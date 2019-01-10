@@ -41,4 +41,3 @@ In 2019, CasperLabs introduces the first 4th generation blockchain platform that
 
 With the introduction of the first 4th generation blockchain as laid out in the subsequent chapters of this white paper, CasperLabs believes the road to full mainstream adoption is wide open. 
 
-1. 
