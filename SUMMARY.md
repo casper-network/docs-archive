@@ -5,6 +5,7 @@
 ## Introduction
 
 * [Background](introduction/background/README.md)
+  * [A Brief History of \(Block\) Time](introduction/background/a-brief-history-of-block-time.md)
   * [Motivation](introduction/background/motivation.md)
 * [Product Description](introduction/product-description.md)
 
