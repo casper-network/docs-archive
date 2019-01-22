@@ -1,10 +1,10 @@
 # A Brief History of \(Block\) Time
 
-## 1st Generation: a Distributed Ledger
+## 1st Generation: Bitcoin, a Distributed Ledger
 
 With release of the first Bitcoin whitepaper by Nakamoto in 2008, the first Byzantine Fault Tolerant \(BFT\) distributed ledger saw the light of day. Nakamoto described and subsequently successfully launched a network protocol that enables the storage of transactions in a perpetual, immutable way. The network is secured through a consensus methodology called "Proof-of-Work", whereby network nodes compete for periodic rewards by solving math problems requiring hard "work", namely computation power. The first network node to solve one such period math problem, gets to append a "block" of transactions to the chain of previous blocks and is rewarded with an amount of currency. \[IMPROVE/EXPAND DESCRIPTION\]. We have since come to refer to such a network protocol as a "Blockchain".
 
-## 2nd Generation: a Turing-Complete Distributed Computer
+## 2nd Generation: Ethereum, a Turing-Complete Distributed Global Computer
 
 Since the launch of Bitcoin, the Blockchain concept has been iterated upon by many derivative and alternative projects. The most notable innovation was accomplished with the launch of Ethereum in 2015 \(first described by Vitalik Buterin in 2014\), with a stated goal of launching an unstoppable, turing-complete global computer \[FIND QUOTE / REFERENCE\], rather than a distributed transaction ledger. Its aim was to maintain an immutable, unstoppable global state through BFT consensus. Similar to Bitcoin, it adopted a Proof-of-Work consensus model and launched its Ethereum Virtual Machine, allowing developers to launch "distributed Apps" \(dApps\), or software applications that run on numerous machines distributed globally, and not controlled by any centralized entity.  
   
