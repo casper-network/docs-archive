@@ -53,6 +53,7 @@
   * [Boundary Conditions](technical-framework/block-dag-architecture/boundary-conditions.md)
 * [Block Storage](technical-framework/block-storage/README.md)
   * [Introduction](technical-framework/block-storage/introduction.md)
+* [Global state](technical-framework/global-state.md)
 
 ## Network and Governance
 
