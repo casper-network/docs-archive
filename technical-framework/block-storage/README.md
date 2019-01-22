@@ -1,2 +1,2 @@
-# Block Storage
+# BlockDAG
 
