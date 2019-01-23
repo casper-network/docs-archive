@@ -29,10 +29,18 @@ We support following value types:
 7. Account. Account addresses are keys in the global data store which point at accounts. Because those references are public, the semantics are much more restrictive than for the mutable cells referenced by unforgable keys. Accounts have the following properties:
    * A public key \(private\)
    * A nonce \(private\)
-   * A set of known unforgable names  \(private\). Mapping between strings to names. Idea behind this map is to allow dApp developers use human readable versions of the keys.
+   * A purse field. This is an unforgeable reference to the `purse` object holding funds of the account.
+   * A set of known unforgeable names  \(private\). Mapping between strings to names. Idea behind this map is to allow dApp developers use human readable versions of the keys.
    * A public method called `give`, which takes an unforgable reference as an argument. When you call `give` on an account, the provided unforgable reference is added to that account's set of known unforgable references. Key used for persisting the name is derived from the name itself.  **NOTE**: name can be remapped later.  **NOTE**: `give`-ing a name is more expensive that deleting it. This incentivizes dApp developers to not `give` out names.
-   * A public method called `authenticate`, which takes a nonce and cryptographic signature as arguments. The `authenticate` method is only called during the first phase of a deploy, called the "login" phase. More detail is given about this below, but the essential point is that the private properties of an account can only be accessed after successfully authenticating. This means that cryptographic \(identity-based\) security is used on the boundary of the system, but full capabilities-based security is used entirely inside the system.
-8. Smart Contract. The precise definition of "Smart Contract" is left purposely vague here because we want to remain agnostic to the detail of the local state, however some rules they must follow with respect to their interaction with the global state are given below. A generally good mental model for Smart Contracts would be functions from one data type to another, where these functions could possibly propose changes within the global state
+   * A public method called `authenticate`, which takes a nonce and cryptographic signature as arguments. The `authenticate` method is only called during the first phase of a deploy, called the "login" phase. This means that cryptographic \(identity-based\) security is used on the boundary of the system, but full capabilities-based security is used entirely inside the system. _**\(note from Mateusz: I am not sure about this part of the description as it seems like something more developer facet, a bit tutorial-ish. I am not convinced it's something that should be put into whitepaper**_**\)**
+8. Smart Contract. The precise definition of "Smart Contract" is left purposely vague here because we are agnostic to the detail about it. Contracts have the following properties:
+
+   1. A set of known unforgeable names. Similarly to `Account`.
+   2. bytearray representing a body of the contract. When contract is being stored in Global State its body is serialized. This means that in order for the contract to update its state it has to put new data into its unforgeable names set. _**\(note from Mateusz: I am not sure about this part of the description as it seems like something more developer facet, a bit tutorial-ish. I am not convinced it's something that should be put into whitepaper**_**\)**
+
+
+
+  
 
 
 
