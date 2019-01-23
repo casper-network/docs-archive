@@ -34,6 +34,7 @@
 * [Appendix](technical-framework/appendix/README.md)
   * [OCaps Security](technical-framework/appendix/ocaps-security.md)
   * [Crypto](technical-framework/appendix/crypto.md)
+  * [gRPC Interfaces](technical-framework/appendix/grpc-interfaces.md)
   * [Release Criteria and Testing](technical-framework/appendix/release-criteria-and-testing.md)
 
 ## Network and Governance
