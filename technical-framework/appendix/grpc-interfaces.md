@@ -14,16 +14,16 @@ description: >-
 syntax = "proto3";
 
 message Node {
-  bytes id = 1;
-  string host = 2;
-  uint32 protocol_port = 3;
-  uint32 discovery_port = 4;
+    bytes id = 1;
+    string host = 2;
+    uint32 protocol_port = 3;
+    uint32 discovery_port = 4;
 }
 
 message Signature {
-  // One of the supported algorithms: ed25519, secp256k1
-  string sig_algorithm = 1; 
-  bytes sig = 2; 
+    // One of the supported algorithms: ed25519, secp256k1
+    string sig_algorithm = 1; 
+    bytes sig = 2; 
 }
 
 message Deploy {
@@ -35,6 +35,22 @@ message Deploy {
     // Signature over hash(timestamp, hash(session_code), hash(payment_code), nonce, gas_price) where hash is blake2b256.
     Signature signature = 6; 
     bytes account_public_key = 7; 
+}
+
+// Generic message for transferring a stream of data that wouldn't fit into single gRPC messages.
+message Chunk {
+    // Alternating between a header and subsequent chunks of data.
+    oneof content {
+        Header header = 1
+        bytes data = 2;
+    }
+ 
+    Header {
+        // Use the content_length to sanity check the size of the data in the chunks that follow.
+        uint32 content_length = 1;
+        // Indicate if compression was used on the data.
+        string compression_algorithm = 2;
+    }
 }
 ```
 {% endcode-tabs-item %}
@@ -50,20 +66,19 @@ syntax = "proto3";
 import "common.proto";
 
 service KademliaService {
-  rpc Ping(PingRequest) returns (PingResponse) {}
-  rpc Lookup(LookupRequest) returns (LookupResponse) {}
+    rpc Ping(PingRequest) returns (PingResponse) {}
+    rpc Lookup(LookupRequest) returns (LookupResponse) {}
 }
 
 message PingRequest {
-  Node sender = 1;
+    Node sender = 1;
 }
 
-message PingResponse {
-}
+message PingResponse {}
 
 message LookupRequest {
-  bytes  id = 1;
-  Node sender = 2;
+    bytes  id = 1;
+    Node sender = 2;
 }
         
 message LookupResponse {
@@ -83,14 +98,112 @@ syntax = "proto3";
 import "common.proto";
 
 service DeployService {
-  rpc Deploy(DeployRequest) returns (DeployResponse) {}
+    rpc Deploy(DeployRequest) returns (DeployResponse) {}
 }
 
 message DeployRequest {
-  Deploy deploy = 1;
+    Deploy deploy = 1;
 }
 
 message DeployResponse {}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+## Gossiping API
+
+{% code-tabs %}
+{% code-tabs-item title="gossiping.proto" %}
+```javascript
+syntax = "proto3";
+
+import "common.proto";
+
+service GossipService {
+    rpc NewBlocks(NewBlocksRequest) returns (NewBlocksResponse);
+    rpc StreamBlockSummaries(StreamBlockSummariesRequest) return (stream BlockSummary);
+    rpc StreamBlocksChunked(StreamBlocksChunkedRequest) return (stream BlockChunk);
+}
+ 
+message BlockSummary {
+    // Hash of the header.
+    bytes block_hash = 1;
+    Block.Header header = 2;
+    // Signature over block_hash.
+    Signature signature = 3;
+}
+ 
+message Block {
+    bytes block_hash = 1;
+    Header header = 2;
+    Body body = 3;
+    Signature signature = 4;
+    
+    message Header {
+        repeated bytes parent_hashes = 1;
+        repeated Justification justifications = 2;
+        bytes post_state_hash = 3;
+        bytes deploys_hash = 4;
+        int64 timestamp = 5;
+        uint64 version = 6;
+        uint32 deploy_count = 7;
+        string shard_id = 8;
+        uint32 validator_block_seq_num = 9;
+        bytes validator_public_key = 10;
+    }
+ 
+    message Body {
+        GlobalState state = 1;
+        repeated ProcessedDeploy deploys = 2;
+    }
+ 
+    message Justification {
+        bytes validator_public_key = 1;
+        bytes latest_block_hash = 2;
+    }
+ 
+    message ProcessedDeploy {
+        Deploy deploy = 1;
+        double cost = 2;
+        bool is_error = 3;
+        string error_message = 4;
+    }
+}
+ 
+message GlobalState {
+    // May not correspond to a particular block if there are multiple parents.
+    bytes pre_state_hash = 1;
+    bytes post_state_hash = 2;
+    repeated Bond bonds = 3;
+}
+ 
+message Bond {
+    bytes validator_public_key = 1;
+    int64 stake = 2;
+}
+ 
+message NewBlocksRequest {
+    Node sender = 1;
+    repeated BlockSummary blocks = 2;
+}
+ 
+message NewBlocksResponse {
+    bool is_new = 1;
+}
+ 
+message StreamBlockSummariesRequest {
+    repeated bytes target_hashes = 1;
+    repeated bytes block_locator_hashes = 2;
+    uint32 max_depth = 3;
+}
+ 
+message StreamBlocksChunkedRequest {
+    repeated bytes block_hashes = 1;
+    uint32 chunk_size = 2;
+    repeated string accepted_compression_algorithms = 3;
+}
+ 
+
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

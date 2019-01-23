@@ -37,7 +37,17 @@ The `Deploy` message has the following notable fields:
 * `nonce` has to correspond to the next sequence number the Account sending the Deploy. The Nodes will hold on to the Deploy until the previous nonce has been included in the Block they are trying to build on.
 * `account_public_key` is the public key associated with the Account and the one that is used to sign the Deploy. This is how Nodes can identify Accounts and find out what the currently expected nonce is.
 
-Only existing Accounts can send Deploys. The way for a user to create an Account is to go to an exchange that already has an Account and tokens and to pay them to create one for the user by calling a blessed contract on the Blockchain which will transfer tokens from the exchange to the user and store the users' public key on the chain as well. The exchange does this in form of a Deploy. As soon as that Deploy appears in one of the Blocks the user is free to send their own Deploys. To identify the Deploy in question the user has to know the public key of the exchange and the nonce it used to create the Account.
+Only existing Accounts can send Deploys. The way for a user to create an Account is to go to an exchange \(or friend\) that already has an Account and tokens and to pay them to create one for the user by calling a blessed contract on the Blockchain which will transfer tokens from the exchange to the user and store the users' public key on the chain as well. The exchange does this in form of a Deploy. As soon as that Deploy appears in one of the Blocks the user is free to send their own Deploys. To identify the Deploy in question the user has to know the public key of the exchange and the nonce it used to create the Account.
 
 The user has to sign the request for which it has to calculate the hashes of all its parts. Currently the only supported hashing algorithm is Blake2b-256. If that needs to change in the future then the name of the algorithm will be added to the `Signature`.
+
+## Block gossiping
+
+Nodes propose Blocks in parallel by finding Deploys that can be applied independently of each other. Whenever a new Block is formed, it has to propagate through the network to become part of the consensus. This is achieved by Nodes making calls to each other via gRPC to invoke methods on their `BlockService` interface which should be listening on the `protocol_port` of the `Node` that represents the peers in the network. The details of the service can be seen under [gRPC Interfaces](../appendix/grpc-interfaces.md#gossiping-api).
+
+
+
+
+
+
 
