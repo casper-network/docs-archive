@@ -23,10 +23,10 @@ message Node {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-## Discovery API
+## Kademlia API
 
 {% code-tabs %}
-{% code-tabs-item title="discovery.proto" %}
+{% code-tabs-item title="kademlia.proto" %}
 ```javascript
 syntax = "proto3";
 
@@ -48,7 +48,7 @@ message LookupResponse {
     repeated Node nodes = 1;
 }
 
-service DiscoveryService {
+service KademliaService {
   rpc Ping (PingRequest) returns (PingResponse) {}
   rpc Lookup (LookupRequest) returns (LookupResponse) {}
 }
