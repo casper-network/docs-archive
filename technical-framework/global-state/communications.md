@@ -8,7 +8,7 @@ description: 'gRPC, Block Propogation, Node Discovery'
 
 Nodes for a peer-to-peer network, constantly communicating with each other to reach consensus about the state of the Blockchain. A Node is not necessarily a single physical machine, but it appears as a single logical entity to the rest of their peers by having a unique ID and address where it responds to requests.
 
-Nodes periodically try to discover each other based on elements of the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol. Unlike the original Kademlia which was using UDP, Nodes are using point-to-point gRPC calls for communication. The specifics can be found under the [gRPC Interfaces](../appendix/grpc-interfaces.md#kademlia-api). According to this protocol every `Node` has the following properties:
+Nodes periodically try to discover each other based on elements of the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol. Unlike the original Kademlia which was using UDP, Nodes are using point-to-point gRPC calls for communication. The specifics can be found under [gRPC Interfaces](../appendix/grpc-interfaces.md#kademlia-api). According to this protocol every `Node` has the following properties:
 
 * `id` is a Keccak-256 digest of the Public Key from the SSL certificate of the node
 * `host` is the public endpoint where the node is reachable
@@ -43,7 +43,7 @@ The user has to sign the request for which it has to calculate the hashes of all
 
 ## Block gossiping
 
-Nodes propose Blocks in parallel by finding Deploys that can be applied independently of each other. Whenever a new Block is formed, it has to propagate through the network to become part of the consensus. This is achieved by Nodes making calls to each other via gRPC to invoke methods on their `BlockService` interface which should be listening on the `protocol_port` of the `Node` that represents the peers in the network. The details of the service can be seen under [gRPC Interfaces](../appendix/grpc-interfaces.md#gossiping-api).
+Nodes propose Blocks in parallel by finding Deploys that can be applied independently of each other. Whenever a new Block is formed, it has to propagate through the network to become part of the consensus. This is achieved by Nodes making calls to each other via gRPC to invoke methods on their `GossipService` interface which should be listening on the `protocol_port` of the `Node` that represents the peers in the network. The details of the service can be seen under [gRPC Interfaces](../appendix/grpc-interfaces.md#gossiping-api).
 
 
 

@@ -121,8 +121,9 @@ import "common.proto";
 
 service GossipService {
     rpc NewBlocks(NewBlocksRequest) returns (NewBlocksResponse);
-    rpc StreamBlockSummaries(StreamBlockSummariesRequest) return (stream BlockSummary);
-    rpc StreamBlocksChunked(StreamBlocksChunkedRequest) return (stream BlockChunk);
+    rpc BatchGetBlockSummaries(BatchGetBlockSummariesRequest) returns (BatchGetBlockSummariesResponse);
+    rpc StreamAncestorBlockSummaries(StreamAncestorBlockSummariesRequest) return (stream BlockSummary);
+    rpc GetBlockChunked(GetBlockChunkedRequest) return (stream Chunk);
 }
  
 message BlockSummary {
@@ -184,21 +185,29 @@ message Bond {
  
 message NewBlocksRequest {
     Node sender = 1;
-    repeated BlockSummary blocks = 2;
+    repeated BlockSummary block_summaries = 2;
 }
  
 message NewBlocksResponse {
     bool is_new = 1;
 }
+
+message BatchGetBlockSummariesRequest {
+    repeatead bytes block_hashes = 1;
+}
+
+message BatchGetBlockSummariesResponse {
+    repeated block_summaries = 1;
+}
  
 message StreamBlockSummariesRequest {
-    repeated bytes target_hashes = 1;
-    repeated bytes block_locator_hashes = 2;
+    repeated bytes target_block_hashes = 1;
+    repeated bytes known_block_hashes = 2;
     uint32 max_depth = 3;
 }
  
-message StreamBlocksChunkedRequest {
-    repeated bytes block_hashes = 1;
+message GetBlockChunkedRequest {
+    bytes block_hashe = 1;
     uint32 chunk_size = 2;
     repeated string accepted_compression_algorithms = 3;
 }
