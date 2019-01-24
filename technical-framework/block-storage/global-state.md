@@ -99,7 +99,7 @@ As a general rule of thumb, a collection is represented as its length \(the numb
 * `Some` is represented by the unsigned 8-bit number 1, followed by the bytes encoding the value the Option holds
 * It is an error for the first byte of a byte array representing an Option to be anything other than 0 or 1
 * Note this definition is recursive on purpose; if it is possible to encode/decode some type `T` then it is possible to encode/decode `Option<T>`.
-* The reference implementation currently uses a 32-bit number to differentiate the `Some` and `None` cases, which is totally unnecessary. There is a ticket to fix this: [![](https://casperlabs.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)EE-84](https://casperlabs.atlassian.net/browse/EE-84) - In Option&lt;T&gt; bytesrepr, use u8 instead of u32 for differentiating between Some and None cases TO DO
+* The reference implementation currently uses a 32-bit number to differentiate the `Some` and `None` cases, which is totally unnecessary. \(To be fixed soon\)
 
 #### Either \(or Result in Rust\) <a id="ApplicationBinaryInterface(ABI)-Either(orResultinRust)"></a>
 
