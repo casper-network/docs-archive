@@ -8,7 +8,7 @@ description: 'gRPC, Block Propogation, Node Discovery'
 
 Nodes for a peer-to-peer network, constantly communicating with each other to reach consensus about the state of the Blockchain. A Node is not necessarily a single physical machine, but it appears as a single logical entity to the rest of their peers by having a unique ID and address where it responds to requests.
 
-Nodes periodically try to discover each other based on elements of the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol. Unlike the original Kademlia which was using UDP, Nodes are using point-to-point gRPC calls for communication. The specifics can be found under [gRPC Interfaces](../appendix/grpc-interfaces.md#kademlia-api). According to this protocol every `Node` has the following properties:
+Nodes periodically try to discover each other based on elements of the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol. Unlike the original Kademlia which was using UDP, Nodes are using point-to-point gRPC calls for communication. The specifics can be found under [Kademlia API](../appendix/grpc-interfaces.md#kademlia-api). According to this protocol every `Node` has the following properties:
 
 * `id` is a Keccak-256 digest of the Public Key from the SSL certificate of the node
 * `host` is the public endpoint where the node is reachable
@@ -27,7 +27,7 @@ At startup the Nodes should be configured with the address of a well known peer 
 
 ## Deployments
 
-Clients send Deploys to one or more Nodes on the network who will validate them and try to include them in future Blocks. To do this Clients need to make a call to the `DeploymentService`. The specifics can be found under [gRPC Interfaces](../appendix/grpc-interfaces.md#deployment-api).
+Clients send Deploys to one or more Nodes on the network who will validate them and try to include them in future Blocks. To do this Clients need to make a call to the `DeploymentService`. The specifics can be found under [Deployment API](../appendix/grpc-interfaces.md#deployment-api).
 
 The `Deploy` message has the following notable fields:
 
@@ -43,7 +43,7 @@ The user has to sign the request for which it has to calculate the hashes of all
 
 ## Block Gossiping
 
-Nodes propose Blocks in parallel by finding Deploys that can be applied independently of each other. Whenever a new Block is formed, it has to propagate through the network to become part of the consensus. This is achieved by Nodes making calls to each other via gRPC to invoke methods on their `GossipService` interface which should be listening on the `protocol_port` of the `Node` that represents the peers in the network. The details of the service can be seen under [gRPC Interfaces](../appendix/grpc-interfaces.md#gossiping-api).
+Nodes propose Blocks in parallel by finding Deploys that can be applied independently of each other. Whenever a new Block is formed, it has to propagate through the network to become part of the consensus. This is achieved by Nodes making calls to each other via gRPC to invoke methods on their `GossipService` interface which should be listening on the `protocol_port` of the `Node` that represents the peers in the network. The details of the service can be seen under [Gossiping API](../appendix/grpc-interfaces.md#gossiping-api).
 
 ### Principles
 
@@ -68,6 +68,22 @@ To achieve these we have the following high level approach:
 * Full Blocks can be served on demand when the gossiped meta-data is _new._
 * Nodes should pick a _relay factor_ according to how much network traffic they can handle and find that many Node to gossip to, Nodes for which the information is _new_.
 * Nodes should try to spread the information mostly to their closer peers but also to their farther away neighbours to accelerate the spread of information to the far reaches of the network.
+
+### Picking Nodes for Gossip
+
+As we established in the [Node Discovery](communications.md#node-discovery) section the Nodes maintain a list of peers using a Kademlia table. The table has one bucket for each possible distance between the bits of their IDs, and they pick a number _k_ to be length of the list of Nodes in each of these buckets that they keep track of. 
+
+In statistical terms, half of the Nodes in the network will fall in the first bucket, since the first bit of their ID will either be 0 or 1. Similarly each subsequent bucket holds half of the remainder of the network. Since _k_ is the same for each bucket, this means that Nodes can track many more of their closest neighbours then the ones which are far away from them. This is why in Kademlia as we perform lookups we get closer and closer to the best possible match anyone knows about.
+
+In practice this means that if we have a network of 50 Nodes and a _k_ of 10, then from the perspective of any given Node, 25 nodes fall into the first bucket, but it only tracks 10 of them, ergo it will never gossip to 15 Nodes from the other half that it doesn't have the room to track in its table.
+
+We can use this skewedness to our advantage: say we pick a relay factor of 3; if we make sure to always notify 1 Node in the farthest non-empty bucket, and 2 in the closer neighbourhood, we can increase the chance that the information gets to those Nodes on the other half of the board that we don't track. 
+
+The following diagram illustrates this. The black actor on the left represents our Node and the vertical partitions represent the distance from it. The split in the middle means the right side of the board falls under a single bucket in the Kademlia table. The black dots on in the board are the Nodes we track, the greys are ones we don't. As we can see we know few peers from the right side of the network, twice as many from the far half of left side, and again twice as many from the closest half of the left half. Once again this is because as we move closer there are more and more buckets to cover each of these areas. If we pick one Node in each area to gossip to, and the Node on the right side follows the same rule, it will start distributing our message on that side of the board more aggressively than bouncing it back on the left side.
+
+![Gossiping based on Kademlia distance](../../.gitbook/assets/gossip.png)
+
+
 
 
 

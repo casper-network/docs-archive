@@ -121,9 +121,9 @@ import "common.proto";
 
 service GossipService {
     rpc NewBlocks(NewBlocksRequest) returns (NewBlocksResponse);
-    rpc BatchGetBlockSummaries(BatchGetBlockSummariesRequest) returns (BatchGetBlockSummariesResponse);
     rpc StreamAncestorBlockSummaries(StreamAncestorBlockSummariesRequest) returns (stream BlockSummary);
     rpc StreamDagTipBlockSummaries(StreamDagTipSummariesRequest) returns (stream BlockSummary);
+    rpc BatchGetBlockSummaries(BatchGetBlockSummariesRequest) returns (BatchGetBlockSummariesResponse);
     rpc GetBlockChunked(GetBlockChunkedRequest) returns (stream Chunk);
 }
  
@@ -144,7 +144,7 @@ message Block {
     message Header {
         repeated bytes parent_hashes = 1;
         repeated Justification justifications = 2;
-        bytes post_state_hash = 3;
+        GlobalState state = 3;
         bytes deploys_hash = 4;
         int64 timestamp = 5;
         uint64 version = 6;
@@ -170,13 +170,14 @@ message Block {
         bool is_error = 3;
         string error_message = 4;
     }
-}
- 
-message GlobalState {
-    // May not correspond to a particular block if there are multiple parents.
-    bytes pre_state_hash = 1;
-    bytes post_state_hash = 2;
-    repeated Bond bonds = 3;
+    
+    message GlobalState {
+        // May not correspond to a particular block if there are multiple parents.
+        bytes pre_state_hash = 1;
+        bytes post_state_hash = 2;
+        // Included in header so lightweight nodes can follow the consensus.
+        repeated Bond bonds = 3;
+    }
 }
  
 message Bond {
