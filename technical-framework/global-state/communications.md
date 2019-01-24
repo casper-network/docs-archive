@@ -83,15 +83,7 @@ The following diagram illustrates this. The black actor on the left represents o
 
 ![](../../.gitbook/assets/gossip%20%282%29.png)
 
-If, on the other hand, we were to just pick 3 random Nodes, it would be less likely that we get to the grey Nodes as early; even less if we pick the closest neighbours. 
-
-In terms of probabilities this makes more difference when the number of Nodes is small compared to the _k_ of the Kademlia table. Consider _k_ of 10 with a network size of 20; 10 Nodes would fall in the right side bucket, the other 10 would be evenly distributed across the buckets on the left. Consider these scenarios:
-
-* If we pick a relay factor of 4 and target random Nodes then every Node would have a $$1 - (1 - 1/20)^4 = 0.185$$ chance of being gossiped to. 
-* If we divided the 20 Nodes into 4 equal groups of 5, each Node would have $$1/5$$ instead, which is not a lot of difference. 
-* But if we divide the buckets first, then any Node in the right side bucket has $$1 / 10$$ chance while the one on the far side of the left half would be $$1 / 5 $$ and the next one to the right would be $$1 / 3$$ or $$1/2$$.
-
-The algorithm below demonstrates the third approach:
+If, on the other hand, we were to just pick 3 random Nodes, it would be less likely that we get to the grey Nodes as early; even less if we pick the closest neighbours. If the network is small enough that _k_ can fit half the network then the difference in probabilities are marginal, but if the network is larger then 2_k_ we might see some gains in the regularity of the information spread.
 
 ```c
 algorithm Gossip is
@@ -101,8 +93,8 @@ algorithm Gossip is
     output: number messages sent s
          
     s <- 0
-    B <- non-empty buckets in K, ordered by distance from current node
-    G <- partition B into R equal sized groups, then flatten the peers in each
+    P <- flatten the peers in K, ordered by distance from current node
+    G <- partition P into R equal sized groups
     
     let i be 0, the index of the current group G
     let v be the empty set of notified peers
