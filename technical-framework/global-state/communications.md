@@ -77,9 +77,9 @@ In statistical terms, half of the Nodes in the network will fall in the first bu
 
 In practice this means that if we have a network of 50 Nodes and a _k_ of 10, then from the perspective of any given Node, 25 nodes fall into the first bucket, but it only tracks 10 of them, ergo it will never gossip to 15 Nodes from the other half that it doesn't have the room to track in its table.
 
-We can use this skewedness to our advantage: say we pick a relay factor of 3; if we make sure to always notify 1 Node in the farthest non-empty bucket, and 2 in the closer neighbourhood, we can increase the chance that the information gets to those Nodes on the other half of the board that we don't track. 
+We can use this skewness to our advantage: say we pick a relay factor of 3; if we make sure to always notify 1 Node in the farthest non-empty bucket, and 2 in the closer neighbourhood, we can increase the chance that the information gets to those Nodes on the other half of the board that we don't track. 
 
-The following diagram illustrates this. The black actor on the left represents our Node and the vertical partitions represent the distance from it. The split in the middle means the right side of the board falls under a single bucket in the Kademlia table. The black dots on in the board are the Nodes we track, the greys are ones we don't. As we can see we know few peers from the right side of the network, twice as many from the far half of left side, and again twice as many from the closest half of the left half. Once again this is because as we move closer there are more and more buckets to cover each of these areas. If we pick one Node in each area to gossip to, and the Node on the right side follows the same rule, it will start distributing our message on that side of the board more aggressively than bouncing it back on the left side.
+The following diagram illustrates this. The black actor on the left represents our Node and the vertical partitions represent the distance from it. The split in the middle means the right half of the board falls under a single bucket in the Kademlia table. The black dots on in the board are the Nodes we track, the greys are ones we don't. As we can see we know few peers from the right half of the network, twice as many from the far size of left half, and yet twice as many in the near side of the left half. Once again this is because as we move closer there are more and more buckets to cover each of these areas. If we pick one Node in each area to gossip to, and the Node on the right follows the same rule, it will start distributing our message on that side of the board more aggressively than bouncing it back to the left.
 
 ![Gossiping based on Kademlia distance](../../.gitbook/assets/gossip.png)
 
@@ -113,5 +113,29 @@ algorithm Gossip is
     return s
 ```
 
-### 
+### Fairness
+
+We can rightfully ask how the gossip algorithm outlined above fares in the face of malicious actors that don't want to take their share in the data distribution, i.e. what happens if a Node decides not to propagate the messages?
+
+The consensus protocol we're building has a built-in protection against lazy validators: to get their fees from a Block produced by somebody else they have to build on top of it. When they do that, they have to gossip about it, otherwise it will not become part of the DAG or it can get orphaned if conflicting blocks emerge, so it's in everyone's incentive for gossiping to happen at a steady pace. 
+
+What if they decide to announce _their_ Blocks to _everyone_ but never relay other Blocks from other Nodes? They have a few incentives against doing this: 
+
+* If everybody would be doing it then the nodes unknown to the creators would get it much later and might produce conflicting blocks, the consensus would slow down.
+* When they finally announce a Block they built _everyone_ would try to download it from them, putting extra load on their networks, plus they might have to download extra Blocks that the Node failed to relay before.
+* If we have to relay to a 100 Nodes directly, it could easily to take longer for each of the 100 to download it from 1 Node then for 10 Nodes to do so and then relay to 10 more Nodes each.
+
+The point of having a _relay factor_ together with the mechanism of returning whether the information was _new_ has the following purpose: 
+
+* By indicating that the information was new the callee is signalling to the caller that once it has done the validation of the Block it will relay the information, therefore the caller can be content that by informing this Node it carried out the number of gossips it set out to do, i.e. it will have to serve the full Blocks up to R number of times.
+* By indicating that the information wasn't new, the callee is signalling that it will not relay the information any longer, therefore the caller should pick another Node if it wants to live up to its pledge of relaying to R number of new Nodes.
+
+Nodes expect the ones that indicated that the Block meta-data was new to them to later attempt to download the full Blocks. This may not happen, as other Nodes may notify them too, in which case they can download some Blocks from here, some from there. 
+
+There are two forms of lying that can happen here:
+
+1. The callee can say the information wasn't anything new, but then attempt to download the data anyway. Nodes may disincentivise this by tracking each others _reputation_ and block Nodes that lied to them.
+2. The callee can say the information was new but not relay. This goes against their own interest as well, but it's difficult to detect. A higher relay factor can compensate for the amount of liars on the network.
+
+Nodes may also use reputation tracking and blocking if they receive notifications about Blocks which cannot be validated or which the notifier isn't able to serve when asked.
 
