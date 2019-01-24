@@ -122,8 +122,9 @@ import "common.proto";
 service GossipService {
     rpc NewBlocks(NewBlocksRequest) returns (NewBlocksResponse);
     rpc BatchGetBlockSummaries(BatchGetBlockSummariesRequest) returns (BatchGetBlockSummariesResponse);
-    rpc StreamAncestorBlockSummaries(StreamAncestorBlockSummariesRequest) return (stream BlockSummary);
-    rpc GetBlockChunked(GetBlockChunkedRequest) return (stream Chunk);
+    rpc StreamAncestorBlockSummaries(StreamAncestorBlockSummariesRequest) returns (stream BlockSummary);
+    rpc StreamDagTipBlockSummaries(StreamDagTipSummariesRequest) returns (stream BlockSummary);
+    rpc GetBlockChunked(GetBlockChunkedRequest) returns (stream Chunk);
 }
  
 message BlockSummary {
@@ -200,10 +201,13 @@ message BatchGetBlockSummariesResponse {
     repeated block_summaries = 1;
 }
  
-message StreamBlockSummariesRequest {
+message StreamAncestorBlockSummariesRequest {
     repeated bytes target_block_hashes = 1;
     repeated bytes known_block_hashes = 2;
     uint32 max_depth = 3;
+}
+
+message StreamDagTipBlockSummariesRequest {
 }
  
 message GetBlockChunkedRequest {

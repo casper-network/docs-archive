@@ -41,9 +41,33 @@ Only existing Accounts can send Deploys. The way for a user to create an Account
 
 The user has to sign the request for which it has to calculate the hashes of all its parts. Currently the only supported hashing algorithm is Blake2b-256. If that needs to change in the future then the name of the algorithm will be added to the `Signature`.
 
-## Block gossiping
+## Block Gossiping
 
 Nodes propose Blocks in parallel by finding Deploys that can be applied independently of each other. Whenever a new Block is formed, it has to propagate through the network to become part of the consensus. This is achieved by Nodes making calls to each other via gRPC to invoke methods on their `GossipService` interface which should be listening on the `protocol_port` of the `Node` that represents the peers in the network. The details of the service can be seen under [gRPC Interfaces](../appendix/grpc-interfaces.md#gossiping-api).
+
+### Principles
+
+We call the method by which information is disseminated on the network _gossiping_. Gossiping means that when a Node comes across new bits of information it will relay it to a selection of its peers, who do the same, eventually saturating the network, i.e. get to the point where everyone has been notified.
+
+Nodes need three layers of information about Blocks to be able to participate in the consensus:
+
+1. Block meta-data, e.g. parent relationships, validator weights, state hashes.
+2. Deploys that were included in given Block.
+3. Global State, to be able to run the Deploys, validate Blocks and build new ones on top of them.
+
+Out of these only the top two are gossiped between Nodes; the Global State they have to calculate themselves by running Deploys. 
+
+We have the following requirements from our gossiping approach:
+
+* It should be efficient, i.e. minimise the network traffic while maximising the rate at which we reach full saturation.
+* Node operators should have a reasonable expectation that network traffic \(a finite resource\) will scale linearly with the amount of Deploys across the network while being less affected by the total number of Nodes. This means the load should be distributed among the peers rather than create hotspots.
+
+To achieve these we have the following high level approach:
+
+* Gossip only the meta-data about the Blocks to minimise the amount of data transfer. 
+* Full Blocks can be served on demand when the gossiped meta-data is _new._
+* Nodes should pick a _relay factor_ according to how much network traffic they can handle and find that many Node to gossip to, Nodes for which the information is _new_.
+* Nodes should try to spread the information mostly to their closer peers but also to their farther away neighbours to accelerate the spread of information to the far reaches of the network.
 
 
 
