@@ -34,13 +34,9 @@ We support following value types:
    * A public method called `give`, which takes an unforgable reference as an argument. When you call `give` on an account, the provided unforgable reference is added to that account's set of known unforgable references. Key used for persisting the name is derived from the name itself.  **NOTE**: name can be remapped later.  **NOTE**: `give`-ing a name is more expensive that deleting it. This incentivizes dApp developers to not `give` out names.
    * A public method called `authenticate`, which takes a nonce and cryptographic signature as arguments. The `authenticate` method is only called during the first phase of a deploy, called the "login" phase. This means that cryptographic \(identity-based\) security is used on the boundary of the system, but full capabilities-based security is used entirely inside the system. _**\(note from Mateusz: I am not sure about this part of the description as it seems like something more developer facet, a bit tutorial-ish. I am not convinced it's something that should be put into whitepaper**_**\)**
 8. Smart Contract. The precise definition of "Smart Contract" is left purposely vague here because we are agnostic to the detail about it. Contracts have the following properties:
+   * A set of known unforgeable names. Similarly to `Account`.
+   * bytearray representing a body of the contract. When contract is being stored in Global State its body is serialized. This means that in order for the contract to update its state it has to put new data into its unforgeable names set. _**\(note from Mateusz: I am not sure about this part of the description as it seems like something more developer facet, a bit tutorial-ish. I am not convinced it's something that should be put into whitepaper**_**\)**
 
-   1. A set of known unforgeable names. Similarly to `Account`.
-   2. bytearray representing a body of the contract. When contract is being stored in Global State its body is serialized. This means that in order for the contract to update its state it has to put new data into its unforgeable names set. _**\(note from Mateusz: I am not sure about this part of the description as it seems like something more developer facet, a bit tutorial-ish. I am not convinced it's something that should be put into whitepaper**_**\)**
-
-
-
-  
 
 ### **Notes**
 
