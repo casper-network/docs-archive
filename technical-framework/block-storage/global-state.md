@@ -6,7 +6,7 @@ description: 'Accounts, K/V'
 
 ### Introduction
 
-Blockchain can be viewed as decentralized, distributed database with verifiable computation layer on top. In order to do anything meaningful we need a way to store data \(in blockchain context these may be contracts, accounts etc\). From a Computer Engineering perspective Global State \(as we call this distributed and decentralized database\) can be thought of as key-value store, a mapping between byte-arrays and byte-arrays that is being replicated between nodes in the network.
+Blockchain can be viewed as decentralized, distributed database with verifiable computation layer on top. In order to do anything meaningful we need a way to store data \(in blockchain context these may be contracts, accounts etc\). From a Computer Engineering perspective Global State \(as we call this distributed and decentralized database\) can be thought of as key-value store, a mapping between byte-arrays and byte-arrays that is being replicated between nodes in the network. Although it is not required from the specific implementation of Global State, it is assumed that the implementation will maintain this mapping in a Merkle Patricia tree.
 
 ### Keys
 
@@ -41,6 +41,10 @@ We support following value types:
 
 
   
+
+### **Notes**
+
+It is assumed that all binary encodings are done using little-endian.
 
 
 
