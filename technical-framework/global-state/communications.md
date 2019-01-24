@@ -83,11 +83,35 @@ The following diagram illustrates this. The black actor on the left represents o
 
 ![Gossiping based on Kademlia distance](../../.gitbook/assets/gossip.png)
 
+If, on the other hand, we were to pick 3 random Nodes, it would have been more unlikely that we get to the grey Nodes soon; even less if we pick the closest neighbours. 
 
+```c
+algorithm Gossip is
+    input: message M to send,
+           relay factor r, 
+           kademlia table K
+    output: number messages sent s
+         
+    s <- 0
+    P <- flatten peers in K (will be ordered by distance from current node)
+    G <- partition P into R equal sized groups
+    
+    let i be 0, the index of the current group G
+    let v be the empty set of notified peers
+    
+    while i < sizeof(G) and s <= r:
+        try to pick a random peer p in G(i) - v
+        if p could not be found then
+            i <- i + 1
+        else            
+            v <- v + p
+            let n be the result of trying to send M to p, indicating whether M was new to p
+            if n is True then
+                i <- i + 1
+                s <- s + 1       
+            
+    return s
+```
 
-
-
-
-
-
+### 
 
