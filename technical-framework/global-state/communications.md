@@ -77,13 +77,21 @@ In statistical terms, half of the Nodes in the network will fall in the first bu
 
 In practice this means that if we have a network of 50 Nodes and a _k_ of 10, then from the perspective of any given Node, 25 nodes fall into the first bucket, but it only tracks 10 of them, ergo it will never gossip to 15 Nodes from the other half that it doesn't have the room to track in its table.
 
-We can use this skewness to our advantage: say we pick a relay factor of 3; if we make sure to always notify 1 Node in the farthest non-empty bucket, and 2 in the closer neighbourhood, we can increase the chance that the information gets to those Nodes on the other half of the board that we don't track. 
+We can use this skewness to our advantage: say we pick a relay factor of 3; if we make sure to always notify 1 Node in the farthest non-empty buckets, and 2 in the closer neighbourhood, we can increase the chance that the information gets to those Nodes on the other half of the board that we don't track. 
 
-The following diagram illustrates this. The black actor on the left represents our Node and the vertical partitions represent the distance from it. The split in the middle means the right half of the board falls under a single bucket in the Kademlia table. The black dots on in the board are the Nodes we track, the greys are ones we don't. As we can see we know few peers from the right half of the network, twice as many from the far size of left half, and yet twice as many in the near side of the left half. Once again this is because as we move closer there are more and more buckets to cover each of these areas. If we pick one Node in each area to gossip to, and the Node on the right follows the same rule, it will start distributing our message on that side of the board more aggressively than bouncing it back to the left.
+The following diagram illustrates this. The black actor on the left represents our Node and the vertical partitions represent the distance from it. The split in the middle means the right half of the board falls under a single bucket in the Kademlia table. The black dots on in the board are the Nodes we track, the greys are ones we don't. We know few peers from the right half of the network, but much more on the left, because it's covered by finer and finer grained buckets. If we pick Nodes evenly across the full distance spectrum to gossip to, and the Node on the right follows the same rule, it will start distributing our message on that side of the board more aggressively than bouncing it back to the left.
 
-![Gossiping based on Kademlia distance](../../.gitbook/assets/gossip.png)
+![](../../.gitbook/assets/gossip%20%282%29.png)
 
-If, on the other hand, we were to pick 3 random Nodes, it would have been more unlikely that we get to the grey Nodes soon; even less if we pick the closest neighbours. 
+If, on the other hand, we were to just pick 3 random Nodes, it would be less likely that we get to the grey Nodes as early; even less if we pick the closest neighbours. 
+
+In terms of probabilities this makes more difference when the number of Nodes is small compared to the _k_ of the Kademlia table. Consider _k_ of 10 with a network size of 20; 10 Nodes would fall in the right side bucket, the other 10 would be evenly distributed across the buckets on the left. Consider these scenarios:
+
+* If we pick a relay factor of 4 and target random Nodes then every Node would have a $$1 - (1 - 1/20)^4 = 0.185$$ chance of being gossiped to. 
+* If we divided the 20 Nodes into 4 equal groups of 5, each Node would have $$1/5$$ instead, which is not a lot of difference. 
+* But if we divide the buckets first, then any Node in the right side bucket has $$1 / 10$$ chance while the one on the far side of the left half would be $$1 / 5 $$ and the next one to the right would be $$1 / 3$$ or $$1/2$$.
+
+The algorithm below demonstrates the third approach:
 
 ```c
 algorithm Gossip is
@@ -93,15 +101,15 @@ algorithm Gossip is
     output: number messages sent s
          
     s <- 0
-    P <- flatten peers in K (will be ordered by distance from current node)
-    G <- partition P into R equal sized groups
+    B <- non-empty buckets in K, ordered by distance from current node
+    G <- partition B into R equal sized groups, then flatten the peers in each
     
     let i be 0, the index of the current group G
     let v be the empty set of notified peers
     
     while i < sizeof(G) and s <= r:
-        try to pick a random peer p in G(i) - v
-        if p could not be found then
+        let p be a random peer in G(i) - v or None if empty
+        if p is None then
             i <- i + 1
         else            
             v <- v + p
@@ -138,4 +146,12 @@ There are two forms of lying that can happen here:
 2. The callee can say the information was new but not relay. This goes against their own interest as well, but it's difficult to detect. A higher relay factor can compensate for the amount of liars on the network.
 
 Nodes may also use reputation tracking and blocking if they receive notifications about Blocks which cannot be validated or which the notifier isn't able to serve when asked.
+
+Ultimately everybody wants to maximise the fees they get from the DAG while minimising their operational costs until they reach some kind of equilibrium.
+
+### Gossip Interface
+
+
+
+
 
