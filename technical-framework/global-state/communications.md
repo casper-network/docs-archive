@@ -82,7 +82,7 @@ We can use this skewness to our advantage: say we pick a _relay factor_ of 3; if
 
 The following diagram illustrates this. The black actor on the left represents our node and the vertical partitions represent the distance from it. The split in the middle means the right half of the board falls under a single bucket in the Kademlia table. The black dots on in the board are the nodes we track, the greys are ones we don't. We know few peers from the right half of the network, but much more on the left, because it's covered by finer and finer grained buckets. If we pick nodes evenly across the full distance spectrum to gossip to, and the Node on the right follows the same rule, it will start distributing our message on that side of the board with a slightly higher chance than bouncing it back to the left.
 
-![](../../.gitbook/assets/gossip%20%282%29.png)
+![Message propagation among peers](../../.gitbook/assets/gossip%20%282%29.png)
 
 In terms of probabilities of reaching a grey node in the 2nd round, or just the message being on the right side of the board in the 1st or 2nd round of message passing, the gains are marginal and depend on how many peers there are in the Kademlia table. We could give higher weights to the buckets that reach the untracked parts of the network, but the effects will have to be simulated.
 
@@ -346,5 +346,19 @@ parallel threads Downloader is
         
 ```
 
+#### GetBlockChunked
 
+Full Blocks containing all the deploys can get big, and the HTTP/2 protocol underlying gRPC has limits on the maximum message size it can transmit in a request body, therefore we need to break the payload up into smaller chunks, transfer them as streams and reconstruct them on the other side. 
+
+The caller should keep track of the data it receives and compare them to the `content_length` it got initially in the header to make sure it's not being fed an infinite stream of data.
+
+In theory the method could return a stream of multiple blocks but asking for them one by one from multiple peers as the notifications arrive to the node about alternative sources should be favoured over downloading from a single source anyway.
+
+#### StreamDagTipBlockSummaries
+
+When a new node joins the network it should ask one or more of its peers about the tips of their DAG, i.e. the Blocks on which they themselves would be proposing new blocks. This can be followed by an arbitrary number of calls to the `StreamAncestorBlockSummaries` until the new node has downloaded and partially verified the full DAG using the algorithms outlined above. It's worth cross-correlating the tips of multiple nodes to avoid being lied to by any single malicious actor.
+
+Finally the following sequence diagram demonstrates the life cycle of Block propagation among nodes. The dashed blocks have been left unconnected for brevity but they do the same thing as the ones on the left side.
+
+![Block Gossiping](../../.gitbook/assets/block-gossiping%20%282%29.png)
 
