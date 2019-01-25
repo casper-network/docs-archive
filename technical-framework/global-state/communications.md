@@ -88,7 +88,7 @@ In terms of probabilities of reaching a grey node in the 2nd round, or just the 
 
 In practice the messages don't have to reach every node on the network. Achieving 100% saturation would be impractical as it would require a high level of redundancy, i.e. a node receiving the same message multiple times from different peers. Tracking who saw a message could bloat the message size or open it up to tampering. But even if a node isn't notified about a particular Block _right now_, it has equal chances of receiving the next Block that builds on top of that, at which point it can catch up with the missing chain.
 
-Therefore nodes should have a _relay saturation_ value beyond which they don't try to gossip a message to new nodes. For example if we pick a _relay factor_ of 5 and a _relay saturation_ of 80% then it's enough to try and send to 25 nodes maximum. If we find less than 5 peers among them to whom the information was _new_ then we achieved a saturation beyond 80% and.
+Therefore nodes should have a _relay saturation_ value beyond which they don't try to gossip a message to new nodes. For example if we pick a _relay factor_ of 5 and a _relay saturation_ of 80% then it's enough to try and send to 25 nodes maximum. If we find less than 5 peers among them to whom the information was _new_ then we achieved a saturation beyond 80%. This prevents the situation when the last node to get the message has to contact every other node in a futile attempt to spread it 5 more times.
 
 ```c
 algorithm BlockGossip is
@@ -146,7 +146,23 @@ There are two forms of lying that can happen here:
 
 Nodes may also use reputation tracking and blocking if they receive notifications about Blocks which cannot be validated or which the notifier isn't able to serve when asked.
 
-### Gossip Interface
+### Syncing the DAG
+
+Let's take a closer look at how the methods supported by the `GossipService` can be used to spread the information about Blocks between nodes.
+
+#### NewBlocks
+
+When a node creates one or more new Blocks, it should pick a number of peers according to its _relay factor_ and call `NewBlocks` on them, passing them the new `block_hashes`. The peers check whether they already have the corresponding blocks: if not they indicate that the information is _new_ and schedule a download from the `sender`; otherwise the caller looks for other peers to notify.
+
+By only sending block hashes we can keep the message size to a minimum. Even block headers need to contain a lot of information for nodes to be able to do basic verification; there's no need to send all that if the receiving end already knows about it.
+
+Here we have to take a note about how nodes can trust that the `sender` value is correct. Nodes talking to each other over gRPC must use 2 way SSL encryption, which means the callee will see the caller's public key in the SSL certificate. The `sender` can only be a `Node` with an `id` that matches the hash of the public key. 
+
+#### StreamAncestorBlockSummaries
+
+
+
+
 
 
 
