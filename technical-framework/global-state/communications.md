@@ -113,7 +113,7 @@ algorithm BlockGossip is
         else            
             n <- n + p
             let r be the result of trying to send M to p, indicating whether M was new to p
-            if r is True then
+            if r is true then
                 i <- i + 1
                 s <- s + 1       
             
@@ -213,9 +213,9 @@ algorithm StreamAncestorBlockSummaries is
         pop (d, h) from Q
         if h in V then
             continue
-        let b be B(h)
-        if b is not found then 
+        if b is not in B then 
             continue
+        b <- B(h)
         A(h) <- b
         V <- V + h
         for each parent hash p of b do
@@ -253,14 +253,14 @@ algorithm SyncDAG is
             let h be the block hash of b
             A(h) <- b
             for each parent p of b do
-                if B(p) does not exist do
+                if p is not in B do
                     G <- G + (p, h)
         return sizeof(S)
                 
     Traverse(N)
 
     define "hashes in G having missing dependencies" as 
-    hash h having no parent in G and B(h) does not exist either
+    hash h having no parent in G and h is not in B
                 
     while there are hashes in G with missing dependencies do
         let H be the hashes in G with missing dependencies
@@ -278,33 +278,43 @@ algorithm SyncDAG is
 Once `SyncDAG` indicates that the summaries from the `sender` of `NewBlocks` have a common ancestry with the DAG we have, we can schedule the download of data.
 
 ```c
+let Q be an empty queue of blocks to sync
 let G be an empty DAG of block dependencies in lieu of a download queue
 let S be a map of source information we keep about blocks
 let GBS be the global block summary map
 let GFB be the global full block map
 
-function OnNewBlocks is
-   input: sender node s,
-          new block hashes N
-          
-   D <- SyncDAG(s, N, GBS)
-   
-   for each block summary b in D do
-       let r be True if hash of b in N
-       ScheduleDownload(b, s, r)
+function NewBlocks is
+    input: sender node s,
+           new block hashes N
+    output: flag indicating if the information was new
+    
+    if hash h in N exists where h is not in GBS then
+        push (s, N) to Q
+    return false
+
+
+parallel threads Synchronizer is
+    for each (s, N) message m in Q do
+        D <- SyncDAG(s, N, GBS)
        
+        for each block summary b in D do
+            let r be true if hash of b in N
+            ScheduleDownload(b, s, r)
+
+              
 function ScheduleDownload is
     input: block summary b,
            sender node s,
            relay flag r
     
     let h be the hash of b
-    if GBS(h) exists then 
+    if h is in GBS then 
         return 
-    if S(h) exists then
-       add node s S(h)
-       if r is True then
-           set the relay flag in S(h)
+    if h is in S then
+       S(h) <- S(h) with extra source s
+       if r is true then
+           S(h) <- S(h) with relay true
    else
        let N be the list of potential source nodes for b with single element s
        S(h) <- (b, N, r)
@@ -312,6 +322,7 @@ function ScheduleDownload is
           add h as a child of parent p in G
        else 
           add h to G without dependencies
+       
        
 parallel threads Downloader is
     for each new item added to G do
@@ -325,12 +336,15 @@ parallel threads Downloader is
                 GFB(h) <- f
                 GBS(h) <- b
                 
-                if r is True then
+                if r is true then
                     let rf be a relay factor of 5
                     let rs be a relay saturation of 0.8
                     let K be the table of peers
-                    BlockGossip(NewBlocks(h), rf, rs, K)
+                    let s be the current node
+                    BlockGossip(NewBlocks(s, h), rf, rs, K)
     
         
 ```
+
+
 
