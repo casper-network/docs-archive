@@ -152,17 +152,44 @@ Let's take a closer look at how the methods supported by the `GossipService` can
 
 #### NewBlocks
 
-When a node creates one or more new Blocks, it should pick a number of peers according to its _relay factor_ and call `NewBlocks` on them, passing them the new `block_hashes`. The peers check whether they already have the corresponding blocks: if not they indicate that the information is _new_ and schedule a download from the `sender`; otherwise the caller looks for other peers to notify.
+When a node creates one or more new Blocks, it should pick a number of peers according to its _relay factor_ and call `NewBlocks` on them, passing them the new `block_hashes`. The peers check whether they already have the corresponding blocks: if not they indicate that the information is _new_ and schedule a download from the `sender`, otherwise the caller looks for other peers to notify.
 
 By only sending block hashes we can keep the message size to a minimum. Even block headers need to contain a lot of information for nodes to be able to do basic verification; there's no need to send all that if the receiving end already knows about it.
 
+{% hint style="info" %}
 Here we have to take a note about how nodes can trust that the `sender` value is correct. Nodes talking to each other over gRPC must use 2 way SSL encryption, which means the callee will see the caller's public key in the SSL certificate. The `sender` can only be a `Node` with an `id` that matches the hash of the public key. 
+{% endhint %}
 
 #### StreamAncestorBlockSummaries
 
+When a node receives a `NewBlock` request about hashes it didn't know about, it must synchronise its Block DAG with the `sender`. One way to do this is to have some kind of _download manager_ running in the node which:
 
+* maintains partially connected DAG of `BlockSummary` records that it has seen
+* tries to connect the new bits to the existing ones by downloading them from the senders
+* tracks which nodes notified it about each Block so to know alternative sources to download from
+* tracks which Blocks it promised to relay to other nodes
+* downloads and verifies full Blocks
+* notifies peers about validated Blocks if it promised to do so
 
+`StreamAncestorBlockSummaries` is a high level method that the caller node can use to ask another for a _way to get to the block it just shouted about_. It's a method to traverse from the _target_ block _backwards_ along its parents until every ancestor path can be connected to the DAG of the caller. It has the following parameters:
 
+* `target_block_hashes` is typically the hashes of the new Blocks the node was notified about, but if multiple iterations are needed to find the connection points then they can be further back the DAG.
+* `known_block_hashes` can be supplied by the caller to provide an early exist criteria for the traversal. These can for example include the hashes close to the tip of the callers DAG, forks, and approved Blocks \(i.e. Blocks with a high safety threshold\).
+* `max_depth` can be supplied by the caller to limit traversal in case the `known_block_hashes` don't stop it earlier. This can be useful during iterations when we have to go back _beyond_ the callers approved blocks, in which case it might be difficult to pick known hashes.
+
+The result should be a partial traversal of the DAG in _reverse topological order_ returning a stream of `BlockSummaries` that the caller can partially verify, merge it into its DAG of pending Blocks, then recursively call `StreamAncestorBlockSummaries` on any Block that didn't connect with a known part of the DAG. Ultimately all paths lead back to the Genesis or last checkpointed Block so eventually we should find the connection, or the caller can decide to give up pursuing a potentially false lead from a malicious actor.
+
+The following diagram illustrates the algorithm. The dots in the graph represent the Blocks; the ones with thicker outer ring are the ones passed as `target_block_hashes`. The dashed rectangles are what's being returned in a stream from one invocation to `StreamAncestorBlockSummaries`.
+
+1. Initially the we only know about the black Blocks, which form our DAG.
+2. We are notified about the white Block, which is not yet part of our DAG.
+3. We call `StreamAncestorBlockSummaries` passing the white Block's hash as target and a `max_depth` of 2 \(passing some of our known block hashes as well\).
+4. We get a stream of two `BlockSummary` records in reverse order from the 1st and we add them to our DAG. But we can see that the grandparents of the of the white Block are still not known to us.
+5. We call `StreamAncestorBlockSummaries` a 2nd time passing the grandparents' hashes as targets.
+6. From the 2nd stream we can see that at least one of the Blocks is connected to the tip our DAG. But there are again Blocks with missing dependencies.
+7. We call `StreamAncestorBlockSummaries` a 3rd time and this time we can form a full connection with the known parts of the DAG, there are no more Blocks with missing parents.
+
+![Backwards traversal to sync the DAGs](../../.gitbook/assets/ancestry.png)
 
 
 
