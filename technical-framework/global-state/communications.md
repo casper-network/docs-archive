@@ -187,11 +187,44 @@ The following diagram illustrates the algorithm. The dots in the graph represent
 4. We get a stream of two `BlockSummary` records in reverse order from the 1st and we add them to our DAG. But we can see that the grandparents of the of the white Block are still not known to us.
 5. We call `StreamAncestorBlockSummaries` a 2nd time passing the grandparents' hashes as targets.
 6. From the 2nd stream we can see that at least one of the Blocks is connected to the tip our DAG. But there are again Blocks with missing dependencies.
-7. We call `StreamAncestorBlockSummaries` a 3rd time and this time we can form a full connection with the known parts of the DAG, there are no more Blocks with missing parents.
+7. We call `StreamAncestorBlockSummaries` a 3rd time and now we can form a full connection with the known parts of the DAG, there are no more Blocks with missing parents.
 
 ![Backwards traversal to sync the DAGs](../../.gitbook/assets/ancestry.png)
 
+The following algorithm describes the server's role:
 
+```c
+algorithm StreamAncestorBlockSummaries is
+    input: target block hashes T,
+           known block hashes K,
+           maximum depth m,
+           block map B
+    output: stream of ancestry DAG in child to parent order 
+    
+    let G be an empty DAG of block hashes
+    let Q be an empty queue of (depth, hash) pairs
+    let A be an empty map of blocks
+    
+    for each hash h in T do
+        push (0, h) to Q
+        
+    while Q is not empty do
+        pop (d, h) from Q
+        let b be B(h)
+        if b is not found then 
+            continue
+        A(h) <- b
+        for each parent hash p of b do
+            G <- G + (h, p)
+            if d < m and p not in K do
+                push (d+1, p) to Q 
+                
+    let H be the hashes in D sorted in topoligical order from child to parents
+   
+    for each hash h in H do
+        return A(h)     
+    
+```
 
 
 
