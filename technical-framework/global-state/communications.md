@@ -198,33 +198,139 @@ algorithm StreamAncestorBlockSummaries is
     input: target block hashes T,
            known block hashes K,
            maximum depth m,
-           block map B
+           block summary map B
     output: stream of ancestry DAG in child to parent order 
     
     let G be an empty DAG of block hashes
     let Q be an empty queue of (depth, hash) pairs
-    let A be an empty map of blocks
+    let A be an empty map of block summaries
+    let V be an empty set of visited hashes
     
     for each hash h in T do
         push (0, h) to Q
         
     while Q is not empty do
         pop (d, h) from Q
+        if h in V then
+            continue
         let b be B(h)
         if b is not found then 
             continue
         A(h) <- b
+        V <- V + h
         for each parent hash p of b do
             G <- G + (h, p)
             if d < m and p not in K do
                 push (d+1, p) to Q 
                 
-    let H be the hashes in D sorted in topoligical order from child to parents
-   
-    for each hash h in H do
-        return A(h)     
-    
+    return A(h) for hashes h in G sorted in topoligical order from child to parents         
 ```
 
+And the next one depicts syncing DAGs from the client's perspective:
 
+```c
+algorithm SyncDAG is
+    input: sender node s,
+           new block hashes N,
+           block summary map B
+    output: new block summaries sorted in topological order from parent to child
+  
+    let G be an empty DAG of block hashes
+    let A be an empty map of block summaries
+    let m be a suitable maximum depth, say 100
+    
+    function Traverse is
+        input: block hashes H
+        output: number of summaries traversed
+        let S be s.StreamAncestorBlockSummaries(H, m)
+        for each block summary b in S do
+            if b cannot be validated then
+                return 0
+            if b is not connected to H with a path or the path is longer than m then
+                return 0
+            if b has too many parents then
+                return 0
+            let h be the block hash of b
+            A(h) <- b
+            for each parent p of b do
+                if B(p) does not exist do
+                    G <- G + (p, h)
+        return sizeof(S)
+                
+    Traverse(N)
+
+    define "hashes in G having missing dependencies" as 
+    hash h having no parent in G and B(h) does not exist either
+                
+    while there are hashes in G with missing dependencies do
+        let H be the hashes in G with missing dependencies
+        if Traverse(H) equals 0 then
+            break
+            
+    if there are hashes in G with missing dependencies then
+        return empty because the DAG did not connect
+    else
+        return A(h) for hashes h in G sorted in topoligical order from parent to child
+```
+
+`SyncDAG` needs to have some protection against malicious actors trying to lead it down the garden path and feeding it infinite streams of data.
+
+Once `SyncDAG` indicates that the summaries from the `sender` of `NewBlocks` have a common ancestry with the DAG we have, we can schedule the download of data.
+
+```c
+let G be an empty DAG of block dependencies in lieu of a download queue
+let S be a map of source information we keep about blocks
+let GBS be the global block summary map
+let GFB be the global full block map
+
+function OnNewBlocks is
+   input: sender node s,
+          new block hashes N
+          
+   D <- SyncDAG(s, N, GBS)
+   
+   for each block summary b in D do
+       let r be True if hash of b in N
+       ScheduleDownload(b, s, r)
+       
+function ScheduleDownload is
+    input: block summary b,
+           sender node s,
+           relay flag r
+    
+    let h be the hash of b
+    if GBS(h) exists then 
+        return 
+    if S(h) exists then
+       add node s S(h)
+       if r is True then
+           set the relay flag in S(h)
+   else
+       let N be the list of potential source nodes for b with single element s
+       S(h) <- (b, N, r)
+       if any parent p of b is in G then
+          add h as a child of parent p in G
+       else 
+          add h to G without dependencies
+       
+parallel threads Downloader is
+    for each new item added to G do
+        while we can mark a new hash h in G without dependencies as being downloaded do
+            (b, N, r) <- S(h)
+            
+            let n be a random node in N
+            let f be the full block returned by n.GetBlockChunked(h)
+            
+            if f is valid then
+                GFB(h) <- f
+                GBS(h) <- b
+                
+                if r is True then
+                    let rf be a relay factor of 5
+                    let rs be a relay saturation of 0.8
+                    let K be the table of peers
+                    BlockGossip(NewBlocks(h), rf, rs, K)
+    
+        
+```
 
