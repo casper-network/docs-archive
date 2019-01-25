@@ -6,7 +6,7 @@ description: 'gRPC, Block Propogation, Node Discovery'
 
 ## Node Discovery
 
-Nodes for a peer-to-peer network, constantly communicating with each other to reach consensus about the state of the Blockchain. A node is not necessarily a single physical machine, but it appears as a single logical entity to the rest of their peers by having a unique ID and address where it responds to requests.
+Nodes form a peer-to-peer network, constantly communicating with each other to reach consensus about the state of the Blockchain. A node is not necessarily a single physical machine, but it appears as a single logical entity to the rest of their peers by having a unique ID and address where it responds to requests.
 
 Nodes periodically try to discover each other based on elements of the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol. Unlike the original Kademlia which was using UDP, nodes are using point-to-point gRPC calls for communication. The specifics can be found under [Kademlia API](../appendix/grpc-interfaces.md#kademlia-api). According to this protocol every `Node` has the following properties:
 
