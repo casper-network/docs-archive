@@ -82,7 +82,7 @@ We can use this skewness to our advantage: say we pick a _relay factor_ of 3; if
 
 The following diagram illustrates this. The black actor on the left represents our node and the vertical partitions represent the distance from it. The split in the middle means the right half of the board falls under a single bucket in the Kademlia table. The black dots on in the board are the nodes we track, the greys are ones we don't. We know few peers from the right half of the network, but much more on the left, because it's covered by finer and finer grained buckets. If we pick nodes evenly across the full distance spectrum to gossip to, and the Node on the right follows the same rule, it will start distributing our message on that side of the board with a slightly higher chance than bouncing it back to the left.
 
-![Message propagation among peers](../../.gitbook/assets/gossip%20%282%29.png)
+![Message propagation among peers](../../.gitbook/assets/gossip.png)
 
 In terms of probabilities of reaching a grey node in the 2nd round, or just the message being on the right side of the board in the 1st or 2nd round of message passing, the gains are marginal and depend on how many peers there are in the Kademlia table. We could give higher weights to the buckets that reach the untracked parts of the network, but the effects will have to be simulated.
 
@@ -360,5 +360,5 @@ When a new node joins the network it should ask one or more of its peers about t
 
 Finally the following sequence diagram demonstrates the life cycle of Block propagation among nodes. The dashed blocks have been left unconnected for brevity but they do the same thing as the ones on the left side.
 
-![Block Gossiping](../../.gitbook/assets/block-gossiping%20%282%29.png)
+![Block Gossiping](../../.gitbook/assets/block-gossiping.png)
 
