@@ -1,9 +1,3 @@
----
-description: >-
-  Protobuf definitions of gRPC services the nodes have to implement to
-  participate in the protocol.
----
-
 # gRPC Interfaces
 
 ## Common Types
