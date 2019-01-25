@@ -187,7 +187,7 @@ message Bond {
  
 message NewBlocksRequest {
     Node sender = 1;
-    repeated BlockSummary block_summaries = 2;
+    repeated bytes block_hashes = 2;
 }
  
 message NewBlocksResponse {
@@ -216,8 +216,6 @@ message GetBlockChunkedRequest {
     uint32 chunk_size = 2;
     repeated string accepted_compression_algorithms = 3;
 }
- 
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
