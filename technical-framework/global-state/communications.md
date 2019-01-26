@@ -295,8 +295,9 @@ function NewBlocks is
            new block hashes N
     output: flag indicating if the information was new
 
-    if at least one hash h exists in N where h is not in GBS then
-        push (s, N) to Q
+    H <- find hashes h in N where h is not in GBS
+    if H is not empty then
+        push (s, H) to Q
         return true
     return false
 
@@ -347,6 +348,7 @@ parallel threads Downloader is
             if f is valid then
                 GFB(h) <- f
                 GBS(h) <- b
+                remove h from G
 
                 if r is true then
                     K <- the current Kademlia table of peers
