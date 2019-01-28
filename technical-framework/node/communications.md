@@ -307,7 +307,7 @@ parallel threads Synchronizer is
         D <- SyncDAG(s, N, GBS)
 
         for each block summary b in D do
-            r <- true if hash of b is in N
+            r <- if hash of b is in N then true else false
             ScheduleDownload(b, s, r)
 
 
