@@ -93,10 +93,116 @@ else
   q.isLeft() == true
 ```
 
-## An Implementation Note
+## Examples
 
-It is clear from the type `P[r]` that purses must be aware of the mint they
-originate from, however this cannot be exposed directly, otherwise a malicious
+### Token transfer
+
+This example is meant to help illustrate the concepts introduced with this mints
+and purses model, however a higher level `transfer` function will likely exist
+in the Casper Labs platform, so that clients do not need to worry about these
+details in day-to-day transactions.
+
+The key idea is that purses have no intrinsic security features in the way that
+wallets do; instead we rely on the fact that access to a purse can be controlled
+via the same OCaps principles the purse itself uses. In particular, a purse
+could live behind an unforgable reference known only to the owner(s) of the
+purse (as these are the only actors who should have all capabilities of the
+purse), meanwhile a public reference could forward the `merge` method so that
+anyone could give tokens to the purse. In code this might look something like
+this:
+```
+//Alice sends Bob 10 tokens.
+//We assume Alice and Bob both have purses of the same type of token.
+
+let p = Alice.purse //only accessible by Alice
+let bobPayment = p.split(10)
+if bobPayment.isLeft() {
+  //Alice had insufficient funds, return an error
+} else {
+  let bob = Bob.mergeForwarder //public reference to forward the merge method
+  bob.merge(bobPayment.castRight())
+}
+```
+
+### Lottery contract
+
+The purpose of this example is to illustrate how purses could be held by
+contracts as well, and thus used to enforce some agreement about how tokens
+should be handled. In this example we consider a simple lottery contract,
+however this could be applied equally well to other financial agreements, e.g.
+multi-signature wallets, betting, auctions, etc.
+
+In our simple example, we will assume that the game is played by each
+participant purchasing a "ticket" for a fixed number of tokens, and a single
+winner is chosen uniformly at random, who then is awarded all the tokens spent
+by all participants.
+
+```javascript
+//type alias indicating that "tickets" are simply unforgable references
+type Ticket = URef
+
+contract lottery:
+  //Contract purse, assumed to work with Casper Labs (cl) tokens.
+  //Note: creating an empty purse of a particular type of token should
+  //always be allowed via a forwarder of the `create(0)` call.
+  var p: P[cl] = m(cl).empty()
+  //map keeping track of who has won
+  var winners: Map[Ticket, P[cl]] = Map.empty()
+  //set keeping track of who has entered the next draw
+  var candidates: Set[Ticket] = Set.empty()
+  //value not important, one was chosen for the sake of the example
+  const COST: Nat = 50
+  
+
+  //API for buying a lottery ticket
+  function play(q: P[cl]): <Unit, Ticket> = {
+    let payment = q.split(COST)
+    if payment.isLeft() {
+      //error case omitted for brevity
+    } else {
+      p.merge(payment.castRight())
+      //system function for returning a fresh unforgable reference
+      let ticket = newURef()
+      candidates.add(ticket)
+      return ticket
+    }
+  }
+
+  //API for selecting a winner
+  function draw(): Unit = {
+    //for simplicity we assume this function exists;
+    //the details are not important for the sake of the example
+    let winner = selectRandomElement(candidates)
+    let prize = p.split(p.balance()).castRight()
+    candidates.clear()
+    winners.add(winner, prize)
+  }
+
+  //API for claiming your prize
+  function claim(t: Ticket): <Unit, P[cl]> = {
+    if winners.contains(t) {
+      let prize = winners.get(t)
+      winners.remove(t)
+      return prize
+    } else {
+      //error case omitted for brevity
+    }
+  }
+```
+
+## Implementation Notes
+
+In the conceptual motivation we refer to tokens as if they are objects
+themselves, however in the descriptions of mints and purses we do not give a
+definition of the token object; this is done purposely. The idea is that tokens
+do not need to exist as objects on their own because they are always held in
+purses, and a purse needs only to keep track of the number of tokens it has
+(i.e. simply a number). Therefore, the term "token" is used purely as a
+conceptual aid, and there is no corresponding object in a reasonable
+implementation of the above description.
+
+It is clear from the type `P[r]` that purses must be aware of the type of token
+they contain, however this cannot be exposed directly, otherwise a malicious
 actor could use the unforgable reference inside a purse to derive the original
 mint and thus break the capabilities model presented here (i.e. only mints can
 create tokens and only purses can hold tokens). This can be done by making the
