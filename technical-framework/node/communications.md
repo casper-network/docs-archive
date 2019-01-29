@@ -72,7 +72,7 @@ To achieve these we have the following high level approach:
 * Full Blocks can be served on demand when the gossiped meta-data is _new._
 * Nodes should pick a _relay factor_ according to how much network traffic they can handle and find that many node to gossip to, nodes for which the information is _new_.
 * Nodes should pick a _relay saturation_ target beyond which point they don't try to push to new peers so the last ones to get a message don't have to contact every other peer in futility.
-* Nodes should try to spread the information mostly to their closer peers \(in terms of Kademlia distance\) but also to their farther away neighbours to accelerate the spread of information to the far reaches of the network.
+* Nodes should try to spread the information mostly to their closer neighbours \(in terms of Kademlia distance\) but also to their farther away peers to accelerate the spread of information to the far reaches of the network.
 
 ### Picking Nodes for Gossip
 
@@ -100,7 +100,7 @@ algorithm BlockGossip is
            relay factor rf, 
            relay saturation rs,
            kademlia table K
-    output: number messages sent s
+    output: number of messages sent s
 
     s <- 0
     P <- flatten the peers in K, ordered by distance from current node
@@ -128,12 +128,12 @@ algorithm BlockGossip is
 
 We can rightfully ask how the gossip algorithm outlined above fares in the face of malicious actors that don't want to take their share in the data distribution, i.e. what happens if a node decides not to propagate the messages?
 
-The consensus protocol we're building has a built-in protection against lazy validators: to get their fees from a Block produced by somebody else they have to build on top of it. When they do that, they have to gossip about it, otherwise it will not become part of the DAG or it can get orphaned if conflicting blocks emerge, so it's in everyone's incentive for gossiping to happen at a steady pace.
+The consensus protocol we're building has a built-in protection against lazy validators: to get their fees from a Block produced by somebody else they have to build on top of it. When they do that, they have to gossip about it, otherwise it will not become part of the DAG or it can get orphaned if conflicting blocks emerge, so it's in everyone's interest for gossiping to happen at a steady pace.
 
 What if they decide to announce _their_ Blocks to _everyone_ but never relay other Blocks from other nodes? They have a few incentives against doing this:
 
 * If everybody would be doing it then the nodes unknown to the creators would get it much later and might produce conflicting blocks, the consensus would slow down.
-* When they finally announce a Block they built _everyone_ would try to download it from them, putting extra load on their networks, plus they might have to download extra Blocks that the node failed to relay before.
+* When they finally announce a Block they built _everyone_ would try to download it directory from them, putting extra load on their networks, plus they might have to download extra Blocks that the node failed to relay before.
 * If we have to relay to a 100 nodes directly, it could easily to take longer for each of the 100 to download it from 1 node then for 10 nodes to do so and then relay to 10 more nodes each.
 
 Having a _relay factor_ together with the mechanism of returning whether the information was _new_ has the following purpose:
@@ -141,7 +141,7 @@ Having a _relay factor_ together with the mechanism of returning whether the inf
 * By indicating that the information was new the callee is signalling to the caller that once it has done the validation of the Block it will relay the information, therefore the caller can be content that by informing this node it carried out the number of gossips it set out to do, i.e. it will have to serve the full Blocks up to R number of times.
 * By indicating that the information wasn't new, the callee is signalling that it will not relay the information any longer, therefore the caller should pick another node if it wants to live up to its pledge of relaying to R number of new nodes.
 
-Nodes expect the ones that indicated that the Block meta-data was new to them to later attempt to download the full Blocks. This may not happen, as other nodes may notify them too, in which case they can download some Blocks from here, some from there.
+Nodes expect the ones which indicated that the Block meta-data was new to them to later attempt to download the full Blocks. This may not happen, as other nodes may notify them too, in which case they can download some Blocks from here, some from there.
 
 There are two forms of lying that can happen here:
 
@@ -170,7 +170,7 @@ When a node receives a `NewBlock` request about hashes it didn't know about, it 
 
 * maintains partially connected DAG of `BlockSummary` records that it has seen
 * tries to connect the new bits to the existing ones by downloading them from the senders
-* tracks which nodes notified it about each Block so to know alternative sources to download from
+* tracks which nodes notified it about each Block, to know alternative sources to download from
 * tracks which Blocks it promised to relay to other nodes
 * downloads and verifies full Blocks
 * notifies peers about validated Blocks if it promised to do so
@@ -181,7 +181,7 @@ When a node receives a `NewBlock` request about hashes it didn't know about, it 
 * `known_block_hashes` can be supplied by the caller to provide an early exist criteria for the traversal. These can for example include the hashes close to the tip of the callers DAG, forks, and approved Blocks \(i.e. Blocks with a high safety threshold\).
 * `max_depth` can be supplied by the caller to limit traversal in case the `known_block_hashes` don't stop it earlier. This can be useful during iterations when we have to go back _beyond_ the callers approved blocks, in which case it might be difficult to pick known hashes.
 
-The result should be a partial traversal of the DAG in _reverse topological order_ returning a stream of `BlockSummaries` that the caller can partially verify, merge it into its DAG of pending Blocks, then recursively call `StreamAncestorBlockSummaries` on any Block that didn't connect with a known part of the DAG. Ultimately all paths lead back to the Genesis or last checkpointed Block so eventually we should find the connection, or the caller can decide to give up pursuing a potentially false lead from a malicious actor.
+The result should be a partial traversal of the DAG in _reverse topological order_ returning a stream of `BlockSummaries` that the caller can partially verify, merge into its DAG of pending Blocks, then recursively call `StreamAncestorBlockSummaries` on any Block that didn't connect with a known part of the DAG. Ultimately all paths lead back to the Genesis or last checkpointed Block so eventually we should find the connection, or the caller can decide to give up pursuing a potentially false lead from a malicious actor.
 
 The following diagram illustrates the algorithm. The dots in the graph represent the Blocks; the ones with thicker outer ring are the ones passed as `target_block_hashes`. The dashed rectangles are what's being returned in a stream from one invocation to `StreamAncestorBlockSummaries`.
 
@@ -190,7 +190,7 @@ The following diagram illustrates the algorithm. The dots in the graph represent
 3. We call `StreamAncestorBlockSummaries` passing the white Block's hash as target and a `max_depth` of 2 \(passing some of our known block hashes as well\).
 4. We get a stream of two `BlockSummary` records in reverse order from the 1st and we add them to our DAG. But we can see that the grandparents of the of the white Block are still not known to us.
 5. We call `StreamAncestorBlockSummaries` a 2nd time passing the grandparents' hashes as targets.
-6. From the 2nd stream we can see that at least one of the Blocks is connected to the tip our DAG. But there are again Blocks with missing dependencies.
+6. From the 2nd stream we can see that at least one of the Blocks is connected to the tip our DAG, but there are again Blocks with missing dependencies.
 7. We call `StreamAncestorBlockSummaries` a 3rd time and now we can form a full connection with the known parts of the DAG, there are no more Blocks with missing parents.
 
 ![Backwards traversal to sync the DAGs](../../.gitbook/assets/ancestry.png)
@@ -208,20 +208,18 @@ algorithm StreamAncestorBlockSummaries is
     G <- an empty DAG of block hashes
     Q <- an empty queue of (depth, hash) pairs
     A <- an empty map of block summaries
-    V <- an empty set of visited hashes
 
     for each hash h in T do
         push (0, h) to Q
 
     while Q is not empty do
         pop (d, h) from Q
-        if h in V then
+        if h in A then
             continue
-        if b is not in B then 
+        if h is not in B then 
             continue
         b <- B(h)
         A(h) <- b
-        V <- V + h
         for each parent hash p of b do
             G <- G + (h, p)
             if d < m and p not in K do
@@ -252,7 +250,7 @@ algorithm SyncDAG is
                 return 0
             if b is not connected to H with a path or the path is longer than m then
                 return 0
-            if we see an abnormally shallow wide DAG being built then
+            if we see an abnormally shallow and wide DAG being built then
                 // the server is trying to feed exponential amount of data
                 // by branching wide while staying within the maximum depth
                 return 0
@@ -362,7 +360,7 @@ Full Blocks containing all the deploys can get big, and the HTTP/2 protocol unde
 
 The caller should keep track of the data it receives and compare them to the `content_length` it got initially in the header to make sure it's not being fed an infinite stream of data.
 
-In theory the method could return a stream of multiple blocks but asking for them one by one from multiple peers as the notifications arrive to the node about alternative sources should be favoured over downloading from a single source anyway.
+In theory the method could return a stream of multiple blocks, but asking for them one by one from multiple peers as the notifications arrive to the node about alternative sources should be favoured over downloading from a single source anyway.
 
 #### StreamDagTipBlockSummaries
 
