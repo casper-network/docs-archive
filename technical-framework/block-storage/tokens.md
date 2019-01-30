@@ -36,9 +36,11 @@ can only be obtained from someone who already has the reference (owning a
 reference gives you the ability to make a copy and send it to others) or by
 creating a fresh reference that has not been used ever before.
 
-This concept can be applied here by "labelling" each type of token by a
-different unforgable reference and then using that label in each mint (creator
-of tokens) and purse (container for tokens).
+An unforgable reference can be used to securely define a mint (creator of
+tokens), as well as purses (containers for tokens). Moreover, each unforgable
+references can represent a different token, thus natively allowing multiple
+tokens to exist together in a rich ecosystem. We say an unforgable reference
+"labels" the type of token the mint can create or purse can hold.
 
 ## Mints and Purses
 
@@ -55,20 +57,34 @@ For all `r` $$ \in $$ `R` and `m(r)` $$ \in $$ `M`, `m(r)` has the following met
 ```
 create(n: Nat): P[r]
 ```
-where `Nat` is the type for a non-negative number. For all `r` $$ \in $$ `R` and `p`
-$$ \in $$ `P[r]`, `p` has the following methods:
+where `Nat` is the type for a non-negative number. Note that we are slightly
+abusing the notation here by using `P[r]` both as a set (as defined above) and
+as the return _type_ of methods that produce purses of a specific token (such as
+`create`). To be perfectly clear, the _value_ returned is a specific purse, i.e.
+some `p` $$ \in $$ `P[r]`, we are simply declaring the _type_ of that value in
+the method definition above. Similarly, for the input `n`, we are saying that it
+is of _type_ `Nat`, but the _value_ of `n`  will be some concrete number.
+
+For all `r` $$ \in $$ `R` and `p` $$ \in $$ `P[r]`, `p` has the following
+methods:
 ```
 split(n: Nat): <Unit, P[r]>
 merge(q: P[r]): Unit
 balance(): Nat
 ```
 where `<L, R>` denotes a "co-product" type, i.e. the result is either of type
-`L` or type `R` and `Unit` is the trivial type with a single value. The `Unit`
-result case for `split` occurs when the balance of `p` is less than `n`. Note
-that the types of `split` and `merge` statically guarantee that operations on
-purses of different tokens are undefined.
+`L` or type `R` and `Unit` is a type used to indicate there is no meaningful
+return value. The `Unit` result case for `split` occurs when the balance of `p`
+is less than `n`. Note that the types of `split` and `merge` indicate that
+operations on purses of different tokens are undefined. This is done on purpose
+to prevent "turning lead into gold" (i.e. accidentally exchanging tokens that do
+not have the same value). Note also that, while we are presenting the API a mint
+and purse implementation must satisfy in terms of types, a specific
+implementation could be written in any language (statically typed or not); the
+properties of these objects are simply being defined in this (convenient)
+abstract framework.
 
-These methods satisfy the following laws:
+Any valid implementation of these methods must satisfy the following laws:
 ### Create/balance identity
 ```
 m(r).create(n).balance() == n
@@ -81,6 +97,9 @@ p.merge(q)
 p.balance() == n + k
 q.balance() == 0
 ```
+Note that `merge` must be an atomic operation; there should be no case in which
+the balance of the destination purse increases and the balance of the source
+purse does not decrease.
 ### Split correctness
 ```
 let p = m(r).create(n)
@@ -92,25 +111,53 @@ else
   p.balance() == n
   q.isLeft() == true
 ```
+Note that `split` must be an atomic operation; there should be no case in which
+a purse with non-zero balance is created without decreasing the balance of the
+original purse.
+
+## Security Properties of Mints and Purses
+
+The concept for mints and purses are based on ideas from OCaps, so the security
+model is different from those traditionally used in many financial contexts.
+Notice that the `split` method contains no arguments for verifying the identity
+(e.g. a cryptographic signature) of the agent requesting the withdraw.
+Therefore, anyone with access to the purse has the _capability_ to make a
+withdraw from it. Similarly, anyone with access to a `mint` can create new
+tokens of the corresponding type. Thinking about security in terms of
+capabilities instead of identities takes some getting used to, but allows for
+much safer, more powerful security patterns to be defined and enforced (as
+discussed in greater detail in [the OCaps
+appendix](../appendix/ocaps-security.md)). In short, capabilities should be
+delegated as needed, so because the owner of a purse does not want anyone but
+themselves to be able to withdraw tokens, they hold the purse under an
+unforgable reference which only they have access to. Other capabilities of the
+purse can still be shared via an _attenuated forwarder_. For example, it would
+be reasonable to make public a forwarder called `deposit` which only exposes the
+`merge` method of the underlying purse. This enables anyone to give the purse
+more tokens without compromising its security.
+
+Similarly, owners of mints cannot expose `create` directly, otherwise there would be
+run-away inflation, however `create(0)` is safe because anyone should be able to
+create an empty purse. Defining an attenuated forwarder called `empty` makes it
+possible to expose only the creation of empty purses capability without risking
+the security of the mint itself.
+
+Examples follow which illustrate some of the ways in which purses and other
+OCaps principles can be applied to writing secure interactions between parties.
 
 ## Examples
 
 ### Token transfer
 
-This example is meant to help illustrate the concepts introduced with this mints
-and purses model, however a higher level `transfer` function will likely exist
+This example is meant to help illustrate the concepts introduced with the mints
+and purses model. However a higher level `transfer` function will likely exist
 in the Casper Labs platform, so that clients do not need to worry about these
 details in day-to-day transactions.
 
-The key idea is that purses have no intrinsic security features in the way that
-wallets do; instead we rely on the fact that access to a purse can be controlled
-via the same OCaps principles the purse itself uses. In particular, a purse
-could live behind an unforgable reference known only to the owner(s) of the
-purse (as these are the only actors who should have all capabilities of the
-purse), meanwhile a public reference could forward the `merge` method so that
-anyone could give tokens to the purse. In code this might look something like
-this:
-```
+The pseudo code snippet here expands on the example above making use of
+unforgable references to secure a purse, but exposing only the `merge`
+capability through a public forwarder.
+```javascript
 //Alice sends Bob 10 tokens.
 //We assume Alice and Bob both have purses of the same type of token.
 
@@ -119,7 +166,7 @@ let bobPayment = p.split(10)
 if bobPayment.isLeft() {
   //Alice had insufficient funds, return an error
 } else {
-  let bob = Bob.mergeForwarder //public reference to forward the merge method
+  let bob = Bob.deposit //public reference to forward the merge method
   bob.merge(bobPayment.castRight())
 }
 ```
@@ -138,14 +185,16 @@ winner is chosen uniformly at random, who then is awarded all the tokens spent
 by all participants.
 
 ```javascript
-//type alias indicating that "tickets" are simply unforgable references
+//Type alias indicating that "tickets" are simply unforgable references.
+//The idea is that a Ticket encodes the capability of claiming a prize, which
+//only the owner of the ticket should be able to do.
 type Ticket = URef
 
 contract lottery:
   //Contract purse, assumed to work with Casper Labs (cl) tokens.
   //Note: creating an empty purse of a particular type of token should
   //always be allowed via a forwarder of the `create(0)` call.
-  var p: P[cl] = m(cl).empty()
+  var p: P[cl] = empty()
   //map keeping track of who has won
   var winners: Map[Ticket, P[cl]] = Map.empty()
   //set keeping track of who has entered the next draw
@@ -155,7 +204,12 @@ contract lottery:
   
 
   //API for buying a lottery ticket
+  //Note: a user calling this function should not supply their whole purse.
+  //      Since only `COST` tokens are needed the user should only provide 
+  //      that many tokens by splitting them off from their main purse.
   function play(q: P[cl]): <Unit, Ticket> = {
+    //Ensure the right number of tokens were provided and take control of them
+    //by putting them in a purse known only to the contract.
     let payment = q.split(COST)
     if payment.isLeft() {
       //error case omitted for brevity
