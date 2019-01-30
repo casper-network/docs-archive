@@ -42,21 +42,21 @@ of tokens) and purse (container for tokens).
 
 ## Mints and Purses
 
-Let `R` be the set of unforgable references and `r` $\in$ `R` an unforgable
+Let `R` be the set of unforgable references and `r` $$ \in $$ `R` an unforgable
 reference which is used to label a type of token (e.g. the native CasperLabs
 token). Let `M` be the set of possible _mints_, which are objects having the
-capability to create tokens. `m(r)` $\in$ `M` is the mint which can create
+capability to create tokens. `m(r)` $$ \in $$ `M` is the mint which can create
 tokens of type `r`. Let `P` be the set of possible _purses_, which are objects
-with the capability to hold tokens. `P[r]` $\subset$ `P` is the set of possible
-purses which can hold tokens of type `r` and `p` $\in$ `P[r]` is a particular
+with the capability to hold tokens. `P[r]` $$ \subset $$ `P` is the set of possible
+purses which can hold tokens of type `r` and `p` $$ \in $$ `P[r]` is a particular
 purse capable of holding tokens of type `r`.
 
-For all `r` $\in$ `R` and `m(r)` $\in$ `M`, `m(r)` has the following method:
+For all `r` $$ \in $$ `R` and `m(r)` $$ \in $$ `M`, `m(r)` has the following method:
 ```
 create(n: Nat): P[r]
 ```
-where `Nat` is the type for a non-negative number. For all `r` $\in$ `R` and `p`
-$\in$ `P[r]`, `p` has the following methods:
+where `Nat` is the type for a non-negative number. For all `r` $$ \in $$ `R` and `p`
+$$ \in $$ `P[r]`, `p` has the following methods:
 ```
 split(n: Nat): <Unit, P[r]>
 merge(q: P[r]): Unit
@@ -209,5 +209,5 @@ create tokens and only purses can hold tokens). This can be done by making the
 purse aware of an "equality-only" version of `r`, say `r*`, which does not
 provide the full capability of `r`, but is still able to distinguish itself from
 others. I.e. `r* == s*` if and only if `r == s`. By not providing the full
-capability we mean that `r*` $\not \in$ `R`, so cannot be used in place of `r`
+capability we mean that `r*` $$ \not \in $$ `R`, so cannot be used in place of `r`
 in any context (in particular cannot be used to create a mint object).
