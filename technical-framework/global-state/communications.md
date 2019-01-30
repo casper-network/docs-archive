@@ -315,10 +315,10 @@ function ScheduleDownload is
            relay flag r
 
     h <- the hash of b
-    
+
     if h is in GBS then 
         return 
-        
+
     if h is in S then
        S(h) <- S(h) with extra source s
        if r is true then
@@ -335,7 +335,7 @@ function ScheduleDownload is
 parallel threads Downloader is
     rf <- the relay factor from config, say 5
     rs <- the relay saturation from config, say 0.8
-    
+
     for each new item added to G or after an idle timeout do
         while we can mark a new hash h in G without dependencies as being downloaded do
             (b, N, r) <- S(h)

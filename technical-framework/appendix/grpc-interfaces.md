@@ -21,7 +21,7 @@ message Chunk {
         Header header = 1
         bytes data = 2;
     }
- 
+
     Header {
         // Use the content_length to sanity check the size of the data in the chunks that follow.
         uint32 content_length = 1;
@@ -64,13 +64,13 @@ message BlockSummary {
     // Signature over block_hash.
     Signature signature = 3;
 }
- 
+
 message Block {
     bytes block_hash = 1;
     Header header = 2;
     Body body = 3;
     Signature signature = 4;
-    
+
     message Header {
         repeated bytes parent_hashes = 1;
         repeated Justification justifications = 2;
@@ -83,24 +83,24 @@ message Block {
         uint32 validator_block_seq_num = 9;
         bytes validator_public_key = 10;
     }
- 
+
     message Body {
         GlobalState state = 1;
         repeated ProcessedDeploy deploys = 2;
     }
- 
+
     message Justification {
         bytes validator_public_key = 1;
         bytes latest_block_hash = 2;
     }
- 
+
     message ProcessedDeploy {
         Deploy deploy = 1;
         double cost = 2;
         bool is_error = 3;
         string error_message = 4;
     }
-    
+
     message GlobalState {
         // May not correspond to a particular block if there are multiple parents.
         bytes pre_state_hash = 1;
@@ -109,12 +109,11 @@ message Block {
         repeated Bond bonds = 3;
     }
 }
- 
+
 message Bond {
     bytes validator_public_key = 1;
     int64 stake = 2;
 }
-
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -143,7 +142,7 @@ message LookupRequest {
     bytes  id = 1;
     Node sender = 2;
 }
-        
+
 message LookupResponse {
     repeated Node nodes = 1;
 }
@@ -191,12 +190,12 @@ service GossipService {
     rpc BatchGetBlockSummaries(BatchGetBlockSummariesRequest) returns (BatchGetBlockSummariesResponse);
     rpc GetBlockChunked(GetBlockChunkedRequest) returns (stream Chunk);
 }
- 
+
 message NewBlocksRequest {
     Node sender = 1;
     repeated bytes block_hashes = 2;
 }
- 
+
 message NewBlocksResponse {
     bool is_new = 1;
 }
@@ -208,7 +207,7 @@ message BatchGetBlockSummariesRequest {
 message BatchGetBlockSummariesResponse {
     repeated block_summaries = 1;
 }
- 
+
 message StreamAncestorBlockSummariesRequest {
     repeated bytes target_block_hashes = 1;
     repeated bytes known_block_hashes = 2;
@@ -217,7 +216,7 @@ message StreamAncestorBlockSummariesRequest {
 
 message StreamDagTipBlockSummariesRequest {
 }
- 
+
 message GetBlockChunkedRequest {
     bytes block_hashe = 1;
     uint32 chunk_size = 2;

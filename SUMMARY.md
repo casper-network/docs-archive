@@ -27,7 +27,7 @@
   * [Economics](technical-framework/block-storage/economics.md)
   * [Sharding](technical-framework/block-storage/sharding.md)
 * [Node](technical-framework/global-state/README.md)
-  * [Communications](technical-framework/node/communications.md)
+  * [Communications](technical-framework/global-state/communications.md)
   * [Storage](technical-framework/global-state/storage.md)
   * [WASM Execution Engine](technical-framework/global-state/wasm-execution-engine.md)
   * [Metrics](technical-framework/global-state/metrics.md)
