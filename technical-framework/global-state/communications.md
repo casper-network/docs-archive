@@ -78,7 +78,7 @@ To achieve these we have the following high level approach:
 
 As we established in the [Node Discovery](communications.md#node-discovery) section the nodes maintain a list of peers using a Kademlia table. The table has one bucket for each possible distance between the bits of their IDs, and they pick a number _k_ to be length of the list of nodes in each of these buckets that they keep track of.
 
-In statistical terms, half of the nodes in the network will fall in the first bucket, since the first bit of their ID will either be 0 or 1. Similarly each subsequent bucket holds half of the remainder of the network. Since _k_ is the same for each bucket, this means that nodes can track many more of their closest neighbours then the ones which are far away from them. This is why in Kademlia, as we perform lookups, we get closer and closer to the best possible match anyone knows about.
+In statistical terms, half of the nodes in the network will fall in the first bucket, since the first bit of their ID will either be 0 or 1. Similarly each subsequent bucket holds half of the remainder of the network. Since _k_ is the same for each bucket, this means that nodes can track many more of their closest neighbours than the ones which are far away from them. This is why in Kademlia, as we perform lookups, we get closer and closer to the best possible match anyone knows about.
 
 In practice this means that if we have a network of 50 nodes and a _k_ of 10, then from the perspective of any given peer, 25 nodes fall into the first bucket, but it only tracks 10 of them, ergo it will never gossip to 15 nodes from the other half that it doesn't have the room to track in its table.
 
@@ -133,7 +133,7 @@ The consensus protocol we're building has a built-in protection against lazy val
 What if they decide to announce _their_ Blocks to _everyone_ but never relay other Blocks from other nodes? They have a few incentives against doing this:
 
 * If everybody would be doing it then the nodes unknown to the creators would get it much later and might produce conflicting blocks, the consensus would slow down.
-* When they finally announce a Block they built _everyone_ would try to download it directory from them, putting extra load on their networks, plus they might have to download extra Blocks that the node failed to relay before.
+* When they finally announce a Block they built _everyone_ would try to download it directly from them, putting extra load on their networks, plus they might have to download extra Blocks that the node failed to relay before.
 * If we have to relay to a 100 nodes directly, it could easily to take longer for each of the 100 to download it from 1 node then for 10 nodes to do so and then relay to 10 more nodes each.
 
 Having a _relay factor_ together with the mechanism of returning whether the information was _new_ has the following purpose:
