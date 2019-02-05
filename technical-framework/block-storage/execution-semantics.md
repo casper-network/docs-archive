@@ -76,9 +76,7 @@ For a given set of transactions, unfortunately, checking their coherence is rath
 
 A pretty straightforward check algorithm can be established by storing a trace of all accesses to the global state done by a transaction, and then checking for a possible conflict by comparing traces.
 
-The intuition comes from a classical example in concurrent programming: the readers-writers problem. This is a situation where people \(=processes\) wait in a queue to access a library \(= data store\). Some of people want only to read data, others are willing to write data as well. Although this problem is mainly analyzed for solving the synchronization issues, it brings as a side effect some useful observations: readers are commutative and writers are not.
-
-For tracing the execution of transactions, we extend the readers-writers model with one additional case. Let's look for example at the adding operation:
+For tracing the execution of transactions, we extend the read-write model with one additional case. Let's look for example at the adding operation:
 
 $$
 + : Int \rightarrow Int \rightarrow Int
@@ -137,16 +135,12 @@ $$
 An example trace of execution could look like this:
 
 $$
-<203, Read>
-\newline
-<132, write>
-\newline
-<132, <Add, Add_51>>
-\newline
-<203, Write>
-\newline
-<203, Read>
-<203, Read>
+<203, Read> \\\
+<132, write> \\
+<132, <Add, Add_51>> \\
+<203, Write> \\
+<203, Read> \\
+<203, Read> \\
 $$
 
 We reduce such trace in two steps:
