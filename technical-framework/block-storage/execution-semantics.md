@@ -8,13 +8,13 @@ One of the biggest challenges that blochchain faces is the one of throughput. Wh
 
 ### Introduction
 
-Let's consider the execution of transactions included in a single block. So we have a **Block\(B\)** and a collection of transactions:
+Let's consider the execution of transactions included in a single block. So we have a $$Block(B)$$ and a collection of transactions:
 
 $$
 t_1, t_2, ..., t_n \in Block(B)
 $$
 
-As part of the validation of block **Block\(B\)**, any validator receiving this block has to execute all transactions so to calculate the global state after applying this block. In principle, all these transactions could be executed sequentially, which is the easiest approach and does not bring any problems. Unfortunately, it is also the slowest one.
+As part of the validation of block $$Block(B)$$, any validator receiving this block has to execute all transactions so to calculate the global state after applying this block. In principle, all these transactions could be executed sequentially, which is the easiest approach and does not bring any problems. Unfortunately, it is also the slowest one.
 
 Given the multi-core architecture of contemporary computers one is interested in exploiting all possibilities where things can be executed concurrently. In the case of transaction execution, we anticipate that vast majority of transactions are "independent" from each other, so their execution could be parallelized.
 
@@ -30,7 +30,7 @@ In this chapter we formalize the intuitive concept of "mutual independent transa
 
 ### Transactions
 
-Let GS denote the set of global states. So an element gs ∈ GS is just a fixed state of the memory of our "blockchain computer" \(which implementation-wise corresponds to a map from keys to values, as was explained [here](global-state.md)\):
+Let GS denote the set of global states. So an element $$gs \in GS$$ is just a fixed state of the memory of our "blockchain computer" \(which implementation-wise corresponds to a map from keys to values, as was explained [here](global-state.md)\):
 
 $$
 gs: Keys \rightarrow Values
@@ -44,9 +44,9 @@ $$
 
 **Caution**: Hidden here are assumptions about what features a smart contract programmer can access inside a body of a smart contract. No _random_ function is available. In other words, the execution of a transaction is completely determined by a global state is is applied to and parameters of the contract.
 
-Further, it is not true that we are interested in every possible functions GS ⟶ GS. Really, we are only interested in computable functions, so functions implementable as Turing Machine programs, where the only extra feature is the access to our global state. Hence such programs are sequential by nature and every access to global state can be traced.
+Further, it is not true that we are interested in every possible functions $$GS \rightarrow GS$$. Really, we are only interested in computable functions, so functions implementable as Turing Machine programs, where the only extra feature is the access to our global state. Hence such programs are sequential by nature and every access to global state can be traced.
 
-Formally, by transactions over GS we understand the following set:
+Formally, by transactions over $$GS$$ we understand the following set:
 
 $$
 Transactions(GS) = { t \in GS^{GS}: t \space is \space computable }
@@ -54,9 +54,9 @@ $$
 
 ### Commutativity of transactions
 
-Consider two transactions t1, t2 ∈ Transactions\(GS\) and a fixed global state gs ∈ GS. To express that t1 and t2 are mutually independent in the context of gs, we just want to say that it does not matter in which order we apply them to gs, because the final result is going to be the same anyway.
+Consider two transactions $$t_1, t_2 \in Transactions(GS)$$ and a fixed global state $$gs \in GS$$. To express that t1 and t2 are mutually independent in the context of gs, we just want to say that it does not matter in which order we apply them to gs, because the final result is going to be the same anyway.
 
-Formally, we say that transactions t1 and t2 are coherent in the context of global state gs∈ GS, iff
+Formally, we say that transactions t1 and t2 are coherent in the context of global state $$gs \in GS$$, $$iff$$
 
 $$
 t_1(t_2(gs)) = t_2(t_1(gs))
@@ -64,7 +64,7 @@ t_1(t_2(gs)) = t_2(t_1(gs))
 \newline (t_1 \circ t_2)(gs) = (t_2 \circ t_1)(gs)
 $$
 
-Obviously, this definition can easily be extended to a finite set of transactions: we say that a set T = {t1, ...., tn} is coherent in the context of global state gs∈ GS iff for all permutations p: {1, ..., n} ⟶ {1, ..., n}:
+Obviously, this definition can easily be extended to a finite set of transactions: we say that a set T = {t1, ...., tn} is coherent in the context of global state $$gs \in GS$$ iff for all permutations p: {1, ..., n} ⟶ {1, ..., n}:
 
 $$
 (t_{p(1)} \circ t_{p(2)} \circ … \circ t_{p(n)}) (gs) = (t_1 \circ t_2 \circ … t_n)(gs)
@@ -108,23 +108,23 @@ Distinguished families of such commutative functions operating on Values are pre
 * adding element to a set
 * removing elements from a set
 
-Such a collection of selected commutative families of functions that are supported by the execution engine we will denote here as _CommutingFamilies_, or CF. So, using previously established notation for adding, we can recognize two example elements in _CommutingFamilies_ that cover the integer addition and adding element to sets of integers:
+Such a collection of selected commutative families of functions that are supported by the execution engine we will denote here as $$CommutingFamilies$$, or CF. So, using previously established notation for adding, we can recognize two example elements in $$CommutingFamilies$$ that cover the integer addition and adding element to sets of integers:
 
 $$
 \{ Add_i : i \in Int \} \in CF, where \space Add_i: Int \rightarrow Int, Add_i(x) = x + i
 \newline
-\{Add_a: a \in A\} \in CF, where \space Add_a: Set[Int]\rightarrow Set[Int] , Add_a(s) = s \cup \{a\}
+\{Add_a: a \in A\} \in CF, where \space Add_a: Set[A]\rightarrow Set[A] , Add_a(s) = s \cup \{a\}
 $$
 
 ### Correctness theorem
 
-We define a trace of execution of a transaction t to be an ordered sequence of _Ops_ capturing the sequence of accesses to the global state made by the program executing the transaction, once applied to a given gs ∈ GS:
+We define a trace of execution of a transaction t to be an ordered sequence of _Ops_ capturing the sequence of accesses to the global state made by the program executing the transaction, once applied to a given $$gs \in GS$$:
 
 $$
 Trace(t, gs) = <op_1, op_2, …, op_n>
 $$
 
-Here, every op is a pair: &lt;address, signature&gt; where
+Here, every op is a pair: $$<address, signature>$$ where
 
 $$
 address \in Keys
@@ -196,13 +196,13 @@ $$
 ReducedTrace(t, gs): K \rightarrow \{Read, Write\} \cup CF, where \space K \subset Keys
 $$
 
-For a pair of transactions t1, t2, and their traces ReducedTrace\(t1, gs\), ReducedTrace\(t2, gs\) we introduce the following way of checking if reduced traces are coherent:
+For a pair of transactions $$t_1$$, $$t_2$$, and their traces $$ReducedTrace(t_1, gs)$$, $$ReducedTrace(t_2, gs)$$ we introduce the following way of checking if reduced traces are coherent:
 
 $$
 \forall k \space IsCoherent(k) : k \in Dom(ReducedTrace(t_1, gs)) \space \cap Dom(ReducedTrace(t_2,gs))
 $$
 
-where IsCoherent function is defined using following rules:
+where $$IsCoherent$$ function is defined using following rules:
 
 | IsCoherent | Read | Write | cf\_2 |
 | :--- | :--- | :--- | :--- |
@@ -245,15 +245,15 @@ This phenomenon happens thanks to the fact, that transaction 1 actually ignores 
 
 ### Proof of theorem \(sketch\)
 
-**Lemma**: Intuitively, only Read\(k\) operations influence how the program executing the transaction operates. For two global states gs1, gs2 ∈ GS, if the same transaction applied to gs1 created a different execution trace than when applied to gs2 then at some point of the trace there must be a Read\(k\) operation where gs1\(k\) &lt;&gt; gs2\(k\).
+**Lemma**: Intuitively, only $$Read(k)$$ operations influence how the program executing the transaction operates. For two global states $$gs_1, gs_2 \in GS$$ if the same transaction applied to gs1 created a different execution trace than when applied to $$gs_2$$ then at some point of the trace there must be a Read\(k\) operation where $$gs_1(k) <> gs_2(k)$$.
 
-Assuming that t1 and t2 commute, we are going to prove:
+We are going to prove:
 
 $$
 ReducedTrace(t_1, t_2(gs))\sim ReducedTrace(t_1, gs)
 $$
 
-This is to say that transaction t1 somehow is not able to notice that global state t2\(gs\) is different than gs and so it operates following exactly the same storage access flow in both cases. 
+This is to say that transaction $$t_1$$ somehow is not able to notice that global state $$t_2(gs)$$ is different than gs and so it operates following exactly the same storage access flow in both cases. 
 
 Let's assume the contrary is true so:
 
@@ -261,9 +261,9 @@ $$
 ReducedTrace(t1, t2(gs)) <> ReducedTrace(t1, gs)
 $$
 
-Using lemma, this would mean that at some point of the trace there must be a Read\(k\) operation where gs\(k\) &lt;&gt; t2\(gs\)\(k\). Which is to say that some key k was modified by t2 and the same key k is being read by t1.
+Using lemma, this would mean that at some point of the trace there must be a $$Read(k)$$ operation where $$gs(k) <> t_2(gs)(k)$$. Which is to say that some key k was modified by $$t_2$$ and the same key k is being read by $$t_1$$.
 
-But modification of key k by transaction t2 must have been caused by Write\(k\) or CF\(k\). And at the same time, we claim that at the key k transaction t1 executes Read\(k\), because it still follows the original execution path.
+But modification of key k by transaction $$t_2$$ must have been caused by $$Write(k)$$ or CF\(k\). And at the same time, we claim that at the key k transaction $$t_1$$ executes $$Read(k)$$, because it still follows the original execution path.
 
 This is, however, a contradiction with reduced trace calculation conditions \(see the table\).
 
