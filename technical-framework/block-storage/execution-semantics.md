@@ -129,7 +129,7 @@ Here, every op is a pair: &lt;address, signature&gt; where
 $$
 address \in Keys
 \newline
-signature \in \{ Read, Write, <cf, f> where \space cf \in CommutingFamilies \wedge f \in cf
+signature \in \{ Read, Write, <cf, f> where \space cf \in CommutingFamilies \wedge f \in cf \}
 $$
 
 An example trace of execution could look like this:
