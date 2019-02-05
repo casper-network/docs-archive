@@ -86,7 +86,7 @@ Adding is commutative, but in the context of mutating global state, we want to s
 
 $$
 Add_2: Int \rightarrow Int \newline
-Add(2) = x + 2
+Add_2(x) = x + 2
 $$
 
 If we consider again the queue of processes that want to access the storage:
