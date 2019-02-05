@@ -85,14 +85,14 @@ $$
 Adding is commutative, but in the context of mutating global state, we want to see adding as a function of one variable. For example:
 
 $$
-Add2: Int \rightarrow Int \newline
+Add_2: Int \rightarrow Int \newline
 Add(2) = x + 2
 $$
 
 If we consider again the queue of processes that want to access the storage:
 
 $$
-Read \rightarrow Write \rightarrow Write \rightarrow Read \rightarrow Read \rightarrow Add2 \rightarrow Add42 \rightarrow Read
+Read \rightarrow Write \rightarrow Write \rightarrow Read \rightarrow Read \rightarrow Add_2 \rightarrow Add_{42} \rightarrow Read
 $$
 
 then it is easy to notice, that we can shuffle consecutive readers and consecutive adders, but not writers. Also swapping a reader with a writer is going to be a problem.
