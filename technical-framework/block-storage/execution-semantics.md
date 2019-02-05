@@ -134,7 +134,7 @@ address \in Keys
 signature \in \{ Read, Write, <cf, f> where \space cf \in CommutingFamilies \wedge f \in cf
 $$
 
-An example trace of execution could look liek this:
+An example trace of execution could look like this:
 
 $$
 <203, Read>
