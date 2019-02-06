@@ -42,7 +42,7 @@ $$
 ts: GS \rightarrow GS
 $$
 
-**Caution**: Hidden here are assumptions about what features a smart contract programmer can access inside a body of a smart contract. No _random_ function is available. In other words, the execution of a transaction is completely determined by a global state is is applied to and parameters of the contract.
+**Caution**: Hidden here are assumptions about what features a smart contract programmer can access inside a body of a smart contract. No _non-deterministic_ function is available. In other words, the execution of a transaction is completely determined by the global state it is applied to and parameters of the contract.
 
 Further, it is not true that we are interested in every possible functions $$GS \rightarrow GS$$. Really, we are only interested in computable functions, so functions implementable as Turing Machine programs, where the only extra feature is the access to our global state. Hence such programs are sequential by nature and every access to global state can be traced.
 
@@ -56,7 +56,7 @@ $$
 
 Consider two transactions $$t_1, t_2 \in Transactions(GS)$$ and a fixed global state $$gs \in GS$$. To express that t1 and t2 are mutually independent in the context of gs, we just want to say that it does not matter in which order we apply them to gs, because the final result is going to be the same anyway.
 
-Formally, we say that transactions t1 and t2 are coherent in the context of global state $$gs \in GS$$, $$iff$$
+Formally, we say that transactions $$t_1$$ and $$t_2$$ are commutative in the context of global state $$gs \in GS$$, $$iff$$
 
 $$
 t_1(t_2(gs)) = t_2(t_1(gs))
@@ -64,7 +64,7 @@ t_1(t_2(gs)) = t_2(t_1(gs))
 \newline (t_1 \circ t_2)(gs) = (t_2 \circ t_1)(gs)
 $$
 
-Obviously, this definition can easily be extended to a finite set of transactions: we say that a set T = {t1, ...., tn} is coherent in the context of global state $$gs \in GS$$ iff for all permutations p: {1, ..., n} ⟶ {1, ..., n}:
+Obviously, this definition can easily be extended to a finite set of transactions: we say that a set $$T = \{t_1, …, t_n\}$$ is commutative in the context of global state $$gs \in GS$$ iff for all permutations $$p: \{1, …, n\} \rightarrow \{1, …, n\}$$:
 
 $$
 (t_{p(1)} \circ t_{p(2)} \circ … \circ t_{p(n)}) (gs) = (t_1 \circ t_2 \circ … t_n)(gs)
@@ -76,7 +76,7 @@ For a given set of transactions, unfortunately, checking their coherence is rath
 
 A pretty straightforward check algorithm can be established by storing a trace of all accesses to the global state done by a transaction, and then checking for a possible conflict by comparing traces.
 
-For tracing the execution of transactions, we extend the read-write model with one additional case. Let's look for example at the adding operation:
+For tracing the execution of transactions, we extend the read-write model with one additional case. Let's look for example at the addition operation:
 
 $$
 + : Int \rightarrow Int \rightarrow Int
@@ -95,7 +95,7 @@ $$
 Read \rightarrow Write \rightarrow Write \rightarrow Read \rightarrow Read \rightarrow Add_2 \rightarrow Add_{42} \rightarrow Read
 $$
 
-then it is easy to notice, that we can shuffle consecutive readers and consecutive adders, but not writers. Also swapping a reader with a writer is going to be a problem.
+then it is easy to notice, that we can shuffle consecutive readers and consecutive adders, but not writers. Also swapping a reader with a writer \(or reader and adder\) is going to be a problem.
 
 The "adding" case can be actually generalized. We can change the order of any operations that come from a commutative Monoid \(like integers with adding, integers with multiplication or hash maps with merging\). We can generalize this even further, saying that apart from Read and Write operations, any commutative family of functions can be used, as long as we can easily recognize \(while tracing\) to which commutative family of functions given operation belongs.
 
@@ -108,7 +108,7 @@ Distinguished families of such commutative functions operating on Values are pre
 * adding element to a set
 * removing elements from a set
 
-Such a collection of selected commutative families of functions that are supported by the execution engine we will denote here as $$CommutingFamilies$$, or CF. So, using previously established notation for adding, we can recognize two example elements in $$CommutingFamilies$$ that cover the integer addition and adding element to sets of integers:
+Such a collection of selected commutative families of functions that are supported by the execution engine we will denote here as $$CommutingFamilies$$, or CF. So, using previously established notation for adding, we can recognize two example elements in $$CommutingFamilies$$ that cover the integer addition and adding element of type $$A$$ to $$Set[A]$$:
 
 $$
 \{ Add_i : i \in Int \} \in CF, where \space Add_i: Int \rightarrow Int, Add_i(x) = x + i
@@ -124,10 +124,10 @@ $$
 Trace(t, gs) = <op_1, op_2, …, op_n>
 $$
 
-Here, every op is a pair: $$<address, signature>$$ where
+Here, every op is a pair: $$<key, signature>$$ where
 
 $$
-address \in Keys
+key \in Keys
 \newline
 signature \in \{ Read, Write, <cf, f> where \space cf \in CommutingFamilies \wedge f \in cf \}
 $$
@@ -136,8 +136,8 @@ An example trace of execution could look like this:
 
 $$
 <203, Read> \\\
-<132, write> \\
-<132, <Add, Add_51>> \\
+<132, Write> \\\
+<132, <Add, Add_{51}>> \\
 <203, Write> \\
 <203, Read> \\
 <203, Read> \\
@@ -146,7 +146,7 @@ $$
 We reduce such trace in two steps:
 
 1. Grouping operations by address
-2. Merging signatures in every, according to the following merging table:
+2. Merging signatures in every group, according to the following merging table:
 
 <table>
   <thead>
@@ -154,9 +154,7 @@ We reduce such trace in two steps:
       <th style="text-align:left"></th>
       <th style="text-align:left">Read</th>
       <th style="text-align:left">Write</th>
-      <th style="text-align:left">
-        <cf_2, ?>
-      </th>
+      <th style="text-align:left"></th>
     </tr>
   </thead>
   <tbody>
@@ -173,13 +171,11 @@ We reduce such trace in two steps:
       <td style="text-align:left">Write</td>
     </tr>
     <tr>
-      <td style="text-align:left">
-        <cf_2, ?>
-      </td>
+      <td style="text-align:left"></td>
       <td style="text-align:left">Write</td>
       <td style="text-align:left">Write</td>
       <td style="text-align:left">
-        <p>if (cf_1 = cf_2) cf_1</p>
+        <p>if () cf_1</p>
         <p>else error</p>
       </td>
     </tr>
@@ -193,24 +189,24 @@ We reduce such trace in two steps:
 Finally, the reduced execution trace of a transaction t can be represented as a function:
 
 $$
-ReducedTrace(t, gs): K \rightarrow \{Read, Write\} \cup CF, where \space K \subset Keys
+ReducedTrace(t, gs): K \rightarrow Op, where \space Op \in \{Read, Write\} \cup CF \space and \space K \subset Keys
 $$
 
-For a pair of transactions $$t_1$$, $$t_2$$, and their traces $$ReducedTrace(t_1, gs)$$, $$ReducedTrace(t_2, gs)$$ we introduce the following way of checking if reduced traces are coherent:
+For a pair of transactions $$t_1$$, $$t_2$$, and their traces $$ReducedTrace(t_1, gs)$$, $$ReducedTrace(t_2, gs)$$ we introduce the following way of checking if reduced traces commute:
 
 $$
-\forall k \space IsCoherent(k) : k \in Dom(ReducedTrace(t_1, gs)) \space \cap Dom(ReducedTrace(t_2,gs))
+\forall k \space Commutes(k) : k \in Dom(ReducedTrace(t_1, gs)) \space \cap Dom(ReducedTrace(t_2,gs))
 $$
 
-where $$IsCoherent$$ function is defined using following rules:
+where $$Commutes$$ function is defined using following rules:
 
-| IsCoherent | Read | Write | cf\_2 |
+| Commutes | Read | Write | $$cf_2$$ |
 | :--- | :--- | :--- | :--- |
 | Read | true | false | false |
 | Write | false | false | false |
-| cf\_1 | false | false | cf\_1 = cf\_2 |
+| $$cf_1$$ | false | false | $$cf_1 = cf_2$$ |
 
-**Theorem:** If two transactions t\_1 and t\_2 have coherent reduced traces they are coherent. Formally:
+**Theorem:** If two transactions $$t_1$$ and $$t_2$$ have commuting reduced traces they commute. Formally:
 
 $$
 \forall gs \in GS, \space \forall t_1,t_2 \in Transactions(GS)
@@ -218,9 +214,13 @@ $$
 ReducedTrace(t_1, gs) \sim ReduedTrace(t_2, gs) \implies (t_1 \circ t_2)(gs) = (t_2 \circ t_1)(gs)
 $$
 
-**Caution**: the inverse theorem is not true, which can be observed in the following examples.
+**Caution**: the inverse theorem is not true, which can be observed in the following example.
 
-**Example:** transactions commute but their reduced traces are not coherent.
+{% hint style="info" %}
+We use $$\sim$$ \(tilde\) to denote that two things commute \(it doesn't matter in which order they are applied\).
+{% endhint %}
+
+**Example:** Transactions commute but their reduced traces don't.
 
 {% code-tabs %}
 {% code-tabs-item title="Transaction 1" %}
@@ -241,29 +241,29 @@ Contract:
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-This phenomenon happens thanks to the fact, that transaction 1 actually ignores the value retrieved from location 42. We are not able to detect this by just pure analysis of execution traces and the reduced traces coherence test will signal a potential conflict.
+When reading above example contracts it's easy to see that transactions should be able to run in parallel \(each of them modified different key\). This is thanks to the fact that although transaction 1 reads from key 42 \(which transaction 2 modifies\) but it ignores its value. Unfortunately, we are not able to detect this by just pure analysis of execution traces and the reduced traces commutativity test will signal a potential conflict.
 
 ### Proof of theorem \(sketch\)
 
-**Lemma**: Intuitively, only $$Read(k)$$ operations influence how the program executing the transaction operates. For two global states $$gs_1, gs_2 \in GS$$ if the same transaction applied to gs1 created a different execution trace than when applied to $$gs_2$$ then at some point of the trace there must be a Read\(k\) operation where $$gs_1(k) <> gs_2(k)$$.
+**Lemma**: Intuitively, only $$Read(k)$$ operations influence how the program executing the transaction operates. For two global states $$gs_1, gs_2 \in GS$$ if the same transaction applied to $$gs_1$$ created a different execution trace than when applied to $$gs_2$$ then at some point of the trace there must be a $$Read(k)$$ operation where $$gs_1(k) \not =  gs_2(k)$$.
 
 We are going to prove:
 
 $$
-ReducedTrace(t_1, t_2(gs))\sim ReducedTrace(t_1, gs)
+ReducedTrace(t_1, t_2(gs)) = ReducedTrace(t_1, gs)
 $$
 
-This is to say that transaction $$t_1$$ somehow is not able to notice that global state $$t_2(gs)$$ is different than gs and so it operates following exactly the same storage access flow in both cases. 
+This is to say that transaction $$t_1$$ somehow is not able to notice that global state $$t_2(gs)$$ is different than _gs_ and so it operates following exactly the same storage access flow in both cases. 
 
 Let's assume the contrary is true so:
 
 $$
-ReducedTrace(t1, t2(gs)) <> ReducedTrace(t1, gs)
+ReducedTrace(t_1, t_2(gs)) \not = ReducedTrace(t_1, gs)
 $$
 
-Using lemma, this would mean that at some point of the trace there must be a $$Read(k)$$ operation where $$gs(k) <> t_2(gs)(k)$$. Which is to say that some key k was modified by $$t_2$$ and the same key k is being read by $$t_1$$.
+Using lemma, this would mean that at some point of the trace there must be a $$Read(k)$$ operation where $$gs(k) \not = t_2(gs)(k)$$. Which is to say that some key _k_ was modified by $$t_2$$ and the same key _k_ is being read by $$t_1$$.
 
-But modification of key k by transaction $$t_2$$ must have been caused by $$Write(k)$$ or CF\(k\). And at the same time, we claim that at the key k transaction $$t_1$$ executes $$Read(k)$$, because it still follows the original execution path.
+But modification of key k by transaction $$t_2$$ must have been caused by $$Write(k)$$ or $$CF(k)$$. And at the same time, we claim that at the key _k_ transaction $$t_1$$ executes $$Read(k)$$, because it still follows the original execution path.
 
 This is, however, a contradiction with reduced trace calculation conditions \(see the table\).
 
