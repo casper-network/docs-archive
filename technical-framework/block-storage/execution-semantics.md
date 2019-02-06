@@ -52,6 +52,10 @@ $$
 Transactions(GS) = { t \in GS^{GS}: t \space is \space computable }
 $$
 
+{% hint style="info" %}
+$$GS^{GS}$$ means "all possible $$GS \rightarrow GS$$ functions"
+{% endhint %}
+
 ### Commutativity of transactions
 
 Consider two transactions $$t_1, t_2 \in Transactions(GS)$$ and a fixed global state $$gs \in GS$$. To express that t1 and t2 are mutually independent in the context of gs, we just want to say that it does not matter in which order we apply them to gs, because the final result is going to be the same anyway.
@@ -247,7 +251,7 @@ When reading above example contracts it's easy to see that transactions should b
 
 **Lemma**: Intuitively, only $$Read(k)$$ operations influence how the program executing the transaction operates. For two global states $$gs_1, gs_2 \in GS$$ if the same transaction applied to $$gs_1$$ created a different execution trace than when applied to $$gs_2$$ then at some point of the trace there must be a $$Read(k)$$ operation where $$gs_1(k) \not =  gs_2(k)$$.
 
-We are going to prove:
+Assume that $$ReducedTrace(t_1, gs) \sim ReducedTrace(t_2, gs)$$. We are going to prove:
 
 $$
 ReducedTrace(t_1, t_2(gs)) = ReducedTrace(t_1, gs)
@@ -255,17 +259,13 @@ $$
 
 This is to say that transaction $$t_1$$ is not affected by $$t_2(gs)$$ and so it operates following exactly the same storage access flow in both cases. 
 
-Let's assume the contrary is true so:
+Let's assume the contrary is true:
 
 $$
 ReducedTrace(t_1, t_2(gs)) \not = ReducedTrace(t_1, gs)
 $$
 
-Using lemma, this would mean that at some point of the trace there must be a $$Read(k)$$ operation where $$gs(k) \not = t_2(gs)(k)$$. Which is to say that some key _k_ was modified by $$t_2$$ and the same key _k_ is being read by $$t_1$$.
-
-But modification of key k by transaction $$t_2$$ must have been caused by $$Write(k)$$ or $$CF(k)$$. And at the same time, we claim that at the key _k_ transaction $$t_1$$ executes $$Read(k)$$, because it still follows the original execution path.
-
-This is, however, a contradiction with reduced trace calculation conditions \(see the table\).
+Using lemma, this would mean that at some point of the $$t_1$$trace there must be a $$Read(k)$$ operation where $$gs(k) \not = t_2(gs)(k)$$. Which is to say that some key _k_ was modified by $$t_2$$ and the same key _k_ is being read by $$t_1$$. This, however, contradicts our assumption that $$t_1$$and $$t_2$$ commute.
 
 End of the proof.
 
