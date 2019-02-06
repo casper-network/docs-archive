@@ -38,6 +38,7 @@
 
 ## Network and Governance
 
+* [Governance Model](network-and-governance/governance-model.md)
 * [Improvement Process](network-and-governance/untitled.md)
 * [Open Source](network-and-governance/open-source.md)
 
