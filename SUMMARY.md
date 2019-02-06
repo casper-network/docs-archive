@@ -46,6 +46,8 @@
 * [Validator Economics](economics/validator-economics.md)
 * [Token Supply](economics/token-supply.md)
 
+## Use Cases
+
 ## Glossary
 
 * [Glossary of Terms](glossary/glossary-of-terms.md)
