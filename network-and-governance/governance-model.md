@@ -34,6 +34,14 @@ A governance board  responsible for making decisions on the platform.  The board
 
 This governance board grants equal power to all constituents. Each constituency has 1 equal vote. No longer are the developers, the open source devs and everyone else at the behest of those network participants with the most hash power or cash staked \(or collusion power\). Within each constituency, the members get to decide on their own governance. This provides for an opportunity to still incentivize increased participation and contribution in exchange for a heavier weighted vote WITHIN one’s constituency, while protecting the overall blockchain governance from one group getting all the power or the need for any politicking and coalition forming between constituents. 
 
+#### Definition of a constituency
+
+* A constituency should fit into one of the categories listed above.
+* Should have tightly aligned interests with respect to the CL blockchain.
+* Should be responsible for ensuring uniqueness of its membership \(people can't be part of 2 constituency groups\)
+* Should be accountable to the other constituencies in that they are checking for membership uniqueness, and board election processes in a transparent way.  This will lend legitimacy to the constituency also.
+* Can also include geographic regions ex: Chinese validators.
+
 #### Responsibilities of the Governance Board
 
 The governance board, since it is elected and represents 'all stakeholders' - is the body that should be charged with making governance decisions for the blockchain, in collaboration with the community. 
@@ -68,4 +76,8 @@ The governance committee is an unelected group of individuals that want to help 
 * Audits & reviews payments for development activities on a regular basis. 
 * Reports abuse to the community and board. 
 * Nominates a representative to the Governance board in the event a constituency of the board experiences an internal governance crisis and the seat is vacant.
+
+### Rollout
+
+Initial decisions will be made by the CasperLabs Core development team and Principals \(Adaptive, Inc.\).  Over time, more constituents are admitted to the board as each constituency group develops its' nomination / election processes. Ultimately new constituent groups can form and the existing board will have to vote by simple majority to admit them to the governance board. 
 
