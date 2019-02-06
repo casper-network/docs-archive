@@ -253,7 +253,7 @@ $$
 ReducedTrace(t_1, t_2(gs)) = ReducedTrace(t_1, gs)
 $$
 
-This is to say that transaction $$t_1$$ somehow is not able to notice that global state $$t_2(gs)$$ is different than _gs_ and so it operates following exactly the same storage access flow in both cases. 
+This is to say that transaction $$t_1$$ is not affected by $$t_2(gs)$$ and so it operates following exactly the same storage access flow in both cases. 
 
 Let's assume the contrary is true so:
 
