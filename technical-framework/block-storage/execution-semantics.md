@@ -2,7 +2,7 @@
 
 ## Motivation
 
-One of the biggest challenges that blochchain faces is the one of throughput. When new projects are being evaluated people often compare how many transactions per second it can run and how does it compare to Visa \( according to some sources it may vary from [1700 TPS ](https://news.bitcoin.com/no-visa-doesnt-handle-24000-tps-and-neither-does-your-pet-blockchain/)to[ 4400 TPS](https://medium.com/@aat.de.kwaasteniet/the-nonsense-of-tps-transactions-per-second-2d7156df5e53) \). It is value that none of the currently operating blockchains can achieve. One of the fundamental design choices that new projects may make is to build a DAG \(directly acyclic graph\) rather than linear chain \(as it is done in Bitcoin or Ethereum\). The idea behind building a DAG is that validators may build a blockchain "in parallel" \(imagine multiple threads that originate from the same place, run in parallel but join at some point in the future to form a single thread again\). One of the fundamental issues with this design is conflict resolution. What to do when there are multiple transactions that want to modify the same account? We can't apply changes from all of them blindly. This may lead to overdraws \(or double spends\). This problem is not trivial and there are potentially multiple ways to solve it. This document presents how we do it in CasperLabs. 
+One of the biggest challenges that blockchain faces is the one of throughput. When new projects are being evaluated people often compare how many transactions per second it can run and how does it compare to Visa \( according to some sources it may vary from [1700 TPS ](https://news.bitcoin.com/no-visa-doesnt-handle-24000-tps-and-neither-does-your-pet-blockchain/)to[ 4400 TPS](https://medium.com/@aat.de.kwaasteniet/the-nonsense-of-tps-transactions-per-second-2d7156df5e53) \). It is value that none of the currently operating blockchains can achieve. One of the fundamental design choices that new projects may make is to build a DAG \(directly acyclic graph\) rather than linear chain \(as it is done in Bitcoin or Ethereum\). The idea behind building a DAG is that validators may build a blockchain "in parallel" \(imagine multiple threads that originate from the same place, run in parallel but join at some point in the future to form a single thread again\). One of the fundamental issues with this design is conflict resolution. What to do when there are multiple transactions that want to modify the same account? We can't apply changes from all of them blindly. This may lead to overdraws \(or double spends\). This problem is not trivial and there are potentially multiple ways to solve it. This document presents how we do it in CasperLabs. 
 
 ## Commutativity of transactions
 
@@ -46,10 +46,10 @@ $$
 
 Further, it is not true that we are interested in every possible functions $$GS \rightarrow GS$$. Really, we are only interested in computable functions, so functions implementable as Turing Machine programs, where the only extra feature is the access to our global state. Hence such programs are sequential by nature and every access to global state can be traced.
 
-Formally, by transactions over $$GS$$ we understand the following set:
+Formally, by $$transactions\space over\space GS$$ we understand the following set:
 
 $$
-Transactions(GS) = { t \in GS^{GS}: t \space is \space computable }
+Transactions(GS) = \{ t \in GS^{GS}: t \space is \space computable \}
 $$
 
 {% hint style="info" %}
@@ -58,13 +58,13 @@ $$GS^{GS}$$ means "all possible $$GS \rightarrow GS$$ functions"
 
 ### Commutativity of transactions
 
-Consider two transactions $$t_1, t_2 \in Transactions(GS)$$ and a fixed global state $$gs \in GS$$. To express that t1 and t2 are mutually independent in the context of gs, we just want to say that it does not matter in which order we apply them to gs, because the final result is going to be the same anyway.
+Consider two transactions $$t_1, t_2 \in Transactions(GS)$$ and a fixed global state $$gs \in GS$$. To express that $$t_1$$ and $$t_2$$ are mutually independent in the context of gs, we just want to say that it does not matter in which order we apply them to gs, because the final result is going to be the same anyway.
 
 Formally, we say that transactions $$t_1$$ and $$t_2$$ are commutative in the context of global state $$gs \in GS$$, $$iff$$
 
 $$
 t_1(t_2(gs)) = t_2(t_1(gs))
-\newline or \space alternatively:
+\newline or \space equivalently:
 \newline (t_1 \circ t_2)(gs) = (t_2 \circ t_1)(gs)
 $$
 
@@ -74,7 +74,7 @@ $$
 (t_{p(1)} \circ t_{p(2)} \circ … \circ t_{p(n)}) (gs) = (t_1 \circ t_2 \circ … t_n)(gs)
 $$
 
-### Checking coherence
+### Checking commutativity
 
 For a given set of transactions, unfortunately, checking their coherence is rather non-trivial and the cost of such checking may easily overweight any gain in performance achieved by parallel execution of transactions. So, we are only really interested in performing such check if it is doable in a reasonably cheap way.
 
@@ -93,7 +93,7 @@ Add_2: Int \rightarrow Int \newline
 Add_2(x) = x + 2
 $$
 
-If we consider again the queue of processes that want to access the storage:
+If we consider the sequence of transactions that want to access the storage:
 
 $$
 Read \rightarrow Write \rightarrow Write \rightarrow Read \rightarrow Read \rightarrow Add_2 \rightarrow Add_{42} \rightarrow Read
@@ -122,18 +122,18 @@ $$
 
 ### Correctness theorem
 
-We define a trace of execution of a transaction t to be an ordered sequence of _Ops_ capturing the sequence of accesses to the global state made by the program executing the transaction, once applied to a given $$gs \in GS$$:
+We define a $$trace \space of \space execution$$ of a transaction $$t$$ to be an ordered sequence of $$actions$$ capturing subsequent accesses to the global state made by the program executing the transaction, once applied to a given $$gs \in GS$$:
 
 $$
-Trace(t, gs) = <op_1, op_2, …, op_n>
+Trace(t, gs) = <action_1, action_2, …, action_n>
 $$
 
-Here, every op is a pair: $$<key, signature>$$ where
+Here, every $$action$$ is a pair: $$<key, op>$$ where
 
 $$
 key \in Keys
 \newline
-signature \in \{ Read, Write, <cf, f> where \space cf \in CommutingFamilies \wedge f \in cf \}
+op \in \{ Read, Write \} \cup \{<cf, f>: \space cf \in CommutingFamilies \wedge f \in cf \}
 $$
 
 An example trace of execution could look like this:
@@ -149,8 +149,8 @@ $$
 
 We reduce such trace in two steps:
 
-1. Grouping operations by address
-2. Merging signatures in every group, according to the following merging table:
+1. Grouping operations by key
+2. Merging operations in every group, according to the following merging table:
 
 <table>
   <thead>
