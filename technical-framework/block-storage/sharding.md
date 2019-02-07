@@ -6,7 +6,7 @@ _(MB: Should this be moved to another part of the paper instead of being in the 
 
 Sharding is often discussed in the blockchain space as being a scaling solution
 (the term itself being borrowed from other distributed systems, e.g. databases).
-However, the Casper Labs platform does not view sharding in this way for a few
+However, the CasperLabs platform does not view sharding in this way for a few
 reasons. First, our platform is already able to scale throughput via the
 concurrent execution model and DAG structure. Nodes can both run and come to
 consensus on many transactions in parallel, with the latter parallelism being
@@ -25,7 +25,7 @@ not require re-running all the transactions to prove their correctness) could
 solve this problem, however no general method for doing this is known as of yet
 in the Turning-complete smart contract setting.
 
-What does sharding provide if not scalability? The answer is heterogeneity.
+What does sharding provide if not scalability? The answer is - heterogeneity.
 Existing blockchains are treated as a "single global computer", but this
 implicitly assumes there is a "one-size fits all" computer capable of meeting
 all use cases. This is obviously false as there are trade offs to be made in all
@@ -40,29 +40,39 @@ from the security and verifiability the blockchain offers. Similarly,
 transactions which are fast-paced but low value (such as those at a typical
 coffee shop) have a much higher requirement for speed as compared to those which
 are rare but high value (e.g. purchasing of real estate or other high value, low
-liquidity assets). This is idea alluded to above -- some use cases may have high
-throughput requirements, which may in turn become requirements on the node
-hardware, and this is then finally becomes a requirement of the shard which is
-designed for this use case. Considering this example further, higher value
+liquidity assets). This is the idea alluded to above -- some use cases may have
+a high throughput requirement, which may in turn become requirements on the node
+hardware, and then finally become a requirement of the shard which is designed
+for this use case. Note that a fast network connection is considered to be part
+of the hardware requirements for the purposes of this discussion (it doesn't
+matter how may cores you have if you cannot tell the network about all the
+transactions you are processing). Considering this example further, higher value
 transactions have a higher need for security compared with lower value
 transactions. Therefore, a shard designed for high value transactions may prefer
 to have many, diverse validators, regardless of their hardware or geographic
-location.
+location. This brings us back to the point mentioned in the opening paragraph
+that while node hardware can be a limiting factor in throughput of a network,
+sharding allows us to put constraints on the hardware in parts of the network
+where very high throughput is needed, while allowing other parts of the network
+to have any device be a node where very high decentralization is needed.
 
 The ability to customize parts of the network to meet specific use cases is
 essential to delivering a platform which all business sectors can find some
 value. Our goal with sharding is to enable that customization. Note that we have
-said nothing about removing the "global computer". In the trade-off space, one
-can view this as preferring decentralization and security at the cost of speed
-(since the rate data can be transferred around the globe is limited); this is a
-customization which is completely allowed (and in fact will play a centrally
-important role, as we will see).
+said nothing about removing the "global computer". There will be a shard which
+looks similar to a network like Ethereum (globally decentralized, reasonably
+open-access). In the trade-off space, one can view such a shard as preferring
+decentralization and security at the cost of speed (since the rate at which data
+can be transferred around the globe is limited). This is a customization which
+is completely allowed and in fact will play an important role, as this
+will be the form the "root shard" will take (described in the following
+section).
 
 ## Technical Details
 
 A _shard_ is an independently replicated blockdag, with its own independent set
 of validators. In most respects, different shards are independent instances of
-the Casper Labs platform. The exception to this is the Casper Labs native token,
+the CasperLabs platform. The exception to this is the CasperLabs native token,
 which will be common throughout all shards. This allows clients to easily do
 business in multiple shards, or move between shards as needed. The way in which
 this is accomplished is by imposing a tree structure on the shards. There is a
@@ -80,6 +90,12 @@ corrupt and its validators are producing invalid blocks which forge tokens,
 these cannot impact the rest of the network because they can never be moved out
 into the parent shard.
 
+Note that the interaction of moving tokens between shards (detailed below) is
+the _only_ interaction between shards. There is no direct calling of a contract
+that lives in another shard. To enable that would require an external service
+using off-chain triggers to make transactions in one shard be forwarded to
+another shard. Such a system is out of scope for this work.
+
 _(TODO: picture of an example shard tree probably needed @jack mills)_
 
 ### Communication between shards
@@ -96,11 +112,11 @@ recognizes some participants, each with some weight (the total weight being
 accepted if at least a weight of `k` (out of the total `n`, hence the name)
 agree. To save on the number of contract calls (and avoid stuck proposals), each
 proposal has a time-to-live (TTL). The proposal must reach the threshold before
-the TTL or it will be defeated. There is only votes in favour of a proposal, not
-votes against, because not voting is considered equivalent to voting no. This
-saves on the number of calls to the contract which is needed because nay-sayers
-do not need to call the contract to give their opinion. We sketch the API of the
-KON contract below.
+the TTL or it will be defeated. There are only votes in favour of a proposal,
+not votes against, because not voting is considered equivalent to voting no.
+This saves on the number of calls to the contract because nay-sayers do not need
+to call the contract to give their opinion. We sketch the API of the KON
+contract below.
 
 ```javascript
 //weights are non-negative, whole numbers
@@ -108,11 +124,42 @@ type Weight = Nat
 //time is measured in cumulative gas spent; a non-negative number
 type Time = Nat
 
+//Data type representing possible proposals to vote on.
+//The two variants Update and Release correspond to the two
+//types of actions which can result from the proposal being
+//successful. The `id` field present in both Proposal variants
+//is a unique identifier which is computed based on the deploy
+//which triggered the voting to need to happen. For example,
+//a the deploy in which a new validator bonds on the network
+//would be used to derive the `id` of the corresponding 
+//`Update` proposal which adds that new validator to the
+//participants of the KON contract. The formula to determine the
+//`id` will be `id = hash(blockhash + deployhash + seq)`, where
+//`blockhash` is the hash of the block which includes the deploy, 
+//`deployhash` is the hash of the deploy which initiated the need
+//for the proposal, and `seq` is a sequential identifier (starting
+//from zero) which is used if the same deploy causes multiple
+//proposals to need to be created.
+//Other fields in the proposal are described below.
+data Proposal = 
+  Update(
+    id: Array[Byte],
+    newParticipants: Map[PublicKey, Weight], 
+    newThreshold: Weight,
+    ttl: Time,
+    yesWeight: Weight //weight that has voted for this proposal
+  ) |
+  Release(
+    id: Array[Byte],
+    amount: Nat, 
+    destination: Address,
+    ttl: Time,
+    yesWeight: Weight
+  )
+
 contract KON:
   var participants: Map[PublicKey, Weight]
   var threshold: Weight
-  //We assume there is some Proposal data type which holds all 
-  //the relevant information (TTL, yes-weight, effect).
   var activeProposals: Set[Proposal]
 
   //Note: all calls to the contract automatically prune the `activeProposals`
@@ -122,7 +169,7 @@ contract KON:
   //Proposal/vote to update the properties of this contract. The purpose of
   //not having a `vote` end-point is to prevent duplicate proposals from being
   //created. A call to `update` with a new set of parameters creates a new active
-  //proposal, where as a call with a set of parameters which is already active
+  //proposal, whereas a call with a set of parameters which is already active
   //is a vote for that proposal. `ttl` does not count as a parameter of the proposal,
   //in the case they differ the larger `ttl` is always chosen; this means a proposal
   //can be kept alive as long as there is sufficiently frequent voting activity on it.
@@ -131,6 +178,7 @@ contract KON:
   //      all other existing active proposals are now compared against the
   //      new standards to determine if they are successful.
   function update(
+      id: Array[Byte],
       newParticipants: Map[PublicKey, Weight], 
       newThreshold: Weight,
       ttl: Time //proposal must be successful before `ttl`
@@ -138,30 +186,50 @@ contract KON:
   
   //Proposal/vote to release tokens into a particular address. Once again
   //there is no `vote` end-point to avoid creating duplicate proposals.
-  //More details about what how `release` has access to tokens to send to
+  //More details about how `release` has access to tokens to send to
   //the destination address are given in the next section.
-  function release(amount: Nat, destination: Address, ttl: Time): Unit
+  function release(
+    id: Array[Byte],
+    amount: Nat, 
+    destination: Address, 
+    ttl: Time
+  ): Unit
 ```
 
-Note that a parent shard will need separate KON contracts for each child it has.
 In order to prevent shards from needing to watch each other's DAGs, the KON
 contract containing the participants corresponding to validators in the parent
-shard lives in the child shard, and vice versa. The disadvantage of this
-approach is that shards need to keep each other up to date with
-bonding/unbonding events that occur via cross-shard `update` proposals to the
-KON contract. However, even though validators in one shard act as clients of the
-other shard, calls validators make to the KON contract will not be charged in
-the way user transactions normally are. It costs both parties resources to send
-and process KON transactions, but both are also compensated. In the case of a
-user transferring tokens from one shard to the other, the sender is compensated
-because the user pays to initiate the transaction in that shard, and the
-receiver is compensated because the value of their shard is increased by the
-influx of new tokens. In the case of bonding/unbonding there is no explicit
-compensation for either party; this is simply the overhead of continuing to do
-business with one another. This overhead should be low though because KON
-operations are reasonably simple (and therefore do not consume a large number of
-resources), and bonding/unbonding operations will be much less common than
-general user transactions.
+shard lives in the child shard, and vice versa. To be clear, what this means is
+that if `KONp` is the KON contract which is in the parent shard (note there will
+be a separate `KONp` contract for each different child that parent has) and
+`KONc` is the KON contract which is in the child shard then
+```
+participants(KONp) == validators in the child
+participants(KONc) == validators in the parent
+```
+This is reversed on purpose to prevent the shards from needing to watch each
+other's blocks. A transfer from parent to child has a trigger originating in the
+parent, but an effect (the new tokens appearing) in the child. So I make the
+parent validators the participants controlling such a transfer since they
+already need to watch their own blocks, but I put the contract where they vote
+on it in the child because that is where the effect needs to happen. This is why
+`KONc` has the parent validators as its participants. A similar argument holds
+for why `KONp` has the child validators as participants.
+
+The disadvantage of this approach is that shards need to keep each other up to
+date with bonding/unbonding events that occur via cross-shard `update` proposals
+to the KON contract. However, even though validators in one shard act as clients
+of the other shard, calls validators make to the KON contract will not be
+charged in the way user transactions normally are. It costs both parties
+resources to send and process KON transactions, but both are also compensated.
+In the case of a user transferring tokens from one shard to the other, the
+sender is compensated because the user pays to initiate the transaction in that
+shard, and the receiver is compensated because the value of their shard is
+increased by the influx of new tokens. In the case of bonding/unbonding there is
+no explicit compensation for either party; this is simply the overhead of
+continuing to do business with one another. This overhead should be low though
+because KON operations are reasonably simple (and therefore do not consume a
+large number of resources), and bonding/unbonding operations will be much less
+common than general user transactions.
 
 ### Moving tokens between shards
 
@@ -174,7 +242,7 @@ mint also accepts tokens to burn which will be released from the depository in
 the parent (corresponding to moving the tokens back to the parent shard). The
 `release` API of the KON contract is the only mechanism for taking tokens out of
 the depository/local mint, while the API for giving tokens back to the
-depository/local mint (this initiating a cross-shard transfer) is available to
+depository/local mint (thus initiating a cross-shard transfer) is available to
 all users. The API for the `depository` contract is given below. Note that the
 same notation used on [the tokens page](./tokens.md) is used again to indicate
 that a depository is parametric in the type of token (labelled by the unforgable
@@ -215,8 +283,8 @@ contract localMint
   //`destination`.
   private function release(amount: Nat, destination: Address): Unit
 
-  //Instructs the validators to call the `release` API in the parent shard
-  //once this transaction is finalized.
+  //Instructs the validators to call the `release` API on the depository
+  //in the parent shard once this transaction is finalized.
   function deposit(purse: P[cl], destination: Address): Unit
 ```
 
@@ -255,17 +323,17 @@ _(MB: I am implying that validator nodes will have some logic to automatically d
 
 ### Creating and destroying shards
 
-Fundamentally, a shard only exists as part of the Casper Labs blockdag ecosystem
+Fundamentally, a shard only exists as part of the CasperLabs blockdag ecosystem
 because either (a) it is the root shard or (b) it has a corresponding
 KON+depository contract pair in a parent shard which is part of the ecosystem.
-The process of creating and destroying shards amounts therefore amounts to
+The process of creating and destroying shards therefore amounts to
 creating and destroying KON+depository contracts (the root shard is never
 created or destroyed, it simply _is_). A shard is created as a child of the root
 shard by calling the _shard factory_ contract which produces the KON+depository
 corresponding to the shard. The factory takes as parameters the initial KON
 participants (i.e. initial shard validators), an initial endowment purse to seed
 the depository (this is possibly empty, but non-empty if the genesis block
-includes pre-minted Casper Labs tokens), and a shard identifier. The shard
+includes pre-minted CasperLabs tokens), and a shard identifier. The shard
 identifier is used to identify nodes which belong to each shard (which is needed
 for validators to send KON transactions back and forth). The shard factory will
 not allow two shards to be created with the same identifier. Since new shards
@@ -283,7 +351,7 @@ only be destroyed if its depository is empty.
 
 ### Shards and seigniorage
 
-It is planned that seigniorage will be part of the Casper Labs platform to
+It is planned that seigniorage will be part of the CasperLabs platform to
 increase the token supply in a controlled way over time (see ... something ... do
 we have a page on this in the whitepaper?). To ensure uniform growth of the
 token supply, the seigniorage will also be applied to tokens which are locked up
