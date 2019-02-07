@@ -244,6 +244,49 @@ contract lottery:
   }
 ```
 
+## Relationship to Existing Token Models (E.g. ERC20)
+
+For readers familiar with ERC20 or similar specifications, the description here
+may seem to be missing some features (e.g. max supply, "number of decimals",
+etc.). This section is meant to help such readers connect what has been
+presented here with their understanding of these other platforms.
+
+The supply of a particular token type is managed by the mint. At a practical
+level, this will typically mean that the only copy of the mint's core unforgable
+reference that exists will be held by some smart contract with pre-defined rules
+(which can be audited before deployment) on how to increase the supply. The
+simplest case is where a fixed number of tokens are created in purses at the
+beginning (perhaps the largest one being some kind of "reserve" that is given to
+the creator of the token), and then the mint (and its unforgable reference) is
+thrown away forever (i.e. there actually is no contract which holds on to the
+mint). This corresponds to the case of a fixed supply and the size of that
+supply is entirely up to the creator of the token. Another example would be an
+initial number of tokens is produced, but then the mint is also held by a
+contract which will periodically produce new tokens at an exponentially falling
+rate. This corresponds to a model similar to Bitcoin, where the total supply is
+finite, but it is not all made available at once like in the fixed supply case.
+These are just two example, but one of the benefits of the specification here is
+the freedom it provides to come up with other useful schemes for managing the
+supply of a custom token; the _logic_ of when to create tokens is totally
+decoupled from the mint, which is simply the _capability_ to create tokens.
+
+It is well known to those writing software for dealing with money that floating
+point numbers are inadequate for representing monetary units which can be
+sub-divided (e.g. dollars into cents, Bitcoin into Satoshi, Ether in to Wei).
+This is because of the rounding error that floating point arithmetic can cause.
+This problem is solved by specifying a smallest, indivisible unit of the money
+and then representing all balances using whole numbers of those units. The
+"number of decimals" field in the ERC20 specification is simply saying how large
+the "logical" token is relative to this indivisible unit. For example, 1 Bitcoin
+is $$ 1 \times 10^8 $$ Satoshi and 1 Ether is $$ 1 \times 10^{18} $$ Wei. In
+this specification we assume all balances are whole numbers (denoted as `Nat`
+above), so while we use the word token, it would perhaps be more accurate to say
+that the API is defined in terms of these indivisible units of tokens. Once
+again, the specification is purposely left flexible, and it is up to token
+creators to define a larger logical unit for their token if they so desire. For
+example, one could write a wrapper over a purse which will express the balance
+in different logical units for the user's convenience.
+
 ## Implementation Notes
 
 In the conceptual motivation we refer to tokens as if they are objects
