@@ -153,6 +153,14 @@ data Proposal =
     id: Array[Byte],
     amount: Nat, 
     destination: Address,
+    //confirmation ID sent back to originating shard to confirm transaction
+    confId: Array[Bytes],
+    ttl: Time,
+    yesWeight: Weight
+  ) |
+  Confirm(
+    id: Array[Byte],
+    confId: Array[Bytes],
     ttl: Time,
     yesWeight: Weight
   )
@@ -192,6 +200,14 @@ contract KON:
     id: Array[Byte],
     amount: Nat, 
     destination: Address, 
+    confId: Array[Byte],
+    ttl: Time
+  ): Unit
+
+  //Proposal/vote to confirm a `release` of tokens has occurred.
+  function confirm(
+    id: Array[Byte],
+    confId: Array[Byte],
     ttl: Time
   ): Unit
 ```
@@ -236,24 +252,36 @@ common than general user transactions.
 Each KON contract is paired with another contract for managing the tokens. This
 contract is different depending on the shard's role (parent or child). The
 parent shard has a `depository` contract, which holds the tokens that have been
-sent to the child. The child shard has a local mint contract which creates "new"
-tokens to correspond to those locked up in the parent's depository. The local
-mint also accepts tokens to burn which will be released from the depository in
-the parent (corresponding to moving the tokens back to the parent shard). The
-`release` API of the KON contract is the only mechanism for taking tokens out of
-the depository/local mint, while the API for giving tokens back to the
-depository/local mint (thus initiating a cross-shard transfer) is available to
-all users. The API for the `depository` contract is given below. Note that the
-same notation used on [the tokens page](./tokens.md) is used again to indicate
-that a depository is parametric in the type of token (labelled by the unforgable
-reference `r`) it uses.
+sent to the child. The child shard has a `localMint` contract which creates
+"new" tokens to correspond to those locked up in the parent's `depository`. The
+local mint also accepts tokens to burn which will be released from the
+depository in the parent (corresponding to moving the tokens back to the parent
+shard). The `release` API of the KON contract is the only mechanism for taking
+tokens out of the depository/local mint, while the API for giving tokens back to
+the depository/local mint (thus initiating a cross-shard transfer) is available
+to all users. Cross-shard transfer proceed via a two-phase-commit-like
+transaction sequence. When the user requests the transfer, the tokens are stored
+in a staging area until the transaction is confirmed by the receiving shard. The
+API for the `depository` contract is given below. Note that the same notation
+used on [the tokens page](./tokens.md) is used again in the depository API
+definition.
 
 ```javascript
+//Type alias for the tuple of information representing
+//a pending deposit. It holds: a purse with the funds,
+//the confirmation ID, the refund pointer and the TTL.
+type PendingDeposit = (P[cl], Array[Byte], URef, Time)
+
 //Lives in the parent shard
 contract depository
   //Local CasperLabs-type purse where the tokens transferred 
   //to the child are held.
   var lockup: P[cl]
+  //Set of transactions waiting to be confirmed. When `deposit` is called
+  //a new `PendingDeposit` is created. This is eventually either
+  //confirmed by the child validators and the funds are moved to the lockup,
+  //or the `ttl` expires and the funds are returned to the user.
+  var staging: Set[PendingDeposit]
 
   //Only accessible via the `release` endpoint of the corresponding 
   //KON contract (controlled by the child validators). Uses the `lockup` 
@@ -263,9 +291,20 @@ contract depository
   //prevents more tokens coming out of the depository than were put in.
   private function release(amount: Nat, destination: Address): Unit
 
+  //Only accessible via the `confirm` endpoint of the corresponding
+  //KON contract. Confirms a pending deposit, removing it from the staging
+  //set and adding the funds to the lockup.
+  private function confirm(confId: Array[Byte]): Unit
+
   //Instructs the validators to call the `release` API in the child shard
-  //once this transaction is finalized.
-  function deposit(purse: P[cl], destination: Address): Unit
+  //once this transaction is finalized. The confirmation ID is returned as
+  //the result of this function. 
+  function deposit(
+    purse: P[cl], //purse containing funds to transfer
+    destination: Address, //address of the account in other shard to give the tokens
+    refund: URef, //pointer to contract/account where to return the funds if transaction fails
+    ttl: Time //time for the transaction to be confirmed before it is refunded
+  ): Array[Byte]
 ```
 
 The API for the local mint contract is as follows:
@@ -276,6 +315,11 @@ contract localMint
   //Local mint which is used to create the tokens that correspond
   //to those locked up in the depository.
   var mint: m(cl)
+  //Set of transactions waiting to be confirmed. When `deposit` is called
+  //a new `PendingDeposit` is created. This is eventually either
+  //confirmed by the parent validators and the funds burned,
+  //or the `ttl` expires and the funds are returned to the user.
+  var staging: Set[PendingDeposit]
 
   //Only accessible via the `release` endpoint of the corresponding 
   //KON contract (controlled by the parent validators). The `mint` 
@@ -283,9 +327,21 @@ contract localMint
   //`destination`.
   private function release(amount: Nat, destination: Address): Unit
 
-  //Instructs the validators to call the `release` API on the depository
-  //in the parent shard once this transaction is finalized.
-  function deposit(purse: P[cl], destination: Address): Unit
+  //Only accessible via the `confirm` endpoint of the corresponding
+  //KON contract. Confirms a pending transfer, removing it from the staging
+  //set and burning the funds (they do not need to be locked up because they
+  //will simply be re-minted if the user transfers them back).
+  private function confirm(confId: Array[Byte]): Unit
+
+  //Instructs the validators to call the `release` API in the parent shard
+  //once this transaction is finalized. The confirmation ID is returned as
+  //the result of this function. 
+  function deposit(
+    purse: P[cl], //purse containing funds to transfer
+    destination: Address, //address of the account in other shard to give the tokens
+    refund: URef, //pointer to contract/account where to return the funds if transaction fails
+    ttl: Time //time for the transaction to be confirmed before it is refunded
+  ): Array[Byte]
 ```
 
 To clarify the details of how cross-shard transactions work, we give the
@@ -303,6 +359,13 @@ following examples.
 3. When the threshold in KON contract is reached, the new tokens are added to
    the purse at the target address in the child shard (this happens as a
    consequence of one of the KON calls in 2.)
+4. When validators in the child shard see that 3. has been finalized, they call
+   the `confirm` endpoint of the KON contract in the parent with the appropriate
+   parameters.
+5. When the threshold in the KON contract is reached, the tokens are moved from the
+   `staging` set of the `depository` and into the `lockup`.
+6. If the `ttl` on the `PendingDeposit` expires before 5. occurs then the funds are
+   returned to the user (in the parent shard).
 
 **Example 2: Transferring tokens from child to parent**
 1. User makes a transaction in the child shard calling the `deposit` API of the
@@ -318,6 +381,14 @@ following examples.
    the parent shard (this happens as a consequence of one of the KON calls in
    2.). Note: if insufficient funds are available in the depository then only as
    many tokens that remain in the depository are taken.
+4. When validators in the parent shard see that 3. has been finalized, they call
+   the `confirm` endpoint of the KON contract in the child with the appropriate
+   parameters.
+5. When the threshold in the KON contract is reached, the tokens are removed from the
+   `staging` set of the `localMint` and burned (they do not need to be kept in a 
+   lockup because they will simply be re-minted if the user transfers them back).
+6. If the `ttl` on the `PendingDeposit` expires before 5. occurs then the funds are
+   returned to the user (in the child shard).
 
 _(MB: I am implying that validator nodes will have some logic to automatically detect when it needs to send a KON transaction to another shard. Is this reasonable?)_
 
