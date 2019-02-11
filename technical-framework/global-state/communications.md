@@ -32,7 +32,7 @@ Clients send Deploys to one or more nodes on the network who will validate them 
 The `Deploy` message has the following notable fields:
 
 * `session_code` is the WASM byte code to be executed on the Blockchain
-* `payment_code` is the WASM byte code that provides funds in the form of a token transfer in exchange for the validators executing the `session_code` 
+* `payment_code` is the WASM byte code that provides funds in the form of a token transfer in exchange for the validators executing the `session_code`
 * `gas_price` is the rate at which the tokens transferred by the `payment_code` are burned up during the execution of the `session_code`
 * `nonce` has to correspond to the next sequence number the Account sending the Deploy. The nodes will hold on to the Deploy until the previous nonce has been included in the Block they are trying to build on.
 * `account_public_key` is the public key associated with the Account and the one that is used to sign the Deploy. This is how nodes can identify Accounts and find out what the currently expected nonce is.
@@ -68,7 +68,7 @@ We have the following requirements from our gossiping approach:
 
 To achieve these we have the following high level approach:
 
-* Gossip only the meta-data about the Blocks to minimise the amount of data transfer. 
+* Gossip only the meta-data about the Blocks to minimise the amount of data transfer.
 * Full Blocks can be served on demand when the gossiped meta-data is _new._
 * Nodes should pick a _relay factor_ according to how much network traffic they can handle and find that many node to gossip to, nodes for which the information is _new_.
 * Nodes should pick a _relay saturation_ target beyond which point they don't try to push to new peers so the last ones to get a message don't have to contact every other peer in futility.
@@ -92,12 +92,12 @@ In terms of probabilities of reaching a grey node in the 2nd round, or just the 
 
 In practice the messages don't have to reach every node on the network. Achieving 100% saturation would be impractical as it would require a high level of redundancy, i.e. a node receiving the same message multiple times from different peers. Tracking who saw a message could bloat the message size or open it up to tampering. But even if a node isn't notified about a particular Block _right now_, it has equal chances of receiving the next Block that builds on top of that, at which point it can catch up with the missing chain.
 
-Therefore nodes should have a _relay saturation_ value beyond which they don't try to gossip a message to new nodes. For example if we pick a _relay factor_ of 5 and a _relay saturation_ of 80% then it's enough to try and send to 25 nodes maximum. If we find less than 5 peers among them to whom the information was _new_ then we achieved a saturation beyond 80%. This prevents the situation when the last node to get the message has to contact every other node in a futile attempt to spread it 5 more times.
+Therefore nodes should have a _relay saturation_ value beyond which they don't try to gossip a message to new nodes. For example if we pick a _relay factor_ of 5 and a _relay saturation_ of 80% then it's enough to try and send to 25 nodes maximum. If we find less than 5 peers among them to whom the information was _new_ then we achieved a saturation beyond 80%. This prevents the situation when the last node to get the message has to contact every other node in a futile attempt to spread it 5 more times. Assuming that every node tracks a random subset of peers in the network, the saturation we observe in the nodes we try to contact is an approximation of the saturation in the whole network, with the accuracy depending on how many nodes we tried.
 
 ```c
 algorithm BlockGossip is
     input: message M to send,
-           relay factor rf, 
+           relay factor rf,
            relay saturation rs,
            kademlia table K
     output: number of messages sent s
@@ -114,12 +114,12 @@ algorithm BlockGossip is
         p <- a random peer in G(i)-n or None if empty
         if p is None then
             i <- i + 1
-        else            
+        else
             n <- n + p
             r <- the result of sending M to p, indicating whether M was new to p
             if r is true then
                 i <- i + 1
-                s <- s + 1       
+                s <- s + 1
 
     return s
 ```
@@ -203,7 +203,7 @@ algorithm StreamAncestorBlockSummaries is
            known block hashes K,
            maximum depth m,
            block summary map B
-    output: stream of ancestry DAG in child to parent order 
+    output: stream of ancestry DAG in child to parent order
 
     G <- an empty DAG of block hashes
     Q <- an empty queue of (depth, hash) pairs
@@ -216,14 +216,14 @@ algorithm StreamAncestorBlockSummaries is
         pop (d, h) from Q
         if h in A then
             continue
-        if h is not in B then 
+        if h is not in B then
             continue
         b <- B(h)
         A(h) <- b
         for each parent hash p of b do
             G <- G + (h, p)
             if d < m and p not in K do
-                push (d+1, p) to Q 
+                push (d+1, p) to Q
 
     return A(h) for hashes h in G sorted in topoligical order from child to parents
 ```
@@ -263,7 +263,7 @@ algorithm SyncDAG is
 
     Traverse(N)
 
-    define "hashes in G having missing dependencies" as 
+    define "hashes in G having missing dependencies" as
     hash h having no parent in G and h is not in B
 
     while there are hashes in G with missing dependencies do
@@ -316,8 +316,8 @@ function ScheduleDownload is
 
     h <- the hash of b
 
-    if h is in GBS then 
-        return 
+    if h is in GBS then
+        return
 
     if h is in S then
        S(h) <- S(h) with extra source s
@@ -328,7 +328,7 @@ function ScheduleDownload is
        S(h) <- (b, N, r)
        if any parent p of b is in pending downloads G then
           add h as a dependant of p in G
-       else 
+       else
           add h to G without dependencies
 
 
