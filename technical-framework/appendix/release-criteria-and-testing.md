@@ -2,18 +2,18 @@
 
 #### Release Criteria
 
-1. Duration: 
+1. Duration:
    * The system must meet the below criteria for a period of 4 weeks. The duration re-starts whenever a defect that meets the defect criteria \(listed below\) is patched on the nodes in scope.
    * The first duration starts with feature complete.
 2. Load:
    * While in test net, an average of 10,000 transactions of must be processed per day for the duration.
    * These transactions can come from any origin.
-3. Scope: 
+3. Scope:
    * The root shard only.
-4. Stability: 
+4. Stability:
    * The test net must remain up, without any interruptions to service for the entire duration. The system must accept new bonding requests during this time.
-5. Defects: 
-   * No ‘Very High’ or ‘High’ bugs can be filed against the system for the duration
+5. Defects:
+   * No ‘Very High’ or ‘High’ (see definition below) bugs can be filed against the system for the duration
 6. Features & Fixes
 
    * The system is feature complete.
