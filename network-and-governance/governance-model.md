@@ -12,7 +12,7 @@ The governance model needs to account for the following stakeholders:
 * Token Holders
 * Software Licensees
 
-### A Proposed Model
+## A Proposed Model
 
 ### The Governance Board
 
