@@ -6,8 +6,8 @@ A breaking change is a change that will cause a hard fork to take place if all t
 
 The following are considered breaking changes:
 
-* Any change to the core protocol is a breaking change.
-* Changes to message format when data is removed from the message schema.
+* Any change to the core protocol.
+* Changes to message format or the message schema.
 * Changes to Wasm that adversely impacts the execution of smart contracts.
 * Changes to accounting / costs for contract execution.
 
