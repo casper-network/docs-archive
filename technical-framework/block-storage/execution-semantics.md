@@ -133,7 +133,8 @@ Here, every $$action$$ is a pair: $$<key, op>$$ where
 $$
 key \in Keys
 \newline
-op \in \{ Read, Write \} \cup \{<cf, f>: \space cf \in CommutingFamilies \wedge f \in cf \}
+Op = \{ Read, Write \} \cup \{<cf, f>: \space cf \in CommutingFamilies \wedge f \in cf \} \\
+op \in Op
 $$
 
 An example trace of execution could look like this:
@@ -193,13 +194,13 @@ We reduce such trace in two steps:
 Finally, the reduced execution trace of a transaction t can be represented as a function:
 
 $$
-ReducedTrace(t, gs): K \rightarrow Op, where \space Op \in \{Read, Write\} \cup CF \space and \space K \subset Keys
+ReducedTrace(t, gs): K \rightarrow Op, where \space K \subset Keys
 $$
 
 For a pair of transactions $$t_1$$, $$t_2$$, and their traces $$ReducedTrace(t_1, gs)$$, $$ReducedTrace(t_2, gs)$$ we introduce the following way of checking if reduced traces commute:
 
 $$
-\forall k \space Commutes(k) : k \in Dom(ReducedTrace(t_1, gs)) \space \cap Dom(ReducedTrace(t_2,gs))
+\forall k \space Commutes(k) : k \in Dom(ReducedTrace(t_1, gs))\space\cap Dom(ReducedTrace(t_2,gs))
 $$
 
 where $$Commutes$$ function is defined using following rules:
