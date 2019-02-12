@@ -74,21 +74,17 @@ Implementation remark: the actual layout of global states in Casperlabs blockcha
 
 A transaction is any partial function $$t:GS \longrightarrow GS$$. Set of all possible transactions $$TR=GS^{GS}$$.
 
-Example 1: Take global states to be $$<\mathbb{N},0>$$. Example transactions:
+**Example 1:** Take global states to be $$<\mathbb{N},0>$$. Example transactions:
 * $$f(n)=n / 2$$ (defined only for even numbers)
 * $$f(n)=n+1$$ (defined for all numbers)
 
-Example 2: Let $$A=\{Alice, Bob, Charlie\}$$. Take global states to be $$\mathbb{N}^A$$. Intuitively this can be seen as a simple banking system accounts, with only 3 accounts and non-negative integer balances. Let's define a transaction:
+**Example 2:** Let $$A=\{Alice, Bob, Charlie\}$$. Take global states to be $$\mathbb{N}^A$$. Intuitively this can be seen as a simple banking system accounts, with only 3 accounts and non-negative integer balances. Let's define a transaction:
 $$
-f:\mathbb{N}^A \rightarrow \mathbb{N}^A
-$$
-$$
-f(b)=\{(Alice, b(Alice) - 1), (Bob, p(Bob)+1)\, (Charlie, p(Charlie))\}
+f:\mathbb{N}^A \supset \{b \in \mathbb{N}^A:b(Alice)>0\} \rightarrow \mathbb{N}^A \newline
+f(b)=\{(Alice, b(Alice) - 1), (Bob, p(Bob)+1), (Charlie, p(Charlie))\} \newline
 $$
 
-Obviously, $$f$$ is defined only for $$\{b \in \mathbb{N}^A:b(Alice)>0\}$$.
-
-This is how a single token transferring transaction looks in our notation.
+This is how a transaction transferring a single token looks in our notation.
 
 ### Evolution graph
 
@@ -126,7 +122,7 @@ In our decentralized network of validators, different validators will independen
 
 To understand this phenomenon on the level of evolution graph.
 
-For example let's assume our database keeps accounts and balances. Our initial state of the database is: [Alice: 10, Bob: 0, Charlie: 0].
+For example let's assume our database keeps accounts and balances. Our $$Zero$$ state of the database is: [Alice: 10, Bob: 0, Charlie: 0].
 
 Consider the following transactions:
 * $$a$$ - is Alice transferring 6 dollars to Bob
@@ -143,17 +139,19 @@ $$
 
 If transactions do not commute, we say they are conflicting. Please notice that this all works relatively to a point in the space of all global states - two transactions may commute at some points, while they are conflicting at others.
 
-On the evolution graph below, there are two places where merging of commutative transactions can happen - we market both mergeable pairs with colors.
+The evolution graph below shows (a subset of) possible scenarios of transactions $$a$$, $$b$$, $$c$$, $$d$$ being executed:
 
 ![Evolution graph (before merging step)](../../.gitbook/assets/casper-evolution-graph-alice-bob-charlie-1.svg)
 
-Transactions $$a$$ and $$b$$ commute on global state [Alice: 10, Bob: 0, Charlie: 0]. Transactions $$c$$ and $$d$$ commute on global state [Alice: 6, Bob: 0, Charlie 4].
+There are two places where merging of commutative transactions can happen - we marked both mergeable pairs with colors:
+* Transactions $$a$$ and $$b$$ commute at global state $$Zero$$, i.e. [Alice: 10, Bob: 0, Charlie: 0].
+* Transactions $$c$$ and $$d$$ commute at global state [Alice: 6, Bob: 0, Charlie 4]. By the way, this makes also transactions $$c \circ c$$ and $$d \circ c$$ commute at global state $$Zero$$.
 
 Let's see how the evolution graph will look after these two mergings are appended:
 
 ![Evolution graph (after merging step)](../../.gitbook/assets/casper-evolution-graph-alice-bob-charlie-2.svg)
 
-Merging can be seen as an operation that picks two global states in an evolution graph and - if relevant paths commute - extends the evolution graph by adding new state that materializes the commutativity.
+Merging can be seen as an operation that picks two global states in the evolution graph and - if relevant paths commute - extends the evolution graph by adding new state that materializes the commutativity.
 
 ### Blocks and blockdags
 
