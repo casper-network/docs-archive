@@ -226,7 +226,7 @@ To fully understand the transformation from blockdag to corresponding evolution 
 
 ![Blockdag to evolution graph transformation (general merging case)](../../.gitbook/assets/casper-blockdag-to-graph-merging-case-2.svg)
 
-Crucial is to observe that once two mergeable paths are discovered - in this case $$b \circ a$$ commutes with $$c$$ at state $$Zero$$ - the construction of implicit merged global state is by directly applying commutativity. So the merged state in this case is:
+Crucial is to observe that once two mergeable paths are discovered - in this case $$b \circ a$$ commutes with $$c$$ at state $$Zero$$ - the construction of implicit merged global state (red dot) is by directly applying commutativity. So the merged state in this case is:
 
 $$
 c(a \circ b (Zero))
@@ -248,43 +248,47 @@ During his operation, a validator maintains two collections:
   *  **blockdag**: an ever-growing data structure which keeps a directed acyclic graph of blocks
   *  **blocks-buffer**: a buffer of blocks received, but not yet incorporated into blockdag
 
- Every validator $$v$$ is busy executing two infinite loops of processing (concurrently):
+Every validator $$v$$ is busy executing two infinite loops of processing (concurrently):
 
-* Loop 1
-  1. select a transaction $$t ∈ TR$$ to be executed as the next one
-  2. select  a subset $$p$$ of  blockdag vertices (to be used as parents)
-  3. create a new block $$B = <creator = v, transaction = t, parents = p>$$
-  4. add $$B$$ to the local blockdag
-  5. broadcast $$B$$ to all validators in the network
+Loop 1:
 
-* Loop 2
-  1. Listen do blocks incoming from other validators
-  2. When a block $$B$$ arrived: check if all parents of B are already included in the blockdag. If yes - append $$B$$ to blockdag, else - append $$B$$ to blocks-buffer.
-  3. Check if any block in blocks-buffer can now leave the buffer and be included in the blockdag, because all its parents are now in blockdag.
-  4. Repeat step 3 as many times as needed.
+1. select a transaction $$t ∈ TR$$ to be executed as the next one
+2. select  a subset $$p$$ of  blockdag vertices (to be used as parents)
+3. create a new block $$B = <creator = v, transaction = t, parents = p>$$
+4. add $$B$$ to the local blockdag
+5. broadcast $$B$$ to all validators in the network
+
+Loop 2:
+
+1. Listen do blocks incoming from other validators
+2. When a block $$B$$ arrived: check if all parents of B are already included in the blockdag. If yes - append $$B$$ to blockdag, else - append $$B$$ to blocks-buffer.
+3. Check if any block in blocks-buffer can now leave the buffer and be included in the blockdag, because all its parents are now in blockdag.
+4. Repeat step 3 as many times as needed.
 
 How parents of a new block are selected (loop 1, step 2) is the most critical point of the whole distributed consensus. We call this the **fork choice rule**.
 
 ### Adding causal structure to blockdag
 
-For the fork choice rule to be defined we need to enrich our model with some sort of causal structure. It could be thought of as "weak time" time and it can be considered a different solution of the same problem that [Lamport synchronization](https://en.wikipedia.org/wiki/Lamport_timestamps) solves. 
+For the fork choice rule to be defined we need to enrich our model with some sort of causal structure. It could be thought of as "weak time" and it can be considered a different solution of the same problem that [Lamport synchronization](https://en.wikipedia.org/wiki/Lamport_timestamps) solves.
 
-When a validator is going to propose a new block B, he will use the fork choice role against his copy of the blockdag to determine parents for B. We want to make the input data for making this decision to be sealed into B.
+When a validator is going to create a new block B, he will use the fork choice role against his copy of the blockdag to determine suitable parents for B. The input data for making this decision is - the blockdag itself. We want to make this input data be sealed into B.
 
-Formally, this means we require each block $$B$$ created by validator $$V$$ to contain a snapshot of a blockdag maintained by V at the moment of creating B.  Technically, thanks to the monotonic nature of blockdag, this snapshot can be equivalently encoded by just enumerating "generators", so a transitive reduction of the blockdag in question. So in basic words, it is enough to enlist blocks, from which all other blocks can be reached by traversing justification links.  We call this new field **justifications**.
+Formally, this means we require each block $$B$$ created by validator $$V$$ to contain a snapshot of a blockdag maintained by V at the moment of creating B.  Technically, thanks to the monotonic nature of blockdag, this snapshot can be equivalently encoded by just enumerating "generators", so a transitive reduction of the blockdag in question. Basically, it is enough to enlist only a subset of blocks collection, starting from which all other blocks can be reached by traversing justification links. This new field in the block we call - **justifications**.
 
-To summarize, let's no state the improved definition of a block. A **block** is a tuple consisting of:
+To summarize, let's state the improved definition of a block. A **block** is a tuple consisting of:
 
   * a validator
   * a transaction
   * a finite non-empty list of justification blocks
-  * a finite non-empty list of parent blocks (must be a subset of transitive closure of justifications)
+  * a finite non-empty list of parent blocks
+
+For a block to be valid, every selected parent block must be included in set of block reachable from justifications sets (by following justification links).
   
-  In lame terms, a on creating a new block $$B$$, a validator seals into the block two sets of links:
+In lame terms, a on creating a new block $$B$$, a validator seals into the block two sets of links:
   * justifications: means "what was my knowledge when I was creating block $$B$$"
   * parents: means "which paths of shared database evolution I am merging with block $$B$$"
 
-  Both parent-child and justifications form directed acyclic graphs. They share the same set of vertices, only justification graph has possibly more edges. So, now within a single blockdag we have two DAGs:
+Both parent-child and justifications form directed acyclic graphs. They share the same set of vertices, only justification graph has possibly more edges. So, now within a single blockdag we have two DAGs:
   * $$pDAG$$: where arrows are from a block to its justification block
   * $$jDAG$$: where arrows are from a block to its parent
 
