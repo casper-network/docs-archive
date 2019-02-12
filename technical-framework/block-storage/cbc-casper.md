@@ -1,7 +1,3 @@
----
-description: 'Improved version of overview presentation, bonding, unbending, slashing'
----
-
 # CBC Casper
 
 ## Introduction
@@ -199,13 +195,13 @@ We use the following conventions to visually represent blockdags:
 
 ### Blockdags vs evolution graphs
 
-Blockdag is really just a smart notation for evolution graphs, with "creator" concept added. Smart means here that we keep global states implicit and we encode mergeable pairs by the parents concept.
+Blockdag is really just a smart notation for evolution graphs, with "block's creator" concept added. "Smartness" comes here from keeping global states implicit and encoding mergeable pairs by the parents concept.
 
-The correspondence of sequential case is as follows:
+Let's see how a blockdag maps to an evolution graph in a simple case:
 
 ![Blockdag to evolution graph transformation (sequential case)](../../.gitbook/assets/casper-blockdag-to-graph-seq-case.svg)
 
-With blockdag we have now the perfectly clear narration of chronology of events in our network of validators:
+With blockdag in place we have now the perfectly clear narration of the chronology of events in our network of validators:
 
 1. Validator C proposed block $$b_1$$ by executing transaction $$f$$ on top of state Zero.
 2. Validator B proposed block $$b_2$$ by building on top of block $$b_1$$ and executing transaction $$g$$.
@@ -218,15 +214,15 @@ Let's see how this will look when merging comes into play:
 Let's again translate events to plain English:
 
 1. Validators A and C independently proposed blocks $$b_1$$ and $$b_2$$. Block $$b_1$$ was executing transaction $$f$$. Block $$b_2$$ was executing transaction $$g$$.
-2. Validator B discovered that blocks b1 and b2 are mergeable, so he proposed block b3 by merging b1 and b2 and executing transaction h on top of it.
+2. Validator B discovered that blocks b1 and b2 are mergeable, so he proposed block b3 by merging b1 and b2 and executing transaction $$h$$ on top of it.
 
-Please observe how the intermediate state $$f(g(Zero)) = g(f(Zero))$$ is hidden from the picture on the left and its existence is just implicitly given by fact that block $$b_3$$ has more than one parent.
+Please observe (see the red dot) how the intermediate state $$f(g(Zero)) = g(f(Zero))$$ is hidden from the picture on the left and its existence is just implicitly given by fact that block $$b_3$$ has more than one parent.
 
-To fully understand the transformation from blockdag to corresponding evolution graph, here is even more complex example:
+To better illustrate the transformation from a blockdag to the corresponding evolution graph, here is slightly more complex example:
 
 ![Blockdag to evolution graph transformation (general merging case)](../../.gitbook/assets/casper-blockdag-to-graph-merging-case-2.svg)
 
-Crucial is to observe that once two mergeable paths are discovered - in this case $$b \circ a$$ commutes with $$c$$ at state $$Zero$$ - the construction of implicit merged global state (red dot) is by directly applying commutativity. So the merged state in this case is:
+Crucial is to observe that once two mergeable paths are discovered - in this case $$b \circ a$$ commutes with $$c$$ at state $$Zero$$ - the construction of implicit merged global state (red dot) is by directly applying commutativity. So the merged state in this case is calculated as:
 
 $$
 c(a \circ b (Zero))
@@ -238,34 +234,36 @@ $$
 a \circ b (c(Zero))
 $$
 
-... thanks to blocks $$b_2$$ and $$b_3$$ being mergeable, which by definition of mergeability means that transactions $$b \circ a$$ and $$c$$ are commutative on global state Zero.
+... thanks to blocks $$b_2$$ and $$b_3$$ being mergeable (which by definition of mergeability means that transactions $$b \circ a$$ and $$c$$ are commutative on global state Zero).
 
 ### Implementation of a shared database
 
-We are now prepared enough to introduce an implementation for a shared database based on distributed consensus.
+We are now prepared enough to introduce the distributed-consensus based implementation of a shared database.
 
-During his operation, a validator maintains two collections:
-  *  **blockdag**: an ever-growing data structure which keeps a directed acyclic graph of blocks
+During his lifetime, a validator $$v$$ maintains two collections:
+  *  **blockdag** with all blocks either produced by $$v$$ or received from other validators; however a block $$b$$ can only be added to the blockdag if all justifications of $$b$$ were collected and added before $$b$$
   *  **blocks-buffer**: a buffer of blocks received, but not yet incorporated into blockdag
 
 Every validator $$v$$ is busy executing two infinite loops of processing (concurrently):
 
-Loop 1:
+Publishing loop:
 
-1. select a transaction $$t ∈ TR$$ to be executed as the next one
-2. select  a subset $$p$$ of  blockdag vertices (to be used as parents)
-3. create a new block $$B = <creator = v, transaction = t, parents = p>$$
-4. add $$B$$ to the local blockdag
-5. broadcast $$B$$ to all validators in the network
+1. Select a transaction $$t ∈ TR$$ to be executed as the next one.
+2. Select  a subset $$p$$ of  blockdag vertices (to be used as parents of the new block).
+3. Create a new block $$b = <creator = v, transaction = t, parents = p>$$.
+4. Add $$b$$ to the local blockdag.
+5. Broadcast $$b$$ to all validators in the network.
 
-Loop 2:
+Listening loop:
 
-1. Listen do blocks incoming from other validators
-2. When a block $$B$$ arrived: check if all parents of B are already included in the blockdag. If yes - append $$B$$ to blockdag, else - append $$B$$ to blocks-buffer.
-3. Check if any block in blocks-buffer can now leave the buffer and be included in the blockdag, because all its parents are now in blockdag.
+1. Listen do blocks incoming from other validators.
+2. When a block $$b$$ arrived: check if all parents of b are already included in the blockdag.
+ - if yes - append $$b$$ to blockdag
+ - else - append $$b$$ to blocks-buffer.
+3. Check if any block in blocks-buffer can now leave the buffer and be included in the blockdag, because all its justifications are now in blockdag.
 4. Repeat step 3 as many times as needed.
 
-How parents of a new block are selected (loop 1, step 2) is the most critical point of the whole distributed consensus. We call this the **fork choice rule**.
+How parents of a new block are selected (publishing loop, step 2) is the most critical point of the whole distributed consensus. We call this the **fork choice rule**.
 
 ### Adding causal structure to blockdag
 
@@ -304,7 +302,7 @@ To carry the enriched structure we have to adjust the way we draw blockdags.
 
 ![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example.svg)
 
-This drawing convention is:
+The drawing convention is:
 * black arrows are from $pDAG$ d
 * red arrows are from $jDAG \setminus pDAG$ 
 * we avoid drawing redundant red arrows (so when a red arrow can be deduced as pats of red-or-block arrows)
