@@ -40,7 +40,14 @@ This governance board grants equal power to all constituents. Each constituency 
 * Should have tightly aligned interests with respect to the CL blockchain.
 * Should be responsible for ensuring uniqueness of its membership \(people can't be part of 2 constituency groups\)
 * Should be accountable to the other constituencies in that they are checking for membership uniqueness, and board election processes in a transparent way.  This will lend legitimacy to the constituency also.
-* Can also include geographic regions ex: Chinese validators.
+
+
+#### Forming a new constituency
+If a new constituency wishes to form, then it must prove that it has the following properties prior to receiving a seat at the governance board:
+* It's membership must be at least 2X the size of the smallest existing constituency at the time of formation.
+* It must demonstrate that it has a transparent process for electing a board representative.
+* A majority of the board must accept the constituency's membership on the board.
+
 
 #### Responsibilities of the Governance Board
 
@@ -62,6 +69,12 @@ In principle, the following items are needed to ensure that the board membership
 
 * A process to request a re-election of a board member by its constituency by the board itself. This means that the board can request that a single member go through an election to determine if the member still holds the confidence of its constituency.
 * Maximum Term limit set by the board for its' members. A constituency could have a shorter term limit if it desires.
+
+### Updating the rules of the Governance board
+This governance process is only a first draft. It is reasonable that the board will need to make updates and refinements to these rules.  Therefore, a process for making these updates should be initially defined.
+
+* The Governance board can update these rules with a 2/3rd majority vote.
+* Anyone can suggest an update to the rules of the governance board.  The board will provide a response to the Improvement Proposal within 90 days of submission to the board.
 
 ### The Governance Committee
 
