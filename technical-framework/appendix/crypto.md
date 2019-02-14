@@ -1,3 +1,4 @@
 # Crypto
 
-TODO (NODE-157)
+TODO \(NODE-157\)
+

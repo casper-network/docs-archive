@@ -1,3 +1,4 @@
-# Object Capabilities (OCaps) Security
+# OCaps Security
 
-TODO (NODE-156)
+TODO \(NODE-156\)
+
