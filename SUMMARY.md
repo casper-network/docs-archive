@@ -16,8 +16,6 @@
 ## Technical Framework
 
 * [BlockDAG](technical-framework/block-storage/README.md)
-  * [Block Structure](technical-framework/block-storage/introduction.md)
-  * [Deploy Structure](technical-framework/block-storage/deploy-structure.md)
   * [Global State](technical-framework/block-storage/global-state.md)
   * [Execution Semantics](technical-framework/block-storage/execution-semantics.md)
   * [CBC Casper](technical-framework/block-storage/cbc-casper.md)
@@ -33,7 +31,7 @@
 * [Governance Model](network-and-governance/governance-model.md)
 * [Breaking Changes](network-and-governance/breaking-changes.md)
 * [Release Criteria and Testing](network-and-governance/release-criteria-and-testing.md)
-* [Open Source License](network-and-governance/open-source.md)
+* [CasperLabs Open Source License \(COSL\)](network-and-governance/open-source.md)
 
 ## Glossary
 

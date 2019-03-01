@@ -79,7 +79,7 @@ message Block {
         int64 timestamp = 5;
         uint64 version = 6;
         uint32 deploy_count = 7;
-        string shard_id = 8;
+        string chain_id = 8;
         uint32 validator_block_seq_num = 9;
         bytes validator_public_key = 10;
     }

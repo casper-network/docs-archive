@@ -55,7 +55,7 @@ The governance board, since it is elected and represents 'all stakeholders' - is
 
 These governance items are scoped thusly:
 
-1. The root shard
+1. The root chain
 2. The utility token of the CasperLabs blockchain
 3. The governance board is charged with making the following decisions:
 4. Makes decisions on emergency fixes/patches/issues.
