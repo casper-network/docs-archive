@@ -1,2 +1,0 @@
-# Improvement Process
-

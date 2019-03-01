@@ -6,13 +6,12 @@
 
 * [Background](introduction/background/README.md)
   * [A Brief History of \(Block\) Time](introduction/background/a-brief-history-of-block-time.md)
-* [Product Description](introduction/product-description/README.md)
-  * [CBC Casper Proof-of-Stake Consensus](introduction/product-description/cbc-casper-proof-of-stake-consensus.md)
-  * [Concurrent Execution](introduction/product-description/concurrent-execution.md)
-  * [Heterogeneous Sharding](introduction/product-description/heterogeneous-sharding.md)
-  * [Efficiency/Throughput](introduction/product-description/efficiency-throughput.md)
-  * [Open Programming Interface](introduction/product-description/open-programming-interface.md)
-  * [Full Decentralization](introduction/product-description/full-decentralization.md)
+* [Product Specification](introduction/product-specification/README.md)
+  * [The Decentralized Computer](introduction/product-specification/the-decentralized-computer.md)
+  * [Contract Execution Model](introduction/product-specification/contract-execution-model.md)
+  * [Persistent Storage Model](introduction/product-specification/persistent-storage-model.md)
+  * [Decentralized Consensus](introduction/product-specification/decentralized-consensus.md)
+* [Heterogenous Side Chains](introduction/sharding.md)
 
 ## Technical Framework
 
@@ -22,32 +21,19 @@
   * [Global State](technical-framework/block-storage/global-state.md)
   * [Execution Semantics](technical-framework/block-storage/execution-semantics.md)
   * [CBC Casper](technical-framework/block-storage/cbc-casper.md)
-  * [Pluggable Crypto](technical-framework/block-storage/pluggable-crypto.md)
-  * [Tokens](technical-framework/block-storage/tokens.md)
-  * [Economics](technical-framework/block-storage/economics.md)
-  * [Sharding](technical-framework/block-storage/sharding.md)
+  * [Token](technical-framework/block-storage/token.md)
 * [Node](technical-framework/global-state/README.md)
   * [Communications](technical-framework/global-state/communications.md)
-  * [Storage](technical-framework/global-state/storage.md)
-  * [WASM Execution Engine](technical-framework/global-state/wasm-execution-engine.md)
   * [Metrics](technical-framework/global-state/metrics.md)
 * [Appendix](technical-framework/appendix/README.md)
-  * [OCaps Security](technical-framework/appendix/ocaps-security.md)
-  * [Crypto](technical-framework/appendix/crypto.md)
   * [gRPC Interfaces](technical-framework/appendix/grpc-interfaces.md)
-  * [Release Criteria and Testing](technical-framework/appendix/release-criteria-and-testing.md)
 
 ## Network and Governance
 
 * [Governance Model](network-and-governance/governance-model.md)
 * [Breaking Changes](network-and-governance/breaking-changes.md)
-* [Improvement Process](network-and-governance/untitled.md)
-* [Open Source](network-and-governance/open-source.md)
-
-## Economics
-
-* [Validator Economics](economics/validator-economics.md)
-* [Token Supply](economics/token-supply.md)
+* [Release Criteria and Testing](network-and-governance/release-criteria-and-testing.md)
+* [Open Source License](network-and-governance/open-source.md)
 
 ## Glossary
 

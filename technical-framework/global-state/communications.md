@@ -368,5 +368,5 @@ When a new node joins the network it should ask one or more of its peers about t
 
 Finally the following sequence diagram demonstrates the life cycle of Block propagation among nodes. The dashed blocks have been left unconnected for brevity but they do the same thing as the ones on the left side.
 
-![Block Gossiping](../../.gitbook/assets/block-gossiping%20%282%29.png)
+![Block Gossiping](../../.gitbook/assets/block-gossiping.png)
 

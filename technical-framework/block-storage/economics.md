@@ -1,6 +1,0 @@
----
-description: Rewards
----
-
-# Economics
-

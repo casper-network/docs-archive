@@ -2,7 +2,7 @@
 
 ## Motivation
 
-One of the biggest challenges that blockchain faces is the one of throughput. When new projects are being evaluated people often compare how many transactions per second it can run and how does it compare to Visa \( according to some sources it may vary from [1700 TPS ](https://news.bitcoin.com/no-visa-doesnt-handle-24000-tps-and-neither-does-your-pet-blockchain/)to[ 4400 TPS](https://medium.com/@aat.de.kwaasteniet/the-nonsense-of-tps-transactions-per-second-2d7156df5e53) \). It is value that none of the currently operating blockchains can achieve. One of the fundamental design choices that new projects may make is to build a DAG \(directed acyclic graph\) rather than linear chain \(as it is done in Bitcoin or Ethereum\). The idea behind building a DAG is that validators may build a blockchain "in parallel" \(imagine multiple threads that originate from the same place, run in parallel but join at some point in the future to form a single thread again\). One of the fundamental issues with this design is conflict resolution. What to do when there are multiple transactions that want to modify the same account? We can't apply changes from all of them blindly. This may lead to overdraws \(or double spends\). This problem is not trivial and there are potentially multiple ways to solve it. This document presents how we do it in CasperLabs. 
+One of the biggest challenges that blockchain faces is the one of throughput. When new projects are being evaluated people often compare how many transactions per second it can run and how does it compare to Visa \( according to some sources it may vary from [1700 TPS ](https://news.bitcoin.com/no-visa-doesnt-handle-24000-tps-and-neither-does-your-pet-blockchain/)to[ 4400 TPS](https://medium.com/@aat.de.kwaasteniet/the-nonsense-of-tps-transactions-per-second-2d7156df5e53) \). It is value that none of the currently operating blockchains can achieve. One of the fundamental design choices that new projects may make is to build a DAG \(directed acyclic graph\) rather than linear chain \(as it is done in Bitcoin or Ethereum\). The idea behind building a DAG is that validators may build a blockchain "in parallel" \(imagine multiple threads that originate from the same place, run in parallel but join at some point in the future to form a single thread again\). One of the fundamental issues with this design is conflict resolution. What to do when there are multiple transactions that want to modify the same account? We can't apply changes from all of them blindly. This may lead to overdraws \(or double spends\). This problem is not trivial and there are potentially multiple ways to solve it. This document presents how we do it in CasperLabs.
 
 ## Commutativity of transactions
 
@@ -18,7 +18,7 @@ As part of the validation of block $$Block(B)$$, any validator receiving this bl
 
 Given the multi-core architecture of contemporary computers one is interested in exploiting all possibilities where things can be executed concurrently. In the case of transaction execution, we anticipate that vast majority of transactions are "independent" from each other, so their execution could be parallelized.
 
-The approach we apply in execution engine is as follows: 
+The approach we apply in execution engine is as follows:
 
 * We expect that blocks are marked as SEQ or PAR by their creator.
 * If a block is marked as SEQ, we execute all transactions sequentially.
@@ -103,7 +103,7 @@ then it is easy to notice, that we can shuffle consecutive readers and consecuti
 
 The "adding" case can be actually generalized. We can change the order of any operations that come from a commutative Monoid \(like integers with adding, integers with multiplication or hash maps with merging\). We can generalize this even further, saying that apart from Read and Write operations, any commutative family of functions can be used, as long as we can easily recognize \(while tracing\) to which commutative family of functions given operation belongs.
 
-Distinguished families of such commutative functions operating on Values are pre-selected and include most typical operations that we want to recognize as commutative: 
+Distinguished families of such commutative functions operating on Values are pre-selected and include most typical operations that we want to recognize as commutative:
 
 * numeric addition
 * storing key-value pair in a map
@@ -153,41 +153,32 @@ We reduce such trace in two steps:
 1. Grouping operations by key
 2. Merging operations in every group, according to the following merging table:
 
+|  | Read | Write |  |
+| :--- | :--- | :--- | :--- |
+
+
+| Read | Read | Write | Write |
+| :--- | :--- | :--- | :--- |
+
+
+| Write | Write | Write | Write |
+| :--- | :--- | :--- | :--- |
+
+
 <table>
   <thead>
     <tr>
       <th style="text-align:left"></th>
-      <th style="text-align:left">Read</th>
       <th style="text-align:left">Write</th>
-      <th style="text-align:left"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">Read</td>
-      <td style="text-align:left">Read</td>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">Write</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">Write</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"></td>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">
+      <th style="text-align:left">Write</th>
+      <th style="text-align:left">
         <p>if () cf_1</p>
         <p>else error</p>
-      </td>
+      </th>
     </tr>
-  </tbody>
-</table>Above table could also be explained as follows:
-
-* Writes conflicts with everything 
+  </thead>
+  <tbody></tbody>
+</table>* Writes conflicts with everything 
 * Reads commute with Reads only 
 * Members of a commutative family commute with other members of the same family
 
@@ -250,7 +241,7 @@ When reading above example contracts it's easy to see that transactions should b
 
 ### Proof of theorem \(sketch\)
 
-**Lemma**: Intuitively, only $$Read(k)$$ operations influence how the program executing the transaction operates. For two global states $$gs_1, gs_2 \in GS$$ if the same transaction applied to $$gs_1$$ created a different execution trace than when applied to $$gs_2$$ then at some point of the trace there must be a $$Read(k)$$ operation where $$gs_1(k) \not =  gs_2(k)$$.
+**Lemma**: Intuitively, only $$Read(k)$$ operations influence how the program executing the transaction operates. For two global states $$gs_1, gs_2 \in GS$$ if the same transaction applied to $$gs_1$$ created a different execution trace than when applied to $$gs_2$$ then at some point of the trace there must be a $$Read(k)$$ operation where $$gs_1(k) \not = gs_2(k)$$.
 
 Assume that $$ReducedTrace(t_1, gs) \sim ReducedTrace(t_2, gs)$$. We are going to prove:
 
@@ -258,7 +249,7 @@ $$
 ReducedTrace(t_1, t_2(gs)) = ReducedTrace(t_1, gs)
 $$
 
-This is to say that transaction $$t_1$$ is not affected by $$t_2(gs)$$ and so it operates following exactly the same storage access flow in both cases. 
+This is to say that transaction $$t_1$$ is not affected by $$t_2(gs)$$ and so it operates following exactly the same storage access flow in both cases.
 
 Let's assume the contrary is true:
 
