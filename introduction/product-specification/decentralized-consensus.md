@@ -62,7 +62,7 @@ for block scores, may need justification arcs to determine "latest block", after
 
 The fork choice rule also requires calculation of cumulative gas for each block which is illustrated in Figure 12. As stated earlier, blocks include the gas expended to execute each deploy in that block. These can be summed to get the total gas expenditure for a block. Total gas expenditure is listed inside each block in the diagram.
 
-![Figure 12: Calculating Cumulative Gas](wpFig12CumGas.png)
+![Figure 12: Calculating Cumulative Gas](wpFig12cumGas.png)
 
 To calculate cumulative gas for a given block, start at that block, initialize its cumulative gas to zero, then follow all outgoing links (i.e. from child to parent) until genesis is reached. Along the way sum the total gas of each unique block encountered.
 
@@ -72,7 +72,7 @@ Note that cumulative gas is the sum of total gas from only the unique blocks enc
 
 The cumulative gas for all blocks in the DAG is given in blue.
 
-![Figure 13: Calculating Cumulative Gas](wpFig13CumGas2.png)
+![Figure 13: Calculating Cumulative Gas](wpFig13cumGas2.png)
 
 With both block score and cumulative gas calculated for all blocks in the DAG, we can now apply the fork choice rule to determine parents. Figure 14 shows the score and cumulative gas for all blocks in the example DAG. A list of blocks is created containing only the genesis block. We then iteratively replace each block in the list with its children (if any) until the list only contains leaf blocks. For blocks with multiple children, said children are sorted first high-to-low in order of score, then high-to-low in order of cumulative gas, then by block hash (which is guaranteed to be unique). If there are duplicates on the list, the second and subsequent duplicates are removed. The table below delineates this process for the example DAG.
 
