@@ -28,7 +28,7 @@ The system library also includes a store_function() call for creating contracts.
 
 ![Listing 3: Creating Contracts](wpList3creatingContracts.png)
 
-The store_function() system call accepts a second argument which is a language-specific type representing a map that associates variable names to values. The contents are used to initialize the KV store of the newly created contract. This allows contracts to act as closures where state from the scope in which store_function() was called is visible within a contract. The store_function() system call saves the "object code" (discussed in the next section) of the specified function to persistent storage and returns the identifier associated with this object code. For all intents and purposes this identifier can be considered to be a uref. [contract objects/datatypes are immutable]
+The store_function() system call accepts a second argument which is a language-specific type representing a map that associates variable names to values. The contents are used to initialize the KV store of the newly created contract. This allows contracts to act as closures where state from the scope in which store_function() was called is visible within a contract. The store_function() system call saves the "object code" (discussed in the next section) of the specified function to persistent storage and returns the identifier associated with this object code. For all intents and purposes this identifier can be considered to be a uref.
 
 Contracts are called using the call_contract() system call as show in Listing 4.
 
