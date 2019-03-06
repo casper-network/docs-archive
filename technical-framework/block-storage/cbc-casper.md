@@ -4,7 +4,7 @@
 
 Consensus protocol stays in the core of any blockchain technology. It dictates how a distributed set of cooperating nodes comes to a coherent view of the world.
 
-The consensus solution used in Casperlabs blockchain is an effect of a long-running research. Critical milestones of this research can be identified as:
+The consensus solution used in Casperlabs blockchain is a result of a long-running research. Critical milestones of this research can be identified as:
 
 * 1980: Lamport / Shostak - the problem of byzantine consensus defined
 * 1985: FLP impossibility theorem
@@ -30,26 +30,45 @@ We use the following terms:
 * **global state** - any snapshot of data stored in the shared database we are executing transactions against
 * **transaction** - a program that operates on the global state
 
-We also use the following well-known concepts from mathematics:
+Below we quickly recall some well-known concepts from mathematics that are used thorough the chapter.
+
+**Sets, functions and logic**
 
 * **iff** - shortcut for "if and only if"; frequently used to connect a name of the concept from its definition
-* $\mathbf{f \circ g}$ - functions composition: $$f \circ g (x) = f(g(x))$$
+* **power set of A** - denoted $$P(A)$$, is the set of all subsets of A
+* **cartesian product ** $$\mathbf{A \times B}$$ - set of all pairs $$(a \in A, b \in B)$$
+* **image and inverse-image** - for a function $$f: A \rightarrow B$$, $$\overrightarrow{f}:P(A) \rightarrow P(B)$$ is a function mapping subsets of $$A$$ to their images via $$f$$, while $$\overleftarrow{f}:P(B) \rightarrow P(A)$$ is a function mapping subsets of B to their inverse-images via $$f$$
+* **bijection** - a function that is invertible
+* **partial function ** $$\mathbf{f:A \rightarrow B}$$ - function $$A \supset X \rightarrow B$$; we denote by $$dom(f)$$ the domain of $$f$$, so the set of elements in $$A$$ where $$f$$ is defined; so basically $$dom(f)=X$$
+* $$\mathbf{f \circ g}$$ - functions composition: $$f \circ g (x) = f(g(x))$$
+* $$\mathbf{B^A}$$ - set of all functions $$A \rightarrow B$$
+* $$\mathbf{Partial(A \rightarrow B)}$$ - set of all partial functions $$A \rightarrow B$$
+
+**Relations and POSETs**
+
+* **relation on A** - any subset of $$A \times A$$
+* **POSET** - partially ordered set; this is a pair $$<A, R>$$, where $$A$$ is a set, $$R$$ is a relation on $$A$$ which is reflexive, antisymmetric and transitive; we write $$a < b$$ when $$(a,b) \in R$$
+* **linear order** - a POSET where any two elements a,b are comparable, so either $$a < b$$ or $$b < a$$
+* **transitive closure of a relation** - for a relation $$R \subset A \times A$$, a smallest transitive relation $$T \subset A \times A$$ such that $$R \subset A$$
+* **transitive reduction of a relation** - for a relation $$R \subset A \times A$$, a smallest relation $$T \subset A \times A$$ such that $$R ⊂ TransitiveClosure(T)$$
+* **linear extension of a partial order** - for a POSET $$<A, R>$$ this is any relation $$E$$ on $$A$$ such that $$R \subset E$$ and $$<A, E>$$ is a linear order
+
+**Directed graphs**
+
 * **directed graph** - a structure $$<V,E,source: E \rightarrow V, target: E \rightarrow V >$$, where $$V, E$$ are arbitrary sets; we call elements of $$E$$ - *edges*, and elements of $$V$$ - *vertices*; conceptually we visualize a graph as a collection of dots (vertices) connected by arrows (edges), where functions $$source$$ and $$target$$ are visualized as, respectively, source and target of every arrow
-* **path in a directed graph** - any ordered sequence of edges $$<e_1, ..., e_n \in E^n>$$, such that $$source(e_{i+1})=target(e_i)$$
+* **path in a directed graph** - any ordered sequence of edges $$<e_1, ..., e_n \in E^n>$$, such that $$source(e_{i+1})=target(e_i)$$; when talking about paths we use the notation $$p:x \leadsto y$$ which signals that path $$p$$ starts at vertex $$x$$ and ends at vertex $$y$$
 * **cycle in a directed graph** - path $$<e_1, ..., e_n \in E^n>$$, where $$source(e_1)=target(e_n)$$
 * **directed acyclic graph** (or just **DAG**) - directed graph which does not contain cycles
-* **simple DAG** - a DAG where any pair of vertices is directly connected by at most one edge
+* **simple DAG** - a DAG where any pair of vertices is directly connected by at most one edge; equivalently - $$\forall p,q \in E \space source(p)=source(q) \wedge target(p)=target(q) \Rightarrow p=q$$
 * **root** - (in a DAG) vertex which is not a target of any edge
-* **leaf** - (in a DAG) vertes which is not a source of any edge
-* **POSET** - partially ordered set; this is a pair $$<A, R>$$, where $$A$$ is a set, $$R$$ is a relation on $$A$$ which is reflexive, antisymmetric and transitive
-* **transitive closure of a relation** - for a relation $$R \subset A \times A$$, a smallest transitive relation $$T \subset A \times A$$ such that $$R \subset A$$
-* **transitive reduction of a relation** - for a relation $$R \subset A \times A$$, a smallest relation $$T \subset A \times A$$ such that $$TransitiveClosure(T) ⊂ R$$
+* **leaf** - (in a DAG) vertex which is not a source of any edge
+* **topological sorting of a DAG** - for a DAG $$<V,E>$$ topological sorting is a linear order on vertices such that $$\forall e \in E \space source(e) < target(e)$$
 
-Simple directed graphs and 2-argument relations are if fact two languages for talking about the same thing. Every simple DAG can be seen as a POSET (by applying transitive closure). Every POSET can be seen as a simple DAG (by applying transitive reduction). Roots in a DAG correspond to minimal elements in a POSET, leaves in a DAG correspond to maximal elements in a POSET.
+Simple directed graphs and 2-argument relations are if fact two languages for talking about the same thing. Every simple DAG can be seen as a POSET (by applying transitive closure). Every POSET can be seen as a simple DAG (by applying transitive reduction). Roots in a DAG correspond to minimal elements in a POSET, leaves in a DAG correspond to maximal elements in a POSET. Topological sortings correspond to linear extensions.
 
 ## Communication layer assumptions
 
-We assume that P2P protocol using for validator-to-validator communication is based on best-effort-broadcasting. So, any time a validator $$v$$ has a new message M to announce, it is announcing the message to all validators in the network. We assume that, once broadcasted, the message M will be eventually delivered to any other validator $$w$$ in the network that is alive, but:
+We assume that P2P protocol using for validator-to-validator communication is based on best-effort-broadcasting. So, any time a validator $$v$$ has a new message $$M$$ to announce, it is announcing the message to all validators in the network. We assume that, once broadcasted, the message M will be eventually delivered to any other validator $$w$$ in the network that is alive, but:
 
 * the delay between sending $$M$$ and receiving $$M$$ is arbitrary long
 * there is no guarantee on messages ordering, so delivered order may differ from broadcasting order
@@ -58,111 +77,151 @@ We assume that P2P protocol using for validator-to-validator communication is ba
 
 ## Base model: distributed database with DAG of transactions
 
-Our base model describes the set of nodes (validators) concurrently updating a shared database (global state).
-
-### Validators
-
-Let $$V$$ denote the (finite) set of validators.
+Our base model describes the set of nodes (validators) concurrently updating a shared database.
 
 ### Global states
 
-Let $$<GS, Zero \in GS>$$ be a set with a distinguished point. We will be calling this set "global states" and distinguished point will be the "initial state".
+Let $$V$$ denote the (finite) set of validators.
 
-Intuition here is that validators are going to establish a common view on "virtual memory of a decentralized computer" or, if you wish, a "shared database". A point $$gs ∈ GS$$ represents a single snapshot of this shared memory.
+Let $$<GS, Zero \in GS>$$ be a set with a distinguished point. We will be calling this set "global states" and the distinguished point will be called "the initial state".
+
+Intuition here is that validators are going to establish a common view on "virtual memory of a decentralized computer" which is just another way of saying about a shared database. A point $$gs ∈ GS$$ represents a single snapshot of this shared memory.
 
 Implementation remark: the actual layout of global states in Casperlabs blockchain is described here [ADD LINK].
 
 ### Transactions
 
-A transaction is any partial function $$t:GS \longrightarrow GS$$. Set of all possible transactions $$TR=GS^{GS}$$.
+A **transaction** is any partial function $$t:GS \longrightarrow GS$$. We think of transactions as "programs". Set of all possible partial functions $$Partial(GS \rightarrow GS)$$ corresponds to "all programs one can imagine", while we typically work in a much more restricted environment, where only Turing-computable programs are allowed (or even less). We hide all this complexity by just assuming that $$TR \subset Partial(GS \rightarrow GS)$$ contains all transactions (=programs) that are available.
 
 **Example 1:** Take global states to be $$<\mathbb{N},0>$$. Example transactions:
 * $$f(n)=n / 2$$ (defined only for even numbers)
 * $$f(n)=n+1$$ (defined for all numbers)
 
-**Example 2:** Let $$A=\{Alice, Bob, Charlie\}$$. Take global states to be $$\mathbb{N}^A$$. Intuitively this can be seen as a simple banking system accounts, with only 3 accounts and non-negative integer balances. Let's define a transaction:
+**Example 2:** Let $$A=\{Alice, Bob, Charlie\}$$. Take global states to be $$\mathbb{N}^A$$. Intuitively this can be seen as a simple banking system with only 3 accounts, where a global state $$gs:A \rightarrow B$$ tells what are current balances of accounts. Let's define a sample transaction:
 $$
 f:\mathbb{N}^A \supset \{b \in \mathbb{N}^A:b(Alice)>0\} \rightarrow \mathbb{N}^A \newline
 f(b)=\{(Alice, b(Alice) - 1), (Bob, p(Bob)+1), (Charlie, p(Charlie))\} \newline
 $$
 
-This is how a transaction transferring a single token looks in our notation.
+This is how a program transferring 1 coin from Alice's account to Bob's account looks in our abstract notation.
 
-### Evolution graph
+**Example 3:** Take global states to be any set $$A$$. Take transactions to be all permutations on A: $$TR={f \in A^A: A \space is \space bijection}$$.
 
-Evolution of the database happens as application of transactions to global states.
+**Example 4:** Let $$GS=\{0,1\}$$. Let $$TR=Partial(GS \rightarrow GS)$$ - this set contains 9 elements. This is in a sense a simplest non-trivial states and transactions setup over which our consensus can be tested.
 
-In the world of classical ACID databases, transactions are applied sequentially to the state of a database.
+### Transitions
+
+By a **transition**, we mean a pair $$<x,f(x)>$$, where $$f$$ is any transaction. Conceptually, transitions are like arrows connecting global states, while transaction is factory of transitions. Talking about transitions pops up naturally when one wants to visualize evolution of database state showing graphs where states are vertices.
+
+The way we use the word "transaction" is slightly different compared to the "IT tradition". In our lingo, a transaction on conceptually a program. A program can be executed against any input data and in the case the input data is the state of the database (= global state). On th other hand, what database community traditionally used to call "transaction", we prefer to call "transition". For example "Alice sends 10 dollars to Bob" or "If last chess game was lost, Alice sends 10 dollars to Bob" are transactions (= programs). The program generates a state transition when applied to a specific global state.
+
+### Composing transactions vs composing transitions
+
+Being just functions, transactions naturally compose. We will follow the normal mathematical notation for composing transactions: $$g \circ f$$ gives a transaction which first applies $$f$$, then applies $$g$$. But because transactions are partial functions, composition may shrink the domain: $$dom(g \circ f) \subset dom(f)$$.
+
+In case of transitions, technically they do not compose (because they are not functions). But it is convenient to actually introduce composition for transitions as well. Let's consider a sequence of two transitions:
+
+$$
+x \xrightarrow{f} y \xrightarrow{g} z
+$$
+
+This notation means that the following holds:
+
+1. $$f(x)=y$$
+2. transaction $$g$$ is defined at global state $$y$$
+3. $$g(y)=z$$
+
+When we have such a sequence, we may define composition of above sequence to give the following result:
+
+$$
+x \xrightarrow{g \circ f} w
+$$
+
+### From transitions to evolution graphs
+
+For talking about distributed consensus we need to find a convenient notation and convenient communication model. These two somehow go together and we will try to follow the heuristic approach, showing how the idea naturally comes out.
+
+A point in $$GS$$ tells the "current" state of the shared database. This points moves after any transaction applied. The trajectory of the point, which can be seen as a sequence of transitions, makes what we call "the evolution". In the world of traditional (=centralized) databases such an evolution could look like this:
 
 ![Evolution graph example (sequential)](../../.gitbook/assets/casper-evolution-graph-seq.svg)
 
-Caution: on this picture "time" goes upwards. This is going to happen thorough this chapter.
+Above notation actually has a problem. Transaction is a program, and we obviously are allowed to apply the same program more than once, like here:
 
-Sequential evolution is (as may be expected) not really good enough for our needs. We need to generalize it to a parallel evolution of the database state.
+![Evolution graph example (iteration)](../../.gitbook/assets/casper-evolution-graph-iteration-of-same-transaction.svg)
 
-Formally: an **evolution graph** is any directed acyclic graph where:
-* vertices are labelled with global states
-* edges are labelled with transactions
-* having an edge $$x - (f) \rightarrow y$$ , we have $$y = f(y)$$, where $$x,y ∈ GS$$, $$f ∈ TR$$
-* every path can be extended to a path starting from Zero.
+So far this does not look too bad but in a distributed environment the ability to distinguish between different invocations of the same transaction is crucial. So we will introduce explicit invocation labels:
+
+![Evolution graph example (with invocation labels)](../../.gitbook/assets/casper-evolution-graph-with-invocations-labels.svg)
+
+We will use the word **block** for referencing the piece of data that carries the information about an invocation of a transaction. In the above picture, $$b_1$$ is a block carrying information about the invocation of the transaction $$f$$.
+
+In our decentralized network of validators, different validators will independently try to execute transactions and then announce this to others. Let's assume that each validator tries to follow what happened in the network so far by using the graph built from state transitions. This would look like:
 
 ![Evolution graph example (non-sequential)](../../.gitbook/assets/casper-evolution-graph-example.svg)
 
-On such diagram, the same transaction may of course appear several times. When there is more than one path connecting two vertices, this implies an equation.
+Now, the skeleton of the shared database solution looks as follows: validators create and broadcast blocks, every block carrying a single transaction. Every validator (independently) tries to capture what happened in the network so far and represents this knowledge (in his local memory) as an evolution graph. However, to be able to define legal way of creating new blocks, we will have to introduce **merging of histories**.
 
-For example, reading above evolution graph we can deduce that:
-$$
-f (g(Zero))= g(f(Zero)
-$$
-$$
-f(g(Zero)) = f(q(p(g(Zero)))
-$$
+### Understanding conflicts and merging
 
-### Double spend problem and merging
+In general one can imagine a shared database solution where, although all validators can propose transactions, the consensus protocol leads to a "canonical" sequential evolution. This is how networks like Bitcoin or Ethereum work. Casperlabs wants to increase the total throughput of the network by allowing independent lines of shared database evolution to be merged.
 
-In our decentralized network of validators, different validators will independently try to propose transactions. Sometimes such propositions are inherently inconsistent, while in other cases they will be mergeable.
-
-To understand this phenomenon on the level of evolution graph.
-
-For example let's assume our database keeps accounts and balances. Our $$Zero$$ state of the database is: [Alice: 10, Bob: 0, Charlie: 0].
+To understand this phenomenon on the level of an evolution graph we will start with an example. Let's assume we have 4 validators: Red, Green, Blue, Orange. Let our shared database keep accounts and balances. Our $$Zero$$ state of the database is: [Alice: 8, Bob: 3, Charlie: 3].
 
 Consider the following transactions:
-* $$a$$ - is Alice transferring 6 dollars to Bob
-* $$b$$ - is Alice transferring 7 dollars to Charlie
-* $$c$$ - is Alice transferring 4 dollars to Charlie
-* $$d$$ - is Charlie transferring 4 dollars to Bob
+* $$a$$ - is Alice transferring 5 dollars to Bob
+* $$b$$ - is Bob transferring 3 dollars to Charlie
+* $$c$$ - is Alice transferring half of her money to Charlie if she has even balance, otherwise do nothing
+* $$d$$ - is Charlie transferring 1 dollars to Alice
 
-Our intuition is that $$a$$ and $$b$$ cannot happen together - Alice does not have enough money. On the other hand $$a$$ and $$c$$ look totally mergeable and so is the case for $$a$$ and $$c$$. In case of $$b$$ and $$d$$ the situation is unclear, because $$d$$ followed by $$b$$ makes sense, while the other way around looks impossible.
+We will use colors to mark who proposed a block. Let's assume Orange validator came up with the following evolution graph:
 
-The correct law is actually easy to discover. We say that **transactions f and g commute at global state gs** iff:
-$$
-f \circ g (gs) = g \circ f (gs)
-$$
+![Evolution graph (before merging step)](../../.gitbook/assets/casper-evolution-graph-alice-bob-charlie-0.svg)
 
-If transactions do not commute, we say they are conflicting. Please notice that this all works relatively to a point in the space of all global states - two transactions may commute at some points, while they are conflicting at others.
+The idea of mergeability goes along the basic intuition: two histories are mergeable if they can be turned into a single history without ambiguity. And we really only understand sequential composition of transactions, so "history" must be something that can be turned into sequential path of transactions.
 
-The evolution graph below shows (a subset of) possible scenarios of transactions $$a$$, $$b$$, $$c$$, $$d$$ being executed:
+For example, look at these two blocks:
 
-![Evolution graph (before merging step)](../../.gitbook/assets/casper-evolution-graph-alice-bob-charlie-1.svg)
+* block $$b_1$$ (executing transaction $$a$$), proposed by Orange
+* block $$b_2$$ (executing transaction $$b$$), proposed by Red
 
-There are two places where merging of commutative transactions can happen - we marked both mergeable pairs with colors:
-* Transactions $$a$$ and $$b$$ commute at global state $$Zero$$, i.e. [Alice: 10, Bob: 0, Charlie: 0].
-* Transactions $$c$$ and $$d$$ commute at global state [Alice: 6, Bob: 0, Charlie 4]. By the way, this makes also transactions $$c \circ c$$ and $$d \circ c$$ commute at global state $$Zero$$.
+If merging is all about creating a history that contains both blocks, then we immediately crash into a problem: which order to apply ?
 
-Let's see how the evolution graph will look after these two mergings are appended:
+This would be $$b_1$$ first, then $$b_2$$:
 
-![Evolution graph (after merging step)](../../.gitbook/assets/casper-evolution-graph-alice-bob-charlie-2.svg)
+![Composing b1 and b2](../../.gitbook/assets/casper-abc-merging-1.svg)
 
-Merging can be seen as an operation that picks two global states in the evolution graph and - if relevant paths commute - extends the evolution graph by adding new state that materializes the commutativity.
+This is the other way around:
 
-### Blocks and blockdags
+![Composing b1 and b2](../../.gitbook/assets/casper-abc-merging-2.svg)
 
-The evolution graph alone is a not sufficient to implement a distributed consensus - we need a richer data structure for this purpose. If I am a validator, I have to maintain data structures that will provide to me at least the ability to record:
+Crucial observation here is that the final state we are getting is the same in both cases we got [Alice: 3, Bob: 5, Charlie: 6]. So the ordering problem is solved easily by the fact that ordering of composition does not matter. This is exactly what we mean by "turning two histories into a single history without ambiguity".
 
-* transactions I applied so far to the database
-* my knowledge about other validators' activity
+Now, let's try another pair: $$b_1$$ with $$b_3$$. Both blocks execute the same transaction $$a$$, but of course these are separate invocations, so in the merged history, transaction $$a$$ would have to be executed twice. Let's see how this looks like:
 
-For this purpose we introduce a dedicated data structure. A **blockdag** is a directed acyclic graph made of blocks.
+![Composing b1 and b3](../../.gitbook/assets/casper-abc-merging-3-x.svg)
+
+Bum! It does not work at all ! Second execution of transaction $$a$$ just fails, so this is not a valid transition. And we can easily see why - it would make the balance of Alice's account negative, which is not allowed in our model. Formally, we say that the global state [Alice: 3, Bob:8, Charlie:3] does not belong to the domain of the partial function $$a$$. So we conclude that these two histories are NOT mergeable.
+
+Let's try yet another pair $$b_4$$ and $$b_5$$. Now the situation is a little more complex because we have to compare $$b_2 \leadsto b_5$$ path vs single element path $$b_4$$ and the problem of "possible orderings" of the sequence becomes more tricky. When we loop over possible sequential histories, we have to respect already existing causal structure. Because $$b_2$$ precedes $$b_5$$, we will only do composing along sequences of $$b_2$$, $$b_4$$ and $$b_5$$ that respect this condition. It leads to 3 possibilities:
+
+![Composing b4 and b5](../../.gitbook/assets/casper-abc-merging-4.svg)
+
+In all 3 cases compositions are well defined but the final state we end up with is not always the same. This is a conflict - merging is not possible.
+
+Let's assume that Orange decided to merge $$b_1$$ and $$b_2$$ (now we now they are mergeable) and extend the merged history by executing transaction $$b$$.
+
+![Evolution graph (after merging step)](../../.gitbook/assets/casper-abc-merging-5.svg)
+
+It looks good but now we can see that out notation is slightly too verbose and turns out to be less convenient then initially expected. There are two issues:
+
+* When we are not really interested in showing "contents" of the state, but only dependencies of blocks, this notation is too verbose.
+* When merging, it is not clear how to label edges. Should we encapsulate transactions $$a$$ and $$b$$ leading to the "merged" state into separate blocks or not ?
+
+This issues lead to a better notation that we introduce in next chapter.
+
+### Blockdag
+
+A **blockdag** is a directed acyclic graph made of blocks.
 
 A **block** is either a special Genesis block or a tuple consisting of:
 
@@ -173,17 +232,18 @@ A **block** is either a special Genesis block or a tuple consisting of:
 As the above type is recursive, to reconstruct the same idea formally, we need to define it by induction:
 $$
 Blocks_0 = {Genesis} \newline
-Blocks_n = \{ <creator , transaction, parents>: creator \in V, transaction \in TR, parents \subset Blocks_{n-1}> \} \newline
+Blocks_n = \{ <creator , transaction, parents>: creator \in V, \newline transaction \in TR, parents \subset Blocks_{n-1}> \} \newline
 Blocks = \bigcup\limits_{i=1}^{\infty} Blocks_i
 $$
 
-Having any collection of blocks $$blockdag \subset Blocks$$, we consider it being a directed acyclic graph by taking:
+Having any collection of blocks $$\mathfrak{B} \subset Blocks$$, we consider it being a directed acyclic graph by taking:
  * vertices are blocks, plus one "special" vertex called Genesis
  * edge $$A \longrightarrow B$$ exists iff block B is included in the collection of parents as specified in A
 
 We consider a blockdag $$\mathfrak{B}$$ to be well formed if:
 * it contains Genesis
-* for every block $$b \in \mathfrak{B}$$ there exists a path $$b \leadsto Genesis$$ in $$\mathfrak{B}$$ (which is equivalent to saying that if a block is in this blockdag then all its parents are also in the blockdag)
+* if a block $$b$$ is in $$\mathfrak{B}$$ then parents of $$b$$ are also in $$\mathfrak{B}$$
+* for every block $$b \in \mathfrak{B}$$ there exists a path $$b \leadsto Genesis$$ in $$\mathfrak{B}$$
 
 This is an example of a well-formed blockdag:
 
@@ -192,7 +252,7 @@ This is an example of a well-formed blockdag:
 We use the following conventions to visually represent blockdags:
 
 * block label $$b6: f$$ tells the identity of the block is $$b_6$$ and transaction it executed is $$f$$
-* vertical swimlines correspond to validators; block is displayed in a swimline of its creator
+* vertical swimlanes correspond to validators; block is displayed in a swimlane of its creator
 * every block is a source of one of more arrows and this way we represent block's parents
 * graph is displayed following the topological sorting, so arrows always are directed downwards and over time the structure grows upwards
 
@@ -210,7 +270,7 @@ Whenever we mention that some structure contains blocks, this "contains" must be
 
 ### Blockdags vs evolution graphs
 
-Blockdag is really just a smart notation for evolution graphs, with "block's creator" concept added. "Smartness" comes here from keeping global states implicit and encoding mergeable pairs by the parents concept. Let's see how a blockdag corresponds to an evolution graph in the simplest case:
+Before we completely drop evolution graphs notation if favor of blockdags, it is worth looking how these two correspond. For example, this is a simple sequential evolution with 3 validators involved:
 
 ![Blockdag to evolution graph transformation (sequential case)](../../.gitbook/assets/casper-blockdag-to-graph-seq-case.svg)
 
@@ -235,19 +295,52 @@ To better illustrate the transformation from a blockdag to the corresponding evo
 
 ![Blockdag to evolution graph transformation (general merging case)](../../.gitbook/assets/casper-blockdag-to-graph-merging-case-2.svg)
 
-Crucial is to observe that once two mergeable paths are discovered - in this case $$b \circ a$$ commutes with $$c$$ at state $$Zero$$ - the construction of implicit merged global state (red dot) happens by directly applying commutativity. So the merged state in this case is calculated as:
+Finally, we can come back to the example with Alice-Bob-Charlie sending money, and convert also this one the a blockdag. This was the evolution graph:
+
+![Evolution graph (after merging step)](../../.gitbook/assets/casper-abc-merging-5.svg)
+
+And this is how it looks after translating to blockdag notation:
+
+![Evolution graph (after merging step)](../../.gitbook/assets/casper-abc-converted-to-blockdag.svg)
+
+
+### Formal definition of merging
+
+We are now ready to define merging formally. We will do this by extending the list of conditions for a blockdag to be well formed. First we need a convenient way of talking about paths in a blockdag.
+
+For two blocks $$a,b \in \mathfrak{B}$$ we say that $$b$$ builds on $$a$$ ($$a \triangleleft b$$) iff there exists a non-empty path in $$\mathfrak{B}$$ from $$b$$ to $$a$$.
+
+For a block $$b \in \mathfrak{B}$$ we define **p-past-cone** as:
 
 $$
-c(a \circ b (Zero))
+pPastCone(b)=\{x \in \mathfrak{B}:  x=b \lor x \triangleleft b\}
 $$
 
-.. which turns out to be equal to:
+Because p-past-cone of a block is a subset of vertices of a blockdag, it inherits the acyclic directed graph structure and so itself is a blockdag.
 
-$$
-a \circ b (c(Zero))
-$$
+For any finite sequence of blocks $$<b_1,...,b_n>$$ we can consider a corresponding sequence of transitions, by starting from global state $$Zero$$ and sequentially applying transactions $$b_i.transaction$$. This path of transitions may or may not be composable (because transactions are partial functions). In case the composition is possible, **composition of a sequence of blocks** is the result of composing transitions.
 
-... thanks to blocks $$b_2$$ and $$b_3$$ being mergeable (which by definition of mergeability means that transactions $$b \circ a$$ and $$c$$ are commutative on global state Zero).
+Any linear order on a finite set of blocks may be seen as a finite sequence of blocks. If $$G$$ is a set of blocks and $$<G,R>$$ is a linear order then corresponding composition of a sequence od blocks we will call **composition of G along R**.
+
+For any directed acyclic graph $$G=<V,E>$$ by $$TopSort(G)$$ we denote the collection of all topological sortings of $$G$$. So elements of $$TopSort(G)$$ are linear orders.
+
+To capture merging correctness we require that a well-formed blockdag $$\mathfrak{B}$$ must fulfill the following condition:
+
+For every block $$b \in \mathfrak{B}$$ there exists a global state $$gs \in GS$$ such that for any linear order $$ts \in TopSort(pPastCone(b))$$, $$ts^{-1}$$ must give a composable sequence of blocks and composition of $$pPastCone(b)$$ along $$ts^{-1}$$ must have destination $$gs$$.
+
+Caution: We need to use the inverted relation $$ts^{-1}$$ because direction arrows in the blockdag is opposite to the direction of underlying transactions.
+
+In the distributed consensus protocol we are going to define, crucial is the ability to tell whether given set of tips is **mergeable**. This concept is directly compatible with merging intuitions we built in previous chapters but now we want to be precise and base it on the formal definition of well-formed blockdag. Intuition is that blocks $$b_1,b_2 \in \mathfrak{B}$$ are mergeable if after adding a block that will have $$b_1$$ and $$b_2$$ as parents $$\mathfrak{B}$$ is still going to be well-formed. But this extra block may contain a transaction and this makes the intuitions less clear (we would have to enforce the new block to contain the identity transaction), so for clarity we take a slightly more elementary approach.
+
+First, we need to generalize past cone concept to handle a collection of blocks:
+
+For a finite set of blocks $$M = \{b_1, ..., b_n\}, b_i \in \mathfrak{B}$$ we define $$pPast(M) = \bigcup\limits_{i=1}^{n} pPastCone(b_i).
+
+Then we define mergeability. We say that a set of blocks $$M = \{b_1, ..., b_n\}, b_i \in \mathfrak{B}$$ is **mergeable** if there exists a global state $$gs \in GS$$ such that for any linear order $$ts \in TopSort(pPast(M))$$, $$ts^{-1}$$ must give a composable sequence of blocks and composition of $$pPast(M)$$ along $$ts^{-1}$$ must have destination $$gs$$.
+
+Both definitions of merging are related by the following:
+
+**Theorem:** in a well-formed blockdag $$\mathfrak(B)$$, for any block $$b \in \mathfrak(B)$$ if $$b$$ has more than one parent then collection $$b.parents$$ is mergeable.
 
 ### Adding causal structure to the blockdag
 
@@ -255,15 +348,15 @@ Blockdags as defined so far look like an appealing data structure for our shared
 
 ![Blockdag with no time concept](../../.gitbook/assets/casper-blockdag-missing-time-problem.svg)
 
-Blocks created by validator $$B$$ form a tree and the tree has more then one leaf. Namely - both block $$b_9$$ and block $$b_10$$ look "last" and by just looking at the blockdag there is no information on the preference that validator B has in regards to the history of the shared database that he prefers to be accepted by others.
+Blocks created by validator $$B$$ form a tree and the tree has more then one leaf. Namely - both block $$b_9$$ and block $$b_{10}$$ look "last" and by just looking at the blockdag there is no information on the preference that validator B has in regards to the history of the shared database that he would like to be accepted by others.
 
-We could enrich our model in many different ways for such preference to be available. For example every validator could keep a counter of created blocks and at the moment of creating a new block - seal a subsequent number into the block. This way other validators could assume that blocks with the highest number corresponds to the most recent preference of the creator. Another possible solution would be to use [Lamport synchronization](https://en.wikipedia.org/wiki/Lamport_timestamps) for establishing the concept of global clock, and seal timestamps derived from this global clock into blocks.
+We could enrich our model in many different ways for such preference to be available. For example every validator could keep a counter of created blocks and at the moment of creating a new block - seal a subsequent number into the block. This way other validators could assume that blocks with the highest number corresponds to the most recent preference of the creator. Another possible solution would be to use [Lamport synchronization](https://en.wikipedia.org/wiki/Lamport_timestamps) for establishing the concept of global clock and seal timestamps derived from this global clock into blocks.
 
-One of findings of Casper protocol research is a convenient solution to this problem. Instead of introducing timestamps and clocks, we are going to use a whole copy of the blockdag as a "timestamp" and seal it into the block !
+One of findings of Casper protocol research was a convenient solution to this problem. Instead of introducing timestamps and clocks, we are going to use a whole copy of the blockdag as a "timestamp" and seal it into the block !
 
-Well, but if we require each block $$B$$ created by validator $$V$$ to contain a snapshot of a blockdag maintained by $$V$$ at the moment of creating $$B$$, are these blocks going to grow very huge and keep growing forever ? Which immediately looks like a major performance problem ! Actually, this is not such a big problem, as it appears. Because blockdag grows by appending blocks only, if every block enumerates collection of blocks seen at its creation - we will call these links **justifications** - then we can just use a collection of roots to represent the snapshot of the whole DAG.
+Well, but if we require each block $$B$$ created by validator $$V$$ to contain a snapshot of a blockdag maintained by $$V$$ at the moment of creating $$B$$, are these blocks going to grow very huge and keep growing forever ? Which immediately looks like a major performance problem ! Actually, this is not such a big problem, as it appears. Because blockdag evolves only by appending new blocks, if every block can point to blocks seen at its creation - we will call these pointers **justifications** - then we can just use reduce the required collection of pointers to just roots of the blockdag's snapshot.
 
-Let's state now an improved definition of a block. A **block** is a tuple consisting of:
+We will have to augment the definition of a block so that this new idea is captured. Let's do it now. A **block** is a tuple consisting of:
 
 * a validator
 * a transaction
@@ -273,19 +366,20 @@ Let's state now an improved definition of a block. A **block** is a tuple consis
 Formally:
 $$
 Blocks_0 = {Genesis} \newline
-Blocks_n = \{ <creator , transaction, justifications, parents>: creator \in V, transaction \in TR, \newline
- justifications \subset Blocks_{n-1}, parents \subset justifications> \} \newline
+Blocks_n = \{ <creator , transaction, justifications, parents>: \newline
+ creator \in V, transaction \in TR, justifications \subset Blocks_{n-1}, \newline
+ parents \subset justifications> \} \newline
 Blocks = \bigcup\limits_{i=1}^{\infty} Blocks_i
 $$
 
-In lame terms, a on creating a new block $$B$$, a validator seals into the block two sets of links:
-  * justifications: means "what was my knowledge when I was creating block $$B$$"
-  * parents: means "which paths of shared database evolution I am merging with block $$B$$"
+In lame terms, when I am a validator, on creating a new block $$B$$ I am sealing into the block two sets of links:
+  * justifications - and they say "look, this was my snapshot of the blockdag when I was creating block $$B$$"
+  * parents - and they encode the decision on "which paths of shared database evolution I am merging with block $$B$$"
 
 So, now we also have to update the definition of **blockdag**: a blockdag is a set of blocks closed to taking parents and justifications (which implies that a blockdag must contain Genesis).
 
-Both parent-child and justifications links form directed acyclic graphs. They share the same set of vertices, only justification graph has possibly more edges. So, now within a single blockdag we have two DAGs:
-  * $$pDAG$$: where arrows are from a block to its justification block
+Both parent-child and justifications links form directed acyclic graphs. They share the same set of vertices, only justification graph has possibly more edges. So, now within a single blockdag we have two directed acyclic graphs:
+  * $$pDAG$$: where arrows are from a block to its justification
   * $$jDAG$$: where arrows are from a block to its parent
 
 And we have an inclusion: $$pDAG \subset jDAG$$.
@@ -299,19 +393,30 @@ This new drawing convention is:
 * Red arrows are from $$jDAG \setminus pDAG$$.
 * We do not draw redundant red arrows (so when a red arrow can be deduced as pats of red-or-block arrows).
 
-The way we use blockdags unfortunately makes classic terminology of DAGs confusing while talking about mutual position of vertices. Classic approach is that if there is a path $$v \rightarrow ... \rightarrow w$$, we say that $$v$$ precedes $$w$$, or that $$v$$ is an ancestor of $$w$$. Frequently it is also denoted by $$v \prec w$$, especially if we talk about a simple DAG, so the one effectively equivalent to a POSET. The source of confusion is coming from how our blockdags glow. Arrows in blockdags point always to the past and latest blocks are always roots. This way "time-precedes" in direct semantic collision with "arrow-precedes". To evade the confusion we introduce the following terms:
+The way we use blockdags unfortunately makes classic terminology of DAGs confusing while talking about mutual position of vertices. Classic approach is that if there is a path $$v \rightarrow ... \rightarrow w$$, we say that $$v$$ precedes $$w$$, or that $$v$$ is an ancestor of $$w$$. Frequently it is also denoted by $$v \prec w$$, especially if we talk about a simple DAG, so the one effectively equivalent to a POSET. The source of confusion is coming from how our blockdags grow. Arrows in blockdags point always towards the "past" and latest blocks are always roots. This way "time-precedes" in direct semantic collision with "arrow-precedes". To evade the confusion we introduce the following terms:
 
 * $$b$$ builds on $$a$$, or $$a \triangleleft b$$ iff there exists a path in $$pDAG$$ from $$b$$ to $$a$$
 * $$b$$ requires $$a$$, or $$a \ll b $$ iff there exists a path in $$jDAG$$ from $$b$$ to $$a$$
 
 This way relational operators $$\triangleleft$$ and $$\ll$$ are coherent with time intuition:
-* $$b$$ builds on $$a$$ implies that $$b$$ is older than $$a$$ (= was added later to the blockdag)
+* $$b$$ builds on $$a$$ implies that $$a$$ is older than $$b$$ (= was added later to the blockdag)
 * $$b$$ requires $$a$$ as well implies that $$a$$ is older than $$b$$ (= was added later to the blockdag)
 
-Also, the "leaves" and "roots" terminology coming from DAGs is not terribly coherent with the time passing intuition. Technically, we have only one leaf - Genesis -  but roots are what was added lately. Plus, we always have to distinguish $$pDAG$$ from $$jDAG$$ ! Therefore we prefer to use these these terms:
+Also, the "leaves" and "roots" terminology coming from DAGs is not quite coherent with the time passing intuition. Technically, we have only one leaf - Genesis -  but roots are what was added lately. Plus, we always have to distinguish $$pDAG$$ from $$jDAG$$ ! Therefore we prefer to use these these terms:
 
 * **p-tips**: roots of $$pDAG$$
 * **j-tips**: roots of $$jDAG$$
+
+Last but not least we introduce **cones**. This terminology is actually borrowed from Einstein's Special Relativity theory, namely from the Minkowski spacetime diagrams:
+
+![Cones as understood in Minkowski spacetime](../../.gitbook/assets/minkowski-spacetime.png)
+
+We already introduced p-past-cone before, now we are adding all sibling definitions as well. For a block $$b \in \mathfrak{B}$$:
+
+* **p-past-cone** - for a block $$pPastCone(b)=\{x \in \mathfrak{B}:  x=b \lor x \triangleleft b\}$$
+* **p-future-cone** - for a block $$pFutureCone(b)=\{x \in \mathfrak{B}:  x=b \lor b \triangleleft x\}$$
+* **j-past-cone** - for a block $$pPastCone(b)=\{x \in \mathfrak{B}:  x=b \lor x \ll b\}$$
+* **j-future-cone** - for a block $$pPastCone(b)=\{x \in \mathfrak{B}:  x=b \lor b \ll x\}$$
 
 ### Implementation of a shared database
 
@@ -321,7 +426,7 @@ During his lifetime, a validator $$v$$ maintains two collections:
   *  **blockdag** with all blocks either produced by $$v$$ or received from other validators
   *  **blocks-buffer**: a buffer of blocks received, but not yet incorporated into blockdag
 
-A block $$b$$ can only be added to the blockdag if all justifications of $$b$$ were collected and added before $$b$$. So if a validator receives a block before receiving some of its validations, the received block must wait in the buffer.
+A block $$b$$ can only be added to the blockdag if all justifications of $$b$$ were collected and added before $$b$$. So if a validator receives a block before receiving some of its justifications, the received block must wait in the buffer.
 
 Every validator $$v$$ is concurrently executing two infinite loops of processing:
 
@@ -337,54 +442,54 @@ Listening loop:
 
 1. Listen to blocks incoming from other validators.
 2. When a block $$b$$ arrived: check if all justifications of b are already included in the blockdag.
-- if yes - append $$b$$ to blockdag
-- else - append $$b$$ to blocks-buffer.
+  * if yes: append $$b$$ to blockdag
+  * else: append $$b$$ to blocks-buffer.
 3. Validate whether parents of block $$b$$ were selected correctly by running fork-choice from the perspective of $$b.creator$$ (using justifications in $$b$$ to re-create the snapshot of the blockdag as seen by $$b.creator$$).
 4. If the validation in step (3) failed, discard $$b$$ and restore blockdag to the state before running step (2).
 5. Check if any block in blocks-buffer can now leave the buffer and be included in the blockdag, because all its justifications are now in blockdag.
 6. Repeat step 3 as many times as needed.
 
-How parents of a new block are selected (publishing loop, step 2) is the most critical point of the whole distributed consensus. We call this the **fork choice rule** and the subsequent 5 sub-chapters are centered around this topic.
+How parents of a new block are selected (publishing loop, step 2) is the most critical point of the whole distributed consensus. We call this the **fork choice rule** and the subsequent sub-chapters are centered around this topic.
 
 ### Equivocation
 
-On the previous example, it looks like when a validator looks at his blockdag and when he focuses on his own swimline (so blocks he proposed), this swimline considered a subgraph of $$jDAG$$ is a chain. This is not surprising because, logically, when I am proposing a new block, all blocks I proposed so far are within my knowledge, so I am including them in justifications of the new block. At least I **should** do so.
+When we again take a look at the example blockdag, every swimlane (considered a subgraph of $$jDAG$$) is a chain:
 
-So, if all validators are acting honestly in the above sense, then on our picture, all swimlines are going to be chains.
+![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example.svg)
 
-The problem is that in a distributed network of validators such an "honest" behaviour cannot be technically enforced. Instead, we have to accept that the reality will look like this:
+This is not surprising because, logically, when I am proposing a new block, all blocks I proposed so far are within the scope of my knowledge, so obviously I am including them in justifications of a new block, when I create one. At least I **should** do so. The problem is that in a network of validators such an "honest" behaviour cannot be technically enforced. Instead, we have to accept that the reality will sometimes look like this:
 
 ![Equivocation as seen in a blockdag](../../.gitbook/assets/casper-equivocation.svg)
 
-In this example, validator A violates the "honesty" rule by splitting his chain on block $$b_5$$. Both $$b_8$$ and $$b_9$$ are referencing $$b_5$$ and yet there are not visible to each-other via justifications. This looks like validator A is not aware of his own blocks he proposed !
+In this example, validator $$A$$ violates the "honesty" rule by splitting his chain at block $$b_5$$. Both $$b_8$$ and $$b_9$$ are referencing $$b_5$$ and yet there are not visible to each-other via justifications. This looks like validator $$A$$ is not aware of his own blocks he proposed ! Every such situation present in a blockdag we reference as **equivocation**.
 
-We call this **equivocation**.
+How such a situation can happen and still be "formally legal" ? Well, it is enough that a malicious validator decides to broadcast new blocks selectively, so in this case $$b_9$$ is published to one subset of the network while $$b_8$$ to another part. Eventually block propagation will cause validators to discover that $$A$$ was equivocating at some point, but this discovery will take time and by that time both blocks will play their role in what happened later.
 
 Caution: Equivocation is a phenomenon that decreases efficiency of consensus, in the extreme case leading to no consensus. We address this problem later by introducing economical incentives, so that validators normally don't equivocate. Nevertheless, equivocations may be present in a blockdag, so any algorithm operating on blockdags must take this into account.
 
 ### Fork choice phase 1: picking latest blocks
 
-The selection of candidates for parents of a new block starts with the **scoring phase**. Scoring is a way of assigning an integer value to every block in a blockdag.
+We start fork-choice by finding the latest block in every swimlane. This is easy for honest validators, because their swimlanes are just chains, so there is always at most one j-tip in the swimlane (the corner case being the empty swimlane, so before the validator proposed his first block).
 
-Scoring starts by finding the latest block in every swimline. This is easy for honest validators, because their swimlines are just chains, so there is always at most one j-tip in the swimline (the corner case being the empty swimline, so before the validator proposed his first block).
+Now, let's focus on the other case, so when a validator $$v$$ is actually equivocating. We somehow have to pick one of his j-tips. The rule here is:
 
-In case of the validator $$v$$ actually equivocating, we somehow have to pick one of his j-tips. The rule here is:
-
-1. We select the one with the biggest p-height
+1. Select the one with the biggest p-height.
 2. If there is more than one, we use the global ordering on blocks - see [here](#digression-blocks-identity-and-hash) - to pick a lowest one (so, implementation-wise, the one with smallest hash).
 
-This is how it worked for our last example:
+This is how it worked for our last example (latest blocks marked with green):
 
 ![Scoring phase 1](../../.gitbook/assets/casper-scoring-phase-1.svg)
 
-Please observe how for validator A we preferred block $$b_10$$ over $$b_8$$ because $$pHeight(b_10)=5$$ and $$pHeight(b_8)=4$$.
+Notice how for validator A we preferred block $$b_{10}$$ over $$b_8$$ because $$pHeight(b_{10})=5$$ and $$pHeight(b_8)=4$$.
 
 ### Fork choice phase 2: scoring
+
+Scoring is a way of assigning an integer value to every block in the blockdag.
 
 Let $$LastBlocks(blockdag)$$ denote the set of blocks chosen by the above algorithm. This is how scoring works:
 
 $$
-Score(block) = \{tip \in LastBlocks(blockdag): b \triangleleft tip \}
+Score(block) = \{tip \in LastBlocks(blockdag): block \triangleleft tip \}
 $$
 
 The results of running the scoring phase look like this:
@@ -393,26 +498,57 @@ The results of running the scoring phase look like this:
 
 ### Fork choice phase 3: ordering tips
 
-The goal of this phase is to introduce a total ordering on the collection of tips chosen in phase 1.
+The goal of this phase is to construct an ordered list of parent candidates. We proceed in a loop, building an ordered collection of blocks, $$T$$:
 
-We proceed in a loop, building an ordered collection of blocks, $$T$$:
-
-1. We initialize the list with just one element: T = $$(Genesis)$$.
-2. For each block $$b \in T$$, if $$b$$ has children, replace $$b$$ with its children (sorted by score), otherwise leave b as is.
-3. Remove any duplicates in $$T$$ (if any), maintaining the current order.
+1. Initialize the collection with just one element: T = $$[Genesis]$$.
+2. For each block $$b \in T$$, if $$b$$ has no children - leave $$b$$ as is, otherwise replace $$b$$ with its children sorted by the following multi-level comparator:
+  * higher score goes first
+  * if scores are equal - smallest block go first (using total ordering on blocks - see [here](#digression-blocks-identity-and-hash))
+3. For all $$b \in T$$: if $$b$$ is duplicated (= occurs more than once in the collection), leave only the leftmost occurence of $$b$$, removing others.
 4. Repeat 2-3 until $$T$$ no longer changes with each iteration (i.e. no block has any children).
-5. $$T$$ is the sorted list of possible blocks.
+5. $$T$$ is the sorted list of parent candidates.
 
+Let's see how this algorithm works for our example blockdag:
+
+|   Step executed         | Resulting contents of the collection |
+|-------------------------|--------------------------------------|
+|initial                  |Genesis                               |
+|replace with children    |b1,b2                                 |
+|replace with children    |b3,b3,b4                              |
+|remove duplicates        |b3,b4                                 |
+|replace with children    |b5,b6,b7                              |
+|replace with children    |b8,b9,b12                             |
+|replace with children    |b12,b11,b10,b11                       |
+|remove duplicates        |b12,b11,b10                           |
+|replace with children    |b11,b11,b10                           |
+|remove duplicates        |b11,b10                               |
+
+The result we got is a collection of all tips of p-DAG, ordered by "preference". First element is the most preferred one, the **fork-choice leader**.
 
 ### Fork choice phase 4: picking biggest mergeable subset of tips
 
+The goal is to find biggest set of p-DAG tips that is mergeable. In case of conflicts we favor blocks with higher priority, where priorities (were established in phase 3). This is the algorithm:
 
-UNDER CONSTRUCTION
-
+1. Initialize results set $$R$$ with just one element - the fork choice leader.
+2. For each element $$b$$ in tips collection $$Tips$$ (obtained in phase 3), starting from second element:
+  * if $$R \cup \{b\}$$ is mergeable, append $$b$$ to $$R$$
 
 ### Fork choice freedom discussion
 
-UNDER CONSTRUCTION
+Interestingly, a validator has some freedom in the way he runs fork choice. Although the fork-choice algorithm is fully deterministic when run against a fixed blockdag, the actual selection of the blockdag that fork-choice is run against is something that can be considered part of validator's strategy. To understand this, let's look again at the first example of a blockdag with justifications:
+
+![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example.svg)
+
+Let's pretend I am the validator $$A$$ and I am just about to propose a new block - $$b_{10}$$. My last block was $$b_7$$ and its j-past-cone is what represents the snapshot of the blockdag that was included with the block. So, as of now, this is what other validators can provably say about my current knowledge:
+
+![Blockdag with justifications](../../.gitbook/assets/casper-fork-choice-freedom-1.svg)
+
+By the time I published block $$b_7$$ my knowledge has grown because - apparently - several new blocks from validators $$B$$ and $$C$$ have arrived. Now, which part of this real knowledge I am going to disclose to others ? This is something that I can actually make a quite arbitrary decision about.
+
+One example of such decision would lead to this blockdag:
+
+![Blockdag with justifications](../../.gitbook/assets/casper-fork-choice-freedom-2.svg)
+
 
 ## Increment 1: dynamic set of validators
 
