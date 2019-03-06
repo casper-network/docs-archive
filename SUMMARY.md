@@ -14,16 +14,16 @@
 
 ## Technical Details
 
-* [BlockDAG](technical-framework/block-storage/README.md)
-  * [Global State](technical-framework/block-storage/global-state.md)
-  * [Execution Semantics](technical-framework/block-storage/execution-semantics.md)
-  * [CBC Casper](technical-framework/block-storage/cbc-casper.md)
-  * [Token](technical-framework/block-storage/token.md)
-* [Node](technical-framework/global-state/README.md)
-  * [Communications](technical-framework/global-state/communications.md)
-  * [Metrics](technical-framework/global-state/metrics.md)
-* [Appendix](technical-framework/appendix/README.md)
-  * [gRPC Interfaces](technical-framework/appendix/grpc-interfaces.md)
+* [BlockDAG](technical-details/block-storage/README.md)
+  * [Global State](technical-details/block-storage/global-state.md)
+  * [Execution Semantics](technical-details/block-storage/execution-semantics.md)
+  * [CBC Casper](technical-details/block-storage/cbc-casper.md)
+  * [Token](technical-details/block-storage/token.md)
+* [Node](technical-details/global-state/README.md)
+  * [Communications](technical-details/global-state/communications.md)
+  * [Metrics](technical-details/global-state/metrics.md)
+* [Appendix](technical-details/appendix/README.md)
+  * [gRPC Interfaces](technical-details/appendix/grpc-interfaces.md)
 
 ## Network and Governance
 
