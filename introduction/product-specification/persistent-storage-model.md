@@ -6,8 +6,6 @@ As stated earlier, which deploys to execute, and the persistent results of that 
 
 Blocks are the atomic unit of consensus between nodes � the atomic increment of forward progress of the decentralized computer. Either all deploys contained in a block are executed or none are. The deploys in a block can be executed concurrently \(in no guaranteed order\) or serially \(in the order in which they appear in the block\) as specified by a field in each block.
 
-\[dapps can influence the allocation of their depoys to blocks using incentize fees\]
-
 dApps have no control over how or when their deploys are allocated to blocks or the execution semantics of the blocks in which their deploys appear. dApps can only control contract execution order within a deploy, not across deploys. If a dApp requires a particular contract execution order, all such dependent contracts must be executed within the same deploy by being called in the appropriate order from the session contract. Because of the account nonce described earlier, each deploy will be executed only once by the decentralized computer even if submitted to multiple nodes. In general blocks will contain deploys from different dApps.
 
 ## Commutativity
@@ -40,19 +38,13 @@ Because nodes are distributed over a network and are executing concurrently, mul
 
 ![Figure 6: Structure of Persistent Storage](../../.gitbook/assets/wpfig6storage.png)
 
-\[blocks are vertices and parent links are edges of the DAG\]
-
 In the diagram, the DAG grows \(i.e. the decentralized computer executes\) from left-to-right with arrows pointing from child to parent. For clarity only deploys are shown inside blocks. The post-state of each block is shown below the block in blue.
 
 A "leaf" block is a block with no children. Nodes select from the current leaves of the DAG when selecting parents for proposed blocks. When there are multiple parents the context in which the proposed block executes is the merged post-state of all parents. This merged post-state is called the "pre-state" of the proposed block. In the case of a single parent a proposed block's pre-state is simply the parent's post-state. In the diagram, the pre-state for multi-parent blocks is shown in grey. Unlike post-state, multi-parent pre-state does not correspond to a specific block in the DAG.
 
 In order to avoid non-deterministic behavior, the post-state of all prospective parents must commute per the same rules as for deploys contained in the same concurrent block. Any parent whose post-state does not commute is removed from the list of prospective parents.
 
-\[only commuting parents are chosen\]
-
 It may appear that the post-state of Blocks 2 and 3 does not commute since "a" has a value of 5 in one and 6 in another. In order to determine commutativity, it is necessary to consider not only the value of a variable but also the set of operations performed on that variable by any deploys in the associated block. In Figure 6 all variables have either zero or one operation performed on them.
-
-if a node receives a block with non-commuting parents then that block is invalid. The current sentence could be interpreted as meaning in the latter case the node tries to reconcile the parents itself
 
 In the case of Blocks 2 and 3, "a" was written in Block 2 and had no operation performed on it in Block 3, i.e. it was neither read nor written. Consider the scenario where all deploys in Blocks 2 and 3 were contained in the same block. In this scenario this access pattern is not a commute violation since only a single write was performed. This is but one of several permutations of variable access patterns and block topologies to consider when establishing commutativity � the complete list will not be discussed here.
 

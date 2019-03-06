@@ -16,15 +16,13 @@ Validators may increase or decrease their stake at any time by calling the POS c
 
 The node that issued the bonding deploy is able to act as a validator for any block that is a descendant of the block that includes this bonding deploy. Thus the set of validators is known for any block in the DAG.
 
-Validators cannot blindly trust the behavior of other validators ï¿½ fallible behavior must be assumed, whether caused by bugs, network or machine failure, or dishonesty. Therefore validators perform a series of checks on proposal messages they receive from other validators. This process is depicted in Figure 9.
+Validators cannot blindly trust the behavior of other validators - fallible behavior must be assumed, whether caused by bugs, network or machine failure, or dishonesty. Therefore validators perform a series of checks on proposal messages they receive from other validators. This process is depicted in Figure 9.
 
 ![Figure 9: Block Validation Lifecycle](../../.gitbook/assets/wpfig9validationlifecycle.png)
 
 When a proposed block arrives at a validator, the validator checks the block signature, constructs the pre-state for the proposed block, confirms commutativity for blocks with multiple parents, executes deploys in the block in the context of the pre-state \(confirming it calculates the same gas costs for each deploy\), confirms commutativity for blocks with concurrent execution semantics, confirms the hash of the post-state is equal to that in the propose message, and stores the proposed block in the block store.
 
 Note that it's possible that the validator has not seen all \(or any\) parents of a proposed block. In this case the proposed block is saved in a buffer where it can be validated after arrival of all parents.
-
-\[each validator's individual dag must be a chain; pdag+jdag\]
 
 The operation of the decentralized consensus algorithms will be illustrated with an example DAG. For clarity this example is given under the following conditions: all multi-parent blocks commute, validator stakes do not change, no validator fails, all validators are honest.
 
@@ -37,8 +35,6 @@ Each validator sees a different DAG topology and this example is from the perspe
 ## Fork Choice Rule
 
 When a fork exists in the DAG, a validator proposing a block must select one or more parents from the current leaf blocks ï¿½ this is the role of the "fork choice rule". In simple terms, the fork choice rule prioritizes leaves by the stakes of their creators then by the gas expended by the decentralized computer on the execution paths leading to that leaf. The fork choice rule is based on two goals: \(1\) validators influence the behavior of the decentralized computer in proportion to their stakes; and \(2\) blocks that are the culmination of a larger expenditure of gas are preferred over those that are of a lesser expenditure. The fork choice rule uses two parameters corresponding to these two goals: score and cumulative gas. These are calculated for each block currently in the DAG.
-
-\[requires using max number of leaves; in event of commute conflict, need to priority; if we're going to throw a leaf away, want to throw away the minumum amount of work\]
 
 ## Block Score
 
@@ -56,8 +52,6 @@ The score of a leaf block is simply the stake of its creator.
 
 The score for all blocks in the DAG is given in red.
 
-for block scores, may need justification arcs to determine "latest block", after that only need parent arcs; cannot select parent unless it and all it's decendants have been "processed" \(if a proposal message does not have all descendants in the block store then it's send to the foster block buffer\)
-
 ## Cumulative Gas
 
 The fork choice rule also requires calculation of cumulative gas for each block which is illustrated in Figure 12. As stated earlier, blocks include the gas expended to execute each deploy in that block. These can be summed to get the total gas expenditure for a block. Total gas expenditure is listed inside each block in the diagram.
@@ -74,73 +68,46 @@ The cumulative gas for all blocks in the DAG is given in blue.
 
 ![Figure 13: Calculating Cumulative Gas](../../.gitbook/assets/wpfig13cumgas2.png)
 
-With both block score and cumulative gas calculated for all blocks in the DAG, we can now apply the fork choice rule to determine parents. Figure 14 shows the score and cumulative gas for all blocks in the example DAG. A list of blocks is created containing only the genesis block. We then iteratively replace each block in the list with its children \(if any\) until the list only contains leaf blocks. For blocks with multiple children, said children are sorted first high-to-low in order of score, then high-to-low in order of cumulative gas, then by block hash \(which is guaranteed to be unique\). If there are duplicates on the list, the second and subsequent duplicates are removed. The table below delineates this process for the example DAG.
+With both block score and cumulative gas calculated for all blocks in the DAG, we can now apply the fork choice rule to determine parents. Figure 14 shows the score and cumulative gas for all blocks in the example DAG. A list of blocks is created containing only the genesis block. We then iteratively replace each block in the list with its children \(if any\) until the list only contains leaf blocks. For blocks with multiple children, said children are sorted first high-to-low in order of score, then high-to-low in order of cumulative gas, then by block hash \(which is guaranteed to be unique\). If there are duplicates on the list, the second and subsequent duplicates are removed.
+
+Once the iteration process completes and there are only leaf blocks on the list. The first block on the list is required to be a parent. For each subsequent block on the list, if that block commutes with all blocks then-currently on the list, then that block must also be a parent.
 
 ![Figure 14: Block Score and Cumulative Gas](../../.gitbook/assets/wpfig14scorecumgas.png)
-
-Once the iteration process completes and there are only leaf blocks on the list. The first block on the list is required to be a parent \(B10 in this case\). For each subsequent block on the list, if that block commutes with all blocks then-currently on the list, then that block must also be a parent. In this example, if B9 commutes with B10 then it also must be a parent.
 
 It should be noted that the actual implementation of the algorithms described above do not traverse the entire DAG between genesis and leaves in order to calculate block score or cumulative gas. A more efficient incremental algorithm is used.
 
 ## Agreement Graphs and Decision Weights
 
-<<<<<<< HEAD
-As discussed earlier, at any given point in time each validator has a different view of the DAG (their “perceived DAG”). A validator’s perceived DAG may arbitrarily overlap the perceived DAG of another validator. Conceptually one can calculate the weight of a view of the DAG as the sum of the stakes of all validators that share that view.
+As discussed earlier, at any given point in time each validator has a different view of the DAG (their "perceived DAG"). A validator's perceived DAG may arbitrarily overlap the perceived DAG of another validator. Conceptually one can calculate the weight of a view of the DAG as the sum of the stakes of all validators that share that view.
 
-A representation of these overlapping views and their weights for the example DAG we’ve been using is given in Figure 15. As can be seen, some blocks may be visible to all three validators; other blocks may be visible to each possible pair of validators; and some blocks may be visible to only one validator. Each of these distinct views of DAG topology may have different weights.
-=======
-Each block is finalized independently. \[but is it true that children cannot be finalized unless all their parents are?\]
+A representation of these overlapping views and their weights for the example DAG we've been using is given in Figure 15. As can be seen, some blocks may be visible to all three validators; other blocks may be visible to each possible pair of validators; and some blocks may be visible to only one validator. Each of these distinct views of DAG topology may have different weights.
 
-It is therefore necessary for validators to be aware of the DAG \(leaves\) seen by all other validators. Parent arcs convey this information ï¿½ since proposed blocks can only descend from then-current leaf blocks. When validators send a proposed block, they need to indicate the most recent blocks they have seen for all validators \(including themselves\). however some most recent blocks seen indication of observability but there are more ï¿½ this is the role of "justifications". When a validator emits a proposed block, not only does it indicate parent blocks, it also indicates which blocks it has seen by all other validators \(that may not have been leaves\). There is an additional field in the block header for justifications.
->>>>>>> 9cf5195b4db1a4378d24e2447dfecb90bae4444d
-
-Conceptually, as time moves forward each validator’s circle expands outward from the center of the overlapping circles. The fork choice rule mandates using the maximum number of commuting leaf blocks as parents for proposed blocks and therefore has the effect of expanding views with more validators over views with fewer validators.
+Conceptually, as time moves forward each validator's circle expands outward from the center of the overlapping circles. The fork choice rule mandates using the maximum number of commuting leaf blocks as parents for proposed blocks and therefore has the effect of expanding views with more validators over views with fewer validators.
 
 ![Figure 15: Validator Views and Weights](wpFig15valViews.png)
 
-<<<<<<< HEAD
-The more validators that have seen a block, the lower the risk that block will be orphaned. Having seen a block, if a validator can ascertain which other validators have also seen that block, then that validator can calculate a risk metric for that block. This risk metric is called the “decision weight” of a block – the higher the decision weight the lower the probability a block will be orphaned in the future. By examining the topology of its perceived DAG a validator can infer knowledge of the perceived views of other validators.
+The more validators that have seen a block, the lower the risk that block will be orphaned. Having seen a block, if a validator can ascertain which other validators have also seen that block, then that validator can calculate a risk metric for that block. This risk metric is called the "decision weight" of a block – the higher the decision weight the lower the probability a block will be orphaned in the future. By examining the topology of its perceived DAG a validator can infer knowledge of the perceived views of other validators.
 
-In order to fully convey their perceived DAG to other validators, when validators send a proposed block they specify the most recent block they have seen from all validators – including themselves. Parent edges contribute to this requirement but unless a proposed block has parents from every validator, parent edges alone will not suffice. Therefore the DAG contains another type of edge known as a “justification” to satisfy this requirement. There is an additional field in the block header for justifications. Except for the first blocks proposed after genesis, the sum of parent edges and justification edges in a block should equal total count of then-current validators. Figure 16 depicts the example DAG we have been using with all justifcation edges. These correspond to the descriptions of the state of the DAG seen by each validator given in Figure 10.
+In order to fully convey their perceived DAG to other validators, when validators send a proposed block they specify the most recent block they have seen from all validators – including themselves. Parent edges contribute to this requirement but unless a proposed block has parents from every validator, parent edges alone will not suffice. Therefore the DAG contains another type of edge known as a "justification" to satisfy this requirement. There is an additional field in the block header for justifications. Except for the first blocks proposed after genesis, the sum of parent edges and justification edges in a block should equal total count of then-current validators. Figure 16 depicts the example DAG we have been using with all justifcation edges. These correspond to the descriptions of the state of the DAG seen by each validator given in Figure 10.
 
 ![Figure 16: Justification Edges](wpFig16justifications.png)
 
-Decision weight is calculated using an “agreement graph”. The agreement graph has one vertex per validator where each vertex has a weight equal to the stake of the corresponding validator. At any point in time this graph may have zero or more “cliques”. A clique is a concept from graph theory defined as a sub-graph where each vertex in the sub-graph is connected to every other vertex in that sub-graph. Note that a clique can be a single vertex. The decision weight is the maximum of all current clique weights in the agreement graph.
+Decision weight is calculated using an "agreement graph". The agreement graph has one vertex per validator where each vertex has a weight equal to the stake of the corresponding validator. At any point in time this graph may have one or more "cliques". A clique is a concept from graph theory defined as a sub-graph where each vertex in the sub-graph is connected to every other vertex in that sub-graph. Note that a clique can be a single vertex. The decision weight is the maximum of all current clique weights in the agreement graph.
 
 Each validator maintains an agreement graph for all blocks it has seen – including its own blocks. Figure 17 depicts the agreement graph for B3 being maintained by Purple – as noted above, every other validator also maintains an agreement graph for B3 (created at the time they first see B3).
 
 ![Figure 17: Agreement Graph and Decision Weight](wpFig17aGraphDweight.png)
 
-When a validator first sees a block, it creates an agreement graph for that block with no connected vertices and decision weight of zero. An edge is added between two vertices (e.g. Purple and Orange) when the validator can prove that Purple knows that Orange knows about the block in question, and also that Orange knows that Purple knows about the block – i.e. that the validators corresponding to both connected vertices have common knowledge. Such assertions can be proven by inspecting the current topology of that validator’s perceived DAG. When an edge is added to the agreement graph the decision weight is re-calculated – note that decision weight will change only if the maximum clique weight has increased.
-=======
-![Figure 15: Clique Oracle](../../.gitbook/assets/wpfig15cliqueoracle.png)
-
-For clarity, and without loss of accuracy, in Figure ? Purple is shown as updating the clique oracle for B3 only when Purple sends a proposal. In reality validators update the affected clique oracles after successfully processing \[upon being stored into the block store\] each proposal message received.
-
-what is known in the literature as a "clique oracle". The oracle is a graph with one vertex per validator where each vertex has a weight equal to the stake of the corresponding validator. There is a clique oracle per block constructed and updated by the block creator. When a block is first proposed, its clique oracle is created with none of the vertices connected by edges \(without any edges\). When a parent or justification arc is seen by that creator, an arc is added between the creator vertex and the vertex of the relevant validator. The sum of the weights of all currently connected vertices is the "safety" value. When this value reaches ? the block is considered finalized.
-
-When B3 is proposed Purple creates B3's clique oracle with no connected vertices and initial safety of 50 \(by definition, at the time of proposal creators support their blocks\).
-
-At the time Purple proposes B6 it has seen B4 \(indicated by the parent edge\) and B2 \(indicated by the justification edge\). Having seen B4 \(and therefore the parent edge from B4 to B3\) Purple now knows that Orange has seen B3. Therefore Purple adds an edge in B3's clique oracle between the Purple and Orange vertices and updates B3's safety to the sum of all then-currently connected vertices in the clique oracle \(125\).
-
-At the time Purple proposes B10 it has seen B8 which requires that it had also seen B5. Having seen B5 \(and therefore the parent edge from B5 to B3\) Purple now knows that Green has seen B3. Therefore Purple adds an edge in B3's clique oracle between the Purple and Green vertices and updates B3's safety to 150. Having seen B8 \(and therefore the parent edge from B8 to B7\) Purple also knows that Green knows that Orange has seen B3 \(because of the B7 to B6 to B3 edges\). At this point all validators have seen B3 and Purple can confirm that other validators know that they have seen B3, and therefore B3 is finalized.
-
-\[all validators are operating clique oracles for B3 ï¿½ not just Purple. Purple can infer some of the state of other validators' B3 clique oracles from the parent and justificaton edges\]
->>>>>>> 9cf5195b4db1a4378d24e2447dfecb90bae4444d
+When a validator first sees a block, it creates an agreement graph with no connected vertices, a single one-vertex clique containing that validator's vertex, and initialzes decision weight to that validator's stake. An edge is added between two vertices (e.g. Purple and Orange) when the validator can prove that Purple knows that Orange knows about the block in question, and also that Orange knows that Purple knows about the block – i.e. that the validators corresponding to both connected vertices have common knowledge. Such assertions can be proven by inspecting the current topology of that validator's perceived DAG. When an edge is added to the agreement graph the decision weight is re-calculated – note that decision weight will change only if the maximum clique weight has increased.
 
 For clarity, and without loss of accuracy, in Figure 17 Purple is shown as updating the agreement graph for B3 only when Purple sends a proposal. In reality validators update the affected agreement graphs after successfully processing each proposal message received.
 
-<<<<<<< HEAD
-When B3 is proposed, Purple creates an oracle for B3 with no connected vertices. When the validator creating an agreement graph for a block is also the creator of that block, the agreement graph is created with a single one-vertex clique consisting of the creator’s vertex and decision weight is set to the stake of the creator (by definition, creators support their blocks), otherwise it’s initialized to zero. In the example in Figure 16, because the operator of the agreement graph is also the creator of the block, decision weight is initialized to 50.
+When B3 is proposed, Purple creates an agreement graph for B3 with no connected vertices, a one-vertex clique containing Purple's vertex, and initializes decision weight to 50 (Purple's stake) - the maximum clique weight at time of initialization.
 
-At the time Purple proposes B6 it has seen B4 (indicated by the parent edge) and B2 (indicated by the justification edge). Having seen B4 (and therefore the parent edge from B4 to B3) Purple now knows that Orange has seen B3, i.e. there is a path in Purple’s perceived DAG from an Orange block to B3. Therefore Purple adds an edge in B3’s agreement graph between the Purple and Orange vertices. This edge forms a two-vertex clique with weight of 50 + 75 = 125. This is greater than then-existing decision weight of 50 and therefore decision weight is set to 125. At the time Purple proposed B6, it had no way to prove Green has seen B3.
+At the time Purple proposes B6 it has seen B4 (indicated by the parent edge) and B2 (indicated by the justification edge). Having seen B4 (and therefore the parent edge from B4 to B3) Purple now knows that Orange has seen B3, i.e. there is a path in Purple's perceived DAG from an Orange block to B3. Therefore Purple adds an edge in B3's agreement graph between the Purple and Orange vertices. This edge forms a two-vertex clique with weight of 50 + 75 = 125. This is greater than then-existing decision weight of 50 and therefore decision weight is set to 125. At the time Purple proposed B6, it had no way to prove Green has seen B3.
 
-At the time Purple proposes B10 it has seen B8 which requires that it had also seen B5. Having seen B5 (and therefore the parent edge from B5 to B3) Purple now knows that Green has seen B3 – there is a path in Purple’s perceived DAG from a Green block to B3. Therefore Purple adds an edge in B3’s agreement graph between the Purple and Green vertices. This creates another two-vertex clique with weight of 75 – this is not greater than the then-current decision weight so decision weight remains unchanged.
+At the time Purple proposes B10 it has seen B8 which requires that it had also seen B5. Having seen B5 (and therefore the parent edge from B5 to B3) Purple now knows that Green has seen B3 – there is a path in Purple's perceived DAG from a Green block to B3. Therefore Purple adds an edge in B3's agreement graph between the Purple and Green vertices. This creates another two-vertex clique with weight of 75 – this is not greater than the then-current decision weight so decision weight remains unchanged.
 
 Having seen B8 (and therefore the parent edge from B8 to B7) Purple also knows that Green knows that Orange has seen B3 – because of the B8 to B7 to B6/B4 to B3 edges there is a path from a Green block through an Orange block to B3. However, in order to add an edge between the Orange and Green vertices, Purple must also be able to prove that Orange knows that Green knows about B3. The topology of the DAG perceived by Purple at the time of proposing B10 does not support this conclusion, i.e. there is no path from an Orange block through a Green block to B3. Note that because the Orange and Green vertices are not connected, the agreement graph has two cliques not one – had they been connected the agreement graph would contain a single three-vertex clique of weight 150.
 
 This was a simple example under the condition of honest/infallible validators which did not need to make use of justification edges. Justification edges play an important role in verifying all validators are conforming to the mandated protocols.
-=======
-It was noted earlier that some blocks \(or sub-DAG's of blocks\) may be "orphaned". The definition of "orphaned" is that the justification/parent edges reach a topology such that it can be determined that these blocks will never reach finalization. This was a simple example under the conditions described in the ? paragraph.
-
->>>>>>> 9cf5195b4db1a4378d24e2447dfecb90bae4444d
