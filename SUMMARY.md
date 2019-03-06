@@ -12,7 +12,7 @@
   * [Decentralized Consensus](introduction/product-specification/decentralized-consensus.md)
 * [Heterogenous Side Chains](introduction/sharding.md)
 
-## Technical Framework
+## Technical Details
 
 * [BlockDAG](technical-framework/block-storage/README.md)
   * [Global State](technical-framework/block-storage/global-state.md)
