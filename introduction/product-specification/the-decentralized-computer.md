@@ -10,7 +10,7 @@ Applications using the decentralized computer are known as “decentralized apps
 The nodes composing the decentralized computer are distributed across the Internet and execute concurrently. Thus messages between nodes will experience out of order delivery, variable transmission latency, and failed delivery. Under these conditions any particular node’s view of the state of the decentralized computer is “eventually consistent” with all other nodes. Referring to Figure 2: At any given point in time there will exist some point in the past prior to which all nodes have a mutually consistent view of the state of the system – this is known as the “finalization boundary” (explained in more detail below). Between the finalization boundary and the present, different nodes may have inconsistent views of the system. A consensus algorithm is used to converge nodes to a consistent view of the state of the decentralized computer.
 
 
-![Figure 2: Eventual Consistency](wpFig2eventualConsistency.png)
+<img style="display:block;margin:auto" src="wpFig2eventualConsistency.png">
 
 The overall design of the CasperLabs system is one of multiple inter-dependent concepts and algorithms. This document presents this set of concepts incrementally. A concept may be presented more than once where earlier presentations omit details and, after other dependencies have been introduced, the concept is then revisited.
 
