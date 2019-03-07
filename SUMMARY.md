@@ -4,7 +4,6 @@
 
 ## Introduction
 
-* [A Brief History of \(Block\) Time](introduction/a-brief-history-of-block-time.md)
 * [Product Specification](introduction/product-specification/README.md)
   * [The Decentralized Computer](introduction/product-specification/the-decentralized-computer.md)
   * [Contract Execution Model](introduction/product-specification/contract-execution-model.md)
