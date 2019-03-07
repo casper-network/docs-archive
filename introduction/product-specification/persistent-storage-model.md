@@ -30,13 +30,13 @@ When the decentralized computer is "booted", the boot node creates a "genesis bl
 
 A simplified view of the structure of persistent storage is given in Figure 5. This diagram is a snapshot in time. Arrows between blocks point from child to parent. For clarity only deploys are shown inside blocks. The temporal sequence leading to this diagram was that the decentralized computer was booted and the genesis block created, then the decentralized computer incrementally progressed by executing the deploys in blocks 1, 2, and 3 in that order. Block 1 was executed in the context of persistent storage as it appeared after the execution of the genesis block; block 2 was executed in the context of persistent storage as it appeared after the execution of block 1; etc.
 
-![Figure 5: Simplified Structure of Persistent Storage](fig5simpleStorage.png)
+![Figure 5: Simplified Structure of Persistent Storage](../../.gitbook/assets/fig5simplestorage.png)
 
 The state of persistent storage after the execution of a block is called the "post-state" of that block. In the figure, block 3 executes in the context of the post-state of block 2. The post-state of a block is not simply the variables written during the execution of that block - it includes all then-currently live variables independent of how far back in time they were last written. Thus when block 3 reads "a" it receives the value written in block 2; when it reads "b" it receives the value written in block 1. The node software's storage subsystem is designed to access variables in post-state in constant time independent of how many blocks in the past they were written.
 
 Because nodes are distributed over a network and are executing concurrently, multiple nodes may concurrently propose different blocks as children of the same parent - thus creating a "fork". Upon seeing this fork, other nodes may concurrently propose blocks on any branch of that fork. Thus, in general, persistent storage is not a linear chain of blocks as depicted in Figure 5 but a directed acyclic graph \(DAG\) of blocks as depicted in Figure 6.
 
-![Figure 6: Structure of Persistent Storage](fig6storage.png)
+![Figure 6: Structure of Persistent Storage](../../.gitbook/assets/fig6storage.png)
 
 In the diagram, the DAG grows \(i.e. the decentralized computer executes\) from left-to-right with arrows pointing from child to parent. For clarity only deploys are shown inside blocks. The post-state of each block is shown below the block in blue.
 
@@ -52,7 +52,7 @@ The CasperLabs system is designed to give operators control over the execution p
 
 We will now revisit the lifecycle of deploys in Figure 7. Upon arrival at a node deploys are stored in a buffer and a message is sent to the operator's block decision process. At some point the block decision process will send a message to the node software indicating when to propose a block and the specific deploys to include in it. Node software will then select a parent block \(to be discussed in more detail below\), execute all deploys in the proposed block on the VM in the context of the parent's post-state \(confirming commutativity if concurrent execution semantics are specified\), and then "propose" that block to its peers as the next increment of forward progress.
 
-![Figure 7: Deploy Lifecycle](fig7deployLifecycle.png)
+![Figure 7: Deploy Lifecycle](../../.gitbook/assets/fig7deploylifecycle.png)
 
 Note that at any given point in time, each node may perceive a different DAG topology. Because this topology is the context in which nodes make block proposal decisions, situations will arise where some forks of the DAG will be in conflict. As discussed below, one objective of the consensus algorithm is deciding which fork is canonical in the event of conflicting forks.
 
@@ -64,4 +64,5 @@ Note that blocks do not contain the state of persistent storage. This is for two
 
 The body is an array containing the deploy messages as received by the creator along with the gas cost of executing each deploy. When node software receives a block proposed by another node, it confirms that it calculates the same gas cost for each deploy as the creator.
 
-![Figure 8: Simplified Block Format](fig8simpleBlock.png)
+![Figure 8: Simplified Block Format](../../.gitbook/assets/fig8simpleblock.png)
+

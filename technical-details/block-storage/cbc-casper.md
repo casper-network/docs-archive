@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Consensus protocol stays in the core of any blockchain technology. It dictates how a distributed set of cooperating nodes comes to a coherent view of the world.
+The consensus protocol is at the core of any blockchain technology. It dictates how a distributed set of trustless nodes come to a coherent view of the world.
 
-The consensus solution used in Casperlabs blockchain is a latest achievement of a research that may be traced back to '80s. Important milestones of this process can be identified as:
+The consensus solution used in CasperLabs blockchain is a latest achievement of research that can be traced back to the 1980's. Important milestones of this process can be identified as:
 
 * 1980: The problem of byzantine consensus defined \(Lamport, Shostak\)
 * 1985: Impossibility of distributed consensus with one faulty process theorem \(Fischer, Lynch, Paterson\)
@@ -19,7 +19,7 @@ The consensus solution used in Casperlabs blockchain is a latest achievement of 
 * 2018: First implementation of proof-of-stake-blockchain built on Casper-GHOST-Blockdag combination attempted \(Rchain system\)
 * 2018: Casper protocol 1.0 specification \(Ethereum research group, Vlad Zamfir\)
 
-The solution we present here is pretty complex. Therefore we introduce it step-by-step, by starting from a simplest possible model first and then enriching the model gradually. This way a sequence of \(abstract\) models is built, where the understanding developed with every model N is directly utilized in subsequent model N+1.
+The solution we present here is pretty complex. Therefore we introduce it step-by-step, starting from the simplest possible model first and then enriching the model gradually. This way a sequence of \(abstract\) models is built, where the understanding developed with every model N is directly utilized in subsequent model N+1.
 
 As our last step we explain how the abstract model actually maps to the real implementation.
 
@@ -79,7 +79,7 @@ We assume that P2P protocol using for validator-to-validator communication is ba
 * the delay between sending $$M$$ and receiving $$M$$ is arbitrary long
 * there is no guarantee on messages ordering, so delivered order may differ from broadcasting order
 * the same message may be delivered more than once
-* in principle messages can also get lost, but we expect this is going to be masked by lower layers of communication, so on in the consensus layer disappearing of messages is visible as delays
+* in principle messages can also get lost, but we expect this is going to be masked by lower layers of communication, so in the consensus layer the disappearing of messages presents as delays
 
 ## Base model: distributed database with DAG of transactions
 
@@ -92,8 +92,6 @@ Let $$V$$ denote the \(finite\) set of validators.
 Let $$<GS, Zero \in GS>$$ be a set with a distinguished point. We will be calling this set "global states" and the distinguished point will be called "the initial state".
 
 Intuition here is that validators are going to establish a common view on "virtual memory of a decentralized computer" which is just another way of saying about a shared database. A point $$gs ∈ GS$$ represents a single snapshot of this shared memory.
-
-Implementation remark: the actual layout of global states in Casperlabs blockchain is described here \[ADD LINK\].
 
 ### Transactions
 
@@ -121,7 +119,7 @@ This is how a program transferring 1 coin from Alice's account to Bob's account 
 
 By a **transition**, we mean a pair $$<x,f(x)>$$, where $$f$$ is any transaction. Conceptually, transitions are like arrows connecting global states, while transaction is factory of transitions. Talking about transitions pops up naturally when one wants to visualize evolution of database state showing graphs where states are vertices.
 
-The way we use the word "transaction" is slightly different compared to the "IT tradition". In our lingo, a transaction on conceptually a program. A program can be executed against any input data and in the case the input data is the state of the database \(= global state\). On th other hand, what database community traditionally used to call "transaction", we prefer to call "transition". For example "Alice sends 10 dollars to Bob" or "If last chess game was lost, Alice sends 10 dollars to Bob" are transactions \(= programs\). The program generates a state transition when applied to a specific global state.
+The way we use the word "transaction" is slightly different compared to the "IT tradition". In our lingo, a transaction on conceptually a program. A program can be executed against any input data and in the case the input data is the state of the database \(= global state\). On the other hand, what database community traditionally used to call "transaction", we prefer to call "transition". For example "Alice sends 10 dollars to Bob" or "If last chess game was lost, Alice sends 10 dollars to Bob" are transactions \(= programs\). The program generates a state transition when applied to a specific global state.
 
 ### Composing transactions vs composing transitions
 

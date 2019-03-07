@@ -6,6 +6,7 @@
 
 * [Product Specification](introduction/product-specification/README.md)
   * [The Decentralized Computer](introduction/product-specification/the-decentralized-computer.md)
+  * [Contract Programming Model](introduction/product-specification/contract-programming-model.md)
   * [Contract Execution Model](introduction/product-specification/contract-execution-model.md)
   * [Persistent Storage Model](introduction/product-specification/persistent-storage-model.md)
   * [Decentralized Consensus](introduction/product-specification/decentralized-consensus.md)
