@@ -2,13 +2,13 @@
 
 ## Introduction
 
-The consensus protocol is at the core of any blockchain technology. It dictates how a distributed set of trustless nodes come to a coherent view of the world.
+A consensus protocol is at the core of any blockchain technology. It dictates how a distributed set of trustless nodes come to a coherent view of the world.
 
 The consensus solution used in CasperLabs blockchain is a latest achievement of research that can be traced back to the 1980's. Important milestones of this process can be identified as:
 
 * 1980: The problem of byzantine consensus defined \(Lamport, Shostak\)
 * 1985: Impossibility of distributed consensus with one faulty process theorem \(Fischer, Lynch, Paterson\)
-* 1997: Proof-of-work invented \(Hashcash system\)
+* 1997: Proof-of-Work invented \(Hashcash system\)
 * 1999: "Practical Byzantine Fault Tolerance" \(PBFT\) algorithm \(Miguel Castro, Barbara Liskov\)
 * 2008: Bitcoin invented \(Satoshi Nakamoto\)
 * 2012: First proof-of-stake cryptocurrency system created \(Peercoin system\)
@@ -16,18 +16,18 @@ The consensus solution used in CasperLabs blockchain is a latest achievement of 
 * 2013: "Greedy Heaviest Observed Subtree" \(GHOST\) algorithm introduced \(Sompolinsky, Zohar\)
 * 2015: Blockchain idea extended to "block DAG" - "Inclusive Block Chain Protocols" \(Lewenberg, Sompolinsky, Zohar\)
 * 2017: First draft version of Casper protocol spec published \(Ethereum research group, Vlad Zamfir\)
-* 2018: First implementation of proof-of-stake-blockchain built on Casper-GHOST-Blockdag combination attempted \(Rchain system\)
+* 2018: First implementation of proof-of-stake blockchain built on Casper-GHOST-Blockdag combination attempted \(Rchain system\)
 * 2018: Casper protocol 1.0 specification \(Ethereum research group, Vlad Zamfir\)
 
 The solution we present here is pretty complex. Therefore we introduce it step-by-step, starting from the simplest possible model first and then enriching the model gradually. This way a sequence of \(abstract\) models is built, where the understanding developed with every model N is directly utilized in subsequent model N+1.
 
-As our last step we explain how the abstract model actually maps to the real implementation.
+As our last step we explain how the abstract model actually maps to the our implementation.
 
 ## Terms and concepts
 
 We deal with a collection of entities attempting to reach consensus via message passing. These entities are typically referenced in literature as processes, actors, nodes, machines or generals. To be consistent with Casper research tradition, we call them 'validators'.
 
-Technically, validators are going to be computers running a dedicated application, referenced here as "blockchain node".  These validators collectively form a peer-to-peer network, using a message-passing based P2P protocol. This is what we aim to describe here.
+Technically, validators are going to be computers running a dedicated application, referenced here as "blockchain node". These validators collectively form a peer-to-peer network, using a message-passing based P2P protocol. This is what we aim to describe here.
 
 Conceptually, the validators connected via their P2P consensus protocol form a decentralized computer. This computer has memory \(elsewhere in this white paper referenced as "global state"\) and performs operations \(transactions\) that change the state of this memory.
 
@@ -119,7 +119,7 @@ This is how a program transferring 1 coin from Alice's account to Bob's account 
 
 By a **transition**, we mean a pair $$<x,f(x)>$$, where $$f$$ is any transaction. Conceptually, transitions are like arrows connecting global states, while transaction is factory of transitions. Talking about transitions pops up naturally when one wants to visualize evolution of database state showing graphs where states are vertices.
 
-The way we use the word "transaction" is slightly different compared to the "IT tradition". In our lingo, a transaction on conceptually a program. A program can be executed against any input data and in the case the input data is the state of the database \(= global state\). On the other hand, what database community traditionally used to call "transaction", we prefer to call "transition". For example "Alice sends 10 dollars to Bob" or "If last chess game was lost, Alice sends 10 dollars to Bob" are transactions \(= programs\). The program generates a state transition when applied to a specific global state.
+The way we use the word "transaction" is slightly different compared to the "IT tradition". In our lingo, a transaction is conceptually a program. A program can be executed against any input data and in this case the input data is the state of the database \(= global state\). On the other hand, what database community traditionally used to call "transaction", we prefer to call "transition". For example "Alice sends 10 dollars to Bob" or "If last chess game was lost, Alice sends 10 dollars to Bob" are transactions \(= programs\). The program generates a state transition when applied to a specific global state.
 
 ### Composing transactions vs composing transitions
 
@@ -140,14 +140,14 @@ This notation means that the following holds:
 When we have such a sequence, we may define composition of above sequence to give the following result:
 
 $$
-x \xrightarrow{g \circ f} w
+x \xrightarrow{g \circ f} z
 $$
 
 ### From transitions to evolution graphs
 
 For talking about distributed consensus we need to find a convenient notation and convenient communication model. These two somehow go together and we will try to follow the heuristic approach, showing how the idea naturally comes out.
 
-A point in $$GS$$ tells the "current" state of the decentralized database. This points moves after any transaction applied. The trajectory of the point, which can be seen as a sequence of transitions, makes what we call "the evolution". In the world of traditional \(=centralized\) databases such an evolution could look like this:
+A point in $$GS$$ tells the "current" state of the decentralized database. This points moves after any transaction applied. The trajectory of the point, which can be seen as a sequence of transitions, makes what we call "the evolution". In the world of traditional \(i.e. centralized\) databases such an evolution could look like this:
 
 ![Evolution graph example \(sequential\)](../../.gitbook/assets/casper-evolution-graph-seq.svg)
 
@@ -165,11 +165,11 @@ In our decentralized network of validators, different validators will independen
 
 ![Evolution graph example \(non-sequential\)](../../.gitbook/assets/casper-evolution-graph-example.svg)
 
-Now, the skeleton of the decentralized database solution looks as follows: validators create and broadcast blocks, every block carrying a single transaction. Every validator \(independently\) tries to capture what happened in the network so far and represents this knowledge \(in his local memory\) as an evolution graph. However, to be able to define legal way of creating new blocks, we will have to introduce **merging of histories**.
+Now, the skeleton of the decentralized database solution looks as follows: validators create and broadcast blocks, every block carrying a single transaction. Every validator \(independently\) tries to capture what happened in the network so far and represents this knowledge \(in his local memory\) as an evolution graph. However, to be able to define a legal way of creating new blocks, we will have to introduce **merging of histories**.
 
 ### Understanding conflicts and merging
 
-In general one can imagine a decentralized database solution where, although all validators can propose transactions, the consensus protocol leads to a "canonical" sequential evolution. This is how networks like Bitcoin or Ethereum work. CasperLabs wants to increase the total throughput of the network by allowing independent lines of decentralized database evolution to be merged.
+In general one can imagine a decentralized database solution where, although all validators can propose transactions, the consensus protocol leads to a "canonical" sequential evolution. This is how networks like Bitcoin or Ethereum work. CasperLabs foreeses significant network throughput gains by allowing independent lines of decentralized database evolution to be merged.
 
 To understand this phenomenon on the level of an evolution graph we will start with an example. Let's assume we have 4 validators: Red, Green, Blue, Orange. Let our decentralized database keep accounts and balances. Our $$Zero$$ state of the database is: \[Alice: 8, Bob: 3, Charlie: 3\].
 
@@ -201,13 +201,13 @@ This is the other way around:
 
 ![Composing b1 and b2](../../.gitbook/assets/casper-abc-merging-2.svg)
 
-Crucial observation here is that the final state we are getting is the same in both cases we got \[Alice: 3, Bob: 5, Charlie: 6\]. So the ordering problem is solved easily by the fact that ordering of composition does not matter. This is exactly what we mean by "turning two histories into a single history without ambiguity".
+A crucial observation here is that the final state we are getting is the same in both cases we got \[Alice: 3, Bob: 5, Charlie: 6\]. So the ordering problem is solved easily by the fact that ordering of composition does not matter. This is exactly what we mean by "turning two histories into a single history without ambiguity".
 
 Now, let's try another pair: $$b_1$$ with $$b_3$$. Both blocks execute the same transaction $$a$$, but of course these are separate invocations, so in the merged history, transaction $$a$$ would have to be executed twice. Let's see how this looks like:
 
 ![Composing b1 and b3](../../.gitbook/assets/casper-abc-merging-3-x.svg)
 
-It does not work at all ! Second execution of transaction $$a$$ just fails, so this is not a valid transition. And we can easily see why - it would make the balance of Alice's account negative, which is not allowed in our model. Formally, we say that the global state \[Alice: 3, Bob:8, Charlie:3\] does not belong to the domain of the partial function $$a$$. So we conclude that these two histories are NOT mergeable.
+It does not work at all! Second execution of transaction $$a$$ just fails, so this is not a valid transition. And we can easily see why - it would make the balance of Alice's account negative, which is not allowed in our model. Formally, we say that the global state \[Alice: 3, Bob:8, Charlie:3\] does not belong to the domain of the partial function $$a$$. So we conclude that these two histories are NOT mergeable.
 
 Let's try yet another pair $$b_4$$ and $$b_5$$. Now the situation is a little more complex because we have to compare $$b_2 \leadsto b_5$$ path vs single element path $$b_4$$ and the problem of "possible orderings" of the sequence becomes more tricky. When we loop over possible sequential histories, we have to respect already existing causal structure. Because $$b_2$$ precedes $$b_5$$, we will only do composing along sequences of $$b_2$$, $$b_4$$ and $$b_5$$ that respect this condition. It leads to 3 possibilities:
 
@@ -217,7 +217,7 @@ In all 3 cases compositions are well defined but the final state we end up with 
 
 Let's assume that Orange decided to merge $$b_1$$ and $$b_2$$ \(now we now they are mergeable\) and extend the merged history by executing transaction $$b$$.
 
-![Evolution graph \(after merging step\)](../../.gitbook/assets/casper-abc-merging-5.svg)
+![Evolution graph \(after merging step\)](../../.gitbook/assets/casper-abc-merging-5%20%281%29.svg)
 
 It looks good but now we can see that out notation is slightly too verbose and turns out to be less convenient then initially expected. There are two issues:
 
@@ -363,7 +363,7 @@ We could enrich our model in many different ways for such preference to be avail
 
 One of findings of Casper protocol research was a convenient solution to this problem. Instead of introducing timestamps and clocks, we are going to use a whole copy of the blockdag as a "timestamp" and seal it into the block !
 
-Well, but if we require each block $$B$$ created by validator $$V$$ to contain a snapshot of a blockdag maintained by $$V$$ at the moment of creating $$B$$, are these blocks going to become large and keep growing forever?  This immediately looks like a major performance problem.   The issue address by evolving the blockdag only by appending new blocks. If every block can point to blocks seen at its creation - we will call these pointers **justifications** - then we can just use reduce the required collection of pointers to just roots of the blockdag's snapshot.
+Well, but if we require each block $$B$$ created by validator $$V$$ to contain a snapshot of a blockdag maintained by $$V$$ at the moment of creating $$B$$, are these blocks going to become large and keep growing forever? This immediately looks like a major performance problem. The issue address by evolving the blockdag only by appending new blocks. If every block can point to blocks seen at its creation - we will call these pointers **justifications** - then we can just use reduce the required collection of pointers to just roots of the blockdag's snapshot.
 
 Augmenting the definition of a block to capture this concept. A **block** is a tuple consisting of:
 
@@ -470,9 +470,9 @@ How parents of a new block are selected \(publishing loop, step 2\) is the most 
 
 When we again take a look at the example blockdag, every swimlane \(considered a subgraph of $$jDAG$$\) is a chain:
 
-![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example.svg)
+![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example%20%281%29.svg)
 
-This is not surprising because, logically, as a valdiator, when I propose a new block, all blocks I proposed so far are within the scope of my knowledge, so obviously I am including them in justifications of a new block, when I create it. At least I **should** do so. The problem is that in a network of validators such  "honest" behaviour cannot be technically enforced. Instead, we have to accept that the reality will sometimes look like this:
+This is not surprising because, logically, as a valdiator, when I propose a new block, all blocks I proposed so far are within the scope of my knowledge, so obviously I am including them in justifications of a new block, when I create it. At least I **should** do so. The problem is that in a network of validators such "honest" behaviour cannot be technically enforced. Instead, we have to accept that the reality will sometimes look like this:
 
 ![Equivocation as seen in a blockdag](../../.gitbook/assets/casper-equivocation.svg)
 
@@ -552,7 +552,7 @@ The goal is to find biggest set of p-DAG tips that is mergeable. In case of conf
 
 Interestingly, a validator has some freedom in the way he runs fork choice. Although the fork-choice algorithm is fully deterministic when run against a fixed blockdag, the actual selection of the blockdag that fork-choice is run against, is something that can be considered part of validator's strategy. To understand this, let's look again at the first example of a blockdag with justifications:
 
-![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example.svg)
+![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example%20%282%29.svg)
 
 Let's pretend I am the validator $$A$$ and I am just about to propose a new block - $$b_{11}$$. My last block was $$b_8$$ and its j-past-cone is what represents the snapshot of the blockdag that was included with the block. So, as of now, this is what other validators can see as my current knowledge:
 

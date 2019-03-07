@@ -23,7 +23,7 @@ dApp components initiate execution of a contract by sending a "deploy" message t
 
 When a deploy is ready for execution, the payment contract is executed first. At some point during execution payment contracts are required to call a special "Proof of Stake \(POS\) contract" to perform the actual payment transaction. The POS contract will be discussed in more detail below. At the time the payment contract completes, if node software has not detected the activation of the POS contract, any state changes made by the payment contract are undone and the deploy is terminated. Payment contracts have access to the persistent variables of the account specified in the deploy message. Typically the execution cost of a deploy is paid from the purse of this account but this need not be the case as payment contracts may contain arbitrary logic for producing the needed funds.
 
-![Figure 4: Simplified Deploy Lifecycle](../../.gitbook/assets/fig4simpledeploy%20%281%29.png)
+![Figure 4: Simplified Deploy Lifecycle](../../.gitbook/assets/fig4simpledeploy-1.png)
 
 Executing contracts incurs a cost and this applies to the payment contract as well. At the start of deploy execution, node software supplies a "loan" to subsidize payment contract execution. The size of this loan is a system parameter. The system maintains the running total cost of executing the payment contract and if this cost exceeds the amount of the loan, its execution is halted, any state changes are undone, and the deploy is terminated. The cost of executing the payment contract is deducted from the amount the payment contract passes to the POS contract and any remaining funds are used to pay for executing the session contract.
 

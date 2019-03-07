@@ -2,7 +2,7 @@
 
 ## Motivation
 
-One of the biggest challenges that blockchain faces is the one of throughput. When new projects are being evaluated people often compare how many transactions per second it can run and how does it compare to Visa \( according to some sources it may vary from [1700 TPS ](https://news.bitcoin.com/no-visa-doesnt-handle-24000-tps-and-neither-does-your-pet-blockchain/)to[ 4400 TPS](https://medium.com/@aat.de.kwaasteniet/the-nonsense-of-tps-transactions-per-second-2d7156df5e53) \). It is value that none of the currently operating blockchains can achieve. One of the fundamental design choices that new projects may make is to build a DAG \(directed acyclic graph\) rather than linear chain \(as it is done in Bitcoin or Ethereum\). The idea behind building a DAG is that validators may build a blockchain "in parallel" \(imagine multiple threads that originate from the same place, run in parallel but join at some point in the future to form a single thread again\). One of the fundamental issues with this design is conflict resolution. What to do when there are multiple transactions that want to modify the same account? We can't apply changes from all of them blindly. This may lead to overdraws \(or double spends\). This problem is not trivial and there are potentially multiple ways to solve it. This document presents how we address this in the CasperLabs platform.
+One of the biggest challenges that blockchain faces is the one of throughput. When new projects are being evaluated people often compare how many transactions per second it can run and how does it compare to Visa \( according to some sources it may vary from [1700 TPS ](https://news.bitcoin.com/no-visa-doesnt-handle-24000-tps-and-neither-does-your-pet-blockchain/)to[ 4400 TPS](https://medium.com/@aat.de.kwaasteniet/the-nonsense-of-tps-transactions-per-second-2d7156df5e53) \). It is value that none of the currently operating decentralized blockchains can achieve. One of the fundamental design choices that new projects may make is to build a DAG \(directed acyclic graph\) rather than linear chain \(as it is done in Bitcoin or Ethereum\). The idea behind building a DAG is that validators may build a blockchain "in parallel" \(imagine multiple threads that originate from the same place, run in parallel but join at some point in the future to form a single thread again\). One of the fundamental issues with this design is conflict resolution. What to do when there are multiple transactions that want to modify the same account? We can't apply changes from all of them blindly. This may lead to overdraws \(or double spends\). This problem is not trivial and there are potentially multiple ways to solve it. This document presents how we address this in the CasperLabs platform.
 
 ## Commutativity of transactions
 
@@ -153,33 +153,45 @@ We reduce such trace in two steps:
 1. Grouping operations by key
 2. Merging operations in every group, according to the following merging table:
 
-|  | Read | Write |  |
-| :--- | :--- | :--- | :--- |
-
-
-| Read | Read | Write | Write |
-| :--- | :--- | :--- | :--- |
-
-
-| Write | Write | Write | Write |
-| :--- | :--- | :--- | :--- |
-
-
 <table>
   <thead>
     <tr>
-      <th style="text-align:left"></th>
-      <th style="text-align:left">Write</th>
-      <th style="text-align:left">Write</th>
-      <th style="text-align:left">
-        <p>if () cf_1</p>
-        <p>else error</p>
+      <th style="text-align:left">+</th>
+      <th style="text-align:left"><b>Read</b>
+      </th>
+      <th style="text-align:left"><b>Write</b>
+      </th>
+      <th style="text-align:left"><b>Add</b>
       </th>
     </tr>
   </thead>
-  <tbody></tbody>
-</table>* Writes conflicts with everything 
-* Reads commute with Reads only 
+  <tbody>
+    <tr>
+      <td style="text-align:left"><b>Read</b>
+      </td>
+      <td style="text-align:left">Read</td>
+      <td style="text-align:left">Write</td>
+      <td style="text-align:left">Write</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Write</b>
+      </td>
+      <td style="text-align:left">Write</td>
+      <td style="text-align:left">Write</td>
+      <td style="text-align:left">Write</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Add</b>
+      </td>
+      <td style="text-align:left">Write</td>
+      <td style="text-align:left">Write</td>
+      <td style="text-align:left">
+        <p>if () cf_1</p>
+        <p>else error</p>
+      </td>
+    </tr>
+  </tbody>
+</table>* Reads commute with Reads only 
 * Members of a commutative family commute with other members of the same family
 
 Finally, the reduced execution trace of a transaction t can be represented as a function:

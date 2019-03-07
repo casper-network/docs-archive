@@ -1,6 +1,6 @@
 # Deployments
 
-### The Deploy Message
+## The Deploy Message
 
 Clients send Deploys to one or more nodes on the network who will validate them and try to include them in future Blocks. To do this Clients need to make a call to the `DeploymentService`. The specifics can be found under [Deployment API](../appendix/grpc-interfaces.md#deployment-api).
 

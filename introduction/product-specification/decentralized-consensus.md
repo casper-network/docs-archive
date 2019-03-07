@@ -18,7 +18,7 @@ The node that issued the bonding deploy is able to act as a validator for any bl
 
 Validators cannot blindly trust the behavior of other validators - fallible behavior must be assumed, whether caused by bugs, network or machine failure, or dishonesty. Therefore validators perform a series of checks on proposal messages they receive from other validators. This process is depicted in Figure 9.
 
-![Figure 9: Block Validation Lifecycle](../../.gitbook/assets/fig9validationlifecycle%20%281%29.png)
+![Figure 9: Block Validation Lifecycle](../../.gitbook/assets/fig9validationlifecycle-1.png)
 
 When a proposed block arrives at a validator, the validator checks the block signature, constructs the pre-state for the proposed block, confirms commutativity for blocks with multiple parents, executes deploys in the block in the context of the pre-state \(confirming it calculates the same gas costs for each deploy\), confirms commutativity for blocks with concurrent execution semantics, confirms the hash of the post-state is equal to that in the propose message, and stores the proposed block in the block store.
 
@@ -56,7 +56,7 @@ The score for all blocks in the DAG is given in red.
 
 The fork choice rule also requires calculation of cumulative gas for each block which is illustrated in Figure 12. As stated earlier, blocks include the gas expended to execute each deploy in that block. These can be summed to get the total gas expenditure for a block. Total gas expenditure is listed inside each block in the diagram.
 
-![Figure 12: Calculating Cumulative Gas](../../.gitbook/assets/fig12cumegas%20%281%29.png)
+![Figure 12: Calculating Cumulative Gas](../../.gitbook/assets/fig12cumegas-1.png)
 
 To calculate cumulative gas for a given block, start at that block, initialize its cumulative gas to zero, then follow all outgoing links \(i.e. from child to parent\) until genesis is reached. Along the way sum the total gas of each unique block encountered.
 
@@ -90,7 +90,7 @@ The more validators that have seen a block, the lower the risk that block will b
 
 In order to fully convey their perceived DAG to other validators, when validators send a proposed block they specify the most recent block they have seen from all validators - including themselves. Parent edges contribute to this requirement but unless a proposed block has parents from every validator, parent edges alone will not suffice. Therefore the DAG contains another type of edge known as a "justification" to satisfy this requirement. There is an additional field in the block header for justifications. Except for the first blocks proposed after genesis, the sum of parent edges and justification edges in a block should equal total count of then-current validators. Figure 16 depicts the example DAG we have been using with all justification edges. These correspond to the descriptions of the state of the DAG seen by each validator given in Figure 10.
 
-![Figure 16: Justification Edges](../../.gitbook/assets/fig16justifications%20%281%29.png)
+![Figure 16: Justification Edges](../../.gitbook/assets/fig16justifications-1.png)
 
 Decision weight is calculated using an "agreement graph". The agreement graph has one vertex per validator where each vertex has a weight equal to the stake of the corresponding validator. At any point in time this graph may have one or more "cliques". A clique is a concept from graph theory defined as a sub-graph where each vertex in the sub-graph is connected to every other vertex in that sub-graph. Note that a clique can be a single vertex. The decision weight is the maximum of all current clique weights in the agreement graph.
 
