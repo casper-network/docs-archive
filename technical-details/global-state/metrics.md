@@ -4,7 +4,7 @@
 
 ## Required metrics
 
-**TODO** What metrics are required to reflect the state of the network? Should we take something from this page? [https://casperlabs.atlassian.net/wiki/spaces/EN/pages/3014657/Casperlabs](https://casperlabs.atlassian.net/wiki/spaces/EN/pages/3014657/Casperlabs) Metrics Should we mark them as "strongly recommended" or "must have"?
+The list of required metrics exposed by the CasperLabs node software will be published in a future version of this specification.
 
 ## Recommended metrics
 
