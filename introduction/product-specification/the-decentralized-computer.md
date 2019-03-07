@@ -4,11 +4,11 @@ The CasperLabs system is a geographically unbounded computer with no single locu
 
 Applications using the decentralized computer are known as "decentralized apps" or "dApps". The architecture of a typical dApp is depicted in Figure 1. dApps implement their desired function by storing and executing contracts on the decentralized computer. In addition to being composed of contracts executed on the decentralized computer, dApps may also be composed of software running elsewhere on the network. In some cases dApp providers will run their own node which in turn will interact with nodes elsewhere on the network.
 
-![Figure 1: Typical dApp Architecture](../../.gitbook/assets/fig1dapparch.png)
+![Figure 1: Typical dApp Architecture](fig1dappArch.png)
 
 The nodes composing the decentralized computer are distributed across the Internet and execute concurrently. Thus messages between nodes will experience out of order delivery, variable transmission latency, and failed delivery. Under these conditions any particular node's view of the state of the decentralized computer is eventually consistent with all other nodes. Referring to Figure 2: At any given point in time there will exist some point in the past prior to which all nodes have a mutually consistent view of the state of the system - this is known as the "finalization boundary" \(explained in more detail below\). Between the finalization boundary and the present, different nodes may have inconsistent views of the system. A consensus algorithm is used to converge nodes to a consistent view of the state of the decentralized computer.
 
-![Figure 2: Eventual Consistency](../../.gitbook/assets/fig2eventualconsistency.png)
+![Figure 2: Eventual Consistency](fig2eventualConsistency.png)
 
 The overall design of the CasperLabs system is one of multiple inter-dependent concepts and algorithms. This document presents this set of concepts incrementally. A concept may be presented more than once where earlier presentations omit details and, after other dependencies have been introduced, the concept is then revisited.
 
