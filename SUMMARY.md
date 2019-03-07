@@ -21,6 +21,7 @@
   * [Token](technical-details/block-storage/token.md)
 * [Node](technical-details/global-state/README.md)
   * [Communications](technical-details/global-state/communications.md)
+  * [Deployments](technical-details/global-state/deployments.md)
   * [Metrics](technical-details/global-state/metrics.md)
 * [Appendix](technical-details/appendix/README.md)
   * [gRPC Interfaces](technical-details/appendix/grpc-interfaces.md)
