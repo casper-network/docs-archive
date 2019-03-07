@@ -4,14 +4,20 @@
 
 Consensus protocol stays in the core of any blockchain technology. It dictates how a distributed set of cooperating nodes comes to a coherent view of the world.
 
-The consensus solution used in Casperlabs blockchain is a result of a long-running research. Critical milestones of this research can be identified as:
+The consensus solution used in Casperlabs blockchain is a latest achievement of a research that may be traced back to '80s. Important milestones of this process can be identified as:
 
-* 1980: Lamport / Shostak - the problem of byzantine consensus defined
-* 1985: FLP impossibility theorem
-* 1997: Proof-of-work invented (Hashcash)
-* 2008: Bitcoin invented by Satoshi Nakamoto
-* 2013: Bitcoin idea generalized to a decentralized general-purpose computing platform (Ethereum, Vitalik Buterin)
-* 2018: Casper protocol research group released version 1.0 of the specification
+* 1980: The problem of byzantine consensus defined (Lamport, Shostak)
+* 1985: Impossibility of distributed consensus with one faulty process theorem (Fischer, Lynch, Paterson)
+* 1997: Proof-of-work invented (Hashcash system)
+* 1999: "Practical Byzantine Fault Tolerance" (PBFT) algorithm (Miguel Castro, Barbara Liskov)
+* 2008: Bitcoin invented (Satoshi Nakamoto)
+* 2012: First proof-of-stake cryptocurrency system created (Peercoin system)
+* 2013: Ethereum invented - cryptocurrency idea generalized to a decentralized general-purpose computing platform (Vitalik Buterin)
+* 2013: "Greedy Heaviest Observed Subtree" (GHOST) algorithm introduced (Sompolinsky, Zohar)
+* 2015: Blockchain idea extended to "block DAG" - "Inclusive Block Chain Protocols" (Lewenberg, Sompolinsky, Zohar)
+* 2017: First draft version of Casper protocol spec published (Ethereum research group, Vlad Zamfir)
+* 2018: First implementation of proof-of-stake-blockchain built on Casper-GHOST-Blockdag combination attempted (Rchain system)
+* 2018: Casper protocol 1.0 specification (Ethereum research group, Vlad Zamfir)
 
 The solution we present here is pretty complex. Therefore we introduce it step-by-step, by starting from a simplest possible model first and then enriching the model gradually. This way a sequence of (abstract) models is built, where the understanding developed with every model N is directly utilized in subsequent model N+1.
 
@@ -34,9 +40,9 @@ Below we quickly recall some well-known concepts from mathematics that are used 
 
 **Sets, functions and logic**
 
-* **iff** - shortcut for "if and only if"; frequently used to connect a name of the concept from its definition
+* **iff** - shorthand for "if and only if", so the logical equivalence
 * **power set of A** - denoted $$P(A)$$, is the set of all subsets of A
-* **cartesian product ** $$\mathbf{A \times B}$$ - set of all pairs $$(a \in A, b \in B)$$
+* **cartesian product** $$\mathbf{A \times B}$$ - set of all pairs $$(a \in A, b \in B)$$
 * **image and inverse-image** - for a function $$f: A \rightarrow B$$, $$\overrightarrow{f}:P(A) \rightarrow P(B)$$ is a function mapping subsets of $$A$$ to their images via $$f$$, while $$\overleftarrow{f}:P(B) \rightarrow P(A)$$ is a function mapping subsets of B to their inverse-images via $$f$$
 * **bijection** - a function that is invertible
 * **partial function ** $$\mathbf{f:A \rightarrow B}$$ - function $$A \supset X \rightarrow B$$; we denote by $$dom(f)$$ the domain of $$f$$, so the set of elements in $$A$$ where $$f$$ is defined; so basically $$dom(f)=X$$
@@ -49,7 +55,7 @@ Below we quickly recall some well-known concepts from mathematics that are used 
 * **relation on A** - any subset of $$A \times A$$
 * **POSET** - partially ordered set; this is a pair $$<A, R>$$, where $$A$$ is a set, $$R$$ is a relation on $$A$$ which is reflexive, antisymmetric and transitive; we write $$a < b$$ when $$(a,b) \in R$$
 * **linear order** - a POSET where any two elements a,b are comparable, so either $$a < b$$ or $$b < a$$
-* **transitive closure of a relation** - for a relation $$R \subset A \times A$$, a smallest transitive relation $$T \subset A \times A$$ such that $$R \subset A$$
+* **transitive closure of a relation** - for a relation $$R \subset A \times A$$, a smallest transitive relation $$T \subset A \times A$$ such that $$R \subset T$$
 * **transitive reduction of a relation** - for a relation $$R \subset A \times A$$, a smallest relation $$T \subset A \times A$$ such that $$R ⊂ TransitiveClosure(T)$$
 * **linear extension of a partial order** - for a POSET $$<A, R>$$ this is any relation $$E$$ on $$A$$ such that $$R \subset E$$ and $$<A, E>$$ is a linear order
 
@@ -100,12 +106,12 @@ A **transaction** is any partial function $$t:GS \longrightarrow GS$$. We think 
 **Example 2:** Let $$A=\{Alice, Bob, Charlie\}$$. Take global states to be $$\mathbb{N}^A$$. Intuitively this can be seen as a simple banking system with only 3 accounts, where a global state $$gs:A \rightarrow B$$ tells what are current balances of accounts. Let's define a sample transaction:
 $$
 f:\mathbb{N}^A \supset \{b \in \mathbb{N}^A:b(Alice)>0\} \rightarrow \mathbb{N}^A \newline
-f(b)=\{(Alice, b(Alice) - 1), (Bob, p(Bob)+1), (Charlie, p(Charlie))\} \newline
+f(b)=\{(Alice, b(Alice) - 1), (Bob, b(Bob)+1), (Charlie, b(Charlie))\} \newline
 $$
 
 This is how a program transferring 1 coin from Alice's account to Bob's account looks in our abstract notation.
 
-**Example 3:** Take global states to be any set $$A$$. Take transactions to be all permutations on A: $$TR={f \in A^A: A \space is \space bijection}$$.
+**Example 3:** Take global states to be any set $$A$$. Take transactions to be all permutations on A: $$TR={f \in A^A: f \space is \space bijection}$$.
 
 **Example 4:** Let $$GS=\{0,1\}$$. Let $$TR=Partial(GS \rightarrow GS)$$ - this set contains 9 elements. This is in a sense a simplest non-trivial states and transactions setup over which our consensus can be tested.
 
@@ -308,7 +314,7 @@ And this is how it looks after translating to blockdag notation:
 
 We are now ready to define merging formally. We will do this by extending the list of conditions for a blockdag to be well formed. First we need a convenient way of talking about paths in a blockdag.
 
-For two blocks $$a,b \in \mathfrak{B}$$ we say that $$b$$ builds on $$a$$ ($$a \triangleleft b$$) iff there exists a non-empty path in $$\mathfrak{B}$$ from $$b$$ to $$a$$.
+For two blocks $$a,b \in \mathfrak{B}$$ we say that $$b$$ builds on $$a$$ ($$a \triangleleft b$$) when there exists a non-empty path in $$\mathfrak{B}$$ from $$b$$ to $$a$$.
 
 For a block $$b \in \mathfrak{B}$$ we define **p-past-cone** as:
 
@@ -395,8 +401,8 @@ This new drawing convention is:
 
 The way we use blockdags unfortunately makes classic terminology of DAGs confusing while talking about mutual position of vertices. Classic approach is that if there is a path $$v \rightarrow ... \rightarrow w$$, we say that $$v$$ precedes $$w$$, or that $$v$$ is an ancestor of $$w$$. Frequently it is also denoted by $$v \prec w$$, especially if we talk about a simple DAG, so the one effectively equivalent to a POSET. The source of confusion is coming from how our blockdags grow. Arrows in blockdags point always towards the "past" and latest blocks are always roots. This way "time-precedes" in direct semantic collision with "arrow-precedes". To evade the confusion we introduce the following terms:
 
-* $$b$$ builds on $$a$$, or $$a \triangleleft b$$ iff there exists a path in $$pDAG$$ from $$b$$ to $$a$$
-* $$b$$ requires $$a$$, or $$a \ll b $$ iff there exists a path in $$jDAG$$ from $$b$$ to $$a$$
+* $$b$$ builds on $$a$$, or $$a \triangleleft b$$ when there exists a path in $$pDAG$$ from $$b$$ to $$a$$
+* $$b$$ requires $$a$$, or $$a \ll b $$ when there exists a path in $$jDAG$$ from $$b$$ to $$a$$
 
 This way relational operators $$\triangleleft$$ and $$\ll$$ are coherent with time intuition:
 * $$b$$ builds on $$a$$ implies that $$a$$ is older than $$b$$ (= was added later to the blockdag)
@@ -494,7 +500,7 @@ $$
 
 The results of running the scoring phase look like this:
 
-![Scoring phase 1](../../.gitbook/assets/casper-scoring-phase-2.svg)
+![Scoring phase 2](../../.gitbook/assets/casper-scoring-phase-2.svg)
 
 ### Fork choice phase 3: ordering tips
 
@@ -510,18 +516,18 @@ The goal of this phase is to construct an ordered list of parent candidates. We 
 
 Let's see how this algorithm works for our example blockdag:
 
-|   Step executed         | Resulting contents of the collection |
-|-------------------------|--------------------------------------|
-|initial                  |Genesis                               |
-|replace with children    |b1,b2                                 |
-|replace with children    |b3,b3,b4                              |
-|remove duplicates        |b3,b4                                 |
-|replace with children    |b5,b6,b7                              |
-|replace with children    |b8,b9,b12                             |
-|replace with children    |b12,b11,b10,b11                       |
-|remove duplicates        |b12,b11,b10                           |
-|replace with children    |b11,b11,b10                           |
-|remove duplicates        |b11,b10                               |
+|   **Step executed**     | **Resulting contents of the collection** |
+|-------------------------|------------------------------------------|
+|initial                  |Genesis                                   |
+|replace with children    |b1,b2                                     |
+|replace with children    |b3,b3,b4                                  |
+|remove duplicates        |b3,b4                                     |
+|replace with children    |b5,b6,b7                                  |
+|replace with children    |b8,b9,b12                                 |
+|replace with children    |b12,b11,b10,b11                           |
+|remove duplicates        |b12,b11,b10                               |
+|replace with children    |b11,b11,b10                               |
+|remove duplicates        |b11,b10                                   |
 
 The result we got is a collection of all tips of p-DAG, ordered by "preference". First element is the most preferred one, the **fork-choice leader**.
 
@@ -535,20 +541,45 @@ The goal is to find biggest set of p-DAG tips that is mergeable. In case of conf
 
 ### Fork choice freedom discussion
 
-Interestingly, a validator has some freedom in the way he runs fork choice. Although the fork-choice algorithm is fully deterministic when run against a fixed blockdag, the actual selection of the blockdag that fork-choice is run against is something that can be considered part of validator's strategy. To understand this, let's look again at the first example of a blockdag with justifications:
+Interestingly, a validator has some freedom in the way he runs fork choice. Although the fork-choice algorithm is fully deterministic when run against a fixed blockdag, the actual selection of the blockdag that fork-choice is run against, is something that can be considered part of validator's strategy. To understand this, let's look again at the first example of a blockdag with justifications:
 
 ![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example.svg)
 
-Let's pretend I am the validator $$A$$ and I am just about to propose a new block - $$b_{10}$$. My last block was $$b_7$$ and its j-past-cone is what represents the snapshot of the blockdag that was included with the block. So, as of now, this is what other validators can provably say about my current knowledge:
+Let's pretend I am the validator $$A$$ and I am just about to propose a new block - $$b_{11}$$. My last block was $$b_8$$ and its j-past-cone is what represents the snapshot of the blockdag that was included with the block. So, as of now, this is what other validators can see as my current knowledge:
 
-![Blockdag with justifications](../../.gitbook/assets/casper-fork-choice-freedom-1.svg)
+![Subset of blockdag that A admitted as seen](../../.gitbook/assets/casper-fork-choice-freedom-1.svg)
 
-By the time I published block $$b_7$$ my knowledge has grown because - apparently - several new blocks from validators $$B$$ and $$C$$ have arrived. Now, which part of this real knowledge I am going to disclose to others ? This is something that I can actually make a quite arbitrary decision about.
+For simplifying the discussion, we will introduce two terms, referencing to subsets of local copy of the blockdag as stored by a validator :
+  * **display** - is the subset of X's local blockdag that other validators can infer as known to X, assuming the source of knowledge being only blocks published by $$X$$; this obviously is the sum of j-past-cones of all blocks published by $$X$$; if $$X$$ is not equivocating, then display of $$X$$ is just equal to j-past-cone of $$X$$'s latest block.
+  * **pocket** - local blockdag minus the display
 
-One example of such decision would lead to this blockdag:
+On blockdag diagrams, we will be marking the display using violet color.
 
-![Blockdag with justifications](../../.gitbook/assets/casper-fork-choice-freedom-2.svg)
+Now let's come back to the discussion. By the time I published block $$b_8$$ my local blockdag has grown because - apparently - several new blocks from validators $$B$$ and $$C$$ have arrived. Now, which part of my local blockdag am I going to display ? This is something that I can actually make quite arbitrary decision about.
 
+For example, I can decide to keep my display minimal. So I deliberately keep $$b_4$$, $$b_6$$, $$b_7$$, $$b_9$$, $$b_{10}$$ in the pocket and I am running the fork-choice against j-past-cone of block $$b_8$$ only. Obviously, $$b_8$$ will become my fork-choice leader and I will publish the new block $$b_{11}$$ having only one parent.
+
+![Running fork-choice with strategy "diplomacy"](../../.gitbook/assets/casper-fork-choice-freedom-2.svg)
+
+The same blockdag but with display and pocket explicitly marked::
+
+![Display and pocket explained](../../.gitbook/assets/casper-display-and-treasury-explained.svg)
+
+Another example would be to make the display equal to the local blockdag, so in other words to disclose everything. Then, $$b_{10}$$ becomes the fork-choice leader and the situation after publishing my new block will be:
+
+![Running fork-choice with strategy "disclose everything"](../../.gitbook/assets/casper-fork-choice-freedom-3.svg)
+
+But I also have several "intermediate" possibilities. For example I can keep blocks $$b_9$$ and $$b_{10}$$ hidden, but display everything else. In such case I am running my fork choice against this blockdag:
+
+![Running fork-choice with arbitrary selection of display](../../.gitbook/assets/casper-fork-choice-freedom-4.svg)
+
+Fork choice will give $$b_6$$ or $$b_8$$ as the leader (depending on block hashes), but it follows from the existence of block $$b_9$$ that all 3 tips are mergeable here. So the final result will be:
+
+![Running fork-choice with arbitrary selection of display](../../.gitbook/assets/casper-fork-choice-freedom-5.svg)
+
+Why may a validator be interested in keeping the pocket non-empty ? Well, because this leaves bigger decision space when it comes to publish a new block. This decision space may be seen as some extra power to influence the direction of where consensus is going to. Look at this block $$b_{11}$$ - it contains transaction $$x$$. If transaction $$x$$ is in conflict with transaction $$m$$, so blocks $$b_{10}$$ and $$b_{11}$$ are not mergeable, then publishing $$b_{11}$$ on top of $$b_10$$ is not possible. On the other hand, hiding some blocks from the display makes publishing $$b_{11}$$ legal. Doing so means that validator $$A$$ actively tries tries to influence the direction of where consensus will go, instead of just "going with the flow".
+
+As we cannot stop this phenomenon, the only solution left is just to accept its existence and understand its consequences for the network.
 
 ## Increment 1: dynamic set of validators
 
