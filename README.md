@@ -1,7 +1,5 @@
 # Abstract
 
-## Motivation
-
 In 2019, CasperLabs introduces a blockchain platform that has all the features required for mainstream adoption. These are outlined in the detailed sections of this technical specification. 
 
 1. **Consensus Method**: CasperLabs strives to be the first to deploy an implementation of  the Correct-by-Construction Casper Proof-of-Stake consensus protocol as described [here](https://github.com/cbc-casper/cbc-casper-paper) by Vlad Zamfir, Ethereum Foundation Researcher  and Lead CBC-Casper Architect for CasperLabs.
