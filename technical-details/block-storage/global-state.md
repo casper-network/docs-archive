@@ -6,7 +6,7 @@ description: 'Accounts, K/V'
 
 ## Introduction
 
-Blockchain can be viewed as decentralized, distributed database with verifiable computation layer on top. In order to do anything meaningful we need a way to store data \(in blockchain context these may be contracts, accounts etc\). From a Computer Engineering perspective Global State \(as we call this distributed and decentralized database\) can be thought of as key-value store, a mapping between byte-arrays and byte-arrays that is being replicated between nodes in the network. Although it is not required from the specific implementation of Global State, it is assumed that the implementation will maintain this mapping in a Merkle Patricia tree.
+Blockchain can be viewed as decentralized, distributed database with verifiable computation layer on top. In order to do anything meaningful we need a way to store data \(in blockchain context these may be contracts, accounts etc\). From a Computer Engineering perspective Global State \(as we call this distributed and decentralized database\) can be thought of as key-value store, a mapping between byte-arrays and byte-arrays that are being replicated between nodes in the network. Although it is not required from the specific implementation of Global State, it is assumed that the implementation will maintain this mapping in a Merkle Patricia tree.
 
 ## Keys
 
@@ -22,11 +22,11 @@ Account is a 160-bit identifier similar to Ethereum. Account addresses are deriv
 
 ### Contract hash
 
-Contract hash is a 256-bit identifier, \(as the name would suggest\) derived from the hash used to label a contract stored on-chain. These hashes are derived from the triple \(public key, nonce, ID\), where the public key and the nonce come from the account that made the deploy which is storing the contract \(this is the same as Ethereum\) and the ID is simply a sequential identifier allowing each deploy to store multiple contracts and still have a unique hash for each of them. Like addresses, these are forgeable keys, meaning they can be written down by anyone at any time. Unlike accounts though, the security is maintained via immutability instead of cryptographic authentication. The contract referenced by a hash is immutable by a rule enforced by the runtime, similar to Ethereum.
+Contract hash is a 256-bit identifier, \(as the name would suggest\) derived from the hash used to label a contract stored on-chain. These hashes are derived from the tuple \(public key, nonce, ID\), where the public key and the nonce come from the account that made the deploy which is storing the contract \(this is the same as Ethereum\) and the ID is simply a sequential identifier allowing each deploy to store multiple contracts and still have a unique hash for each of them. Like addresses, these are forgeable keys, meaning they can be written down by anyone at any time. Unlike accounts though, the security is maintained via immutability instead of cryptographic authentication. The contract referenced by a hash is immutable by a rule enforced by the runtime, similar to Ethereum.
 
 ### Unforgeable reference
 
-Unforgeable reference \(called `URef` interchangeably in the rest of the document\) is a 256-bit random identifier. These cannot be created by any source code, though new, yet unused ones, can be. The value associated with a `URef` in the global state is a mutable cell of some data type \(see the values section below\). Unforgeable references enable OCaps \(see [OCaps Security Appendix]()\) security by allowing developers to delegate authority \(e.g. to access data or perform some action\) using these references.
+Unforgeable reference \(called `URef` interchangeably in the rest of the document\) is a 256-bit random identifier. These cannot be created by any source code, though new, yet unused ones, can be. The value associated with a `URef` in the global state is a mutable cell of some data type \(see the values section below\). Unforgeable references enable Capability based security by allowing developers to delegate authority \(e.g. to access data or perform some action\) using these references.
 
 ## Values
 
@@ -50,20 +50,20 @@ Account addresses are keys in the global data store which point at accounts. Bec
 * A purse field. This is an unforgeable reference to the `purse` object holding funds of the account.
 * A set of known `URef`s  \(private\). Mapping between strings to names. Idea behind this map is to allow developers use human readable versions of the keys.
 * A public method called `give`, which takes an unforgeable reference as an argument. When you call `give` on an account, the provided `URef` is added to that account's set of known unforgeable references. Key used for persisting the name is derived from the name itself.   **NOTE**: name can be remapped later.  **NOTE**: `give`-ing a name is more expensive that deleting it. This incentivizes developers to not `give` out names.
-* A public method called `authenticate`, which takes a nonce and cryptographic signature as arguments. The `authenticate` method is only called during the first phase of a deploy, called the "login" phase. This means that cryptographic \(identity-based\) security is used on the boundary of the system, but full capabilities-based security is used entirely inside the system. _**\(note from Mateusz: I am not sure about this part of the description as it seems like something more developer facet, a bit tutorial-ish. I am not convinced it's something that should be put into whitepaper**_**\)**
+* A public method called `authenticate`, which takes a nonce and cryptographic signature as arguments. The `authenticate` method is only called during the first phase of a deploy, called the "login" phase. This means that cryptographic \(identity-based\) security is used on the boundary of the system, but full capabilities-based security is used entirely inside the system. 
 
 ### Smart contract
 
-The precise definition of "Smart Contract" is left purposely vague here because we are agnostic to the detail about it. Contracts have the following properties:
+The precise definition of "Smart Contract" is left purposely vague here because we are keeping it as generic as possible. Contracts have the following properties:
 
-* A set of known unforgeable references. Similarly to `Account`.
-* bytearray representing serialized body of the contract. At the moment this is serialized Wasm code. This means that in order for the contract to update its state it has to put new data into its `URef` set. _**\(note from Mateusz: I am not sure about this part of the description as it seems like something more developer facet, a bit tutorial-ish. I am not convinced it's something that should be put into whitepaper**_**\)**
+* A set of known unforgeable references. Similar to `Account`.
+* bytearray representing serialized body of the contract. At the moment this is serialized Wasm code. This means that in order for the contract to update its state it has to put new data into its `URef` set. 
 
 ## ABI
 
 ### Background
 
-The bytecode used to execute transactions on the blockdag is Web Assembly \(wasm\). It is extremely low-level; meaning that interaction with the host runtime environment can only be done by copying bytes back and forth. This happens for example when passing arguments to a smart contract, getting a return value from a smart contract, and getting/putting from/to the global state. The purpose of this document is to specify the Application Binary Interface \(ABI\) to allow higher-order data structures to be communicated via bytes over the host/wasm boundary.
+The bytecode used to execute transactions on the blockdag is Web Assembly \(wasm\). It is extremely low-level; meaning that interaction with the host runtime environment can only be done by copying bytes back and forth. For example, this occurs when arguments are passed to a smart contract, get a return value from a smart contract, and get/put from/to the global state. The purpose of this document is to specify the Application Binary Interface \(ABI\) to allow higher-order data structures to be communicated via bytes over the host/wasm boundary.
 
 ### Specification
 

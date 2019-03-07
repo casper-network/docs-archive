@@ -13,7 +13,7 @@ The details of the Wasm instruction set and module format are beyond the scope o
 
 Being an active component of the decentralized computer requires operators to run nodes that execute contracts and maintain persistent state, which in turn requires operators to incur capital and operating expenses. Therefore the CasperLabs system is designed to compensate operators for performing these functions. Each instruction in the Wasm instruction set, and each function in the system library, is assigned a fixed cost denominated in units of "gas". Gas is a measure of the relative amount of compute and storage resources expended by the decentralized computer to perform some operation. The gas cost of executing a contract is the sum of the cost of all dynamic Wasm instructions executed plus the sum of the cost of all dynamic system function calls. A market mechanism will be used to dynamically map of a unit of gas to one or more currencies.
 
-All contracts execute in the context of an account. Accounts only contain persistent state; they do not contain executable object code. There is no fixed association between accounts and contracts -  the same contract may execute in the context of multiple accounts and multiple contracts may execute in the context of the same account.
+All contracts execute in the context of an account. Accounts only contain persistent state; they do not contain executable object code. There is no fixed association between accounts and contracts - the same contract may execute in the context of multiple accounts and multiple contracts may execute in the context of the same account.
 
 At a minimum, accounts have a persistent variable named "purse" whose value is a contract that can be executed to pay for, among other things, contract execution. The contract reference by purse has a persistent variable containing a current balance.
 
@@ -44,3 +44,4 @@ The payment and session contracts have the following unique characteristics:
 * They cannot be passed arguments
 * They are transient, i.e. they only exist in the deploy message and are not stored in persistent storage
 * They have direct access to the persistent variables of the account specified in the deploy message, including the ability to create new account persistent variables and the ability to pass these variables to any contract they call.
+
