@@ -4,7 +4,6 @@
 
 ## Introduction
 
-* [A Brief History of \(Block\) Time](introduction/a-brief-history-of-block-time.md)
 * [Product Specification](introduction/product-specification/README.md)
   * [The Decentralized Computer](introduction/product-specification/the-decentralized-computer.md)
   * [Contract Execution Model](introduction/product-specification/contract-execution-model.md)
@@ -21,6 +20,7 @@
   * [Token](technical-details/block-storage/token.md)
 * [Node](technical-details/global-state/README.md)
   * [Communications](technical-details/global-state/communications.md)
+  * [Deployments](technical-details/global-state/deployments.md)
   * [Metrics](technical-details/global-state/metrics.md)
 * [Appendix](technical-details/appendix/README.md)
   * [gRPC Interfaces](technical-details/appendix/grpc-interfaces.md)
