@@ -27,9 +27,9 @@ As our last step we explain how the abstract model actually maps to the real imp
 
 We deal with a collection of entities attempting to reach consensus via message passing. These entities are typically referenced in literature as processes, actors, nodes, machines or generals. To be consistent with Casper research tradition, we call them 'validators'.
 
-Technically, validators are going to be computers running a dedicated application, referenced here as "blockchain node", and these validators collectively form a peer-to-peer network, where the message-passing based P2P protocol they use is what we aim to describe here.
+Technically, validators are going to be computers running a dedicated application, referenced here as "blockchain node".  These validators collectively form a peer-to-peer network, using a message-passing based P2P protocol. This is what we aim to describe here.
 
-Conceptually, validators connected with their P2P consensus protocol form a decentralized computer. This computer has memory \(elsewhere in this white paper referenced as "global state"\) and performs operations \(transactions\) that change the state of this memory.
+Conceptually, the validators connected via their P2P consensus protocol form a decentralized computer. This computer has memory \(elsewhere in this white paper referenced as "global state"\) and performs operations \(transactions\) that change the state of this memory.
 
 We use the following terms:
 
@@ -70,16 +70,16 @@ Below we quickly recall some well-known concepts from mathematics that are used 
 * **leaf** - \(in a DAG\) vertex which is not a source of any edge
 * **topological sorting of a DAG** - for a DAG $$<V,E>$$ topological sorting is a linear order on vertices such that $$\forall e \in E \space source(e) < target(e)$$
 
-Simple directed graphs and 2-argument relations are if fact two languages for talking about the same thing. Every simple DAG can be seen as a POSET \(by applying transitive closure\). Every POSET can be seen as a simple DAG \(by applying transitive reduction\). Roots in a DAG correspond to minimal elements in a POSET, leaves in a DAG correspond to maximal elements in a POSET. Topological sortings correspond to linear extensions.
+Simple directed graphs and 2-argument relations are in fact two languages for talking about the same thing. Every simple DAG can be seen as a POSET \(by applying transitive closure\). Every POSET can be seen as a simple DAG \(by applying transitive reduction\). Roots in a DAG correspond to minimal elements in a POSET, leaves in a DAG correspond to maximal elements in a POSET. Topological sortings correspond to linear extensions.
 
 ## Communication layer assumptions
 
-We assume that P2P protocol using for validator-to-validator communication is based on best-effort-broadcasting. So, any time a validator $$v$$ has a new message $$M$$ to announce, it is announcing the message to all validators in the network. We assume that, once broadcasted, the message M will be eventually delivered to any other validator $$w$$ in the network that is alive, but:
+We assume that the P2P protocol used for validator-to-validator communication is based on best-effort-broadcasting. So, any time a validator $$v$$ has a new message $$M$$ to announce, it is announcing the message to all validators in the network. We assume that, once broadcasted, the message M will be eventually delivered to any other validator $$w$$ in the network that is alive, but:
 
-* the delay between sending $$M$$ and receiving $$M$$ is arbitrary long
-* there is no guarantee on messages ordering, so delivered order may differ from broadcasting order
+* the delay between sending $$M$$ and receiving $$M$$ is arbitrary in duration.
+* there is no guarantee on message order, so delivery order may differ from broadcast order
 * the same message may be delivered more than once
-* in principle messages can also get lost, but we expect this is going to be masked by lower layers of communication, so in the consensus layer the disappearing of messages presents as delays
+* in principle messages can also get lost, but we expect this is going to be handled by lower layers of communication, so in the consensus layer message loss presents as delays
 
 ## Base model: distributed database with DAG of transactions
 
@@ -91,7 +91,7 @@ Let $$V$$ denote the \(finite\) set of validators.
 
 Let $$<GS, Zero \in GS>$$ be a set with a distinguished point. We will be calling this set "global states" and the distinguished point will be called "the initial state".
 
-Intuition here is that validators are going to establish a common view on "virtual memory of a decentralized computer" which is just another way of saying about a shared database. A point $$gs ∈ GS$$ represents a single snapshot of this shared memory.
+Intuition here is that validators are going to establish a common view on "virtual memory of a decentralized computer" which is just another way of saying "decentralized database". A point $$gs ∈ GS$$ represents a single snapshot of this shared memory.
 
 ### Transactions
 
@@ -147,7 +147,7 @@ $$
 
 For talking about distributed consensus we need to find a convenient notation and convenient communication model. These two somehow go together and we will try to follow the heuristic approach, showing how the idea naturally comes out.
 
-A point in $$GS$$ tells the "current" state of the shared database. This points moves after any transaction applied. The trajectory of the point, which can be seen as a sequence of transitions, makes what we call "the evolution". In the world of traditional \(=centralized\) databases such an evolution could look like this:
+A point in $$GS$$ tells the "current" state of the decentralized database. This points moves after any transaction applied. The trajectory of the point, which can be seen as a sequence of transitions, makes what we call "the evolution". In the world of traditional \(=centralized\) databases such an evolution could look like this:
 
 ![Evolution graph example \(sequential\)](../../.gitbook/assets/casper-evolution-graph-seq.svg)
 
@@ -165,13 +165,13 @@ In our decentralized network of validators, different validators will independen
 
 ![Evolution graph example \(non-sequential\)](../../.gitbook/assets/casper-evolution-graph-example.svg)
 
-Now, the skeleton of the shared database solution looks as follows: validators create and broadcast blocks, every block carrying a single transaction. Every validator \(independently\) tries to capture what happened in the network so far and represents this knowledge \(in his local memory\) as an evolution graph. However, to be able to define legal way of creating new blocks, we will have to introduce **merging of histories**.
+Now, the skeleton of the decentralized database solution looks as follows: validators create and broadcast blocks, every block carrying a single transaction. Every validator \(independently\) tries to capture what happened in the network so far and represents this knowledge \(in his local memory\) as an evolution graph. However, to be able to define legal way of creating new blocks, we will have to introduce **merging of histories**.
 
 ### Understanding conflicts and merging
 
-In general one can imagine a shared database solution where, although all validators can propose transactions, the consensus protocol leads to a "canonical" sequential evolution. This is how networks like Bitcoin or Ethereum work. Casperlabs wants to increase the total throughput of the network by allowing independent lines of shared database evolution to be merged.
+In general one can imagine a decentralized database solution where, although all validators can propose transactions, the consensus protocol leads to a "canonical" sequential evolution. This is how networks like Bitcoin or Ethereum work. CasperLabs wants to increase the total throughput of the network by allowing independent lines of decentralized database evolution to be merged.
 
-To understand this phenomenon on the level of an evolution graph we will start with an example. Let's assume we have 4 validators: Red, Green, Blue, Orange. Let our shared database keep accounts and balances. Our $$Zero$$ state of the database is: \[Alice: 8, Bob: 3, Charlie: 3\].
+To understand this phenomenon on the level of an evolution graph we will start with an example. Let's assume we have 4 validators: Red, Green, Blue, Orange. Let our decentralized database keep accounts and balances. Our $$Zero$$ state of the database is: \[Alice: 8, Bob: 3, Charlie: 3\].
 
 Consider the following transactions:
 
@@ -184,14 +184,14 @@ We will use colors to mark who proposed a block. Let's assume Orange validator c
 
 ![Evolution graph \(before merging step\)](../../.gitbook/assets/casper-evolution-graph-alice-bob-charlie-0.svg)
 
-The idea of mergeability goes along the basic intuition: two histories are mergeable if they can be turned into a single history without ambiguity. And we really only understand sequential composition of transactions, so "history" must be something that can be turned into sequential path of transactions.
+The idea of merge-ability goes along the basic intuition: two histories are mergeable if they can be turned into a single history without ambiguity. And we really only understand sequential composition of transactions, so "history" must be something that can be turned into sequential path of transactions.
 
 For example, look at these two blocks:
 
 * block $$b_1$$ \(executing transaction $$a$$\), proposed by Orange
 * block $$b_2$$ \(executing transaction $$b$$\), proposed by Red
 
-If merging is all about creating a history that contains both blocks, then we immediately crash into a problem: which order to apply ?
+If merging is all about creating a history that contains both blocks, then we immediately encounter a problem: which order to apply ?
 
 This would be $$b_1$$ first, then $$b_2$$:
 
@@ -207,7 +207,7 @@ Now, let's try another pair: $$b_1$$ with $$b_3$$. Both blocks execute the same 
 
 ![Composing b1 and b3](../../.gitbook/assets/casper-abc-merging-3-x.svg)
 
-Bum! It does not work at all ! Second execution of transaction $$a$$ just fails, so this is not a valid transition. And we can easily see why - it would make the balance of Alice's account negative, which is not allowed in our model. Formally, we say that the global state \[Alice: 3, Bob:8, Charlie:3\] does not belong to the domain of the partial function $$a$$. So we conclude that these two histories are NOT mergeable.
+It does not work at all ! Second execution of transaction $$a$$ just fails, so this is not a valid transition. And we can easily see why - it would make the balance of Alice's account negative, which is not allowed in our model. Formally, we say that the global state \[Alice: 3, Bob:8, Charlie:3\] does not belong to the domain of the partial function $$a$$. So we conclude that these two histories are NOT mergeable.
 
 Let's try yet another pair $$b_4$$ and $$b_5$$. Now the situation is a little more complex because we have to compare $$b_2 \leadsto b_5$$ path vs single element path $$b_4$$ and the problem of "possible orderings" of the sequence becomes more tricky. When we loop over possible sequential histories, we have to respect already existing causal structure. Because $$b_2$$ precedes $$b_5$$, we will only do composing along sequences of $$b_2$$, $$b_4$$ and $$b_5$$ that respect this condition. It leads to 3 possibilities:
 
@@ -224,7 +224,7 @@ It looks good but now we can see that out notation is slightly too verbose and t
 * When we are not really interested in showing "contents" of the state, but only dependencies of blocks, this notation is too verbose.
 * When merging, it is not clear how to label edges. Should we encapsulate transactions $$a$$ and $$b$$ leading to the "merged" state into separate blocks or not ?
 
-This issues lead to a better notation that we introduce in next chapter.
+This issue leads to a better notation that we introduce in next chapter.
 
 ### Blockdag
 
@@ -363,9 +363,9 @@ We could enrich our model in many different ways for such preference to be avail
 
 One of findings of Casper protocol research was a convenient solution to this problem. Instead of introducing timestamps and clocks, we are going to use a whole copy of the blockdag as a "timestamp" and seal it into the block !
 
-Well, but if we require each block $$B$$ created by validator $$V$$ to contain a snapshot of a blockdag maintained by $$V$$ at the moment of creating $$B$$, are these blocks going to grow very huge and keep growing forever ? Which immediately looks like a major performance problem ! Actually, this is not such a big problem, as it appears. Because blockdag evolves only by appending new blocks, if every block can point to blocks seen at its creation - we will call these pointers **justifications** - then we can just use reduce the required collection of pointers to just roots of the blockdag's snapshot.
+Well, but if we require each block $$B$$ created by validator $$V$$ to contain a snapshot of a blockdag maintained by $$V$$ at the moment of creating $$B$$, are these blocks going to become large and keep growing forever?  This immediately looks like a major performance problem.   The issue address by evolving the blockdag only by appending new blocks. If every block can point to blocks seen at its creation - we will call these pointers **justifications** - then we can just use reduce the required collection of pointers to just roots of the blockdag's snapshot.
 
-We will have to augment the definition of a block so that this new idea is captured. Let's do it now. A **block** is a tuple consisting of:
+Augmenting the definition of a block to capture this concept. A **block** is a tuple consisting of:
 
 * a validator
 * a transaction
@@ -382,7 +382,7 @@ Blocks_n = \{ <creator , transaction, justifications, parents>: \newline
 Blocks = \bigcup\limits_{i=1}^{\infty} Blocks_i
 $$
 
-In lame terms, when I am a validator, on creating a new block $$B$$ I am sealing into the block two sets of links:
+In layman terms, when I am a validator, on creating a new block $$B$$ I am sealing into the block two sets of links:
 
 * justifications - and they say "look, this was my snapshot of the blockdag when I was creating block $$B$$"
 * parents - and they encode the decision on "which paths of shared database evolution I am merging with block $$B$$"
@@ -432,9 +432,9 @@ We already introduced p-past-cone before, now we are adding all sibling definiti
 * **j-past-cone** - for a block $$pPastCone(b)=\{x \in \mathfrak{B}:  x=b \lor x \ll b\}$$
 * **j-future-cone** - for a block $$pPastCone(b)=\{x \in \mathfrak{B}:  x=b \lor b \ll x\}$$
 
-### Implementation of a shared database
+### Implementation of a decentralized database
 
-We are now prepared enough to introduce the distributed-consensus based implementation of a shared database.
+We are now prepared enough to introduce the distributed-consensus based implementation of a decentralized database.
 
 During his lifetime, a validator $$v$$ maintains two collections:
 
@@ -472,11 +472,11 @@ When we again take a look at the example blockdag, every swimlane \(considered a
 
 ![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example.svg)
 
-This is not surprising because, logically, when I am proposing a new block, all blocks I proposed so far are within the scope of my knowledge, so obviously I am including them in justifications of a new block, when I create one. At least I **should** do so. The problem is that in a network of validators such an "honest" behaviour cannot be technically enforced. Instead, we have to accept that the reality will sometimes look like this:
+This is not surprising because, logically, as a valdiator, when I propose a new block, all blocks I proposed so far are within the scope of my knowledge, so obviously I am including them in justifications of a new block, when I create it. At least I **should** do so. The problem is that in a network of validators such  "honest" behaviour cannot be technically enforced. Instead, we have to accept that the reality will sometimes look like this:
 
 ![Equivocation as seen in a blockdag](../../.gitbook/assets/casper-equivocation.svg)
 
-In this example, validator $$A$$ violates the "honesty" rule by splitting his chain at block $$b_5$$. Both $$b_8$$ and $$b_9$$ are referencing $$b_5$$ and yet there are not visible to each-other via justifications. This looks like validator $$A$$ is not aware of his own blocks he proposed ! Every such situation present in a blockdag we reference as **equivocation**.
+In this example, validator $$A$$ violates the "honesty" rule by splitting his chain at block $$b_5$$. Both $$b_8$$ and $$b_9$$ are referencing $$b_5$$ and yet there are not visible to each-other via justifications. This looks like validator $$A$$ is not aware of his own blocks he proposed! This is called an **equivocation**.
 
 How such a situation can happen and still be "formally legal" ? Well, it is enough that a malicious validator decides to broadcast new blocks selectively, so in this case $$b_9$$ is published to one subset of the network while $$b_8$$ to another part. Eventually block propagation will cause validators to discover that $$A$$ was equivocating at some point, but this discovery will take time and by that time both blocks will play their role in what happened later.
 
@@ -565,7 +565,7 @@ For simplifying the discussion, we will introduce two terms, referencing to subs
 
 On blockdag diagrams, we will be marking the display using violet color.
 
-Now let's come back to the discussion. By the time I published block $$b_8$$ my local blockdag has grown because - apparently - several new blocks from validators $$B$$ and $$C$$ have arrived. Now, which part of my local blockdag am I going to display ? This is something that I can actually make quite arbitrary decision about.
+Now let's come back to the discussion. By the time I published block $$b_8$$ my local blockdag has grown because - apparently - several new blocks from validators $$B$$ and $$C$$ have arrived. Now, which part of my local blockdag am I going to display? This is something that I can make an arbitrary decision about.
 
 For example, I can decide to keep my display minimal. So I deliberately keep $$b_4$$, $$b_6$$, $$b_7$$, $$b_9$$, $$b_{10}$$ in the pocket and I am running the fork-choice against j-past-cone of block $$b_8$$ only. Obviously, $$b_8$$ will become my fork-choice leader and I will publish the new block $$b_{11}$$ having only one parent.
 
