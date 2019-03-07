@@ -10,7 +10,7 @@
   * [Contract Execution Model](introduction/product-specification/contract-execution-model.md)
   * [Persistent Storage Model](introduction/product-specification/persistent-storage-model.md)
   * [Decentralized Consensus](introduction/product-specification/decentralized-consensus.md)
-* [Heterogenous Side Chains](introduction/sharding.md)
+* [Heterogenous Side Chains](introduction/side-chains.md)
 
 ## Technical Details
 
