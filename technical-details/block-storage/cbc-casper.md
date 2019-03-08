@@ -53,22 +53,22 @@ Below we quickly recall some well-known concepts from mathematics that are used 
 **Relations and POSETs**
 
 * **relation on A** - any subset of $$A \times A$$
-* **POSET** - partially ordered set; this is a pair $$<A, R>$$, where $$A$$ is a set, $$R$$ is a relation on $$A$$ which is reflexive, antisymmetric and transitive; we write $$a < b$$ when $$(a,b) \in R$$
+* **POSET** - partially ordered set; this is a pair $$\langle A, R \rangle$$, where $$A$$ is a set, $$R$$ is a relation on $$A$$ which is reflexive, antisymmetric and transitive; we write $$a < b$$ when $$(a,b) \in R$$
 * **linear order** - a POSET where any two elements a,b are comparable, so either $$a < b$$ or $$b < a$$
 * **transitive closure of a relation** - for a relation $$R \subset A \times A$$, a smallest transitive relation $$T \subset A \times A$$ such that $$R \subset T$$
 * **transitive reduction of a relation** - for a relation $$R \subset A \times A$$, a smallest relation $$T \subset A \times A$$ such that $$R ⊂ TransitiveClosure(T)$$
-* **linear extension of a partial order** - for a POSET $$<A, R>$$ this is any relation $$E$$ on $$A$$ such that $$R \subset E$$ and $$<A, E>$$ is a linear order
+* **linear extension of a partial order** - for a POSET $$\langle A, R \rangle$$ this is any relation $$E$$ on $$A$$ such that $$R \subset E$$ and $$\langle A, E \rangle$$ is a linear order
 
 **Directed graphs**
 
-* **directed graph** - a structure $$<V,E,source: E \rightarrow V, target: E \rightarrow V >$$, where $$V, E$$ are arbitrary sets; we call elements of $$E$$ - _edges_, and elements of $$V$$ - _vertices_; conceptually we visualize a graph as a collection of dots \(vertices\) connected by arrows \(edges\), where functions $$source$$ and $$target$$ are visualized as, respectively, source and target of every arrow
-* **path in a directed graph** - any ordered sequence of edges $$<e_1, ..., e_n \in E^n>$$, such that $$source(e_{i+1})=target(e_i)$$; when talking about paths we use the notation $$p:x \leadsto y$$ which signals that path $$p$$ starts at vertex $$x$$ and ends at vertex $$y$$
-* **cycle in a directed graph** - path $$<e_1, ..., e_n \in E^n>$$, where $$source(e_1)=target(e_n)$$
+* **directed graph** - a structure $$ \langle V,E,source: E \rightarrow V, target: E \rightarrow V \rangle$$, where $$V, E$$ are arbitrary sets; we call elements of $$E$$ - _edges_, and elements of $$V$$ - _vertices_; conceptually we visualize a graph as a collection of dots \(vertices\) connected by arrows \(edges\), where functions $$source$$ and $$target$$ are visualized as, respectively, source and target of every arrow
+* **path in a directed graph** - any ordered sequence of edges $$\langle e_1, ..., e_n \in E^n \rangle$$, such that $$source(e_{i+1})=target(e_i)$$; when talking about paths we use the notation $$p:x \leadsto y$$ which signals that path $$p$$ starts at vertex $$x$$ and ends at vertex $$y$$
+* **cycle in a directed graph** - path $$\langle e_1, ..., e_n \in E^n \rangle$$, where $$source(e_1)=target(e_n)$$
 * **directed acyclic graph** \(or just **DAG**\) - directed graph which does not contain cycles
 * **simple DAG** - a DAG where any pair of vertices is directly connected by at most one edge; equivalently - $$\forall p,q \in E \space source(p)=source(q) \wedge target(p)=target(q) \Rightarrow p=q$$
 * **root** - \(in a DAG\) vertex which is not a target of any edge
 * **leaf** - \(in a DAG\) vertex which is not a source of any edge
-* **topological sorting of a DAG** - for a DAG $$<V,E>$$ topological sorting is a linear order on vertices such that $$\forall e \in E \space source(e) < target(e)$$
+* **topological sorting of a DAG** - for a DAG $$\langle V,E \rangle$$ topological sorting is a linear order on vertices such that $$\forall e \in E \space source(e) < target(e)$$
 
 Simple directed graphs and 2-argument relations are in fact two languages for talking about the same thing. Every simple DAG can be seen as a POSET \(by applying transitive closure\). Every POSET can be seen as a simple DAG \(by applying transitive reduction\). Roots in a DAG correspond to minimal elements in a POSET, leaves in a DAG correspond to maximal elements in a POSET. Topological sortings correspond to linear extensions.
 
@@ -376,9 +376,8 @@ Formally:
 
 $$
 Blocks_0 = \{ Genesis \} \newline
-Blocks_n = \{ \langle creator , transaction, justifications, parents \rangle: \newline
- creator \in V, transaction \in TR, justifications \subset Blocks_{n-1}, \newline
- parents \subset justifications \rangle \} \newline
+Blocks_n = \{ \langle creator, transaction, justifications, parents \rangle: creator \in V, \newline
+ transaction \in TR, justifications \subset Blocks_{n-1}, parents \subset justifications \rangle \} \newline
 Blocks = \bigcup\limits_{i=1}^{\infty} Blocks_i
 $$
 
