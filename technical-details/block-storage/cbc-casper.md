@@ -9,7 +9,7 @@ The consensus solution used in CasperLabs blockchain is a latest achievement of 
 * 1980: The problem of byzantine consensus defined \(Lamport, Shostak\)
 * 1985: Impossibility of distributed consensus with one faulty process theorem \(Fischer, Lynch, Paterson\)
 * 1997: Proof-of-Work invented \(Hashcash system\)
-* 1999: "Practical Byzantine Fault Tolerance" \(PBFT\) algorithm \(Miguel Castro, Barbara Liskov\)
+* 1999: "Practical Byzantine Fault Tolerance" \(PBFT\) algorithm \(Castro, Liskov\)
 * 2008: Bitcoin invented \(Satoshi Nakamoto\)
 * 2012: First proof-of-stake cryptocurrency system created \(Peercoin system\)
 * 2013: Ethereum invented - cryptocurrency idea generalized to a decentralized general-purpose computing platform \(Vitalik Buterin\)
@@ -89,7 +89,7 @@ Our base model describes the set of nodes \(validators\) concurrently updating a
 
 Let $$V$$ denote the \(finite\) set of validators.
 
-Let $$<GS, Zero \in GS>$$ be a set with a distinguished point. We will be calling this set "global states" and the distinguished point will be called "the initial state".
+Let $$\langle GS, Zero \in GS \rangle$$ be a set with a distinguished point. We will be calling this set "global states" and the distinguished point will be called "the initial state".
 
 Intuition here is that validators are going to establish a common view on "virtual memory of a decentralized computer" which is just another way of saying "decentralized database". A point $$gs ∈ GS$$ represents a single snapshot of this shared memory.
 
@@ -97,7 +97,7 @@ Intuition here is that validators are going to establish a common view on "virtu
 
 A **transaction** is any partial function $$t:GS \longrightarrow GS$$. We think of transactions as "programs". Set of all possible partial functions $$Partial(GS \rightarrow GS)$$ corresponds to "all programs one can imagine", while we typically work in a much more restricted environment, where only Turing-computable programs are allowed \(or even less\). We hide all this complexity by just assuming that $$TR \subset Partial(GS \rightarrow GS)$$ contains all transactions \(=programs\) that are available.
 
-**Example 1:** Take global states to be $$<\mathbb{N},0>$$. Example transactions:
+**Example 1:** Take global states to be $$\langle \mathbb{N},0 \rangle$$. Example transactions:
 
 * $$f(n)=n / 2$$ \(defined only for even numbers\)
 * $$f(n)=n+1$$ \(defined for all numbers\)
@@ -111,13 +111,13 @@ $$
 
 This is how a program transferring 1 coin from Alice's account to Bob's account looks in our abstract notation.
 
-**Example 3:** Take global states to be any set $$A$$. Take transactions to be all permutations on A: $$TR={f \in A^A: f \space is \space bijection}$$.
+**Example 3:** Take global states to be any set $$A$$. Take transactions to be all permutations on A: $$TR=\{ f \in A^A: f \space is \space bijection \}$$.
 
 **Example 4:** Let $$GS=\{0,1\}$$. Let $$TR=Partial(GS \rightarrow GS)$$ - this set contains 9 elements. This is in a sense a simplest non-trivial states and transactions setup over which our consensus can be tested.
 
 ### Transitions
 
-By a **transition**, we mean a pair $$<x,f(x)>$$, where $$f$$ is any transaction. Conceptually, transitions are like arrows connecting global states, while transaction is factory of transitions. Talking about transitions pops up naturally when one wants to visualize evolution of database state showing graphs where states are vertices.
+By a **transition**, we mean a pair $$\langle x,f(x) \rangle$$, where $$f$$ is any transaction. Conceptually, transitions are like arrows connecting global states, while transaction is factory of transitions. Talking about transitions pops up naturally when one wants to visualize evolution of database state showing graphs where states are vertices.
 
 The way we use the word "transaction" is slightly different compared to the "IT tradition". In our lingo, a transaction is conceptually a program. A program can be executed against any input data and in this case the input data is the state of the database \(= global state\). On the other hand, what database community traditionally used to call "transaction", we prefer to call "transition". For example "Alice sends 10 dollars to Bob" or "If last chess game was lost, Alice sends 10 dollars to Bob" are transactions \(= programs\). The program generates a state transition when applied to a specific global state.
 
@@ -215,7 +215,7 @@ Let's try yet another pair $$b_4$$ and $$b_5$$. Now the situation is a little mo
 
 In all 3 cases compositions are well defined but the final state we end up with is not always the same. This is a conflict - merging is not possible.
 
-Let's assume that Orange decided to merge $$b_1$$ and $$b_2$$ \(now we now they are mergeable\) and extend the merged history by executing transaction $$b$$.
+Let's assume that Orange decided to merge $$b_1$$ and $$b_2$$ \(now we know they are mergeable\) and extend the merged history by executing transaction $$b$$.
 
 ![Evolution graph \(after merging step\)](../../.gitbook/assets/casper-abc-merging-5%20%281%29.svg)
 
@@ -240,7 +240,7 @@ As the above type is recursive, to reconstruct the same idea formally, we need t
 
 $$
 Blocks_0 = {Genesis} \newline
-Blocks_n = \{ <creator , transaction, parents>: creator \in V, \newline transaction \in TR, parents \subset Blocks_{n-1}> \} \newline
+Blocks_n = \{ \langle creator , transaction, parents \rangle: creator \in V, \newline transaction \in TR, parents \subset Blocks_{n-1} \rangle \} \newline
 Blocks = \bigcup\limits_{i=1}^{\infty} Blocks_i
 $$
 
@@ -327,11 +327,11 @@ $$
 
 Because p-past-cone of a block is a subset of vertices of a blockdag, it inherits the acyclic directed graph structure and so itself is a blockdag.
 
-For any finite sequence of blocks $$<b_1,...,b_n>$$ we can consider a corresponding sequence of transitions, by starting from global state $$Zero$$ and sequentially applying transactions $$b_i.transaction$$. This path of transitions may or may not be composable \(because transactions are partial functions\). In case the composition is possible, **composition of a sequence of blocks** is the result of composing transitions.
+For any finite sequence of blocks $$\langle b_1,...,b_n \rangle$$ we can consider a corresponding sequence of transitions, by starting from global state $$Zero$$ and sequentially applying transactions $$b_i.transaction$$. This path of transitions may or may not be composable \(because transactions are partial functions\). In case the composition is possible, **composition of a sequence of blocks** is the result of composing transitions.
 
-Any linear order on a finite set of blocks may be seen as a finite sequence of blocks. If $$G$$ is a set of blocks and $$<G,R>$$ is a linear order then corresponding composition of a sequence od blocks we will call **composition of G along R**.
+Any linear order on a finite set of blocks may be seen as a finite sequence of blocks. If $$G$$ is a set of blocks and $$\langle G,R \rangle$$ is a linear order then corresponding composition of a sequence od blocks we will call **composition of G along R**.
 
-For any directed acyclic graph $$G=<V,E>$$ by $$TopSort(G)$$ we denote the collection of all topological sortings of $$G$$. So elements of $$TopSort(G)$$ are linear orders.
+For any directed acyclic graph $$G=\langle V,E \rangle$$ by $$TopSort(G)$$ we denote the collection of all topological sortings of $$G$$. So elements of $$TopSort(G)$$ are linear orders.
 
 To capture merging correctness we require that a well-formed blockdag $$\mathfrak{B}$$ must fulfill the following condition:
 
@@ -343,7 +343,7 @@ In the distributed consensus protocol we are going to define, crucial is the abi
 
 First, we need to generalize past cone concept to handle a collection of blocks:
 
-For a finite set of blocks $$M = \{b_1, ..., b_n\}, b_i \in \mathfrak{B}$$ we define $$pPast\(M\) = \bigcup\limits\_{i=1}^{n} pPastCone\(b\_i\).
+For a finite set of blocks $$M = \{b_1, ..., b_n\}, b_i \in \mathfrak{B}$$ we define $$pPast(M) = \bigcup\limits_{i=1}^{n} pPastCone(b_i)$$.
 
 Then we define mergeability. We say that a set of blocks $$M = \{b_1, ..., b_n\}, b_i \in \mathfrak{B}$$ is **mergeable** if there exists a global state $$gs \in GS$$ such that for any linear order $$ts \in TopSort(pPast(M))$$, $$ts^{-1}$$ must give a composable sequence of blocks and composition of $$pPast(M)$$ along $$ts^{-1}$$ must have destination $$gs$$.
 
@@ -375,10 +375,10 @@ Augmenting the definition of a block to capture this concept. A **block** is a t
 Formally:
 
 $$
-Blocks_0 = {Genesis} \newline
-Blocks_n = \{ <creator , transaction, justifications, parents>: \newline
+Blocks_0 = \{ Genesis \} \newline
+Blocks_n = \{ \langle creator , transaction, justifications, parents \rangle: \newline
  creator \in V, transaction \in TR, justifications \subset Blocks_{n-1}, \newline
- parents \subset justifications> \} \newline
+ parents \subset justifications \rangle \} \newline
 Blocks = \bigcup\limits_{i=1}^{\infty} Blocks_i
 $$
 
@@ -404,7 +404,7 @@ This new drawing convention is:
 
 * Black arrows are from $$pDAG$$.
 * Red arrows are from $$jDAG \setminus pDAG$$.
-* We do not draw redundant red arrows \(so when a red arrow can be deduced as pats of red-or-block arrows\).
+* We avoid drawing redundant red arrows (red arrow is redundant when it can be deduced as path of red-or-black arrows).
 
 The way we use blockdags unfortunately makes classic terminology of DAGs confusing while talking about mutual position of vertices. Classic approach is that if there is a path $$v \rightarrow ... \rightarrow w$$, we say that $$v$$ precedes $$w$$, or that $$v$$ is an ancestor of $$w$$. Frequently it is also denoted by $$v \prec w$$, especially if we talk about a simple DAG, so the one effectively equivalent to a POSET. The source of confusion is coming from how our blockdags grow. Arrows in blockdags point always towards the "past" and latest blocks are always roots. This way "time-precedes" in direct semantic collision with "arrow-precedes". To evade the confusion we introduce the following terms:
 
@@ -449,7 +449,7 @@ Publishing loop:
 
 1. Select a transaction $$t ∈ TR$$ to be executed as the next one \(we here say nothing on how this selection happens but intuition is of course that these transactions come from the business context - most likely from clients sending requests\).
 2. Run **fork choice**, i.e. select a subset $$p$$ of  blockdag vertices \(to be used as parents of the new block\).
-3. Create a new block $$b = <creator = v, transaction = t, parents = p, justifications = jtips(blockdag)>$$.
+3. Create a new block $$b = \langle creator = v, transaction = t, parents = p, justifications = jtips(blockdag) \rangle$$.
 4. Add $$b$$ to the blockdag.
 5. Broadcast $$b$$ to all validators in the network.
 
