@@ -239,7 +239,7 @@ A **block** is either a special Genesis block or a tuple consisting of:
 As the above type is recursive, to reconstruct the same idea formally, we need to define it by induction:
 
 $$
-Blocks_0 = {Genesis} \newline
+Blocks_0 = \{ Genesis \} \newline
 Blocks_n = \{ \langle creator , transaction, parents \rangle: creator \in V, \newline transaction \in TR, parents \subset Blocks_{n-1} \rangle \} \newline
 Blocks = \bigcup\limits_{i=1}^{\infty} Blocks_i
 $$
