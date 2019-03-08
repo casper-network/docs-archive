@@ -58,9 +58,9 @@ These governance items are scoped thusly:
 1. The root chain
 2. The utility token of the CasperLabs blockchain
 3. The governance board is charged with making the following decisions:
-4. Makes decisions on emergency fixes/patches/issues.
-5. Makes decisions on slashes caused by defects.
-6. Approves budgets for development activities.
+   1. Makes decisions on emergency fixes/patches/issues.
+   2. Makes decisions on slashes caused by defects.
+   3. Approves budgets for development activities.
 
 ### Recalling Members & Term Limits
 
@@ -92,5 +92,5 @@ The governance committee is an unelected group of individuals that want to help 
 
 ### Rollout
 
-Initial decisions will be made by the CasperLabs Core development team and Principals \(Adaptive, Inc.\). Over time, more constituents are admitted to the board as each constituency group develops its' nomination / election processes. Ultimately new constituent groups can form and the existing board will have to vote by simple majority to admit them to the governance board.
+Initial decisions will be made by the CasperLabs Core development team and Principals \(ADAPtive, Inc.\). Over time, more constituents are admitted to the board as each constituency group develops its' nomination / election processes. Ultimately new constituent groups can form and the existing board will have to vote by simple majority to admit them to the governance board.
 

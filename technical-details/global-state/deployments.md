@@ -12,11 +12,11 @@ The `Deploy` message has the following notable fields:
 * `nonce` has to correspond to the next sequence number the Account sending the Deploy. The nodes will hold on to the Deploy until the previous nonce has been included in the Block they are trying to build on.
 * `account_public_key` is the public key associated with the Account and the one that is used to sign the Deploy. This is how nodes can identify Accounts and find out what the currently expected nonce is.
 
-Only existing Accounts can send Deploys. The way for a user to create an Account is to:
+Only existing Accounts can send Deploys. A user can create an Account by doing the following:
 
 1. generate a public/private key pair for themselves offline
 2. give the public key to an exchange \(or friend\) that already has an Account and tokens, and ask them to send a Deploy which transfers some tokens to the user, and by doing so establishes the user's Account
 3. probably pay fiat money for the service/favor.
 
-Users have to sign the Deploys, for which they have to calculate the hashes of all its parts. Currently the only supported hashing algorithm is Blake2b-256. If that needs to change in the future then the name of the algorithm will be added to the `Signature`.
+Users have to sign the Deploys, for which they have to calculate the hashes of all its parts. Currently the only supported hashing algorithm is Blake2b-256. If that needs to change in the future, the name of the algorithm will be added to the `Signature`.
 

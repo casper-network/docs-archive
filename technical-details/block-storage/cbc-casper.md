@@ -21,7 +21,7 @@ The consensus solution used in CasperLabs blockchain is a latest achievement of 
 
 The solution we present here is pretty complex. Therefore we introduce it step-by-step, starting from the simplest possible model first and then enriching the model gradually. This way a sequence of \(abstract\) models is built, where the understanding developed with every model N is directly utilized in subsequent model N+1.
 
-As our last step we explain how the abstract model actually maps to the our implementation.
+Finally we explain how the abstract model actually maps to the our implementation.
 
 ## Terms and concepts
 
@@ -61,7 +61,7 @@ Below we quickly recall some well-known concepts from mathematics that are used 
 
 **Directed graphs**
 
-* **directed graph** - a structure $$ \langle V,E,source: E \rightarrow V, target: E \rightarrow V \rangle$$, where $$V, E$$ are arbitrary sets; we call elements of $$E$$ - _edges_, and elements of $$V$$ - _vertices_; conceptually we visualize a graph as a collection of dots \(vertices\) connected by arrows \(edges\), where functions $$source$$ and $$target$$ are visualized as, respectively, source and target of every arrow
+* **directed graph** - a structure $$\langle V,E,source: E \rightarrow V, target: E \rightarrow V \rangle$$, where $$V, E$$ are arbitrary sets; we call elements of $$E$$ - _edges_, and elements of $$V$$ - _vertices_; conceptually we visualize a graph as a collection of dots \(vertices\) connected by arrows \(edges\), where functions $$source$$ and $$target$$ are visualized as, respectively, source and target of every arrow
 * **path in a directed graph** - any ordered sequence of edges $$\langle e_1, ..., e_n \in E^n \rangle$$, such that $$source(e_{i+1})=target(e_i)$$; when talking about paths we use the notation $$p:x \leadsto y$$ which signals that path $$p$$ starts at vertex $$x$$ and ends at vertex $$y$$
 * **cycle in a directed graph** - path $$\langle e_1, ..., e_n \in E^n \rangle$$, where $$source(e_1)=target(e_n)$$
 * **directed acyclic graph** \(or just **DAG**\) - directed graph which does not contain cycles
@@ -79,11 +79,11 @@ We assume that the P2P protocol used for validator-to-validator communication is
 * the delay between sending $$M$$ and receiving $$M$$ is arbitrary in duration.
 * there is no guarantee on message order, so delivery order may differ from broadcast order
 * the same message may be delivered more than once
-* in principle messages can also get lost, but we expect this is going to be handled by lower layers of communication, so in the consensus layer message loss presents as delays
+* in principle messages can also get lost, but we expect this will be handled by lower layers of communication, so in the consensus layer message loss presents as delays
 
 ## Base model: distributed database with DAG of transactions
 
-Our base model describes the set of nodes \(validators\) concurrently updating a shared database.
+Our base model describes a set of nodes \(validators\) concurrently updating a shared database.
 
 ### Global states
 
@@ -123,7 +123,7 @@ The way we use the word "transaction" is slightly different compared to the "IT 
 
 ### Composing transactions vs composing transitions
 
-Being just functions, transactions naturally compose. We will follow the normal mathematical notation for composing transactions: $$g \circ f$$ gives a transaction which first applies $$f$$, then applies $$g$$. But because transactions are partial functions, composition may shrink the domain: $$dom(g \circ f) \subset dom(f)$$.
+Being functions, transactions naturally compose. We will follow the normal mathematical notation for composing transactions: $$g \circ f$$ gives a transaction which first applies $$f$$, then applies $$g$$. But because transactions are partial functions, composition may shrink the domain: $$dom(g \circ f) \subset dom(f)$$.
 
 In case of transitions, technically they do not compose \(because they are not functions\). But it is convenient to actually introduce composition for transitions as well. Let's consider a sequence of two transitions:
 
@@ -169,7 +169,7 @@ Now, the skeleton of the decentralized database solution looks as follows: valid
 
 ### Understanding conflicts and merging
 
-In general one can imagine a decentralized database solution where, although all validators can propose transactions, the consensus protocol leads to a "canonical" sequential evolution. This is how networks like Bitcoin or Ethereum work. CasperLabs foreeses significant network throughput gains by allowing independent lines of decentralized database evolution to be merged.
+In general one can imagine a decentralized database solution where, although all validators can propose transactions, the consensus protocol leads to a "canonical" sequential evolution. This is how networks like Bitcoin or Ethereum work. CasperLabs foresees significant network throughput gains by allowing independent lines of decentralized database evolution to be merged.
 
 To understand this phenomenon on the level of an evolution graph we will start with an example. Let's assume we have 4 validators: Red, Green, Blue, Orange. Let our decentralized database keep accounts and balances. Our $$Zero$$ state of the database is: \[Alice: 8, Bob: 3, Charlie: 3\].
 
@@ -219,7 +219,7 @@ Let's assume that Orange decided to merge $$b_1$$ and $$b_2$$ \(now we know they
 
 ![Evolution graph \(after merging step\)](../../.gitbook/assets/casper-abc-merging-5%20%281%29.svg)
 
-It looks good but now we can see that out notation is slightly too verbose and turns out to be less convenient then initially expected. There are two issues:
+Now we can see that out notation is slightly too verbose and turns out to be less convenient than initially thought. There are two issues:
 
 * When we are not really interested in showing "contents" of the state, but only dependencies of blocks, this notation is too verbose.
 * When merging, it is not clear how to label edges. Should we encapsulate transactions $$a$$ and $$b$$ leading to the "merged" state into separate blocks or not ?
@@ -284,7 +284,7 @@ Before we completely drop evolution graphs notation if favor of blockdags, it is
 
 ![Blockdag to evolution graph transformation \(sequential case\)](../../.gitbook/assets/casper-blockdag-to-graph-seq-case.svg)
 
-With blockdag in place we have now a clear narration of the chronology of events in our network of validators:
+With this definition of the blockdag in place we have now a clear story of the chronology of events in our network of validators:
 
 1. Validator C proposed block $$b_1$$ by executing transaction $$f$$ on top of state Zero.
 2. Validator B proposed block $$b_2$$ by building on top of block $$b_1$$ and executing transaction $$g$$.
@@ -339,7 +339,7 @@ For every block $$b \in \mathfrak{B}$$ there exists a global state $$gs \in GS$$
 
 Caution: We need to use the inverted relation $$ts^{-1}$$ because direction arrows in the blockdag is opposite to the direction of underlying transactions.
 
-In the distributed consensus protocol we are going to define, crucial is the ability to tell whether given set of tips is **mergeable**. This concept is directly compatible with merging intuitions we built in previous chapters but now we want to be precise and base it on the formal definition of well-formed blockdag. Intuition is that blocks $$b_1,b_2 \in \mathfrak{B}$$ are mergeable if after adding a block that will have $$b_1$$ and $$b_2$$ as parents $$\mathfrak{B}$$ is still going to be well-formed. But this extra block may contain a transaction and this makes the intuitions less clear \(we would have to enforce the new block to contain the identity transaction\), so for clarity we take a slightly more elementary approach.
+In the distributed consensus protocol we are going to define, it is crucial to identify whether a given set of tips is **mergeable**. This concept is directly compatible with merging intuitions we built in previous chapters but now we want to be precise and base it on the formal definition of well-formed blockdag. Intuition is that blocks $$b_1,b_2 \in \mathfrak{B}$$ are mergeable if after adding a block that will have $$b_1$$ and $$b_2$$ as parents $$\mathfrak{B}$$ is still going to be well-formed. But this extra block may contain a transaction and this makes the intuitions less clear \(we would have to enforce the new block to contain the identity transaction\), so for clarity we take a slightly more elementary approach.
 
 First, we need to generalize past cone concept to handle a collection of blocks:
 
@@ -353,11 +353,11 @@ Both definitions of merging are related by the following:
 
 ### Adding causal structure to the blockdag
 
-Blockdags as defined so far look like an appealing data structure for our shared database consensus implementation. Unfortunately they miss something important: time. To understand why this is a problem, let's look at the following blockdag:
+Blockdags as defined so far look like an appealing data structure for our decentralized database consensus implementation. However, the concept of time is unaccounted for. To understand why this is a problem, let's look at the following blockdag:
 
 ![Blockdag with no time concept](../../.gitbook/assets/casper-blockdag-missing-time-problem.svg)
 
-Blocks created by validator $$B$$ form a tree and the tree has more then one leaf. Namely - both block $$b_9$$ and block $$b_{10}$$ look "last" and by just looking at the blockdag there is no information on the preference that validator B has in regards to the history of the shared database that he would like to be accepted by others.
+Blocks created by validator $$B$$ form a tree and the tree has more than one leaf. Namely - both block $$b_9$$ and block $$b_{10}$$ look "last" and by just looking at the blockdag there is no information on the preference that validator B has in regards to the history of the shared database that he would like to be accepted by others.
 
 We could enrich our model in many different ways for such preference to be available. For example every validator could keep a counter of created blocks and at the moment of creating a new block - seal a subsequent number into the block. This way other validators could assume that blocks with the highest number corresponds to the most recent preference of the creator. Another possible solution would be to use [Lamport synchronization](https://en.wikipedia.org/wiki/Lamport_timestamps) for establishing the concept of global clock and seal timestamps derived from this global clock into blocks.
 
@@ -403,7 +403,7 @@ This new drawing convention is:
 
 * Black arrows are from $$pDAG$$.
 * Red arrows are from $$jDAG \setminus pDAG$$.
-* We avoid drawing redundant red arrows (red arrow is redundant when it can be deduced as path of red-or-black arrows).
+* We avoid drawing redundant red arrows \(red arrow is redundant when it can be deduced as path of red-or-black arrows\).
 
 The way we use blockdags unfortunately makes classic terminology of DAGs confusing while talking about mutual position of vertices. Classic approach is that if there is a path $$v \rightarrow ... \rightarrow w$$, we say that $$v$$ precedes $$w$$, or that $$v$$ is an ancestor of $$w$$. Frequently it is also denoted by $$v \prec w$$, especially if we talk about a simple DAG, so the one effectively equivalent to a POSET. The source of confusion is coming from how our blockdags grow. Arrows in blockdags point always towards the "past" and latest blocks are always roots. This way "time-precedes" in direct semantic collision with "arrow-precedes". To evade the confusion we introduce the following terms:
 
@@ -471,7 +471,7 @@ When we again take a look at the example blockdag, every swimlane \(considered a
 
 ![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example%20%281%29.svg)
 
-This is not surprising because, logically, as a valdiator, when I propose a new block, all blocks I proposed so far are within the scope of my knowledge, so obviously I am including them in justifications of a new block, when I create it. At least I **should** do so. The problem is that in a network of validators such "honest" behaviour cannot be technically enforced. Instead, we have to accept that the reality will sometimes look like this:
+This is not surprising because, logically, as a validator, when I propose a new block, all blocks I proposed so far are within the scope of my knowledge, so obviously I am including them in justifications of a new block, when I create it. At least I **should** do so. The problem is that in a network of validators such "honest" behaviour cannot be technically enforced. Instead, we have to accept that the reality will sometimes look like this:
 
 ![Equivocation as seen in a blockdag](../../.gitbook/assets/casper-equivocation.svg)
 
@@ -518,7 +518,7 @@ The goal of this phase is to construct an ordered list of parent candidates. We 
 2. For each block $$b \in T$$, if $$b$$ has no children - leave $$b$$ as is, otherwise replace $$b$$ with its children sorted by the following multi-level comparator:
    * higher score goes first
    * if scores are equal - smallest block go first \(using total ordering on blocks - see [here](cbc-casper.md#digression-blocks-identity-and-hash)\)
-3. For all $$b \in T$$: if $$b$$ is duplicated \(= occurs more than once in the collection\), leave only the leftmost occurence of $$b$$, removing others.
+3. For all $$b \in T$$: if $$b$$ is duplicated \(= occurs more than once in the collection\), leave only the leftmost instance of $$b$$, removing others.
 4. Repeat 2-3 until $$T$$ no longer changes with each iteration \(i.e. no block has any children\).
 5. $$T$$ is the sorted list of parent candidates.
 
@@ -553,7 +553,7 @@ Interestingly, a validator has some freedom in the way he runs fork choice. Alth
 
 ![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example%20%282%29.svg)
 
-Let's pretend I am the validator $$A$$ and I am just about to propose a new block - $$b_{11}$$. My last block was $$b_8$$ and its j-past-cone is what represents the snapshot of the blockdag that was included with the block. So, as of now, this is what other validators can see as my current knowledge:
+Let's pretend I am the validator $$A$$ and I am just about to propose a new block - $$b_{11}$$. My last block was $$b_8$$ and its' j-past-cone is what represents the snapshot of the blockdag that was included with the block. So, as of now, this is what other validators can see as my current knowledge:
 
 ![Subset of blockdag that A admitted as seen](../../.gitbook/assets/casper-fork-choice-freedom-1.svg)
 

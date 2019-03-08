@@ -2,7 +2,7 @@
 
 ## Definition
 
-A breaking change is a change that will cause a hard fork to take place if all the validators do not accept the change. These kinds of changes will be subject to more governance rigor, and updates including any of these items will need to take effect at some fixed point in 'time'. How this will work on the CasperLabs blockchain is still to be determined.
+A breaking change is a change that will cause a hard fork to take place if all the validators do not accept the change. These kinds of changes will be subject to more governance rigor, and updates including any of these items will need to take effect at some fixed point in 'time'. The mechanics of protocol upgrades for the CasperLabs blockchain is still to be determined.
 
 The following are considered breaking changes:
 

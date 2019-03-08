@@ -108,7 +108,7 @@ algorithm BlockGossip is
 
 We can rightfully ask how the gossip algorithm outlined above fares in the face of malicious actors that don't want to take their share in the data distribution, i.e. what happens if a node decides not to propagate the messages?
 
-The consensus protocol we're building has a built-in protection against lazy validators: to get their fees from a Block produced by somebody else they have to build on top of it. When they do that, they have to gossip about it, otherwise it will not become part of the DAG or it can get orphaned if conflicting blocks emerge, so it's in everyone's interest for gossiping to happen at a steady pace.
+The consensus protocol has a built-in protection against lazy validators: to get their fees from a Block produced by somebody else they have to build on top of it. When they do that, they have to gossip about it, otherwise it will not become part of the DAG or it can get orphaned if conflicting blocks emerge, so it's in everyone's interest for gossiping to happen at a steady pace.
 
 What if they decide to announce _their_ Blocks to _everyone_ but never relay other Blocks from other nodes? They have a few incentives against doing this:
 

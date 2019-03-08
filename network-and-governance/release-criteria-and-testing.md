@@ -11,7 +11,7 @@
 3. Scope:
    * The root chain only.
 4. Stability:
-   * The test net must remain up, without any interruptions to service for the entire Duration. The system must accept new bonding requests during this time.
+   * The test net must remain up, without any interruptions to service for the entire Duration. The system must accept new bonding requests and unbonding requests during this time.
 5. Defects:
    * No ‘Very High’ or ‘High’ \(see definition below\) bugs can be filed against the system for the Duration
 6. Features & Fixes
