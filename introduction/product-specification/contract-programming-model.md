@@ -20,7 +20,7 @@ The operation of these system calls is depicted in Figure 3 where contract1 writ
 
 ![Figure 3: Human-Readable Names](../../.gitbook/assets/fig3humanreadable.png)
 
-Given that it is persisent, even when a contract is not executing its name map can be used by other dApp components to query that contract's KV store using human-readable names.
+Given that it is persistent, even when a contract is not executing its name map can be used by other dApp components to query that contract's KV store using human-readable names.
 
 Each programming language will have unique data types with different memory formats; even when two programming languages have a very similar data type their memory formats may differ. To simplify the exchange of data between contracts written in different languages, the KV store system calls accept only a fixed set of data types which are defined in the system library. This includes common types such as integers, strings, arrays, tuples, maps, etc. The CasperLabs Application Binary Interface \(ABI\) specifies the byte-level storage format of these data types. The contract source will need to perform the necessary translations between Casper ABI format and the format of their desired language-specific data type.
 

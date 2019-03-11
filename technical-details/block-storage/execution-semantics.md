@@ -186,7 +186,7 @@ We reduce such trace in two steps:
       <td style="text-align:left">Write</td>
       <td style="text-align:left">Write</td>
       <td style="text-align:left">
-        <p>if () cf_1</p>
+        <p>if (cf_1 == cf_2) cf_1</p>
         <p>else error</p>
       </td>
     </tr>

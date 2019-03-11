@@ -72,7 +72,7 @@ The bytecode used to execute transactions on the blockdag is Web Assembly \(Wasm
 #### Numbers      <a id="ApplicationBinaryInterface(ABI)-Numbers"></a>
 
 * Unsigned integers are represented in the typical binary format, with little endian byte order
-* Signed integers are represented in the typical two's compliment binary format, with little endian byte order
+* Signed integers are represented in the typical two's complement binary format, with little endian byte order
 * 8-bit, 32-bit and 64-bit numbers are supported
 * Floating point numbers are not supported
 
@@ -109,7 +109,9 @@ This data type distinguishes successful and error cases.
   * 1 = `Right` \( in Rust it's`Ok`\)
 * The subsequent bytes encode the value the Either holds
 * It is an error if the first byte is anything other than 0 or 1
-* **Vector/List/Array**    
+
+#### Vector/List/Array      <a id="ApplicationBinaryInterface(ABI)-Vector"></a>
+
 * A vector is represented by its length \(in number of elements, **not** bytes\) followed by the elements encoded via this ABI
 * The length is always a 32-bit unsigned integer
 * If the first 4 bytes encode the number `n` \(as per the Numbers section above\), then there must be exactly `n` distinct byte arrays \(concatenated together\) which follow
@@ -132,7 +134,8 @@ This data type distinguishes successful and error cases.
 
 * A set is encoded as if it were a vector
 * Similar to Map, the underlying data structure must be ordered, such that serialization is deterministic.\*
-* **Structs/Enums/Classes**
+
+#### Structs/Enums/Classes      <a id="ApplicationBinaryInterface(ABI)-Structs"></a>
 
 The ABI does not support arbitrary named structures with named fields. If this is required then the native instance will need to be represented as a tuple containing the same data. However, because of their special importance in the global state, some structs are supported in the ABI and the form of their encoding could be applied to other structs/enums.
 
