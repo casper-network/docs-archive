@@ -157,7 +157,7 @@ We reduce such trace in two steps:
 | :--- | :--- | :--- | :--- |
 | Read | Read | Write | Write |
 | Write | Write | Write | Write |
-| Add | Write | Write | $$if (cf_1 = cf_2) cf_1 <br> else error$$ |
+| Add | Write | Write | $$if (cf_1 = cf_2) \space cf_1 \space else \space  error$$ |
 
 * Members of a commutative family commute with other members of the same family
 
