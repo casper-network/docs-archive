@@ -67,16 +67,16 @@ The bytecode used to execute transactions on the blockdag is Web Assembly \(Wasm
 
 ### Specification
 
-### Basic data types      <a id="ApplicationBinaryInterface(ABI)-Basicdatatypes"></a>
+### Basic data types       <a id="ApplicationBinaryInterface(ABI)-Basicdatatypes"></a>
 
-#### Numbers      <a id="ApplicationBinaryInterface(ABI)-Numbers"></a>
+#### Numbers       <a id="ApplicationBinaryInterface(ABI)-Numbers"></a>
 
 * Unsigned integers are represented in the typical binary format, with little endian byte order
 * Signed integers are represented in the typical two's complement binary format, with little endian byte order
 * 8-bit, 32-bit and 64-bit numbers are supported
 * Floating point numbers are not supported
 
-#### Strings      <a id="ApplicationBinaryInterface(ABI)-Strings"></a>
+#### Strings       <a id="ApplicationBinaryInterface(ABI)-Strings"></a>
 
 * A string is represented by its length \(in bytes, **not** characters – note that these could be different for UTF8 strings using non-ASCII characters\) followed by its UTF8 encoding
 * The length is always a 32-bit unsigned integer
@@ -85,22 +85,22 @@ The bytecode used to execute transactions on the blockdag is Web Assembly \(Wasm
 * There is no representation for a single character; if this is needed then use a 1 character long string to encode it
 * Note that a String is considered a basic data type as opposed to a collection of characters since there is no encoding for a character alone
 
-#### Unit      <a id="ApplicationBinaryInterface(ABI)-Unit"></a>
+#### Unit       <a id="ApplicationBinaryInterface(ABI)-Unit"></a>
 
 * The unit data type \(also sometimes referred to as the empty tuple\) is represented as an empty byte array
 
-### Collections      <a id="ApplicationBinaryInterface(ABI)-Collections"></a>
+### Collections       <a id="ApplicationBinaryInterface(ABI)-Collections"></a>
 
 As a general rule of thumb, a collection is represented as its length \(the number of items in that collection\) followed by the ABI-encoded form of those items.
 
-#### Option      <a id="ApplicationBinaryInterface(ABI)-Option"></a>
+#### Option       <a id="ApplicationBinaryInterface(ABI)-Option"></a>
 
 * `None` is represented by the unsigned, 8-bit number 0
 * `Some` is represented by the unsigned 8-bit number 1, followed by the bytes encoding the value the Option holds
 * It is an error for the first byte of a byte array representing an Option to be anything other than 0 or 1
 * Note this definition is recursive on purpose; if it is possible to encode/decode some type `T` then it is possible to encode/decode `Option<T>`.
 
-#### Either      <a id="ApplicationBinaryInterface(ABI)-Either(orResultinRust)"></a>
+#### Either       <a id="ApplicationBinaryInterface(ABI)-Either(orResultinRust)"></a>
 
 This data type distinguishes successful and error cases.
 
@@ -110,7 +110,7 @@ This data type distinguishes successful and error cases.
 * The subsequent bytes encode the value the Either holds
 * It is an error if the first byte is anything other than 0 or 1
 
-#### Vector/List/Array      <a id="ApplicationBinaryInterface(ABI)-Vector"></a>
+#### Vector/List/Array       <a id="ApplicationBinaryInterface(ABI)-Vector"></a>
 
 * A vector is represented by its length \(in number of elements, **not** bytes\) followed by the elements encoded via this ABI
 * The length is always a 32-bit unsigned integer
@@ -119,27 +119,27 @@ This data type distinguishes successful and error cases.
 * Similar to `Option`, this definition is recursive in the sense that if `T` can be encoded/decoded, then so can `Vec<T>`, however only certain concrete types are implemented in the reference implementation for efficiency reasons \(though this may change in the future\)
 * Note that even though in Rust the length of an array is statically known \(similarly for Vectors in dependently typed languages like Idris\) we still include the length in the encoding because this is a feature relatively unique to Rust and the ABI should be language agnostic. If the length represented by the first 4 bytes does not match the statically known length of the array then a formatting error is returned
 
-#### Tuple      <a id="ApplicationBinaryInterface(ABI)-Tuple"></a>
+#### Tuple       <a id="ApplicationBinaryInterface(ABI)-Tuple"></a>
 
 * Since a tuple is a known, fixed length, the length is not included in the encoding
 * A tuple is simply the concatenation of the encoding of each of its elements
 * As with Vector, there is no delimiter between elements because it is assumed that the number of bytes to be used can be determined based on the type of the element
 
-#### Map      <a id="ApplicationBinaryInterface(ABI)-Map"></a>
+#### Map       <a id="ApplicationBinaryInterface(ABI)-Map"></a>
 
 * A map is considered to be a list of \(key, value\) tuples and encoded as such \(i.e. the first 4 bytes are the number of keys in the map encoded as a 32-bit unsigned integer, then the data follows as a the concatenation of the encodings of all the key-value pairs\)
 * The underlying data structure must be ordered, such that serialization is deterministic.\*
 
-#### Set      <a id="ApplicationBinaryInterface(ABI)-Set"></a>
+#### Set       <a id="ApplicationBinaryInterface(ABI)-Set"></a>
 
 * A set is encoded as if it were a vector
 * Similar to Map, the underlying data structure must be ordered, such that serialization is deterministic.\*
 
-#### Structs/Enums/Classes      <a id="ApplicationBinaryInterface(ABI)-Structs"></a>
+#### Structs/Enums/Classes       <a id="ApplicationBinaryInterface(ABI)-Structs"></a>
 
 The ABI does not support arbitrary named structures with named fields. If this is required then the native instance will need to be represented as a tuple containing the same data. However, because of their special importance in the global state, some structs are supported in the ABI and the form of their encoding could be applied to other structs/enums.
 
-#### Key \(the enum used as keys in the global state key-value store\)      <a id="ApplicationBinaryInterface(ABI)-Key(theenumusedaskeysintheglobalstatekey-valuestore)"></a>
+#### Key \(the enum used as keys in the global state key-value store\)       <a id="ApplicationBinaryInterface(ABI)-Key(theenumusedaskeysintheglobalstatekey-valuestore)"></a>
 
 * The first byte determines which variant of Key is being used
   * 0 = Account
@@ -151,7 +151,7 @@ The ABI does not support arbitrary named structures with named fields. If this i
 * If the data does not follow these definitions \(e.g. the first byte is a number different from 0, 1, or 2; or the account "data length" is anything other than 20\) then a formatting error is raised
 * Note that even though the length of the data is statically known we still include it in the encoding for consistency with the Collections ABI definitions
 
-#### Account \(the data structure which holds information relevant to on-dag accounts\)      <a id="ApplicationBinaryInterface(ABI)-Account(thedatastructurewhichholdsinformationrelevanttoon-dagaccounts)"></a>
+#### Account \(the data structure which holds information relevant to on-dag accounts\)       <a id="ApplicationBinaryInterface(ABI)-Account(thedatastructurewhichholdsinformationrelevanttoon-dagaccounts)"></a>
 
 * This is serialized identically to the tuple `([u8; 32], u64, Map<String, Key>)`, or more explicitly the concatenation of:
   * 32 bytes representing the account public key
@@ -159,7 +159,7 @@ The ABI does not support arbitrary named structures with named fields. If this i
   * 4 bytes giving the number of keys in the known\_urefs map
   * the encoding for the data in the map
 
-#### Value \(the enum used as values in the global state key-value store\)      <a id="ApplicationBinaryInterface(ABI)-Value(theenumusedasvaluesintheglobalstatekey-valuestore)"></a>
+#### Value \(the enum used as values in the global state key-value store\)       <a id="ApplicationBinaryInterface(ABI)-Value(theenumusedasvaluesintheglobalstatekey-valuestore)"></a>
 
 * The first byte determines which variant of Value is being used
   * 0 = Int32
@@ -183,7 +183,7 @@ The ABI does not support arbitrary named structures with named fields. If this i
 
 \*_This ordering has to be the same for all the nodes in the network_
 
-## Reference implementation      <a id="ApplicationBinaryInterface(ABI)-Referenceimplementation"></a>
+## Reference implementation       <a id="ApplicationBinaryInterface(ABI)-Referenceimplementation"></a>
 
 A Rust reference implementation for those implementing this spec in another language can be found here:
 

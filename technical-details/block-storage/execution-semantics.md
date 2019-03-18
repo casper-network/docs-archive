@@ -167,32 +167,30 @@ We reduce such trace in two steps:
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left"><b>Read</b>
-      </td>
+      <td style="text-align:left">Read</td>
       <td style="text-align:left">Read</td>
       <td style="text-align:left">Write</td>
       <td style="text-align:left">Write</td>
     </tr>
     <tr>
-      <td style="text-align:left"><b>Write</b>
-      </td>
+      <td style="text-align:left">Write</td>
       <td style="text-align:left">Write</td>
       <td style="text-align:left">Write</td>
       <td style="text-align:left">Write</td>
     </tr>
     <tr>
-      <td style="text-align:left"><b>Add</b>
-      </td>
+      <td style="text-align:left">Add</td>
       <td style="text-align:left">Write</td>
       <td style="text-align:left">Write</td>
       <td style="text-align:left">
-        <p>if (cf_1 == cf_2) cf_1</p>
-        <p>else error</p>
+        <p>$$</p>
+        <p>if(cf_1 = cf_2) cf_1</p>
+        <p>else Error</p>
+        <p>$$</p>
       </td>
     </tr>
   </tbody>
-</table>* Reads commute with Reads only 
-* Members of a commutative family commute with other members of the same family
+</table>* Members of a commutative family commute with other members of the same family
 
 Finally, the reduced execution trace of a transaction t can be represented as a function:
 
@@ -219,7 +217,7 @@ where $$Commutes$$ function is defined using following rules:
 $$
 \forall gs \in GS, \space \forall t_1,t_2 \in Transactions(GS)
 \newline
-ReducedTrace(t_1, gs) \sim ReduedTrace(t_2, gs) \implies (t_1 \circ t_2)(gs) = (t_2 \circ t_1)(gs)
+ReducedTrace(t_1, gs) \sim ReducedTrace(t_2, gs) \implies (t_1 \circ t_2)(gs) = (t_2 \circ t_1)(gs)
 $$
 
 **Caution**: the inverse theorem is not true, which can be observed in the following example.
