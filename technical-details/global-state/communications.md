@@ -43,14 +43,14 @@ Out of these only the top two are gossiped between nodes; the Global State they 
 
 We have the following requirements from our gossiping approach:
 
-* It should be efficient, i.e. minimise the network traffic while maximising the rate at which we reach full saturation.
+* It should be efficient, i.e. minimize the network traffic while maximizing the rate at which we reach full saturation.
 * Node operators should have a reasonable expectation that network traffic \(a finite resource\) will scale linearly with the amount of Deploys across the network while being less affected by the total number of nodes. This means the load should be distributed among the peers rather than create hotspots.
 
 To achieve these we have the following high level approach:
 
-* Gossip only the meta-data about the Blocks to minimise the amount of data transfer.
+* Gossip only the meta-data about the Blocks to minimize the amount of data transfer.
 * Full Blocks can be served on demand when the gossiped meta-data is _new._
-* Nodes should pick a _relay factor_ according to how much network traffic they can handle and find that many node to gossip to, nodes for which the information is _new_.
+* Nodes should pick a _relay factor_ according to how much network traffic they can handle and find that many nodes to gossip to.
 * Nodes should pick a _relay saturation_ target beyond which point they don't try to push to new peers so the last ones to get a message don't have to contact every other peer in futility.
 * Nodes should try to spread the information mostly to their closer neighbours \(in terms of Kademlia distance\) but also to their farther away peers to accelerate the spread of information to the far reaches of the network.
 
@@ -125,7 +125,7 @@ Nodes expect the ones which indicated that the Block meta-data was new to them t
 
 There are two forms of lying that can happen here:
 
-1. The callee can say the information wasn't anything new, but then attempt to download the data anyway. Nodes may disincentivise this by tracking each others _reputation_ and block nodes that lied to them.
+1. The callee can say the information wasn't anything new, but then attempt to download the data anyway. Nodes may disincentivize this by tracking each others _reputation_ and block nodes that lied to them.
 2. The callee can say the information was new but not relay. This goes against their own interest as well, but it's difficult to detect. A higher relay factor can compensate for the amount of liars on the network.
 
 Nodes may also use reputation tracking and blocking if they receive notifications about Blocks which cannot be validated or which the notifier isn't able to serve when asked.
@@ -146,7 +146,7 @@ Here we have to take a note about how nodes can trust that the `sender` value is
 
 #### StreamAncestorBlockSummaries
 
-When a node receives a `NewBlock` request about hashes it didn't know about, it must synchronise its Block DAG with the `sender`. One way to do this is to have some kind of _download manager_ running in the node which:
+When a node receives a `NewBlock` request about hashes it didn't know about, it must synchronize its Block DAG with the `sender`. One way to do this is to have some kind of _download manager_ running in the node which:
 
 * maintains partially connected DAG of `BlockSummary` records that it has seen
 * tries to connect the new bits to the existing ones by downloading them from the senders
@@ -158,7 +158,7 @@ When a node receives a `NewBlock` request about hashes it didn't know about, it 
 `StreamAncestorBlockSummaries` is a high level method that the caller node can use to ask another for a _way to get to the block it just shouted about_. It's a method to traverse from the _target_ block _backwards_ along its parents until every ancestor path can be connected to the DAG of the caller. It has the following parameters:
 
 * `target_block_hashes` is typically the hashes of the new Blocks the node was notified about, but if multiple iterations are needed to find the connection points then they can be further back the DAG.
-* `known_block_hashes` can be supplied by the caller to provide an early exist criteria for the traversal. These can for example include the hashes close to the tip of the callers DAG, forks, last Blocks seen from validators, and approved Blocks \(i.e. Blocks with a high safety threshold\).
+* `known_block_hashes` can be supplied by the caller to provide early exit criteria for the traversal. These can for example include the hashes close to the tip of the caller's DAG, forks, last Blocks seen from validators, and approved Blocks \(i.e. Blocks with a high safety threshold\).
 * `max_depth` can be supplied by the caller to limit traversal in case the `known_block_hashes` don't stop it earlier. This can be useful during iterations when we have to go back _beyond_ the callers approved blocks, in which case it might be difficult to pick known hashes.
 
 The result should be a partial traversal of the DAG in _reverse BFS order_ returning a stream of `BlockSummaries` that the caller can partially verify, merge into its DAG of pending Blocks, then recursively call `StreamAncestorBlockSummaries` on any Block that didn't connect with a known part of the DAG. Ultimately all paths lead back to the Genesis or last checkpointed Block so eventually we should find the connection, or the caller can decide to give up pursuing a potentially false lead from a malicious actor.

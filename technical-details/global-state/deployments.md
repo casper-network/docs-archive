@@ -9,7 +9,7 @@ The `Deploy` message has the following notable fields:
 * `session_code` is the WASM byte code to be executed on the Blockchain
 * `payment_code` is the WASM byte code that provides funds in the form of a token transfer in exchange for the validators executing the `session_code`
 * `gas_price` is the rate at which the tokens transferred by the `payment_code` are burned up during the execution of the `session_code`
-* `nonce` has to correspond to the next sequence number the Account sending the Deploy. The nodes will hold on to the Deploy until the previous nonce has been included in the Block they are trying to build on.
+* `nonce` has to correspond to the next sequence number of the Account sending the Deploy. The nodes will hold on to the Deploy until the previous nonce has been included in the Block they are trying to build on.
 * `account_public_key` is the public key associated with the Account and the one that is used to sign the Deploy. This is how nodes can identify Accounts and find out what the currently expected nonce is.
 
 Only existing Accounts can send Deploys. A user can create an Account by doing the following:
