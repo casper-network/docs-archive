@@ -153,44 +153,13 @@ We reduce such trace in two steps:
 1. Grouping operations by key
 2. Merging operations in every group, according to the following merging table:
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">+</th>
-      <th style="text-align:left"><b>Read</b>
-      </th>
-      <th style="text-align:left"><b>Write</b>
-      </th>
-      <th style="text-align:left"><b>Add</b>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">Read</td>
-      <td style="text-align:left">Read</td>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">Write</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">Write</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">Add</td>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">Write</td>
-      <td style="text-align:left">
-        <p>$$</p>
-        <p>if(cf_1 = cf_2) cf_1</p>
-        <p>else Error</p>
-        <p>$$</p>
-      </td>
-    </tr>
-  </tbody>
-</table>* Members of a commutative family commute with other members of the same family
+| + | Read | Write | Add |
+| :--- | :--- | :--- | :--- |
+| Read | Read | Write | Write |
+| Write | Write | Write | Write |
+| Add | Write | Write | $$if (cf_1 = cf_2) cf_1 <br> else error$$ |
+
+* Members of a commutative family commute with other members of the same family
 
 Finally, the reduced execution trace of a transaction t can be represented as a function:
 
