@@ -18,15 +18,17 @@ message Node {
 message Chunk {
     // Alternating between a header and subsequent chunks of data.
     oneof content {
-        Header header = 1
+        Header header = 1;
         bytes data = 2;
     }
 
-    Header {
-        // Use the content_length to sanity check the size of the data in the chunks that follow.
-        uint32 content_length = 1;
+    message Header {
         // Indicate if compression was used on the data. e.g. lz4
-        string compression_algorithm = 2;
+        string compression_algorithm = 1;
+        // Use the `content_length` to sanity check the size of the data in the chunks that follow.
+        uint32 content_length = 2;
+        // The original content length before any compression was applied.
+        uint32 original_content_length = 3;
     }
 }
 ```
@@ -40,42 +42,71 @@ message Chunk {
 ```javascript
 syntax = "proto3";
 
+// Signature over for example a deploy or a block. The location of the public key depends
+// on the subject; for example if it's a block then the key is actually part of the data
+// that needs to be signed over.
 message Signature {
     // One of the supported algorithms: ed25519, secp256k1
-    string sig_algorithm = 1; 
-    bytes sig = 2; 
+    string sig_algorithm = 1;
+    bytes sig = 2;
 }
 
+// A smart contract invocation, singed by the account that sent it.
 message Deploy {
-    int64 timestamp = 1;
-    bytes session_code = 2;
-    bytes payment_code = 3;
-    uint64 gas_price = 4;
-    uint64 nonce = 5;
-    // Signature over hash(timestamp, hash(session_code), hash(payment_code), nonce, gas_price) where hash is blake2b256.
-    Signature signature = 6; 
-    bytes account_public_key = 7; 
+    // blake2b256 hash of the `header`.
+    bytes deploy_hash = 1;
+    Header header = 2;
+    Body body = 3;
+    // Signature over `deploy_hash`.
+    Signature signature = 4;
+
+    message Header {
+        // Identifying the Account is the key used to sign the Deploy.
+        bytes account_public_key = 1;
+        // Monotonic nonce of the Account. Only the Deploy with the expected nonce can be executed straight away;
+        // anything higher has to wait until the Account gets into the correct state, i.e. the pending Deploys get
+        // executed on whichever Node they are currently waiting.
+        uint64 nonce = 2;
+        // Current time milliseconds.
+        uint64 timestamp = 3;
+        // Conversion rate between the cost of Wasm opcodes and the tokens sent by the `payment_code`.
+        uint64 gas_price = 4;
+        // Hash of the body structure as a whole.
+        bytes body_hash = 5;
+    }
+
+    message Body {
+        // Wasm code of the smart contract to be executed.
+        bytes session_code = 1;
+        // Wasm code that transfers some tokens to the validators as payment in exchange to run the Deploy.
+        bytes payment_code = 2;
+    }
 }
 
+// Limited block information for gossiping.
 message BlockSummary {
-    // Hash of the header.
+    // blake2b256 hash of the `header`.
     bytes block_hash = 1;
     Block.Header header = 2;
-    // Signature over block_hash.
+    // Signature over `block_hash`.
     Signature signature = 3;
 }
 
+// Full block information.
 message Block {
+    // blake2b256 hash of the `header`.
     bytes block_hash = 1;
     Header header = 2;
     Body body = 3;
+    // Signature over `block_hash`.
     Signature signature = 4;
 
     message Header {
         repeated bytes parent_hashes = 1;
         repeated Justification justifications = 2;
         GlobalState state = 3;
-        bytes deploys_hash = 4;
+        // Hash of the body structure as a whole.
+        bytes body_hash = 4;
         int64 timestamp = 5;
         uint64 version = 6;
         uint32 deploy_count = 7;
@@ -85,8 +116,7 @@ message Block {
     }
 
     message Body {
-        GlobalState state = 1;
-        repeated ProcessedDeploy deploys = 2;
+        repeated ProcessedDeploy deploys = 1;
     }
 
     message Justification {
@@ -96,7 +126,7 @@ message Block {
 
     message ProcessedDeploy {
         Deploy deploy = 1;
-        double cost = 2;
+        uint64 cost = 2;
         bool is_error = 3;
         string error_message = 4;
     }
@@ -112,8 +142,9 @@ message Block {
 
 message Bond {
     bytes validator_public_key = 1;
-    int64 stake = 2;
+    uint64 stake = 2;
 }
+
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -139,7 +170,7 @@ message PingRequest {
 message PingResponse {}
 
 message LookupRequest {
-    bytes  id = 1;
+    bytes id = 1;
     Node sender = 2;
 }
 
@@ -186,8 +217,8 @@ import "consensus.proto";
 service GossipService {
     rpc NewBlocks(NewBlocksRequest) returns (NewBlocksResponse);
     rpc StreamAncestorBlockSummaries(StreamAncestorBlockSummariesRequest) returns (stream BlockSummary);
-    rpc StreamDagTipBlockSummaries(StreamDagTipSummariesRequest) returns (stream BlockSummary);
-    rpc BatchGetBlockSummaries(BatchGetBlockSummariesRequest) returns (BatchGetBlockSummariesResponse);
+    rpc StreamDagTipBlockSummaries(StreamDagTipBlockSummariesRequest) returns (stream BlockSummary);
+    rpc StreamBlockSummaries(StreamBlockSummariesRequest) returns (stream BlockSummary);
     rpc GetBlockChunked(GetBlockChunkedRequest) returns (stream Chunk);
 }
 
@@ -200,12 +231,8 @@ message NewBlocksResponse {
     bool is_new = 1;
 }
 
-message BatchGetBlockSummariesRequest {
-    repeatead bytes block_hashes = 1;
-}
-
-message BatchGetBlockSummariesResponse {
-    repeated block_summaries = 1;
+message StreamBlockSummariesRequest {
+    repeated bytes block_hashes = 1;
 }
 
 message StreamAncestorBlockSummariesRequest {
@@ -218,10 +245,11 @@ message StreamDagTipBlockSummariesRequest {
 }
 
 message GetBlockChunkedRequest {
-    bytes block_hashe = 1;
+    bytes block_hash = 1;
     uint32 chunk_size = 2;
     repeated string accepted_compression_algorithms = 3;
 }
+
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}

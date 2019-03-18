@@ -186,26 +186,28 @@ algorithm StreamAncestorBlockSummaries is
     output: stream of ancestry DAG in child to parent order
 
     G <- an empty DAG of block hashes
-    Q <- an empty queue of (depth, hash) pairs
-    A <- an empty map of block summaries
+    Q <- an empty priority queue of (depth, hash) pairs
+    A <- an empty list of ancestor block summaries
+    V <- an empty set of visited block hashes
 
     for each hash h in T do
         push (0, h) to Q
 
     while Q is not empty do
         pop (d, h) from Q
-        if h in A then
+        if h in V then
             continue
         if h is not in B then
             continue
         b <- B(h)
-        A(h) <- b
+        A <- A + b
+        V <- V + h
         for each parent hash p of b do
             G <- G + (h, p)
             if d < m and p not in K do
                 push (d+1, p) to Q
 
-    return A(h) for hashes h in G sorted in topoligical order from child to parents
+    return stream of A
 ```
 
 And the next one depicts syncing DAGs from the client's perspective:
