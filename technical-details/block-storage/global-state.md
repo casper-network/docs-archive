@@ -187,8 +187,10 @@ The ABI does not support arbitrary named structures with named fields. If this i
 
 A Rust reference implementation for those implementing this spec in another language can be found here:
 
-* [https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/common/src/bytesrepr.rs](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/common/src/bytesrepr.rs)
-* [https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/common/src/key.rs\#L19](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/common/src/key.rs#L19)
-* [https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/common/src/value.rs\#L150](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/common/src/value.rs#L150)
-* [https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/common/src/value.rs\#L33](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/common/src/value.rs#L33)
+* [bytesrep.rs](https://github.com/CasperLabs/CasperLabs/blob/147704a0629b3723fc4c61fce4393be07c13cde2/execution-engine/common/src/bytesrepr.rs)
+* [key.rs](https://github.com/CasperLabs/CasperLabs/blob/147704a0629b3723fc4c61fce4393be07c13cde2/execution-engine/common/src/key.rs#L244)
+* [value.rs](https://github.com/CasperLabs/CasperLabs/blob/147704a0629b3723fc4c61fce4393be07c13cde2/execution-engine/common/src/value/mod.rs#L48)
+* [account.rs](https://github.com/CasperLabs/CasperLabs/blob/147704a0629b3723fc4c61fce4393be07c13cde2/execution-engine/common/src/value/account.rs#L44)
+* [contract.rs](https://github.com/CasperLabs/CasperLabs/blob/147704a0629b3723fc4c61fce4393be07c13cde2/execution-engine/common/src/value/contract.rs#L35)
+* [uint.rs](https://github.com/CasperLabs/CasperLabs/blob/147704a0629b3723fc4c61fce4393be07c13cde2/execution-engine/common/src/value/uint.rs#L51)
 
