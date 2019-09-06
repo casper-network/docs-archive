@@ -1,6 +1,6 @@
----
-description: 'purses, etc.'
----
+<!-- --- -->
+<!-- description: 'purses, etc.' -->
+<!-- --- -->
 
 # Token
 
@@ -128,7 +128,7 @@ contract lottery:
 
   //API for buying a lottery ticket
   //Note: a user calling this function should not supply their whole purse.
-  //      Since only `COST` tokens are needed the user should only provide 
+  //      Since only `COST` tokens are needed the user should only provide
   //      that many tokens by splitting them off from their main purse.
   function play(q: P[cl]): <Unit, Ticket> = {
     //Ensure the right number of tokens were provided and take control of them

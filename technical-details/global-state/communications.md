@@ -1,6 +1,6 @@
----
-description: 'gRPC, Block Propogation, Node Discovery'
----
+<!-- --- -->
+<!-- description: 'gRPC, Block Propogation, Node Discovery' -->
+<!-- --- -->
 
 # Communications
 
@@ -66,7 +66,7 @@ We can use this skewness to our advantage: say we pick a _relay factor_ of 3; if
 
 The following diagram illustrates this. The black actor on the left represents our node and the vertical partitions represent the distance from it. The split in the middle means the right half of the board falls under a single bucket in the Kademlia table. The black dots on in the board are the nodes we track, the greys are ones we don't. We know few peers from the right half of the network, but much more on the left, because it's covered by finer and finer grained buckets. If we pick nodes evenly across the full distance spectrum to gossip to, and the Node on the right follows the same rule, it will start distributing our message on that side of the board with a slightly higher chance than bouncing it back to the left.
 
-![Message propagation among peers](../../.gitbook/assets/gossip-2.png)
+![Message propagation among peers](/assets/gossip-2.png)
 
 In terms of probabilities of reaching a grey node in the 2nd round, or just the message being on the right side of the board in the 1st or 2nd round of message passing, the gains are marginal and depend on how many peers there are in the Kademlia table. We could give higher weights to the buckets that reach the untracked parts of the network, but the effects will have to be simulated.
 
@@ -173,7 +173,7 @@ The following diagram illustrates the algorithm. The dots in the graph represent
 6. From the 2nd stream we can see that at least one of the Blocks is connected to the tip our DAG, but there are again Blocks with missing dependencies.
 7. We call `StreamAncestorBlockSummaries` a 3rd time and now we can form a full connection with the known parts of the DAG, there are no more Blocks with missing parents.
 
-![Backwards traversal to sync the DAGs](../../.gitbook/assets/ancestry.png)
+![Backwards traversal to sync the DAGs](/assets/ancestry.png)
 
 The following algorithm describes the server's role:
 
@@ -350,5 +350,5 @@ When a new node joins the network it should ask one or more of its peers about t
 
 Finally the following sequence diagram demonstrates the life cycle of Block propagation among nodes. The dashed blocks have been left unconnected for brevity but they do the same thing as the ones on the left side.
 
-![Block Gossiping](../../.gitbook/assets/block-gossiping.png)
+![Block Gossiping](/assets/block-gossiping.png)
 

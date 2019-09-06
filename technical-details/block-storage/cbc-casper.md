@@ -1,5 +1,6 @@
 # CBC Casper
 
+
 ## Introduction
 
 A consensus protocol is at the core of any blockchain technology. It dictates how a distributed set of trustless nodes come to a coherent view of the world.
@@ -56,7 +57,7 @@ Below we quickly recall some well-known concepts from mathematics that are used 
 * **POSET** - partially ordered set; this is a pair $$\langle A, R \rangle$$, where $$A$$ is a set, $$R$$ is a relation on $$A$$ which is reflexive, antisymmetric and transitive; we write $$a < b$$ when $$(a,b) \in R$$
 * **linear order** - a POSET where any two elements a,b are comparable, so either $$a < b$$ or $$b < a$$
 * **transitive closure of a relation** - for a relation $$R \subset A \times A$$, a smallest transitive relation $$T \subset A \times A$$ such that $$R \subset T$$
-* **transitive reduction of a relation** - for a relation $$R \subset A \times A$$, a smallest relation $$T \subset A \times A$$ such that $$R ⊂ TransitiveClosure(T)$$
+* **transitive reduction of a relation** - for a relation $$R \subset A \times A$$, a smallest relation $$T \subset A \times A$$ such that $$R \subset TransitiveClosure(T)$$
 * **linear extension of a partial order** - for a POSET $$\langle A, R \rangle$$ this is any relation $$E$$ on $$A$$ such that $$R \subset E$$ and $$\langle A, E \rangle$$ is a linear order
 
 **Directed graphs**
@@ -91,7 +92,7 @@ Let $$V$$ denote the \(finite\) set of validators.
 
 Let $$\langle GS, Zero \in GS \rangle$$ be a set with a distinguished point. We will be calling this set "global states" and the distinguished point will be called "the initial state".
 
-Intuition here is that validators are going to establish a common view on "virtual memory of a decentralized computer" which is just another way of saying "decentralized database". A point $$gs ∈ GS$$ represents a single snapshot of this shared memory.
+Intuition here is that validators are going to establish a common view on "virtual memory of a decentralized computer" which is just another way of saying "decentralized database". A point $$gs \in GS$$ represents a single snapshot of this shared memory.
 
 ### Transactions
 
@@ -149,21 +150,21 @@ For talking about distributed consensus we need to find a convenient notation an
 
 A point in $$GS$$ tells the "current" state of the decentralized database. This points moves after any transaction applied. The trajectory of the point, which can be seen as a sequence of transitions, makes what we call "the evolution". In the world of traditional \(i.e. centralized\) databases such an evolution could look like this:
 
-![Evolution graph example \(sequential\)](../../.gitbook/assets/casper-evolution-graph-seq.svg)
+![Evolution graph example \(sequential\)](/assets/casper-evolution-graph-seq.svg)
 
 Above notation actually has a problem. Transaction is a program, and we obviously are allowed to apply the same program more than once, like here:
 
-![Evolution graph example \(iteration\)](../../.gitbook/assets/casper-evolution-graph-iteration-of-same-transaction.svg)
+![Evolution graph example \(iteration\)](/assets/casper-evolution-graph-iteration-of-same-transaction.svg)
 
 So far this does not look too bad but in a distributed environment the ability to distinguish between different invocations of the same transaction is crucial. So we will introduce explicit invocation labels:
 
-![Evolution graph example \(with invocation labels\)](../../.gitbook/assets/casper-evolution-graph-with-invocations-labels.svg)
+![Evolution graph example \(with invocation labels\)](/assets/casper-evolution-graph-with-invocations-labels.svg)
 
 We will use the word **block** for referencing the piece of data that carries the information about an invocation of a transaction. In the above picture, $$b_1$$ is a block carrying information about the invocation of the transaction $$f$$.
 
 In our decentralized network of validators, different validators will independently try to execute transactions and then announce this to others. Let's assume that each validator tries to follow what happened in the network so far by using the graph built from state transitions. This would look like:
 
-![Evolution graph example \(non-sequential\)](../../.gitbook/assets/casper-evolution-graph-example.svg)
+![Evolution graph example \(non-sequential\)](/assets/casper-evolution-graph-example.svg)
 
 Now, the skeleton of the decentralized database solution looks as follows: validators create and broadcast blocks, every block carrying a single transaction. Every validator \(independently\) tries to capture what happened in the network so far and represents this knowledge \(in his local memory\) as an evolution graph. However, to be able to define a legal way of creating new blocks, we will have to introduce **merging of histories**.
 
@@ -182,7 +183,7 @@ Consider the following transactions:
 
 We will use colors to mark who proposed a block. Let's assume Orange validator came up with the following evolution graph:
 
-![Evolution graph \(before merging step\)](../../.gitbook/assets/casper-evolution-graph-alice-bob-charlie-0.svg)
+![Evolution graph \(before merging step\)](/assets/casper-evolution-graph-alice-bob-charlie-0.svg)
 
 The idea of merge-ability goes along the basic intuition: two histories are mergeable if they can be turned into a single history without ambiguity. And we really only understand sequential composition of transactions, so "history" must be something that can be turned into sequential path of transactions.
 
@@ -195,29 +196,29 @@ If merging is all about creating a history that contains both blocks, then we im
 
 This would be $$b_1$$ first, then $$b_2$$:
 
-![Composing b1 and b2](../../.gitbook/assets/casper-abc-merging-1.svg)
+![Composing b1 and b2](/assets/casper-abc-merging-1.svg)
 
 This is the other way around:
 
-![Composing b1 and b2](../../.gitbook/assets/casper-abc-merging-2.svg)
+![Composing b1 and b2](/assets/casper-abc-merging-2.svg)
 
 A crucial observation here is that the final state we are getting is the same in both cases we got \[Alice: 3, Bob: 5, Charlie: 6\]. So the ordering problem is solved easily by the fact that ordering of composition does not matter. This is exactly what we mean by "turning two histories into a single history without ambiguity".
 
 Now, let's try another pair: $$b_1$$ with $$b_3$$. Both blocks execute the same transaction $$a$$, but of course these are separate invocations, so in the merged history, transaction $$a$$ would have to be executed twice. Let's see how this looks like:
 
-![Composing b1 and b3](../../.gitbook/assets/casper-abc-merging-3-x.svg)
+![Composing b1 and b3](/assets/casper-abc-merging-3-x.svg)
 
 It does not work at all! Second execution of transaction $$a$$ just fails, so this is not a valid transition. And we can easily see why - it would make the balance of Alice's account negative, which is not allowed in our model. Formally, we say that the global state \[Alice: 3, Bob:8, Charlie:3\] does not belong to the domain of the partial function $$a$$. So we conclude that these two histories are NOT mergeable.
 
 Let's try yet another pair $$b_4$$ and $$b_5$$. Now the situation is a little more complex because we have to compare $$b_2 \leadsto b_5$$ path vs single element path $$b_4$$ and the problem of "possible orderings" of the sequence becomes more tricky. When we loop over possible sequential histories, we have to respect already existing causal structure. Because $$b_2$$ precedes $$b_5$$, we will only do composing along sequences of $$b_2$$, $$b_4$$ and $$b_5$$ that respect this condition. It leads to 3 possibilities:
 
-![Composing b4 and b5](../../.gitbook/assets/casper-abc-merging-4.svg)
+![Composing b4 and b5](/assets/casper-abc-merging-4.svg)
 
 In all 3 cases compositions are well defined but the final state we end up with is not always the same. This is a conflict - merging is not possible.
 
 Let's assume that Orange decided to merge $$b_1$$ and $$b_2$$ \(now we know they are mergeable\) and extend the merged history by executing transaction $$b$$.
 
-![Evolution graph \(after merging step\)](../../.gitbook/assets/casper-abc-merging-5%20%281%29.svg)
+![Evolution graph \(after merging step\)](/assets/casper-abc-merging- (1).svg)
 
 Now we can see that out notation is slightly too verbose and turns out to be less convenient than initially thought. There are two issues:
 
@@ -257,7 +258,7 @@ We consider a blockdag $$\mathfrak{B}$$ to be well formed if:
 
 This is an example of a well-formed blockdag:
 
-![Blockdag example](../../.gitbook/assets/casper-dag-example.svg)
+![Blockdag example](/assets/casper-dag-example.svg)
 
 We use the following conventions to visually represent blockdags:
 
@@ -282,7 +283,7 @@ Whenever we mention that some structure contains blocks, this "contains" must be
 
 Before we completely drop evolution graphs notation if favor of blockdags, it is worth looking how these two correspond. For example, this is a simple sequential evolution with 3 validators involved:
 
-![Blockdag to evolution graph transformation \(sequential case\)](../../.gitbook/assets/casper-blockdag-to-graph-seq-case.svg)
+![Blockdag to evolution graph transformation \(sequential case\)](/assets/casper-blockdag-to-graph-seq-case.svg)
 
 With this definition of the blockdag in place we have now a clear story of the chronology of events in our network of validators:
 
@@ -292,7 +293,7 @@ With this definition of the blockdag in place we have now a clear story of the c
 
 Let's see how this will look when merging comes into play:
 
-![Blockdag to evolution graph transformation \(simplest merging case\)](../../.gitbook/assets/casper-blockdag-to-graph-merging-case.svg)
+![Blockdag to evolution graph transformation \(simplest merging case\)](/assets/casper-blockdag-to-graph-merging-case.svg)
 
 Let's again translate events to plain English:
 
@@ -303,15 +304,15 @@ Please observe \(see the red dot\) how the intermediate state $$f(g(Zero)) = g(f
 
 To better illustrate the transformation from a blockdag to the corresponding evolution graph, here is slightly more complex example:
 
-![Blockdag to evolution graph transformation \(general merging case\)](../../.gitbook/assets/casper-blockdag-to-graph-merging-case-2.svg)
+![Blockdag to evolution graph transformation \(general merging case\)](/assets/casper-blockdag-to-graph-merging-case-2.svg)
 
 Finally, we can come back to the example with Alice-Bob-Charlie sending money, and convert also this one the a blockdag. This was the evolution graph:
 
-![Evolution graph \(after merging step\)](../../.gitbook/assets/casper-abc-merging-5.svg)
+![Evolution graph \(after merging step\)](/assets/casper-abc-merging-5.svg)
 
 And this is how it looks after translating to blockdag notation:
 
-![Evolution graph \(after merging step\)](../../.gitbook/assets/casper-abc-converted-to-blockdag.svg)
+![Evolution graph \(after merging step\)](/assets/casper-abc-converted-to-blockdag.svg)
 
 ### Formal definition of merging
 
@@ -355,7 +356,7 @@ Both definitions of merging are related by the following:
 
 Blockdags as defined so far look like an appealing data structure for our decentralized database consensus implementation. However, the concept of time is unaccounted for. To understand why this is a problem, let's look at the following blockdag:
 
-![Blockdag with no time concept](../../.gitbook/assets/casper-blockdag-missing-time-problem.svg)
+![Blockdag with no time concept](/assets/casper-blockdag-missing-time-problem.svg)
 
 Blocks created by validator $$B$$ form a tree and the tree has more than one leaf. Namely - both block $$b_9$$ and block $$b_{10}$$ look "last" and by just looking at the blockdag there is no information on the preference that validator B has in regards to the history of the shared database that he would like to be accepted by others.
 
@@ -397,7 +398,7 @@ And we have an inclusion: $$pDAG \subset jDAG$$.
 
 To visually reflect the enriched structure we have to adjust the way we draw blockdags.
 
-![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example.svg)
+![Blockdag with justifications](/assets/casper-blockdag-with-justifications-example.svg)
 
 This new drawing convention is:
 
@@ -422,7 +423,7 @@ Also, the "leaves" and "roots" terminology coming from DAGs is not quite coheren
 
 Last but not least we introduce **cones**. This terminology is actually borrowed from Einstein's Special Relativity theory, namely from the Minkowski spacetime diagrams:
 
-![Cones as understood in Minkowski spacetime](../../.gitbook/assets/minkowski-spacetime.png)
+![Cones as understood in Minkowski spacetime](/assets/minkowski-spacetime.png)
 
 We already introduced p-past-cone before, now we are adding all sibling definitions as well. For a block $$b \in \mathfrak{B}$$:
 
@@ -446,7 +447,7 @@ Every validator $$v$$ is concurrently executing two infinite loops of processing
 
 Publishing loop:
 
-1. Select a transaction $$t ∈ TR$$ to be executed as the next one \(we here say nothing on how this selection happens but intuition is of course that these transactions come from the business context - most likely from clients sending requests\).
+1. Select a transaction $$t \in TR$$ to be executed as the next one \(we here say nothing on how this selection happens but intuition is of course that these transactions come from the business context - most likely from clients sending requests\).
 2. Run **fork choice**, i.e. select a subset $$p$$ of  blockdag vertices \(to be used as parents of the new block\).
 3. Create a new block $$b = \langle creator = v, transaction = t, parents = p, justifications = jtips(blockdag) \rangle$$.
 4. Add $$b$$ to the blockdag.
@@ -469,11 +470,11 @@ How parents of a new block are selected \(publishing loop, step 2\) is the most 
 
 When we again take a look at the example blockdag, every swimlane \(considered a subgraph of $$jDAG$$\) is a chain:
 
-![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example%20%281%29.svg)
+![Blockdag with justifications](/assets/casper-blockdag-with-justifications-example (1).svg)
 
 This is not surprising because, logically, as a validator, when I propose a new block, all blocks I proposed so far are within the scope of my knowledge, so obviously I am including them in justifications of a new block, when I create it. At least I **should** do so. The problem is that in a network of validators such "honest" behaviour cannot be technically enforced. Instead, we have to accept that the reality will sometimes look like this:
 
-![Equivocation as seen in a blockdag](../../.gitbook/assets/casper-equivocation.svg)
+![Equivocation as seen in a blockdag](/assets/casper-equivocation.svg)
 
 In this example, validator $$A$$ violates the "honesty" rule by splitting his chain at block $$b_5$$. Both $$b_8$$ and $$b_9$$ are referencing $$b_5$$ and yet there are not visible to each-other via justifications. This looks like validator $$A$$ is not aware of his own blocks he proposed! This is called an **equivocation**.
 
@@ -492,7 +493,7 @@ Now, let's focus on the other case, so when a validator $$v$$ is actually equivo
 
 This is how it worked for our last example \(latest blocks marked with green\):
 
-![Scoring phase 1](../../.gitbook/assets/casper-scoring-phase-1.svg)
+![Scoring phase 1](/assets/casper-scoring-phase-1.svg)
 
 Notice how for validator A we preferred block $$b_{10}$$ over $$b_8$$ because $$pHeight(b_{10})=5$$ and $$pHeight(b_8)=4$$.
 
@@ -508,7 +509,7 @@ $$
 
 The results of running the scoring phase look like this:
 
-![Scoring phase 2](../../.gitbook/assets/casper-scoring-phase-2.svg)
+![Scoring phase 2](/assets/casper-scoring-phase-2.svg)
 
 ### Fork choice phase 3: ordering tips
 
@@ -551,11 +552,11 @@ The goal is to find biggest set of p-DAG tips that is mergeable. In case of conf
 
 Interestingly, a validator has some freedom in the way he runs fork choice. Although the fork-choice algorithm is fully deterministic when run against a fixed blockdag, the actual selection of the blockdag that fork-choice is run against, is something that can be considered part of validator's strategy. To understand this, let's look again at the first example of a blockdag with justifications:
 
-![Blockdag with justifications](../../.gitbook/assets/casper-blockdag-with-justifications-example%20%282%29.svg)
+![Blockdag with justifications](/assets/casper-blockdag-with-justifications-example (2).svg)
 
 Let's pretend I am the validator $$A$$ and I am just about to propose a new block - $$b_{11}$$. My last block was $$b_8$$ and its' j-past-cone is what represents the snapshot of the blockdag that was included with the block. So, as of now, this is what other validators can see as my current knowledge:
 
-![Subset of blockdag that A admitted as seen](../../.gitbook/assets/casper-fork-choice-freedom-1.svg)
+![Subset of blockdag that A admitted as seen](/assets/casper-fork-choice-freedom-1.svg)
 
 For simplifying the discussion, we will introduce two terms, referencing to subsets of local copy of the blockdag as stored by a validator :
 
@@ -568,23 +569,23 @@ Now let's come back to the discussion. By the time I published block $$b_8$$ my 
 
 For example, I can decide to keep my display minimal. So I deliberately keep $$b_4$$, $$b_6$$, $$b_7$$, $$b_9$$, $$b_{10}$$ in the pocket and I am running the fork-choice against j-past-cone of block $$b_8$$ only. Obviously, $$b_8$$ will become my fork-choice leader and I will publish the new block $$b_{11}$$ having only one parent.
 
-![Running fork-choice with strategy &quot;diplomacy&quot;](../../.gitbook/assets/casper-fork-choice-freedom-2.svg)
+![Running fork-choice with strategy &quot;diplomacy&quot;](/assets/casper-fork-choice-freedom-2.svg)
 
 The same blockdag but with display and pocket explicitly marked::
 
-![Display and pocket explained](../../.gitbook/assets/casper-display-and-treasury-explained.svg)
+![Display and pocket explained](/assets/casper-display-and-treasury-explained.svg)
 
 Another example would be to make the display equal to the local blockdag, so in other words to disclose everything. Then, $$b_{10}$$ becomes the fork-choice leader and the situation after publishing my new block will be:
 
-![Running fork-choice with strategy &quot;disclose everything&quot;](../../.gitbook/assets/casper-fork-choice-freedom-3.svg)
+![Running fork-choice with strategy &quot;disclose everything&quot;](/assets/casper-fork-choice-freedom-3.svg)
 
 But I also have several "intermediate" possibilities. For example I can keep blocks $$b_9$$ and $$b_{10}$$ hidden, but display everything else. In such case I am running my fork choice against this blockdag:
 
-![Running fork-choice with arbitrary selection of display](../../.gitbook/assets/casper-fork-choice-freedom-4.svg)
+![Running fork-choice with arbitrary selection of display](/assets/casper-fork-choice-freedom-4.svg)
 
 Fork choice will give $$b_6$$ or $$b_8$$ as the leader \(depending on block hashes\), but it follows from the existence of block $$b_9$$ that all 3 tips are mergeable here. So the final result will be:
 
-![Running fork-choice with arbitrary selection of display](../../.gitbook/assets/casper-fork-choice-freedom-5.svg)
+![Running fork-choice with arbitrary selection of display](/assets/casper-fork-choice-freedom-5.svg)
 
 Why may a validator be interested in keeping the pocket non-empty ? Well, because this leaves bigger decision space when it comes to publish a new block. This decision space may be seen as some extra power to influence the direction of where consensus is going to. Look at this block $$b_{11}$$ - it contains transaction $$x$$. If transaction $$x$$ is in conflict with transaction $$m$$, so blocks $$b_{10}$$ and $$b_{11}$$ are not mergeable, then publishing $$b_{11}$$ on top of $$b_10$$ is not possible. On the other hand, hiding some blocks from the display makes publishing $$b_{11}$$ legal. Doing so means that validator $$A$$ actively tries tries to influence the direction of where consensus will go, instead of just "going with the flow".
 

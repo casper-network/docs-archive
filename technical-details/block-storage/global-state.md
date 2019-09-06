@@ -1,6 +1,6 @@
----
-description: 'Accounts, K/V'
----
+<!-- --- -->
+<!-- description: 'Accounts, K/V' -->
+<!-- --- -->
 
 # Global State
 
@@ -50,14 +50,14 @@ Account addresses are keys in the global data store which point at accounts. Bec
 * A purse field. This is an unforgeable reference to the `purse` object holding funds of the account.
 * A set of known `URef`s  \(private\). Mapping between strings to names. Idea behind this map is to allow developers use human readable versions of the keys.
 * A public method called `give`, which takes an unforgeable reference as an argument. When you call `give` on an account, the provided `URef` is added to that account's set of known unforgeable references. Key used for persisting the name is derived from the name itself.   Note: name can be remapped later.  Note: `give`-ing a name is more expensive that deleting it. This incentivizes developers to not `give` out names.
-* A public method called `authenticate`, which takes a nonce and cryptographic signature as arguments. The `authenticate` method is only called during the first phase of a deploy, called the "login" phase. This means that cryptographic \(identity-based\) security is used on the boundary of the system, but full capabilities-based security is used entirely inside the system. 
+* A public method called `authenticate`, which takes a nonce and cryptographic signature as arguments. The `authenticate` method is only called during the first phase of a deploy, called the "login" phase. This means that cryptographic \(identity-based\) security is used on the boundary of the system, but full capabilities-based security is used entirely inside the system.
 
 ### Smart contract
 
 The precise definition of "Smart Contract" is left purposely vague here because we are keeping it as generic as possible. Contracts have the following properties:
 
 * A set of known unforgeable references. Similar to `Account`.
-* bytearray representing serialized body of the contract. At the moment this is serialized Wasm code. This means that in order for the contract to update its state it has to put new data into its `URef` set. 
+* bytearray representing serialized body of the contract. At the moment this is serialized Wasm code. This means that in order for the contract to update its state it has to put new data into its `URef` set.
 
 ## ABI
 
