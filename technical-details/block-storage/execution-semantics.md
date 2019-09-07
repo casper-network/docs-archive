@@ -8,13 +8,13 @@ One of the biggest challenges that blockchain faces is the one of throughput. Wh
 
 ### Introduction
 
-Let's consider the execution of transactions included in a single block. So we have a $$Block(B)$$ and a collection of transactions:
+Let's consider the execution of transactions included in a single block. So we have a $Block(B)$ and a collection of transactions:
 
 $$
 t_1, t_2, ..., t_n \in Block(B)
 $$
 
-As part of the validation of block $$Block(B)$$, any validator receiving this block has to execute all transactions so to calculate the global state after applying this block. In principle, all these transactions could be executed sequentially, which is the easiest approach and does not bring any problems. Unfortunately, it is also the slowest one.
+As part of the validation of block $Block(B)$, any validator receiving this block has to execute all transactions so to calculate the global state after applying this block. In principle, all these transactions could be executed sequentially, which is the easiest approach and does not bring any problems. Unfortunately, it is also the slowest one.
 
 Given the multi-core architecture of contemporary computers one is interested in exploiting all possibilities where things can be executed concurrently. In the case of transaction execution, we anticipate that vast majority of transactions are "independent" from each other, so their execution could be parallelized.
 
@@ -30,7 +30,7 @@ In this chapter we formalize the intuitive concept of "mutual independent transa
 
 ### Transactions
 
-Let GS denote the set of global states. So an element $$gs \in GS$$ is just a fixed state of the memory of our "blockchain computer" \(which implementation-wise corresponds to a map from keys to values, as was explained [here](global-state.md)\):
+Let GS denote the set of global states. So an element $gs \in GS$ is just a fixed state of the memory of our "blockchain computer" \(which implementation-wise corresponds to a map from keys to values, as was explained [here](global-state.md)\):
 
 $$
 gs: Keys \rightarrow Values
@@ -44,23 +44,23 @@ $$
 
 **Caution**: Hidden here are assumptions about what features a smart contract programmer can access inside a body of a smart contract. No _non-deterministic_ function is available. In other words, the execution of a transaction is completely determined by the global state it is applied to and parameters of the contract.
 
-Further, it is not true that we are interested in every possible functions $$GS \rightarrow GS$$. Really, we are only interested in computable functions, so functions implementable as Turing Machine programs, where the only extra feature is the access to our global state. Hence such programs are sequential by nature and every access to global state can be traced.
+Further, it is not true that we are interested in every possible functions $GS \rightarrow GS$. Really, we are only interested in computable functions, so functions implementable as Turing Machine programs, where the only extra feature is the access to our global state. Hence such programs are sequential by nature and every access to global state can be traced.
 
-Formally, by $$transactions\space over\space GS$$ we understand the following set:
+Formally, by $transactions\space over\space GS$ we understand the following set:
 
 $$
 Transactions(GS) = \{ t \in GS^{GS}: t \space is \space computable \}
 $$
 
 {% hint style="info" %}
-$$GS^{GS}$$ means "all possible $$GS \rightarrow GS$$ functions"
+$GS^{GS}$ means "all possible $GS \rightarrow GS$ functions"
 {% endhint %}
 
 ### Commutativity of transactions
 
-Consider two transactions $$t_1, t_2 \in Transactions(GS)$$ and a fixed global state $$gs \in GS$$. To express that $$t_1$$ and $$t_2$$ are mutually independent in the context of gs, we just want to say that it does not matter in which order we apply them to gs, because the final result is going to be the same anyway.
+Consider two transactions $t_1, t_2 \in Transactions(GS)$ and a fixed global state $gs \in GS$. To express that $t_1$ and $t_2$ are mutually independent in the context of gs, we just want to say that it does not matter in which order we apply them to gs, because the final result is going to be the same anyway.
 
-Formally, we say that transactions $$t_1$$ and $$t_2$$ are commutative in the context of global state $$gs \in GS$$, $$iff$$
+Formally, we say that transactions $t_1$ and $t_2$ are commutative in the context of global state $gs \in GS$, $iff$
 
 $$
 t_1(t_2(gs)) = t_2(t_1(gs))
@@ -68,7 +68,7 @@ t_1(t_2(gs)) = t_2(t_1(gs))
 \newline (t_1 \circ t_2)(gs) = (t_2 \circ t_1)(gs)
 $$
 
-Obviously, this definition can easily be extended to a finite set of transactions: we say that a set $$T = \{t_1, …, t_n\}$$ is commutative in the context of global state $$gs \in GS$$ iff for all permutations $$p: \{1, …, n\} \rightarrow \{1, …, n\}$$:
+Obviously, this definition can easily be extended to a finite set of transactions: we say that a set $T = \{t_1, …, t_n\}$ is commutative in the context of global state $gs \in GS$ iff for all permutations $p: \{1, …, n\} \rightarrow \{1, …, n\}$:
 
 $$
 (t_{p(1)} \circ t_{p(2)} \circ … \circ t_{p(n)}) (gs) = (t_1 \circ t_2 \circ … t_n)(gs)
@@ -112,7 +112,7 @@ Distinguished families of such commutative functions operating on Values are pre
 * adding element to a set
 * removing elements from a set
 
-Such a collection of selected commutative families of functions that are supported by the execution engine we will denote here as $$CommutingFamilies$$, or CF. So, using previously established notation for adding, we can recognize two example elements in $$CommutingFamilies$$ that cover the integer addition and adding element of type $$A$$ to $$Set[A]$$:
+Such a collection of selected commutative families of functions that are supported by the execution engine we will denote here as $CommutingFamilies$, or CF. So, using previously established notation for adding, we can recognize two example elements in $CommutingFamilies$ that cover the integer addition and adding element of type $A$ to $Set[A]$:
 
 $$
 \{ Add_i : i \in Int \} \in CF, where \space Add_i: Int \rightarrow Int, Add_i(x) = x + i
@@ -122,13 +122,13 @@ $$
 
 ### Correctness theorem
 
-We define a $$trace \space of \space execution$$ of a transaction $$t$$ to be an ordered sequence of $$actions$$ capturing subsequent accesses to the global state made by the program executing the transaction, once applied to a given $$gs \in GS$$:
+We define a $trace \space of \space execution$ of a transaction $t$ to be an ordered sequence of $actions$ capturing subsequent accesses to the global state made by the program executing the transaction, once applied to a given $gs \in GS$:
 
 $$
 Trace(t, gs) = <action_1, action_2, …, action_n>
 $$
 
-Here, every $$action$$ is a pair: $$<key, op>$$ where
+Here, every $action$ is a pair: $<key, op>$ where
 
 $$
 key \in Keys
@@ -157,7 +157,7 @@ We reduce such trace in two steps:
 | :--- | :--- | :--- | :--- |
 | Read | Read | Write | Write |
 | Write | Write | Write | Write |
-| Add | Write | Write | $$if (cf_1 = cf_2) \space cf_1 \space else \space  error$$ |
+| Add | Write | Write | $if (cf_1 = cf_2) \space cf_1 \space else \space  error$ |
 
 * Members of a commutative family commute with other members of the same family
 
@@ -167,21 +167,21 @@ $$
 ReducedTrace(t, gs): K \rightarrow Op, where \space K \subset Keys
 $$
 
-For a pair of transactions $$t_1$$, $$t_2$$, and their traces $$ReducedTrace(t_1, gs)$$, $$ReducedTrace(t_2, gs)$$ we introduce the following way of checking if reduced traces commute:
+For a pair of transactions $t_1$, $t_2$, and their traces $ReducedTrace(t_1, gs)$, $ReducedTrace(t_2, gs)$ we introduce the following way of checking if reduced traces commute:
 
 $$
 \forall k \space Commutes(k) : k \in Dom(ReducedTrace(t_1, gs))\space\cap Dom(ReducedTrace(t_2,gs))
 $$
 
-where $$Commutes$$ function is defined using following rules:
+where $Commutes$ function is defined using following rules:
 
-| Commutes | Read | Write | $$cf_2$$ |
+| Commutes | Read | Write | $cf_2$ |
 | :--- | :--- | :--- | :--- |
 | Read | true | false | false |
 | Write | false | false | false |
-| $$cf_1$$ | false | false | $$cf_1 = cf_2$$ |
+| $cf_1$ | false | false | $cf_1 = cf_2$ |
 
-**Theorem:** If two transactions $$t_1$$ and $$t_2$$ have commuting reduced traces they commute. Formally:
+**Theorem:** If two transactions $t_1$ and $t_2$ have commuting reduced traces they commute. Formally:
 
 $$
 \forall gs \in GS, \space \forall t_1,t_2 \in Transactions(GS)
@@ -192,7 +192,7 @@ $$
 **Caution**: the inverse theorem is not true, which can be observed in the following example.
 
 {% hint style="info" %}
-We use $$\sim$$ \(tilde\) to denote that two things commute \(it doesn't matter in which order they are applied\).
+We use $\sim$ \(tilde\) to denote that two things commute \(it doesn't matter in which order they are applied\).
 {% endhint %}
 
 **Example:** Transactions commute but their reduced traces don't.
@@ -220,15 +220,15 @@ When reading above example contracts it's easy to see that transactions should b
 
 ### Proof of theorem \(sketch\)
 
-**Lemma**: Intuitively, only $$Read(k)$$ operations influence how the program executing the transaction operates. For two global states $$gs_1, gs_2 \in GS$$ if the same transaction applied to $$gs_1$$ created a different execution trace than when applied to $$gs_2$$ then at some point of the trace there must be a $$Read(k)$$ operation where $$gs_1(k) \not = gs_2(k)$$.
+**Lemma**: Intuitively, only $Read(k)$ operations influence how the program executing the transaction operates. For two global states $gs_1, gs_2 \in GS$ if the same transaction applied to $gs_1$ created a different execution trace than when applied to $gs_2$ then at some point of the trace there must be a $Read(k)$ operation where $gs_1(k) \not = gs_2(k)$.
 
-Assume that $$ReducedTrace(t_1, gs) \sim ReducedTrace(t_2, gs)$$. We are going to prove:
+Assume that $ReducedTrace(t_1, gs) \sim ReducedTrace(t_2, gs)$. We are going to prove:
 
 $$
 ReducedTrace(t_1, t_2(gs)) = ReducedTrace(t_1, gs)
 $$
 
-This is to say that transaction $$t_1$$ is not affected by $$t_2(gs)$$ and so it operates following exactly the same storage access flow in both cases.
+This is to say that transaction $t_1$ is not affected by $t_2(gs)$ and so it operates following exactly the same storage access flow in both cases.
 
 Let's assume the contrary is true:
 
@@ -236,7 +236,7 @@ $$
 ReducedTrace(t_1, t_2(gs)) \not = ReducedTrace(t_1, gs)
 $$
 
-Using lemma, this would mean that at some point of the $$t_1$$trace there must be a $$Read(k)$$ operation where $$gs(k) \not = t_2(gs)(k)$$. Which is to say that some key _k_ was modified by $$t_2$$ and the same key _k_ is being read by $$t_1$$. This, however, contradicts our assumption that $$t_1$$and $$t_2$$ commute.
+Using lemma, this would mean that at some point of the $t_1$trace there must be a $Read(k)$ operation where $gs(k) \not = t_2(gs)(k)$. Which is to say that some key _k_ was modified by $t_2$ and the same key _k_ is being read by $t_1$. This, however, contradicts our assumption that $t_1$and $t_2$ commute.
 
 End of the proof.
 
