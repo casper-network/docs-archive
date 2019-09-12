@@ -133,8 +133,7 @@ code). Therefore, the mint’s ``transfer`` method which accepts ``PurseId``\ s 
 the most convenient to use when transferring between account main purses. For
 this reason, CasperLabs supplies a
 ```transfer_to_account`` <https://docs.rs/casperlabs-contract-ffi/0.13.0/casperlabs_contract_ffi/contract_api/fn.transfer_to_account.html>`__
-function which takes the public key used to derive the `identity
-key <./global-state.md#account-identity-key>`__ of the account. This function uses
+function which takes the public key used to derive the `identity key <./global-state.md#account-identity-key>`__ of the account. This function uses
 the mint transfer function with the current account’s main purse as the ``source``
 and the main purse of the account at the provided key as the ``target``. The
 ``transfer_from_purse_to_account`` function is similar, but uses a given purse as
