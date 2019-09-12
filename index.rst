@@ -20,11 +20,8 @@ In 2019, CasperLabs introduces a blockchain platform that it believes incorporat
    :maxdepth: 2
    :caption: Contents:
 
-   introduction/index
-   technical-details/index
-   network-and-governance/index
-   glossary/index
-
+   theory/index
+   implementation/index
 
 
 Indices and tables
