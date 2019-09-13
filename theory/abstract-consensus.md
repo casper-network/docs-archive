@@ -1,4 +1,4 @@
-# Abstract consensus
+# Abstract Casper Consensus
 
 ## Introduction
 
@@ -45,7 +45,7 @@ Given the assumptions above it follows that the order of delivery may not coinci
 interface GossipService {
   proc broadcast(message: Message)
 }
- 
+
 interface Validator {
   proc handleMessageFromNetwork(message: Message)
 }
@@ -78,7 +78,7 @@ class Message {
   val creator: Validator
   val justifications: List[Message]
   val consensusValue: Option[Int]
-   
+
   fun daglevel: Int =
      if (justifications.isEmpty)
        0
@@ -98,7 +98,7 @@ Such a graph is always acyclic because a cycle in this graph would mean time-tra
 
 We call any such structure **j-dag**. We generally assume that every validator maintains a (mutable) representation of **j-dag** reflecting the most up-to-date knowledge on the on-going consensus establishing process. Observe that **j-dag** may be equivalently seen as a POSET, because of the well known equivalence between transitively closed DAGs and POSETs. We frequently blur the distinction between DAG-based and POSET-based languages when talking about consensus.
 
-Please observe that for any message **m**, the collection $m.justifications$ determines a sub-dag of the **j-dag**.  
+Please observe that for any message **m**, the collection $m.justifications$ determines a sub-dag of the **j-dag**.
 
 In the context of any **j-dag** we introduce the following concepts:
 
@@ -125,7 +125,7 @@ interface JDagOfMessages {
   fun tips: Iterable[Message]
   proc insert(n: Message)
 }
- 
+
 class ProtocolState {
   val jDagTips: Set[Message]
 }
@@ -147,7 +147,7 @@ But historically, two different ways of talking about this situation emerged and
 
 So, for a software engineer, a protocol state might well be seen as a snapshot of the **j-dag**.
 
-When talking about the universum of protocol states, we usually use speak about the order of protocol states (= the inclusion relation) using the time flow metaphor, so for example when $ps_1$ and $ps_2$ are protocol states and $ps_1 < ps_2$, we say that $ps_1$ is earlier than $ps_2$, or that $ps_2$ is "in the future of $ps_1$". 
+When talking about the universum of protocol states, we usually use speak about the order of protocol states (= the inclusion relation) using the time flow metaphor, so for example when $ps_1$ and $ps_2$ are protocol states and $ps_1 < ps_2$, we say that $ps_1$ is earlier than $ps_2$, or that $ps_2$ is "in the future of $ps_1$".
 
 ### Lifecycle of a validator
 
@@ -173,21 +173,21 @@ class Message {
   val creator: Validator
   val justifications: List[Message]
   val consensusValue: Option[Int]
-   
+
   fun daglevel: Int =
      if (justifications.isEmpty)
        0
      else
        max(justifications map (j => j.daglevel))
 }
- 
+
 class Validator {
   var currentProtocolState
-  
+
   fun estimator(pc: ProtocolState): Set[Int]
-   
+
   fun pickValueFrom(subsetOfConsensusValues: Set[Int]): Int
- 
+
   fun createNewMessage(): Message = new Message(
       id = generateMessageId,
       creator = this,
@@ -197,9 +197,9 @@ class Validator {
           None
         else
          pickValueFrom(estimator(currentProtocolState)))
- 
+
   fun generateMessageId(): Long
- 
+
   fun shouldNextVoteBeEmpty(): Boolean
 }
 ```
@@ -217,7 +217,7 @@ For a protocol state $ps$ we calculate the estimator value in the following way:
   3. for every validator - find its latest message
   4. sum latest messages by weight - this end up with a mapping $total–votes: C \to Int$ - for every consensus value $c$ it returns the sum of weights of validators voting for $c$
   5. find all points $c ∈ C$ such that $total–votes$ has maximum value at $c$
-  6. using total order on $C$, from elements found in previous step pick maximum element $cmax$ 
+  6. using total order on $C$, from elements found in previous step pick maximum element $cmax$
   7. the result is one-element set ${cmax}$
 
 ## Finality
@@ -243,7 +243,7 @@ It may be not immediately obvious how equivocations are possible in the context 
 1. The essence of an equivocation is not voting for different consensus values but behaving in a "schizophrenic" way by pretending that "I have not seen my previous message".
 2. Estimator returns a set, not a single value. When this set has size >0, it leaves some extra freedom.
 3. Even if the size of the set returned by the estimator is actually 1, there is always a possibility to cast an empty vote. Voting for empty vs voting for a value is a freedom.
-4. Validator does not have to reveal all messages actually received. "Revealing" happens at the creation of new message - by listing justifications of this message. It is legal to hide some knowledge here, as long as a validator does this hiding in a consistent way (if I once admit I have seen message $m$, I cannot un-admit this later). 
+4. Validator does not have to reveal all messages actually received. "Revealing" happens at the creation of new message - by listing justifications of this message. It is legal to hide some knowledge here, as long as a validator does this hiding in a consistent way (if I once admit I have seen message $m$, I cannot un-admit this later).
 
 ### Finality criteria
 

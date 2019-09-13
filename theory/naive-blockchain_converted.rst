@@ -1,5 +1,5 @@
-Naive blockchain
-================
+Naive Casper Blockchain
+=======================
 
 Introduction
 ------------

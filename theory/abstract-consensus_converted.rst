@@ -1,5 +1,5 @@
-Abstract consensus
-==================
+Abstract Casper Consensus
+=========================
 
 Introduction
 ------------
@@ -51,7 +51,7 @@ Given the assumptions above it follows that the order of delivery may not coinci
    interface GossipService {
      proc broadcast(message: Message)
    }
-    
+
    interface Validator {
      proc handleMessageFromNetwork(message: Message)
    }
@@ -85,7 +85,7 @@ When validator :math:`V` creates and braodcasts a message with consensus value :
      val creator: Validator
      val justifications: List[Message]
      val consensusValue: Option[Int]
-      
+
      fun daglevel: Int =
         if (justifications.isEmpty)
           0
@@ -135,7 +135,7 @@ In the context of any **j-dag** we introduce the following concepts:
      fun tips: Iterable[Message]
      proc insert(n: Message)
    }
-    
+
    class ProtocolState {
      val jDagTips: Set[Message]
    }
@@ -186,21 +186,21 @@ We can now rewrite the definition of Message class with this assumption applied:
      val creator: Validator
      val justifications: List[Message]
      val consensusValue: Option[Int]
-      
+
      fun daglevel: Int =
         if (justifications.isEmpty)
           0
         else
           max(justifications map (j => j.daglevel))
    }
-    
+
    class Validator {
      var currentProtocolState
-     
+
      fun estimator(pc: ProtocolState): Set[Int]
-      
+
      fun pickValueFrom(subsetOfConsensusValues: Set[Int]): Int
-    
+
      fun createNewMessage(): Message = new Message(
          id = generateMessageId,
          creator = this,
@@ -210,9 +210,9 @@ We can now rewrite the definition of Message class with this assumption applied:
              None
            else
             pickValueFrom(estimator(currentProtocolState)))
-    
+
      fun generateMessageId(): Long
-    
+
      fun shouldNextVoteBeEmpty(): Boolean
    }
 
