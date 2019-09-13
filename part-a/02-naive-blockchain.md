@@ -82,7 +82,7 @@ In proof-of-stake blockchains, **stake** is a representation of the voting power
 
 ### Encoding of stakes
 
-Main assumption is that a global state encodes (among other things) the "weights map" - an mapping of validators to their voting power. So, mathematically, we expect the existence of a function which assigns to every global state a function mapping validators to their weights:
+Main assumption is that a global state encodes (among other things) the "weights map" - a mapping of validators to their voting power. So, mathematically, we expect the existence of a function which assigns to every global state a function mapping validators to their weights:
 $$
 weights–map: GS → Int^{ValidatorId} \\
 weights–map(gs): ValidatorId → Int
@@ -183,14 +183,14 @@ We explain here only the intuition behind the blockdag. These ideas are formaliz
 
 The blockdag emerges as a combination of these central ideas:
 
-- Independently proposing updates of the shared database inevitably leads to a tree of transactions (blocks), because the proposing validator must choose which version of history is is about to extend. This is how the **main-tree** pops up.
+- Independently proposing updates of the shared database inevitably leads to a tree of transactions (blocks), because the proposing validator must choose which version of history it is about to extend. This is how the **main-tree** pops up.
 - All that remains is to add the mechanics for validators to collectively agree on which branch of the main-tree is the "official" one.
 - We solve this problem by recursively applying Abstract Casper Consensus.
 - Secondary parents idea is a further refinement of the solution, by merging as many non-agreed paths of main-tree as is possible without introducing inconsistencies.
 
 The single, most crucial trick here is the recursive application of Abstract Casper Consensus. Let's try to understand this trick first, before we dive into detailed specs of how validators and finalizers operate.
 
-Let's **b** be any block. So, **b** is a vertex in the main-tree. We will consider a projection of validators P2P protocol to a particular Abstract Casper Consensus model instance, which we will be calling **b-game**. 
+Let **b** be any block. So, **b** is a vertex in the main-tree. We will consider a projection of validators P2P protocol to a particular Abstract Casper Consensus model instance, which we will be calling **b-game**. 
 
 | Abstract Casper Consensus concept                 | How this concept maps to b-game                              |
 | ------------------------------------------------- | ------------------------------------------------------------ |
@@ -239,7 +239,7 @@ This is previous example of a blockdag, reduced to **p-dag** only:
 
 <img src="./pictures/p-dag.png" width=450>
 
-We define **p-past-cone(b)** as the set of all blocks $x$ such that $x \leqslant b$ (in the POSET corresponding to p-dag, $x < y \iff y → x$).
+We define **p-past-cone(b)** as the set of all blocks $x$ such that $x \leqslant b$ (in the POSET corresponding to p-dag, $x \leqslant y \iff y → x$).
 
 **<u>Example:</u>** Let's look at the block $3$. Its p-past-cone is $\{Genesis, 1, 2, 3\}$. Let's look at the block $9$. Its p-past-cone is $\{Genesis, 1,2,3,4,5,9\}$.
 
@@ -352,7 +352,7 @@ Listen to messages incoming from other validators. Whenever a message $m$ (block
 2. Check if all justifications of $m$ are already included in $blockdag$.
 
    1. if yes: continue
-2. otherwise: append $m$ to the $message–sbuffer$, then exit
+2. otherwise: append $m$ to the $messages–buffer$, then exit
    
 3. Perform processing specific to type of $m$ (block or ballot) - see below.
 
@@ -611,7 +611,7 @@ Once an equivocation catastrophe is discovered, the following handling must be a
 
 1. Starting from the catastrophic point, re-calculate the **LFB chain** (initializing initial players accordingly to current contents of **equivocators**).
    
-   2. Find the first **i** such that new new LFB-chain differs from old LFB chain at index **i**. Usually such **i** will be bigger than the catastrophic point.
+   2. Find the first **i** such that the new LFB-chain differs from old LFB chain at index **i**. Usually such **i** will be bigger than the catastrophic point.
 3. Publish a rollback event at the level of external API.
    4. Publish re-calculated LFB stream, starting from first difference.
 

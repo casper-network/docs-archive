@@ -160,7 +160,7 @@ A validator itself must decide when to create and broadcast new messages - this 
 
 ### Estimator
 
-Upon creation of a new message $m$, a validator must decide what consensus value $m$ will vote for. We limit the freedom here by enforcing that the selected consensus value is constrained by certain function, called **estimator**. Assumption here is that estimator is fixed upfront and used by all validators. This function as allowed to depend only on justifications of message $m$ and it returns a subset of consensus values. When a validator makes a vote, it is allowed to:
+Upon creation of a new message $m$, a validator must decide what consensus value $m$ will vote for. We limit the freedom here by enforcing that the selected consensus value is constrained by a certain function, called **estimator**. The assumption here is that an estimator is fixed upfront and used by all validators. This function is allowed to depend only on justifications of message $m$ and it returns a subset of consensus values. When a validator makes a vote, it is allowed to:
 
 - either pick a value from the subset returned by the estimator
 - or pick $None$, so create a message voting for nothing
@@ -196,7 +196,7 @@ class Validator {
         if (shouldNextVoteBeEmpty())
           None
         else
-         pickValueFrom(estimator(currentProtocolState)))
+          pickValueFrom(estimator(currentProtocolState)))
  
   fun generateMessageId(): Long
  
@@ -206,7 +206,7 @@ class Validator {
 
 ### The reference estimator
 
-In fact, in all solutions considered so far by Casperlabs we are reusing the same pattern for estimators construction. It assumes that the set of consensus values $C$ is totally ordered.
+In fact, in all solutions considered so far by CasperLabs we are reusing the same pattern for estimators construction. It assumes that the set of consensus values $C$ is totally ordered.
 
 For a protocol state $ps$ we calculate the estimator value in the following way:
 
@@ -224,7 +224,7 @@ For a protocol state $ps$ we calculate the estimator value in the following way:
 
 ### What is finality ?
 
-Finality is a situation where certain consensus value $c$ gets "locked", i.e. eventually every honest validator $V$ starts voting for $c$ and there is no way that $V$ will vote for another consensus value in the future.
+Finality is a situation where a certain consensus value $c$ gets "locked", i.e. eventually every honest validator $V$ starts voting for $c$ and there is no way that $V$ will vote for another consensus value in the future.
 
 The challenge here is that, while finality may be already achieved, it is not quite easy to actually recognize it. Please keep in mind that we want to recognize the finality from the perspective of the knowledge that a single validator has, so although some "ultimate observer" able so see the current state of all validators could deduce finality, individual validators may still struggle to make such conclusion.
 
