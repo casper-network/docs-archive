@@ -1,5 +1,9 @@
+.. _communications-head:
+
 Communications
 ==============
+
+.. _communications-discovery:
 
 Node Discovery
 --------------
@@ -42,6 +46,8 @@ multiple strategies:
    more addresses until there are nothing new to add.
 -  Periodically construct artificial keys to try to find peers at certain
    distances from ``id`` and perform a lookup by a random node.
+
+.. _communications-gossiping:
 
 Block Gossiping
 ---------------
@@ -100,7 +106,7 @@ To achieve these we have the following high level approach:
 Picking Nodes for Gossip
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-As we established in the `Node Discovery <communications.md#node-discovery>`__
+As we established in the :ref:`communications-discovery`
 section the nodes maintain a list of peers using a Kademlia table. The table has
 one bucket for each possible distance between the bits of their IDs, and they
 pick a number *k* to be length of the list of nodes in each of these buckets
