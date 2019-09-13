@@ -1,4 +1,4 @@
-# Abstract consensus
+# Abstract Casper Consensus
 
 ## Introduction
 
