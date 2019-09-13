@@ -1,5 +1,9 @@
+.. _accounts-head:
+
 Accounts
 ========
+
+.. _accounts-intro:
 
 Introduction
 ------------
@@ -11,11 +15,13 @@ CasperLabs blockchain (i.e. “deploys”) must originate from an account. Each
 account has its own context where it can locally store information (e.g.
 references to useful contracts, metrics, aggregated data from other parts of the
 blockchain). Each account also has a “main purse” where it can hold CasperLabs
-tokens (see `Tokens <./tokens.md>`__ for more information).
+tokens (see :ref:`Tokens <tokens-purses-and-accounts>` for more information).
 
 In this chapter we describe the permission model for accounts, their local
 storage capabilities, and briefly mention some runtime functions for interacting
 with accounts.
+
+.. _accounts-data-structure:
 
 The ``Account`` data structure
 ------------------------------
@@ -23,13 +29,17 @@ The ``Account`` data structure
 An ``Account`` contains the following data:
 
 -  A collection of named keys (this plays the same role as the named keys in a
-   `stored contract <./global-state.md#contracts>`__)
+   :ref:`stored contract <global-state-contracts>`)
 -  A ``URef`` representing the account’s “main purse”
 -  A collections of “associated keys” (see below for more information)
 -  “Action thresholds” (see below for more information)
 
+.. _accounts-permissions:
+
 Permissions model
 -----------------
+
+.. _accounts-actions-thresholds:
 
 Actions and thresholds
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -45,6 +55,8 @@ which must be met in order to perform that action. How these weight thresholds
 can be met is described in the next section. Since a key management action
 requires a deploy action, the key management threshold should always be greater
 than or equal to the deploy threshold.
+
+.. _accounts-associated-keys-weights:
 
 Associated keys and weights
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,6 +75,8 @@ management action threshold of the account. Note that any key may be used to
 help authorize any action; there are no “special keys”, all keys contribute
 their weight in exactly the same way.
 
+.. _accounts-key-management:
+
 Key management actions
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -76,6 +90,8 @@ the account. This includes the following:
 Key management action have validity rules which prevent a user from locking
 themselves out of their account. For example, it is not allowed to set a
 threshold larger than the sum of the weights of all associated keys.
+
+.. _accounts-recovery:
 
 Account security and recovery using key management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,30 +110,36 @@ to a sufficient number of keys to perform the key management action, otherwise
 future recovery will be impossible (we currently do not support “inactive
 recovery”).
 
+.. _accounts-creating:
+
 Creating an account
 -------------------
 
-Account creation happens automatically when there is a `token
-transfer <./tokens.md#purses-and-accounts>`__ to a yet unused `identity
-key <./global-state.md#account-identity-key>`__. When an account is first created,
+Account creation happens automatically when there is a :ref:`token
+transfer <tokens-purses-and-accounts>` to a yet unused :ref:`identity
+key <global-state-account-key>`. When an account is first created,
 the balance of its main purse is equal to the number of tokens transferred, its
 action thresholds are equal to 1 and there is one associated key (equal to the
 public key used to derive the identity key) with weight 1.
+
+.. _accounts-context:
 
 The account context
 -------------------
 
 A deploy is a user request to perform some execution on the blockchain (see
-`Execution Semantics <./execution-semantics.md>`__ for more information). It
+:ref:`Execution Semantics <execution-semantics-deploys>` for more information). It
 contains “payment code” and “session code” which are contracts that contain the
 logic to be executed. These contracts are executed in the context of the account
 of the deploy. This means these contracts use the named keys of the account and
-use the account’s local storage (i.e. the “root” for the `local
-keys <./global-state/md#local-key>`__ come from the account identity key). Note
+use the account’s local storage (i.e. the “root” for the :ref:`local
+keys <global-state-local-key>` come from the account identity key). Note
 that other contracts called from the session code by ``call_contract`` are
 executed in their own context, not the account context. This means, an account
 (with logic contained in session code) can be used to locally store information
 relevant to the user owning the account.
+
+.. _accounts-api-functions:
 
 Functions for interacting with an account
 -----------------------------------------

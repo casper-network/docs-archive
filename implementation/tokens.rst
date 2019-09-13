@@ -1,5 +1,9 @@
+.. _tokens-head:
+
 Tokens
 ======
+
+.. _tokens-intro:
 
 Introduction
 ------------
@@ -13,6 +17,8 @@ we continue that tradition here.
 This chapter describes how we define tokens and how they are used in our
 platform.
 
+.. _tokens-divisibility:
+
 Divisibility of tokens
 ----------------------
 
@@ -23,6 +29,8 @@ of indivisible parts. For the purposes of this document we will always work in
 terms of these indivisible units so as to not need to pick a particular level of
 divisibility for our “token” (as this detail is not important for the present
 description). We call the indivisible units which make up our token *motes*.
+
+.. _tokens-mints-and-purses:
 
 Mints and pursers
 -----------------
@@ -40,7 +48,7 @@ balances as *purses* and conceptually they represent a container for motes. The
 ``PurseId`` is how a purse is referenced from outside the mint.
 
 ``PurseId``\ s have the same permissions model as
-```URef``\ s <./global-state.md#permissions-for-urefs>`__ (indeed our implementation
+:ref:`URefs <global-state-urefs-permissions>` (indeed our implementation
 models ``PurseId``\ s as simply a new-type wrapper over a ``URef``). Each ``PurseId``
 has ``AccessRights`` which determine what actions are allowed to be performed
 using that ID. The basic global state options map onto more standard monetary
@@ -60,6 +68,8 @@ permissions for details).
 
 We will use these definitions throughout this chapter as we describe the
 implementation and usage of tokens on the CasperLabs system.
+
+.. _tokens-mint-interface:
 
 The mint contract interface
 ---------------------------
@@ -95,6 +105,8 @@ implementations may exist, each corresponding to a different “currency”).
    -  ``BalanceResult`` either returns the number of motes held by the ``purse``, or
       nothing if the ``PurseId`` is not valid
 
+.. _tokens-using-purses:
+
 Using ``PurseId``\ s
 --------------------
 
@@ -122,18 +134,21 @@ with ``Read`` access rights publicly available. This allows clients to pay via a
 transfer using their own purse, without either party exposing ``Write`` access to
 any purse.
 
+.. _tokens-purses-and-accounts:
+
 Purses and accounts
 -------------------
 
-Every `account <./accounts.md>`__ on the CasperLabs system has a purse associated
+Every :ref:`accounts-head` on the CasperLabs system has a purse associated
 with the CasperLabs system mint, which we call the account’s “main purse”.
 However, for security reasons, the ``PurseId`` of the main purse is only available
 to code running in the context of that account (i.e. only in payment or session
 code). Therefore, the mint’s ``transfer`` method which accepts ``PurseId``\ s is not
 the most convenient to use when transferring between account main purses. For
 this reason, CasperLabs supplies a
-```transfer_to_account`` <https://docs.rs/casperlabs-contract-ffi/0.13.0/casperlabs_contract_ffi/contract_api/fn.transfer_to_account.html>`__
-function which takes the public key used to derive the `identity key <./global-state.md#account-identity-key>`__ of the account. This function uses
+`transfer_to_account <https://docs.rs/casperlabs-contract-ffi/0.13.0/casperlabs_contract_ffi/contract_api/fn.transfer_to_account.html>`__
+function which takes the public key used to derive the
+:ref:`identity key <global-state-account-key>` of the account. This function uses
 the mint transfer function with the current account’s main purse as the ``source``
 and the main purse of the account at the provided key as the ``target``. The
 ``transfer_from_purse_to_account`` function is similar, but uses a given purse as

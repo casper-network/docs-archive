@@ -1,5 +1,9 @@
+.. _global-state-head:
+
 Global State
 ============
+
+.. _global-state-intro:
 
 Introduction
 ------------
@@ -20,6 +24,8 @@ In this chapter we describe what constitutes a “key”, what constitutes a
 “value”, the permissions model for the keys, and the Merkle-Patricia trie
 structure.
 
+.. _global-state-keys:
+
 Keys
 ----
 
@@ -32,6 +38,8 @@ A *key* in the global state is one of the following four data types:
 
 We cover each of these key types in more detail in the sections that follow.
 
+.. _global-state-account-key:
+
 Account identity key
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -39,7 +47,9 @@ This key type is used specifically for accounts in the global state. All
 accounts in the system must be stored under an account identity key, and no
 other type. The 32-byte identifier which represents this key is derived from the
 ``blake2b256`` hash of the public key used to create the associated account (see
-`Accounts <accounts.md>`__ for more information).
+:ref:`Accounts <accounts-associated-keys-weights>` for more information).
+
+.. _global-state-hash-key:
 
 Hash key
 ~~~~~~~~
@@ -47,10 +57,12 @@ Hash key
 This key type is used for storing contracts immutably. Once a contract is
 written under a hash key, that contract can never change. The 32-byte identifier
 representing this key is derived from the ``blake2b256`` hash of the deploy hash
-(see `Block Structure <block-structure.md>`__ for more information) concatenated
+(see :ref:`block-structure-head` for more information) concatenated
 with a 4-byte sequential ID. The ID begins at zero for each deploy and
 increments by 1 each time a contract is stored. The purpose of this ID is to
 allow each contract stored in the same deploy to have a unique key.
+
+.. _global-state-uref:
 
 Unforgable Reference (``URef``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,8 +76,10 @@ have, we say the contract has attempted to “forge” the unforgable reference,
 the runtime will raise a forged ``URef`` error. Permissions for a ``URef`` can be
 given across contract calls, allowing data stored under a ``URef`` to be shared in
 a controlled way. The 32-byte identifier representing the key is generated
-randomly by the runtime (see `Execution Semantics <execution-semantics.md>`__ for
+randomly by the runtime (see :ref:`Execution Semantics <execution-semantics-urefs>` for
 for more information).
+
+.. _global-state-local-key:
 
 Local key
 ~~~~~~~~~
@@ -82,6 +96,8 @@ hash allows local keys to be used as a private key-value store embedded within
 the larger global state. However this “local state” has no restrictions on its
 key type, so long as it can be serialized into bytes for hashing.
 
+.. _global-state-values:
+
 Values
 ------
 
@@ -95,7 +111,7 @@ A *value* in the global state is one of the following:
 -  A list of strings
 -  A key (as per the key types described above)
 -  A string, key pair
--  An account (see `Accounts <accounts.md>`__ for more information)
+-  An account (see :ref:`accounts-head` for more information)
 -  A contract (see section below for more information)
 -  A unit value (“unit” in the computer science sense, see for example `the rust
    definition <https://doc.rust-lang.org/std/primitive.unit.html>`__)
@@ -103,6 +119,8 @@ A *value* in the global state is one of the following:
 Note: this is the set of supported value types at the time of writing, however
 we know this list is too restrictive. We plan on expanding this list in the
 future.
+
+.. _global-state-contracts:
 
 Contracts
 ~~~~~~~~~
@@ -118,8 +136,8 @@ following data:
 The wasm module must contain a function named ``call`` which takes no arguments
 and returns no values. This is the main entry point into the contract. Moreover,
 the module may import any of the functions supported by the CasperLabs runtime;
-a list of all supported functions can be found in `Appendix
-A <./appendix.md#a---list-of-possible-function-imports>`__. Note that while the
+a list of all supported functions can be found in :ref:`Appendix A <appendix-a>`.
+Note that while the
 ``call`` function cannot take any arguments or have any return value, the contract
 itself still can via the ``get_arg`` and ``ret`` CasperLabs runtime functions.
 
@@ -137,12 +155,14 @@ was compiled to be compatible with. Contracts which are not compatible with the
 active major protocol version will not be executed by any node in the CasperLabs
 network.
 
+.. _global-state-permissions:
+
 Permissions
 -----------
 
 There are three types of actions which can be done on a value: read, write, add.
 The reason for add to be called out separately from write is to allow for
-commutativity checking (see `Merging Histories <./todo>`__ for more information).
+commutativity checking.
 The available actions depends on the key type and the context. This is
 summarized in the table below:
 
@@ -160,6 +180,8 @@ summarized in the table below:
 |                                   | seed used to construct the key    |
 |                                   | matches the current context       |
 +-----------------------------------+-----------------------------------+
+
+.. _global-state-urefs-permissions:
 
 Permissions for ``URef``\ s
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -187,6 +209,8 @@ boundaries; this means the system cannot be tricked into accepted a forged
 The ability to pass ``URef``\ s between contexts via ``call_contract`` / ``ret`` allow
 them to be used to share state among a fixed number of parties, while keeping it
 private from all others.
+
+.. _global-state-trie:
 
 Merkle-Patricia trie structure
 ------------------------------

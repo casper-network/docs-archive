@@ -1,5 +1,9 @@
+.. _block-structure-head:
+
 Block Structure
 ===============
+
+.. _block-structure-intro:
 
 Introduction
 ------------
@@ -7,6 +11,8 @@ Introduction
 A *block* is the primary data structure by which information about the state of
 the CasperLabs system is communicated between nodes of the network. In thi
 chapter we briefly describe the format of this data structure.
+
+.. _block-structure-proto:
 
 Protobuf definition
 -------------------
@@ -17,6 +23,8 @@ definition of a block can be `found on
 GitHub <https://github.com/CasperLabs/CasperLabs/blob/c78e35f4d8f0f7fd9b8cf45a4b17a630ae6ab18f/protobuf/io/casperlabs/casper/consensus/consensus.proto#L111>`__
 in this format; the description here is only meant to provide an overview of the
 block format, while the protobuf definition is authoritative.
+
+.. _block-structure-data:
 
 Data fields
 -----------
@@ -52,8 +60,7 @@ The block header contains the following fields:
 
 -  a summary of the global state, including
 
-   -  the `root hash of the global state
-      trie <./global-state.md#merkle-patricia-trie-structure>`__ prior to executing
+   -  the :ref:`root hash of the global state trie <global-state-trie>` prior to executing
       the deploys in this block (``pre_state_hash``)
    -  the root hash of the global state trie after executing the deploys in this
       block (``post_state_hash``)
@@ -78,11 +85,9 @@ processed deploy contains the following information:
 
 -  a copy of the `deploy
    message <https://github.com/CasperLabs/CasperLabs/blob/c78e35f4d8f0f7fd9b8cf45a4b17a630ae6ab18f/protobuf/io/casperlabs/casper/consensus/consensus.proto#L24>`__
-   which was executed (see `Execution Semantics <./execution-semantics.md>`__ for
+   which was executed (see :ref:`Execution Semantics <execution-semantics-deploys>` for
    more information about deploys and how they are executed)
--  the `amount of gas
-   spent <./execution-semantics.md#measuring-computational-work>`__ during its
-   execution
+-  the :ref:`amount of gas spent <execution-semantics-gas>` during its execution
 -  a flag indicating whether the deploy encountered an error
 -  a string for an error message (if applicable)
 

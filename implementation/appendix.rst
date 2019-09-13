@@ -1,5 +1,9 @@
+.. _appendix-head:
+
 Appendix
 ========
+
+.. _appendix-a:
 
 A - List of possible function imports
 -------------------------------------
@@ -15,7 +19,7 @@ libraries to support developing contracts for CasperLabs in other programming
 languages.
 
 Note: anywhere serialization is referenced, the custom CasperLabs serialization
-format is used. See `Appendix B <#b---serialization-format>`__ for details.
+format is used. See :ref:`Appendix B <appendix-b>` for details.
 
 -  ``read_value``
 
@@ -265,7 +269,9 @@ format is used. See `Appendix B <#b---serialization-format>`__ for details.
 
    -  Behavior:
 
-      -  This function serializes the named keys of the current context (account or contract) and copies them to the runtime buffer. The result can be obtained from the buffer by calling ``list_known_urefs``.
+      -  This function serializes the named keys of the current context (account
+         or contract) and copies them to the runtime buffer. The result can be
+         obtained from the buffer by calling ``list_known_urefs``.
 
 -  ``list_known_urefs``
 
@@ -873,6 +879,8 @@ format is used. See `Appendix B <#b---serialization-format>`__ for details.
          session phase and 3 means the finalization phase (should never be
          encountered by user code).
 
+.. _appendix-b:
+
 B - Serialization format
 ------------------------
 
@@ -1016,6 +1024,7 @@ Key (the enum used as keys in the global state key-value store)
    -  0 = Account
    -  1 = Hash
    -  2 = URef
+   -  3 = Local
 
 -  The remaining bytes encode the data for the Key and are different depending on
    the variant
@@ -1035,7 +1044,8 @@ Key (the enum used as keys in the global state key-value store)
 Account (the data structure which holds information relevant to on-dag accounts)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
--  This is serialized identically to the tuple ``([u8; 32], u64, Map<String, Key>)``, or more explicitly the concatenation of:
+-  This is serialized identically to the tuple ``([u8; 32], u64, Map<String, Key>)``,
+   or more explicitly the concatenation of:
 
    -  32 bytes representing the account public key
    -  8 bytes, representing the 64-bit unsigned integer for the nonce
@@ -1078,7 +1088,7 @@ Reference implementation
 A Rust reference implementation for those implementing this spec in another
 language can be found here:
 
--  `bytesrep.rs <https://github.com/CasperLabs/CasperLabs/blob/d542ea702c9d30f2e329fe65c8e958a6d54b9cae/execution-engine/contract-ffi/src/bytesrepr.rs>`__
+-  `bytesrepr.rs <https://github.com/CasperLabs/CasperLabs/blob/d542ea702c9d30f2e329fe65c8e958a6d54b9cae/execution-engine/contract-ffi/src/bytesrepr.rs>`__
 -  `value.rs <https://github.com/CasperLabs/CasperLabs/blob/d542ea702c9d30f2e329fe65c8e958a6d54b9cae/execution-engine/contract-ffi/src/value/mod.rs>`__
 -  `account.rs <https://github.com/CasperLabs/CasperLabs/blob/d542ea702c9d30f2e329fe65c8e958a6d54b9cae/execution-engine/contract-ffi/src/value/account.rs>`__
 -  `contract.rs <https://github.com/CasperLabs/CasperLabs/blob/d542ea702c9d30f2e329fe65c8e958a6d54b9cae/execution-engine/contract-ffi/src/value/contract.rs>`__
