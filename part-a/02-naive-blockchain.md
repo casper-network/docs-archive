@@ -1,4 +1,4 @@
-# Naive Casper blockchain
+# Naive Casper Blockchain
 
 ## Introduction
 
