@@ -118,15 +118,15 @@ If I am not the leader of current round, I setup a handler for receiving lambda 
 
 #### Rule 5: omega message
 
-Let $j$ be the id of current round. At tick $j + R \cdot 2^n$ I create a ballot $b$, using all tips of my local j-dag as justifications of $b$.
+Let $j$ be the id of current round. At tick $j + omega–delay \cdot 2^n$ I create a ballot $b$, using all tips of my local j-dag as justifications of $b$.
 
-$R \in(0,1)$ is a blockchain parameter - to be picked by simulation and then hardcoded.  
+$omega–delay \in(0,1)$ is a blockchain parameter - to be picked by simulation and then hardcoded.  
 
 ## Adjusting round exponent
 
 We assume that for a fixed validator $v$ its round exponent is a function $n_v: Int \to Int$. When a validator want to adjust his round exponent, it must be done at a tick which happens to be the boundary of both the old-length round and the new-length round. Mathematically it transforms to saying that $n_v(i) = n_v(i-1)$ unless $i$ is a multiple of both $2^{n_v(i)}$ and $2^{n_v(i-1)}$.
 
-Auto-adjusting of round lengths is based on an internal finalizer which every validator must run. This finalizer would run with $FTT$ set as blockchain-wide constant ($FTT=1%$ sounds like a good candidate value here) and $acknowledgement–level=1$.
+Auto-adjusting of round lengths is based on an internal finalizer which every validator must run. This finalizer would run with fault tolerance threshold $ftt$ set as blockchain-wide constant ($ftt=1\%$ sounds like a good candidate value here) and $acknowledgement–level=1$.
 
 For adjusting round exponents we set two blockchain-wide integer constants, both expressing number of rounds:
 
@@ -147,7 +147,7 @@ A message $m$ belongs to an era decided by $m.round–id$.
 
 ### Critical blocks
 
-Round ids are really Unix timestamps, so main-tree can be now imagined with time-acis  
+Round ids are really Unix timestamps, so main-tree can be now imagined with time-axis.   
 
 ### Bonding and unbonding with eras
 

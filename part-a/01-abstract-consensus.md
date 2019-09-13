@@ -7,7 +7,7 @@ We are considering a collection of processes (called **validators**) communicati
 The space of possible distributed algorithms fulfilling the mission as described above is probably huge. Therefore we want to limit our attention only to a restricted family of such solutions. In doing so, we introduce several assumptions:
 
 - we set a very specific format of messages that validators exchange
-- we enforce some constraints on the behaviour of validators
+- we enforce some constraints on the behavior of validators
 - we expect certain guarantees from the message-oriented communication layer that validators use
 
 This restricted model we call **Abstract Casper Consensus (ACC)**.
@@ -37,7 +37,7 @@ val validators: Map[Validator, Int]
 Validators are communicating over a network. We assume that all the communication stack layers taken together provide the following semantics:
 
 1. Communication between validators is based on the "broadcast" principle: at any time, a validator can broadcast a message $m$.
-2. Once broadcasted, the message $m$ will be eventually delivered to every validator in the network. The delivery will happen exactly once. The delivery delay may be of arbitrary length.
+2. Once broadcast, the message $m$ will be eventually delivered to every validator in the network. The delivery will happen exactly once. The delivery delay may be of arbitrary length.
 
 Given the assumptions above it follows that the order of delivery may not coincide with the order of broadcasting, i.e. if a validator $A$ broadcasts message $m_1$ and later it broadcasts message $m_2$ and $B$ is another validator then we cannot say anything certain about the order of receiving $m_1$ and $m_2$ by $B$.
 
@@ -68,9 +68,9 @@ $m.daglevel$
 Daglevel is calculated in the following way:
 
 - if the list of justifications is empty: $daglevel = 0$
-- otherwise: $daglevel = max (daglevels of justifications) + 1$
+- otherwise: $daglevel = \max (\text{daglevels of justifications}) + 1$
 
-When validator $V$ creates and braodcasts a message with consensus value $X$, we say that $V is voting for X$.
+When validator $V$ creates and broadcasts a message with consensus value $X$, we say that $V is voting for X$.
 
 ```
 class Message {
@@ -94,7 +94,7 @@ Justifications are pointing to previously received messages. Let us consider any
 - take vertices to be all elements of $M$
 - take edges (= arrows) to be all pairs $m_1 →  m_2$ such that $m_2 \in m1.justifications$.
 
-Such a graph is always acyclic because a cycle in this graph would mean time-travelling is possible (i.e. we assume that listing a message as justification is only possible if this message was first created).
+Such a graph is always acyclic because a cycle in this graph would mean time-traveling is possible (i.e. we assume that listing a message as justification is only possible if this message was first created).
 
 We call any such structure **j-dag**. We generally assume that every validator maintains a (mutable) representation of **j-dag** reflecting the most up-to-date knowledge on the on-going consensus establishing process. Observe that **j-dag** may be equivalently seen as a POSET, because of the well known equivalence between transitively closed DAGs and POSETs. We frequently blur the distinction between DAG-based and POSET-based languages when talking about consensus.
 
@@ -136,22 +136,22 @@ class ProtocolState {
 Any set of messages closed under traversing via justifications is a j-dag. We typically use j-dags in two contexts:
 
 - when talking about the **local j-dag**, i.e. the data structure that a validator maintains to reflect the ever-growing knowledge about the on-going consensus
-- when talking about the universum of all-possible j-dags over a set $M$ of messages - this universum is an infinite POSET, who has j-dags as elements and the ordering relation is set-inclusion, so, **jdag1 <= jdag2 iff jdag1 ⊂ jdag2**.
+- when talking about the universe of all-possible j-dags over a set $M$ of messages - this universe is an infinite POSET, who has j-dags as elements and the ordering relation is set-inclusion, so, **jdag1 <= jdag2 iff jdag1 ⊂ jdag2**.
 
-From the point of view of pure mathematics, the local **j-dag** corresponds to a chain in the universum - on receiving some message, a validator updates its local j-dag, and the updated j-dag will then be a superset of the previous j-dag he has.
+From the point of view of pure mathematics, the local **j-dag** corresponds to a chain in the universe - on receiving some message, a validator updates its local j-dag, and the updated j-dag will then be a superset of the previous j-dag he has.
 
 But historically, two different ways of talking about this situation emerged and both ways tend to be actually useful:
 
-- when talking about the universum, we prefer to speak about the **protocol states**; so, a protocol state is a point in the universum of j-dags, representing a set of messages closed under justifications
+- when talking about the universe, we prefer to speak about the **protocol states**; so, a protocol state is a point in the universe of j-dags, representing a set of messages closed under justifications
 - when talking implementation-wise, we tend to speak about j-dags, meaning "a DAG formed with messages and justifications" because we frequently have also other DAGs around (also taking messages as vertices, but using other sets of edges)
 
 So, for a software engineer, a protocol state might well be seen as a snapshot of the **j-dag**.
 
-When talking about the universum of protocol states, we usually use speak about the order of protocol states (= the inclusion relation) using the time flow metaphor, so for example when $ps_1$ and $ps_2$ are protocol states and $ps_1 < ps_2$, we say that $ps_1$ is earlier than $ps_2$, or that $ps_2$ is "in the future of $ps_1$". 
+When talking about the universe of protocol states, we usually use speak about the order of protocol states (= the inclusion relation) using the time flow metaphor, so for example when $ps_1$ and $ps_2$ are protocol states and $ps_1 < ps_2$, we say that $ps_1$ is earlier than $ps_2$, or that $ps_2$ is "in the future of $ps_1$". 
 
 ### Lifecycle of a validator
 
-A validator continuosly runs two activities:
+A validator continuously runs two activities:
 
 - listens to messages incoming from other validators and on every incoming message runs the finality detection algorithm to see if the consensus has already been reached (we explain finality detection in detail later in the document)
 - (from time to time) decides to cast his vote - by creating a new message $m$ and broadcasting it
@@ -236,7 +236,7 @@ Finality cannot really be "absolute" because validators may cheat, i.e. they can
 2. violate the condition that message is allowed to vote on a value picked from what estimator tells
 3. equivocate
 
-Case (2) can be really considered a subcase of (1), and (1) can be evaded by just assuming that validators reject malformed messages on reception. So, the only real problem comes from (3). Equivocations do break consensus and the intuition for this is clear - if everybody cheats by concurrently voting for different values, validators will never come up with a decision which value is finally agreed.
+Case (2) can be really considered a sub-case of (1), and (1) can be evaded by just assuming that validators reject malformed messages on reception. So, the only real problem comes from (3). Equivocations do break consensus and the intuition for this is clear - if everybody cheats by concurrently voting for different values, validators will never come up with a decision which value is finally agreed.
 
 It may be not immediately obvious how equivocations are possible in the context of the estimator, which forces us to pick certain values. It is worth noticing that:
 
@@ -265,7 +265,7 @@ Finality criterion is a strictly mathematical concept. To introduce new finality
 1. Define suitable $fc$ function.
 2. Prove the finality theorem for $fc$.
 
-On our way to CasperLabs blockchain we expect to see a diversity of finality criterions to be discovered and used. As of September 2019 we have been working with 3 finality criterions (so far):
+On our way to CasperLabs blockchain we expect to see a diversity of finality criteria to be discovered and used. As of September 2019 we have been working with 3 finality criteria (so far):
 
 - E-clique
 - The Inspector

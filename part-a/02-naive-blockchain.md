@@ -6,7 +6,7 @@ Blockchain is a P2P network, where a collection of nodes (called **validators**)
 
 For the "outside world", the blockchain looks like a computer. This blockchain computer has a memory (= shared database) and can execute programs (= transactions). Execution of a program changes the state of the memory. Anybody can send a program to the computer and the computer will do a best effort attempt to execute this program.
 
-We say that a blockchain computer is **decentralized**, i.e. there is no sigle point of failure in the infrastructure. Significant portion of the network of validators could be suddenly destroyed and nevertheless the blockchain will continue to work. Also, the system is resistant to malicious validators (as long total weight of malicious validators is below 50% of total weight of all validators).
+We say that a blockchain computer is **decentralized**, i.e. there is no single point of failure in the infrastructure. Significant portion of the network of validators could be suddenly destroyed and nevertheless the blockchain will continue to work. Also, the system is resistant to malicious validators (as long total weight of malicious validators is below 50% of total weight of all validators).
 
 The core of blockchain mechanics is continuous work of validators struggling to agree on consistent history of programs executed on the blockchain computer. This central idea we describe as "achieving **consensus** on the chain of blocks". Because every block contains a chain of transactions, this "consistent history" ends up being a sequence of transactions.
 
@@ -43,7 +43,7 @@ $$
 
 Let:
 
-- $TSeq$ be the set of finite sequences of tranactions: $TSeq = P^{Int}$
+- $TSeq$ be the set of finite sequences of transactions: $TSeq = P^{Int}$
 - $StatusTraces$ be the set of finite sequences of Booleans
 
 We define the execution of a sequence of transactions as:
@@ -227,7 +227,7 @@ Not all **b-games** tend to be equally important. What happens is the following 
 The security of proof-of-stake blockchain is based on the stake in two ways:
 
 - Large investment (=money) is needed to revert/overtake the history of transactions using honest means.
-- Malicious behaviour (= hacking) implies that the stake will get slashed.
+- Malicious behavior (= hacking) implies that the stake will get slashed.
 
 Therefore, we would like only bonded validators to be able to participate in blockchain evolution. The problem here is that - when a validator unbonds, some of the **b-games** he was a player of, might not be completed (= finalized) yet. We would like to allow the validator still participate in these games, while not allowing him to join new games. This is where ballots come into play. Ballots allow to continue the consensus game for validators that are no longer bonded.
 
@@ -325,7 +325,7 @@ For a ballot **b** we define the collection $b.all–justifications$ as target b
 
 From the definitions above it follows that for every message $m$ there is a **j-dag** path from $m$ to $Genesis$.  
 
-### Validators P2P protocol - behaviour
+### Validators P2P protocol - behavior
 
 We use the same assumptions on message-passing network as were stated in Abstract Casper Consensus model. So validators only exchange information by broadcasting messages, where the broadcasting implementation provides exactly-once delivery guarantee, but the delays and shuffling of messages are arbitrary.
 
@@ -412,7 +412,7 @@ If $m$ is a ballot - do nothing.
 
 Case 1: new block 
 
-1. Take desired subset of transactions $trans$ from $deploys-buffer$ (this part of behaviour is subject to separate spec; on this level of abstraction we accept any strategy of picking transactions from the buffer).
+1. Take desired subset of transactions $trans$ from $deploys-buffer$ (this part of behavior is subject to separate spec; on this level of abstraction we accept any strategy of picking transactions from the buffer).
 2. Apply $trans$ sequentially on top of $merged–gs$. Let $post–gs$ be the resulting global state.
 3. Create new block:
    - block id = hash of the binary representation of this block
@@ -492,7 +492,7 @@ Case 2: new ballot
    tipBlock(v)=\begin{cases} lm(v), & lm(v) \space is \space a \space block \\lm(v).target–block, & otherwise \end{cases}
    $$
 
-   5. Take $lca–block$ = latest common anecestor along main-tree of all $tipBlock(v)$
+   5. Take $lca–block$ = latest common ancestor along main-tree of all $tipBlock(v)$
 
    6. Initialize resulting collection of blocks as one-element list $Result = [lca–block]$
 
@@ -518,7 +518,7 @@ Case 2: new ballot
   
 ### Parameters
 
-In general - different finalizers will be based on different finality criterions. For the current design we assume that the criterion described [here](https://casperlabs.atlassian.net/wiki/spaces/EN/pages/135921775/Finality+3+Summits) is in use.
+In general - different finalizers will be based on different finality criteria. For the current design we assume that the criterion described [here](https://casperlabs.atlassian.net/wiki/spaces/EN/pages/135921775/Finality+3+Summits) is in use.
 
 Hence, the finalizer is parameterized by:
 
@@ -597,7 +597,7 @@ Hence, the finalizer is parameterized by:
 
    1. If **m.creator** is already included in **equivocators** collection - do nothing.
    
-2. Otherwise - check if m is not introducing a new equivocation. If yes - add m.creator to equivocators and:
+2. Otherwise - check if m is not introducing a new equivocation. If yes - add **m.creator** to equivocators and:
    
    1. for every i such that m ∈ initial-players(i):
    
