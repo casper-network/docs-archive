@@ -8,7 +8,7 @@ Blockchain is a P2P network, where a collection of nodes (called **validators**)
 
 For the “outside world”, the blockchain looks like a computer. This blockchain computer has a memory (= shared database) and can execute programs (= transactions). Execution of a program changes the state of the memory. Anybody can send a program to the computer and the computer will do a best effort attempt to execute this program.
 
-We say that a blockchain computer is **decentralized**, i.e. there is no sigle point of failure in the infrastructure. Significant portion of the network of validators could be suddenly destroyed and nevertheless the blockchain will continue to work. Also, the system is resistant to malicious validators (as long total weight of malicious validators is below 50% of total weight of all validators).
+We say that a blockchain computer is **decentralized**, i.e. there is no single point of failure in the infrastructure. Significant portion of the network of validators could be suddenly destroyed and nevertheless the blockchain will continue to work. Also, the system is resistant to malicious validators (as long total weight of malicious validators is below 50% of total weight of all validators).
 
 The core of blockchain mechanics is continuous work of validators struggling to agree on consistent history of programs executed on the blockchain computer. This central idea we describe as “achieving **consensus** on the chain of blocks”. Because every block contains a chain of transactions, this “consistent history” ends up being a sequence of transactions.
 
@@ -51,7 +51,7 @@ For any :math:`p ∈ P` let :math:`\triangle p: GS ⭢ GS` be a total function t
 
 Let:
 
--  :math:`TSeq` be the set of finite sequences of tranactions: :math:`TSeq = P^{Int}`
+-  :math:`TSeq` be the set of finite sequences of transactions: :math:`TSeq = P^{Int}`
 -  :math:`StatusTraces` be the set of finite sequences of Booleans
 
 We define the execution of a sequence of transactions as:
@@ -100,7 +100,7 @@ In proof-of-stake blockchains, **stake** is a representation of the voting power
 Encoding of stakes
 ~~~~~~~~~~~~~~~~~~
 
-Main assumption is that a global state encodes (among other things) the “weights map” - an mapping of validators to their voting power. So, mathematically, we expect the existence of a function which assigns to every global state a function mapping validators to their weights:
+Main assumption is that a global state encodes (among other things) the “weights map” - a mapping of validators to their voting power. So, mathematically, we expect the existence of a function which assigns to every global state a function mapping validators to their weights:
 
 .. math::
 
@@ -150,11 +150,15 @@ Visual introduction
 
 The consensus protocol is based on a data structure that we call a **blockdag**, which can be seen as a graph. This is how it looks like:
 
-|image0|
+.. figure:: pictures/blockdag-with-ballots-and-equivocations.png
+   :width: 60%
+   :align: center
 
 The meaning of symbols:
 
-|image1|
+.. figure:: pictures/blockdag-with-ballots-legend.png
+   :width: 60%
+   :align: center
 
 We have 3 types of vertices in the graph:
 
@@ -211,14 +215,14 @@ Core mechanics of the blockchain
 
 The blockdag emerges as a combination of these central ideas:
 
--  Independently proposing updates of the shared database inevitably leads to a tree of transactions (blocks), because the proposing validator must choose which version of history is is about to extend. This is how the **main-tree** pops up.
+-  Independently proposing updates of the shared database inevitably leads to a tree of transactions (blocks), because the proposing validator must choose which version of history it is about to extend. This is how the **main-tree** pops up.
 -  All that remains is to add the mechanics for validators to collectively agree on which branch of the main-tree is the “official” one.
 -  We solve this problem by recursively applying Abstract Casper Consensus.
 -  Secondary parents idea is a further refinement of the solution, by merging as many non-agreed paths of main-tree as is possible without introducing inconsistencies.
 
 The single, most crucial trick here is the recursive application of Abstract Casper Consensus. Let’s try to understand this trick first, before we dive into detailed specs of how validators and finalizers operate.
 
-Let’s **b** be any block. So, **b** is a vertex in the main-tree. We will consider a projection of validators P2P protocol to a particular Abstract Casper Consensus model instance, which we will be calling **b-game**.
+Let **b** be any block. So, **b** is a vertex in the main-tree. We will consider a projection of validators P2P protocol to a particular Abstract Casper Consensus model instance, which we will be calling **b-game**.
 
 +-------------------------------+--------------------------------------+
 | Abstract Casper Consensus     | How this concept maps to b-game      |
@@ -274,7 +278,7 @@ Why do we need ballots ?
 The security of proof-of-stake blockchain is based on the stake in two ways:
 
 -  Large investment (=money) is needed to revert/overtake the history of transactions using honest means.
--  Malicious behaviour (= hacking) implies that the stake will get slashed.
+-  Malicious behavior (= hacking) implies that the stake will get slashed.
 
 Therefore, we would like only bonded validators to be able to participate in blockchain evolution. The problem here is that - when a validator unbonds, some of the **b-games** he was a player of, might not be completed (= finalized) yet. We would like to allow the validator still participate in these games, while not allowing him to join new games. This is where ballots come into play. Ballots allow to continue the consensus game for validators that are no longer bonded.
 
@@ -286,9 +290,11 @@ Topological sortings of p-past-cone
 
 This is previous example of a blockdag, reduced to **p-dag** only:
 
-|image2|
+.. figure:: pictures/p-dag.png
+   :width: 60%
+   :align: center
 
-We define **p-past-cone(b)** as the set of all blocks :math:`x` such that :math:`x \leqslant b` (in the POSET corresponding to p-dag, :math:`x < y \iff y → x`).
+We define **p-past-cone(b)** as the set of all blocks :math:`x` such that :math:`x \leqslant b` (in the POSET corresponding to p-dag, :math:`x \leqslant y \iff y → x`).
 
 **Example:** Let’s look at the block :math:`3`. Its p-past-cone is :math:`\{Genesis, 1, 2, 3\}`. Let’s look at the block :math:`9`. Its p-past-cone is :math:`\{Genesis, 1,2,3,4,5,9\}`.
 
@@ -298,30 +304,42 @@ For :math:`<A,R>` any POSET, topological sorting of :math:`<A,R>` is any linear 
 
 \ **Example:**\  Let’s take the :math:`p–past–cone(3)` from our example. As a POSET it looks like this:
 
-|image3|
+.. figure:: pictures/p-past-cone-for-block-3.png
+   :width: 40%
+   :align: center
 
 It can be topo-sorted in two ways only:
 
-|image4|
+.. figure:: pictures/p-past-cone-of-block-3-topo-sorts.png
+   :width: 50%
+   :align: center
 
 Example: Let’s take the p-past-cone(9) from our example. As a POSET it looks like this:
 
-|image5|
+.. figure:: pictures/p-past-cone-for-block-9.png
+   :width: 50%
+   :align: center
 
 It can be topo-sorted in many ways. One such topo-sort is shown below:
 
-|image6|
+.. figure:: pictures/p-past-cone-for-block-9-toposort.png
+   :width: 20%
+   :align: center
 
 The context of merging problem
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Let’s assume that current p-dag as seen by a validator **v** looks like this:
 
-|image7|
+.. figure:: pictures/situation-before-merging.png
+   :width: 60%
+   :align: center
 
 To add a new block :math:`x`, validator :math:`V` needs to decide which blocks to take as parents of :math:`x`. In other words, which variants of transactions history block :math:`x` will continue. Merging is all about defining what does it mean that **x** continues more than one version of the history:
 
-|image8|
+.. figure:: pictures/merging-problem-illustrated.png
+   :width: 60%
+   :align: center
 
 We have blocks 8, 9 and 10 as current tips of p-dag, so they are candidates for becoming parents of the new block. But usually we won’t be able to take all such tips as parents, because the versions of transactions history they represent are in conflict.
 
@@ -377,8 +395,8 @@ For a ballot **b** we define the collection :math:`b.all–justifications` as ta
 
 From the definitions above it follows that for every message :math:`m` there is a **j-dag** path from :math:`m` to :math:`Genesis`.
 
-Validators P2P protocol - behaviour
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Validators P2P protocol - behavior
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We use the same assumptions on message-passing network as were stated in Abstract Casper Consensus model. So validators only exchange information by broadcasting messages, where the broadcasting implementation provides exactly-once delivery guarantee, but the delays and shuffling of messages are arbitrary.
 
@@ -406,7 +424,7 @@ Listen to messages incoming from other validators. Whenever a message :math:`m` 
 
    1. if yes: continue
 
-3. otherwise: append :math:`m` to the :math:`message–sbuffer`, then exit
+3. otherwise: append :math:`m` to the :math:`messages–buffer`, then exit
 
 4. Perform processing specific to type of :math:`m` (block or ballot) - see below.
 
@@ -430,11 +448,10 @@ If :math:`m` is a block:
 
    1. run the fork-choice for the protocol state derived from justifications of :math:`m`
 
-   2. compare calculated parents with actual parent of :math:`m`:
+2. compare calculated parents with actual parent of :math:`m`:
 
-      1. if they are the same: append :math:`m` to :math:`blockdag`.
-
-2. are different than actual parents - drop the block (invalid block) and exit
+   -  if they are the same: append :math:`m` to :math:`blockdag`.
+   -  otherwise - drop the block (invalid block) and exit
 
 3. Check if parents of :math:`m` are not conflicting. If they are conflicting then drop the block (invalid block) and exit.
 
@@ -444,7 +461,15 @@ If :math:`m` is a block:
 
 6. Store post-state calculated in step (4) in :math:`global–states–db`.
 
-If :math:`m` is a ballot - do nothing.
+If :math:`m` is a ballot:
+
+1. Validate whether :math:`m.target–block` was selected correctly:
+
+   1. run the fork-choice for the protocol state derived from justifications of :math:`m`
+   2. compare calculated main parent candidate with actual :math:`m.target–block`:
+
+      -  if they are the same: append :math:`m` to :math:`blockdag`.
+      -  otherwise - drop the block (invalid block) and exit
 
 **Publishing loop:**
 
@@ -470,7 +495,7 @@ If :math:`m` is a ballot - do nothing.
 
 Case 1: new block
 
-1. Take desired subset of transactions :math:`trans` from :math:`deploys-buffer` (this part of behaviour is subject to separate spec; on this level of abstraction we accept any strategy of picking transactions from the buffer).
+1. Take desired subset of transactions :math:`trans` from :math:`deploys-buffer` (this part of behavior is subject to separate spec; on this level of abstraction we accept any strategy of picking transactions from the buffer).
 2. Apply :math:`trans` sequentially on top of :math:`merged–gs`. Let :math:`post–gs` be the resulting global state.
 3. Create new block:
 
@@ -509,56 +534,61 @@ Case 2: new ballot
 
    We start from the latest (= top-most on the diagram) message in the :math:`swimlane(v)` and we traverse the swimlane down, stopping as soon as we find a message that is counts as non-empty vote in **b-game**.
 
-   \ **Example:**\ 
+   \ **Example:**\
 
    Below is the original example of the blockdag, but with all messages that are non-empty votes in 3-game highlighted with green:
 
-|image9|
+   .. figure::    pictures/fork-choice-paradox.png
+      :width: 60%
+      :align: center
 
-**Example:**
+   **Example:**
 
-Let us again look at the example of a blockdag:
+   Let us again look at the example of a blockdag:
 
-|image10|
+   .. figure::    pictures/blockdag-with-ballots-and-equivocations.png
+      :width: 60%
+      :align: center
 
-Let’s apply this definition using validator 3 as the example and find last votes of validator 3 in various games.
+   Let’s apply this definition using validator 3 as the example and find last votes of validator 3 in various games.
 
-======= ============================================
-Block b Last non-empty vote of validator 3 in b-game
-======= ============================================
-Genesis 14
-1       9
-2       14
-3       9
-4       (none)
-5       14
-6       (none)
-======= ============================================
+   ======= ============================================
+   Block b Last non-empty vote of validator 3 in b-game
+   ======= ============================================
+   Genesis 14
+   1       9
+   2       14
+   3       9
+   4       (none)
+   5       14
+   6       (none)
+   ======= ============================================
 
-#### Fork choice
+   .. rubric:: Fork choice
+      :name: fork-choice
 
-The goal of fork-choice is to take the decision on top of which version of shared database history we want to build in the next step. This decision can be seen as iterative application of the reference estimator from “Abstract Casper Consensus”. As a result we want to get a list of blocks (ordered by preference) which will serve as parent candidates for the new block.
+   The goal of fork-choice is to take the decision on top of which version of shared database history we want to build in the next step. This decision can be seen as iterative application of the reference estimator from “Abstract Casper Consensus”. As a result we want to get a list of blocks (ordered by preference) which will serve as parent candidates for the new block.
 
-The algorithm goes as follows:
+   The algorithm goes as follows:
 
-1. Decide which protocol state :math:`ps` to use:
+   1. Decide which protocol state :math:`ps` to use:
 
-   1. When using fork choice for creation of new block this is the point where the validator can decide on the subset of his local knowledge to reveal to outside world. Ideally, the validator reveals all local knowledge, so it takes as protocol state the whole local blockdag.
+      1. When using fork choice for creation of new block this is the point where the validator can decide on the subset of his local knowledge to reveal to outside world. Ideally, the validator reveals all local knowledge, so it takes as protocol state the whole local blockdag.
 
-2. When using fork choice for validation of received message :math:`m`, the protocol state to take is :math:`j–past–cone(m)`.
+   2. When using fork choice for validation of received message :math:`m`, the protocol state to take is :math:`j–past–cone(m)`.
 
-3. Take :math:`HV` - all honest validators (all creators of messages in :math:`ps` minus these seen equivocating with messages in :math:`ps`).
+4. Take :math:`HV` - all honest validators (all creators of messages in :math:`ps` minus these seen equivocating with messages in :math:`ps`).
 
-4. Find latest message :math:`lm(v)` created by each validator :math:`v ∊ HV`, ignoring validators that produced no message.
+5. Find latest message :math:`lm(v)` created by each validator :math:`v ∊ HV`, ignoring validators that produced no message.
 
-5. For all validators that have :math:`lm(v)` defined take:
+6. For all validators that have :math:`lm(v)` defined take:
 
    .. math::
 
 
       tipBlock(v)=\begin{cases} lm(v), & lm(v) \space is \space a \space block \\lm(v).target–block, & otherwise \end{cases}
 
-   5. Take :math:`lca–block` = latest common anecestor along main-tree of all :math:`tipBlock(v)`
+   5. Take :math:`lca–block` = latest common ancestor along main-tree of all :math:`tipBlock(v)`
 
    6. Initialize resulting collection of blocks as one-element list :math:`Result = [lca–block]`
 
@@ -572,9 +602,9 @@ The algorithm goes as follows:
 
    9. Order the sequence :math:`c_i` by calculated votes, using :math:`ci.id` (= block hash) as tie-breaker.
 
-6. Repeat step 7 as long as it is changing **Result**.
+7. Repeat step 7 as long as it is changing **Result**.
 
-7. The **Result** is the list of blocks we want. First block on the list is the main parent candidate, remaining blocks are secondary parents candidates.
+8. The **Result** is the list of blocks we want. First block on the list is the main parent candidate, remaining blocks are secondary parents candidates.
 
    .. rubric:: Operation of a finalizer
       :name: operation-of-a-finalizer
@@ -582,7 +612,7 @@ The algorithm goes as follows:
    .. rubric:: The objective
       :name: the-objective
 
-   Finalizer observes the growing blokchain. The objective is to recognize the subset of transactions history that:
+   Finalizer observes the growing blockchain. The objective is to recognize the subset of transactions history that:
 
    -  is already agreed (as a result of on-going consensus)
 
@@ -591,7 +621,7 @@ The algorithm goes as follows:
 Parameters
 ~~~~~~~~~~
 
-In general - different finalizers will be based on different finality criterions. For the current design we assume that the criterion described `here <https://casperlabs.atlassian.net/wiki/spaces/EN/pages/135921775/Finality+3+Summits>`__ is in use.
+In general - different finalizers will be based on different finality criteria. For the current design we assume that the criterion described in previous chapter is in use.
 
 Hence, the finalizer is parameterized by:
 
@@ -686,7 +716,7 @@ Hence, the finalizer is parameterized by:
 
    1. If **m.creator** is already included in **equivocators** collection - do nothing.
 
-5. Otherwise - check if m is not introducing a new equivocation. If yes - add m.creator to equivocators and:
+5. Otherwise - check if m is not introducing a new equivocation. If yes - add **m.creator** to equivocators and:
 
    1. for every i such that m ∈ initial-players(i):
 
@@ -700,7 +730,7 @@ Once an equivocation catastrophe is discovered, the following handling must be a
 
 1. Starting from the catastrophic point, re-calculate the **LFB chain** (initializing initial players accordingly to current contents of **equivocators**).
 
-   2. Find the first **i** such that new new LFB-chain differs from old LFB chain at index **i**. Usually such **i** will be bigger than the catastrophic point.
+   2. Find the first **i** such that the new LFB-chain differs from old LFB chain at index **i**. Usually such **i** will be bigger than the catastrophic point.
 
 2. Publish a rollback event at the level of external API.
 
@@ -721,18 +751,14 @@ Once an equivocation catastrophe is discovered, the following handling must be a
 
    Events:
 
-   +------+-----------------------------------+---------------------------+
-   | Even | Contents                          | Semantics                 |
-   | t    |                                   |                           |
-   | type |                                   |                           |
-   +======+===================================+===========================+
-   | NEXT | event idLFB(i).idisequence of     | published as soon as      |
-   | _LFB | indirectly finalized blocks       | **LFB(i)** is finalized   |
-   +------+-----------------------------------+---------------------------+
-   | CATA | event idsequence id of            | signal that equivocation  |
-   | STRO | catastrophy point                 | catastrophe happened      |
-   | PHY  |                                   |                           |
-   +------+-----------------------------------+---------------------------+
+   +-------------+-----------------------------------------------------------+-----------------------------------------------+
+   | Event type  | Contents                                                  | Semantics                                     |
+   +=============+===========================================================+===============================================+
+   | NEXT_LFB    | event idLFB(i).idisequence of indirectly finalized blocks | published as soon as **LFB(i)** is finalized  |
+   +-------------+-----------------------------------------------------------+-----------------------------------------------+
+   | CATASTROPHY | event idsequence id of catastrophy point                  | signal that equivocation catastrophe happened |
+   +-------------+-----------------------------------------------------------+-----------------------------------------------+
+
 
 **Example:**
 
@@ -746,16 +772,4 @@ CATASTROPHY(4, 2)                    (231)
 NEXT_LFB(5, 421, 1, <105, 116, 228>) (231, 421)
 NEXT_LFB(6, 480, 2, <>)              (231, 421, 480)
 ==================================== =============================
-
-.. |image0| image:: ./pictures/blockdag-with-ballots-and-equivocations.png
-.. |image1| image:: ./pictures/blockdag-with-ballots-legend.png
-.. |image2| image:: ./pictures/p-dag.png
-.. |image3| image:: ./pictures/p-past-cone-for-block-3.png
-.. |image4| image:: ./pictures/p-past-cone-of-block-3-topo-sorts.png
-.. |image5| image:: ./pictures/p-past-cone-for-block-9.png
-.. |image6| image:: ./pictures/p-past-cone-for-block-9-toposort.png
-.. |image7| image:: ./pictures/situation-before-merging.png
-.. |image8| image:: ./pictures/merging-problem-illustrated.png
-.. |image9| image:: ./pictures/fork-choice-paradox.png
-.. |image10| image:: ./pictures/blockdag-with-ballots-and-equivocations.png
 

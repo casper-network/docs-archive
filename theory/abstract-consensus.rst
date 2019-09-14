@@ -9,7 +9,7 @@ We are considering a collection of processes (called **validators**) communicati
 The space of possible distributed algorithms fulfilling the mission as described above is probably huge. Therefore we want to limit our attention only to a restricted family of such solutions. In doing so, we introduce several assumptions:
 
 -  we set a very specific format of messages that validators exchange
--  we enforce some constraints on the behaviour of validators
+-  we enforce some constraints on the behavior of validators
 -  we expect certain guarantees from the message-oriented communication layer that validators use
 
 This restricted model we call **Abstract Casper Consensus (ACC)**.
@@ -42,7 +42,7 @@ Network
 Validators are communicating over a network. We assume that all the communication stack layers taken together provide the following semantics:
 
 1. Communication between validators is based on the “broadcast” principle: at any time, a validator can broadcast a message :math:`m`.
-2. Once broadcasted, the message :math:`m` will be eventually delivered to every validator in the network. The delivery will happen exactly once. The delivery delay may be of arbitrary length.
+2. Once broadcast, the message :math:`m` will be eventually delivered to every validator in the network. The delivery will happen exactly once. The delivery delay may be of arbitrary length.
 
 Given the assumptions above it follows that the order of delivery may not coincide with the order of broadcasting, i.e. if a validator :math:`A` broadcasts message :math:`m_1` and later it broadcasts message :math:`m_2` and :math:`B` is another validator then we cannot say anything certain about the order of receiving :math:`m_1` and :math:`m_2` by :math:`B`.
 
@@ -74,9 +74,9 @@ We reference properties of message :math:`m` using dot notation, for example:
 Daglevel is calculated in the following way:
 
 -  if the list of justifications is empty: :math:`daglevel = 0`
--  otherwise: :math:`daglevel = max (daglevels of justifications) + 1`
+-  otherwise: :math:`daglevel = \max (\text{daglevels of justifications}) + 1`
 
-When validator :math:`V` creates and braodcasts a message with consensus value :math:`X`, we say that :math:`V is voting for X`.
+When validator :math:`v` creates and broadcasts a message with consensus value :math:`X`, we say that :math:`V` is voting for :math:`X`.
 
 ::
 
@@ -101,7 +101,7 @@ Justifications are pointing to previously received messages. Let us consider any
 -  take vertices to be all elements of :math:`M`
 -  take edges (= arrows) to be all pairs :math:`m_1 → m_2` such that :math:`m_2 \in m1.justifications`.
 
-Such a graph is always acyclic because a cycle in this graph would mean time-travelling is possible (i.e. we assume that listing a message as justification is only possible if this message was first created).
+Such a graph is always acyclic because a cycle in this graph would mean time-traveling is possible (i.e. we assume that listing a message as justification is only possible if this message was first created).
 
 We call any such structure **j-dag**. We generally assume that every validator maintains a (mutable) representation of **j-dag** reflecting the most up-to-date knowledge on the on-going consensus establishing process. Observe that **j-dag** may be equivalently seen as a POSET, because of the well known equivalence between transitively closed DAGs and POSETs. We frequently blur the distinction between DAG-based and POSET-based languages when talking about consensus.
 
@@ -146,23 +146,23 @@ Protocol states
 Any set of messages closed under traversing via justifications is a j-dag. We typically use j-dags in two contexts:
 
 -  when talking about the **local j-dag**, i.e. the data structure that a validator maintains to reflect the ever-growing knowledge about the on-going consensus
--  when talking about the universum of all-possible j-dags over a set :math:`M` of messages - this universum is an infinite POSET, who has j-dags as elements and the ordering relation is set-inclusion, so, **jdag1 <= jdag2 iff jdag1 ⊂ jdag2**.
+-  when talking about the universe of all-possible j-dags over a set :math:`M` of messages - this universe is an infinite POSET, who has j-dags as elements and the ordering relation is set-inclusion, so, **jdag1 <= jdag2 iff jdag1 ⊂ jdag2**.
 
-From the point of view of pure mathematics, the local **j-dag** corresponds to a chain in the universum - on receiving some message, a validator updates its local j-dag, and the updated j-dag will then be a superset of the previous j-dag he has.
+From the point of view of pure mathematics, the local **j-dag** corresponds to a chain in the universe - on receiving some message, a validator updates its local j-dag, and the updated j-dag will then be a superset of the previous j-dag he has.
 
 But historically, two different ways of talking about this situation emerged and both ways tend to be actually useful:
 
--  when talking about the universum, we prefer to speak about the **protocol states**; so, a protocol state is a point in the universum of j-dags, representing a set of messages closed under justifications
+-  when talking about the universe, we prefer to speak about the **protocol states**; so, a protocol state is a point in the universe of j-dags, representing a set of messages closed under justifications
 -  when talking implementation-wise, we tend to speak about j-dags, meaning “a DAG formed with messages and justifications” because we frequently have also other DAGs around (also taking messages as vertices, but using other sets of edges)
 
 So, for a software engineer, a protocol state might well be seen as a snapshot of the **j-dag**.
 
-When talking about the universum of protocol states, we usually use speak about the order of protocol states (= the inclusion relation) using the time flow metaphor, so for example when :math:`ps_1` and :math:`ps_2` are protocol states and :math:`ps_1 < ps_2`, we say that :math:`ps_1` is earlier than :math:`ps_2`, or that :math:`ps_2` is “in the future of :math:`ps_1`”.
+When talking about the universe of protocol states, we usually use speak about the order of protocol states (= the inclusion relation) using the time flow metaphor, so for example when :math:`ps_1` and :math:`ps_2` are protocol states and :math:`ps_1 < ps_2`, we say that :math:`ps_1` is earlier than :math:`ps_2`, or that :math:`ps_2` is “in the future of :math:`ps_1`”.
 
 Lifecycle of a validator
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-A validator continuosly runs two activities:
+A validator continuously runs two activities:
 
 -  listens to messages incoming from other validators and on every incoming message runs the finality detection algorithm to see if the consensus has already been reached (we explain finality detection in detail later in the document)
 -  (from time to time) decides to cast his vote - by creating a new message :math:`m` and broadcasting it
@@ -172,7 +172,7 @@ A validator itself must decide when to create and broadcast new messages - this 
 Estimator
 ~~~~~~~~~
 
-Upon creation of a new message :math:`m`, a validator must decide what consensus value :math:`m` will vote for. We limit the freedom here by enforcing that the selected consensus value is constrained by certain function, called **estimator**. Assumption here is that estimator is fixed upfront and used by all validators. This function as allowed to depend only on justifications of message :math:`m` and it returns a subset of consensus values. When a validator makes a vote, it is allowed to:
+Upon creation of a new message :math:`m`, a validator must decide what consensus value :math:`m` will vote for. We limit the freedom here by enforcing that the selected consensus value is constrained by a certain function, called **estimator**. The assumption here is that an estimator is fixed upfront and used by all validators. This function is allowed to depend only on justifications of message :math:`m` and it returns a subset of consensus values. When a validator makes a vote, it is allowed to:
 
 -  either pick a value from the subset returned by the estimator
 -  or pick :math:`None`, so create a message voting for nothing
@@ -209,7 +209,7 @@ We can now rewrite the definition of Message class with this assumption applied:
            if (shouldNextVoteBeEmpty())
              None
            else
-            pickValueFrom(estimator(currentProtocolState)))
+             pickValueFrom(estimator(currentProtocolState)))
 
      fun generateMessageId(): Long
 
@@ -219,7 +219,7 @@ We can now rewrite the definition of Message class with this assumption applied:
 The reference estimator
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-In fact, in all solutions considered so far by Casperlabs we are reusing the same pattern for estimators construction. It assumes that the set of consensus values :math:`C` is totally ordered.
+In fact, in all solutions considered so far by CasperLabs we are reusing the same pattern for estimators construction. It assumes that the set of consensus values :math:`C` is totally ordered.
 
 For a protocol state :math:`ps` we calculate the estimator value in the following way:
 
@@ -228,7 +228,7 @@ For a protocol state :math:`ps` we calculate the estimator value in the followin
 
    1. take the collection of all honest validators in :math:`ps`
    2. restrict to collection of validators that created at least one message
-   3. for every validator - find its latest message
+   3. for every validator - find its latest message with non-empty vote
    4. sum latest messages by weight - this end up with a mapping :math:`total–votes: C \to Int` - for every consensus value :math:`c` it returns the sum of weights of validators voting for :math:`c`
    5. find all points :math:`c ∈ C` such that :math:`total–votes` has maximum value at :math:`c`
    6. using total order on :math:`C`, from elements found in previous step pick maximum element :math:`cmax`
@@ -240,7 +240,7 @@ Finality
 What is finality ?
 ~~~~~~~~~~~~~~~~~~
 
-Finality is a situation where certain consensus value :math:`c` gets “locked”, i.e. eventually every honest validator :math:`V` starts voting for :math:`c` and there is no way that :math:`V` will vote for another consensus value in the future.
+Finality is a situation where a certain consensus value :math:`c` gets “locked”, i.e. eventually every honest validator :math:`V` starts voting for :math:`c` and there is no way that :math:`V` will vote for another consensus value in the future.
 
 The challenge here is that, while finality may be already achieved, it is not quite easy to actually recognize it. Please keep in mind that we want to recognize the finality from the perspective of the knowledge that a single validator has, so although some “ultimate observer” able so see the current state of all validators could deduce finality, individual validators may still struggle to make such conclusion.
 
@@ -253,7 +253,7 @@ Finality cannot really be “absolute” because validators may cheat, i.e. the
 2. violate the condition that message is allowed to vote on a value picked from what estimator tells
 3. equivocate
 
-Case (2) can be really considered a subcase of (1), and (1) can be evaded by just assuming that validators reject malformed messages on reception. So, the only real problem comes from (3). Equivocations do break consensus and the intuition for this is clear - if everybody cheats by concurrently voting for different values, validators will never come up with a decision which value is finally agreed.
+Case (2) can be really considered a sub-case of (1), and (1) can be evaded by just assuming that validators reject malformed messages on reception. So, the only real problem comes from (3). Equivocations do break consensus and the intuition for this is clear - if everybody cheats by concurrently voting for different values, validators will never come up with a decision which value is finally agreed.
 
 It may be not immediately obvious how equivocations are possible in the context of the estimator, which forces us to pick certain values. It is worth noticing that:
 
@@ -284,7 +284,7 @@ Finality criterion is a strictly mathematical concept. To introduce new finality
 1. Define suitable :math:`fc` function.
 2. Prove the finality theorem for :math:`fc`.
 
-On our way to CasperLabs blockchain we expect to see a diversity of finality criterions to be discovered and used. As of September 2019 we have been working with 3 finality criterions (so far):
+On our way to CasperLabs blockchain we expect to see a diversity of finality criteria to be discovered and used. As of September 2019 we have been working with 3 finality criteria (so far):
 
 -  E-clique
 -  The Inspector
@@ -340,34 +340,126 @@ Calculating finality
 Introduction
 ~~~~~~~~~~~~
 
-UNDER CONSTRUCTION
+We describe here the criterion of finality known as “The summit theory”. A **summit** is a situation in the j-dag when the finality of certain consensus value has been established.
+
+This criterion has two parameters:
+
+-  **ftt: Int** - “absolute” fault tolerance threshold (expressed as total weight)
+-  **ack-level: Int** - acknowledgement level, which is an integer value bigger than zero
 
 Visual notation
 ~~~~~~~~~~~~~~~
 
-UNDER CONSTRUCTION
+To understand the summit theory we developed a simulator and a visual notation.
 
-Zero-level blocks
-~~~~~~~~~~~~~~~~~
+This is how finality looks like:
 
-UNDER CONSTRUCTION
+.. figure:: pictures/finality-snapshot-2019-08-12T01-27-42-370.png
+    :width: 80%
+    :align: center
 
-Quorum
-~~~~~~
+Rectangles on the left represent validators. Dots are messages. Displayed is the local j-dag of validator 0, arranged accordingly to j-daglevel (X-coordinate of a message corresponds to j-daglevel).
 
-UNDER CONSTRUCTION
+Swimlanes correspond to horizontal lines (a message is displayed with Y coordinate the same as its creator).
 
-Acknowledgement level 1
-~~~~~~~~~~~~~~~~~~~~~~~
+A color inside of a dot represents a consensus value this message is voting for.
 
-UNDER CONSTRUCTION
+Zero-level messages
+~~~~~~~~~~~~~~~~~~~
 
-Acknowledgement level 2
-~~~~~~~~~~~~~~~~~~~~~~~
+Within a swimlane of a honest validator, **zero-level messages** are all messages since the last change of mind on the consensus value this validator was voting for (empty votes are not counting as change of mind).
 
-UNDER CONSTRUCTION
+**Example:** if the sequence of messages in the swimlane looks like this:
 
-General case
-~~~~~~~~~~~~
+A, B, C, A, Empty, A, Empty, A, Empty, Empty
 
-UNDER CONSTRUCTION
+… then all messages starting from second “A” are zero-level.
+
+In this case:
+
+A, B, C, A, B, C
+
+… zero-level is just the last message.
+
+Quorum size
+~~~~~~~~~~~
+
+Quorum size is an integer value calculated as:
+
+.. math::
+
+
+   q = ceiling(\frac{1}{2}(\frac{ftt}{1-2^{-k}}+tw))
+
+… where:
+
+-  :math:`tw` - sum of weights of validators
+-  :math:`k` - ack-level
+-  :math:`ceiling` - is rounding towards positive infinity
+
+1-level summit
+~~~~~~~~~~~~~~
+
+Let’s take a zero-level message :math:`m` and a subset of validators set :math:`S \subset V`.
+
+Def: **0-support of message m in context S** is the set of validators :math:`v \in S` such that some zero-level message created by :math:`v` is in :math:`j–past–cone(m)`.
+
+Def: **1-level message in context S** is a zero-level message :math:`m` such that the total weight of 0-support of :math:`m` is at least quorum size.
+
+Def: **1-level summit with committee S** is a situation where :math:`S \subset V` is a subset of validators set such that:
+
+-  :math:`S` contains only honest nodes
+-  every member of :math:`S` is a creator of at least one 1-level message in context S
+-  total weight of validators in :math:`S` is at least quorum-size
+
+**Example:**
+
+Below is an example of 1-level summit for 8 validators (all having equal weights 1) with :math:`ftt=2`. Number of consensus values is 8.
+
+Border of a message signals the following information:
+
+-  black border: this is not 0-level message
+-  red border: this is 0-level message
+-  yellow border: this is 1-level message
+-  dashed border: this message has not arrived yet to validator 0
+
+Validators marked with green rectangles are members of the committee.
+
+.. figure:: pictures/summit-1.png
+    :width: 80%
+    :align: center
+
+K-level summit
+~~~~~~~~~~~~~~
+
+We recursively generalize the idea of 1-summit to arbitrary acknowledgement level. The parameter :math:`k` here corresponds to :math:`ack–level`.
+
+Def: **p-support of message m in context S** is the set of validators :math:`v \in S` such that some p-level message created by :math:`v` is in :math:`j–past–cone(m)`.
+
+Def: **k-level message in context S** is a (k-1)-level message :math:`m` such that the total weight of 0-support of :math:`m` is at least quorum size.
+
+Def: **k-level summit with committee S** is a situation where :math:`S \subset V` is a subset of validators set such that:
+
+-  there exists :math:`R \subset V` such that :math:`S \subset R` and we have (k-1)-summit at R
+-  every member of :math:`S` is a creator of at least one k-level message in context S
+-  total weight of validators in :math:`S` is at least quorum-size
+
+**Example:**
+
+Below is an example of 1-level summit for 8 validators (all having equal weights 1) with :math:`ftt=2` and :math:`k=4`.
+
+Border of a message signals the following information:
+
+-  black border: this is not 0-level message
+-  red border: this is 0-level message
+-  yellow border: this is 1-level message
+-  green border: this is 2-level message
+-  lime border: this is 3-level message
+-  blue border: this is 4-level message
+-  dashed border: this message has not arrived yet to validator 0
+
+.. figure:: pictures/summit-2.png
+    :width: 80%
+    :align: center
+
+
