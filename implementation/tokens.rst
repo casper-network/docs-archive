@@ -17,6 +17,35 @@ we continue that tradition here.
 This chapter describes how we define tokens and how they are used in our
 platform.
 
+Token Generation and Distribution
+---------------------------------
+
+A blockchain system will need to have a supply of tokens available for the
+purposes of paying for computation and rewarding validators for the processing
+of transactions on the network.  The tokens will be allocated in the following
+fashion:
+
+- 10% Reserved for equity holders of CasperLabs AG
+- 14% Reserved for grants to developers and employees on the project in a manner
+  consistent with an employee stock option program.  Tokens in these grants
+  shall be made available over an extended period of time.
+- 6% Reserved for advisors and community ambassadors on the project.
+- 10-15% shall be sold in a private validator sale, for the purposes of securing
+  the genesis block.  Validators participating in the private sale shall be
+  required to lock up their tokens for a minimum of 90 days post-launch.  At the
+  end of 90 days, the tokens from the private sale are eligible for liquidation
+  over the subsequent year at a rate of 1/365th per day.
+- The remainder shall be sold to the public via auction over an extended period
+  of time.  Some of these tokens may be used for working capital.  These tokens
+  are eligible for trading immediately.
+
+In addition to the initial supply, the system will have a low rate of inflation,
+the results of which will be paid out to validators in the form of seigniorage,
+as described previously in this document.
+
+The number of tokens used as a basis for calculating seigniorage and the above
+stated allocations is 10 billion.
+
 .. _tokens-divisibility:
 
 Divisibility of tokens
