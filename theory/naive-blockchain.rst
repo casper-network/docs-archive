@@ -8,7 +8,7 @@ Blockchain is a P2P network, where a collection of nodes (called **validators**)
 
 For the “outside world”, the blockchain looks like a computer. This blockchain computer has a memory (= shared database) and can execute programs (= transactions). Execution of a program changes the state of the memory. Anybody can send a program to the computer and the computer will do a best effort attempt to execute this program.
 
-We say that a blockchain computer is **decentralized**, i.e. there is no single point of failure in the infrastructure. Significant portion of the network of validators could be suddenly destroyed and nevertheless the blockchain will continue to work. Also, the system is resistant to malicious validators (as long total weight of malicious validators is below 50% of total weight of all validators).
+We say that a blockchain computer is **decentralized**, i.e. there is no single point of failure in the infrastructure. Significant portion of the network of validators could be suddenly destroyed and nevertheless the blockchain will continue to work. Also, the system is resistant to malicious validators (as long total weight of malicious validators is below 50% of total weight of all validators).
 
 The core of blockchain mechanics is continuous work of validators struggling to agree on consistent history of programs executed on the blockchain computer. This central idea we describe as “achieving **consensus** on the chain of blocks”. Because every block contains a chain of transactions, this “consistent history” ends up being a sequence of transactions.
 

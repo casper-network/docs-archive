@@ -145,7 +145,7 @@ The named keys are used to give human-readable names to keys in the global state
 which are important to the contract. For example, the hash key of another
 contract it frequently calls maybe stored under a meaningful name. It is also
 used to store the ``URef``\ s which are known to the contract (see below section on
-permissions for details). Note that purely local state (i.e. private variables)
+permissions for details). Note that purely local state (i.e. private variables)
 should be stored under local keys as opposed to ``URef``\ s in the named keys map
 since local keys are more efficient and the primary advantage of ``URef``\ s is to
 share them with others.

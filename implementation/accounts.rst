@@ -9,9 +9,9 @@ Introduction
 ------------
 
 An *account* is a cryptographically secured gateway into the CasperLabs system
-used by entities outside the blockchain (e.g. off-chain components of
+used by entities outside the blockchain (e.g. off-chain components of
 blockchain-based applications, individual users). All user activity on the
-CasperLabs blockchain (i.e. “deploys”) must originate from an account. Each
+CasperLabs blockchain (i.e. “deploys”) must originate from an account. Each
 account has its own context where it can locally store information (e.g.
 references to useful contracts, metrics, aggregated data from other parts of the
 blockchain). Each account also has a “main purse” where it can hold CasperLabs
@@ -103,7 +103,7 @@ day to day usage, and this can be done without worrying about the repercussions
 of losing the phone. The recommended setup would be to have a low-weight key on
 the phone, only just enough for the deploy threshold, but not enough for key
 management, then if the phone is lost or stolen a key management action using
-other associated keys from another device (e.g. a home computer) can be used to
+other associated keys from another device (e.g. a home computer) can be used to
 remove the lost associated key and add a key which resides on a replacement
 phone. Note that it is extremely important to ensure there will always be access
 to a sufficient number of keys to perform the key management action, otherwise
@@ -132,7 +132,7 @@ A deploy is a user request to perform some execution on the blockchain (see
 contains “payment code” and “session code” which are contracts that contain the
 logic to be executed. These contracts are executed in the context of the account
 of the deploy. This means these contracts use the named keys of the account and
-use the account’s local storage (i.e. the “root” for the :ref:`local
+use the account’s local storage (i.e. the “root” for the :ref:`local
 keys <global-state-local-key>` come from the account identity key). Note
 that other contracts called from the session code by ``call_contract`` are
 executed in their own context, not the account context. This means, an account

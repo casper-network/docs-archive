@@ -13,7 +13,7 @@ First theorem is just another name for the machinery of finality detectors. And 
 
 Despite the fact that “naive” design of a blockchain described in previous chapter can be actually implemented and its observed behavior is promising, so far we were not successful trying to prove liveness theorem for it.
 
-As part of this effort, we were actively looking for some hardening of assumptions that would lead to provably live protocol, while maintaining our key goals intact, i.e. to have a permissionless, full decentralized, Casper-based blockchain, compatible with broadcast-based message passing and partially synchronous network.
+As part of this effort, we were actively looking for some hardening of assumptions that would lead to provably live protocol, while maintaining our key goals intact, i.e. to have a permissionless, full decentralized, Casper-based blockchain, compatible with broadcast-based message passing and partially synchronous network.
 
 **Highway** is one of such attempts, which we found particularly promising. This is a variant of Casper, where liveness theorem is achieved via constraining message production with pseudorandomly generated sequence of leaders, which in effect leads to predictable structure of the emerging blockdag.
 

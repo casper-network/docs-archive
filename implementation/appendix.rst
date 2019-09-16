@@ -11,7 +11,7 @@ A - List of possible function imports
 The following functions can be imported into a wasm module which is meant to be
 used as a contract on the CasperLabs system. These functions give a contract
 access to features specific to the CasperLabs platform that are not supported by
-general wasm (e.g. accessing the global state, creating new ``URef``\ s). Note that
+general wasm (e.g. accessing the global state, creating new ``URef``\ s). Note that
 these are defined and automatically imported if the `CasperLabs rust
 library <https://crates.io/crates/casperlabs-contract-ffi>`__ is used to develop
 the contract; these functions should only be used directly by those writing
@@ -310,7 +310,7 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
 
       -  This function copies the ``i``-th argument provided to the current call into
          the host buffer. The result can be obtained by calling ``get_arg``. This
-         function will cause a ``Trap`` if ``i`` is out of range (e.g. if three
+         function will cause a ``Trap`` if ``i`` is out of range (e.g. if three
          arguments were provided ``i > 2`` would be invalid).
 
 -  ``get_arg``
@@ -553,7 +553,7 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
    -  Behavior:
 
       -  This function checks if all the keys contained in the given ``Value`` are
-         valid in the current context (i.e. the ``Value`` does not contain any forged
+         valid in the current context (i.e. the ``Value`` does not contain any forged
          ``URef``\ s). This function causes a ``Trap`` if the bytes in wasm memory from
          offset ``value_ptr`` to ``value_ptr + value_size`` cannot be de-serialized as
          type ``Value``.
@@ -733,7 +733,7 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
          tokens from the current account’s main purse to the main purse of the
          target account. If the target account does not exist then it is
          automatically created, and the tokens are transferred to the main purse of
-         the new account. The target is a serialized ``PublicKey`` (i.e. 36 bytes
+         the new account. The target is a serialized ``PublicKey`` (i.e. 36 bytes
          where the first 4 bytes are the number ``32`` in little endian encoding, and
          the remaining 32-bytes are the public key). The amount must be a
          serialized 512-bit unsigned integer. This function causes a ``Trap`` if the
@@ -789,7 +789,7 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
          If the target account does not exist then it is automatically created, and
          the tokens are transferred to the main purse of the new account. The
          source is a serialized ``PurseId``, which is equivalent to a serialized
-         ``URef``. The target is a serialized ``PublicKey`` (i.e. 36 bytes where the
+         ``URef``. The target is a serialized ``PublicKey`` (i.e. 36 bytes where the
          first 4 bytes are the number ``32`` in little endian encoding, and the
          remaining 32-bytes are the public key). The amount must be a serialized
          512-bit unsigned integer. This function causes a ``Trap`` if the source
@@ -966,7 +966,7 @@ Vector/List/Array
    together) which follow
 -  Note that there is no delimiter between elements; it is assumed that the
    number of bytes needed for each element can be deduced from the type of
-   elements stored in the vector (e.g. a vector of 32-bit signed integers would
+   elements stored in the vector (e.g. a vector of 32-bit signed integers would
    have each element take 4 bytes, and vector of strings would have each element
    describe its length as per the Strings section above)
 -  Similar to ``Option``, this definition is recursive in the sense that if ``T`` can
@@ -994,7 +994,7 @@ Map
 ^^^
 
 -  A map is considered to be a list of (key, value) tuples and encoded as such
-   (i.e. the first 4 bytes are the number of keys in the map encoded as a 32-bit
+   (i.e. the first 4 bytes are the number of keys in the map encoded as a 32-bit
    unsigned integer, then the data follows as a the concatenation of the
    encodings of all the key-value pairs)
 -  The underlying data structure must be ordered, such that serialization is
@@ -1034,7 +1034,7 @@ Key (the enum used as keys in the global state key-value store)
    -  Hash/URef: 4 bytes representing the 32-bit unsigned number 32; followed by
       32 bytes which represent the hash or uref identifier
 
--  If the data does not follow these definitions (e.g. the first byte is a
+-  If the data does not follow these definitions (e.g. the first byte is a
    number different from 0, 1, or 2; or the account “data length” is anything
    other than 20) then a formatting error is raised
 -  Note that even though the length of the data is statically known we still
@@ -1079,7 +1079,7 @@ Value (the enum used as values in the global state key-value store)
    -  Account = Account
    -  Contract = (Vector of 8-bit unsigned integers, ``Map<String, Key>``) tuple
 
--  It is an error if the data does not conform to these definitions (e.g. the
+-  It is an error if the data does not conform to these definitions (e.g. the
    first byte is anything other than 0 - 7)
 
 Reference implementation

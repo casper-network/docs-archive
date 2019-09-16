@@ -18,7 +18,7 @@ We primarily see ACC as a definition of a problem to be solved. Solutions of thi
 
 In CasperLabs we work with diversity of **ACC** solutions. For us, an **ACC** solution is what lives in the heart of a blockchain design. Different solutions of **ACC** problem lead to different blockchains.
 
-**Caution 1:** Be warned that ACC is NOT a blockchain ! Abstract-consensus and blockchain consensus are two separate problems. In abstract consensus model nodes talk to agree on a value and then they stop talking. In a blockchain model nodes never stop talking, because they want to keep extending the chain of blocks forever. So at some point they need to agree on adding yet another block to the chain - this is where the ACC problem shows up and this is why we first study this sub-problem in isolation. After having the sub-problem studied enough, we apply the sub-problem in the wider context, i.e. building a blockchain.
+**Caution 1:** Be warned that ACC is NOT a blockchain ! Abstract-consensus and blockchain consensus are two separate problems. In abstract consensus model nodes talk to agree on a value and then they stop talking. In a blockchain model nodes never stop talking, because they want to keep extending the chain of blocks forever. So at some point they need to agree on adding yet another block to the chain - this is where the ACC problem shows up and this is why we first study this sub-problem in isolation. After having the sub-problem studied enough, we apply the sub-problem in the wider context, i.e. building a blockchain.
 
 **Caution 2**: As target audience of this document is software developers, here and there we add some pseudo-code snippets to illustrate the concepts with a language closer to developer’s perspective. This pseudo-code generally alludes to Scala syntax, but was modified so that non-scala developers will be able to guess the meaning.
 
@@ -44,7 +44,7 @@ Validators are communicating over a network. We assume that all the communicatio
 1. Communication between validators is based on the “broadcast” principle: at any time, a validator can broadcast a message :math:`m`.
 2. Once broadcast, the message :math:`m` will be eventually delivered to every validator in the network. The delivery will happen exactly once. The delivery delay may be of arbitrary length.
 
-Given the assumptions above it follows that the order of delivery may not coincide with the order of broadcasting, i.e. if a validator :math:`A` broadcasts message :math:`m_1` and later it broadcasts message :math:`m_2` and :math:`B` is another validator then we cannot say anything certain about the order of receiving :math:`m_1` and :math:`m_2` by :math:`B`.
+Given the assumptions above it follows that the order of delivery may not coincide with the order of broadcasting, i.e. if a validator :math:`A` broadcasts message :math:`m_1` and later it broadcasts message :math:`m_2` and :math:`B` is another validator then we cannot say anything certain about the order of receiving :math:`m_1` and :math:`m_2` by :math:`B`.
 
 ::
 
@@ -101,7 +101,7 @@ Justifications are pointing to previously received messages. Let us consider any
 -  take vertices to be all elements of :math:`M`
 -  take edges (= arrows) to be all pairs :math:`m_1 → m_2` such that :math:`m_2 \in m1.justifications`.
 
-Such a graph is always acyclic because a cycle in this graph would mean time-traveling is possible (i.e. we assume that listing a message as justification is only possible if this message was first created).
+Such a graph is always acyclic because a cycle in this graph would mean time-traveling is possible (i.e. we assume that listing a message as justification is only possible if this message was first created).
 
 We call any such structure **j-dag**. We generally assume that every validator maintains a (mutable) representation of **j-dag** reflecting the most up-to-date knowledge on the on-going consensus establishing process. Observe that **j-dag** may be equivalently seen as a POSET, because of the well known equivalence between transitively closed DAGs and POSETs. We frequently blur the distinction between DAG-based and POSET-based languages when talking about consensus.
 
@@ -145,7 +145,7 @@ Protocol states
 
 Any set of messages closed under traversing via justifications is a j-dag. We typically use j-dags in two contexts:
 
--  when talking about the **local j-dag**, i.e. the data structure that a validator maintains to reflect the ever-growing knowledge about the on-going consensus
+-  when talking about the **local j-dag**, i.e. the data structure that a validator maintains to reflect the ever-growing knowledge about the on-going consensus
 -  when talking about the universe of all-possible j-dags over a set :math:`M` of messages - this universe is an infinite POSET, who has j-dags as elements and the ordering relation is set-inclusion, so, **jdag1 <= jdag2 iff jdag1 ⊂ jdag2**.
 
 From the point of view of pure mathematics, the local **j-dag** corresponds to a chain in the universe - on receiving some message, a validator updates its local j-dag, and the updated j-dag will then be a superset of the previous j-dag he has.
@@ -240,14 +240,14 @@ Finality
 What is finality ?
 ~~~~~~~~~~~~~~~~~~
 
-Finality is a situation where a certain consensus value :math:`c` gets “locked”, i.e. eventually every honest validator :math:`V` starts voting for :math:`c` and there is no way that :math:`V` will vote for another consensus value in the future.
+Finality is a situation where a certain consensus value :math:`c` gets “locked”, i.e. eventually every honest validator :math:`V` starts voting for :math:`c` and there is no way that :math:`V` will vote for another consensus value in the future.
 
 The challenge here is that, while finality may be already achieved, it is not quite easy to actually recognize it. Please keep in mind that we want to recognize the finality from the perspective of the knowledge that a single validator has, so although some “ultimate observer” able so see the current state of all validators could deduce finality, individual validators may still struggle to make such conclusion.
 
 Equivocations
 ~~~~~~~~~~~~~
 
-Finality cannot really be “absolute” because validators may cheat, i.e. they can violate “fair play”. There are 3 ways a validator can violate fair play:
+Finality cannot really be “absolute” because validators may cheat, i.e. they can violate “fair play”. There are 3 ways a validator can violate fair play:
 
 1. produce a malformed messages
 2. violate the condition that message is allowed to vote on a value picked from what estimator tells

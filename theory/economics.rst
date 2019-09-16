@@ -101,7 +101,7 @@ The compensation :math:`F_c` will be added up to :math:`F`, which will be **dist
    +s_j(F+F_c) & \text{for every validator } j\neq i.
    \end{cases}
 
-This scheme disincentivizes validators from being “lazy”, i.e. proposing empty blocks in order not to incur the computational cost of processing transactions.
+This scheme disincentivizes validators from being “lazy”, i.e. proposing empty blocks in order not to incur the computational cost of processing transactions.
 
 The block proposer paying a compensation might seem unfair especially when there is a lack of submitted transactions. However, every validator’s being subjected to it ensures fairness in the long term, even at times of low demand.
 

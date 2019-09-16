@@ -72,7 +72,7 @@ specific mint contract and it will manage the CasperLabs utility token (used for
 paying for computation and bonding onto the network). The mint also maintains
 all the balances for its type of mote. Each balance is associated with a
 ``PurseId``, which acts as a sort of key to instruct the mint to perform actions
-on that balance (e.g. transfer motes). Informally, we will refer to these
+on that balance (e.g. transfer motes). Informally, we will refer to these
 balances as *purses* and conceptually they represent a container for motes. The
 ``PurseId`` is how a purse is referenced from outside the mint.
 
@@ -86,8 +86,8 @@ operations according to the table below
 =================== =============================
 Global State Action Monetary Action
 =================== =============================
-Add                 Deposit (i.e. transfer to)
-Write               Withdraw (i.e. transfer from)
+Add                 Deposit (i.e. transfer to)
+Write               Withdraw (i.e. transfer from)
 Read                Balance check
 =================== =============================
 
@@ -171,7 +171,7 @@ Purses and accounts
 Every :ref:`accounts-head` on the CasperLabs system has a purse associated
 with the CasperLabs system mint, which we call the account’s “main purse”.
 However, for security reasons, the ``PurseId`` of the main purse is only available
-to code running in the context of that account (i.e. only in payment or session
+to code running in the context of that account (i.e. only in payment or session
 code). Therefore, the mint’s ``transfer`` method which accepts ``PurseId``\ s is not
 the most convenient to use when transferring between account main purses. For
 this reason, CasperLabs supplies a

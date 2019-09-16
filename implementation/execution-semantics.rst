@@ -81,7 +81,7 @@ Payment code
 
 *Payment code* provides the logic used to pay for the computation the deploy
 will do. Payment code is allowed to include arbitrary logic, providing maximal
-flexibility in how a deploy can be paid for (e.g. the simplest payment code
+flexibility in how a deploy can be paid for (e.g. the simplest payment code
 could use the account’s :ref:`main purse <tokens-purses-and-accounts>`, while an
 enterprise application may require deploys to pay via a multi-sig application
 accessing a corporate purse). We restrict the gas limit of the payment code
@@ -125,7 +125,7 @@ The user-defined logic of a deploy can be specified in a number of ways:
    under the key
 
 Each of payment and session code are independently specified, so different
-methods of specifying them may be used (e.g. payment could be specified by a
+methods of specifying them may be used (e.g. payment could be specified by a
 hash key, while session is explicitly provided as a wasm module).
 
 .. _execution-semantics-deploys-as-functions:
@@ -138,10 +138,10 @@ by parallel deploys in the same block or parallel blocks on different forks of
 the chain), we view each deploy as a function taking our global state as input
 and producing a new global state as output. It is safe to execute two such
 functions concurrently if they do not interfere with each other, which formally
-can be defined to mean the functions *commute* (i.e. if they were executed
+can be defined to mean the functions *commute* (i.e. if they were executed
 sequentially it does not matter in what order they are executed, the final
 result is the same for a given input). Whether two deploys commute is determined
-based on the effects they have on the global state, i.e. which operation (read,
+based on the effects they have on the global state, i.e. which operation (read,
 write, add) it does on each key in the key-value store. How this is done is
 described in the first part of this document.
 
@@ -151,7 +151,7 @@ The CasperLabs runtime
 ----------------------
 
 A wasm module is not natively able to create any effects outside of reading /
-writing from its own linear memory. To enable other effects (e.g. reading /
+writing from its own linear memory. To enable other effects (e.g. reading /
 writing to the CasperLabs global state), wasm modules must import functions from
 the host environment they are running in. In the case of contracts on the
 CasperLabs blockchain, this host is the CasperLabs Runtime. Here, we briefly
@@ -184,7 +184,7 @@ description of the functions available for contracts to import, see :ref:`Append
 
    -  ``call_contract`` allows executing a contract stored under a key (hash or
       ``URef``), including passing arguments and getting a return value
-   -  ``ret`` is used by contracts to return a value to their caller (i.e. enables
+   -  ``ret`` is used by contracts to return a value to their caller (i.e. enables
       return values from ``call_contract``)
    -  ``get_arg`` allows getting arguments passed to the contract (either to session
       code as part of the deploy, or arguments to ``call_contract``)

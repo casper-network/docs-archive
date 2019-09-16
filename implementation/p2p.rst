@@ -65,13 +65,13 @@ Principles
 We call the method by which information is disseminated on the network
 *gossiping*. Gossiping means that when a node comes across new bits of
 information it will relay it to a selection of its peers, who do the same,
-eventually saturating the network, i.e. get to the point where everyone has been
+eventually saturating the network, i.e. get to the point where everyone has been
 notified.
 
 Nodes need three layers of information about Blocks to be able to participate in
 the consensus:
 
-1. Block meta-data, e.g. parent relationships, validator weights, state hashes.
+1. Block meta-data, e.g. parent relationships, validator weights, state hashes.
 2. Deploys that were included in given Block.
 3. Global State, to be able to run the Deploys, validate Blocks and build new
    ones on top of them.
@@ -81,7 +81,7 @@ have to calculate themselves by running Deploys.
 
 We have the following requirements from our gossiping approach:
 
--  It should be efficient, i.e. minimize the network traffic while maximizing the
+-  It should be efficient, i.e. minimize the network traffic while maximizing the
    rate at which we reach full saturation.
 -  Node operators should have a reasonable expectation that network traffic (a
    finite resource) will scale linearly with the amount of Deploys across the
@@ -154,7 +154,7 @@ un-tracked parts of the network, but the effects will have to be simulated.
 
 In practice the messages don’t have to reach every node on the network.
 Achieving 100% saturation would be impractical as it would require a high level
-of redundancy, i.e. a node receiving the same message multiple times from
+of redundancy, i.e. a node receiving the same message multiple times from
 different peers. Tracking who saw a message could bloat the message size or open
 it up to tampering. But even if a node isn’t notified about a particular Block
 *right now*, it has equal chances of receiving the next Block that builds on top
@@ -206,7 +206,7 @@ Fairness
 
 We can rightfully ask how the gossip algorithm outlined above fares in the face
 of malicious actors that don’t want to take their share in the data
-distribution, i.e. what happens if a node decides not to propagate the messages?
+distribution, i.e. what happens if a node decides not to propagate the messages?
 
 The consensus protocol has a built-in protection against lazy validators: to get
 their fees from a Block produced by somebody else they have to build on top of
@@ -233,7 +233,7 @@ information was *new* has the following purpose:
 -  By indicating that the information was new the callee is signalling to the
    caller that once it has done the validation of the Block it will relay the
    information, therefore the caller can be content that by informing this node
-   it carried out the number of gossips it set out to do, i.e. it will have to
+   it carried out the number of gossips it set out to do, i.e. it will have to
    serve the full Blocks up to R number of times.
 -  By indicating that the information wasn’t new, the callee is signalling that
    it will not relay the information any longer, therefore the caller should pick
@@ -312,7 +312,7 @@ following parameters:
 -  ``known_block_hashes`` can be supplied by the caller to provide an early exist
    criteria for the traversal. These can for example include the hashes close to
    the tip of the callers DAG, forks, last Blocks seen from validators, and
-   approved Blocks (i.e. Blocks with a high safety threshold).
+   approved Blocks (i.e. Blocks with a high safety threshold).
 -  ``max_depth`` can be supplied by the caller to limit traversal in case the
    ``known_block_hashes`` don’t stop it earlier. This can be useful during
    iterations when we have to go back *beyond* the callers approved blocks, in
@@ -537,7 +537,7 @@ StreamDagTipBlockSummaries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When a new node joins the network it should ask one or more of its peers about
-the tips of their DAG, i.e. the Blocks on which they themselves would be
+the tips of their DAG, i.e. the Blocks on which they themselves would be
 proposing new blocks. This can be followed by an arbitrary number of calls to
 the ``StreamAncestorBlockSummaries`` until the new node has downloaded and
 partially verified the full DAG using the algorithms outlined above. It’s worth
