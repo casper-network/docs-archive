@@ -131,7 +131,7 @@ Rule 3: lambda message
 
 If I am the leader of current round, I produce new block :math:`b`, using all tips of my local j-dag as justifications of :math:`b`. Then I broadcast :math:`b` to all validators.
 
-We call this message **the lambda message**. There is only one lambda message in every round. Every block :math:`b` is a lambda message of some round, namely round :math:`b.round–id`.
+We call this message **the lambda message**. There is only one lambda message in every round. Every block :math:`b` is a lambda message of some round, namely round :math:`b.round\_id`.
 
 Rule 4: lambda response message
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -141,9 +141,9 @@ If I am not the leader of current round, I setup a handler for receiving lambda 
 Rule 5: omega message
 ^^^^^^^^^^^^^^^^^^^^^
 
-Let :math:`j` be the id of current round. At tick :math:`j + omega–delay \cdot 2^n` I create a ballot :math:`b`, using all tips of my local j-dag as justifications of :math:`b`.
+Let :math:`j` be the id of current round. At tick :math:`j + omega\_delay \cdot 2^n` I create a ballot :math:`b`, using all tips of my local j-dag as justifications of :math:`b`.
 
-:math:`omega–delay \in(0,1)` is a blockchain parameter - to be picked by simulation and then hardcoded.
+:math:`omega\_delay \in(0,1)` is a blockchain parameter - to be picked by simulation and then hardcoded.
 
 Adjusting round exponent
 ------------------------
@@ -152,7 +152,7 @@ We need to make it clear what is the semantics of adjusting the round exponent. 
 
 When a validator wants to adjust his round exponent, it must be done at a tick which happens to be the boundary of both the old-length round and the new-length round. Mathematically this transforms to saying that :math:`n_v(i) = n_v(i-1)` unless :math:`i` is a multiple of both :math:`2^{n_v(i)}` and :math:`2^{n_v(i-1)}`.
 
-Auto-adjusting of round lengths is based on an internal finalizer which every validator must maintain. This finalizer would run with the fault tolerance threshold :math:`ftt` set as blockchain-wide constant (:math:`ftt=1\%` sounds like a good candidate value here) and :math:`acknowledgement–level=1`.
+Auto-adjusting of round lengths is based on an internal finalizer which every validator must maintain. This finalizer would run with the fault tolerance threshold :math:`ftt` set as blockchain-wide constant (:math:`ftt=1\%` sounds like a good candidate value here) and :math:`acknowledgement\_level=1`.
 
 Now, we finally can define the strategy of auto-adjusting round exponents.
 
@@ -174,7 +174,7 @@ Boundary of an era
 
 **Era length** is just a parameter of the blockchain - expressed as a number of ticks. We expect reasonable era length might be 604800000, which is one week.
 
-A message :math:`m` belongs to an era deduced by knowing the era length and looking at :math:`m.round–id`.
+A message :math:`m` belongs to an era deduced by knowing the era length and looking at :math:`m.round\_id`.
 
 Critical blocks
 ~~~~~~~~~~~~~~~
@@ -188,19 +188,19 @@ In every era, there are two ticks (with a distance fixed relative to the beginni
 
 These points are blockchain parameters and **key-point** must be strictly bigger than **booking-point**.
 
-Let :math:`era–start: Int \to Int` be a function that assigns to every tick the beginning of an era this tick belongs to. This function can easily be calculated as:
+Let :math:`era\_start: Int \to Int` be a function that assigns to every tick the beginning of an era this tick belongs to. This function can easily be calculated as:
 
 .. math::
 
 
-   era–start(t) = (t / era–length) * era–length
+   era\_start(t) = (t / era\_length) * era\_length
 
 … where the division is integer division.
 
 **Booking block** is any block :math:`b` such that both following conditions hold:
 
--  :math:`b.round–id \geqslant era–start(b.round–id) + booking–point`
--  :math:`b.main–parent.round–id < era–start(b.round–id) + booking–point`
+-  :math:`b.round\_id \geqslant era\_start(b.round\_id) + booking\_point`
+-  :math:`b.main\_parent.round\_id < era\_start(b.round\_id) + booking\_point`
 
 It can be explained as the idea that on any path of the main-tree, booking block is the first block to cross the time defined by **booking-point**, where we consider “time of a block” to be the tick of the beginning of its era.
 
@@ -235,10 +235,10 @@ Within a single era:
 
 An era starts at fixed point of real time (fixed tick). We generally expect that:
 
-1. The weights map to be used in this era is defined by a booking block from :math:`era–delay` rounds ago.
-2. The random seed to be used in this era is defined by a key block from :math:`era–delay` rounds ago.
+1. The weights map to be used in this era is defined by a booking block from :math:`era\_delay` rounds ago.
+2. The random seed to be used in this era is defined by a key block from :math:`era\_delay` rounds ago.
 
-Both :math:`era–delay` is a blockchain parameter. We expect that reasonable value for :math:`era–delay` is 2.
+Both :math:`era\_delay` is a blockchain parameter. We expect that reasonable value for :math:`era\_delay` is 2.
 
 Setting the weights map
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -253,10 +253,10 @@ Take the hash of corresponding key-block, then add all magic bits from main-tree
 Disparation of eras
 ~~~~~~~~~~~~~~~~~~~
 
-In an era we typically will observe many booking blocks and key blocks, just because the main-tree is typically not a chain. The expectation here is that the combination of :math:`era–delay` and :math:`key–point` make together enough time between the key block and the beginning of the era it defines, that the LFB chain of reasonably strong finalizer will do the selection of only one, “official”, key block.
+In an era we typically will observe many booking blocks and key blocks, just because the main-tree is typically not a chain. The expectation here is that the combination of :math:`era\_delay` and :math:`key\_point` make together enough time between the key block and the beginning of the era it defines, that the LFB chain of reasonably strong finalizer will do the selection of only one, “official”, key block.
 
 Let us do a simple calculations.
 
-Assuming the era length is set to one week - starting Monday and ending Sunday - and the key point is set to Thursday noon. Also, assume that “era–delay” is 2. This means that key blocks created just after Thursday noon will control the era that will start 10.5 days later. This is a plenty of time and by that time it is “almost sure” that the progressing LFB chain will pick the “right” key block to be used.
+Assuming the era length is set to one week - starting Monday and ending Sunday - and the key point is set to Thursday noon. Also, assume that “era\_delay” is 2. This means that key blocks created just after Thursday noon will control the era that will start 10.5 days later. This is a plenty of time and by that time it is “almost sure” that the progressing LFB chain will pick the “right” key block to be used.
 
 In the extreme case, however, the finality of the key block might not be there at the moment of starting the era to be controlled by this block. This is an interesting situation that actually can be handled, although this is to happen in a “shocking” way. The way to go is to run in parallel all possible eras - accordingly to all key blocks that are “on the table”. Of course these parallel eras must be run as if they are completely independent blockchains (= separate P2p networks). Eventually, the progressing LFB chain will materialize only one reality, and so all the other virtual eras must disappear, so validators will just forget they ever existed. This is exactly like in quantum mechanics, where at some point only one version of reality is materializing.

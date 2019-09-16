@@ -110,11 +110,11 @@ Please observe that for any message **m**, the collection :math:`m.justification
 In the context of any **j-dag** we introduce the following concepts:
 
 -  **transitive justification of message :math:`A`** is any message :math:`B` such that **j-dag** contains a path :math:`A → ... → B`; this naming reflects the fact that an arrow in **j-DAG** goes always from newer messages to older messages; in POSET lingo it translates to :math:`B < A`, and we specifically pick here the direction of the ordering relation to reflect the time flow, so :math:`B < A` because :math:`B` must be older than :math:`A` (= :math:`A` confirms that it saw :math:`B`)
--  **j-past-cone of block A** or shortly :math:`j–past–cone(A)` is the full subgraph of **j-dag** formed by taking all as vertices all transitive justifications of messages :math:`A`, plus the message :math:`A` itself; in POSET lingo it is just the set of all :math:`B` such that :math:`B <= A`
+-  **j-past-cone of block A** or shortly :math:`j\_past\_cone(A)` is the full subgraph of **j-dag** formed by taking all as vertices all transitive justifications of messages :math:`A`, plus the message :math:`A` itself; in POSET lingo it is just the set of all :math:`B` such that :math:`B <= A`
 -  **swimlane of validator V** (or just **V-swimlane**) is: (1) take the transitive closure of **j-dag** (2) cut it to a subgraph by taking only messages created by V
 -  **j-dag tip** is a message :math:`m` that is not a justification of any other message in **j-dag**; in POSET lingo it is just a maximal element in a **j-dag**
--  **panorama of message B** - for a validator :math:`V` cut **V-swimlane** down to vertices included in :math:`j-past-cone(B)`; the resulting subgraph of **V-swimlane** we will be calling **V-swimlane-cut-to-B**; now iterate over the collection of all validators, for every validator :math:`V_i` take all tips of :math:`V_i–swimlane–cut–to–B`; sum of such tips is what we want to call the :math:`panorama(B)`
--  **validator V is honest** if :math:`V–swimlane` is a chain; in POSET language: :math:`V–swimlane` is a linear order
+-  **panorama of message B** - for a validator :math:`V` cut **V-swimlane** down to vertices included in :math:`j-past-cone(B)`; the resulting subgraph of **V-swimlane** we will be calling **V-swimlane-cut-to-B**; now iterate over the collection of all validators, for every validator :math:`V_i` take all tips of :math:`V_i\_swimlane\_cut\_to\_B`; sum of such tips is what we want to call the :math:`panorama(B)`
+-  **validator V is honest** if :math:`V\_swimlane` is a chain; in POSET language: :math:`V\_swimlane` is a linear order
 -  **validator V is an equivocator** if V is not honest
 -  **equivocation** is a proof that validator :math:`V` is not honest; in other words it is pair of messages :math:`A`, :math:`B`, both created by :math:`V`, such that :math:`A` is not a transitive justification of :math:`B` and **B** is not a transitive justification of :math:`A`
 -  **latest message of a validator V** is a j-dag tip of **V-swimlane**; if :math:`V` is honest then it has at most one latest message
@@ -122,7 +122,7 @@ In the context of any **j-dag** we introduce the following concepts:
 
    -  both :math:`Y` and :math:`Z` are honest
    -  take :math:`m` = latest message of :math:`Y` (must be unique because :math:`Y` is honest)
-   -  take the intersection of :math:`panorama(m)` and :math:`Z–swimlane` - must contain at most one element, because :math:`Z` is honest - this is the “latest message” we are talking about
+   -  take the intersection of :math:`panorama(m)` and :math:`Z\_swimlane` - must contain at most one element, because :math:`Z` is honest - this is the “latest message” we are talking about
 
 -  **honest validator Y can see a honest validator Z voting for consensus value P** is when latest message of validator :math:`Z` that validator :math:`Y` can see is voting for :math:`P`
 
@@ -229,8 +229,8 @@ For a protocol state :math:`ps` we calculate the estimator value in the followin
    1. Take the collection of all honest validators in :math:`ps`.
    2. Restrict to collection of validators that created at least one message.
    3. For every validator - find its latest message with non-empty vote.
-   4. Sum latest messages by weight - this end up with a mapping :math:`total–votes: C \to Int` - for every consensus value :math:`c` it returns the sum of weights of validators voting for :math:`c`.
-   5. Find all points :math:`c \in C` such that :math:`total–votes` has maximum value at :math:`c`.
+   4. Sum latest messages by weight - this end up with a mapping :math:`total\_votes: C \to Int` - for every consensus value :math:`c` it returns the sum of weights of validators voting for :math:`c`.
+   5. Find all points :math:`c \in C` such that :math:`total\_votes` has maximum value at :math:`c`.
    6. Using total order on :math:`C`, from elements found in previous step pick maximum element :math:`cmax`.
    7. The result is one-element set :math:`{cmax}`.
 
@@ -260,7 +260,7 @@ Finality criteria
 
 Because of equivocations, finality really means “consensus value :math:`c` being locked as long as the fraction of honest nodes is sufficiently high”. We typically express the “sufficiently high” part by introducing the concept of **faults tolerance threshold**, or **FTT** in short.
 
-Finality criterion is a function :math:`fc: protocol–states \times Int \to C \cup {EMPTY}`.
+Finality criterion is a function :math:`fc: protocol\_states \times Int \to C \cup {EMPTY}`.
 
 We interpret this function as providing the answer if the finality was achieved (and if yes, then which consensus value is finalized), given the following input data:
 
@@ -360,7 +360,7 @@ A color inside of a dot represents a consensus value this message is voting for.
 Zero-level messages
 ~~~~~~~~~~~~~~~~~~~
 
-Within a swimlane of a honest validator, **zero-level messages** are all messages since the last change of mind on the consensus value this validator was voting for (empty votes are not counting as change of mind).
+Within a swimlane of an honest validator, **zero-level messages** are all messages since the last change of mind on the consensus value this validator was voting for (empty votes are not counting as change of mind).
 
 **Example:** if the sequence of messages in the swimlane looks like this:
 
@@ -395,7 +395,7 @@ Quorum size is an integer value calculated as:
 
 Let’s take a zero-level message :math:`m` and a subset of validators set :math:`S \subset V`.
 
-Def: **0-support of message m in context S** is the set of validators :math:`v \in S` such that some zero-level message created by :math:`v` is in :math:`j–past–cone(m)`.
+Def: **0-support of message m in context S** is the set of validators :math:`v \in S` such that some zero-level message created by :math:`v` is in :math:`j\_past\_cone(m)`.
 
 Def: **1-level message in context S** is a zero-level message :math:`m` such that the total weight of 0-support of :math:`m` is at least quorum size.
 
@@ -425,9 +425,9 @@ Validators marked with green rectangles are members of the committee.
 K-level summit
 ~~~~~~~~~~~~~~
 
-We recursively generalize the idea of 1-summit to arbitrary acknowledgement level. The parameter :math:`k` here corresponds to :math:`ack–level`.
+We recursively generalize the idea of 1-summit to arbitrary acknowledgement level. The parameter :math:`k` here corresponds to :math:`ack\_level`.
 
-Def: **p-support of message m in context S** is the set of validators :math:`v \in S` such that some p-level message created by :math:`v` is in :math:`j–past–cone(m)`.
+Def: **p-support of message m in context S** is the set of validators :math:`v \in S` such that some p-level message created by :math:`v` is in :math:`j\_past\_cone(m)`.
 
 Def: **k-level message in context S** is a (k-1)-level message :math:`m` such that the total weight of 0-support of :math:`m` is at least quorum size.
 

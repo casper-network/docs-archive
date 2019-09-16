@@ -105,8 +105,8 @@ Main assumption is that a global state encodes (among other things) the “weigh
 .. math::
 
 
-   weights–map: GS \rightarrow Int^{ValidatorId} \\
-   weights–map(gs): ValidatorId \rightarrow Int
+   weights\_map: GS \rightarrow Int^{ValidatorId} \\
+   weights\_map(gs): ValidatorId \rightarrow Int
 
 Intuitively, the stake of a validator will be (usually) defined by the amount of internal blockchain “money” allocated to corresponding account.
 
@@ -302,7 +302,7 @@ Of course, any **p-past-cone(b)** inherits the order from the whole **p-dag**, s
 
 For :math:`<A,R>` any POSET, topological sorting of :math:`<A,R>` is any linear order :math:`<A,T>` such that :math:`identity: <A,R> \rightarrow <A,T>` is monotonic. In other words, topological sorting is converting a POSET into a total order in a way that preserves the original order. For a given POSET this can be usually done in many ways.
 
-\ **Example:**\  Let’s take the :math:`p–past–cone(3)` from our example. As a POSET it looks like this:
+\ **Example:**\  Let’s take the :math:`p\_past\_cone(3)` from our example. As a POSET it looks like this:
 
 .. figure:: pictures/p-past-cone-for-block-3.png
    :width: 40%
@@ -348,7 +348,7 @@ Formal definition of merging
 
 We say that a set of blocks :math:`B = \{b_1, b_2, ..., b_n\}` is **mergeable** (= **not in conflict**) when the following holds:
 
-1. take the sum :math:`S` of :math:`p–past–cone(b_i)` for :math:`i=1,..., n` - this is a sub-POSET of p-dag
+1. take the sum :math:`S` of :math:`p\_past\_cone(b_i)` for :math:`i=1,..., n` - this is a sub-POSET of p-dag
 
 2. given any topo-sort :math:`T` of :math:`S`
 
@@ -382,7 +382,7 @@ A **block** contains the following data:
 -  **pre-state-hash** - hash of global state that represents state after executing all parents of this block
 -  **post-state hash** - hash of global state achieved after executing transactions in this block (and all previous block, as implied by p-dag)
 
-For a block :math:`b` we define the collection :math:`b.all–justifications` as main parent + secondary parents + justifications. This collection is always non-empty because **main parent** is a mandatory field.
+For a block :math:`b` we define the collection :math:`b.all\_justifications` as main parent + secondary parents + justifications. This collection is always non-empty because **main parent** is a mandatory field.
 
 A **ballot** contains the following data:
 
@@ -391,7 +391,7 @@ A **ballot** contains the following data:
 -  **target block** (id of a block)
 -  **justifications** (collection of message ids that the creator confirms as seen at the moment of creation of this ballot, excluding target block; may be empty)
 
-For a ballot **b** we define the collection :math:`b.all–justifications` as target block + additional justifications. This collection is always non-empty because target block is a mandatory field.
+For a ballot **b** we define the collection :math:`b.all\_justifications` as target block + additional justifications. This collection is always non-empty because target block is a mandatory field.
 
 From the definitions above it follows that for every message :math:`m` there is a **j-dag** path from :math:`m` to :math:`Genesis`.
 
@@ -410,7 +410,7 @@ During its lifetime, a validator maintains the following data structures:
 -  **reference-finalizer** - an instance of finalizer used internally (see later in this spec what finalizers are)
 -  **global-states-db** - mapping of global state hash to global state
 
-A message :math:`m` can be added to the :math:`blockdag` only if all justifications of :math:`m` are already present in the blockdag. So if a validator receives a message before receiving some of its justifications, the received message must wait in the :math:`messages–buffer`.
+A message :math:`m` can be added to the :math:`blockdag` only if all justifications of :math:`m` are already present in the blockdag. So if a validator receives a message before receiving some of its justifications, the received message must wait in the :math:`messages\_buffer`.
 
 A validator is concurrently executing two infinite loops of processing:
 
@@ -424,19 +424,19 @@ Listen to messages incoming from other validators. Whenever a message :math:`m` 
 
    1. if yes: continue
 
-3. otherwise: append :math:`m` to the :math:`messages–buffer`, then exit
+3. otherwise: append :math:`m` to the :math:`messages\_buffer`, then exit
 
 4. Perform processing specific to type of :math:`m` (block or ballot) - see below.
 
 5. If :math:`equivocators` does not contain :math:`m.creator`:
 
-   1. Check if :math:`m` introduces new equivocation - this is the case when :math:`latest–honest–messages(m.creator)` is not member of :math:`j–past–cone(m)`
+   1. Check if :math:`m` introduces new equivocation - this is the case when :math:`latest\_honest\_messages(m.creator)` is not member of :math:`j\_past\_cone(m)`
 
 6. If yes then add :math:`m.creator` to :math:`equivocators`
 
-7. If :math:`equivocators` does not contain :math:`m.creator`, update :math:`latest–honest–messages` map by setting :math:`latest–honest–messages(m.creator) = m`
+7. If :math:`equivocators` does not contain :math:`m.creator`, update :math:`latest\_honest\_messages` map by setting :math:`latest\_honest\_messages(m.creator) = m`
 
-8. Check if there is any message :math:`x` in :math:`messages–buffer` that can now leave the buffer and be included in the :math:`blockdag` because of :math:`x.all–justifications` are now present in the :math:`blockdag`. For first such :math:`x` found apply steps (3) - (4) - (5) .
+8. Check if there is any message :math:`x` in :math:`messages\_buffer` that can now leave the buffer and be included in the :math:`blockdag` because of :math:`x.all\_justifications` are now present in the :math:`blockdag`. For first such :math:`x` found apply steps (3) - (4) - (5) .
 
 9. (“Buffer pruning cascade”) Repeat step (6) as many times as there are blocks which can be released from the buffer.
 
@@ -459,14 +459,14 @@ If :math:`m` is a block:
 
 5. Calculate post-state for :math:`m` by sequentially applying all transactions in :math:`m` on top of global state calculated in step (3). Check if calculated hash of post-state is equal to post-state-hash stored in :math:`m`. If not, then drop :math:`m` (invalid block) and exit.
 
-6. Store post-state calculated in step (4) in :math:`global–states–db`.
+6. Store post-state calculated in step (4) in :math:`global\_states\_db`.
 
 If :math:`m` is a ballot:
 
-1. Validate whether :math:`m.target–block` was selected correctly:
+1. Validate whether :math:`m.target\_block` was selected correctly:
 
    1. run the fork-choice for the protocol state derived from justifications of :math:`m`
-   2. compare calculated main parent candidate with actual :math:`m.target–block`:
+   2. compare calculated main parent candidate with actual :math:`m.target\_block`:
 
       -  if they are the same: append :math:`m` to :math:`blockdag`.
       -  otherwise - drop the block (invalid block) and exit
@@ -482,9 +482,9 @@ If :math:`m` is a ballot:
 
 3. Pick the maximal non-conflicting subset :math:`mncsp \subset sp`, respecting the selection of :math:`mp` and the ordering of :math:`sp`.
 
-4. Calculate merged global state :math:`merged–gs` derived from :math:`\{mp\} \cup mncsp`.
+4. Calculate merged global state :math:`merged\_gs` derived from :math:`\{mp\} \cup mncsp`.
 
-5. Check the weight of local validator in merged global state: :math:`weights–map(merged–gs)(vid)`
+5. Check the weight of local validator in merged global state: :math:`weights\_map(merged\_gs)(vid)`
 
    1. If weight is non-zero and :math:`deploys-buffer` is nonempty, we will be creating and publishing a new block.
 
@@ -496,19 +496,19 @@ If :math:`m` is a ballot:
 Case 1: new block
 
 1. Take desired subset of transactions :math:`trans` from :math:`deploys-buffer` (this part of behavior is subject to separate spec; on this level of abstraction we accept any strategy of picking transactions from the buffer).
-2. Apply :math:`trans` sequentially on top of :math:`merged–gs`. Let :math:`post–gs` be the resulting global state.
+2. Apply :math:`trans` sequentially on top of :math:`merged\_gs`. Let :math:`post\_gs` be the resulting global state.
 3. Create new block:
 
    -  block id = hash of the binary representation of this block
    -  creator id = :math:`vid`
    -  main parent = :math:`mp`
    -  secondary parents = :math:`mncsp`
-   -  justifications = :math:`latest–honest–messages` after removing main parent, secondary parents and redundant messages (see explanation below)
+   -  justifications = :math:`latest\_honest\_messages` after removing main parent, secondary parents and redundant messages (see explanation below)
    -  transactions list = :math:`trans`
-   -  pre-state-hash = :math:`hash(merged–gs)`
-   -  post-state hash = :math:`hash(post–gs)`
+   -  pre-state-hash = :math:`hash(merged\_gs)`
+   -  post-state hash = :math:`hash(post\_gs)`
 
-4. Store :math:`post–gs` in :math:`global–states–db`
+4. Store :math:`post\_gs` in :math:`global\_states\_db`
 5. Broadcast new block across validators P2P network.
 
 Case 2: new ballot
@@ -518,7 +518,7 @@ Case 2: new ballot
    -  block id = hash of the binary representation of this block
    -  creator id = :math:`vid`
    -  target block = :math:`mp`
-   -  justifications = :math:`latest–honest–messages` after removing: target block and redundant messages (see explanation below)
+   -  justifications = :math:`latest\_honest\_messages` after removing: target block and redundant messages (see explanation below)
 
 2. Broadcast new ballot across validators P2P network.
 
@@ -530,7 +530,7 @@ Case 2: new ballot
    We will need the concept of “last message created by validator **v** that was non-empty vote in **b-game**”. Given any block :math:`b` and any validator :math:`V` let us take look at the swimlane of :math:`V`. If :math:`v` is honest, then this swimlane is a chain. Any message :math:`m` counts as non-empty vote in **b-game** only if:
 
    -  :math:`m` is a block and the ancestor of :math:`m` (in main-tree) is :math:`b`
-   -  :math:`m` is a ballot and the ancestor of :math:`m.target–block` (in main-tree) is :math:`b`
+   -  :math:`m` is a ballot and the ancestor of :math:`m.target\_block` (in main-tree) is :math:`b`
 
    We start from the latest (= top-most on the diagram) message in the :math:`swimlane(v)` and we traverse the swimlane down, stopping as soon as we find a message that is counts as non-empty vote in **b-game**.
 
@@ -575,7 +575,7 @@ Case 2: new ballot
 
       1. When using fork choice for creation of new block this is the point where the validator can decide on the subset of his local knowledge to reveal to outside world. Ideally, the validator reveals all local knowledge, so it takes as protocol state the whole local blockdag.
 
-   2. When using fork choice for validation of received message :math:`m`, the protocol state to take is :math:`j–past–cone(m)`.
+   2. When using fork choice for validation of received message :math:`m`, the protocol state to take is :math:`j\_past\_cone(m)`.
 
 4. Take :math:`HV` - all honest validators (all creators of messages in :math:`ps` minus these seen equivocating with messages in :math:`ps`).
 
@@ -586,11 +586,11 @@ Case 2: new ballot
    .. math::
 
 
-      tipBlock(v)=\begin{cases} lm(v), & lm(v) \space is \space a \space block \\lm(v).target–block, & otherwise \end{cases}
+      tipBlock(v)=\begin{cases} lm(v), & lm(v) \space is \space a \space block \\lm(v).target\_block, & otherwise \end{cases}
 
-   5. Take :math:`lca–block` = latest common ancestor along main-tree of all :math:`tipBlock(v)`
+   5. Take :math:`lca\_block` = latest common ancestor along main-tree of all :math:`tipBlock(v)`
 
-   6. Initialize resulting collection of blocks as one-element list :math:`Result = [lca–block]`
+   6. Initialize resulting collection of blocks as one-element list :math:`Result = [lca\_block]`
 
    7. For each block :math:`b` in :math:`Result` replace :math:`b` with its direct children in main-tree: :math:`c_1, c_2, ..., c_n`, where the list of children is ordered following this recipe:
 
@@ -598,7 +598,7 @@ Case 2: new ballot
 
    8. Find a child :math:`c_i` that :math:`lmb(v)` is voting for - by traversing down the main-tree.
 
-      3. Using :math:`validator–weights(b)` count the votes.
+      3. Using :math:`validator\_weights(b)` count the votes.
 
    9. Order the sequence :math:`c_i` by calculated votes, using :math:`ci.id` (= block hash) as tie-breaker.
 
