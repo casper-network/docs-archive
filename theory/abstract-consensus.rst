@@ -226,13 +226,13 @@ For a protocol state :math:`ps` we calculate the estimator value in the followin
 -  if :math:`ps` is empty then the result is :math:`C`
 -  otherwise - we apply the following algorithm:
 
-   1. take the collection of all honest validators in :math:`ps`
-   2. restrict to collection of validators that created at least one message
-   3. for every validator - find its latest message with non-empty vote
-   4. sum latest messages by weight - this end up with a mapping :math:`total–votes: C \to Int` - for every consensus value :math:`c` it returns the sum of weights of validators voting for :math:`c`
-   5. find all points :math:`c \in C` such that :math:`total–votes` has maximum value at :math:`c`
-   6. using total order on :math:`C`, from elements found in previous step pick maximum element :math:`cmax`
-   7. the result is one-element set :math:`{cmax}`
+   1. Take the collection of all honest validators in :math:`ps`.
+   2. Restrict to collection of validators that created at least one message.
+   3. For every validator - find its latest message with non-empty vote.
+   4. Sum latest messages by weight - this end up with a mapping :math:`total–votes: C \to Int` - for every consensus value :math:`c` it returns the sum of weights of validators voting for :math:`c`.
+   5. Find all points :math:`c \in C` such that :math:`total–votes` has maximum value at :math:`c`.
+   6. Using total order on :math:`C`, from elements found in previous step pick maximum element :math:`cmax`.
+   7. The result is one-element set :math:`{cmax}`.
 
 Finality
 --------
@@ -242,9 +242,9 @@ Equivocations
 
 Finality cannot really be “absolute” because validators may cheat, i.e. they can violate “fair play”. There are 3 ways a validator can violate fair play:
 
-1. produce a malformed messages
-2. violate the condition that message is allowed to vote on a value picked from what estimator tells
-3. equivocate
+1. Produce a malformed message.
+2. Violate the condition that message is allowed to vote on a value picked from what estimator tells.
+3. Equivocate.
 
 Case (2) can be really considered a sub-case of (1), and (1) can be evaded by just assuming that validators reject malformed messages on reception. So, the only real problem comes from (3). Equivocations do break consensus and the intuition for this is clear - if everybody cheats by concurrently voting for different values, validators will never come up with a decision which value is finally agreed.
 

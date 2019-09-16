@@ -22,7 +22,7 @@ make html
 To generate the PDF (LaTeX), run
 
 ```
-bash generate_xelatexpdf.sh
+make latexpdf
 ```
 
 Files will be generated under `_build/`.
