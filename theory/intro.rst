@@ -15,7 +15,7 @@ The consensus solution used in CasperLabs blockchain is a latest achievement of 
 -  2013: “Greedy Heaviest Observed Subtree” (GHOST) algorithm introduced (Sompolinsky, Zohar)
 -  2015: Blockchain idea extended to “block DAG” - “Inclusive Block Chain Protocols” (Lewenberg, Sompolinsky, Zohar)
 -  2017: First draft version of Casper protocol spec published (Ethereum research group, Vlad Zamfir)
--  Jul 2018: First implementation of proof-of-stake blockchain built on Casper-GHOST-Blockdag combination attempted (Rchain system)
+-  Jul 2018: First implementation of proof-of-stake blockchain built on Casper-GHOST-Blockdag combination attempted
 -  Dec 2018: CBC Casper protocol 1.0 specification (Ethereum research group, Vlad Zamfir)
 -  Sep 2019: Leader-based CBC Casper (Daniel Kane, Vlad Zamfir, Andreas Fackler)
 

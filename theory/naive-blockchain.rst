@@ -258,7 +258,7 @@ The contents of the table above may be explained as follows:
 3. We setup Abstract Casper Consensus instance “relative to block **b**”, where consensus values are direct children of **b**.
 4. Any block **x** can be seen as a vote for some child of **b** only if **x** is a descendant of **b** in main-tree. So if **x** is not a descendant of **b**, we consider **x** as carrying empty vote.
 
-**Caution:** when defining the players of **b-game**, we exclude all equivocators as seen in the current protocol state. This means that b-game is not “absolute”, it is rather depending on the current perspective on the blockchain that given validator has. Also, the collection of equivocators grows over time, which means that over time we may need to recalculate b-game, excluding more validators. This aspect plays crucial role in how **finalizers** work - see below the chapter on finalizers.
+**Note:** when defining the players of **b-game**, we exclude all equivocators as seen in the current protocol state. This means that b-game is not “absolute”, it is rather depending on the current perspective on the blockchain that given validator has. Also, the collection of equivocators grows over time, which means that over time we may need to recalculate b-game, excluding more validators. This aspect plays crucial role in how **finalizers** work - see below the chapter on finalizers.
 
 Not all **b-games** tend to be equally important. What happens is the following pattern:
 
@@ -522,7 +522,7 @@ Case 2: new ballot
 
 2. Broadcast new ballot across validators P2P network.
 
-3. Caution: we generally want to keep the collection :math:`m.justifications` as short as possible. For this, we never include there main parent, secondary parents and target block, and also we want the collection of justifications included in the message to be transitively reduced (= included justifications form an antichain).
+3. Note: we generally want to keep the collection :math:`m.justifications` as short as possible. For this, we never include there main parent, secondary parents and target block, and also we want the collection of justifications included in the message to be transitively reduced (= included justifications form an antichain).
 
    .. rubric:: Relative votes
       :name: relative-votes
@@ -635,7 +635,7 @@ Hence, the finalizer is parameterized by:
 
    The assumption is that a finalizer can traverse the blockdag, reading contents of blocks. Also, for any block b it should be able to read post-state of b and in particular get weights-map from this post-state.
 
-   Caution: refer to subsequent sections to
+   Note: refer to subsequent sections to
 
    The internal state of the “reference” implementation of a finalizer would be:
 

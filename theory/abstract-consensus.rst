@@ -18,9 +18,9 @@ We primarily see ACC as a definition of a problem to be solved. Solutions of thi
 
 In CasperLabs we work with diversity of **ACC** solutions. For us, an **ACC** solution is what lives in the heart of a blockchain design. Different solutions of **ACC** problem lead to different blockchains.
 
-**Caution 1:** Be warned that ACC is NOT a blockchain ! Abstract-consensus and blockchain consensus are two separate problems. In abstract consensus model nodes talk to agree on a value and then they stop talking. In a blockchain model nodes never stop talking, because they want to keep extending the chain of blocks forever. So at some point they need to agree on adding yet another block to the chain - this is where the ACC problem shows up and this is why we first study this sub-problem in isolation. After having the sub-problem studied enough, we apply the sub-problem in the wider context, i.e. building a blockchain.
+**Note 1:** Be warned that ACC is NOT a blockchain. Abstract-consensus and blockchain consensus are two separate problems. In abstract consensus model nodes talk to agree on a value and then they stop talking. In a blockchain model nodes never stop talking, because they want to keep extending the chain of blocks forever. So at some point they need to agree on adding yet another block to the chain - this is where the ACC problem shows up and this is why we first study this sub-problem in isolation. After having the sub-problem studied enough, we apply the sub-problem in the wider context, i.e. building a blockchain.
 
-**Caution 2**: As target audience of this document is software developers, here and there we add some pseudo-code snippets to illustrate the concepts with a language closer to developer’s perspective. This pseudo-code generally alludes to Scala syntax, but was modified so that non-scala developers will be able to guess the meaning.
+**Note 2**: As target audience of this document is software developers, here and there we add some pseudo-code snippets to illustrate the concepts with a language closer to developer’s perspective. This pseudo-code generally alludes to Scala syntax, but was modified so that non-scala developers will be able to guess the meaning.
 
 The model
 ---------
@@ -236,13 +236,6 @@ For a protocol state :math:`ps` we calculate the estimator value in the followin
 
 Finality
 --------
-
-What is finality ?
-~~~~~~~~~~~~~~~~~~
-
-Finality is a situation where a certain consensus value :math:`c` gets “locked”, i.e. eventually every honest validator :math:`V` starts voting for :math:`c` and there is no way that :math:`V` will vote for another consensus value in the future.
-
-The challenge here is that, while finality may be already achieved, it is not quite easy to actually recognize it. Please keep in mind that we want to recognize the finality from the perspective of the knowledge that a single validator has, so although some “ultimate observer” able so see the current state of all validators could deduce finality, individual validators may still struggle to make such conclusion.
 
 Equivocations
 ~~~~~~~~~~~~~
