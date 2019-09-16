@@ -146,7 +146,7 @@ Protocol states
 Any set of messages closed under traversing via justifications is a j-dag. We typically use j-dags in two contexts:
 
 -  when talking about the **local j-dag**, i.e. the data structure that a validator maintains to reflect the ever-growing knowledge about the on-going consensus
--  when talking about the universe of all-possible j-dags over a set :math:`M` of messages - this universe is an infinite POSET, who has j-dags as elements and the ordering relation is set-inclusion, so, **jdag1 <= jdag2 iff jdag1 ⊂ jdag2**.
+-  when talking about the universe of all-possible j-dags over a set :math:`M` of messages - this universe is an infinite POSET, who has j-dags as elements and the ordering relation is set-inclusion, so, **jdag1 <= jdag2 iff jdag1 \subset jdag2**.
 
 From the point of view of pure mathematics, the local **j-dag** corresponds to a chain in the universe - on receiving some message, a validator updates its local j-dag, and the updated j-dag will then be a superset of the previous j-dag he has.
 
@@ -230,7 +230,7 @@ For a protocol state :math:`ps` we calculate the estimator value in the followin
    2. restrict to collection of validators that created at least one message
    3. for every validator - find its latest message with non-empty vote
    4. sum latest messages by weight - this end up with a mapping :math:`total–votes: C \to Int` - for every consensus value :math:`c` it returns the sum of weights of validators voting for :math:`c`
-   5. find all points :math:`c ∈ C` such that :math:`total–votes` has maximum value at :math:`c`
+   5. find all points :math:`c \in C` such that :math:`total–votes` has maximum value at :math:`c`
    6. using total order on :math:`C`, from elements found in previous step pick maximum element :math:`cmax`
    7. the result is one-element set :math:`{cmax}`
 
@@ -291,7 +291,7 @@ IF
 
 -  :math:`ps` is some protocol state
 -  :math:`FTT` is some integer value
--  :math:`c ∈ C`
+-  :math:`c \in C`
 -  :math:`fc(pc, FTT) = c`
 
 THEN

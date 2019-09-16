@@ -22,11 +22,11 @@ Memory and programs
 
 We need to define the “computational semantics” of a blockchain computer, so what are programs and how they execute. However, because the consensus protocol we will introduce is compatible with a wide range of computing models, it is convenient to keep this part as abstract as possible. Therefore, we represent the “computational semantics” of a blockchain computer as a triple :math:`<GS, Zero, P>` where:
 
--  :math:`GS` is a set of states of the shared database (think that each point :math:`gs ∈ GS` represents a “snapshot” of the shared database); we call them “global states”
--  :math:`Zero ∈ GS` is the initial state of the database
--  :math:`P ⊂ Partial(GS ⭢ GS)` is a non-empty set of partial functions from :math:`GS` to :math:`GS`, closed under composition; elements of :math:`P` we call **transactions** (and we just think of them as “executable programs”)
+-  :math:`GS` is a set of states of the shared database (think that each point :math:`gs \in GS` represents a “snapshot” of the shared database); we call them “global states”
+-  :math:`Zero \in GS` is the initial state of the database
+-  :math:`P \subset Partial(GS \rightarrow GS)` is a non-empty set of partial functions from :math:`GS` to :math:`GS`, closed under composition; elements of :math:`P` we call **transactions** (and we just think of them as “executable programs”)
 
-Given a state :math:`gs ∈ GS` and a transaction :math:`p ∈ P` we can calculate the value :math:`p(gs)` only in the case when :math:`p` is defined at :math:`gs`. In our lingo this is **the execution of p**.
+Given a state :math:`gs \in GS` and a transaction :math:`p \in P` we can calculate the value :math:`p(gs)` only in the case when :math:`p` is defined at :math:`gs`. In our lingo this is **the execution of p**.
 
 When :math:`p` is not defined at point :math:`gs`, we say that **execution of p on state gs failed**. So this is how we represent errors in program execution.
 
@@ -35,9 +35,9 @@ Executing sequences of transactions
 
 We want to generalize this notion to sequences of transactions, but in such a way that the information on execution errors is retained.
 
-Having a sequence of transactions :math:`p_1, p_2, ...., p_n∈ P` we will keep the information on execution success/error as a function :math:`status: [1,2,...,n] → \{false, true\}`.
+Having a sequence of transactions :math:`p_1, p_2, ...., p_n\in P` we will keep the information on execution success/error as a function :math:`status: [1,2,...,n] \rightarrow \{false, true\}`.
 
-For any :math:`p ∈ P` let :math:`\triangle p: GS ⭢ GS` be a total function that extends :math:`p` by applying identity whenever :math:`p` is not defined, so formally:
+For any :math:`p \in P` let :math:`\triangle p: GS \rightarrow GS` be a total function that extends :math:`p` by applying identity whenever :math:`p` is not defined, so formally:
 
 .. math::
 
@@ -59,12 +59,12 @@ We define the execution of a sequence of transactions as:
 .. math::
 
 
-   exec: GS \times TSeq → GS \times StatusTraces \\
+   exec: GS \times TSeq \rightarrow GS \times StatusTraces \\
    exec(gs, [p1, p2, ...., pn]) = (resultGS, trace)
 
 … where:
 
--  :math:`resultGS = ∆pn ∘ ∆pn-1 ∘ ... ∘ ∆p1 (gs)`
+-  :math:`resultGS = \Delta pn \circ \Delta pn-1 \circ ... \circ \Delta p1 (gs)`
 -  :math:`trace(i) = \begin{cases} false, & execution \space of \space p_i \space failed \\ true, & otherwise \end{cases}`
 
 Intuitively, **exec** takes a pair - initial global state and a sequence of transactions to execute. The result is also a pair - the resulting global state reached by sequentially applying all transactions and a trace of this execution saying which transactions failed along the way.
@@ -72,7 +72,7 @@ Intuitively, **exec** takes a pair - initial global state and a sequence of tran
 Executing sequences of blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A block contains a sequences of transactions. Given some initial global state :math:`gs ∈ GS`, whenever we say “execute a block” we mean executing the sequence of transactions it contains, starting from :math:`gs`. We usually call :math:`gs` the **pre-state** of the block, and we say **post-state** to denote the resulting global state, returned by :math:`exec(gs, sequence)`.
+A block contains a sequences of transactions. Given some initial global state :math:`gs \in GS`, whenever we say “execute a block” we mean executing the sequence of transactions it contains, starting from :math:`gs`. We usually call :math:`gs` the **pre-state** of the block, and we say **post-state** to denote the resulting global state, returned by :math:`exec(gs, sequence)`.
 
 Given any sequence of blocks we may also **execute the sequence of blocks** because it is effectively a sequence of sequences of transactions, so it may be flattened to a single sequence of transactions.
 
@@ -105,8 +105,8 @@ Main assumption is that a global state encodes (among other things) the “weigh
 .. math::
 
 
-   weights–map: GS → Int^{ValidatorId} \\
-   weights–map(gs): ValidatorId → Int
+   weights–map: GS \rightarrow Int^{ValidatorId} \\
+   weights–map(gs): ValidatorId \rightarrow Int
 
 Intuitively, the stake of a validator will be (usually) defined by the amount of internal blockchain “money” allocated to corresponding account.
 
@@ -193,9 +193,9 @@ POSET is a common abbreviation for “partially ordered set”.
 
 When a DAG has at most one edge between any pair of vertices, we say this DAG is “simple”.
 
-Any POSET can be seen as a simple DAG when you define an edge **a → b** to be present whenever **a < b**.
+Any POSET can be seen as a simple DAG when you define an edge **a \rightarrow b** to be present whenever **a < b**.
 
-Any simple DAG leads to a POSET by taking its transitive closure and saying that **a < b** iff there is an edge **a → b**. By symmetry, taking **a < b** iff there is an edge **b → a** gives also a POSET (just based on inverted order). Going in the other direction - from POSET to a DAG - is analogous. In practice, POSET is “like a simple DAG”, where we do not distinguish between DAGs with the same transitive closure, so in particular for visualization purposes it is convenient to draw a POSET as transitive reduction of corresponding DAG.
+Any simple DAG leads to a POSET by taking its transitive closure and saying that **a < b** iff there is an edge **a \rightarrow b**. By symmetry, taking **a < b** iff there is an edge **b \rightarrow a** gives also a POSET (just based on inverted order). Going in the other direction - from POSET to a DAG - is analogous. In practice, POSET is “like a simple DAG”, where we do not distinguish between DAGs with the same transitive closure, so in particular for visualization purposes it is convenient to draw a POSET as transitive reduction of corresponding DAG.
 
 When talking about **j-dag** and **p-dag**, we blur the difference between DAG language and POSET language, because essentially one language is convertible to another.
 
@@ -294,13 +294,13 @@ This is previous example of a blockdag, reduced to **p-dag** only:
    :width: 60%
    :align: center
 
-We define **p-past-cone(b)** as the set of all blocks :math:`x` such that :math:`x \leqslant b` (in the POSET corresponding to p-dag, :math:`x \leqslant y \iff y → x`).
+We define **p-past-cone(b)** as the set of all blocks :math:`x` such that :math:`x \leqslant b` (in the POSET corresponding to p-dag, :math:`x \leqslant y \iff y \rightarrow x`).
 
 **Example:** Let’s look at the block :math:`3`. Its p-past-cone is :math:`\{Genesis, 1, 2, 3\}`. Let’s look at the block :math:`9`. Its p-past-cone is :math:`\{Genesis, 1,2,3,4,5,9\}`.
 
 Of course, any **p-past-cone(b)** inherits the order from the whole **p-dag**, so it can be seen as a POSET as well.
 
-For :math:`<A,R>` any POSET, topological sorting of :math:`<A,R>` is any linear order :math:`<A,T>` such that :math:`identity: <A,R> → <A,T>` is monotonic. In other words, topological sorting is converting a POSET into a total order in a way that preserves the original order. For a given POSET this can be usually done in many ways.
+For :math:`<A,R>` any POSET, topological sorting of :math:`<A,R>` is any linear order :math:`<A,T>` such that :math:`identity: <A,R> \rightarrow <A,T>` is monotonic. In other words, topological sorting is converting a POSET into a total order in a way that preserves the original order. For a given POSET this can be usually done in many ways.
 
 \ **Example:**\  Let’s take the :math:`p–past–cone(3)` from our example. As a POSET it looks like this:
 
@@ -480,9 +480,9 @@ If :math:`m` is a ballot:
    1. Main parent - :math:`mp`.
    2. Collection of secondary parents - :math:`sp` - sorted by preference.
 
-3. Pick the maximal non-conflicting subset :math:`mncsp ⊂ sp`, respecting the selection of :math:`mp` and the ordering of :math:`sp`.
+3. Pick the maximal non-conflicting subset :math:`mncsp \subset sp`, respecting the selection of :math:`mp` and the ordering of :math:`sp`.
 
-4. Calculate merged global state :math:`merged–gs` derived from :math:`\{mp\} ∪ mncsp`.
+4. Calculate merged global state :math:`merged–gs` derived from :math:`\{mp\} \cup mncsp`.
 
 5. Check the weight of local validator in merged global state: :math:`weights–map(merged–gs)(vid)`
 
@@ -579,7 +579,7 @@ Case 2: new ballot
 
 4. Take :math:`HV` - all honest validators (all creators of messages in :math:`ps` minus these seen equivocating with messages in :math:`ps`).
 
-5. Find latest message :math:`lm(v)` created by each validator :math:`v ∊ HV`, ignoring validators that produced no message.
+5. Find latest message :math:`lm(v)` created by each validator :math:`v \in HV`, ignoring validators that produced no message.
 
 6. For all validators that have :math:`lm(v)` defined take:
 
@@ -718,7 +718,7 @@ Hence, the finalizer is parameterized by:
 
 5. Otherwise - check if m is not introducing a new equivocation. If yes - add **m.creator** to equivocators and:
 
-   1. for every i such that m ∈ initial-players(i):
+   1. for every i such that m \in initial-players(i):
 
       1. add m to **excluded-players(i)**
 

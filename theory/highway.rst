@@ -36,13 +36,20 @@ How to achieve such real time clocks and how to secure the network against inten
 Why “Highway”
 -------------
 
-To intuitively capture the key idea of :math:`2^n` round length trick, we once imagined a highway, well - a mathematical highway with infinitely many lanes. Lanes are numbered with integers (all integers, also negative).
+To intuitively capture the key idea of :math:`2^n` round length trick, we once
+imagined a highway, well - a mathematical highway with infinitely many lanes.
+Lanes are numbered with integers (all integers, also negative).
 
-This highway is rather a strange one, because it is not for cars, but for frogs, moreover the speed of all frogs is constant. However, on the lane :math:`n` a frog makes :math:`2^n` jumps on a distance of one meter.
+This highway is different, because movement on it takes place in the form of
+hops, while the speed of all cars is constant.
+In any given lane :math:`n` a car makes :math:`2^n` hops on a distance of one meter.
 
-Therefore, if you switch to the lane on your left hand, you increase the frequency of jumping x2. In you switch to your right hand, you decrease the frequency x2.
+Therefore, if you switch to the lane on your left hand, you increase the
+frequency of hopping  x2. If you switch to your
+right hand, you decrease the frequency x2.
 
-Frogs from the lane on your left hand you meet on every jump you make. But frogs on your right hand you meed only every your second jump.
+Cars from the lane on your left hand you meet on every jump you make.  For cars
+on your right hand you meet only every your second hop.
 
 Messages structure
 ------------------
