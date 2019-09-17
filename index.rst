@@ -29,7 +29,7 @@ incorporates all the features required for mainstream adoption outlined in the d
    specialized dApps such as distributed exchanges.
 5. **Open to All Programming Languages**: Rather than introducing a new,
    proprietary, and obscure programming language for the development of dApps,
-   CasperLabs' execution engine is based on WebAssembly, \(Wasm\), the open
+   CasperLabs' execution engine is based on WebAssembly \(Wasm\), the open
    standard put forward by the W3C. Wasm is a binary instruction format that is
    designed as a target for compilation of high-level languages like C, C++,
    Rust and many others. In fact, community projects to develop compilation
@@ -43,7 +43,7 @@ incorporates all the features required for mainstream adoption outlined in the d
    shall exist for all that wish to operate network nodes. \(2\) *development of
    the software shall be open source and community driven*. While CasperLabs is
    excited to initially take a leading role in the development of the blockchain software, it expects the community to take over the lead after the initial
-   launch of the network, and encourages community participation in the software
+   launch of the network and encourages community participation in the software
    development at all times. \(3\) *governance of the network shall be community
    driven*. CasperLabs believes that decentralized networks should be governed
    by their community of stakeholders, not by centralized entities or
