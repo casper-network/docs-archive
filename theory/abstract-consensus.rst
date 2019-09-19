@@ -75,7 +75,7 @@ Messages
 
 We assume that every message contains the following information:
 
--  **message id** (= a unique identifier for a digital message)
+-  **message id** (= unique identifier for a digital message)
 -  **creator id** (= id of validator that created this message)
 -  **justifications** (= collection of message ids that the creator acknowledges as seen at the moment of creation of this message; may be empty)
 -  **consensus value** (= a value this message is voting for; this value is optional; if not present then this message is voting for nothing)
@@ -179,7 +179,7 @@ Lifecycle of a validator
 
 A validator continuously runs two activities:
 
--  listens to messages incoming from other validators, and on every incoming message, runs the finality detection algorithm to see if the consensus has already been reached (we explain finality detection in detail later in the document)
+-  listens to messages incoming from other validators, and on every incoming message, runs the finality detection algorithm to see if the consensus has already been reached (we explain finality detection in detail later in this section of the document)
 -  and (from time to time) decides to cast their vote by creating a new message :math:`m` and broadcasting it
 
 A validator itself must decide when to create and broadcast new messages - this is what we call a **validator strategy.**
