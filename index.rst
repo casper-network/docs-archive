@@ -7,10 +7,11 @@ Abstract
 ========
 
 In 2019, CasperLabs introduces a blockchain platform that it believes
-incorporates all the features required for mainstream adoption outlined in the detailed sections of this technical specification.
+incorporates all the features required for mainstream adoption outlined in the
+detailed sections of this technical specification.
 
 1. **Consensus Method**: CasperLabs strives to be the first to deploy an
-   implementation of the Correct-by-Construction \(CBC\) Casper Proof-of-Stake consensus
+   implementation of the Correct-by-Construction  Casper \(CBC Casper\) Proof-of-Stake consensus
    protocol as described here_ by Vlad Zamfir, Ethereum Foundation Researcher
    and Lead CBC-Casper Architect for CasperLabs.
 2. **Throughput**: By implementing a consensus protocol that reserves its
@@ -42,13 +43,15 @@ incorporates all the features required for mainstream adoption outlined in the d
    exist in the network. No special roles shall be delegated. Equal opportunity
    shall exist for all that wish to operate network nodes. \(2\) *development of
    the software shall be open source and community driven*. While CasperLabs is
-   excited to initially take a leading role in the development of the blockchain software, it expects the community to take over the lead after the initial
+   excited to initially take a leading role in the development of the blockchain
+   software, it expects the community to take over the lead after the initial
    launch of the network and encourages community participation in the software
    development at all times. \(3\) *governance of the network shall be community
    driven*. CasperLabs believes that decentralized networks should be governed
    by their community of stakeholders, not by centralized entities or
    disproportionally by one category of stakeholders. Governance principles will
    be put forth to ensure this.
+
 
 
 .. toctree::
