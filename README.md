@@ -23,6 +23,17 @@ pip3 install sphinx sphinx-rtd-theme recommonmark sphinx-autobuild
 
 Run `make` to see the many output options.
 
+Note: You don't need to be on Linux to work on the TechSpec. You can work on any
+OS (e.g. OSX of your choice as long as Python and Sphinx are installed, and relevant
+binaries are in your $PATH. Windows doesn't come with `make`, so it might be a
+good idea to use
+[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about).
+The other option is to invoke `sphinx-build` directly, e.g.
+
+```
+$ sphinx-build -M html "." "_build"
+```
+
 ### Static HTML
 
 To generate the website, run
@@ -84,16 +95,6 @@ require a lot of features or IDEs. The only requirement is the 80-character hard
 wrap setting. On the other hand, good-to-haves are syntax highlighting,
 and keybindings to insert frequently used rst directives such as `:math:\`...\``.
 
-Note: You don't need to be on Linux to work on the TechSpec. You can work on any
-OS (e.g. OSX of your choice as long as Python and Sphinx are installed, and relevant
-binaries are in your $PATH. Windows doesn't come with `make`, so it might be a
-good idea to use
-[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about).
-The other option is to invoke `sphinx-build` directly, e.g.
-
-```
-$ sphinx-build -M html "." "_build"
-```
 
 ### Setting up VS Code
 
