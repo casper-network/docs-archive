@@ -5,8 +5,18 @@
 
 Install the following Python packages using pip:
 
+On Mac/Linux:
+
 ```
-sudo pip install sphinx sphinx-rtd-theme recommonmark sphinx-autobuild
+sudo pip3 install sphinx sphinx-rtd-theme recommonmark sphinx-autobuild
+```
+
+On Windows:
+
+Start `cmd` in Admin mode. Make sure Python binaries are in your $PATH and run
+
+```
+pip3 install sphinx sphinx-rtd-theme recommonmark sphinx-autobuild
 ```
 
 ## Building
@@ -64,6 +74,36 @@ or
 ```
 make clean; make latexpdf
 ```
+
+## Editing
+
+This section outlines a recommended way of editing reStructuredText files.
+I chose [VS Code](https://code.visualstudio.com) as an example, but you could
+reproduce the same configuration with your own text editor. Editing will not
+require a lot of features or IDEs. The only requirement is the 80-character hard
+wrap setting. On the other hand, good-to-haves are syntax highlighting,
+and keybindings to insert frequently used rst directives such as `:math:\`...\``.
+
+Note: You don't need to be on Linux to work on the TechSpec. You can work on any
+OS (e.g. OSX of your choice as long as Python and Sphinx are installed, and relevant
+binaries are in your $PATH. Windows doesn't come with `make`, so it might be a
+good idea to use
+[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about).
+The other option is to invoke `sphinx-build` directly, e.g.
+
+```
+$ sphinx-build -M html "." "_build"
+```
+
+### Setting up VS Code
+
+1. Install VS Code.
+2. Install the plugins
+[reStructuredText](https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext)
+and [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
+3. Go to settings with `Ctrl+,`.
+   - Change the setting `Editor: Word Wrap` to `off`.
+   - Make sure `Rewrap: Auto Wrap` is `Enabled`.
 
 ## Why move away from Gitbook?
 
