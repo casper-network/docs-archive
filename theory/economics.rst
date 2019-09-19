@@ -111,8 +111,7 @@ Then ``seigniorage_parameter`` is simply calculated as
 .. math::
 
 
-   \text{seigniorage_parameter} =
-   \text{target_annual_seigniorage}^{2^{\bar{n}_L}/\text{ms_in_year}}
+   \text{seigniorage}\_\text{parameter} = \text{target}\_\text{annual}\_\text{seigniorage}^{2^{\bar{n}_L}/\text{ms}\_\text{in}\_\text{year}}
 
 where ``ms_in_year`` is the number of milliseconds in a year. The governance
 committee would do this calculation periodically and update
