@@ -264,7 +264,7 @@ Equivocations
 Finality cannot really be “absolute” because validators may cheat, i.e. they can violate “fair play”. There are 3 ways a validator can violate fair play:
 
 1. Produce a malformed message.
-2. Violate the condition that a message is allowed to vote on a value picked from what the estimator tells.
+2. Violate the condition that a message is allowed a vote on a value picked from what the estimator tells.
 3. Equivocate.
 
 Case (2) can really be considered a sub-case of (1), and (1) can be evaded by just assuming that validators reject malformed messages on reception. So, the only real problem comes from (3). Equivocations do break consensus and the intuition for this is clear - if everybody cheats by concurrently voting for different values, validators will never come up with a decision the value is finally agreed upon.
