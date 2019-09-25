@@ -9,7 +9,7 @@ share of the fees from the transactions submitted by the network’s users.
 
 Staking requires the validator to participate in the network by processing transactions; and proposing, validating, and storing blocks. The network’s continuation and maintenance requires that validators adhere to the protocol, which is ensured by the network’s incentive mechanism. This works by rewarding adherence to the protocol and punishing deviation from the protocol.
 
-Rewards are provided through a process called *seigniorage*. New tokens are minted at a constant rate and distributed to participating validators, similar to the block reward mechanism in Bitcoin. Unlike Bitcoin, validators don’t have to wait until a block is mined in order to realize their rewards. Seigniorage is paid continuously to validators. This ensures stable payments and eliminates the need to create pools. An honest validator therefore receives more tokens at a predictable and satisfying rate without joining a pool.
+Rewards are provided through a process called *seigniorage*. New tokens are minted at a constant rate and distributed to participating validators, similar to the block reward mechanism in Bitcoin. Unlike Bitcoin, validators don’t have to wait until a block is mined to realize their rewards. Seigniorage is paid continuously to validators. This ensures stable payments and eliminates the need to create pools. An honest validator therefore receives more tokens at a predictable and satisfying rate without joining a pool.
 
 A malicious validator, on the other hand- is punished through disincentives for various types of undesirable activities such as inactivity, attacks on consensus, and censorship. The protocol is designed to penalize validators that engage in such activities by reducing their payments---called throttling---, and burning a part of their stake---called slashing.
 
@@ -486,7 +486,7 @@ functioning network. When a validator is slashed, the amount is deducted from th
 ``buffer_balance``. If ``buffer_balance`` is not high enough to compensate a
 slashed amount, **the difference is deducted from** ``bonded_balance``.
 
-A validator is required to bond ``minimum_stake`` number of tokens in order to participate in consensus. Rewards and slashings are incurred when a new block is proposed, and the slashing can potentially be high enough to reduce ``bonded_balance`` below ``minimum_stake``. An incurred slashing cannot exceed the amount required to reduce ``bonded_balance`` to ``minimum_stake``. If ``bonded_balance - minimum_stake`` is not high enough to compensate a slashedamount, the validator is considered to be *expelled*---kicked out of the validator set. An expelled validator cannot propose blocks even though they have assigned ticks left in that era, and they are fully removed from the validator set when the era ends.
+A validator is required to bond ``minimum_stake`` number of tokens in order to participate in consensus. Rewards and slashings are incurred when a new block is proposed, and the slashing can potentially be high enough to reduce ``bonded_balance`` below ``minimum_stake``. An incurred slashing cannot exceed the amount required to reduce ``bonded_balance`` to ``minimum_stake``. If ``bonded_balance - minimum_stake`` is not high enough to compensate a slashed amount, the validator is considered to be *expelled*---kicked out of the validator set. An expelled validator cannot propose blocks even though they have assigned ticks left in that era, and they are fully removed from the validator set when the era ends.
 
 .. code:: python
 
