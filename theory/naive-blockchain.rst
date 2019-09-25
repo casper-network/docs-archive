@@ -4,15 +4,15 @@ Naive Casper Blockchain
 Introduction
 ------------
 
-Blockchain is a P2P network, where a collection of nodes (called **validators**) concurrently update a decentralized, shared database. They do this by collectively building an ever-growing chain of **transactions**. For performance reasons transactions are bundled in **blocks**.
+Blockchain is a P2P network where the collection of nodes (**validators**) concurrently update a decentralized, shared database. They do this by collectively building an ever-growing chain of **transactions**. For performance reasons transactions are bundled in **blocks**.
 
 For the “outside world”, the blockchain looks like a computer. This blockchain computer has a memory (= shared database) and can execute programs (= transactions). Execution of a program changes the state of the memory. Anybody can send a program to the computer and the computer will do a best effort attempt to execute this program.
 
-We say that a blockchain computer is **decentralized**, i.e. there is no single point of failure in the infrastructure. Significant portion of the network of validators could be suddenly destroyed and nevertheless the blockchain will continue to work. Also, the system is resistant to malicious validators (as long total weight of malicious validators is below 50% of total weight of all validators).
+We say that a blockchain computer is **decentralized**, i.e. there is no single point of failure in the infrastructure. A significant portion of the network of validators could be suddenly destroyed and nevertheless the blockchain will continue to work. Also, the system is resistant to malicious validators (as long as the total weight of malicious validators is below 50% of the total weight of all validators).
 
-The core of blockchain mechanics is continuous work of validators struggling to agree on consistent history of programs executed on the blockchain computer. This central idea we describe as “achieving **consensus** on the chain of blocks”. Because every block contains a chain of transactions, this “consistent history” ends up being a sequence of transactions.
+The core of blockchain mechanics is the continuous work of validators struggling to agree on a consistent history of programs executed on the blockchain computer. We describe this central idea as “achieving **consensus** on the chain of blocks”. Because every block contains a chain of transactions, this “consistent history” results in being a sequence of transactions.
 
-In this spec we use terms **shared database** and **blockchain computer memory** interchangeably.
+Note that in this spec we use the terms **shared database** and **blockchain computer memory** interchangeably.
 
 Computing model
 ---------------
@@ -20,24 +20,24 @@ Computing model
 Memory and programs
 ~~~~~~~~~~~~~~~~~~~
 
-We need to define the “computational semantics” of a blockchain computer, so what are programs and how they execute. However, because the consensus protocol we will introduce is compatible with a wide range of computing models, it is convenient to keep this part as abstract as possible. Therefore, we represent the “computational semantics” of a blockchain computer as a triple :math:`<GS, Zero, P>` where:
+We need to define the “computational semantics” of a blockchain computer; what programs are and how they execute. However, because the consensus protocol we introduce is compatible with a wide range of computing models, it is convenient to approach this abstractly. Therefore, we represent the “computational semantics” of a blockchain computer as a triple :math:`<GS, Zero, P>` where:
 
--  :math:`GS` is a set of states of the shared database (think that each point :math:`gs \in GS` represents a “snapshot” of the shared database); we call them “global states”
+-  :math:`GS` is a set of states of the shared database (think that each point :math:`gs \in GS` represents a “snapshot” of the shared database) we call “global states”
 -  :math:`Zero \in GS` is the initial state of the database
--  :math:`P \subset Partial(GS \rightarrow GS)` is a non-empty set of partial functions from :math:`GS` to :math:`GS`, closed under composition; elements of :math:`P` we call **transactions** (and we just think of them as “executable programs”)
+-  :math:`P \subset Partial(GS \rightarrow GS)` is a non-empty set of partial functions from :math:`GS` to :math:`GS`, closed under composition; elements of :math:`P` we call **transactions** (we think of them as “executable programs”)
 
-Given a state :math:`gs \in GS` and a transaction :math:`p \in P` we can calculate the value :math:`p(gs)` only in the case when :math:`p` is defined at :math:`gs`. In our lingo this is **the execution of p**.
+Given a state :math:`gs \in GS` and a transaction :math:`p \in P`, we can calculate the value :math:`p(gs)` only in the case when :math:`p` is defined at :math:`gs`. We refer to this as **the execution of p**.
 
-When :math:`p` is not defined at point :math:`gs`, we say that **execution of p on state gs failed**. So this is how we represent errors in program execution.
+When :math:`p` is not defined at point :math:`gs`, we say that **execution of p on state gs failed**. This is how we represent errors in program execution.
 
 Executing sequences of transactions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We want to generalize this notion to sequences of transactions, but in such a way that the information on execution errors is retained.
+We want to generalize this notion to sequences of transactions in such a way that the information on execution errors is retained.
 
-Having a sequence of transactions :math:`p_1, p_2, ...., p_n\in P` we will keep the information on execution success/error as a function :math:`status: [1,2,...,n] \rightarrow \{false, true\}`.
+Having a sequence of transactions :math:`p_1, p_2, ...., p_n\in P` we'll keep the information on execution success/error as a function :math:`status: [1,2,...,n] \rightarrow \{false, true\}`.
 
-For any :math:`p \in P` let :math:`\triangle p: GS \rightarrow GS` be a total function that extends :math:`p` by applying identity whenever :math:`p` is not defined, so formally:
+For any :math:`p \in P` let :math:`\triangle p: GS \rightarrow GS` be a total function that extends :math:`p` by applying identity whenever :math:`p` is not defined, hence formally as:
 
 .. math::
 
@@ -67,25 +67,25 @@ We define the execution of a sequence of transactions as:
 -  :math:`resultGS = \Delta pn \circ \Delta pn-1 \circ ... \circ \Delta p1 (gs)`
 -  :math:`trace(i) = \begin{cases} false, & execution \space of \space p_i \space failed \\ true, & otherwise \end{cases}`
 
-Intuitively, **exec** takes a pair - initial global state and a sequence of transactions to execute. The result is also a pair - the resulting global state reached by sequentially applying all transactions and a trace of this execution saying which transactions failed along the way.
+Intuitively, **exec** takes a pair - the initial global state and a sequence of transactions to execute. The result is also a pair - the resulting global state reached by sequentially applying all transactions and a trace of this execution saying which transactions failed along the way.
 
 Executing sequences of blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A block contains a sequences of transactions. Given some initial global state :math:`gs \in GS`, whenever we say “execute a block” we mean executing the sequence of transactions it contains, starting from :math:`gs`. We usually call :math:`gs` the **pre-state** of the block, and we say **post-state** to denote the resulting global state, returned by :math:`exec(gs, sequence)`.
+A block contains sequences of transactions. Given some initial global state :math:`gs \in GS`, whenever we say “execute a block” we mean executing the sequence of transactions it contains starting from :math:`gs`. We usually call :math:`gs` the **pre-state** of the block, and we say **post-state** to denote the resulting global state returned by :math:`exec(gs, sequence)`.
 
 Given any sequence of blocks we may also **execute the sequence of blocks** because it is effectively a sequence of sequences of transactions, so it may be flattened to a single sequence of transactions.
 
-Given any set of blocks :math:`B` we sometimes consider different linear orders of such set. Given a linear order :math:`R` on set :math:`B` we will be speaking about **executing the set of blocks B along linear order R**, with the obvious semantics of taking all the blocks, arranging them in a sequence following the order :math:`R` and then executing the resulting sequence of transactions.
+Given any set of blocks :math:`B`, we sometimes consider different linear orders of such set. Given a linear order :math:`R` on set :math:`B`, we are speaking about **executing the set of blocks B along linear order R**, with the obvious semantics of taking all the blocks, arranging them in a sequence following the order :math:`R`, and then executing the resulting sequence of transactions.
 
 Blockchain participants
 -----------------------
 
-We envision the infrastructure of blockchain participants as a collection of actors (processes) communicating over a network, where each process plays one of the following roles:
+We envision the infrastructure of blockchain participants as a collection of actors (processes) communicating over a network, and where each process plays one of the following roles:
 
--  **validators (aka “ring 0”)** - they form a P2P network that attempts to reach consensus on the ever-growing history of executed transactions; they do this by creating and validating blocks
--  **finalizers (aka “ring 1”)** - they observe validators and try to deduce the subset of history that is considered as “confirmed” (while “confirmed” predicate is parameterized so to reflect expected trust level)
--  **clients (aka “ring 2” or “dapps”)** - they use the blockchain computer - so they send programs to be executed and react to execution results; a client connects to a validator (one or many) to send transactions, while it also connects to a finalizer (one or many) to observe execution results
+-  **validators (aka “ring 0”)** - form a P2P network that attempts to reach consensus on the ever-growing history of executed transactions; they do this by creating and validating blocks
+-  **finalizers (aka “ring 1”)** - they observe validators and try to deduce the subset of history that is considered as “confirmed” (the “confirmed” predicate is parameterized so to reflect the expected trust level)
+-  **clients (aka “ring 2” or “dapps”)** - use the blockchain computer - they send programs to be executed and react to execution results; a client connects to a validator (one or many) to send transactions while it also connects to a finalizer (one or many) to observe execution results
 
 Stake management
 ----------------
@@ -95,12 +95,12 @@ Stake management
 Introduction
 ~~~~~~~~~~~~
 
-In proof-of-stake blockchains, **stake** is a representation of the voting power that a validator has. We leave the question of exact representation of stakes open. We only summarize here the minimal assumptions that we need for the mechanics of the blockchain to work.
+In proof-of-stake blockchains, **stake** is a representation of the voting power a validator has. We leave the question of exact representation of stakes open. We only summarize here the minimal assumptions we need for the mechanics of the blockchain to work.
 
 Encoding of stakes
 ~~~~~~~~~~~~~~~~~~
 
-Main assumption is that a global state encodes (among other things) the “weights map” - a mapping of validators to their voting power. So, mathematically, we expect the existence of a function which assigns to every global state a function mapping validators to their weights:
+The main assumption is that a global state encodes (among other things) the “weights map” - a mapping of validators to their voting power. So, mathematically we expect the existence of a function that assigns to every global state a function mapping validators to their weights:
 
 .. math::
 
@@ -108,21 +108,21 @@ Main assumption is that a global state encodes (among other things) the “weigh
    weights\_map: GS \rightarrow Int^{ValidatorId} \\
    weights\_map(gs): ValidatorId \rightarrow Int
 
-Intuitively, the stake of a validator will be (usually) defined by the amount of internal blockchain “money” allocated to corresponding account.
+Intuitively, the stake of a validator will be (usually) defined by the amount of internal blockchain “money” allocated to the corresponding account.
 
 Bonding and unbonding
 ~~~~~~~~~~~~~~~~~~~~~
 
-Blockchain users can increase / decrease the stake of given validator. This is to happen via executing (special) transactions.
+Blockchain users can increase/decrease the stake of a given validator. This is to happen via executing (special) transactions.
 
 Minimal stake **MIN_STAKE** is a parameter of the blockchain.
 
 Unbonding stages
 ~~~~~~~~~~~~~~~~
 
-Unbonding is always a total unbonding, so a validator transitioning to stake=0. There is no partial unbonding.
+Unbonding is always a total unbonding -- a validator transitioning to stake=0. There is no partial unbonding.
 
-Unbonding must be go in stages, leading to the following states of validator:
+Unbonding must be go in stages, leading to the following states of a validator:
 
 -  STAKED
 -  VOTING_ONLY
@@ -135,20 +135,21 @@ While in VOTING_ONLY, a validator can produce only ballots.
 
 While in UNBONDING_ESCROW and ZEROED, a validator is not supposed to produce messages.
 
-How transitioning between states happens is beyond the scope of this specification (it can be based on wall clock, p-time, j-daglevel, block generation and other approaches).
+The how of transitioning between states is beyond the scope of this specification (it can be based on wall clock, p-time, j-daglevel, block generation and other approaches).
 
 Slashing
-^^^^^^^^
+~~~~~~~~
+Slashing is forced unbonding where the money used for the stake is burned. The  intention is to penalizing equivocators.
 
-Slashing is forced unbonding, where the money used for the stake is burned. The intention is to penalize equivocators.
 
 Blockdag
 --------
 
-Visual introduction
-^^^^^^^^^^^^^^^^^^^
 
-The consensus protocol is based on a data structure that we call a **blockdag**, which can be seen as a graph. This is how it looks like:
+Visual introduction
+~~~~~~~~~~~~~~~~~~~
+
+The consensus protocol is based on a data structure we call a **blockdag**, represented as a graph it looks like the following:
 
 .. figure:: pictures/blockdag-with-ballots-and-equivocations.png
    :width: 60%
@@ -160,11 +161,11 @@ The meaning of symbols:
    :width: 60%
    :align: center
 
-We have 3 types of vertices in the graph:
+The 3 types of vertices in the graph are as follows:
 
--  **normal blocks** - they contain transactions to be executed against the blockchain computer
--  **ballots** - they do not contain transactions, but participate in the consensus
--  **genesis** - this is a special block that stands as a root node of the structure
+-  **normal blocks** - contain transactions to be executed against the blockchain computer
+-  **ballots** - do not contain transactions, but participate in the consensus
+-  **genesis** - a special block that stands as a root node of the structure
 
 Additionally we say:
 
@@ -172,57 +173,59 @@ Additionally we say:
 -  **message** - when we mean “normal block or ballot”
 -  **vertex** - when we mean “normal block or ballot or genesis”
 
-We visually mark the creator of a message by placing it in relevant swimlane. Genesis is outside swimlanes because genesis is given at blockchain initialization (= it does not have a creator).
+We visually mark the creator of a message by placing it in a relevant swimlane. Genesis is outside swimlanes because genesis is given at blockchain initialization (= it does not have a creator).
 
-Every normal block points to its **main parent** block (we visualize this with red arrows). Hence blocks form a tree, which we call **the main tree**.
+Every normal block points to its **main parent** block (we visualize this with red arrows). Hence, blocks form a tree we call the **main tree**.
 
-Additionally, any normal block may point to arbitrary number of blocks as **secondary parents**. We visualize them with blue arrows. Blocks + red arrows + blue arrows together form a directed acyclic graph and we call it **the p-dag**.
+Additionally, any normal block may point to an arbitrary number of blocks as **secondary parents**. We visualize them with blue arrows. Blocks + red arrows + blue arrows together form a directed acyclic graph we call **the p-dag**.
 
 Any ballot points to exactly one block. We call this block “the target block of a ballot”.
 
-Additionally, any message may point to arbitrary number of vertices as **additional justifications**. We visualize them with **dashed arrows**.
+Additionally, any message may point to an arbitrary number of vertices as **additional justifications**. We visualize them with **dashed arrows**.
 
-All arrows together with all vertices form a directed acyclic graph we call **the j-dag**.
+All arrows together with all vertices form a directed acyclic graph we call the **j-dag**.
 
 DAG vs POSET language
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 DAG is a common abbreviation for “directed acyclic graph”.
 
 POSET is a common abbreviation for “partially ordered set”.
 
+
 When a DAG has at most one edge between any pair of vertices, we say this DAG is “simple”.
 
 Any POSET can be seen as a simple DAG when you define an edge **a \rightarrow b** to be present whenever **a < b**.
 
-Any simple DAG leads to a POSET by taking its transitive closure and saying that **a < b** iff there is an edge **a \rightarrow b**. By symmetry, taking **a < b** iff there is an edge **b \rightarrow a** gives also a POSET (just based on inverted order). Going in the other direction - from POSET to a DAG - is analogous. In practice, POSET is “like a simple DAG”, where we do not distinguish between DAGs with the same transitive closure, so in particular for visualization purposes it is convenient to draw a POSET as transitive reduction of corresponding DAG.
+Any simple DAG leads to a POSET by taking its transitive closure and saying that **a < b** iff there is an edge **a \rightarrow b**. By symmetry, taking **a < b** iff there is an edge **b \rightarrow a**  is also a POSET (just based on inverted order). Going in the other direction - from POSET to a DAG - is analogous. 
+
+In practice, POSET is “like a simple DAG” where we do not distinguish between DAGs with the same transitive closure. In particular, for visualization purposes it is convenient to draw a POSET as a transitive reduction of a corresponding DAG.
 
 When talking about **j-dag** and **p-dag**, we blur the difference between DAG language and POSET language, because essentially one language is convertible to another.
 
 Understanding the layers of the blockdag
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Here we explain only the intuition behind the blockdag. These ideas are formalized later in this document.
 
-We explain here only the intuition behind the blockdag. These ideas are formalized later.
+**J-dag** is all about attesting what I have seen so far. When I am a validator creating a new message (= block or ballot), I have to attest what is my current protocol state -- i.e., what my current blockdag looks like. I do this by including on the justifications list (which is part of the new message) pointers to all **j-dag** tips present in my blockdag. 
+Please note that we continue to use the terminology established for j-dag from previous chapters (*See* the topic on J-dag).
 
-**J-dag** is all about attesting what I have seen so far. When I am a validator, on creating a new message (= block or ballot) I have to attest what is my current protocol state, so in other words how my current blockdag looks like. I do this by including on the justifications list (which is part of the new message) pointers to all **j-dag** tips present in my blockdag. We will continue to use the terminology established for j-dag in previous chapter.
+**Main-tree** encodes the multi-variant progress of a transaction's history. When a validator creating a block B picks block A as the main parent of B, it means “I want transactions included in B to extend the history of the blockchain that ended at block A with all transactions in A already executed”. This tree is analogous to a similar tree of blocks that forms in a previous generation of blockchains, like Bitcoin or Ethereum.
 
-**Main-tree** encodes the multi-variant progress of transactions history. When a validator creating a block B picks block A as the main parent of B, it means “I want transactions included in B to extend the history of the blockchain that ended at block A, with all transactions in A already executed”. This tree is analogous to similar tree of blocks that forms in previous generation of blockchains, like Bitcoin or Ethereum.
-
-**P-dag** and the concept of secondary parents corresponds to “merging of histories” which is a subtle optimization on the way we process transactions. In blockchains like Ethereum, effectively only a single path of the main-tree ends up as “transactions that have been actually executed” while all the rest of main-tree ends up being wasted, or - as we say - “orphaned”. In fact the amount of wasted work can be reduced by “merging”. While creating a new block, a validator performs careful analysis of all branches of the main-tree and attempts to merge as many of them as is possible without introducing concurrency conflict.
+**P-dag** and the concept of secondary parents, corresponds to “merging of histories” -- a subtle optimization on the way we process transactions. In blockchains such as Ethereum, effectively only a single path of the main-tree ends up as “transactions that have been actually executed” while all the rest of the main-tree ends up being wasted, or - as we say - “orphaned”. In fact, the amount of wasted work can be reduced by “merging”. While creating a new block, a validator performs careful analysis of all branches of the main-tree and attempts to merge as many of them possible without introducing a concurrency conflict.
 
 Core mechanics of the blockchain
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The blockdag emerges as a combination of these central ideas:
 
--  Independently proposing updates of the shared database inevitably leads to a tree of transactions (blocks), because the proposing validator must choose which version of history it is about to extend. This is how the **main-tree** pops up.
+-  Independently proposing updates of the shared database inevitably leads to a tree of transactions (blocks) because the proposing validator must choose which version of history it is about to extend. This is how the **main-tree** pops up.
 -  All that remains is to add the mechanics for validators to collectively agree on which branch of the main-tree is the “official” one.
--  We solve this problem by recursively applying Abstract Casper Consensus.
--  Secondary parents idea is a further refinement of the solution, by merging as many non-agreed paths of main-tree as is possible without introducing inconsistencies.
+-  We solve this problem by recursively applying the Abstract Casper Consensus (a.k.a. ACC).
+-  The Secondary parents idea is a further refinement of the solution by merging as many non-agreed paths of a main-tree as possible without introducing inconsistencies.
 
-The single, most crucial trick here is the recursive application of Abstract Casper Consensus. Let’s try to understand this trick first, before we dive into detailed specs of how validators and finalizers operate.
+The single most crucial trick here is the recursive application of the Abstract Casper Consensus -- to first try to understand this trick before diving into detailed specs of how validators and finalizers operate.
 
-Let **b** be any block. So, **b** is a vertex in the main-tree. We will consider a projection of validators P2P protocol to a particular Abstract Casper Consensus model instance, which we will be calling **b-game**.
+Let **b** be any block. So, **b** is a vertex in the main-tree. We will consider a projection of validators P2P protocol to a particular Abstract Casper Consensus model instance we will be calling **b-game**.
 
 +-------------------------------+--------------------------------------+
 | Abstract Casper Consensus     | How this concept maps to b-game      |
@@ -245,7 +248,7 @@ Let **b** be any block. So, **b** is a vertex in the main-tree. We will consider
 | consensus value **c**         | descendant of **c** along the        |
 |                               | **main-tree**, for a ballot **m**:   |
 |                               | **m.target-block** is a descendant   |
-|                               | of **c** along the **main-tree**;    |
+|                               | of **c** along the **main-tree**     |
 |                               | when above conditions are not met,   |
 |                               | we consider **m** as voting for      |
 |                               | nothing (empty vote)                 |
@@ -253,42 +256,42 @@ Let **b** be any block. So, **b** is a vertex in the main-tree. We will consider
 
 The contents of the table above may be explained as follows:
 
-1. Hypothetically assuming that validators already achieved consensus on the block **b** as being the part of “official” chain of blocks, they will have to decide which direct child of **b** (in main-tree) will be the next “official” chain.
-2. So, the focus now is on the block **b** and on its direct main-tree children.
-3. We setup Abstract Casper Consensus instance “relative to block **b**”, where consensus values are direct children of **b**.
-4. Any block **x** can be seen as a vote for some child of **b** only if **x** is a descendant of **b** in main-tree. So if **x** is not a descendant of **b**, we consider **x** as carrying empty vote.
+1. Hypothetically assuming that validators already achieved consensus on the block **b** as being the part of an “official” chain of blocks, they will have to decide which direct child of **b** (in main-tree) will be the next “official” chain.
+2. So the focus now is on the block **b** and on its direct main-tree children.
+3. We setup the Abstract Casper Consensus instance “relative to block **b**” where consensus values are direct children of **b**.
+4. Any block **x** can be seen as a vote for some child of **b** only if **x** is a descendant of **b** in the main-tree. So if **x** is not a descendant of **b**, we consider **x** as carrying an empty vote.
 
-**Note:** when defining the players of **b-game**, we exclude all equivocators as seen in the current protocol state. This means that b-game is not “absolute”, it is rather depending on the current perspective on the blockchain that given validator has. Also, the collection of equivocators grows over time, which means that over time we may need to recalculate b-game, excluding more validators. This aspect plays crucial role in how **finalizers** work - see below the chapter on finalizers.
+**Note:** when defining the players of **b-game**, we exclude all equivocators, as seen in the current protocol state. This means that b-game is not “absolute”, it is rather depending on the current perspective on the blockchain that given validator has. Also, the collection of equivocators grows over time, which means that over time we may need to recalculate b-game, excluding more validators. This aspect plays a crucial role in how **finalizers** work - (*see below* the topic **Operation of a finalizer**).
 
-Not all **b-games** tend to be equally important. What happens is the following pattern:
+Not all **b-games** tend to be equally important. What happens is presented with the following pattern:
 
 1. The **Genesis** block is given. So, **Genesis-game** is the first game.
 2. As the blockdag grows, the **Genesis-game** is progressing towards finality.
-3. Finality of **Genesis-game** means picking some direct child of **Genesis**. Let us name this child **LFB1**
-4. Then, **LFB1-game** becomes the “important” game that everybody look at.
+3. Finality of the **Genesis-game** means picking some direct child of **Genesis**. Let us name this child **LFB1**
+4. Then, the **LFB1-game** becomes the “important” game that everybody looks at.
 5. As the blockdag grows, the **LFB1-game** is progressing towards finality.
-6. Finality of **LFB1-game** means picking some direct child of **LFB1**. Let us name this child **LFB2**
+6. Finality of the **LFB1-game** means picking some direct child of **LFB1**. Let us name this child **LFB2**
 7. This pattern goes on forever.
 
 “LFB” stands for “last finalized block”. For symmetry, we set **LFB0** = **Genesis**.
 
 Why do we need ballots ?
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The security of proof-of-stake blockchain is based on the stake in two ways:
 
 -  Large investment (=money) is needed to revert/overtake the history of transactions using honest means.
 -  Malicious behavior (= hacking) implies that the stake will get slashed.
 
-Therefore, we would like only bonded validators to be able to participate in blockchain evolution. The problem here is that - when a validator unbonds, some of the **b-games** he was a player of, might not be completed (= finalized) yet. We would like to allow the validator still participate in these games, while not allowing him to join new games. This is where ballots come into play. Ballots allow to continue the consensus game for validators that are no longer bonded.
+Therefore, we would like only bonded validators to be able to participate in blockchain evolution. The problem here is that - when a validator unbonds, some of the **b-games** he was a player of might not be completed (= finalized) yet. We would like to allow the validator to still participate in these games while not allowing him to join new games. This is where ballots come into play. Ballots make it possible for a validator that is no longer bonded to continue the consensus game.
 
 Merging of histories
 --------------------
 
 Topological sortings of p-past-cone
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is previous example of a blockdag, reduced to **p-dag** only:
+This is a previous example of a blockdag, reduced to **p-dag** only:
 
 .. figure:: pictures/p-dag.png
    :width: 60%
@@ -300,7 +303,7 @@ We define **p-past-cone(b)** as the set of all blocks :math:`x` such that :math:
 
 Of course, any **p-past-cone(b)** inherits the order from the whole **p-dag**, so it can be seen as a POSET as well.
 
-For :math:`<A,R>` any POSET, topological sorting of :math:`<A,R>` is any linear order :math:`<A,T>` such that :math:`identity: <A,R> \rightarrow <A,T>` is monotonic. In other words, topological sorting is converting a POSET into a total order in a way that preserves the original order. For a given POSET this can be usually done in many ways.
+For :math:`<A,R>` any POSET, topological sorting of :math:`<A,R>` is any linear order :math:`<A,T>` such that :math:`identity: <A,R> \rightarrow <A,T>` is monotonic. In other words, topological sorting is converting a POSET into a total order in a way that preserves the original order. For a given POSET, this can usually be done in many ways.
 
 \ **Example:**\  Let’s take the :math:`p\_past\_cone(3)` from our example. As a POSET it looks like this:
 
@@ -327,7 +330,7 @@ It can be topo-sorted in many ways. One such topo-sort is shown below:
    :align: center
 
 The context of merging problem
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let’s assume that current p-dag as seen by a validator **v** looks like this:
 
@@ -335,16 +338,17 @@ Let’s assume that current p-dag as seen by a validator **v** looks like this:
    :width: 60%
    :align: center
 
-To add a new block :math:`x`, validator :math:`V` needs to decide which blocks to take as parents of :math:`x`. In other words, which variants of transactions history block :math:`x` will continue. Merging is all about defining what does it mean that **x** continues more than one version of the history:
+To add a new block :math:`x`, validator :math:`V` needs to decide which blocks to take as parents of :math:`x`. In other words, decide which variants of a transactions history block :math:`x` will continue. Merging is all about defining what it means that **x** continues more than one version of the history:
 
 .. figure:: pictures/merging-problem-illustrated.png
    :width: 60%
    :align: center
 
-We have blocks 8, 9 and 10 as current tips of p-dag, so they are candidates for becoming parents of the new block. But usually we won’t be able to take all such tips as parents, because the versions of transactions history they represent are in conflict.
+We have blocks 8, 9 and 10 as current tips of p-dag, so they are candidates for becoming parents of the new block. But usually, we won’t be able to take all such tips as parents because the versions of the transactions history they represent are in conflict.
+
 
 Formal definition of merging
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We say that a set of blocks :math:`B = \{b_1, b_2, ..., b_n\}` is **mergeable** (= **not in conflict**) when the following holds:
 
@@ -361,7 +365,7 @@ We say that a set of blocks :math:`B = \{b_1, b_2, ..., b_n\}` is **mergeable** 
 Operation of a validator
 ------------------------
 
-The spec is written from the perspective of a validator. We say this **local validator** to reference the validator which is running the algorithm. Let **vid** be the id of local validator.
+The spec is written from the perspective of a validator. We say it as **local validator** in order to reference the validator which is running the algorithm. Let **vid** be the id of the local validator.
 
 Validators P2P protocol - messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -380,16 +384,16 @@ A **block** contains the following data:
 -  **justifications** (collection of message ids that the creator confirms as seen at the moment of creation of this block; excluding main parent and secondary parents; may be empty)
 -  **transactions list** (nonempty)
 -  **pre-state-hash** - hash of global state that represents state after executing all parents of this block
--  **post-state hash** - hash of global state achieved after executing transactions in this block (and all previous block, as implied by p-dag)
+-  **post-state hash** - hash of global state achieved after executing transactions in this block (and all previous blocks, as implied by p-dag)
 
 For a block :math:`b` we define the collection :math:`b.all\_justifications` as main parent + secondary parents + justifications. This collection is always non-empty because **main parent** is a mandatory field.
 
 A **ballot** contains the following data:
 
--  **block id**
+-  **block id** 
 -  **creator id** (= id of validator that created this ballot)
 -  **target block** (id of a block)
--  **justifications** (collection of message ids that the creator confirms as seen at the moment of creation of this ballot, excluding target block; may be empty)
+-  **justifications** (collection of message ids that the creator confirms as seen at the moment of creation of this ballot, excluding the target block; may be empty)
 
 For a ballot **b** we define the collection :math:`b.all\_justifications` as target block + additional justifications. This collection is always non-empty because target block is a mandatory field.
 
@@ -398,16 +402,16 @@ From the definitions above it follows that for every message :math:`m` there is 
 Validators P2P protocol - behavior
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We use the same assumptions on message-passing network as were stated in Abstract Casper Consensus model. So validators only exchange information by broadcasting messages, where the broadcasting implementation provides exactly-once delivery guarantee, but the delays and shuffling of messages are arbitrary.
+We use the same assumptions on a message-passing network as were stated in the Abstract Casper Consensus model. So, validators only exchange information by broadcasting messages where the broadcasting implementation provides an exactly-once delivery guarantee, but the delays and shuffling of messages are arbitrary.
 
 During its lifetime, a validator maintains the following data structures:
 
 -  **deploys-buffer** - a buffer of transactions sent by clients, to be executed on the blockchain computer
--  **blockdag** - keeping all blocks and ballots either he produced by or received from other validators
+-  **blockdag** - keeping all blocks and ballots either produced by or received from other validators
 -  **messages-buffer** - a buffer of messages received, but not yet incorporated into the **blockdag**
 -  **latest-honest-messages** - a mapping from validator id to message id, pointing every validator known in the **blockdag**, excluding **equivocators**, to the corresponding swimlane tip
 -  **equivocators** - a collection of validators for which current blockdag contains an equivocation
--  **reference-finalizer** - an instance of finalizer used internally (see later in this spec what finalizers are)
+-  **reference-finalizer** - an instance of finalizer used internally (*see* **Operation of a finalizer** later in this spec for more information about what finalizers are)
 -  **global-states-db** - mapping of global state hash to global state
 
 A message :math:`m` can be added to the :math:`blockdag` only if all justifications of :math:`m` are already present in the blockdag. So if a validator receives a message before receiving some of its justifications, the received message must wait in the :math:`messages\_buffer`.
@@ -436,9 +440,9 @@ Listen to messages incoming from other validators. Whenever a message :math:`m` 
 
 7. If :math:`equivocators` does not contain :math:`m.creator`, update :math:`latest\_honest\_messages` map by setting :math:`latest\_honest\_messages(m.creator) = m`
 
-8. Check if there is any message :math:`x` in :math:`messages\_buffer` that can now leave the buffer and be included in the :math:`blockdag` because of :math:`x.all\_justifications` are now present in the :math:`blockdag`. For first such :math:`x` found apply steps (3) - (4) - (5) .
+8. Check if there is any message :math:`x` in :math:`messages\_buffer` that can now leave the buffer and be included in the :math:`blockdag` because of :math:`x.all\_justifications` are now present in the :math:`blockdag`. For first such :math:`x` found, apply steps (3) - (4) - (5) .
 
-9. (“Buffer pruning cascade”) Repeat step (6) as many times as there are blocks which can be released from the buffer.
+9. (“Buffer pruning cascade”) Repeat step (6) as many times as there are blocks that can be released from the buffer.
 
 Processing specific to type of :math:`m` goes as follows:
 
@@ -453,7 +457,7 @@ If :math:`m` is a block:
    -  if they are the same: append :math:`m` to :math:`blockdag`.
    -  otherwise - drop the block (invalid block) and exit
 
-3. Check if parents of :math:`m` are not conflicting. If they are conflicting then drop the block (invalid block) and exit.
+3. Check if parents of :math:`m` are not conflicting. If they are conflicting, then drop the block (invalid block) and exit.
 
 4. Calculate pre-state for :math:`m` by executing the transactions in the merged history that is determined by all parents of :math:`m`. Check if calculated hash of pre-state is equal to pre-state-hash stored in :math:`m`. If not, then drop :math:`m` (invalid block) and exit.
 
@@ -495,7 +499,7 @@ If :math:`m` is a ballot:
 
 Case 1: new block
 
-1. Take desired subset of transactions :math:`trans` from :math:`deploys-buffer` (this part of behavior is subject to separate spec; on this level of abstraction we accept any strategy of picking transactions from the buffer).
+1. Take desired subset of transactions :math:`trans` from :math:`deploys-buffer` (this part of behavior is subject to a separate spec; on this level of abstraction we accept any strategy of picking transactions from the buffer).
 2. Apply :math:`trans` sequentially on top of :math:`merged\_gs`. Let :math:`post\_gs` be the resulting global state.
 3. Create new block:
 
@@ -503,7 +507,7 @@ Case 1: new block
    -  creator id = :math:`vid`
    -  main parent = :math:`mp`
    -  secondary parents = :math:`mncsp`
-   -  justifications = :math:`latest\_honest\_messages` after removing main parent, secondary parents and redundant messages (see explanation below)
+   -  justifications = :math:`latest\_honest\_messages` after removing main parent, secondary parents, and redundant messages (see explanation below)
    -  transactions list = :math:`trans`
    -  pre-state-hash = :math:`hash(merged\_gs)`
    -  post-state hash = :math:`hash(post\_gs)`
@@ -522,17 +526,18 @@ Case 2: new ballot
 
 2. Broadcast new ballot across validators P2P network.
 
-3. Note: we generally want to keep the collection :math:`m.justifications` as short as possible. For this, we never include there main parent, secondary parents and target block, and also we want the collection of justifications included in the message to be transitively reduced (= included justifications form an antichain).
+3. Note: we generally want to keep the collection :math:`m.justifications` as short as possible. For this, we never include there main parent, secondary parents, and target block. Also, we want the collection of justifications included in the message to be transitively reduced (= included justifications form an antichain).
 
-   .. rubric:: Relative votes
-      :name: relative-votes
 
-   We will need the concept of “last message created by validator **v** that was non-empty vote in **b-game**”. Given any block :math:`b` and any validator :math:`V` let us take look at the swimlane of :math:`V`. If :math:`v` is honest, then this swimlane is a chain. Any message :math:`m` counts as non-empty vote in **b-game** only if:
+Relative votes
+~~~~~~~~~~~~~~
+
+   We will need the concept of “last message created by validator **v** that was a non-empty vote in **b-game**”. Given any block :math:`b` and any validator :math:`V` let us take look at the swimlane of :math:`V`. If :math:`v` is honest, then this swimlane is a chain. Any message :math:`m` counts as a non-empty vote in **b-game** only if:
 
    -  :math:`m` is a block and the ancestor of :math:`m` (in main-tree) is :math:`b`
    -  :math:`m` is a ballot and the ancestor of :math:`m.target\_block` (in main-tree) is :math:`b`
 
-   We start from the latest (= top-most on the diagram) message in the :math:`swimlane(v)` and we traverse the swimlane down, stopping as soon as we find a message that is counts as non-empty vote in **b-game**.
+   We start from the latest (= top-most on the diagram) message in the :math:`swimlane(v)` and we traverse the swimlane down, stopping as soon as we find a message that counts as a non-empty vote in **b-game**.
 
    \ **Example:**\
 
@@ -550,7 +555,7 @@ Case 2: new ballot
       :width: 60%
       :align: center
 
-   Let’s apply this definition using validator 3 as the example and find last votes of validator 3 in various games.
+   Let’s apply this definition using validator 3 as the example and find the last votes of validator 3 in various games.
 
    ======= ============================================
    Block b Last non-empty vote of validator 3 in b-game
@@ -564,23 +569,20 @@ Case 2: new ballot
    6       (none)
    ======= ============================================
 
-   .. rubric:: Fork choice
-      :name: fork-choice
+Fork choice
+~~~~~~~~~~~
 
-   The goal of fork-choice is to take the decision on top of which version of shared database history we want to build in the next step. This decision can be seen as iterative application of the reference estimator from “Abstract Casper Consensus”. As a result we want to get a list of blocks (ordered by preference) which will serve as parent candidates for the new block.
+The goal of fork-choice is to take the decision on top of the version of the shared database history we want to build in the next step. This decision can be seen as an iterative application of the reference estimator from the “Abstract Casper Consensus”. As a result we want to get a list of blocks (ordered by preference) which will serve as parent candidates for the new block.
 
-   The algorithm goes as follows:
+The algorithm goes as follows:
 
-   1. Decide which protocol state :math:`ps` to use:
+1. Decide which protocol state :math:`ps` to use:
+   1. When using fork choice for creation of new block this is the point where the validator can decide on the subset of his local knowledge to reveal to outside world. Ideally, the validator reveals all local knowledge, so it takes as protocol state the whole local blockdag.
 
-      1. When using fork choice for creation of new block this is the point where the validator can decide on the subset of his local knowledge to reveal to outside world. Ideally, the validator reveals all local knowledge, so it takes as protocol state the whole local blockdag.
+2. When using fork choice for validation of received message :math:`m`, the protocol state to take is :math:`j\_past\_cone(m)`.
 
-   2. When using fork choice for validation of received message :math:`m`, the protocol state to take is :math:`j\_past\_cone(m)`.
-
-4. Take :math:`HV` - all honest validators (all creators of messages in :math:`ps` minus these seen equivocating with messages in :math:`ps`).
-
+4. Take :math:`HV` - all honest validators (all creators of messages in :math:`ps` minus those seen equivocating with messages in :math:`ps`).
 5. Find latest message :math:`lm(v)` created by each validator :math:`v \in HV`, ignoring validators that produced no message.
-
 6. For all validators that have :math:`lm(v)` defined take:
 
    .. math::
@@ -604,24 +606,23 @@ Case 2: new ballot
 
 7. Repeat step 7 as long as it is changing **Result**.
 
-8. The **Result** is the list of blocks we want. First block on the list is the main parent candidate, remaining blocks are secondary parents candidates.
+8. The **Result** is the list of blocks we want. The first block on the list is the main parent candidate, remaining blocks are secondary parents candidates.
 
-   .. rubric:: Operation of a finalizer
-      :name: operation-of-a-finalizer
+Operation of a finalizer
+------------------------
 
-   .. rubric:: The objective
-      :name: the-objective
+The objective
+~~~~~~~~~~~~~
 
-   Finalizer observes the growing blockchain. The objective is to recognize the subset of transactions history that:
+Finalizer observes the growing blockchain. The objective is to recognize the subset of transactions history that:
 
-   -  is already agreed (as a result of on-going consensus)
-
+-  is already agreed (as a result of on-going consensus)
 -  cannot be reverted (unless the equivocators collection exceeds - by total weight - predefined threshold)
 
 Parameters
 ~~~~~~~~~~
 
-In general - different finalizers will be based on different finality criteria. For the current design we assume that the criterion described in previous chapter is in use.
+In general - different finalizers will be based on different finality criteria. For the current design we assume that the criterion described in the previous chapter is in use.
 
 Hence, the finalizer is parameterized by:
 
@@ -631,15 +632,14 @@ Hence, the finalizer is parameterized by:
 
    -  **WP** (weight percentage) - expressed as a number between 0 and 1
 
-   ### State
+State
+~~~~~
 
-   The assumption is that a finalizer can traverse the blockdag, reading contents of blocks. Also, for any block b it should be able to read post-state of b and in particular get weights-map from this post-state.
+The assumption is that a finalizer can traverse the blockdag, reading contents of blocks. Also, for any block b it should be able to read post-state of b, and in particular get the weights-map from this post-state.
 
-   Note: refer to subsequent sections to
+The internal state of the “reference” implementation of a finalizer would be:
 
-   The internal state of the “reference” implementation of a finalizer would be:
-
-   -  **equivocators: Set[ValidatorId]**
+-  **equivocators: Set[ValidatorId]**
 
 -  **current-game-id: Int**
 
@@ -665,28 +665,26 @@ Hence, the finalizer is parameterized by:
 
    -  **FTT(0) = ceiling(WP \* total-weight(post-state of Genesis))**
 
-   ### Behaviour - the general plan
+Behaviour - the general plan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    The operation of a finalizer can be decomposed as the following, partially independent activities:
 
    1. Maintaining equivocators collection corresponding to current protocol state.
    2. Building the **LFB** chain
    3. Propagating **LFB** chain finality via secondary parents (indirect finalization).
-
-4. Monitoring old games in **LFB** chain for the possibility of equivocation catastrophe.
-
+   4. Monitoring old games in **LFB** chain for the possibility of equivocation catastrophe.
    5. Reacting to equivocation catastrophe (by recalculating the **LFB** chain).
+   6. Publishing the stream of finalized blocks (over some streaming API) - this includes possibly also maintaining the collection of subscribers.
 
-5. Publishing the stream of finalized blocks (over some streaming API) - this includes possibly also maintaining the collection of subscribers.
-
-**LFB chain**
-~~~~~~~~~~~~~
+LFB chain
+~~~~~~~~~
 
 **LFB(i)** is supposed to be the “i-th last finalized block”. **LFB** chain is achieved in the following way:
 
 1. Take **LFB(0) = Genesis**
 
-2. Let’s assume that LFB(m) is the last-so-far element of the chain, so in other words the last finalized block.
+2. Let’s assume that LFB(m) is the last-so-far element of the chain. So in other words, it is the last finalized block.
 
    1. For deciding which main-tree child of LFB(m) should be taken as LFB(m+1) we need to start a new empty instance of finality detector.
 
@@ -702,19 +700,19 @@ Hence, the finalizer is parameterized by:
 
       3. Once **LFB(m)**-game reaches finality, the next element of **LFB** chain is established.
 
-   .. rubric:: Indirect finalization
-      :name: indirect-finalization
+Indirect finalization
+~~~~~~~~~~~~~~~~~~~~~
 
    Once **LFB(m)** is established, we consider the whole **p-past-cone(LFB(m))** as finalized.
 
-   .. rubric:: Equivocation catastrophe
-      :name: equivocation-catastrophe
+Equivocation catastrophe
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-   For any **LFB(m)**, the **LFB(m)-game** may “crash” by total weight of equivocators exceeding **FTT(m)**. Such situation we call **the equivocation catastrophe**.
+For any **LFB(m)**, the **LFB(m)-game** may “crash” by total weight of equivocators exceeding **FTT(m)**. Such situation we call **the equivocation catastrophe**.
 
-   Discovery of equivocation catastrophe works as follows. Whenever a new message **m** is added to local blockdag, the following handling is done by the finalizer:
+Discovery of equivocation catastrophe works as follows. -- Whenever a new message **m** is added to a local blockdag, the following handling is done by the finalizer:
 
-   1. If **m.creator** is already included in **equivocators** collection - do nothing.
+1. If **m.creator** is already included in **equivocators** collection - do nothing.
 
 5. Otherwise - check if m is not introducing a new equivocation. If yes - add **m.creator** to equivocators and:
 
@@ -729,35 +727,31 @@ Hence, the finalizer is parameterized by:
 Once an equivocation catastrophe is discovered, the following handling must be applied:
 
 1. Starting from the catastrophic point, re-calculate the **LFB chain** (initializing initial players accordingly to current contents of **equivocators**).
-
-   2. Find the first **i** such that the new LFB-chain differs from old LFB chain at index **i**. Usually such **i** will be bigger than the catastrophic point.
-
+2. Find the first **i** such that the new LFB-chain differs from old LFB chain at index **i**. Usually such **i** will be bigger than the catastrophic point.
 2. Publish a rollback event at the level of external API.
+4. Publish re-calculated LFB stream, starting from first difference.
 
-   4. Publish re-calculated LFB stream, starting from first difference.
+External API of a finalizer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   .. rubric:: External API of a finalizer
-      :name: external-api-of-a-finalizer
+The API should be stream-based. The decision on the actual streaming technology to use is beyond the scope of this specification.
 
-   The API should be stream-based. The decision on the actual streaming technology to use is beyond the scope of this specification.
+We only assume that:
 
-   We only assume that:
+-  external software components may subscribe to the API (to be notified
+- subscribed observers may unsubscribe
+      -  what a subscribed observer receives is a sequence of events
 
-   -  external software components may subscribe to the API (to be notified)
 
--  subscribed observers may unsubscribe
+**Events:**
 
-   -  what a subscribed observer receives is a sequence of events
-
-   Events:
-
-   +-------------+-----------------------------------------------------------+-----------------------------------------------+
-   | Event type  | Contents                                                  | Semantics                                     |
-   +=============+===========================================================+===============================================+
-   | NEXT_LFB    | event idLFB(i).idisequence of indirectly finalized blocks | published as soon as **LFB(i)** is finalized  |
-   +-------------+-----------------------------------------------------------+-----------------------------------------------+
-   | CATASTROPHY | event idsequence id of catastrophy point                  | signal that equivocation catastrophe happened |
-   +-------------+-----------------------------------------------------------+-----------------------------------------------+
++-------------+-----------------------------------------------------------+-----------------------------------------------+
+| Event type  | Contents                                                  | Semantics                                     |
++=============+===========================================================+===============================================+
+| NEXT_LFB    | event idLFB(i).idisequence of indirectly finalized blocks | published as soon as **LFB(i)** is finalized  |
++-------------+-----------------------------------------------------------+-----------------------------------------------+
+| CATASTROPHY | event idsequence id of catastrophy point                  | signal that equivocation catastrophe happened |
++-------------+-----------------------------------------------------------+-----------------------------------------------+
 
 
 **Example:**
