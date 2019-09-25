@@ -7,71 +7,35 @@ anybody is allowed to become a validator by staking a minimum number of tokens.
 Staking allows validators to receive payments through "seigniorage", and also a
 share of the fees from the transactions submitted by the network’s users.
 
-Staking requires the validator to participate in the network by processing
-transactions, and proposing, validating and storing blocks.
-The network’s continuation and maintenance requires that validators
-adhere to the protocol, which is ensured by the network’s incentive mechanism.
-This works by rewarding adherence to the protocol and punishing deviation from
-the protocol.
+Staking requires the validator to participate in the network by processing transactions; and proposing, validating, and storing blocks. The network’s continuation and maintenance requires that validators adhere to the protocol, which is ensured by the network’s incentive mechanism. This works by rewarding adherence to the protocol and punishing deviation from the protocol.
 
-Rewards are provided through a process called *seigniorage*. New tokens are
-minted at a constant rate and distributed to participating validators, similar
-to the block reward mechanism in Bitcoin. Unlike Bitcoin, validators don’t have
-to wait until a block is mined in order to realize their rewards.
-Seigniorage is paid continuously to validators. This ensures stable payments and
-eliminates the need to create pools. An honest validator therefore receives more
-tokens at a predictable and satisfying rate without joining a pool.
+Rewards are provided through a process called *seigniorage*. New tokens are minted at a constant rate and distributed to participating validators, similar to the block reward mechanism in Bitcoin. Unlike Bitcoin, validators don’t have to wait until a block is mined in order to realize their rewards. Seigniorage is paid continuously to validators. This ensures stable payments and eliminates the need to create pools. An honest validator therefore receives more tokens at a predictable and satisfying rate without joining a pool.
 
-A malicious validator on the other hand is punished through disincentives for
-various types of undesirable activities such as inactivity, attacks on consensus
-and censorship. The protocol is designed to penalize validators that engage in
-such activities by reducing their payments---called throttling---, and burning a
-part of their stake---called slashing.
+A malicious validator, on the other hand- is punished through disincentives for various types of undesirable activities such as inactivity, attacks on consensus, and censorship. The protocol is designed to penalize validators that engage in such activities by reducing their payments---called throttling---, and burning a part of their stake---called slashing.
 
-Some attacks, due to their nature, cannot be attributed to the perpetrators they
-originate from. In such cases, one has no option other than to collectively
-slash everyone involved. For example, a voluntary absence from proposing a block
-is indistinguishable from the same proposer’s being censored, from the
-protocol’s point of view. For that reason, even honest validators incur a base
-level of throttling and slashing, called *background throttling* and *slashing*.
-These are taken into account when tuning network parameters.
-In an ideal network, incentives and disincentives work hand in hand, ensuring
-the intended regular payments for honest validators and maximum penalty for
-malicious validators.
+Some attacks, due to their nature, cannot be attributed to the perpetrators they originate from. In such cases, one has no option other than to collectively slash everyone involved. For example, a voluntary absence from proposing a block is indistinguishable from the same proposer’s being censored -- from the protocol’s point of view. For that reason, even honest validators incur a base level of throttling and slashing, called *background throttling* and *slashing*. These are taken into account when tuning network parameters. In an ideal network, incentives and disincentives work hand-in-hand, ensuring the intended regular payments for honest validators, and maximum penalty for malicious validators.
 
-In addition to seigniorage payments, validators receive transaction fees paid by
-the users. Computation is metered by gas like in Ethereum, where each operation
-is assigned a cost in gas. Users specify a gas price when submitting their
-transactions, and the resulting fees are collected by the block proposers.
+In addition to seigniorage payments, validators receive transaction fees paid by the users. Computation is metered by gas like in Ethereum, where each operation is assigned a cost in gas. Users specify a gas price when submitting their transactions, and the resulting fees are collected by the block proposers.
 
 Tokens
 ------
 
 The CasperLabs blockchain hosts its own native token, having the symbol CLX,
-which serves many functions for the network’s participants. Similar to Ethereum,
+that serves many functions for the network’s participants. Similar to Ethereum,
 users use CLX to fund their transactions, and validators receive rewards in CLX.
 Additionally, CLX is used as deposit when becoming a validator, as part of the
 Proof of Stake protocol. Users are able to delegate their own CLX to validators
-without having to become validators themselves. Validators in turn take a
+without having to become validators themselves. Validators, in turn, take a
 commission out of the rewards and transaction fees earned through delegated CLX.
 
-New CLX is minted through seigniorage to incentivize validators, whereas bonded
-CLX is slashed occasionally to punish faults. The rate of seigniorage is higher
-than the rate of slashing, whose parameters are tuned periodically by the
-governance committee to achieve predictable fees for the validators.
+New CLX is minted through seigniorage to incentivize validators, whereas bonded CLX is slashed occasionally to punish faults. The rate of seigniorage is higher than the rate of slashing, whose parameters are tuned periodically by the governance committee to achieve predictable fees for the validators.
 
 Seigniorage
 -----------
 
-Seigniorage provides a base level of payments for validators so that they are
-still compensated for their work even if there is not a lot of demand for
-computation on the network. By issuing new CLX for validators, resources
-necessary to keep the network running are transferred from CLX holders to
-validators. The depreciation in users’ assets caused by this inflation is simply
-understood as the price of owning assets on the blockchain.
+Seigniorage provides a base level of payments for validators so that they are still compensated for their work even if there is not a lot of demand for computation on the network. By issuing new CLX for validators, resources necessary to keep the network running are transferred from CLX holders to validators. The depreciation in users’ assets caused by this inflation is simply understood as the price of owning assets on the blockchain.
 
-In each block, the amount of newly minted CLX is calculated by multiplying the
-current total supply with a ``seigniorage_parameter``:
+In each block, the amount of newly minted CLX is calculated by multiplying the current total supply with a ``seigniorage_parameter``:
 
 .. code:: python
 
@@ -129,11 +93,11 @@ Gas Pricing
 ~~~~~~~~~~~
 
 It is one of the goals of CasperLabs to maintain a certain level of
-predictability for users, in terms of gas prices, and for validators, in terms
+predictability for users in terms of gas prices, and for validators in terms
 of transaction fees. Blockchains with unregulated fee markets are
 susceptible to high volatility in transaction fees, which get pushed up as
-demand rises and blocks become full. An in-protocol gas price floor, set high
-enough, can reduce this volatility. The price of gas would be prevented from
+demand rises and blocks become full. An in-protocol gas price floor set high
+enough can reduce this volatility. The price of gas would be prevented from
 falling below a certain value, whereas it can float freely above said value. It
 is, however, expected to do so only during unexpectedly high surges, which are
 not expected to happen more than a couple of times a year.
@@ -143,7 +107,7 @@ willing to pay per the gas they consume. Considering that the primary goal is to
 reduce volatility in prices, it makes little sense to set the floor in CLX whose
 price in fiat is expectedly volatile, especially in the first few years
 following the launch. To this end, it is imperative to have the price floor
-denominated in CLX, but set in fiat. The baseline is that a single CLX transfer
+denominated in CLX but set in fiat. The baseline is that a single CLX transfer
 between two accounts costs $0.05.
 
 A successful implementation of this system requires a reliable on-chain feed of
@@ -198,7 +162,7 @@ are
 This scheme disincentivizes validators from being “lazy”, i.e. proposing empty
 blocks in order not to incur the computational cost of processing transactions.
 
-The block proposer paying a compensation might seem unfair especially when there
+The block proposer paying a compensation might seem unfair, especially when there
 is a lack of submitted transactions. However, every validator’s being subjected
 to it ensures fairness in the long term, even at times of low demand.
 
@@ -209,13 +173,13 @@ The practical utility of a blockchain platform depends on its *safety* and
 *liveness*. A safe blockchain is one where users can expect valid transactions
 to eventually become recorded in the canonical history, or a linear sequence of
 finalized blocks. A live blockchain is one where this process can continue
-indefinitely, as long as there are validators to process, disseminate and record
+indefinitely, as long as there are validators to process, disseminate, and record
 the transactions in blocks. Actions by validators that constitute a threat to
 either the safety or the liveness of the blockchain are termed *faults*.
 
 We can enforce compliance with certain features of the protocol, such as the
 fields expected to be populated in a block’s metadata, as part of the
-programmatic protocol definition and reject all blocks failing to satisfy the
+programmatic protocol definition, and reject all blocks failing to satisfy the
 conditions as invalid, or faulty. However, some faults cannot be defined as
 properties of individual blocks, or directly prohibitied by the protocol
 specification. Rather, they must be incentivized by imposing costs for
@@ -302,7 +266,7 @@ equivocations require a slash value of 1, without a limit imposed by minimum
 bond.
 
 In our protocol, only validators assigned to be leaders in the respective slots
-produce blocks and consequently the relevant information for detecting
+produce blocks, and consequently the relevant information for detecting
 equivocations is contained in a key block created prior to each era, as well as
 the observed state.
 
@@ -360,7 +324,7 @@ Description
 
 Liveness faults constitute a less severe threat to the expected operation of the
 blockchain than equivocation, since they do not preclude eventual convergence to
-a unique history, but nevertheless it is critical that validators be
+a unique history. Nevertheless, it is critical that validators be
 incentivized to carry out the necessary computations promptly and communicate
 when expected. Liveness faults need not arise because of unexpected or malicious
 behavior alone. They can also be the result of power and network outages, as
@@ -369,7 +333,7 @@ keep their availability high, with slashing for attributable forms of liveness
 faults as the incentive.
 
 Liveness faults come in three forms, unlike equivocations. It is expected that
-validators
+validators:
 
 -  Create and send a block when their internal *cadence*, referred to as the
    “private parameter” in the theory paper, aligns with a tick in which they are
@@ -471,12 +435,7 @@ Throttling is a mechanism implemented to disincentivize liveness faults. While
 collective liveness slashing slowly reduces everyone’s total stake, throttling
 reduces everyone’s seigniorage for the same purpose.
 
-Inactivity is measured
-between seigniorage payouts, and payouts are scaled down linearly with increased
-inactivity. For example, if a validator coalition comprising 90% of the total
-stake successfully censors a minority comprising 10% of the total stake, this
-will result in a 10% reduction of seigniorage for everyone for the duration of
-the censorship.
+Inactivity is measured between seigniorage payouts, and payouts are scaled down linearly with increased inactivity. For example, if a validator coalition comprising 90% of the total stake successfully censors a minority comprising 10% of the total stake, this will result in a 10% reduction of seigniorage for everyone for the duration of the censorship.
 
 Validator Account Management
 ----------------------------
@@ -523,21 +482,11 @@ Validators will likely start being slashed as soon as they bond, even if they
 adhere to the protocol. Called *background slashing*, this is due to the
 collective slashing of validators as a part of the incentive mechanism.
 Background slashing should be minimal (though not negligible) in a well
-functioning network.
-When a validator is slashed, the amount is deducted from their
+functioning network. When a validator is slashed, the amount is deducted from their
 ``buffer_balance``. If ``buffer_balance`` is not high enough to compensate a
 slashed amount, **the difference is deducted from** ``bonded_balance``.
 
-A validator is required to bond ``minimum_stake`` number of tokens in order to
-participate in consensus. Rewards and slashings are incurred when a new block is
-proposed, and the slashing can potentially be high enough to reduce
-``bonded_balance`` below ``minimum_stake``. An incurred slashing cannot exceed
-the amount required to reduce ``bonded_balance`` to ``minimum_stake``. If
-``bonded_balance - minimum_stake`` is not high enough to compensate a slashed
-amount, the validator is considered to be *expelled*---kicked out of the validator
-set. An expelled validator cannot propose blocks even though they have assigned
-ticks left in that era, and they are fully removed from the validator set when
-the era ends.
+A validator is required to bond ``minimum_stake`` number of tokens in order to participate in consensus. Rewards and slashings are incurred when a new block is proposed, and the slashing can potentially be high enough to reduce ``bonded_balance`` below ``minimum_stake``. An incurred slashing cannot exceed the amount required to reduce ``bonded_balance`` to ``minimum_stake``. If ``bonded_balance - minimum_stake`` is not high enough to compensate a slashedamount, the validator is considered to be *expelled*---kicked out of the validator set. An expelled validator cannot propose blocks even though they have assigned ticks left in that era, and they are fully removed from the validator set when the era ends.
 
 .. code:: python
 
@@ -568,9 +517,7 @@ A validator’s ``buffer_balance`` decreases continuously due to background
 slashing. If the validator wants to retain their ``bonded_balance``, they would
 have to top up their ``buffer_balance`` at regular intervals.
 
-To reduce the operational risk of having to look after their ``buffer_balance``,
-a validator can instead **opt-in** to have their seigniorage rewards paid out
-directly to their ``buffer_balance``.
+To reduce the operational risk of having to look after their ``buffer_balance``, a validator can instead **opt-in** to have their seigniorage rewards paid out directly to their ``buffer_balance``.
 
 .. code:: python
 
