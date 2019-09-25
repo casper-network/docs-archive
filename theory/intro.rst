@@ -5,8 +5,8 @@ A consensus protocol is at the core of any blockchain technology. It dictates
 how a distributed set of trustless nodes comes to a coherent view of the world.
 
 The consensus solution used in CasperLabs blockchain is a latest achievement of
-research path that can be traced back to the 1980’s. Important milestones on
-this path were:
+a research path that can be traced back to the 1980’s. Important milestones on
+this path are:
 
 -  1980: The problem of byzantine consensus defined (Lamport, Shostak)
 -  1985: Impossibility of distributed consensus with one faulty process theorem
@@ -29,6 +29,7 @@ this path were:
    Vlad Zamfir)
 -  Sep 2019: Leader-based CBC Casper (Daniel Kane, Vlad Zamfir, Andreas Fackler)
 
-The solution we present here is pretty complex. Therefore, we introduce it
-step-by-step, starting from the simplest possible model first and then enriching
+The solution we present here is significantly complex. Therefore, we introduce it
+step-by-step, starting from the simplest possible model first, and then
+enriching
 the model gradually.
