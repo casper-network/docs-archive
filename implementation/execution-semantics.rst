@@ -8,8 +8,8 @@ Execution Semantics
 Introduction
 ------------
 
-The CasperLabs system is a decentralized computation platform. In this chapter
-we describe aspects of the computational model we use.
+The CasperLabs system is a decentralized computation platform. In this chapter we describe aspects of the computational model we use.
+
 
 .. _execution-semantics-gas:
 
@@ -18,28 +18,19 @@ Measuring computational work
 
 Computation is all done in a `WebAssembly (wasm) <https://webassembly.org/>`__
 interpreter, allowing any programming language which compiles to wasm to become
-a smart contract language for the CasperLabs blockchain. Similar to Ethereum, we
-use ``Gas`` to measure computational work in a way which is consistent from node
-to node in the CasperLabs network. Each wasm instruction is
+a smart contract language for the CasperLabs blockchain. Similar to Ethereum, we use ``Gas`` to measure computational work in a way which is consistent from node to node in the CasperLabs network. Each wasm instruction is
 `assigned <https://github.com/CasperLabs/CasperLabs/blob/1b382d5e5d2f8923c245c3844e4a6c372441c939/execution-engine/engine-wasm-prep/src/wasm_costs.rs#L9>`__
-a ``Gas`` value, and the amount of gas spent is tracked by the runtime with each instruction
-executed by the interpreter. All executions are finite because each has a finite
-*gas limit* which specifies the maximum amount of gas that can be spent before
-the computation is terminated by the runtime. How this limit is determined is
-discussed in more detail below.
+a ``Gas`` value, and the amount of gas spent is tracked by the runtime with each instruction executed by the interpreter. All executions are finite because each has a finite *gas limit* that specifies the maximum amount of gas that can be spent before
+the computation is terminated by the runtime. How this limit is determined is discussed in more detail below.
 
-Although computation is measured in ``Gas``, we still take payment for computation
-in :ref:`motes <tokens-divisibility>`. Therefore, there is a conversion
-rate between ``Gas`` and motes. How this conversion rate is determined is
-discussed elsewhere.
+Although computation is measured in ``Gas``, we still take payment for computation in :ref:`motes <tokens-divisibility>`. Therefore, there is a conversion rate between ``Gas`` and motes. How this conversion rate is determined is discussed elsewhere.
 
 .. _execution-semantics-deploys:
 
 Deploys
 -------
 
-A *deploy* represents a request from a user to perform computation on our
-platform. It has the following information:
+A *deploy* represents a request from a user to perform computation on our platform. It has the following information:
 
 -  Body: containing payment code and session code (more details on these below)
 -  Header: containing
@@ -51,28 +42,18 @@ platform. It has the following information:
    -  the ``blake2b256`` hash of the body
 
 -  Deploy hash: the ``blake2b256`` hash of the Header
--  Approvals: the set of signatures which have signed the deploy hash, these are
-   used in the :ref:`account permissions model <accounts-associated-keys-weights>`
+-  Approvals: the set of signatures which have signed the deploy hash, these are xsused in the :ref:`account permissions model <accounts-associated-keys-weights>`
 
-Each deploy is an atomic piece of computation in the sense that whatever effects
-a deploy would have on the global state must be entirely included in a block or
-the entire deploy must not be included in a block.
+Each deploy is an atomic piece of computation in the sense that, whatever effects a deploy would have on the global state must be entirely included in a block or the entire deploy must not be included in a block.
 
 .. _execution-semantics-phases:
 
 Phases of deploy execution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A deploy is executed in distinct *phases* in order to accommodate paying for
-computation in a flexible way. The phases of a deploy are payment, session, and
-finalization. During the payment phase the payment code is executed, if it is
-successful then the sessions code is executed during the session phase, and
-finally (independent of whether session code was executed) the the finalization
-phase is executed, which does some bookkeeping around payment. In particular,
-the finalization phase refunds the user any unspent ``Gas`` originally purchased
-(after converting back to motes) and moves the remaining payment into the
-rewards pool for the validators. The finalization phase does not include any
-user-defined logic, it is merely upkeep for the system.
+A deploy is executed in distinct *phases* in order to accommodate paying for computation in a flexible way. The phases of a deploy are payment, session, and finalization. During the payment phase, the payment code is executed. If it is successful, then the sessions code is executed during the session phase. And, finally (independent of whether session code was executed), the finalization phase is executed, which does some bookkeeping around payment. 
+
+In particular, the finalization phase refunds the user any unspent ``Gas`` originally purchased (after converting back to motes), and moves the remaining payment into the rewards pool for the validators. The finalization phase does not include any user-defined logic, it is merely upkeep for the system.
 
 .. _execution-semantics-payment:
 
@@ -81,21 +62,19 @@ Payment code
 
 *Payment code* provides the logic used to pay for the computation the deploy
 will do. Payment code is allowed to include arbitrary logic, providing maximal
-flexibility in how a deploy can be paid for (e.g. the simplest payment code
+flexibility in how a deploy can be paid for (e.g., the simplest payment code
 could use the account’s :ref:`main purse <tokens-purses-and-accounts>`, while an
 enterprise application may require deploys to pay via a multi-sig application
 accessing a corporate purse). We restrict the gas limit of the payment code
 execution, based on the current conversion rate between gas and motes, such that
-no more that ``MAX_PAYMENT_COST`` motes (a constant of the system) are spent. To
+no more than ``MAX_PAYMENT_COST`` motes (a constant of the system) are spent. To
 ensure payment code will pay for its own computation, we only allow accounts
-with a balance in their main purse greater than or equal to ``MAX_PAYMENT_COST``
+with a balance in their main purse greater than or equal to ``MAX_PAYMENT_COST``,
 to execute deploys.
 
 Payment code ultimately provides its payment by performing a
 :ref:`token transfer <tokens-mint-interface>` into the
-`proof-of-stake contract’s payment purse <https://github.com/CasperLabs/CasperLabs/blob/1b382d5e5d2f8923c245c3844e4a6c372441c939/execution-engine/contracts/system/pos/src/lib.rs#L319>`__.
-If payment is not given, or not enough is transferred then payment execution is
-not considered successful. In this case the effects of the payment code on the
+`proof-of-stake contract’s payment purse <https://github.com/CasperLabs/CasperLabs/blob/1b382d5e5d2f8923c245c3844e4a6c372441c939/execution-engine/contracts/system/pos/src/lib.rs#L319>`__. If payment is not given or not enough is transferred, then payment execution is not considered successful. In this case the effects of the payment code on the
 global state are reverted and the cost of the computation is covered by motes
 taken from the offending account’s main purse.
 
@@ -117,7 +96,7 @@ Specifying payment code and session code
 The user-defined logic of a deploy can be specified in a number of ways:
 
 -  a wasm module in binary format representing a valid
-   :ref:`contract <global-state-contracts>` (note the named keys do not need to be
+   :ref:`contract <global-state-contracts>` (Note: the named keys do not need to be
    specified because they come from the account the deploy is running in)
 -  a 32-byte identifier representing the :ref:`hash <global-state-hash-key>` or
    :ref:`URef <global-state-uref>` where a contract is already stored in the global state
@@ -138,8 +117,8 @@ by parallel deploys in the same block or parallel blocks on different forks of
 the chain), we view each deploy as a function taking our global state as input
 and producing a new global state as output. It is safe to execute two such
 functions concurrently if they do not interfere with each other, which formally
-can be defined to mean the functions *commute* (i.e. if they were executed
-sequentially it does not matter in what order they are executed, the final
+can be defined to mean the functions *commute* (i.e., if they were executed
+sequentially, it does not matter in what order they are executed, the final
 result is the same for a given input). Whether two deploys commute is determined
 based on the effects they have on the global state, i.e. which operation (read,
 write, add) it does on each key in the key-value store. How this is done is
@@ -163,7 +142,7 @@ description of the functions available for contracts to import, see :ref:`Append
 
    -  ``read``, ``write``, ``add`` functions allow working with exiting
       :ref:`URefs <global-state-uref>`
-   -  ``new_uref`` allows creating a new ``URef``, initialized with a given value (see
+   -  ``new_uref`` allows creating a new ``URef`` initialized with a given value (see
       section below about how ``URef``\ s are generated)
    -  ``read_local``, ``write_local``, ``add_local`` allow working with
       :ref:`local keys <global-state-local-key>`
@@ -215,10 +194,4 @@ description of the functions available for contracts to import, see :ref:`Append
 Generating ``URef``\ s
 ~~~~~~~~~~~~~~~~~~~~~~
 
-``URef``\ s are generated using a
-`cryptographically secure random number generator <https://rust-random.github.io/rand/rand_chacha/struct.ChaCha20Rng.html>`__
-using the `ChaCha algorithm <https://cr.yp.to/chacha.html>`__. The random number
-generator is seeded by taking the ``blake2b256`` hash of the deploy hash
-concatenated with an index representing the current phase of execution (to
-prevent collisions between ``URef``\ s generated in different phases of the same
-deploy).
+``URef``\ s are generated using a `cryptographically secure random number generator <https://rust-random.github.io/rand/rand_chacha/struct.ChaCha20Rng.html>`__ using the `ChaCha algorithm <https://cr.yp.to/chacha.html>`__. The random number generator is seeded by taking the ``blake2b256`` hash of the deploy hash concatenated with an index representing the current phase of execution (to prevent collisions between ``URef``\ s generated in different phases of the same deploy).
