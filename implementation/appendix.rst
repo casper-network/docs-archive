@@ -417,7 +417,7 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
          otherwise data corruption in the wasm memory may occur due to this call
          overwriting some bytes unintentionally. The size of the data which will be
          written is returned from the ``call_contract`` call. The bytes which are
-         written are the those corresponding to the value returned by the called
+         written are those corresponding to the value returned by the called
          contract; it is up to the developer to know how to attempt to interpret
          those bytes.
 
@@ -442,7 +442,7 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
          copied from the buffer are of type ``Option<Key>`` and should be interpreted
          as such. The result is ``None`` if there is no key associated with the given
          name, and ``Some(key)`` otherwise. This function will cause a ``Trap`` if the
-         name cannot be sde-serialized as a String.
+         name cannot be de-serialized as a String.
 
 -  ``has_uref``
 
@@ -660,8 +660,8 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
       -  This function changes the threshold to perform the specified action. The
          action index is interpreted as follows: 0 means deployment and 1 means key
          management. Thresholds are represented internally as a ``u8``, this function
-         with cause a ``Trap`` if the new threshold is not between 0 and 255,
-         inclusive. The return value is a status code where 0 means success, 1
+         will cause a ``Trap`` if the new threshold is not between 0 and 255
+         inclusively. The return value is a status code where 0 means success, 1
          means the key management threshold cannot be set lower than the deploy
          threshold, 2 means the deployment threshold cannot be set higher than the
          key management threshold, 3 means permission denied (this could be because
