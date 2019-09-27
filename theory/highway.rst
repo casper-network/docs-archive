@@ -121,7 +121,7 @@ A round is identified by the tick at which it starts. Of course validators with 
 **Example:** Alice has round exponent 5. Bob has round exponent 7. So, in
 Alice’s world, rounds have length 32 ticks, while in Bob’s world rounds have
 length 128 ticks. Timepoint 2019-09-13T13:13:13.088Z corresponds with tick
-1568380393088 and is the beginning of a round for both Alice and Bob. But in
+1568380393088 and is the beginning of a round for both Alice and Bob. But, in
 Alice’s world, this round will only last for 32 milliseconds, while for Bob this
 round will last for 128 milliseconds.
 
@@ -150,7 +150,7 @@ exponent.
 Rule 2: follow the leader sequence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For every round I use the leaders pseudorandom sequence to figure out the id of a validator which is the leader of this round.
+For every round I use the leader's pseudorandom sequence to figure out the id of a validator which is the leader of this round.
 
 Rule 3: lambda message
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -162,10 +162,10 @@ We call this message **the lambda message**. There is only one lambda message in
 Rule 4: lambda response message
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If I am not the leader of current round, I setup a handler for receiving the
+If I am not the leader of the current round, I set up a handler for receiving the
 lambda message from this round’s leader. This handler waits for the lambda
-message but only up to the end of current round. If the lambda message arrives
-before the end of current round, I create a ballot taking as its justifications
+message but only up to the end of the current round. If the lambda message arrives
+before the end of the current round, I create a ballot taking as its justifications
 only the lambda message and my last message (if I have one).
 
 Rule 5: omega message
