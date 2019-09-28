@@ -8,9 +8,7 @@ Block Structure
 Introduction
 ------------
 
-A *block* is the primary data structure by which information about the state of
-the CasperLabs system is communicated between nodes of the network. In thi
-chapter we briefly describe the format of this data structure.
+A *block* is the primary data structure by which information about the state of the CasperLabs system is communicated between nodes of the network. We briefly describe here the format of this data structure.
 
 .. _block-structure-proto:
 
@@ -18,11 +16,8 @@ Protobuf definition
 -------------------
 
 Messages between nodes are communicated using `Google’s protocol
-buffers <https://developers.google.com/protocol-buffers/>`__. The complete
-definition of a block can be `found on
-GitHub <https://github.com/CasperLabs/CasperLabs/blob/c78e35f4d8f0f7fd9b8cf45a4b17a630ae6ab18f/protobuf/io/casperlabs/casper/consensus/consensus.proto#L111>`__
-in this format; the description here is only meant to provide an overview of the
-block format, while the protobuf definition is authoritative.
+buffers <https://developers.google.com/protocol-buffers/>`__. The complete definition of a block in this format can be `found on
+GitHub <https://github.com/CasperLabs/CasperLabs/blob/c78e35f4d8f0f7fd9b8cf45a4b17a630ae6ab18f/protobuf/io/casperlabs/casper/consensus/consensus.proto#L111>`__ ; the description here is only meant to provide an overview of the block format; the protobuf definition is authoritative.
 
 .. _block-structure-data:
 
@@ -41,8 +36,7 @@ Each of these are detailed in the subsequent sections.
 ``block_hash``
 ~~~~~~~~~~~~~~
 
-The ``block_hash`` is the ``blake2b256`` hash of the header (serialized according to
-the protobuf specification).
+The ``block_hash`` is the ``blake2b256`` hash of the header (serialized according to the protobuf specification).
 
 Header
 ~~~~~~
@@ -74,14 +68,13 @@ The block header contains the following fields:
 -  the human-readable name corresponding to this instance of the CasperLabs
    system (``chain_id``)
 -  the public key of the validator who created this block
--  an indicator for whether this message is intended as a true block, or merely a
-   *ballot* (see consensus description in part A for more details)
+-  an indicator for whether this message is intended as a true block, or merely a *ballot* (see consensus description in part A for more details)
+
 
 Body
 ~~~~
 
-The block body contains a list of the deploys processed as part of this block. A
-processed deploy contains the following information:
+The block body contains a list of the deploys processed as part of this block. A processed deploy contains the following information:
 
 -  a copy of the `deploy
    message <https://github.com/CasperLabs/CasperLabs/blob/c78e35f4d8f0f7fd9b8cf45a4b17a630ae6ab18f/protobuf/io/casperlabs/casper/consensus/consensus.proto#L24>`__
@@ -94,8 +87,4 @@ processed deploy contains the following information:
 Signature
 ~~~~~~~~~
 
-The block signature cryptographically proves the block was created by the
-validator who’s public key is contained in the header. The signature is created
-using a specified algorithm (currently only
-`Ed25519 <https://en.wikipedia.org/wiki/EdDSA#Ed25519>`__ is supported), and is
-signed over the ``block_hash`` so that it is unique to that block.
+The block signature cryptographically proves the block was created by the validator who’s public key is contained in the header. The signature is created using a specified algorithm (currently only `Ed25519 <https://en.wikipedia.org/wiki/EdDSA#Ed25519>`__ is supported), and is signed over the ``block_hash`` so that it is unique to that block.

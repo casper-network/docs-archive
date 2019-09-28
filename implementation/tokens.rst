@@ -8,14 +8,9 @@ Tokens
 Introduction
 ------------
 
-CasperLabs is a decentralized computation platform based on a proof-of-stake
-consensus algorithm. Having a unit of value is required to make this system work
-because users must pay for computation and validators must have stake to bond.
-It is traditional in the blockchain space to name this unit of value “token” and
-we continue that tradition here.
+CasperLabs is a decentralized computation platform based on a proof-of-stake consensus algorithm. Having a unit of value is required to make this system work because users must pay for computation and validators must have stake to bond. It is traditional in the blockchain space to name this unit of value “token” and we continue that tradition here.
 
-This chapter describes how we define tokens and how they are used in our
-platform.
+This chapter describes how we define tokens and how they are used in our platform.
 
 Token Generation and Distribution
 ---------------------------------
@@ -72,7 +67,7 @@ specific mint contract and it will manage the CasperLabs utility token (used for
 paying for computation and bonding onto the network). The mint also maintains
 all the balances for its type of mote. Each balance is associated with a
 ``PurseId``, which acts as a sort of key to instruct the mint to perform actions
-on that balance (e.g. transfer motes). Informally, we will refer to these
+on that balance (e.g., transfer motes). Informally, we will refer to these
 balances as *purses* and conceptually they represent a container for motes. The
 ``PurseId`` is how a purse is referenced from outside the mint.
 
@@ -81,7 +76,7 @@ balances as *purses* and conceptually they represent a container for motes. The
 models ``PurseId``\ s as simply a new-type wrapper over a ``URef``). Each ``PurseId``
 has ``AccessRights`` which determine what actions are allowed to be performed
 using that ID. The basic global state options map onto more standard monetary
-operations according to the table below
+operations according to the table below:
 
 =================== =============================
 Global State Action Monetary Action
@@ -92,7 +87,7 @@ Read                Balance check
 =================== =============================
 
 ``PurseId``\ s are unforgable (just like ``URef``\ s), so the only way to interact with
-a purse is for the ID to given to the current context in a valid way (see ``URef``
+a purse is for the ID to be given to the current context in a valid way (see ``URef``
 permissions for details).
 
 We will use these definitions throughout this chapter as we describe the
@@ -139,13 +134,7 @@ implementations may exist, each corresponding to a different “currency”).
 Using ``PurseId``\ s
 --------------------
 
-It is dangerous to pass a ``PurseId`` with ``Write`` permissions to any contract. A
-malicious contract may use that access to take more tokens than was intended or
-share that ``PurseId`` with another contract which was not meant to have that
-access. Therefore, if a contract requires a purse with ``Write`` permissions, it
-is recommended to always use a “payment purse”, which is a purse used for that
-single transaction and nothing else. This ensures even if that ``PurseId`` becomes
-compromised it does not contain any more funds than the user intended on giving.
+It is dangerous to pass a ``PurseId`` with ``Write`` permissions to any contract. A malicious contract may use that access to take more tokens than was intended or share that ``PurseId`` with another contract which was not meant to have that access. Therefore, if a contract requires a purse with ``Write`` permissions, it is recommended to always use a “payment purse”, which is a purse used for that single transaction and nothing else. This ensures even if that ``PurseId`` becomes compromised it does not contain any more funds than the user intended on giving.
 
 .. code:: rust
 
@@ -158,10 +147,9 @@ compromised it does not contain any more funds than the user intended on giving.
    }
 
 To avoid this inconvenience, it is better practice for application developers
-intending to accept payment on-chain to may a version of their own ``PurseId``
+intending to accept payment on-chain to make a version of their own ``PurseId``
 with ``Read`` access rights publicly available. This allows clients to pay via a
-transfer using their own purse, without either party exposing ``Write`` access to
-any purse.
+transfer using their own purse, without either party exposing ``Write`` access to any purse.
 
 .. _tokens-purses-and-accounts:
 
@@ -170,15 +158,7 @@ Purses and accounts
 
 Every :ref:`accounts-head` on the CasperLabs system has a purse associated
 with the CasperLabs system mint, which we call the account’s “main purse”.
-However, for security reasons, the ``PurseId`` of the main purse is only available
-to code running in the context of that account (i.e. only in payment or session
-code). Therefore, the mint’s ``transfer`` method which accepts ``PurseId``\ s is not
-the most convenient to use when transferring between account main purses. For
-this reason, CasperLabs supplies a
+However, for security reasons, the ``PurseId`` of the main purse is only available to code running in the context of that account (i.e. only in payment or session code). Therefore, the mint’s ``transfer`` method which accepts ``PurseId``\ s is not the most convenient to use when transferring between account main purses. For this reason, CasperLabs supplies a
 `transfer_to_account <https://docs.rs/casperlabs-contract-ffi/0.13.0/casperlabs_contract_ffi/contract_api/fn.transfer_to_account.html>`__
 function which takes the public key used to derive the
-:ref:`identity key <global-state-account-key>` of the account. This function uses
-the mint transfer function with the current account’s main purse as the ``source``
-and the main purse of the account at the provided key as the ``target``. The
-``transfer_from_purse_to_account`` function is similar, but uses a given purse as
-the ``source`` instead of the present account’s main purse.
+:ref:`identity key <global-state-account-key>` of the account. This function uses the mint transfer function with the current account’s main purse as the ``source``and the main purse of the account at the provided key as the ``target``. The `transfer_from_purse_to_account`` function is similar, but uses a given purse as the ``source`` instead of the present account’s main purse.
