@@ -140,7 +140,7 @@ If :math:`G<G_\text{max}`, validator :math:`i` is obliged to come up with
 .. math::
 
 
-   \boxed{F_c = s_i N  (G_\text{max}-G)}
+   \boxed{F_c = s_i N P (G_\text{max}-G)}
 
 worth of tokens as compensation. This is deducted from their reward balance if
 sufficient, and from their bonded tokens if not. Deduction from stake is

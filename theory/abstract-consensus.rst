@@ -17,7 +17,8 @@ The space of possible distributed algorithms fulfilling the mission as described
 
 We call this restricted model **Abstract Casper Consensus (ACC)**.
 
-We primarily see ACC as a definition of a problem to be solved. Solutions of this problem are going to be pairs :math:`<EST, FD>` -- where :math:`EST` is some estimator and :math:`FD` is some finality detector. The remainder of this document is mostly devoted to explaining in detail what **estimator** and **finality detector** really mean.
+We primarily see ACC as a definition of a problem to be solved. Solutions of
+this problem are going to be pairs :math:`\langle EST, FD\rangle` -- where :math:`EST` is some estimator and :math:`FD` is some finality detector. The remainder of this document is mostly devoted to explaining in detail what **estimator** and **finality detector** really mean.
 
 In CasperLabs we work with a diversity of **ACC** solutions. For us, an **ACC**
 solution is what lives in the heart of a blockchain design. Different solutions
@@ -29,7 +30,7 @@ nodes talk to agree on a value and then they stop talking. In a blockchain model
 nodes never stop talking because they want to keep extending the chain of
 blocks forever. So, at some point they need to agree on adding yet another block
 to the chain - this is where the ACC problem shows up and this is why we first
-study this sub-problem in isolation. After having studied the sub-problem 
+study this sub-problem in isolation. After having studied the sub-problem
 enough, we apply it in the wider context, i.e. building a
 blockchain.
 
@@ -116,7 +117,7 @@ J-dag
 Justifications are pointing to previously received messages. Let us consider any set of messages :math:`M` closed under taking justifications. Let us define the following directed graph:
 
 -  take vertices to be all elements of :math:`M`;
--  take edges (= arrows) to be all pairs :math:`m_1 → m_2` such that :math:`m_2 \in m1.justifications`.
+-  take edges (= arrows) to be all pairs :math:`m_1 \rightarrow m_2` such that :math:`m_2 \in m_1.justifications`.
 
 Such a graph is always acyclic because a cycle in this graph would mean
 time-traveling is possible (i.e. we assume that listing a message as a justification is only possible if this message was first created).
@@ -127,7 +128,7 @@ Please observe that for any message **m**, the collection :math:`m.justification
 
 In the context of any **j-dag** we introduce the following concepts:
 
--  **transitive justification of message** :math:`A`** is any message :math:`B` such that **j-dag** contains a path :math:`A → ... → B`; this naming reflects the fact that an arrow in **j-DAG** goes always from newer messages to older messages; in POSET lingo it translates to :math:`B < A`, and we specifically pick here the direction of the ordering relation to reflect the time flow, so :math:`B < A` because :math:`B` must be older than :math:`A` (= :math:`A` confirms that it saw :math:`B`)
+-  **transitive justification of message** :math:`A`** is any message :math:`B` such that **j-dag** contains a path :math:`A \rightarrow ... \rightarrow B`; this naming reflects the fact that an arrow in **j-DAG** goes always from newer messages to older messages; in POSET lingo it translates to :math:`B < A`, and we specifically pick here the direction of the ordering relation to reflect the time flow, so :math:`B < A` because :math:`B` must be older than :math:`A` (= :math:`A` confirms that it saw :math:`B`)
 -  **j-past-cone of block A** or shortly :math:`j\_past\_cone(A)` is the full subgraph of **j-dag** formed by taking all as vertices all transitive justifications of messages :math:`A`, plus the message :math:`A` itself; in POSET lingo it is just the set of all :math:`B` such that :math:`B <= A`
 -  **swimlane of validator V** (or just **V-swimlane**) is: (1) take the transitive closure of **j-dag** (2) cut it to a subgraph by taking only messages created by V
 -  **j-dag tip** is a message :math:`m` that is not a justification of any other message in **j-dag**; in POSET lingo it is just a maximal element in a **j-dag**
@@ -182,7 +183,7 @@ Lifecycle of a validator
 
 A validator continuously runs two activities:
 
--  listens to messages incoming from other validators, and on every incoming message, runs the finality detection algorithm to see if the consensus has already been reached (we explain finality detection in detail later in this document) 
+-  listens to messages incoming from other validators, and on every incoming message, runs the finality detection algorithm to see if the consensus has already been reached (we explain finality detection in detail later in this document)
 
 - and (from time to time) decides to cast a vote by creating a new message :math:`m` and broadcasting it
 
@@ -405,7 +406,7 @@ Quorum size is an integer value calculated as:
 .. math::
 
 
-   q = ceiling(\frac{1}{2}(\frac{ftt}{1-2^{-k}}+tw))
+   q = ceiling\left(\frac{1}{2}\left(\frac{ftt}{1-2^{-k}}+tw\right)\right)
 
 … where:
 
