@@ -20,7 +20,11 @@ Computing model
 Memory and programs
 ~~~~~~~~~~~~~~~~~~~
 
-We need to define the “computational semantics” of a blockchain computer; what programs are and how they execute. However, because the consensus protocol we introduce is compatible with a wide range of computing models, it is convenient to approach this abstractly. Therefore, we represent the “computational semantics” of a blockchain computer as a triple :math:`<GS, Zero, P>` where:
+We need to define the “computational semantics” of a blockchain computer; what
+programs are and how they execute. However, because the consensus protocol we
+introduce is compatible with a wide range of computing models, it is convenient
+to approach this abstractly. Therefore, we represent the “computational
+semantics” of a blockchain computer as a triple :math:`\langle GS, Zero, P\rangle` where:
 
 -  :math:`GS` is a set of states of the shared database (think that each point :math:`gs \in GS` represents a “snapshot” of the shared database) we call “global states”
 -  :math:`Zero \in GS` is the initial state of the database
@@ -197,7 +201,7 @@ When a DAG has at most one edge between any pair of vertices, we say this DAG is
 
 Any POSET can be seen as a simple DAG when you define an edge **a \rightarrow b** to be present whenever **a < b**.
 
-Any simple DAG leads to a POSET by taking its transitive closure and saying that **a < b** iff there is an edge **a \rightarrow b**. By symmetry, taking **a < b** iff there is an edge **b \rightarrow a**  is also a POSET (just based on inverted order). Going in the other direction - from POSET to a DAG - is analogous. 
+Any simple DAG leads to a POSET by taking its transitive closure and saying that **a < b** iff there is an edge **a \rightarrow b**. By symmetry, taking **a < b** iff there is an edge **b \rightarrow a**  is also a POSET (just based on inverted order). Going in the other direction - from POSET to a DAG - is analogous.
 
 In practice, POSET is “like a simple DAG” where we do not distinguish between DAGs with the same transitive closure. In particular, for visualization purposes it is convenient to draw a POSET as a transitive reduction of a corresponding DAG.
 
@@ -207,7 +211,7 @@ Understanding the layers of the blockdag
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Here we explain only the intuition behind the blockdag. These ideas are formalized later in this document.
 
-**J-dag** is all about attesting what I have seen so far. When I am a validator creating a new message (= block or ballot), I have to attest what is my current protocol state -- i.e., what my current blockdag looks like. I do this by including on the justifications list (which is part of the new message) pointers to all **j-dag** tips present in my blockdag. 
+**J-dag** is all about attesting what I have seen so far. When I am a validator creating a new message (= block or ballot), I have to attest what is my current protocol state -- i.e., what my current blockdag looks like. I do this by including on the justifications list (which is part of the new message) pointers to all **j-dag** tips present in my blockdag.
 Please note that we continue to use the terminology established for j-dag from previous chapters (*See* the topic on J-dag).
 
 **Main-tree** encodes the multi-variant progress of a transaction's history. When a validator creating a block B picks block A as the main parent of B, it means “I want transactions included in B to extend the history of the blockchain that ended at block A with all transactions in A already executed”. This tree is analogous to a similar tree of blocks that forms in a previous generation of blockchains, like Bitcoin or Ethereum.
@@ -303,7 +307,9 @@ We define **p-past-cone(b)** as the set of all blocks :math:`x` such that :math:
 
 Of course, any **p-past-cone(b)** inherits the order from the whole **p-dag**, so it can be seen as a POSET as well.
 
-For :math:`<A,R>` any POSET, topological sorting of :math:`<A,R>` is any linear order :math:`<A,T>` such that :math:`identity: <A,R> \rightarrow <A,T>` is monotonic. In other words, topological sorting is converting a POSET into a total order in a way that preserves the original order. For a given POSET, this can usually be done in many ways.
+For :math:`\langle A,R\rangle` any POSET, topological sorting of :math:`\langle A,R\rangle`
+is any linear order :math:`\langle A,T\rangle` such that :math:`identity:
+\langle A,R\rangle \rightarrow \langle A,T\rangle` is monotonic. In other words, topological sorting is converting a POSET into a total order in a way that preserves the original order. For a given POSET, this can usually be done in many ways.
 
 \ **Example:**\  Let’s take the :math:`p\_past\_cone(3)` from our example. As a POSET it looks like this:
 
@@ -390,7 +396,7 @@ For a block :math:`b` we define the collection :math:`b.all\_justifications` as 
 
 A **ballot** contains the following data:
 
--  **block id** 
+-  **block id**
 -  **creator id** (= id of validator that created this ballot)
 -  **target block** (id of a block)
 -  **justifications** (collection of message ids that the creator confirms as seen at the moment of creation of this ballot, excluding the target block; may be empty)
