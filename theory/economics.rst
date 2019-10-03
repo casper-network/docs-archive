@@ -446,6 +446,18 @@ Balances
 Each validator has 4 different balances to flexibly accommodate all state
 transitions during bonding, unbonding and expulsion:
 
+.. 
+   MB: you say there are 4 different balances, but then list 5.
+   I know one is optional, but it still seems inconsistent. Now, that said
+   I don't know about this "buffer_balance". This is money which is locked up
+   but does not contribute to consensus weight? If they do an equivocation, where
+   they are supposed to lose their whole bond, do they lose this buffer too?
+   If so then it seems like they are just exposing themselves to more risk without
+   getting anything for it. Personally, I think we should always send rewards to a
+   rewards purse, and always slash from the bond, rather than introducing this buffer.
+   I also think there should be an "unbonded balance" to account for the holding
+   period after unbonding (see the validator state machine section in the consensus theory)
+
 -  ``bonded_balance``: Contains the bonded tokens of the validator
 -  ``buffer_balance``: Contains additional tokens provided by the validator, in
    case they don’t want slashings to be incurred directly on their
@@ -475,8 +487,23 @@ send ``submitted_amount >= target_stake`` tokens with their bonding request.
 Validator weights are calculated at the beginning of each era using
 ``bonded_balance``\ s.
 
+.. 
+   MB: we need to talk about unbonding too. Make clear that there is a holding
+   period where they can still be slashed, but during which they are not an
+   active validator in the new era.
+
 Slashing and Expulsion
 ~~~~~~~~~~~~~~~~~~~~~~
+
+.. 
+   MB: I'm concerned about this "background slashing" idea. I haven't read this
+   whole economics chapter, but is this explained in more detail elsewhere?
+   I assume this is meant to enforce liveness, but are there other rules that
+   fall under background slashing? I wonder if we can incentivize liveness in
+   another way. It seems like the point of the bonded buffer is to allow validators
+   to automatically have their rewards get scaled down based on the slashing they
+   take. Maybe we should always do that -- throttle the rewards instead of constantly
+   slash.
 
 Validators will likely start being slashed as soon as they bond, even if they
 adhere to the protocol. Called *background slashing*, this is due to the
