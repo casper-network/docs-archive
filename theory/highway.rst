@@ -50,14 +50,19 @@ Why “Highway”
 -------------
 
 To intuitively capture the key idea of the :math:`2^n` round length trick, we once
-imagined a highway, well - a mathematical highway with infinitely many lanes.
+imagined a highway---a mathematical highway with infinitely many lanes.
 Lanes are numbered with integers (all integers, also negative).
 
-This highway is different because movement on it takes place in the form of hops while the speed of all cars is constant. In any given lane :math:`n` a car makes :math:`2^n` hops a distance of one meter.
+This highway is different because movement on it takes place in the form of hops,
+while the speed of all cars is constant. In any given lane :math:`n`, a car has
+to make :math:`2^n` hops to cover a unit distance.
 
-Therefore, if you switch to the lane on your left-hand side, you increase the frequency of hopping x2. If you switch to your right-hand side, you decrease the frequency x2.
+Therefore, if you switch to the lane on your left-hand side, you increase the
+frequency of your hopping by a factor of 2. If you switch to your right-hand side,
+you decrease the frequency by a factor of 2.
 
-You meet cars from the lane on your left-hand side on every jump you make, for cars on your right-hand side, you meet only every second hop.
+You meet cars from the lane on your left-hand side on every jump you make. For
+cars on your right-hand side, you meet only every second hop.
 
 Messages structure
 ------------------
