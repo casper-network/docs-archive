@@ -31,5 +31,4 @@ this path are:
 
 The solution we present here is significantly complex. Therefore, we introduce it
 step-by-step, starting from the simplest possible model first, and then
-enriching
-the model gradually.
+enriching the model gradually.
