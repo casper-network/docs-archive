@@ -1,0 +1,60 @@
+---
+
+clone:
+  git-clone:
+    commands: |
+      set -ex
+      git clone -b ${DRONE_TAG:-$DRONE_BRANCH} $DRONE_REMOTE_URL .
+      if [ x$DRONE_PULL_REQUEST != x ]; then
+          git fetch origin refs/pull/$DRONE_PULL_REQUEST/head
+          EMAIL=ci git merge --no-edit FETCH_HEAD
+      fi
+      git rev-parse HEAD
+    image: "blang/latex:ctanfull"
+
+kind: pipeline
+name: techspec
+
+steps:
+- name: html
+  environment:
+    USER_ID: $UID
+  commands:
+  - "make html"
+  image: "ddidier/sphinx-doc"
+  when:
+    event:
+    - pull_request
+    - push
+    branch:
+    - master
+
+- name: clean
+  environment:
+    USER_ID: $UID
+  commands:
+  - "make clean"
+  image: "ddidier/sphinx-doc"
+  when:
+    event:
+    - pull_request
+    - push
+    branch:
+    - master
+
+- name: latexpdf
+  environment:
+    USER_ID: $UID
+  commands:
+  - "make latexpdf"
+  image: "ddidier/sphinx-doc"
+  when:
+    event:
+    - pull_request
+    - push
+    branch:
+    - master
+
+trigger:
+  branch:
+  - master
