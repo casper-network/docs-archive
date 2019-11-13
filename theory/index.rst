@@ -8,4 +8,3 @@ Theory
    abstract-consensus.rst
    naive-blockchain.rst
    highway.rst
-   economics.rst
