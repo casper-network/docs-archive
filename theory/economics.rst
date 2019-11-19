@@ -302,8 +302,3 @@ The key block :math:`b'` implicitly sets the range of the variable :math:`v` in
 the coordinate-wise definitions above.
 
 For equivocations, :math:`w_{\min}` is the zero vector.
-
-Algorithmic implementation
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-TBD
