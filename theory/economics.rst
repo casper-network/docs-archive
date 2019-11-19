@@ -96,7 +96,9 @@ cost of processing transactions. As long as there are enough honest validators
 including transactions, these "lazy" validators can keep on receiving a share of
 the transactions fees, despite not including transactions themselves.
 The following scheme is an attempt at solving the lazy validator problem by
-disincentivizing proposing empty or partially full blocks.
+disincentivizing proposing empty or partially full blocks. This is achieved by
+making the validators pay a fine, called the compensation fee, proportional to
+the space in the block left out empty.
 
 The protocol has the following parameters:
 
