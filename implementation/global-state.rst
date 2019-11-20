@@ -17,11 +17,11 @@ contains. In order for validators to efficiently judge the correctness of these
 changes, information about the new state needs to be communicated succinctly.
 Moreover, we need to be able to communicate pieces of the global state to users,
 while allowing them to verify the correctness of the parts they receive. For
-these reasons, the key-value store is implemented as a `Merkle-Patricia
-trie <https://github.com/ethereum/wiki/wiki/Patricia-Tree#modified-merkle-patricia-trie-specification-also-merkle-patricia-tree>`__.
+these reasons, the key-value store is implemented as a
+:ref:`Merkle trie <global-state-trie>`.
 
 In this chapter we describe what constitutes a “key”, what constitutes a
-“value”, the permissions model for the keys, and the Merkle-Patricia trie
+“value”, the permissions model for the keys, and the Merkle trie
 structure.
 
 .. _global-state-keys:
@@ -192,10 +192,10 @@ private from all others.
 
 .. _global-state-trie:
 
-Merkle-Patricia trie structure
+Merkle trie structure
 ------------------------------
 
-At a high level, a Merkle-Patricia trie is a key-value store data structure
+At a high level, a Merkle trie is a key-value store data structure
 which is able to be shared piece-wise in a verifiable way (via a construction
 called a Merkle proof). Each node is labelled by the hash of its data; for leaf
 nodes ---that is the data stored in that part of the tree, for other node types ---

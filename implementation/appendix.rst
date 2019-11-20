@@ -886,7 +886,7 @@ B - Serialization format
 
 The CasperLabs serialization format is used to pass data between wasm and the
 CasperLabs host runtime. It is also used to persist global state data in the
-Merkle-Patricia trie. The definition of this format is as follows:
+Merkle trie. The definition of this format is as follows:
 
 Basic data types
 ~~~~~~~~~~~~~~~~
