@@ -1,5 +1,28 @@
 # CasperLabs TechSpec
 
+## tl;dr on how to work and contribute
+
+- The whole document is written in a plaintext format called reStructuredText,
+  and compiled into HTML and PDF by a documentation generator called
+  [Sphinx](https://www.sphinx-doc.org/).
+- The recommended way of working on this doc is with the static HTML output with
+  live reload.
+  - Open up a terminal, go to the project directory and run `make livehtml`.
+  - Choose a page to work on. Open up that page in your text editor. Also
+    navigate to that page in your browser. Set the browser window and editor
+    side-by-side on your screen.
+  - Make changes in your editor. When you save, Sphinx Autobuild will
+    automatically refresh any browser tabs that has the document opened up.
+- The documents are hosted on the paid version of [Read the Docs](https://readthedocs.com/).
+  The CI workflow is described as follows:
+  - Contributors must create their own branch, commit, and create a pull request
+    on GitHub.
+  - The pull request must be reviewed by another member of the team before it
+    can be merged.
+  - When the branch is merged to `master`, Read the Docs automatically
+    recompiles all output, served on
+    [techspec.casperlabs.io](https://techspec.casperlabs.io).
+
 
 ## Installing Sphinx and Other Modules
 
@@ -71,7 +94,7 @@ make html
 This generates the website under `_build/html/`. To view it, open the file
 `_build/html/index.html` in your browser.
 
-### Static HTML - Live
+### Static HTML with live reload
 
 It's too tedious to type in `make html` every time one needs a preview.
 [Sphinx Autobuild](https://pypi.org/project/sphinx-autobuild/) is an external
