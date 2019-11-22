@@ -3,6 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+========
 Abstract
 ========
 
@@ -10,7 +11,9 @@ We present the design for a new Turing-complete smart contract platform, backed
 by a proof-of-stake (PoS) consensus algorithm, and WebAssembly (wasm). The
 intent is for this design to be implemented as a new permissionless,
 decentralized, public blockchain. The consensus protocol is built on Vlad
-Zamfir's correct-by-construction (CBC) Casper work. Here, we describe a
+Zamfir's
+`correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-casper-paper>`_
+work. Here, we describe a
 particular protocol in the CBC Casper family which is provably safe and live
 under partial synchrony without an in-protocol fault tolerance threshold. The
 computation model allows for efficient detection of when contract executions
@@ -27,7 +30,7 @@ contracts (without the need for  expensive cryptographic checks). We also
 provide discussions of the economics of our proof-of-stake implementation
 and our token policies.
 
-
+.. include:: disclaimer.rst
 
 
 .. toctree::
@@ -38,11 +41,3 @@ and our token policies.
    implementation/index
 
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
-.. _here: https://github.com/cbc-casper/cbc-casper-paper
