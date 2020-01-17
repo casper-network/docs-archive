@@ -8,5 +8,6 @@ In this document we will explain how to develop dAPP with CasperLabs Blockchain.
 .. toctree::
    :maxdepth: 2
 
-   intro.rst
+   intro
+   firstchapter
 
