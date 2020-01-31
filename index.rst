@@ -29,11 +29,10 @@ proof-of-stake implementation and our token policies.
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    theory/index
    implementation/index
    dapp/index
-
 

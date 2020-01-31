@@ -7,7 +7,7 @@ CasperLabs Blockchain.
 `Latest Rust docs from CasperLabs <https://docs.rs/casperlabs-contract-ffi/>`__
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    intro
    getting-started
@@ -16,5 +16,6 @@ CasperLabs Blockchain.
    contract-development
    writing-contracts
    smart-contract-API
-   contract-examples/index
+   contract-examples
    learning-dApp-development
+

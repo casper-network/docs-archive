@@ -6,7 +6,7 @@ the CasperLabs blockchain. Content covers what is included in our
 CasperLabs contract development kit enabling developers to run smart
 contracts in the CasperLabs runtime environment.
 
-- system (Genesis contracts)
+- system (Genesis) contracts
 - Example contracts - ERC20 example
 - Integration tests
 
@@ -23,42 +23,51 @@ You can use this guide to install and build dApps to run:
 
 Selecting an IDE
 ----------------
-- Pre-requisites
-- 
+You can choose to use the CasperLabs runtime environment or the environment of your choice.
 
-
-### The CasperLabs runtime environment
+## Pre-requisites
 
 - Rust plugin
 - Rust language support
 - Cargo
 
-### Runtime environment of your choice
+## CasperLabs runtime environment
 
-Choose an IDE that supports Rust.  
+1. Install Rust Tool Chain
 
+`clone https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine`
 
-This example is IntelliJ:
+1. Check your Pre-requisites
 
-- IntelliJ Rust Plugin
+## Runtime environment of your choice
+
+Choose an IDE that supports Rust.
+
+- Rust Plugin
 - Rust Language support
 - Rust
 
-Install Rust Tool Chain
-clone https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine
+
+1. Install Rust Tool Chain
+
+`clone https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine`
+
+1. Check your Pre-requisites
 
 
 Opening the execution-engine project
 ------------------------------------
-https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine
+
+`https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine`
 
 
 How to use the CasperLabs runtime environment
 ---------------------------------------------
 
 
-Deploying contracts to the DevNet
----------------------------------
+
+Deploying and Testing contracts to the DevNet
+---------------------------------------------
 
 ### Deploy
 
@@ -67,13 +76,10 @@ Deploying contracts to the DevNet
 
 Execution error codes - a listing and description of each error code
 --------------------------------------------------------------------
-https://docs.rs/casperlabs-contract-ffi/0.22.0/casperlabs_contract_ffi/contract_api/enum.Error.html
+
+`https://docs.rs/casperlabs-contract-ffi/0.22.0/casperlabs_contract_ffi/contract_api/enum.Error.html`
 
 
-
-### Example Contracts
-
-- ERC20
 
 
 

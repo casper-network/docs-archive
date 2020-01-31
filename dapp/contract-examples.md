@@ -1,9 +1,11 @@
-# Contract Examples
+Contract Examples
+=================
 
 Access our repository of contract examples [here](https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine/contracts/examples)
 
 
-## bonding-call
+bonding-call
+------------
 
 [**bonding-call example**](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/bonding-call/src/lib.rs)
 
@@ -49,7 +51,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 [bonding-call](https://docs.rs/casperlabs-contract-ffi/0.21.0/casperlabs_contract_ffi/all.html) 
 
 
-## counter-call
+counter-call
+------------
 
 >[**counter-call contract example**](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/bonding-call/src/lib.rs)
 
@@ -85,7 +88,8 @@ pub extern "C" fn call() {
 ```
 
 
-## Call Counter
+Call Counter
+------------
 
 Implementation of smart contract, that increments previously deployed counter.
 
@@ -122,7 +126,8 @@ $ casperlabs-client --host $HOST query-state \
 [counter-call](https://docs.rs/casperlabs-contract-ffi/0.21.0/casperlabs_contract_ffi/all.html) 
 
 
-## counter define
+counter define
+--------------
 
 ### counter-define contract example
 

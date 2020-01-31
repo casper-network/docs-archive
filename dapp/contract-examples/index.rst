@@ -9,6 +9,5 @@ CasperLabs Blockchain.
 .. toctree::
    :maxdepth: 2
 
-   contract-examples
    contract-example-erc20
    contract-example-erc20-logic
