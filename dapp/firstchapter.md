@@ -1,3 +1,0 @@
-## First chapter ##
-
-**Bold** explanations

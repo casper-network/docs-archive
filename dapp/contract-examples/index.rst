@@ -9,12 +9,6 @@ CasperLabs Blockchain.
 .. toctree::
    :maxdepth: 2
 
-   intro
-   getting-started
-   deploying-contracts
-   debugging-contracts
-   contract-development
-   writing-contracts
-   smart-contract-API
-   contract-examples/index
-   learning-dApp-development
+   contract-examples
+   contract-example-erc20
+   contract-example-erc20-logic

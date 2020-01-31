@@ -5,10 +5,7 @@ Access our repository of contract examples [here](https://github.com/CasperLabs/
 
 ## bonding-call
 
-#### About the bonding-call
-
-
->[**bonding-call example**](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/bonding-call/src/lib.rs)
+[**bonding-call example**](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/bonding-call/src/lib.rs)
 
 ```rust
 #![no_std]
@@ -52,8 +49,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 [bonding-call](https://docs.rs/casperlabs-contract-ffi/0.21.0/casperlabs_contract_ffi/all.html) 
 
 
-## counter-call contract example
-
+## counter-call
 
 >[**counter-call contract example**](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/bonding-call/src/lib.rs)
 
@@ -89,18 +85,18 @@ pub extern "C" fn call() {
 ```
 
 
-### Call Counter
+## Call Counter
 
 Implementation of smart contract, that increments previously deployed counter.
 
-#### Build
+### Call Counter Build
 
 Build the `wasm` file using `make` in the `execution-engine` directory.
 ```
 $ make build-contract/counter-call
 ```
 
-#### Deploy
+### Call Counter Deploy
 
 Deploy the counter smart contract.
 ```
@@ -110,7 +106,7 @@ $ casperlabs-client --host $HOST deploy \
     --session $COUNTER_CALL_WASM
 ```
 
-#### Check counter's value
+### Call Counter Check counter's value
 
 Query global state to check counter's value.
 
@@ -122,13 +118,13 @@ $ casperlabs-client --host $HOST query-state \
     --path "counter/count"
 ```
 
-#### Rust Crates
+### counter call Rust Crates
 [counter-call](https://docs.rs/casperlabs-contract-ffi/0.21.0/casperlabs_contract_ffi/all.html) 
 
 
+## counter define
 
-
-## counter-define contract example
+### counter-define contract example
 
 > [**counter define contract example**](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/counter-define/src/lib.rs)
 
@@ -206,7 +202,7 @@ pub extern "C" fn call() {
 
 ```
 
-#### Deploy Counter
+### counter define deploy counter
 
 Implementation of URef-based counter.
 
@@ -218,14 +214,20 @@ The `counter` smart contract exposes two methods:
 
 
 
-#### Build
+### counter define Build
 
 Build the `wasm` file using `make` in the `execution-engine` directory.
 
 `$ make build-contract/counter-define`
 
 
-> **Deploy**
+### counter define deploy
+
+
+### deploy the counter smart contract.
+
+
+> **counter define deploy example**
 
 ```shell
 $ casperlabs-client --host $HOST deploy \
@@ -234,12 +236,11 @@ $ casperlabs-client --host $HOST deploy \
     --session $COUNTER_DEFINE_WASM
 ```
 
-#### Deploy
 
-Deploy the counter smart contract.
+### counter define check  counter's value
 
-
-**Check counter's value**
+Query global state to check counter's value.
+**conter define check counter's value example**
 
 ```shell
 $ casperlabs-client --host $HOST query-state \`
@@ -250,9 +251,7 @@ $ casperlabs-client --host $HOST query-state \`
 ```
 
 
-#### Check counter's value
 
-Query global state to check counter's value.
 
 
 

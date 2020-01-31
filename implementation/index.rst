@@ -1,8 +1,9 @@
+============================
 CasperLabs Blockchain Design
 ============================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    p2p.rst
    global-state.rst

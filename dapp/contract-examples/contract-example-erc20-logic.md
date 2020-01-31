@@ -1,7 +1,15 @@
-## erc20-logic contract example
+# Contract Example erc20-logic
+
+## About erc20-logic contracts
+
+EE internal errors will be mapped to the appropriate string message to return to Node via an UpgradeDeployError message.
+
 
 
 > [**erc20-logic contract example**]()
+
+.. include
+
 
 ```rust
 #![no_std]
@@ -300,43 +308,4 @@ mod tests {
 ```
 
 
-#### About erc20-logic contracts
 
-#### Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur
-adipiscing elit ut aliquam purus sit amet luctus. Gravida neque
-convallis a cras semper auctor neque vitae. Pellentesque elit eget
-gravida cum sociis natoque. Velit sed ullamcorper morbi tincidunt ornare
-massa eget. In fermentum et sollicitudin ac orci phasellus egestas.
-Eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada.
-Et molestie ac feugiat sed lectus vestibulum mattis. Non odio euismod
-lacinia at. Vitae congue eu consequat ac felis donec et. Ornare aenean
-euismod elementum nisi quis eleifend. E gestas fringilla phasellus
-faucibus scelerisque eleifend donec pretium vulputate sapien. Integer
-eget aliquet nibh praesent tristique magna. Non quam lacus suspendisse
-faucibus interdum posuere lorem.
-
-Rutrum tellus pellentesque eu tincidunt
-tortor aliquam. Natoque penatibus et magnis dis parturient montes
-nascetur ridiculus. Sed nisi lacus sed viverra tellus in hac. Velit
-dignissim sodales ut eu. In tellus integer feugiat scelerisque varius
-morbi. Erat pellentesque adipiscing commodo elit at imperdiet. Elementum
-eu facilisis sed odio morbi quis commodo odio aenean. Quisque non tellus
-orci ac auctor augue mauris. Dignissim diam quis enim lobortis
-scelerisque fermentum dui faucibus in. Massa enim nec dui nunc. Nulla
-posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Donec
-ultrices tincidunt arcu non sodales neque sodales ut. Consectetur
-adipiscing elit pellentesque habitant. Lectus quam id leo in vitae
-turpis massa. Semper feugiat nibh sed pulvinar proin.
-Elementum integer enim neque volutpat ac tincidunt.
-
-Magna etiam tempororci eu lobortis. Vel orci porta non pulvinar neque.
-Varius duis at consectetur lorem donec massa sapien. Suspendisse sed
-nisi lacus sed viverra tellus. Adipiscing at in tellus integer. Enim eu
-turpis egestas pretium aenean pharetra magna ac. Est lorem ipsum dolor
-sit. Viverra nam libero justo laoreet sit amet cursus sit. Ultrices in
-iaculis nunc sed augue lacus. Ultrices tincidunt arcu non sodales neque.
-Cursus euismod quis viverra nibh cras. Dignissim convallis aenean et
-tortor at risus viverra adipiscing. Scelerisque varius morbi enim nunc
-faucibus a pellentesque sit amet. Pellentesque pulvinar pellentesque
-habitant morbi tristique senectus.
