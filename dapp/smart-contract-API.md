@@ -4,9 +4,6 @@ Smart Contract API
 You can use this documentation to access our CLContract API endpoints, and get information about CLContract types and how to build your own contracts.
 
 
-
-
-
 Rust
 ----
 

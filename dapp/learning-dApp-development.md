@@ -1,21 +1,20 @@
 Learning About dApp Development
 -------------------------------
 
+## What you need to Know
+
+[Building Contracts
+](https://github.com/CasperLabs/CasperLabs/blob/master/docs/CONTRACTS.md) ------------------
 
 
-Building Contracts
-------------------
+### [About the CL Blockchain](https://techspec.casperlabs.io/en/latest/implementation/index.html#casperlabs-blockchain-design)
 
 
 
-### About the CL Blockchain
-
-
-
-Blockchain 101
+[Blockchain 101](https://casperlabs.atlassian.net/wiki/spaces/EN/pages/8028213/Reading+List#ReadingList-Blockchain101)
 --------------
 
-### Shared global state
+### [Shared global state](https://techspec.casperlabs.io/en/latest/implementation/global-state.html#global-state-head)
 
 
 
@@ -26,7 +25,7 @@ CL Blockchain 101
 
 ### Block Merging in CL
 
-### Finalization & Safety
+### [Finalization](https://techspec.casperlabs.io/en/latest/theory/abstract-consensus.html#finality) & [Safety]()
 
 
 
@@ -40,11 +39,7 @@ Contracts are built with Rust and compiled to WASM
 Writing Contracts on CL
 -----------------------
 
-
-
 ### The contract API
-
-
 
 ### Structuring your project
 

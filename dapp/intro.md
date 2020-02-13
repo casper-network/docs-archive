@@ -11,10 +11,15 @@ Who is this guide for
 
 This documentation is intended for dApp Developers interested in creating **smart contracts**. You can use this documentation to learn about CasperLabs and how you can build applications with our platform.
 
+[DApp Developers](https://github.com/CasperLabs/casperlabs-wiki-docs/blob/dev/Home.md#dapp-developers) (DApp Devs) are members of our Community who build Apps using our CasperLabs features. You can install our environment locally, create and test Smart contracts with our Smart Contracts and Test Libraries, and use these libraries to build your own applications,
+
+
+
 Purpose of this guide
 ---------------------
 
 This document highlights the set of our core documentation prioritized for you to get started with our platform. This documentation is accessed here and located on our GitHub repository, the single source of truth for all Smart Contract Developer documentation.  The topics on the index include present and future documentation initiatives in our roadmap.
+
 
 
 Background
