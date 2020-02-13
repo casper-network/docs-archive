@@ -1,7 +1,7 @@
 Introduction
 ============
 
-Welcome to the CasperLabs project, implemented as a new permissionless, decentralized, public blockchain. Our open source Turing-complete smart contract platform is backed by a proof-of-stake (PoS) consensus algorithm, and WebAssembly (wasm). Our particular consensus protocol in the CBC Casper family, backed by Vlad Zamfir’s correct-by-construction (CBC) Casper work, is provably safe and live under partial synchrony without an in-protocol fault tolerance threshold.
+Welcome to the CasperLabs project, implemented as a new permissionless, decentralized, public blockchain. Our open source Turing-complete smart contract platform is backed by a proof-of-stake (PoS) consensus algorithm, and WebAssembly (wasm). Our particular consensus protocol in the CBC Casper family, built on Vlad Zamfir’s correct-by-construction (CBC) Casper work, is provably safe and live under partial synchrony without an in-protocol fault tolerance threshold.
 
 Read our [Tech Spec](https://techspec.casperlabs.io/en/latest/) to Learn more about what we're building so you can become a contributor.
 
@@ -9,7 +9,7 @@ Read our [Tech Spec](https://techspec.casperlabs.io/en/latest/) to Learn more ab
 Who is this guide for
 ---------------------
 
-This documentation is intended for dApp Developers interested in creating **smart contracts**. You can use this documentation to learn about CasperLabs and how you can build applications with tools from our platform.
+This documentation is intended for dApp Developers interested in creating **smart contracts**. You can use this documentation to learn about CasperLabs and how you can build applications with our platform.
 
 Purpose of this guide
 ---------------------

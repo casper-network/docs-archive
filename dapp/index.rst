@@ -10,6 +10,7 @@ CasperLabs Blockchain.
    :maxdepth: 3
 
    intro
+   dApp-dev-getting-started-content
    getting-started
    deploying-contracts
    debugging-contracts
@@ -17,5 +18,6 @@ CasperLabs Blockchain.
    writing-contracts
    smart-contract-API
    contract-examples
+   subcommand-deploy-parameters
    learning-dApp-development
 
