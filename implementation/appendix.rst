@@ -788,8 +788,8 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
          tokens from the specified purse to the main purse of the target account.
          If the target account does not exist then it is automatically created, and
          the tokens are transferred to the main purse of the new account. The
-         source is a serialized ``URef``, which is equivalent to a serialized
-         ``URef``. The target is a serialized ``PublicKey`` (i.e. 36 bytes where the
+         source is a serialized ``URef``.
+         The target is a serialized ``PublicKey`` (i.e. 36 bytes where the
          first 4 bytes are the number ``32`` in little endian encoding, and the
          remaining 32-bytes are the public key). The amount must be a serialized
          512-bit unsigned integer. This function causes a ``Trap`` if the source
@@ -826,8 +826,8 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
          tokens from the specified source purse to the specified target purse. If
          the target account does not exist then it is automatically created, and
          the tokens are transferred to the main purse of the new account. The
-         source is a serialized ``URef``, which is equivalent to a serialized
-         ``URef``. The target is also a serialized ``URef``. The amount must be a
+         source is a serialized ``URef``.
+         The target is also a serialized ``URef``. The amount must be a
          serialized 512-bit unsigned integer. This function causes a ``Trap`` if the
          source or target cannot be de-serialized as a ``URef`` or the amount
          cannot be de-serialized into a ``U512``. The return value indicated what
