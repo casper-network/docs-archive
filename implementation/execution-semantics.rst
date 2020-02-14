@@ -179,7 +179,7 @@ description of the functions available for contracts to import, see :ref:`Append
 
 -  :ref:`Mint <tokens-mints-and-purses>` functionality
 
-   -  ``create_purse`` creates a new empty purse, returning the ``PurseId``
+   -  ``create_purse`` creates a new empty purse, returning the ``URef`` to the purse
    -  ``get_balance`` reads the balance of a purse
    -  ``transfer_to_account`` transfers from the present account’s main purse to the
       main purse of a specified account (creating the account if it does not

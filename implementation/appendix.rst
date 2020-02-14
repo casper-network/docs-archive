@@ -693,9 +693,9 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
 
    -  Arguments:
 
-      -  ``purse_id_ptr: i32``: pointer to position in wasm memory where to write the
-         created ``PurseId``
-      -  ``purse_id_size: i32``: allocated size for the ``PurseId``
+      -  ``purse_ptr: i32``: pointer to position in wasm memory where to write the
+         created ``URef``
+      -  ``purse_size: i32``: allocated size for the ``URef``
 
    -  Return:
 
@@ -705,11 +705,11 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
    -  Behavior:
 
       -  This function uses the mint contract to create a new, empty purse. If the
-         call is successful then the ``PurseId`` (in serialized form) is written to
+         call is successful then the ``URef`` (in serialized form) is written to
          the indicated place in wasm memory. It is up to the caller to ensure at
-         least ``purse_id_size`` bytes are allocated at ``purse_id_ptr``, otherwise
+         least ``purse_size`` bytes are allocated at ``purse_ptr``, otherwise
          data corruption may occur. This function causes a ``Trap`` if
-         ``purse_id_size`` is not equal to 38.
+         ``purse_size`` is not equal to 38.
 
 -  ``transfer_to_account``
 
@@ -768,8 +768,8 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
    -  Arguments:
 
       -  ``source_ptr: i32``: pointer in wasm memory to bytes representing the source
-         ``PurseId`` to transfer from
-      -  ``source_size: i32``: size of the source ``PurseId`` (in bytes)
+         ``URef`` to transfer from
+      -  ``source_size: i32``: size of the source ``URef`` (in bytes)
       -  ``target_ptr: i32``: pointer in wasm memory to bytes representing the target
          account to transfer to
       -  ``target_size: i32``: size of the target (in bytes)
@@ -788,12 +788,12 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
          tokens from the specified purse to the main purse of the target account.
          If the target account does not exist then it is automatically created, and
          the tokens are transferred to the main purse of the new account. The
-         source is a serialized ``PurseId``, which is equivalent to a serialized
+         source is a serialized ``URef``, which is equivalent to a serialized
          ``URef``. The target is a serialized ``PublicKey`` (i.e. 36 bytes where the
          first 4 bytes are the number ``32`` in little endian encoding, and the
          remaining 32-bytes are the public key). The amount must be a serialized
          512-bit unsigned integer. This function causes a ``Trap`` if the source
-         cannot be de-serialized as a ``PurseId``, or the target cannot be
+         cannot be de-serialized as a ``URef``, or the target cannot be
          de-serialized as a ``PublicKey`` or the amount cannot be de-serialized into
          a ``U512``. The return value indicated what occurred, where 0 means a
          successful transfer to an existing account, 1 means a successful transfer
@@ -806,10 +806,10 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
    -  Arguments:
 
       -  ``source_ptr: i32``: pointer in wasm memory to bytes representing the source
-         ``PurseId`` to transfer from
-      -  ``source_size: i32``: size of the source ``PurseId`` (in bytes)
+         ``URef`` to transfer from
+      -  ``source_size: i32``: size of the source ``URef`` (in bytes)
       -  ``target_ptr: i32``: pointer in wasm memory to bytes representing the target
-         ``PurseId`` to transfer to
+         ``URef`` to transfer to
       -  ``target_size: i32``: size of the target (in bytes)
       -  ``amount_ptr: i32``: pointer in wasm memory to bytes representing the amount
          to transfer to the target account
@@ -826,10 +826,10 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
          tokens from the specified source purse to the specified target purse. If
          the target account does not exist then it is automatically created, and
          the tokens are transferred to the main purse of the new account. The
-         source is a serialized ``PurseId``, which is equivalent to a serialized
-         ``URef``. The target is also a serialized ``PurseId``. The amount must be a
+         source is a serialized ``URef``, which is equivalent to a serialized
+         ``URef``. The target is also a serialized ``URef``. The amount must be a
          serialized 512-bit unsigned integer. This function causes a ``Trap`` if the
-         source or target cannot be de-serialized as a ``PurseId`` or the amount
+         source or target cannot be de-serialized as a ``URef`` or the amount
          cannot be de-serialized into a ``U512``. The return value indicated what
          occurred, where 0 means a successful transfer, 1 means the transfer
          failed (this could be because the source purse had insufficient tokens or
@@ -839,9 +839,9 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
 
    -  Arguments:
 
-      -  ``purse_id_ptr: i32``: pointer in wasm memory to the bytes representing the
-         ``PurseId`` of the purse to get the balance of
-      -  ``purse_id_size: i32``: size of the ``PurseId`` (in bytes
+      -  ``purse_ptr: i32``: pointer in wasm memory to the bytes representing the
+         ``URef`` of the purse to get the balance of
+      -  ``purse_size: i32``: size of the ``URef`` (in bytes
 
    -  Return:
 
@@ -850,9 +850,9 @@ format is used. See :ref:`Appendix B <appendix-b>` for details.
    -  Behavior:
 
       -  This function uses the mint contract’s balance function to get the balance
-         of the specified ``PurseId``. It causes a ``Trap`` if the bytes in wasm memory
-         from ``purse_id_ptr`` to ``purse_id_ptr + purse_id_size`` cannot be
-         de-serialized as a ``PurseId``. The return value is the size of the result
+         of the specified purse. It causes a ``Trap`` if the bytes in wasm memory
+         from ``purse_ptr`` to ``purse_ptr + purse_size`` cannot be
+         de-serialized as a ``URef``. The return value is the size of the result
          in bytes. The result is copied to the host buffer and thus can be obtained
          by any function which copies the buffer into wasm memory (e.g.
          ``get_read``). The result bytes are serialized from type ``Option<U512>`` and
