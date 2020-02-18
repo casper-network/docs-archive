@@ -51,15 +51,19 @@ $ casperlabs-client --host $HOST query-state \
 
 counter define
 --------------
-> [**counter define contract example**](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/counter-define/src/lib.rs)
 
 create map of references for stored contract
+
+> [**counter define contract example**](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/counter-define/src/lib.rs)
+
 
 ### counter define deploy counter
 
 Implementation of URef-based counter.
 
-The deployement of this session code, creates new named key `counter`, that points to the deployed smart contract. The `counter` smart contract will have one named key called `count`, that points to the actual integer value, that is the counter.
+The deployement of this session code, creates new named key `counter`, that points to the deployed smart contract.
+
+The `counter` smart contract will have one named key called `count`, that points to the actual integer value, that is the counter.
 
 The `counter` smart contract exposes two methods:
 - `inc`, that increments the `count` value by one;

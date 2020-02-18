@@ -39,7 +39,6 @@ GIT [KEYS.md](https://github.com/CasperLabs/CasperLabs/blob/master/docs/KEYS.md)
 
 
 
-
 Optimizing for Commutativity (Block Merging) properties
 -------------------------------------------------------
 

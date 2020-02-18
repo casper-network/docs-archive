@@ -7,10 +7,13 @@ Contract Development
 
 <!--As a dApp developer, I would like to have the right documentation and information necessary for me to build an app running on Casperlabs blockchain. I would like to develop a dApp from scratch to understand the deficiencies in the documentation available to dApp developers. -->
 
-<!--Use only publically available documentation -->
+<!--Use only publicly available documentation -->
+
+
 
 Pre-requisites
 --------------
+
 
 Supported platforms
 -------------------
@@ -18,8 +21,12 @@ Supported platforms
 Using Rust
 ----------
 
+
+
 Writing contracts
 -----------------
+
+
 
 
 Develop working dApp
