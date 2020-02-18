@@ -44,8 +44,8 @@ description). We call the indivisible units which make up our token *motes*.
 
 .. _tokens-mints-and-purses:
 
-Mints and pursers
------------------
+Mints and purses
+----------------
 
 A *mint* is a contract which has the ability to produce new motes of a
 particular type. We allow for multiple mote types (each of which would have
@@ -54,16 +54,20 @@ different tokens, similar to ERC20 tokens on Ethereum. CasperLabs will deploy a
 specific mint contract and it will manage the CasperLabs utility token (used for
 paying for computation and bonding onto the network). The mint also maintains
 all the balances for its type of mote. Each balance is associated with a
-``PurseId``, which acts as a sort of key to instruct the mint to perform actions
+``URef``, which acts as a sort of key to instruct the mint to perform actions
 on that balance (e.g., transfer motes). Informally, we will refer to these
 balances as *purses* and conceptually they represent a container for motes. The
-``PurseId`` is how a purse is referenced from outside the mint.
+``URef`` is how a purse is referenced from outside the mint.
 
-``PurseId``\ s have the same permissions model as
-:ref:`URefs <global-state-urefs-permissions>` (indeed our implementation
-models ``PurseId``\ s as simply a new-type wrapper over a ``URef``). Each ``PurseId``
-has ``AccessRights`` which determine what actions are allowed to be performed
-using that ID. The basic global state options map onto more standard monetary
+The ``AccessRights`` of the :ref:`URefs <global-state-urefs-permissions>`
+permissions model determine what actions are allowed to be performed
+when using a ``URef`` associated with a purse.
+
+As all ``URef``\ s are unforgable, the only way to interact with
+a purse is for a ``URef`` with appropriate ``AccessRights``
+to be given to the current context in a valid way (see ``URef`` permissions for details).
+
+The basic global state options map onto more standard monetary
 operations according to the table below:
 
 =================== =============================
@@ -73,10 +77,6 @@ Add                 Deposit (i.e. transfer to)
 Write               Withdraw (i.e. transfer from)
 Read                Balance check
 =================== =============================
-
-``PurseId``\ s are unforgable (just like ``URef``\ s), so the only way to interact with
-a purse is for the ID to be given to the current context in a valid way (see ``URef``
-permissions for details).
 
 We will use these definitions throughout this chapter as we describe the
 implementation and usage of tokens on the CasperLabs system.
@@ -89,7 +89,7 @@ The mint contract interface
 A valid mint contract exposes the following methods (recall that many mint
 implementations may exist, each corresponding to a different “currency”).
 
--  ``transfer(source: PurseId, target: PurseId, amount: Motes) -> TransferResult``
+-  ``transfer(source: URef, target: URef, amount: Motes) -> TransferResult``
 
    -  ``source`` must have at least ``Write`` access rights, ``target`` must have at
       least ``Add`` access rights
@@ -98,7 +98,7 @@ implementations may exist, each corresponding to a different “currency”).
 
 -  ``mint(amount: Motes) -> MintResult``
 
-   -  ``MintResult`` either gives the created ``PurseId`` (with full access rights),
+   -  ``MintResult`` either gives the created ``URef`` (with full access rights),
       which now has balance equal to the given ``amount``; or an error due to the
       minting of new motes not being allowed
    -  In the CasperLabs mint only the system account can call ``mint``, and it has
@@ -106,23 +106,23 @@ implementations may exist, each corresponding to a different “currency”).
       the software itself can execute contracts in the context of the system
       account
 
--  ``create() -> PurseId``
+-  ``create() -> URef``
 
    -  a convenience function for ``mint(0)`` which cannot fail because it is always
       allowed to create an empty purse
 
--  ``balance(purse: PurseId) -> Option<Motes>``
+-  ``balance(purse: URef) -> Option<Motes>``
 
    -  ``purse`` must have at least ``Read`` access rights
    -  ``BalanceResult`` either returns the number of motes held by the ``purse``, or
-      nothing if the ``PurseId`` is not valid
+      nothing if the ``URef`` is not valid
 
 .. _tokens-using-purses:
 
-Using ``PurseId``\ s
---------------------
+Using purse ``URef``\ s
+-----------------------
 
-It is dangerous to pass a ``PurseId`` with ``Write`` permissions to any contract. A malicious contract may use that access to take more tokens than was intended or share that ``PurseId`` with another contract which was not meant to have that access. Therefore, if a contract requires a purse with ``Write`` permissions, it is recommended to always use a “payment purse”, which is a purse used for that single transaction and nothing else. This ensures even if that ``PurseId`` becomes compromised it does not contain any more funds than the user intended on giving.
+It is dangerous to pass a purse's ``URef`` with ``Write`` permissions to any contract. A malicious contract may use that access to take more tokens than was intended or share that ``URef`` with another contract which was not meant to have that access. Therefore, if a contract requires a purse with ``Write`` permissions, it is recommended to always use a “payment purse”, which is a purse used for that single transaction and nothing else. This ensures even if that ``URef`` becomes compromised it does not contain any more funds than the user intended on giving.
 
 .. code:: rust
 
@@ -134,8 +134,8 @@ It is dangerous to pass a ``PurseId`` with ``Write`` permissions to any contract
        _ => contract_api::revert(1),
    }
 
-To avoid this inconvenience, it is better practice for application developers
-intending to accept payment on-chain to make a version of their own ``PurseId``
+To avoid this inconvenience, it is a better practice for application developers
+intending to accept payment on-chain to make a version of their own purse ``URef``
 with ``Read`` access rights publicly available. This allows clients to pay via a
 transfer using their own purse, without either party exposing ``Write`` access to any purse.
 
@@ -146,7 +146,7 @@ Purses and accounts
 
 Every :ref:`accounts-head` on the CasperLabs system has a purse associated
 with the CasperLabs system mint, which we call the account’s “main purse”.
-However, for security reasons, the ``PurseId`` of the main purse is only available to code running in the context of that account (i.e. only in payment or session code). Therefore, the mint’s ``transfer`` method which accepts ``PurseId``\ s is not the most convenient to use when transferring between account main purses. For this reason, CasperLabs supplies a
+However, for security reasons, the ``URef`` of the main purse is only available to code running in the context of that account (i.e. only in payment or session code). Therefore, the mint’s ``transfer`` method which accepts ``URef``\ s is not the most convenient to use when transferring between account main purses. For this reason, CasperLabs supplies a
 `transfer_to_account <https://docs.rs/casperlabs-contract-ffi/0.13.0/casperlabs_contract_ffi/contract_api/fn.transfer_to_account.html>`__
 function which takes the public key used to derive the
 :ref:`identity key <global-state-account-key>` of the account. This function uses the mint transfer function with the current account’s main purse as the ``source``and the main purse of the account at the provided key as the ``target``. The `transfer_from_purse_to_account`` function is similar, but uses a given purse as the ``source`` instead of the present account’s main purse.
