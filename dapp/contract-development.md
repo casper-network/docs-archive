@@ -16,6 +16,7 @@ Pre-requisites
 
 
 Supported platforms
+
 -------------------
 
 Using Rust
@@ -25,7 +26,6 @@ Using Rust
 
 Writing contracts
 -----------------
-
 
 
 

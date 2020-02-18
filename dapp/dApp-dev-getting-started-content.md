@@ -47,7 +47,7 @@ We support building smart contracts with libraries provided for the following la
 
   ## What you need to Know
 
-  [How contracts are built and how they work with the platform]
+  [How contracts are built and how they work with the platform](https://github.com/CasperLabs/CasperLabs/tree/release-v0.12/execution-engine/contracts/examples)
 
   Contracts are written in supported languages and compiled with WASM.
 
@@ -57,6 +57,10 @@ We support building smart contracts with libraries provided for the following la
   What's it for, what's in it, how is it used for DApp developers
 
   - [Contract types] -- Categories of contracts and their purpose
+
+    - ...
+    - ...
+    - ...
 
   - [Code Review](https://github.com/CasperLabs/CasperLabs/blob/dev/CONTRIBUTING.md)-- recommendations on coding standards, and how to review and publish your code
 

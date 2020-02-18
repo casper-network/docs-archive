@@ -52,7 +52,7 @@ $ casperlabs-client --host $HOST query-state \
 counter define
 --------------
 
-create map of references for stored contract
+The counter defin smart contract creates a map of references for stored contract.
 
 > [**counter define contract example**](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/counter-define/src/lib.rs)
 
