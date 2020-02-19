@@ -22,9 +22,12 @@ With this Kit Using you will be able to build, debug, deploy contracts using our
 
 We support building smart contracts with libraries provided for the following languages.
 
-- [Rust] A Rust library for writing smart contracts on the [CasperLabs Platform](https://techspec.casperlabs.io/).
+- [Rust](...) A Rust library for writing smart contracts on the [CasperLabs Platform](https://techspec.casperlabs.io/).
 - [Assemblyscript](https://github.com/AssemblyScript/assemblyscript) Typescript  Library 
-  - Truffle
+  - [Truffle](...)
+
+
+
 
 
 ### Pre-requisites to build smart contracts
@@ -56,13 +59,14 @@ We support building smart contracts with libraries provided for the following la
 
   What's it for, what's in it, how is it used for DApp developers
 
-  - [Contract types] -- Categories of contracts and their purpose
+  - [Contract Categories] -- Categories of contracts and their purpose
 
     - ...
     - ...
     - ...
 
-  - [Code Review](https://github.com/CasperLabs/CasperLabs/blob/dev/CONTRIBUTING.md)-- recommendations on coding standards, and how to review and publish your code
+
+  - [Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/dev/CONTRIBUTING.md)-- recommendations on coding standards, and how to review and publish your code
 
   - [Getting Help](https://github.com/CasperLabs/CasperLabs/tree/dev#getting-help) - Find us on Discord and Telegram.
 

@@ -4,7 +4,7 @@ Writing contracts
 The [ContractAPI](https://docs.rs/casperlabs-contract-ffi/0.22.0/casperlabs_contract_ffi/#writing-smart-contracts) provides support for writing smart contracts.
 
 All our crates are published on crates.io [here](https://crates.io/search?q=casperlabs)
-The ones which I think are worth pointing out to app devs are
+<!--The ones which I think are worth pointing out to app devs are-->
 We highlight the following for DApp developement
 1. CasperLabs Rust Types are located [here](https://docs.rs/casperlabs-types)
 1. CasperLabs Contract API [here](https://docs.rs/casperlabs-contract)
@@ -46,6 +46,7 @@ GIT [KEYS.md](https://github.com/CasperLabs/CasperLabs/blob/master/docs/KEYS.md)
 
 Payment Code and Session Code
 -----------------------------
+**Payment code**
 
 This section overview provides explanation about what payment code is and why we have it.
 
@@ -60,9 +61,11 @@ The payment code is as powerful as the session code, same exact instructions and
 
 So a Deploy consists of two atomic computations, `--payment` and `--session`, meaning that the payment code entirely happens and it gets submitted to the blockchain or it doesn't happen and its effects are reverted. So payment code runs out of gas, all that was done gets reverted and doesn't get committed to the chain.
 
-Q: great do I pay for this failure
+Payment (e.g. transaction failure)
 
-So if it fails, the gas that it is given to run on the outset is considered like a loan, no money was given. If it fails to complete, we take the loan amount out of the accounts main purse. You have the option to pay in a different way if it is within those limits.
+So if a deploy fails, the gas that it is given to run on the outset is considered like a loan, no money was given. If it fails to complete, we take the loan amount out of the accounts main purse.
+
+(There is potential for providing options to pay in a different way if a deploy is within the standard limits, however this documention covers standard deployments.)
 
 Funds are taken from the [main purse](...) for the computation, if the account didn't have enough CLX in the main purse to cover that loan, the account doesn't do any computation at all, it fails as a pre-condition failure.
 
@@ -77,6 +80,56 @@ The payment code is as powerful as the session code in terms as what you are abl
 PC and SC are equally as powerful -- flexibility developed as a conscious piece of the design.
 
 Technical details about Payment Code can be found [here](https://techspec.casperlabs.io/en/latest/implementation/execution-semantics.html#payment-code)
+
+
+**Session Code**
+
+`--Session Code` is the second half of a deploy, and contains the logic you really care about, i.e., the reason for what you do on the blockchain in the first place, e.g., from a simple trivial Token transfer  to complex deploy for like booking contracts, aggregating the results, and writing them into a log.
+
+The session code is also bounded by a gas limit determined by the amount the payment code paid, less it's loan (E.g. loan is 10 and you paid a 100 you have 90 units remaining to use on your Session Code)
+
+The session code is also an atomic unit in the sense that it entirely happens or entirely does not happen. So, for example if you run out of gas or an error occurs in your deploy, whatever causes it to fail, everything is reverted, so for example if you make nested calls, everything in that nested call gets reverted. So, if at the end of a long chain of calls the deploy runs out of gas, everything that every one of those calls did **triggerred by that session code** gets reverted.
+
+It's a success and all effects happens, or a a failure none of those effects happens (and this conscious by design (the interest is for it  to be impossible for it to end up in a partial state)
+
+So if contract relies on certain invariants we don't want that invariants that temporarily break during the course of an execution we want to be able to assume they are holding for an execution so we want to make it impossible to stop in the middle,
+
+Q do we always pay a fixed amount for payment code
+
+E.g. 10 for the loan,
+
+Can create a payment code that pays less or more
+Limited in the sense of number of lines and operations
+
+Technically less than the cost of the payment execution which may or may not be the entire loan (if loan was 20 and Payment cost is 8 Session you would have 92 units)
+
+So the session code is technically less
+
+Q. estimation of execution
+
+Not a formal tool to estimate gas e.g. gas estimator --
+
+The way the EE works can always estimate the gas so you can do this (manual)
+The EE can always estimate gas -- with a dry run (a manual process e.g. standalone node, or an EE test framework -- run it locally in same environment you expect it to run in production and estimate it that way)
+
+
+This is Deterministic
+
+Determinism is incredibly important in Blockchain
+
+You need to get the same answer on every single node on the network, not only deterministic run to run but also on every machine as well.
+
+Summary
+
+PC and SC are symmetric in the sense that they are both equally as powerful and everything said that applies to one will also apply to the other.
+
+Both atomic -- happen or don't
+
+Session Code is conditional on payment code execution, so if payment code fails, the session code never executes, and if it succeeds, runs with a gas limit based on how much the payment code paid.
+
+
+Techspec
+
 
 
 Storing and calling contracts

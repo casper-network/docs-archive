@@ -1,19 +1,21 @@
-Contract Examples
-=================
+About Contract Examples
+=======================
 
-You can access our repository of contract examples [here](https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine/contracts/examples)
+You can access our repository of contract examples [here](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples)
 
-bonding-call
+Bonding Call
 ------------
-[**bonding-call**](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/bonding-call/src/lib.rs)
+
+[bonding-call contract example](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/bonding-call/src/lib.rs)
 
 Accepts bonding amount (of type `U512`) as first argument.
 Issues bonding request to the PoS contract.
 
 
-[bonding-call](https://docs.rs/casperlabs-contract-ffi/0.21.0/casperlabs_contract_ffi/all.html)
+[bonding-call-api](https://docs.rs/casperlabs-contract-ffi/0.21.0/casperlabs_contract_ffi/all.html)
 
->[**counter-call contract](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/bonding-call/src/lib.rs)
+## Call Counter
+[counter-call contract example](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/bonding-call/src/lib.rs)
 
 Implementation of smart contract that increments previously deployed counter.
 
@@ -49,10 +51,10 @@ $ casperlabs-client --host $HOST query-state \
 [counter-call](https://docs.rs/casperlabs-contract-ffi/0.21.0/casperlabs_contract_ffi/all.html) 
 
 
-counter define
+Define counter
 --------------
 
-The counter defin smart contract creates a map of references for stored contract.
+The counter define smart contract creates a map of references for stored contract.
 
 > [**counter define contract example**](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/contracts/examples/counter-define/src/lib.rs)
 
@@ -78,9 +80,6 @@ Build the `wasm` file using `make` in the `execution-engine` directory.
 
 ### counter define deploy
 
-### deploy the counter smart contract.
-
-
 **counter define deploy example**
 
 ```shell
@@ -90,9 +89,10 @@ $ casperlabs-client --host $HOST deploy \
     --session $COUNTER_DEFINE_WASM
 ```
 
-### counter define check  counter's value
+### counter define check counter's value
 
 Query global state to check counter's value.
+
 **conter define check counter's value example**
 
 ```shell
@@ -103,18 +103,27 @@ $ casperlabs-client --host $HOST query-state \`
     `--path "counter/count"`
 ```
 
+## erc20-smart-contract
 
-[erc20-smart-contract](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples/erc20-smart-contract)
+[erc20-smart-contract layer](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples/erc20-smart-contract)
 
-[erc20-logic contract example](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples/erc20-logic)
-## About erc20-logic
+[erc20-logic layer](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples/erc20-logic)
+
 EE internal errors will be mapped to the appropriate string message to return to Node via an `UpgradeDeployError` message.
+
+## hello-name-call
 
 [hello-name-call contract example](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples/hello-name-call)
 
+## hello-name-define
+
 [hello-name-define](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples/hello-name-define)
 
+## mailimg-list-call
+
 [mailing-list-call](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples/mailing-list-call)
+
+## mailing-list-define
 
 [mailing-list-define](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples/mailing-list-call)
 
