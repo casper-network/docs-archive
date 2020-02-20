@@ -2,7 +2,7 @@
 Getting started
 ===============
 
-This guide is intended to support the development of smart contracts on the CasperLabs blockchain enabling developers to run smart contracts in the CasperLabs runtime environment included with our CasperLabs contract development kit:
+To support the development of smart contracts on the CasperLabs blockchain enabling developers to run smart contracts in the CasperLabs runtime environment included with our CasperLabs contract development kit as follows:
 
 - [System (Genesis) contracts](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/system) - to bond to the network
 - [Example contracts](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples) - ERC20 example - smart contract examples
@@ -19,8 +19,6 @@ You can use this guide to build DApps to run:
 - Your local environment
 
 In the [CasperLabs environment](https://clarity.casperlabs.io/#/) and choose to use tools you are familiar with to build your contracts and run them in the engine in the order you desire and so observe the effects of contract execution in the [global state](https://techspec.casperlabs.io/en/latest/implementation/global-state.html) (the shared database that is the blockchain) -all from within an IDE of your choice.
-
-
 
 ## What you need to Get Started
 

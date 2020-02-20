@@ -1,5 +1,5 @@
-Knowledge Sources
-=================
+Knowledge Sources for dApp Developer Education
+==============================================
 
 
 

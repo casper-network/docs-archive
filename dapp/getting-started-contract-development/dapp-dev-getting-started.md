@@ -26,10 +26,6 @@ We support building smart contracts with libraries provided for the following la
 - [Assemblyscript](https://github.com/AssemblyScript/assemblyscript) Typescript  Library 
   - [Truffle](...)
 
-
-
-
-
 ### Pre-requisites to build smart contracts
 
 - Using our [CasperLabs  binaries](https://github.com/CasperLabs/CasperLabs/releases) you can build your contracts to deploy to the CasperLabs Network or network of your choice

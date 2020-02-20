@@ -7,22 +7,20 @@ Read our [Tech Spec](https://techspec.casperlabs.io/en/latest/) to Learn more ab
 
 ## Purpose of this guide
 
-This document highlights the set of our core documentation prioritized for you to get started with our platform so that you can install our environment locally, create and test Smart contracts with our Smart Contracts and Test Libraries, and use these libraries to build your own applications.
+This guide highlights the set of our core documentation prioritized for you to get started with our platform so that you can install our environment locally, create and test Smart contracts with our Smart Contracts and test and use our libraries to build your own applications.
 
 ## Who is this guide for
-This documentation is intended for members of our Community who build DApps using our CasperLabs features.
+This documentation is intended for members of our Community who build distributed applications (dApps), smart contracts using our CasperLabs features.
 
 ## How this guide is organized
 
-This documentation is accessed here and located on our GitHub repository, the single source of truth for all Smart Contract Developer documentation. The topics on the index include present and future documentation initiatives in our roadmap.
+This documentation is accessed here and located on our GitHub repository, the single source of truth for all Smart Contract Developer documentation. The topics on the index include present and future documentation initiatives in our roadmap and organized so that you will be able to:
 
-Documentation is provided for you so that you will be able to:
-
-##### Understand what CasperLabs is building and how you can build your applications
-##### Learn how to build and operate applications on the platform
-##### Learn how to set up the CasperLabs environment locally
-##### Learn how to create and test Smart Contracts with our Libraries
-##### Work with our Contracts API to access our Rust resources
+- Understand what CasperLabs is building and how you can build your applications
+- Learn how to build and operate applications on the platform
+- Learn how to set up the CasperLabs environment locally
+- Learn how to create and test Smart Contracts with our Libraries
+- Work with our Contracts API to access our Rust resources
 
 
 ## Background

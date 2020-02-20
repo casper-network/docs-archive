@@ -10,7 +10,6 @@ Contract Development
 <!--Use only publicly available documentation -->
 
 
-
 Pre-requisites
 --------------
 
