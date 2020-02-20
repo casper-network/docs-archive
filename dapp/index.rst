@@ -10,5 +10,5 @@ CasperLabs Blockchain.
    :maxdepth: 3
 
    intro
-   getting-started/index
+   getting-started-contract-development/index
    dapp-developer-education/index

@@ -45,7 +45,7 @@ Choose an IDE that has Rust support. We recommended you choose an application wh
 
 
 Opening the project
-------------------------------------
+-------------------
 
 1. Clone the repository following the [README.md](https://github.com/CasperLabs/CasperLabs/blob/master/execution-engine/cargo-casperlabs/README.md) with a description of the contents and structure of how it is organized.
 
@@ -93,15 +93,9 @@ The runtime environment consists of:
 
 Writing Contracts
 -----------------
-CasperLabs provides capabilities to develop contracts that include but are not limited to the following types:
+You can build contracts from scratch or use our example smart contracts:
 
-For example:
-- Tokenization types to use for exchanging tokens
-- Storing assets, catalog and tokenizing what you own ---- power to vote (stake)
-- Rewards (e.g. get tokens when you purchase something)-->
-
-#####Example Contracts:
-
+- ERC20
 - Tokens -- distributing tokens
 - Payment processing
 - Receiving payments
@@ -116,22 +110,21 @@ For example:
 <!--  - Supply chain management-->
 
 
-
-
 ## Using Rust
 
 All our crates are published on [crates.io](https://crates.io/search?q=casperlabs)
 
 [GITHub Source](https://github.com/CasperLabs/CasperLabs/blob/master/execution-engine/contract-ffi/src/lib.rs)
 
-1. [Types](https://docs.rs/casperlabs-types)
-1. Casperlabs [Contract API](https://docs.rs/casperlabs-contract)
-1. Casperlabs [Test Support](https://docs.rs/casperlabs-engine-test-support)
+- [Types](https://docs.rs/casperlabs-types)
+- Casperlabs [Contract API](https://docs.rs/casperlabs-contract)
+- Casperlabs [Test Support](https://docs.rs/casperlabs-engine-test-support)
 
-We also have a [cargo-casperlabs CLI tool](https://crates.io/crates/cargo-casperlabs)  or [cargo-casperlabs CLI tool Source](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs )
- These two links have equivalent information - including a README.md from the crate's root.
+We also have a [cargo-casperlabs CLI tool](https://crates.io/crates/cargo-casperlabs) also accessed cargo-casperlabs CLI tool source in GIT [here](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs)
 
-The list of [Contract exit codes](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings)
+These links have equivalent information - including a README.md from the crate's root.
+
+Access the list of annotated Contract exit codes with details [here](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings)
 
 
 Deploying and Testing contracts to the DevNet
@@ -148,13 +141,13 @@ Also see [CONTRACT](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/C
 
 For instructions on Testing your Contracts See [Execution Engine Test Framework](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs)
 
-tests to build, deploy, and debug your contracts
+In your project you will find tests to build, deploy, and debug your contracts:
 
 - Cargo.toml - for the purposes of
-- [Cl_test_..py](...) - in order to
-- [Cl_test_...py](...) - in order to
+- [Cl_test_..py](...) - test the CasperLabs scala client
+- [Cl_test_..py](...) - test the CasperLabs python client
 - [Makefile.toml](...) - to build the contract
-- [README.md](...) -
+- [README.md](...) --
 - [rust-toolchain](...) - to build and deploy your test contracts
 
 
@@ -167,11 +160,9 @@ Error Types
 - [Api errors](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/types/src/api_error.rs) (PoS, Mint errors,...)
 - Contract FFI [Errors] (...)
 
-You can find a dynamically generated list with descriptions of each error code in our Rust and source documentation respectively:
+You can find a dynamically generated list with descriptions of each error code in our Rust and source documentation respectively [here](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings)
 
-You can see our annotated list of Contract exit codes [here] (https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings)
-
-see [Short Description of Fraser's Implementation](...)
-see [Enum Contract FFI Error Enum](https://docs.rs/casperlabs-contract-ffi/0.22.0/casperlabs_contract_ffi/contract_api/enum.Error.html)
-see Source of the [Contract_API error ](https://docs.rs/casperlabs-contract-ffi/0.22.0/src/casperlabs_contract_ffi/contract_api/error.rs.html#56-138)
+<!--see [Short Description of Fraser's Implementation](...)-->
+<!--see [Enum Contract FFI Error Enum](https://docs.rs/casperlabs-contract-ffi/0.22.0/casperlabs_contract_ffi/contract_api/enum.Error.html)-->
+<!--see Source of the [Contract_API error ](https://docs.rs/casperlabs-contract-ffi/0.22.0/src/casperlabs_contract_ffi/contract_api/error.rs.html#56-138)-->
 

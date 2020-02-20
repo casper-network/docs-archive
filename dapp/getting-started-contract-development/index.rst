@@ -1,5 +1,5 @@
-DApp Developer Education
-========================
+Getting started with contract development
+=========================================
 
 In this document we present information on how to develop decentralized applications (dApps) with
 CasperLabs Blockchain.
@@ -10,4 +10,8 @@ CasperLabs Blockchain.
    :maxdepth: 3
 
    intro
-   concepts/index
+   getting-started
+   tutorials/index
+   how-tos/index
+   references/index
+

@@ -44,105 +44,57 @@ Confluence [Key Management](https://casperlabs.atlassian.net/wiki/spaces/EN/page
 GIT [KEYS.md](https://github.com/CasperLabs/CasperLabs/blob/master/docs/KEYS.md)
 
 
-Payment Code and Session Code
------------------------------
-**Payment code**
 
-This section overview provides explanation about what payment code is and why we have it.
+##Deploys 
 
-The purpose of the Payment Code `--payment code` is to pay the system for the computation that the `--session code` is going to do.
+A Deploy consists of two atomic computations, `--payment` and `--session`. The payment code and session code are symmetric in the sense that they are both equally as powerful and everything that applies to one will also apply to the other.
 
-The reason we do it this way (as opposed to perhaps more simpler approach like what Etherium does for example) this kind of payment code flexibility allows for more powerful paradigms around how we think about payment.
+*- Payment code* provides the logic used to pay for the computation the deploy will do. See technical details about Payment Code [here](https://techspec.casperlabs.io/en/latest/implementation/execution-semantics.html#payment-code).
 
- We can extend the way we think about payment, e.g. rather than pay from a personal account, pay from a corporate account, or  offer a free trial to some user to have temporary access to freely use the blockchain. There's a lot of use cases the payment code opens up, so that is a rationale for its implementation
+*- Session code*is the second half of a deploy, and contains the logic you really care about, i.e. the reason for what you do on the blockchain in the first place, -- from a simple trivial Token transfer to complex deploy for like booking contracts, aggregating the results, and writing them into a log.
 
-The payment code is as powerful as the session code, same exact instructions and libraries that you can use, turing complete im the same way, but limited in the amount of work it can do, by a very stringent amount of gas, so if you don't complete the payment within that limit, your whole deploy is going to fail. So even though payment code is powerful and flexible it also necessarily has to be computationally simple --
-<!-- (this is on purpose so that we don't get Dossed out all the time).-->
+The payment code and session code are both atomic -- they either happen or don't happen. The payment code entirely happens and it gets submitted to the blockchain or it doesn't happen and its effects are reverted. If payment code runs out of gas, all that was done gets reverted and doesn't get committed to the chain. 
 
-So a Deploy consists of two atomic computations, `--payment` and `--session`, meaning that the payment code entirely happens and it gets submitted to the blockchain or it doesn't happen and its effects are reverted. So payment code runs out of gas, all that was done gets reverted and doesn't get committed to the chain.
+Hence, session code is conditional on payment code execution, so if payment code fails, the session code never executes, and if the payment code succeeds, the session code runs with a gas limit based on how much the payment code paid.
 
-Payment (e.g. transaction failure)
+For further details about payment and session code see the Techspec [here] 
 
-So if a deploy fails, the gas that it is given to run on the outset is considered like a loan, no money was given. If it fails to complete, we take the loan amount out of the accounts main purse.
+###Storing and calling contracts
 
-(There is potential for providing options to pay in a different way if a deploy is within the standard limits, however this documention covers standard deployments.)
+####Stored contracts
 
-Funds are taken from the [main purse](...) for the computation, if the account didn't have enough CLX in the main purse to cover that loan, the account doesn't do any computation at all, it fails as a pre-condition failure.
+A function that is part of the deployed contract's module can be saved on the blockchain with Contract API function `store_function`. Such function becomes a stored contract that can be later called from another contract with `call_contract` or used instead of a WASM file when creating a new deploy on command line.
 
-So the minimum amounts of tokens is this loan, so there's a minimum balance we require accounts to hold. You can have exactly the minimum balance, we won't take any money from it, unless you are I the failure case, so as long as you are always submitting good payment code, you can keep the exactly the minimum balance, and that's fine. One may not choose to use the main purse as the method.
+**Contract address**
 
-You can use whatever payment method, something other than your main purse and there are infinite ways to do this.
-
-Standard_payment code uses the [main purse](...) of the account.
-
-The payment code is as powerful as the session code in terms as what you are able to express in terms of logic. Whenever you see --session name and --payment the reason it is symmetric is because payment code is as powerful as session code so all of the things options you have for Session Code you have for the payment code, you can send WASM that has logic, and access previously stored contracts, it will always be symmetric because they are equally as powerful.
-
-PC and SC are equally as powerful -- flexibility developed as a conscious piece of the design.
-
-Technical details about Payment Code can be found [here](https://techspec.casperlabs.io/en/latest/implementation/execution-semantics.html#payment-code)
-
-
-**Session Code**
-
-`--Session Code` is the second half of a deploy, and contains the logic you really care about, i.e., the reason for what you do on the blockchain in the first place, e.g., from a simple trivial Token transfer  to complex deploy for like booking contracts, aggregating the results, and writing them into a log.
-
-The session code is also bounded by a gas limit determined by the amount the payment code paid, less it's loan (E.g. loan is 10 and you paid a 100 you have 90 units remaining to use on your Session Code)
-
-The session code is also an atomic unit in the sense that it entirely happens or entirely does not happen. So, for example if you run out of gas or an error occurs in your deploy, whatever causes it to fail, everything is reverted, so for example if you make nested calls, everything in that nested call gets reverted. So, if at the end of a long chain of calls the deploy runs out of gas, everything that every one of those calls did **triggerred by that session code** gets reverted.
-
-It's a success and all effects happens, or a a failure none of those effects happens (and this conscious by design (the interest is for it  to be impossible for it to end up in a partial state)
-
-So if contract relies on certain invariants we don't want that invariants that temporarily break during the course of an execution we want to be able to assume they are holding for an execution so we want to make it impossible to stop in the middle,
-
-Q do we always pay a fixed amount for payment code
-
-E.g. 10 for the loan,
-
-Can create a payment code that pays less or more
-Limited in the sense of number of lines and operations
-
-Technically less than the cost of the payment execution which may or may not be the entire loan (if loan was 20 and Payment cost is 8 Session you would have 92 units)
-
-So the session code is technically less
-
-Q. estimation of execution
-
-Not a formal tool to estimate gas e.g. gas estimator --
-
-The way the EE works can always estimate the gas so you can do this (manual)
-The EE can always estimate gas -- with a dry run (a manual process e.g. standalone node, or an EE test framework -- run it locally in same environment you expect it to run in production and estimate it that way)
-
-
-This is Deterministic
-
-Determinism is incredibly important in Blockchain
-
-You need to get the same answer on every single node on the network, not only deterministic run to run but also on every machine as well.
-
-Summary
-
-PC and SC are symmetric in the sense that they are both equally as powerful and everything said that applies to one will also apply to the other.
-
-Both atomic -- happen or don't
-
-Session Code is conditional on payment code execution, so if payment code fails, the session code never executes, and if it succeeds, runs with a gas limit based on how much the payment code paid.
-
-
-Techspec
+A contract stored on blockchain with `store_function` has an address, which is a 256 bits long Blake2b hash of the deploy hash and a 32 bits integer function counter. The function counter is equal `0` for the first function saved with `store_function` during execution of a deploy, `1` for the second stored function, and so on.
 
 
 
-Storing and calling contracts
------------------------------
+### Calling contracts
+
+**Calling a stored contract using its address**
+
+Contract address is a cryptographic hash uniquely identifyiyng a stored contract in the system. Thus, it can be used to call the stored contract, both directly when creating a deploy, e.g. on command line or from another contract.
+
+`casperlabs-client` `deploy` command accepts argument `--session-hash` which can be used to create a deploy using a stored contract instead of a file with a compiled WASM module. Its value should be a base16 representation of the contract address, 
+
+for example: 
+
+`--session-hash 2358448f76c8b3a9e263571007998791a815e954c3c3db2da830a294ea7cba65`.
+
+Note:  `payment-hash` is an option equivalent to `--session-hash` but for specifying address of payment contract.
+
+
 
 Detailed information about storing and calling contracts can be found [here](https://github.com/CasperLabs/CasperLabs/blob/master/docs/CONTRACTS.md#advanced-deploy-options)
+
 
 
 Optimizing for Commutativity (Block Merging) properties
 -------------------------------------------------------
 
-Optimizations for your contracts for
-[Commutativity](https://techspec.casperlabs.io/en/latest/implementation/global-state.html#permissions), i.e.
+Optimizations for your contracts for Commutativity](https://techspec.casperlabs.io/en/latest/implementation/global-state.html#permissions), i.e.
 
 1. reduce orphaning (reduce orphaned blocks), and
 1. reduce Cost (reduce costs / block sizes)

@@ -1,3 +1,6 @@
+Getting started with dApp Development
+=====================================
+
 This guide supports the development of smart contracts on the CasperLabs blockchain enabling developers to run smart contracts in the CasperLabs runtime environment included with our CasperLabs contract development kit as follows:
 
 - [System (Genesis) contracts](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/system) - to bond to the network
@@ -32,7 +35,7 @@ We support building smart contracts with libraries provided for the following la
 - Programming knowledge
   - JavaScript and/or Python
 
-## What you will discover
+## Building contracts
 
   [How contracts are built and how they work with the platform](https://github.com/CasperLabs/CasperLabs/tree/release-v0.12/execution-engine/contracts/examples)
 
@@ -41,10 +44,13 @@ Contracts are written in supported languages and compiled with WASM.
 - [GIT Repository](https://github.com/CasperLabs/CasperLabs/tree/master)
     All our code is open source on GitHub. What's it for, what's in it, how is it used for DApp developers
 
-  - [Contract Categories] -- Categories of contracts and their purpose
-    - ...
-    - ...
-    - ...
+### CasperLabs Contracts
+CasperLabs provides capabilities to develop contracts that include but are not limited to the following types:
+
+    - Tokenization types to use for exchanging tokens
+    - Storing assets catalog and tokenizing what you own
+    - power to vote (stake)
+    - Rewards (e.g. get tokens when you purchase something)
 
   - [Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/dev/CONTRIBUTING.md)-- recommendations on coding standards, and how to review and publish your code
 
