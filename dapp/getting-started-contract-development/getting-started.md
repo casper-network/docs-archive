@@ -2,7 +2,7 @@
 Getting started
 ===============
 
-### Pre-requisites to build smart contracts
+### Pre-requisites 
 
 - Using our [CasperLabs  binaries](https://github.com/CasperLabs/CasperLabs/releases) you can build your contracts to deploy to the CasperLabs Network or network of your choice
 
@@ -11,16 +11,49 @@ Getting started
   - customization, versioning, optimization of compiling process
   - making your code visible on the blockchain for full transparency
 
-## Pre-requisites
+## Instructions
 - Install [rustup](https://rustup.rs/)
 - Install the [Casperlabs client]() (`WASM`, `Python`)
-- [Cargo](https://crates.io/) -- "Cargo is the build tool for Rust. It bundles all common actions into a single command. No boilerplate required."
+- [Cargo CasperLabs](https://crates.io/) -- "Cargo is the build tool for Rust. It bundles all common actions into a single command. No boilerplate required."
 - [SBT](https://www.scala-sbt.org/index.html)
   "The interactive Scala build tool where you can define your tasks in Scala and run them in parallel from sbt's interactive shell.
 
 
+
 Using the CasperLabs runtime environment
 ----------------------------------------
+
+Step 1 - Install Cargo CasperLabs
+
+`cargo install cargo-casperlabs`
+
+Step 2 - Create your project "my_project"
+
+`cargo casperlabs my_project`
+
+Step 3 - Set up your Rust environment for building
+
+```shell
+cd my_project/contract
+rustup install $(cat rust-toolchain)
+rustup target add --toolchain=$(cat rust-toolchain) wasm32-unknown-unknown
+```
+
+Step 4 - Build your project 
+
+`cargo build --release`
+
+Step 5 - A test framework is set up for you so you can Run tests by:
+
+```
+cd my_project/tests
+cargo test
+```
+
+
+
+
+
 1. Install the CasperLabs Rust Tool Chain
 2. Clone the [repository](https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine)
 3. Check your Pre-requisites
@@ -155,10 +188,10 @@ Execution error codes
 ---------------------
 
 Error Types
-- [System](https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine/types/src/system_contract_errors) contract errors
+- [System Contract Errors](https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine/types/src/system_contract_errors)
 - smart contract errors
-- [Api errors](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/types/src/api_error.rs) (PoS, Mint errors,...)
-- Contract FFI [Errors] (...)
+- [Pos and Mint Errors](https://github.com/CasperLabs/CasperLabs/blob/dev/execution-engine/types/src/api_error.rs) (PoS, Mint errors,...)
+- [Contract API FFI] [Errors] (...)
 
 You can find a dynamically generated list with descriptions of each error code in our Rust and source documentation respectively [here](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings)
 
