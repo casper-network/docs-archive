@@ -1,6 +1,5 @@
-
-Getting started
-===============
+Getting started instructions
+============================
 
 ### Pre-requisites 
 

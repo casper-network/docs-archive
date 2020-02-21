@@ -155,6 +155,16 @@ and [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap).
    - Change the setting `Editor: Word Wrap` to `off`.
    - Make sure `Rewrap: Auto Wrap` is `Enabled`.
 
+
+### Structuring your content
+
+1. Setup your file structure in no more than 2 levels
+1. Format your content with no more than 3 heading levels
+1. To reference content within the guide use :ref: (e.g., see :ref:`Execution Semantics <execution-semantics-urefs>` for
+for more information)
+1. To reference content to GIT source, link to latest version (e.g., https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples)
+1. To cross-reference content of CasperLabs tools and references like SDKs, APIs... link to the newest published GIT sources and versions   (e.g., cargo-casperlabs CLI tool -- https://crates.io/crates/cargo-casperlabs or https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs (those two links have equivalent information - it's the README from the crate's root) )
+
 ## Why move away from Gitbook?
 
 We discussed recently how to collaborate on the whitepaper/techspec

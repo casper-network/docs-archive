@@ -1,13 +1,13 @@
 DApp Developer Education
 ========================
 
-In this document we present information on how to develop decentralized applications (dApps) with
-CasperLabs Blockchain.
+In-depth information about developing decentralized applications
+(dApps) with CasperLabs Blockchain.
 
-`Latest Rust docs from CasperLabs <https://docs.rs/casperlabs-contract-ffi/>`__
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
-   intro
-   concepts/index
+   learning-dapp-development
+   contract-development
+   dappdev-education-knowledge-sources
