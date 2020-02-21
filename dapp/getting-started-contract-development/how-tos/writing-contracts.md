@@ -94,7 +94,38 @@ Detailed information about storing and calling contracts can be found [here](htt
 Optimizing for Commutativity (Block Merging) properties
 -------------------------------------------------------
 
-Optimizations for your contracts for Commutativity](https://techspec.casperlabs.io/en/latest/implementation/global-state.html#permissions), i.e.
+#### Deploy Dependencies see [Advanced usage ](CONTRACT.md)
 
-1. reduce orphaning (reduce orphaned blocks), and
-1. reduce Cost (reduce costs / block sizes)
+**Commutativity**
+the execution order does not matter (the commutativity approach)
+
+Commutativity Checking
+
+[Optimizations for your contracts for Commutativity](https://techspec.casperlabs.io/en/latest/implementation/global-state.html#permissions):
+
+**Merging**
+
+Commutativity is one of ways to establishing merging. Canonical order is just another way. see [here](https://casperlabs.atlassian.net/wiki/spaces/~167734600/pages/88244226/Handling+overflows+during+merging+for+DEVNET)
+
+
+Concretely Merging -- Merging is about establishing consensus on the order of execution. 
+
+More broadly it about ensuring the resulting post-state is well-defined; that is to say there is no ambiguity as to what the result of the merge is.
+
+Another way to put this is that commutativity checking is one way to ensure the (finalized subdag's) partial order is strong enough to uniquely define that final state.
+
+
+ Merging condition is based on independence of ordering, the problem of merging is reduced to the problem of checking whether transactions commute. Detect commutativity without needing re-run transactions in multiple orders. To achieve this we define what as come to be known as the "op-algebra" which summarizes what operations can be done on a value (read, write, add), how they combine when multiple operations are done a single value, and their commutativity properties.
+
+see Techspec [NewBlocks]
+(https://techspec.casperlabs.io/en/latest/implementation/p2p.html#syncing-the-dag)
+
+See block_hashes and message size
+
+Global State Permissions
+
+1. reduce orphaning (reduce orphaned blocks) i.e. not becoming part of the DAG.
+
+for more details see Techspec [Fairness](https://techspec.casperlabs.io/en/latest/implementation/p2p.html#fairness), and
+
+2. reduce Cost (reduce costs / block sizes)
