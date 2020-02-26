@@ -1,10 +1,8 @@
 References
 ==========
 
-The following reference documentation provides information so that you can develop your smart
-contracts using, included but not limited to, our CasperLabs APIs, Specifications, Design
-Documentation, Mathematical Papers,
-Whitepapers 
+The CasperLabs dApp development kit includes the following reference libraries for Rust and
+Assembly script with contract examples for you to quickly get started developing on our platform.
 
 
 .. toctree::
@@ -13,4 +11,5 @@ Whitepapers 
    smart-contract-api
    subcommand-deploy-parameters
    execution-error-codes
+   stack-languages
    contract-examples/index

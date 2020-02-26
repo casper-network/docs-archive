@@ -1,6 +1,3 @@
-Knowledge Sources
-=================
-
 Knowledge Sources for Getting Started with dApp Development
 ===========================================================
 

@@ -1,10 +1,13 @@
-CasperLabs dApp Developer Guide
-===============================
+Contract Examples Library
+=========================
 
-In this document we present information on how to develop decentralized applications (dApps) with
-CasperLabs Blockchain.
+The following provides a set of examples including basic and advanced features to develop
+contracts. We recommend you also view our documentation about permissions and execution semantics
+found in our Techspec [here](https://github.com/CasperLabs/techspec/blob/master/implementation/accounts
+.rst).
 
-`Latest Rust docs from CasperLabs <https://docs.rs/casperlabs-contract-ffi/>`__
+You can find a library of contract examples [here](...).
+
 
 .. toctree::
    :maxdepth: 3
@@ -12,3 +15,5 @@ CasperLabs Blockchain.
    contract-examples
    contract-example-erc20
    contract-example-erc20-logic
+   contract-example-tic-tac-toe
+   contract-example-vesting-contract
