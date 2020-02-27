@@ -15,16 +15,21 @@ Pre-requisites
 
 
 Supported platforms
-
 -------------------
+
+- Unix (Linux, Ubuntu)
+- Mac
+- Docker
 
 Using Rust
 ----------
 
-
+Using AssemblyScript
+--------------------
 
 Writing contracts
 -----------------
+
 
 
 

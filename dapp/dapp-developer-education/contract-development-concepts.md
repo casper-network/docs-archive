@@ -1,25 +1,31 @@
 Writing contracts
 =================
 
+A Wasm module is not natively able to create any effects outside of reading / writing from its own linear memory. To enable other effects (e.g. reading / writing to the CasperLabs global state), Wasm modules must import functions from the host environment they are running in. In the case of contracts on the CasperLabs blockchain, this host is the CasperLabs Runtime.
+
+Briefly descriptions of the functionalities provided by imported function.
+All these features are conveniently accessible via functions in the CasperLabs rust library.
+
+For a more detailed description of the functions available for contracts to import, see [Appendix A.](https://techspec.casperlabs.io/en/latest/implementation/execution-semantics.html#the-casperlabs-runtime)
+
+Details about our runtime can be found in our Techspec [here](https://techspec.casperlabs.io/en/latest/implementation/appendix.html#a-list-of-possible-function-imports)
+
 The [ContractAPI](https://docs.rs/casperlabs-contract-ffi/0.22.0/casperlabs_contract_ffi/#writing-smart-contracts) provides support for writing smart contracts.
 
-All our crates are published on crates.io [here](https://crates.io/search?q=casperlabs)
+All our crates are published on crates.io [here](https://crates.io/search?q=casperlabs).
 <!--The ones which I think are worth pointing out to app devs are-->
 We highlight the following for DApp developement
 1. CasperLabs Rust Types are located [here](https://docs.rs/casperlabs-types)
 1. CasperLabs Contract API [here](https://docs.rs/casperlabs-contract)
 1. CasperLabs Execution Engine Test Framework is located [here](https://docs.rs/casperlabs-engine-test-support)
-
-1. Additionally, we provide the cargo-casperlabs CLI tool for which the best documentation is either
-[here] (https://crates.io/crates/cargo-casperlabs) or [here](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs)
-
-(these links have equivalent information - including the README from the crate's root).
+1. Additionally, we provide the cargo-casperlabs CLI tool for which the documentation is either
+[here](https://crates.io/crates/cargo-casperlabs) or [here](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs) (these links have equivalent information - including the README from the crate's root).
 
 The list of contract exit codes is located [here](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings)
 
 Structuring your project
 ------------------------
-<!--Video [CasperLabs - Smart contract template repository v0.0.1] (https://www.youtube.com/wat CasperLabs - Smart contract template repository v0.0.1] ch?v=P8SC_upCqAg&feature=youtu.be)-->
+<!--Video [CasperLabs - Smart contract template repository v0.0.1] (https://www.youtube.com/watch CasperLabs - Smart contract template repository v0.0.1] ch?v=P8SC_upCqAg&feature=youtu.be)-->
 
 Directories structure is designed for developing, building, and testing  Rust contracts.
 
@@ -68,8 +74,6 @@ A function that is part of the deployed contract's module can be saved on the bl
 **Contract address**
 
 A contract stored on blockchain with `store_function` has an address, which is a 256 bits long Blake2b hash of the deploy hash and a 32 bits integer function counter. The function counter is equal `0` for the first function saved with `store_function` during execution of a deploy, `1` for the second stored function, and so on.
-
-
 
 ### Calling contracts
 
@@ -122,8 +126,7 @@ see Techspec [NewBlocks]
 
 See block_hashes and message size
 
-Global State Permissions
-
+### Global State Permissions
 1. reduce orphaning (reduce orphaned blocks) i.e. not becoming part of the DAG.
 
 for more details see Techspec [Fairness](https://techspec.casperlabs.io/en/latest/implementation/p2p.html#fairness), and

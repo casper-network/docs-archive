@@ -35,7 +35,4 @@ proof-of-stake implementation and our token policies.
    theory/index
    implementation/index
    dapp/index
-   how-tos/index
-   tutorials/index
-   dapp-developer-education/index
 

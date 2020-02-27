@@ -67,22 +67,28 @@ How this works.
     - summary, conclusions - relations, synthesis
 
 ### Structuring your project
-    - description of your project
-    - purpose of your project
-    - composition of your project
-    - how to open your project
-    - how to structure your projects
-    - summary, conclusions - relations, synthesis
+
+- My_project IDE project structure
+      - description of your project
+      - purpose of your project
+      - composition of your project
+      - how to open your project
+      - how to structure your projects
+      - summary, conclusions - relations, synthesis
 
 
 ### Testing your project
+- CasperLabs Cargo tool
     - description of the tests
     - purpose, objectives, and interests of the tests
     - composition of the tests
     - process of how to use and run the tests
     - summary, conclusions - relations, synthesis
 
+
 ### Using GraphQL
+
+- CasperLabs Clarity
     - description of the GraphQL
     - purpose, objectives, and interests of GraphQL
     - composition of working with GraphQL
@@ -90,8 +96,13 @@ How this works.
     - summary, conclusions - relations, synthesis
 
 
-#### GQL debug contracts
-    - description of debugging contracts GraphQL
+#### GraphQL debug contracts
+
+- GraphQL console located [here](http://devnet-graphql.casperlabs.io:40403/graphql) can also be accessed through our Clarity self service portal for you to interact with the blockchain.
+
+ Pre-requisites
+
+  - description of debugging contracts GraphQL
     - purpose, objectives, and interests of debugging contracts with GraphQL
     - composition of debugging contracts with GraphQL
     - process of how to use and debug contracts with GraphQL
@@ -99,9 +110,11 @@ How this works.
 
 
 #### Using GQL To learn about the network
-    - description of the network
-    - purpose, objectives, and interests of the network
-    - composition of the network
-    - process of the network
-    - summary, conclusions - relations, synthesis
+
+- Devnet
+  - description of the network
+  - purpose, objectives, and interests of the network
+  - composition
+  - he network
+  - summary, conclusions - relations, synthesis
 

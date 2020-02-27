@@ -12,5 +12,5 @@ CasperLabs Blockchain.
    instructions
    how-tos/index
    tutorials/index
-   references/index
    dapp-developer-education/index
+

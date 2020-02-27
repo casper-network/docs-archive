@@ -17,3 +17,5 @@ We provide tutorials so that you can get oriented and follow us on the journey t
    developing-contracts
    deploying-contracts
    debugging-contracts
+   tutorial-ERC20-contracts
+   tutorial-multisig-weighted-keys

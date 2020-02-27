@@ -114,11 +114,13 @@ CasperLabs provides capabilities to develop contracts that include but are not l
 
 - Tokenization types to use for exchanging tokens
 - Storing assets catalog and tokenizing what you own
-- power to vote (stake)
+- Power to vote (stake)
 - Rewards (e.g. get tokens when you purchase something)
 
 [GIT Repository](https://github.com/CasperLabs/CasperLabs/tree/master)
-All our code is open source on GitHub. What's it for, what's in it, how is it used for DApp developers
+All our code is open source on GitHub.
+
+ README.md docs of a repo describe what a feature is for, what's in it, and how is it used for DApp developers
 
 #### Coding Standards
 

@@ -159,43 +159,32 @@ and [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap).
 ### Structuring your content
 
 1. Setup your file structure in no more than 2 levels
-1. Format your content with no more than 3 heading levels
-1. To reference content within the guide use :ref: (e.g., see :ref:`Execution Semantics <execution-semantics-urefs>` for
+2. Format your content with no more than 3 heading levels
+Note: Setex is recommended, but ATX is also acceptible
+3. To reference content within the guide, use :ref: (e.g., see :ref:`Execution Semantics <execution-semantics-urefs>` for
 for more information)
-1. To reference content to GIT source, link to latest version (e.g., https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples)
-1. To cross-reference content of CasperLabs tools and references like SDKs, APIs... link to the newest published GIT sources and versions   (e.g., cargo-casperlabs CLI tool -- https://crates.io/crates/cargo-casperlabs or https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs (those two links have equivalent information - it's the README from the crate's root) )
+4. To reference content to GIT source, link to latest version (e.g. v0.14, https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples)
+5. To cross-reference content of CasperLabs tools and references like SDKs, APIs... link to the newest published GIT sources and versions   (e.g., cargo-casperlabs CLI tool -- https://crates.io/crates/cargo-casperlabs or https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs (those two links have equivalent information - it's the README from the crate's root) )
 
 ## Why move away from Gitbook?
 
 We discussed recently how to collaborate on the whitepaper/techspec
 It's in gitbook, which changed versions recently:
 https://docs.gitbook.com/v2-changes/important-differences
-And here are some disconcerting quotes:
 
-> We have moved away from the static site generator model, and no longer use the
-> famous gitbook CLI to build documentation output. This has brought a lot of
-> benefits and simplicity to the new version, such as instant publishing,
-> getting rid of obscure build failures, automatic updates and continuous
-> improvement of features for hosted documentations.
->
-> We are no longer versioning your books as a Git repository. With the new
-> version, we have shifted to a GitBook specific versioning system. Your content
-> is still backed-up, versioned, and always available for export, so it is never
-> locked on our platform. But we no longer offer this feature in the form of a
-> git hosting service.
+And here are some of their disconcerting quotes:
+
+> We have moved away from the static site generator model, and no longer use the famous gitbook CLI to build documentation output. This has brought a lot of benefits and simplicity to the new version, such as instant publishing, getting rid of obscure build failures, automatic updates and continuous improvement of features for hosted documentations.
+> We are no longer versioning your books as a Git repository. With the new version, we have shifted to a GitBook specific versioning system. Your content is still backed-up, versioned, and always available for export, so it is never locked on our platform. But we no longer offer this feature in the form of a git hosting service.
 
 IMO having a documentation system that supports git is a must. This will be a
 specialized technical document which requires features like:
-1. LaTeX equations (MathJax must be configurable, apparently one needs to type
-   `$$` also for inline equations which @Wojtek and I find stupid)
+1. LaTeX equations (MathJax must be configurable, apparently one needs to type `$$` also for inline equations which @Wojtek and I find stupid)
 2. Figures
 3. Exporting to both web and PDF
 4. other hard to foresee features...
 
 AFAIU gitbook has problems with 1 and 3 already. They removed the CLI build
-workflow, which makes it hard to see the output locally. This is a headache when
-writing out equations for example. I'm not sure if it's like that now, but
-having to commit every time you need to see the output isn't very smart
+workflow, which makes it hard to see the output locally. This is a headache when writing out equations for example. I'm not sure if it's like that now, but having to commit every time you need to see the output isn't very smart
 
-They removed git, which makes collaboration a headache. *Also, storing document
-state in places other than the repo isn't very smart.*
+GITbook removed git, which makes collaboration a headache. *Also, storing document state in places other than the repo isn't very smart.*
