@@ -32,9 +32,9 @@ This guide supports the development of smart contracts on the CasperLabs blockch
 
 - [System (Genesis) contracts](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/system) - to bond to the network
 - [Example contracts](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples) - smart contract examples (e.g., ERC20, Vesting, etc.)
-- [Integration tests](...) - to test and debug smart contract examples
+- [Integration tests](...) - to test and debug smart contract <!--hey fix this link-->
 
-You will be able to run smart contracts in the [CasperLabs environment](https://clarity.casperlabs.io/#/) and choose to use tools you are familiar with to build your contracts and run them in the runtime environment in the order you desire and so observe the effects of contract execution in the [global state](https://techspec.casperlabs.io/en/latest/implementation/global-state.html) (the shared database that is the blockchain) -all from within an IDE of your choice.
+You will be able to run smart contracts in the [CasperLabs environment](https://clarity.casperlabs.io/#/) and choose to use tools you are familiar with to build your contracts and run them in the runtime environment in the order you desire and so observe the effects of contract execution in the [global state](https://techspec.casperlabs.io/en/latest/implementation/global-state.html) (the shared database that is the blockchain) -all from within an IDE of your choice. 
 
 You will be able to build, debug, deploy contracts using our CasperLabs environment and an IDE of your choice for the following scenarios:
 
@@ -75,7 +75,7 @@ For developers that would prefer to use a scripting type language, the W3C found
 
 AssemblyScript is often conflated with TypeScript, and while these 2 languages are both scripting languages, there are several differences which are documented and contract developers should be aware of these differences.
 
-To access the AssemblyScript contract library — you can search [here] (https://www.npmjs.com/search?q=casperlabs) or install it as follows:
+To access the AssemblyScript contract library — you can search [here](https://www.npmjs.com/search?q=casperlabs) or install it as follows:
 
 `npm i @casperlabs/contract`
 
