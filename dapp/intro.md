@@ -32,7 +32,7 @@ This guide supports the development of smart contracts on the CasperLabs blockch
 
 - [System (Genesis) contracts](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/system) - to bond to the network
 - [Example contracts](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples) - smart contract examples (e.g., ERC20, Vesting, etc.)
-- [Integration tests](...) - to test and debug smart contract examples
+- [Integration tests](...) <!--need link-->- to test and debug smart contract examples
 
 You will be able to run smart contracts in the [CasperLabs environment](https://clarity.casperlabs.io/#/) and choose to use tools you are familiar with to build your contracts and run them in the runtime environment in the order you desire and so observe the effects of contract execution in the [global state](https://techspec.casperlabs.io/en/latest/implementation/global-state.html) (the shared database that is the blockchain) -all from within an IDE of your choice.
 
@@ -60,7 +60,7 @@ We support building smart contracts with the following libraries.
 
 - [Rust](...) A Rust library and Rustdocs
 - [Assemblyscript](https://github.com/AssemblyScript/assemblyscript) Typescript  Library
-  - [Truffle](...)
+  - [Truffle](...)<!--need link-->
 
 ##Rustdocs
 
