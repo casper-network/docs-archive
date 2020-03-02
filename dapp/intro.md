@@ -1,15 +1,17 @@
+
 Introduction
 ============
 
-Welcome to the CasperLabs project, implemented as a new permissionless, decentralized, public blockchain. Our open source Turing-complete smart contract platform is backed by a proof-of-stake (PoS) consensus algorithm, and WebAssembly (Wasm). Our particular consensus protocol in the CBC Casper family, built on Vlad Zamfir’s correct-by-construction (CBC) Casper work, is provably safe and live under partial synchrony without an in-protocol fault tolerance threshold.
+Welcome to the CasperLabs project, implemented as a new permissionless decentralized, public blockchain. Our open source Turing-complete smart contract platform is backed by a proof-of-stake (PoS) consensus algorithm, and WebAssembly (Wasm). Our particular consensus protocol in the CBC Casper family, built on Vlad Zamfir’s correct-by-construction (CBC) Casper work, is provably safe and live under partial synchrony without an in-protocol fault tolerance threshold.
 
-Read our [Tech Spec](https://techspec.casperlabs.io/en/latest/) to Learn more about what we're building so you can become a contributor.
+Read our [Tech Spec](https://techspec.casperlabs.io/en/latest/) to learn more about what we're building and become a community contributor.
 
 ## Purpose of this guide
 
-This guide highlights the set of our core documentation prioritized for you to get started with our platform so that you can install our environment locally, create and test smart contracts with our smart contracts library and test and use our libraries to build your own applications.
+This guide is designed to support dApp developers getting started with the development of smart contracts on the CasperLabs blockchain with AssemblyScript contracts, and a Rust contract development kit that includes a runtime environment, reference documentation, and test framework.
 
 ## Who is this guide for
+<<<<<<< HEAD
 This documentation is intended for members of our Community who build distributed applications (dApps), smart contracts using our CasperLabs features.
 
 ## How this guide is organized
@@ -32,7 +34,7 @@ This guide supports the development of smart contracts on the CasperLabs blockch
 
 - [System (Genesis) contracts](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/system) - to bond to the network
 - [Example contracts](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples) - smart contract examples (e.g., ERC20, Vesting, etc.)
-- [Integration tests](...) <!--need link-->- to test and debug smart contract examples
+- [Integration tests](...) - to test and debug smart contract examples
 
 You will be able to run smart contracts in the [CasperLabs environment](https://clarity.casperlabs.io/#/) and choose to use tools you are familiar with to build your contracts and run them in the runtime environment in the order you desire and so observe the effects of contract execution in the [global state](https://techspec.casperlabs.io/en/latest/implementation/global-state.html) (the shared database that is the blockchain) -all from within an IDE of your choice.
 
@@ -60,7 +62,7 @@ We support building smart contracts with the following libraries.
 
 - [Rust](...) A Rust library and Rustdocs
 - [Assemblyscript](https://github.com/AssemblyScript/assemblyscript) Typescript  Library
-  - [Truffle](...)<!--need link-->
+  - [Truffle](...)
 
 ##Rustdocs
 
@@ -98,45 +100,56 @@ parents {
 ```
 
 The GraphQL interface is available on every node, and public interface for [DevNet](http://devnet-graphql.casperlabs.io:40403/graphql)
+=======
+
+This documentation is intended for members of our Community who build distributed applications (dApps), smart contracts using our CasperLabs features. You can install our environment locally, create and test Smart Contracts with our Smart Contracts and Test Libraries, and use these libraries to build your own applications.
+>>>>>>> 51c0146f12a355b02b2632e6254c0474b159d6da
 
 ## What you need to know
 
-- Linux or OSx
-- Programming knowledge
-  - JavaScript and/or Python
-  - Rust and/or Assembly Script
+It is recommended you have prior knowledge about
 
-## Building contracts
+* Linux or OSx
+* Programming knowledge
+  * JavaScript and/or Python
+  * Rust and/or Assembly script.
 
-Contracts are written in supported languages and compiled to Wasm for deployment from a node processed through our execution engine. Learn more about [how contracts are built and how they work with the platform](https://github.com/CasperLabs/CasperLabs/tree/release-v0.12/execution-engine/contracts/examples)
+## How this guide is organized
 
-CasperLabs provides capabilities to develop contracts that include but are not limited to the following types:
+This documentation is accessed here and located on our [GitHub](https://github.com/CasperLabs/techspec) repository, the single source of truth for all Smart Contract Developer documentation. The topics on the index include present and future documentation initiatives in our roadmap and are organized so that you will be able to:
 
-- Tokenization types to use for exchanging tokens
-- Storing assets catalog and tokenizing what you own
-- Power to vote (stake)
-- Rewards (e.g. get tokens when you purchase something)
+- Understand what CasperLabs is building and how you can build your applications
+- Learn how to build and operate applications on the platform
+- Learn how to set up the CasperLabs environment locally
+- Learn how to create and test Smart Contracts with our Libraries
+- Work with our Contracts API to access our Rust resources.
 
-[GIT Repository](https://github.com/CasperLabs/CasperLabs/tree/master)
-All our code is open source on GitHub.
+See the overview and instructions for Getting Started [here](#getting-started.md).
 
- README.md docs of a repo describe what a feature is for, what's in it, and how is it used for DApp developers
+## Background
 
-#### Coding Standards
+The motivation for our roadmap is inspired by feedback we are receiving from your recommendations. We hope you continue to provide your feedback as you embark on this journey with us -- we look forward to building a decentralized future together.
 
-[Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/dev/CONTRIBUTING.md)-- recommendations on coding standards, and how to review and publish your code
+## Coding Standards
 
-#### Getting Help
+[Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/dev/CONTRIBUTING.md) include recommendations on coding standards, and how to review and publish your code.
 
-[Getting Help](https://github.com/CasperLabs/CasperLabs/tree/dev#getting-help) - Find us on Discord and Telegram.
+## Getting Help
 
-#### Feedback
+[Getting Help](https://github.com/CasperLabs/CasperLabs/tree/dev#getting-help) - CasperLabs makes available the following resources for you to connect and get support where you can:
 
-[Your feedback is welcome](...) If you have feedback or suggestions for improvement, please share with us.
+* Connect live with members of our Engineering Team on our [Discord Channel](https://discordapp.com/invite/mpZ9AYD) there to support you with the progress of your projects.
+* Join the [CasperLabs Community Forum](https://forums.casperlabs.io/) that includes Technical discussions on using the CasperLabs features, obtain support, and pose questions to the CasperLabs core development team.
+* Subscribe to CasperLabs Official [Telegram channel]((https://t.me/CasperLabs)) for general information and updated notifications about our platform.
 
-Note: For documentation feedback please file issues on our docs repo or submit a pull request with your edits.
+## Feedback
 
+If you have feedback or suggestions for improvement, please share with us.
+You can [file an issue](https://github.com/CasperLabs/CasperLabs/issues/new) on our GitHub repository.
 
+Note: For documentation feedback please file issues with links to our docs repo accessed with each page on this site. You can submit a pull request with your suggestions.
 
+## Where will bugs be filed?
 
+You can  report a bug on our [GitHub](https://github.com/CasperLabs/CasperLabs/issues/new) also.
 
