@@ -1,6 +1,6 @@
 # Getting started with dApp development
 
-Our CasperLabs Rust contracts development kit leverages the existing Rust development toolchains and ecosystem, and will work with any IDE that supports Rust development.   
+Our CasperLabs Rust contracts development kit leverages the existing Rust development toolchains and ecosystem, and will work with any IDE that supports Rust development.      
 
 You will be able to run smart contracts in the [CasperLabs environment](https://clarity.casperlabs.io/#/) using tools you choose to build your contracts and run them in the runtime environment in the order you desire and so observe the effects of contract execution in the [global state](https://github.com/CasperLabs/techspec/blob/master/implementation/global-state.rst) (the shared database that is the blockchain). The kit includes:
 
