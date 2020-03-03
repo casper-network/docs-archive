@@ -1,4 +1,4 @@
-# Getting started with dApp development
+# Getting started with dApp development 
 
 Our CasperLabs Rust contracts development kit leverages the existing Rust development toolchains and ecosystem, and will work with any IDE that supports Rust development.      
 
