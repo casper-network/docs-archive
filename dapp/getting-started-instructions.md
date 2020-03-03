@@ -1,9 +1,9 @@
 5 steps to Start Building dApps
 =====================================
 
-The following is a step-by-step process covering basic and advanced features to develop, build, and test contracts using the CasperLabs development tools available in our development envrironment.
+The following is a step-by-step process covering basic and advanced features to develop, build, and test contracts using the CasperLabs development tools available in our development envrironment.   
 
-As DApp developers you may build from the ground up to go against the CasperLabs current `dev` or make modifications on your side, build locally, or just use what you build with the CasperLabs binaries we produce.
+As DApp developers you may build from the ground up to go against the CasperLabs current `dev` or make modifications on your side, build locally, or just use what you build with the CasperLabs binaries we produce.   
 
 
 Pre-requisites
