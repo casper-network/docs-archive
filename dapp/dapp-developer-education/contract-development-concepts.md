@@ -1,11 +1,7 @@
 Writing contracts
 =================
 
-<<<<<<< HEAD
-A Wasm module is not natively able to create any effects outside of reading / writing from its own linear memory. To enable other effects (e.g. reading / writing to the CasperLabs global state), Wasm modules must import functions from the host environment they are running in. In the case of contracts on the CasperLabs blockchain, this host is the CasperLabs Runtime.  
-=======
 A Wasm module is not natively able to create any effects outside of reading / writing from its own linear memory. To enable other effects (e.g. reading / writing to the CasperLabs global state), Wasm modules must import functions from the host environment they are running in. In the case of contracts on the CasperLabs blockchain, this host is the CasperLabs Runtime.
->>>>>>> 845f1392099a60fe0027c996c20af0edaf064cd0
 
 Briefly descriptions of the functionalities provided by imported function.
 All these features are conveniently accessible via functions in the CasperLabs rust library.
@@ -125,14 +121,14 @@ Another way to put this is that commutativity checking is one way to ensure the 
 
  Merging condition is based on independence of ordering, the problem of merging is reduced to the problem of checking whether transactions commute. Detect commutativity without needing re-run transactions in multiple orders. To achieve this we define what as come to be known as the "op-algebra" which summarizes what operations can be done on a value (read, write, add), how they combine when multiple operations are done a single value, and their commutativity properties.
 
-see Techspec [NewBlocks](https://techspec.casperlabs.io/en/latest/implementation/p2p.html#syncing-the-dag)
+see Techspec [NewBlocks]
+(https://techspec.casperlabs.io/en/latest/implementation/p2p.html#syncing-the-dag)
 
 See block_hashes and message size
 
 ### Global State Permissions
+1. reduce orphaning (reduce orphaned blocks) i.e. not becoming part of the DAG.
 
-1. Reduce orphaning (reduce orphaned blocks) i.e. not becoming part of the DAG.
+for more details see Techspec [Fairness](https://techspec.casperlabs.io/en/latest/implementation/p2p.html#fairness), and
 
-For more details see Techspec [Fairness](https://techspec.casperlabs.io/en/latest/implementation/p2p.html#fairness)
-
-2. Reduce Cost (reduce costs / block sizes)
+2. reduce Cost (reduce costs / block sizes)

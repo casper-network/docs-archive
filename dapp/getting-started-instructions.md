@@ -3,7 +3,11 @@
 
 The following is a step-by-step process covering basic and advanced features to develop, build, and test contracts using the CasperLabs development tools available in our development envrironment.   
 
+<<<<<<< HEAD
 As DApp developers you may build from the ground up to go against the CasperLabs current `dev` or make modifications on your side, build locally, or just use what you build with the CasperLabs binaries we produce.    
+=======
+As DApp developers you may build from the ground up to go against the CasperLabs current `dev` or make modifications on your side, build locally, or just use what you build with the CasperLabs binaries we produce.   
+>>>>>>> 845f1392099a60fe0027c996c20af0edaf064cd0
 
 
 Pre-requisites
