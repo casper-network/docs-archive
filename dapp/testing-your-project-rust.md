@@ -9,7 +9,7 @@ and testing your smart contracts.
 
 Additionally, this environment can also be used for continuous
 integration, enabling Rust smart contracts to be managed using
-development best practices.
+development best practices.  
 
 We’ve simplified the process into 5 easy steps with the Cargo CasperLabs
 tool for creating a Wasm smart contract and tests for use on the

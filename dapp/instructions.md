@@ -1,7 +1,7 @@
 Getting Started
 ===============
 
-The following provides a step-by-step set of examples including basic and advanced features to develop, build, and test contracts using the CasperLabs development tools available in our development envrironment for:
+The following provides a step-by-step set of examples including basic and advanced features to develop, build, and test contracts using the CasperLabs development tools available in our development envrironment for: 
 
 - Rust
 - Assembly Scrip the following set of documentation is presented in order and provides instructions on Linux and OSx for developing, building, testing, and executing Smart contracts to address your use case
@@ -112,7 +112,7 @@ Opening the project
 - The main CasperLabs project directory contains configuration files, build and compiler tools, and source code library to build and test your contracts:
 - [contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts)
 - [tests] directory containing two Cargo crates:
-    
+  
     - one for contract
     - one for tests
       - build and compile

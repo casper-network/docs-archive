@@ -4,7 +4,7 @@ Deploying contracts
 How to structure your deployments
 ---------------------------------
 
-You can Deploy contracts using our pre-built binaries or build from source. Both provide the casperLabs-client.
+You can Deploy contracts using our pre-built binaries or build from source. Both provide the casperLabs-client.  
 
 * [**Using binaries**](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md#using-binaries-recommended) (recommended):
 

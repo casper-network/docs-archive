@@ -6,7 +6,7 @@ Theoretical knowledge
 (to study and so you can get working with all the features CasperLabs)
 
 - [Technical Specification - Theory](...)
-- [Mathematical Paper](...)
+- [Mathematical Paper](...) 
 
 **References:** (information oriented) e.g. APIs, Specifications, Design
 Documentation, Mathematical Papers, Whitepapers
