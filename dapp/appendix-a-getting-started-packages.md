@@ -3,11 +3,7 @@ Getting Started Packages
 
 At release, links to installation packages and relevant documentation is available on GitHub.
 
-<<<<<<< HEAD
-- Packages are available on [GitHub](https://github.com/CasperLabs/CasperLabs/releases) 
-=======
 - Packages are available on [GitHub](https://github.com/CasperLabs/CasperLabs/releases)
->>>>>>> 845f1392099a60fe0027c996c20af0edaf064cd0
 
 ##  Pre-built Binaries
 - [Debian](https://dl.bintray.com/casperlabs/debian/) recommended for Ubuntu

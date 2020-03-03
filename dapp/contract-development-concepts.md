@@ -1,11 +1,7 @@
 Writing contracts
 =================
 
-<<<<<<< HEAD
-A Wasm module is not natively able to create any effects outside of reading / writing from its own linear memory. To enable other effects (e.g. reading / writing to the CasperLabs global state), Wasm modules must import functions from the host environment they are running in. In the case of contracts on the CasperLabs blockchain, this host is the CasperLabs Runtime.  
-=======
 A Wasm module is not natively able to create any effects outside of reading / writing from its own linear memory. To enable other effects (e.g. reading / writing to the CasperLabs global state), Wasm modules must import functions from the host environment they are running in. In the case of contracts on the CasperLabs blockchain, this host is the CasperLabs Runtime.
->>>>>>> 845f1392099a60fe0027c996c20af0edaf064cd0
 
 Briefly descriptions of the functionalities provided by imported function.
 All these features are conveniently accessible via functions in the CasperLabs rust library.
@@ -93,8 +89,6 @@ for example:
 
 Note:  `payment-hash` is an option equivalent to `--session-hash` but for specifying address of payment contract.
 
-
-
 Detailed information about storing and calling contracts can be found [here](https://github.com/CasperLabs/CasperLabs/blob/master/docs/CONTRACTS.md#advanced-deploy-options)
 
 
@@ -105,9 +99,11 @@ Optimizing for Commutativity (Block Merging) properties
 #### Deploy Dependencies see [Advanced usage ](CONTRACT.md)
 
 **Commutativity**
-the execution order does not matter (the commutativity approach)
+the execution order does not matter (the commutativity approach), 
 
-Commutativity Checking
+<!--see Mateuz demo from GMT20200128-160316_Sprint-Dem_3840x2160 (1).mp4-->
+
+Commutativity Checking 
 
 [Optimizations for your contracts for Commutativity](https://techspec.casperlabs.io/en/latest/implementation/global-state.html#permissions):
 
@@ -123,11 +119,11 @@ More broadly it about ensuring the resulting post-state is well-defined; that is
 Another way to put this is that commutativity checking is one way to ensure the (finalized subdag's) partial order is strong enough to uniquely define that final state.
 
 
- Merging condition is based on independence of ordering, the problem of merging is reduced to the problem of checking whether transactions commute. Detect commutativity without needing re-run transactions in multiple orders. To achieve this we define what as come to be known as the "op-algebra" which summarizes what operations can be done on a value (read, write, add), how they combine when multiple operations are done a single value, and their commutativity properties.
+ Merging condition is based on independence of ordering, the problem of merging is reduced to the problem of checking whether transactions commute. Detect commutativity without needing to re-run transactions in multiple orders. To achieve this we define what has come to be known as the "op-algebra" which summarizes what operations can be done on a value (read, write, add), how they combine when multiple operations are done a single value, and their commutativity properties.
 
-see Techspec [NewBlocks](https://techspec.casperlabs.io/en/latest/implementation/p2p.html#syncing-the-dag)
+see Techspec [NewBlocks](https://github.com/CasperLabs/techspec/blob/master/implementation/p2p.rst#newblocks)
 
-See block_hashes and message size
+See [block_hashes and message size](https://github.com/CasperLabs/techspec/blob/master/implementation/p2p.rst#picking-nodes-for-gossip)
 
 ### Global State Permissions
 

@@ -119,7 +119,7 @@ my_project/
 ```
 
 
-Use the CasperLabs runtime environment
+Step 3 Use the CasperLabs runtime environment
 ---------------------------------------------
 
 Developers who want to use Rust (recommended for financial applications) can create a crates project for your smart contracts and run your contracts in a testing framework with the CasperLabs contract runtime environment. This enables you to use a seamless workflow for authoring and testing your smart contracts.
@@ -138,8 +138,8 @@ This process has been simplified with the Cargo CasperLabs tool for creating a W
 
 - CasperLabs Cargo installation creates your project folder, e.g. <"my_project">, this will generate your project directory with contracts and test crates projects,  see [Directory Structure](#directory-structure) in Step 2 above.
 
-Writing Contracts
------------------
+Step 4 Writing Contracts
+------------------------
 You can build contracts from scratch or use our [example smart contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples) with instructions and directories containing example smart contracts definitions and companion contracts.
 
 For example:
@@ -213,8 +213,8 @@ my_project/
   Note: These links have equivalent information - including a README.md from the  Cargo Casperlabs crate's root.
 
 
-Deploying and Testing   contracts to the DevNet
----------------------------------------------
+Step 5 Deploying and Testing contracts to the DevNet
+----------------------------------------------------
 
 ### Deploy
 
@@ -222,8 +222,8 @@ For instructions on Deploying Contracts see [DEVNET.md](https://github.com/Caspe
 
 Additionally, more advanced functions for deployments are covered in [CONTRACT.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md) in the /docs folder of the master repo you cloned your project from.
 
-### Using the Testing Framework
-
+Step 6 Using the Testing Framework
+----------------------------------
 In your <`my_project`> you will find the Tests project with tests to build, deploy, and debug your contracts:
 
 Details are in the README.md of the Casperlabs Cargo GitHub [here](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs).
@@ -250,8 +250,6 @@ By default the installation creates projects which rely on our packages being
 published at [crates.io](crates.io) to test the tool against.
 
 Using the Command line argument available in the tool,  you will see the following output for usage, flags, and options:
-
-
 
 USAGE
 
@@ -308,33 +306,38 @@ my_project/
 ```
 
 ##### 2. Start the tests, this compiles the folder:
+
 You will have test code and pre-compiled Wasm provided with the tool compiling the tests invoking the `build.rs`
 
 You can do this by adding it with the configuration `Run/Debug`
 
 Configurations run on the Command:
 - Cargo Command Unnamed
-- Templates
+- **Templated Contract and test code includes:**
+  - `contract.rs` source code file located in the contract directory
+  - `.cargo/config` this configuration is file located in the contract crate and specifies the build target.
+  - `* build.rs`  You can use this build file to automate builds
 
 The tool compiles the tests, invoking the build script compiler
 to build the contract using the correct target.
 
 Wasm 32 -- compiles the contract, storing as a string provided as the single argument stored under a key code value.
 
-- The test runs, storing a string, to be stored as expected. This is a wrapped test support framework, with new highlevel easy to use structures.
+The test runs, storing a string, to be stored as expected. This is a wrapped test support framework, with new highlevel easy to use structures.
 
-For more detail, see the test support API reference crate documentation for [Casperlabs Engine Test Support](https://docs.rs/casperlabs-engine-test-support)
+For more detail, see the engine test support API reference crate documentation for [Casperlabs Engine Test Support](https://docs.rs/casperlabs-engine-test-support).
 
 
 Test contracts in the Execution Engine (EE) itself with access to elements you require:
 
-The test will:
-- build the contract
-- executed it
-- and show it passed
+### Testing workflow
 
+The test will run in 3 steps:
 
-#### Testing workflow
+1. build the contract
+2. executed it
+3. and show it passed
+
 Running the test builds the contract, and takes it and runs the code treating it as if it is being sent from the node as a deploy and executing it through the Execution Engine itself.
 
 Note: you can also just build the contract in contract and deploy using
@@ -347,9 +350,13 @@ Single argument to the contract is stored under a special value
 
 Test `-- stores` a `key` and the value
 
- To view an example, we recommend you start with testing out our [Hello World]() contract:
+ To view an example, we recommend you start with testing out our [Hello World Contract](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples/hello-name-define) and [companion](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples/hello-name-call):
 
  `"hello world"`
+
+### Dependencies
+
+Note that the test crate depends on the contract crate.
 
 Execution error codes
 ---------------------

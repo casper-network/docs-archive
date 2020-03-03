@@ -9,8 +9,15 @@ CasperLabs Blockchain.
    :maxdepth: 3
 
    intro
-   instructions
-   how-tos/index
+   getting-started-overview
+   getting-started-instructions
+   contract-development-concepts
+   smart-contract-development-guidelines
+   deploying-contracts
+   getting-started-graphql
    tutorials/index
-   dapp-developer-education/index
+   contract-examples/index
+   appendix-a-getting-started-packages
+   appendix-b-devdocs-descriptions
+   appendix-c-stack-languages
 
