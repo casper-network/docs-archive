@@ -20,9 +20,9 @@ You can Deploy contracts using our pre-built binaries or build from source. Both
 Features of the deployment interface
 ------------------------------------
 
-* [CasperLabs Clarity](https://clarity.casperlabs.io/#/) - you can deploy contracts from our Clarity Portal, or
+[CasperLabs Clarity](https://clarity.casperlabs.io/#/) - you can deploy contracts from our Clarity Portal, or
 
-* Follow the instructions in [CONTRACTS.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md) about how to deploy contracts using the CasperLabs Client 
+Follow the instructions in [CONTRACTS.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md) about how to deploy contracts using the CasperLabs Client 
 
 ## Deploying to DevNet
 
@@ -30,7 +30,7 @@ A quick start includes a simple set of instructions for getting started on the C
 
 Note: More advanced users may wish to take other approaches to some of the steps listed.
 
-## How do I know my contract deployed successfully?
+##### How do I know my contract deployed successfully?
 
 **View deploys in [Clarity](https://clarity.casperlabs.io/#/deploys) -** Navigate to your account in Clarity and select the deploys tab where you can se a detailed view of your deploy with a hash, timestamp, amd result.
 

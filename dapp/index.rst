@@ -8,16 +8,14 @@ CasperLabs Blockchain.
 .. toctree::
    :maxdepth: 3
 
-   intro
-   getting-started-overview
-   getting-started-instructions
-   contract-development-concepts
+   introduction
+   development-toolkit
+   getting-started
    smart-contract-development-guidelines
    deploying-contracts
-   getting-started-graphql
+   using-graphql
+   execution-error-codes
    tutorials/index
-   contract-examples/index
-   appendix-a-getting-started-packages
-   appendix-b-devdocs-descriptions
-   appendix-c-stack-languages
+
+
 

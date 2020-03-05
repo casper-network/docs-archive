@@ -3,8 +3,7 @@ Writing contracts
 
 A Wasm module is not natively able to create any effects outside of reading / writing from its own linear memory. To enable other effects (e.g. reading / writing to the CasperLabs global state), Wasm modules must import functions from the host environment they are running in. In the case of contracts on the CasperLabs blockchain, this host is the CasperLabs Runtime.
 
-Briefly descriptions of the functionalities provided by imported function.
-All these features are conveniently accessible via functions in the CasperLabs rust library.
+Briefly descriptions of the functionalities provided by imported function. All these features are conveniently accessible via functions in the CasperLabs rust library.
 
 For a more detailed description of the functions available for contracts to import, see [Appendix A.](https://techspec.casperlabs.io/en/latest/implementation/execution-semantics.html#the-casperlabs-runtime)
 
@@ -12,16 +11,20 @@ Details about our runtime can be found in our Techspec [here](https://techspec.c
 
 The [ContractAPI](https://docs.rs/casperlabs-contract-ffi/0.22.0/casperlabs_contract_ffi/#writing-smart-contracts) provides support for writing smart contracts.
 
-All our crates are published on crates.io [here](https://crates.io/search?q=casperlabs).
-<!--The ones which I think are worth pointing out to app devs are-->
+All our crates are published on [crates.io](https://crates.io/search?q=casperlabs).
 We highlight the following for DApp developement
-1. CasperLabs Rust Types are located [here](https://docs.rs/casperlabs-types)
-1. CasperLabs Contract API [here](https://docs.rs/casperlabs-contract)
-1. CasperLabs Execution Engine Test Framework is located [here](https://docs.rs/casperlabs-engine-test-support)
-1. Additionally, we provide the cargo-casperlabs CLI tool for which the documentation is either
-[here](https://crates.io/crates/cargo-casperlabs) or [here](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs) (these links have equivalent information - including the README from the crate's root).
 
-The list of contract exit codes is located [here](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings)
+[CasperLabs Rust Types](https://docs.rs/casperlabs-types)
+
+[CasperLabs Contract API](https://docs.rs/casperlabs-contract)
+
+[CasperLabs Execution Engine Test Framework](https://docs.rs/casperlabs-engine-test-support)
+
+[Cargo Casperlabs Crate](https://crates.io/crates/cargo-casperlabs) or 
+
+[Cargo CasperLabs Git Repository](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs)
+
+[Contract exit codes Source](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings)
 
 <!--Structuring your project-->
 ------------------------
@@ -35,19 +38,7 @@ The list of contract exit codes is located [here](https://docs.rs/casperlabs-typ
 - <!--Cargo-->
 - <!--Rust tool chain-->
 
-
-Weighted Keys and Thresholds
-----------------------------
-
-Details about the global state and keys is located [here](https://techspec.casperlabs.io/en/latest/implementation/global-state.html#global-state)
-
-Workshop [Weighted Keys](https://casperlabs.atlassian.net/wiki/spaces/REL/pages/213123657/1-23-2020+Workshop+-Weighted+Keys)
-
-Video [Adjusting Key weights and thresholds](https://www.youtube.com/watch?v=R24-3iIau0g)
-
-Confluence [Key Management](https://casperlabs.atlassian.net/wiki/spaces/EN/pages/128974920/Key+Management)
-
-GIT [KEYS.md](https://github.com/CasperLabs/CasperLabs/blob/master/docs/KEYS.md)
+https://github.com/CasperLabs/CasperLabs/blob/master/docs/KEYS.md)
 
 
 

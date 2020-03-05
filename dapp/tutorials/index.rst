@@ -15,4 +15,4 @@ We provide tutorials so that you can get oriented and follow us on the journey t
    :maxdepth: 2
 
    tutorial-ERC20-contracts
-   tutorial-multisig-weighted-keys
+   tutorial-vesting-contract

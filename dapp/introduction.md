@@ -1,8 +1,6 @@
+# Introduction
 
-About this guide
-============
-
-This guide is designed to support dApp developers getting started with the development of smart contracts on the CasperLabs blockchain with a contract development kit that includes a runtime environment, reference documentation, and test framework that supports Rust, and a library that supports developing dApps with AssemblyScript. 
+This guide is designed to support dApp developers getting started with the development of smart contracts on the CasperLabs blockchain with a contract development kit that includes a runtime environment, reference documentation, test framework that supports Rust, and a library that supports developing dApps with AssemblyScript.
 
 - Understand what CasperLabs is building and how you can build your applications
 - Learn how to build and operate applications on the platform
@@ -27,8 +25,6 @@ It is recommended you have prior knowledge about:
 ## How this guide is organized
 
 This documentation is accessed here and located on our [GitHub](https://github.com/CasperLabs/techspec) repository, the single source of truth for CasperLabs developer documentation. The topics on the index include present and future documentation initiatives in our roadmap.
-
-See the Getting Started [overview](getting-started-overview.md) and [instructions](instructions.md) in this guide.
 
 ## Background
 

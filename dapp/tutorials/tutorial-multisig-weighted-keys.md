@@ -6,8 +6,3 @@ This tutorial describes the usage of Mutisig/Weighted keys based on our CasperLa
 
 (learning oriented --experience) learn by doing as the journey of
 learning — not a final destination
-
-
-
-
-Pre-requisites

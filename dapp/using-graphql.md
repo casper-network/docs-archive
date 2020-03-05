@@ -53,7 +53,7 @@ For further details on our GraphQl see our [source code](https://clarity.casperl
 
 
 
-#### Using GQL To learn about the network
+#### Using GraphQL To learn about the network
 
 - Devnet
   - description of the network
