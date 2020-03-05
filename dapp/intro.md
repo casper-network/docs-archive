@@ -43,7 +43,7 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
 
 [Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/CONTRIBUTING.md) cover best practices and recommendations following our coding standards, code reviews and publishing your code to our GitHub.
 
-### Supported Operating Systems
+## Supported Operating Systems
 
 - Unix
 - Mac OS
