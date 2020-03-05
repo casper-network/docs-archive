@@ -27,7 +27,7 @@ It is recommended you have prior knowledge about:
 
 This documentation is accessed here and located on our [GitHub](https://github.com/CasperLabs/techspec) repository, the single source of truth for all Smart Contract Developer documentation. The topics on the index include present and future documentation initiatives in our roadmap and are organized so that you will be able to:
 
-- Understand what CasperLabs is building and how you can build your applications
+- Understand what CasperLabs is building
 - Learn how to build and operate applications on the platform
 - Learn how to set up the CasperLabs environment locally
 - Learn how to create and test Smart Contracts with our Libraries
@@ -42,6 +42,12 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
 ## Coding Standards
 
 [Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/CONTRIBUTING.md) cover best practices and recommendations following our coding standards, code reviews and publishing your code to our GitHub.
+
+### Supported Operating Systems
+
+- Unix
+- Mac OS
+- Windows
 
 ## Getting Help
 
@@ -58,7 +64,4 @@ You can [file an issue](https://github.com/CasperLabs/CasperLabs/issues/new) on 
 
 Note: For documentation feedback please file issues with links to our docs repo accessed with each page on this site. You can submit a pull request with your suggestions.
 
-## Where will bugs be filed?
-
-You can report a bug on our [GitHub](https://github.com/CasperLabs/CasperLabs/issues/new) also.
 
