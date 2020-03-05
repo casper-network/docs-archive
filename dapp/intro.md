@@ -33,15 +33,13 @@ This documentation is accessed here and located on our [GitHub](https://github.c
 - Learn how to create and test Smart Contracts with our Libraries
 - Work with our Contracts API to access our Rust resources.
 
-See the [overview](getting-started-overview.md) and [instructions](instructions.md) for Getting Started in this guide.
-
 ## Background
 
 The motivation for our roadmap is inspired by feedback we are receiving from your recommendations. We hope you continue to provide your feedback as you embark on this journey with us -- we look forward to building a decentralized future together.
 
 ## Coding Standards
 
-[Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/CONTRIBUTING.md) cover best practices and recommendations following our coding standards, code reviews and publishing your code to our GitHub.
+[Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/CONTRIBUTING.md/) cover best practices and recommendations following our coding standards, code reviews and publishing your code to our GitHub.
 
 ## Supported Operating Systems
 
