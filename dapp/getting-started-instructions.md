@@ -1,132 +1,80 @@
-# Start Building dApps in 5 steps
+# Getting Started
 
-The following is a step-by-step process covering basic and advanced features provided for you to begin to develop, build, and test contracts using the CasperLabs development kit tools available in our development environment.   
+This follows the recommended process for getting started with dApp development with the CasperLabs platform features so that you can begin to develop, build, and test contracts using the CasperLabs development kit tools.
 
-As dApp developers, you may build from the ground up to go against the CasperLabs current `dev` or make modifications on your side, build locally, or just use what you build with the CasperLabs binaries we produce.  
+As dApp developers, you may build from the ground up to, or go against the latest CasperLabs release version, make modifications on your side, build locally, or just use what you build with the CasperLabs binaries we produce.
 
-## What is Covered here 
+- Setup your dApp development environment to work with the CasperLabs platform
 
-- Install CasperLabs contract SDK
 - Create a new smart contract project
-- Set up the build environment
-- Open the project in your IDE and view the project structure.
-- Build a contract
-- Run a test 
-- Create a stored contract
-- Create a test for the new functionality and run the test.
+- Use the runtime environment to build and test contracts
 
-### Preparation and resources
+## Pre-requisites
 
-- Familiarity with CasperLabs Basics covered in the documentation of our [GitHub repository](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/docs)
-- An account at [clarity.casperlabs.io](https://clarity.casperlabs.io/#/) with motes added to this account, instructions are provided in the /docs folder in the [CONTRACTS.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md#step-3-create-an-account-at-claritycasperlabsio) documentation for Deploying Contracts
-- [Using the Contracts Kit Workshop](https://casperlabs.atlassian.net/wiki/spaces/REL/pages/279707738/Using+the+Contracts+Kit+Workshop) 
-- [Stored Contracts -Using the Contracts Kit Workshop](https://casperlabs.atlassian.net/wiki/spaces/REL/pages/294584327/Stored+Contracts+-Using+the+Contracts+Kit+Workshop)
+[An IDE with Rust integration](https://www.rust-lang.org/tools) that enables you to most easily write and debug your contracts. See Rust recommended tools from their website [here](https://www.rust-lang.org/tools). 
 
-## Getting set up - Technical Pre-requisites
+[rustup](https://rustup.rs/), which installs Rust tools including rust Cargo. This allows you to install cargo-casperlabs whereby CL Crates will be installed, or crates that may have been installed previously will be updated.
 
-As you move along,  following list includes pre-requisites necessary to complete the activities in each step.
+[Cargo CasperLabs](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs) develop, build, debug, and deploy contracts using our CasperLabs environment and run your contracts locally and on the CasperLabs Devnet.
 
-- [JDK](https://openjdk.java.net/) - Java Development Kit (JDK), version 11
-- We recommend using [OpenJDK](https://openjdk.java.net/)
-- [Building with CasperLabs  binaries](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md#using-binaries-recommended) (Recommended) we provide pre-built binaries so that you can develop and build your contracts to deploy to the CasperLabs Network or network of your choice
--  [Building from source](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md#building-from-source) you can develop and build your contracts from source code for:
-  - deploying to the CasperLabs Network or network of your choice
-  - customization, versioning, optimization of compiling process
-  - making your code visible on the blockchain for full transparency
-  - any purpose you choose
-- [rustup](https://rustup.rs/) -  the installer for the Rust programming language that includes a command line tool for managing Rust versions and associated tools including Rust cargo and the rust package manager.
-- [Cargo CasperLabs](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs) -- Cargo CasperLabs provides a build tool for Rust. Rust Cargo has a built in ability to install binaries it will put a folder in your path and run commands as Cargo subcommands. CasperLabs Cargo bundles all common actions into a single command with no boilerplate required and provides an environment to help you test your code, and perform continuous integration according to recommended best practices.
-- Clone the CasperLabs [repository](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine) (if you have not already).
+## Instructions
+
+From the your terminal
+
+Follow the instructions in the Cargo CasperLabs [README.md](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#usage) 
+
+Install from source clone [CasperLabs release branch](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#installation) and installing cargo-casperlabs cargo-casperlabs directory.
+
+CasperLabs Cargo installation creates your project folder, e.g.  `*_project`, this will generate your project directory with contracts and test crates projects.
 
 
 
-## About the CasperLabs toolchain
+##### Step 1 - installation
 
-It is recommended you check your pre-requisites have been completed before working through the instructions for packages in this list:
+From the command line, or terminal in your IDE you can: 
 
-- Java Development Kit (JDK), version 11
+1. install 
 
-  - We recommend using the [OpenJDK](https://openjdk.java.net/)
+This also installs Rust Cargo which, with a built in ability to install binaries it will put a folder in your path and run commands as Cargo subcommands. 
 
--  [protoc](https://github.com/protocolbuffers/protobuf/releases), version 3.6.1 or greater - protobuf compiler for Protocol Buffers language-neutral, platform-neutral, extensible mechanism for serializing structured data.
+2. clone the CasperLabs [repository](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0) from the latest branch 
 
-- [sbt](https://www.scala-sbt.org/download.html) - this is an interactive Scala build tool where you can define your tasks in Scala and run them in parallel from sbt's interactive shell.
+3. navigate to the `cargo-casperlabs` directory
 
--  [rustup](https://rustup.rs/) - is the installer for the Rust programming language that includes a command line tool for managing Rust versions and associated tools including Rust cargo and the rust package manager.
+4. install [Cargo CasperLabs ](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#installation) 
 
-- **Clients (Scala and/or Python)** - Clients include a language specific library to interact with a node via our gRPC API, and a command line interface script (CLI)
-  
-  [Casperlabs client](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/INSTALL.md) (Scala)(debian and rpm) installation
-  
-  [Casperlabs client](https://pypi.org/project/casperlabs-client/) (Python Package and Instructions)
-  
--  [Cargo CasperLabs](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs) -- Cargo CasperLabs provides a build tool for Rust. Rust Cargo has a built in ability to install binaries it will put a folder in your path and run commands as Cargo subcommands. CasperLabs Cargo bundles all common actions into a single command with no boilerplate required and provides an environment to help you test your code, and perform continuous integration according to recommended best practices.
+Now the Cargo CasperLabs tool may be used as a Cargo subcommand -  A (CLI) command line tool that provides an environment to help contract developers compile, build, and test code. You can use this for creating a Wasm contract and tests  to deploy on the CasperLabs network. 
 
-Selecting an IDE
-----------------
+1. Create a new smart contract project 
+   1. contracts project 
+   2. test project
 
-Choose an IDE with Rust integration. We recommended you choose an application which enables you to most easily write and debug your contracts. You can find Rust recommended tools on their website [here](https://www.rust-lang.org/tools).
-
-- Select and install the Rust recommended IDE for your operating system.
-- Open your IDE and setup your environment with Rust required extension plugins including:
-   - rust language integration
-   - rust language support (rls)
-
-### Step 1 - Opening the execution-engine project
-
-Navigate to the directory where you will find the:
-  - system (Genesis) contracts - to bond to the network
-  - example contracts - smart contract templates
-    - ERC20 -
-    - Vesting -
-    - Tic Tac toe -
-  - Tests - to test and debug smart contract examples
-
-Open the CasperLabs project in your chosen IDE, you will find the configuration files, build and compiler tools, and source code library to build and test your contracts. 
-
-* The main CasperLabs project directory contains two Cargo crates project folders, [contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts) and [tests](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/test) 
-
-* Templated Contracts and test code
-`contract.rs` source code file located in the contract directory
-`.cargo/config` this configuration is file located in the contract crate and specifies the build target.
-`build.rs`  You can use this build file to automate builds
-
-### Dependencies
-Note that the test crate depends on the contract crate.
-
-### Step 2: Opening the project
-
-* Clone the [repository](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine) (if you have not already).
-
-* Once you clone the repository, follow the installation process for CasperLabs Cargo [here](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#installation).
-
+You will find the configuration files, build and compiler tools, and source code library to build and test your contracts. 
 
 Note: If you get stuck, check that the Pre-requisites are installed and that you have the correct versions:
 
-   - Java VM - must be installed to use the kit
-   - WASM - WebAssembly is the language your contracts are compiled to, see detailed information about Wasm [here](https://webassembly.org/)
-   - Python - Python client
-   - Scala - Scala client
-   - JavaScript
+##### Step 2 - opening the execution-engine project
 
+**Directory Structure**
 
-#### Directory Structure
+Having followed the [Cargo CasperLabs Installation](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#usage) you should have created a new project,  `*_project` and 2 CargoCasperlabs projects:
 
- Having followed the [Cargo CasperLabs Installation] (https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#usage) you should have created a project < `my_project`>.
+- contract
+- tests 
 
-Upon opening your <my_project> in your IDE you will see the project directory with a contract project folder and tests project folder which containing the templates, configuration files, compiling and build tools, and libraries you will need to create, build, test, deploy, and debug your contracts:
+In your IDE you will see the project directory containing the templates, configuration files, compiling and build tools, and libraries you will need to create, build, test, deploy, and debug your contracts: 
 
-```
-my_project/
-├── contract
+```markdown
+`*_project`/
+├── `contract`
 │   ├── .cargo
 │   │   └── config
 │   ├── Cargo.toml
 │   ├── rust-toolchain
 │   └── src
 │       └── lib.rs
-└── tests
-    ├── build.rs
+└── `tests`
+		├── build.rs
     ├── Cargo.toml
     ├── rust-toolchain
     ├── src
@@ -137,181 +85,54 @@ my_project/
         └── standard_payment.wasm
 ```
 
+##### How it works, what it does
 
-Step 3 Use the CasperLabs runtime environment
----------------------------------------------
+`*_project`
 
-Developers who want to use Rust (recommended for financial applications) can create a crates project for your smart contracts and run your contracts in a testing framework with the CasperLabs contract runtime environment. This enables you to use a seamless workflow for authoring and testing your smart contracts.
+Cargo crates project folders, [contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts) and [tests](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/test) 
 
-Additionally, this environment can also be used for continuous integration, enabling Rust smart contracts to be managed using development best practices.
+* Contracts
 
-This process has been simplified with the Cargo CasperLabs tool for creating a Wasm smart contract and tests for use on the CasperLabs network.
+  `.cargo/config` this configuration is file located in the contract crate and specifies the build target.
 
-- From the `terminal` within your project:
+  `contract.rs` source code file located in the contract directory
 
-  Follow the instructions in the Cargo CasperLabs [README.md](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#usage), 
+* Tests 
 
-  Start with installing [rustup](https://rustup.rs/), which installs Rust tools including rust Cargo. This allows you to install cargo-casperlabs whereby CL Crates will be installed, or crates that may have been installed previously will be updated.
+  * Tests - to test and debug smart contract examples
 
-- You can also [install from the lastest `dev` branch](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#installation) by cloning this repository and installing cargo-casperlabs in the cargo-casperlabs directory.
+    Templated Contracts with test code
+    `build.rs`  You can use this build file to automate builds
 
-- CasperLabs Cargo installation creates your project folder, e.g. <"my_project">, this will generate your project directory with contracts and test crates projects,  see [Directory Structure](#directory-structure) in Step 2 above.
+    `Cargo.toml`
 
-Step 4 Writing Contracts
-------------------------
-You can build contracts from scratch or use our [example smart contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples) with instructions and directories containing example smart contracts definitions and companion contracts.
+    `rust-toolchain`
 
-For example:
+    `src` folder contains 
 
-- ERC20
+    ​	 	`rust_integration_tests.rs `	
 
-- Tokens -- distributing tokens
+* wasm - system (Genesis) contracts - to bond to the network
 
-- Payment processing
+**Dependencies**
 
-- Receiving payments
+Note that the test crate depends on the contract crate
 
-- Vesting Contracts
-
-- Games
-  - Tic Tac Toe
-
-  In the Execution Engine directory of the repo you have cloned, you can [build](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples#building) all contracts or specific contracts:
-
-##### Building the Contract
-
-From within your `my_project/contract folder`, you will install Rust and add the Wasm target. You will run the commands provided in the Casperabs Cargo [README.md](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#building-the-contract) from within the root directory of the`contract` project, and then build the contracts with the commands of the Cargo Casperlabs tool. The `contract.wasm` will be built  in the `release` directory as per this example:
-
-For Example:
-
-Building a specific contract, you will see it in the root of your contract directory
-```
-cargo build --target wasm32-unknown-unknown --release -p hello-name-define -p hello-name-call
-```
-
-```
-my_project/
-├── contract
-│   ├── .cargo
-│   │   └── config
-│   ├── Cargo.toml
-│   ├── rust-toolchain
-│   └── src
-│       └── lib.rs
-|   └── target/
-|				└── wasm32-unknown-unknown
-|						└──	debug
-|						└──	release <--- See
-└── tests
-    ├── build.rs
-    ├── Cargo.toml
-    ├── rust-toolchain
-    ├── src
-    │   └── integration_tests.rs
-    └── wasm
-        ├── mint_install.wasm
-        ├── pos_install.wasm
-        └── standard_payment.wasm
-```
-
-
-
-
-## Using Rust
-
-- [crates.io](https://crates.io/search?q=casperlabs) this is where all CasperLabs crates are published
-- [GITHub Source](https://github.com/CasperLabs/CasperLabs/blob/master/execution-engine/contract-ffi/src/lib.rs) - source code is available in all of our feature repositories
-- [Contract API](https://docs.rs/casperlabs-contract) - smart contracts Rust library 
-- [Types](https://docs.rs/casperlabs-types) - types you will used in creating Wasm contracts and tests for CasperLabs platform
-- [Test Support](https://docs.rs/casperlabs-engine-test-support)- our platforms test support libraries
-- [Error Codes](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings) - Access the list of annotated Contract exit codes with details
-
-**Tools**
-- [CLI Tool](https://crates.io/crates/cargo-casperlabs) cargo-casperlabs CLI tool also accessed as cargo-casperlabs CLI tool source in GIT [here](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs)
-
-  Note: These links have equivalent information - including a README.md from the  Cargo Casperlabs crate's root.
-
-
-Step 5 Deploying and Testing contracts to the DevNet
-----------------------------------------------------
-
-### Deploying Contracts to Devnet
-
-For instructions on Deploying Contracts see [DEVNET.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/DEVNET.md#deploying-code)
-
-Additionally, more advanced functions for deployments are covered in [CONTRACT.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md) in the /docs folder of the master repo you cloned your project from.
-
-#### Pre-requisites for Deploying Contracts
-
-- CasperLabs client is [installed](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/INSTALL.md) and built
-
-- [rustup](https://rustup.rs/) is installed with the tool chain
-
-- the [main repo](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0) is cloned with the [example contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples)
-
-  Note: source code of the contract examples is located in this directory `./execution-engine/contracts/examples` inside the main repo
-
-- You have an account at [clarity.casperlabs.io](https://clarity.casperlabs.io/#/) with motes added to this account
-
-1. Build the example contracts 
-
-2. Use the CasperLabs Client, deploy your contract
-
-   
-
-Using the Testing Framework
-----------------------------------
-In your <`my_project`> you will find the Tests project with tests to build, deploy, and debug your contracts:
-
-```shell
-my_project/
-├── contract
-│   ├── .cargo
-│   │   └── config
-│   ├── Cargo.toml
-│   ├── rust-toolchain
-│   └── src
-│       └── lib.rs
-|   └── target/
-|				└── wasm32-unknown-unknown
-|						└──	debug
-|						└──	release <--- See
-└── tests  <---
-    ├── build.rs
-    ├── Cargo.toml
-    ├── rust-toolchain
-    ├── src
-    │   └── integration_tests.rs
-    └── wasm
-        ├── mint_install.wasm
-        ├── pos_install.wasm
-        └── standard_payment.wasm
-```
-
-
-
-Details are in the README.md of the Casperlabs Cargo GitHub [here](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs).
-
-### Testing your project - Rust
-
-Once installed, the  Cargo CasperLabs tool may be used as a Cargo subcommand - A (CLI) command line tool for creating a Wasm contract and tests at your <path>  to deploy on the CasperLabs network. This tool provides an environment to help contract developers test their code. Rust Cargo has a built in ability to install binaries it will put a folder in your path and run commands as Cargo subcommands.
-
-For detailed instructions see [Testing the Contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#testing-the-contract) in the Cargo CasperLabs repository.
-
-### Installing Casperlabs Cargo
+##### Step 2 How to use the runtime environment with Casperlabs Cargo
 
 `$cargo install -f cargo-casperlabs` --path=. (to create a path when not published)
 
 `$cargo install -f cargo-casperlabs` -- works with Test docs that have been published at crates.io--
 
-This will update your crates, download, compile and build the tool and
-install it to your local binary folder.
+This will update your crates, download, compile and build the tool and install it to your local binary folder.
 
-`cd cargo casperlabs `--help`` includes brief instructions on how to use the
-tool. It is important you have to have the Wasm target available for the toolchain we want to use.
+`cd cargo casperlabs `--help`` includes brief instructions on how to use the tool.
 
-By default the installation creates projects which rely on our packages being
-published at [crates.io](crates.io) to test the tool against.
+
+
+It is important you have to have the Wasm target available for the toolchain we want to use.
+
+Note: By default the installation creates projects which rely on our packages being published at [crates.io](crates.io) to test the tool against.
 
 Using the Command line argument available in the tool,  you will see the following output for usage, flags, and options:
 
@@ -325,24 +146,182 @@ USAGE
 	cargo test
 ```
 
-
-
 FLAGS
 
 `-h` `--help` Prints help information
 `-v,` `--version` Prints written version information
 
-
-
 OPTIONS
 
 ARGS:	<path>  Path to new folder for contract and tests
 
-#### Pre-requisites for Testing Contracts
 
-* Make sure you have the Wasm target available to use the tool. 
 
-  Note: By default the tool creates projects which relies on our packages being published at [Crates.io]()
+##### Compile and testing a contracts
+
+
+
+# Smart contract development guidelines
+
+You can build contracts from scratch or use our [example smart contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples) with instructions and directories containing example smart contracts definitions and companion contracts.
+
+In the Execution Engine directory of the repo you have cloned, you can [build](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples#building) all contracts or specific contracts:
+
+For example:
+
+- ERC20
+- Tokens -- distributing tokens
+- Payment processing
+- Receiving payments
+- Vesting Contracts
+- Games
+  - Tic Tac Toe
+
+
+#### Using Rust
+
+Developers who want to use Rust (recommended for financial applications) can create a crates project for your smart contracts and run your contracts in a testing framework with the CasperLabs contract runtime environment. This enables you to use a seamless workflow for authoring and testing your smart contracts.
+
+Additionally, this environment can also be used for continuous integration, enabling Rust smart contracts to be managed using development best practices.
+
+This process has been simplified with the Cargo CasperLabs tool for creating a Wasm smart contract and tests for use on the CasperLabs network.
+
+##### Rust 101 
+
+- [crates.io](https://crates.io/search?q=casperlabs) this is where all CasperLabs crates are published
+- [GITHub Source](https://github.com/CasperLabs/CasperLabs/blob/master/execution-engine/contract-ffi/src/lib.rs) - source code is available in all of our feature repositories
+- [Contract API](https://docs.rs/casperlabs-contract) - smart contracts Rust library 
+- [Types](https://docs.rs/casperlabs-types) - types you will used in creating Wasm contracts and tests for CasperLabs platform
+- [Test Support](https://docs.rs/casperlabs-engine-test-support)- our platforms test support libraries
+- [Error Codes](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings) - Access the list of annotated Contract exit codes with details
+
+**Tools**
+
+- [CLI Tool](https://crates.io/crates/cargo-casperlabs) cargo-casperlabs CLI tool also accessed as cargo-casperlabs CLI tool source in GIT [here](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs)
+
+  Note: These links have equivalent information - including a README.md from the  Cargo Casperlabs crate's root.
+
+##### Example Contracts
+
+Contracts are written in supported languages (for compiling to Wasm for deployment from a node) and processed through our execution engine (EE). 
+
+Learn more about this in the  [README.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/execution-engine/contracts/examples/README.md)  of the contracts example directory as well as about how contracts are built and when deploying, [how they operate on the platform](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md) 
+
+CasperLabs provides capabilities to develop contracts that include but are not limited to the following types:
+
+- Tokenization types to use for exchanging tokens
+- Storing assets catalog and tokenizing what you own
+- Power to vote (stake)
+- Rewards (e.g. get tokens when you purchase something)
+
+##### The Contract API
+
+##### Structuring your project
+
+<!--Video [CasperLabs - Smart contract template repository v0.0.1] (https://www.youtube.com/watch CasperLabs - Smart contract template repository v0.0.1] ch?v=P8SC_upCqAg&feature=youtu.be)-->
+
+Directories structure is designed for developing, building, and testing  Rust contracts.
+
+- Smart Contracts
+- Tests
+- System contracts
+- Cargo
+- Rust tool chain
+
+##### Testing Your Project
+
+##### Building the Contract
+
+From within your `my_project/contract folder`, you will install Rust and add the Wasm target. You will run the commands provided in the Casperabs Cargo [README.md](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#building-the-contract) from within the root directory of the`contract` project, and then build the contracts with the commands of the Cargo Casperlabs tool. The `contract.wasm` will be built  in the `release` directory as per this example:
+
+For Example:
+
+Building a specific contract, you will see it in the root of your contract directory
+```
+cargo build --target wasm32-unknown-unknown --release -p hello-name-define -p hello-name-call
+```
+
+```markdown
+the_project/
+├── contract
+│   ├── .cargo
+│   │   └── config
+│   ├── Cargo.toml
+│   ├── rust-toolchain
+│   └── src
+│       └── lib.rs
+|   └── target/
+|				└── wasm32-unknown-unknown
+|						└──	debug
+|						└──	release <--- See
+└── tests
+    ├── build.rs
+    ├── Cargo.toml
+    ├── rust-toolchain
+    ├── src
+    │   └── integration_tests.rs
+    └── wasm
+        ├── mint_install.wasm
+        ├── pos_install.wasm
+        └── standard_payment.wasm
+```
+
+##### Step 3 Deploying and Testing contracts to the DevNet
+
+##### Deploying Contracts to Devnet
+
+For instructions on Deploying Contracts see [DEVNET.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/DEVNET.md#deploying-code)
+
+Additionally, more advanced functions for deployments are covered in [CONTRACT.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md) in the /docs folder of the master repo you cloned your project from.
+
+##### Using the Testing Framework
+
+Running the test builds the contract, and takes it and runs the code treating it as if it is being sent from a node as a deploy and executing it through the Execution Engine itself.
+
+##### Testing workflow
+
+The test will run in 3 steps:
+
+1. build the contract
+2. execute the contract
+3. show the results -- passed, or failed with an error report to help debug 
+
+Note: you can also just build the contract in contract and deploy using `-- cargo build`
+
+1. In your `*_project` you will find the Tests project with tests to build, deploy, and debug your contracts:
+
+```markdown
+`*_project`/
+├── contract
+│   ├── .cargo
+│   │   └── config
+│   ├── Cargo.toml
+│   ├── rust-toolchain
+│   └── src
+│       └── lib.rs
+│  └── target/
+│				└── wasm32-unknown-unknown
+│						└──	debug
+│						└──	release <-- See
+└── tests  <-- See
+    ├── build.rs
+    ├── Cargo.toml
+    ├── rust-toolchain
+    ├── src
+    │   └── integration_tests.rs
+    └── wasm
+        ├── mint_install.wasm
+        ├── pos_install.wasm
+        └── standard_payment.wasm
+```
+
+##### Testing your project - Rust
+
+For detailed instructions see [Testing the Contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#testing-the-contract) in the Cargo CasperLabs repository.
+
+1. Make sure you have the Wasm target available to use the tool. 
+
+Note: By default the tool creates projects which relies on our packages being published at [Crates.io]()
 
 1. Navigate to the execution-engine directory 
 
@@ -353,11 +332,11 @@ ARGS:	<path>  Path to new folder for contract and tests
 
 Note: To Test the tool against what is not yet published, you can use a non visible command line argument available to pass to the path of the local EE folder `--workspace-path` -- (see source code)
 
-1. Open the project <my_project>
+1. Open the project `*_project`
 
 You will see two rust projects have been built, contract and tests:
 
-```shell
+```markdown
 my_project/
 ├── **contract** (can be extended, see project directory above in step 1.
 └── **tests**
@@ -385,8 +364,7 @@ Configurations run on the Command:
   - `.cargo/config` this configuration is file located in the contract crate and specifies the build target.
   - `* build.rs`  You can use this build file to automate builds
 
-The tool compiles the tests, invoking the build script compiler
-to build the contract using the correct target.
+The tool compiles the tests, invoking the build script compiler to build the contract using the correct target.
 
 Wasm 32 -- compiles the contract, storing as a string provided as the single argument stored under a key code value.
 
@@ -397,20 +375,7 @@ For more detail, see the engine test support API reference crate documentation f
 
 Test contracts in the Execution Engine (EE) itself with access to elements you require:
 
-### Testing workflow
-
-The test will run in 3 steps:
-
-1. build the contract
-2. executed it
-3. and show it passed
-
-Running the test builds the contract, and takes it and runs the code treating it as if it is being sent from the node as a deploy and executing it through the Execution Engine itself.
-
-Note: you can also just build the contract in contract and deploy using
-`-- cargo build`
-
-#### Failure and Error Reporting
+## Failure and Error Reporting
 
 Single argument to the contract is stored under a special value
 `-- a key code`
@@ -425,8 +390,7 @@ Test `-- stores` a `key` and the value
 
 Note that the test crate depends on the contract crate.
 
-Execution error codes
----------------------
+##### Execution error codes
 
 You can find a dynamically generated list with descriptions of each error code in our Rust and source documentation respectively
 

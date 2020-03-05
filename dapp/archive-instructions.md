@@ -1,10 +1,9 @@
-Getting Started
-===============
+###See Getting Started-instructions
 
-The following provides a step-by-step set of examples including basic and advanced features to develop, build, and test contracts using the CasperLabs development tools available in our development envrironment for: 
+The following provides a step-by-step set of examples including basic and advanced features to develop, build, and test contracts using the CasperLabs development tools available in our development envrironment for:
 
 - Rust
-- Assembly Scrip the following set of documentation is presented in order and provides instructions on Linux and OSx for developing, building, testing, and executing Smart contracts to address your use case
+- Assembly Script with the following set of documentation presented in order and provides instructions on Linux and OSx for developing, building, testing, and executing Smart contracts to address your use case
 
 Prior knowledge about Rust and/or Assembly script is assumed.
 
@@ -189,8 +188,6 @@ In your project you will find tests to build, deploy, and debug your contracts:
 - [Makefile.toml](...) - to build the contract
 - [rust-toolchain](...) - to build and deploy your test contracts
 - [README.md](...) --
-
-
 
 Execution error codes
 ---------------------

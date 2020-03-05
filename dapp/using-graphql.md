@@ -1,4 +1,4 @@
-## GraphQL
+## Using GraphQL
 
 GraphQL can be accessed in the following ways:
 - Our GraphQL console located
@@ -10,19 +10,16 @@ GraphQL can be accessed in the following ways:
 
 [Execute GraphQL Queries](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/hack/docker#execute-graphql-queries)
 
-The node includes a GraphQL console which you can use to explore the
-schema and build queries with the help of auto-completion.
+The node includes a GraphQL console which you can use to explore the schema and build queries with the help of auto-completion.
 
-To access GraphQL with Docker, first make sure the top level docker
-containers and the bootstrap container are started:
+Note: To access GraphQL with Docker, first make sure the top level docker containers and the bootstrap container are started:
 
 `make up node-0/up`.
 
 Once that's done you can point your browser on [Clarity](http://localhost:40403/graphql)
 
-1. View what's exposed by clicking the DOCS and SCHEMA buttons
-   on the right-hand side of the screen.
-
+1. View what's exposed by clicking the DOCS and SCHEMA buttons on the right-hand side of the screen.
+   
 2. Run a query, start typing "query" or "subscription" into the
    left-hand pane and see what the code completion offers up.
 

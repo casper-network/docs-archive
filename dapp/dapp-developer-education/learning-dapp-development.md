@@ -115,6 +115,6 @@ How this works.
   - description of the network
   - purpose, objectives, and interests of the network
   - composition
-  - he network
+  - the network
   - summary, conclusions - relations, synthesis
 

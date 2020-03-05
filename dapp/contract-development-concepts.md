@@ -23,17 +23,17 @@ We highlight the following for DApp developement
 
 The list of contract exit codes is located [here](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings)
 
-Structuring your project
+<!--Structuring your project-->
 ------------------------
-<!--Video [CasperLabs - Smart contract template repository v0.0.1] (https://www.youtube.com/watch CasperLabs - Smart contract template repository v0.0.1] ch?v=P8SC_upCqAg&feature=youtu.be)-->
+<!--<!--Video [CasperLabs - Smart contract template repository v0.0.1] (https://www.youtube.com/watch CasperLabs - Smart contract template repository v0.0.1] ch?v=P8SC_upCqAg&feature=youtu.be)-->-->
 
-Directories structure is designed for developing, building, and testing  Rust contracts.
+<!--Directories structure is designed for developing, building, and testing  Rust contracts.-->
 
-- Smart Contracts
-- Tests
-- System contracts
-- Cargo
-- Rust tool chain
+- <!--Smart Contracts-->
+- <!--Tests-->
+- <!--System contracts-->
+- <!--Cargo-->
+- <!--Rust tool chain-->
 
 
 Weighted Keys and Thresholds
