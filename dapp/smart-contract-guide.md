@@ -1,18 +1,27 @@
 # Smart Contract Guide
 
+## Rust environment
+
+### Install Rust
+
+### Cargo CasperLabs Tool
+
+### Available packages
+
+## Developping Smart Contracts
 In this tutorial we will use Rust's Smart Contract library we created at Casperlab. Casperlabs blockchain uses WebAssembly (WASM) as it's virtual machine. Thanks to the Rust's native ability to compile to WASM we can build smart contract using all the good tools and libraries Rust ecosystem gives us.
 
-## Start a new project.
+### Start a new project
 First lets create a new project.
 ```bash
 $ cargo casperlabs my-project
 ```
 We should endup with two crates called `contract` and `tests`. It's an out of the box implementation of a very simple smart contract that saves a value, passed as an argument, on the blockchain.
 
-## Project structure
+### Project structure
 TODO: describe each file.
 
-## Compile and test.
+### Compile and test
 Let's compile the smart contract into WASM file. Note, that it's not necessary to set WASM as an compilation target. It's already defined in `contract/.cargo/config`.
 ```bash
 $ cd contract
@@ -25,10 +34,10 @@ $ cargo test
 ```
 `tests` crate has `build.rs` file. It's executed every time before running tests and it compiles smart contract for your convenience. In practice, that means we only need to run `cargo test` in `tests` crate during the developement. Go ahead and modify `contract/src/lib.rs`. You can change the value of `KEY` and observe how smart contract compiles and test fails.
 
-## Libs.
+### Libs
 TODO: describe dependencies libs.
 
-## Basic Smart Contract.
+### Basic Smart Contract
 Casperlab's VM executes smart contract by calling it's `call` function. If the function is not there, then it's not a valid smart contract. The simples possible example we can write is just an empty `call` function.
 ```rust
 #[no_mangle]
@@ -36,7 +45,7 @@ pub extern "C" fn call() { }
 ```
 `#[no_mangle]` attribute prevents the compiler from changing (mangling) the function name when converting to binary format of WASM. Without it, the VM exits with the error message: `Module doesn't have export call`.
 
-## Failing gentely.
+### Failing gentely
 Throwing an error during the smart contract execution is a perfectly normall thing to do. This is how we do it.
 ```rust
 use casperlabs_contract::contract_api::runtime;
@@ -49,7 +58,7 @@ pub extern "C" fn call() {
 ```
 Build-in error codes can be found here: https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings. You can create your own errors using `ApiError::User(<your error code>)` variant of `ApiError`.
 
-## Arguments.
+### Arguments
 It's possible to read arguments passed to the smart contract. Passing arguments is covered later. The function we are interested in is `runtime::get_arg()`. Helper function `unwrap_or_revert_with` is added to `Option` and `Result` when importing `unwrap_or_revert::UnwrapOrRevert`.
 ```rust
 use casperlabs_contract::{
@@ -68,7 +77,7 @@ pub extern "C" fn call() {
 }
 ```
 
-## Storage.
+### Storage
 Saving and reading values from and to the blockchain is a manual process at CasperLabs. It requires more code to be written, but also gives much flexibility.
 
 Below code comes from `contract/src/lib.rs`. It reads an argument and stores it in the memory under `special_value` key.
@@ -111,3 +120,11 @@ pub extern "C" fn call() {
     store(value);
 }
 ```
+
+## Using GraphQL
+
+### To debug contracts
+
+### To learn about the network
+
+## Execution error codes - a listing and description of each error code.
