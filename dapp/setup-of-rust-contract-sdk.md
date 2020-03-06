@@ -35,7 +35,8 @@ $ cargo casperlabs my-project
 This step will install two crates called `contract` and `tests`. This is a complete basic smart contract that saves a value, passed as an argument, on the blockchain. The tests crate provides a runtime environment of the CasperLabs virtual machine, and a basic test of the smart contract.
 
 ## Configure Rust for Compilation to Wasm
-Pitor to add here. TODO
+
+    $ cargo install wasm-pack
 
 ## Compile
 The next step is to compile the smart contract into WASM. 
