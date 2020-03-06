@@ -4,7 +4,7 @@ The CasperLabs node software includes a GraphQL console which you can use to exp
 To query the blockchain on DevNet, navigate to: [CasperLabs Clarity](http://devnet-graphql.casperlabs.io:40403/graphql)
 
 
-### Using GraphQL for Querying and Debugging contracts
+## Using GraphQL for Querying and Debugging contracts
 
 * View what graphs are available by clicking the DOCS and SCHEMA buttons on the right-hand side of the screen.
    
