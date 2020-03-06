@@ -11,5 +11,6 @@ CasperLabs Blockchain.
    intro
    set-rust-sdk
    writting-rust-contracts
+   deploying-contracts
    smart-contract-tutorials
    developer-faq
