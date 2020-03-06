@@ -39,5 +39,6 @@ and our token policies.
 
    theory/index
    implementation/index
+   dapp/index
 
 
