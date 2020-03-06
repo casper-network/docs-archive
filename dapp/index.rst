@@ -13,5 +13,6 @@ CasperLabs Blockchain.
    writting-rust-contracts
    deploying-contracts
    graphql
+   execution-error-codes
    smart-contract-tutorials
    developer-faq

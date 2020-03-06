@@ -8,7 +8,7 @@ Read our [Tech Spec](https://techspec.casperlabs.io/en/latest/) to learn more ab
 
 ## Purpose of this guide
 
-This guide is designed to support dApp developers getting started with the development of smart contracts on the CasperLabs blockchain in AssemblyScript or Rust. For Rust there is a [contract development kit](/smart-contract-guide.md#getting-started) that includes a runtime environment, reference documentation, and test framework.
+This guide is designed to support dApp developers getting started with the development of smart contracts on the CasperLabs blockchain in AssemblyScript or Rust. For Rust there is a [contract development kit](set-rust-sdk) that includes a runtime environment, reference documentation, and test framework.
 
 ## Who is this guide for
 

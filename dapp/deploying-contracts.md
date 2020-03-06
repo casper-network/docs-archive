@@ -42,10 +42,10 @@ The easiest way to deploy a contract is to use an existing public network.  Casp
 * Place your private key in a location that you can access during the deployment.
 * Request tokens from the faucet to  fund your account.
 
-The host name of the DevNet is [deploy.casperlabs.io](deploy.casperlabs.io)
+The host name of the DevNet is 'deploy.casperlabs.io'
 
 ### A Basic Deployment
-As described above, a basic deployment must provide some essential information. Here is an example deployment using the Python client that will work with the basic contract we created using the [Contracts SDK for Rust](/writting-rust-contracts.md)
+As described above, a basic deployment must provide some essential information. Here is an example deployment using the Python client that will work with the basic contract we created using the [Contracts SDK for Rust](writting-rust-contracts)
 ```bash
 $ casperlabs_client --host deploy.casperlabs.io deploy \
     --session contract.wasm \
