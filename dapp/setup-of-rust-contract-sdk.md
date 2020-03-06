@@ -1,5 +1,10 @@
 # Setting up the Rust Contract SDK
-The SDK is the easiest way to get started with Smart Contract development. This guide will walk you through the steps to get set up.
+
+To get you started with developing dApps, CasperLabs has released a contract development kit that leverages the Rust development toolchain and ecosystem, this kit will work with any IDE that supports Rust.      
+
+You will be able to run smart contracts in a CasperLabs runtime environment (Execution Engine (EE)) using IDE you choose and run them in the runtime environment in the order you desire and so observe the effects of contract execution in the [global state](https://github.com/CasperLabs/techspec/blob/master/implementation/global-state.rst) (the shared database that is the blockchain). 
+
+This guide will walk you through the steps to get set up.
 
 
 ## Install Rust
