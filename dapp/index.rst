@@ -9,6 +9,7 @@ CasperLabs Blockchain.
    :maxdepth: 3
 
    intro
-   smart-contract-guide
+   set-rust-sdk
+   writting-rust-contracts
    smart-contract-tutorials
    developer-faq
