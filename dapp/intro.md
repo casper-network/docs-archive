@@ -40,7 +40,7 @@ We recommend familiarizing yourself with the following resources:
 - Familiarize yourself with CasperLabs Basics covered in the documentation of our [GitHub repository](
 - Tutorial: [Using the Contracts Kit Workshop](https://casperlabs.atlassian.net/wiki/spaces/REL/pages/279707738/Using+the+Contracts+Kit+Workshop) 
 - Rust [rust-lang.org](https://www.rust-lang.org/)
-- AssemblyScript - if you choose to use AssemblyScript for Smart Contracts, you can familarize yourself with AssemblyScript and our [Contract Library.](https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine/contract-as)
+- AssemblyScript [Contract Library.](https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine/contract-as)
 
 
 ## Background
