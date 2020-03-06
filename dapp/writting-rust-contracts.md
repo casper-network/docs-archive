@@ -4,16 +4,16 @@
 This section explains step by step how to write a new smart contract.
 
 ### Basic Smart Contract
-The CasperLabs VM executes smart contract by calling thecall function specified in the contract. If the function is missing, the smart contract is not valid. The simplest possible example is an empty call function.
 
+The CasperLabs VM executes smart contract by calling thecall function specified in the contract. If the function is missing, the smart contract is not valid. The simplest possible example is an empty call function.
 ```rust
 #[no_mangle]
 pub extern "C" fn call() { }
 ```
 `#[no_mangle]` attribute prevents the compiler from changing (mangling) the function name when converting to binary format of WASM. Without it, the VM exits with the error message: `Module doesn't have export call`.
 
-### Falling gently
-The CasperLabs VM supports error codes in smart contracts. It's possible to create a set of error codes for your smart contract for different errors that may occur during contract execution. Here is an example of how a custom error code works:
+### Using Error Codes
+The CasperLabs VM supports error codes in smart contracts. It's possible to create a set of error codes for your smart contract for different errors that may occur during contract execution. When a contract returns an error, it's visible in the Block Explorer. Here is an example of how a custom error code works:
 
 ```rust
 use casperlabs_contract::contract_api::runtime;
@@ -24,10 +24,10 @@ pub extern "C" fn call() {
     runtime::revert(ApiError::PermissionDenied) 
 }
 ```
-Build-in error codes can be found here: https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings. You can create your own errors using `ApiError::User(<your error code>)` variant of `ApiError`.
+Built-in error codes can be found here: https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings. You can create your own errors using `ApiError::User(<your error code>)` variant of `ApiError`.
 
 ### Arguments
-It's possible to read arguments passed to the smart contract. Passing arguments is covered later. The function we are interested in is `runtime::get_arg`. Helper function `unwrap_or_revert_with` is added to `Option` and `Result` when importing `unwrap_or_revert::UnwrapOrRevert`.
+It's possible pass arguments to smart contracts. Passing arguments is covered later. To leverage this feature, use `runtime::get_arg`. The helper function `unwrap_or_revert_with` is added to `Option` and `Result` when importing `unwrap_or_revert::UnwrapOrRevert`.
 ```rust
 use casperlabs_contract::{
     contract_api::runtime,
@@ -46,7 +46,7 @@ pub extern "C" fn call() {
 ```
 
 ### Storage
-Saving and reading values from and to the blockchain is a manual process in CasperLabs. It requires more code to be written, but also gives much flexibility. Storage system works similar to the filesystem in a operating system. Let's say we hava a string `"Hello CasperLabs"`. If you want to save it as a file, you first go to the text editor, create a new file, paste the string in and save it under a name in some directory. Similar happens in CasperLabs. First you have to save your value to the memory using `storage::new_turef`. It returns a reference to the memory object that holds `"Hello Casperlabs"` value. You could use this reference to update the value to something else. It's like a file. Secondly you have to save the reference under a human-readable string using `runtime::put_key`. It's like giving a name to the file. Following function implements this scenario:
+Saving and reading values from and to the blockchain is a manual process in CasperLabs. It requires more code to be written, but also provides a lot of flexibility. The storage system works similar to a file system in a operating system. Let's say we have a string `"Hello CasperLabs"` that needs to be saved. To do this, use the text editor, create a new file, paste the string in and save it under a name in some directory. The pattern is similar on the CasperLabs blockchain. First you have to save your value to the memory using `storage::new_turef`. This returns a reference to the memory object that holds `"Hello Casperlabs"` value. You could use this reference to update the value to something else. It's like a file. Secondly you have to save the reference under a human-readable string using `runtime::put_key`. It's like giving a name to the file. Following function implements this scenario:
 ```rust
 const KEY: &str = "special_value";
 
