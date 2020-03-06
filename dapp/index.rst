@@ -10,3 +10,5 @@ CasperLabs Blockchain.
 
    intro
    smart-contract-guide
+   smart-contract-tutorials
+   developer-faq
