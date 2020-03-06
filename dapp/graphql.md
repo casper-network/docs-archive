@@ -6,9 +6,9 @@ To query the blockchain on DevNet, navigate to: [CasperLabs Clarity](http://devn
 
 ### Using GraphQL for Querying and Debugging contracts
 
-1. View what graphs are available by clicking the DOCS and SCHEMA buttons on the right-hand side of the screen.
+* View what graphs are available by clicking the DOCS and SCHEMA buttons on the right-hand side of the screen.
    
-2. Run a query, start typing "query" or "subscription" into the
+* Run a query, start typing "query" or "subscription" into the
    left-hand pane and see what the code completion offers up.
 
 Note: The DOCS can be kept open on the right hand side to see what's
@@ -33,7 +33,7 @@ query {
 You can use the "COPY CURL" button to see what an equivalent pure
 HTTP/JSON command would be.
 
-3. Press the "play" button in the middle of the tool screen to see the query response.
+* Press the "play" button in the middle of the tool screen to see the query response.
 
 For further details on our GraphQl see our [source code](https://clarity.casperlabs.io/#/) 
 
