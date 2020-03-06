@@ -1,6 +1,8 @@
 # Getting Started
 
-To get you started with CasperLabs development kit we where you can use cargo-casperLabs package manager to develop, test, debug, and deploy contracts locally or on the CasperLabs Devnet.
+This step-by-step process includes a set of examples designed for you to become familiar with how to use the CasperLabs development tool kit. 
+
+Starting with the cargo-casperlabs package manager you will see how to use the tools so that you can start to develop, test, debug, and deploy contracts locally or on the CasperLabs Devnet with the basics to: 
 
 - Setup your dApp development environment to work with the CasperLabs platform
 
@@ -107,7 +109,7 @@ Note: that the tests crate depends on the contract crate
 
 Casperlabs contracts are built and compiled to Wasm to deploy to our DevNet.
 
-Here you will build the contract ensuring the correct version of Rust is installed along with the Wasm target:
+Build the contract ensuring the correct version of Rust is installed along with the Wasm target:
 
 1. navigate to the `contract` directory of your project
 
