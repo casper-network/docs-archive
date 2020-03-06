@@ -4,7 +4,8 @@
 This section explains step by step how to write a new smart contract.
 
 ### Basic Smart Contract
-Casperlab's VM executes smart contract by calling it's `call` function. If the function is not there, then it's not a valid smart contract. The simples possible example we can write is just an empty `call` function.
+The CasperLabs VM executes smart contract by calling thecall function specified in the contract. If the function is missing, the smart contract is not valid. The simplest possible example is an empty call function.
+
 ```rust
 #[no_mangle]
 pub extern "C" fn call() { }
@@ -12,7 +13,8 @@ pub extern "C" fn call() { }
 `#[no_mangle]` attribute prevents the compiler from changing (mangling) the function name when converting to binary format of WASM. Without it, the VM exits with the error message: `Module doesn't have export call`.
 
 ### Falling gently
-Throwing an error during the smart contract execution is a perfectly normall thing to do. This is how we do it.
+The CasperLabs VM supports error codes in smart contracts. It's possible to create a set of error codes for your smart contract for different errors that may occur during contract execution. Here is an example of how a custom error code works:
+
 ```rust
 use casperlabs_contract::contract_api::runtime;
 use casperlabs_types::ApiError;
