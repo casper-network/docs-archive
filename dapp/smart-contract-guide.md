@@ -1,6 +1,6 @@
 # Smart Contract Guide
 
-## Rust environment
+## Getting Started
 
 ### Install Rust
 
@@ -8,8 +8,8 @@
 
 ### Available packages
 
-## Developping Smart Contracts
-In this tutorial we will use Rust's Smart Contract library we created at Casperlab. Casperlabs blockchain uses WebAssembly (WASM) as it's virtual machine. Thanks to the Rust's native ability to compile to WASM we can build smart contract using all the good tools and libraries Rust ecosystem gives us.
+### Developping Smart Contracts
+In this tutorial we will use Rust's Smart Contract library we created at Casperlab. CasperLabs blockchain uses WebAssembly (WASM) as it's virtual machine. Thanks to the Rust's native ability to compile to WASM we can build smart contract using all the good tools and libraries Rust ecosystem gives us.
 
 ### Start a new project
 First lets create a new project.
@@ -17,9 +17,6 @@ First lets create a new project.
 $ cargo casperlabs my-project
 ```
 We should endup with two crates called `contract` and `tests`. It's an out of the box implementation of a very simple smart contract that saves a value, passed as an argument, on the blockchain.
-
-### Project structure
-TODO: describe each file.
 
 ### Compile and test
 Let's compile the smart contract into WASM file. Note, that it's not necessary to set WASM as an compilation target. It's already defined in `contract/.cargo/config`.
@@ -34,8 +31,8 @@ $ cargo test
 ```
 `tests` crate has `build.rs` file. It's executed every time before running tests and it compiles smart contract for your convenience. In practice, that means we only need to run `cargo test` in `tests` crate during the developement. Go ahead and modify `contract/src/lib.rs`. You can change the value of `KEY` and observe how smart contract compiles and test fails.
 
-### Libs
-TODO: describe dependencies libs.
+## Smart Contracts
+This section explains step by step how to write a new smart contract.
 
 ### Basic Smart Contract
 Casperlab's VM executes smart contract by calling it's `call` function. If the function is not there, then it's not a valid smart contract. The simples possible example we can write is just an empty `call` function.
@@ -45,7 +42,7 @@ pub extern "C" fn call() { }
 ```
 `#[no_mangle]` attribute prevents the compiler from changing (mangling) the function name when converting to binary format of WASM. Without it, the VM exits with the error message: `Module doesn't have export call`.
 
-### Failing gentely
+### Falling gently
 Throwing an error during the smart contract execution is a perfectly normall thing to do. This is how we do it.
 ```rust
 use casperlabs_contract::contract_api::runtime;
@@ -59,7 +56,7 @@ pub extern "C" fn call() {
 Build-in error codes can be found here: https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings. You can create your own errors using `ApiError::User(<your error code>)` variant of `ApiError`.
 
 ### Arguments
-It's possible to read arguments passed to the smart contract. Passing arguments is covered later. The function we are interested in is `runtime::get_arg()`. Helper function `unwrap_or_revert_with` is added to `Option` and `Result` when importing `unwrap_or_revert::UnwrapOrRevert`.
+It's possible to read arguments passed to the smart contract. Passing arguments is covered later. The function we are interested in is `runtime::get_arg`. Helper function `unwrap_or_revert_with` is added to `Option` and `Result` when importing `unwrap_or_revert::UnwrapOrRevert`.
 ```rust
 use casperlabs_contract::{
     contract_api::runtime,
@@ -78,8 +75,22 @@ pub extern "C" fn call() {
 ```
 
 ### Storage
-Saving and reading values from and to the blockchain is a manual process at CasperLabs. It requires more code to be written, but also gives much flexibility.
+Saving and reading values from and to the blockchain is a manual process in CasperLabs. It requires more code to be written, but also gives much flexibility. Storage system works similar to the filesystem in a operating system. Let's say we hava a string `"Hello CasperLabs"`. If you want to save it as a file, you first go to the text editor, create a new file, paste the string in and save it under a name in some directory. Similar happens in CasperLabs. First you have to save your value to the memory using `storage::new_turef`. It returns a reference to the memory object that holds `"Hello Casperlabs"` value. You could use this reference to update the value to something else. It's like a file. Secondly you have to save the reference under a human-readable string using `runtime::put_key`. It's like giving a name to the file. Following function implements this scenario:
+```rust
+fn store(value: String) {
+    // Store `value` under a new unforgeable reference.
+    let value_ref = storage::new_turef(value);
 
+    // Wrap the unforgeable reference in a value of type `Key`.
+    let value_key: Key = value_ref.into();
+
+    // Store this key under the name "special_value" in context-local storage.
+    runtime::put_key(KEY, value_key);
+}
+```
+After this function is executed, the context (Account or Smart Contract) will have the content of the `value` stored under `KEY` in its named keys space. The named keys space is a key-value storage that every context has. It's like a home directory.
+
+### Final Smart Contract
 Below code comes from `contract/src/lib.rs`. It reads an argument and stores it in the memory under `special_value` key.
 ```rust
 #![cfg_attr(
@@ -121,48 +132,134 @@ pub extern "C" fn call() {
 }
 ```
 
-## Deploying contracts
-### How to structure your deployments
+## Tests
+As part of the CasperLabs local environment we provide the in-memory virtual machine you can run your contract against. We design the testing framework to be used using following pattern:
+1. Initialize the context.
+2. Deploy or call the smart contract.
+3. Query the context for changes and assert the result data with the expected values.
 
-You can Deploy contracts using our pre-built binaries or build from source. Both provide the casperLabs-client.
+### Context
+Context provides a virtual machine instance. It should be a mutable object as we will change it's internal data while making deploys. It's also important to set initial balance for the account use for deploys.
+```rust
+const MY_ACCOUNT: [u8; 32] = [7u8; 32];
 
-* [**Using binaries**](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md#using-binaries-recommended) (recommended):
+let mut context = TestContextBuilder::new()
+    .with_account(MY_ACCOUNT, U512::from(128_000_000))
+    .build();
+```
+Account is type of `[u8; 32]`. Balance is type of `U512`.
 
-    Make sure you have rustup installed and the casperlabs package, which contains casperlabs-client.
+### Run Smart Contract
+Before we can deploy the contract to the context, we need to prepare the request. We call the request a `session`. Each session call should have 4 elements: 
+- WASM file path.
+- List of arguments.
+- Account context of execution.
+- List of keys, that authorises the call. See: TODO insert keys management link.
+```rust
+let VALUE: &str = "hello world";
+let session_code = Code::from("contract.wasm");
+let session_args = (VALUE,);
+let session = SessionBuilder::new(session_code, session_args)
+    .with_address(MY_ACCOUNT)
+    .with_authorization_keys(&[MY_ACCOUNT])
+    .build();
+context.run(session);
+```
+Run function panics if the code execution fails.
 
-* [**Building from source**](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md#building-from-source)
+### Query And Assert
+The smart contract we deployed creates a new vaule `"hello world"` under the key `"special_value"`. Using the `query` function it's possible to extract this value from the blockchain.
+```rust
+let result_of_query: Result<Value, Error> = context.query(MY_ACCOUNT, &[KEY]);
+let returned_value = result_of_query.expect("should be a value");
+let expected_value = Value::from_t(VALUE.to_string()).expect("should construct Value");
+assert_eq!(expected_value, returned_value);
+```
+Note that the `expected_value` is a `String` type lifted to the `Value` type. It was also possible to map `returned_value` to the `String` type. 
 
-    Make sure you have rustup installed and you can build the casperlabs-client from [source]() . If you build from source, you will need to add the build directories to your PATH.
+### Final Test
+Below code comes from `tests/src/integration_tests.rs`.
+```rust
+#[cfg(test)]
+mod tests {
+    use casperlabs_engine_test_support::{Code, Error, SessionBuilder, TestContextBuilder, Value};
+    use casperlabs_types::U512;
 
-    Or, you can run the client commands from the root directory of the repo, using explicit paths to the binaries.
+    const MY_ACCOUNT: [u8; 32] = [7u8; 32];
+    // define KEY constant to match that in the contract
+    const KEY: &str = "special_value";
+    const VALUE: &str = "hello world";
 
+    #[test]
+    fn should_store_hello_world() {
+        let mut context = TestContextBuilder::new()
+            .with_account(MY_ACCOUNT, U512::from(128_000_000))
+            .build();
 
-### Features of the deployment interface
+        // The test framework checks for compiled Wasm files in '<current working dir>/wasm'.  Paths
+        // relative to the current working dir (e.g. 'wasm/contract.wasm') can also be used, as can
+        // absolute paths.
+        let session_code = Code::from("contract.wasm");
+        let session_args = (VALUE,);
+        let session = SessionBuilder::new(session_code, session_args)
+            .with_address(MY_ACCOUNT)
+            .with_authorization_keys(&[MY_ACCOUNT])
+            .build();
 
-* [CasperLabs Clarity](https://clarity.casperlabs.io/#/) - you can deploy contracts from our Clarity Portal, or
+        let result_of_query: Result<Value, Error> = context.run(session).query(MY_ACCOUNT, &[KEY]);
 
-* Follow the instructions in [CONTRACTS.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md) about how to deploy contracts using the CasperLabs Client 
+        let returned_value = result_of_query.expect("should be a value");
 
-### Deploying to DevNet
+        let expected_value = Value::from_t(VALUE.to_string()).expect("should construct Value");
+        assert_eq!(expected_value, returned_value);
+    }
+}
 
-A quick start includes a simple set of instructions for getting started on the CasperLabs devnet [here](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/DEVNET.md#deploying-code).
+fn main() {
+    panic!("Execute \"cargo test\" to test the contract, not \"cargo run\".");
+}
+```
 
-Note: More advanced users may wish to take other approaches to some of the steps listed.
+## Deploy To Devnet
+Nothing stops you now from deploying the smart contract to the devnet network. First you need to have a account with positive balance of CLX. Go to https://clarity.casperlabs.io and prepare your account. Secondly you need commandline client to make a deploy. Go to https://pypi.org/project/casperlabs-client/ and follow the installation steps.
 
-### How do I know my contract deployed successfully?
+### Use Client To Deploy
+More on contracts deployment you can find here https://github.com/CasperLabs/CasperLabs/blob/master/docs/CONTRACTS.md. Below command is just an example of how the deploy should look like.
+```bash
+$ casperlabs_client --host deploy.casperlabs.io deploy \
+    --session contract.wasm \
+    --session-args '[{"name": "surname", "value": {"string_value": "Nakamoto"}}]' \
+    --private-key account-private.pem \
+    --payment-amount 10000000
 
-**View deploys in [Clarity](https://clarity.casperlabs.io/#/deploys) -** Navigate to your account in Clarity and select the deploys tab where you can se a detailed view of your deploy with a hash, timestamp, amd result.
+Success! Deploy 8428717f1cfc9cc5c047f503661e9c0fc2a495ead44305a807bead130cbd181f deployed
+```
 
-**Work with deploys in CL Client**- You will find a step-by-step set of instructions and examples including basic and advanced features about features you can use including but not limited to creating, sending, printing, and querying deployments in our [CONTRACTS.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md#deploying-contracts).
+### Check The Deploy Status
+Making a deploy is not the same as having deploy included in the block. First it goes to the mempool and then validators of the network are responsible for adding it the the block. You can use client to check the status of the deploy.
+```bash
+$ casperlabs_client --host deploy.casperlabs.io show-deploy \
+    8428717f1cfc9cc5c047f503661e9c0fc2a495ead44305a807bead130cbd181f
 
-Note: Prior knowledge about permissions and execution semantics is recommended and can be found in our Techspec [here](https://github.com/CasperLabs/techspec/blob/master/implementation/accounts.rst).
+deploy {
+  deploy_hash: "8428717f1cfc9cc5c047f503661e9c0fc2a495ead44305a807bead130cbd181f"
+...
+  cost: 126165
+}
+status {
+  state: PROCESSED
+}
 
+```
 
-## Using GraphQL
+### How do I know my contract executed successfully?
+You can use client's method `query-state` to see a specific named key of the account. It works the same a `query` method from the testing framework.
+```bash
+$ casperlabs_client --host deploy.casperlabs.io query-state \
+    --block-hash "f21fc0763279ad8349b0c0fce08e1ed678412d5e234a92e3063d4d5a35ee0739" \
+    --type address \
+    --key "0cc94662d68bd71b03083e38094f0b0e07a1bbb485969b6e68f21f4577fe928a" \
+    --path "special_value"
 
-### To debug contracts
-
-### To learn about the network
-
-## Execution error codes
-A listing and description of each error code.
+string_value: "Nakamoto"
+```
