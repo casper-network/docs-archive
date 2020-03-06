@@ -8,7 +8,7 @@ Read our [Tech Spec](https://techspec.casperlabs.io/en/latest/) to learn more ab
 
 ## Purpose of this guide
 
-This guide is designed to support dApp developers getting started with the development of smart contracts on the CasperLabs blockchain with AssemblyScript contracts, and a Rust contract development kit that includes a runtime environment, reference documentation, and test framework.
+This guide is designed to support dApp developers getting started with the development of smart contracts on the CasperLabs blockchain in AssemblyScript or Rust. For Rust there is a [contract development kit](/smart-contract-guide.md#getting-started) that includes a runtime environment, reference documentation, and test framework.
 
 ## Who is this guide for
 
@@ -20,7 +20,7 @@ It is recommended you have prior knowledge about:
 
 * Linux or OSx
 * Programming knowledge
-  * JavaScript and/or Python
+  * JavaScript and/or Python (optional)
   * Rust and/or Assembly script.
 
 ## How this guide is organized
@@ -30,14 +30,14 @@ This documentation is accessed here and located on our [GitHub](https://github.c
 - Understand what CasperLabs is building
 - Learn how to build and operate applications on the platform
 - Learn how to set up the CasperLabs environment locally
-- Learn how to create and test Smart Contracts with our Libraries
 - Work with our Contracts API to access our Rust resources.
+- Learn how to create and test Smart Contracts with our Libraries
 
 ## Background
 
 The motivation for our roadmap is inspired by feedback we are receiving from your recommendations. We hope you continue to provide your feedback as you embark on this journey with us -- we look forward to building a decentralized future together.
 
-## Coding Standards
+## Recommended Coding Standards
 
 [Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/CONTRIBUTING.md/) cover best practices and recommendations following our coding standards, code reviews and publishing your code to our GitHub.
 
@@ -45,7 +45,7 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
 
 - Unix
 - Mac OS
-- Windows
+
 
 ## Getting Help
 
@@ -57,7 +57,7 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
 
 ## Feedback
 
-If you have feedback or suggestions for improvement, please share with us.
+If you have feedback or suggestions for improvement, please let us know!
 You can [file an issue](https://github.com/CasperLabs/CasperLabs/issues/new) on our GitHub repository.
 
 Note: For documentation feedback please file issues with links to our docs repo accessed with each page on this site. You can submit a pull request with your suggestions.
