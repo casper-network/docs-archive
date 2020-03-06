@@ -1,15 +1,31 @@
 # Smart Contract Guide
+Complete the guide to start the adventure with the CasperLabs Smart Contracts.
 
 ## Getting Started
+Before you start writing code install the environment and see what we build for you.
 
 ### Install Rust
+Install Rust using the `curl`
+```bash
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+For more details follow official Rust guide. https://www.rust-lang.org/tools/install
 
 ### Cargo CasperLabs Tool
+Creating a new project is easy if you have `cargo-casperlabs` tool installed.
+```bash
+$ cargo install cargo-casperlabs
+```
+For more details follow our Github. https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs
 
-### Available packages
+### Available Packages
+As the smart contract developer you are interested in the three crates we published:
+* [CasperLabs Contract](https://crates.io/crates/casperlabs-contract) - library that supports communication with the blockchain. That's the main library to use when writing smart contracts.
+* [CasperLabs Test Support](https://crates.io/crates/casperlabs-engine-test-support) - in-memory virtual machine you can test your smart contracts agains.
+* [CasperLabs Types](https://crates.io/crates/casperlabs-types) - library with types we use across the Rust ecosystem.
 
 ### Developping Smart Contracts
-In this tutorial we will use Rust's Smart Contract library we created at Casperlab. CasperLabs blockchain uses WebAssembly (WASM) as it's virtual machine. Thanks to the Rust's native ability to compile to WASM we can build smart contract using all the good tools and libraries Rust ecosystem gives us.
+In this tutorial we will use Rust's Smart Contract library we created at CasperLab. CasperLabs blockchain uses WebAssembly (WASM) as it's virtual machine. Thanks to the Rust's native ability to compile to WASM we can build smart contract using all the good tools and libraries Rust ecosystem gives us.
 
 ### Start a new project
 First lets create a new project.
@@ -77,6 +93,8 @@ pub extern "C" fn call() {
 ### Storage
 Saving and reading values from and to the blockchain is a manual process in CasperLabs. It requires more code to be written, but also gives much flexibility. Storage system works similar to the filesystem in a operating system. Let's say we hava a string `"Hello CasperLabs"`. If you want to save it as a file, you first go to the text editor, create a new file, paste the string in and save it under a name in some directory. Similar happens in CasperLabs. First you have to save your value to the memory using `storage::new_turef`. It returns a reference to the memory object that holds `"Hello Casperlabs"` value. You could use this reference to update the value to something else. It's like a file. Secondly you have to save the reference under a human-readable string using `runtime::put_key`. It's like giving a name to the file. Following function implements this scenario:
 ```rust
+const KEY: &str = "special_value";
+
 fn store(value: String) {
     // Store `value` under a new unforgeable reference.
     let value_ref = storage::new_turef(value);
@@ -138,7 +156,7 @@ As part of the CasperLabs local environment we provide the in-memory virtual mac
 2. Deploy or call the smart contract.
 3. Query the context for changes and assert the result data with the expected values.
 
-### Context
+### TestContext
 Context provides a virtual machine instance. It should be a mutable object as we will change it's internal data while making deploys. It's also important to set initial balance for the account use for deploys.
 ```rust
 const MY_ACCOUNT: [u8; 32] = [7u8; 32];
@@ -170,6 +188,7 @@ Run function panics if the code execution fails.
 ### Query And Assert
 The smart contract we deployed creates a new vaule `"hello world"` under the key `"special_value"`. Using the `query` function it's possible to extract this value from the blockchain.
 ```rust
+let KEY: &str = "special_value";
 let result_of_query: Result<Value, Error> = context.query(MY_ACCOUNT, &[KEY]);
 let returned_value = result_of_query.expect("should be a value");
 let expected_value = Value::from_t(VALUE.to_string()).expect("should construct Value");
