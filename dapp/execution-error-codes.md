@@ -1,6 +1,6 @@
 # Execution error codes
 
-You can find a dynamically generated list with descriptions of each error code in our Rust and source documentation respectively
+You can find a dynamically generated list with descriptions of each error code in our Rust and source documentation respectively:
 
 - Contract exit codes is found in our API [here](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings)
 
