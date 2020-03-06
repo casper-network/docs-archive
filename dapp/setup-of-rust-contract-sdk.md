@@ -1,7 +1,6 @@
 # Setting up the Rust Contract SDK
-Complete the guide to start the adventure with the CasperLabs Smart Contracts.
+The SDK is the easiest way to get started with Smart Contract development. This guide will walk you through the steps to get set up.
 
-Before you start writing code install the environment and see what we build for you.
 
 ## Install Rust
 Install Rust using the `curl`
