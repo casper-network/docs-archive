@@ -51,8 +51,6 @@ This installs Cargo which, with the built in ability to install binaries it will
 
 Note: If you get stuck, check that the Pre-requisites are installed and that you have the correct versions.
 
-You can use `cargo-casperlabs --help` including brief instructions about the tool.
-
 For detailed instructions refer to the [README.md](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#usage) of the Cargo CasperLabs repository . 
 
 **Step 2**  **Create your project** 
@@ -163,7 +161,7 @@ cargo test
 
 **Compile and test contracts from within your IDE**
 
-When you run the casperlabs cargo tool, you will see the two separate projects folders.  You can view the folder structure more in detail in the [cargo-casperlabs](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs#usage) repository.
+When you run the casperlabs cargo tool, you will see the two separate projects folders: contracts and tests.  You can view learn about the folder structure more in detail in the [cargo-casperlabs](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs#usage) repository.
 
 - **The contract project** is a library project that is more standalone and would still build if it is moved to a different location 
 
@@ -176,6 +174,8 @@ published to the Rust Package Registry rust.docs reference documentation reposit
 - **the "tests" project** is a binary project that has a custom build script included (`build.rs`) which expects the corresponding contract project to be right next to it. So, it is recommended you open each of your contract projects in a separate instance of your IDE.  
 
   With the tests you can provide break points and work with variables operating the same as it normally would when developing any software. 
+
+You can use `cargo-casperlabs --help` including brief instructions about the tool.
 
 Note: The tests project will auto-build the contract, but not vice-versa
 
