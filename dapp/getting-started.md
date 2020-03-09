@@ -18,7 +18,7 @@ We recommend the following set-up:
 
 The kit includes cargo-casperlabs package manager to see how to use this tool to develop, test, debug, and deploy contracts locally or on the CasperLabs Devnet.
 
-**Step 1 - install the cargo-casperlabs Rust toolchain**
+**Step 1 - install cargo-casperlabs pacakage manager**
 
 **From your command line**
 
@@ -35,7 +35,7 @@ CasperLabs/execution-engine/cargo-casperlabs
 cargo install cargo-casperlabs --path=.
 ```
 
-With the built in ability to install binaries, cargo-casperlabs  will put a folder in your path so you can run commands as Cargo subcommands,  a command line tool that provides an environment to help contract developers compile, build, and test code - creating a Wasm contract and tests to deploy on the CasperLabs network. 
+With the built in ability to install binaries, cargo-casperlabs  will put a folder in your path so you can run commands as Cargo subcommands -- a command line tool that provides an environment to help contract developers compile, build, and test code - creating a Wasm contract and tests to deploy on the CasperLabs network. 
 
 Note: If you get stuck, check that the Pre-requisites are installed and that you have the correct versions.
 
@@ -59,16 +59,14 @@ ls example_project
 ```shell
 example_project`/
 ├── `contract` - 
-└── `tests` - full test environment with the entire structure and stub so you can model that structure to create a full testing framework for your contract: 
+└── `tests` - full test environment with the entire structure and stub so you can model that structure to create a full testing framework for your contract. 
 ```
 
 When you run the casperlabs cargo tool, you will see the two separate projects folders: contracts and tests.
 
 **The contract project** is a library project that is more standalone and would still build if it is moved to a different location.  `contract.rs` source code file,  like a stub with basic contract code, provides a structure for you to build your contract.
 
-The contract project also contains the [Contract API](https://docs.rs/casperlabs-contract/0.2.0/casperlabs_contract/) and [type system](https://docs.rs/casperlabs-contract/0.2.0/casperlabs_contract/) with a complete set of documentation on [CasperLabs Rust docs](https://docs.rs/releases/search?query=casperlabs).
-
-published to the Rust Package Registry rust.docs reference documentation repository where you can find functions, e.g.  for managing the accounts, and runtime features
+The contract project also contains the [Contract API](https://docs.rs/casperlabs-contract/0.2.0/casperlabs_contract/) and [type system](https://docs.rs/casperlabs-contract/0.2.0/casperlabs_contract/) with a complete set of documentation on [CasperLabs Rust docs](https://docs.rs/releases/search?query=casperlabs) published to the Rust Package Registry rust.docs reference documentation repository where you can find functions, e.g.  for managing the accounts, and runtime features
 
 **the "tests" project** is a binary project that has a custom build script included (`build.rs`) which expects the corresponding contract project to be right next to it. So, it is recommended you open each of your contract projects in a separate instance of your IDE.  
 
@@ -147,11 +145,10 @@ example_project`/
         └── standard_payment.wasm
 ```
 
-1. Run the test
-2. View the test compiling
-3. View the test running
-4. See the test results
-5. To debug, you can view our section of this guide about [Debugging contracts](....)
+Once you Run the test, you will see the test compiling and running the test with the following test results.
+
+To debug, you can view our section of this guide about [Debugging contracts](....)
+
 Note: The tests project will auto-build the contract, but not vice-versa.
 
 You can use `cargo-casperlabs --help` including brief instructions.
