@@ -97,8 +97,6 @@ Deploy the ERC20 smart contract & specify the token supply
 
 This step creates your initial token supply & the token contract in your account.
 
-
-
 ## Query the results
 
 Now let’s take a look at GraphQL and confirm that we can see the token contract in our account.  From https://clarity.casperlabs.io, Log in and select the GraphQL console from the home page.  Create a new tab.  Have the hash of the block containing your deployment (or the latest block hash) and the Base16 public key of key1.  
@@ -179,8 +177,6 @@ Under `namedKeys` you should see 2 names - `erc20_proxy` and `test-token`
 }
 ```
 
-
-
 ### Check the balance
 
 Next you can check the balance in the token contract.
@@ -242,12 +238,11 @@ It is also possible to purchase more token using the native CLX token
 ./erc20.sh buy $PRIV $PUB [amount to purchase]
 ```
 
-Now check the balance, and do the math!
+Now you can check the balance and do the math!
 
 ```
 ./erc20.sh balance $PUB $PUB
 ```
-
 
 
 ### For Help - 

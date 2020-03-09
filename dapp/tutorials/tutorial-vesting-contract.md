@@ -2,38 +2,31 @@
 
 The implementation of a vesting smart contract for Casperlabs allows you to lock in some tokens to be given after some set time frame.
 
-The CasperLabs vesting smart contract is organized in two parts -- 
+The CasperLabs vesting smart contract is organized in two parts:
 
--  the smart contract layer that uses the contract logic and 
+- the smart contract layer that uses the contract logic and
 - a smart contract test that allows you to test your contract
 
-This contract provides for:
+- you can allocate an amount from your, e.g. CLX tokens (motes) to someone after a set time frame, so that a given user may withdraw the amount when it is made available
 
-With some CLX tokens, you can lock in some tokens (motes) to give to someone after a set time (see parameters below). So that 
+- set a "drip amount" to be allocated over a period of time, after which the tokens are no longer available, e.g. 15 tokens daily for 1 month, so that a user can periodically retrieve the allocated amount until the time frame has expired
 
-- a user can withdraw the number of tokens after a set time 
-
-- allocate a "drip amount" whereby, over a time period a user can periodically retrieve a given amount, after which the tokens are no longer available, e.g. 15 tokens daily for 1 month 
-
-The `admin_release_duration` function defines a time frame whereby an admin can take back the amount after the set time elapses.
+Note: The `admin_release_duration` function defines a time frame whereby an admin can take back the amount after the set time elapses.
 
 ## Before you begin
 
 ### What you need to know
 
-Prior knowledge of working with contracts it is recommended you familiarize yourself with the [Getting Started](getting-started-instructions.md) topics of this guide.
+Prior knowledge of working with contracts it is recommended you with the [Getting Started](getting-started.md) topics of this guide.
 
 ### Pre-requisites
 
-
-
 ## Instructions
 
-Step 1
+##### Step 1
 
-Step 2
+##### Step 2
 
-Step 3
+##### Step 3
 
-Step 4
-
+##### Step 4

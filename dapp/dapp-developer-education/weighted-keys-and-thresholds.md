@@ -8,4 +8,4 @@ Video [Adjusting Key weights and thresholds](https://www.youtube.com/watch?v=R24
 
 Confluence [Key Management](https://casperlabs.atlassian.net/wiki/spaces/EN/pages/128974920/Key+Management)
 
-GIT [KEYS.md](
+See our documentation about [KEYS](KEYS.md...) in our GIT Repository.

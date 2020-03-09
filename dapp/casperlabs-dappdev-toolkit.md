@@ -1,6 +1,6 @@
 ## CasperLabs dApp development toolkit
 
-To get you started with developing dApps, CasperLabs has released a contract development kit leveraging our CasperLabs Rust development toolchain and ecosystem, this kit will work with any IDE that integrates with Rust development.      
+To get you started with developing dApps, CasperLabs has released a contract development kit leveraging our CasperLabs Rust development toolchain and ecosystem. This kit will work with any IDE that integrates with Rust development.
 
 You will be able to run smart contracts in a CasperLabs runtime environment (Execution Engine (EE)) using IDE you choose to build your contracts and run them in the runtime environment in the order you desire and so observe the effects of contract execution in the [global state](https://github.com/CasperLabs/techspec/blob/master/implementation/global-state.rst) (the shared database that is the blockchain). 
 

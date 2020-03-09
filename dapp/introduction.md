@@ -18,7 +18,7 @@ It is recommended you have prior knowledge about:
 
 * Operating systems (Linux or OSx)
 * Programming knowledge 
-  *  Rust
+  * Rust
   * JavaScript (optional)
   * Python (optional)
 

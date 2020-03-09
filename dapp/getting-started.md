@@ -1,24 +1,22 @@
 # Getting Started
 
-This three step process includes examples designed for you to become familiar with how to use the CasperLabs development tool kit as follows:
+This three step process includes examples designed for you to become familiar with how to use the CasperLabs development tool kit:
 
-- Install and setup your dApp development environment to work with the CasperLabs platform
-
-- Create a new smart contract project
-
-- Use the runtime environment to build and test contracts
+1. Install and setup your dApp development environment to work with the CasperLabs platform
+2. Create a new smart contract project
+3. Use the runtime environment to build and test contracts
 
 ## Pre-requisites
 
 We recommend the following set-up:
 
-[rustup](https://rustup.rs/), with Rust Cargo package manager
+- [rustup](https://rustup.rs/), with Rust Cargo package manager
 
-An IDE with Rust integration in order for you to most easily write and debug your contracts. See the [Rust website](https://www.rust-lang.org/tools) for further information.
+- An IDE with Rust integration in order for you to most easily write and debug your contracts. See the [Rust website](https://www.rust-lang.org/tools) for recommended tools.
 
 ## Instructions
 
-Starting with the cargo-casperlabs package manager, you will see how to use this tool to develop, test, debug, and deploy contracts locally or on the CasperLabs Devnet.
+The kit includes cargo-casperlabs package manager to see how to use this tool to develop, test, debug, and deploy contracts locally or on the CasperLabs Devnet.
 
 **Step 1 - install the cargo-casperlabs Rust toolchain**
 
@@ -64,7 +62,7 @@ example_project`/
 └── `tests` - full test environment with the entire structure and stub so you can model that structure to create a full testing framework for your contract: 
 ```
 
-When you run the casperlabs cargo tool, you will see the two separate projects folders: contracts and tests.  For more detail about the directory structure, see the [cargo-casperlabs](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs#usage) repository.
+When you run the casperlabs cargo tool, you will see the two separate projects folders: contracts and tests.
 
 **The contract project** is a library project that is more standalone and would still build if it is moved to a different location.  `contract.rs` source code file,  like a stub with basic contract code, provides a structure for you to build your contract.
 
@@ -81,6 +79,8 @@ Once your  `example_project` is setup you will see the project directory contain
 **Dependencies**
 
 Note: that the tests crate depends on the contract crate
+
+For more detail about the directory structure, see the [cargo-casperlabs](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs#usage) repository.
 
 **Step 3 - Use the runtime environment to build and test contracts**
 
@@ -147,6 +147,11 @@ example_project`/
         └── standard_payment.wasm
 ```
 
-The tests project will auto-build the contract, but not vice-versa.
+1. Run the test
+2. View the test compiling
+3. View the test running
+4. See the test results
+5. To debug, you can view our section of this guide about [Debugging contracts](....)
+Note: The tests project will auto-build the contract, but not vice-versa.
 
 You can use `cargo-casperlabs --help` including brief instructions.

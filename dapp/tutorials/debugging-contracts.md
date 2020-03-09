@@ -32,8 +32,6 @@ Using the gRPC interface
 ------------------------
 
 
-
-
 Deciphering data in blocks
 --------------------------
 
