@@ -2,7 +2,7 @@
 Introduction
 ============
 
-Welcome to the CasperLabs project, implemented as a new permissionless decentralized, public blockchain. Our open source Turing-complete smart contract platform is backed by a proof-of-stake (PoS) consensus algorithm, and WebAssembly (Wasm). Our particular consensus protocol in the CBC Casper family, built on Vlad Zamfir’s correct-by-construction (CBC) Casper work, is provably safe and live under partial synchrony without an in-protocol fault tolerance threshold.
+Welcome to the CasperLabs project, implemented as a new permissionless decentralized, public blockchain. Our open source Turing-complete smart contract platform is backed by a proof-of-stake (PoS) consensus algorithm, and WebAssembly (Wasm). Our particular consensus protocol in the correct-by-construction (CBC) Casper family, built on Vlad Zamfir’s CBC Casper work, is provably safe and live under partial synchrony without an in-protocol fault tolerance threshold.
 
 Read our [Tech Spec](https://techspec.casperlabs.io/en/latest/) to learn more about what we're building and become a community contributor.
 
@@ -18,7 +18,7 @@ This documentation is intended for members of our Community who build distribute
 
 It is recommended you have prior knowledge about:
 
-* Linux or OSx
+* Linux or macOS
 * Programming knowledge
   * JavaScript and/or Python (optional)
   * Rust and/or Assembly script.
@@ -30,24 +30,23 @@ This documentation is accessed here and located on our [GitHub](https://github.c
 - Understand what CasperLabs is building
 - Learn how to build and operate applications on the platform
 - Learn how to set up the CasperLabs environment locally
-- Work with our Contracts API to access our Rust resources.
-- Learn how to create and test Smart Contracts with our Libraries
+- Work with our Contracts API to access our Rust resources
+- Learn how to create and test Smart Contracts with our libraries
 
 ## Background
 
 The motivation for our roadmap is inspired by feedback we are receiving from your recommendations. We hope you continue to provide your feedback as you embark on this journey with us -- we look forward to building a decentralized future together.
 
-## Recommended Coding Standards
+## Recommended coding standards
 
 [Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/CONTRIBUTING.md/) cover best practices and recommendations following our coding standards, code reviews and publishing your code to our GitHub.
 
-## Supported Operating Systems
+## Supported operating systems
 
 - Unix
-- Mac OS
+- macOS
 
-
-## Getting Help
+## Getting help
 
 [Getting Help](https://github.com/CasperLabs/CasperLabs/tree/dev#getting-help) - CasperLabs makes available the following resources for you to connect and get support where you can:
 

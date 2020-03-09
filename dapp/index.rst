@@ -10,7 +10,7 @@ CasperLabs Blockchain.
 
    intro
    setup-of-rust-contract-sdk
-   writting-rust-contracts
+   writing-rust-contracts
    deploying-contracts
    graphql
    execution-error-codes
