@@ -125,31 +125,49 @@ future.
 Contracts
 ~~~~~~~~~
 
-Contracts are a special value type because they contain the on-chain logic of the applications running on the CasperLabs system. A *contract* contains the following data:
+Contracts are a special value type because they contain the on-chain logic of
+the applications running on the CasperLabs system. A *contract* contains the
+following data:
 
 -  a `wasm module <https://webassembly.org/docs/modules/>`__
 -  a collection of named keys
 -  a protocol version
 
-The wasm module must contain a function named ``call`` which takes no arguments and returns no values. This is the main entry point into the contract. Moreover, the module may import any of the functions supported by the CasperLabs runtime; a list of all supported functions can be found in :ref:`Appendix A <appendix-a>`. 
+The wasm module must contain a function named ``call`` which takes no arguments
+and returns no values. This is the main entry point into the contract. Moreover,
+the module may import any of the functions supported by the CasperLabs runtime;
+a list of all supported functions can be found in :ref:`Appendix A
+<appendix-a>`.
 
-Note: that while the ``call`` function cannot take any arguments or have any return value, the contract itself still can via the ``get_arg`` and ``ret`` CasperLabs runtime functions.
+Note: that while the ``call`` function cannot take any arguments or have any
+return value, the contract itself still can via the ``get_arg`` and ``ret``
+CasperLabs runtime functions.
 
-The named keys are used to give human-readable names to keys in the global state which are important to the contract. For example, the hash key of another
+The named keys are used to give human-readable names to keys in the global state
+which are important to the contract. For example, the hash key of another
 contract it frequently calls maybe stored under a meaningful name. It is also
-used to store the ``URef``\ s which are known to the contract (*see* below section on Permissions for details). 
+used to store the ``URef``\ s which are known to the contract (*see* below
+section on Permissions for details).
 
-Note: that purely local state (i.e., private variables) should be stored under local keys, as opposed to ``URef``\ s, in the named keys map, since local keys are more efficient and the primary advantage of ``URef``\ s is to share them with others.
+Note: that purely local state (i.e., private variables) should be stored under
+local keys, as opposed to ``URef``\ s, in the named keys map, since local keys
+are more efficient and the primary advantage of ``URef``\ s is to share them
+with others.
 
-The protocol version says which version of the CasperLabs protocol this contract was compiled to be compatible with. Contracts which are not compatible with the active major protocol version will not be executed by any node in the CasperLabs network.
+The protocol version says which version of the CasperLabs protocol this contract
+was compiled to be compatible with. Contracts which are not compatible with the
+active major protocol version will not be executed by any node in the CasperLabs
+network.
 
 .. _global-state-permissions:
 
 Permissions
 -----------
 
-There are three types of actions which can be done on a value: read, write, add. The reason for add to be called out separately from write is to allow for
-commutativity checking. The available actions depends on the key type and the context. This is summarized in the table below:
+There are three types of actions which can be done on a value: read, write, add.
+The reason for add to be called out separately from write is to allow for
+commutativity checking. The available actions depends on the key type and the
+context. This is summarized in the table below:
 
 +-----------------------------------+-----------------------------------+
 | Key Type                          | Available Actions                 |
@@ -173,7 +191,12 @@ Permissions for ``URef``\ s
 
 In the runtime, a ``URef`` carries its own permissions called ``AccessRights``.
 Additionally, the runtime tracks what ``AccessRights`` would be valid for each
-``URef`` to have in each context. As mentioned above, if a malicious contract attempts to use a ``URef`` with ``AccessRights`` that are not valid in its context, then the runtime will raise an error; this is what enforces the security properties of all keys. By default, in all contexts, all ``URef``\ s are invalid (both with any ``AccessRights``, or no ``AccessRights``); however, a ``URef`` can be added to a context in the following ways:
+``URef`` to have in each context. As mentioned above, if a malicious contract
+attempts to use a ``URef`` with ``AccessRights`` that are not valid in its
+context, then the runtime will raise an error; this is what enforces the
+security properties of all keys. By default, in all contexts, all ``URef``\ s
+are invalid (both with any ``AccessRights``, or no ``AccessRights``); however, a
+``URef`` can be added to a context in the following ways:
 
 -  it can exist in a set of “known” ``URef``\ s
 -  it can be freshly created by the runtime via the ``new_uref`` function
@@ -230,4 +253,6 @@ The rust implementation of our trie can be found on GitHub:
    trie <https://github.com/CasperLabs/CasperLabs/blob/d542ea702c9d30f2e329fe65c8e958a6d54b9cae/execution-engine/engine-storage/src/trie_store/operations/mod.rs#L616>`__
 
 Note: that conceptually, each block has its own trie because the state changes
-based on the deploys it contains. For this reason, our implementation has a notion of a ``TrieStore`` which allows us to look up the root node for each trie.
+based on the deploys it contains. For this reason, our implementation has a
+notion of a ``TrieStore`` which allows us to look up the root node for each
+trie.
