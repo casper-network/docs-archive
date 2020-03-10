@@ -1,4 +1,4 @@
-# Getting Started
+# Getting Started (DRAFT in Progress)
 
 This three step process includes examples designed for you to become familiar with how to use the CasperLabs development tool kit:
 
