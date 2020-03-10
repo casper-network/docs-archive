@@ -1,14 +1,14 @@
 # GraphQL
 
-The CasperLabs node software includes a GraphQL console which you can use to explore the schema and build queries with the help of auto-completion. A GraphQL query looks at the blockchain on a single node. It is important to know which network you are querying when using a GraphQL interface.  
+The CasperLabs node software includes a GraphQL console which you can use to explore the schema and build queries with the help of auto-completion. A GraphQL query looks at the blockchain on a single node. It is important to know which network you are querying when using a GraphQL interface.
 
-To query the blockchain on DevNet, navigate to: [CasperLabs Clarity](http://devnet-graphql.casperlabs.io:40403/graphql)
+To query the blockchain on DevNet, navigate to: [CasperLabs Clarity](http://devnet-graphql.casperlabs.io:40403/graphql).
 
 
-## Using GraphQL for Querying and Debugging contracts
+## Using GraphQL for Querying and Debugging Contracts
 
 * View what graphs are available by clicking the DOCS and SCHEMA buttons on the right-hand side of the screen.
-   
+
 * Run a query, start typing "query" or "subscription" into the
    left-hand pane and see what the code completion offers up.
 
@@ -36,6 +36,6 @@ HTTP/JSON command would be.
 
 * Press the "play" button in the middle of the tool screen to see the query response.
 
-For further details on our GraphQl see our [source code](https://clarity.casperlabs.io/#/) 
+For further details on our GraphQL see our [source code](https://clarity.casperlabs.io/#/).
 
 

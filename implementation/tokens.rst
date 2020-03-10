@@ -23,7 +23,7 @@ A blockchain system will need to have a supply of tokens available for the purpo
        - The remainder in public sales over an extended period of time
     - 12% reserved for developer & entrepreneur incentives, advisors and community managers
     - 10% reserved for CasperLabs shareholders
-    - 8% reserved for personnel in a manner consistent with customary employee incentive programs. 
+    - 8% reserved for personnel in a manner consistent with customary employee incentive programs.
 
 In addition to the initial supply, the system will have a low rate of inflation, the results of which will be paid out to validators in the form of seigniorage, as described previously in this document.
 
@@ -147,6 +147,6 @@ Purses and accounts
 Every :ref:`accounts-head` on the CasperLabs system has a purse associated
 with the CasperLabs system mint, which we call the account’s “main purse”.
 However, for security reasons, the ``URef`` of the main purse is only available to code running in the context of that account (i.e. only in payment or session code). Therefore, the mint’s ``transfer`` method which accepts ``URef``\ s is not the most convenient to use when transferring between account main purses. For this reason, CasperLabs supplies a
-`transfer_to_account <https://docs.rs/casperlabs-contract-ffi/0.13.0/casperlabs_contract_ffi/contract_api/fn.transfer_to_account.html>`__
+`transfer_to_account <https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/system/fn.transfer_to_account.html>`_
 function which takes the public key used to derive the
-:ref:`identity key <global-state-account-key>` of the account. This function uses the mint transfer function with the current account’s main purse as the ``source``and the main purse of the account at the provided key as the ``target``. The `transfer_from_purse_to_account`` function is similar, but uses a given purse as the ``source`` instead of the present account’s main purse.
+:ref:`identity key <global-state-account-key>` of the account. This function uses the mint transfer function with the current account’s main purse as the ``source`` and the main purse of the account at the provided key as the ``target``. The `transfer_from_purse_to_account <https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/system/fn.transfer_from_purse_to_account.html>`_ function is similar, but uses a given purse as the ``source`` instead of the present account’s main purse.
