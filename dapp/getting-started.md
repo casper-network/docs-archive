@@ -41,7 +41,7 @@ Note: If you get stuck, check that the Pre-requisites are installed and that you
 
 For detailed instructions refer to the [README.md](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs#usage) of the Cargo CasperLabs repository . 
 
-**Step 2 Create your project** 
+**Step 2 Create your project and structure your project** 
 
 Once the casperlabs-cargo crate is installed, create your project, e.g. `example_project` containing an example contract with a separate test crate:
 
@@ -63,6 +63,8 @@ example_project`/
 ```
 
 When you run the casperlabs cargo tool, you will see the two separate projects folders: contracts and tests.
+
+**Structure of the CasperLabs project**
 
 **The contract project** is a library project that is more standalone and would still build if it is moved to a different location.  `contract.rs` source code file,  like a stub with basic contract code, provides a structure for you to build your contract.
 
@@ -105,9 +107,9 @@ rustup target add --toolchain=$(cat rust-toolchain) wasm32-unknown-unknown
 
 The contract is compiled and the wasm built to the `contract/ release directory: example_project/contract/target/wasm32-unknown-unknown/release/contract.wasm`.
 
-You can run your contract against our casperlabs execution-engine (EE) a virtual machine our blockchain provides. This runtime environment  allows you to run a contract the same as running it on our block chain without the overhead of having to run it on a separate node.
+You can run your contract against our casperlabs execution-engine (EE) a virtual machine our blockchain provides. This runtime environment (EEVM) allows you to run a contract simulating running it on our block chain, but without the overhead of having to run it on a separate node.
 
-You can run it within any test infrastructure, like a CLI, or your IDE and observe the effects of your contract.  
+You can run it within any test infrastructure, like a CLI, or your IDE and observe the effects of your contract on a simulation of the blockchain global state in the EEVM.
 
 For Example: 
 
@@ -115,14 +117,16 @@ For Example:
 
 You will see how all the dependencies are being compiled to run the execution engine locally where it will run your contract and your tests:
 
-navigate to your tests folder and run the test with the cargo command:
+1. Navigate to your tests folder and run the test with the cargo command:
 
 ```shell
 cd example_project/tests
 cargo test
 ```
+2. View the output compiling the contract, running the test, and generating a result
 
 **Compile and test contracts from within your IDE**
+
 
 ```shell
 example_project`/
@@ -145,9 +149,11 @@ example_project`/
         └── standard_payment.wasm
 ```
 
-Once you Run the test, you will see the test compiling and running the test with the following test results.
+Once you Run the test, you will see the test compiling and running the test with the test results `success` or `failure`.
 
-To debug, you can view our section of this guide about [Debugging contracts](....)
+To debug your contract, view the output where you can see the errors
+
+For more detail, see our section of this guide about [Debugging contracts](debugging-contracts.md)
 
 Note: The tests project will auto-build the contract, but not vice-versa.
 

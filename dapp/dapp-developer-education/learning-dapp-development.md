@@ -39,7 +39,6 @@ see [Highway](https://techspec.casperlabs.io/en/latest/theory/highway.html#motiv
 
 - Finalization and Safety
   [Finalization](https://techspec.casperlabs.io/en/latest/theory/abstract-consensus.html#finality) & [Safety Theory](https://techspec.casperlabs.io/en/latest/theory/highway.html#highway)
-
   - [Theory](...)
   - [Implementation](https://techspec.casperlabs.io/en/latest/implementation/p2p.html#communications)
 

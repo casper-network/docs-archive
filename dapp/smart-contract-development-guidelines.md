@@ -30,7 +30,7 @@ Contracts are built with Rust and compiled to [WASM](...)
 
 - [Error Codes](https://docs.rs/casperlabs-types/latest/casperlabs_types/enum.ApiError.html#mappings) - Access the list of annotated Contract exit codes with details
 
-**Tools**
+**Rust Development Tools**
 
 - [Cargo CasperLabs CLI Tool](https://crates.io/crates/cargo-casperlabs) cargo-casperlabs CLI tool
 [cargo-casperlabs GIT Repository](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs)
@@ -47,7 +47,6 @@ This process has been simplified with the Cargo CasperLabs tool for creating a W
 You can build contracts from scratch or use our [example smart contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples) with instructions and directories containing example smart contracts definitions and companion contracts.
 
 In the Execution Engine directory of the repo you have cloned, you can [build](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples#building) all contracts or specific contracts:
-
 
 Contracts are written in supported languages (for compiling to Wasm for deployment from a node) and processed through our execution engine (EE).
 

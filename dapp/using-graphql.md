@@ -1,12 +1,13 @@
 ## Using GraphQL
 
-GraphQL can be accessed in the following ways:
-- Our GraphQL console located
-  [CasperLabs Clarity](http://devnet-graphql.casperlabs.io:40403/graphql)
-- This tool can also be accessed through our [Clarity self service portal](https://clarity.casperlabs.io/#/) for you
-  to interact with the blockchain.
+This includes examples designed for you to become familiar with how to use GraphQL to query and debug contracts, and learn about Devnet.
 
-### Using GraphQL for Querying and Debugging contracts
+### Pre-requisites
+GraphQL can be accessed for you to interact with the blockchain:
+- Via the GraphQL Console [CasperLabs Clarity](http://devnet-graphql.casperlabs.io:40403/graphql)
+- Via [Clarity self service portal](https://clarity.casperlabs.io/#/)
+
+### Querying and Debugging contracts
 
 [Execute GraphQL Queries](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/hack/docker#execute-graphql-queries)
 
@@ -23,7 +24,7 @@ Once that's done you can point your browser on [Clarity](http://localhost:40403/
 2. Run a query, start typing "query" or "subscription" into the
    left-hand pane and see what the code completion offers up.
 
-Note: The DOCS can be kept open on the right hand side to see what's
+Note: The DOCS tab can be kept open on the right hand side to see what's
 available and closed when you finished your query.
 
 
@@ -52,7 +53,6 @@ For further details on our GraphQl see our [source code](https://clarity.casperl
 [README.md](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/hack/docker)
 
 
-
 #### Using GraphQL To learn about the network
 
 - Devnet
@@ -62,4 +62,4 @@ For further details on our GraphQl see our [source code](https://clarity.casperl
   - the network
   - summary, conclusions - relations, synthesis
 
-See Akosh demo February 25, 2020
+<!--See Akosh demo February 25, 2020-->

@@ -1,29 +1,33 @@
-## CasperLabs dApp development toolkit
+## About the CasperLabs dApp development toolkit
 
 To get you started with developing dApps, CasperLabs has released a contract development kit leveraging our CasperLabs Rust development toolchain and ecosystem. This kit will work with any IDE that integrates with Rust development.
 
-You will be able to run smart contracts in a CasperLabs runtime environment (Execution Engine (EE)) using IDE you choose to build your contracts and run them in the runtime environment in the order you desire and so observe the effects of contract execution in the [global state](https://github.com/CasperLabs/techspec/blob/master/implementation/global-state.rst) (the shared database that is the blockchain). 
+You will be able to run smart contracts in a CasperLabs runtime environment (Execution Engine (EE) Virtual Machine) using an IDE you choose to build your contracts and run them in the runtime environment in the order you desire and so observe the effects of contract execution in the [global state](https://github.com/CasperLabs/techspec/blob/master/implementation/global-state.rst) (the shared database that is the blockchain).
 
 The kit includes: 
 
-- [Example contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples) - smart contract examples for the CasperLabs contract library with tutorials for you to easily follow our standard and more advanced contracts (e.g. ERC20, Vesting, Tic Tac Toe) contracts.
-- [Integration tests](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/test) -  The Cargo CasperLabs tool provides also provides for testing and debugging smart contracts in our runtime environment (Execution Engine) so that you can run a contract locally and see it's effects.
+- [Example contracts](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples) - smart contract examples for the CasperLabs contract library with tutorials for you to easily follow our standard and more advanced contracts including but not limited to ERC20, Vesting, etc..
 
-### Supported Platforms
 
-- Unix
-- Mac OS
-- Windows
+- [Integration tests](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/test) -  The cargo casperLabs library for you to test and debug smart contracts in our runtime environment (EEVM) so that you can run a contract locally and see it's effects.
+
+You may choose to build, debug, deploy contracts using our CasperLabs environment or an IDE of your choice running your contracts with the following scenarios:
+
+* the CasperLabs Devenet
+* locally
 
 ## Libraries
 
 We support building smart contracts with Rust and AssemblyScript libraries.
 
+[GIT Repository](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0) All our code is open source on GitHub. README.md docs are included with the of a repository describing what a feature is for, what it includes (e.g. source code and libraries,  and how is it used for developing dApps).
+
+
 ## Rust
 
-[Rust Library](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs/src) includes Rust source code found on our GitHub.
+[Rust Library](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs/src) includes Rust source code accessed on our GitHub.
 
-[Rustdocs](https://docs.rs/releases/search?query=casperlabs) are part of the Rust development environment enhancements. We also present Rustdocs with our Rust contracts library available in our Rust Crates repository where you can find the here recommended documentation to develop your projects.
+[Rustdocs](https://docs.rs/releases/search?query=casperlabs) are part of the Rust development environment enhancements. We also present Rustdocs with our Rust contracts library available in our Rust Crates repository where you can find the following recommended documentation to develop your projects:
 
 [Casperlabs Contract API](https://docs.rs/casperlabs-contract/0.2.0/casperlabs_contract/) - Rust library for writing smart contracts
 
@@ -31,22 +35,32 @@ We support building smart contracts with Rust and AssemblyScript libraries.
 
 [Cargo Test Engine](https://docs.rs/casperlabs-engine-test-support/) - Test library to support testing of Wasm smart contracts for use on the CasperLabs Platform
 
-[Cargo CasperLabs](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs) Developers who want to use Rust (recommended for financial applications) can use this tool that provides a command line interface to create a crates project for your smart contracts and run them in our testing framework in our runtime environment. This enables you to have a seamless workflow for authoring and testing your smart contracts, as well as implementing continuous integration so that Rust smart contracts can be managed with recommended development best practices.
+**Rust Tools**
 
-Build Cargo Casperlabs from source for developing dApps with CasperLabs Rust libraries. CasperLabs Cargo bundles all common actions into a single command with no boilerplate required, helps you create your project, setup your build environment, build and test your code, and perform continuous integration according to recommended best practices. 
+[cargo casperLabs](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/cargo-casperlabs) Developers who want to use Rust (recommended for financial applications) can use this tool that provides a command line interface to create a crates project for your smart contracts and run them in our testing framework in our runtime environment. This enables you to have a seamless workflow for authoring and testing your smart contracts, as well as implementing continuous integration so that Rust smart contracts can be managed with recommended development best practices.
+
+Build Cargo Casperlabs from source for developing dApps with CasperLabs Rust libraries. CasperLabs Cargo bundles all common actions into a single command with no boilerplate required, helps you create your project, setup your build environment, build and test your code, and perform continuous integration according to recommended best practices.
+
+### AssemblyScript smart contract Library
+
+For developers that would prefer to use a scripting type language, the W3C foundation has implemented [AssemblyScript](https://docs.assemblyscript.org/) for WebAssembly. You can use the contracts library to create smart contracts for WebAssembly using AssemblyScript.
+
+Our CasperLabs AssemblyScript contract library may be downloaded from [NPM](https://www.npmjs.com/search?q=casperlabs), or you can install it from your command line.
+
+`npm i @casperlabs/contract`
+
+Note: AssemblyScript is often conflated with TypeScript, and while these 2 languages are both scripting languages, there are several differences documented for contract developers to be aware of.
 
 ## GraphQL 
 
-Write and execute your smart contract on our platform and read data from the network using CasperLabs' GraphQL APIs:
+Write and execute your smart contract on our platform and read data from Devnet using CasperLabs' GraphQL APIs:
 
-* CasperLabs GraphQL API reference documentation and schema is accessed via the console, and from every node, and public interface for our [DevNet](http://devnet-graphql.casperlabs.io:40403/graphql)
-* You can access our GraphQL Console on our [Clarity self-service portal](https://clarity.casperlabs.io/#/)
+* You can access CasperLabs GraphQL API reference documentation and schema via our [Clarity self-service portal](https://clarity.casperlabs.io/#/) and from every node, and public interface for our [DevNet](http://devnet-graphql.casperlabs.io:40403/graphql)
 
-Note: If you are not familiar with GraphQL you can find a set of resources like tutorials at the [Graphql website](https://graphql.org/)
-
-Our GraphQL supports retrieving the child relationships given a block hash provided in the following query.
 
 Example query:
+
+Our GraphQL implementation supports retrieving the child relationships given a block hash provided in the following query.
 
 ```query
 query {block(blockHashBase16Prefix: "a3016e93f101da2781eae0696064df8c1ca770058b1d1eae261cfd4034f47547") {
@@ -60,16 +74,36 @@ parents {
 }
 ```
 
-[GIT Repository](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0) All our code is open source on GitHub. README.md docs are included with the of a repository describing what a feature is for, what it includes (e.g. source code and libraries,  and how is it used for developing dApps).
+Note: If you are not familiar with GraphQL you can find a set of resources like tutorials at the [Graphql website](https://graphql.org/)
 
-## What you need to know
 
-We recommend familiarizing yourself with the following resources:
 
-- Familiarize yourself with CasperLabs Basics covered in the documentation of our [GitHub repository](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/docs)
-- You have an account at [clarity.casperlabs.io](https://clarity.casperlabs.io/#/) with motes added to this account, instructions are provided in the /docs folder in the [CONTRACTS.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md#step-3-create-an-account-at-claritycasperlabsio) documentation for Deploying Contracts
+## Example contracts
+
+CasperLabs provides capabilities to develop contracts that include but are not limited to the following types:
+
+- Tokenization types to use for exchanging tokens
+- Storing assets catalog and tokenizing what you own
+- Power to vote (stake)
+- Rewards (e.g. get tokens when you purchase something)
+
+
+Contracts are written in supported languages and compiled to Wasm for deployment locally through our EEVM or from a node processed through our execution engine on our Devnet. Learn more by viewing the [README.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/execution-engine/contracts/examples/README.md) about how contracts are built and [how they operate on the platform](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md)
+
+
+## Recommended Resources
+
+The following is a list of resources referenced throughout this guide for you to look into as needed.
+
+- CasperLabs Basics covered in the documentation of our [GitHub repository](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/docs)
+- To set up an account at [clarity.casperlabs.io](https://clarity.casperlabs.io/#/) with motes added to this account, instructions are provided in the /docs folder in the [CONTRACTS.md](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/CONTRACTS.md#step-3-create-an-account-at-claritycasperlabsio) documentation for Deploying Contracts
 - Demo: [Using the Contracts Kit Workshop](https://casperlabs.atlassian.net/wiki/spaces/REL/pages/279707738/Using+the+Contracts+Kit+Workshop) 
 - Demo: [Stored Contracts -Using the Contracts Kit Workshop](https://casperlabs.atlassian.net/wiki/spaces/REL/pages/294584327/Stored+Contracts+-Using+the+Contracts+Kit+Workshop)
 - [rust-lang.org](https://www.rust-lang.org/) -  Rust
 - AssemblyScript - if you choose to work with AssemblyScript familarize yourself with AssemblyScript and our implementation [here](...)
 - WASM - WebAssembly is the language your contracts are compiled to, see detailed information about Wasm [here](https://webassembly.org/)
+
+[CasperLabs GIT Repository](https://github.com/CasperLabs/CasperLabs/tree/v0.14.0)
+----------------------------------------------------------------------------------
+All our code is open source on GitHub. README.md docs are included with the of a repository describing what a feature is for, what's in it, and how is it used for developing dApps.
+
