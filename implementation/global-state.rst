@@ -101,24 +101,235 @@ key type so long as it can be serialized into bytes for hashing.
 Values
 ------
 
-A *value* in the global state is one of the following:
+A value stored in the global state is a ``StoredValue``. A ``StoredValue`` is
+one of three possible variants:
 
--  A 32-bit signed integer
--  A 64, 128, 256, or 512-bit unsigned integer
--  An array of bytes
--  A list of 32-bit signed integers
--  A string
--  A list of strings
--  A key (as per the key types described above)
--  A string, key pair
--  An account (see :ref:`accounts-head` for more information)
--  A contract (see section below for more information)
--  A unit value (“unit” in the computer science sense, for example, see `the rust
-   definition <https://doc.rust-lang.org/std/primitive.unit.html>`__)
+- A ``CLValue``
+- A contract
+- An account
 
-Note: this is the set of supported value types at the time of writing; however,
-we know this list is too restrictive. We plan on expanding this list in the
-future.
+We discuss ``CLValue`` and contract in more detail below, while details about
+accounts can be found in :ref:`accounts-head`.
+
+Each ``StoredValue`` can be serialized in order for it to be stored in the
+global state. The first byte is a tag indicating which variant of
+``StoredValue`` it is. This is followed by the serialization of that variant.
+The tag for each variant is as follows: ``CLValue`` is ``0``, ``Account`` is
+``1`` and ``Contract`` is ``2``. The details of ``CLType`` serialization is in
+the following section. Using the serialization format for ``CLValue`` as a
+basis, we can succinctly write the serialization rules for contracts and
+accounts. Contracts serialize in the same way as data with ``CLType`` equal to
+``Tuple3(List(U8), Map(String, Key), Tuple3(U32, U32, U32))``.
+Accounts serialize in the same way as data with ``CLType`` equal to
+``Tuple5(FixedList(U8, 32), Map(String, Key), URef, Map(FixedList(U8, 32), U8), Tuple2(U8, U8))``.
+Note: ``Tuple5`` is not a presently supported ``CLType``, however it is clear
+how to generalize the rules for ``Tuple1``, ``Tuple2``, ``Tuple3`` to any size
+tuple.
+
+``CLValue``
+~~~~~~~~~~~
+
+``CLValue`` is used to describe data that is used by smart contracts. This could
+be as a local state variable, input argument or return value. A ``CLValue``
+consists of two parts: a ``CLType`` describing the type of the value, and an
+array of bytes which represent the data in our serialization format.
+
+``CLType`` is described by the following recursive data type:
+
+.. code:: rust
+
+   enum CLType {
+      Bool, // boolean primitive
+      I32, // signed 32-bit integer primitive
+      I64, // signed 64-bit integer primitive
+      U8, // unsigned 8-bit integer primitive
+      U32, // unsigned 32-bit integer primitive
+      U64, // unsigned 64-bit integer primitive
+      U128, // unsigned 128-bit integer primitive
+      U256, // unsigned 256-bit integer primitive
+      U512, // unsigned 512-bit integer primitive
+      Unit, // singleton value without additional semantics
+      String, // e.g. "Hello, World!"
+      URef, // unforgable reference (see above)
+      Key, // global state key (see above)
+      Option(CLType), // optional value of the given type
+      List(CLType), // list of values of the given type (e.g. Vec in rust)
+      FixedList(CLType, u32), // same as `List` above, but number of elements
+                              // is statically known (e.g. arrays in rust)
+      Result(CLType, CLType), // co-product of the the given types;
+                              // one variant meaning success, the other failure
+      Map(CLType, CLType), // key-value association where keys and values have the given types
+      Tuple1(CLType), // single value of the given type
+      Tuple2(CLType, CLType), // pair consisting of elements of the given types
+      Tuple3(CLType, CLType, CLType), // triple consisting of elements of the given types
+      Any // Indicates the type is not known
+   }
+
+All data which can be assigned a (non-``Any``) ``CLType`` can be serialized according to the
+following rules (this defines the CasperLabs serialization format):
+
+- Boolean values serialize as a single byte; ``true`` maps to ``1``, while ``false`` maps to ``0``.
+
+- Numeric values consisting of 64 bits or less serialize in the two's complement
+  representation with little-endian byte order, and the appropriate number of
+  bytes for the bit-width.
+
+   - E.g. ``7u8`` serializes as ``0x07``
+   - E.g. ``7u32`` serializes as ``0x07000000``
+   - E.g. ``1024u32`` serializes as ``0x00040000``
+
+- Wider numeric values (i.e. ``U128``, ``U256``, ``U512``) serialize as: one
+  byte given the length of the subsequent number (in bytes), followed by the two's
+  complement representation with little-endian byte order. The number of bytes
+  should be chosen as small as possible to represent the given number. This is
+  done to reduce the size of the serialization in the case of small numbers
+  represented within a wide data type.
+
+   - E.g. ``U512::from(7)`` serializes as ``0x0107``
+   - E.g. ``U512::from(1024)`` serializes as ``0x020004``
+   - E.g. ``U512::from("123456789101112131415")`` serializes as ``0x0957ff1ada959f4eb106``
+
+- Unit serializes to an empty byte array.
+
+- Strings serialize as a 32-bit integer representing the length in bytes (note:
+  this might be different than the number of characters since special characters,
+  such as emojis, take more than one byte), followed by the UTF-8 encoding of the
+  characters in the string.
+
+   - E.g. ``"Hello, World!"`` serializes as ``0x0d00000048656c6c6f2c20576f726c6421``
+
+- Optional values serialize with a single byte tag, followed by the
+  serialization of the value it self. The tag is equal to ``0`` if the value is
+  missing, and ``1`` if it is present.
+
+   - E.g. ``None`` serializes as ``0x00``
+   - E.g. ``Some(10u32)`` serializes as ``0x010a000000``
+
+- A list of values serializes as a 32-bit integer representing the number of
+  elements in the list (note this differs from strings where it gives the number
+  of *bytes*), followed by the concatenation of each serialized element.
+
+   - E.g. ``List()`` serializes as ``0x00000000``
+   - E.g. ``List(1u32, 2u32, 3u32)`` serializes as ``0x03000000010000000200000003000000``
+
+- A fixed-length list of values serializes as simply the concatenation of the
+  serialized elements. Unlike a variable-length list, the length is not included
+  in the serialization because it is statically known by the type of the value.
+
+   - E.g. ``[1u32, 2u32, 3u32]`` serializes as ``0x010000000200000003000000``
+
+- A ``Result`` serializes as a single byte tag followed by the serialization of
+  the contained value. The tag is equal to ``1`` for the success variant and ``0``
+  for the error variant.
+
+   - E.g. ``Ok(314u64)`` serializes as ``0x013a01000000000000``
+   - E.g. ``Err("Uh oh")`` serializes as ``0x00050000005568206f68``
+
+- Tuples serialize as the concatenation of their serialized elements. Similar to
+  ``FixedList`` the number of elements is not included in the serialization
+  because it is statically known in the type.
+
+   - E.g. ``(1u32, "Hello, World!", true)`` serializes as
+     ``0x010000000d00000048656c6c6f2c20576f726c642101``
+
+- A ``Map`` serializes as a list of key-value tuples. There must be a
+  well-defined ordering on the keys, and in the serialization the pairs are listed
+  in ascending order. This is done to ensure determinism in the serialization, as
+  ``Map`` data structures can be unordered.
+
+- ``URef`` values serialize as the concatenation of its address (which is a
+  fixed-length list of ``u8``) and a single byte tag representing the access
+  rights. Access rights are converted as follows:
+
++--------------------+---------------+
+| Access Rights      | Serialization |
++====================+===============+
+| ``NONE``           |             0 |
++--------------------+---------------+
+| ``READ``           |             1 |
++--------------------+---------------+
+| ``WRITE``          |             2 |
++--------------------+---------------+
+| ``READ_WRITE``     |             3 |
++--------------------+---------------+
+| ``ADD``            |            4  |
++--------------------+---------------+
+| ``READ_ADD``       |            5  |
++--------------------+---------------+
+| ``ADD_WRITE``      |            6  |
++--------------------+---------------+
+| ``READ_ADD_WRITE`` |            7  |
++--------------------+---------------+
+
+- ``Key`` values serialize as a single byte tag representing the variant,
+  followed by the serialization of the data that variant contains. For most
+  variants this is simply a fixed-length 32 byte array. The exception is
+  ``Key::URef`` which contains a ``URef``, so its data serializes per the
+  description above. The tags are as follows: ``Key::Account`` serializes as
+  ``0``, ``Key::Hash`` as ``1``, ``Key::URef`` as ``2`` and ``Key::Local`` as
+  ``3``.
+
+``CLType`` itself also has rules for serialization. A ``CLType`` serializes as a
+single byte tag, followed by the concatenation of serialized inner types, if any
+(e.g. lists, and tuples have inner types). ``FixedList`` is a minor exception
+because it also includes the length in the type, however this simply means that
+the length included in the serialization as well (as a 32-bit integer, per the
+serialization rules above), following the serialization of the inner type. The
+tags are as follows:
+
++---------------+-------------------+
+| ``CLType``    | Serialization Tag |
++===============+===================+
+| ``Bool``      |                 0 |
++---------------+-------------------+
+| ``I32``       |                 1 |
++---------------+-------------------+
+| ``I64``       |                 2 |
++---------------+-------------------+
+| ``U8``        |                 3 |
++---------------+-------------------+
+| ``U32``       |                 4 |
++---------------+-------------------+
+| ``U64``       |                 5 |
++---------------+-------------------+
+| ``U128``      |                 6 |
++---------------+-------------------+
+| ``U256``      |                 7 |
++---------------+-------------------+
+| ``U512``      |                 8 |
++---------------+-------------------+
+| ``Unit``      |                 9 |
++---------------+-------------------+
+| ``String``    |                10 |
++---------------+-------------------+
+| ``URef``      |                11 |
++---------------+-------------------+
+| ``Key``       |                12 |
++---------------+-------------------+
+| ``Option``    |                13 |
++---------------+-------------------+
+| ``List``      |                14 |
++---------------+-------------------+
+| ``FixedList`` |                15 |
++---------------+-------------------+
+| ``Result``    |                16 |
++---------------+-------------------+
+| ``Map``       |                17 |
++---------------+-------------------+
+| ``Tuple1``    |                18 |
++---------------+-------------------+
+| ``Tuple2``    |                19 |
++---------------+-------------------+
+| ``Tuple3``    |                20 |
++---------------+-------------------+
+| ``Any``       |                21 |
++---------------+-------------------+
+
+A complete ``CLValue``, including both the data and the type can also be
+serialized (in order to store it in the global state). This is done by
+concatenating: the serialization of the type, the serialization of the length
+(as a 32-bit integer) of the serialized data (in bytes), and the serialized data
+itself.
 
 .. _global-state-contracts:
 
@@ -146,7 +357,7 @@ CasperLabs runtime functions.
 The named keys are used to give human-readable names to keys in the global state
 which are important to the contract. For example, the hash key of another
 contract it frequently calls maybe stored under a meaningful name. It is also
-used to store the ``URef``\ s which are known to the contract (*see* below
+used to store the ``URef``\ s which are known to the contract (see below
 section on Permissions for details).
 
 Note: that purely local state (i.e., private variables) should be stored under
