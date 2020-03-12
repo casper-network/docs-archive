@@ -39,7 +39,7 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
 
 ## Recommended coding standards
 
-[Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/CONTRIBUTING.md/) cover best practices and recommendations following our coding standards, code reviews and publishing your code to our GitHub.
+[Coding Standards and Review](https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/) cover best practices and recommendations following our coding standards, code reviews and publishing your code to our GitHub.
 
 ## Supported operating systems
 
