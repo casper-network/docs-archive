@@ -27,7 +27,7 @@ brew install protobuf
 
 For more details follow the [official downloads page](https://developers.google.com/protocol-buffers/docs/downloads).
 
-## Casper Labs SDK
+## CasperLabs SDK
 
 ## Available Packages
 There are three crates we publish to support Rust development of Smart Contracts. These can be found on crates.io, and are:
