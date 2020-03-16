@@ -11,3 +11,4 @@ Content of the tutorial:
 
    prepare
    logic
+   logic-test

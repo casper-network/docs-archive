@@ -1,4 +1,4 @@
-# ERC20 Logic
+# Logic
 
 ## ERC-20 Standard
 ERC20 standard is defined in [ERC-20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#). Read it carefully as it defines methods we'll implement:
@@ -56,7 +56,7 @@ num-traits = { version = "0.2.10", default-features = false }
 ## ERC20Trait
 The logic will be implemented as an `ERC20Trait` trait.
 ```rust
-# logic/src/lib.rs
+// logic/src/lib.rs
 
 pub trait ERC20Trait<
     Amount: num_traits::Zero + Add<Output = Amount> + Sub<Output = Amount> + PartialOrd + Copy,
@@ -69,7 +69,7 @@ pub trait ERC20Trait<
 ## Reads and Writes
 Next things to add are abstract functions, that handle data saves and reads.
 ```rust
-# logic/src/lib.rs
+// logic/src/lib.rs
 
 pub trait ERC20Trait<
     Amount: num_traits::Zero + Add<Output = Amount> + Sub<Output = Amount> + PartialOrd + Copy,
@@ -115,7 +115,7 @@ fn mint(&mut self, address: &Address, amount: Amount) {
 ## Errors
 Further implementation of `transfer` and `transfer_from` will be able to throw errors. Let's define them in the separate file and have them ready for later.
 ```rust
-# logic/src/errors.rs
+// logic/src/errors.rs
 
 #[derive(PartialEq, Debug)]
 pub enum ERC20TransferError {
@@ -185,7 +185,7 @@ Note, that internaly it uses `transfer` function. If transfer fails, the `ERC20T
 
 ## Full Example
 ```rust
-# logic/src/lib.rs
+// logic/src/lib.rs
 
 pub mod errors;
 
@@ -265,7 +265,7 @@ pub trait ERC20Trait<
 ```
 
 ```rust
-# logic/src/error.rs
+// logic/src/error.rs
 
 #[derive(PartialEq, Debug)]
 pub enum ERC20TransferError {
