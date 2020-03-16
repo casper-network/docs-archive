@@ -892,8 +892,8 @@ Merkle trie. The definition of this format is described in the
 A Rust reference implementation for those implementing this spec in another
 language can be found here:
 
--  `bytesrepr.rs <https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/execution-engine/types/src/bytesrepr.rs>`__
--  `cl_value.rs <https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/execution-engine/types/src/cl_value.rs>`__
--  `account.rs <https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/execution-engine/engine-shared/src/account.rs>`__
--  `contract.rs <https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/execution-engine/engine-shared/src/contract.rs>`__
--  `uint.rs <https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/execution-engine/types/src/uint.rs>`__
+-  `bytesrepr.rs <https://docs.rs/casperlabs-types/0.2.0/casperlabs_types/bytesrepr/index.html>`__
+-  `cl_value.rs <https://docs.rs/casperlabs-types/0.2.0/src/casperlabs_types/cl_value.rs.html>`__
+-  `account.rs <https://docs.rs/casperlabs-engine-shared/0.3.0/casperlabs_engine_shared/account/struct.Account.html>`__
+-  `contract.rs <https://docs.rs/casperlabs-engine-shared/0.3.0/casperlabs_engine_shared/contract/struct.Contract.html>`__
+-  `uint.rs <https://docs.rs/casperlabs-types/0.2.0/src/casperlabs_types/uint.rs.html>`__

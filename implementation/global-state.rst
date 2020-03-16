@@ -111,7 +111,7 @@ one of three possible variants:
 We discuss ``CLValue`` and contract in more detail below, while details about
 accounts can be found in :ref:`accounts-head`.
 
-Each ``StoredValue`` can be serialized in order for it to be stored in the
+Each ``StoredValue`` is serialized when written to the
 global state. The first byte is a tag indicating which variant of
 ``StoredValue`` it is. This is followed by the serialization of that variant.
 The tag for each variant is as follows: ``CLValue`` is ``0``, ``Account`` is
@@ -350,20 +350,21 @@ the module may import any of the functions supported by the CasperLabs runtime;
 a list of all supported functions can be found in :ref:`Appendix A
 <appendix-a>`.
 
-Note: that while the ``call`` function cannot take any arguments or have any
-return value, the contract itself still can via the ``get_arg`` and ``ret``
-CasperLabs runtime functions.
+Note: though the ``call`` function signature has no arguments and no return
+value, within the ``call`` function body the ``get_arg`` runtime function can be
+used to accept arguments (by ordinal) and the ``ret`` runtime function can be used
+to return a single ``CLValue`` to the caller.
 
 The named keys are used to give human-readable names to keys in the global state
 which are important to the contract. For example, the hash key of another
-contract it frequently calls maybe stored under a meaningful name. It is also
+contract it frequently calls may be stored under a meaningful name. It is also
 used to store the ``URef``\ s which are known to the contract (see below
 section on Permissions for details).
 
-Note: that purely local state (i.e., private variables) should be stored under
-local keys, as opposed to ``URef``\ s, in the named keys map, since local keys
-are more efficient and the primary advantage of ``URef``\ s is to share them
-with others.
+Note: purely local state should be stored under local keys rather than under
+``URef``\ s in the named keys map. A primary advantage of ``URef``\ s is their
+portability (between on-chain contexts), but for unshared, private variables,
+where portability is not a factor, local keys are more efficient.
 
 The protocol version says which version of the CasperLabs protocol this contract
 was compiled to be compatible with. Contracts which are not compatible with the
