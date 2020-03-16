@@ -108,14 +108,19 @@ one of three possible variants:
 - A contract
 - An account
 
-We discuss ``CLValue`` and contract in more detail below, while details about
+We discuss ``CLValue`` and contract in more detail below, details about
 accounts can be found in :ref:`accounts-head`.
 
 Each ``StoredValue`` is serialized when written to the
 global state. The first byte is a tag indicating which variant of
 ``StoredValue`` it is. This is followed by the serialization of that variant.
-The tag for each variant is as follows: ``CLValue`` is ``0``, ``Account`` is
-``1`` and ``Contract`` is ``2``. The details of ``CLType`` serialization is in
+The tag for each variant is as follows:
+
+- ``CLValue`` is ``0``
+- ``Account`` is ``1``
+- ``Contract`` is ``2``
+
+The details of ``CLType`` serialization is in
 the following section. Using the serialization format for ``CLValue`` as a
 basis, we can succinctly write the serialization rules for contracts and
 accounts. Contracts serialize in the same way as data with ``CLType`` equal to
