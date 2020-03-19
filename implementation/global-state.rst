@@ -332,9 +332,9 @@ tags are as follows:
 
 A complete ``CLValue``, including both the data and the type can also be
 serialized (in order to store it in the global state). This is done by
-concatenating: the serialization of the type, the serialization of the length
-(as a 32-bit integer) of the serialized data (in bytes), and the serialized data
-itself.
+concatenating: the serialization of the length (as a 32-bit integer) of the
+serialized data (in bytes), the serialized data itself, and the serialization of
+the type.
 
 .. _global-state-contracts:
 
