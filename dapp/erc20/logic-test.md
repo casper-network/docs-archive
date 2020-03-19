@@ -1,13 +1,15 @@
 # Logic Tests
-In this section we'll test previously written [ERC20 logic](logic.html).
+Included is a guided step-by-step set of examples we can follow to test the [ERC20 logic](logic.html).
 
 ## Test Module
-Add new file for tests at `logic/src/tests.rs` and include this module at the top of `logic/src/lib.rs` by adding `tests` module only when testing.
+1. Add a new crate file for tests at `logic/src/tests.rs` and include this module at the top of `logic/src/lib.rs` by adding the  `tests` module for use when testing:
+
 ```rust
 #[cfg(test)]
 mod tests;
 ```
-Write simple test to verify it works.
+1. Write a simple test to verify that it works:
+
 ```rust
 // logic/src/tests.rs
 
@@ -16,7 +18,8 @@ fn my_test() {
     assert_eq!(1, 1);
 }
 ```
-And run it.
+1. Run the example:
+
 ```bash
 $ cargo test -p logic
 
@@ -25,7 +28,10 @@ test tests::my_test ... ok
 ```
 
 ## Test Token Implemetation
-Testing traits requires to implement it first. Let's create a test token implemention.
+Testing traits requires implementing it first. 
+
+1. Let's create a test token implemention:
+
 ```rust
 use std::collections::HashMap;
 
@@ -49,7 +55,8 @@ impl Token {
     }
 }
 ```
-`Token` struct can store all the data ERC20 requires, so it's possible to implement `ERC20Trait` on top of it.
+`Token` struct can store all the data ERC20 requires so that it's possible to implement `ERC20Trait` on top of it.
+
 ```rust
 impl ERC20Trait<Amount, Address> for Token {
     fn read_balance(&mut self, address: &Address) -> Option<Amount> {
@@ -79,13 +86,13 @@ impl ERC20Trait<Amount, Address> for Token {
 ```
 
 ## Unit Tests
-All ERC20 operations are account-based, so it's handy to have a few accounts already defined.
+All ERC20 operations are account-based -- it's recommended to have a few accounts defined in advance:
 ```rust
 const ADDRESS_1: Address = 1;
 const ADDRESS_2: Address = 2;
 const ADDRESS_3: Address = 3;
 ```
-Testing `transfer` function should look like this.
+The testing `transfer` function should look like this:
 ```rust
 #[test]
 fn test_transfer() {
@@ -98,4 +105,6 @@ fn test_transfer() {
     assert_eq!(token.total_supply(), 10);
 }
 ```
-Rest of the tests you can read in our repository on Github [CasperLabs/erc20](https://github.com/CasperLabs/erc20) TODO: Give a link to existing file.
+For further information, you can read about additional tests located in the [CasperLabs/erc20](https://github.com/CasperLabs/erc20) repository on Github.
+
+TODO: Give a link to existing file.

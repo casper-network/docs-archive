@@ -1,24 +1,31 @@
 # Logic
 
 ## ERC-20 Standard
-ERC20 standard is defined in [ERC-20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#). Read it carefully as it defines methods we'll implement:
-* balance_of
-* transfer
-* total_supply
-* approve
-* allowance
-* transfer_from
-* mint
+Before starting, we highly recommend a careful reading of the [ERC-20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#) that provides for the definition of the following methods we'll implement:
+
+- `balance_of`
+- `	transfer`
+- `total_supply`
+- `approve`
+- `allowance`
+- `transfer_from`
+- `mint`
 
 ## Add new crate
-One of the greates benefits of writing smart contract in Rust is that we can write a lot of code as standalone library and use it later to implement smart contracts. In this section we will implement the logic of ERC20. To make it testable and easly usable later in smart contract we will abstract all memory operations.
+One of the greatest benefits of writing smart contracts in Rust is that we can write a lot of code as a standalone library to later use for implementing smart contracts. 
 
-Generate a new `logic` crate.
+Here we will implement the logic of the ERC20. To make it testable and easly usable in a smart contract, we will abstract all memory operations:
+
+1. Generate a new `logic` crate
+
 ```
 $ cargo new logic --lib
 warning: compiling this new crate may not work due to invalid workspace configuration
 ```
-Cargo reminds us to add `logic` to the current workspace, so let's modify `Cargo.toml` in the root directory.
+Cargo reminds us to add `logic` to the current workspace, 
+
+1. We'll modify `Cargo.toml` in the root directory:
+
 ```toml
 # Cargo.toml
 
@@ -30,11 +37,13 @@ members = [
     "tests"
 ]
 ```
-Run `logic` tests to see it works.
+1. Run `logic` tests to see it work:
+
 ```bash
 $ cargo test -p logic
 ```
-Prepare `logic/Cargo.toml`.
+1. Prepare `logic/Cargo.toml`:
+
 ```toml
 # logic/Cargo.toml
 
@@ -54,7 +63,7 @@ num-traits = { version = "0.2.10", default-features = false }
 ```
 
 ## ERC20Trait
-The logic will be implemented as an `ERC20Trait` trait.
+The logic will be implemented as an `ERC20Trait` trait:
 ```rust
 // logic/src/lib.rs
 
@@ -64,10 +73,11 @@ pub trait ERC20Trait<
 >
 {}
 ```
-`Amount` and `Address` generics allows for flexibilty in types definitions on the implementation step.
+`Amount` and `Address` generics allows for flexibilty in types definitions on the implementation.
 
 ## Reads and Writes
-Next things to add are abstract functions, that handle data saves and reads.
+1. Next, we add abstract functions which handle data saves and reads:
+
 ```rust
 // logic/src/lib.rs
 
@@ -86,7 +96,8 @@ pub trait ERC20Trait<
 ```
 
 ## Total Supply, Balance and Approval
-We are ready now to define first ERC20 methods. Below is the implementation of `balance_of`, `total_supply` and `allowance`. These are read-only methods.
+1. We are now ready to define the first among the ERC20 methods including the implementation of `balance_of`, `total_supply` , and `allowance`,  all of which are read-only methods:
+
 ```rust
 fn balance_of(&mut self, address: &Address) -> Amount {
     self.read_balance(address).unwrap_or_else(Amount::zero)
@@ -102,7 +113,8 @@ fn allowance(&mut self, owner: &Address, spender: &Address) -> Amount {
 ```
 
 ## Mint
-Next method to define is called `mint`. It's not a part of ERC20 specification, but it's present in almost every ERC20 implementation. It's responsibility is incrementing the balance of tokens for the given `Address`. It should update the total supply as well.
+1. Next,  we'll define what is called the `mint` method -- though not a part of ERC20 specification, it's present in almost every ERC20 implementation and responsable for incrementing the balance of tokens for the given `Address`. Addtionally, `mint`  should also update the total supply as well.
+
 ```rust
 fn mint(&mut self, address: &Address, amount: Amount) {
     let address_balance = self.balance_of(address);
@@ -113,7 +125,10 @@ fn mint(&mut self, address: &Address, amount: Amount) {
 ```
 
 ## Errors
-Further implementation of `transfer` and `transfer_from` will be able to throw errors. Let's define them in the separate file and have them ready for later.
+Further implementation of `transfer` and `transfer_from` will be able to throw errors.
+
+1. Let's define them in the separate file to be ready for later implementation:
+
 ```rust
 // logic/src/errors.rs
 
@@ -136,7 +151,10 @@ impl From<ERC20TransferError> for ERC20TransferFromError {
 ```
 
 ## Transfer
-Finally we can implement `transfer` method, so it's possible to transfer tokens from address to address. If the `sender` address has enought balance then tokens should be transfered to the `recipient` address. Othewise return the `ERC20TransferError::NotEnoughBalance` error.
+1. Finally, we can implement the `transfer` method for transfering tokens from address to address. 
+
+   If the `sender` address has enough balance, tokens should be transfered to the `recipient` address. Othewise, return the `ERC20TransferError::NotEnoughBalance` error:
+
 ```rust
 fn transfer(
     &mut self,
@@ -157,13 +175,14 @@ fn transfer(
 ```
 
 ## Approve and Transfer From
-The last missing functions are `approve` and `transfer_from`. `approve` is used to allow other address to spend tokens in my name.
+The last functions are `approve` and `transfer_from`. `approve` is used to allow other addressess to spend tokens in "my name":
 ```rust
 fn approve(&mut self, owner: &Address, spender: &Address, amount: Amount) {
     self.save_allowance(owner, spender, amount)
 }
 ```
-`transfer_from` allows to spend approved tokens.
+`transfer_from` allows for spending approved tokens:
+
 ```rust
 fn transfer_from(
     &mut self,
@@ -180,10 +199,10 @@ fn transfer_from(
     self.approve(owner, spender, allowance - amount);
     Ok(())
 }
-``` 
-Note, that internaly it uses `transfer` function. If transfer fails, the `ERC20TransferError` is automatialy converted to `ERC20TransferFromError` that's to `impl From<ERC20TransferError> for ERC20TransferFromError` implmentation in `logic/src/error.rs`.
+```
+Note: internaly this uses the  `transfer` function. If a transfer fails, the `ERC20TransferError` is automatialy converted to `ERC20TransferFromError`, that's to `impl From<ERC20TransferError> for ERC20TransferFromError` implmentation in `logic/src/error.rs`.
 
-## Full Example
+## Example Implementation
 ```rust
 // logic/src/lib.rs
 
