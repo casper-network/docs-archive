@@ -1,12 +1,12 @@
 Tutorial- Using the ERC20 Contract
 ==================================
 
-The following provides a guided step-by-step process with a set of examples for using basic and advanced features of the CasperLabs development tools available in our development environment to work with the ERC 20 contract:
+The following provides a guided step-by-step process with a set of examples for using basic and advanced features of the CasperLabs eco system to work with the ERC 20 contract including but not limited to:
 
-- Access the example ERC20 Token contract
-- Deploy the contract to Devnet
-- Use scripts to interact with the contract on the CL Blockchain
-- Check account balances in Clarity
+- Accessing the example ERC20 Token contract
+- Deploying the contract to Devnet
+- Using scripts to interact with the contract on the CL Blockchain
+- Checking account balances in Clarity
 
 ## Before you begin
 

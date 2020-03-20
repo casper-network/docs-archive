@@ -6,13 +6,14 @@ The following includes a guided tutorial for implementing the CasperLabs ERC20. 
 
 We highly recommended reading `Writing Rust Contracts on CasperLabs <../writing-rust-contracts.html>`_. 
 
-Note: Completed code is available on our Github `CasperLabs/erc20 <https://github.com/CasperLabs/erc20>`_. 
+Note: Completed code is found on our Github `CasperLabs/erc20 <https://github.com/CasperLabs/erc20>`_. 
 
 
 Content of the tutorial:
 
 .. toctree::
 
+   erc20-intro
    prepare
    logic
    logic-test
