@@ -11,7 +11,7 @@ The following provides step-by-step examples to guide you through basic and adva
 
 ### Before getting started
 
-Though most smart contract developers are familiar with the ERC20, we highly recommend, you take the opportunity to carefully read through the Etherium [ERC-20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#). It provides for the definition methods we'll be implementing in the following steps:
+Though most smart contract developers are familiar with the ERC20, we highly recommend, you take the opportunity to carefully read through the Etherium [ERC-20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#). It provides for the definition of methods we'll be implementing.
 
 
 

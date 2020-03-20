@@ -18,7 +18,7 @@ Before starting, we highly recommend a careful reading of the [ERC-20 Token Stan
 
 Add new crate
 -------------
-One of the main benefits of writing smart contracts in Rust is having the capability to write a lot of code which then can serve as a library for implementing smart contracts.
+One of the main benefits of developing smart contracts in Rust is having the capability to write a lot of code which then can serve as a library for implementing smart contracts.
 
 Here we will implement the logic of the ERC20 abstracting memory operations to render it fitting and testable for a smart contract as follows:
 
@@ -108,7 +108,7 @@ pub trait ERC20Trait<
 Total Supply, Balance and Approval
 ----------------------------------
 
-1. Now that we are ready, we will define the first among the ERC20 methods -- `balance_of`, `total_supply` , and `allowance` (all read-only methods):
+1. Now that we have completed our setup, we will define the first among the ERC20 methods -- `balance_of`, `total_supply` , and `allowance` (all read-only methods):
 
 ```rust
 fn balance_of(&mut self, address: &Address) -> Amount {
@@ -127,7 +127,7 @@ fn allowance(&mut self, owner: &Address, spender: &Address) -> Amount {
 Mint
 ----
 
-1. We'll then define the `mint` method -- though not a part of ERC20 specification, it's present in almost every one of our ERC20 implementations for incrementing the balance of tokens for a given `Address`. Additionally, `mint` also updates the total as well.
+1. Next, we'll define the `mint` method -- though not a part of ERC20 specification, it's present in almost every one of our ERC20 implementations for incrementing the balance of tokens for a given `Address`. Additionally, `mint` also updates the total as well.
 
 ```rust
 fn mint(&mut self, address: &Address, amount: Amount) {
@@ -142,7 +142,7 @@ Errors
 ------
 Implementation of `transfer` and `transfer_from` will be able to throw errors.
 
-1. We'll define these errors in a separate file for use further on in our implementation(s):
+1. Here, we'll define these errors in a separate file. We can then use this further on in our implementation(s):
 
 ```rust
 // logic/src/errors.rs
@@ -222,8 +222,11 @@ fn transfer_from(
 ```
 Note: internally this uses the  `transfer` function. However, if a transfer fails, the `ERC20TransferError` is automatically converted to `ERC20TransferFromError`; to `impl From<ERC20TransferError> for ERC20TransferFromError` implementation in `logic/src/error.rs`.
 
-Example Implementation
-----------------------
+
+Example Implementation of our ERC20 Contract Capabilities
+---------------------------------------------------------
+
+This example is a complete implementation of our ERC20 logic including all the methods covered in the previous steps, e.g. balances, allocating allowances, and transferring funds, etc. followed by the associated error logic.
 
 ```rust
 // logic/src/lib.rs
