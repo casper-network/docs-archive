@@ -17,4 +17,3 @@ CasperLabs Blockchain.
    erc20/index
    eco-315-erc20docs/index
 
-

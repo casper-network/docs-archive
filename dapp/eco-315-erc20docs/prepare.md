@@ -66,17 +66,17 @@ const BUILD_ARGS: [&str; 2] = ["build", "--release"];
 ```
 to
 ```rust
-const BUILD_ARGS: [&str; 4] = ["build", "--release", "-p", "contract"];
+const BUILD_ARGS: [&str; 4] = ["build", "--release", "-p", "contract"];`
 ```
 
-1. Finally, remove `rust-toolchain` files from `contract` and `tests` crates, and make just one crate in the root directory:
+1. Remove `rust-toolchain` files from `contract` and `tests` crates, and make just one crate in the root directory:
 
 ```bash
 $ rm contract/rust-toolchain
 $ mv tests/rust-toolchain .
 ```
 
-1. Test the changes by compiling `contract` crate, and then running the test on `tests` crate.
+1. Then, test the changes by compiling `contract` crate, and then running the test on `tests` crate.
 
 ```bash
 $ cargo build --release -p contract 

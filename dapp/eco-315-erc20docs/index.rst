@@ -22,5 +22,5 @@ Content of the tutorial:
    prepare
    logic
    logic-test
-   tutorial-use-ERC20
+   tutorial-use-erc20
 ```

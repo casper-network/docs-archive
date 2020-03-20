@@ -13,7 +13,7 @@ Here we present the organization of the functional components we implement with 
 
 
 **ERC-20 Standard**
-Before starting, we highly recommend a careful reading of the [ERC-20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#) providing for the definition of the above mentioned methods we'll be implementing in the following steps:
+The [ERC-20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#) provides for the definition of the above mentioned methods we'll be implementing in the following steps:
 
 
 Add new crate
