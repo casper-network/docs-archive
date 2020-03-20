@@ -7,6 +7,8 @@ The client software communicates with the network to transmit your deployments t
 
 It's possible to use pre-built binaries or build from source. Both provide the casperLabs-client.
 
+**Ensure that your client matches the version of the network you intend to deploy to.**
+
 ### Using Binaries
 
 * **Linux**: apt, rpm (yum, dnf, zypper - depends on the Linux distribution being used)
@@ -42,7 +44,20 @@ The easiest way to deploy a contract is to use an existing public network.  Casp
 * Place your private key in a location that you can access during the deployment.
 * Request tokens from the faucet to fund your account.
 
-The host name of the DevNet is 'deploy.casperlabs.io'
+The host name of the DevNet is 'deploy.casperlabs.io'  The DevNet always runs the most recent released version of the software
+
+### Check the Client Version
+There are 2 versions of the client - Scala and Python. 
+
+To check the Scala client version run:
+```bash
+casperlabs-client --version
+```
+For Python run:
+```bash
+pip show casperlabs_client
+```
+If you want to send your deployments to an external network, use the latest released version of the client.  If you are working off of dev, build the client locally and check the gitHash.
 
 ### A Basic Deployment
 As described above, a basic deployment must provide some essential information. Here is an example deployment using the Python client that will work with the basic contract we created using the [Contracts SDK for Rust](writing-rust-contracts):
