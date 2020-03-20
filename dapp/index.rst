@@ -15,3 +15,6 @@ CasperLabs Blockchain.
    graphql
    execution-error-codes
    erc20/index
+   eco-315-erc20docs/index
+
+
