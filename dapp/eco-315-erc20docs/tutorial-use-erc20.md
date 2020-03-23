@@ -10,7 +10,7 @@ The following provides a guided step-by-step process with a set of examples for 
 
 ## Before you begin
 
-Prior knowledge of working with contracts is highly recommended. For more details see  [...contract development documentation in this guide](...) topics of this guide.
+Prior knowledge of working with contracts is highly recommended. For more details see  [Writing Rust Contracts on CasperLabs] (`<../writing-rust-contracts.html>`) topics of this guide.
 
 TODO: rename link above and link appropriately
 

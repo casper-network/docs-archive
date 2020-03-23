@@ -160,7 +160,7 @@ and [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap).
 
 1. Setup your file structure in no more than 2 levels
 2. Format your content with no more than 3 heading levels
-Note: Setex is recommended, but ATX is also acceptible
+Note: Setex is recommended, but ATX is also acceptable
 3. To reference content within the guide, use :ref: (e.g., see :ref:`Execution Semantics <execution-semantics-urefs>` for
 for more information)
 4. To reference content to GIT source, link to master branch (e.g. https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples)

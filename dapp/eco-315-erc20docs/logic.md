@@ -11,26 +11,25 @@ Here we present the organization of the functional components we implement with 
 - `transfer_from`
 - `mint`
 
-
 **ERC-20 Standard**
 The [ERC-20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#) provides for the definition of the above mentioned methods we'll be implementing in the following steps:
 
 
-Add new crate
+Add a new crate
 -------------
 One of the main benefits of developing smart contracts in Rust is having the capability to write a lot of code which then can serve as a library for implementing smart contracts.
 
 Here we will implement the logic of the ERC20 abstracting memory operations to render it fitting and testable for a smart contract as follows:
 
-1. First, we generate a new `logic` crate
+1. First, generate a new `logic` crate
 
-```
+```bash
 $ cargo new logic --lib
 warning: compiling this new crate may not work due to invalid workspace configuration
 ```
 Note that Cargo provides us a reminder to add `logic` to the current workspace,
 
-1. We'll then modify `Cargo.toml` configuration file in the root directory:
+1. We'll modify `Cargo.toml` configuration file in the root directory adding the "logic" crate to the workspace:
 
 ```toml
 # Cargo.toml
@@ -43,7 +42,7 @@ members = [
     "tests"
 ]
 ```
-1. Now, we run `logic` tests and so see it work:
+1. Now, we can run `logic` tests and to see how it works:
 
 ```bash
 $ cargo test -p logic
@@ -223,7 +222,7 @@ fn transfer_from(
 Note: internally this uses the  `transfer` function. However, if a transfer fails, the `ERC20TransferError` is automatically converted to `ERC20TransferFromError`; to `impl From<ERC20TransferError> for ERC20TransferFromError` implementation in `logic/src/error.rs`.
 
 
-Example Implementation of our ERC20 Contract Capabilities
+Example of Complete CasperLabs ERC20
 ---------------------------------------------------------
 
 This example is a complete implementation of our ERC20 logic including all the methods covered in the previous steps, e.g. balances, allocating allowances, and transferring funds, etc. followed by the associated error logic.

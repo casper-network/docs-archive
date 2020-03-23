@@ -1,7 +1,9 @@
-# Logic Tests
+Logic Tests
+===========
 Included is a guided step-by-step set of examples we can follow to test the [ERC20 logic](logic.html).
 
-## Test Module
+Test Module
+-----------
 1. Add a new crate file for tests at `logic/src/tests.rs` and include this module at the top of `logic/src/lib.rs` by adding the  `tests` module for use when testing:
 
 ```rust
@@ -27,7 +29,8 @@ running 1 test
 test tests::my_test ... ok
 ```
 
-## Test Token Implementation
+Test Token Implementation
+-------------------------
 Testing traits requires implementing it first. 
 
 1. Let's create a test token implemention:
@@ -85,7 +88,8 @@ impl ERC20Trait<Amount, Address> for Token {
 }
 ```
 
-## Unit Tests
+Unit Tests
+----------
 All ERC20 operations are account-based -- it's recommended to have a few accounts defined in advance:
 ```rust
 const ADDRESS_1: Address = 1;

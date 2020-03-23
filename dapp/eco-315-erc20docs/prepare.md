@@ -66,7 +66,7 @@ const BUILD_ARGS: [&str; 2] = ["build", "--release"];
 ```
 to
 ```rust
-const BUILD_ARGS: [&str; 4] = ["build", "--release", "-p", "contract"];`
+const BUILD_ARGS: [&str; 4] = ["build", "--release", "-p", "contract"];
 ```
 
 1. Remove `rust-toolchain` files from `contract` and `tests` crates, and make just one crate in the root directory:
