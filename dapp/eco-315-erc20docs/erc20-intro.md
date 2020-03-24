@@ -4,18 +4,14 @@ The ERC20 standard, the foundation upon which the CasperLabs ERC20 is implemente
 
 ### CasperLabs ERC20 model
 
-The CasperLabs [example erc20](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples/erc20-smart-contract)  token contract, modeled after ERC20, includes buy and sell methods enabling us to create our own token on the platform and move this token between accounts.
-<<<<<<< Updated upstream
-=======
 
-Our blockchain stores transactions with an execution engine that runs smart contracts, and tokens that are live on our blockchain (CRX - CasperLabs native currency (motes)) to represent many things, not just currency. It is very important that this is set up and managed properly since storing them on the blockchain is immutable.
+The CasperLabs [example erc20](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples/erc20-smart-contract)  token contract, modeled after ERC20, includes buy and sell methods enables developers to create their own token on the platform and transfer the token between accounts.
 
->>>>>>> Stashed changes
 Note: CLX is required to fund these transactions.
 
-Our mandatory and optional methods allow for provisioning and transfer of tokens to be approved for spending by third party stakeholders, and used by decentralized applications, e.g. purses, etc..
+The methods allow for provisioning and transfer of tokens to be approved for spending by third party stakeholders, and to be used by decentralized applications, such as smart contracts.
 
-<<<<<<< Updated upstream
+
 Topics in this section cover the entire implementation of our ERC20 as follows:
 =======
 Topics in this section cover the entire implementation of our ERC20 as with the following goals:
@@ -34,7 +30,7 @@ Create, transfer and track balances, precision about errors is important to depl
 Interoperability -- custom code, talk to your contract purse
 Structure - guideline
 
-We have a blockchain that stores transactions, an execution engine that runs smart contracts, and tokens that are live on our blockchain (CRX - CasperLabs native currency (motes)) to represent many things not just currency. -- so it is very important that this is set up and managed properly since storing them on the blockchain is immutable.
+We have a blockchain that stores transactions, an execution engine that runs smart contracts, and tokens that are live on our blockchain (CLX - CasperLabs native currency (motes)) to represent many things not just currency. -- so it is very important that this is set up and managed properly since storing them on the blockchain is immutable.
 =======
 Create, transfer and track balances
 Interoperability -- custom code, talk to your contract purse
