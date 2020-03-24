@@ -5,11 +5,21 @@ The ERC20 standard, the foundation upon which the CasperLabs ERC20 is implemente
 ### CasperLabs ERC20 model
 
 The CasperLabs [example erc20](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples/erc20-smart-contract)  token contract, modeled after ERC20, includes buy and sell methods enabling us to create our own token on the platform and move this token between accounts.
+<<<<<<< Updated upstream
+=======
+
+Our blockchain stores transactions with an execution engine that runs smart contracts, and tokens that are live on our blockchain (CRX - CasperLabs native currency (motes)) to represent many things, not just currency. It is very important that this is set up and managed properly since storing them on the blockchain is immutable.
+
+>>>>>>> Stashed changes
 Note: CLX is required to fund these transactions.
 
 Our mandatory and optional methods allow for provisioning and transfer of tokens to be approved for spending by third party stakeholders, and used by decentralized applications, e.g. purses, etc..
 
+<<<<<<< Updated upstream
 Topics in this section cover the entire implementation of our ERC20 as follows:
+=======
+Topics in this section cover the entire implementation of our ERC20 as with the following goals:
+>>>>>>> Stashed changes
 
 - Preparation - setting up your erc20 project and library
 - Logic - modifying the environment and implementing methods we use, this topic describes how our ERC20 functions to store transactions, and how our execution engine vm, capable of simulating deployment on our blockchain, supports tokens and other currencies
@@ -19,11 +29,19 @@ Topics in this section cover the entire implementation of our ERC20 as follows:
 ### Basics on our platform blockchain and virtual machine
 
 Create a smart contract, managing transactions, tracking the balance of each token holder
+<<<<<<< Updated upstream
 Create, transfer and track balances, precision about errors is important to deployment
 Interoperability -- custom code, talk to your contract purse
 Structure - guideline
 
 We have a blockchain that stores transactions, an execution engine that runs smart contracts, and tokens that are live on our blockchain (CRX - CasperLabs native currency (motes)) to represent many things not just currency. -- so it is very important that this is set up and managed properly since storing them on the blockchain is immutable.
+=======
+Create, transfer and track balances
+Interoperability -- custom code, talk to your contract purse
+Structure - guidelines for structuring your contract
+
+
+>>>>>>> Stashed changes
 
 **How tokens are created**
 A smart contract can create a token. This smart contract not only creates tokens but also sets up how transactions are managed.
@@ -45,7 +63,11 @@ How to keep track account balance
 
 **Mandatory functions**
 
+<<<<<<< Updated upstream
 Our mandatory methods define the following - i.e. they must be set up in order to for the erc20 to be viable
+=======
+Our mandatory methods define the following - i.e. they must be set up in order to for the erc20 to be viable:
+>>>>>>> Stashed changes
 
 - total -- supply of token
 - balance of -- # of tokens an address has
@@ -65,7 +87,11 @@ Our mandatory methods define the following - i.e. they must be set up in order t
 - symbol -- of token
 
 **Optional functions**
+<<<<<<< Updated upstream
 TODOs
+=======
+
+>>>>>>> Stashed changes
 Our optional methods defined:
 - ...
 - ...

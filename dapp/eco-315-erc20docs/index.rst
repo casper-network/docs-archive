@@ -4,7 +4,11 @@ ERC20 Tutorial Overview
 The following includes a set of topics with step-by-step examples to guide you through basic and
 advanced features for implementing the CasperLabs ERC20. Following the preparation and logic
 you will be able to create and manage tokens by smart contract, and test contracts using the
+<<<<<<< Updated upstream
 CasperLabs development framework, before deploying and running erc20 contracts to devnet.
+=======
+CasperLabs development framework, and deploy and run erc20 contracts to devnet.
+>>>>>>> Stashed changes
 
 We highly recommended reviewing `Writing Rust Contracts on CasperLabs <../writing-rust-contracts.html>`_ in this guide, prior to beginning this tutorial.
 
