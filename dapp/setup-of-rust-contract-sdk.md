@@ -1,14 +1,33 @@
 # Setting Up the Rust Contract SDK
 The SDK is the easiest way to get started with Smart Contract development. This guide will walk you through the steps to get set up.
 
+## Prerequisites 
 
-## Install Rust
+### Install Rust
 Install Rust using `curl`
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 For more details follow the [official Rust guide](https://www.rust-lang.org/tools/install).
+
+### Install Google protobuf compiler
+
+Linux with `apt` 
+
+```bash
+sudo apt install protobuf-compiler
+```
+
+macOS with `brew`
+
+```bash
+brew install protobuf
+```
+
+For more details follow the [official downloads page](https://developers.google.com/protocol-buffers/docs/downloads).
+
+## CasperLabs SDK
 
 ## Available Packages
 There are three crates we publish to support Rust development of Smart Contracts. These can be found on crates.io, and are:

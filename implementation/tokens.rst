@@ -15,15 +15,13 @@ This chapter describes how we define tokens and how they are used in our platfor
 Token Generation and Distribution
 ---------------------------------
 
-A blockchain system will need to have a supply of tokens available for the purposes of paying for computation and rewarding validators for the processing of transactions on the network. The tokens will be allocated in the following fashion (subject to applicable laws and regulations):
+A blockchain system will need to have a supply of tokens available for the purposes of paying for computation and rewarding validators for the processing of transactions on the network. A great deal of effort has been taken to ensure that no single individual or entity acquires 1%+ of the tokens from the onset. The tokens will be allocated in the following fashion (subject to applicable laws and regulations):
 
-    - 70% of total token supply will be sold
-       - 10% in the private validator sale for purposes of securing the genesis block
-       - 10% in the initial public sale (around the time of main net launch)
-       - The remainder in public sales over an extended period of time
-    - 12% reserved for developer & entrepreneur incentives, advisors and community managers
-    - 10% reserved for CasperLabs shareholders
-    - 8% reserved for personnel in a manner consistent with customary employee incentive programs.
+    - 60% of total token supply will be sold to the public via validator sales and ongoing public sales.
+    - 16% reserved for developer & entrepreneur incentives, advisors and community managers via a DAO structure coupled with an AWS credits style system deployed over 5 years.
+    - 10% will be held by the CasperLabs network; any and all distributions will be commensurate with public release.
+    - 8% reserved for the team, vesting on a schedule similar to equity incentive programs over 3 years.
+    - 6% for advisors and strategic partners, distributed in a manner similar to the developer and community incentives.
 
 In addition to the initial supply, the system will have a low rate of inflation, the results of which will be paid out to validators in the form of seigniorage, as described previously in this document.
 

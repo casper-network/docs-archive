@@ -163,7 +163,7 @@ and [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap).
 Note: Setex is recommended, but ATX is also acceptible
 3. To reference content within the guide, use :ref: (e.g., see :ref:`Execution Semantics <execution-semantics-urefs>` for
 for more information)
-4. To reference content to GIT source, link to latest version (e.g. v0.14, https://github.com/CasperLabs/CasperLabs/tree/v0.14.0/execution-engine/contracts/examples)
+4. To reference content to GIT source, link to master branch (e.g. https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples)
 5. To cross-reference content of CasperLabs tools and references like SDKs, APIs... link to the newest published GIT sources and versions   (e.g., cargo-casperlabs CLI tool -- https://crates.io/crates/cargo-casperlabs or https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs (those two links have equivalent information - it's the README from the crate's root) )
 
 ## Why move away from Gitbook?
