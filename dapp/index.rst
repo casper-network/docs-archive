@@ -6,7 +6,7 @@ CasperLabs Blockchain.
 
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    intro
    setup-of-rust-contract-sdk
@@ -14,3 +14,4 @@ CasperLabs Blockchain.
    deploying-contracts
    graphql
    execution-error-codes
+   erc20/index
