@@ -1,8 +1,8 @@
 # Smart Contract Tests
 
-In this section we'll use [CasperLabs Engine Test Support](https://crates.io/crates/casperlabs-engine-test-support) crate to test ERC20 smart contract against the virtual machine that is the same as CasperLabs uses in production.
+In this section we'll use the [CasperLabs Engine Test Support](https://crates.io/crates/casperlabs-engine-test-support) crate to test the ERC-20 smart contract against the execution environment that is equivalent to what CasperLabs uses in production.
 
-The example of finished test.
+The following is an example of a finished test.
 ```rust
 #[test]
 fn test_erc20_transfer() {

@@ -1,9 +1,9 @@
 # Smart Contract
 
-In this section we will use [logic](logic) crate to finally implement ERC20 Smart Contract. Make sure you know the basics from [Writing Rust Contracts on CasperLabs](../writing-rust-contracts) tutorial.
+In this section we will use the [logic](logic) crate to finally implement the ERC-20 Smart Contract. Make sure you know the basics from the [Writing Rust Contracts on CasperLabs](../writing-rust-contracts) tutorial.
 
-ERC20 will have two contracts:
-* `erc20` contract that handles ERC20 implementation,
+ERC-20 will have two contracts:
+* `erc20` contract that handles ERC-20 implementation,
 * `proxy` contract that should be called by the account. It calls `erc20` on behalf of the account, so `erc20` has its own context. 
 
 The `contract` crate will include:
@@ -14,15 +14,15 @@ The `contract` crate will include:
 * `contracts.rs` - smart contracts.
 
 ## Context
-It's important to understand how execution contract works. Let's compare it to Ethereum to see the difference.
+It's important to understand how contract execution works. Let's compare with Ethereum to see the difference.
 
-In Ethereum account object is just an public key with the balance. In CasperLabs account has its own key-value storage and account-only functions like the [associated keys](../../implementation/accounts.html#associated-keys-and-weights) management.
+In Ethereum, an account object is just a public key with the balance. In CasperLabs, each account has its own key-value storage and account-only functions like the [associated keys](../../implementation/accounts.html#associated-keys-and-weights) management.
 
-In Ethereum when contract is called, it executes in its own context. The contract knows only the account's address which invoked it. In Solidity accessible by `msg.caller`. 
+In Ethereum when a contract is called, it executes in its own context. The contract knows only the account's address which invoked it. In Solidity this address is accessible by `msg.caller`. 
 
-In CasperLabs when contract is called, it executes in the context of calling account, so it uses account's storage.
+In CasperLabs, when a deploy ("transaction" in Ethereum's nomenclature) directly executes a contract (as opposed to sending new wasm instructions), it executes in the context of calling account, so it uses account's storage.
 
-Additionaly in CasperLabs the contract has its own key-value storage, but only when called by other contract. Imagine a chain of calls: `Account` calls `Contract A`, then `Contract A` calls `Contract B`. `Contract A` is executed in the context of `Account`. `Contract B` is executed in the context of itself.
+Additionally, in CasperLabs, each contract has its own key-value storage, but only when executed in its own context (i.e. invoked by [call_contract](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/runtime/fn.call_contract.html)). For example, consider the chain of calls: a deploy from `Account` executes `Contract A`, then `Contract A` calls `Contract B`; then `Contract A` is executed in the context of `Account`, and `Contract B` is executed in its own context.
 
 ## Cargo.toml
 Start with package definition at `contract/Cargo.toml`.
@@ -107,14 +107,14 @@ impl Error {
     }
 }
 ```
-Take a look at the complete error list in [error.rs](https://github.com/CasperLabs/erc20/blob/master/logic/src/tests.rs) file.
+Take a look at the complete error list in [error.rs](https://github.com/CasperLabs/erc20/blob/master/logic/src/tests.rs) on GitHub.
 
 ## Input
-You already know that in CasperLabs arguments should be handled manually as presented in [Writing Rust Contracts on CasperLabs](../writing-rust-contracts). It's possible to come up with different strategies for arguments parsing that suit our needs. In this very example we'll follow 2 simple rules:
+You already know that in CasperLabs methods should be handled manually (i.e. via dispatch) as presented in [Writing Rust Contracts on CasperLabs](../writing-rust-contracts). It's possible to come up with different strategies for arguments parsing that suit our needs. In this case we'll follow two simple rules:
 1. Calls addressed to `erc20` contract has first argument a type of `String`, that is the name of function we want to call.
 2. Calls addressed to `proxy` contract has first argument a type of `Tuple(String, Hash)`, where `Hash` is the address of `erc20` token and `String` is method name. The `proxy` should call `erc20` contract at `Hash` using `String` as a function name and pass other arguments intact.
 
-Having those rules allows us to build universal (for `erc20` and `proxy`) argument handler. It's a good practice to separate argument parser from the rest of the code.
+Having those rules allows us to build a universal (for both `erc20` and `proxy`) argument handler. It's a good practice to separate the argument parser from the rest of the code.
 
 ```rust
 // contract/src/input_parser.rs
@@ -186,10 +186,10 @@ fn method_name() -> String {
     }
 }
 ```
-The idea is to convert arguments into `Input` enum and use `input_parser::from_args()` in contracts.
+The idea is to convert arguments into the `Input` enum and use `input_parser::from_args()` in contracts.
 
 ## Implement ERC20Trait
-We already implemented `ERC20Trait` once in [Logic Tests](logic-test.html#test-token-implemetation). Now we'll do it again, using blockchain as a state storage this time.
+We already implemented `ERC20Trait` once in [Logic Tests](logic-test.html#test-token-implementation). Now we'll do it again, using blockchain as the state storage this time.
 ```rust
 // src/contract/erc20.rs
 
@@ -319,7 +319,7 @@ pub extern "C" fn erc20_proxy() {
 [call_contract](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/runtime/fn.call_contract.html) is the key function here. It allows to call another contract.
 
 ## ERC20 Contract
-Next contract we'll define is `erc20`. When called, the function `erc20` is invoked. At first, contract checks if it's already initialized. `env` functions are defined below. If not it's not initialized, it calls `init_erc20` function that mints tokens for the caller and marks contract as initialized. From now on, the `handle_erc20` function is always invoked.
+The next contract we'll define is `erc20`. When called, the function `erc20` is invoked. At first, contract checks if it's already initialized (`env` functions are defined below). If not it's not initialized, it calls the `init_erc20` function that mints tokens for the caller and marks contract as initialized. From now on, the `handle_erc20` function is always invoked.
 ```rust
 // contract/src/contract.rs
 
@@ -382,10 +382,10 @@ pub fn mark_as_initialized(name: &str) {
     set_key(name, true);
 }
 ``` 
-[ret](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/runtime/fn.ret.html) function returns the given value to the host (other contract that invoked the `call_contract`) and terminates the currently running module.
+The [ret](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/runtime/fn.ret.html) function returns the given value to the caller (other contract that invoked the `call_contract`) and terminates the currently running module.
 
 ## Call Function
-Above contract won't do much if they are not deployed. It's not enought to define them. We'll use [store_function_at_hash](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/storage/fn.store_function_at_hash.html) to save them on the blockchain. Below's `call` function will be called right after the WASM file is included in the block.
+The above contracts won't do much if they are not deployed. It's not enough to define them. We'll use [`store_function_at_hash`](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/storage/fn.store_function_at_hash.html) to save them on the blockchain. The `call` function defined below will be called at the start of our deploy because `call` is always the entry point for the execution.
 ```rust
 // contract/src/contracts.rs
 
@@ -402,7 +402,7 @@ pub extern "C" fn call() {
 ```
 It expects two arguments: `"deploy"` as a method name, and `initial_balance` as the number of tokens initially minted for the calling account.
 
-Let's take a look at `env::deploy_token` and `env::deploy_proxy`. `deploy_token` stores the `erc20` contract and gets `token_ref` as the return. Then it calls `erc20` contract to initilized it. At the end it saves the contract's hash under `erc2` as one of the named key the account. `call` is running in the context of the account that executed the transaction. `deploy_proxy` does the same, but without initialization step as it doesn't need it. 
+Let's take a look at `env::deploy_token` and `env::deploy_proxy`. `deploy_token` stores the `erc20` contract and gets `token_ref` as the return value. Then it calls the `erc20` contract to initialize it. At the end it saves the contract's hash under `erc20_proxy` as one of the named key the account. `call` is running in the context of the account that executed the transaction. `deploy_proxy` does the same, but without initialization step as it isn't needed. 
 
 ```rust
 // contract/src/env.rs
@@ -427,4 +427,3 @@ pub fn deploy_proxy() {
     runtime::put_key(ERC20_PROXY_CONTRACT_NAME, proxy);
 }
 ```
-

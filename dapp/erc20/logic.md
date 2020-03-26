@@ -3,7 +3,7 @@
 Full example of the `logic` crate is available on our [CasperLabs/erc20](https://github.com/CasperLabs/erc20/tree/master/logic) repository
 
 ## ERC-20 Standard
-ERC20 standard is defined in [ERC-20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#). Read it carefully as it defines methods we'll implement:
+The ERC-20 standard is defined in [an Ethereum Improvement Proposal (EIP)](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#). Read it carefully, as it defines the methods we'll implement:
 * balance_of
 * transfer
 * total_supply
@@ -13,7 +13,7 @@ ERC20 standard is defined in [ERC-20 Token Standard](https://github.com/ethereum
 * mint
 
 ## Add new crate
-One of the greates benefits of writing smart contracts in Rust is that we can write a lot of code as standalone library and use it later to implement smart contracts. In this section we will implement the logic of ERC20. To make it testable and easly usable later in smart contract we will abstract all the memory operations.
+One of the great benefits of writing smart contracts in Rust is that we can write a lot of code as a standalone library and use it later to implement smart contracts. In this section we will implement the logic of ERC-20. To make it testable, and easy to use later in smart contracts, we will make all the memory operations abstract.
 
 Generate a new `logic` crate.
 ```
@@ -68,7 +68,7 @@ pub trait ERC20Trait<
 >
 {}
 ```
-`Amount` and `Address` generics allows for flexibilty in types definition on the implementation step.
+The `Amount` and `Address` type parameters allow for flexibility in the types used in concrete implementations of the trait (e.g. implementation in tests and implementation in smart contracts).
 
 ## Reads and Writes
 Next things to add are abstract functions, that handle data saves and reads.
@@ -90,7 +90,7 @@ pub trait ERC20Trait<
 ```
 
 ## Total Supply, Balance and Allowance
-We are ready now to define first ERC20 methods. Below is the implementation of `balance_of`, `total_supply` and `allowance` inside the `ERC20Trait`. These are read-only methods.
+We are ready now to define first ERC-20 methods. Below is the implementation of `balance_of`, `total_supply` and `allowance` inside the `ERC20Trait`. These are read-only methods.
 ```rust
 // logic/src/lib.rs
 pub trait ERC20Trait<...> {
@@ -203,4 +203,3 @@ pub trait ERC20Trait<...> {
 }
 ``` 
 Note, that internaly it uses `transfer` function. If transfer fails, the `ERC20TransferError` is automatialy converted to `ERC20TransferFromError` thanks to the `impl From<ERC20TransferError> for ERC20TransferFromError` implmentation in `logic/src/error.rs`.
-

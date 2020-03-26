@@ -24,7 +24,7 @@ running 1 test
 test tests::my_test ... ok
 ```
 
-## Test Token Implemetation
+## Test Token Implementation
 Testing traits requires to implement it first. Let's create a test token struct.
 ```rust
 // logic/src/tests.rs
@@ -51,7 +51,7 @@ impl Token {
     }
 }
 ```
-`Token` struct can store all the data ERC20 defines, so it's possible to implement `ERC20Trait` on top of it.
+The `Token` struct can store all the data ERC-20 tokens require, so it's possible to implement `ERC20Trait` on top of it.
 ```rust
 // logic/src/tests.rs
 
@@ -83,7 +83,7 @@ impl ERC20Trait<Amount, Address> for Token {
 ```
 
 ## Unit Tests
-All ERC20 operations are account-based, so it's handy to have a few accounts already defined.
+All ERC-20 operations are account-based, so it's handy to have a few accounts already defined.
 ```rust
 const ADDRESS_1: Address = 1;
 const ADDRESS_2: Address = 2;
@@ -102,4 +102,4 @@ fn test_transfer() {
     assert_eq!(token.total_supply(), 10);
 }
 ```
-Rest of the tests could be found on Github [tests.rs](https://github.com/CasperLabs/erc20/blob/master/logic/src/tests.rs).
+Rest of the tests are found on Github: [tests.rs](https://github.com/CasperLabs/erc20/blob/master/logic/src/tests.rs).
