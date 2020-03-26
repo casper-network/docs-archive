@@ -68,7 +68,6 @@ $ mv tests/rust-toolchain .
 
 Test the changes by compiling `contract` crate and executing `cargo test` on `tests` crate.
 
-TODO: fix required `--target wasm32-unknown-unknown`
 ```bash
 $ cargo build --release -p contract 
 $ cargo test -p tests
