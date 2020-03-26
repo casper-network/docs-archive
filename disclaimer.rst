@@ -53,7 +53,7 @@ domi-cile and which might be relevant to the purchase, holding or disposal
 of CLX. No action has been taken to authorise the distribution of this
 Whitepaper in any jurisdiction in which such authorisation might be required.
 
-No action has been or is intended to be taken by CasperLabs Networks Ltd and/or
+No action has been or is intended to be taken by CasperLabs Networks AG and/or
 any of its affiliates in any jurisdiction that would or is intended to, permit a
 public sale or offering of any CLX, or possession or distribution of this
 Whitepaper (in preliminary, proof or final form) or any other sale, offering or
@@ -72,7 +72,7 @@ items of a destructive nature.
 
 
 This Whitepaper is a draft and the information set out herein is of a
-preliminary nature. Consequently, neither CasperLabs Networks Ltd nor any of its
+preliminary nature. Consequently, neither CasperLabs Networks AG nor any of its
 affiliates assumes any responsibility that the information set out herein is
 final or correct and each of the foregoing disclaims, to the fullest extent
 permitted by applicable law, any and all liability whether arising in tort,
@@ -84,7 +84,7 @@ CasperLabs blockchain is subject to ongoing technical, legal, regulatory and tax
 considerations and each is, therefore, subject to material changes. In
 particular, neither the applicability nor the non-applicability of Swiss
 financial market regulations on the CLX sale has not been confirmed by the Swiss
-Financial Market Supervisory Authority ("**FINMA**"). CasperLabs Networks Ltd
+Financial Market Supervisory Authority ("**FINMA**"). CasperLabs Networks AG
 and all its affiliates reserve the right to not assist in the completion of the
 software underlying CLX and the CasperLabs blockchain, to not participate in the
 issuance or creation of CLX or to change the structure of CLX and/or the
@@ -103,14 +103,14 @@ and other factors, which may cause the actual functionality, performance or
 features of the CasperLabs blockchain and/or CLX to be materially different from
 any future functionality, performance or features expressed or implied by such
 forward-looking statements. Such forward-looking statements are based on
-numerous assumptions regarding the CasperLabs Networks Ltd’s and/or any of its
+numerous assumptions regarding the CasperLabs Networks AG’s and/or any of its
 affiliates’ present and future expectations regarding the development of the
 CasperLabs blockchain and the associated software.
 
 These forward-looking statements speak only as of the date of this Whitepaper.
-CasperLabs Networks Ltd and its affiliates expressly disclaim any obligation or
+CasperLabs Networks AG and its affiliates expressly disclaim any obligation or
 undertaking to release any updates of or revisions to any forward-looking
-statement contained herein to reflect any change in CasperLabs Networks Ltd’s
+statement contained herein to reflect any change in CasperLabs Networks AG’s
 and/or any of its affiliates’ expectations with regard thereto or any change in
 events, conditions or circumstances on which any such statement is based.
 
@@ -122,8 +122,8 @@ associated with blockchain and distributed ledger technology, tokens and
 cryptocurrencies in general and the CLX in particular, including, but not
 limited to, those outlined hereinafter.
 
-- **Risks associated with CasperLabs Networks Ltd.’s experience**: the
-  Recipient is aware that CasperLabs Networks Ltd and its affiliates constitute a
+- **Risks associated with CasperLabs Networks AG’s experience**: the
+  Recipient is aware that CasperLabs Networks AG and its affiliates constitute a
   start-up group of companies. Inability of such companies to manage their
   affairs, including any failure to attract and retain appropriate personnel,
   could affect the completion and functionality of the CasperLabs blockchain.
@@ -162,14 +162,14 @@ limited to, those outlined hereinafter.
   possible that certain jurisdictions will apply existing regulations on, or
   introduce new regulations addressing, distributed ledger technology and/or
   blockchain technology based applications, which may be contrary to the current
-  setup of the smart contract or the CasperLabs Networks Ltd project and which
+  setup of the smart contract or the CasperLabs Networks AG project and which
   may, inter alia, result in substantial modifications of the smart contract
-  and/or the CasperLabs Networks Ltd project, including its termination and the
+  and/or the CasperLabs Networks AG project, including its termination and the
   loss of the CLX, if and when created and/or issued, or entitlements to receive
   CLX, for the Recipient.
 - **Risks associated with abandonment / lack of success**: the Recipient
   understands and accepts that the creation of the CLX and the development of the
-  CasperLabs blockchain as well as the CasperLabs Networks Ltd project may be
+  CasperLabs blockchain as well as the CasperLabs Networks AG project may be
   abandoned for a number of reasons, including lack of interest from the public,
   lack of funding, lack of prospects (e.g. caused by competing projects) and
   legal, tax or regulatory considerations. The Recipient therefore understands
@@ -184,7 +184,7 @@ limited to, those outlined hereinafter.
   or stolen, the CLX associated with the Recipient's account (address) will be
   unrecoverable and will be permanently lost.
 - **Risks associated with wallets:** the Recipient understands and accepts
-  that CasperLabs Networks Ltd or any of its affiliates, employees, partners or
+  that CasperLabs Networks AG or any of its affiliates, employees, partners or
   advisors are in no way responsible for the wallet to which any CLX are
   transferred. The Recipient understands and agrees that it is solely responsible
   for the access and security of its wallet, for any security breach of its wallet
@@ -197,8 +197,8 @@ limited to, those outlined hereinafter.
   after its launch, may be exposed to attacks by hackers or other individuals that
   could result in an inability to launch the CasperLabs blockchain or the theft or
   loss of CLX. Any such event could also result in the loss of financial and other
-  support of the CasperLabs Networks Ltd project impacting the ability to develop
-  the CasperLabs Networks Ltd project and CasperLabs blockchain.
+  support of the CasperLabs Networks AG project impacting the ability to develop
+  the CasperLabs Networks AG project and CasperLabs blockchain.
 - **Risks associated with mining attacks**: the Recipient understands and
   accepts that, as with other cryptocurrencies and tokens, if and when launched,
   the CasperLabs blockchain is susceptible to attacks relating to validators. Any
