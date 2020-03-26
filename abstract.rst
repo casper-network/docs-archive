@@ -1,8 +1,3 @@
-.. CasperLabs Tech Spec documentation master file, created by
-   sphinx-quickstart on Fri Sep  6 21:40:51 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 ========
 Abstract
 ========
@@ -31,14 +26,3 @@ provide discussions of the economics of our proof-of-stake implementation
 and our token policies.
 
 .. include:: disclaimer.rst
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   abstract
-   theory/index
-   implementation/index
-   dapp/index
-
-
