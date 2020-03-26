@@ -20,7 +20,7 @@ In Ethereum, an account object is just a public key with the balance. In CasperL
 
 In Ethereum when a contract is called, it executes in its own context. The contract knows only the account's address which invoked it. In Solidity this address is accessible by `msg.caller`. 
 
-In CasperLabs, when a deploy ("transaction" in Ethereum's nomenclature) directly executes a contract (as opposed to sending new wasm instructions), it executes in the context of calling account, so it uses account's storage.
+In CasperLabs, when a deploy ("transaction" in Ethereum's nomenclature) directly executes a contract (as opposed to sending new Wasm instructions), it executes in the context of calling account, so it uses the account's storage.
 
 Additionally, in CasperLabs, each contract has its own key-value storage, but only when executed in its own context (i.e. invoked by [call_contract](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/runtime/fn.call_contract.html)). For example, consider the chain of calls: a deploy from `Account` executes `Contract A`, then `Contract A` calls `Contract B`; then `Contract A` is executed in the context of `Account`, and `Contract B` is executed in its own context.
 
@@ -260,8 +260,6 @@ use casperlabs_types::{
     bytesrepr::{FromBytes, ToBytes},
     CLTyped, Key, U512,
 };
-
-
 pub fn key<T: FromBytes + CLTyped>(name: &str) -> Option<T> {
     match runtime::get_key(name) {
         None => None,
@@ -318,8 +316,8 @@ pub extern "C" fn erc20_proxy() {
 ```
 [call_contract](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/runtime/fn.call_contract.html) is the key function here. It allows to call another contract.
 
-## ERC20 Contract
-The next contract we'll define is `erc20`. When called, the function `erc20` is invoked. At first, contract checks if it's already initialized (`env` functions are defined below). If not it's not initialized, it calls the `init_erc20` function that mints tokens for the caller and marks contract as initialized. From now on, the `handle_erc20` function is always invoked.
+## ERC-20 Contract
+The next contract we'll define is `erc20`. When called, the function `erc20` is invoked. At first, contract checks if it's already initialized (`env` functions are defined below). If it's not initialized, it calls the `init_erc20` function that mints tokens for the caller and marks contract as initialized. From now on, the `handle_erc20` function is always invoked.
 ```rust
 // contract/src/contract.rs
 
@@ -402,7 +400,7 @@ pub extern "C" fn call() {
 ```
 It expects two arguments: `"deploy"` as a method name, and `initial_balance` as the number of tokens initially minted for the calling account.
 
-Let's take a look at `env::deploy_token` and `env::deploy_proxy`. `deploy_token` stores the `erc20` contract and gets `token_ref` as the return value. Then it calls the `erc20` contract to initialize it. At the end it saves the contract's hash under `erc20_proxy` as one of the named key the account. `call` is running in the context of the account that executed the transaction. `deploy_proxy` does the same, but without initialization step as it isn't needed. 
+Let's take a look at `env::deploy_token` and `env::deploy_proxy`. `deploy_token` stores the `erc20` contract and gets `token_ref` as the return value. Then it calls the `erc20` contract to initialize it. At the end it saves the contract's hash under `erc20_proxy` as one of the named keys of the account. `call` is running in the context of the account that executed the transaction. `deploy_proxy` does the same, but without the initialization step as it isn't needed. 
 
 ```rust
 // contract/src/env.rs

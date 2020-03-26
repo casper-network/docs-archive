@@ -70,7 +70,7 @@ To clearly mark the address sending the transaction, introduce `Sender` wrapper.
 pub struct Sender(pub PublicKey);
 ```
 
-We'll define `ERC20Contract` struct that has it's own VM instance and implements ERC20 methods. `ERC20Contract` struct should hold [TestContext](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html) of his own. The token contract hash and the proxy contract hash won't change after the contract is deployed, so it's handy to have it available.
+We'll define `ERC20Contract` struct that has its own VM instance and implements ERC-20 methods. `ERC20Contract` struct should hold a [TestContext](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html) of its own. The token contract hash and the proxy contract hash won't change after the contract is deployed, so it's handy to have it available.
 ```rust
 // tests/src/erc20.rs
 
@@ -143,21 +143,21 @@ impl ERC20Contract {
 ```
 `deployed` function creates new instance of `ERC20Contract` with `ALI`, `BOB` and `JOE` having positive initial balance. The contract is deployed using `ALI` account. 
 
-`call_proxy` function uses [run](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html#method.run) function to calls contract deployed under `self.proxy_hash`. It will be used to implement `transfer`, `approve` and `transfer_from` calls.
+`call_proxy` function uses [run](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html#method.run) function to call the contract deployed under `self.proxy_hash`. It will be used to implement `transfer`, `approve` and `transfer_from` calls.
 
 `query_contract` function uses [query](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html#method.query) to lookup named keys of the `erc20` contract stored under `self.token_hash`. It will be used to implement `balance_of`, `total_supply` and `allowance` checks.
 
 ## Transfer, Approve, Transfer From
-Now it's easy to define methods that need to make a deploy.
+Now it's easy to define methods that are needed to make a deploy.
 ```rust
 // tests/src/erc20.rs
 
-pub fn transfer(&mut self, reciever: PublicKey, amount: u64, sender: Sender) {
+pub fn transfer(&mut self, receiver: PublicKey, amount: u64, sender: Sender) {
     self.call_proxy(
         sender,
         (
             (method::TRANSFER, self.token_hash),
-            reciever,
+            receiver,
             U512::from(amount),
         ),
     )
@@ -177,7 +177,7 @@ pub fn approve(&mut self, spender: PublicKey, amount: u64, sender: Sender) {
 pub fn transfer_from(
     &mut self,
     owner: PublicKey,
-    reciever: PublicKey,
+    receiver: PublicKey,
     amount: u64,
     sender: Sender,
 ) {
@@ -186,7 +186,7 @@ pub fn transfer_from(
         (
             (method::TRANSFER_FROM, self.token_hash),
             owner,
-            reciever,
+            receiver,
             U512::from(amount),
         ),
     )

@@ -110,7 +110,7 @@ pub trait ERC20Trait<...> {
 ```
 
 ## Mint
-Next method to define inside the `ERC20Trait` is called `mint`. It's not a part of ERC20 specification, but it's present in almost every ERC20 implementations. Its responsibility is incrementing the balance of tokens for the given `address`. It should update the total supply as well.
+Next method to define inside the `ERC20Trait` is called `mint`. It's not a part of the ERC-20 specification, but it's present in almost every ERC-20 implementation. Its responsibility is incrementing the balance of tokens for the given `address`. It should update the total supply as well.
 ```rust
 // logic/src/lib.rs
 pub trait ERC20Trait<...> {
@@ -148,7 +148,7 @@ impl From<ERC20TransferError> for ERC20TransferFromError {
 ```
 
 ## Transfer
-Finally we can implement `transfer` method, so it's possible to transfer tokens from `sender` address to `recipient` address. If the `sender` address has enought balance then tokens should be transfered to the `recipient` address. Othewise return the `ERC20TransferError::NotEnoughBalance` error.
+Finally we can implement `transfer` method, so it's possible to transfer tokens from `sender` address to `recipient` address. If the `sender` address has enough balance then tokens should be transferred to the `recipient` address. Otherwise return the `ERC20TransferError::NotEnoughBalance` error.
 ```rust
 pub trait ERC20Trait<...> {
     ...
@@ -172,7 +172,7 @@ pub trait ERC20Trait<...> {
 ```
 
 ## Approve and Transfer From
-The last missing functions are `approve` and `transfer_from`. `approve` is used to allow other address to spend tokens on my behalf.
+The last missing functions are `approve` and `transfer_from`. `approve` is used to allow another address to spend tokens on my behalf.
 ```rust
 pub trait ERC20Trait<...> {
     ...
@@ -202,4 +202,4 @@ pub trait ERC20Trait<...> {
     }
 }
 ``` 
-Note, that internaly it uses `transfer` function. If transfer fails, the `ERC20TransferError` is automatialy converted to `ERC20TransferFromError` thanks to the `impl From<ERC20TransferError> for ERC20TransferFromError` implmentation in `logic/src/error.rs`.
+Note, that internaly it uses `transfer` function. If transfer fails, the `ERC20TransferError` is automatically converted to `ERC20TransferFromError` thanks to the `impl From<ERC20TransferError> for ERC20TransferFromError` implementation in `logic/src/error.rs`.
