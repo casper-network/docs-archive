@@ -2,7 +2,7 @@
 
 Before we start the development, let's prepare the repository first.
 
-The code will be devided into 3 crates: `logic`, `contract` and `tests`. Let's start with generating a new project and applying a few changes.
+The code will be divided into 3 crates: `logic`, `contract` and `tests`. Let's start with generating a new project and applying a few changes.
 
 Generate a new project using [Cargo CasperLabs](../setup-of-rust-contract-sdk#cargo-casperlabs).
 ```bash

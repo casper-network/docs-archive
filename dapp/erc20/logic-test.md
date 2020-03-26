@@ -1,5 +1,5 @@
 # Logic Tests
-In this section we'll test previously written [ERC20 logic](logic).
+In this section we'll test previously written [ERC-20 logic](logic).
 
 ## Test Module
 Add new file for tests at `logic/src/tests.rs` and include this module at the top of `logic/src/lib.rs`.
@@ -25,7 +25,7 @@ test tests::my_test ... ok
 ```
 
 ## Test Token Implementation
-Testing traits requires to implement it first. Let's create a test token struct.
+Testing traits requires us to implement it first. Let's create a test token struct.
 ```rust
 // logic/src/tests.rs
 
