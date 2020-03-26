@@ -1,236 +1,360 @@
 Abstract Casper Consensus
 =========================
 
-Introduction
-------------
+Stating the problem
+-------------------
 
-We are considering a collection of processes (**validators**) communicating over a message-passing network. The goal
-they collectively pursue is to agree on selecting a single value from a finite set :math:`C` we call the set of
-**consensus values**. Once the agreement is achieved, the problem is solved and the processes can terminate.
+We are considering a collection of processes (called here and later **validators**) - later referenced as
+:math:`Validators` - communicating over a message-passing network. Every validator has a **weight** -- a non-zero
+integer value thought of as “the voting power of this validator”.
 
-The space of possible distributed algorithms fulfilling the mission as described above is probably huge. Therefore,
-we want to limit our attention only to a restricted family of such solutions. In doing so, we introduce several
-assumptions:
+The goal validators collectively pursue is to agree on selecting a single value from a finite set :math:`Con` we call
+the set of **consensus values**. Once the agreement is achieved, the problem is solved and the processes terminate.
 
--  we set a very specific format of messages that validators exchange
--  we enforce some constraints on the behavior of validators
--  we expect certain guarantees from the message-oriented communication layer validators use
+The resulting solution is not a blockchain yet. It is just a building block we later on use to design our blockchain.
 
-We call this restricted model **Abstract Casper Consensus (ACC)**.
+Caution: we use **ACC** as the shortcut for **Abstract Casper Consensus**.
 
-We primarily see ACC as a definition of a problem to be solved. Solutions of this problem are going to be pairs
-:math:`(EST, FD)` -- where :math:`EST` is some estimator and :math:`FD` is some finality detector. The
-remainder of this document is mostly devoted to explaining in detail what **estimator** and **finality detector**
-really mean.
 
-In CasperLabs we work with a diversity of **ACC** solutions. For us, an **ACC** solution is what lives in the heart
-of a blockchain design. Different solutions of an **ACC** problem lead to different blockchains.
+Network model
+-------------
 
-**Note 1:** Be warned that ACC is NOT a blockchain model. Abstract-consensus and blockchain consensus are two separate
-problems. In the abstract consensus model nodes talk to agree on a value and then they stop talking. In a blockchain
-model nodes never stop talking because they want to keep extending the chain of blocks forever. So, at some point they
-need to agree on adding yet another block to the chain - this is where the ACC problem shows up and this is why we first
-study this sub-problem in isolation. After having studied the sub-problem enough, we apply it in the wider context,
-i.e. for building a blockchain.
+We assume fully asynchronous network model with delivery guarantee and the single primitive: `broadcast(m)`. Precisely
+speaking:
 
-**Note 2**: As the target audience of this document is software developers; here and there we add some pseudo-code
-snippets to illustrate the concepts with a language closer to a developer’s perspective. This pseudo-code generally
-alludes to Scala syntax, but is modified so that non-Scala developers should be able to guess the meaning.
-
-The model
----------
-
-Validators and their weights
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Validators are just processes (actors / applications / entities) able to do computing and communicating via message
-passing.
-
-Every validator has a **weight** -- a non-zero integer value thought of as “the voting power of this validator”. In the
-context of proof-of-stake blockchains, this corresponds to the bonded stake.
-
-::
-
-   val validators: Map[Validator, Int]
-
-Network
-~~~~~~~
-
-Validators are communicating over a network. We assume that all the communication stack layers taken together provide
-the following semantics:
-
-1. Communication between validators is based on the “broadcast” principle: at any time, a validator can broadcast a
-message :math:`m`.
-2. Once broadcasted, the message :math:`m` will be eventually delivered to every validator in the network. The delivery
-will happen exactly once. The delivery delay may be of arbitrary length.
+1. Communication between validators is based on the “broadcast” primitive: at any time, a validator can broadcast a
+   message :math:`m`.
+2. Once broadcast, the message :math:`m` will be eventually delivered to every validator in the network. The delivery
+   will happen exactly once. The delivery delay may be of arbitrary length.
 
 Given the assumptions above, it follows that the order of delivery may not coincide with the order of broadcasting,
-i.e. if a validator :math:`A` broadcasts message :math:`m_1` and later it  broadcasts message :math:`m_2`, and :math:`B`
-is another validator, then we cannot say anything certain about the order of receiving :math:`m_1` and :math:`m_2`
-by :math:`B`.
+i.e. two messages :math:`m_1`, :math:`m_2` broadcast by a validator :math:`A` may be delivered to another validator
+:math:`A` in different order than the broadcasting order.
 
-::
+.. code:: scala
 
-   interface GossipService {
-     proc broadcast(message: Message)
-   }
+    trait GossipService {
+      def broadcast(message: BinaryMessage)
+    }
 
-   interface Validator {
-     proc handleMessageFromNetwork(message: Message)
-   }
+    trait GossipHandler {
+      def handleMessageReceivedFromNetwork(message: BinaryMessage)
+    }
+
 
 Messages
-~~~~~~~~
+--------
 
-We assume that every message contains the following information:
+Messages broadcast by validators have the following structure:
 
--  **message id** - unique identifier for a message
--  **creator id** - id of validator that created this message
--  **justifications** - collection of message ids that the creator acknowledges as seen at the moment of creation of this
-   message; this collection may possibly be empty
--  **consensus value** - a value this message is voting for; this value is optional; if not present then this message is
-   voting for nothing
--  **daglevel** - height of this message in justifications DAG (see below)
+.. code:: scala
 
-We reference attributes of message :math:`m` using dot notation, for example:
+    class Message {
+      val messageId: MessageId
+      val creator: ValidatorId
+      val justifications: Seq[MessageId]
+      val consensusValue: Option[Con]
+      val dagLevel: Int
+    }
 
-:math:`m.daglevel`
+-  ``messageId: MessageId`` unique identifier (typically - hash of the message)
+-  ``creator: Int`` id of the validator that created this message
+-  ``justifications: Seq[MessageId]`` collection of message ids that the creator acknowledges as seen at the moment of
+   creation of this message; this collection may possibly be empty
+-  ``consensusValue: Option[Con]`` consensus value this message is voting for; the value is optional, because we allow
+   empty votes
+-  ``daglevel: Int`` height of this message in justifications DAG
 
-Daglevel is calculated in the following way:
-
--  if the list of justifications is empty: :math:`daglevel = 0`
--  otherwise: :math:`daglevel = \max (\text{daglevels of justifications}) + 1`
-
-When validator :math:`V` creates and broadcasts a message with consensus value :math:`X`, we say that :math:`V` is voting
-for :math:`X`.
-
-::
-
-   class Message {
-     val id: Long
-     val creator: Validator
-     val justifications: List[Message]
-     val consensusValue: Option[Int]
-
-     fun daglevel: Int =
-        if (justifications.isEmpty)
-          0
-        else
-          max(justifications map (j => j.daglevel))
-   }
+When a validator :math:`V` creates and broadcasts a message with consensus value :math:`X`, we say that :math:`V` is
+voting for :math:`X`.
 
 J-dag
 ~~~~~
 
-Justifications are pointing to previously received messages. Let us consider any set of messages :math:`M` closed under
-taking justifications. Let us define the following directed graph:
+Justifications are pointing to previously received messages. Let us consider arbitrary set of messages :math:`M` closed
+under taking justifications. We will define the following acyclic directed graph :math:`jDag(M)`:
 
--  take vertices to be all elements of :math:`M`;
--  take edges (= arrows) to be all pairs :math:`m_1 \rightarrow m_2` such that :math:`m_2 \in m_1.justifications`.
+-  vertices = all elements of :math:`M`;
+-  edges = all pairs :math:`m_1 \rightarrow m_2` such that :math:`m_2 \in m_1.justifications`.
 
-Such a graph is always acyclic because a cycle in this graph would mean time-traveling is possible (i.e. we assume that
-listing a message as a justification is only possible if this message was first created).
+Why we claim this graph is acyclic ? Well, because a cycle in this graph would mean that either time-traveling is
+possible or a validator managed to guess an id of some message before that message was actually created. Time-travelling
+we preclude on the basis of physics, while guessing of future message id must be made close-to-impossible via smart
+implementation of message identifiers (using message hash should be good enough).
 
-We call any such structure **j-dag**. We generally assume that every validator maintains a (mutable) representation of
-**j-dag** reflecting the most up-to-date knowledge on the on-going consensus-establishing process. Observe that
-**j-dag** may be equivalently seen as a POSET because of the well-known equivalence between transitively closed DAGs and
-POSETs. Therefore we allow ourselves to sometimes blur the distinction between DAG-based and POSET-based languages.
+We require that every validator maintains a representation of :math:`jDag(M)` reflecting the most up-to-date
+knowledge on the on-going consensus-establishing process. Observe that :math:`jDag(M)` may be equivalently seen as
+a POSET because of the well-known equivalence between transitively closed DAGs and POSETs. In the remainder of this
+chapter we blur the difference :math:`jDag(M)` seen as a DAG and is transiive closure seen as a POSET.
+We will use the relation symbols :math:`<` and :math:`\leqslant` for the implied partial order of :math:`jDag(M)`.
 
-Please observe that for any message **m**, the collection :math:`m.justifications` determines a sub-dag of the
-**j-dag**.
+When :math:`m \in M`, we define :math:`jPastCone(m)` as :math:`\{x \in M: x \leqslant m \}`. Of course this is also
+a DAG.
 
-In the context of any **j-dag** we introduce the following concepts:
+In the context of any :math:`jDag(M)` we introduce the following concepts:
 
--  **transitive justification of message** :math:`\mathbf{A}` is any message :math:`B` such that **j-dag** contains a path
-   :math:`A \rightarrow ...\rightarrow B`; this naming reflects the fact that an arrow in **j-DAG** goes always from
-   newer messages to older messages; in POSET lingo it translates to :math:`B < A`, and we specifically pick here the
-   direction of the ordering relation to reflect the time flow, so :math:`B < A` because :math:`B` must be older than
-   :math:`A` (= :math:`A` confirms that it saw :math:`B`)
+**transitive justification of message m**
+   is any message :math:`p` such that :math:`jDag(M)` contains a path :math:`m \rightarrow ...\rightarrow p`; this naming
+   reflects the fact that an arrow in :math:`jDag(M)` goes always from newer messages to older messages; in POSET lingo
+   it translates to :math:`p < m`, and we specifically pick here the direction of the ordering relation to reflect
+   the time flow, so if :math:`p < m` then message :math:`m` confirms that it saw :math:`p`
 
--  **j\_past\_cone of block A** or shortly :math:`j\_past\_cone(A)` is the full subgraph of **j-dag** formed by taking
-   all as vertices all transitive justifications of messages :math:`A`, plus the message :math:`A` itself; in POSET lingo
-   it is just the set of all :math:`B` such that :math:`B <= A`
+**swimlane of validator v**
+   or just :math:`swimlane(v,M)` is :math:`\{m \in M: m.creator = v\}`; of course, being a subset of :math:`jDag(M)`,
+   :math:`swimlane(v,M)` is also a DAG and a POSET
 
--  **swimlane of validator V** (or just **V-swimlane**) is: (1) take the transitive closure of **j-dag** (2) cut it to
-   a subgraph by taking only messages created by V
+**tip**
+   is a maximal element in :math:`jDag(M)`; of course, being a POSET, :math:`jDag(M)` can contain more than one maximal
+   element
 
--  **j-dag tip** is a message :math:`m` that is not a justification of any other message in **j-dag**; in POSET lingo it
-   is just a maximal element in a **j-dag**
+**validator v is honest in M**
+   if :math:`swimlane(v,M)` is empty or it is a nonempty chain; in POSET language in translates to :math:`swimlane(v,M)`
+   being a (possibly empty) linear order
 
--  **panorama of message B** - for a validator :math:`V` cut **V-swimlane** down to vertices included in
-   :math:`j\_past\_cone(B)`; the resulting subgraph of **V-swimlane** we will be calling **V-swimlane-cut-to-B**; now
-   iterate over the collection of all validators, for every validator :math:`V_i` take all tips of
-   :math:`V_i\_swimlane\_cut\_to\_B`; sum of such tips is what we want to call the :math:`panorama(B)`
+**validator v is an equivocator in M**
+   if V is not honest in M
 
--  **validator V is honest** if :math:`V\_swimlane` is a chain; in POSET language in translates to :math:`V\_swimlane`
-   being a linear order
+**equivocation by v**
+   is a proof that validator :math:`v` is not honest; in other words it is a pair of messages :math:`a,b \in M`,
+   both created by :math:`v`, such that :math:`\neg (a < b)` and :math:`\neg (b < a)`
 
--  **validator V is an equivocator** if V is not honest
+**latest message of a validator v in M**
+   is any tip in :math:`swimlane(v,M)`; if :math:`v` is honest in M then it has at most one latest message in M
 
--  **equivocation** is a proof that validator :math:`V` is not honest; in other words it is pair of messages :math:`A`,
-   :math:`B`, both created by :math:`V`, such that :math:`A` is not a transitive justification of :math:`B` and **B** is
-   not a transitive justification of :math:`A`
+**honest validators in M**
+  :math:`\{v \in Validators: v \space is \space honest \space in \space M \}`
 
--  **latest message of a validator V** is a j-dag tip of **V-swimlane**; if :math:`V` is honest then it has at most one
-   latest message
+**honest panorama of message m**
+   is a function :math:`panorama: HonestValidators(M) \rightarrow M`, :math:`panorama(v) =` *latest message of v in
+   jPastCone(m)*
 
--  **latest message of validator Z that honest validator Y can see** is the following situation (notice we define it in
-   the context of a local j-dag maintained by any validator V)
-
-   -  both :math:`Y` and :math:`Z` are honest
-   -  take :math:`m` = latest message of :math:`Y` (must be unique because :math:`Y` is honest)
-   -  take the intersection of :math:`panorama(m)` and :math:`Z\_swimlane` - must contain at most one element,
-      because :math:`Z` is honest - this is the “latest message” we are talking about
-
--  **honest validator Y can see a honest validator Z voting for consensus value P** is when latest message of validator
-   :math:`Z` that validator :math:`Y` can see is voting for :math:`P`
-
-::
-
-   interface JDagOfMessages {
-     fun targets(message: Message): Iterable[Message]
-     fun sources(message: Message): Iterable[Message]
-     fun contains(n: Message): Boolean
-     fun tips: Iterable[Message]
-     proc insert(n: Message)
-   }
-
-   class ProtocolState {
-     val jDagTips: Set[Message]
-   }
-
-Protocol states
-~~~~~~~~~~~~~~~
-
-Any set of messages closed under traversing via justifications is a j-dag. We typically use j-dags in two contexts:
-
--  when talking about the **local j-dag**, i.e. the data structure that a validator maintains to reflect the
-   ever-growing knowledge about the on-going consensus
--  when talking about the universe of all-possible j-dags over a set :math:`M` of messages - this universe is
-   an infinite POSET that has j-dags as elements and the ordering relation is set-inclusion,
-   so :math:`jdag1 <= jdag2 \space iff \space jdag1 \subset jdag2`.
-
-From the point of view of pure mathematics, the local **j-dag** corresponds to a chain in the universe - on receiving
-some message, a validator updates its local j-dag, and the updated j-dag will then be a superset of the previous j-dag
-they have.
-
-But historically, two different ways of talking about this situation emerged and both ways tend to be actually useful:
-
--  when talking about the universe, we prefer to speak about the **protocol states**; so a protocol state is a point in
-   the universe of j-dags representing a set of messages closed under justifications
--  when talking implementation-wise, we tend to speak about j-dags, meaning “a DAG formed with messages and
-   justifications”, because we frequently also have other DAGs around (also taking messages as vertices, but using other
-   sets of edges).
-
-So for a software engineer, a protocol state might well be seen as a snapshot of the **j-dag**.
-
-When talking about the universe of protocol states, we usually use speak about the order of protocol states (= the
-inclusion relation) using the time flow metaphor. So for example, when :math:`ps_1` and :math:`ps_2` are protocol states
-and :math:`ps_1 < ps_2`, we say that :math:`ps_1` is earlier than :math:`ps_2`, or that :math:`ps_2` is “in the future of
-:math:`ps_1`”.
-
-Lifecycle of a validator
+Operation of a validator
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+We are using the following abstraction of mutable 2-argument relation:
+
+.. code:: scala
+
+    //Represents a mutable subset of cartesian product AxB
+    //A is "source", B is "target"
+    trait Relation[A,B] {
+      def addPair(a: A, b: B): Unit
+      def removePair(a: A, b: B): Unit
+      def removeSource(a: A): Unit
+      def removeTarget(b: B): Unit
+      def containsPair(a: A, b: B): Boolean
+      def findTargetsFor(source: A): Iterable[B]
+      def findSourcesFor(target: B): Iterable[A]
+      def hasSource(a: A): Boolean
+      def hasTarget(b: B): Boolean
+      def sources: Iterable[A]
+      def targets: Iterable[B]
+      def size: Int
+      def isEmpty: Boolean
+    }
+
+... and directed acyclic graph:
+
+.. code:: scala
+
+    //Represents a mutable directed acyclic graph, i.e. a data structure composed of
+    //vertices and directed edges. Edges are implicit. Source of vertex v is any
+    //vertex s such that the graph contains edge s->v. Target of vertex v is any vertex t
+    //such that the graph contains edge v->t.
+    trait Dag[Vertex] {
+      def targets(n: Vertex): Seq[Vertex]
+      def sources(n: Vertex): Seq[Vertex]
+      def contains(n: Vertex): Boolean
+      def tips: Seq[Vertex]
+      def insert(n: Vertex): Boolean
+      def toposortTraverseFrom(n: Vertex): Iterator[Vertex]
+    }
+
+During its lifetime, a validator maintains the following state:
+
+.. code:: scala
+
+    //A participant of Abstract Casper Consensus protocol
+    class Validator extends GossipHandler {
+      val id: ValidatorId
+      val preferredConsensusValue: Con
+      val messagesBuffer: Relation[Message, MessageId]
+      val jdagGraph: Dag[Message]
+      val jdagMessagesIds: Set[MessageId]
+      val latestHonestMessages: Map[ValidatorId,Message]
+      val equivocators: Set[ValidatorId]
+      val weightsOfValidators: Map[ValidatorId, Int]
+      val finalizer: Finalizer
+      val gossipService: GossipService
+    }
+
+-  ``messagesBuffer: Relation[Message,MessageId]`` - a buffer of messages received, but not incorporated into ``jdag`` yet;
+   a pair :math:`(m,j)` in this relation represents buffered message :math:`m` waiting for not-yet-received message
+   with id :math:`j`
+-  ``jdagGraph`` - representation of :math:`jDag(M)`, where :math:`M` is the set of all messages known, such that
+   their dependencies are fulfilled; in other words, before a message :math:`m` can be added to ``jdag``, all
+   justifications of :math:`m` must be already present in ``jdag``
+-  ``latestHonestMessages: Map[ValidatorId -> Message]`` - a map keeping swimlane tip for every honest validator
+-  ``equivocators`` - collection of equivocators visible in ``jdag``
+-  ``weightsOfValidators: Map[ValidatorId, Int]`` - weights of validators
+-  ``finalizer: Finalizer`` - finality detector
+-  ``gossipService: GossipService`` - communication layer API used to broadcast messages
+
+A validator continuously runs two activities:
+
+- **listening loop** - handling messages arriving from the network
+- **publishing loop** - creating and broadcasting new messages
+
+The pseudocode below explains detailed working of listening loop and publishing loop.
+
+.. code:: scala
+
+    //A participant of Abstract Casper Consensus protocol
+    class Validator extends GossipHandler {
+      val id: ValidatorId
+      val preferredConsensusValue: Con
+      val messagesBuffer: Relation[Message, MessageId]
+      val jdagGraph: Dag[Message]
+      val jdagMessagesIds: Set[MessageId]
+      val latestHonestMessages: Map[ValidatorId,Message]
+      val equivocators: Set[ValidatorId]
+      val weightsOfValidators: Map[ValidatorId, Int]
+      val finalizer: Finalizer
+      val gossipService: GossipService
+
+      //logic of listening loop
+      def handleMessageReceivedFromNetwork(bm: BinaryMessage): HandlerResult = {
+        val validationResult: Boolean = validateFormalStructureOfMessageAndCheckSignature(bm)
+        if (validationResult == MessageValidationResult.ERROR)
+          return HandlerResult.InvalidMessage
+
+        if (jdagMessageIds containsAll message.justifications)
+          runBufferPruningCascadeFor(message)
+        else {
+          val missingDependencies = message.justifications.filter(j => ! jdagMessageIds.contains(j))
+          for (j <- missingDependencies)
+            messagesBuffer.addPair(message,j)
+        }
+
+        return HandlerResult.Accepted
+      }
+
+      def runBufferPruningCascadeFor(message: Message): Unit = {
+        val queue = new Queue[Message]()
+        queue enqueue message
+
+        while (queue.nonEmpty) {
+          val nextMsg = queue.dequeue()
+          if (! jdagMessagesIds.contains(nextMsg.id)) {
+            addToLocalJdag(nextMsg)
+            val waitingForThisOne = messagesBuffer.findSourcesFor(nextMsg.id)
+            messagesBuffer.removeTarget(nextMsg.id)
+            val unblockedMessages = waitingForThisOne.filterNot(b => messagesBuffer.hasSource(b))
+            queue enqueueAll unblockedMessages
+          }
+        }
+      }
+
+      def addToLocalJdag(msg: Message): Unit = {
+        if (!equivocators.contains(msg.creator) && checkIfIntroducesAnEquivocation(msg)) {
+          equivocators.add(msg.creator)
+          latestHonestMessages remove msg.creator
+        }
+        jdagGraph insert msg
+        jdagMessagesIds add msg.id
+        if (! equivocators(msg.creator))
+          latestHonestMessages add (msg.creator -> msg)
+
+        finalizer.runFinalityDetection(msg)
+      }
+
+      def checkIfIntroducesAnEquivocation(msg: Message): Boolean = {
+        latestHonestMessages(msg.creator) match {
+          case None =>
+            false // first message arriving from this validator, so it cannot be an equivocation
+          case Some(tip) => //tip of the swimlane
+            if (msg.justifications.contains(tip))
+              false
+            else {
+              val toposortIteratorOfJPastCone = jdagGraph.toposortTraverseFrom(msg)
+              val decisionPointBlockOption: Option[Message] = toposortIteratorOfJPastCone
+                     .find(m => m == tip || m.dagLevel < tip.dagLevel)
+
+          return decisionPointBlock == None || decisionPointBlock.get != tip
+        }
+
+      def shouldCurrentVoteBeEmpty(): Boolean
+
+      def estimator(collectionOfMessagesByNonEquivocators: Collection[Message]): Int = {
+        val conValueToCollOfVotingMessages =
+          collectionOfMessagesByNonEquivocators.groupBy(m => m.consensusValue)
+        val summingOfVotes: Collection[Message] => Int = {
+          coll => coll.map(m => weightsOfValidators(b.creator)).sum
+        }
+        val pairsConsensusValueToTotalWeightOfVotes =
+          conValueToCollOfVotingMessages map { (consensusValue, collectionOfMessages) =>
+            consensusValue -> summingOfVotes(collectionOfMessages)}
+
+        //if weights are the same, we pick the bigger consensus value
+        //tuples (w,c) are ordered lexicographically, so first weight of votes decides
+        //if weights are the same, we pick the bigger consensus value
+        //total ordering of consensus values is implicitly assumed here
+        val (winnerConsensusValue, winnerTotalWeight) = pairsConsensusToTotalWeight maxBy { case (c,w) => (w, c) }
+        return winnerConsensusValue
+      }
+
+      //logic of publishing loop
+      def publishNewMessage(): Unit = {
+        val msg = createNewMessage()
+        addToLocalJdag(msg)
+        gossipService.broadcast(msg)
+      }
+
+      def createNewMessage(): Message =
+        new Message {
+          val creator = id
+          val justifications = jdagGraph.tips map (t => t.id)
+          val consensusValue =
+            if (shouldCurrentVoteBeEmpty())
+              None
+            else
+              if (justifications.isEmpty)
+                Some(preferredConsensusValue)
+              else
+                Some(estimator(latestHonestMessages.values))
+        }
+
+    }
+
+**Listening loop** is implicit - we assume that as soon as a message arrives from the network, method
+``Validator.handleMessageReceivedFromNetwork()`` is invoked. What happens is roughly:
+
+  1. Message is formally validated.
+  2. Message is either buffered or added to the ``jdag`` - depending on whether its justifications have already arrived.
+  3. ``latestHonestMessages`` map is updated to reflect the updated swimlane.
+  4. Jdag is analyzed for new message possibly introducing an equivocation of so-far-honest validator (and if
+     yes - ``equivocators`` collection is updated accordingly)
+  5. Finalizer state is updated (see below for the explanation how finalizer works).
+  6. Steps 3..5 are repeated as long as adding last message to ``jdag`` unblocks some messages waiting in the buffer.
+
+**Publishing loop** is also implicit - we do not determine when exactly a validator decides to create and broadcast
+a new message. This is pluggable part of ACC. As soon as a validator, following its publishing strategy, decides to
+publish a message, it calls ``Validator.publishNewMessage()``. What happens is roughly:
+
+  (fork choice)
+
+
+
+
+Listen to messages incoming from other validators. Whenever a message :math:`m` arrives, follow this handling scenario:
+
+1. Validate the formal structure of :math:`m`. In case of any error - drop :math:`m` (invalid message) and exit.
+2. Check if all justifications of :math:`m` are already included in ``jdag``.
+  1. if yes: continue
+  2. otherwise: append :math:`m` to the :math:`messages\_buffer`, then exit
+
+
+
 
 A validator continuously runs two activities:
 
