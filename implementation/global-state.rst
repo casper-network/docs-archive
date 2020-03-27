@@ -134,6 +134,9 @@ Note: ``Tuple5`` is not a presently supported ``CLType``, however it is clear
 how to generalize the rules for ``Tuple1``, ``Tuple2``, ``Tuple3`` to any size
 tuple.
 
+Note: links to further serialization examples and a reference implementation are
+found in :ref:`Appendix B <appendix-b>`.
+
 ``CLValue``
 ~~~~~~~~~~~
 
