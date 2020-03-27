@@ -897,3 +897,11 @@ language can be found here:
 -  `account.rs <https://docs.rs/casperlabs-engine-shared/0.3.0/casperlabs_engine_shared/account/struct.Account.html>`__
 -  `contract.rs <https://docs.rs/casperlabs-engine-shared/0.3.0/casperlabs_engine_shared/contract/struct.Contract.html>`__
 -  `uint.rs <https://docs.rs/casperlabs-types/0.2.0/src/casperlabs_types/uint.rs.html>`__
+
+Additionally, examples of all data types and their serializations are found in
+our `main GitHub repository
+<https://github.com/CasperLabs/CasperLabs/blob/dev/models/src/test/resources/CLSerialization.toml>`__. These
+examples are meant to form a standard set of tests for any implementation of the
+serialization format. An implementation of these example as tests is found in
+our `Scala code base
+<https://github.com/CasperLabs/CasperLabs/blob/dev/models/src/test/scala/io/casperlabs/models/cltype/StandardCLSerializationTest.scala>`__.
