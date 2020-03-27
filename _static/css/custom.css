@@ -1,0 +1,13 @@
+@import 'theme.css';
+
+body{
+    font-family: "Arial", Helvetica, sans-serif;
+}
+
+h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend {
+    font-family: "Arial", Helvetica, sans-serif;
+}
+
+pre.literal-block, div[class^='highlight'] pre, .linenodiv pre {
+    font-size: 14px;
+}
