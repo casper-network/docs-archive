@@ -4,14 +4,15 @@ Abstract Casper Consensus
 Stating the problem
 -------------------
 
-We are considering a collection of processes (called here and later **validators**) - later referenced as
-:math:`Validators` - communicating over a message-passing network. Every validator has a **weight** -- a non-zero
-integer value thought of as “the voting power of this validator”.
+We are considering a collection of processes - **validators** - communicating over a message-passing network. Every
+validator has a **weight** -- a non-zero integer value representing the "voting power".
 
-The goal validators collectively pursue is to agree on selecting a single value from a finite set :math:`Con` we call
-the set of **consensus values**. Once the agreement is achieved, the problem is solved and the processes terminate.
+The goal validators collectively pursue is to pick a single value from a finite set :math:`Con` we call
+the set of **consensus values**. Once the agreement is achieved, the problem is considered solved (i.e. validators
+terminate their operation).
 
-The resulting solution is not a blockchain yet. It is just a building block we later on use to design our blockchain.
+The resulting solution of this problem is not a blockchain yet. It is however a core building block of our blockchain
+design. The way abstract consensus is used for building a blockchain is explained in subsequent chapers.
 
 Caution: we use **ACC** as the shortcut for **Abstract Casper Consensus**.
 
@@ -19,60 +20,41 @@ Caution: we use **ACC** as the shortcut for **Abstract Casper Consensus**.
 Network model
 -------------
 
-We assume fully asynchronous network model with delivery guarantee and the single primitive: `broadcast(m)`. Precisely
+We assume a fully asynchronous network model with delivery guarantee and a single primitive: `broadcast(m)`. Precisely
 speaking:
 
 1. Communication between validators is based on the “broadcast” primitive: at any time, a validator can broadcast a
    message :math:`m`.
-2. Once broadcast, the message :math:`m` will be eventually delivered to every validator in the network. The delivery
-   will happen exactly once. The delivery delay may be of arbitrary length.
+2. Once broadcast, the message :math:`m` will be eventually delivered to every other validator in the network. The
+   delivery will happen exactly once but with arbitrary delay.
 
-Given the assumptions above, it follows that the order of delivery may not coincide with the order of broadcasting,
-i.e. two messages :math:`m_1`, :math:`m_2` broadcast by a validator :math:`A` may be delivered to another validator
-:math:`A` in different order than the broadcasting order.
-
-.. code:: scala
-
-    trait GossipService {
-      def broadcast(message: BinaryMessage)
-    }
-
-    trait GossipHandler {
-      def handleMessageReceivedFromNetwork(message: BinaryMessage)
-    }
-
+Given the assumptions above, it follows that the order of delivery generally is not going to be preserved. In other
+words when a validator :math:`A` broadcast sequence of messages :math:`(m_1, m_2, ... m_k)` then another validator
+:math:`B` will receive all the messages in the sequence, but with delivery chronology following arbitrary permutation
+:math:`p:(1,..,k) \rightarrow (1,..,k)`, i.e. :math:`(m_{p(1)}, m_{p(2)}, ... m_{p(k)})`.
 
 Messages
 --------
 
-Messages broadcast by validators have the following structure:
+All the messages broadcast by validators have the same structure. Every message :math:`m`:
 
-.. code:: scala
+- has unique identifier - :math:`m.id`
+- includes the identifier of the validator who created :math:`m.creator`
+- references messages the creator confirms as seen at the moment of creating :math:`m` - we call this list
+  "justifications" - :math:`m.justifications`
+- points to the consensus value that creator is voting for - :math:`m.consensusValue`
+- is cryptographically signed by the creator
 
-    class Message {
-      val messageId: MessageId
-      val creator: ValidatorId
-      val justifications: Seq[MessageId]
-      val consensusValue: Option[Con]
-      val dagLevel: Int
-    }
-
--  ``messageId: MessageId`` unique identifier (typically - hash of the message)
--  ``creator: Int`` id of the validator that created this message
--  ``justifications: Seq[MessageId]`` collection of message ids that the creator acknowledges as seen at the moment of
-   creation of this message; this collection may possibly be empty
--  ``consensusValue: Option[Con]`` consensus value this message is voting for; the value is optional, because we allow
-   empty votes
--  ``daglevel: Int`` height of this message in justifications DAG
-
-When a validator :math:`V` creates and broadcasts a message with consensus value :math:`X`, we say that :math:`V` is
-voting for :math:`X`.
+The consensus value included in the message is however optional - it is OK to broadcast an "empty vote" message. The
+semantics of such empty vote is "I support my previous vote, unchanged". If the previous vote is empty, it counts
+as "vote for nothing".
 
 J-dag
-~~~~~
+-----
 
-Justifications are pointing to previously received messages. Let us consider arbitrary set of messages :math:`M` closed
-under taking justifications. We will define the following acyclic directed graph :math:`jDag(M)`:
+Let us consider arbitrary set of messages :math:`M` closed under taking justifications, i.e. for every :math:`m \in M`
+justifications referenced in :math:`m` also belong to :math:`M`. We will define the following acyclic directed graph
+:math:`jDag(M)`:
 
 -  vertices = all elements of :math:`M`;
 -  edges = all pairs :math:`m_1 \rightarrow m_2` such that :math:`m_2 \in m_1.justifications`.
@@ -82,10 +64,10 @@ possible or a validator managed to guess an id of some message before that messa
 we preclude on the basis of physics, while guessing of future message id must be made close-to-impossible via smart
 implementation of message identifiers (using message hash should be good enough).
 
-We require that every validator maintains a representation of :math:`jDag(M)` reflecting the most up-to-date
-knowledge on the on-going consensus-establishing process. Observe that :math:`jDag(M)` may be equivalently seen as
+We require that every validator maintains a representation of :math:`jDag(M)` reflecting the most up to date
+knowledge on the on going consensus establishing process. Observe that :math:`jDag(M)` may be equivalently seen as
 a POSET because of the well-known equivalence between transitively closed DAGs and POSETs. In the remainder of this
-chapter we blur the difference :math:`jDag(M)` seen as a DAG and is transiive closure seen as a POSET.
+chapter we blur the difference :math:`jDag(M)` seen as a DAG and is transitive closure seen as a POSET.
 We will use the relation symbols :math:`<` and :math:`\leqslant` for the implied partial order of :math:`jDag(M)`.
 
 When :math:`m \in M`, we define :math:`jPastCone(m)` as :math:`\{x \in M: x \leqslant m \}`. Of course this is also
@@ -128,445 +110,180 @@ In the context of any :math:`jDag(M)` we introduce the following concepts:
    is a function :math:`panorama: HonestValidators(M) \rightarrow M`, :math:`panorama(v) =` *latest message of v in
    jPastCone(m)*
 
+Validity conditions
+-------------------
+
+On reception of a message, every validator must check certain conditions. Messages not compliant with these conditions
+are considered invalid and hence ignored.
+
+Formal validation is:
+
+- message must be correctly structured, following the transport (= binary) representation
+- checking of the cryptographic signature of message creator
+
+Semantic validation is:
+
+- consensus value :math:`m.consensusValue` must be compliant with applying the estimator to :math:`jPastCone(m)`
+- justifications :math:`m.justifications` must reference messages belonging to distinct swimlanes,
+  i.e. if :math:`j_1`, :math:`j_2` are two justifications in :math:`m`, then :math:`creator(j_1) \ne creator(j_2)`
+
+We explain the concept of "estimator" later in this chapter.
+
 Operation of a validator
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-We are using the following abstraction of mutable 2-argument relation:
-
-.. code:: scala
-
-    //Represents a mutable subset of cartesian product AxB
-    //A is "source", B is "target"
-    trait Relation[A,B] {
-      def addPair(a: A, b: B): Unit
-      def removePair(a: A, b: B): Unit
-      def removeSource(a: A): Unit
-      def removeTarget(b: B): Unit
-      def containsPair(a: A, b: B): Boolean
-      def findTargetsFor(source: A): Iterable[B]
-      def findSourcesFor(target: B): Iterable[A]
-      def hasSource(a: A): Boolean
-      def hasTarget(b: B): Boolean
-      def sources: Iterable[A]
-      def targets: Iterable[B]
-      def size: Int
-      def isEmpty: Boolean
-    }
-
-... and directed acyclic graph:
-
-.. code:: scala
-
-    //Represents a mutable directed acyclic graph, i.e. a data structure composed of
-    //vertices and directed edges. Edges are implicit. Source of vertex v is any
-    //vertex s such that the graph contains edge s->v. Target of vertex v is any vertex t
-    //such that the graph contains edge v->t.
-    trait Dag[Vertex] {
-      def targets(n: Vertex): Seq[Vertex]
-      def sources(n: Vertex): Seq[Vertex]
-      def contains(n: Vertex): Boolean
-      def tips: Seq[Vertex]
-      def insert(n: Vertex): Boolean
-      def toposortTraverseFrom(n: Vertex): Iterator[Vertex]
-    }
-
-During its lifetime, a validator maintains the following state:
-
-.. code:: scala
-
-    //A participant of Abstract Casper Consensus protocol
-    class Validator extends GossipHandler {
-      val id: ValidatorId
-      val preferredConsensusValue: Con
-      val messagesBuffer: Relation[Message, MessageId]
-      val jdagGraph: Dag[Message]
-      val jdagMessagesIds: Set[MessageId]
-      val latestHonestMessages: Map[ValidatorId,Message]
-      val equivocators: Set[ValidatorId]
-      val weightsOfValidators: Map[ValidatorId, Int]
-      val finalizer: Finalizer
-      val gossipService: GossipService
-    }
-
--  ``messagesBuffer: Relation[Message,MessageId]`` - a buffer of messages received, but not incorporated into ``jdag`` yet;
-   a pair :math:`(m,j)` in this relation represents buffered message :math:`m` waiting for not-yet-received message
-   with id :math:`j`
--  ``jdagGraph`` - representation of :math:`jDag(M)`, where :math:`M` is the set of all messages known, such that
-   their dependencies are fulfilled; in other words, before a message :math:`m` can be added to ``jdag``, all
-   justifications of :math:`m` must be already present in ``jdag``
--  ``latestHonestMessages: Map[ValidatorId -> Message]`` - a map keeping swimlane tip for every honest validator
--  ``equivocators`` - collection of equivocators visible in ``jdag``
--  ``weightsOfValidators: Map[ValidatorId, Int]`` - weights of validators
--  ``finalizer: Finalizer`` - finality detector
--  ``gossipService: GossipService`` - communication layer API used to broadcast messages
+------------------------
 
 A validator continuously runs two activities:
 
 - **listening loop** - handling messages arriving from the network
 - **publishing loop** - creating and broadcasting new messages
 
-The pseudocode below explains detailed working of listening loop and publishing loop.
+**Listening loop**
 
-.. code:: scala
+When a message :math:`m` arrived:
 
-    //A participant of Abstract Casper Consensus protocol
-    class Validator extends GossipHandler {
-      val id: ValidatorId
-      val preferredConsensusValue: Con
-      val messagesBuffer: Relation[Message, MessageId]
-      val jdagGraph: Dag[Message]
-      val jdagMessagesIds: Set[MessageId]
-      val latestHonestMessages: Map[ValidatorId,Message]
-      val equivocators: Set[ValidatorId]
-      val weightsOfValidators: Map[ValidatorId, Int]
-      val finalizer: Finalizer
-      val gossipService: GossipService
+  1. Formal validation of :math:`m` is performed.
+  2. If :math:`m.justifications` are already present in the local representation of jdag then:
 
-      //logic of listening loop
-      def handleMessageReceivedFromNetwork(bm: BinaryMessage): HandlerResult = {
-        val validationResult: Boolean = validateFormalStructureOfMessageAndCheckSignature(bm)
-        if (validationResult == MessageValidationResult.ERROR)
-          return HandlerResult.InvalidMessage
+     - semantic validation of :math:`m` is performed
+     - :math:`m` is added to the jdag
 
-        if (jdagMessageIds containsAll message.justifications)
-          runBufferPruningCascadeFor(message)
-        else {
-          val missingDependencies = message.justifications.filter(j => ! jdagMessageIds.contains(j))
-          for (j <- missingDependencies)
-            messagesBuffer.addPair(message,j)
-        }
+     otherwise:
 
-        return HandlerResult.Accepted
-      }
+     - :math:`m` is added to the messages buffer, where it waits until all justifications it references are present
+       in the jdag
 
-      def runBufferPruningCascadeFor(message: Message): Unit = {
-        val queue = new Queue[Message]()
-        queue enqueue message
+On every message added to the local j-dag:
 
-        while (queue.nonEmpty) {
-          val nextMsg = queue.dequeue()
-          if (! jdagMessagesIds.contains(nextMsg.id)) {
-            addToLocalJdag(nextMsg)
-            val waitingForThisOne = messagesBuffer.findSourcesFor(nextMsg.id)
-            messagesBuffer.removeTarget(nextMsg.id)
-            val unblockedMessages = waitingForThisOne.filterNot(b => messagesBuffer.hasSource(b))
-            queue enqueueAll unblockedMessages
-          }
-        }
-      }
+  1. Messages buffer is checked for messages that have now all justifications present in the jdag and so can be removed
+     from the buffer.
+  2. Finality detector analyzes local jdag to check if the consensus has already been reached.
 
-      def addToLocalJdag(msg: Message): Unit = {
-        if (!equivocators.contains(msg.creator) && checkIfIntroducesAnEquivocation(msg)) {
-          equivocators.add(msg.creator)
-          latestHonestMessages remove msg.creator
-        }
-        jdagGraph insert msg
-        jdagMessagesIds add msg.id
-        if (! equivocators(msg.creator))
-          latestHonestMessages add (msg.creator -> msg)
+**Publishing loop**
 
-        finalizer.runFinalityDetection(msg)
-      }
+We do not determine when exactly a validator decides to create and broadcast a new message. This is pluggable part
+of ACC. As soon as a validator, following its publishing strategy, decides to publish a message, it builds a new
+message with:
 
-      def checkIfIntroducesAnEquivocation(msg: Message): Boolean = {
-        latestHonestMessages(msg.creator) match {
-          case None =>
-            false // first message arriving from this validator, so it cannot be an equivocation
-          case Some(tip) => //tip of the swimlane
-            if (msg.justifications.contains(tip))
-              false
-            else {
-              val toposortIteratorOfJPastCone = jdagGraph.toposortTraverseFrom(msg)
-              val decisionPointBlockOption: Option[Message] = toposortIteratorOfJPastCone
-                     .find(m => m == tip || m.dagLevel < tip.dagLevel)
-
-          return decisionPointBlock == None || decisionPointBlock.get != tip
-        }
-
-      def shouldCurrentVoteBeEmpty(): Boolean
-
-      def estimator(collectionOfMessagesByNonEquivocators: Collection[Message]): Int = {
-        val conValueToCollOfVotingMessages =
-          collectionOfMessagesByNonEquivocators.groupBy(m => m.consensusValue)
-        val summingOfVotes: Collection[Message] => Int = {
-          coll => coll.map(m => weightsOfValidators(b.creator)).sum
-        }
-        val pairsConsensusValueToTotalWeightOfVotes =
-          conValueToCollOfVotingMessages map { (consensusValue, collectionOfMessages) =>
-            consensusValue -> summingOfVotes(collectionOfMessages)}
-
-        //if weights are the same, we pick the bigger consensus value
-        //tuples (w,c) are ordered lexicographically, so first weight of votes decides
-        //if weights are the same, we pick the bigger consensus value
-        //total ordering of consensus values is implicitly assumed here
-        val (winnerConsensusValue, winnerTotalWeight) = pairsConsensusToTotalWeight maxBy { case (c,w) => (w, c) }
-        return winnerConsensusValue
-      }
-
-      //logic of publishing loop
-      def publishNewMessage(): Unit = {
-        val msg = createNewMessage()
-        addToLocalJdag(msg)
-        gossipService.broadcast(msg)
-      }
-
-      def createNewMessage(): Message =
-        new Message {
-          val creator = id
-          val justifications = jdagGraph.tips map (t => t.id)
-          val consensusValue =
-            if (shouldCurrentVoteBeEmpty())
-              None
-            else
-              if (justifications.isEmpty)
-                Some(preferredConsensusValue)
-              else
-                Some(estimator(latestHonestMessages.values))
-        }
-
-    }
-
-**Listening loop** is implicit - we assume that as soon as a message arrives from the network, method
-``Validator.handleMessageReceivedFromNetwork()`` is invoked. What happens is roughly:
-
-  1. Message is formally validated.
-  2. Message is either buffered or added to the ``jdag`` - depending on whether its justifications have already arrived.
-  3. ``latestHonestMessages`` map is updated to reflect the updated swimlane.
-  4. Jdag is analyzed for new message possibly introducing an equivocation of so-far-honest validator (and if
-     yes - ``equivocators`` collection is updated accordingly)
-  5. Finalizer state is updated (see below for the explanation how finalizer works).
-  6. Steps 3..5 are repeated as long as adding last message to ``jdag`` unblocks some messages waiting in the buffer.
-
-**Publishing loop** is also implicit - we do not determine when exactly a validator decides to create and broadcast
-a new message. This is pluggable part of ACC. As soon as a validator, following its publishing strategy, decides to
-publish a message, it calls ``Validator.publishNewMessage()``. What happens is roughly:
-
-  (fork choice)
-
-
-
-
-Listen to messages incoming from other validators. Whenever a message :math:`m` arrives, follow this handling scenario:
-
-1. Validate the formal structure of :math:`m`. In case of any error - drop :math:`m` (invalid message) and exit.
-2. Check if all justifications of :math:`m` are already included in ``jdag``.
-  1. if yes: continue
-  2. otherwise: append :math:`m` to the :math:`messages\_buffer`, then exit
-
-
-
-
-A validator continuously runs two activities:
-
--  listens to messages incoming from other validators, and on every incoming message, runs the finality detection
-   algorithm to see if the consensus has already been reached (we explain finality detection in detail later in this
-   document)
-
--  (from time to time) decides to cast a vote by creating a new message :math:`m` and broadcasting it
-
-A validator itself must decide when to create and broadcast new messages — this is what we call
-a **validator strategy.**
+- justifications set to tips of all swimlanes, according to local jdag; in case of equivocators, i.e. when the
+  corresponding swimlane has more than one tip - validator picks just one tip (any)
+- consensus value determined by estimator, as applied to the justifications
 
 Estimator
-~~~~~~~~~
+---------
 
 Upon creation of a new message :math:`m`, a validator must decide what consensus value :math:`m` will vote for. We limit
 the freedom here by enforcing that the selected consensus value is constrained by a certain function called
-**estimator**. The assumption here is that an estimator is fixed upfront and used by all validators. This function is
-allowed to depend only on justifications of message :math:`m`, and it returns a subset of consensus values; when
-a validator makes a vote, it is allowed to:
+**estimator**. This function depends only on justifications of message :math:`m`, and it returns a single consensus
+value. Estimator value is however not defined for an empty list of justifications.
+
+When a validator makes a vote, it is allowed to:
 
 -  either pick a value from the subset returned by the estimator
--  or pick :math:`None`, and so create a message voting for nothing
+-  or pick :math:`None`, and so create an empty vote
 
-We can now rewrite the definition of Message class with this assumption applied:
+Caution: For defining the estimator we need the set of consensus values :math:`Con` to be totally ordered.
 
-::
+For a set of justifications :math:`J`, we calculate the estimator value in the following way:
 
-   class Message {
-     val id: Long
-     val creator: Validator
-     val justifications: List[Message]
-     val consensusValue: Option[Int]
+  1. Take :math:`CJ` a smallest transitive closure of :math:`J`
+  2. Take the collection of all honest validators in :math:`CJ`.
+  3. Restrict to collection of validators that created at least one message.
+  4. For every validator - find its latest message with non-empty vote.
+  5. Sum latest messages by weight - this will end up with a mapping :math:`tv: Con \to Int` - for every
+     consensus value :math:`c` it returns the sum of weights of validators voting for :math:`c`.
+  6. Find all points :math:`c \in Con` such that :math:`tv` has maximum value at :math:`c`.
+  7. Using total order on :math:`Con`, from elements found in the previous step pick maximum element :math:`cmax`.
+  8. The result is :math:`cmax`.
 
-     fun daglevel: Int =
-        if (justifications.isEmpty)
-          0
-        else
-          max(justifications map (j => j.daglevel))
-   }
+The concept of finality
+-----------------------
 
-   class Validator {
-     var currentProtocolState
+When the consensus is reached
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-     fun estimator(pc: ProtocolState): Set[Int]
+A validator :math:`v` analyzes its local jdag to observe a value :math:`c \in Con` getting "locked" in the following
+sense:
 
-     fun pickValueFrom(subsetOfConsensusValues: Set[Int]): Int
+- from now on, the estimator applied to jdag tips seen by :math:`v` will always return :math:`c`
+- this will happen as well for other validators (eventually)
 
-     fun createNewMessage(): Message = new Message(
-         id = generateMessageId,
-         creator = this,
-         justifications = currentProtocolState.tips,
-         consensusValue =
-           if (shouldNextVoteBeEmpty())
-             None
-           else
-             pickValueFrom(estimator(currentProtocolState)))
+We call such a situation by saying that **consensus value is now finalized**, so the consensus was reached.
+Unfortunately, above definition is not useful enough and needs to be adjusted, what we explain below.
 
-     fun generateMessageId(): Long
+Malicious validators
+~~~~~~~~~~~~~~~~~~~~
 
-     fun shouldNextVoteBeEmpty(): Boolean
-   }
+In general - malicious validators can stop consensus from happening. We need to adjust the concept of finalization
+so to account for this problem.
 
-The reference estimator
-~~~~~~~~~~~~~~~~~~~~~~~
+In general there are 4 ways a validator can expose malicious behaviour:
 
-In fact, in all solutions considered so far by CasperLabs, we are reusing the same pattern for estimators construction.
-The pattern assumes the set of consensus values :math:`C` is totally ordered.
+1. Be silent (= stop producing messages)
+2. Produce malformed messages.
+3. Violate the condition that a message must vote on a value derived from justifications via the estimator.
+4. Equivocate.
 
-For a protocol state :math:`ps`, we calculate the estimator value in the following way:
+Case (3) can really be considered a sub-case of (2), and (2) can be evaded by just assuming that validators reject
+malformed messages on reception.
 
--  if :math:`ps` is empty then the result is :math:`C`
--  otherwise - we apply the following algorithm:
+So, the only real problems come from (1) and (4).
 
-   1. Take the collection of all honest validators in :math:`ps`.
-   2. Restrict to collection of validators that created at least one message.
-   3. For every validator - find its latest message with non-empty vote.
-   4. Sum latest messages by weight - this will end up with a mapping :math:`total\_votes: C \to Int` - for every
-      consensus value :math:`c` it returns the sum of weights of validators voting for :math:`c`.
-   5. Find all points :math:`c \in C` such that :math:`total\_votes` has maximum value at :math:`c`.
-   6. Using total order on :math:`C`, from elements found in the previous step pick maximum element :math:`cmax`.
-   7. The result is one-element set :math:`{cmax}`.
+Problem (1) is something we are not addressing within ACC.
 
-Finality
---------
+Problem (4) is something we control explicitly in the finality calculation.
 
-Equivocations
-~~~~~~~~~~~~~
+Closer look at equivocations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Finality cannot really be “absolute” because validators may cheat, i.e. they can violate “fair play”. There are 3 ways
-a validator can violate fair play:
+Equivocations do break consensus. Intuition for this is clear - if everybody cheats by concurrently voting for
+different values, validators will never come up with a decision the value is finally agreed upon.
 
-1. Produce a malformed message.
-2. Violate the condition that a message is allowed a vote on a value picked from what the estimator tells.
-3. Equivocate.
-
-Case (2) can really be considered a sub-case of (1), and (1) can be evaded by just assuming that validators reject
-malformed messages on reception. So, the only real problem comes from (3). Equivocations do break consensus and the
-intuition for this is clear - if everybody cheats by concurrently voting for different values, validators will never
-come up with a decision the value is finally agreed upon.
-
-It may be not immediately obvious how equivocations are possible in the context of the estimator, which forces us to
-pick certain values. It is worth noticing that:
+It may be not immediately obvious how equivocations are possible in the context of the rule that the estimator function.
+It is worth noticing that:
 
 1. The essence of an equivocation is not about voting for different consensus values; it is about behaving in
-a “schizophrenic” way by pretending that “I have not seen my previous message”.
-2. An Estimator returns a set, not a single value. When this set has size >0, it leaves some extra freedom.
-3. Even if the size of the set returned by the estimator is actually 1, there is always a possibility to cast an empty vote. Voting for empty, vs voting
- for a value, is a freedom.
-4. A Validator does not have to reveal all messages actually received. “Revealing” happens at the creation of new
-message by listing justifications of this message. It is legal to hide some knowledge here as long as a validator does
-this hiding in a consistent way (if I once admit I have seen message :math:`m`, I cannot un-admit this later).
+   a “schizophrenic” way by pretending that “I have not seen my previous message”.
+2. A Validator does not have to reveal all messages actually received. “Revealing” happens at the creation of new
+   message by listing justifications of this message. The protocol does not prevent a validator from hiding this
+   knowledge.
+3. Technically, to create an equivocation is very easy - all one have to do is to create a branch in the swimlane.
+   Such a branch is created every time when for a message :math:`m` its transitive justifications :math:`jPastCone(m)`
+   do not include previous message by :math:`m.creator`.
 
 Finality criteria
 ~~~~~~~~~~~~~~~~~
 
+Let :math:`\mathcal{M}` be the set of all possible formally correct messages. Let :math:`Snapshots(\mathcal{M})`
+be the set of all justifications-closed subsets of :math:`\mathcal{M}`.
+
 Because of equivocations, finality really means “consensus value :math:`c` being locked as long as the fraction
-of honest nodes is sufficiently high”. We typically express the “sufficiently high” part by introducing the concept
-of **faults tolerance threshold**, or **FTT** in short.
+of honest nodes is sufficiently high”. We express the “sufficiently high” part by introducing the concept
+of **faults tolerance threshold**, or **FTT** in short. This leads us to the improved definition of finality:
 
-Finality criterion is a function :math:`fc: protocol\_states \times Int \to C \cup {EMPTY}`.
+A value :math:`c \in Con` is finalized in a snapshot :math:`S \in Snapshots(\mathcal{M})` with fault tolerance :math:`t`
+if:
 
-We interpret this function as providing the answer as to if the finality was achieved (and if yes, then which consensus
-value is finalized) given the following input data:
+1. :math:`Estimator(S) = c`
+2. For every snapshot :math:`S \in Snapshots(\mathcal{M})` such that :math:`S \subset R` one of the following is true:
 
--  protocol state (so, a j-dag)
--  fault tolerance threshold (integer number)
+  - :math:`Estimator(R) = c`
+  - total weights of equivocators visible in :math:`R` is bigger than :math:`t`
 
-And the result, if not empty, gives the “locked” consensus value that will be locked as long as the total weight of
-equivocators will not exceed **FTT**.
+**Finality criterion** is any function :math:`fc: Snapshots(\mathcal{M}) \times Int \to C \cup {EMPTY}` such that if
+:math:`fc(S,t) = c` then :math:`c` is finalized in :math:`S` with fault tolerance :math:`t`.
 
-Finality theorems
-~~~~~~~~~~~~~~~~~
-
-Finality criterion is a strictly mathematical concept. To introduce new finality criterion, one has to:
-
-1. Define suitable :math:`fc` function.
-2. Prove the finality theorem for :math:`fc`.
-
-On our way to CasperLabs blockchain, we expect to see a diversity of finality criteria to be discovered and used.
-As of March 2020 we have been working with 3 finality criteria (so far):
-
--  E-clique
--  The Inspector
--  Summit theory by Daniel Kane
-
-For a protocol state :math:`ps`, let :math:`eq(ps)` denote the total weight of equivocators (so validators :math:`V`
-such that :math:`ps` includes an equivocation by :math:`V`).
-
-A finality theorem for a criterion :math:`fc` says:
-
-IF
-
--  :math:`ps` is some protocol state
--  :math:`FTT` is some integer value
--  :math:`c \in C`
--  :math:`fc(pc, FTT) = c`
-
-THEN
-
--  :math:`estimator(ps) = {c}`
-
--  for every protocol state :math:`fps` such that :math:`PS \leqslant fps` and :math:`eq(fps) < eq (ps) + FTT` the
-   following holds:
-
-   -    :math:`estimator(fps) = {c}`
-
-Finality detectors
-~~~~~~~~~~~~~~~~~~
-
-Finality criterion is a purely mathematical construct. On the software side,
-it will typically map to several different implementations. For example, in
-the case of “The Inspector” finality criterion, we currently have the
-following implementations (with more to come):
-
--  reference implementation (very simple but also quite slow)
--  single-sweep implementation (order of magnitude faster than reference
-implementation)
--  voting matrix (order of magnitude faster than single sweep, but limited to
- acknowledgement level 1)
-
-Therefore, the distinction between finality criterion and a finality detector
- is quite important in practice.
-
-The following code snippet shows the contract for incremental finality
-detectors that is used in our abstract consensus simulator:
-
-::
-
-   interface FinalityDetector {
-     fun onNewMessageAddedToTheJDag(
-       msg: Message,
-       latestHonestMessages: ValidatorId => Option[Message]): Option[Commitee[C]]
-   }
-
-Of course, a convenient contract for finality detectors will typically be
-dependent on the exact shape of the surrounding software - usually because of
- various optimizations in place.
+Intuitively, finality is something that is easy to define mathematically but potentially hard to discover by an
+efficient calculation. Therefore in general we discuss various finality criteria, which are approximations of finality.
+Finality criteria may differ by sensitivity (= how they are not overlooking existing finality) and computational
+efficacy.
 
 Calculating finality
 --------------------
 
-.. _introduction-1:
-
 Introduction
 ~~~~~~~~~~~~
 
-We describe here the criterion of finality known as “The summit theory”. A
-**summit** is a situation in the j-dag when the finality of a certain consensus
-value has been established.
-
-This criterion has two parameters:
+We describe here the criterion of finality codenamed “Summit theory ver 2”. This criterion has two parameters:
 
 -  **ftt: Int** - “absolute” fault tolerance threshold (expressed as total weight)
 -  **ack-level: Int** - acknowledgement level; an integer value bigger than zero
@@ -574,29 +291,26 @@ This criterion has two parameters:
 Visual notation
 ~~~~~~~~~~~~~~~
 
-To understand the summit theory we developed a simulator and a visual notation.
+To investigate the summit theory we developed a simulator and a visual notation.
 
 This is how finality looks like:
 
 .. figure:: pictures/finality-snapshot-2019-08-12T01-27-42-370.png
-    :width: 80%
+    :width: 100%
     :align: center
 
-Rectangles on the left represent validators. Dots are messages. Displayed is
-the local j-dag of validator 0, arranged accordingly to j-daglevel
-(X-coordinate of a message corresponds to j-daglevel).
+Rectangles on the left represent validators. Dots are messages. Displayed is the local j-dag of validator 0, arranged
+accordingly to j-daglevel (X-coordinate of a message corresponds to j-daglevel). Swimlanes correspond to horizontal
+lines (a message is displayed with the Y-coordinate the same as its creator).
 
-Swimlanes correspond to horizontal lines (a message is displayed with the
-Y-coordinate the same as its creator).
-
-A color inside of a dot represents a consensus value this message is voting for.
+The color inside of a dot represents the consensus value given message is voting for. The color of the dot's border
+represents the so called "confirmation level" (explained below).
 
 Zero-level messages
 ~~~~~~~~~~~~~~~~~~~
 
-Within a swimlane of an honest validator, **zero-level messages** are all
-messages since the last change of mind on the consensus value this validator
-was voting for (empty votes are not counting as change of mind).
+Within a swimlane of an honest validator, **zero-level messages** are all messages since the last change of mind
+on the consensus value this validator was voting for (empty votes are not counting as change of mind).
 
 **Example:** if the sequence of messages in the swimlane looks like this:
 
@@ -629,28 +343,27 @@ Quorum size is an integer value calculated as:
 1-level summit
 ~~~~~~~~~~~~~~
 
-Let’s take a zero-level message :math:`m` and a subset of validators set
-:math:`S \subset V`.
+** ################## THIS SECTION IS UNDER CONSTRUCTION #################### **
 
-Def: **0-support of message m in context S** is the set of validators
-:math:`v \in S` such that some zero-level message created by :math:`v` is in
-:math:`j\_past\_cone(m)`.
+Let’s take a zero-level message :math:`m` and a subset of validators set :math:`S \subset V`.
 
-Def: **1-level message in context S** is a zero-level message :math:`m` such
-that the total weight of 0-support of :math:`m` is at least quorum size.
+Def: **0-support of message m in context S** is the set of validators :math:`v \in S` such that some zero-level message
+created by :math:`v` is in :math:`j\_past\_cone(m)`.
 
-Def: **1-level summit with committee S** is a situation where :math:`S
-\subset V` is a subset of the validators set such that:
+Def: **1-level message in context S** is a zero-level message :math:`m` such that the total weight of 0-support
+of :math:`m` is at least quorum size.
+
+Def: **1-level summit with committee S** is a situation where :math:`S \subset V` is a subset of the validators set such
+that:
 
 -  :math:`S` contains only honest nodes
--  every member of :math:`S` is a creator of at least one 1-level message in
-context S
+-  every member of :math:`S` is a creator of at least one 1-level message in context S
 -  total weight of validators in :math:`S` is at least quorum-size
 
 **Example:**
 
-Below is an example of 1-level summit for 8 validators (all having equal
-weights 1) with :math:`ftt=2`. Number of consensus values is 8.
+Below is an example of 1-level summit for 8 validators (all having equal weights 1) with :math:`ftt=2`. Number of
+consensus values is 8.
 
 Border of a message signals the following information:
 
@@ -662,23 +375,24 @@ Border of a message signals the following information:
 Validators marked with green rectangles are members of the committee.
 
 .. figure:: pictures/summit-1.png
-    :width: 80%
+    :width: 100%
     :align: center
 
 K-level summit
 ~~~~~~~~~~~~~~
 
-We recursively generalize the idea of 1-summit to arbitrary acknowledgement
-level. The parameter :math:`k` here corresponds to :math:`ack\_level`.
+** ################## THIS SECTION IS UNDER CONSTRUCTION #################### **
 
-Def: **p-support of message m in context S** is the set of validators
-:math:`v \in S` such that some p-level message created by :math:`v` is in :math:`j\_past\_cone(m)`.
+We recursively generalize the idea of 1-summit to arbitrary acknowledgement level. The parameter :math:`k` here
+corresponds to :math:`ack\_level`.
 
-Def: **k-level message in context S** is a (k-1)-level message :math:`m` such
- that the total weight of 0-support of :math:`m` is at least quorum size.
+Def: **p-support of message m in context S** is the set of all validators :math:`v \in S` such that some p-level message created by :math:`v` is in :math:`j\_past\_cone(m)`.
 
-Def: **k-level summit with committee S** is a situation where :math:`S
-\subset V` is a subset of the validators set such that:
+Definition: **k-level message in context S** is a (k-1)-level message :math:`m` such that the total weight of 0-support
+of :math:`m` is at least quorum size.
+
+Definition: **k-level summit with committee S** is a situation where :math:`S \subset V` is a subset of the validators
+set such that:
 
 -  there exists :math:`R \subset V` such that :math:`S \subset R` and we have (k-1)-summit at R
 -  every member of :math:`S` is a creator of at least one k-level message in context S
@@ -686,8 +400,7 @@ Def: **k-level summit with committee S** is a situation where :math:`S
 
 **Example:**
 
-Below is an example of 1-level summit for 8 validators (all having equal
-weights 1) with :math:`ftt=2` and :math:`k=4`.
+Below is an example of 1-level summit for 8 validators (all having equal weights 1) with :math:`ftt=2` and :math:`k=4`.
 
 The Border of a message signals the following information:
 
@@ -700,7 +413,588 @@ The Border of a message signals the following information:
 -  dashed border: this message has not arrived yet to validator 0
 
 .. figure:: pictures/summit-2.png
-    :width: 80%
+    :width: 100%
     :align: center
 
+Reference implementation
+------------------------
 
+In this section we sketch a "reference" implementation of Abstract Casper Consensus. We use Scala syntax for the code,
+but we limit ourselves to elementary language features (so it is readable for any developer familiar with contemporary
+programming languages).
+
+Scala primer for non-scala developers:
+
+.. code:: scala
+
+    //value declaration (= constant)
+    val localValidatorId: ValidatorId
+
+    //variable declaration (a valued can be assigned to a variable many times)
+    val localValidatorId: ValidatorId
+
+    //method declaration
+    def containsPair(a: A, b: B): Boolean
+
+    //special type Unit contains only one value, so it is used to signal that a function returns nothing of interest
+    def addPair(a: A, b: B): Unit
+
+    //class declaration
+    class Person {
+      var name: String
+      var dateOfBirth: Date
+    }
+
+    //class with immutable values
+    case class Person(
+        name: String,
+        dateOfBirth: Date
+    )
+
+    //standalone object
+    object PersonsManager {
+      def findPersonById(id: Int): Option[Person]
+      def currentNumberOfPersons: Int
+    }
+
+    //interface declaration
+    trait Sizeable {
+      def size: Int
+      def isEmpty: Boolean
+    }
+
+    //this is a tuple
+    (1,"foo",true)
+
+    //this is convenience notation for 2-tuples; equivalent to (1, "foo")
+    1 -> "foo"
+
+    //a loop iterating over a collection of messages
+    for (m <- messages)
+      println(message.id)
+
+    //a type of functions from ValidatorId to Message
+    val panorama: ValidatorId => Message
+
+    //cartesian product of types; means Int x String
+    type Prod = (Int,String)
+
+    //a function instance
+    val add: (Int,Int) => Int = ((x,y) => x+y)
+
+    //optional values
+    val a: Option[Int] = None
+    val b: Option[String] = Some("foo")
+
+    //pattern matching
+    x match {
+      case None => println("1")
+      case Some(p) => println(p)
+    }
+
+Common abstractions
+~~~~~~~~~~~~~~~~~~~
+
+We use the following type aliases:
+
+.. code:: scala
+
+    type ValidatorId = Long
+    type MessageId = Hash
+    type Con = Int
+    type BinaryMessage = Array[Byte]
+    type Weight = Long
+
+We are using the following abstraction of mutable 2-argument relation:
+
+.. code:: scala
+
+    trait Relation[A,B] {
+      def addPair(a: A, b: B): Unit
+      def removePair(a: A, b: B): Unit
+      def removeSource(a: A): Unit
+      def removeTarget(b: B): Unit
+      def containsPair(a: A, b: B): Boolean
+      def findTargetsFor(source: A): Iterable[B]
+      def findSourcesFor(target: B): Iterable[A]
+      def hasSource(a: A): Boolean
+      def hasTarget(b: B): Boolean
+      def sources: Iterable[A]
+      def targets: Iterable[B]
+      def size: Int
+      def isEmpty: Boolean
+    }
+
+... and directed acyclic graph:
+
+.. code:: scala
+
+    trait Dag[Vertex] {
+
+      /**
+       * Returns targets reachable (in one step) from given vertex by going along the arrows.
+       * @param v vertex
+       * @return collection of vertices
+       */
+      def targets(v: Vertex): Iterable[Vertex]
+
+      /**
+       * Returns sources reachable (in one step) from given vertex by going against the arrows.
+       * @param v vertex
+       * @return collection of vertices
+       */
+      def sources(v: Vertex): Iterable[Vertex]
+
+      /**
+       * Returns true if given vertex is a member of this DAG.
+       * @param v vertex
+       * @return true if this DAG contains vertex
+       */
+      def contains(v: Vertex): Boolean
+
+      /**
+       * List of nodes which are only sources, but not targets,
+       * i.e. nodes with only outgoing arrows and no incoming arrows.
+       * @return list of nodes which are only sources.
+       */
+      def tips: Iterable[Vertex]
+
+      /**
+       * Add a new node to the DAG.
+       * Sources and targets of this node must be inferred (so we assume that this information is somehow encoded
+       * inside the vertex itself).
+       * @param v new vertex to be added; targets of v must be already present in the DAG
+       * @return true if the vertex was actually added, false if the vertex was already present in the DAG
+       */
+      def insert(v: Vertex): Boolean
+
+      /**
+       * Traverses the DAG (breadth-first-search) along the arrows.
+       * @param v vertex from which we start the traversal
+       * @return iterator of vertices, sorted by dagLevel (descending)
+       */
+      def toposortTraverseFrom(v: Vertex): Iterator[Vertex]
+
+      /**
+       * Traverses the DAG (breadth-first-search) along the arrows.
+       * @param coll collection of vertices from which we start the traversal
+       * @return iterator of vertices, sorted by dagLevel (descending)
+       */
+      def toposortTraverseFrom(coll: Iterable[Vertex]): Iterator[Vertex]
+
+    }
+
+We say nothing about hashing in use, we just assume that hashes can be seen as binary arrays:
+
+.. code:: scala
+
+    trait Hash extends Ordered[Hash] {
+      def bytes: Array[Byte]
+    }
+
+Messages
+~~~~~~~~
+
+Message structure:
+
+.. code:: scala
+
+    case class Message(
+      id: MessageId,
+      creator: ValidatorId,
+      previous: Option[MessageId],
+      justifications: Seq[MessageId],
+      consensusValue: Option[Con],
+      dagLevel: Int
+    )
+
+-  ``id: MessageId`` unique identifier - hash of other fields
+-  ``creator: Int`` id of the validator that created this message
+-  `previous: Option[MessageId]` distinguished justification that points to previous message published by creator
+-  ``justifications: Seq[MessageId]`` collection of messages that the creator acknowledges as seen at the moment of
+   creation of this message; this collection may possibly be empty; only message identifiers are kept here
+-  ``consensusValue: Option[Con]`` consensus value this message is voting for; the value is optional, because we allow
+   empty votes
+-  ``daglevel: Int`` height of this message in justifications DAG
+
+Serialization of messages joins the logical layer and transport layer:
+
+.. code:: scala
+
+    trait MessagesSerializer {
+
+      //conversion binary message --> message
+      //validates:
+      //  (1) binary format of the message
+      //  (2) message's hash
+      //  (3) message's signature
+      def decodeBinaryMessage(bm: BinaryMessage): (Message, EnvelopeValidationResult)
+
+      //conversion message --> binary message
+      def convertToBinaryRepresentationWithSignature(m: Message): BinaryMessage
+
+    }
+
+Network abstraction
+~~~~~~~~~~~~~~~~~~~
+
+Broadcasting messages:
+
+.. code:: scala
+
+    trait GossipService {
+      def broadcast(message: BinaryMessage)
+    }
+
+Receiving messages:
+
+.. code:: scala
+
+    trait GossipHandler {
+      def handleMessageReceivedFromNetwork(message: BinaryMessage): HandlerResult
+    }
+
+Panoramas
+~~~~~~~~~
+
+We use panoramas to encode the "perspective on the jdag as seen from given message".
+
+.. code:: scala
+
+    case class Panorama(
+                         honestSwimlanesTips: Map[ValidatorId,Message],
+                         equivocators: Set[ValidatorId]
+                       ) {
+
+      def honestValidatorsWithNonEmptySwimlane: Iterable[ValidatorId] = honestSwimlanesTips.keys
+    }
+
+    object Panorama {
+      val empty: Panorama = Panorama(honestSwimlanesTips = Map.empty, equivocators = Set.empty)
+
+      def atomic(msg: Message): Panorama = Panorama(
+        honestSwimlanesTips = Map(msg.creator -> msg),
+        equivocators = Set.empty[ValidatorId]
+      )
+    }
+
+Validator
+~~~~~~~~~
+
+The abstraction of the estimator:
+
+.. code:: scala
+
+    trait Estimator {
+
+      //calculates correct consensus value to be voted for, given the j-dag snapshot (represented as a panorama)
+      def deriveConsensusValueFrom(panorama: Panorama): Option[Con]
+
+      //convert panorama to votes
+      //this involves traversing down every corresponding swimlane so to find latest non-empty vote
+      def extractVotesFrom(panorama: Panorama): Map[ValidatorId, Con]
+
+    }
+
+... and finality detector (implementing the "summit theory" finality criterion):
+
+.. code:: scala
+
+    trait FinalityDetector {
+      def onLocalJDagUpdated(latestPanorama: Panorama): Option[Summit]
+    }
+
+The implementation of a validator is complex so we split it into sections.
+
+
+.. code:: scala
+
+    //A participant of Abstract Casper Consensus protocol
+    abstract class Validator extends GossipHandler {
+    }
+
+**Validator configuration**
+
+.. code:: scala
+
+  val localValidatorId: ValidatorId
+  val weightsOfValidators: Map[ValidatorId, Weight]
+  val gossipService: GossipService
+  val serializer: MessagesSerializer
+  val preferredConsensusValue: Con
+
+-  ``weightsOfValidators: Map[ValidatorId, Int]`` - weights of validators
+-  ``finalizer: Finalizer`` - finality detector
+-  ``gossipService: GossipService`` - communication layer API used to broadcast messages
+
+**Protocol state**
+
+.. code:: scala
+
+  val messagesBuffer: Relation[Message, MessageId]
+  val jdagGraph: Dag[Message]
+  val messageIdToMessage: mutable.Map[MessageId, Message]
+  var globalPanorama: Panorama = Panorama.empty
+  val message2panorama: mutable.Map[Message,Panorama]
+  val finalityDetector: FinalityDetector
+  val estimator: Estimator = new ReferenceEstimator(messageIdToMessage, weightsOfValidators)
+  var myLastMessagePublished: Option[Message] = None
+
+-  ``messagesBuffer: Relation[Message,MessageId]`` - a buffer of messages received, but not incorporated into ``jdag`` yet;
+   a pair :math:`(m,j)` in this relation represents buffered message :math:`m` waiting for not-yet-received message
+   with id :math:`j`
+-  ``jdagGraph`` - representation of :math:`jDag(M)`, where :math:`M` is the set of all messages known, such that
+   their dependencies are fulfilled; in other words, before a message :math:`m` can be added to ``jdag``, all
+   justifications of :math:`m` must be already present in ``jdag``
+-  ``jdagIdToMessage: mutable.Map[MessageId, Message]`` - indexing of messages by id
+
+**Handling of incoming messages**
+
+.. code:: scala
+
+  def handleMessageReceivedFromNetwork(bm: BinaryMessage): HandlerResult = {
+    val (message, validationResult) = serializer.decodeBinaryMessage(bm)
+    if (validationResult == EnvelopeValidationResult.Error)
+      return HandlerResult.InvalidMessage
+
+    if (message.justifications.forall(id => messageIdToMessage.contains(id)))
+      runBufferPruningCascadeFor(message)
+    else {
+      val missingDependencies = message.justifications.filter(j => ! messageIdToMessage.contains(j))
+      for (j <- missingDependencies)
+        messagesBuffer.addPair(message,j)
+    }
+
+    return HandlerResult.Accepted
+  }
+
+  def runBufferPruningCascadeFor(message: Message): Unit = {
+    val queue = new mutable.Queue[Message]()
+    queue enqueue message
+
+    while (queue.nonEmpty) {
+      val nextMsg = queue.dequeue()
+      if (! messageIdToMessage.contains(nextMsg.id) && isValid(nextMsg)) {
+        addToLocalJdag(nextMsg)
+        val waitingForThisOne = messagesBuffer.findSourcesFor(nextMsg.id)
+        messagesBuffer.removeTarget(nextMsg.id)
+        val unblockedMessages = waitingForThisOne.filterNot(b => messagesBuffer.hasSource(b))
+        queue enqueueAll unblockedMessages
+      }
+    }
+  }
+
+**Publishing of new messages**
+
+.. code:: scala
+
+  def publishNewMessage(): Unit = {
+    val msg = createNewMessage()
+    addToLocalJdag(msg)
+    val bm = serializer.convertToBinaryRepresentationWithSignature(msg)
+    gossipService.broadcast(bm)
+  }
+
+  def createNewMessage(): Message = {
+    val creator: ValidatorId = localValidatorId
+    val justifications: Seq[MessageId] =
+      jdagGraph.tips
+        .groupBy(m => m.creator)
+        .map {case (vid,coll) => coll.head}
+        .map(m => m.id)
+        .toSeq
+    val dagLevel: Int =
+      if (justifications.isEmpty)
+        0
+      else
+        (justifications map (j => messageIdToMessage(j).dagLevel)).max + 1
+    val consensusValue: Option[Con] =
+      if (shouldCurrentVoteBeEmpty())
+        None
+      else if (justifications.isEmpty)
+        Some(preferredConsensusValue)
+      else
+        estimator.deriveConsensusValueFrom(globalPanorama)
+
+    val msgWithBlankId = Message (
+      id = placeholderHash,
+      creator,
+      previous = myLastMessagePublished map (m => m.id),
+      justifications,
+      consensusValue,
+      dagLevel
+    )
+
+    return Message(
+      id = generateMessageIdFor(msgWithBlankId),
+      msgWithBlankId.creator,
+      msgWithBlankId.previous,
+      msgWithBlankId.justifications,
+      msgWithBlankId.consensusValue,
+      msgWithBlankId.dagLevel
+    )
+  }
+
+**Abstract methods** - i.e. extension points (things outside of this protocol spec)
+
+.. code:: scala
+
+  def shouldCurrentVoteBeEmpty(): Boolean
+
+  def placeholderHash: Hash
+
+  def generateMessageIdFor(message: Message): Hash
+
+  def consensusHasBeenReached(summit: Summit)
+
+**Validation of incoming messages**
+
+.. code:: scala
+
+  def isValid(message: Message): Boolean =
+    validityConditionDaglevel(message) &&
+    validityConditionDirectJustifications(message) &&
+    validityConditionPrevious(message) &&
+    validityConditionConsensusValue(message)
+
+  //daglevel must be correct
+  def validityConditionDaglevel(message: Message): Boolean = {
+    val correctDaglevel: Int = (message.justifications map (j => messageIdToMessage(j).dagLevel)).max + 1
+    return message.dagLevel == correctDaglevel
+  }
+
+  //direct justifications must not reference the same swimlane twice
+  //(while message.previous is considered one of justifications)
+  def validityConditionDirectJustifications(message: Message): Boolean = {
+    val swimlanesUsed = message.justifications.map(j => messageIdToMessage(j).creator).toSet
+    message.previous match {
+      case None => //ok
+      case Some(p) =>
+        if (swimlanesUsed.contains(messageIdToMessage(p).creator))
+          return false
+    }
+
+    return swimlanesUsed.size == message.justifications.size
+  }
+
+  //msg.previous must point to highest element of msg.creator swimlane earlier than msg itself
+  def validityConditionPrevious(message: Message): Boolean = {
+    val effectiveJustifications: Seq[MessageId] =
+      message.previous match {
+        case None => message.justifications
+        case Some(p) => message.justifications :+ p
+      }
+    val effectiveJustificationsAsMessages: Seq[Message] = effectiveJustifications map (id => messageIdToMessage(id))
+    val toposortIteratorOfJPastCone = jdagGraph.toposortTraverseFrom(effectiveJustificationsAsMessages)
+
+    return message.previous match {
+      case None =>
+        toposortIteratorOfJPastCone.find(m => m.creator == message.creator) match {
+          case Some(x) => false
+          case None => true
+        }
+      case Some(p) =>
+        val declaredPreviousMessage: Message = messageIdToMessage(p)
+        val realFirst: Message = toposortIteratorOfJPastCone.filter(m => m.creator == message.creator).next()
+        declaredPreviousMessage == realFirst
+    }
+  }
+
+  def validityConditionConsensusValue(message: Message): Boolean =
+    message.consensusValue match {
+      case None => true
+      case Some(consensusValueInMessage) =>
+        estimator.deriveConsensusValueFrom(panoramaOf(message)) match {
+          case Some(requiredConsensusValue) => consensusValueInMessage == requiredConsensusValue
+          case None => true //estimator gave no constraint, so the creator of this message was allowed
+                            //to pick any consensus value
+        }
+    }
+
+**Updating of local j-dag**
+
+.. code:: scala
+
+  def addToLocalJdag(msg: Message): Unit = {
+    globalPanorama = mergePanoramas(globalPanorama, panoramaOf(msg))
+    jdagGraph insert msg
+    messageIdToMessage += msg.id -> msg
+
+    finalityDetector.onLocalJDagUpdated(globalPanorama) match {
+      case Some(summit) => consensusHasBeenReached(summit)
+      case None => //no consensus yet, do nothing
+    }
+  }
+
+**Calculating panoramas**
+
+.. code:: scala
+
+  /**
+   * Calculates panorama of given msg.
+   */
+  def panoramaOf(msg: Message): Panorama =
+    message2panorama.get(msg) match {
+      case Some(p) => p
+      case None =>
+        val result =
+          msg.justifications.foldLeft(Panorama.empty){case (acc,j) =>
+            val justificationMessage = messageIdToMessage(j)
+            val tmp = mergePanoramas(panoramaOf(justificationMessage), Panorama.atomic(justificationMessage))
+            mergePanoramas(acc, tmp)}
+        message2panorama += (msg -> result)
+        result
+    }
+
+  //sums j-dags defined by two panoramas and represents the result as a panorama
+  //caution: this implementation relies on daglevels being correct
+  //so validation of daglevel must have happened before
+  def mergePanoramas(p1: Panorama, p2: Panorama): Panorama = {
+    val mergedTips = new mutable.HashMap[ValidatorId,Message]
+    val mergedEquivocators = new mutable.HashSet[ValidatorId]()
+    mergedEquivocators ++= p1.equivocators
+    mergedEquivocators ++= p2.equivocators
+
+    for (validatorId <- p1.honestValidatorsWithNonEmptySwimlane ++ p2.honestValidatorsWithNonEmptySwimlane) {
+      if (! mergedEquivocators.contains(validatorId)) {
+        val msg1opt: Option[Message] = p1.honestSwimlanesTips.get(validatorId)
+        val msg2opt: Option[Message] = p2.honestSwimlanesTips.get(validatorId)
+
+        (msg1opt,msg2opt) match {
+          case (None, None) => //do nothing
+          case (None, Some(m)) => mergedTips += (validatorId -> m)
+          case (Some(m), None) => mergedTips += (validatorId -> m)
+          case (Some(m1), Some(m2)) =>
+            if (m1 == m2)
+              mergedTips += (validatorId -> m1)
+            else if (m1.dagLevel == m2.dagLevel)
+              mergedEquivocators += validatorId
+            else {
+              val higher: Message = if (m1.dagLevel > m2.dagLevel) m1 else m2
+              val lower: Message = if (m1.dagLevel < m2.dagLevel) m1 else m2
+              if (isEquivocation(higher, lower))
+                mergedEquivocators += validatorId
+              else
+                mergedTips += (validatorId -> higher)
+            }
+        }
+      }
+    }
+
+    return Panorama(mergedTips.toMap, mergedEquivocators.toSet)
+  }
+
+  //tests if given messages pair from the same swimlane is an equivocation
+  //caution: we assume that msg.previous and msg.daglevel are correct (= were validated before)
+  def isEquivocation(higher: Message, lower: Message): Boolean = {
+    require(lower.creator == higher.creator)
+
+    if (higher == lower)
+      false
+    else if (higher.dagLevel <= lower.dagLevel)
+      true
+    else if (higher.previous.isEmpty)
+      true
+    else
+      isEquivocation(messageIdToMessage(higher.previous.get), lower)
+  }
