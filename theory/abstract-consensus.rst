@@ -386,7 +386,8 @@ K-level summit
 We recursively generalize the idea of 1-summit to arbitrary acknowledgement level. The parameter :math:`k` here
 corresponds to :math:`ack\_level`.
 
-Def: **p-support of message m in context S** is the set of all validators :math:`v \in S` such that some p-level message created by :math:`v` is in :math:`j\_past\_cone(m)`.
+Def: **p-support of message m in context S** is the set of all validators :math:`v \in S` such that some p-level message
+created by :math:`v` is in :math:`j\_past\_cone(m)`.
 
 Definition: **k-level message in context S** is a (k-1)-level message :math:`m` such that the total weight of 0-support
 of :math:`m` is at least quorum size.
@@ -740,8 +741,8 @@ The implementation of a validator is complex so we split it into sections.
   val estimator: Estimator = new ReferenceEstimator(messageIdToMessage, weightsOfValidators)
   var myLastMessagePublished: Option[Message] = None
 
--  ``messagesBuffer: Relation[Message,MessageId]`` - a buffer of messages received, but not incorporated into ``jdag`` yet;
-   a pair :math:`(m,j)` in this relation represents buffered message :math:`m` waiting for not-yet-received message
+-  ``messagesBuffer: Relation[Message,MessageId]`` - a buffer of messages received, but not incorporated into ``jdag``
+   yet; a pair :math:`(m,j)` in this relation represents buffered message :math:`m` waiting for not-yet-received message
    with id :math:`j`
 -  ``jdagGraph`` - representation of :math:`jDag(M)`, where :math:`M` is the set of all messages known, such that
    their dependencies are fulfilled; in other words, before a message :math:`m` can be added to ``jdag``, all
@@ -998,3 +999,218 @@ The implementation of a validator is complex so we split it into sections.
     else
       isEquivocation(messageIdToMessage(higher.previous.get), lower)
   }
+
+Estimator
+~~~~~~~~~
+
+.. code:: scala
+
+    class ReferenceEstimator(
+                              id2msg: MessageId => Message,
+                              weight: ValidatorId => Weight
+                            ) extends Estimator {
+
+      def deriveConsensusValueFrom(panorama: Panorama): Option[Con] = {
+        //panorama may be empty, which means "no votes yet"
+        if (panorama.honestSwimlanesTips.isEmpty)
+          return None
+
+        val votes: Map[ValidatorId, Con] = extractVotesFrom(panorama)
+        //this may happen if all votes were empty (i.e. consensus value = None)
+        if (votes.isEmpty)
+          return None
+
+        //summing votes
+        val accumulator = new mutable.HashMap[Con, Weight]
+        for ((validator, c) <- votes) {
+          val oldValue: Weight = accumulator.getOrElse(c, 0L)
+          val newValue: Weight = oldValue + weight(validator)
+          accumulator += (c -> newValue)
+        }
+
+        //if weights are the same, we pick the bigger consensus value
+        //tuples (w,c) are ordered lexicographically, so first weight of votes decides
+        //if weights are the same, we pick the bigger consensus value
+        //total ordering of consensus values is implicitly assumed here
+        val (winnerConsensusValue, winnerTotalWeight) = accumulator maxBy { case (c, w) => (w, c) }
+        return Some(winnerConsensusValue)
+      }
+
+      def extractVotesFrom(panorama: Panorama): Map[ValidatorId, Con] =
+        panorama.honestSwimlanesTips
+          .map { case (vid, msg) => (vid, vote(msg)) }
+          .collect { case (vid, Some(vote)) => (vid, vote) }
+
+      //finds latest non-empty vote as seen from given message by traversing "previous" chain
+      @tailrec
+      private def vote(message: Message): Option[Con] =
+        message.consensusValue match {
+          case Some(c) => Some(c)
+          case None =>
+            message.previous match {
+              case Some(m) => vote(id2msg(m))
+              case None => None
+            }
+        }
+
+    }
+
+Finality detector
+~~~~~~~~~~~~~~~~~
+
+Representation of a committee:
+
+.. code:: scala
+
+    case class Committee(entries: Map[ValidatorId,Message]) {
+      def validators: Iterable[ValidatorId] = entries.keys
+      def validatorsSet: Set[ValidatorId] = validators.toSet
+    }
+
+Representation of a summit:
+
+.. code:: scala
+
+    case class Summit(
+                       relativeFtt: Double,
+                       level: Int,
+                       committees: Array[Committee]
+                     )
+
+Implementation of the "summit theory" finality criterion:
+
+.. code:: scala
+
+    class ReferenceFinalityDetector(
+                                     relativeFTT: Double,
+                                     ackLevel: Int,
+                                     weightsOfValidators: Map[ValidatorId, Weight],
+                                     jDag: Dag[Message],
+                                     messageIdToMessage: MessageId => Message,
+                                     message2panorama: Message => Panorama,
+                                     estimator: Estimator
+                                   ) extends FinalityDetector {
+
+      val totalWeight: Weight = weightsOfValidators.values.sum
+      val absoluteFTT: Weight = math.ceil(relativeFTT * totalWeight).toLong
+      val quorum: Weight = {
+        val q: Double = (absoluteFTT.toDouble / (1 - math.pow(2, - ackLevel)) + totalWeight.toDouble) / 2
+        math.ceil(q).toLong
+      }
+
+      override def onLocalJDagUpdated(latestPanorama: Panorama): Option[Summit] = {
+        estimator.deriveConsensusValueFrom(latestPanorama) match {
+          case None =>
+            return None
+          case Some(mostSupportedConsensusValue) =>
+            val validatorsVotingForThisValue: Iterable[ValidatorId] = estimator.extractVotesFrom(latestPanorama)
+                .filter {case (validatorId,vote) => vote == mostSupportedConsensusValue}
+                .keys
+            val zeroLevelCommittee: Committee =
+              findOldestZeroLevelMessages(mostSupportedConsensusValue,validatorsVotingForThisValue, latestPanorama)
+
+            if (sumOfWeights(zeroLevelCommittee.validators) < quorum)
+              return None
+            else {
+              //var committeeOnCurrentLevel: Committee = zeroLevelCommittee
+              val committeesFound: Array[Committee] = new Array[Committee](ackLevel + 1)
+              committeesFound(0) = zeroLevelCommittee
+              for (k <- 1 to ackLevel) {
+                val levelKCommittee: Option[Committee] =
+                  findLevelNPlus1Committee(committeesFound(k-1), committeesFound(k-1).validatorsSet)
+                if (levelKCommittee.isEmpty)
+                  return None
+                else
+                  committeesFound(k) = levelKCommittee.get
+              }
+
+              return Some(Summit(relativeFTT, ackLevel, committeesFound))
+            }
+        }
+      }
+
+      private def findOldestZeroLevelMessages(
+                                       consensusValue: Con,
+                                       validatorsSubset: Iterable[ValidatorId],
+                                       latestPanorama: Panorama): Committee = {
+        val pairs: Iterable[(ValidatorId, Message)] = for {
+          validator <- validatorsSubset
+          swimlaneTip: Message = latestPanorama.honestSwimlanesTips(validator)
+          oldestZeroLevelMessage: Message = swimlaneIterator(swimlaneTip)
+            .takeWhile(m => m.consensusValue.isEmpty || m.consensusValue.get == consensusValue)
+            .toSeq
+            .last
+        }
+          yield (validator, oldestZeroLevelMessage)
+
+        return Committee(pairs.toMap)
+      }
+
+      @tailrec
+      private def findLevelNPlus1Committee(
+                                            levelNCommittee: Committee,
+                                            candidatesConsidered: Set[ValidatorId]): Option[Committee] = {
+        val approximationOfResult: Map[ValidatorId, Message] =
+          candidatesConsidered
+            .map(validator => (validator, findNextLevelMsg(validator, levelNCommittee, candidatesConsidered)))
+            .collect {case (validator, Some(msg)) => (validator, msg)}
+            .toMap
+
+        val candidatesAfterPruning: Set[ValidatorId] = approximationOfResult.keys.toSet
+
+        if (sumOfWeights(candidatesAfterPruning) < quorum)
+          None
+        else
+        if (candidatesAfterPruning forall (v => candidatesConsidered.contains(v)))
+          Some(Committee(approximationOfResult))
+        else
+          findLevelNPlus1Committee(levelNCommittee, candidatesAfterPruning)
+      }
+
+      private def swimlaneIterator(message: Message): Iterator[Message] =
+        new Iterator[Message] {
+          var nextElement: Option[Message] = Some(message)
+
+          override def hasNext: Boolean = nextElement.isDefined
+
+          override def next(): Message = {
+            val result = nextElement.get
+            nextElement = nextElement.get.previous map (m => messageIdToMessage(m))
+            return result
+          }
+        }
+
+      /**
+       * In the swimlane of given validator which is part of a committee we attempt finding lowest (= oldest) message
+       * that has support at least q (relative to the given committee, ).
+       */
+      private def findNextLevelMsg(
+                                    validator: ValidatorId,
+                                    levelNCommittee: Committee,
+                                    candidatesConsidered: Set[ValidatorId]
+                                  ): Option[Message] =
+        findNextLevelMsgRecursive(validator, levelNCommittee, candidatesConsidered, levelNCommittee.entries(validator))
+
+      @tailrec
+      private def findNextLevelMsgRecursive(
+                                             validator: ValidatorId,
+                                             levelNCommittee: Committee,
+                                             candidatesConsidered: Set[ValidatorId],
+                                             message: Message): Option[Message] = {
+
+        val relevantSubPanorama: Map[ValidatorId, Message] = message2panorama(message).honestSwimlanesTips filter
+          {case (v,msg) => candidatesConsidered.contains(v) && msg.dagLevel >= levelNCommittee.entries(v).dagLevel}
+
+        if (sumOfWeights(relevantSubPanorama.keys) >= quorum)
+          Some(message)
+        else {
+          val nextMessageInThisSwimlane = jDag.sources(message).filter(m => m.creator == validator).head
+          findNextLevelMsgRecursive(validator, levelNCommittee, candidatesConsidered, nextMessageInThisSwimlane)
+        }
+      }
+
+      private def sumOfWeights(validators: Iterable[ValidatorId]): Weight = validators.map(v => weightsOfValidators(v)).sum
+
+    }
+
+
