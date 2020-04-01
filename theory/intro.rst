@@ -31,7 +31,7 @@ details are specified in "CasperLabs Blockchain Design" chapter. The outline of 
 - **Brickdag** - introduces the transactions ledger structure - bricks, blocks, ballots, parents tree and justifications
   graph
 - **Leaders and rounds** - explains the mechanics of "Flat Highway", i.e. when the set of validators is fixed
-- **Fork choice and finality** - applies the abstract casper consensus to the brickdag
+- **Fork choice and finality** - applies the abstract Casper consensus to the brickdag
 - **Eras** - describes how we do stake management in Highway
 - **Known limitations and features planned for ver 4.0** - sketches changes we anticipate to hit version 4.0 of this spec
 

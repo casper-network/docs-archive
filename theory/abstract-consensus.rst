@@ -493,6 +493,15 @@ Scala primer for non-scala developers:
       case Some(p) => println(p)
     }
 
+    //transforming a sequence by applying given function to every element
+    val coll: Seq[Int] = Seq(1,2,3,4,5)
+    val mapped1 = coll.map(n => n*n)
+    val mapped2 = coll map (n => n*n) //equivalent, but without a dot
+
+    //transforming a map by applying given function to every element
+    val coll: Map[Int,String] = Map(1->"this", 2->"is", 3->"example")
+    val mapped: Map[Int,Int] = coll map {case (k,v) => (k*k, v.length)}
+
 Common abstractions
 ~~~~~~~~~~~~~~~~~~~
 
