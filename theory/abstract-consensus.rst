@@ -469,10 +469,12 @@ Definition: **(p+1)-level committee in context S** is a function :math:`comm:R \
 K-level summit
 ~~~~~~~~~~~~~~
 
-Definition: **k-level summit** is a sequence :math:`(comm_1, com_2, ..., com_k)` such that:
+Definition: **k-level summit** is a sequence :math:`(\textit{comm}_1, \textit{comm}_2, ..., \textit{comm}_k)` such that:
 
 - :math:`comm_1` is a 1-level committee in context "all validators which created 0-level messages"
-- :math:`comm_i` is an i-level committee in context :math:`comm_{i-1}` for :math:`i=2, ..., k`
+- :math:`comm_i` is an i-level committee in context :math:`dom(comm_{i-1})` for :math:`i=2, ..., k`
+
+... where :math:`dom(f)` denotes a domain of function :math:`f`
 
 **Example:**
 
