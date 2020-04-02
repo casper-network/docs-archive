@@ -42,7 +42,7 @@ All the messages broadcast by validators have the same structure. Every message 
 - includes the identifier of the validator who created :math:`m.creator`
 - references messages the creator confirms as seen at the moment of creating :math:`m` - we call this list
   "justifications" - :math:`m.justifications`
-- points to the consensus value that creator is voting for - :math:`m.consensusValue`
+- points to the consensus value that creator is voting for - :math:`\textit{m.consensusValue}`
 - is cryptographically signed by the creator
 
 The consensus value included in the message is however optional - it is OK to broadcast an "empty vote" message. The
@@ -60,14 +60,14 @@ justifications referenced in :math:`m` also belong to :math:`M`. We will define 
 -  edges = all pairs :math:`m_1 \rightarrow m_2` such that :math:`m_2 \in m_1.justifications`.
 
 Why we claim this graph is acyclic ? Well, because a cycle in this graph would mean that either time-traveling is
-possible or a validator managed to guess an id of some message before that message was actually created. Time-travelling
+possible or a validator managed to guess an id of some message before that message was actually created. Time-traveling
 we preclude on the basis of physics, while guessing of future message id must be made close-to-impossible via smart
 implementation of message identifiers (using message hash should be good enough).
 
 We require that every validator maintains a representation of :math:`jDag(M)` reflecting the most up to date
-knowledge on the on going consensus establishing process. Observe that :math:`jDag(M)` may be equivalently seen as
+knowledge on the ongoing consensus establishing process. Observe that :math:`jDag(M)` may be equivalently seen as
 a POSET because of the well-known equivalence between transitively closed DAGs and POSETs. In the remainder of this
-chapter we blur the difference :math:`jDag(M)` seen as a DAG and is transitive closure seen as a POSET.
+chapter we blur the difference between :math:`jDag(M)` seen as a DAG and its transitive closure seen as a POSET.
 We will use the relation symbols :math:`<` and :math:`\leqslant` for the implied partial order of :math:`jDag(M)`.
 
 When :math:`m \in M`, we define :math:`jPastCone(m)` as :math:`\{x \in M: x \leqslant m \}`. Of course this is also
@@ -94,21 +94,33 @@ In the context of any :math:`jDag(M)` we introduce the following concepts:
    being a (possibly empty) linear order
 
 **validator v is an equivocator in M**
-   if V is not honest in M
+   if :math:`v` is not honest in :math:`M`
 
 **equivocation by v**
    is a proof that validator :math:`v` is not honest; in other words it is a pair of messages :math:`a,b \in M`,
    both created by :math:`v`, such that :math:`\neg (a < b)` and :math:`\neg (b < a)`
 
 **latest message of a validator v in M**
-   is any tip in :math:`swimlane(v,M)`; if :math:`v` is honest in M then it has at most one latest message in M
+   is any tip in :math:`swimlane(v,M)`; if :math:`v` is honest in :math:`M` then it has at most one latest message
+   in :math:`M`
 
 **honest validators in M**
-  :math:`\{v \in Validators: v \space is \space honest \space in \space M \}`
+  :math:`\{v \in \textit{Validators}: \textit{v is honest in M}\}`
 
 **honest panorama of message m**
-   is a function :math:`panorama: HonestValidators(M) \rightarrow M`, :math:`panorama(v) =` *latest message of v in
-   jPastCone(m)*
+   is a function :math:`\textit{panorama}: \textit{HonestValidators}(M) \rightarrow M`, :math:`panorama(v) =
+   \textit{latest message of v in jPastCone(m)}`
+
+These concepts are illustrated below. Messages are represented with circles. Justifications are represented with
+arrows. Colors inside a circle represents consensus values.
+
+.. figure:: pictures/acc-concepts.png
+    :width: 100%
+    :align: center
+
+.. figure:: pictures/acc-jpastcone.png
+    :width: 100%
+    :align: center
 
 Validity conditions
 -------------------
@@ -142,21 +154,21 @@ A validator continuously runs two activities:
 When a message :math:`m` arrived:
 
   1. Formal validation of :math:`m` is performed.
-  2. If :math:`m.justifications` are already present in the local representation of jdag then:
+  2. If :math:`textit{m.justifications}` are already present in the local representation of j-dag then:
 
      - semantic validation of :math:`m` is performed
-     - :math:`m` is added to the jdag
+     - :math:`m` is added to the j-dag
 
      otherwise:
 
      - :math:`m` is added to the messages buffer, where it waits until all justifications it references are present
-       in the jdag
+       in the j-dag
 
 On every message added to the local j-dag:
 
-  1. Messages buffer is checked for messages that have now all justifications present in the jdag and so can be removed
+  1. Messages buffer is checked for messages that have now all justifications present in the j-dag and so can be removed
      from the buffer.
-  2. Finality detector analyzes local jdag to check if the consensus has already been reached.
+  2. Finality detector analyzes local j-dag to check if the consensus has already been reached.
 
 **Publishing loop**
 
@@ -164,7 +176,7 @@ We do not determine when exactly a validator decides to create and broadcast a n
 of ACC. As soon as a validator, following its publishing strategy, decides to publish a message, it builds a new
 message with:
 
-- justifications set to tips of all swimlanes, according to local jdag; in case of equivocators, i.e. when the
+- justifications set to tips of all swimlanes, according to local j-dag; in case of equivocators, i.e. when the
   corresponding swimlane has more than one tip - validator picks just one tip (any)
 - consensus value determined by estimator, as applied to the justifications
 
@@ -201,14 +213,14 @@ The concept of finality
 When the consensus is reached
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A validator :math:`v` analyzes its local jdag to observe a value :math:`c \in Con` getting "locked" in the following
-sense:
+A validator :math:`v` constantly analyzes its local j-dag to observe a value :math:`c \in Con` becoming "locked" in the
+following sense:
 
-- from now on, the estimator applied to jdag tips seen by :math:`v` will always return :math:`c`
-- this will happen as well for other validators (eventually)
+- from now on, the estimator applied to local j-dag tips will always return :math:`c`
+- the same phenomenon is guaranteed to happen also for other validators (eventually)
 
-We call such a situation by saying that **consensus value is now finalized**, so the consensus was reached.
-Unfortunately, above definition is not useful enough and needs to be adjusted, what we explain below.
+If such locking happens, we say that **consensus value c is now finalized**, i.e. the consensus was reached with
+value :math:`c \in Con` being the winner.
 
 Malicious validators
 ~~~~~~~~~~~~~~~~~~~~
@@ -216,21 +228,18 @@ Malicious validators
 In general - malicious validators can stop consensus from happening. We need to adjust the concept of finalization
 so to account for this problem.
 
-In general there are 4 ways a validator can expose malicious behaviour:
+There are 4 ways a validator can expose malicious behaviour:
 
 1. Be silent (= stop producing messages)
 2. Produce malformed messages.
 3. Violate the condition that a message must vote on a value derived from justifications via the estimator.
 4. Equivocate.
 
-Case (3) can really be considered a sub-case of (2), and (2) can be evaded by just assuming that validators reject
-malformed messages on reception.
+Case (3) can really be considered a sub-case of (2), and (2) can be evaded by assuming that validators reject
+malformed messages on reception. So, the only real problems come from (1) and (4):
 
-So, the only real problems come from (1) and (4).
-
-Problem (1) is something we are not addressing within ACC.
-
-Problem (4) is something we control explicitly in the finality calculation.
+- Problem (1) is something we are not addressing within ACC.
+- Problem (4) is something we control explicitly in the finality calculation.
 
 Closer look at equivocations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -238,38 +247,39 @@ Closer look at equivocations
 Equivocations do break consensus. Intuition for this is clear - if everybody cheats by concurrently voting for
 different values, validators will never come up with a decision the value is finally agreed upon.
 
-It may be not immediately obvious how equivocations are possible in the context of the rule that the estimator function.
-It is worth noticing that:
+It may be not immediately obvious how equivocations are possible in the context of the rule that the estimator function
+determines the consensus value to vote for. It is worth noticing that:
 
 1. The essence of an equivocation is not about voting for different consensus values; it is about behaving in
    a “schizophrenic” way by pretending that “I have not seen my previous message”.
-2. A Validator does not have to reveal all messages actually received. “Revealing” happens at the creation of new
-   message by listing justifications of this message. The protocol does not prevent a validator from hiding this
-   knowledge.
-3. Technically, to create an equivocation is very easy - all one have to do is to create a branch in the swimlane.
+2. A Validator does not have to reveal all messages actually received. “Revealing” happens at the creation of a new
+   message - by listing justifications of this message. The protocol does not prevent a validator from hiding
+   knowledge, i.e. listing as justifications "old" messages.
+3. Technically, to create an equivocation is very easy - all one have to do is to create a branch own the swimlane.
    Such a branch is created every time when for a message :math:`m` its transitive justifications :math:`jPastCone(m)`
    do not include previous message by :math:`m.creator`.
 
 Finality criteria
 ~~~~~~~~~~~~~~~~~
 
-Let :math:`\mathcal{M}` be the set of all possible formally correct messages. Let :math:`Snapshots(\mathcal{M})`
+Let :math:`\mathcal{M}` be the set of all possible formally correct messages. Let :math:`\textit{Snapshots}(\mathcal{M})`
 be the set of all justifications-closed subsets of :math:`\mathcal{M}`.
 
 Because of equivocations, finality really means “consensus value :math:`c` being locked as long as the fraction
 of honest nodes is sufficiently high”. We express the “sufficiently high” part by introducing the concept
 of **faults tolerance threshold**, or **FTT** in short. This leads us to the improved definition of finality:
 
-A value :math:`c \in Con` is finalized in a snapshot :math:`S \in Snapshots(\mathcal{M})` with fault tolerance :math:`t`
+A value :math:`c \in Con` is finalized in a snapshot :math:`S \in \textit{Snapshots}(\mathcal{M})` with fault
+tolerance :math:`t`
 if:
 
-1. :math:`Estimator(S) = c`
-2. For every snapshot :math:`S \in Snapshots(\mathcal{M})` such that :math:`S \subset R` one of the following is true:
+1. :math:`\textit{Estimator}(S) = c`
+2. For every snapshot :math:`S \in \mathit{Snapshots}(\mathcal{M})` such that :math:`S \subset R` one of the following is true:
 
   - :math:`Estimator(R) = c`
   - total weights of equivocators visible in :math:`R` is bigger than :math:`t`
 
-**Finality criterion** is any function :math:`fc: Snapshots(\mathcal{M}) \times Int \to C \cup {EMPTY}` such that if
+**Finality criterion** is any function :math:`fc: \mathit{Snapshots}(\mathcal{M}) \times Int \to C \cup {EMPTY}` such that if
 :math:`fc(S,t) = c` then :math:`c` is finalized in :math:`S` with fault tolerance :math:`t`.
 
 Intuitively, finality is something that is easy to define mathematically but potentially hard to discover by an
@@ -286,132 +296,187 @@ Introduction
 We describe here the criterion of finality codenamed “Summit theory ver 2”. This criterion has two parameters:
 
 -  **ftt: Int** - “absolute” fault tolerance threshold (expressed as total weight)
--  **ack-level: Int** - acknowledgement level; an integer value bigger than zero
+-  **ack_level: Int** - acknowledgement level; an integer value bigger than zero
+
+The criterion is centered about the concept of "summit". Summits are subgraphs of j-dag fulfilling certain properties.
+We will use the term **K-summit** for a summit formed with acknowledgement level K.
 
 Visual notation
 ~~~~~~~~~~~~~~~
 
-To investigate the summit theory we developed a simulator and a visual notation.
+To investigate the summit theory we developed a simulator and a visual notation. Pictures in this chapter are produced
+with this simulator.
 
-This is how finality looks like:
-
-.. figure:: pictures/finality-snapshot-2019-08-12T01-27-42-370.png
-    :width: 100%
-    :align: center
-
-Rectangles on the left represent validators. Dots are messages. Displayed is the local j-dag of validator 0, arranged
-accordingly to j-daglevel (X-coordinate of a message corresponds to j-daglevel). Swimlanes correspond to horizontal
-lines (a message is displayed with the Y-coordinate the same as its creator).
-
-The color inside of a dot represents the consensus value given message is voting for. The color of the dot's border
-represents the so called "confirmation level" (explained below).
-
-Zero-level messages
-~~~~~~~~~~~~~~~~~~~
-
-Within a swimlane of an honest validator, **zero-level messages** are all messages since the last change of mind
-on the consensus value this validator was voting for (empty votes are not counting as change of mind).
-
-**Example:** if the sequence of messages in the swimlane looks like this:
-
-A, B, C, A, Empty, A, Empty, A, Empty, Empty
-
-… then all messages starting from second “A” are zero-level.
-
-In this case:
-
-A, B, C, A, B, C
-
-… zero-level is just the last message.
-
-Quorum size
-~~~~~~~~~~~
-
-Quorum size is an integer value calculated as:
-
-.. math::
-
-
-   q = ceiling\left(\frac{1}{2}\left(\frac{ftt}{1-2^{-k}}+tw\right)\right)
-
-… where:
-
--  :math:`tw` - sum of weights of validators
--  :math:`k` - ack-level
--  :math:`ceiling` - is rounding towards positive infinity
-
-1-level summit
-~~~~~~~~~~~~~~
-
-** ################## THIS SECTION IS UNDER CONSTRUCTION #################### **
-
-Let’s take a zero-level message :math:`m` and a subset of validators set :math:`S \subset V`.
-
-Def: **0-support of message m in context S** is the set of validators :math:`v \in S` such that some zero-level message
-created by :math:`v` is in :math:`j\_past\_cone(m)`.
-
-Def: **1-level message in context S** is a zero-level message :math:`m` such that the total weight of 0-support
-of :math:`m` is at least quorum size.
-
-Def: **1-level summit with committee S** is a situation where :math:`S \subset V` is a subset of the validators set such
-that:
-
--  :math:`S` contains only honest nodes
--  every member of :math:`S` is a creator of at least one 1-level message in context S
--  total weight of validators in :math:`S` is at least quorum-size
-
-**Example:**
-
-Below is an example of 1-level summit for 8 validators (all having equal weights 1) with :math:`ftt=2`. Number of
-consensus values is 8.
-
-Border of a message signals the following information:
-
--  black border: this is not 0-level message
--  red border: this is 0-level message
--  yellow border: this is 1-level message
--  dashed border: this message has not arrived yet to validator 0
-
-Validators marked with green rectangles are members of the committee.
+This is an example of 1-summit:
 
 .. figure:: pictures/summit-1.png
     :width: 100%
     :align: center
 
-K-level summit
-~~~~~~~~~~~~~~
+The graph corresponds to local j-dag of validator 0 and is visually aligned by daglevel (so time goes from left to
+right).
 
-** ################## THIS SECTION IS UNDER CONSTRUCTION #################### **
+Rectangles on the left represent validators. Swimlane of a validator is aligned horizontally, so for example swimlane
+of validator 3 contains messages 4, 14, 20 and 24. Message 28 is marked with a dashed border - this means this message
+was created somewhere in the network but at the moment of taking the snapshot of local state of validator 0 was not
+yet delivered to validator 0.
 
-We recursively generalize the idea of 1-summit to arbitrary acknowledgement level. The parameter :math:`k` here
-corresponds to :math:`ack\_level`.
+Validator colors are also meaningful:
 
-Def: **p-support of message m in context S** is the set of all validators :math:`v \in S` such that some p-level message
-created by :math:`v` is in :math:`j\_past\_cone(m)`.
+- white - this validator is not part of the summit
+- green - this validator is part of the summit
+- red - this is an equivocator
 
-Definition: **k-level message in context S** is a (k-1)-level message :math:`m` such that the total weight of 0-support
-of :math:`m` is at least quorum size.
+The color inside of each message represents the consensus value this message is voting for.
 
-Definition: **k-level summit with committee S** is a situation where :math:`S \subset V` is a subset of the validators
-set such that:
+Similarly to summits, messages also have "acknowledgement levels". We will say **K-level message** for a message with
+acknowledgement level K. Acknowledgement level for a message is optional. We will use the term **plain-message** to
+reference messages that do not have acknowledgement level.
 
--  there exists :math:`R \subset V` such that :math:`S \subset R` and we have (k-1)-summit at R
--  every member of :math:`S` is a creator of at least one k-level message in context S
--  total weight of the validators in :math:`S` is at least quorum-size
+The border of a message signals the following information:
+
+-  black border: plain message
+-  red border: 0-level message
+-  yellow border: 1-level message
+-  green border: 2-level message
+-  lime border: 3-level message
+-  blue border: 4-level message
+-  dashed border: this message has not arrived yet to validator 0; it is not part of j-dag as seen by validator 0
+
+Caution: By definition (see later) every K-level message is also (K-1)-level message.
+
+Step 1: Calculate quorum size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Quorum size is an integer value calculated as:
+
+.. math::
+
+   q = ceiling\left(\frac{1}{2}\left(\frac{ftt}{1-2^{-k}}+w\right)\right)
+
+… where:
+
+- :math:`ftt` - absolute fault tolerance threshold
+- :math:`w` - sum of weights of validators
+- :math:`k` - desired acknowledgement level of a summit we are trying to find
+- :math:`ceiling` - rounding towards positive infinity
+
+The formula can be rephrased to use relative ftt instead of absolute ftt:
+
+.. math::
+
+   q = ceiling\left(\frac{w}{2}\left(\frac{rftt}{1-2^{-k}}+1\right)\right)
+
+… where:
+
+- :math:`rftt` - relative fault tolerance threshold (fractional value between 0 and 1); represents the maximal accepted
+  total weight of malicious validators - as fraction of :math:`w`
+
+
+Step 2: Find consensus candidate value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The first step in finding a summit is to apply the estimator to the whole j-dag. This way the consensus value
+that gets most votes (by weight) is found, where the total ordering on :math:`Con` is used as a tie-breaker.
+
+Say the value returned by the estimator is :math:`c`. When the total weight of votes for :math:`c` is less than
+quorum size, we do not have a summit yet, so this terminates the summit search .
+
+
+Step 3: Find 0-level messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**0-level messages for a honest validator v** is a subset of :math:`swimlane(v)` formed by taking all messages voting
+for :math:`c` which have no later message by :math:`v` voting for consensus value other than :math:`c`. Please notice
+that empty votes are considered a continuation of last non-empty vote.
+
+**0-level messages** is a sum of zero level messages for all hones validators.
+
+Let us look again at the example summit:
+
+.. figure:: pictures/summit-1.png
+    :width: 100%
+    :align: center
+
+All latest messages vote for consensus value "white", so it is clear that white is the value picked by the estimator.
+
+In the swimlane of validator 2, messages 3 and 9 vote for white, but are not 0-level, because 2 changed mind later.
+Also messages 11 and 15 are not 0-level, because they vote for orange. Only messages 19 and 26 are 0-level.
+
+In the swimlane of validator 1, all messages are 0-level: 2, 13, 22, 23.
+
+In the swimlane of validator 0 no message is 0-level, because validator 0 is an equivocator. This becomes clear
+when we highlight the j-past-cone of message 25:
+
+.. figure:: pictures/summit-1-jpastcone.png
+    :width: 100%
+    :align: center
+
+Message 18 is not included in j-past-cone of message 25. Hence - messages 18 and 25 form an equivocation.
+
+
+1-level committee
+~~~~~~~~~~~~~~~~~
+
+We will be working in the context of local jdag of a fixed validator :math:`v_0 \in V`. Let :math:`M` be the set of all
+messages in the local j-dag of :math:`v_0`. Let :math:`S \subset V` be some subset of validators set.
+
+By :math:`weight(S)` we mean just the sum of weights of validators in :math:`S`.
+
+Definition: **0-support of message m in context S** is a subset :math:`R \subset S` obtained by taking all
+validators :math:`v \in S` such that some 0-level message created by :math:`v` is visible in in :math:`jPastCone(m)`.
+
+Definition: **1-level message in context S** is a 0-level message :math:`m` such that the weight of 0-support of :math:`m`
+in context S is at least :math:`q`.
+
+Definition: **1-level committee in context S** is a function :math:`comm:R \to M` such that:
+
+- :math:`R \subset S`
+- every value :math:`comm(v)` is a 1-level message in context S
+- :math:`\textit{weight}(S) \geqslant q`
 
 **Example:**
 
-Below is an example of 1-level summit for 8 validators (all having equal weights 1) with :math:`ftt=2` and :math:`k=4`.
+In the example below, all validators have equal weight 1, and :math:`ftt=1`.
+We have the following 1-level committee here:
 
-The Border of a message signals the following information:
+.. math::
 
--  black border: this is not 0-level message
--  red border: this is 0-level message
--  yellow border: this is 1-level message
--  green border: this is 2-level message
--  lime border: this is 3-level message
--  blue border: this is 4-level message
--  dashed border: this message has not arrived yet to validator 0
+  \{v_1 \to m_{23}, v_2 \to m_{19}, v_3 \to m_{24}, v_4 \to m_{21} \}
+
+.. figure:: pictures/summit-1.png
+    :width: 100%
+    :align: center
+
+K-level committee
+~~~~~~~~~~~~~~~~~
+
+We recursively generalize the idea of 1-level committee to arbitrary acknowledgement level..
+
+Definition: **p-support of message m in context S** is a subset :math:`R \subset S` obtained by taking all
+validators :math:`v \in S` such that some (p-1)-level message created by :math:`v` is visible in in :math:`jPastCone(m)`.
+
+Definition: **(p+1)-level message in context S** is a p-level message :math:`m` such that the weight of p-support of :math:`m`
+in context S is at least :math:`q`.
+
+Definition: **(p+1)-level committee in context S** is a function :math:`comm:R \to M`  set such that:
+
+- :math:`R \subset S`
+-  every value :math:`comm(v)` is a p-level message in context S
+-  :math:`\textit{weight}(S) \geqslant q`
+
+
+K-level summit
+~~~~~~~~~~~~~~
+
+Definition: **k-level summit** is a sequence :math:`(comm_1, com_2, ..., com_k)` such that:
+
+- :math:`comm_1` is a 1-level committee in context "all validators which created 0-level messages"
+- :math:`comm_i` is an i-level committee in context :math:`comm_{i-1}` for :math:`i=2, ..., k`
+
+**Example:**
+
+Below is an example of 4-level summit for 8 validators (all having equal weights 1) with :math:`ftt=2`.
 
 .. figure:: pictures/summit-2.png
     :width: 100%
@@ -667,7 +732,7 @@ Receiving messages:
 Panoramas
 ~~~~~~~~~
 
-We use panoramas to encode the "perspective on the jdag as seen from given message".
+We use panoramas to encode the "perspective on the j-dag as seen from given message".
 
 .. code:: scala
 
