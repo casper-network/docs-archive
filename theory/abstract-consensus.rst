@@ -108,7 +108,7 @@ In the context of any :math:`jDag(M)` we introduce the following concepts:
   :math:`\{v \in \textit{Validators}: \textit{v is honest in M}\}`
 
 **honest panorama of message m**
-   is a function :math:`\textit{panorama}: \textit{HonestValidators}(M) \rightarrow M`, :math:`panorama(v) =
+   is a function :math:`\textit{panorama}: \textit{HonestValidators}(M) \rightarrow M`, :math:`panorama_m(v) =
    \textit{latest message of v in jPastCone(m)}`
 
 These concepts are illustrated below. Messages are represented with circles. Justifications are represented with
@@ -352,7 +352,7 @@ Quorum size is an integer value calculated as:
 
 .. math::
 
-   q = ceiling\left(\frac{1}{2}\left(\frac{ftt}{1-2^{-k}}+w\right)\right)
+   \textit{quorum} = ceiling\left(\frac{1}{2}\left(\frac{ftt}{1-2^{-k}}+w\right)\right)
 
 … where:
 
@@ -365,7 +365,7 @@ The formula can be rephrased to use relative ftt instead of absolute ftt:
 
 .. math::
 
-   q = ceiling\left(\frac{w}{2}\left(\frac{rftt}{1-2^{-k}}+1\right)\right)
+   \textit{quorum} = ceiling\left(\frac{w}{2}\left(\frac{rftt}{1-2^{-k}}+1\right)\right)
 
 … where:
 
@@ -418,22 +418,42 @@ Message 18 is not included in j-past-cone of message 25. Hence - messages 18 and
 Committee
 ~~~~~~~~~
 
-We will be working in the context of local jdag of a fixed validator :math:`v_0 \in V`. Let :math:`M` be the set of all
-messages in the local j-dag of :math:`v_0`. Let :math:`S \subset V` be some subset of validators set.
+We will be working in the context of local j-dag of a fixed validator :math:`v_0 \in V`. Let :math:`M` be the set of all
+messages in the local j-dag of :math:`v_0`.
 
-By :math:`weight(S)` we mean just the sum of weights of validators in :math:`S`.
+Definition: Let :math:`S \subset V` be some subset of the validators set.
 
-Definition: **Support of message m in context S** is a subset :math:`R \subset S` obtained by taking all
-validators :math:`v \in S` such that some 0-level message created by :math:`v` is visible in in :math:`jPastCone(m)`.
+- We will use the term **j-dag trimmer** for any function :math:`p:S \to M`.
+- By :math:`weight(S)` we mean the sum of weights of validators in :math:`S`.
 
-Definition: **1-level message in context S** is a 0-level message :math:`m` such that the weight of support of :math:`m`
-in context S is at least :math:`q`.
+If you think of swimlanes as being "fibers" or "hair" then having a trimmer means:
 
-Definition: **Committee in context S** is a function :math:`comm:R \to M` such that:
+- selecting a subset of swimlanes
+- picking a "cutting point" for every selected swimlane
 
-- :math:`R \subset S`
-- every value :math:`comm(v)` is a 1-level message in context R
-- :math:`\textit{weight}(R) \geqslant q`
+When having a trimmer, we will be interested in the all the messages "cut" by the trimmer:
+
+Definition: For a j-dag trimmer :math:`p` we introduce the set of messages **p-messages**:
+
+.. math::
+
+   \{m \in M: m.creator \in dom(p) \land p(m.creator) \leqslant m\}
+
+Observe that a function assigning to any honest validator its oldest 0-level message is a jdag trimmer. We will call
+it **the base trimmer** or just **base**.
+
+Definition: Let :math:`p` be some j-dag trimmer.
+
+- **Support of message m in context p** is a subset :math:`R \subset S`
+  obtained by taking all validators :math:`v \in S` such that :math:`\textit{panorama}_m(v) \in \textit{p-messages}`.
+- **1-level message in context p** is a p-message :math:`m` such that the weight of support of :math:`m`
+  in context :math:`p` is at least :math:`\textit{quorum}`.
+
+Definition: **Committee in context p** is a j-dag trimmer :math:`comm:S \to M` such that:
+
+- :math:`S \subset dom(p)`
+- every value :math:`comm(v)` is a 1-level message in context p
+- :math:`\textit{weight}(S) \geqslant \textit{quorum}`
 
 **Example:**
 
@@ -453,10 +473,8 @@ K-level summit
 
 Definition: **k-level summit** is a sequence :math:`(\textit{comm}_1, \textit{comm}_2, ..., \textit{comm}_k)` such that:
 
-- :math:`comm_1` is a committee in context "all validators which created at least one 0-level message"
-- :math:`comm_i` is a committee in context :math:`dom(comm_{i-1})` for :math:`i=2, ..., k`
-
-... where :math:`dom(f)` denotes a domain of function :math:`f`
+- :math:`comm_1` is a committee in context of the base trimmer
+- :math:`comm_i` is a committee in context :math:`comm_{i-1}` for :math:`i=2, ..., k`
 
 **Example:**
 
