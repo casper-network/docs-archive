@@ -299,7 +299,9 @@ We describe here the criterion of finality codenamed “Summit theory ver 2”. 
 -  **ack_level: Int** - acknowledgement level; an integer value bigger than zero
 
 The criterion is centered about the concept of "summit". Summits are subgraphs of j-dag fulfilling certain properties.
-We will use the term **K-summit** for a summit formed with acknowledgement level K.
+We will use the term **k-summit** for a summit formed with acknowledgement level k.
+
+Once a k-level summit is found, the consensus is achieved.
 
 Visual notation
 ~~~~~~~~~~~~~~~
@@ -415,8 +417,8 @@ when we highlight the j-past-cone of message 25:
 Message 18 is not included in j-past-cone of message 25. Hence - messages 18 and 25 form an equivocation.
 
 
-Committee
-~~~~~~~~~
+J-dag trimmer
+~~~~~~~~~~~~~
 
 We will be working in the context of local j-dag of a fixed validator :math:`v_0 \in V`. Let :math:`M` be the set of all
 messages in the local j-dag of :math:`v_0`.
@@ -441,6 +443,9 @@ Definition: For a j-dag trimmer :math:`p` we introduce the set of messages **p-m
 
 Observe that a function assigning to any honest validator its oldest 0-level message is a jdag trimmer. We will call
 it **the base trimmer** or just **base**.
+
+Committee
+~~~~~~~~~
 
 Definition: Let :math:`p` be some j-dag trimmer.
 
@@ -468,8 +473,8 @@ We have the following 1-level committee here:
     :width: 100%
     :align: center
 
-K-level summit
-~~~~~~~~~~~~~~
+Step 4: Find k-level summit
+~~~~~~~~~~~~~~~~~~~
 
 Definition: **k-level summit** is a sequence :math:`(\textit{comm}_1, \textit{comm}_2, ..., \textit{comm}_k)` such that:
 
