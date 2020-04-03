@@ -384,7 +384,7 @@ quorum size, we do not have a summit yet, so this terminates the summit search .
 
 
 Step 3: Find 0-level messages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **0-level messages for a honest validator v** is a subset of :math:`swimlane(v)` formed by taking all messages voting
 for :math:`c` which have no later message by :math:`v` voting for consensus value other than :math:`c`. Please notice
@@ -415,25 +415,25 @@ when we highlight the j-past-cone of message 25:
 Message 18 is not included in j-past-cone of message 25. Hence - messages 18 and 25 form an equivocation.
 
 
-1-level committee
-~~~~~~~~~~~~~~~~~
+Committee
+~~~~~~~~~
 
 We will be working in the context of local jdag of a fixed validator :math:`v_0 \in V`. Let :math:`M` be the set of all
 messages in the local j-dag of :math:`v_0`. Let :math:`S \subset V` be some subset of validators set.
 
 By :math:`weight(S)` we mean just the sum of weights of validators in :math:`S`.
 
-Definition: **0-support of message m in context S** is a subset :math:`R \subset S` obtained by taking all
+Definition: **Support of message m in context S** is a subset :math:`R \subset S` obtained by taking all
 validators :math:`v \in S` such that some 0-level message created by :math:`v` is visible in in :math:`jPastCone(m)`.
 
-Definition: **1-level message in context S** is a 0-level message :math:`m` such that the weight of 0-support of :math:`m`
+Definition: **1-level message in context S** is a 0-level message :math:`m` such that the weight of support of :math:`m`
 in context S is at least :math:`q`.
 
-Definition: **1-level committee in context S** is a function :math:`comm:R \to M` such that:
+Definition: **Committee in context S** is a function :math:`comm:R \to M` such that:
 
 - :math:`R \subset S`
-- every value :math:`comm(v)` is a 1-level message in context S
-- :math:`\textit{weight}(S) \geqslant q`
+- every value :math:`comm(v)` is a 1-level message in context R
+- :math:`\textit{weight}(R) \geqslant q`
 
 **Example:**
 
@@ -448,31 +448,13 @@ We have the following 1-level committee here:
     :width: 100%
     :align: center
 
-K-level committee
-~~~~~~~~~~~~~~~~~
-
-We recursively generalize the idea of 1-level committee to arbitrary acknowledgement level..
-
-Definition: **p-support of message m in context S** is a subset :math:`R \subset S` obtained by taking all
-validators :math:`v \in S` such that some (p-1)-level message created by :math:`v` is visible in in :math:`jPastCone(m)`.
-
-Definition: **(p+1)-level message in context S** is a p-level message :math:`m` such that the weight of p-support of :math:`m`
-in context S is at least :math:`q`.
-
-Definition: **(p+1)-level committee in context S** is a function :math:`comm:R \to M`  set such that:
-
-- :math:`R \subset S`
--  every value :math:`comm(v)` is a p-level message in context S
--  :math:`\textit{weight}(S) \geqslant q`
-
-
 K-level summit
 ~~~~~~~~~~~~~~
 
 Definition: **k-level summit** is a sequence :math:`(\textit{comm}_1, \textit{comm}_2, ..., \textit{comm}_k)` such that:
 
-- :math:`comm_1` is a 1-level committee in context "all validators which created 0-level messages"
-- :math:`comm_i` is an i-level committee in context :math:`dom(comm_{i-1})` for :math:`i=2, ..., k`
+- :math:`comm_1` is a committee in context "all validators which created at least one 0-level message"
+- :math:`comm_i` is a committee in context :math:`dom(comm_{i-1})` for :math:`i=2, ..., k`
 
 ... where :math:`dom(f)` denotes a domain of function :math:`f`
 
@@ -498,13 +480,14 @@ Scala primer for non-scala developers:
     //value declaration (= constant)
     val localValidatorId: ValidatorId
 
-    //variable declaration (a valued can be assigned to a variable many times)
+    //variable declaration (a value can be assigned to a variable many times)
     val localValidatorId: ValidatorId
 
     //method declaration
     def containsPair(a: A, b: B): Boolean
 
-    //special type Unit contains only one value, so it is used to signal that a function returns nothing of interest
+    //special type Unit contains only one value, so it is used to signal that a function returns nothing
+    //of interest
     def addPair(a: A, b: B): Unit
 
     //class declaration
@@ -521,6 +504,7 @@ Scala primer for non-scala developers:
 
     //standalone object
     object PersonsManager {
+      val ageOfAdult: Int = 18
       def findPersonById(id: Int): Option[Person]
       def currentNumberOfPersons: Int
     }
@@ -542,7 +526,10 @@ Scala primer for non-scala developers:
       println(message.id)
 
     //a type of functions from ValidatorId to Message
-    val panorama: ValidatorId => Message
+    type Foo = ValidatorId => Message
+
+    //a variable using functional type
+    var panorama: ValidatorId => Message
 
     //cartesian product of types; means Int x String
     type Prod = (Int,String)
@@ -687,7 +674,7 @@ Message structure:
 
 -  ``id: MessageId`` unique identifier - hash of other fields
 -  ``creator: Int`` id of the validator that created this message
--  `previous: Option[MessageId]` distinguished justification that points to previous message published by creator
+-  ``previous: Option[MessageId]`` distinguished justification that points to previous message published by creator
 -  ``justifications: Seq[MessageId]`` collection of messages that the creator acknowledges as seen at the moment of
    creation of this message; this collection may possibly be empty; only message identifiers are kept here
 -  ``consensusValue: Option[Con]`` consensus value this message is voting for; the value is optional, because we allow
