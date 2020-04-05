@@ -274,13 +274,14 @@ tolerance :math:`t`
 if:
 
 1. :math:`\textit{Estimator}(S) = c`
-2. For every snapshot :math:`S \in \mathit{Snapshots}(\mathcal{M})` such that :math:`S \subset R` one of the following is true:
+2. For every snapshot :math:`S \in \mathit{Snapshots}(\mathcal{M})` such that :math:`S \subset R` one of the following
+   is true:
 
   - :math:`Estimator(R) = c`
   - total weights of equivocators visible in :math:`R` is bigger than :math:`t`
 
-**Finality criterion** is any function :math:`fc: \mathit{Snapshots}(\mathcal{M}) \times Int \to C \cup {EMPTY}` such that if
-:math:`fc(S,t) = c` then :math:`c` is finalized in :math:`S` with fault tolerance :math:`t`.
+**Finality criterion** is any function :math:`fc: \mathit{Snapshots}(\mathcal{M}) \times Int \to C \cup {EMPTY}` such
+that if :math:`fc(S,t) = c` then :math:`c` is finalized in :math:`S` with fault tolerance :math:`t`.
 
 Intuitively, finality is something that is easy to define mathematically but potentially hard to discover by an
 efficient calculation. Therefore in general we discuss various finality criteria, which are approximations of finality.
@@ -331,21 +332,7 @@ Validator colors are also meaningful:
 
 The color inside of each message represents the consensus value this message is voting for.
 
-Similarly to summits, messages also have "acknowledgement levels". We will say **K-level message** for a message with
-acknowledgement level K. Acknowledgement level for a message is optional. We will use the term **plain-message** to
-reference messages that do not have acknowledgement level.
-
-The border of a message signals the following information:
-
--  black border: plain message
--  red border: 0-level message
--  yellow border: 1-level message
--  green border: 2-level message
--  lime border: 3-level message
--  blue border: 4-level message
--  dashed border: this message has not arrived yet to validator 0; it is not part of j-dag as seen by validator 0
-
-Caution: By definition (see later) every K-level message is also (K-1)-level message.
+The color outside represents the information related to summit structure (explained later in this chapter).
 
 Step 1: Calculate quorum size
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -444,6 +431,10 @@ Definition: For a j-dag trimmer :math:`p` we introduce the set of messages **p-m
 Observe that a function assigning to any honest validator its oldest 0-level message is a jdag trimmer. We will call
 it **the base trimmer** or just **base**.
 
+.. figure:: pictures/base-trimmer-explained.png
+    :width: 100%
+    :align: center
+
 Committee
 ~~~~~~~~~
 
@@ -474,12 +465,14 @@ We have the following 1-level committee here:
     :align: center
 
 Step 4: Find k-level summit
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Definition: **k-level summit** is a sequence :math:`(\textit{comm}_1, \textit{comm}_2, ..., \textit{comm}_k)` such that:
 
-- :math:`comm_1` is a committee in context of the base trimmer
-- :math:`comm_i` is a committee in context :math:`comm_{i-1}` for :math:`i=2, ..., k`
+- :math:`\textit{comm}_1` is a committee in context of the base trimmer
+- :math:`\textit{comm}_i` is a committee in context :math:`\textit{comm}_{i-1}` for :math:`i=2, ..., k`
+
+In particular - a committee in context of the base trimmer is 1-level summit.
 
 **Example:**
 
@@ -488,6 +481,31 @@ Below is an example of 4-level summit for 8 validators (all having equal weights
 .. figure:: pictures/summit-2.png
     :width: 100%
     :align: center
+
+Similarly to summits, messages also have "acknowledgement levels". We will say **K-level message** for a message with
+acknowledgement level K. Acknowledgement level for a message is optional. We will use the term **plain-message** to
+reference messages that do not have acknowledgement level.
+
+The border of a message signals the following information:
+
+-  black border: plain message
+-  red border: 0-level message
+-  yellow border: :math:`\textit{comm}_1-\textit{messages}` that are not :math:`\textit{comm}_1 \textit{values}`
+-  green border: :math:`\textit{comm}_2-\textit{messages}` that are not :math:`\textit{comm}_2 \textit{values}`
+-  lime border: :math:`\textit{comm}_3-\textit{messages}` that are not :math:`\textit{comm}_3 \textit{values}`
+-  blue border: :math:`\textit{comm}_4-\textit{messages}` that are not :math:`\textit{comm}_4 \textit{values}`
+-  dashed border: this message has not arrived yet to validator 0; it is not part of j-dag as seen by validator 0
+
+Looking at border colors, it is easy to find subsequent committees.
+
+- :math:`\textit{comm}_1` is formed by leftmost yellow messages
+- :math:`\textit{comm}_2` is formed by leftmost green messages
+- :math:`\textit{comm}_3` is formed by leftmost lime messages
+- :math:`\textit{comm}_4` is formed by leftmost blue messages
+
+Leftmost red border messages form the base-trimmer.
+
+Caution: search for "leftmost messages" separately for every swimlane.
 
 Reference implementation
 ------------------------
