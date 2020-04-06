@@ -410,10 +410,9 @@ J-dag trimmer
 We will be working in the context of local j-dag of a fixed validator :math:`v_0 \in V`. Let :math:`M` be the set of all
 messages in the local j-dag of :math:`v_0`.
 
-Definition: Let :math:`S \subset V` be some subset of the validators set.
+Definition: Let :math:`S \subset V` be some subset of the validators set. By **j-dag trimmer** we mean
+any function :math:`p:S \to M` such that :math:`\forall{v \in S}, p(v).\textit{creator} = v`
 
-- We will use the term **j-dag trimmer** for any function :math:`p:S \to M`.
-- By :math:`weight(S)` we mean the sum of weights of validators in :math:`S`.
 
 If you think of swimlanes as being "fibers" or "hair" then having a trimmer means:
 
@@ -440,6 +439,7 @@ Committee
 
 Definition: Let :math:`p` be some j-dag trimmer.
 
+- By :math:`weight(S)` we mean the sum of weights of validators in :math:`S`.
 - **Support of message m in context p** is a subset :math:`R \subset S`
   obtained by taking all validators :math:`v \in S` such that :math:`\textit{panorama}_m(v) \in \textit{p-messages}`.
 - **1-level message in context p** is a p-message :math:`m` such that the weight of support of :math:`m`
@@ -614,6 +614,8 @@ We are using the following abstraction of mutable 2-argument relation:
 
 .. code:: scala
 
+    //Contract for a mutable 2-argument relation (= subset of the cartesian product AxB)
+    //We use this structure to represent messages buffer.
     trait Relation[A,B] {
       def addPair(a: A, b: B): Unit
       def removePair(a: A, b: B): Unit
@@ -634,6 +636,8 @@ We are using the following abstraction of mutable 2-argument relation:
 
 .. code:: scala
 
+    //Abstraction of directed acyclic graph.
+    //We use this to represent the j-dag.
     trait Dag[Vertex] {
 
       /**
@@ -766,6 +770,9 @@ We use panoramas to encode the "perspective on the j-dag as seen from given mess
 
 .. code:: scala
 
+    //Represents a result of j-dag processing that is an intermediate result needed as an input to the estimator.
+    //We calculate the panorama associated with every message - this ends up being a data structure
+    //that is "parallel" to the local j-dag
     case class Panorama(
                          honestSwimlanesTips: Map[ValidatorId,Message],
                          equivocators: Set[ValidatorId]
@@ -782,6 +789,7 @@ We use panoramas to encode the "perspective on the j-dag as seen from given mess
         equivocators = Set.empty[ValidatorId]
       )
     }
+
 
 Validator
 ~~~~~~~~~
@@ -823,10 +831,12 @@ The implementation of a validator is complex so we split it into sections.
 .. code:: scala
 
   val localValidatorId: ValidatorId
-  val weightsOfValidators: Map[ValidatorId, Weight]
+  val weightsOfValidators: Map[ValidatorId, Weight] //this map must be the same in every validator instance
   val gossipService: GossipService
   val serializer: MessagesSerializer
   val preferredConsensusValue: Con
+  val relativeFTT: Double
+  val ackLevel: Int
 
 -  ``weightsOfValidators: Map[ValidatorId, Int]`` - weights of validators
 -  ``finalizer: Finalizer`` - finality detector
@@ -841,9 +851,16 @@ The implementation of a validator is complex so we split it into sections.
   val messageIdToMessage: mutable.Map[MessageId, Message]
   var globalPanorama: Panorama = Panorama.empty
   val message2panorama: mutable.Map[Message,Panorama]
-  val finalityDetector: FinalityDetector
   val estimator: Estimator = new ReferenceEstimator(messageIdToMessage, weightsOfValidators)
   var myLastMessagePublished: Option[Message] = None
+  val finalityDetector: FinalityDetector = new ReferenceFinalityDetector(
+    relativeFTT,
+    ackLevel,
+    weightsOfValidators,
+    jdagGraph,
+    messageIdToMessage,
+    message2panorama,
+    estimator)
 
 -  ``messagesBuffer: Relation[Message,MessageId]`` - a buffer of messages received, but not incorporated into ``jdag``
    yet; a pair :math:`(m,j)` in this relation represents buffered message :math:`m` waiting for not-yet-received message
@@ -879,12 +896,20 @@ The implementation of a validator is complex so we split it into sections.
 
     while (queue.nonEmpty) {
       val nextMsg = queue.dequeue()
-      if (! messageIdToMessage.contains(nextMsg.id) && isValid(nextMsg)) {
-        addToLocalJdag(nextMsg)
-        val waitingForThisOne = messagesBuffer.findSourcesFor(nextMsg.id)
-        messagesBuffer.removeTarget(nextMsg.id)
-        val unblockedMessages = waitingForThisOne.filterNot(b => messagesBuffer.hasSource(b))
-        queue enqueueAll unblockedMessages
+      if (! messageIdToMessage.contains(nextMsg.id)) {
+        if (isValid(nextMsg)) {
+          addToLocalJdag(nextMsg)
+          val waitingForThisOne = messagesBuffer.findSourcesFor(nextMsg.id)
+          messagesBuffer.removeTarget(nextMsg.id)
+          val unblockedMessages = waitingForThisOne.filterNot(b => messagesBuffer.hasSource(b))
+          queue enqueueAll unblockedMessages
+        } else {
+          gotInvalidMessage(nextMsg)
+          //nextMsg was already removed from messages buffer
+          //any messages recursively depending on it will stay in the buffer
+          //some form of "garbage collecting" too old messages that wait in the buffer for ages
+          //is reasonable, but doing this properly is beyond the scope of the reference implementation
+        }
       }
     }
   }
@@ -898,16 +923,12 @@ The implementation of a validator is complex so we split it into sections.
     addToLocalJdag(msg)
     val bm = serializer.convertToBinaryRepresentationWithSignature(msg)
     gossipService.broadcast(bm)
+    myLastMessagePublished = Some(msg)
   }
 
   def createNewMessage(): Message = {
     val creator: ValidatorId = localValidatorId
-    val justifications: Seq[MessageId] =
-      jdagGraph.tips
-        .groupBy(m => m.creator)
-        .map {case (vid,coll) => coll.head}
-        .map(m => m.id)
-        .toSeq
+    val justifications: Seq[MessageId] = globalPanorama.honestSwimlanesTips.values.map(msg => msg.id).toSeq
     val dagLevel: Int =
       if (justifications.isEmpty)
         0
@@ -919,7 +940,10 @@ The implementation of a validator is complex so we split it into sections.
       else if (justifications.isEmpty)
         Some(preferredConsensusValue)
       else
-        estimator.deriveConsensusValueFrom(globalPanorama)
+        estimator.deriveConsensusValueFrom(globalPanorama) match {
+          case Some(c) => Some(c)
+          case None => Some(preferredConsensusValue)
+        }
 
     val msgWithBlankId = Message (
       id = placeholderHash,
@@ -944,13 +968,20 @@ The implementation of a validator is complex so we split it into sections.
 
 .. code:: scala
 
+  //decides whether current vote should be empty (as opposed to voting for whatever estimator tells)
   def shouldCurrentVoteBeEmpty(): Boolean
 
+  //"empty" hash value needed for message hash calculation
   def placeholderHash: Hash
 
+  //hashing of messages
   def generateMessageIdFor(message: Message): Hash
 
-  def consensusHasBeenReached(summit: Summit)
+  //do whatever is needed after consensus (= summit) has been discovered
+  def consensusHasBeenReached(summit: Summit): Unit
+
+  //we received an invalid message; a policy for handling such situations can be plugged-in here
+  def gotInvalidMessage(message: Message): Unit
 
 **Validation of incoming messages**
 
@@ -989,7 +1020,8 @@ The implementation of a validator is complex so we split it into sections.
         case None => message.justifications
         case Some(p) => message.justifications :+ p
       }
-    val effectiveJustificationsAsMessages: Seq[Message] = effectiveJustifications map (id => messageIdToMessage(id))
+    val effectiveJustificationsAsMessages: Seq[Message] =
+      effectiveJustifications map (id => messageIdToMessage(id))
     val toposortIteratorOfJPastCone = jdagGraph.toposortTraverseFrom(effectiveJustificationsAsMessages)
 
     return message.previous match {
@@ -1000,8 +1032,9 @@ The implementation of a validator is complex so we split it into sections.
         }
       case Some(p) =>
         val declaredPreviousMessage: Message = messageIdToMessage(p)
-        val realFirst: Message = toposortIteratorOfJPastCone.filter(m => m.creator == message.creator).next()
-        declaredPreviousMessage == realFirst
+        val actualPreviousMessage: Message = toposortIteratorOfJPastCone
+          .filter(m => m.creator == message.creator).next()
+        declaredPreviousMessage == actualPreviousMessage
     }
   }
 
@@ -1104,6 +1137,7 @@ The implementation of a validator is complex so we split it into sections.
       isEquivocation(messageIdToMessage(higher.previous.get), lower)
   }
 
+
 Estimator
 ~~~~~~~~~
 
@@ -1162,11 +1196,14 @@ Estimator
 Finality detector
 ~~~~~~~~~~~~~~~~~
 
-Representation of a committee:
+Representation of a j-dag trimmer:
 
 .. code:: scala
 
-    case class Committee(entries: Map[ValidatorId,Message]) {
+    /**
+     * Represents a j-dag trimmer.
+     */
+    case class Trimmer(entries: Map[ValidatorId,Message]) {
       def validators: Iterable[ValidatorId] = entries.keys
       def validatorsSet: Set[ValidatorId] = validators.toSet
     }
@@ -1178,13 +1215,14 @@ Representation of a summit:
     case class Summit(
                        relativeFtt: Double,
                        level: Int,
-                       committees: Array[Committee]
+                       committees: Array[Trimmer]
                      )
 
 Implementation of the "summit theory" finality criterion:
 
 .. code:: scala
 
+    //Implementation of finality criterion based on summits theory.
     class ReferenceFinalityDetector(
                                      relativeFTT: Double,
                                      ackLevel: Int,
@@ -1206,22 +1244,21 @@ Implementation of the "summit theory" finality criterion:
         estimator.deriveConsensusValueFrom(latestPanorama) match {
           case None =>
             return None
-          case Some(mostSupportedConsensusValue) =>
+          case Some(winnerConsensusValue) =>
             val validatorsVotingForThisValue: Iterable[ValidatorId] = estimator.extractVotesFrom(latestPanorama)
-                .filter {case (validatorId,vote) => vote == mostSupportedConsensusValue}
+                .filter {case (validatorId,vote) => vote == winnerConsensusValue}
                 .keys
-            val zeroLevelCommittee: Committee =
-              findOldestZeroLevelMessages(mostSupportedConsensusValue,validatorsVotingForThisValue, latestPanorama)
+            val baseTrimmer: Trimmer =
+              findBaseTrimmer(winnerConsensusValue,validatorsVotingForThisValue, latestPanorama)
 
-            if (sumOfWeights(zeroLevelCommittee.validators) < quorum)
+            if (sumOfWeights(baseTrimmer.validators) < quorum)
               return None
             else {
-              //var committeeOnCurrentLevel: Committee = zeroLevelCommittee
-              val committeesFound: Array[Committee] = new Array[Committee](ackLevel + 1)
-              committeesFound(0) = zeroLevelCommittee
+              val committeesFound: Array[Trimmer] = new Array[Trimmer](ackLevel + 1)
+              committeesFound(0) = baseTrimmer
               for (k <- 1 to ackLevel) {
-                val levelKCommittee: Option[Committee] =
-                  findLevelNPlus1Committee(committeesFound(k-1), committeesFound(k-1).validatorsSet)
+                val levelKCommittee: Option[Trimmer] =
+                  findCommittee(committeesFound(k-1), committeesFound(k-1).validatorsSet)
                 if (levelKCommittee.isEmpty)
                   return None
                 else
@@ -1233,42 +1270,46 @@ Implementation of the "summit theory" finality criterion:
         }
       }
 
-      private def findOldestZeroLevelMessages(
+      private def findBaseTrimmer(
                                        consensusValue: Con,
                                        validatorsSubset: Iterable[ValidatorId],
-                                       latestPanorama: Panorama): Committee = {
-        val pairs: Iterable[(ValidatorId, Message)] = for {
-          validator <- validatorsSubset
-          swimlaneTip: Message = latestPanorama.honestSwimlanesTips(validator)
-          oldestZeroLevelMessage: Message = swimlaneIterator(swimlaneTip)
-            .takeWhile(m => m.consensusValue.isEmpty || m.consensusValue.get == consensusValue)
-            .toSeq
-            .last
+                                       latestPanorama: Panorama): Trimmer = {
+        val pairs: Iterable[(ValidatorId, Message)] =
+          for {
+            validator <- validatorsSubset
+            swimlaneTip: Message = latestPanorama.honestSwimlanesTips(validator)
+            oldestZeroLevelMessage: Message = swimlaneIterator(swimlaneTip)
+              .takeWhile(m => m.consensusValue.isEmpty || m.consensusValue.get == consensusValue)
+              .toSeq
+              .last
         }
           yield (validator, oldestZeroLevelMessage)
 
-        return Committee(pairs.toMap)
+        val pairsWithNonemptyVote = pairs filter {case (validator, msg) => msg.consensusValue.isDefined}
+        return Trimmer(pairsWithNonemptyVote.toMap)
       }
 
       @tailrec
-      private def findLevelNPlus1Committee(
-                                            levelNCommittee: Committee,
-                                            candidatesConsidered: Set[ValidatorId]): Option[Committee] = {
+      private def findCommittee(
+                                 context: Trimmer,
+                                 candidatesConsidered: Set[ValidatorId]): Option[Trimmer] = {
+        //pruning of candidates collection
+        //we filter out validators that do not have a 1-level message in provided context
         val approximationOfResult: Map[ValidatorId, Message] =
           candidatesConsidered
-            .map(validator => (validator, findNextLevelMsg(validator, levelNCommittee, candidatesConsidered)))
+            .map(validator => (validator, findLevel1Msg(validator, context, candidatesConsidered)))
             .collect {case (validator, Some(msg)) => (validator, msg)}
             .toMap
 
         val candidatesAfterPruning: Set[ValidatorId] = approximationOfResult.keys.toSet
 
-        if (sumOfWeights(candidatesAfterPruning) < quorum)
+        return if (sumOfWeights(candidatesAfterPruning) < quorum)
           None
         else
-        if (candidatesAfterPruning forall (v => candidatesConsidered.contains(v)))
-          Some(Committee(approximationOfResult))
-        else
-          findLevelNPlus1Committee(levelNCommittee, candidatesAfterPruning)
+          if (candidatesAfterPruning forall (v => candidatesConsidered.contains(v)))
+            Some(Trimmer(approximationOfResult))
+          else
+            findCommittee(context, candidatesAfterPruning)
       }
 
       private def swimlaneIterator(message: Message): Iterator[Message] =
@@ -1285,36 +1326,49 @@ Implementation of the "summit theory" finality criterion:
         }
 
       /**
-       * In the swimlane of given validator which is part of a committee we attempt finding lowest (= oldest) message
-       * that has support at least q (relative to the given committee, ).
+       * In the swimlane of given validator we attempt finding lowest (= oldest) message that has support
+       * at least q in given context.
        */
-      private def findNextLevelMsg(
-                                    validator: ValidatorId,
-                                    levelNCommittee: Committee,
-                                    candidatesConsidered: Set[ValidatorId]
+      private def findLevel1Msg(
+                                 validator: ValidatorId,
+                                 context: Trimmer,
+                                 candidatesConsidered: Set[ValidatorId]
                                   ): Option[Message] =
-        findNextLevelMsgRecursive(validator, levelNCommittee, candidatesConsidered, levelNCommittee.entries(validator))
+        findNextLevelMsgRecursive(
+          validator,
+          context,
+          candidatesConsidered,
+          context.entries(validator))
 
       @tailrec
       private def findNextLevelMsgRecursive(
                                              validator: ValidatorId,
-                                             levelNCommittee: Committee,
+                                             context: Trimmer,
                                              candidatesConsidered: Set[ValidatorId],
                                              message: Message): Option[Message] = {
 
-        val relevantSubPanorama: Map[ValidatorId, Message] = message2panorama(message).honestSwimlanesTips filter
-          {case (v,msg) => candidatesConsidered.contains(v) && msg.dagLevel >= levelNCommittee.entries(v).dagLevel}
+        val relevantSubPanorama: Map[ValidatorId, Message] =
+          message2panorama(message).honestSwimlanesTips filter
+            {case (v,msg) =>
+              candidatesConsidered.contains(v) && msg.dagLevel >= context.entries(v).dagLevel
+            }
 
-        if (sumOfWeights(relevantSubPanorama.keys) >= quorum)
+        return if (sumOfWeights(relevantSubPanorama.keys) >= quorum)
           Some(message)
         else {
-          val nextMessageInThisSwimlane = jDag.sources(message).filter(m => m.creator == validator).head
-          findNextLevelMsgRecursive(validator, levelNCommittee, candidatesConsidered, nextMessageInThisSwimlane)
+          val nextMessageInThisSwimlane: Option[Message] =
+            jDag.sources(message).find(m => m.creator == validator)
+          nextMessageInThisSwimlane match {
+            case Some(m) => findNextLevelMsgRecursive(validator, context, candidatesConsidered, m)
+            case None => None
+          }
         }
       }
 
-      private def sumOfWeights(validators: Iterable[ValidatorId]): Weight = validators.map(v => weightsOfValidators(v)).sum
+      private def sumOfWeights(validators: Iterable[ValidatorId]): Weight =
+        validators.map(v => weightsOfValidators(v)).sum
 
     }
+
 
 
