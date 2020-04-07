@@ -9,13 +9,12 @@ validator has a **weight** -- a non-zero integer value representing the "voting 
 
 The goal validators collectively pursue is to pick a single value from a finite set :math:`Con` we call
 the set of **consensus values**. Once the agreement is achieved, the problem is considered solved (i.e. validators
-terminate their operation).
+terminate their operation). We require that :math:`Con` is totally ordered.
 
 The resulting solution of this problem is not a blockchain yet. It is however a core building block of our blockchain
-design. The way abstract consensus is used for building a blockchain is explained in subsequent chapers.
+design. The way abstract consensus is used for building a blockchain is explained in subsequent chapters.
 
 Caution: we use **ACC** as the shortcut for **Abstract Casper Consensus**.
-
 
 Network model
 -------------
@@ -42,19 +41,42 @@ All the messages broadcast by validators have the same structure. Every message 
 - includes the identifier of the validator who created :math:`m.creator`
 - references messages the creator confirms as seen at the moment of creating :math:`m` - we call this list
   "justifications" - :math:`m.justifications`
-- points to the consensus value that creator is voting for - :math:`\textit{m.consensusValue}`
+- has a vote:
+
+    - this means pointing to a some consensus value, or
+    - picking no consensus value (i.e. this is "empty vote")
+
 - is cryptographically signed by the creator
 
 The consensus value included in the message is however optional - it is OK to broadcast an "empty vote" message. The
 semantics of such empty vote is "I support my previous vote, unchanged". If the previous vote is empty, it counts
 as "vote for nothing".
 
+This is the pseudo-code definition of a message structure (taken from the reference implementation, which is
+presented in detail later in this chapter):
+
+.. code:: scala
+
+    //Definition of messages exchanged by validators.
+    case class Message(
+                        id: MessageId,
+                        creator: ValidatorId,
+                        previous: Option[MessageId],
+                        justifications: Seq[MessageId],
+                        vote: Option[Con],
+                        dagLevel: Int
+    )
+
 J-dag
 -----
 
-Let us consider arbitrary set of messages :math:`M` closed under taking justifications, i.e. for every :math:`m \in M`
-justifications referenced in :math:`m` also belong to :math:`M`. We will define the following acyclic directed graph
-:math:`jDag(M)`:
+We use the term **snapshot** for a set of messages :math:`M`  that is closed under taking justifications, i.e. such that:
+
+.. math::
+
+  \forall{m \in M}, m.justifications \subset M
+
+Let us consider arbitrary snapshot :math:`M`. We will define the following acyclic directed graph :math:`jDag(M)`:
 
 -  vertices = all elements of :math:`M`;
 -  edges = all pairs :math:`m_1 \rightarrow m_2` such that :math:`m_2 \in m_1.justifications`.
@@ -68,36 +90,37 @@ We require that every validator maintains a representation of :math:`jDag(M)` re
 knowledge on the ongoing consensus establishing process. Observe that :math:`jDag(M)` may be equivalently seen as
 a POSET because of the well-known equivalence between transitively closed DAGs and POSETs. In the remainder of this
 chapter we blur the difference between :math:`jDag(M)` seen as a DAG and its transitive closure seen as a POSET.
-We will use the relation symbols :math:`<` and :math:`\leqslant` for the implied partial order of :math:`jDag(M)`.
+We will use the relation symbols :math:`<` and :math:`\leqslant` for the implied partial order of :math:`jDag(M)`,
+where for two messages :math:`a` and :math:`b` a justification :math:`a \to b` implies :math:`b < a`.
 
-When :math:`m \in M`, we define :math:`jPastCone(m)` as :math:`\{x \in M: x \leqslant m \}`. Of course this is also
-a DAG.
+When :math:`m \in M`, we define:
 
-In the context of any :math:`jDag(M)` we introduce the following concepts:
+- :math:`jPast(m)` as :math:`\{x \in M: x < m \}`.
+- :math:`jPastCone(m)` as :math:`\{x \in M: x \leqslant m \}`.
+
+Of course both :math:`jPast(m)` and :math:`jPastCone(m)` are snapshots.
+
+In the context of any snapshot :math:`M` we introduce the following concepts:
 
 **transitive justification of message m**
-   is any message :math:`p` such that :math:`jDag(M)` contains a path :math:`m \rightarrow ...\rightarrow p`; this naming
-   reflects the fact that an arrow in :math:`jDag(M)` goes always from newer messages to older messages; in POSET lingo
-   it translates to :math:`p < m`, and we specifically pick here the direction of the ordering relation to reflect
-   the time flow, so if :math:`p < m` then message :math:`m` confirms that it saw :math:`p`
+   is any message :math:`x` such that :math:`x < m`; we also say that ":math:`m` has seen :math:`x`"
 
 **swimlane of validator v**
-   or just :math:`swimlane(v,M)` is :math:`\{m \in M: m.creator = v\}`; of course, being a subset of :math:`jDag(M)`,
-   :math:`swimlane(v,M)` is also a DAG and a POSET
+   or just :math:`swimlane(v,M)` is :math:`\{m \in M: m.creator = v\}`; a swimlane usually is not a snapshot,
+   nevertheless it inherits the ordering from  :math:`jDag(M)`, so it can be seen as a DAG and a POSET
 
 **tip**
-   is a maximal element in :math:`jDag(M)`; of course, being a POSET, :math:`jDag(M)` can contain more than one maximal
-   element
+   is a maximal element in :math:`jDag(M)`; of course :math:`jDag(M)` can contain more than one maximal element
 
 **validator v is honest in M**
-   if :math:`swimlane(v,M)` is empty or it is a nonempty chain; in POSET language in translates to :math:`swimlane(v,M)`
-   being a (possibly empty) linear order
+   means :math:`swimlane(v,M)` is empty or it is a nonempty chain; in POSET language in translates to
+   :math:`swimlane(v,M)` being a (possibly empty) linear order
 
 **validator v is an equivocator in M**
    if :math:`v` is not honest in :math:`M`
 
 **equivocation by v**
-   is a proof that validator :math:`v` is not honest; in other words it is a pair of messages :math:`a,b \in M`,
+   is a proof that a validator :math:`v` is not honest; in other words it is a pair of messages :math:`a,b \in M`,
    both created by :math:`v`, such that :math:`\neg (a < b)` and :math:`\neg (b < a)`
 
 **latest message of a validator v in M**
@@ -107,9 +130,9 @@ In the context of any :math:`jDag(M)` we introduce the following concepts:
 **honest validators in M**
   :math:`\{v \in \textit{Validators}: \textit{v is honest in M}\}`
 
-**honest panorama of message m**
-   is a function :math:`\textit{panorama}: \textit{HonestValidators}(M) \rightarrow M`, :math:`panorama_m(v) =
-   \textit{latest message of v in jPastCone(m)}`
+**panorama of M**
+   is a partial function :math:`\textit{panorama(M)}: \textit{Validators} \rightarrow M`, defined for every validator
+   which is honest in M and swimlane(v,M) is nonempty, :math:`panorama(M)(v) = \textit{tip of the swimlane of v}`
 
 These concepts are illustrated below. Messages are represented with circles. Justifications are represented with
 arrows. Colors inside a circle represents consensus values.
@@ -121,6 +144,37 @@ arrows. Colors inside a circle represents consensus values.
 .. figure:: pictures/acc-jpastcone.png
     :width: 100%
     :align: center
+
+Estimator
+---------
+
+Upon creation of a new message :math:`m`, a validator must decide which consensus value :math:`m` will vote for. We limit
+the freedom here by enforcing that the selected consensus value is constrained by the function called
+**estimator**:
+
+.. math::
+
+  \textit{estimator}: Snapshots \to Con \cup \{ None \}
+
+For any message :math:`m` we say **estimated vote for m** for :math:`\textit{estimator}(jPast(m))`.
+
+We enforce the votes by the following rule:
+
+- if estimated vote for :math:`m` is not None then must vote for the estimated vote
+- otherwise, :math:`m` is allowed to vote for any value in :math:`Con`
+
+Let us consider any snapshot :math:`M`. The way :math:`estimator(M)` is calculated goes as follows:
+
+  1. Take the collection :math:`H` of all honest validators in :math:`M`.
+  2. Restrict :math:`H` to collection of validators that created at least one message with non-empty vote - :math:`H'`
+  3. If :math:`H'` is empty - return :math:`None`, otherwise - continue calculation.
+  4. For every validator in :math:`H'` - find its latest message with non-empty vote.
+  5. Sum latest messages by weight; this will end up with a mapping :math:`\textit{totalVotes}: Con \to Int`,
+     for every consensus value :math:`c` it returns the sum of weights of validators voting for :math:`c`.
+  6. Find all points :math:`c \in Con` such that :math:`\textit{totalVotes}` has maximum value at :math:`c`.
+  7. From elements found in the previous step pick maximum element :math:`cmax \in Con`. This is where we use the fact
+     that :math:`Con` is finite and totally ordered.
+  8. The result of the estimator is :math:`cmax`.
 
 Validity conditions
 -------------------
@@ -135,7 +189,7 @@ Formal validation is:
 
 Semantic validation is:
 
-- consensus value :math:`m.consensusValue` must be compliant with applying the estimator to :math:`jPastCone(m)`
+- consensus value :math:`m.vote` must be compliant with applying the estimator to :math:`jPast(m)`
 - justifications :math:`m.justifications` must reference messages belonging to distinct swimlanes,
   i.e. if :math:`j_1`, :math:`j_2` are two justifications in :math:`m`, then :math:`creator(j_1) \ne creator(j_2)`
 
@@ -179,33 +233,6 @@ message with:
 - justifications set to tips of all swimlanes, according to local j-dag; in case of equivocators, i.e. when the
   corresponding swimlane has more than one tip - validator picks just one tip (any)
 - consensus value determined by estimator, as applied to the justifications
-
-Estimator
----------
-
-Upon creation of a new message :math:`m`, a validator must decide what consensus value :math:`m` will vote for. We limit
-the freedom here by enforcing that the selected consensus value is constrained by a certain function called
-**estimator**. This function depends only on justifications of message :math:`m`, and it returns a single consensus
-value. Estimator value is however not defined for an empty list of justifications.
-
-When a validator makes a vote, it is allowed to:
-
--  either pick a value from the subset returned by the estimator
--  or pick :math:`None`, and so create an empty vote
-
-Caution: For defining the estimator we need the set of consensus values :math:`Con` to be totally ordered.
-
-For a set of justifications :math:`J`, we calculate the estimator value in the following way:
-
-  1. Take :math:`CJ` a smallest transitive closure of :math:`J`
-  2. Take the collection of all honest validators in :math:`CJ`.
-  3. Restrict to collection of validators that created at least one message.
-  4. For every validator - find its latest message with non-empty vote.
-  5. Sum latest messages by weight - this will end up with a mapping :math:`tv: Con \to Int` - for every
-     consensus value :math:`c` it returns the sum of weights of validators voting for :math:`c`.
-  6. Find all points :math:`c \in Con` such that :math:`tv` has maximum value at :math:`c`.
-  7. Using total order on :math:`Con`, from elements found in the previous step pick maximum element :math:`cmax`.
-  8. The result is :math:`cmax`.
 
 The concept of finality
 -----------------------
@@ -375,7 +402,7 @@ quorum size, we do not have a summit yet, so this terminates the summit search .
 Step 3: Find 0-level messages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**0-level messages for a honest validator v** is a subset of :math:`swimlane(v)` formed by taking all messages voting
+**0-level messages for an honest validator v** is a subset of :math:`swimlane(v)` formed by taking all messages voting
 for :math:`c` which have no later message by :math:`v` voting for consensus value other than :math:`c`. Please notice
 that empty votes are considered a continuation of last non-empty vote.
 
@@ -448,7 +475,8 @@ Definition: Let :math:`p` be some j-dag trimmer.
 Definition: **Committee in context p** is a j-dag trimmer :math:`comm:S \to M` such that:
 
 - :math:`S \subset dom(p)`
-- every value :math:`comm(v)` is a 1-level message in context p
+- every value :math:`comm(v)` is a 1-level message in context :math:`p|_S` (i.e. we restrict here :math:`p` to subdomain
+  :math:`S`
 - :math:`\textit{weight}(S) \geqslant \textit{quorum}`
 
 **Example:**
@@ -565,6 +593,20 @@ Scala primer for non-scala developers:
     //a loop iterating over a collection of messages
     for (m <- messages)
       println(message.id)
+
+    //nested imperative loop
+    for {
+      v <- validators
+      m <- messages(v)
+    } {
+      println(m.id)
+    }
+
+    //for comprehension
+    for (i <- 0 until n;
+        j <- 0 until n if i + j == v)
+    yield
+     (i, j)
 
     //a type of functions from ValidatorId to Message
     type Foo = ValidatorId => Message
@@ -713,7 +755,7 @@ Message structure:
       creator: ValidatorId,
       previous: Option[MessageId],
       justifications: Seq[MessageId],
-      consensusValue: Option[Con],
+      vote: Option[Con],
       dagLevel: Int
     )
 
@@ -722,7 +764,7 @@ Message structure:
 -  ``previous: Option[MessageId]`` distinguished justification that points to previous message published by creator
 -  ``justifications: Seq[MessageId]`` collection of messages that the creator acknowledges as seen at the moment of
    creation of this message; this collection may possibly be empty; only message identifiers are kept here
--  ``consensusValue: Option[Con]`` consensus value this message is voting for; the value is optional, because we allow
+-  ``vote: Option[Con]`` consensus value this message is voting for; the value is optional, because we allow
    empty votes
 -  ``daglevel: Int`` height of this message in justifications DAG
 
@@ -937,8 +979,6 @@ The implementation of a validator is complex so we split it into sections.
     val consensusValue: Option[Con] =
       if (shouldCurrentVoteBeEmpty())
         None
-      else if (justifications.isEmpty)
-        Some(preferredConsensusValue)
       else
         estimator.deriveConsensusValueFrom(globalPanorama) match {
           case Some(c) => Some(c)
@@ -959,7 +999,7 @@ The implementation of a validator is complex so we split it into sections.
       msgWithBlankId.creator,
       msgWithBlankId.previous,
       msgWithBlankId.justifications,
-      msgWithBlankId.consensusValue,
+      msgWithBlankId.vote,
       msgWithBlankId.dagLevel
     )
   }
@@ -1039,7 +1079,7 @@ The implementation of a validator is complex so we split it into sections.
   }
 
   def validityConditionConsensusValue(message: Message): Boolean =
-    message.consensusValue match {
+    message.vote match {
       case None => true
       case Some(consensusValueInMessage) =>
         estimator.deriveConsensusValueFrom(panoramaOf(message)) match {
@@ -1143,6 +1183,7 @@ Estimator
 
 .. code:: scala
 
+    //Reference implementation of the estimator described in theory chapter.
     class ReferenceEstimator(
                               id2msg: MessageId => Message,
                               weight: ValidatorId => Weight
@@ -1153,14 +1194,14 @@ Estimator
         if (panorama.honestSwimlanesTips.isEmpty)
           return None
 
-        val votes: Map[ValidatorId, Con] = extractVotesFrom(panorama)
-        //this may happen if all votes were empty (i.e. consensus value = None)
-        if (votes.isEmpty)
+        val effectiveVotes: Map[ValidatorId, Con] = extractVotesFrom(panorama)
+        //this may happen if all effective votes were empty (i.e. consensus value = None)
+        if (effectiveVotes.isEmpty)
           return None
 
         //summing votes
         val accumulator = new mutable.HashMap[Con, Weight]
-        for ((validator, c) <- votes) {
+        for ((validator, c) <- effectiveVotes) {
           val oldValue: Weight = accumulator.getOrElse(c, 0L)
           val newValue: Weight = oldValue + weight(validator)
           accumulator += (c -> newValue)
@@ -1176,17 +1217,17 @@ Estimator
 
       def extractVotesFrom(panorama: Panorama): Map[ValidatorId, Con] =
         panorama.honestSwimlanesTips
-          .map { case (vid, msg) => (vid, vote(msg)) }
+          .map { case (vid, msg) => (vid, effectiveVote(msg)) }
           .collect { case (vid, Some(vote)) => (vid, vote) }
 
       //finds latest non-empty vote as seen from given message by traversing "previous" chain
       @tailrec
-      private def vote(message: Message): Option[Con] =
-        message.consensusValue match {
+      private def effectiveVote(message: Message): Option[Con] =
+        message.vote match {
           case Some(c) => Some(c)
           case None =>
             message.previous match {
-              case Some(m) => vote(id2msg(m))
+              case Some(m) => effectiveVote(id2msg(m))
               case None => None
             }
         }
@@ -1278,15 +1319,17 @@ Implementation of the "summit theory" finality criterion:
           for {
             validator <- validatorsSubset
             swimlaneTip: Message = latestPanorama.honestSwimlanesTips(validator)
-            oldestZeroLevelMessage: Message = swimlaneIterator(swimlaneTip)
-              .takeWhile(m => m.consensusValue.isEmpty || m.consensusValue.get == consensusValue)
+            oldestZeroLevelMessageOption: Option[Message] = swimlaneIterator(swimlaneTip)
+              .filter(m => m.vote.isDefined)
+              .takeWhile(m => m.vote.get == consensusValue)
               .toSeq
-              .last
-        }
-          yield (validator, oldestZeroLevelMessage)
+              .lastOption
+            msg <- oldestZeroLevelMessageOption
 
-        val pairsWithNonemptyVote = pairs filter {case (validator, msg) => msg.consensusValue.isDefined}
-        return Trimmer(pairsWithNonemptyVote.toMap)
+        }
+          yield (validator, msg)
+
+        return Trimmer(pairs.toMap)
       }
 
       @tailrec
