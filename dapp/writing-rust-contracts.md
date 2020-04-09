@@ -195,3 +195,6 @@ fn main() {
     panic!("Execute \"cargo test\" to test the contract, not \"cargo run\".");
 }
 ```
+
+## WASM File Size
+We encourage shrinking the WASM file size as much as possible. Smaller deploys cost less and save the network bandwidth. We recommend reading [Shrinking .wasm Code Size](https://rustwasm.github.io/docs/book/reference/code-size.html) chapter of [The Rust Wasm Book](https://rustwasm.github.io/docs/book/).
