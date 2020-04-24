@@ -36,15 +36,24 @@ Blockchains use private key encryption to sign transactions.  The  private key u
 ### Advanced Deployments
 CasperLabs supports complex deployments.  To learn more about what is possible visit [GitHub](https://github.com/CasperLabs/CasperLabs/blob/master/docs/CONTRACTS%2Emd).
 
-## Sending a Deployment to the DevNet
+## Sending a Deployment to the Testnet
 
-The easiest way to deploy a contract is to use an existing public network.  CasperLabs provides a Developer Net for this.
+The easiest way to deploy a contract is to use an existing public network.  CasperLabs provides a Testnet for this.
 
 * Go to [CasperLabs Clarity](https://clarity.casperlabs.io) and create an account.
 * Place your private key in a location that you can access during the deployment.
 * Request tokens from the faucet to fund your account.
 
-The host name of the DevNet is 'deploy.casperlabs.io'  The DevNet always runs the most recent released version of the software
+The Testnet is operated by external validators that can accept transactions at the following endpoints:
+
+* deploy.casperlabs.io
+* 18.219.70.138
+* 62.171.172.72
+* 52.88.90.57
+* 116.203.69.88
+* 35.158.200.94
+
+The default port is 40401
 
 ### Check the Client Version
 There are 2 versions of the client - Scala and Python. 
