@@ -13,6 +13,12 @@ continuation and maintenance requires that validators adhere to the protocol,
 which is ensured by the network’s incentive mechanism. This works by rewarding
 adherence to the protocol and punishing deviation from the protocol.
 
+In order to stake the network, prospective validators participate in open auctions 
+for a limited number of validator positions, with winning bids becoming bonded as stakes.
+This approach strikes a balance between security and performance, since increasing
+the number of validators must weakly decrease network throuhput with the present mainnet
+architecture.
+
 Rewards are provided through a process called *seigniorage*. New tokens are
 minted at a constant rate and distributed to participating validators, similar
 to the block reward mechanism in Bitcoin. Unlike Bitcoin, validators don’t have
