@@ -1,5 +1,5 @@
-CasperLabs dApp Developer Guide
-===============================
+DApp Developer Guide
+====================
 
 In this document we present information on how to develop decentralized applications (dApps) with
 CasperLabs Blockchain.

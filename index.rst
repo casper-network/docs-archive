@@ -3,9 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-========
-Abstract
-========
+************************
+CasperLabs Documentation
+************************
+
+**Abstract**
+
 
 We present the design for a new Turing-complete smart contract platform, backed
 by a proof-of-stake (PoS) consensus algorithm, and WebAssembly (wasm). The
@@ -33,10 +36,11 @@ and our token policies.
 .. include:: disclaimer.rst
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :hidden:
+   :maxdepth: 3
+   :titlesonly:
 
-   abstract
+   Home <self>
    theory/index
    implementation/index
    dapp/index
