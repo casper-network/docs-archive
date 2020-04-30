@@ -1,5 +1,5 @@
-CasperLabs Blockchain Design
-============================
+Blockchain Design
+=================
 
 .. toctree::
    :maxdepth: 2

@@ -31,7 +31,7 @@ Install the following Python packages using pip:
 On Mac/Linux:
 
 ```
-sudo pip3 install sphinx sphinx-rtd-theme recommonmark sphinx-autobuild
+sudo pip3 install sphinx sphinx-rtd-theme recommonmark sphinx-autobuild pydata-sphinx-theme
 ```
 
 On Windows:
@@ -39,7 +39,7 @@ On Windows:
 Start `cmd` in Admin mode. Make sure Python binaries are in your $PATH and run
 
 ```
-pip3 install sphinx sphinx-rtd-theme recommonmark sphinx-autobuild
+pip3 install sphinx sphinx-rtd-theme recommonmark sphinx-autobuild pydata-sphinx-theme
 ```
 
 ## Installing a TeX Distribution
