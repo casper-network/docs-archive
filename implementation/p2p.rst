@@ -49,7 +49,7 @@ Block Gossiping
 Nodes propose Blocks in parallel by finding Deploys that can be applied
 independently of each other. Whenever a new Block is formed, it has to propagate
 through the network to become part of the consensus. This is achieved by nodes
-making calls to each other via gRPC to invoke methods on their ``GossipService`` `interface <https://github.com/CasperLabs/CasperLabs/blob/c78e35f4d8f0f7fd9b8cf45a4b17a630ae6ab18f/protobuf/io/casperlabs/comm/gossiping/gossiping.proto>`__
+making calls to each other via gRPC to invoke methods on their ``GossipService`` `interface <https://github.com/CasperLabs/CasperLabs/blob/release-v0.18/protobuf/io/casperlabs/comm/gossiping/gossiping.proto>`__
 which should be listening on the ``protocol_port`` of the ``Node`` that represents
 the peers in the network.
 
@@ -527,7 +527,7 @@ them one by one from multiple peers as the notifications arrive to the node
 about alternative sources, should be favoured over downloading from a single
 source anyway.
 
-StreamDagTipBlockSummaries
+StreamLatestMessages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When a new node joins the network it should ask one or more of its peers about
@@ -538,6 +538,17 @@ partially verified the full DAG using the algorithms outlined above. It’s wort
 cross-correlating the tips of multiple nodes to avoid being lied to by any
 single malicious actor.
 
+The same method can also be utilised for pull-based gossiping by picking a
+random peer every now and then and asking for their tips of the DAG. This
+compensates for the diminishing returns of trying to reach 100% saturation
+by push based gossiping: as we reach full saturation it's becoming every
+harder to find a node that doesn't have the information yet, so more and more
+messages are sent in futility; yet for the small percent of nodes that haven't
+been reached yet, it's almost guaranteed that if they ask one of their peers
+about their state they are going to be talking to someone in the know.
+
+
+
 Finally the following sequence diagram demonstrates the life cycle of Block
 propagation among nodes. The dashed blocks have been left unconnected for
 brevity but they do the same thing as the ones on the left side.
@@ -546,3 +557,40 @@ brevity but they do the same thing as the ones on the left side.
    :alt: Block Gossiping
 
    Block Gossiping
+
+
+
+Deploy Gossiping
+---------------
+
+With certain consensus protocols, nodes can only produce blocks when its their turn to do so.
+To make sure that users can send their deploys to any node and see them included in the next
+available block on the network, regardless of which validator creates that block, nodes need
+to gossip about deploys between each other, independently of blocks.
+
+
+The principles and mechanisms of deploy gossiping are exactly the same as the block gossiping
+depicted above. The fact that we do deploy gossiping enables some further optimisations though:
+
+Blocks can contain deploy that the node already has, so the download of blocks happens with
+asking only for the deploy hashes and their execution results, excluding the deploy body and header.
+The downloading node figures out which deploys it's missing and downloads them separately.
+
+
+NewDeploys
+^^^^^^^^^^
+
+When a node receives a deploy from the user, or when it downloads it as part of gossiping, it should,
+with the same algorithm as we use for blocks, inform some of its peers that it has this particular
+deploys available for download. The semantics are exactly the same as for `NewBlocks`.
+
+StreamDeploysChunked
+^^^^^^^^^^^^^^^^^^^^
+
+Nodes use this method to retrieve one or more deploys from each other. Typically one when they do it
+as part of gossiping, and multiple when they want all the deploys which are missing from the body
+of a block.
+
+The semantics are very similar to `GetBlockChunked` but instead of containing a single item,
+the stream is alternating between header chunks and contents, with each group corresponding to
+one deploy hash in the request.
