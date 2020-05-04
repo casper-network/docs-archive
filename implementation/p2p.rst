@@ -541,7 +541,7 @@ single malicious actor.
 The same method can also be utilised for pull-based gossiping by picking a
 random peer every now and then and asking for their tips of the DAG. This
 compensates for the diminishing returns of trying to reach 100% saturation
-by push based gossiping: as we reach full saturation it's becoming every
+by push based gossiping: as we reach full saturation it's becoming
 harder to find a node that doesn't have the information yet, so more and more
 messages are sent in futility; yet for the small percent of nodes that haven't
 been reached yet, it's almost guaranteed that if they ask one of their peers
