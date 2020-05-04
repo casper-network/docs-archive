@@ -582,9 +582,9 @@ and downloads them separately.
 NewDeploys
 ^^^^^^^^^^
 
-When a node receives a deploy from the user, or when it downloads it as part of gossiping, it should,
-with the same algorithm as we use for blocks, inform some of its peers that it has this particular
-deploys available for download. The semantics are exactly the same as for `NewBlocks`.
+When a node receives a deploy (either from a user or via deploy gossiping), it should inform 
+some of its peers that it has the deploy available for download. The semantics are exactly 
+the same as for `NewBlocks` (using the same algorithm).
 
 StreamDeploysChunked
 ^^^^^^^^^^^^^^^^^^^^
