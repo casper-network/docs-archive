@@ -290,7 +290,7 @@ pub fn set_key<T: ToBytes + CLTyped>(name: &str, value: T) {
 ```
 
 ## ERC20 Indirect Session Code
-We'll write is the `erc20_indirect` session code now. It will be executed in the context of the account, that sends the transaction. Its goal is to call `erc20` contract and pass arguments further.
+We will write the `erc20_indirect` session code now. It will be executed in the context of the account, that sends the transaction. Its goal is to call `erc20` contract and pass arguments further.
 ```rust
 // contract/src/contracts.rs
 
