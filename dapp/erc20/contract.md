@@ -4,7 +4,7 @@ In this section we will use the [logic](logic) crate to finally implement the ER
 
 ERC-20 will have two contracts:
 * `erc20` contract that handles ERC-20 implementation,
-* `proxy` contract that should be called by the account. It calls `erc20` on behalf of the account, so `erc20` has its own context. 
+* `erc20_indirect` session code that should be called by the account. It calls `erc20` on behalf of the account, so `erc20` has its own context. 
 
 The `contract` crate will include:
 * `errors.rs` - errors definition,
@@ -20,9 +20,9 @@ In Ethereum, an account object is just a public key with the balance. In CasperL
 
 In Ethereum when a contract is called, it executes in its own context. The contract knows only the account's address which invoked it. In Solidity this address is accessible by `msg.caller`. 
 
-In CasperLabs, when a deploy ("transaction" in Ethereum's nomenclature) directly executes a contract (as opposed to sending new Wasm instructions), it executes in the context of calling account, so it uses the account's storage.
+In CasperLabs, when a deploy ("transaction" in Ethereum's nomenclature) directly executes a session code (as opposed to sending new Wasm instructions), it executes in the context of calling account, so it uses the account's storage.
 
-Additionally, in CasperLabs, each contract has its own key-value storage, but only when executed in its own context (i.e. invoked by [call_contract](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/runtime/fn.call_contract.html)). For example, consider the chain of calls: a deploy from `Account` executes `Contract A`, then `Contract A` calls `Contract B`; then `Contract A` is executed in the context of `Account`, and `Contract B` is executed in its own context.
+Additionally, in CasperLabs, each session code has its own key-value storage, but only when executed in its own context (i.e. invoked by [call_contract](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/runtime/fn.call_contract.html)). For example, consider the chain of calls: a deploy from `Account` executes `Contract A`, then `Contract A` calls `Contract B`; then `Contract A` is executed in the context of `Account`, and `Contract B` is executed in its own context.
 
 ## Cargo.toml
 Start with package definition at `contract/Cargo.toml`.
@@ -59,7 +59,7 @@ use casperlabs_types::ApiError;
 pub enum Error {
     UnknownApiCommand = 1,                      // 65537
     UnknownDeployCommand = 2,                   // 65538
-    UnknownProxyCommand = 3,                    // 65539
+    UnknownIndirectCommand = 3,                 // 65539
     MissingArgument0 = 16,                      // 65552
     MissingArgument1 = 17,                      // 65553
     MissingArgument2 = 18,                      // 65554
@@ -112,9 +112,9 @@ Take a look at the complete error list in [error.rs](https://github.com/CasperLa
 ## Input
 You already know that in CasperLabs methods should be handled manually (i.e. via dispatch) as presented in [Writing Rust Contracts on CasperLabs](../writing-rust-contracts). It's possible to come up with different strategies for arguments parsing that suit our needs. In this case we'll follow two simple rules:
 1. Calls addressed to `erc20` contract has first argument a type of `String`, that is the name of function we want to call.
-2. Calls addressed to `proxy` contract has first argument a type of `Tuple(String, Hash)`, where `Hash` is the address of `erc20` token and `String` is method name. The `proxy` should call `erc20` contract at `Hash` using `String` as a function name and pass other arguments intact.
+2. Calls addressed to `erc20_indirect` session code has first argument a type of `Tuple(String, Hash)`, where `Hash` is the address of `erc20` token and `String` is method name. The `erc20_indirect` should call `erc20` contract at `Hash` using `String` as a function name and pass other arguments intact.
 
-Having those rules allows us to build a universal (for both `erc20` and `proxy`) argument handler. It's a good practice to separate the argument parser from the rest of the code.
+Having those rules allows us to build a universal (for both `erc20` and `erc20_indirect`) argument handler. It's a good practice to separate the argument parser from the rest of the code.
 
 ```rust
 // contract/src/input_parser.rs
@@ -289,13 +289,13 @@ pub fn set_key<T: ToBytes + CLTyped>(name: &str, value: T) {
 }
 ```
 
-## Proxy Contract
-The first smart contract we'll write is the `proxy` contract. It will be executed in the context of the account, that sends the transaction. Its goal is to call `erc20` contract and pass arguments further.
+## ERC20 Indirect Session Code
+We will write the `erc20_indirect` session code now. It will be executed in the context of the account, that sends the transaction. Its goal is to call `erc20` contract and pass arguments further.
 ```rust
 // contract/src/contracts.rs
 
 #[no_mangle]
-pub extern "C" fn erc20_proxy() {
+pub extern "C" fn erc20_indirect() {
     let token = input_parser::destination_contract();
     match input_parser::from_args() {
         Input::Transfer(recipient, amount) => {
@@ -310,7 +310,7 @@ pub extern "C" fn erc20_proxy() {
             let args = (input_parser::APPROVE, spender, amount);
             runtime::call_contract::<_, ()>(token, args);
         }
-        _ => runtime::revert(Error::UnknownProxyCommand),
+        _ => runtime::revert(Error::UnknownIndirectCommand),
     }
 }
 ```
@@ -392,7 +392,7 @@ pub extern "C" fn call() {
     match input_parser::from_args() {
         Input::Deploy(initial_balance) => {
             env::deploy_token(initial_balance);
-            env::deploy_proxy();
+            env::deploy_token_indirect();
         }
         _ => runtime::revert(Error::UnknownDeployCommand),
     }
@@ -400,7 +400,7 @@ pub extern "C" fn call() {
 ```
 It expects two arguments: `"deploy"` as a method name, and `initial_balance` as the number of tokens initially minted for the calling account.
 
-Let's take a look at `env::deploy_token` and `env::deploy_proxy`. `deploy_token` stores the `erc20` contract and gets `token_ref` as the return value. Then it calls the `erc20` contract to initialize it. At the end it saves the contract's hash under `erc20_proxy` as one of the named keys of the account. `call` is running in the context of the account that executed the transaction. `deploy_proxy` does the same, but without the initialization step as it isn't needed. 
+Let's take a look at `env::deploy_token` and `env::deploy_token_indirect`. `deploy_token` stores the `erc20` contract and gets `token_ref` as the return value. Then it calls the `erc20` contract to initialize it. At the end it saves the contract's hash under `erc20` as one of the named keys of the account. `call` is running in the context of the account that executed the transaction. `deploy_token_indirect` does the same, but without the initialization step as it isn't needed. 
 
 ```rust
 // contract/src/env.rs
@@ -408,7 +408,7 @@ Let's take a look at `env::deploy_token` and `env::deploy_proxy`. `deploy_token`
 use crate::input_parser;
 
 pub const ERC20_CONTRACT_NAME: &str = "erc20";
-pub const ERC20_PROXY_CONTRACT_NAME: &str = "erc20_proxy";
+pub const ERC20_INDIRECT_NAME: &str = "erc20_indirect";
 
 pub fn deploy_token(initial_balance: U512) {
     let token_ref = storage::store_function_at_hash(ERC20_CONTRACT_NAME, Default::default());
@@ -418,10 +418,10 @@ pub fn deploy_token(initial_balance: U512) {
     runtime::put_key(ERC20_CONTRACT_NAME, token);
 }
 
-pub fn deploy_proxy() {
-    let proxy_ref = storage::store_function_at_hash(ERC20_PROXY_CONTRACT_NAME, Default::default());
-    let contract_key: Key = proxy_ref.into();
-    let proxy: Key = storage::new_uref(contract_key).into();
-    runtime::put_key(ERC20_PROXY_CONTRACT_NAME, proxy);
+pub fn deploy_token_indirect() {
+    let indirect_ref = storage::store_function_at_hash(ERC20_INDIRECT_NAME, Default::default());
+    let indirect_key: Key = indirect_ref.into();
+    let indirect: Key = storage::new_uref(indirect_key).into();
+    runtime::put_key(ERC20_INDIRECT_NAME, indirect);
 }
 ```
