@@ -588,10 +588,10 @@ deploys available for download. The semantics are exactly the same as for `NewBl
 StreamDeploysChunked
 ^^^^^^^^^^^^^^^^^^^^
 
-Nodes use this method to retrieve one or more deploys from each other. Typically one when they do it
-as part of gossiping, and multiple when they want all the deploys which are missing from the body
-of a block.
+Nodes use this method to retrieve one or more deploys from each other. Typically one deploy is streamed
+when deploy gossiping, but when a node determines it is missing one or more deploy bodies in a received
+block (derived from the deploy hashes in the block) it will request all of the deploys it is missing.
 
 The semantics are very similar to `GetBlockChunked` but instead of containing a single item,
-the stream is alternating between header chunks and contents, with each group corresponding to
+the stream alternates between header chunks and contents, with each group corresponding to
 one deploy hash in the request.
