@@ -570,11 +570,12 @@ to gossip about deploys between each other, independently of blocks.
 
 
 The principles and mechanisms of deploy gossiping are exactly the same as the block gossiping
-depicted above. The fact that we do deploy gossiping enables some further optimisations though:
+depicted above. 
 
-Blocks can contain deploy that the node already has, so the download of blocks happens with
-asking only for the deploy hashes and their execution results, excluding the deploy body and header.
-The downloading node figures out which deploys it's missing and downloads them separately.
+A block may contain one or more deploys that a node already has, so when downloading a block 
+only the deploy hashes and their execution results are included and the deploy body and header
+are excluded. A downloading node derives which deploys it is missing via the deploy hashes
+and downloads them separately.
 
 
 NewDeploys
