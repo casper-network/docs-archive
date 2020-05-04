@@ -538,7 +538,7 @@ partially verified the full DAG using the algorithms outlined above. It’s wort
 cross-correlating the tips of multiple nodes to avoid being lied to by any
 single malicious actor.
 
-The same method can also be utilised for pull-based gossiping by picking a
+The same method can also be utilized for pull-based gossiping by picking a
 random peer every now and then and asking for their tips of the DAG. This
 compensates for the diminishing returns of trying to reach 100% saturation
 by push based gossiping: as we reach full saturation it's becoming
