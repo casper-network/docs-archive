@@ -58,7 +58,7 @@ mod method {
 }
 
 mod key {
-    pub const ERC20_PROXY: &str = "erc20_proxy";
+    pub const ERC20_INDIRECT: &str = "erc20_indirect";
     pub const ERC20: &str = "erc20";
     pub const TOTAL_SUPPLY: &str = "total_supply";
 }
@@ -70,14 +70,14 @@ To clearly mark the address sending the transaction, introduce `Sender` wrapper.
 pub struct Sender(pub PublicKey);
 ```
 
-We'll define `ERC20Contract` struct that has its own VM instance and implements ERC-20 methods. `ERC20Contract` struct should hold a [TestContext](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html) of its own. The token contract hash and the proxy contract hash won't change after the contract is deployed, so it's handy to have it available.
+We'll define `ERC20Contract` struct that has its own VM instance and implements ERC-20 methods. `ERC20Contract` struct should hold a [TestContext](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html) of its own. The `erc20` token contract hash and the `erc20_indirect` session code hash won't change after the contract is deployed, so it's handy to have it available.
 ```rust
 // tests/src/erc20.rs
 
 pub struct ERC20Contract {
     pub context: TestContext,
     pub token_hash: Hash,
-    pub proxy_hash: Hash,
+    pub indirect_hash: Hash,
 }
 
 impl ERC20Contract {
@@ -99,11 +99,11 @@ impl ERC20Contract {
         context.run(session);
         // Read hashes.
         let token_hash = Self::contract_hash(&context, key::ERC20);
-        let proxy_hash = Self::contract_hash(&context, key::ERC20_PROXY);
+        let indirect_hash = Self::contract_hash(&context, key::ERC20_INDIRECT);
         Self {
             context,
             token_hash,
-            proxy_hash,
+            indirect_hash,
         }
     }
 
@@ -118,9 +118,9 @@ impl ERC20Contract {
             .unwrap_or_else(|| panic!("{} is not a type Hash.", name))
     }
 
-    fn call_proxy(&mut self, sender: Sender, args: impl ArgsParser) {
+    fn call_indirect(&mut self, sender: Sender, args: impl ArgsParser) {
         let Sender(address) = sender;
-        let code = Code::Hash(self.proxy_hash);
+        let code = Code::Hash(self.indirect_hash);
         let session = SessionBuilder::new(code, args)
             .with_address(address)
             .with_authorization_keys(&[address])
@@ -143,7 +143,7 @@ impl ERC20Contract {
 ```
 `deployed` function creates new instance of `ERC20Contract` with `ALI`, `BOB` and `JOE` having positive initial balance. The contract is deployed using `ALI` account. 
 
-`call_proxy` function uses [run](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html#method.run) function to call the contract deployed under `self.proxy_hash`. It will be used to implement `transfer`, `approve` and `transfer_from` calls.
+`call_indirect` function uses [run](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html#method.run) function to call the contract deployed under `self.indirect_hash`. It will be used to implement `transfer`, `approve` and `transfer_from` calls.
 
 `query_contract` function uses [query](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html#method.query) to lookup named keys of the `erc20` contract stored under `self.token_hash`. It will be used to implement `balance_of`, `total_supply` and `allowance` checks.
 
@@ -153,7 +153,7 @@ Now it's easy to define methods that are needed to make a deploy.
 // tests/src/erc20.rs
 
 pub fn transfer(&mut self, receiver: PublicKey, amount: u64, sender: Sender) {
-    self.call_proxy(
+    self.call_indirect(
         sender,
         (
             (method::TRANSFER, self.token_hash),
@@ -164,7 +164,7 @@ pub fn transfer(&mut self, receiver: PublicKey, amount: u64, sender: Sender) {
 }
 
 pub fn approve(&mut self, spender: PublicKey, amount: u64, sender: Sender) {
-    self.call_proxy(
+    self.call_indirect(
         sender,
         (
             (method::APPROVE, self.token_hash),
@@ -181,7 +181,7 @@ pub fn transfer_from(
     amount: u64,
     sender: Sender,
 ) {
-    self.call_proxy(
+    self.call_indirect(
         sender,
         (
             (method::TRANSFER_FROM, self.token_hash),
