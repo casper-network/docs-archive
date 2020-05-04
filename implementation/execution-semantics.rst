@@ -122,7 +122,7 @@ sequentially, it does not matter in what order they are executed, the final
 result is the same for a given input). Whether two deploys commute is determined
 based on the effects they have on the global state, i.e. which operation (read,
 write, add) it does on each key in the key-value store. How this is done is
-described in the first part of this document.
+described in :ref:`Appendix C <appendix-c>`.
 
 .. _execution-semantics-runtime:
 

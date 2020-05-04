@@ -20,6 +20,7 @@ steps:
   environment:
     USER_ID: $UID
   commands:
+  - "pip install pydata-sphinx-theme"
   - "make html"
   image: "ddidier/sphinx-doc"
   when:
@@ -33,6 +34,7 @@ steps:
   environment:
     USER_ID: $UID
   commands:
+  - "pip install pydata-sphinx-theme"
   - "make clean"
   image: "ddidier/sphinx-doc"
   when:
@@ -46,6 +48,7 @@ steps:
   environment:
     USER_ID: $UID
   commands:
+  - "pip install pydata-sphinx-theme"
   - "make latexpdf"
   image: "ddidier/sphinx-doc"
   when:
