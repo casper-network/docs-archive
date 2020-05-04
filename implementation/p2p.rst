@@ -49,7 +49,7 @@ Block Gossiping
 Nodes propose Blocks in parallel by finding Deploys that can be applied
 independently of each other. Whenever a new Block is formed, it has to propagate
 through the network to become part of the consensus. This is achieved by nodes
-making calls to each other via gRPC to invoke methods on their ``GossipService`` `interface <https://github.com/CasperLabs/CasperLabs/blob/c78e35f4d8f0f7fd9b8cf45a4b17a630ae6ab18f/protobuf/io/casperlabs/comm/gossiping/gossiping.proto>`__
+making calls to each other via gRPC to invoke methods on their ``GossipService`` `interface <https://github.com/CasperLabs/CasperLabs/blob/release-v0.18/protobuf/io/casperlabs/comm/gossiping/gossiping.proto>`__
 which should be listening on the ``protocol_port`` of the ``Node`` that represents
 the peers in the network.
 
@@ -527,7 +527,7 @@ them one by one from multiple peers as the notifications arrive to the node
 about alternative sources, should be favoured over downloading from a single
 source anyway.
 
-StreamDagTipBlockSummaries
+StreamLatestMessages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When a new node joins the network it should ask one or more of its peers about
@@ -538,6 +538,18 @@ partially verified the full DAG using the algorithms outlined above. It’s wort
 cross-correlating the tips of multiple nodes to avoid being lied to by any
 single malicious actor.
 
+The same method can also be utilized for pull-based gossiping by picking a
+random peer every now and then and asking for their tips of the DAG. This
+compensates for the diminishing returns of trying to reach 100% saturation
+by push based gossiping: as we reach full saturation it's becoming
+harder to find a node that doesn't have the information yet, so an increasing
+number of messages are sent in futility to peers that have already received an
+equivalent message from another peer; but for the small percentage of nodes 
+that haven't yet been reached it becomes increasingly probable that any peer 
+they communicate with has received the information.
+
+
+
 Finally the following sequence diagram demonstrates the life cycle of Block
 propagation among nodes. The dashed blocks have been left unconnected for
 brevity but they do the same thing as the ones on the left side.
@@ -546,3 +558,41 @@ brevity but they do the same thing as the ones on the left side.
    :alt: Block Gossiping
 
    Block Gossiping
+
+
+
+Deploy Gossiping
+---------------
+
+With certain consensus protocols, nodes can only produce blocks when its their turn to do so.
+To make sure that users can send their deploys to any node and see them included in the next
+available block on the network, regardless of which validator creates that block, nodes need
+to gossip about deploys between each other, independently of blocks.
+
+
+The principles and mechanisms of deploy gossiping are exactly the same as the block gossiping
+depicted above. 
+
+A block may contain one or more deploys that a node already has, so when downloading a block 
+only the deploy hashes and their execution results are included and the deploy body and header
+are excluded. A downloading node derives which deploys it is missing via the deploy hashes
+and downloads them separately.
+
+
+NewDeploys
+^^^^^^^^^^
+
+When a node receives a deploy (either from a user or via deploy gossiping), it should inform 
+some of its peers that it has the deploy available for download. The semantics are exactly 
+the same as for `NewBlocks` (using the same algorithm).
+
+StreamDeploysChunked
+^^^^^^^^^^^^^^^^^^^^
+
+Nodes use this method to retrieve one or more deploys from each other. Typically one deploy is streamed
+when deploy gossiping, but when a node determines it is missing one or more deploy bodies in a received
+block (derived from the deploy hashes in the block) it will request all of the deploys it is missing.
+
+The semantics are very similar to `GetBlockChunked` but instead of containing a single item,
+the stream alternates between header chunks and contents, with each group corresponding to
+one deploy hash in the request.
