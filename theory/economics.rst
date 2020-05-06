@@ -16,8 +16,8 @@ adherence to the protocol and punishing deviation from the protocol.
 In order to stake the network, prospective validators participate in open auctions 
 for a limited number of validator positions, with winning bids becoming bonded as stakes.
 This approach strikes a balance between security and performance, since increasing
-the number of validators must weakly decrease network throuhput with the present mainnet
-architecture.
+the number of validators must weakly decrease network throughput with the present mainnet
+architecture, due to increased communication complexity.
 
 Rewards are provided through a process called *seigniorage*. New tokens are
 minted at a constant rate and distributed to participating validators, similar
@@ -172,7 +172,7 @@ To this end, as an initial step, Casperlabs is implementing a transaction pricin
 that will assign fiat (dollar) prices to all relevant resources, such as bytes of storage,
 opcodes and standardized computation times for external functions. A successful implementation 
 of this system requires a reliable on-chain feed of the CLX price in USD. To this end, 
-CasperLabs will utilizer a `Chainlink<https://chain.link>`__ network of oracles to aggregate 
+CasperLabs will utilize the `Chainlink<https://chain.link>`__ network of oracles to aggregate 
 a single price from major exchanges.
 
 Slashing
