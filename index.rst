@@ -43,6 +43,7 @@ and our token policies.
    Home <self>
    theory/index
    implementation/index
+   economics/index
    dapp/index
 
 
