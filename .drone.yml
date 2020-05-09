@@ -22,7 +22,7 @@ steps:
   commands:
   - "pip install pydata-sphinx-theme"
   - "make html"
-  image: "ddidier/sphinx-doc:2.4.4-1"
+  image: "ddidier/sphinx-doc:latest"
   when:
     event:
     - pull_request
@@ -36,7 +36,7 @@ steps:
   commands:
   - "pip install pydata-sphinx-theme"
   - "make clean"
-  image: "ddidier/sphinx-doc:2.4.4-1"
+  image: "ddidier/sphinx-doc:latest"
   when:
     event:
     - pull_request
@@ -50,7 +50,7 @@ steps:
   commands:
   - "pip install pydata-sphinx-theme"
   - "make latexpdf"
-  image: "ddidier/sphinx-doc:2.4.4-1"
+  image: "ddidier/sphinx-doc:latest"
   when:
     event:
     - pull_request
