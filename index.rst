@@ -7,11 +7,8 @@
 CasperLabs Documentation
 ************************
 
-**Abstract**
-
-
 We present the design for a new Turing-complete smart contract platform, backed
-by a proof-of-stake (PoS) consensus algorithm, and WebAssembly (wasm). The
+by a Proof of Stake (PoS) consensus algorithm, and WebAssembly (Wasm). The
 intent is for this design to be implemented as a new permissionless,
 decentralized, public blockchain. The consensus protocol is built on Vlad
 Zamfir's
