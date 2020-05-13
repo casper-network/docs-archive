@@ -9,6 +9,8 @@ to weaken the incentive to steal transactions from other blocks, in case the
 block proposer receives the whole fee.
 
 
+set at a level high enough to curb any congestion the network might face on a daily basis
+
 Gas Pricing
 ~~~~~~~~~~~
 
