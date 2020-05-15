@@ -26,8 +26,8 @@ where :code:`i = 1, 2, ...` and so on is the era's index, :code:`initial_supply`
 at the Mainnet launch and :code:`seigniorage_rate` is the annual rate at which new CLX
 is minted.
 
-Highway Reward Distribution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Reward Distribution
+~~~~~~~~~~~~~~~~~~~
 
 In Highway, validators are rewarded for proposing and finalizing blocks. New tokens are minted at the end of each era through seigniorage, and distributed to validators according to their performance in that era. We do not have constant block rewards as in Proof of Work blockchains like Bitcoin and Ethereum—instead, block rewards are calculated retrospectively at the end of each era based on multiple factors, such as finality and participated weight. The concept of weight is crucial for understanding reward distribution, so we need to clarify what we mean by weight in different contexts:
 
@@ -66,4 +66,6 @@ Once a block has been proposed and enough time has passed, the history of messag
 Underestimating Round Exponents
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Truthful announcement of round exponents is essential for liveness. However, certain strategies exist where individual validators may earn more rewards by announcing a much lower round exponent than the majority of the validators, e.g. 0. This is basically a catch-all, where the validator is assigned to every tick, rewarded for feasible rounds with successful OTF, but not punished for being assigned to infeasible rounds. If left unaccounted for, such a strategy would increase the odds of receiving rewards. We do not want underestimating round exponents to be a dominant strategy, so we introduce a rule that punishes it: If a validator assigns himself to :code:`N` (a protocol parameter) or more infeasible ticks consecutively, they do not receive any reward from their next feasible round. The allocated reward is simply burned.
+Truthful announcement of round exponents is essential for liveness. However, certain strategies exist where individual validators may earn more rewards by announcing a much lower round exponent than the majority of the validators, e.g. 0. This is basically a catch-all, where the validator is assigned to every tick, rewarded for feasible rounds with successful OTF, but not punished for being assigned to infeasible rounds. If left unaccounted for, such a strategy would increase the odds of receiving rewards. We do not want underestimating round exponents to be a dominant strategy, so we introduce a rule that punishes it:
+
+If a validator assigns himself to :code:`N` (a protocol parameter) or more infeasible ticks consecutively, they do not receive any reward from their next feasible round. The allocated reward is simply burned.
