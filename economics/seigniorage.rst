@@ -35,7 +35,7 @@ In Highway, validators are rewarded for proposing and finalizing blocks. New tok
 - **Assigned weight of a block/round:** The total stake of validators that are scheduled to participate on a block.
 - **Participated weight of a block/round:** The total stake of validators that actually end up participating. Here, *participating* means sending messages to finalize a block before their respective rounds end.
 
-In general, we will be looking at two criteria to determine the validators’ eligibility to receive rewards from a proposed block:
+In general, we look at two criteria to determine the validators’ eligibility to receive rewards from a proposed block:
 
 - **On-time finalization (OTF):** Validators should finalize blocks on time, by sending required messages before their respective rounds end. We set OTF to require only a small but sufficient participating weight, for a simple reason: the probability of receiving a message on time decreases as the duration required for that approaches network propagation delay, so there is a trade-off between round lengths and assigned weight. We favor faster rounds over higher short-term safety guarantees, and argue that the latter can be achieved once the rounds end.
 - **Eventual finality (EF):** Complementary to the lower safety guarantees of OTF, we want all validators voting for a block once a long enough time passes. This is possible, because validators that are not assigned to a block can still vote for it by participating on one of its descendants. The higher the weight voting for a block, the better.

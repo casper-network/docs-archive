@@ -140,51 +140,23 @@ make clean; make latexpdf
 This section outlines a recommended way of editing reStructuredText files.
 I chose [VS Code](https://code.visualstudio.com) as an example, but you could
 reproduce the same configuration with your own text editor. Editing will not
-require a lot of features or IDEs. The only requirement is the 80-character hard
-wrap setting. On the other hand, good-to-haves are syntax highlighting,
+require a lot of features or IDEs. On the other hand, good-to-haves are syntax highlighting,
 and keybindings to insert frequently used rst directives such as ``:math:`...` ``.
 
 
 ### Setting up VS Code
 
 1. Install VS Code.
-2. Go to the extensions sidebar (`Ctrl+X`) and install the extensions
-[reStructuredText](https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext)
-and [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap).
-3. Go to settings with `Ctrl+,`.
-   - Change the setting `Editor: Word Wrap` to `off`.
-   - Make sure `Rewrap: Auto Wrap` is `Enabled`.
+2. Go to the extensions sidebar (`Ctrl+X`) and install the extension
+[reStructuredText](https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext).
 
 
 ### Structuring your content
 
-1. Setup your file structure in no more than 2 levels
-2. Format your content with no more than 3 heading levels
-Note: Setex is recommended, but ATX is also acceptible
-3. To reference content within the guide, use :ref: (e.g., see :ref:`Execution Semantics <execution-semantics-urefs>` for
+- Don't impose hard wraps on lines with line breaks. Instead, configure your editor to [word wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap). For example, this is achieved in Emacs by disabling `auto-fill-mode` and enabling `visual-line-mode`.
+- Setup your file structure in no more than 2 levels
+- Format your content with no more than 3 heading levels
+- To reference content within the guide, use :ref: (e.g., see :ref:`Execution Semantics <execution-semantics-urefs>` for
 for more information)
-4. To reference content to GIT source, link to master branch (e.g. https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples)
-5. To cross-reference content of CasperLabs tools and references like SDKs, APIs... link to the newest published GIT sources and versions   (e.g., cargo-casperlabs CLI tool -- https://crates.io/crates/cargo-casperlabs or https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs (those two links have equivalent information - it's the README from the crate's root) )
-
-## Why move away from Gitbook?
-
-We discussed recently how to collaborate on the whitepaper/techspec
-It's in gitbook, which changed versions recently:
-https://docs.gitbook.com/v2-changes/important-differences
-
-And here are some of their disconcerting quotes:
-
-> We have moved away from the static site generator model, and no longer use the famous gitbook CLI to build documentation output. This has brought a lot of benefits and simplicity to the new version, such as instant publishing, getting rid of obscure build failures, automatic updates and continuous improvement of features for hosted documentations.
-> We are no longer versioning your books as a Git repository. With the new version, we have shifted to a GitBook specific versioning system. Your content is still backed-up, versioned, and always available for export, so it is never locked on our platform. But we no longer offer this feature in the form of a git hosting service.
-
-IMO having a documentation system that supports git is a must. This will be a
-specialized technical document which requires features like:
-1. LaTeX equations (MathJax must be configurable, apparently one needs to type `$$` also for inline equations which @Wojtek and I find stupid)
-2. Figures
-3. Exporting to both web and PDF
-4. other hard to foresee features...
-
-AFAIU gitbook has problems with 1 and 3 already. They removed the CLI build
-workflow, which makes it hard to see the output locally. This is a headache when writing out equations for example. I'm not sure if it's like that now, but having to commit every time you need to see the output isn't very smart
-
-GITbook removed git, which makes collaboration a headache. *Also, storing document state in places other than the repo isn't very smart.*
+- To reference content to git source, link to master branch (e.g. https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples)
+- To cross-reference content of CasperLabs tools and references like SDKs, APIs... link to the newest published GIT sources and versions   (e.g., cargo-casperlabs CLI tool -- https://crates.io/crates/cargo-casperlabs or https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs (those two links have equivalent information - it's the README from the crate's root) )
