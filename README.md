@@ -154,9 +154,9 @@ and keybindings to insert frequently used rst directives such as ``:math:`...` `
 ### Structuring your content
 
 - Don't impose hard wraps on lines with line breaks. Instead, configure your editor to [word wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap). For example, this is achieved in Emacs by disabling `auto-fill-mode` and enabling `visual-line-mode`.
-- Setup your file structure in no more than 2 levels
-- Format your content with no more than 3 heading levels
+- Setup your file structure in no more than 2 levels.
+- Format your content with no more than 3 heading levels.
 - To reference content within the guide, use :ref: (e.g., see :ref:`Execution Semantics <execution-semantics-urefs>` for
-for more information)
-- To reference content to git source, link to master branch (e.g. https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples)
-- To cross-reference content of CasperLabs tools and references like SDKs, APIs... link to the newest published GIT sources and versions   (e.g., cargo-casperlabs CLI tool -- https://crates.io/crates/cargo-casperlabs or https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs (those two links have equivalent information - it's the README from the crate's root) )
+for more information).
+- To reference content to git source, link to the `master` branch (e.g. https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts/examples). If the content you want to link has not been merged to `master` yet, then you can link to the `dev` branch.
+- To cross-reference content of CasperLabs tools and references like SDKs, APIs, etc., link to the newest published GIT sources and versions (e.g., cargo-casperlabs CLI tool -- https://crates.io/crates/cargo-casperlabs or https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs (those two links have equivalent information - it's the README from the crate's root)).
