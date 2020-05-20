@@ -59,4 +59,3 @@ to the 1980’s. Important milestones on this path are:
    abstract-consensus.rst
    naive-blockchain.rst
    highway.rst
-   economics.rst
