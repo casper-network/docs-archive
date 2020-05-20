@@ -41,6 +41,4 @@ and our token policies.
    theory/index
    implementation/index
    economics/index
-   dapp/index
-
-
+   dapp-dev-guide/index
