@@ -41,4 +41,5 @@ and our token policies.
    theory/index
    implementation/index
    economics/index
-   dapp-dev-guide/index
+   Validators <validators/index>
+   Developers <developers/index>
