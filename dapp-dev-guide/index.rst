@@ -1,7 +1,7 @@
-DApp Developer Guide
+Dapp Developer Guide
 ====================
 
-This guide is designed to support dApp developers getting started with the development of smart contracts on the CasperLabs blockchain in AssemblyScript or Rust. For Rust, there is a contract development kit that includes a runtime environment, reference documentation, and test framework. You can install our environment locally, create and test Smart Contracts with our Smart Contracts and Test Libraries, and use these libraries to build your own applications.
+This guide is designed to support dapp developers getting started with the development of smart contracts on the CasperLabs blockchain in AssemblyScript or Rust. For Rust, there is a contract development kit that includes a runtime environment, reference documentation, and test framework. You can install our environment locally, create and test Smart Contracts with our Smart Contracts and Test Libraries, and use these libraries to build your own applications.
 
 It is recommended you have prior knowledge about Unix-based operating systems, like GNU/Linux or macOS, and programming knowledge with
 
@@ -54,3 +54,4 @@ you can use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk
    graphql
    execution-error-codes
    erc20/index
+   assemblyscript

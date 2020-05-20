@@ -40,6 +40,6 @@ and our token policies.
    Home <self>
    theory/index
    implementation/index
-   dapp/index
+   dapp-dev-guide/index
 
 
