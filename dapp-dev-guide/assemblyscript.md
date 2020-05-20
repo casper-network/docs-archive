@@ -43,9 +43,9 @@ In your project root, create an `index.js` file with the following contents:
 
 ```js
 const fs = require("fs");
-​
+
 const compiled = new WebAssembly.Module(fs.readFileSync(__dirname + "/dist/your-contract-name.wasm"));
-​
+
 const imports = {
     env: {
         abort(_msg, _file, line, column) {
@@ -53,7 +53,7 @@ const imports = {
         }
     }
 };
-​
+
 Object.defineProperty(module, "exports", {
     get: () => new WebAssembly.Instance(compiled, imports).exports
 });
