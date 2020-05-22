@@ -1,6 +1,6 @@
 ## Running a Validator Node
 
-Pre-packaged binaries are published to [http://repo.casperlabs.io/casperlabs/repo](http://repo.casperlabs.io/casperlabs/repo). The following are an example of installing the node on Ubuntu.
+Pre-packaged binaries are published to [Bintray](https://bintray.com/casperlabs/), and [the release page of the main CasperLabs repo](https://github.com/CasperLabs/CasperLabs/releases). The following are an example of installing the node on Ubuntu.
 
 ### Prerequisites
 
@@ -47,20 +47,11 @@ OpenJDK 64-Bit Server VM (build 11.0.1+13-Ubuntu-3ubuntu116.04ppa1, mixed mode, 
 ```
 
 
-### Installing from Debian packages
+### Installation
 
-The node consists of an API component running in Java and an execution engine running the WASM code of the deploys. They have to be started separately at the moment and configured to talk to each other.
+We currently host Debian and rpm packages on Bintray. Refer to [this page](https://github.com/CasperLabs/CasperLabs/blob/master/docs/INSTALL.md) for further instructions.
 
-*NOTE: Users will need to update \[VERSION\] with the version the want. See:
-
-```none
-curl -sO http://repo.casperlabs.io/casperlabs/repo/master/casperlabs-node_[VERSION]_all.deb
-curl -sO http://repo.casperlabs.io/casperlabs/repo/master/casperlabs-engine-grpc-server_[VERSION]_amd64.deb
-sudo dpkg -i casperlabs-node_[VERSION]_all.deb
-sudo dpkg -i casperlabs-engine-grpc-server_[VERSION]_amd64.deb
-```
-
-After these steps you should be able to run `casperlabs-node --help` and `casperlabs-engine-grpc-server --help`.
+After the installation, you should be able to run `casperlabs-node --help` and `casperlabs-engine-grpc-server --help`.
 
 
 ### Starting the execution engine
@@ -106,7 +97,7 @@ If the `--loglevel` argument is not provided, the execution engine defaults to t
 
 ### Configuring networking
 
-With the keys at hand you can start the node again, but this time configure it to be reachable on the network. [UPnP](https://casperlabs.atlassian.net/wiki/spaces/EN/pages/38928385/Node+Supported+Network+Configuration?atlOrigin=eyJpIjoiOTNmZjI2ZDllYmMxNGM1NmIwMzVjNmRlNTAyNzU2M2QiLCJwIjoiYyJ9) might be able to discover your public IP and open firewall rules in your router, or you may have to do it manually.
+With the keys at hand you can start the node again, but this time configure it to be reachable on the network. Your router will require open access to the internet on the port your node is communicating. UPnP might be able to discover your public IP and open firewall rules in your router, or you may have to do it manually.
 
 If you do it manually, you need to find out your externally visible IP address. You'll have to set this using the `--server-host <ip>` option so the node advertises itself at the right address.
 
@@ -129,14 +120,6 @@ openssl s_client -showcerts -connect localhost:40401 </dev/null 2>/dev/null \
   | openssl x509 -outform PEM \
   > node.crt
 ```
-
-### Configure auto-proposal
-
-It is possible to call the `propose` command to manually trigger block creation but this is best reserved for demonstrational purposes. The recommended way to run a node at the moment is to turn on the simple auto-proposal feature that will try to create a block if a certain number of deploys have accumulated or the oldest has been sitting in the buffer for longer than a threshold:
-* `--casper-auto-propose-enabled`
-* `--casper-auto-propose-max-interval 5seconds`
-* `--casper-auto-propose-max-count 10`
-
 
 ### Starting the node
 
