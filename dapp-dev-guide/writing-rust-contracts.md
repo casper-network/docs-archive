@@ -29,7 +29,8 @@ CasperLabs has [several built-in error variants](https://docs.rs/casperlabs-type
 When a contract exits with an error code, the exit code is visible in the Block Explorer.
 
 ### Arguments
-It's possible to pass arguments to smart contracts. To leverage this feature, use [`runtime::get_named_arg`](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/runtime/fn.get_named_arg.html). The helper function [`unwrap_or_revert_with`](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/unwrap_or_revert/trait.UnwrapOrRevert.html#tymethod.unwrap_or_revert_with) is available on `Option` and `Result` when importing [`unwrap_or_revert::UnwrapOrRevert`](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/unwrap_or_revert/trait.UnwrapOrRevert.html).
+It's possible to pass arguments to smart contracts. To leverage this feature, use [`runtime::get_named_arg`](https://docs.rs/casperlabs-contract/latest/casperlabs_contract/contract_api/runtime/fn.get_named_arg.html).
+
 ```rust
 use casperlabs_contract::contract_api::runtime;
 
