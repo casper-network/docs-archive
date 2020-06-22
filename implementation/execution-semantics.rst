@@ -165,7 +165,7 @@ description of the functions available for contracts to import, see :ref:`Append
       ``URef``), including passing arguments and getting a return value
    -  ``ret`` is used by contracts to return a value to their caller (i.e. enables
       return values from ``call_contract``)
-   -  ``get_arg`` allows getting arguments passed to the contract (either to session
+   -  ``get_named_arg`` allows getting arguments passed to the contract (either to session
       code as part of the deploy, or arguments to ``call_contract``)
    -  ``revert`` exits the entire executing deploy, reverting any effects it caused,
       and returns a status code that is captured in the block
