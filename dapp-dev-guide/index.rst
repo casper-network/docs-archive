@@ -55,3 +55,4 @@ you can use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk
    execution-error-codes
    erc20/index
    assemblyscript
+   ethereum-keys
