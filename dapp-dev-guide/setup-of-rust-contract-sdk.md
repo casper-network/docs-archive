@@ -31,9 +31,12 @@ For more details follow the [official downloads page](https://developers.google.
 
 ## Available Packages
 There are three crates we publish to support Rust development of Smart Contracts. These can be found on crates.io, and are:
-* [CasperLabs Contract](https://crates.io/crates/casperlabs-contract) - library that supports communication with the blockchain. That's the main library to use when writing smart contracts.
+* [CasperLabs Contract](https://crates.io/crates/casperlabs-contract) - library that supports communication with the blockchain. That's the main library to use when writing smart contracts. 
 * [CasperLabs Test Support](https://crates.io/crates/casperlabs-engine-test-support) - in-memory virtual machine you can test your smart contracts against.
 * [CasperLabs Types](https://crates.io/crates/casperlabs-types) - library with types we use across the Rust ecosystem.
+
+## Technical Documentation for the Contract API
+Each of the crates ships with API documentation and examples for each of the functions. Docs are located at https://docs.rs.  For example, the contract API documentation for version 0.5.1 is located at: https://docs.rs/casperlabs-contract/0.5.1/casperlabs_contract/contract_api/index.html
 
 
 ## Cargo CasperLabs
