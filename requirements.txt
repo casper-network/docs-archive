@@ -1,2 +1,2 @@
 pydata-sphinx-theme==0.2.1
-sphinx_markdown_tables===0.0.15
+sphinx-markdown-tables===0.0.15
