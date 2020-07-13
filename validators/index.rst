@@ -1,11 +1,15 @@
 Validator Guide
 ===============
 
-This guide is designed to support validators to create an account, stake tokens, bootstrap a node and participate in validation.
+In this part, we cover the essential requirements and process to setup and operate a CasperLabs node.
 
 .. toctree::
    :maxdepth: 2
    :hidden:
 
    Introduction <self>
-   Running a Node <running-a-node>
+   hardware
+   setup
+   Generating Keys <keys>
+   operating-the-node
+   troubleshooting

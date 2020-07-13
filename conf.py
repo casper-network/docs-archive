@@ -43,6 +43,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.githubpages',
     'sphinx.ext.imgconverter',
+    'sphinx_markdown_tables',
     'recommonmark'
 ]
 

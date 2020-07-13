@@ -14,7 +14,20 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
 }
 
+pre {
+    /* padding: 5px; */
+    background: #f8f8f8;
+    color: #333333;
+    line-height: 120%;
+    font-size: 94%;
+    /* border: 1px solid #e1e4e5; */
+}
 
+code {
+    background-color: #ecf0f3;
+    font-size: 94%;
+    color: #333;
+}
 
 h1 {
     margin-top: 0;
