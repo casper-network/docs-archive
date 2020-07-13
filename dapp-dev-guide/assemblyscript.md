@@ -22,6 +22,10 @@ npm install --save-dev assemblyscript@0.9.1
 npm install --save @casperlabs/contract
 ```
 
+## Contract API Documentation
+The Assemblyscript contract API documentation can be found at https://www.npmjs.com/package/@casperlabs/contract
+
+
 ## Usage
 Add script entries for assembly script to your project's `package.json`; note that your contract name is used
 for the name of the wasm file.

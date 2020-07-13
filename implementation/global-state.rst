@@ -34,7 +34,6 @@ A *key* in the global state is one of the following four data types:
 -  32-byte account identifier (called an “account identity key”)
 -  32-byte immutable contract identifier (called a “hash key”)
 -  32-byte reference identifier (called an “unforgable reference”)
--  32-byte local reference identifier (called a “local key”)
 
 We cover each of these key types in more detail in the sections that follow.
 
@@ -78,23 +77,6 @@ given across contract calls, allowing data stored under a ``URef`` to be shared 
 a controlled way. The 32-byte identifier representing the key is generated
 randomly by the runtime (see :ref:`Execution Semantics <execution-semantics-urefs>` for
 for more information).
-
-.. _global-state-local-key:
-
-Local key
-~~~~~~~~~
-
-This key type is used for storing any kind of value (except ``Account``) privately
-within an account or contract (collectively called a “context”). Unlike ``URef``\ s,
-access to a local key cannot be shared. The 32-byte identifier is derived from
-the ``blake2b256`` hash of a 32-byte “seed” concatenated with some user data. The
-“seed” is equal to the 32-byte identifier of the key under which the current
-context is stored. For example, a contract stored under a ``URef`` would use the
-32-byte identifier of the ``URef`` as its local seed, and an account would use its
-32-byte identity as its local seed. The user data, that also contributes to the
-hash, allows local keys to be used as a private key-value store embedded within
-the larger global state. However, this “local state” has no restrictions on its
-key type so long as it can be serialized into bytes for hashing.
 
 .. _global-state-values:
 
@@ -277,8 +259,7 @@ following rules (this defines the CasperLabs serialization format):
   variants this is simply a fixed-length 32 byte array. The exception is
   ``Key::URef`` which contains a ``URef``, so its data serializes per the
   description above. The tags are as follows: ``Key::Account`` serializes as
-  ``0``, ``Key::Hash`` as ``1``, ``Key::URef`` as ``2`` and ``Key::Local`` as
-  ``3``.
+  ``0``, ``Key::Hash`` as ``1``, ``Key::URef`` as ``2``.
 
 ``CLType`` itself also has rules for serialization. A ``CLType`` serializes as a
 single byte tag, followed by the concatenation of serialized inner types, if any
@@ -362,7 +343,7 @@ a list of all supported functions can be found in :ref:`Appendix A
 <appendix-a>`.
 
 Note: though the ``call`` function signature has no arguments and no return
-value, within the ``call`` function body the ``get_arg`` runtime function can be
+value, within the ``call`` function body the ``get_named_arg`` runtime function can be
 used to accept arguments (by ordinal) and the ``ret`` runtime function can be used
 to return a single ``CLValue`` to the caller.
 
@@ -372,10 +353,6 @@ contract it frequently calls may be stored under a meaningful name. It is also
 used to store the ``URef``\ s which are known to the contract (see below
 section on Permissions for details).
 
-Note: purely local state should be stored under local keys rather than under
-``URef``\ s in the named keys map. A primary advantage of ``URef``\ s is their
-portability (between on-chain contexts), but for unshared, private variables,
-where portability is not a factor, local keys are more efficient.
 
 The protocol version says which version of the CasperLabs protocol this contract
 was compiled to be compatible with. Contracts which are not compatible with the
