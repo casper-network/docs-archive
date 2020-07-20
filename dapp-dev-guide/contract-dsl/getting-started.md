@@ -39,12 +39,17 @@ The following contract creates a counter in storage. Each time the contract is i
 ```
 extern crate alloc;
 use alloc::{collections::BTreeSet, string::String};
+
+// import casperlabs contract api
 use contract::{
 	contract_api::{runtime, storage},
 	unwrap_or_revert::UnwrapOrRevert,
 };
+// import the contract macros
 use contract_macro::{casperlabs_constructor, casperlabs_contract, casperlabs_method};
 use std::convert::TryInto;
+
+// import casperlabs types
 use types::{
 	bytesrepr::{FromBytes, ToBytes},
 	contracts::{EntryPoint, EntryPointAccess, EntryPointType, EntryPoints},
@@ -53,9 +58,12 @@ use types::{
 
 const KEY: &str = "special_value";
 
+// macro to set up the contract
 #[casperlabs_contract]
 mod tutorial {
 	use super::*;
+
+// constructor macro that sets up the methods, values and keys required for the contract.
 	#[casperlabs_constructor]
 	fn init_counter(initial_value: u64) {
     	let value_ref: URef = storage::new_uref(initial_value);
@@ -63,6 +71,7 @@ mod tutorial {
     	runtime::put_key(KEY, value_key);
 	}
 
+// method macro that sets up required elements for each method in the contract.  
 	#[casperlabs_method]
 	fn update_counter() {
     	let old_value: u64 = key(KEY).unwrap();
@@ -70,6 +79,7 @@ mod tutorial {
     	set_key(KEY, new_value);
 	}
 
+// method macro that sets up required elements for each method in the contract.  
 	#[casperlabs_method]
 	fn get_counter_value() -> u64 {
     	key(KEY).unwrap()
