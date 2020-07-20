@@ -49,8 +49,8 @@ you can use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk
 
    Introduction <self>
    setup-of-rust-contract-sdk
-   contracts-dsl/index
    writing-rust-contracts
+   contracts-dsl/index
    deploying-contracts
    graphql
    execution-error-codes
