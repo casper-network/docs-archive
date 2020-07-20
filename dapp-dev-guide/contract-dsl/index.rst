@@ -13,13 +13,10 @@ Table of Contents
 
 * Getting started with the DSL
  * Importing the macros
+ * About the macros
  * Using the macros
  * Basic syntax
-* About the macros
- * casperlabs_contract
- * casperlabs_constructor
- * casperlabs_method
- * casperlabs_initiator (optional macro)
+  * casperlabs_initiator (optional macro)
 * Looking at the expanded code (Advanced)
  * Using cargo-expand
  * Optimizing the code for gas costs (TODO)
@@ -30,6 +27,5 @@ Table of Contents
  :hidden:
  Introduction <self>
  getting-started
- about
  advanced
  debugging
