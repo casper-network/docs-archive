@@ -1,7 +1,19 @@
-### Getting Started with the DSL
+## Getting Started with the DSL
 
 Since the DSL uses macros, it works like templates in the smart contract, so it's necessary to tell the Rust compiler where the macros are located for each smart contract.
 The aim of this guide is to describe how to configure the smart contract to use the DSL.
+
+### About the DSL
+
+
+With the release of Node 0.20, each contract can have multiple entry points. 
+
+* The `constructor_macro` creates the code that sets up the contract in the runtime and locates the contract in the runtime when execution begins (this is the deploy function that creates the entry point & stores the deploy hash stored under some function name in the runtime).  Think of the function templated by the constructor macro as your ```main``` function, while the contract macro sets up the function definitions within the calls.
+* The `contract_macro` generates the code for the headers for each of the entry points that use it.
+* The `casperlabs_method` creates an entry point for any function in your contract. 
+
+
+
 
 #### Pre-Requisites - Set up the Rust SDK
 Please use the Rust SDK to [create your smart contract project](/dapp-dev-guide/setup-of-rust-contract-sdk.md#setting-up-the-rust-contract-sdk) before setting up the DSL.
