@@ -14,7 +14,7 @@ Install the tooling with the following command:
 cargo install cargo-expand
 ```
 
-Go to `contract` and run the command:
+Run this command in the folder containing the smart contract code:
 ```
 cargo expand
 ```
