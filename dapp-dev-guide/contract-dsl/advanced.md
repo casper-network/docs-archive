@@ -20,7 +20,10 @@ Go to `contract` and run the command:
 cargo expand
 
 ```
-You should see the following output:
+
+##### Example Simple Counter Contract
+
+Running `cargo-expand` on the simple counter contract yeilds this output:
 ```
 #![feature(prelude_import)]
 #[prelude_import]
