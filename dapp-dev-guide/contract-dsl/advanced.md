@@ -12,13 +12,11 @@ The `cargo expand` tool will run the macros and append the boilerplate code to t
 Install the tooling with the following command:
 ```
 cargo install cargo-expand
-
 ```
 
 Go to `contract` and run the command:
 ```
 cargo expand
-
 ```
 
 ##### Example Simple Counter Contract
