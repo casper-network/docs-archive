@@ -1,10 +1,13 @@
-## Tests
-As part of the CasperLabs local environment we provide the in-memory virtual machine you can run your contract against. The testing framework is designed to be used in the following way:
+## Testing Smart Contracts Locally
+
+As part of the CasperLabs local Rust contract development environment we provide the in-memory virtual machine you can run your contract against. The testing framework is designed to be used in the following way:
 1. Initialize the context.
 2. Deploy or call the smart contract.
 3. Query the context for changes and assert the result data matches expected values.
 
-### TestContext
+It is also possible to create build scripts with this environment and set up continuous integration for contract code.
+
+### TestContext for Rust Contracts
 A [`TestContext`](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html) provides a virtual machine instance. It should be a mutable object as we will change its internal data while making deploys. It's also important to set an initial balance for the account to use for deploys.
 ```rust
 const MY_ACCOUNT: [u8; 32] = [7u8; 32];
@@ -15,13 +18,15 @@ let mut context = TestContextBuilder::new()
 ```
 Account is type of `[u8; 32]`. Balance is type of `U512`.
 
-### Run Smart Contract
+### Running the Rust Smart Contract
 
-Before we can deploy the contract to the context, we need to prepare the request. We call the request a [`Session`](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.Session.html). Each session call should have 4 elements:
-- Wasm file path.
-- List of arguments.
-- Account context of execution.
-- List of keys that authorize the call. 
+Before the contract can be deployed to the context, the request has to be prepared. A request is referred to as a [`Session`](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.Session.html). Each session call has 4 elements:
+- A Wasm file path.
+- A list of arguments.
+- The account context for execution.
+- The list of keys that authorize the call. 
+
+Here is an example of a prepared request:
 
 ```rust
 let VALUE: &str = "hello world";
@@ -39,7 +44,7 @@ Executing `run` will panic if the code execution fails.
 
 ### Query and Assert
 
-The smart contract we deployed creates a new value `"hello world"` under the key `"special_value"`. Using the `query` function it's possible to extract this value from the blockchain.
+The smart contract creates a new value `"hello world"` under the key `"special_value"`. Using the `query` function it's possible to extract this value from the global state of the blockchain.
 ```rust
 let KEY: &str = "special_value";
 let result_of_query: Result<Value, Error> = context.query(MY_ACCOUNT, &[KEY]);
