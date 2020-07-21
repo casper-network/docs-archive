@@ -6,7 +6,7 @@ configuration before saving the changes.
 
 ##### Expanding the Code
 When the rust compiler encounters each of the macros, it 'expands' the code and adds additional lines of code for each of the macros. 
-The resultant expanded code is then finally compiled to the wasm which can then be deployed to the runtime.
+The resultant expanded code is then compiled to the wasm which can then be deployed to the blockchain.
 
 The `cargo expand` tool will run the macros and append the boilerplate code to the contract without compiling the code. 
 Install the tooling with the following command:
