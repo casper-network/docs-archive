@@ -7,7 +7,7 @@ As part of the CasperLabs local Rust contract development environment we provide
 
 It is also possible to create build scripts with this environment and set up continuous integration for contract code.
 
-### TestContext for Rust Contracts
+### The TestContext for Rust Contracts
 A [`TestContext`](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html) provides a virtual machine instance. It should be a mutable object as we will change its internal data while making deploys. It's also important to set an initial balance for the account to use for deploys.
 ```rust
 const MY_ACCOUNT: [u8; 32] = [7u8; 32];
