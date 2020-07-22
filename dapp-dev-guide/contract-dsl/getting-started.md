@@ -24,7 +24,7 @@ To import the macros, include a line in the `Cargo.toml` file in the `/contract`
 The entry needs to appear in the`[dependencies]` section.  This entry will import the macros into your project. 
 Below are a few sources for the macros.
 
-##### From Crates.io[Recommended]
+##### From Crates.io
 To use the crate available on [crates.io](https://crates.io/crates/casperlabs_contract_macro) include the 
 following entry in the `Cargo.toml` file for the smart contract.
 ```
