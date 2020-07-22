@@ -52,23 +52,19 @@ tlKF2V5RFQn4rzkwipSYnrqaPf1pTA==
 The last missing element is obtaining the Account Hash. One can simply make a deploy and read the header value.
 
 ```bash
-$ casperlabs_client --host localhost transfer --private-key eth-private.pem -a 100 -t d5fcbd8fc87d8943ce9273f3a4d1e98ec78f1515f05e7fe027a94885dbe043e2
-Success! Deploy 3ac411115a0df8c28554e914c078c6ac7efb26b740740d11bce132a0e5c4de2a deployed
+$ casperlabs_client --host localhost deploy --private-key eth-private.pem --session contract.wasm --algorithm secp256k1
+Success! Deploy a124a6e68d804b4222cc12a3a9dfd1b64d9700589724682095f87705614c54c8 deployed
 
-$ casperlabs_client --host localhost show-deploy 3ac411115a0df8c28554e914c078c6ac7efb26b740740d11bce132a0e5c4de2a
+$ casperlabs_client --host localhost show-deploy a124a6e68d804b4222cc12a3a9dfd1b64d9700589724682095f87705614c54c8
 deploy {
-  deploy_hash: "3ac411115a0df8c28554e914c078c6ac7efb26b740740d11bce132a0e5c4de2a"
+  deploy_hash: "a124a6e68d804b4222cc12a3a9dfd1b64d9700589724682095f87705614c54c8"
   header {
-    account_public_key_hash: "a58f68fffdb5b0bcc593577696e8c41320b199fae35d866494edca20d314129d"
-    timestamp: 1593436760800
-    body_hash: "ddc22e669e08ee784af0ca77b8a0fc058860fb80f5db55163c26406aadc08fd1"
+    account_public_key_hash: "c1f358d347c3134d0eade886c8379ebf05788ee7fb713d657ce358b6cf3b35a6"
+    timestamp: 1594220659169
+    body_hash: "e6b3f3fcf2fb5d3ab1cc74a4fa0271b68c4f75a9273d6982a95ffb9ee4cdd4e7"
   }
   approvals {
-    approver_public_key: "24578ce721ef423dda2aeb2703fab6fab86eed120eb09d8e94dc1c2ccd713314"
-    signature {
-      sig_algorithm: "ed25519"
-      sig: "99be8e0c34d9b42fc9c6f589ab5a2d851a188c9b22cd97b8ef8825d07667cf469d72280ad3a0035fcfaafcbcf5d94c4d8cad16571368f679b17fc9e6b0a0f60e"
-    }
+    ...
   }
 }
 status {
