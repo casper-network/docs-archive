@@ -54,7 +54,7 @@ This line can go after the last `use` line in the blank contract created by `car
 
 Remember, if you are using the crates.io package, you may have to use the package as `casperlabs_contract_macro`. This depends entirely on how you import the package in your `Cargo.toml` file
 
-##### Example Simple Counter Contract
+##### Example Counter Contract
 
 The following contract creates a counter in storage. Each time the contract is invoked, the counter is incremented by 1.
 
@@ -134,9 +134,10 @@ mod tutorial {
 ```
 
 
-##### Testing the sample contract:
+##### Testing the Example Contract:
 
-You can use the following test to check whether or not your tutorial contract is working as it uses the DSL:
+If you set up your contract using `cargo-casperlabs` you can test your contract using the local runtime.  Set up the runtime following the steps in /./testing.md
+You can use the following test to check whether or not your tutorial contract is working properly:
 ```
 #[cfg(test)]
 mod tests {
