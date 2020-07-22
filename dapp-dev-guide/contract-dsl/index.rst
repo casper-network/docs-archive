@@ -15,4 +15,3 @@ The macros work with Contract Headers (released as part of the 0.20 release).  C
    Introduction <self>
    getting-started
    advanced
-   debugging
