@@ -1,32 +1,26 @@
 ### Advanced Options 
-Once the base logic of the smart contract is in place, it's desirable to optimize the contract for the blockchain.  This will require digging into the actual code that
-the DSL generates.  This section will describe the steps to do this.  Once the code has been expanded and then changed, make sure to remove the macros from the project 
-configuration before saving the changes.
-
-#### Debugging Contracts when using Macros:
-
-You should be able to set up breakpoints once you have expanded the code using ```cargo-expand``` - which will display the code as the compiler sees it, and as the wasm runs.
-
-It isn't possible to use `as-try-build` because it requires a main function, something which smart contracts do not use, because they run differently. 
-
+Once the base logic of the smart contract is in place, it's desirable to optimize the contract 
+for the blockchain. This will require digging into the actual code that the DSL generates. 
+This section will describe the steps to do this. Once the code has been expanded and then 
+changed, make sure to remove the macros from the project configuration before saving the changes.
 
 ##### Expanding the Code
-When the rust compiler encounters each of the macros, it 'expands' the code and adds additional lines of code for each of the macros. 
-The resultant expanded code is then compiled to the wasm which can then be deployed to the blockchain.
+When the Rust compiler encounters each of the macros, it 'expands' the code and adds additional 
+lines of code for each of the macros. The resultant expanded code is then compiled to the wasm 
+which can then be deployed to the blockchain.
 
-The `cargo expand` tool will run the macros and append the boilerplate code to the contract without compiling the code. 
-Install the tooling with the following command:
+The `cargo expand` tool will run the macros and append the boilerplate code to the contract 
+without compiling the code. Install the tooling with the following command:
 ```
-cargo install cargo-expand
+$ cargo install cargo-expand
 ```
 
 Run this command in the folder containing the smart contract code:
 ```
-cargo expand
+$ cargo expand
 ```
 
 ##### Example Simple Counter Contract
-
 Running `cargo-expand` on the simple counter contract yeilds this output:
 ```
 #![feature(prelude_import)]
