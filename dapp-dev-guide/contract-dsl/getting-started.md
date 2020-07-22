@@ -136,7 +136,7 @@ mod tutorial {
 
 ##### Testing the Example Contract:
 
-If you set up your contract using `cargo-casperlabs` you can test your contract using the local runtime.  Set up the runtime following the steps in /./testing.md
+If you set up your contract using `cargo-casperlabs` you can test your contract using the local runtime.  Set up the runtime following the steps in the [testing](/./dapp-dev-guide/testing.md) 
 You can use the following test to check whether or not your tutorial contract is working properly:
 ```
 #[cfg(test)]
