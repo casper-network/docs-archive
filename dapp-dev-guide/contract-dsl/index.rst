@@ -8,9 +8,11 @@ The code will be a bit larger after the macros run and the boilerplate code is a
 
 The macros work with Contract Headers (released as part of the 0.20 release).  Contracts created prior to 0.20 will need to be upgraded to use the macros.
 
+Table of Contents
+#####
 .. toctree::
    :maxdepth: 2
-   :caption: Table of Contents
+ 
 
    Introduction <self>
    getting-started
