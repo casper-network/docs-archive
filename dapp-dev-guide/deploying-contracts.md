@@ -12,13 +12,12 @@ It's possible to use pre-built binaries or build from source. Both provide the c
 ### Using Binaries
 
 * **Linux**: apt, rpm (yum, dnf, zypper - depends on the Linux distribution being used)
-* **macOS**: [Homebrew](https://brew.sh/)
 * **Python**: [casperlabs-client](https://pypi.org/project/casperlabs-client/)
 * **Tarball** from [GitHub](https://github.com/CasperLabs/CasperLabs/releases)
 * **Docker**
 
 ### Building from Source
-[Instructions](https://github.com/CasperLabs/CasperLabs/blob/master/docs/BUILD.md#build-the-client)
+[Instructions](https://github.com/CasperLabs/client-py/blob/master/README.md)
 
 Make sure you have pre-requisites installed and you can build the casperlabs-client from source. If you build from source, you will need to add the build directories to your PATH.
 
@@ -56,17 +55,14 @@ The Testnet is operated by external validators that can accept transactions at t
 The default port is 40401
 
 ### Check the Client Version
-There are 2 versions of the client - Scala and Python. 
+There is an official Python client. 
 
-To check the Scala client version run:
-```bash
-casperlabs-client --version
-```
-For Python run:
+To check the client version run:
+
 ```bash
 pip show casperlabs_client
 ```
-If you want to send your deployments to an external network, use the latest released version of the client.  If you are working off of dev, build the client locally and check the gitHash.
+If you want to send your deployments to an external network, use the latest [released](https://pypi.org/project/casperlabs-client/) version of the client.  If you are working off of dev, build the client locally and check the gitHash.
 
 ### A Basic Deployment
 As described above, a basic deployment must provide some essential information. Here is an example deployment using the Python client that will work with the basic contract we created using the [Contracts SDK for Rust](writing-rust-contracts):
