@@ -6,8 +6,7 @@ The aim of this guide is to describe how to configure the smart contract to use 
 
 ### About the DSL
 
-
-**With the release of Node 0.20, each contract can have multiple entry points.
+The DSL is designed specifically for Rust Smart Contrats.  
 
 * The `constructor_macro` creates the code that sets up the contract in the runtime and locates the contract in the runtime when execution begins (this is the deploy function that creates the entry point & stores the deploy hash stored under some function name in the runtime).  Think of the function templated by the constructor macro as your ```main``` function, while the contract macro sets up the function definitions within the calls.
 * The `contract_macro` generates the code for the headers for each of the entry points that use it.
@@ -22,7 +21,7 @@ Please use the Rust SDK to [create your smart contract project](/dapp-dev-guide/
 The source code for the macros is located at [GitHub](https://github.com/CasperLabs/casperlabs_contract_macro).
 To import the macros, include a line in the `Cargo.toml` file in the `/contract` folder for your smart contract. 
 The entry needs to appear in the`[dependencies]` section.  This entry will import the macros into your project. 
-Below are a few sources for the macros.
+There are a few sources for the macros.
 
 ##### From Crates.io
 To use the crate available on [crates.io](https://crates.io/crates/casperlabs_contract_macro) include the 
@@ -39,18 +38,18 @@ contract_macro = { git = "https://github.com/CasperLabs/casperlabs_contract_macr
 
 ```
 ##### Local package
-This example entry uses a local path for the macros:
+This example `Cargo.toml` entry uses a local path for the macros:
 ```
 contract_macro = { path = "../../casperlabs-node/smart_contracts/contract_macro" }
 ```
 
 ### Using the DSL
-To use the DSL, simply add the following line to the `use` section of the contract.  This section is similar to `include`
+To use the DSL, simply add the following line to the `use` section of the contract. 
 
 ```rust
 use contract_macro::{casperlabs_constructor, casperlabs_contract, casperlabs_method};
 ```
-This line can go after the last `use` line in the blank contract created by `cargo-casperlabs`
+This line can go after the last `use` line in the blank contract created by `cargo-casperlabs`.
 
 Remember, if you are using the crates.io package, you may have to use the package as `casperlabs_contract_macro`. This depends entirely on how you import the package in your `Cargo.toml` file
 
@@ -81,11 +80,13 @@ use types::{
 const KEY: &str = "special_value";
 
 // macro to set up the contract
+
 #[casperlabs_contract]
 mod tutorial {
 	use super::*;
 
 // constructor macro that sets up the methods, values and keys required for the contract.
+
 	#[casperlabs_constructor]
 	fn init_counter(initial_value: u64) {
     	let value_ref: URef = storage::new_uref(initial_value);
@@ -94,6 +95,7 @@ mod tutorial {
 	}
 
 // method macro that defines a new entry point for the contract.
+
 	#[casperlabs_method]
 	fn update_counter() {
     	let old_value: u64 = key(KEY).unwrap();
@@ -102,6 +104,7 @@ mod tutorial {
 	}
 
 // method macro that defines a new entry point for the contract.
+
 	#[casperlabs_method]
 	fn get_counter_value() -> u64 {
     	key(KEY).unwrap()
@@ -136,9 +139,11 @@ mod tutorial {
 
 #### Testing the Example Contract:
 
-If you set up your contract using `cargo-casperlabs` you can test your contract using the local runtime.  
+If you set up your contract using `cargo-casperlabs` you can test your contract using the local runtime. 
+
 Set up the runtime following the steps in the [testing](/./dapp-dev-guide/testing.md) section 
 of this guide to set up the runtime context.
+
 The following test will check whether or not the tutorial contract is working properly:
 ```rust
 #[cfg(test)]
