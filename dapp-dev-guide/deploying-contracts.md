@@ -3,7 +3,7 @@
 Ultimately, smart contracts should be run on the blockchain.  Once your smart contract is complete, it's time to deploy your contract to a blockchain.  Deploying a contract has a few pre-requisites:
 
 ## CasperLabs Client
-The client software communicates with the network to transmit your deployments to the network.  Clients exist for a variety of development platforms such as Python, Rust and Scala.  It is also possible to create a client to meet specific needs as well.
+The client software communicates with the network to transmit your deployments to the network.  Clients exist for a variety of development platforms such as Python and Javascript.  The official client is the [Python Client](https://github.com/CasperLabs/client-py) It is also possible to create a client to meet specific needs as well.
 
 It's possible to use pre-built binaries or build from source. Both provide the casperLabs-client.
 
@@ -11,10 +11,7 @@ It's possible to use pre-built binaries or build from source. Both provide the c
 
 ### Using Binaries
 
-* **Linux**: apt, rpm (yum, dnf, zypper - depends on the Linux distribution being used)
-* **Python**: [casperlabs-client](https://pypi.org/project/casperlabs-client/)
-* **Tarball** from [GitHub](https://github.com/CasperLabs/CasperLabs/releases)
-* **Docker**
+* **Python**: [casperlabs-client](https://github.com/CasperLabs/client-py)
 
 ### Building from Source
 [Instructions](https://github.com/CasperLabs/client-py/blob/master/README.md)
