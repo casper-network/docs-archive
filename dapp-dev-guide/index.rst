@@ -58,3 +58,4 @@ you can use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk
    erc20/index
    assemblyscript
    ethereum-keys
+   solidity
