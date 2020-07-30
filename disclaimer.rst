@@ -10,7 +10,7 @@ to comply with this directive may result in a violation of applicable laws of
 any affected or involved jurisdiction.
 
 Nothing in this Whitepaper constitutes an offer to sell, or a solicitation to
-purchase, the tokens native to the CasperLabs blockchain (“**CLX**”). In any
+purchase, the tokens native to the Casper blockchain (“**CLX**”). In any
 event, were this Whitepaper to be deemed to be such an offer or solicitation, no
 such offer or solicitation is intended or conveyed by this Whitepaper in any
 jurisdiction where it is unlawful to do so, where such an offer or solicitation
@@ -80,7 +80,7 @@ contract or otherwise in respect of this Whitepaper. Neither this Whitepaper nor
 anything contained herein shall form the basis of or be relied on in connection
 with or act as an inducement to enter into any contract or commitment
 whatsoever. Recipients should note that the final structuring of CLX and the
-CasperLabs blockchain is subject to ongoing technical, legal, regulatory and tax
+Casper blockchain is subject to ongoing technical, legal, regulatory and tax
 considerations and each is, therefore, subject to material changes. In
 particular, neither the applicability nor the non-applicability of Swiss
 financial market regulations on the CLX sale has not been confirmed by the Swiss
@@ -88,7 +88,7 @@ Financial Market Supervisory Authority ("**FINMA**"). CasperLabs Networks AG
 and all its affiliates reserve the right to not assist in the completion of the
 software underlying CLX and the CasperLabs blockchain, to not participate in the
 issuance or creation of CLX or to change the structure of CLX and/or the
-CasperLabs blockchain for any reason, each at its sole discretion.
+Casper blockchain for any reason, each at its sole discretion.
 
 **Forward-Looking Statements**
 
@@ -100,12 +100,12 @@ like "believe", "anticipate", "expect", "project", "estimate", "predict",
 similar expressions are intended to identify such forward-looking statements.
 Such forward-looking statements involve known and unknown risks, uncertainties
 and other factors, which may cause the actual functionality, performance or
-features of the CasperLabs blockchain and/or CLX to be materially different from
+features of the Casper blockchain and/or CLX to be materially different from
 any future functionality, performance or features expressed or implied by such
 forward-looking statements. Such forward-looking statements are based on
 numerous assumptions regarding the CasperLabs Networks AG’s and/or any of its
 affiliates’ present and future expectations regarding the development of the
-CasperLabs blockchain and the associated software.
+Casper blockchain and the associated software.
 
 These forward-looking statements speak only as of the date of this Whitepaper.
 CasperLabs Networks AG and its affiliates expressly disclaim any obligation or
@@ -126,13 +126,13 @@ limited to, those outlined hereinafter.
   Recipient is aware that CasperLabs Networks AG and its affiliates constitute a
   start-up group of companies. Inability of such companies to manage their
   affairs, including any failure to attract and retain appropriate personnel,
-  could affect the completion and functionality of the CasperLabs blockchain.
+  could affect the completion and functionality of the Casper blockchain.
 - **Risks associated with CLX relative value**: the Recipient understands and
   accepts that a purchaser of CLX may experience financial losses relative to
   other assets, including fiat currency and/or any other cryptocurrency (including
   any cryptocurrency used to acquire CLX). Potential purchasers and holders of CLX
   are urged to carefully review this Whitepaper and assess and understand the risk
-  factors relating to the CLX and the CasperLabs blockchain before acquiring CLX
+  factors relating to the CLX and the Casper blockchain before acquiring CLX
   (when and if CLX become available).
 - **Risks associated with (intellectual) property rights**: the Recipient
   understands and accepts that, due to a lack of originality of the software and
@@ -140,14 +140,14 @@ limited to, those outlined hereinafter.
   and to the intellectual property rights relating to CLX.
 - **Risks associated with blockchain**: the Recipient understands and accepts
   that the smart contract, the underlying software application and software
-  platform (i.e. the CasperLabs blockchain) is still in an early development stage
+  platform (i.e. the Casper blockchain) is still in an early development stage
   and unproven. The Recipient understands and accepts that there is no warranty
-  that the process for creating the CLX and/or the CasperLabs blockchain will be
+  that the process for creating the CLX and/or the Casper blockchain will be
   uninterrupted or error-free and acknowledges that there is an inherent risk that
   the software could contain weaknesses, vulnerabilities or bugs causing, inter
   alia, the complete loss of CLX. The Recipient understands and accepts that,
-  after launch of the CasperLabs blockchain, the smart contract and/or underlying
-  protocols and/or the CasperLabs blockchain and/or any other software involved
+  after launch of the Casper blockchain, the smart contract and/or underlying
+  protocols and/or the Casper blockchain and/or any other software involved
   may either delay and/or not execute a contribution due to the overall
   contribution volume, mining attacks and/or similar events.
 - **Risk of weaknesses in the field of cryptography**: the Recipient
@@ -156,7 +156,7 @@ limited to, those outlined hereinafter.
   access and/or manipulate data stored on a distributed ledger or blockchain are
   highly likely to progress in parallel and in addition, new technological
   developments such as quantum computers may pose as of now unpredictable risks to
-  the CLX and the CasperLabs blockchain that could increase the risk of theft or
+  the CLX and the Casper blockchain that could increase the risk of theft or
   loss of CLX (if and when CLX are created and/or issued).
 - **Regulatory risks**: the Recipient understands and accepts that it is
   possible that certain jurisdictions will apply existing regulations on, or
@@ -169,7 +169,7 @@ limited to, those outlined hereinafter.
   CLX, for the Recipient.
 - **Risks associated with abandonment / lack of success**: the Recipient
   understands and accepts that the creation of the CLX and the development of the
-  CasperLabs blockchain as well as the CasperLabs Networks AG project may be
+  Casper blockchain as well as the CasperLabs Networks AG project may be
   abandoned for a number of reasons, including lack of interest from the public,
   lack of funding, lack of prospects (e.g. caused by competing projects) and
   legal, tax or regulatory considerations. The Recipient therefore understands
@@ -193,15 +193,15 @@ limited to, those outlined hereinafter.
   bankruptcy of the wallet provider.
 - **Risks associated with theft/hacks**: the Recipient understands and accepts
   that the smart contract, the website, the underlying software application and
-  software platform (i.e. the CasperLabs blockchain), during its development and
+  software platform (i.e. the Casper blockchain), during its development and
   after its launch, may be exposed to attacks by hackers or other individuals that
-  could result in an inability to launch the CasperLabs blockchain or the theft or
+  could result in an inability to launch the Casper blockchain or the theft or
   loss of CLX. Any such event could also result in the loss of financial and other
   support of the CasperLabs Networks AG project impacting the ability to develop
-  the CasperLabs Networks AG project and CasperLabs blockchain.
+  the CasperLabs Networks AG project and Casper blockchain.
 - **Risks associated with mining attacks**: the Recipient understands and
   accepts that, as with other cryptocurrencies and tokens, if and when launched,
-  the CasperLabs blockchain is susceptible to attacks relating to validators. Any
+  the Casper blockchain is susceptible to attacks relating to validators. Any
   successful attack presents a risk to the smart contract, expected proper
   execution and sequencing of transactions, and expected proper execution and
   sequencing of contract computations.

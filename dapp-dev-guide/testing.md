@@ -1,14 +1,15 @@
 ## Testing Smart Contracts Locally
 
-As part of the CasperLabs local Rust contract development environment we provide the in-memory virtual machine you can run your contract against. The testing framework is designed to be used in the following way:
-1. Initialize the context.
+As part of the CasperLabs local Rust contract development environment we provide an in-memory virtual machine you can run your contract against. A full node is not required for testing.  The testing framework is designed to be used in the following way:
+1. Initialize the system (context).
 2. Deploy or call the smart contract.
 3. Query the context for changes and assert the result data matches expected values.
 
-It is also possible to create build scripts with this environment and set up continuous integration for contract code.
+It is also possible to create build scripts with this environment and set up continuous integration for contract code.  
+This environment enables the testing of blockchain enabled systems from end to end.
 
 ### The TestContext for Rust Contracts
-A [`TestContext`](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html) provides a virtual machine instance. It should be a mutable object as we will change its internal data while making deploys. It's also important to set an initial balance for the account to use for deploys.
+A [`TestContext`](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html) provides a virtual machine instance. It should be a mutable object as its internal data will change with each deploy. It's also important to set an initial balance for the account to use for deploys, as the system requires a balance in order to create an account.
 ```rust
 const MY_ACCOUNT: [u8; 32] = [7u8; 32];
 
