@@ -15,7 +15,7 @@ Without any doubts, the existence and simplicity of Solidity were one of the key
 Transpiling is a well known process of turning code written in one high-level language into another high-level language. At the moment the most popular example is the TypeScript to JavaScript transpiler. 
 
 We have concluded that Solidity support is much easier and efficient to achieve by transpiling Solidity to Rust, that by compiling Solidity to WASM bytecode. This is why:
-* Solidity features are easy to express in Rust, that is much richer language.
+* Solidity features are easy to express in Rust, which is a much richer language.
 * The shape of CasperLabs DSL is similar to Solidity.
 * The CasperLabs Rust toolchain is something we want to leverage, rather than coding it from scratch.
 * The CasperLabs execution model is different than Ethereum's, therefore it's easier to translate it on the language level, that on the bytecode level.
