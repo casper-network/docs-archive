@@ -1,7 +1,7 @@
 # Caspiler - Solidity to Rust Transpiler
 
 ## tl;dr 
-**We transpile Solidity to Rust and this is great!**
+**Transpile Solidity to Rust and access the cool features of Casper!**
 
 ## Smart Contracts at CasperLabs
 The CasperLabs Virtual Machine requires Smart Contract to compile to WebAssembly.
