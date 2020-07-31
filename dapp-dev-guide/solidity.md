@@ -12,7 +12,7 @@ As the AssemblyScript itself is still under heavy development, we focus mainly o
 Without any doubts, the existence and simplicity of Solidity were one of the key factors behind the growth of the Ethereum. It resulted in the large group of Solidity developers for whom it's still the best tool for expressing their Smart Contract ideas. At CasperLabs we feel a strong connection with that (our) community and we came up with the value proposition: Solidity to Rust transpiler.
 
 ## Transpiler
-Code transpilation is a well know process of turning a code written in one high-level language into another high-level language. At the moment the most popular example is the TypeScript to JavaScript transpiler. 
+Transpiling is a well known process of turning code written in one high-level language into another high-level language. At the moment the most popular example is the TypeScript to JavaScript transpiler. 
 
 We have concluded that Solidity support is much easier and efficient to achieve by transpiling Solidity to Rust, that by compiling Solidity to WASM bytecode. This is why:
 * Solidity features are easy to express in Rust, that is much richer language.
