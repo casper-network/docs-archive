@@ -39,6 +39,9 @@ members = [
     "contract",
     "tests"
 ]
+
+[profile.release]
+lto = true
 ```
 
 
