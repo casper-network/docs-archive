@@ -55,7 +55,7 @@ you can use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk
    deploying-contracts
    graphql
    execution-error-codes
-   erc20/index
    assemblyscript
    ethereum-keys
    solidity
+   erc20/index
