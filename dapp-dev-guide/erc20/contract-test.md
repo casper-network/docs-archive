@@ -1,6 +1,6 @@
 # Smart Contract Tests
 
-In this section we'll use the [CasperLabs Engine Test Support](https://crates.io/crates/casperlabs-engine-test-support) crate to test the ERC-20 smart contract against the execution environment that is equivalent to what CasperLabs uses in production.
+In this section we'll use the [CasperLabs Engine Test Support](https://crates.io/crates/casperlabs-engine-test-support) crate to test the ERC-20 smart contract against the execution environment that is equivalent to what CasperLabs uses in production.  Here we will create 2 files that will set up the testing framework for the ERC20 contract.  
 
 The following is an example of a finished test.
 ```rust
@@ -13,35 +13,38 @@ fn test_erc20_transfer() {
     assert_eq!(token.balance_of(BOB), amount);
 }
 ```
-Remove `tests/src/integration_tests.rs` and create two files `tests/src/lib.rs` and `tests/src/erc20.rs`.
+Remove `tests/src/integration_tests.rs` and create three files:
+* `tests/src/erc20.rs` - sets up testing context and creates helper functions used by unit tests 
+* `tests/src/tests.rs` - contains the unit tests
+* `tests/src/lib.rs` - required by rust toolchain.  Links the other 2 files together
 
 The `tests` crate has a `build.rs` file: effectively a custom build script. It's executed every time before running tests and it compiles `contract` crate in release mode for your convenience and copies the `contract.wasm` file to `tests/wasm` directory. In practice, that means we only need to run `cargo test -p tests` during the development.
 
-## Cargo.toml
+## Set up Cargo.toml
 Define a `tests` package at `tests/Cargo.toml`.
 ```toml
 [package]
 name = "tests"
 version = "0.1.1"
-authors = ["Maciej Zieliński <maciej@casperlabs.io>"]
-edition = "2018"
+authors = ["Your Name here <your email here>"]
+edition = "2020"
 
 [dependencies]
-casperlabs-contract = "0.4.0"
-casperlabs-types = "0.4.0"
-casperlabs-engine-test-support = "0.5.0"
+casperlabs-contract = "0.6.1"
+casperlabs-types = "0.6.1"
+casperlabs-engine-test-support = "0.8.1"
 
 [features]
 default = ["casperlabs-contract/std", "casperlabs-types/std"]
 ```
 
-## Testing Context
-Start with defining constants like method names, key names and account addresses we'll reuse across tests.
+## Create ERC20.rs Logic for Testing
+
+### Set Up the Testing Context
+Start with defining constants like method names, key names and account addresses that will be reused across tests.  This initializes the global state with all the data and methods that the smart contract needs in order to run properly. Here we initialize the global state with the 
+
 ```rust
 // tests/src/erc20.rs
-
-const ERC20_WASM: &str = "contract.wasm";
-pub const ERC20_INIT_BALANCE: u64 = 10000;
 
 pub mod account {
     use super::PublicKey;
@@ -50,86 +53,84 @@ pub mod account {
     pub const JOE: PublicKey = PublicKey::ed25519_from([3u8; 32]);
 }
 
-mod method {
-    pub const DEPLOY: &str = "deploy";
-    pub const TRANSFER: &str = "transfer";
-    pub const TRANSFER_FROM: &str = "transfer_from";
-    pub const APPROVE: &str = "approve";
+pub mod token_cfg {
+    use super::*;
+    pub const NAME: &str = "ERC20";
+    pub const SYMBOL: &str = "STX";
+    pub const DECIMALS: u8 = 18;
+    pub fn total_supply() -> U256 { 1_000.into() } 
 }
 
-mod key {
-    pub const ERC20_INDIRECT: &str = "erc20_indirect";
-    pub const ERC20: &str = "erc20";
-    pub const TOTAL_SUPPLY: &str = "total_supply";
+pub struct Sender(pub AccountHash);
+
+pub struct Token {
+    context: TestContext
 }
 ```
-To clearly mark the address sending the transaction, introduce `Sender` wrapper.
+
+### Deploying the Contract
+The next step is to define the ERC20Contract struct that has its' own VM instance and implements ERC-20 methods. This struct should hold a TestContext of its own. The token contract hash and the erc20_indirect session code hash won’t change after the contract is deployed, so it’s handy to have it available. This code snippet builds the context and includes the compiled ```contract.wasm``` binary that is being tested. This function creates new instance of ERC20Contract with ALI, BOB and JOE having positive initial balance. The contract is deployed using ALI account.
+
+
 ```rust
 // tests/src/erc20.rs
 
-pub struct Sender(pub PublicKey);
-```
-
-We'll define `ERC20Contract` struct that has its own VM instance and implements ERC-20 methods. `ERC20Contract` struct should hold a [TestContext](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html) of its own. The `erc20` token contract hash and the `erc20_indirect` session code hash won't change after the contract is deployed, so it's handy to have it available.
-```rust
-// tests/src/erc20.rs
-
-pub struct ERC20Contract {
-    pub context: TestContext,
-    pub token_hash: Hash,
-    pub indirect_hash: Hash,
+// the contract struct
+pub struct Token {
+    context: TestContext
 }
 
-impl ERC20Contract {
-    pub fn deployed() -> Self {
-        // Init context.
-        let clx_init_balance = U512::from(10_000_000_000u64);
+impl Token {
+
+    pub fn deployed() -> Token {
+    
+    // Builds test context with Alice & Bob's accounts
         let mut context = TestContextBuilder::new()
-            .with_account(account::ALI, clx_init_balance)
-            .with_account(account::BOB, clx_init_balance)
-            .with_account(account::JOE, clx_init_balance)
+            .with_account(account::ALI, U512::from(128_000_000))
+            .with_account(account::BOB, U512::from(128_000_000))
             .build();
-        // Deploy contract.
-        let code = Code::from(ERC20_WASM);
-        let args = (method::DEPLOY, U512::from(ERC20_INIT_BALANCE));
-        let session = SessionBuilder::new(code, args)
+            
+       // adds compiled contract to the context with arguments specified above.  For this example it is 'ERC20' & 'STX'    
+        let session_code = Code::from("contract.wasm");
+        let session_args = runtime_args! {
+            "tokenName" => token_cfg::NAME,
+            "tokenSymbol" => token_cfg::SYMBOL,
+            "tokenTotalSupply" => token_cfg::total_supply()
+        };
+        // Builds the session with the code and arguments 
+        let session = SessionBuilder::new(session_code, session_args)
             .with_address(account::ALI)
             .with_authorization_keys(&[account::ALI])
             .build();
+            
+        //Runs the code
+        
         context.run(session);
-        // Read hashes.
-        let token_hash = Self::contract_hash(&context, key::ERC20);
-        let indirect_hash = Self::contract_hash(&context, key::ERC20_INDIRECT);
-        Self {
-            context,
-            token_hash,
-            indirect_hash,
-        }
+        Token { context }
     }
 
-    fn contract_hash(context: &TestContext, name: &str) -> Hash {
-        let contract_ref: Key = context
-            .query(account::ALI, &[name])
-            .unwrap_or_else(|_| panic!("{} contract not found.", name))
+```
+
+### Querying the System
+The above step has simulated a real deploy on the network. This code snippet describes how to query for the hash of the contract.  Contracts are deployed under the context of an account.  Since the deployment was created under thhe context of ```account::ALI```, this is what is queried here. The query_contract function uses query to lookup named keys of the erc20 contract stored under self.token_hash. It will be used to implement balance_of, total_supply and allowance checks.
+
+
+```rust
+ fn contract_hash(&self) -> Hash {
+        self.context
+            .query(account::ALI, &[format!("{}_hash", token_cfg::NAME)])
+            .unwrap_or_else(|_| panic!("{} contract not found", token_cfg::NAME))
             .into_t()
-            .unwrap_or_else(|_| panic!("{} is not a type Contract.", name));
-        contract_ref
-            .into_hash()
-            .unwrap_or_else(|| panic!("{} is not a type Hash.", name))
+            .unwrap_or_else(|_| panic!("{} has wrong type", token_cfg::NAME))
     }
 
-    fn call_indirect(&mut self, sender: Sender, args: impl ArgsParser) {
-        let Sender(address) = sender;
-        let code = Code::Hash(self.indirect_hash);
-        let session = SessionBuilder::new(code, args)
-            .with_address(address)
-            .with_authorization_keys(&[address])
-            .build();
-        self.context.run(session);
-    }
+// This function is a generic helper function that queries for a named key defined in the contract.  
 
-    fn query_contract<T: CLTyped + FromBytes>(&self, name: String) -> Option<T> {
-        match self.context.query(account::ALI, &[key::ERC20, &name]) {
+    fn query_contract<T: CLTyped + FromBytes>(&self, name: &str) -> Option<T> {
+        match self.context.query(
+            account::ALI,
+            &[token_cfg::NAME, &name.to_string()],
+        ) {
             Err(_) => None,
             Ok(maybe_value) => {
                 let value = maybe_value
@@ -139,140 +140,174 @@ impl ERC20Contract {
             }
         }
     }
-}
-```
-`deployed` function creates new instance of `ERC20Contract` with `ALI`, `BOB` and `JOE` having positive initial balance. The contract is deployed using `ALI` account. 
 
-`call_indirect` function uses [run](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html#method.run) function to call the contract deployed under `self.indirect_hash`. It will be used to implement `transfer`, `approve` and `transfer_from` calls.
+ // here we call the helper function to query on specific named keys defined in the contract.
+ 
+ // returns the name of the token
+  pub fn name(&self) -> String {
+        self.query_contract("_name").unwrap()
+    }
 
-`query_contract` function uses [query](https://docs.rs/casperlabs-engine-test-support/latest/casperlabs_engine_test_support/struct.TestContext.html#method.query) to lookup named keys of the `erc20` contract stored under `self.token_hash`. It will be used to implement `balance_of`, `total_supply` and `allowance` checks.
+// returns the token symbol
+    pub fn symbol(&self) -> String {
+        self.query_contract("_symbol").unwrap()
+    }
 
-## Transfer, Approve, Transfer From
-Now it's easy to define methods that are needed to make a deploy.
-```rust
-// tests/src/erc20.rs
+// returns the number of decimal places for the token
+    pub fn decimals(&self) -> u8 {
+        self.query_contract("_decimals").unwrap()
+    }
 
-pub fn transfer(&mut self, receiver: PublicKey, amount: u64, sender: Sender) {
-    self.call_indirect(
-        sender,
-        (
-            (method::TRANSFER, self.token_hash),
-            receiver,
-            U512::from(amount),
-        ),
-    )
-}
-
-pub fn approve(&mut self, spender: PublicKey, amount: u64, sender: Sender) {
-    self.call_indirect(
-        sender,
-        (
-            (method::APPROVE, self.token_hash),
-            spender,
-            U512::from(amount),
-        ),
-    )
-}
-
-pub fn transfer_from(
-    &mut self,
-    owner: PublicKey,
-    receiver: PublicKey,
-    amount: u64,
-    sender: Sender,
-) {
-    self.call_indirect(
-        sender,
-        (
-            (method::TRANSFER_FROM, self.token_hash),
-            owner,
-            receiver,
-            U512::from(amount),
-        ),
-    )
-}
 ```
 
-## Balance Of, Total Supply, Allowance
-It's also easy to define reader functions. Note that, for `balance_of` and `allowance` if the record is not present, it means it's equal to zero.
+### Invoking methods in the Contract
+This code snippet describe a generic way to call a specific entry point in the contract. 
+
 ```rust
-// tests/src/erc20.rs
 
-pub fn balance_of(&self, account: PublicKey) -> u64 {
-    let balance: Option<U512> = self.query_contract(account.to_string());
-    balance.unwrap_or_else(U512::zero).as_u64()
-}
-
-pub fn allowance(&self, owner: PublicKey, spender: PublicKey) -> u64 {
-    let allowance: Option<U512> = self.query_contract(format!("{}{}", owner, spender));
-    allowance.unwrap_or_else(U512::zero).as_u64()
-}
-
-pub fn total_supply(&self) -> u64 {
-    let balance: Option<U512> = self.query_contract(key::TOTAL_SUPPLY.to_string());
-    balance.unwrap().as_u64()
-}
+  fn call(&mut self, sender: Sender, method: &str, args: RuntimeArgs) {
+        let Sender(address) = sender;
+        let code = Code::Hash(self.contract_hash(), method.to_string());
+        let session = SessionBuilder::new(code, args)
+            .with_address(address)
+            .with_authorization_keys(&[address])
+            .build();
+        self.context.run(session);
+    }
 ```
 
-## Unit Tests
-Include `tests/src/erc20.rs` in `tests/src/lib.rs` and start writing tests.
+### Invoke each of the Methods in the Contract
+
 ```rust
-// tests/src/lib.rs
 
-[cfg(test)]
-mod erc20;
+// returns the balance of an account
+ pub fn balance_of(&self, account: AccountHash) -> U256 {
+        let key = format!("_balances_{}", account);
+        self.query_contract(&key).unwrap_or_default()
+    }
 
+    pub fn allowance(&self, owner: AccountHash, spender: AccountHash) -> U256 {
+        let key = format!("_allowances_{}_{}", owner, spender);
+        self.query_contract(&key).unwrap_or_default()
+    }
+
+// transfers token from sender to recipient
+    pub fn transfer(&mut self, recipient: AccountHash, amount: U256, sender: Sender) {
+        self.call(sender, "transfer", runtime_args! {
+            "recipient" => recipient,
+            "amount" => amount
+        });
+    }
+
+    pub fn approve(&mut self, spender: AccountHash, amount: U256, sender: Sender) {
+        self.call(sender, "approve", runtime_args! {
+            "spender" => spender,
+            "amount" => amount
+        });
+    }
+    
+    pub fn transfer_from(&mut self, owner: AccountHash, recipient: AccountHash, amount: U256, sender: Sender) {
+        self.call(sender, "transferFrom", runtime_args! {
+            "owner" => owner,
+            "recipient" => recipient,
+            "amount" => amount
+        });
+    }
+}
+
+```
+
+## Create tests.rs File with Units
+
+### Unit Tests
+Now that we have a testing context, we can use this context and create unit tests that test the contract code by invoking the functions defined in  `tests/src/erc20.rs`.  Add these functions to `tests/src/tests.rs`.
+
+```rust
+// tests/src/tests.rs
+
+// pull in tests/src/erc20.rs
+
+use crate::erc20::{Token, Sender, account::{ALI, BOB, JOE}, token_cfg};
+
+#[test]
+fn test_erc20_deploy() {
+    let token = Token::deployed();
+    assert_eq!(token.name(), token_cfg::NAME);
+    assert_eq!(token.symbol(), token_cfg::SYMBOL);
+    assert_eq!(token.decimals(), token_cfg::DECIMALS);
+    assert_eq!(token.balance_of(ALI), token_cfg::total_supply());
+    assert_eq!(token.balance_of(BOB), 0.into());
+    assert_eq!(token.allowance(ALI, ALI), 0.into());
+    assert_eq!(token.allowance(ALI, BOB), 0.into());
+    assert_eq!(token.allowance(BOB, ALI), 0.into());
+    assert_eq!(token.allowance(BOB, BOB), 0.into());
+}
+
+#[test]
+fn test_erc20_transfer() {
+    let amount = 10.into();
+    let mut token = Token::deployed();
+    token.transfer(BOB, amount, Sender(ALI));
+    assert_eq!(token.balance_of(ALI), token_cfg::total_supply() - amount);
+    assert_eq!(token.balance_of(BOB), amount);
+}
+
+#[test]
+#[should_panic]
+fn test_erc20_transfer_too_much() {
+    let amount = 1.into();
+    let mut token = Token::deployed();
+    token.transfer(ALI, amount, Sender(BOB));
+}
+
+#[test]
+fn test_erc20_approve() {
+    let amount = 10.into();
+    let mut token = Token::deployed();
+    token.approve(BOB, amount, Sender(ALI));
+    assert_eq!(token.balance_of(ALI), token_cfg::total_supply());
+    assert_eq!(token.balance_of(BOB), 0.into());
+    assert_eq!(token.allowance(ALI, BOB), amount);
+    assert_eq!(token.allowance(BOB, ALI), 0.into());
+}
+
+#[test]
+fn test_erc20_transfer_from() {
+    let allowance = 10.into();
+    let amount = 3.into();
+    let mut token = Token::deployed();
+    token.approve(BOB, allowance, Sender(ALI));
+    token.transfer_from(ALI, JOE, amount, Sender(BOB));
+    assert_eq!(token.balance_of(ALI), token_cfg::total_supply() - amount);
+    assert_eq!(token.balance_of(BOB), 0.into());
+    assert_eq!(token.balance_of(JOE), amount);
+    assert_eq!(token.allowance(ALI, BOB), allowance - amount);
+}
+
+#[test]
+#[should_panic]
+fn test_erc20_transfer_from_too_much() {
+    let amount = token_cfg::total_supply().checked_add(1.into()).unwrap();
+    let mut token = Token::deployed();
+    token.transfer_from(ALI, JOE, amount, Sender(BOB));
+}
+
+```
+
+## Configure lib.rs to run everything via cargo
+Within the ```tests/src/lib.rs``` file, add the following lines.  This tells cargo which files to use when running the tests.
+
+```rust
 #[cfg(test)]
-mod tests {
-    use super::erc20;
-    use erc20::{
-        account::{ALI, BOB, JOE},
-        ERC20Contract, Sender, ERC20_INIT_BALANCE,
-    };
+pub mod tests;
+#[cfg(test)]
+pub mod erc20;
 
-    #[test]
-    fn test_erc20_deploy() {
-        let token = ERC20Contract::deployed();
-        assert_eq!(token.balance_of(ALI), ERC20_INIT_BALANCE);
-        assert_eq!(token.balance_of(BOB), 0);
-        assert_eq!(token.total_supply(), ERC20_INIT_BALANCE);
-    }
-
-    #[test]
-    fn test_erc20_transfer() {
-        let amount = 10;
-        let mut token = ERC20Contract::deployed();
-        token.transfer(BOB, amount, Sender(ALI));
-        assert_eq!(token.balance_of(ALI), ERC20_INIT_BALANCE - amount);
-        assert_eq!(token.balance_of(BOB), amount);
-    }
-
-    #[test]
-    fn test_erc20_approve() {
-        let amount = 10;
-        let mut token = ERC20Contract::deployed();
-        token.approve(BOB, amount, Sender(ALI));
-        assert_eq!(token.balance_of(ALI), ERC20_INIT_BALANCE);
-        assert_eq!(token.balance_of(BOB), 0);
-        assert_eq!(token.allowance(ALI, BOB), amount);
-        assert_eq!(token.allowance(BOB, ALI), 0);
-    }
-
-    #[test]
-    fn test_erc20_transfer_from() {
-        let allowance = 10;
-        let amount = 3;
-        let mut token = ERC20Contract::deployed();
-        token.approve(BOB, allowance, Sender(ALI));
-        token.transfer_from(ALI, JOE, amount, Sender(BOB));
-        assert_eq!(token.balance_of(ALI), ERC20_INIT_BALANCE - amount);
-        assert_eq!(token.balance_of(BOB), 0);
-        assert_eq!(token.balance_of(JOE), amount);
-        assert_eq!(token.allowance(ALI, BOB), allowance - amount);
-    }
-}
 ```
-Run tests to verify they work.
+
+## Run the Tests!
+
+Run tests to verify they work. This is run via `bash`
 ```bash
 $ cargo test -p tests
 ```
