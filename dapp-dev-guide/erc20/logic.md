@@ -20,9 +20,9 @@ Rust development with Casper is easy with the Rust SDK.  Follow these steps TODO
 
 Contract development is easier with the DSL.  Update the ```Cargo.toml``` with the DSL package by TODO: Fix the link to the Macros
 
-## Initialize the Contract
+## Contract Initialization & Mint Function
 
-When the contract is deployed it must be initialized with some values, this can be done with the help of the `casperlabs_constructor` 
+When the contract is deployed it must be initialized with some values, this can be done with the help of the `casperlabs_constructor`.  This also acts as our Mint function. 
 
 ```
    #[casperlabs_constructor]
@@ -106,45 +106,6 @@ We are ready now to define first ERC-20 methods. Below is the implementation of 
 
 ```
 
-
-## Mint - TODO
-Next method to define inside the `ERC20Trait` is called `mint`. It's not a part of the ERC-20 specification, but it's present in almost every ERC-20 implementation. Its responsibility is incrementing the balance of tokens for the given `address`. It should update the total supply as well.
-```rust
-// logic/src/lib.rs
-pub trait ERC20Trait<...> {
-    ...
-    fn mint(&mut self, address: &Address, amount: Amount) {
-        let address_balance = self.balance_of(address);
-        let total_supply = self.total_supply();
-        self.save_balance(&address, address_balance + amount);
-        self.save_total_supply(total_supply + amount);
-    }
-}
-```
-
-## Errors
-Further implementation of `transfer` and `transfer_from` will be able to throw errors. Let's define them in the separate file and have them ready for later.
-```rust
-// logic/src/errors.rs
-
-#[derive(PartialEq, Debug)]
-pub enum ERC20TransferError {
-    NotEnoughBalance,
-}
-
-#[derive(PartialEq, Debug)]
-pub enum ERC20TransferFromError {
-    TransferError(ERC20TransferError),
-    NotEnoughAllowance,
-}
-
-impl From<ERC20TransferError> for ERC20TransferFromError {
-    fn from(error: ERC20TransferError) -> ERC20TransferFromError {
-        ERC20TransferFromError::TransferError(error)
-    }
-}
-```
-
 ## Transfer
 Finally we can implement `transfer` method, so it's possible to transfer tokens from `sender` address to `recipient` address. If the `sender` address has enough balance then tokens should be transferred to the `recipient` address. TODO: Otherwise return the `ERC20TransferError::NotEnoughBalance` error.
  ```
@@ -179,4 +140,3 @@ The last missing functions are `approve` and `transfer_from`. `approve` is used 
         );
     }
 ``` 
-Note, that internaly it uses `transfer` function. If transfer fails, the `ERC20TransferError` is automatically converted to `ERC20TransferFromError` thanks to the `impl From<ERC20TransferError> for ERC20TransferFromError` implementation in `logic/src/error.rs`.
