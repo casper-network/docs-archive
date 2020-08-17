@@ -1,24 +1,22 @@
-# Caspiler - Solidity to Rust Transpiler
+# Solidity to Rust Transpiler
 
 ## tl;dr 
-**Transpile Solidity to Rust and access the cool features of Casper!**
+**Introducing Caspiler - Transpile Solidity to Rust and access the cool features of Casper!**
 
 ## Smart Contracts at CasperLabs
-The CasperLabs Virtual Machine requires Smart Contract to compile to WebAssembly.
-So far we support two ecosystems that allow doing that: Rust and AssemblyScript.
-As the AssemblyScript itself is still under heavy development, we focus mainly on the Rust toolchain. We have shipped many Rust tools, that make rapid Smart Contracts development possible. Yet, we are not seing CasperLabs as a competitor to other ecosystems, but rather complimentary project to the larger blockchain family. None of that would be possible without all of the lessons learned by the Ethereum community.
+The CasperLabs Virtual Machine runs smart contracts that compile to Webassembly. There are two ecosystems that provide compilation targets for webassembly: Rust and AssemblyScript.  CasperLabs provides smart contract libraries to support development for both of these languages. The core development of the Casper Protocol is taking place in Rust, and as a result, there are many Rust tools that make rapid Smart Contracts development possible. It is widely recognized that most smart contracts in use today have been authored in Solidity for the EVM (Ethereum Virtual Machhine).
 
 ## Solidity
-Without any doubts, the existence and simplicity of Solidity were one of the key factors behind the growth of the Ethereum. It resulted in the large group of Solidity developers for whom it's still the best tool for expressing their Smart Contract ideas. At CasperLabs we feel a strong connection with that (our) community and we came up with the value proposition: Solidity to Rust transpiler.
+Without any doubt, the existence and simplicity of Solidity is one of the key factors behind the growth of Ethereum. There is a large group of developers for whom Solidity is still the best tool for expressing their Smart Contract ideas. At CasperLabs we feel a strong connection with the Ethereum community, so we decided to include support for Solidity via a transpiler.
 
 ## Transpiler
 Transpiling is a well known process of turning code written in one high-level language into another high-level language. At the moment the most popular example is the TypeScript to JavaScript transpiler. 
 
-We have concluded that Solidity support is much easier and efficient to achieve by transpiling Solidity to Rust, that by compiling Solidity to WASM bytecode. This is why:
+We have concluded that Solidity support is much easier and efficient to achieve by transpiling Solidity to Rust, rather than by compiling Solidity to WASM bytecode for the following reasons:
 * Solidity features are easy to express in Rust, which is a much richer language.
 * The shape of CasperLabs DSL is similar to Solidity.
 * The CasperLabs Rust toolchain is something we want to leverage, rather than coding it from scratch.
-* The CasperLabs execution model is different than Ethereum's, therefore it's easier to translate it on the language level, that on the bytecode level.
+* The CasperLabs execution model is different than Ethereum's, therefore it's easier to translate it on the language level, than on the bytecode level.
 
 ## Solidity to Rust Migration
 Having transpiler gives Smart Contract developers a powerful tool for the migration of the existing Solidity source code to Rust if they wish to use it.
@@ -75,4 +73,4 @@ It is possible to transpile a complex Smart Contracts like ERC20 Token.
 Full example with tests can be found in this [GitHub repository](https://github.com/casper-ecosystem/erc20-solidity).
 
 ### Deploying to Testnet.
-TODO
+Take a look at the deployment instructions in the dApp developer guide for details.
