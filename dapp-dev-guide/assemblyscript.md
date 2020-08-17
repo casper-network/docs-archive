@@ -1,4 +1,4 @@
-# Using AssemblyScript
+# Writing AssemblyScript Smart Contracts
 
 CasperLabs maintains the package [@casperlabs/contract](https://www.npmjs.com/package/@casperlabs/contract) to allow a dapp developer to create smart contracts using [AssemblyScript](https://www.npmjs.com/package/assemblyscript). The package source is hosted in the [main CasperLabs repository](https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine/contract-as).
 
