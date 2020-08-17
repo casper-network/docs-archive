@@ -10,5 +10,5 @@ Content of the tutorial:
 .. toctree::
 
    prepare
-   logic
+   implementation
    tests
