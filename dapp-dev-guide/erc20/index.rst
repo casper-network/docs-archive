@@ -11,4 +11,4 @@ Content of the tutorial:
 
    prepare
    logic
-   contract-test
+   tests
