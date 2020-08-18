@@ -149,19 +149,19 @@ The above step has simulated a real deploy on the network. This code snippet des
     }
 
 // returns the token symbol
-    pub fn symbol(&self) -> String {
+  pub fn symbol(&self) -> String {
         self.query_contract("_symbol").unwrap()
     }
 
 // returns the number of decimal places for the token
-    pub fn decimals(&self) -> u8 {
+  pub fn decimals(&self) -> u8 {
         self.query_contract("_decimals").unwrap()
     }
 
 ```
 
 ### Invoking methods in the Contract
-This code snippet describe a generic way to call a specific entry point in the contract. 
+This code snippet describes a generic way to call a specific entry point in the contract. 
 
 ```rust
 
@@ -186,7 +186,7 @@ This code snippet describe a generic way to call a specific entry point in the c
         self.query_contract(&key).unwrap_or_default()
     }
 
-    pub fn allowance(&self, owner: AccountHash, spender: AccountHash) -> U256 {
+ pub fn allowance(&self, owner: AccountHash, spender: AccountHash) -> U256 {
         let key = format!("_allowances_{}_{}", owner, spender);
         self.query_contract(&key).unwrap_or_default()
     }
@@ -199,7 +199,7 @@ This code snippet describe a generic way to call a specific entry point in the c
         });
     }
 
-    pub fn approve(&mut self, spender: AccountHash, amount: U256, sender: Sender) {
+   pub fn approve(&mut self, spender: AccountHash, amount: U256, sender: Sender) {
         self.call(sender, "approve", runtime_args! {
             "spender" => spender,
             "amount" => amount
@@ -224,8 +224,6 @@ Now that we have a testing context, we can use this context and create unit test
 
 ```rust
 // tests/src/tests.rs
-
-// pull in tests/src/erc20.rs
 
 use crate::erc20::{Token, Sender, account::{ALI, BOB, JOE}, token_cfg};
 
