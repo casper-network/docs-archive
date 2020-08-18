@@ -13,7 +13,7 @@ The ERC-20 standard is defined in [an Ethereum Improvement Proposal (EIP)](https
 
 ## Create a New Empty Smart Contract
 
-Rust development with Casper is easy with the Rust SDK.  Create a new contract by following these [steps](https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html).
+Rust development with Casper is easy with the Rust SDK. Create a new contract by following these [steps](https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html).
 
 ### Include the Casper DSL
 
@@ -21,7 +21,7 @@ Contract development is easier with the DSL.  Update the ```Cargo.toml``` with t
 
 ## Contract Initialization
 
-When the contract is deployed it must be initialized with some values, this can be done with the help of the `casperlabs_constructor`.  This also initializes the balance with the starting token supply.
+When the contract is deployed it must be initialized with some values, this can be done with the help of the `casperlabs_constructor`. This also initializes the balance with the starting token supply.
 
 ```rust
 #[casperlabs_constructor]
@@ -35,22 +35,22 @@ fn constructor(tokenName: String, tokenSymbol: String, tokenTotalSupply: U256) {
         set_key("_totalSupply", _totalSupply);
 }
 ```
-We then also add a few helper functions to set, and retrieve values from keys.  The `[casperlabs_method] ` macro facilitates this.  Notice that each of these helper functions reference each of the `set_key` definitions in the constructor.
+We then also add a few helper functions to set, and retrieve values from keys. The `[casperlabs_method] ` macro facilitates this. Notice that each of these helper functions reference each of the `set_key` definitions in the constructor.
 
 ```rust
 #[casperlabs_method]
 fn name() {
-        ret(get_key::<String>("_name"));
+    ret(get_key::<String>("_name"));
 }
 
 #[casperlabs_method]
 fn symbol() {
-        ret(get_key::<String>("_symbol"));
+    ret(get_key::<String>("_symbol"));
 }
 
 #[casperlabs_method]
 fn decimals() {
-        ret(get_key::<u8>("_decimals"));
+    ret(get_key::<u8>("_decimals"));
 }
 
 // write to storage
@@ -89,18 +89,18 @@ We are ready now to define first ERC-20 methods. Below is the implementation of 
 ```rust
 #[casperlabs_method]
 fn totalSupply() {
-        ret(get_key::<U256>("_totalSupply"));
+    ret(get_key::<U256>("_totalSupply"));
 }
 
 #[casperlabs_method]
 fn totalSupply() {
-        ret(get_key::<U256>("_totalSupply"));
+    ret(get_key::<U256>("_totalSupply"));
 }
 
 #[casperlabs_method]
 fn allowance(owner: AccountHash, spender: AccountHash) -> U256 {
-        let key = format!("_allowances_{}_{}", owner, spender);
-        get_key::<U256>(&key)
+    let key = format!("_allowances_{}_{}", owner, spender);
+    get_key::<U256>(&key)
 }
 
 ```
@@ -109,10 +109,10 @@ fn allowance(owner: AccountHash, spender: AccountHash) -> U256 {
 Finally we can implement `transfer` method, so it's possible to transfer tokens from `sender` address to `recipient` address. If the `sender` address has enough balance then tokens should be transferred to the `recipient` address. TODO: Otherwise return the `ERC20TransferError::NotEnoughBalance` error.
  ```rust
 fn _transfer(sender: AccountHash, recipient: AccountHash, amount: U256) {
-      let new_sender_balance: U256 = (get_key::<U256>(&new_key("_balances", sender)) - amount);
-      set_key(&new_key("_balances", sender), new_sender_balance);
-      let new_recipient_balance: U256 = (get_key::<U256>(&new_key("_balances", recipient)) + amount);
-      set_key(&new_key("_balances", recipient), new_recipient_balance);
+    let new_sender_balance: U256 = (get_key::<U256>(&new_key("_balances", sender)) - amount);
+    set_key(&new_key("_balances", sender), new_sender_balance);
+    let new_recipient_balance: U256 = (get_key::<U256>(&new_key("_balances", recipient)) + amount);
+    set_key(&new_key("_balances", recipient), new_recipient_balance);
 }
 
 ```
@@ -121,21 +121,21 @@ fn _transfer(sender: AccountHash, recipient: AccountHash, amount: U256) {
 The last missing functions are `approve` and `transfer_from`. `approve` is used to allow another address to spend tokens on my behalf.
 ```rust
 fn _approve(owner: AccountHash, spender: AccountHash, amount: U256) {
-        set_key(&new_key(&new_key("_allowances", owner), spender), amount);
+    set_key(&new_key(&new_key("_allowances", owner), spender), amount);
 }
 ```
 `transfer_from` allows to spend approved amount of tokens.
 ```rust
 #[casperlabs_method]
 fn transferFrom(owner: AccountHash, recipient: AccountHash, amount: U256) {
-        _transfer(owner, recipient, amount);
-        _approve(
-            owner,
+    _transfer(owner, recipient, amount);
+    _approve(
+      owner,
+      runtime::get_caller(),
+      (get_key::<U256>(&new_key(
+            &new_key("_allowances", owner),
             runtime::get_caller(),
-            (get_key::<U256>(&new_key(
-                &new_key("_allowances", owner),
-                runtime::get_caller(),
             )) - amount),
-        );
+       );
 }
 ``` 
