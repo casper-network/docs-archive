@@ -13,11 +13,11 @@ The ERC-20 standard is defined in [an Ethereum Improvement Proposal (EIP)](https
 
 ## Create a New Empty Smart Contract
 
-Rust development with Casper is easy with the Rust SDK.  Follow these steps TODO:Fix the link to the SDK Setup to create an empty contract crate. 
+Rust development with Casper is easy with the Rust SDK.  Create a new contract by following these [steps](https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html).
 
 ### Include the Casper DSL
 
-Contract development is easier with the DSL.  Update the ```Cargo.toml``` with the DSL package by TODO: Fix the link to the Macros
+Contract development is easier with the DSL.  Update the ```Cargo.toml``` with the DSL [package](https://docs.casperlabs.io/en/latest/dapp-dev-guide/contract-dsl/index.html).  
 
 ## Contract Initialization
 
