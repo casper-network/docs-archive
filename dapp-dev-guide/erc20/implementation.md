@@ -25,7 +25,7 @@ When the contract is deployed it must be initialized with some values, this can 
 
 ```rust
 #[casperlabs_constructor]
-    fn constructor(tokenName: String, tokenSymbol: String, tokenTotalSupply: U256) {
+fn constructor(tokenName: String, tokenSymbol: String, tokenTotalSupply: U256) {
         set_key("_name", tokenName);
         set_key("_symbol", tokenSymbol);
         let _decimals: u8 = 18;
@@ -39,17 +39,17 @@ We then also add a few helper functions to set, and retrieve values from keys.  
 
 ```rust
 #[casperlabs_method]
-  fn name() {
+fn name() {
         ret(get_key::<String>("_name"));
     }
 
 #[casperlabs_method]
-   fn symbol() {
+fn symbol() {
         ret(get_key::<String>("_symbol"));
     }
 
-    #[casperlabs_method]
-    fn decimals() {
+#[casperlabs_method]
+fn decimals() {
         ret(get_key::<u8>("_decimals"));
     }
 
@@ -88,17 +88,17 @@ We are ready now to define first ERC-20 methods. Below is the implementation of 
 
 ```rust
 #[casperlabs_method]
-    fn totalSupply() {
+fn totalSupply() {
         ret(get_key::<U256>("_totalSupply"));
     }
 
 #[casperlabs_method]
-    fn totalSupply() {
+fn totalSupply() {
         ret(get_key::<U256>("_totalSupply"));
     }
 
 #[casperlabs_method]
-    fn allowance(owner: AccountHash, spender: AccountHash) -> U256 {
+fn allowance(owner: AccountHash, spender: AccountHash) -> U256 {
         let key = format!("_allowances_{}_{}", owner, spender);
         get_key::<U256>(&key)
     }
@@ -108,26 +108,26 @@ We are ready now to define first ERC-20 methods. Below is the implementation of 
 ## Transfer
 Finally we can implement `transfer` method, so it's possible to transfer tokens from `sender` address to `recipient` address. If the `sender` address has enough balance then tokens should be transferred to the `recipient` address. TODO: Otherwise return the `ERC20TransferError::NotEnoughBalance` error.
  ```rust
-   fn _transfer(sender: AccountHash, recipient: AccountHash, amount: U256) {
-        let new_sender_balance: U256 = (get_key::<U256>(&new_key("_balances", sender)) - amount);
-        set_key(&new_key("_balances", sender), new_sender_balance);
-        let new_recipient_balance: U256 = (get_key::<U256>(&new_key("_balances", recipient)) + amount);
-        set_key(&new_key("_balances", recipient), new_recipient_balance);
-    }
+fn _transfer(sender: AccountHash, recipient: AccountHash, amount: U256) {
+      let new_sender_balance: U256 = (get_key::<U256>(&new_key("_balances", sender)) - amount);
+      set_key(&new_key("_balances", sender), new_sender_balance);
+      let new_recipient_balance: U256 = (get_key::<U256>(&new_key("_balances", recipient)) + amount);
+      set_key(&new_key("_balances", recipient), new_recipient_balance);
+   }
 
 ```
 
 ## Approve and Transfer From
 The last missing functions are `approve` and `transfer_from`. `approve` is used to allow another address to spend tokens on my behalf.
 ```rust
-  fn _approve(owner: AccountHash, spender: AccountHash, amount: U256) {
+fn _approve(owner: AccountHash, spender: AccountHash, amount: U256) {
         set_key(&new_key(&new_key("_allowances", owner), spender), amount);
     }
 ```
 `transfer_from` allows to spend approved amount of tokens.
 ```rust
 #[casperlabs_method]
-    fn transferFrom(owner: AccountHash, recipient: AccountHash, amount: U256) {
+fn transferFrom(owner: AccountHash, recipient: AccountHash, amount: U256) {
         _transfer(owner, recipient, amount);
         _approve(
             owner,
