@@ -39,12 +39,12 @@ We then also add a few helper functions to set, and retrieve values from keys.  
 
 ```rust
 #[casperlabs_method]
-    fn name() {
+  fn name() {
         ret(get_key::<String>("_name"));
     }
 
-    #[casperlabs_method]
-    fn symbol() {
+#[casperlabs_method]
+   fn symbol() {
         ret(get_key::<String>("_symbol"));
     }
 
