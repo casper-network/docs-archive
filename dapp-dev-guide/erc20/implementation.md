@@ -108,6 +108,12 @@ fn allowance(owner: AccountHash, spender: AccountHash) -> U256 {
 ## Transfer
 Finally we can implement `transfer` method, so it's possible to transfer tokens from `sender` address to `recipient` address. If the `sender` address has enough balance then tokens should be transferred to the `recipient` address. TODO: Otherwise return the `ERC20TransferError::NotEnoughBalance` error.
  ```rust
+#[casperlabs_method]
+fn transfer(recipient: AccountHash, amount: U256) {
+    _transfer(runtime::get_caller(), recipient, amount);
+}
+ 
+ 
 fn _transfer(sender: AccountHash, recipient: AccountHash, amount: U256) {
     let new_sender_balance: U256 = (get_key::<U256>(&new_key("_balances", sender)) - amount);
     set_key(&new_key("_balances", sender), new_sender_balance);
