@@ -1,4 +1,3 @@
-# Logic
 
 The source code shown in this tutorial is adapted from using the casperlabs solidity to rust transpilier. Previously, we would implement a separate `logic` crate to implement the ERC20 standard functionality. However, now with the new contract headers system, we can directly implement them into the `contract` crate.
 
@@ -20,12 +19,12 @@ Rust development with Casper is easy with the Rust SDK.  Follow these steps TODO
 
 Contract development is easier with the DSL.  Update the ```Cargo.toml``` with the DSL package by TODO: Fix the link to the Macros
 
-## Contract Initialization & Mint Function
+## Contract Initialization
 
-When the contract is deployed it must be initialized with some values, this can be done with the help of the `casperlabs_constructor`.  This also acts as our Mint function. 
+When the contract is deployed it must be initialized with some values, this can be done with the help of the `casperlabs_constructor`.  This also initializes the balance with the starting token supply.
 
-```
-   #[casperlabs_constructor]
+```rust
+#[casperlabs_constructor]
     fn constructor(tokenName: String, tokenSymbol: String, tokenTotalSupply: U256) {
         set_key("_name", tokenName);
         set_key("_symbol", tokenSymbol);
@@ -38,8 +37,8 @@ When the contract is deployed it must be initialized with some values, this can 
 ```
 We then also add a few helper functions to set, and retrieve values from keys.  The `[casperlabs_method] ` macro facilitates this.  Notice that each of these helper functions reference each of the `set_key` definitions in the constructor.
 
-```
-   #[casperlabs_method]
+```rust
+#[casperlabs_method]
     fn name() {
         ret(get_key::<String>("_name"));
     }
@@ -87,7 +86,7 @@ fn new_key(a: &str, b: AccountHash) -> String {
 ## Total Supply, Balance and Allowance
 We are ready now to define first ERC-20 methods. Below is the implementation of `balance_of`, `total_supply` and `allowance`. These are read-only methods.
 
-```
+```rust
 #[casperlabs_method]
     fn totalSupply() {
         ret(get_key::<U256>("_totalSupply"));
@@ -108,8 +107,8 @@ We are ready now to define first ERC-20 methods. Below is the implementation of 
 
 ## Transfer
 Finally we can implement `transfer` method, so it's possible to transfer tokens from `sender` address to `recipient` address. If the `sender` address has enough balance then tokens should be transferred to the `recipient` address. TODO: Otherwise return the `ERC20TransferError::NotEnoughBalance` error.
- ```
-    fn _transfer(sender: AccountHash, recipient: AccountHash, amount: U256) {
+ ```rust
+   fn _transfer(sender: AccountHash, recipient: AccountHash, amount: U256) {
         let new_sender_balance: U256 = (get_key::<U256>(&new_key("_balances", sender)) - amount);
         set_key(&new_key("_balances", sender), new_sender_balance);
         let new_recipient_balance: U256 = (get_key::<U256>(&new_key("_balances", recipient)) + amount);
@@ -120,13 +119,13 @@ Finally we can implement `transfer` method, so it's possible to transfer tokens 
 
 ## Approve and Transfer From
 The last missing functions are `approve` and `transfer_from`. `approve` is used to allow another address to spend tokens on my behalf.
-```
+```rust
   fn _approve(owner: AccountHash, spender: AccountHash, amount: U256) {
         set_key(&new_key(&new_key("_allowances", owner), spender), amount);
     }
 ```
 `transfer_from` allows to spend approved amount of tokens.
-```
+```rust
 #[casperlabs_method]
     fn transferFrom(owner: AccountHash, recipient: AccountHash, amount: U256) {
         _transfer(owner, recipient, amount);
