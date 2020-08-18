@@ -126,6 +126,11 @@ fn _transfer(sender: AccountHash, recipient: AccountHash, amount: U256) {
 ## Approve and Transfer From
 The last missing functions are `approve` and `transfer_from`. `approve` is used to allow another address to spend tokens on my behalf.
 ```rust
+#[casperlabs_method]
+fn approve(spender: AccountHash, amount: U256) {
+    _approve(runtime::get_caller(), spender, amount);
+}
+    
 fn _approve(owner: AccountHash, spender: AccountHash, amount: U256) {
     set_key(&new_key(&new_key("_allowances", owner), spender), amount);
 }
