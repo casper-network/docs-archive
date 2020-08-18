@@ -33,7 +33,7 @@ fn constructor(tokenName: String, tokenSymbol: String, tokenTotalSupply: U256) {
         set_key(&new_key("_balances", runtime::get_caller()), tokenTotalSupply);
         let _totalSupply: U256 = tokenTotalSupply;
         set_key("_totalSupply", _totalSupply);
-    }
+}
 ```
 We then also add a few helper functions to set, and retrieve values from keys.  The `[casperlabs_method] ` macro facilitates this.  Notice that each of these helper functions reference each of the `set_key` definitions in the constructor.
 
@@ -41,17 +41,17 @@ We then also add a few helper functions to set, and retrieve values from keys.  
 #[casperlabs_method]
 fn name() {
         ret(get_key::<String>("_name"));
-    }
+}
 
 #[casperlabs_method]
 fn symbol() {
         ret(get_key::<String>("_symbol"));
-    }
+}
 
 #[casperlabs_method]
 fn decimals() {
         ret(get_key::<u8>("_decimals"));
-    }
+}
 
 // write to storage
 fn get_key<T: FromBytes + CLTyped + Default>(name: &str) -> T {
@@ -90,18 +90,18 @@ We are ready now to define first ERC-20 methods. Below is the implementation of 
 #[casperlabs_method]
 fn totalSupply() {
         ret(get_key::<U256>("_totalSupply"));
-    }
+}
 
 #[casperlabs_method]
 fn totalSupply() {
         ret(get_key::<U256>("_totalSupply"));
-    }
+}
 
 #[casperlabs_method]
 fn allowance(owner: AccountHash, spender: AccountHash) -> U256 {
         let key = format!("_allowances_{}_{}", owner, spender);
         get_key::<U256>(&key)
-    }
+}
 
 ```
 
@@ -113,7 +113,7 @@ fn _transfer(sender: AccountHash, recipient: AccountHash, amount: U256) {
       set_key(&new_key("_balances", sender), new_sender_balance);
       let new_recipient_balance: U256 = (get_key::<U256>(&new_key("_balances", recipient)) + amount);
       set_key(&new_key("_balances", recipient), new_recipient_balance);
-   }
+}
 
 ```
 
@@ -122,7 +122,7 @@ The last missing functions are `approve` and `transfer_from`. `approve` is used 
 ```rust
 fn _approve(owner: AccountHash, spender: AccountHash, amount: U256) {
         set_key(&new_key(&new_key("_allowances", owner), spender), amount);
-    }
+}
 ```
 `transfer_from` allows to spend approved amount of tokens.
 ```rust
@@ -137,5 +137,5 @@ fn transferFrom(owner: AccountHash, recipient: AccountHash, amount: U256) {
                 runtime::get_caller(),
             )) - amount),
         );
-    }
+}
 ``` 
