@@ -4,8 +4,12 @@ clone:
   git-clone:
     commands: |
       set -ex
+      echo "Tag: $DRONE_TAG"
+      echo "Branch: $DRONE_BRANCH"
+      echo "Remote: $DRONE_REMOTE_URL"
       git clone -b ${DRONE_TAG:-$DRONE_BRANCH} $DRONE_REMOTE_URL .
       if [ x$DRONE_PULL_REQUEST != x ]; then
+          echo "PR: $DRONE_PULL_REQUEST"
           git fetch origin refs/pull/$DRONE_PULL_REQUEST/head
           EMAIL=ci git merge --no-edit FETCH_HEAD
       fi
