@@ -1,9 +1,9 @@
-# Using AssemblyScript
+# Writing AssemblyScript Smart Contracts
 
-CasperLabs maintains the package [@casperlabs/contract](https://www.npmjs.com/package/@casperlabs/contract) to allow a dapp developer to create smart contracts using [AssemblyScript](https://www.npmjs.com/package/assemblyscript). The package source is hosted in the [main CasperLabs repository](https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine/contract-as).
+CasperLabs maintains [@casperlabs/contract](https://www.npmjs.com/package/@casperlabs/contract) to allow developers to create smart contracts using [AssemblyScript](https://www.npmjs.com/package/assemblyscript). The package source is hosted in the [main CasperLabs repository](https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine/contract-as).
 
 ## Installation
-For each smart contract you create, make a project directory and initialize it.
+For each smart contract it's necessary to create a project directory and initialize it.
 
 ```sh
 mkdir project
@@ -11,7 +11,7 @@ cd project
 npm init
 ```
 
-npm init will prompt you for various details about your project;
+The `npm init` process prompts for various details about the project;
 answer as you see fit but you may safely default everything except `name` which should follow the convention of
 `your-contract-name`.
 
@@ -43,7 +43,7 @@ for the name of the wasm file.
 }
 ```
 
-In your project root, create an `index.js` file with the following contents:
+In the project root, create an `index.js` file with the following contents:
 
 ```js
 const fs = require("fs");
@@ -74,7 +74,7 @@ Create an `assembly/tsconfig.json` file in the following way:
 ```
 
 ### Sample smart contract
-Create a `assembly/index.ts` file. This is where the code for your contract will go.
+Create a `assembly/index.ts` file. This is where the code for the contract has to go.
 
 You can use the following sample snippet which demonstrates a very simple smart contract that immediately returns an error, which will write a message to a block if executed on the CasperLabs platform.
 
@@ -90,9 +90,9 @@ export function call(): void {
 If you prefer a more complicated first contract, you can look at example contracts on the [CasperLabs](https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts-as/examples) github repository for inspiration.
 
 ### Compile to wasm
-To compile your contract to wasm, use npm to run the asbuild script from your project root.
+To compile the contract to wasm, use npm to run the asbuild script from the project root.
 ```
 npm run asbuild
 ```
-If the build is successful, you should see a `dist` folder in your root folder and in it
+If the build is successful, there will be a `dist` folder in the root folder and in it
 should be `your-contract-name.wasm`

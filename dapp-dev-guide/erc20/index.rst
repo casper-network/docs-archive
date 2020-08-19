@@ -10,7 +10,5 @@ Content of the tutorial:
 .. toctree::
 
    prepare
-   logic
-   logic-test
-   contract
-   contract-test
+   implementation
+   tests
