@@ -7,6 +7,7 @@ clone:
       echo "Tag: $DRONE_TAG"
       echo "Branch: $DRONE_BRANCH"
       echo "Remote: $DRONE_REMOTE_URL"
+      echo "Pre clone"
       git clone -b ${DRONE_TAG:-$DRONE_BRANCH} $DRONE_REMOTE_URL .
       if [ x$DRONE_PULL_REQUEST != x ]; then
           echo "PR: $DRONE_PULL_REQUEST"
