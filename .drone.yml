@@ -3,7 +3,7 @@
 clone:
   git-clone:
     commands: |
-      set -ex
+      set -e
       echo "Tag: $DRONE_TAG"
       echo "Branch: $DRONE_BRANCH"
       echo "Remote: $DRONE_REMOTE_URL"
