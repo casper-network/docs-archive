@@ -41,7 +41,8 @@ default = ["casperlabs-contract/std", "casperlabs-types/std"]
 ## Create ERC20.rs Logic for Testing
 
 ### Set Up the Testing Context
-Start with defining constants like method names, key names and account addresses that will be reused across tests.  This initializes the global state with all the data and methods that the smart contract needs in order to run properly. Here we initialize the global state with the 
+Start with defining constants like method names, key names and account addresses that will be reused across tests. 
+This initializes the global state with all the data and methods that the smart contract needs in order to run properly.
 
 ```rust
 // tests/src/erc20.rs
@@ -69,7 +70,12 @@ pub struct Token {
 ```
 
 ### Deploying the Contract
-The next step is to define the ERC20Contract struct that has its' own VM instance and implements ERC-20 methods. This struct should hold a TestContext of its own. The token contract hash and the erc20_indirect session code hash won’t change after the contract is deployed, so it’s handy to have it available. This code snippet builds the context and includes the compiled ```contract.wasm``` binary that is being tested. This function creates new instance of ERC20Contract with ALI, BOB and JOE having positive initial balance. The contract is deployed using ALI account.
+The next step is to define the `ERC20Contract` struct that has its' own VM instance and implements ERC-20 methods.
+This struct should hold a `TestContext` of its own. The token contract hash and the erc20_indirect session code 
+hash won’t change after the contract is deployed, so it’s handy to have it available. This code snippet builds 
+the context and includes the compiled `contract.wasm` binary that is being tested. This function creates new 
+instance of `ERC20Contract` with `ALI`, `BOB` and `JOE` having positive initial balance. 
+The contract is deployed using the `ALI` account.
 
 
 ```rust
@@ -84,19 +90,21 @@ impl Token {
 
     pub fn deployed() -> Token {
     
-    // Builds test context with Alice & Bob's accounts
+        // Builds test context with Alice & Bob's accounts
         let mut context = TestContextBuilder::new()
             .with_account(account::ALI, U512::from(128_000_000))
             .with_account(account::BOB, U512::from(128_000_000))
             .build();
             
-       // adds compiled contract to the context with arguments specified above.  For this example it is 'ERC20' & 'STX'    
+        // Adds compiled contract to the context with arguments specified above.
+        // For this example it is 'ERC20' & 'STX'    
         let session_code = Code::from("contract.wasm");
         let session_args = runtime_args! {
             "tokenName" => token_cfg::NAME,
             "tokenSymbol" => token_cfg::SYMBOL,
             "tokenTotalSupply" => token_cfg::total_supply()
         };
+
         // Builds the session with the code and arguments 
         let session = SessionBuilder::new(session_code, session_args)
             .with_address(account::ALI)
@@ -104,19 +112,20 @@ impl Token {
             .build();
             
         //Runs the code
-        
         context.run(session);
         Token { context }
     }
-
 ```
 
 ### Querying the System
-The above step has simulated a real deploy on the network. This code snippet describes how to query for the hash of the contract.  Contracts are deployed under the context of an account.  Since the deployment was created under thhe context of ```account::ALI```, this is what is queried here. The query_contract function uses query to lookup named keys of the erc20 contract stored under self.token_hash. It will be used to implement balance_of, total_supply and allowance checks.
-
+The above step has simulated a real deploy on the network. This code snippet describes 
+how to query for the hash of the contract. Contracts are deployed under the context of an account. 
+Since the deployment was created under thhe context of `account::ALI`, this is what is queried here. 
+The `query_contract` function uses `query` to lookup named keys. It will be used to implement `balance_of`, 
+`total_supply` and `allowance` checks.
 
 ```rust
- fn contract_hash(&self) -> Hash {
+    fn contract_hash(&self) -> Hash {
         self.context
             .query(account::ALI, &[format!("{}_hash", token_cfg::NAME)])
             .unwrap_or_else(|_| panic!("{} contract not found", token_cfg::NAME))
@@ -124,8 +133,7 @@ The above step has simulated a real deploy on the network. This code snippet des
             .unwrap_or_else(|_| panic!("{} has wrong type", token_cfg::NAME))
     }
 
-// This function is a generic helper function that queries for a named key defined in the contract.  
-
+    // This function is a generic helper function that queries for a named key defined in the contract.
     fn query_contract<T: CLTyped + FromBytes>(&self, name: &str) -> Option<T> {
         match self.context.query(
             account::ALI,
@@ -141,31 +149,29 @@ The above step has simulated a real deploy on the network. This code snippet des
         }
     }
 
- // here we call the helper function to query on specific named keys defined in the contract.
+    // Here we call the helper function to query on specific named keys defined in the contract.
  
- // returns the name of the token
-  pub fn name(&self) -> String {
+    // Returns the name of the token
+    pub fn name(&self) -> String {
         self.query_contract("_name").unwrap()
     }
 
-// returns the token symbol
-  pub fn symbol(&self) -> String {
+    // Returns the token symbol
+    pub fn symbol(&self) -> String {
         self.query_contract("_symbol").unwrap()
     }
 
-// returns the number of decimal places for the token
-  pub fn decimals(&self) -> u8 {
+    // Returns the number of decimal places for the token
+    pub fn decimals(&self) -> u8 {
         self.query_contract("_decimals").unwrap()
     }
-
 ```
 
 ### Invoking methods in the Contract
 This code snippet describes a generic way to call a specific entry point in the contract. 
 
 ```rust
-
-  fn call(&mut self, sender: Sender, method: &str, args: RuntimeArgs) {
+    fn call(&mut self, sender: Sender, method: &str, args: RuntimeArgs) {
         let Sender(address) = sender;
         let code = Code::Hash(self.contract_hash(), method.to_string());
         let session = SessionBuilder::new(code, args)
@@ -176,22 +182,19 @@ This code snippet describes a generic way to call a specific entry point in the 
     }
 ```
 
-### Invoke each of the Methods in the Contract
+### Invoke each of the getter methods in the Contract.
 
 ```rust
-
-// returns the balance of an account
- pub fn balance_of(&self, account: AccountHash) -> U256 {
+    pub fn balance_of(&self, account: AccountHash) -> U256 {
         let key = format!("_balances_{}", account);
         self.query_contract(&key).unwrap_or_default()
     }
 
- pub fn allowance(&self, owner: AccountHash, spender: AccountHash) -> U256 {
+    pub fn allowance(&self, owner: AccountHash, spender: AccountHash) -> U256 {
         let key = format!("_allowances_{}_{}", owner, spender);
         self.query_contract(&key).unwrap_or_default()
     }
 
-// transfers token from sender to recipient
     pub fn transfer(&mut self, recipient: AccountHash, amount: U256, sender: Sender) {
         self.call(sender, "transfer", runtime_args! {
             "recipient" => recipient,
@@ -199,7 +202,7 @@ This code snippet describes a generic way to call a specific entry point in the 
         });
     }
 
-   pub fn approve(&mut self, spender: AccountHash, amount: U256, sender: Sender) {
+    pub fn approve(&mut self, spender: AccountHash, amount: U256, sender: Sender) {
         self.call(sender, "approve", runtime_args! {
             "spender" => spender,
             "amount" => amount
@@ -214,13 +217,14 @@ This code snippet describes a generic way to call a specific entry point in the 
         });
     }
 }
-
 ```
 
 ## Create tests.rs File with Units
 
 ### Unit Tests
-Now that we have a testing context, we can use this context and create unit tests that test the contract code by invoking the functions defined in  `tests/src/erc20.rs`.  Add these functions to `tests/src/tests.rs`.
+Now that we have a testing context, we can use this context and create unit tests that test 
+the contract code by invoking the functions defined in  `tests/src/erc20.rs`.
+Add these functions to `tests/src/tests.rs`.
 
 ```rust
 // tests/src/tests.rs
@@ -289,23 +293,21 @@ fn test_erc20_transfer_from_too_much() {
     let mut token = Token::deployed();
     token.transfer_from(ALI, JOE, amount, Sender(BOB));
 }
-
 ```
 
 ## Configure lib.rs to run everything via cargo
-Within the ```tests/src/lib.rs``` file, add the following lines.  This tells cargo which files to use when running the tests.
+Within the `tests/src/lib.rs` file, add the following lines.
+This tells cargo which files to use when running the tests.
 
 ```rust
 #[cfg(test)]
 pub mod tests;
 #[cfg(test)]
 pub mod erc20;
-
 ```
 
 ## Run the Tests!
-
-Run tests to verify they work. This is run via `bash`
+Run tests to verify they work. This is run via `bash`.
 ```bash
 $ cargo test -p tests
 ```
