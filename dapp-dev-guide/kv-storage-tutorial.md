@@ -1,15 +1,16 @@
 # Casperlabs Key Value Storage Tutorial
 
 This tutorial walks through how to design a simple contract that creates a key that stores a CLType value. 
-This example will show you how to store a u64, string, account hash, or U512 value.
+This example will show you how to store a u64, string, account hash, or U512 value.  
+The code is available at: https://github.com/CasperLabs/casperlabs-kv-storage
 
-Additionally, this tutorial will also provide some insight into how to use the Casperlabs smart contract DSL and how contract headers work.
+This tutorial will also provide some insight into how to use the Casperlabs smart contract DSL and how contract headers work.
 
 ## The Contract
 Lets start by understanding the structure of the contract itself. Here we create a contract using the `casperlabs_contract` macro and name it `kvstorage_contract`.
 This is the name under which the contract package will be stored. The next macro we see is the `casperlabs_constructor`, 
 since the a key-value contract is slightly stateless in nature, initialization is not required. 
-However, `casperlabs_constructor` is a required element, we simply create an empty function.
+However, because `casperlabs_constructor` is a required element, we simply create an empty function.
 
 ```rust
 
@@ -74,22 +75,23 @@ mod kvstorage_contract {
 
 ## Testing the Contract
 
-The CasperLabs Contracts SDK supports local testing of smart contracts.  This tutorial will cover how to test the u64 key-value function. 
+The CasperLabs Contracts SDK supports local testing of smart contracts. This tutorial will cover how to test the u64 key-value function. 
 This can be easily adapted it for other types also.
 
 In order to test the contract, the value must be stored, and the contract has to be deployed.
 Here is some sample code for these steps:
 
 ```rust
+impl KVstorageContract{
    pub fn deploy() -> Self {
    
-   // build the test context with the account for the deploy
+       // build the test context with the account for the deploy
    
         let mut context = TestContextBuilder::new()
             .with_account(TEST_ACCOUNT, U512::from(128_000_000))
             .build();
             
-   // specify the session code & build the deploy         
+       // specify the session code & build the deploy         
         let session_code = Code::from("contract.wasm");
         let session = SessionBuilder::new(session_code, runtime_args! {})
             .with_address(TEST_ACCOUNT)
@@ -103,7 +105,7 @@ Here is some sample code for these steps:
         }
     }
 
-// query the contract hash after the deploy is complete
+    // query the contract hash after the deploy is complete
 
     pub fn contract_hash(context: &TestContext, name: &str) -> Hash {
         context
@@ -113,7 +115,7 @@ Here is some sample code for these steps:
             .unwrap_or_else(|_| panic!("{} is not a type Contract.", name))
     }
 
-// store the u_64 value in the global state
+    // store the u_64 value in the global state
 
     pub fn call_store_u64(&mut self, name: String, value: u64) {
         let code = Code::Hash(self.kvstorage_hash, "store_u64".to_string());
@@ -127,13 +129,15 @@ Here is some sample code for these steps:
             .build();
         self.context.run(session);
     }
+}
 ```
 
 ### Write Unit Tests
-With these functions in place, it' possible to start writing tests for the contract.
+With these functions in place, it's possible to start writing tests for the contract.
 
 ```rust
-   #[test]
+mod tests {
+    #[test]
     fn should_store_u64() {
         const KEY_NAME: &str = "test_u64";
         let mut kv_storage = KVstorageContract::deploy();
@@ -143,10 +147,8 @@ With these functions in place, it' possible to start writing tests for the contr
         let check: u64 = kv_storage.query_contract(&KEY_NAME).unwrap();
         assert_eq!(value, check);
     }
-```
-We can also write a test to check whether the value is updated
 
-```
+   // A test to check whether the value is updated
    #[test]
     fn should_update_u64() {
         const KEY_NAME: &str = "testu64";
@@ -158,6 +160,7 @@ We can also write a test to check whether the value is updated
         let value: u64 = kv_storage.query_contract(&KEY_NAME).unwrap();
         assert_eq!(value, 2);
     }
+}
 ```
 
 ### Running Locally
@@ -170,11 +173,10 @@ cargo test -p tests
 ```
 
 ## Deploying to the Testnet and Interacting with the Contract
-There is a standalone python cli application that you can use for the kvstorage contract. 
+There is a standalone python cli application that you can use for the kvstorage contract. When working with the testnet, create an account in [CLarity](https://clarity.casperlabs.io) and fund it using the faucet. Download the private key and use the key to sign the deployment. It's possible to create keys using the python client as well.
 
 **Note, that this client was designed specifically for this contract. **
 
-TODO: Link the repo for this client.
 
 ### Deploy the Contract
 The first step is actually to deploy the compiled wasm to the network, if you are using the python kv-client you must use the command `deploy_kv_storage_contract`. 
@@ -191,7 +193,6 @@ Once the contract is deployed, we can create another deploy, which calls one of 
 To call an entry point, you must first know the name of the entry point and the session hash, which we retrieved from the previous step. 
 The kv-client, has four distinct commands to set key-values for u64, String, U512 and AccountHash.
 
-TODO: Need to know what this command returns.
 
 ```bash
 python cli.py insert_u64 -f "29acb007dfa4f92fa5155cc2f3ae008b4ff234acf95b00c649e2eb77447f47ca" -p "../../kvkey.private.key" -s "0e82027493b88db434e85f82f6bcf48a30e0c1db15cf55fb87b73461b8aef20b" -k "test" -v 1 -b True
@@ -199,7 +200,7 @@ python cli.py insert_u64 -f "29acb007dfa4f92fa5155cc2f3ae008b4ff234acf95b00c649e
 
 
 ### Query the Contract On Chain
-Contracts can be executed under different contexts.  In this example, 
+Contracts can be executed under different contexts. In this example, 
 when the contract is deployed, it runs in the context of a `Contract` and not a ` Session`. 
 This means that all stored keys are not stored under the account hash, but within the context of the contract. 
 Therefore when we query to retrieve the value under a key, we are actually querying 
@@ -229,16 +230,3 @@ client = casperlabs_client.CasperLabsClient(‘deploy.casperlabs.io’, 40401)
 Session_code = client.queryState(<block-hash>, <account-hash>, “kvstorage_contract_hash”,’address’)
 Session_hash = session_code.cl_value.value.bytes_value.hex()
 ``` 
-
-
-
-
-
-
-
-
-
-
-
-
-
