@@ -1,4 +1,4 @@
-# Casperlabs Key Value Storage Tutorial
+# Key Value Storage Tutorial
 
 This tutorial walks through how to design a simple contract that creates a key that stores a CLType value. 
 This example will show you how to store a u64, string, account hash, or U512 value.  
