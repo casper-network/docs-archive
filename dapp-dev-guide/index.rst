@@ -59,3 +59,4 @@ you can use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk
    ethereum-keys
    solidity
    erc20/index
+   kv-storage-tutorial
