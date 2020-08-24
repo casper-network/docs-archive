@@ -1,7 +1,7 @@
-Seigniorage
+Rewards
 -----------
 
-Seigniorage provides a base level of payments for validators, so that they are
+Rewards provide a base level of payments for validators, so that they are
 compensated for their work even if there is not a lot of demand for
 using the network. By issuing new CLX for validators, we ensure that
 the network is secured by sufficient stake, even without the transaction fees.
