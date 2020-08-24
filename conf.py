@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'CasperLabs Tech Spec'
-copyright = '2019, CasperLabs Development Team'
+copyright = '2020, CasperLabs LLC'
 author = 'CasperLabs Development Team'
 
 # The short X.Y version
