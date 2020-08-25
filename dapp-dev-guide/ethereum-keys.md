@@ -4,8 +4,8 @@ The Casper platform supports two types of signatures for the creation of account
 
 In this section we'll explore secp256k1, commonly known as Ethereum keys.
 
-## Keys Generation
-Thhe CasperLabs Client enables the creatin of a new secp256k1 key-pair and the coresponding Account Hash.
+## Key Generation
+Thhe CasperLabs client enables the creation of a new secp256k1 key-pair and the coresponding account hash.
 ```bash
 $ mkdir secp256k1-keys
 
@@ -51,8 +51,8 @@ tlKF2V5RFQn4rzkwipSYnrqaPf1pTA==
 ```
 
 The last missing element is obtaining the Account Hash. Because the internal representation 
-of accounts is the hash of the public key and the algoirthhm, this hash is necessary
-in order to query the state. Making a deploy and reading the header value is the easiest
+of accounts is the hash of the public key and the algorithm, this hash is necessary
+in order to query the state. Creating a deploy and reading the header value is the easiest
 way to obtain this information.
 
 ```bash
