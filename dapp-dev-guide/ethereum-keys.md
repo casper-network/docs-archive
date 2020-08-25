@@ -1,10 +1,11 @@
 # Working with Ethereum Keys
 
-CasperLabs platform supports two types of signatures: secp256k1 and ed25519. 
-In this section we'll explore secp256k1, that is used in Ethereum.
+The Casper platform supports two types of signatures for the creation of accounts and signing of transactions: secp256k1 and ed25519.  Internally, the system does this is by representing the account as the hash of the public key + encryption type.  By taking the hash of the public key and algorithm name, the likelihood of account collision is eliminated.  
+
+In this section we'll explore secp256k1, commonly known as Ethereum keys.
 
 ## Keys Generation
-CasperLabs Client allows to generate a new secp256k1 key-pair and the coresponding Account Hash.
+Thhe CasperLabs Client enables the creatin of a new secp256k1 key-pair and the coresponding Account Hash.
 ```bash
 $ mkdir secp256k1-keys
 
@@ -19,7 +20,7 @@ secp256k1-keys/
 ```
 
 ## Using Ethereum Keys in CasperLabs
-It is possible to use already existing secp256k1 keys. Ethereum private keys usually are presented
+It is possible to use existing secp256k1 keys. Ethereum private keys usually are presented
 in the form of hex string that represents 256 bits.
 
 Example of the Ethereum private key.
@@ -49,7 +50,10 @@ tlKF2V5RFQn4rzkwipSYnrqaPf1pTA==
 -----END EC PRIVATE KEY-----
 ```
 
-The last missing element is obtaining the Account Hash. One can simply make a deploy and read the header value.
+The last missing element is obtaining the Account Hash. Because the internal representation 
+of accounts is the hash of the public key and the algoirthhm, this hash is necessary
+in order to query the state. Making a deploy and reading the header value is the easiest
+way to obtain this information.
 
 ```bash
 $ casperlabs_client --host localhost deploy --private-key eth-private.pem --session contract.wasm --algorithm secp256k1
@@ -72,4 +76,4 @@ status {
 }
 ```
 
-`account_public_key_hash` shows the Account Hash generated from the `eth-private.pem`.
+`account_public_key_hash` shows the Account Hash generated from `eth-private.pem`.
