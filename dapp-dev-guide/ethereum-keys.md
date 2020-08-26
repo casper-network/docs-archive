@@ -5,7 +5,7 @@ The Casper platform supports two types of signatures for the creation of account
 In this section we'll explore secp256k1, commonly known as Ethereum keys.
 
 ## Key Generation
-Thhe CasperLabs client enables the creation of a new secp256k1 key-pair and the coresponding account hash.
+The CasperLabs client enables the creation of a new secp256k1 key-pair and the coresponding account hash.
 ```bash
 $ mkdir secp256k1-keys
 
