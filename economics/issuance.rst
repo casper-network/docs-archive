@@ -1,18 +1,12 @@
 Issuance
 --------
 
-Issuance provides a base level of payments for validators, so that they are
-compensated for their work even if there is not a lot of demand for
-using the network. By issuing new CSPR for validators, we ensure that
-the network is secured by sufficient stake, even without the transaction fees.
+Issuance provides a base level of payments for validators, so that they are compensated for their work even if there is not a lot of demand for using the network. By issuing new CSPR for validators, we ensure that the network is secured by sufficient stake, even without the transaction fees.
 
-CSPR is issued at a fixed rate and distributed to validators in proportion to
-their stake. This is analogous to block rewards in Proof of Work blockchains,
-except for two major differences:
+CSPR is issued at a fixed rate and distributed to validators in proportion to their stake. This is analogous to block rewards in Proof of Work blockchains, except for a couple of differences:
 
 - The growth of CSPR supply is exponential instead of linear.
-- New CSPR is minted at the end of each era, called the *era reward*, and distributed to validators
-  proportional to their performance in that era.
+- Issuance takes into account slashed CSPR.
 
 If there were no slashing, we would have computed block rewards according to the following formula
 
@@ -31,7 +25,7 @@ However, we have to factor in slashed tokens too when we issue new CSPR. To this
 
 where :code:`rewards(i)` is the total CSPR minted per issuance during era :code:`i`, and :code:`slashings(i)` is the total CSPR slashed during era :code:`i`. All of these quantities can be derived objectively from the history of the global state.
 
-We introduce the *round issuance rate*
+We introduce *round issuance rate*
 
 .. code-block::
 
@@ -50,20 +44,17 @@ This value gives us the maximum amount of CSPR that the validators can receive f
 Reward Distribution
 ~~~~~~~~~~~~~~~~~~~
 
-Validators are rewarded for proposing and finalizing blocks. New tokens are minted at the end of each era through issuance, and distributed to validators according to their performance in that era. We do not have constant block rewards as in Proof of Work blockchains like Bitcoin and Ethereum. Instead, block rewards increase at the end of each era based on the increase in CSPR supply, in order to keep a constant rate of issuance.
-
-
-The concept of weight is crucial for understanding reward distribution, so we need to clarify what we mean by weight in different contexts:
+Validators are rewarded for proposing and finalizing blocks, according to their performance. The concept of weight is crucial for understanding reward distribution:
 
 - **Weight:** A validator's bonded stake, used in consensus.
 - **Assigned weight of a block/round:** The total stake of validators that are scheduled to participate on a block.
 - **Participated weight of a block/round:** The total stake of validators that actually end up participating. Here, *participating* means sending messages to finalize a block before their respective rounds end.
 
-To determine the validators' eligibility to receive rewards from a proposed block, we look at **on-time finalization (OTF)**: Validators should finalize blocks on time, by sending required messages before their respective rounds end.
+To determine the validators' eligibility to receive rewards from a proposed block, we look at **on-time finalization (OTF)**. Validators should finalize blocks on time, by sending required messages before their respective rounds end.
 
 
-Participation Schedule and Validator Rounds
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Participation Schedule
+^^^^^^^^^^^^^^^^^^^^^^
 
 The schedule with which validators send messages are determined by the validators' rounds, which are in turn determined by their round exponents. A validator with the round exponent :code:`n` has to participate in rounds that repeat every :code:`2^n` ticks.
 
