@@ -13,12 +13,12 @@ intent is for this design to be implemented as a new permissionless,
 decentralized, public blockchain. The consensus protocol is built on Vlad
 Zamfir's
 `correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-casper-paper>`_
-work. Here, we describe The Highway Protocol, a member of the CBC Casper family which 
+work. Here, we describe The Highway Protocol, a member of the CBC Casper family which
 is provably safe and live under partial synchrony. The computation model allows
-for efficient detection of when contract executions can be run in parallel and 
-the block message format allows "merging" forks in the chain; so the platform 
+for efficient detection of when contract executions can be run in parallel and
+the block message format allows "merging" forks in the chain; so the platform
 avoids orphaning blocks. Rust is supported as the primary programming language
-for smart contracts because of its good support for compilation to wasm; 
+for smart contracts because of its good support for compilation to wasm;
 however, the platform itself does not make assumptions about the source language,
 so libraries facilitating contract development in other programming language having
 wasm as a compile target are expected. Other features of the execution engine include:
@@ -35,7 +35,7 @@ and our token policies.
    :maxdepth: 3
    :titlesonly:
 
-   Home <self
+   Home <self>
    implementation/index
    economics/index
    dapp-dev-guide/index

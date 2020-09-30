@@ -10,7 +10,7 @@ Gas Pricing
 
 It is one of the goals of CasperLabs to maintain a certain level of predictability for users in terms of gas prices, and for validators in terms of transaction fees. Blockchains with unregulated fee markets are susceptible to high volatility in transaction fees, which get pushed up as demand rises and blocks become full.
 
-To this end, as an initial step, Casperlabs is implementing a transaction pricing system that assigns fiat (dollar) prices to all relevant resources, such as bytes of storage, opcodes and standardized computation times for external functions. A successful implementation of this system requires a reliable on-chain feed of the CLX price in USD. To this end, CasperLabs utilizes the `Chainlink <https://chain.link>`_ network of oracles to aggregate a single price from major exchanges.
+To this end, as an initial step, Casperlabs is implementing a transaction pricing system that assigns fiat (dollar) prices to all relevant resources, such as bytes of storage, opcodes and standardized computation times for external functions. A successful implementation of this system requires a reliable on-chain feed of the CSPR price in USD. To this end, CasperLabs utilizes the `Chainlink <https://chain.link>`_ network of oracles to aggregate a single price from major exchanges.
 
 Normally, there would be no way to prioritize high value transactions with such a fixed price model. To mitigate this issue, we set our gas price at a level high enough to curb any congestion the network might face on a consistent basis, e.g. `daily <https://solmaz.io/2019/10/21/gas-price-fee-volatility/>`_.
 

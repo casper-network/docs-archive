@@ -23,9 +23,9 @@ A blockchain system will need to have a supply of tokens available for the purpo
     - 8% reserved for the team, vesting on a schedule similar to equity incentive programs over 3 years.
     - 6% for advisors and strategic partners, distributed in a manner similar to the developer and community incentives.
 
-In addition to the initial supply, the system will have a low rate of inflation, the results of which will be paid out to validators in the form of seigniorage, as described previously in this document.
+In addition to the initial supply, the system will have a low rate of inflation, the results of which will be paid out to validators in the form of issuance, as described previously in this document.
 
-The number of tokens used as a basis for calculating seigniorage and the above stated allocations is 10 billion.
+The number of tokens used as a basis for calculating issuance and the above stated allocations is 10 billion.
 
 .. _tokens-divisibility:
 
