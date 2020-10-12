@@ -36,9 +36,11 @@ CasperLabs supports complex deployments.  To learn more about what is possible v
 
 The easiest way to deploy a contract is to use an existing public network.  CasperLabs provides a Testnet for this.
 
-* Go to [CasperLabs Clarity](https://clarity.casperlabs.io) and create an account.
-* Place your private key in a location that you can access during the deployment.
-* Request tokens from the faucet to fund your account.
+* Go to [CasperLabs Clarity](https://clarity.casperlabs.io) and ```Sign in``` by using either your Goolge or GitHub username.
+* Select "Accounts" and click ```Create Account key```.  You will be prompted to download some files. Make sure you download the files. These are your signing keys.
+* Place the key files in a location that you can access during the deployment.  You should store your keys securely.
+* Go to 'Faucet' in Clarity and then select the account for the key you just saved.  Click ```Request tokens``` from the faucet to fund your account.  Under ```Recent Faucet Requests``` an entry for your account should appear, with a green check mark.
+
 
 The Testnet is operated by external validators that can accept transactions at the following endpoints:
 
@@ -61,7 +63,7 @@ pip show casperlabs_client
 ```
 If you want to send your deployments to an external network, use the latest [released](https://pypi.org/project/casperlabs-client/) version of the client.  If you are working off of dev, build the client locally and check the gitHash.
 
-### A Basic Deployment
+### A Basic Deployment using the Command Line
 As described above, a basic deployment must provide some essential information. Here is an example deployment using the Python client that will work with the basic contract we created using the [Contracts SDK for Rust](writing-rust-contracts):
 ```bash
 casperlabs_client --host deploy.casperlabs.io deploy \
