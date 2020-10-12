@@ -4,12 +4,17 @@ The SDK is the easiest way to get started with Smart Contract development. This 
 ## Prerequisites 
 
 ### Install Rust
-Install Rust using `curl`
+The recommended way to from the [official Rust guide](https://www.rust-lang.org/tools/install) to install Rust is by using `curl`
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-For more details follow the [official Rust guide](https://www.rust-lang.org/tools/install).
+It is also possible to use brew or apt to install Rust.
+
+### Update cmake
+
+Version 3.14.1 or greater is required.
+
 
 ### Install Google protobuf compiler
 
