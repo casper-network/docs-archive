@@ -87,4 +87,4 @@ The test crate will build the contract and test it in a CasperLabs runtime envir
 cd ../tests
 cargo test
 ```
-The `tests` crate has a `build.rs` file: effectively a custom build script. It's executed every time before running tests and it compiles the smart contract in release mode for your convenience. In practice, that means we only need to run `cargo test` in the `tests` crate during the development. Go ahead and modify `contract/src/lib.rs`. You can change the value of `KEY` and observe how the smart contract is recompiled and the test fails.
+The `tests` crate has a `build.rs` file: effectively a custom build script. It's executed every time before running tests and it compiles the smart contract in release mode for your convenience. In practice, that means we only need to run `cargo test` in the `tests` crate during the development. Go ahead and modify `contract/src/main.rs`. You can change the value of `KEY` and observe how the smart contract is recompiled and the test fails.
