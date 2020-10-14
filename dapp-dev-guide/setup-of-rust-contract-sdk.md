@@ -4,12 +4,17 @@ The SDK is the easiest way to get started with Smart Contract development. This 
 ## Prerequisites 
 
 ### Install Rust
-Install Rust using `curl`
+The recommended way to from the [official Rust guide](https://www.rust-lang.org/tools/install) to install Rust is by using `curl`
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-For more details follow the [official Rust guide](https://www.rust-lang.org/tools/install).
+It is also possible to use brew or apt to install Rust.
+
+### Update cmake
+
+Version 3.14.1 or greater is required.
+
 
 ### Install Google protobuf compiler
 
@@ -87,4 +92,4 @@ The test crate will build the contract and test it in a CasperLabs runtime envir
 cd ../tests
 cargo test
 ```
-The `tests` crate has a `build.rs` file: effectively a custom build script. It's executed every time before running tests and it compiles the smart contract in release mode for your convenience. In practice, that means we only need to run `cargo test` in the `tests` crate during the development. Go ahead and modify `contract/src/lib.rs`. You can change the value of `KEY` and observe how the smart contract is recompiled and the test fails.
+The `tests` crate has a `build.rs` file: effectively a custom build script. It's executed every time before running tests and it compiles the smart contract in release mode for your convenience. In practice, that means we only need to run `cargo test` in the `tests` crate during the development. Go ahead and modify `contract/src/main.rs`. You can change the value of `KEY` and observe how the smart contract is recompiled and the test fails.
