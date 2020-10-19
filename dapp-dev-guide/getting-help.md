@@ -1,5 +1,4 @@
 ## Getting Help 
-~~~~~~~~~~~~
 
 CasperLabs makes available the following resources for you to connect and get support where you can:
 
