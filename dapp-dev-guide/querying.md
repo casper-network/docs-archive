@@ -6,12 +6,13 @@ This document will outline the query features of the rust `casper-client`
 
 ### Pre-Requisites
 
+The structure of Global state and the Blockchain Design can be found [here](https://docs.casperlabs.io/en/latest/implementation/index.html).
+
 Responses from the node are returned as JSON. To make the output readable, it's recommended to have JQuery installed on the system.
 
 ```bash
 sudo apt-get install -y libjs-jquery
 ```
-
 
 ## Installing the client
 
@@ -120,6 +121,99 @@ And the associated response:
 }
 ```
 Note: The balance returned is in motes (the unit that makes up the Casper token). 
+
+## Getting Block Information
+
+It is possible to obtain detailed block information from the system.  To do this, obtain the hash of the block of interest and send this query to a node in the network: As an Example:
+```bash
+casper-client get-block  --node-address http://localhost:7777 -b f598c1b2852acebc299c200751dae20565b3891fa0d656f537959a68c47a1ef5 |jq -r
+{
+  "api_version": "1.0.0",
+  "block": {
+    "body": null,
+    "hash": "f598c1b2852acebc299c200751dae20565b3891fa0d656f537959a68c47a1ef5",
+    "header": {
+      "accumulated_seed": "da4dd0e151f20e503d51cf7af35a0e45532563547b7053de956261bde23f1b48",
+      "body_hash": "0e5751c026e543b2e8ab2eb06099daa1d1e5df47778f7787faab45cdf12fe3a8",
+      "deploy_hashes": [],
+      "era_end": null,
+      "era_id": 151,
+      "global_state_hash": "95da44e0e6f380034176386bc60cc77e07d7ccc07267588ca0a08fd3aa60466b",
+      "height": 1694,
+      "parent_hash": "10947da39448da222974d097119b4f20679b9f33fe922c20dc2e0241d9d9b06e",
+      "proposer": "016af0262f67aa93a225d9d57451023416e62aaa8391be8e1c09b8adbdef9ac19d",
+      "random_bit": true,
+      "timestamp": "2020-10-19T21:37:47.008Z"
+    },
+    "proofs": [
+      "01ade71b9975b8f11ea6caf5c268b1ab09952969a5a70f2fcc557768053aaf8271e87c7e07190655bc0fbde595e50a4581262a37f304874a0d79357062a9567805"
+    ]
+  }
+}
+```
+
+### Querying the State for the Address of a contract
+
+The `query-state` command is a generic query against global state. Earlier we queried global state for the account's main purse. Here we query the state of a contract.  We can  do so by  including the contract address rather than the account public key in the `query-state` command.
+
+Here we query to get the address of the ERC20 contract from Global State.
+
+#### Step 1: Get the Block Hash 
+This can be done by looking on the explorer,  or checking a status endpoint.
+
+#### Step 2: Query for Block Information 
+In order to query global state, we need the hash of interest.  This is in the block information
+
+```bash
+casper-client get-block  --node-address http://NODE:PORT -b <BLOCK_HASH> |jq -r
+```
+
+#### Step 3: Query State 
+```bash
+casper-client query-state --node-address http://NODE:PORT -k <PUBLIC KEY IN  HEX> -g <GLOBAL_STATE_HASH>
+```
+
+#### Example Result
+If there is a contract stored in an account, it will appear under `named-keys`. 
+
+```bash
+casper-client query-state --node-address http://localhost:7777 -k 016af0262f67aa93a225d9d57451023416e62aaa8391be8e1c09b8adbdef9ac19d -g 0c3aaf547a55dd500c6c9bbd42bae45e97218f70a45fee6bf8ab04a89ccb9adb |jq -r
+{
+  "api_version": "1.0.0",
+  "stored_value": {
+    "Account": {
+      "account_hash": "804af75bc8161e1ec4189e7d4441eb1bf1047ff6fc13b1d71026f34c5f96f937",
+      "action_thresholds": {
+        "deployment": 1,
+        "key_management": 1
+      },
+      "associated_keys": [
+        {
+          "account_hash": "804af75bc8161e1ec4189e7d4441eb1bf1047ff6fc13b1d71026f34c5f96f937",
+          "weight": 1
+        }
+      ],
+      "main_purse": "uref-439d5326bf89bd34d3b2c924b3af2f5e233298b473d5bd8b54fab61ccef6c003-007",
+      "named_keys": {
+        "ERC20": "hash-d527103687bfe3188caf02f1e487bfb8f60bfc01068921f7db24db72a313cedb",
+        "ERC20_hash": "uref-80d9d36d628535f0bc45ae4d28b0228f9e07f250c3e85a85176dba3fc76371ce-007",
+
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
