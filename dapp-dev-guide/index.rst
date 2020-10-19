@@ -34,7 +34,7 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    contract-dsl/index
    testing
    deploying-contracts
-   graphql
+   querying
    execution-error-codes
    assemblyscript
    ethereum-keys
