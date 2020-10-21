@@ -223,18 +223,6 @@ And we should see something like this:
   }
 }
 ```
-Note: The result is returned as bytes. These bytes need to be deserialized into a the correct CLType.
-
-
-
-
-
-
-
-
-
-
-
-
-
+Note: The result is returned as bytes. These bytes need to be deserialized into a the correct CLType.  This can be done in the contract or in the dApp.
+Refer to [casper-types](https://docs.rs/casperlabs-types/0.6.1/casperlabs_types/bytesrepr/index.html) for the API's to do this.
 
