@@ -54,7 +54,7 @@ There are several types of data that can be requested from a node.
 The State of the system transitions with each block that is created. Therefore, it's important to first obtain the latest global state hash.
 
 ```bash
-casper-client get-global-state-hash --node-address http://address:7777 | jq -r
+casper-client get-global-state-hash --node-address http://NODE:PORT | jq -r
 
 ```
 
@@ -72,7 +72,7 @@ Which will return something that looks like this:
 
 Casper uses the notion of purses, which can exist within accounts.  In order to obtain a balance, we first need to get the purse we want. To do this, we provide the public key of the account and the global state hash and query the system for the purses associated with the account. 
 ```bash
-casper-client query-state --node-address http://address:7777 -k <PUBLIC_KEY_AS_HEX> -g GLOBAL_STATE_HASH | jq -r
+casper-client query-state --node-address http://NODE:PORT -k <PUBLIC_KEY_AS_HEX> -g GLOBAL_STATE_HASH | jq -r
 
 ```
 Submitting this query returns something like this:
@@ -104,7 +104,7 @@ Submitting this query returns something like this:
 Now that we have a purse, we can call `get-balance` and retrieve the token balance in the purse.
 
 ```bash
-casper-client get-balance --node-address http://address:7777 -p <uref-<HEX STRING>-<THREE DIGIT INTEGER> -g b16697514e88019410e6cc1df7d66cb5279ff5cd1f45206bfefaddc7069c38c0 | jq -r
+casper-client get-balance --node-address http://NODE:PORT -p <uref-<HEX STRING>-<THREE DIGIT INTEGER> -g GLOBAL STATE HASH | jq -r
 
 ```
 Here is an example request:
@@ -127,6 +127,10 @@ Note: The balance returned is in motes (the unit that makes up the Casper token)
 It is possible to obtain detailed block information from the system.  To do this, obtain the hash of the block of interest and send this query to a node in the network: As an Example:
 ```bash
 casper-client get-block  --node-address http://localhost:7777 -b f598c1b2852acebc299c200751dae20565b3891fa0d656f537959a68c47a1ef5 |jq -r
+```
+Returns this information about the block:
+
+```bash
 {
   "api_version": "1.0.0",
   "block": {
@@ -154,17 +158,18 @@ casper-client get-block  --node-address http://localhost:7777 -b f598c1b2852aceb
 
 ### Querying the State for the Address of a contract
 
-The `query-state` command is a generic query against global state. Earlier we queried global state for the account's main purse. Here we query the state of a contract.  We can  do so by  including the contract address rather than the account public key in the `query-state` command.
+The `query-state` command is a generic query against global state. Earlier we queried global state for the account's main purse. Here we query the state of a contract. We can do so by including the contract address rather than the account public key in the `query-state` command.
 
-Here we query to get the address of the ERC20 contract from Global State.
+Here we query to get the address of an ERC20 contract from Global State.
 
 #### Step 1: Get the Latest Global State Hash 
-We need to know which global state hash has our contract.
+We need to obtain the global state hash after our contract has been deployed to the network.
 ```bash
-casper-client get-global-state-hash --node-address http://address:7777 | jq -r
+casper-client get-global-state-hash --node-address http://NODE:PORT | jq -r
 ```
 
 #### Step 2: Query State 
+Now take the global state hash from Step 1 and include it here, along with the account public key that created the contract.
 ```bash
 casper-client query-state --node-address http://NODE:PORT -k <PUBLIC KEY IN  HEX> -g <GLOBAL_STATE_HASH>
 ```
@@ -218,7 +223,7 @@ And we should see something like this:
   }
 }
 ```
-
+Note: The result is returned as bytes. These bytes need to be deserialized into a the correct CLType.
 
 
 
