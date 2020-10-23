@@ -19,7 +19,7 @@ secp256k1-keys/
 └── account-public.pem
 ```
 
-## Using Ethereum Keys in CasperLabs
+## Using Ethereum Keys in Casper
 It is possible to use existing secp256k1 keys. Ethereum secret keys usually are presented
 in the form of hex string that represents 256 bits.
 
