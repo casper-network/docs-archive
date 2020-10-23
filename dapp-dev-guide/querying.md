@@ -16,7 +16,7 @@ sudo apt-get install -y libjs-jquery
 
 ## Installing the client
 
-The client is available as a rust crate.
+The client is available as a rust crate. You can also build from [source](https://github.com/CasperLabs/casper-node/tree/master/client)
 
 ```bash
 cargo install casper-client
@@ -51,7 +51,7 @@ There are several types of data that can be requested from a node.
 
 ### Pre-Requisite: Obtain the Global State Hash
 
-The State of the system transitions with each block that is created. Therefore, it's important to first obtain the latest global state hash.
+The state of the system transitions with each block that is created. Therefore, it's important to first obtain the latest global state hash.
 
 ```bash
 casper-client get-global-state-hash --node-address http://NODE:PORT | jq -r
@@ -206,7 +206,7 @@ casper-client query-state --node-address http://localhost:7777 -k 016af0262f67aa
 ```
 
 ### Step 3: Query the contract State
-Now that we have the hash of the contract, we can query the contract's internal state. To do this, we pass in the contract's hash and the global state hash.
+Now that we have the hash of the contract, we can query the contract's internal state. To do this, we pass in the contract's hash and the global state hash.  If we look at the ERC20 contract, we see that there is a token name specified as `_name`.  We can query for the value stored here.
 
 ```bash
 casper-client query-state --node-address http://localhost:7777 -k hash-d527103687bfe3188caf02f1e487bfb8f60bfc01068921f7db24db72a313cedb -g 0c3aaf547a55dd500c6c9bbd42bae45e97218f70a45fee6bf8ab04a89ccb9adb -q _name | jq -r 
@@ -223,6 +223,6 @@ And we should see something like this:
   }
 }
 ```
-Note: The result is returned as bytes. These bytes need to be deserialized into a the correct CLType.  This can be done in the contract or in the dApp.
+Note: This result is returned as bytes. These bytes need to be deserialized into a the correct CLType.  This can be done in the contract or in the dApp.
 Refer to [casper-types](https://docs.rs/casperlabs-types/0.6.1/casperlabs_types/bytesrepr/index.html) for the API's to do this.
 
