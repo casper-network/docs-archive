@@ -76,7 +76,7 @@ Note: Each deploy gets a unique hash.  This is part of the cryptographic securit
 Once the network has received the deployment, it will queue up in the system before being listed in a block for execution.  Sending a transaction (deployment) to the network does not mean that the transaction processed successfully.  Therefore, it's important to check to see that the contract executed properly, and that the block was finalized. 
 
 ```bash
-casperlabs-client get-deploy -chain-name <NETWORK_NAME> --node-address http://<HOST:PORT> <DEPLOY_HASH>
+casper-client get-deploy --chain-name <NETWORK_NAME> --node-address http://<HOST:PORT> <DEPLOY_HASH>
 ```
 Which will return a data structure like this:
 ```bash
