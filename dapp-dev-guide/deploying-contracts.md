@@ -21,7 +21,7 @@ The client software communicates with the network to transmit your deployments t
 * **Rust**: [casperlabs-client](https://crates.io/crates/casper-client)
 
 ```bash
-cargo install casper-client
+cargo +nightly install casper-client
 ```
 **Ensure that your client matches the version of the network you intend to deploy to.**
 
@@ -174,7 +174,7 @@ LIST OF TRANSFORMS
     }
    
 ```
-From this data structure we can learn a few things:
+From this data structure we can observe some properties about the deploy (some of which can be set by the user):
 * Execution cost 164645 gas
 * No errors were returned by the contract
 * There were no dependencies for this deploy
@@ -183,16 +183,17 @@ From this data structure we can learn a few things:
 It is also possible to check the contract's state by performing a `query-state` command using the client.
 
 ### Advanced Deployments
-CasperLabs supports complex deployments.  To learn more about what is possible visit [GitHub](https://github.com/CasperLabs/casper-node/blob/master/docs/CONTRACTS%2Emd).
+CasperLabs supports complex deployments.  
 
 #### Creating, signing, and deploying contracts with multiple signatures
 
-The `deploy` command on its own provides multiple actions strung together optimizing for the common case, with the capability to separate concerns between your key management and deploy creation. See details about generating account key pairs [here](https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/docs/KEYS.md#generating-account-keys).
+The `deploy` command on its own provides multiple actions strung together optimizing for the common case, with the capability to separate concerns between your key management and deploy creation. See details about generating account key pairs in the Developer Guide.
 
-Every account can associate multiple keys with it and give each a weight. Collective weight of signing keys decides whether an action of certain type can be made. In order to collect weight of different associated keys, a deploy has to be signed by corresponding private keys. The `put-deploy` command creates a deploy, signs it and deploys to the node but doesn't allow for signing with multiple keys. Therefore, we split `deploy` into separate commands:
+Every account can associate multiple keys with it and give each a weight. Collective weight of signing keys decides whether an action of certain type can be made. To learn more about how weights and threshholds work, please review the [Blockchain Design](https://docs.casperlabs.io/en/latest/implementation/accounts.html). In order to collect weight of different associated keys, a deploy has to be signed by corresponding private keys. The `put-deploy` command creates a deploy, signs it and deploys to the node but doesn't allow for signing with multiple keys. Therefore, we split `deploy` into separate commands:
 
 * `make-deploy`  - creates a deploy from input parameters
 * `sign-deploy`  - signs a deploy with given private key
 * `send-deploy`  - sends a deploy to CasperLabs node
 
-To make a deploy signed with multiple keys: first make the deploy with `make-deploy`, sign it with the keys calling `sign-deploy` for each key, and then send it to the node with `send-deploy`.
+To make a deploy signed with multiple keys: first create the deploy with `make-deploy`. This generates a deploy file that can be sent to the other signers, who 
+then sign it with their keys by calling `sign-deploy` for each key. Signatures need to be gathered on the deploy one after another, untill all requisite parties have signed the deploy.  Finally the signed deploy is sent to the node with `send-deploy` for processing by the network.
