@@ -64,7 +64,7 @@ If you want to send your deployments to an external network, use the latest rele
 ### A Basic Deployment using the Command Line
 As described above, a basic deployment must provide some essential information. Here is an example deployment using the Rust client that will work with the basic contract we created using the [Contracts SDK for Rust](writing-rust-contracts):
 ```bash
-casper-client put-deploy --chain-name <NETWORK_NAME> --node-address http://<HOST:PORT> --secret-key /home/keys/n2-secretkey.pem --session-path  /home/casper-node/target/wasm32-unknown-unknown/release/do_nothing.wasm  --payment-amount 10000000
+casper-client put-deploy --chain-name <NETWORK_NAME> --node-address http://<HOST:PORT> --secret-key /home/keys/n2-secretkey.pem --session-path /home/casper-node/target/wasm32-unknown-unknown/release/do_nothing.wasm  --payment-amount 10000000
 ```
 If your deployment works, expect to see a success message that looks like this:
 ```
@@ -196,4 +196,3 @@ Every account can associate multiple keys with it and give each a weight. Collec
 * `send-deploy`  - sends a deploy to CasperLabs node
 
 To make a deploy signed with multiple keys: first make the deploy with `make-deploy`, sign it with the keys calling `sign-deploy` for each key, and then send it to the node with `send-deploy`.
-
