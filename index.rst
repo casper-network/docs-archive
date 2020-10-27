@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 ************************
-CasperLabs Documentation
+Casper Documentation
 ************************
 
 We present the design for a new Turing-complete smart contract platform, backed
@@ -39,3 +39,4 @@ and our token policies.
    implementation/index
    economics/index
    dapp-dev-guide/index
+   node-operator/index
