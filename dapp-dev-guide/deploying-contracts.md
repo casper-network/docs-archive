@@ -47,12 +47,12 @@ The easiest way to deploy a contract is to use an existing public network.  Casp
 * Place the key files in a location that you can access during the deployment.  You should store your keys securely.
 * Go to 'Faucet' in Clarity and then select the account for the key you just saved.  Click ```Request tokens``` from the faucet to fund your account.  Under ```Recent Faucet Requests``` an entry for your account should appear, with a green check mark.
 
-The Testnet is operated by external validators that can accept transactions. 
+The Testnet is operated by external validators that can accept transactions.  **Note: At the moment, Clarity points to the Scala network, not the Rust network**
 
 The default port is 7777
 
 ### Check the Client Version
-There is an official Python client. 
+There is an official Python client, that works with the current Testnet.  **Note: The Python client does not work with the new rust node **
 
 To check the client version run:
 
