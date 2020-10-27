@@ -1,0 +1,2 @@
+Recommended Hardware Specifications
+===================================
