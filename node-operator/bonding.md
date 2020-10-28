@@ -18,9 +18,10 @@ Steps:
 * Check the status of the auction to see if you have won a slot.
 
 ## Example Bonding Transaction
+Note the path to files and keys.
 
 ```bash
-casper-client put-deploy --chain-name <CHAIN_NAME> --node-address http://<HOST:PORT> --secret-key /home/keys/<VALIDATOR_SECRET_KEY>.pem --session-path  $HOME/casper-node/target/wasm32-unknown-unknown/release/add_bid.wasm  --payment-amount 10000000  --session-arg=public_key:public_key=<VALIDATOR_PUBLIC_KEY_HEX> --session-arg=amount:u512=<BID-AMOUNT> --session-arg=delegation_rate:u64=<PERCENT_TO_KEEP_FROM_DELEGATORS>
+casper-client put-deploy --chain-name <CHAIN_NAME> --node-address http://<HOST:PORT> --secret-key /etc/casper/<VALIDATOR_SECRET_KEY>.pem --session-path  $HOME/casper-node/target/wasm32-unknown-unknown/release/add_bid.wasm  --payment-amount 10000000  --session-arg=public_key:public_key=<VALIDATOR_PUBLIC_KEY_HEX> --session-arg=amount:u512=<BID-AMOUNT> --session-arg=delegation_rate:u64=<PERCENT_TO_KEEP_FROM_DELEGATORS>
 ```
 
 ### Contract Arguments
