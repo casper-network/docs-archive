@@ -1,0 +1,32 @@
+Joining an Existing Network
+===========================
+
+The Casper network is permissionless, enabling new validators to join the network and provide additional security to the system. This page will outline 
+the sequence of steps required in order to spin up a validating node and successfully join an existing network
+
+## Step 1: Provision Hardware
+Visit the Hardware section and provision your node hardware.
+
+## Step 2: Set Up the Node
+Visit the Setup  section in this guide and configure the software on your node.
+
+## Step 3: Fund your Keys
+Obtain token to bond your node on to the network & to pay for the bonding transaction.
+
+## Step 4: Send the Bonding Request
+Before your start your node, it's necessary for you to send a bonding request first. Consensus only sends messages to bonded nodes at this time.
+Visit the bonding section of this guide for detailed steps on how to do this.
+
+## Step 5: Update the Trusted Hash
+The node's `config.toml` needs to be updated with a recent trusted hash. Visit a `/status` endpoint of a validating node to obtain a fresh trusted block hash.
+```bash
+curl http://<IP_ADDRESS>:<PORT>/status
+```
+Default port is usually `7777`
+
+## Step 5: Start the Node
+Once the node has been added to the list of validators for an upcoming era, it's time to start the node.
+
+## Step 6: Confirm the Node Proposes Blocks
+Once the node catches up to the current era, and it is part of the `era-validators` structure in the auction contract, it will propose a block when
+selected as leader.  Look for the node's public key as `proposer` for a new block in the `/status` endpoint.
