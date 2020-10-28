@@ -39,7 +39,43 @@ Which will return the status of execution.
 
 
 ## Check the Status of the bid in the Auction
+If the bid wins the auction, the public key and associated bond amount (formerly bid amount) will appear in the auction contract as part of the 
+validator set for a future era. To determine if the bid was accepted, query the auction contract via the rust `casper-client`
 
+```bash
+casper-client --get-auction-info --node-address http://<HOST:PORT> <DEPLOY_HASH>
+```
+The request returns a response that looks like this:
+```bash
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "bids": {
+      "0248..6873": {
+       ...
+      },
+    ...
+    },
+    "era_id": 10,
+    "state_root_hash": "42ad1966f4203dbc41ca63da3ab2e99e0da6b5155369cee7e4bbad1f9230463c",
+    "validator_weights": {
+      "0248..6873": "100000000000001",
+       ...
+    }
+  },
+  "id": 572773124
+}
+```
+Note the `era_id` and the `validator_weights` sections of the response. For a given `era_id` a set of validators is defined.  To determine the current era,
+ping the `/status` endpoint of a validating node in the network.  This will return the current `era_id`.  The current `era_id` will be listed in the auction
+info response. If the public key associated with a bid appears in the `validator_weights` structure for an era, then the account is bonded in that era.
+
+## If the Bid doesn't win
+If the public key doesn't make it into the auction, there could be a few reasons why:
+* No open slots remain
+* Bid amount is too low
+
+It is possible to submit additional bids, to increase the odds of winning a slot.
 
 
 
