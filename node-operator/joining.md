@@ -30,3 +30,5 @@ Once the node has been added to the list of validators for an upcoming era, it's
 ## Step 6: Confirm the Node Proposes Blocks
 Once the node catches up to the current era, and it is part of the `era-validators` structure in the auction contract, it will propose a block when
 selected as leader.  Look for the node's public key as `proposer` for a new block in the `/status` endpoint.
+
+**Note: While the node is synchronizing, the `/status` endpoint is NOT available. 
