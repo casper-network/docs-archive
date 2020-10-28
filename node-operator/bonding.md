@@ -43,7 +43,7 @@ If the bid wins the auction, the public key and associated bond amount (formerly
 validator set for a future era. To determine if the bid was accepted, query the auction contract via the rust `casper-client`
 
 ```bash
-casper-client --get-auction-info --node-address http://<HOST:PORT> <DEPLOY_HASH>
+casper-client --get-auction-info --node-address http://<HOST:PORT>
 ```
 The request returns a response that looks like this:
 ```bash
