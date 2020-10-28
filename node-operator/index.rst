@@ -16,3 +16,5 @@ It is recommended that you have prior knowledge of Unix-based operating systems 
    Introduction <self>
    hardware
    setup
+   bonding
+   
