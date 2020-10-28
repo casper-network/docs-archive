@@ -1,7 +1,7 @@
-Dapp Developer Guide
+Developer Guide
 ====================
 
-This guide is designed to support dapp developers getting started with the development of smart contracts on the CasperLabs blockchain in AssemblyScript or Rust. For Rust, there is a contract development kit that includes a runtime environment, reference documentation, and test framework. You can install our environment locally, create and test Smart Contracts with our Smart Contracts and Test Libraries, and use these libraries to build your own applications.
+This guide is designed to support developers getting started with the development of smart contracts on the Casper blockchain in AssemblyScript or Rust. For Rust, there is a contract development kit that includes a runtime environment, reference documentation, and test framework. You can install our environment locally, create and test Smart Contracts with our Smart Contracts and Test Libraries, and use these libraries to build your own applications.
 
 It is recommended you have prior knowledge about Unix-based operating systems, like GNU/Linux or macOS, and programming knowledge with
 
@@ -34,6 +34,7 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    contract-dsl/index
    testing
    deploying-contracts
+   calling-contracts
    querying
    execution-error-codes
    assemblyscript
