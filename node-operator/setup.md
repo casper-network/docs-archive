@@ -53,7 +53,7 @@ The Casper network is a permissionless, proof of stake network - which implies t
  Configure whether you want text or JSON
 
 ### Secret Keys
-Provide the path to the private keys for the node.
+Provide the path to the secret keys for the node.
 
 ### Networking & Gossiping
 The node requires a publicly accessible IP address.  We do not recommend NAT at this time. Specify the public IP address of the node. Default values are specified in the file, if you want to change them: 
