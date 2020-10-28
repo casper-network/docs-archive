@@ -2,7 +2,7 @@ Bonding
 =======
 
 Unlike other networks, Casper requires that a bonding request be sent prior to beginning the synchronization process. Bonding in Casper takes
-place through the auction contract. The node needs to be part of the validator set before it catches up to the current era (presently). In the Charlie testnet, era durations are approx. 30 minutes. Bonding requests (bids) are transactions like any other. Because they are generic transactions, they are more resistant to censorship.
+place through the auction contract. The node needs to be part of the validator set before it catches up to the current era (presently). In the testnet, era durations are approx. 30 minutes. Bonding requests (bids) are transactions like any other. Because they are generic transactions, they are more resistant to censorship.
 
 
 ## Build Add_Bid Contract
@@ -76,7 +76,6 @@ If the public key doesn't make it into the auction, there could be a few reasons
 * Bid amount is too low
 
 It is possible to submit additional bids, to increase the odds of winning a slot.
-
 
 
 
