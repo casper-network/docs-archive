@@ -10,7 +10,7 @@ Staking allows validators to receive rewards and share transaction fees. Validat
 
 In order to stake in the network, prospective validators participate in bonding auctions for a limited number of validator positions, with winning bids becoming bonded as stakes. This approach strikes a balance between security and performance, since increasing the number of validators must weakly decrease network throughput with the present mainnet architecture, due to increased communication complexity.
 
-Rewards are provided through a process called *seigniorage*. New tokens are minted at a constant rate and distributed to participating validators, similar to the block reward mechanism in Bitcoin. At the end of an Era, seigniorage is paid to all validators based on their stake and participation in finalizing transacgtions. This ensures stable, continuous payments for honest validators, and eliminates the need to create pools.
+Rewards are provided through a process called *seigniorage*. New tokens are minted at a constant rate and distributed to participating validators, similar to the block reward mechanism in Bitcoin. At the end of an Era, seigniorage is paid to all validators based on their stake and participation in finalizing transactions. This ensures stable, continuous payments for honest validators, and eliminates the need to create pools.
 
 A malicious validator, on the other hand, is punished through disincentives for various types of undesirable activities such as attacks on consensus, censorship and freeloading. The protocol is designed to penalize validators that engage in such activities by burning a part of their stake, referred to as slashing.
 
@@ -26,4 +26,3 @@ In addition to seigniorage payments, validators receive transaction fees paid by
    transaction-fees.rst
    staking.rst
    slashing.rst
-
