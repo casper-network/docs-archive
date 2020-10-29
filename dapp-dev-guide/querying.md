@@ -54,7 +54,7 @@ There are several types of data that can be requested from a node.
 The state of the system transitions with each block that is created. Therefore, it's important to first obtain the latest global state hash.
 
 ```bash
-casper-client get-global-state-hash --node-address http://NODE:PORT | jq -r
+casper-client get-state-root-hash --node-address http://NODE:PORT | jq -r
 
 ```
 
