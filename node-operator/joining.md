@@ -1,4 +1,4 @@
-Joining an Existing Network
+Joining a Running Network
 ===========================
 
 The Casper network is permissionless, enabling new validators to join the network and provide additional security to the system. This page will outline 
@@ -22,7 +22,7 @@ The node's `config.toml` needs to be updated with a recent trusted hash. Visit a
 ```bash
 curl http://<IP_ADDRESS>:<PORT>/status
 ```
-Default port is usually `7777`
+Default port is usually `7777`  Retrieve thhe `last_added_block_info:` hash.
 
 ## Step 5: Start the Node
 Once the node has been added to the list of validators for an upcoming era, it's time to start the node.  The deb package installs a casper-node service for
