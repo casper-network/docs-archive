@@ -9,5 +9,7 @@ Blockchain Design
    execution-semantics.rst
    accounts.rst
    block-structure.rst
+   serialization-standard.rst
    tokens.rst
    appendix.rst
+   
