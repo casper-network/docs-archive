@@ -17,10 +17,10 @@ Normally, there would be no way to prioritize high value transactions with such 
 Flexible Payments
 ~~~~~~~~~~~~~~~~~
 
-A major feature of Highway is the ability to implement arbitrary payment logic with :ref:`payment codes <execution-semantics-payment>`. This has a number of advantages:
+A major feature of Casper is the ability to implement arbitrary payment logic with :ref:`payment codes <execution-semantics-payment>`. This has a number of advantages:
 
 - It enables dapp maintainers to pay for the transactions of their users without additional complexity, greatly improving the onboarding of new users.
 - It allows the platform to support all kinds of payment schemes that future businesses might want to adapt.
 - It makes it possible to have multiple parties pay for a transaction, or contracts that pay for their own transactions.
 
-Payment codes render Highway future-proof, that is, its economic layer has enough room for every possibility that one can imagine.
+Flexible payment code render Casper future-proof, that is, its economic layer has enough room for every possibility that one can imagine.
