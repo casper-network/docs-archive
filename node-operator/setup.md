@@ -22,7 +22,18 @@ or
 ```bash
 sudo apt install casper-node_1.5.0_amd64.deb 
 ```
-This will install both the node and the client.  Configuration files are located in `etc/casper`, and an example config.toml is present as `/etc/casper/config-example.toml`.
+This package will install the `casper-node` executable in `/usr/bin`.
+
+Configuration files and other needed files are installed in `/etc/casper/`. An example config file is given
+as `/etc/casper/config-example.toml`. This is automatically modified for your system in `config.toml`. If 
+`config.toml` exists from a previous install, the file we be created as `config.toml.new` and you need to manually create an appropriate `config.toml` from this if changes are needed. 
+
+The `accounts.csv` and `chainspec.toml` files will be downloaded into `/etc/casper` with the deb package install. 
+If genesis files need to be pulled down again, run `sudo -u casper /etc/casper/pull_genesis.sh`. 
+
+A `casper` user and `casper` group is created during install and used to run the software. 
+
+To install the casper-client, use `sudo apt install casper-client_1.5.0_amd64.deb`
 
 
 ## Create Keys
@@ -73,6 +84,5 @@ The node requires a publicly accessible IP address.  We do not recommend NAT at 
 
 ### Save the Config Toml
 Save your changes to the file.
-
 
 
