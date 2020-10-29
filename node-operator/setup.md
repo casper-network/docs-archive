@@ -7,7 +7,9 @@ You can choose to build from source. If you opt to do this, please ensure that t
 
 The recommended way is to obtain released packages using debian installers. Installing the debian package will automatically configure the system into a working state if a config.toml does not exist yet.  If keys are generated in ‘/etc/casper/validator_keys/’, the system can be started with no manual configuration.
 
-If you have installed a version of the node before, plese uninstall the older version.  Please also clear out any old state. There is a script `delete_local_db.sh` in `/casper-node`
+If you have installed a version of the node before, plese uninstall the older version.  Please also clear out any old state. There is a script `delete_local_db.sh` in `/casper-node` which removes local state in `/var/lib/casper/casper-node`.
+
+If you have run versions prior to 1.5.0, you may have local state in `/root/.local/share/casper-node` which should be deleted.
 
 Depending on your system, you may need to use either `dpkg' or 'apt'
 
@@ -71,7 +73,6 @@ The node requires a publicly accessible IP address.  We do not recommend NAT at 
 
 ### Save the Config Toml
 Save your changes to the file.
-
 
 
 
