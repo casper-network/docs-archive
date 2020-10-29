@@ -25,7 +25,14 @@ curl http://<IP_ADDRESS>:<PORT>/status
 Default port is usually `7777`
 
 ## Step 5: Start the Node
-Once the node has been added to the list of validators for an upcoming era, it's time to start the node.
+Once the node has been added to the list of validators for an upcoming era, it's time to start the node.  The deb package installs a casper-node service for
+systemd. Start the node with:
+
+```bash
+sudo systemctl start casper-node
+```
+
+For more information visit [Github](https://github.com/CasperLabs/casper-node/blob/release-1.5.0/resources/production/README.md)
 
 ## Step 6: Confirm the Node Proposes Blocks
 Once the node catches up to the current era, and it is part of the `era-validators` structure in the auction contract, it will propose a block when
