@@ -6,14 +6,35 @@ Basic Node Setup
 You can choose to build from source. If you opt to do this, please ensure that the correct software version (tag) is used. You will also need to obtain the 4 system wasm contracts which are distributed with the debian package. Wasm compilation is non-deterministic, so for those building from source, the wasm system contracts will need to use pre-built wasm files. Otherwise the genesis hash will be different for the system and it will experience protocol level faults. 
 
 The recommended way is to obtain released packages using debian installers. Installing the debian package will automatically configure the system into a working state if a config.toml does not exist yet.  If keys are generated in ‘/etc/casper/validator_keys/’, the system can be started with no manual configuration.
-```bash
-sudo apt install casper-node_1.5.0
-```
-and the client for querying the node
+
+If you have installed a version of the node before, plese uninstall the older version.  Please also clear out any old state. There is a script `delete_local_db.sh` in `/casper-node` which removes local state in `/var/lib/casper/casper-node`.
+
+If you have run versions prior to 1.5.0, you may have local state in `/root/.local/share/casper-node` which should be deleted.
+
+Depending on your system, you may need to use either `dpkg' or 'apt'
 
 ```bash
-sudo apt install casper-client_1.5.0
+apt install dnsutils
+
+sudo dpkg -i casper-node_1.5.0_amd64.deb 
 ```
+or 
+```bash
+sudo apt install casper-node_1.5.0_amd64.deb 
+```
+This package will install the `casper-node` executable in `/usr/bin`.
+
+Configuration files and other needed files are installed in `/etc/casper/`. An example config file is given
+as `/etc/casper/config-example.toml`. This is automatically modified for your system in `config.toml`. If 
+`config.toml` exists from a previous install, the file we be created as `config.toml.new` and you need to manually create an appropriate `config.toml` from this if changes are needed. 
+
+The `accounts.csv` and `chainspec.toml` files will be downloaded into `/etc/casper` with the deb package install. 
+If genesis files need to be pulled down again, run `sudo -u casper /etc/casper/pull_genesis.sh`. 
+
+A `casper` user and `casper` group is created during install and used to run the software. 
+
+To install the casper-client, use `sudo apt install casper-client_1.5.0_amd64.deb`
+
 
 ## Create Keys
 
@@ -63,7 +84,5 @@ The node requires a publicly accessible IP address.  We do not recommend NAT at 
 
 ### Save the Config Toml
 Save your changes to the file.
-
-
 
 
