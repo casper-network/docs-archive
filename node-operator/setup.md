@@ -11,17 +11,23 @@ If you have installed a version of the node before, plese uninstall the older ve
 
 If you have run versions prior to 1.5.0, you may have local state in `/root/.local/share/casper-node` which should be deleted.
 
-Depending on your system, you may need to use either `dpkg' or 'apt'
+Depending on your system, you may need to use either `dpkg` or `apt`
+
+Client installation:
 
 ```bash
-apt install dnsutils
+wget --content-disposition https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_1.5.0-2267_amd64.deb
+sudo apt install ./casper-client_1.5.0-2267_amd64.deb
+```
+and Node Installation
 
-sudo dpkg -i casper-node_1.5.0_amd64.deb 
-```
-or 
 ```bash
-sudo apt install casper-node_1.5.0_amd64.deb 
+wget --content-disposition https://bintray.com/casperlabs/debian/download_file?file_path=casper-node_1.5.0-2267_amd64.deb
+
+sudo apt install ./casper-node_1.5.0-2267_amd64.deb
+
 ```
+
 This package will install the `casper-node` executable in `/usr/bin`.
 
 Configuration files and other needed files are installed in `/etc/casper/`. An example config file is given
