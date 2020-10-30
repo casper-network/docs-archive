@@ -51,10 +51,10 @@ The deploy header is defined as
     }
 
 - Account is defined as enum which can either contain an Ed25519 key or secp256k1 key.
-- An Ed25519 key is serialized as buffer of bytes with the leading byte being 0 for Ed25519
-- Thus an Ed25519 key ``1fb5bef76ac0602990bed9fc893ba65a082e240fc0d043c11692d181f73ce915`` serializes to ``0x0000000020000000000000001fb5bef76ac0602990bed9fc893ba65a082e240fc0d043c11692d181f73ce915``
-- Correspondingly a Secp256k1 key is serialized as a buffer of bytes with the leading byte being 1
-- Thus an Secp256k1 key ``02f98dbaf31d1c4fdb5cc89bed4343b1d1f12b6bcd97b69e830d5584b5f932b383`` serializes as ``0x01000000210000000000000002f98dbaf31d1c4fdb5cc89bed4343b1d1f12b6bcd97b69e830d5584b5f932b383``
+- An Ed25519 key is serialized as buffer of bytes with the leading byte being ``1`` for Ed25519
+- Thus an Ed25519 key ``4dd8edb64cad4bd472f2ab8b0409392306c14b45f5b47ac0c295da461d09b18a`` serializes to ``0x01200000004dd8edb64cad4bd472f2ab8b0409392306c14b45f5b47ac0c295da461d09b18a``
+- Correspondingly a Secp256k1 key is serialized as a buffer of bytes with the leading byte being ``2``
+- Thus an Secp256k1 key ``0365dc07a060cac57c98cdeab9a659e097458d4e72899b4bec4f1b230d57a70d72`` serializes as ``0x02210000000365dc07a060cac57c98cdeab9a659e097458d4e72899b4bec4f1b230d57a70d72``
 - A timestamp is struct that is unary tuple containing a ``u64`` value. This value is a count of the milliseconds since the UNIX epoch. Thus the value ``1603994401469`` serializes as ``0xbd3a847575010000``
 - The gas is ``u64`` value which is serialized as ``u64`` CLValue discussed below.
 - Body hash is a hash over the contents of the deploy body which includes the payment, session and approval fields. Its serialization is the byte representation of the hash itself.
