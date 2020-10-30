@@ -2,7 +2,7 @@ Joining a Running Network
 ===========================
 
 The Casper network is permissionless, enabling new validators to join the network and provide additional security to the system. This page will outline 
-the sequence of steps required in order to spin up a validating node and successfully join an existing network
+the sequence of recommended steps to spin up a validating node and successfully join an existing network. 
 
 ## Step 1: Provision Hardware
 Visit the Hardware section and provision your node hardware.
@@ -10,7 +10,7 @@ Visit the Hardware section and provision your node hardware.
 ## Step 2: Set Up the Node
 Visit the Setup section in this guide and configure the software on your node.
 
-## Step 3: Fund your Keys
+## Step 3: Fund your Keys for Bonding
 Obtain token to bond your node on to the network & to pay for the bonding transaction.
 
 ## Step 4: Send the Bonding Request
