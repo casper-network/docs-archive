@@ -21,9 +21,9 @@ number adjustment mechanism.
 Delegation
 ~~~~~~~~~~
 
-Users are able to delegate their own CLX to validators
+Users are able to delegate their own CSPR to validators
 without having to become validators themselves. Validators, in turn, take a
-commission out of the rewards and transaction fees earned through delegated CLX.
+commission out of the rewards and transaction fees earned through delegated CSPR.
 Delegated tokens are subject to the same unbonding rules as the tokens staked by
 validator from their own accounts.
 Further, delegated tokens can be used in bidding for validator slots and can be
