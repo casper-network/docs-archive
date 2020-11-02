@@ -2,7 +2,7 @@
 
 This tutorial walks through how to design a simple contract that creates a key that stores a CLType value. 
 This example will show you how to store a u64, string, account hash, or U512 value.  
-The code is available at: https://github.com/CasperLabs/casperlabs-kv-storage
+The code is available in the [Casper Ecosystem GitHub](https://github.com/casper-ecosystem/kv-storage-contract)
 
 This tutorial will also provide some insight into how to use the Casperlabs smart contract DSL and how contract headers work.
 
@@ -166,38 +166,40 @@ mod tests {
 ### Running Locally
 
 It's possible to run the unit tests locally- if you have set up the contract using [cargo-casperlabs](https://crates.io/cargo-casperlabs).
-The steps to set up the SDK are in the guide.
+The steps to set up the SDK are in the guide. 
 
 ```bash
 cargo test -p tests
 ```
 
 ## Deploying to the Testnet and Interacting with the Contract
-There is a standalone python cli application that you can use for the kvstorage contract. When working with the testnet, create an account in [CLarity](https://clarity.casperlabs.io) and fund it using the faucet. Download the private key and use the key to sign the deployment. It's possible to create keys using the python client as well.
-
-**Note, that this client was designed specifically for this contract. **
+When working with the testnet, create an account in [CLarity](https://clarity.casperlabs.io) and fund it using the faucet. Download the private key and use the key to sign the deployment. It's possible to create keys using the rust client as well.
 
 
 ### Deploy the Contract
-The first step is actually to deploy the compiled wasm to the network, if you are using the python kv-client you must use the command `deploy_kv_storage_contract`. 
-Once the contract is deployed, the client will retrieve the contract session hash as well as the blockhash where the contract is deployed.
+After the contract has been compiled, it's time to deploy the compiled wasm to the network. This action installs the contract in the blockchain.
+Once the contract is deployed, the client can retrieve the contract session hash as well as the blockhash where the contract is deployed.
 
-```bash
-python cli.py deploy_kv_storage_contract -f "29acb007dfa4f92fa5155cc2f3ae008b4ff234acf95b00c649e2eb77447f47ca" -p "../../kvkey.private.key" -c "../target/wasm32-unknown-unknown/release/contract.wasm" -b True
-
+```casper-client put-deploy --chain-name <CHAIN-NAME> --node-address http://<HOST>:<PORT> --secret-key /home/keys/secretkey.pem --session-path  $HOME/kv-storage-contract/target/wasm32-unknown-unknown/release/contract.wasm  --payment-amount 1000000000000
 ```
+
+### Query the Account & Get the Contract Hash
+The internal state of the blockchain is updated via a series of steps (blocks). All queries of a blockchain must include a `global state hash` which corresponds to the block hash / height of the blockchain.  Visit [Querying the State for the Address of a Contract](https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html).
+
 
 ### Invoke an Entry Point & Set a value
 
 Once the contract is deployed, we can create another deploy, which calls one of the entry points within the contract. 
-To call an entry point, you must first know the name of the entry point and the session hash, which we retrieved from the previous step. 
+To call an entry point, you must first know the name of the entry point or  the session hash, which we retrieved from the previous step. 
 The kv-client, has four distinct commands to set key-values for u64, String, U512 and AccountHash.
 
-
 ```bash
-python cli.py insert_u64 -f "29acb007dfa4f92fa5155cc2f3ae008b4ff234acf95b00c649e2eb77447f47ca" -p "../../kvkey.private.key" -s "0e82027493b88db434e85f82f6bcf48a30e0c1db15cf55fb87b73461b8aef20b" -k "test" -v 1 -b True
+casper-client put-deploy --session-name kvstorage_contract --session-entry-point store-string --session-arg=name:"string=`test`" --payment-amount 100000000000 --chain-name <CHAIN-NAME> --node-address http://<HOST>:<PORT> --secret-key /home/keys/secretkey.pem 
 ```
-
+If the deploy works, a response similar this will be returned:
+```bash
+{"api_version":"1.0.0","deploy_hash":"8c3068850354c2788c1664ac6a275ee575c8823676b4308851b7b3e1fe4e3dcc"}
+```
 
 ### Query the Contract On Chain
 Contracts can be executed under different contexts. In this example, 
@@ -206,27 +208,15 @@ This means that all stored keys are not stored under the account hash, but withi
 Therefore when we query to retrieve the value under a key, we are actually querying 
 `AccountHash/kvstorage_contract/<key-name>` and not just `AccountHash/<key-name>`. 
 
-Reading a value is simple enough, after you insert a value, the command retrieves the block hash under which the value, is stored. 
-Using that block hash, and the `read-key` command you can easily retrieve and value that was previously stored under a named key.
+You must first find the block hash for the block that contains your deploy.
+Once you have the requisite block hash, then you can use `casper-client` to retrieve the session hash
 
+Reading a value is simple enough, we obtain the block hash under which the value, is stored, and then  
+using that block hash, and the `query-state` command you can easily retrieve and value that was stored under a named key.
+Please reference the [Querying Section](https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html) for details.
+An example global state query looks like this:
 
 ```bash
-python cli.py read_key -bh "cb08a634c9bbea695fbd92e2ddbeec6fe6a374db807b36fea35077a9c1d720df" -p "29acb007dfa4f92fa5155cc2f3ae008b4ff234acf95b00c649e2eb77447f47ca" -k "test"
+casper-client query-state --node-address http://<HOST>:<PORT> -k <PUBLIC_KEY_AS_HEX> -g GLOBAL_STATE_HASH | jq -r
 
 ```
-
-More information on the kv-client, is available via the `--help` command. There is detailed information on each of the commands available with the client. 
-
-NOTE: The session hash is retrieved from the the chain by using a simple time delay, if processing the deploy takes longer than expected, 
-it is likely that the kv-client will error out and not retrieve the session hash. 
-In such cases, you can retrieve the session hash using the python casperlabs_client.
-
-You must first find the block hash for the block that contains your deploy.
-Once you have the requisite block hash, then you can use the python shell to retrieve the session hash
-
-```bash
-Import casperlabs_client
-client = casperlabs_client.CasperLabsClient(‘deploy.casperlabs.io’, 40401)
-Session_code = client.queryState(<block-hash>, <account-hash>, “kvstorage_contract_hash”,’address’)
-Session_hash = session_code.cl_value.value.bytes_value.hex()
-``` 
