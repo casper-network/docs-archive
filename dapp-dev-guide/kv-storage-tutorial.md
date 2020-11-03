@@ -2,7 +2,7 @@
 
 This tutorial walks through how to design a simple contract that creates a key that stores a CLType value. 
 This example will show you how to store a u64, string, account hash, or U512 value.  
-The code is available in the [Casper Ecosystem GitHub](https://github.com/casper-ecosystem/kv-storage-contract)
+The code is available in the [Casper Ecosystem GitHub](https://github.com/casper-ecosystem/kv-storage-contract).  [Get Started in GitPod](https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-contract)
 
 This tutorial will also provide some insight into how to use the Casperlabs smart contract DSL and how contract headers work.
 
