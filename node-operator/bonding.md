@@ -84,11 +84,9 @@ ping the `/status` endpoint of a validating node in the network.  This will retu
 info response. If the public key associated with a bid appears in the `validator_weights` structure for an era, then the account is bonded in that era.
 
 ## If the Bid doesn't win
-If the public key doesn't make it into the auction, there could be a few reasons why:
-* No open slots remain
-* Bid amount is too low
-
-It is possible to submit additional bids, to increase the odds of winning a slot.
+If your bid doesn't win a slot in the auction, it is because your bid is too low.  The resolution for this problem is to increase your bid amount.
+It is possible to submit additional bids, to increase the odds of winning a slot. It is also possible to encourage token holders to delegate stake to 
+you for bonding.
 
 
 
