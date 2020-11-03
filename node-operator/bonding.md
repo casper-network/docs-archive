@@ -95,28 +95,7 @@ It is possible to submit additional bids, to increase the odds of winning a slot
 you for bonding.
 
 ## Withdrawing a Bid
-
-Once a bid is placed, it will remain in the state of the auction contract. Even if the bid does not win. The reason for this is that new slots may
-become available if bonded validators leave the network, or reduce their bond amounts.  Therefore, a bid must be explicitly withdrawn in order to remove
-the bid from the auction. Since tokens will be transferred out of the bid purse, it's important to compile the contract to withdraw the bid yourself, so 
-there is confidence in the correctness of the contract.  
-
-## Example Withdrawl Transaction
-Note the path to files and keys. Note: the session arguments need to be encased in double quotes, with the parameter values in single quotes.
-Note the required payment amount.  It must contain at least 12 zeros.  Payment amount is specified in motes.
-
-```bash
-casper-client put-deploy --chain-name <CHAIN_NAME> --node-address http://<HOST>:<PORT> --secret-key secret_key.pem --session-path  withdraw_bid.wasm  --payment-amount 100000000000  --session-arg=public_key:"public_key='<PUBLIC_KEY>'" --session-arg=amount:"u512='<AMT_TO_WITHDRAW>'"
-```
-
-### Contract Arguments
-The withdraw_bid contract accepts 3 arguments:
-* public key: The public key in hex of the account to withhdraw.  Note: This has to be the matching key to the validator secret key that signs the deploy,
-and has to match the public key of a bid in the auction contract.
-* amount: This is the amount that is being withdrawn. 
-* unbond_purse (optional): The purse to which the withdrawal will be remitted. Defaults to the main purse for the account if not provided.
-
-Then check the status of the auction contract & the balance of the unbond purse for updates.
+Follow the steps in [Unbonding](https://docs.casperlabs.io/en/latest/node-operator/unbonding.html) to withdraw a bid.
 
 
 
