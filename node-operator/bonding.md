@@ -7,6 +7,7 @@ place through the auction contract. The node needs to be part of the validator s
 Steps:
 
 * Visit [Github](https://github.com/CasperLabs/casper-node) and fork and clone the repository.
+* Make sure that all dependencies are installed  (documented on GitHub).
 * Follow the instructions to build the contracts.
 * Ensure that the keys you will use for bonding are available & have been funded.
 * Create the bonding transaction & deploy it.
