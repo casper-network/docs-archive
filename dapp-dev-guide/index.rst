@@ -33,11 +33,11 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    writing-rust-contracts
    contract-dsl/index
    testing
+   assemblyscript
    deploying-contracts
    calling-contracts
    querying
    execution-error-codes
-   assemblyscript
    ethereum-keys
    solidity
    erc20/index
