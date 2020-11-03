@@ -1,8 +1,11 @@
 Bonding
 =======
 
-Unlike other networks, Casper requires that a bonding request be sent prior to beginning the synchronization process. Bonding in Casper takes
-place through the auction contract. The node needs to be part of the validator set before it catches up to the current era (presently). In the testnet, era durations are approx. 30 minutes. Bonding requests (bids) are transactions like any other. Because they are generic transactions, they are more resistant to censorship.
+It is recommended that a bonding request be sent prior to beginning the synchronization process. Bonding in Casper takes
+place through the auction contract via the `add_bid.wasm` contract. Once a bid has been submitted, the auction runs for a future era.
+In the testnet, era durations are approx. 30 minutes. The entire process takes approximately 3 eras. 
+Bonding requests (bids) are transactions like any other. 
+Because they are generic transactions, they are more resistant to censorship.
 
 Steps:
 
