@@ -51,6 +51,7 @@ For a video walkthrough of these steps, feel free to check out this quick start 
 
 Available Packages
 ##################
+
 There are three crates we publish to support Rust development of Smart Contracts. These can be found on crates.io, and are:
 
 *  `CasperLabs Contract <https://crates.io/crates/casperlabs-contract>`_ - library that supports communication with the blockchain. That's the main library to use       when writing smart contracts. 
@@ -59,10 +60,12 @@ There are three crates we publish to support Rust development of Smart Contracts
 
 API Level Documentation for Smart Contracts
 ###########################################
+
 Each of the crates ships with API documentation and examples for each of the functions. Docs are located at `https://docs.rs <https://docs.rs/releases/search?query=casperlabs>`_.  The contract API documentation is specific for a given version, ex: for version 0.5.1 is located at: `https://docs.rs/casperlabs-contract/0.5.1/casperlabs_contract/contract_api/index.html`
 
 Development Environment Setup
 #############################
+
 The best & fastest way to set up a Casper Rust Smart Contract project is to use :code:`cargo-casperlabs`.  When you use this, it will set the project up with a simple contract and a runtime environment/testing framework with a simple test. It's possible to use this configuration in your CI/CD pipeline as well. Instructions are also available on `GitHub <https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs>`_.
 
 .. code-block::
@@ -74,6 +77,7 @@ This step will create two crates called :code:`contract` and :code:`tests` insid
 
 Compiling to wasm
 #################
+
 The Casper blockchain uses WebAssembly (Wasm) in its runtime environment.  Compilation targets for Wasm are available for Rust, giving developers access to all the tools in the Rust ecosystem when developing smart contracts.
 Casper Contracts support Rust tooling such as :code:`clippy` for linting contracts. Feel free to use them!
 
@@ -84,7 +88,7 @@ The project requires a specific nightly version of Rust, and requires a Wasm tar
    cargo casperlabs --help
 
 
-Set up your wasm compilation rust toolchain by doing the following:
+Set up your wasm compilation rust toolchain by doing the following
 
 .. code-block::
 
