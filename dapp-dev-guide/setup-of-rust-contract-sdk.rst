@@ -42,9 +42,12 @@ For more details follow the `official downloads page <https://developers.google.
 SDK
 ^^^^^^^^^^^^^^^^
 
+For a video walkthrough of these steps, feel free to check out this quick start video.
+
 .. raw:: html 
 
    <iframe width="560" height="315" src="https://www.youtube.com/embed/P8ljeSxg4NA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 Available Packages
 ##################
