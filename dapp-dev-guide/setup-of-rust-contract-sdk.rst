@@ -9,7 +9,7 @@ Install Rust
 ^^^^^^^^^^^^^^^^
 The recommended way to from the `official Rust guide <https://www.rust-lang.org/tools/install>`_ to install Rust is by using :code:`curl`
 
-.. code-block::
+.. code::
 
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -25,14 +25,14 @@ Install Google protobuf compiler
 ################################
 Linux with :code:`apt` 
 
-.. code-block::
+.. code::
 
     sudo apt install protobuf-compiler
 
 
 macOS with :code:`brew`
 
-.. code-block::
+.. code::
 
     brew install protobuf
 
@@ -68,7 +68,7 @@ Development Environment Setup
 
 The best & fastest way to set up a Casper Rust Smart Contract project is to use :code:`cargo-casperlabs`.  When you use this, it will set the project up with a simple contract and a runtime environment/testing framework with a simple test. It's possible to use this configuration in your CI/CD pipeline as well. Instructions are also available on `GitHub <https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs>`_.
 
-.. code-block::
+.. code::
 
    $ cargo install cargo-casperlabs
    $ cargo casperlabs my-project
@@ -83,14 +83,14 @@ Casper Contracts support Rust tooling such as :code:`clippy` for linting contrac
 
 The project requires a specific nightly version of Rust, and requires a Wasm target to be added to that Rust version.  The steps to follow are shown by running
 
-.. code-block::
+.. code::
 
    cargo casperlabs --help
 
 
 Set up your wasm compilation rust toolchain by doing the following
 
-.. code-block::
+.. code::
 
    cd my-project/contract
    rustup install $(cat rust-toolchain)
@@ -101,7 +101,7 @@ Build the Contract
 ##################
 The next step is to compile the smart contract into Wasm.
 
-.. code-block::
+.. code::
 
    cd my-project/contract
    cargo build --release
@@ -115,7 +115,7 @@ Test the Contract & verify your environment is correct
 
 The test crate will build the contract and test it in a CasperLabs runtime environment.  A successful test run indicates that the smart contract environment is set up correctly.
 
-.. code-block::
+.. code::
 
    cd ../tests
    cargo test
