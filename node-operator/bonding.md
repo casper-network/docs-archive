@@ -1,12 +1,22 @@
 Bonding
 =======
 
-Unlike other networks, Casper requires that a bonding request be sent prior to beginning the synchronization process. Bonding in Casper takes
-place through the auction contract. The node needs to be part of the validator set before it catches up to the current era (presently). In the testnet, era durations are approx. 30 minutes. Bonding requests (bids) are transactions like any other. Because they are generic transactions, they are more resistant to censorship.
+It is recommended that a bonding request be sent prior to beginning the synchronization process. Bonding in Casper takes
+place through the auction contract via the `add_bid.wasm` contract. The auction runs for a future era, every era. The Chainspec 
+specifies the number of slots available, and the auction will  take the top N slots and create the validator set for the future era.
+In the testnet, era durations are approx. 30 minutes. The entire process takes approximately 3 eras. Therefore, the time of submission
+of a bid, to inclusion in the validator set is a minimum of 90 minutes.  
+Bonding requests (bids) are transactions like any other. 
+Because they are generic transactions, they are more resistant to censorship.
 
-Steps:
+## Security and Bonding
+
+The most secure way to send a bonding transaction is to compile the contract and send the request to the network. 
+Because the transaction authorizes the bonding purse to be locked into the auction contract, it's really important
+to compile the contract yourself. Here are the steps to do this:
 
 * Visit [Github](https://github.com/CasperLabs/casper-node) and fork and clone the repository.
+* Make sure that all dependencies are installed  (documented on GitHub).
 * Follow the instructions to build the contracts.
 * Ensure that the keys you will use for bonding are available & have been funded.
 * Create the bonding transaction & deploy it.
@@ -80,11 +90,14 @@ ping the `/status` endpoint of a validating node in the network.  This will retu
 info response. If the public key associated with a bid appears in the `validator_weights` structure for an era, then the account is bonded in that era.
 
 ## If the Bid doesn't win
-If the public key doesn't make it into the auction, there could be a few reasons why:
-* No open slots remain
-* Bid amount is too low
+If your bid doesn't win a slot in the auction, it is because your bid is too low.  The resolution for this problem is to increase your bid amount.
+It is possible to submit additional bids, to increase the odds of winning a slot. It is also possible to encourage token holders to delegate stake to 
+you for bonding.
 
-It is possible to submit additional bids, to increase the odds of winning a slot.
+## Withdrawing a Bid
+Follow the steps in [Unbonding](https://docs.casperlabs.io/en/latest/node-operator/unbonding.html) to withdraw a bid.
+
+
 
 
 

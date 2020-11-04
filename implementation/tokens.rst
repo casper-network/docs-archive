@@ -39,6 +39,7 @@ of indivisible parts. For the purposes of this document we will always work in
 terms of these indivisible units so as to not need to pick a particular level of
 divisibility for our “token” (as this detail is not important for the present
 description). We call the indivisible units which make up our token *motes*.
+Each CSPR is divisible into :math:`10^{9}` motes.
 
 .. _tokens-mints-and-purses:
 
@@ -49,7 +50,7 @@ A *mint* is a contract which has the ability to produce new motes of a
 particular type. We allow for multiple mote types (each of which would have
 their own mint) because we anticipate the existence of a large ecosystem of
 different tokens, similar to ERC20 tokens on Ethereum. CasperLabs will deploy a
-specific mint contract and it will manage the CasperLabs utility token (used for
+specific mint contract and it will manage the Casper (CSPR) utility token (used for
 paying for computation and bonding onto the network). The mint also maintains
 all the balances for its type of mote. Each balance is associated with a
 ``URef``, which acts as a sort of key to instruct the mint to perform actions

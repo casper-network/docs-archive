@@ -1,6 +1,6 @@
 # Smart Contract Tests
 
-In this section we'll use the [CasperLabs Engine Test Support](https://crates.io/crates/casperlabs-engine-test-support) crate to test the ERC-20 smart contract against the execution environment that is equivalent to what CasperLabs uses in production.  Here we will create 2 files that will set up the testing framework for the ERC20 contract.  
+In this section we'll use the [Casper Engine Test Support](https://crates.io/crates/casperlabs-engine-test-support) crate to test the ERC-20 smart contract against the execution environment that is equivalent to what Casper uses in production.  Here we will create 2 files that will set up the testing framework for the ERC20 contract.  
 
 The following is an example of a finished test.
 ```rust

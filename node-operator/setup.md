@@ -9,22 +9,22 @@ The recommended way is to obtain released packages using debian installers. Inst
 
 If you have installed a version of the node before, plese uninstall the older version.  Please also clear out any old state. There is a script `delete_local_db.sh` in `/casper-node` which removes local state in `/var/lib/casper/casper-node`.
 
-If you have run versions prior to 1.5.0, you may have local state in `/root/.local/share/casper-node` which should be deleted.
+If you have run prior versions, you may have local state in `/root/.local/share/casper-node` which should be deleted.
 
 Depending on your system, you may need to use either `dpkg` or `apt`
 
 Client installation:
 
 ```bash
-wget --content-disposition https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_1.5.0-2267_amd64.deb
-sudo apt install ./casper-client_1.5.0-2267_amd64.deb
+wget --content-disposition https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_1.6.0-2465_amd64.deb
+sudo apt install ./casper-client_1.6.0-2465_amd64.deb
 ```
 and Node Installation
 
 ```bash
-wget --content-disposition https://bintray.com/casperlabs/debian/download_file?file_path=casper-node_1.5.0-2267_amd64.deb
+wget --content-disposition https://bintray.com/casperlabs/debian/download_file?file_path=casper-node_1.6.0-2465_amd64.deb
 
-sudo apt install ./casper-node_1.5.0-2267_amd64.deb
+sudo apt install ./casper-node_1.6.0-2465_amd64.deb
 
 ```
 
@@ -39,7 +39,7 @@ If genesis files need to be pulled down again, run `sudo -u casper /etc/casper/p
 
 A `casper` user and `casper` group is created during install and used to run the software. 
 
-To install the casper-client, use `sudo apt install casper-client_1.5.0_amd64.deb`
+To install the casper-client, use `sudo apt install casper-client_1.6.0-2465_amd64.deb`
 
 
 ## Create Keys
