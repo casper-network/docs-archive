@@ -61,9 +61,14 @@ casper-client get-state-root-hash --node-address http://NODE:PORT | jq -r
 Which will return something that looks like this:
 ```bash
 {
-  "api_version": "1.0.0",
-  "global_state_hash": "b16697514e88019410e6cc1df7d66cb5279ff5cd1f45206bfefaddc7069c38c0"
+  "jsonrpc": "2.0",
+  "result": {
+    "api_version": "1.0.0",
+    "state_root_hash": "d9044b240d612d9a57461a87bd61bcd1c6cc8ea4d4f4e68ec7875f61502c4468"
+  },
+  "id": -6565689384115820052
 }
+
 ```
 
 ### Getting the Balance of a Purse
@@ -72,39 +77,42 @@ Which will return something that looks like this:
 
 Casper uses the notion of purses, which can exist within accounts.  In order to obtain a balance, we first need to get the purse we want. To do this, we provide the public key of the account and the global state hash and query the system for the purses associated with the account. 
 ```bash
-casper-client query-state --node-address http://NODE:PORT -k <PUBLIC_KEY_AS_HEX> -g GLOBAL_STATE_HASH | jq -r
+casper-client query-state --node-address http://NODE:PORT -k <PUBLIC_KEY_AS_HEX> -s STATE_ROOT_HASH | jq -r
 
 ```
 Submitting this query returns something like this:
 
 ```bash
 {
-  "api_version": "1.0.0",
+  "jsonrpc": "2.0",
+  "result": {
+    "api_version": "1.0.0",
+    "merkle_proof": <LARGE MERKLE PROOF>,
   "stored_value": {
-    "Account": {
-      "account_hash": "22465f462b6cb2d32dfd68ebcea919f618d0d08f0078e1625fa49ede7d1b7ab2",
-      "action_thresholds": {
-        "deployment": 1,
-        "key_management": 1
-      },
-      "associated_keys": [
-        {
-          "account_hash": "22465f462b6cb2d32dfd68ebcea919f618d0d08f0078e1625fa49ede7d1b7ab2",
-          "weight": 1
-        }
-      ],
-      "main_purse": "uref-cc5f988b415f1c0813bf93510acdcb25e8f3c750479599ca89a4b25b32a91414-007",
-      "named_keys": {}
+      "Account": {
+        "account_hash": "account-hash-0790b3283de2756c4baef02cdb81ddee6e4dddc007c41ed63c4d59f2dff270ff",
+        "action_thresholds": {
+          "deployment": 1,
+          "key_management": 1
+        },
+        "associated_keys": {
+          "account-hash-0790b3283de2756c4baef02cdb81ddee6e4dddc007c41ed63c4d59f2dff270ff": 1
+        },
+        "main_purse": "uref-79658d9daeceb2a140fe38f4368349ff296665911dba3cbf2bf359b19f233a35-007",
+        "named_keys": {}
+      }
     }
-  }
+  },
+  "id": 4629249493325064079
 }
+
 ```
 #### Step 2: Request the balance at the Purse
 
 Now that we have a purse, we can call `get-balance` and retrieve the token balance in the purse.
 
 ```bash
-casper-client get-balance --node-address http://NODE:PORT -p <uref-<HEX STRING>-<THREE DIGIT INTEGER> -g GLOBAL STATE HASH | jq -r
+casper-client get-balance --node-address http://NODE:PORT -p <uref-<HEX STRING>-<THREE DIGIT INTEGER> -s STATE_ROOT_HASH | jq -r
 
 ```
 Here is an example request:
@@ -115,9 +123,15 @@ casper-client get-balance --node-address http://localhost:7777 -p uref-cc5f988b4
 
 And the associated response:
 ```bash
+casper-client get-balance --node-address http://localhost:7777  --purse-uref uref-79658d9daeceb2a140fe38f4368349ff296665911dba3cbf2bf359b19f233a35-007 -s d9044b240d612d9a57461a87bd61bcd1c6cc8ea4d4f4e68ec7875f61502c4468
 {
-  "api_version": "1.0.0",
-  "balance_value": "1000000000000000"
+  "jsonrpc": "2.0",
+  "result": {
+    "api_version": "1.0.0",
+    "balance_value": "6000000000",
+    "merkle_proof": <MERKLE PROOF>,
+     },
+  "id": -6819892948223785654
 }
 ```
 Note: The balance returned is in motes (the unit that makes up the Casper token). 
@@ -171,7 +185,7 @@ casper-client get-global-state-hash --node-address http://NODE:PORT | jq -r
 #### Step 2: Query State 
 Now take the global state hash from Step 1 and include it here, along with the account public key that created the contract.
 ```bash
-casper-client query-state --node-address http://NODE:PORT -k <PUBLIC KEY IN  HEX> -g <GLOBAL_STATE_HASH>
+casper-client query-state --node-address http://NODE:PORT -k <PUBLIC KEY IN  HEX> -s <STATE_ROOT_HASH>
 ```
 
 #### Example Result

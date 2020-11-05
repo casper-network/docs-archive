@@ -185,6 +185,14 @@ It is also possible to check the contract's state by performing a `query-state` 
 ### Advanced Deployments
 CasperLabs supports complex deployments.  
 
+#### Using Arguments with Deployments
+
+Casper contracts support arguments for deployments, which enables powerful capabilities for smart contract.  The casper client provides some examples on
+how to do this:
+```bash
+$ casper-client put-deploy --show-arg-examples
+```
+
 #### Creating, signing, and deploying contracts with multiple signatures
 
 The `deploy` command on its own provides multiple actions strung together optimizing for the common case, with the capability to separate concerns between your key management and deploy creation. See details about generating account key pairs in the Developer Guide.
