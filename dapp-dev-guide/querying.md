@@ -117,7 +117,7 @@ casper-client get-balance --node-address http://NODE:PORT -p <uref-<HEX STRING>-
 ```
 Here is an example request:
 ```bash
-casper-client get-balance --node-address http://localhost:7777 -p uref-cc5f988b415f1c0813bf93510acdcb25e8f3c750479599ca89a4b25b32a91414-007 -g b16697514e88019410e6cc1df7d66cb5279ff5cd1f45206bfefaddc7069c38c0 | jq -r
+casper-client get-balance --node-address http://localhost:7777 -p uref-cc5f988b415f1c0813bf93510acdcb25e8f3c750479599ca89a4b25b32a91414-007 -s b16697514e88019410e6cc1df7d66cb5279ff5cd1f45206bfefaddc7069c38c0 | jq -r
 
 ```
 
@@ -179,7 +179,7 @@ Here we query to get the address of an ERC20 contract from Global State.
 #### Step 1: Get the Latest Global State Hash 
 We need to obtain the global state hash after our contract has been deployed to the network.
 ```bash
-casper-client get-global-state-hash --node-address http://NODE:PORT | jq -r
+casper-client get-state-root-hash --node-address http://NODE:PORT | jq -r
 ```
 
 #### Step 2: Query State 
@@ -192,7 +192,7 @@ casper-client query-state --node-address http://NODE:PORT -k <PUBLIC KEY IN  HEX
 If there is a contract stored in an account, it will appear under `named-keys`. 
 
 ```bash
-casper-client query-state --node-address http://localhost:7777 -k 016af0262f67aa93a225d9d57451023416e62aaa8391be8e1c09b8adbdef9ac19d -g 0c3aaf547a55dd500c6c9bbd42bae45e97218f70a45fee6bf8ab04a89ccb9adb |jq -r
+casper-client query-state --node-address http://localhost:7777 -k 016af0262f67aa93a225d9d57451023416e62aaa8391be8e1c09b8adbdef9ac19d -s 0c3aaf547a55dd500c6c9bbd42bae45e97218f70a45fee6bf8ab04a89ccb9adb |jq -r
 {
   "api_version": "1.0.0",
   "stored_value": {
@@ -223,7 +223,7 @@ casper-client query-state --node-address http://localhost:7777 -k 016af0262f67aa
 Now that we have the hash of the contract, we can query the contract's internal state. To do this, we pass in the contract's hash and the global state hash.  If we look at the ERC20 contract, we see that there is a token name specified as `_name`.  We can query for the value stored here.
 
 ```bash
-casper-client query-state --node-address http://localhost:7777 -k hash-d527103687bfe3188caf02f1e487bfb8f60bfc01068921f7db24db72a313cedb -g 0c3aaf547a55dd500c6c9bbd42bae45e97218f70a45fee6bf8ab04a89ccb9adb -q _name | jq -r 
+casper-client query-state --node-address http://localhost:7777 -k hash-d527103687bfe3188caf02f1e487bfb8f60bfc01068921f7db24db72a313cedb -s 0c3aaf547a55dd500c6c9bbd42bae45e97218f70a45fee6bf8ab04a89ccb9adb -q _name | jq -r 
 ```
 And we should see something like this:
 ```bash
