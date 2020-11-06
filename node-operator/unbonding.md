@@ -9,7 +9,7 @@ Note the path to files and keys. Note: the session arguments need to be encased 
 
 To withdraw a bid, compile the contract & submit a deploy:
 ```bash
-casper-client put-deploy --chain-name <CHAIN_NAME> --node-address http://<HOST>:<PORT> --secret-key <VALIDATOR_SECRET_KEY>.pem --session-path  withdraw_bid.wasm  --payment-amount 10000000  --session-arg="public_key:public_key='<VALIDATOR_PUBLIC_KEY_HEX>'" --session-arg="amount:u512='<AMOUNT_TO_WITHDRAW>'" --session-arg="unbond_purse:opt_uref='null'"
+casper-client put-deploy --chain-name <CHAIN_NAME> --node-address http://<HOST>:<PORT> --secret-key <VALIDATOR_SECRET_KEY>.pem --session-path  withdraw_bid.wasm  --payment-amount 10000000  --session-arg="public_key:public_key='<VALIDATOR_PUBLIC_KEY_HEX>'" --session-arg="amount:u512='<AMOUNT_TO_WITHDRAW>'" --session-arg="unbond_purse:opt_uref=null"
 ```
 
 ### Contract Arguments
