@@ -32,7 +32,7 @@ systemd. Start the node with:
 sudo systemctl start casper-node
 ```
 
-For more information visit [Github](https://github.com/CasperLabs/casper-node/blob/release-1.5.0/resources/production/README.md)
+For more information visit [Github](https://github.com/CasperLabs/casper-node/tree/master/resources/production)
 
 ## Step 6: Confirm the Node Proposes Blocks
 Once the node catches up to the current era, and it is part of the `era-validators` structure in the auction contract, it will propose a block when
