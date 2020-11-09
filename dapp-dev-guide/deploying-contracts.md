@@ -29,6 +29,16 @@ $ sudo apt install ./casper-client_1.6.0-2465_amd64.deb
 ### Building from Source
 [Instructions](https://github.com/CasperLabs/casper-node/tree/master/client)
 
+### Check the Client Version
+There is an official Rust client, that works with the Delta Testnet. 
+
+To check the client version run:
+
+```bash
+$ casper-client --version
+```
+If you want to send your deployments to an external network, use the latest released version of the client.  If you are building the client locally, check the gitHash and ensure it matches the githash of the network.
+
 
 ### Token to Pay for Deployments
 Blockchains are supported by infrastructure providers called "Validators". To use the Validator infrastructure, it's necessary to acquire token to pay for deployments (transactions). In a testnet, this is possible by using a faucet.  Alternatively,  accounts can be funded in Genesis, or token can be transferred from a  Genesis account to a new account.  In a production system, token is typically acquired by visiting an exchange.
@@ -36,8 +46,22 @@ Blockchains are supported by infrastructure providers called "Validators". To us
 ### Target Network
 When sending a deploy, the client needs to know which host will receive the deployment.  The `node-address` and `chain-name` parameters provide this info.
 
-### Private Key
-Blockchains use asymmetric key encryption to secure transactions.  The  private key used to sign the deployment must be the private key of the account that is being used to pay for the transaction.  The transaction will execute in this account's context unless key delegation and the `from` parameter is being used.
+### Creating Keys
+Blockchains use asymmetric key encryption to secure transactions. The secret key used to sign the deployment will be the secret key of the account that is being used to pay for the transaction.  The transaction will execute in this account's context unless key delegation and the `from` parameter is being used.
+To create keys using the rust client, execute the following commandd:
+
+```bash
+$ casper-client keygen <TARGET DIRECTORY>
+```
+
+This process will create 3 files:
+
+* secret-key.pem
+* public-key.pem
+* public_key_hex
+
+When passing in the public key as hex, it's recommended to  `cat public_key_hex` in the transaction, or extract the contents of the file.  
+Use the secret-key.pem file to sign transaction.
 
 ## Sending a Deployment to the Delta Testnet
 
@@ -48,17 +72,6 @@ The Testnet is operated by external validators that can accept transactions.
 To send a deploy to the network, create keys and obtain token.
 Token can be obtained via a faucet or by a participant that has token.  Connect to our [Discord](https://discordapp.com/invite/Q38s3Vh) to get token via 
 an existing participant.  
-
-
-### Check the Client Version
-There is an official Rust client, that works with the Delta Testnet. 
-
-To check the client version run:
-
-```bash
-$ casper-client --version
-```
-If you want to send your deployments to an external network, use the latest released version of the client.  If you are building the client locally, check the gitHash and ensure it matches the githash of the network.
 
 ### A Basic Deployment using the Command Line (Rust Client)
 As described above, a basic deployment must provide some essential information. Here is an example deployment using the Rust client that will work with the basic contract we created using the [Contracts SDK for Rust](writing-rust-contracts). The default port is 7777:
