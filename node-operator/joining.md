@@ -10,7 +10,7 @@ Visit the Hardware section and provision your node hardware.
 ## Step 2: Set Up the Node
 Visit the Setup section in this guide and configure the software on your node.
 
-## Step 3: Fund your Keys for Bonding
+## Step 3: Create & Fund your Keys for Bonding
 Obtain token to bond your node on to the network & to pay for the bonding transaction.
 
 ## Step 4: Send the Bonding Request

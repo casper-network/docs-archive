@@ -21,12 +21,23 @@ The client software communicates with the network to transmit your deployments t
 * **Rust**: [casperlabs-client](https://crates.io/crates/casper-client)
 
 ```bash
-cargo +nightly install casper-client
+$ wget --content-disposition https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_1.6.0-2465_amd64.deb
+$ sudo apt install ./casper-client_1.6.0-2465_amd64.deb
 ```
 **Ensure that your client matches the version of the network you intend to deploy to.**
 
 ### Building from Source
 [Instructions](https://github.com/CasperLabs/casper-node/tree/master/client)
+
+### Check the Client Version
+There is an official Rust client, that works with the Delta Testnet. 
+
+To check the client version run:
+
+```bash
+$ casper-client --version
+```
+If you want to send your deployments to an external network, use the latest released version of the client.  If you are building the client locally, check the gitHash and ensure it matches the githash of the network.
 
 
 ### Token to Pay for Deployments
@@ -35,38 +46,39 @@ Blockchains are supported by infrastructure providers called "Validators". To us
 ### Target Network
 When sending a deploy, the client needs to know which host will receive the deployment.  The `node-address` and `chain-name` parameters provide this info.
 
-### Private Key
-Blockchains use asymmetric key encryption to secure transactions.  The  private key used to sign the deployment must be the private key of the account that is being used to pay for the transaction.  The transaction will execute in this account's context unless key delegation and the `from` parameter is being used.
+### Creating Keys
+Blockchains use asymmetric key encryption to secure transactions. The secret key used to sign the deployment will be the secret key of the account that is being used to pay for the transaction.  The transaction will execute in this account's context unless key delegation and the `from` parameter is being used.
+To create keys using the rust client, execute the following commandd:
 
-## Sending a Deployment to the Testnet
+```bash
+$ casper-client keygen <TARGET DIRECTORY>
+```
+
+This process will create 3 files:
+
+* secret-key.pem
+* public-key.pem
+* public_key_hex
+
+When passing in the public key as hex, it's recommended to  `$(cat public_key_hex)` in the transaction, or extract the contents of the file.  
+Use the secret-key.pem file to sign transaction.
+
+## Sending a Deployment to the Delta Testnet
 
 The easiest way to deploy a contract is to use an existing public network.  CasperLabs provides a Testnet for this.
+The Testnet is operated by external validators that can accept transactions.  
 
-* Go to [CasperLabs Clarity](https://clarity.casperlabs.io) and ```Sign in``` by using either your Goolge or GitHub username.
-* Select "Accounts" and click ```Create Account key```.  You will be prompted to download some files. Make sure you download the files. These are your signing keys.
-* Place the key files in a location that you can access during the deployment.  You should store your keys securely.
-* Go to 'Faucet' in Clarity and then select the account for the key you just saved.  Click ```Request tokens``` from the faucet to fund your account.  Under ```Recent Faucet Requests``` an entry for your account should appear, with a green check mark.
+### Obtain Token
+To send a deploy to the network, create keys and obtain token.
+Token can be obtained via a faucet or by a participant that has token.  Connect to our [Discord](https://discordapp.com/invite/Q38s3Vh) to get token via 
+an existing participant.  
 
-The Testnet is operated by external validators that can accept transactions.  **Note: At the moment, Clarity points to the Scala network, not the Rust network**
-
-The default port is 7777
-
-### Check the Client Version
-There is an official Python client, that works with the current Testnet.  **Note: The Python client does not work with the new rust node **
-
-To check the client version run:
-
+### A Basic Deployment using the Command Line (Rust Client)
+As described above, a basic deployment must provide some essential information. Here is an example deployment using the Rust client that will work with the basic contract we created using the [Contracts SDK for Rust](writing-rust-contracts). The default port is 7777:
 ```bash
-casper-client --version
+$ casper-client put-deploy --chain-name <NETWORK_NAME> --node-address http://<HOST:PORT> --secret-key /home/keys/secret_key.pem --session-path /home/casper-node/target/wasm32-unknown-unknown/release/do_nothing.wasm  --payment-amount 10000000
 ```
-If you want to send your deployments to an external network, use the latest released version of the client.  If you are building the client locally, check the gitHash and ensure it matches the githash of the network.
-
-### A Basic Deployment using the Command Line
-As described above, a basic deployment must provide some essential information. Here is an example deployment using the Rust client that will work with the basic contract we created using the [Contracts SDK for Rust](writing-rust-contracts):
-```bash
-casper-client put-deploy --chain-name <NETWORK_NAME> --node-address http://<HOST:PORT> --secret-key /home/keys/n2-secretkey.pem --session-path /home/casper-node/target/wasm32-unknown-unknown/release/do_nothing.wasm  --payment-amount 10000000
-```
-If your deployment works, expect to see a success message that looks like this:
+If your deployment command is correct, expect to see a success message that looks like this:
 ```
 {"api_version":"1.0.0","deploy_hash":"8c3068850354c2788c1664ac6a275ee575c8823676b4308851b7b3e1fe4e3dcc"}
 ```
@@ -76,7 +88,7 @@ Note: Each deploy gets a unique hash.  This is part of the cryptographic securit
 Once the network has received the deployment, it will queue up in the system before being listed in a block for execution.  Sending a transaction (deployment) to the network does not mean that the transaction processed successfully.  Therefore, it's important to check to see that the contract executed properly, and that the block was finalized. 
 
 ```bash
-casper-client get-deploy --chain-name <NETWORK_NAME> --node-address http://<HOST:PORT> <DEPLOY_HASH>
+$ casper-client get-deploy --chain-name <NETWORK_NAME> --node-address http://<HOST:PORT> <DEPLOY_HASH>
 ```
 Which will return a data structure like this:
 ```bash
