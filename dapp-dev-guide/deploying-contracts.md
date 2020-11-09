@@ -60,7 +60,7 @@ This process will create 3 files:
 * public-key.pem
 * public_key_hex
 
-When passing in the public key as hex, it's recommended to  `cat public_key_hex` in the transaction, or extract the contents of the file.  
+When passing in the public key as hex, it's recommended to  `$(cat public_key_hex)` in the transaction, or extract the contents of the file.  
 Use the secret-key.pem file to sign transaction.
 
 ## Sending a Deployment to the Delta Testnet
