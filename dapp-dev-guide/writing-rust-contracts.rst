@@ -150,19 +150,20 @@ Before we can deploy the contract to the context, we need to prepare the request
 * List of arguments.
 * Account context of execution.
 * List of keys that authorize the call. See: TODO insert keys management link.
-  .. code-block:: rust
+.. code-block:: rust
 
-     let VALUE: &str = "hello world";
-     let session_code = Code::from("contract.wasm");
-     let session_args = runtime_args! {
-       "value" => VALUE,
-     };
-     let session = SessionBuilder::new(session_code, session_args)
-       .with_address(MY_ACCOUNT)
-       .with_authorization_keys(&[MY_ACCOUNT])
-       .build();
-     context.run(session);
-  Executing ``run`` will panic if the code execution fails.
+    let VALUE: &str = "hello world";
+    let session_code = Code::from("contract.wasm");
+    let session_args = runtime_args! {
+    "value" => VALUE,
+    };
+    let session = SessionBuilder::new(session_code, session_args)
+    .with_address(MY_ACCOUNT)
+    .with_authorization_keys(&[MY_ACCOUNT])
+    .build();
+    context.run(session);
+
+Executing ``run`` will panic if the code execution fails.
 
 Query and Assert
 ^^^^^^^^^^^^^^^^
