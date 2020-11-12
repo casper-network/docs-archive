@@ -1,5 +1,4 @@
-
-The source code shown in this tutorial is adapted from using the casperlabs solidity to rust transpilier. Previously, we would implement a separate ``logic`` crate to implement the ERC20 standard functionality. However, now with the new contract headers system, we can directly implement them into the ``contract`` crate.
+This tutorial reviews an implementation of the ERC20 standard for Casper.
 
 ERC-20 Standard
 ---------------
@@ -15,15 +14,11 @@ The ERC-20 standard is defined in `an Ethereum Improvement Proposal (EIP) <https
 * transfer_from
 * mint
 
-Create a New Empty Smart Contract
+Clone the Example Contract
 ---------------------------------
 
-Rust development with Casper is easy with the Rust SDK. Create a new contract by following these `steps <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_.
+The example ERC20 is located in `GitHub <https://github.com/CasperLabs/erc20>`_.
 
-Include the Casper DSL
-^^^^^^^^^^^^^^^^^^^^^^
-
-Contract development is easier with the DSL.  Update the ``Cargo.toml`` with the DSL `package <https://docs.casperlabs.io/en/latest/dapp-dev-guide/contract-dsl/index.html>`_.  
 
 Contract Initialization
 -----------------------
@@ -47,62 +42,35 @@ We then also add a few helper functions to set, and retrieve values from keys. T
 
 .. code-block:: rust
 
-   #[casperlabs_method]
-   fn name() {
-       ret(get_key::<String>("_name"));
-   }
+  #[casperlabs_method]
+    fn name() -> String {
+        get_key("_name")
+    }
 
-   #[casperlabs_method]
-   fn symbol() {
-       ret(get_key::<String>("_symbol"));
-   }
+    #[casperlabs_method]
+    fn symbol() -> String {
+        get_key("_symbol")
+    }
 
-   #[casperlabs_method]
-   fn decimals() {
-       ret(get_key::<u8>("_decimals"));
-   }
+    #[casperlabs_method]
+    fn decimals() -> u8 {
+        get_key("_decimals")
+    }
 
-   // write to storage
-   fn get_key<T: FromBytes + CLTyped + Default>(name: &str) -> T {
-       match runtime::get_key(name) {
-           None => Default::default(),
-           Some(value) => {
-               let key = value.try_into().unwrap_or_revert();
-               storage::read(key).unwrap_or_revert().unwrap_or_revert()
-           }
-       }
-   }
-   // write to storage
-   fn set_key<T: ToBytes + CLTyped>(name: &str, value: T) {
-       match runtime::get_key(name) {
-           Some(key) => {
-               let key_ref = key.try_into().unwrap_or_revert();
-               storage::write(key_ref, value);
-           }
-           None => {
-               let key = storage::new_uref(value).into();
-               runtime::put_key(name, key);
-           }
-       }
-   }
-
-   fn new_key(a: &str, b: AccountHash) -> String {
-       format!("{}_{}", a, b)
-   }
 
 Total Supply, Balance and Allowance
 -----------------------------------
 
-We are ready now to define first ERC-20 methods. Below is the implementation of ``balance_of``\ , ``total_supply`` and ``allowance``. These are read-only methods.
+Here are some of the  ERC-20 methods. Below is the implementation of ``balance_of``\ , ``total_supply`` and ``allowance``. 
 
 .. code-block:: rust
 
-   #[casperlabs_method]
-   fn totalSupply() {
-       ret(get_key::<U256>("_totalSupply"));
-   }
-
-   #[casperlabs_method]
+  #[casperlabs_method]
+    fn balance_of(account: AccountHash) -> U256 {
+        get_key(&balance_key(&account))
+    }
+  
+  #[casperlabs_method]
    fn totalSupply() {
        ret(get_key::<U256>("_totalSupply"));
    }
@@ -112,18 +80,19 @@ We are ready now to define first ERC-20 methods. Below is the implementation of 
        let key = format!("_allowances_{}_{}", owner, spender);
        get_key::<U256>(&key)
    }
+   
 
 Transfer
 --------
 
-Finally we can implement ``transfer`` method, so it's possible to transfer tokens from ``sender`` address to ``recipient`` address. If the ``sender`` address has enough balance then tokens should be transferred to the ``recipient`` address.
+Here is the ``transfer`` method, which makes it possible to transfer tokens from ``sender`` address to ``recipient`` address. If the ``sender`` address has enough balance then tokens should be transferred to the ``recipient`` address.
 
 .. code-block:: rust
 
    #[casperlabs_method]
-   fn transfer(recipient: AccountHash, amount: U256) {
-       _transfer(runtime::get_caller(), recipient, amount);
-   }
+    fn transfer(recipient: AccountHash, amount: U256) {
+        _transfer(runtime::get_caller(), recipient, amount);
+    }
 
 
    fn _transfer(sender: AccountHash, recipient: AccountHash, amount: U256) {
@@ -136,7 +105,8 @@ Finally we can implement ``transfer`` method, so it's possible to transfer token
 Approve and Transfer From
 -------------------------
 
-The last missing functions are ``approve`` and ``transfer_from``. ``approve`` is used to allow another address to spend tokens on my behalf.
+Finally, we review the functions ``approve`` and ``transfer_from``. ``approve`` is used to allow another address to spend tokens on my behalf.
+This is used when multiple keys are authorized to perform deployments from an account.
 
 .. code-block:: rust
 
