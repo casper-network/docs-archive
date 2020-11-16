@@ -23,7 +23,7 @@ If your environment is correct, you will see:
    rustup target add wasm32-unknown-unknown
    info: component 'rust-std' for target 'wasm32-unknown-unknown' is up to date
 
-If you do not see this message, check build prequisites at:ref:`/dapp-dev-guide/setup-of-rust-contract-sdk.rst`
+If you do not see this message, check build prequisites at :ref:`/dapp-dev-guide/setup-of-rust-contract-sdk.rst`
 
 
 
