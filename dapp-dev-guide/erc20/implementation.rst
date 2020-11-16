@@ -32,23 +32,25 @@ They are:
 
 .. code-block:: rust
 
-use alloc::{
+   use alloc::{
     collections::{BTreeMap, BTreeSet},
     string::String,
-};
-use core::convert::TryInto;
+   };
 
-use casperlabs_contract_macro::{casperlabs_constructor, casperlabs_contract, casperlabs_method};
-use contract::{
-    contract_api::{runtime, storage},
-    unwrap_or_revert::UnwrapOrRevert,
-};
-use types::{
-    account::AccountHash,
-    bytesrepr::{FromBytes, ToBytes},
-    contracts::{EntryPoint, EntryPointAccess, EntryPointType, EntryPoints},
-    runtime_args, CLType, CLTyped, CLValue, Group, Parameter, RuntimeArgs, URef, U256,
-};
+   use core::convert::TryInto;
+
+   use casperlabs_contract_macro::{casperlabs_constructor, casperlabs_contract, casperlabs_method};
+   use contract::{
+       contract_api::{runtime, storage},
+       unwrap_or_revert::UnwrapOrRevert,
+   };
+
+   use types::{
+       account::AccountHash,
+       bytesrepr::{FromBytes, ToBytes},
+       contracts::{EntryPoint, EntryPointAccess, EntryPointType, EntryPoints},
+       runtime_args, CLType, CLTyped, CLValue, Group, Parameter, RuntimeArgs, URef, U256,
+   };
 
 
 Contract Initialization
@@ -58,19 +60,19 @@ When the contract is deployed it must be initialized with some values, this is d
 
 .. code-block:: rust
 
-#[casperlabs_contract]
-mod ERC20 {
+   #[casperlabs_contract]
+   mod ERC20 {
 
-   #[casperlabs_constructor]
-   fn constructor(tokenName: String, tokenSymbol: String, tokenTotalSupply: U256) {
-       set_key("_name", tokenName);
-       set_key("_symbol", tokenSymbol);
-       let _decimals: u8 = 18;
-       set_key("_decimals", _decimals);
-       set_key(&new_key("_balances", runtime::get_caller()), tokenTotalSupply);
-       let _totalSupply: U256 = tokenTotalSupply;
-       set_key("_totalSupply", _totalSupply);
-   }
+      #[casperlabs_constructor]
+      fn constructor(tokenName: String, tokenSymbol: String, tokenTotalSupply: U256) {
+          set_key("_name", tokenName);
+          set_key("_symbol", tokenSymbol);
+          let _decimals: u8 = 18;
+          set_key("_decimals", _decimals);
+          set_key(&new_key("_balances", runtime::get_caller()), tokenTotalSupply);
+          let _totalSupply: U256 = tokenTotalSupply;
+          set_key("_totalSupply", _totalSupply);
+      }
  
 
 We then also add a few helper functions to set, and retrieve values from the contract. The ``[casperlabs_method]`` macro facilitates this. Notice that each of these helper functions reference each of the ``set_key`` definitions in the constructor, and a generic ``get_key`` function to retrieve values is used.
@@ -179,28 +181,28 @@ These functions are generic Casper storage write and read methods. Implement the
 
 .. code-block:: rust
 
-fn get_key<T: FromBytes + CLTyped + Default>(name: &str) -> T {
-    match runtime::get_key(name) {
-        None => Default::default(),
-        Some(value) => {
-            let key = value.try_into().unwrap_or_revert();
-            storage::read(key).unwrap_or_revert().unwrap_or_revert()
-        }
-    }
-}
+   fn get_key<T: FromBytes + CLTyped + Default>(name: &str) -> T {
+       match runtime::get_key(name) {
+           None => Default::default(),
+           Some(value) => {
+               let key = value.try_into().unwrap_or_revert();
+               storage::read(key).unwrap_or_revert().unwrap_or_revert()
+           }
+       }
+   }
 
-fn set_key<T: ToBytes + CLTyped>(name: &str, value: T) {
-    match runtime::get_key(name) {
-        Some(key) => {
-            let key_ref = key.try_into().unwrap_or_revert();
-            storage::write(key_ref, value);
-        }
-        None => {
-            let key = storage::new_uref(value).into();
-            runtime::put_key(name, key);
-        }
-    }
-}
+   fn set_key<T: ToBytes + CLTyped>(name: &str, value: T) {
+       match runtime::get_key(name) {
+           Some(key) => {
+               let key_ref = key.try_into().unwrap_or_revert();
+               storage::write(key_ref, value);
+           }
+           None => {
+               let key = storage::new_uref(value).into();
+               runtime::put_key(name, key);
+           }
+       }
+   }
    
 
 Formatting Helper functions
