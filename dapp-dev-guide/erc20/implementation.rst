@@ -23,7 +23,7 @@ The example ERC20 is located in `GitHub <https://github.com/CasperLabs/erc20>`_.
 Required Crates
 ---------------
 
-This is a rust contract. In rust, the keyword ``use`` is like an ``include`` statement in C/C++. Casper contracts require a few crates (libaries) to be included.
+This is a rust contract. In rust, the keyword ``use`` is like an ``include`` statement in C/C++. Casper contracts require a few crates to be included.
 They are:
 
 * casperlabs_contract_macros: The Casper DSL that includes the boilerplate code needed for every contract
