@@ -1,4 +1,4 @@
-This tutorial reviews an implementation of the ERC20 standard for Casper.
+This tutorial reviews an implementation of the ERC-20 standard for Casper.
 
 ERC-20 Standard
 ---------------
@@ -17,7 +17,7 @@ The ERC-20 standard is defined in `an Ethereum Improvement Proposal (EIP) <https
 Clone the Example Contract
 ---------------------------------
 
-The example ERC20 is located in `GitHub <https://github.com/CasperLabs/erc20>`_.
+The example ERC-20 is located in `GitHub <https://github.com/CasperLabs/erc20>`_.
 
 
 Required Crates
