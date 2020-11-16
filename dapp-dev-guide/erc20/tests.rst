@@ -2,7 +2,7 @@
 Smart Contract Tests
 ====================
 
-In this section we'll use the `Casper Engine Test Support <https://crates.io/crates/casperlabs-engine-test-support>`_ crate to test the ERC-20 smart contract against the execution environment that is equivalent to what Casper uses in production.  Here we will create 2 files that will set up the testing framework for the ERC20 contract.  
+In this section we'll review the `Casper Engine Test Support <https://crates.io/crates/casperlabs-engine-test-support>`_ crate that tests the ERC-20 smart contract against the execution environment that Casper uses in production.  Here we will review the 2 files set up the testing framework for the ERC20 contract.  
 
 The following is an example of a finished test.
 
@@ -17,8 +17,6 @@ The following is an example of a finished test.
        assert_eq!(token.balance_of(BOB), amount);
    }
 
-Remove ``tests/src/integration_tests.rs`` and create three files:
-
 
 * ``tests/src/erc20.rs`` - sets up testing context and creates helper functions used by unit tests 
 * ``tests/src/tests.rs`` - contains the unit tests
@@ -26,10 +24,10 @@ Remove ``tests/src/integration_tests.rs`` and create three files:
 
 The ``tests`` crate has a ``build.rs`` file: effectively a custom build script. It's executed every time before running tests and it compiles ``contract`` crate in release mode for your convenience and copies the ``contract.wasm`` file to ``tests/wasm`` directory. In practice, that means we only need to run ``cargo test -p tests`` during the development.
 
-Set up Cargo.toml
+Cargo.toml
 -----------------
 
-Define a ``tests`` package at ``tests/Cargo.toml``.
+Defines a ``tests`` package at ``tests/Cargo.toml``.
 
 .. code-block:: toml
 
@@ -37,7 +35,7 @@ Define a ``tests`` package at ``tests/Cargo.toml``.
    name = "tests"
    version = "0.1.1"
    authors = ["Your Name here <your email here>"]
-   edition = "2020"
+   edition = "2018"
 
    [dependencies]
    casperlabs-contract = "0.6.1"
@@ -45,16 +43,18 @@ Define a ``tests`` package at ``tests/Cargo.toml``.
    casperlabs-engine-test-support = "0.8.1"
 
    [features]
-   default = ["casperlabs-contract/std", "casperlabs-types/std"]
+   default = ["casperlabs-contract/std", "casperlabs-types/std", "casperlabs-contract/test-support"]
 
-Create ERC20.rs Logic for Testing
+The ERC20.rs Logic for Testing
 ---------------------------------
+
+In order to test the smart contract, it's important to set up the starting state of the blockchain, deploy the compiled contract to this starting state, and create additional deploys for each of the methods in the contract.  This file contains all of the methods that simulates a real world deployment to store the contract in the blockchain as well as transactions that invoke each of the methods in the contract.
 
 Set Up the Testing Context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Start with defining constants like method names, key names and account addresses that will be reused across tests. 
-This initializes the global state with all the data and methods that the smart contract needs in order to run properly.
+This initializes the global state with all the data and methods that the smart contract needs in order to run properly.  
 
 .. code-block:: rust
 
@@ -237,8 +237,8 @@ Invoke each of the getter methods in the Contract.
        }
    }
 
-Create tests.rs File with Units
--------------------------------
+The tests.rs File with Unit Tests
+---------------------------------
 
 Unit Tests
 ^^^^^^^^^^
@@ -332,7 +332,7 @@ This tells cargo which files to use when running the tests.
 Run the Tests!
 --------------
 
-Run tests to verify they work. This is run via ``bash``.
+Run tests to verify they work. This is run via ``bash``.  If you are using a Rust IDE, it's also possible to configure it to run the tests.
 
 .. code-block:: bash
 
