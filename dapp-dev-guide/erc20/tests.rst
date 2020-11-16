@@ -35,7 +35,7 @@ Defines a ``tests`` package at ``tests/Cargo.toml``.
    name = "tests"
    version = "0.1.1"
    authors = ["Your Name here <your email here>"]
-   edition = "2020"
+   edition = "2018"
 
    [dependencies]
    casperlabs-contract = "0.6.1"
@@ -43,7 +43,7 @@ Defines a ``tests`` package at ``tests/Cargo.toml``.
    casperlabs-engine-test-support = "0.8.1"
 
    [features]
-   default = ["casperlabs-contract/std", "casperlabs-types/std"]
+   default = ["casperlabs-contract/std", "casperlabs-types/std", "casperlabs-contract/test-support"]
 
 The ERC20.rs Logic for Testing
 ---------------------------------
@@ -237,8 +237,8 @@ Invoke each of the getter methods in the Contract.
        }
    }
 
-The tests.rs File with Units
--------------------------------
+The tests.rs File with Unit Tests
+---------------------------------
 
 Unit Tests
 ^^^^^^^^^^
@@ -332,7 +332,7 @@ This tells cargo which files to use when running the tests.
 Run the Tests!
 --------------
 
-Run tests to verify they work. This is run via ``bash``.
+Run tests to verify they work. This is run via ``bash``.  If you are using a Rust IDE, it's also possible to configure it to run the tests.
 
 .. code-block:: bash
 
