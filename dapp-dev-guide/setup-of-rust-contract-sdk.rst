@@ -54,24 +54,24 @@ Available Packages
 
 There are three crates we publish to support Rust development of Smart Contracts. These can be found on crates.io, and are:
 
-*  `CasperLabs Contract <https://crates.io/crates/casperlabs-contract>`_ - library that supports communication with the blockchain. That's the main library to use       when writing smart contracts. 
-*  `CasperLabs Test Support <https://crates.io/crates/casperlabs-engine-test-support>`_ - in-memory virtual machine you can test your smart contracts against.
-*  `CasperLabs Types <https://crates.io/crates/casperlabs-types>`_ - library with types we use across the Rust ecosystem.
+*  `Casper Contract <https://crates.io/crates/casper-contract>`_ - library that supports communication with the blockchain. That's the main library to use       when writing smart contracts. 
+*  `Casper Test Support <https://crates.io/crates/casper-engine-test-support>`_ - in-memory virtual machine you can test your smart contracts against.
+*  `Casper Types <https://crates.io/crates/casper-types>`_ - library with types we use across the Rust ecosystem.
 
 API Level Documentation for Smart Contracts
 ###########################################
 
-Each of the crates ships with API documentation and examples for each of the functions. Docs are located at `https://docs.rs <https://docs.rs/releases/search?query=casperlabs>`_.  The contract API documentation is specific for a given version, ex: for version 0.5.1 is located at: `https://docs.rs/casperlabs-contract/0.5.1/casperlabs_contract/contract_api/index.html`
+Each of the crates ships with API documentation and examples for each of the functions. Docs are located at `https://docs.rs <https://docs.rs/releases/search?query=casper>`_.  The contract API documentation is specific for a given version, ex: for version 0.5.1 is located at: `https://docs.rs/casper-contract/0.1.0`
 
 Development Environment Setup
 #############################
 
-The best & fastest way to set up a Casper Rust Smart Contract project is to use :code:`cargo-casperlabs`.  When you use this, it will set the project up with a simple contract and a runtime environment/testing framework with a simple test. It's possible to use this configuration in your CI/CD pipeline as well. Instructions are also available on `GitHub <https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/cargo-casperlabs>`_.
+The best & fastest way to set up a Casper Rust Smart Contract project is to use :code:`cargo-casper`.  When you use this, it will set the project up with a simple contract and a runtime environment/testing framework with a simple test. It's possible to use this configuration in your CI/CD pipeline as well. 
 
 .. code::
 
-   $ cargo install cargo-casperlabs
-   $ cargo casperlabs my-project
+   $ cargo install cargo-casper
+   $ cargo casper my-project
 
 This step will create two crates called :code:`contract` and :code:`tests` inside a new folder called :code:`my-project`. This is a complete basic smart contract that saves a value, passed as an argument, on the blockchain. The tests crate provides a runtime environment of the Casper virtual machine, and a basic test of the smart contract.
 
@@ -85,7 +85,7 @@ The project requires a specific nightly version of Rust, and requires a Wasm tar
 
 .. code::
 
-   cargo casperlabs --help
+   cargo casper --help
 
 
 Set up your wasm compilation rust toolchain by doing the following
@@ -113,7 +113,7 @@ The :code:`build` command produces a smart contract at :code:`my-project/contrac
 Test the Contract & verify your environment is correct
 ######################################################
 
-The test crate will build the contract and test it in a CasperLabs runtime environment.  A successful test run indicates that the smart contract environment is set up correctly.
+The test crate will build the contract and test it in a Casper runtime environment.  A successful test run indicates that the smart contract environment is set up correctly.
 
 .. code::
 
