@@ -223,7 +223,7 @@ The deploy header is defined as
 - A timestamp is struct that is unary tuple containing a ``u64`` value. This value is a count of the milliseconds since the UNIX epoch. Thus the value ``1603994401469`` serializes as ``0xbd3a847575010000``
 - The gas is ``u64`` value which is serialized as ``u64`` CLValue discussed below.
 - Body hash is a hash over the contents of the deploy body which includes the payment, session and approval fields. Its serialization is the byte representation of the hash itself.
-- Is a list of deploy hashes referencing deploys that must execute before the current deploy can be executed. It serializes as a buffer containing the indiviual serialization of each DeployHash within the Vector.
+- Dependencies is a vector of deploy hashes referencing deploys that must execute before the current deploy can be executed. It serializes as a buffer containing the indiviual serialization of each DeployHash within the Vector.
 - Chain name is a human readable string describing the name of the chain as detailed in the chainspec. It is serialized as a String CLValue described below.
 
 Payment & Session
