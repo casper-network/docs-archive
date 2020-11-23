@@ -26,12 +26,12 @@ A block is programmtically defined as follows
 * Body: Currently empty 
 * Proofs: An array/vector of signatures over the Block. 
 
-BlockHash
-~~~~
+Block-Hash
+~~~~~~~~~~~
 The blockhash is a Digest over the contents of the Block Header. The BlockHash serialises as the byte representation of the hash itself.
 
-Header
-~~~~~~
+Block-Header
+~~~~~~~~~~~~
 The header portion of a Block, programmtically, it is defined as follows:
 
 .. code:: rust 
@@ -195,12 +195,12 @@ A deploy is programmtically defined as follows
 * Approvals: A list of signatures:
 * is_valid: A flag that marks the validity of the deploy. Do note that is the only field within the struct that is not serialized.
 
-Hash
-~~~~
+Deploy-Hash
+~~~~~~~~~~~~
 The Deploy hash is a Digest over the contents of the Deploy header. The Deploy Hash serialises as the byte representation of the hash itself.
 
-Header
-~~~~~~
+Deploy-Header
+~~~~~~~~~~~~~
 The deploy header is defined as
 
 .. code:: rust
