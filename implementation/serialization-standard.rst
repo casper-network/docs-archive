@@ -2,7 +2,7 @@
 
 Serialization standard
 ======================
-There is a custom implementation to serialize data structures used by the Casperlabs Node to their byte representation. This document details and describes the way in which this custom serialization is implemented.
+There is a custom implementation to serialize data structures used by the Casper Node to their byte representation. This document details and describes the way in which this custom serialization is implemented, allowing developers to build their own library that implements the custom serialization.
 
 
 .. _serialization-standard-block:
@@ -21,16 +21,16 @@ A block is programmtically defined as follows
         proofs: Vec<Signature>,
     }
 
-* Hash: A hash over the body of the Block.
-* Header: The header of the block which contains information about the contents of the block with additional metadata.
-* Body: Currently empty 
-* Proofs: An array/vector of signatures over the Block. 
+* hash: A hash over the body of the Block.
+* header: The header of the block which contains information about the contents of the block with additional metadata.
+* body: Currently empty 
+* proofs: An array/vector of signatures over the Block. 
 
-Block-Hash
+Block hash
 ~~~~~~~~~~~
 The blockhash is a Digest over the contents of the Block Header. The BlockHash serialises as the byte representation of the hash itself.
 
-Block-Header
+Block header
 ~~~~~~~~~~~~
 The header portion of a Block, programmtically, it is defined as follows:
 
@@ -62,10 +62,10 @@ The header portion of a Block, programmtically, it is defined as follows:
 * ``height``: The height of this block, i.e. the number of ancestors.
 * ``proposer``: The PublicKey which proposed this block. 
 
-When serializing the BlockHeader, we create a buffer which contains the serialized representations of each of the header fields. 
+When serializing the ``BlockHeader``, we create a buffer which contains the serialized representations of each of the header fields. 
 
-*  ``parent_hash`` serializes to the byte representation of the parent Hash. The serialized buffer of the ``parent_hash`` is 32 bytes long.
-*  ``state_root_hash`` serializes to the byte representation of the State Root Hash. The serialized buffer of the ``state_root_hash`` is 32 bytes long.
+*  ``parent_hash`` serializes to the byte representation of the parent hash. The serialized buffer of the ``parent_hash`` is 32 bytes long.
+*  ``state_root_hash`` serializes to the byte representation of the ``state root hash``. The serialized buffer of the ``state_root_hash`` is 32 bytes long.
 *  ``body_hash`` is the serialized representation of the unit type ``()``. Its serialization is described in detail in the CLValue section. 
 *  ``deploy_hashes`` serialises to the byte representation of all the ``deploy_hashes`` within the block header. Its length is ```32 * n``, where n denotes the amount of deploy hashes present within the header.
 *  ``random_bit`` is serialized as a single byte; true maps to 1, while false maps to 0.
