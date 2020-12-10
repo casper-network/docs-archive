@@ -211,10 +211,10 @@ These functions format the balances and account information from the internal re
 
 .. code-block:: rust
 
-fn balance_key(account: &AccountHash) -> String {
+   fn balance_key(account: &AccountHash) -> String {
     format!("_balances_{}", account)
-}
+   }
 
-fn allowance_key(owner: &AccountHash, sender: &AccountHash) -> String {
+   fn allowance_key(owner: &AccountHash, sender: &AccountHash) -> String {
     format!("_allowances_{}_{}", owner, sender)
-}
+   }
