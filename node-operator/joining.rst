@@ -10,10 +10,10 @@ Step 1: Provision Hardware
 
 Visit the Hardware section and provision your node hardware.
 
-Step 2: Set Up the Node
+Step 2: Build Contracts & Set Up the Node
 -----------------------
 
-Visit the Setup section in this guide and configure the software on your node.
+Visit the Setup section in this guide and configure the software on your node.  Build all necessary contracts for bonding, retrieving rewards and unbonding.
 
 Step 3: Create & Fund your Keys for Bonding
 -------------------------------------------
@@ -23,7 +23,7 @@ Obtain token to bond your node on to the network & to pay for the bonding transa
 Step 4: Send the Bonding Request
 --------------------------------
 
-Before your start your node, it's necessary for you to send a bonding request first. Consensus only sends messages to bonded nodes at this time.
+Before your start your node, we recommend sending in a bonding request first. Consensus only sends messages to bonded nodes at this time.
 Visit the bonding section of this guide for detailed steps on how to do this.
 
 Step 5: Update the Trusted Hash
