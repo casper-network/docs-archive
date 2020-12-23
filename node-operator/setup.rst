@@ -5,30 +5,25 @@ Basic Node Setup
 Obtain the node software
 ------------------------
 
-You can choose to build from source. If you opt to do this, please ensure that the correct software version (tag) is used. You will also need to obtain the 4 system wasm contracts which are distributed with the debian package. Wasm compilation is non-deterministic, so for those building from source, the wasm system contracts will need to use pre-built wasm files. Otherwise the genesis hash will be different for the system and it will experience protocol level faults. 
+You can choose to build from source. If you opt to do this, please ensure that the correct software version (tag) is used.
+You will also need to obtain the 4 system wasm contracts which are distributed with the debian package. Wasm compilation is non-deterministic,
+so for those building from source, the wasm system contracts will need to use pre-built wasm files. Otherwise the genesis hash will be different for the system and it will experience protocol level faults.
 
-The recommended way is to obtain released packages using debian installers. Installing the debian package will automatically configure the system into a working state if a config.toml does not exist yet.  If keys are generated in ‘/etc/casper/validator_keys/’, the system can be started with no manual configuration.
+The recommended way is to obtain released packages using debian installers. Installing the debian package will automatically configure the system into a working state if a config.toml does not exist yet.
+If keys are generated in ‘/etc/casper/validator_keys/’, the system can be started with no manual configuration.
 
-If you have installed a version of the node before, plese uninstall the older version.  Please also clear out any old state. There is a script ``delete_local_db.sh`` in ``/casper-node`` which removes local state in ``/var/lib/casper/casper-node``.
-
-If you have run prior versions, you may have local state in ``/root/.local/share/casper-node`` which should be deleted.
+If you have installed a version of the node before, please uninstall the older version.  Please also clear out any old state.
+There is a script ``delete_local_db.sh`` in ``/etc/casper`` which removes local state in ``/var/lib/casper/casper-node``.
+This can be run with ``sudo -u casper /etc/casper/delete_local_db.sh`` and should be done anytime you make a mistake in joining with the network, such as forgetting ``trusted_hash``.
 
 Depending on your system, you may need to use either ``dpkg`` or ``apt``
 
-Client installation:
+Node Installation:
 
 .. code-block:: bash
 
-   wget --content-disposition https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_1.6.0-2465_amd64.deb
-   sudo apt install ./casper-client_1.6.0-2465_amd64.deb
-
-and Node Installation
-
-.. code-block:: bash
-
-   wget --content-disposition https://bintray.com/casperlabs/debian/download_file?file_path=casper-node_1.6.0-2465_amd64.deb
-
-   sudo apt install ./casper-node_1.6.0-2465_amd64.deb
+    curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-node_0.3.1-3423_amd64.deb
+    sudo apt install ./casper-node_0.3.1-3423_amd64.deb
 
 This package will install the ``casper-node`` executable in ``/usr/bin``.
 
@@ -41,7 +36,13 @@ If genesis files need to be pulled down again, run ``sudo -u casper /etc/casper/
 
 A ``casper`` user and ``casper`` group is created during install and used to run the software. 
 
-To install the casper-client, use ``sudo apt install casper-client_1.6.0-2465_amd64.deb``
+Client installation:
+
+.. code-block:: bash
+
+    curl -JLO https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_0.3.1-3423_amd64.deb
+    sudo apt install ./casper-client_0.3.1-3423_amd64.deb
+
 
 Create Keys
 -----------
@@ -51,23 +52,25 @@ To learn about options for generating keys, include ``--help`` when running the 
 
 .. code-block:: bash
 
-   casper-client keygen <PATH_FOR_NEW_KEYS>
+   casper-client keygen /etc/casper/validator_keys
 
 Set up the Node Configuration
 -----------------------------
 
-Once you have the node system installed, you have to create the configuration for the node software to run.  Each node should be configured separately. The software provides an example configuration file that can be used as a template. Create ``/etc/casper/config.toml`` from ``/etc/casper/config-example.toml``  If you installed the node system from the provided debian package, a valid ``/etc/casper/config.toml`` is automatically generated during the installation. If ``/etc/casper/config.toml`` already exists, the file is saved as ``/etc/casper/config.toml.new``. The following sections describe portions of the node config.toml and how to complete these sections.
+The software provides an example configuration file that can be used as a template. Create ``/etc/casper/config.toml`` from ``/etc/casper/config-example.toml``
+If you installed the node system from the provided debian package, a valid ``/etc/casper/config.toml`` is automatically generated during the installation.
+If ``/etc/casper/config.toml`` already exists, the file is saved as ``/etc/casper/config.toml.new``. The following sections describe portions of the node config.toml and how to complete these sections.
 
 Obtain the ChainSpec
 ^^^^^^^^^^^^^^^^^^^^
 
 The Casper node creates the genesis block locally on the system by consuming 2 files. 
-chainspec.toml and accounts.csv. The chainspec.toml file sets up a series of configuration options for the blockchain, and the accounts.csv lists the starting balances for the network.
+``chainspec.toml`` and ``accounts.csv``. The ``chainspec.toml`` file sets up a series of configuration options for the blockchain, and the ``accounts.csv`` lists the starting balances for the network genesis nodes.
 Depending on which network the node is joining, a different set of source files will be needed.  The files have to match exactly (have the same checksums) in order for the nodes to connect (have the same Genesis block)
 
 This is done automatically during installation of the debian package. However, if you need to update these files, they are run using the ``casper`` user with a script in ``/etc/casper``.
 
-This script will pull the latest files for the chainspec from the release branch and verify their md5 checksums.
+This script will pull the latest genesis files and verify their md5 checksums.
 
 .. code-block:: bash
 
