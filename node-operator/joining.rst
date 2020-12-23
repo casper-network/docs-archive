@@ -35,7 +35,9 @@ The node's ``config.toml`` needs to be updated with a recent trusted hash. Visit
 
    curl http://<IP_ADDRESS>:<PORT>/status
 
-Default port is usually ``7777``  Retrieve thhe ``last_added_block_info:`` hash.
+Default port is usually ``8888``  Retrieve the ``last_added_block_info:`` hash.
+
+A good IP to use above are those listed in your ``config.toml`` as ``known_addresses``.
 
 Step 5: Start the Node
 ----------------------
@@ -55,4 +57,7 @@ Step 6: Confirm the Node Proposes Blocks
 Once the node catches up to the current era, and it is part of the ``era-validators`` structure in the auction contract, it will propose a block when
 selected as leader.  Look for the node's public key as ``proposer`` for a new block in the ``/status`` endpoint.
 
-**Note: While the node is synchronizing, the ``/status`` endpoint is NOT available. 
+While the node is synchronizing, the ``/status`` endpoint is available. You will be able to compare this to
+other node's status endpoint ``era_id`` and ``height`` to determine if you are caught up.You will not be able to perform any
+
+``casper-client`` calls to your ``7777`` RPC port until your node is fully caught up.
