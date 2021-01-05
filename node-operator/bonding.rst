@@ -32,7 +32,8 @@ to compile the contract yourself. Here are the steps to do this:
 Build Add_Bid Contract
 ----------------------
 
-Because bonding transactions are generic transactions, it's necessary to build the contract that submits a bid. 
+Because bonding transactions are generic transactions, it's necessary to build the contract that submits a bid.
+Clone the casper-node repository and build the contracts.
 To build contracts, set up Rust & install all dependencies. Visit 'Setting up Rust' in the Developer Guide.
 
 Build the contracts in release mode.
@@ -88,106 +89,171 @@ The request returns a response that looks like this:
 .. code-block:: bash
 
    {
-     "jsonrpc": "2.0",
-     "result": {
-       "bids": {
-         "1117189c666f81c5160cd610ee383dc9b2d0361f004934754d39752eedc64957": {
-           "bonding_purse": "uref-8329c2fc97d914618157c0f1fd41c38702a4852a0159b487eebdd5677123f035-007",
-           "delegation_rate": 10,
-           "funds_locked": null,
-           "staked_amount": "100001111"
-         },
-         "3f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012": {
-           "bonding_purse": "uref-3ff1a0232d73c37dd1d11da0db1442472c400f190b81a9a81edc28a88717526c-007",
-           "delegation_rate": 0,
-           "funds_locked": 15,
-           "staked_amount": "10000000"
-         },
-         "524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f": {
-           "bonding_purse": "uref-f472df50830c2aba6f74c1d491ba22a9cde357aa4ab478834abab2959052ba70-007",
-           "delegation_rate": 0,
-           "funds_locked": 15,
-           "staked_amount": "10000000"
-         },
-         "5f3d612fa94222b01f851d1d465bd8a7f86c0bc40d81b3d20ec3197e67d02718": {
-           "bonding_purse": "uref-8a5524f6a9a17d3e414009d0ec262546c446d07b6bfb6972a0040c4845caec1e-007",
-           "delegation_rate": 10,
-           "funds_locked": null,
-           "staked_amount": "100000"
-         },
-         "86d42bacf67a4b6c5042edba6bc736769171ca3320f7b0040ab9265aca13bbee": {
-           "bonding_purse": "uref-9f7ce53d6b144ec3cde3cafd36139b1d39159f59072e2abd87733a61a5fd6d5c-007",
-           "delegation_rate": 10,
-           "funds_locked": null,
-           "staked_amount": "100000"
-         },
-         "8b15761be0c527117c79b87ca013b014a4628f01e382902a139529406723d86b": {
-           "bonding_purse": "uref-9e0495811818350dc1f5c6b77a850e78faf91e0352611eb60bf5a471323a0161-007",
-           "delegation_rate": 0,
-           "funds_locked": 15,
-           "staked_amount": "10000000"
-         },
-         "a4707d761e69f5838d77c2edcf378e9c51a82048fdafff389bba60aeff58210e": {
-           "bonding_purse": "uref-4c8136ba59ae9b25a5287bae9a679634b16b0305f400aa3fbdd22e6fbda8806b-007",
-           "delegation_rate": 10,
-           "funds_locked": null,
-           "staked_amount": "5318008"
-         },
-         "aaa7deb9ec99d6bed089fc938cac4a77bc9539f53556af057f9351a1d3c81de9": {
-           "bonding_purse": "uref-3719c7c75525c2bd7f021b9560cdac1056912d444fb94c16c1420b891f0d7597-007",
-           "delegation_rate": 10,
-           "funds_locked": null,
-           "staked_amount": "1000005"
-         },
-         "d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e": {
-           "bonding_purse": "uref-9393594d011ac65378993f23b25c8bed109734a5e08223b8ac63c953c4b5a84a-007",
-           "delegation_rate": 0,
-           "funds_locked": 15,
-           "staked_amount": "10000000"
-         }
-       },
-       "block_height": 65,
-       "era_validators": {
-         "4": {
-           "3f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012": "10000000",
-           "524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f": "10000000",
-           "8b15761be0c527117c79b87ca013b014a4628f01e382902a139529406723d86b": "10000000",
-           "aaa7deb9ec99d6bed089fc938cac4a77bc9539f53556af057f9351a1d3c81de9": "1000005",
-           "d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e": "10000000"
-         },
-         "5": {
-           "3f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012": "10000000",
-           "524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f": "10000000",
-           "5f3d612fa94222b01f851d1d465bd8a7f86c0bc40d81b3d20ec3197e67d02718": "100000",
-           "86d42bacf67a4b6c5042edba6bc736769171ca3320f7b0040ab9265aca13bbee": "100000",
-           "8b15761be0c527117c79b87ca013b014a4628f01e382902a139529406723d86b": "10000000",
-           "aaa7deb9ec99d6bed089fc938cac4a77bc9539f53556af057f9351a1d3c81de9": "1000005",
-           "d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e": "10000000"
-         },
-         "6": {
-           "3f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012": "10000000",
-           "524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f": "10000000",
-           "5f3d612fa94222b01f851d1d465bd8a7f86c0bc40d81b3d20ec3197e67d02718": "100000",
-           "86d42bacf67a4b6c5042edba6bc736769171ca3320f7b0040ab9265aca13bbee": "100000",
-           "8b15761be0c527117c79b87ca013b014a4628f01e382902a139529406723d86b": "10000000",
-           "aaa7deb9ec99d6bed089fc938cac4a77bc9539f53556af057f9351a1d3c81de9": "1000005",
-           "d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e": "10000000"
-         },
-         "7": {
-           "1117189c666f81c5160cd610ee383dc9b2d0361f004934754d39752eedc64957": "100001111",
-           "3f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012": "10000000",
-           "524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f": "10000000",
-           "5f3d612fa94222b01f851d1d465bd8a7f86c0bc40d81b3d20ec3197e67d02718": "100000",
-           "86d42bacf67a4b6c5042edba6bc736769171ca3320f7b0040ab9265aca13bbee": "100000",
-           "8b15761be0c527117c79b87ca013b014a4628f01e382902a139529406723d86b": "10000000",
-           "a4707d761e69f5838d77c2edcf378e9c51a82048fdafff389bba60aeff58210e": "5318008",
-           "aaa7deb9ec99d6bed089fc938cac4a77bc9539f53556af057f9351a1d3c81de9": "1000005",
-           "d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e": "10000000"
-         }
-       },
-       "state_root_hash": "98fd03288616408cd66619496ae4e265ba3b69dbc342a5ad71a113a7a48cf88d"
-     },
-     "id": -1845994568083720043
+  "jsonrpc": "2.0",
+  "result": {
+    "bids": [
+      {
+        "bid": {
+          "bonding_purse": "uref-488a0bbc3c3729f5696965da7a3aeee83805392944e36157909da273255fdb85-007",
+          "delegation_rate": 0,
+          "delegators": [],
+          "release_era": null,
+          "reward": "93328432442428418861229954179737",
+          "staked_amount": "10000000000000000"
+        },
+        "public_key": "013f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012"
+      },
+      {
+        "bid": {
+          "bonding_purse": "uref-14e128b099b0c3680100520226e6999b322989586cc22db0630db5ec1329f0a7-007",
+          "delegation_rate": 10,
+          "delegators": [],
+          "release_era": null,
+          "reward": "0",
+          "staked_amount": "9000000000000000"
+        },
+        "public_key": "01405133e73ef2946fe3a2d76a4c75d305a04ad6b969f3c4a8a0d27235eb260f87"
+      },
+      {
+        "bid": {
+          "bonding_purse": "uref-6c0bf8cee1c0749dd9766376910867a84b2e826eaf6c118fcb0224c7d8d229dd-007",
+          "delegation_rate": 10,
+          "delegators": [],
+          "release_era": null,
+          "reward": "266185120443441810685787",
+          "staked_amount": "100000000"
+        },
+        "public_key": "01524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f"
+      },
+      {
+        "bid": {
+          "bonding_purse": "uref-3880b3daf95f962f57e6a4b1589564abf7deef58a1fb0753d1108316bba7b3d7-007",
+          "delegation_rate": 10,
+          "delegators": [],
+          "release_era": null,
+          "reward": "0",
+          "staked_amount": "9000000000000000"
+        },
+        "public_key": "01a6901408eda702a653805f50060bfe00d5e962747ee7133df64bd7bab50b4643"
+      },
+      {
+        "bid": {
+          "bonding_purse": "uref-5a777c9cd53456b49eecf25dcc13e12ddff4106175a69f8e24a7c9a4c135df0d-007",
+          "delegation_rate": 0,
+          "delegators": [],
+          "release_era": null,
+          "reward": "93328432442428418861229954179737",
+          "staked_amount": "10000000000000000"
+        },
+        "public_key": "01d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e"
+      }
+    ],
+    "block_height": 318,
+    "era_validators": [
+      {
+        "era_id": 20,
+        "validator_weights": [
+          {
+            "public_key": "013f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012",
+            "weight": "10000000000000000"
+          },
+          {
+            "public_key": "01405133e73ef2946fe3a2d76a4c75d305a04ad6b969f3c4a8a0d27235eb260f87",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f",
+            "weight": "100000000"
+          },
+          {
+            "public_key": "01a6901408eda702a653805f50060bfe00d5e962747ee7133df64bd7bab50b4643",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e",
+            "weight": "10000000000000000"
+          }
+        ]
+      },
+      {
+        "era_id": 21,
+        "validator_weights": [
+          {
+            "public_key": "013f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012",
+            "weight": "10000000000000000"
+          },
+          {
+            "public_key": "01405133e73ef2946fe3a2d76a4c75d305a04ad6b969f3c4a8a0d27235eb260f87",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f",
+            "weight": "100000000"
+          },
+          {
+            "public_key": "01a6901408eda702a653805f50060bfe00d5e962747ee7133df64bd7bab50b4643",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e",
+            "weight": "10000000000000000"
+          }
+        ]
+      },
+      {
+        "era_id": 22,
+        "validator_weights": [
+          {
+            "public_key": "013f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012",
+            "weight": "10000000000000000"
+          },
+          {
+            "public_key": "01405133e73ef2946fe3a2d76a4c75d305a04ad6b969f3c4a8a0d27235eb260f87",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f",
+            "weight": "100000000"
+          },
+          {
+            "public_key": "01a6901408eda702a653805f50060bfe00d5e962747ee7133df64bd7bab50b4643",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e",
+            "weight": "10000000000000000"
+          }
+        ]
+      },
+      {
+        "era_id": 23,
+        "validator_weights": [
+          {
+            "public_key": "013f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012",
+            "weight": "10000000000000000"
+          },
+          {
+            "public_key": "01405133e73ef2946fe3a2d76a4c75d305a04ad6b969f3c4a8a0d27235eb260f87",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f",
+            "weight": "100000000"
+          },
+          {
+            "public_key": "01a6901408eda702a653805f50060bfe00d5e962747ee7133df64bd7bab50b4643",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e",
+            "weight": "10000000000000000"
+          }
+        ]
+      }
+    ],
+    "state_root_hash": "c16ba80ea200d786008f8100ea79f9cfeb8d7d5ee8b133eda5a50dcf1c7131e8"
+  },
+  "id": -3624528661787095850
    }
 
 Note the ``era_id`` and the ``validator_weights`` sections of the response. For a given ``era_id`` a set of validators is defined.  To determine the current era,
