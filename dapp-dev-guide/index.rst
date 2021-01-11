@@ -17,6 +17,7 @@ The topics on the index include present and future documentation initiatives in 
 - Learn how to set up the CasperLabs environment locally.
 - Work with our Contracts API to access our Rust resources.
 - Learn how to create and test Smart Contracts with our libraries.
+- Work with the multi-signature capability to sign transactions.
 
 The motivation for our roadmap is inspired by feedback we are receiving from your recommendations. We hope you continue to provide your feedback as you embark on this journey with us -- we look forward to building a decentralized future together.
 
@@ -42,3 +43,4 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    solidity
    erc20/index
    kv-storage-tutorial
+   multi-sig/index
