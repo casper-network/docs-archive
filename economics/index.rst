@@ -22,6 +22,7 @@ In addition to issuance payments, validators receive transaction fees paid by th
    :hidden:
 
    Introduction <self>
+   economicsoverview.rst  
    seigniorage.rst
    transaction-fees.rst
    staking.rst
