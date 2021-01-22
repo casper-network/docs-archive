@@ -20,13 +20,7 @@ Step 3: Create & Fund your Keys for Bonding
 
 Obtain token to bond your node on to the network & to pay for the bonding transaction.
 
-Step 4: Send the Bonding Request
---------------------------------
-
-Before your start your node, we recommend sending in a bonding request first. Consensus only sends messages to bonded nodes at this time.
-Visit the bonding section of this guide for detailed steps on how to do this.
-
-Step 5: Update the Trusted Hash
+Step 4: Update the Trusted Hash
 -------------------------------
 
 The node's ``config.toml`` needs to be updated with a recent trusted hash. Visit a ``/status`` endpoint of a validating node to obtain a fresh trusted block hash.
@@ -61,3 +55,9 @@ While the node is synchronizing, the ``/status`` endpoint is available. You will
 other node's status endpoint ``era_id`` and ``height`` to determine if you are caught up.You will not be able to perform any
 
 ``casper-client`` calls to your ``7777`` RPC port until your node is fully caught up.
+
+
+Step 7: Send the Bonding Request
+--------------------------------
+
+To avoid being ejected for liveness failures, it is critical that the bonding request be sent to the local node only after it has synchronized the protocol state and linear blockchain.  
