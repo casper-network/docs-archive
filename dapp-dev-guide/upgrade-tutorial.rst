@@ -7,24 +7,19 @@ Smart Contract Upgrade Tutorial
 
 This tutorial shows you how to upgrade smart contracts.  
 
-A great feature that smart contracts have is that,
-when a bug is found in the source code we can fix  
-the bug and upgrade the running smart contract.  
+Casper contracts are upgradeable, making it easy for contract authors for add features and fix bugs in smart contracts.
 
-Using the smartcontract libraries, it's pretty simple to upgrade a contract. 
-All we need to deploy a new version of our contract and overwrite our old functions with  
-new functions. 
+The process of upgrading a smart contract is simple. All that needs to be done is to deploy a new version of the contract and overwrite the old functions with new ones.
+
 
 
 
 Upgrade   
 ------------   
-In order to upgrade a smart contract we need two things:   
-first we need the contract to allow itself to be upgraded.   
-This is done by implementing an upgrade function to the 
-smart contract. If an upgrade function is not added, then the  
-contract stays immutable and we're not able to     
-change or modify it further down the road.    
+
+Upgrading smart contracts require 2 pieces:
+
+1. An upgrade function needs to be present in the contract when the contract is *first deployed*. Without this, the contract is immutable, and cannot be changed in the future.
  
 
 Lets start by creating a function our contract can use to upgrade itself with:
@@ -42,8 +37,8 @@ Lets start by creating a function our contract can use to upgrade itself with:
 	}
 
 
+2, An entry point in the call function to the upgrade function. This enables the upgrade function to be invoked in the future.
 
-Then we want to add it to our entry points in our call function  
 
 
 .. code-block:: rust
@@ -73,7 +68,9 @@ Then we want to add it to our entry points in our call function
 	    set_key(CONTRACT_HASH, new_contract_hash);
 	}
 
-Now we can got a contract that has the ability to be upgraded with new features and functions:
+
+Now this contract can be upgraded with new features and functions:
+
 
 .. code-block:: rust
 	// Using the package hash and our access token, we're able to    
@@ -107,9 +104,7 @@ Read more here:
 https://docs.rs/casperlabs-contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html
 
 
-So when you write your smart contract be sure to add an upgrade function and make sure you save and safeguard the   
-access token you used in the first place.
-
+It is important to include the upgrade function and safeguard the access token from the first deployment of the contract. The access token will be needed for future upgrades.
 
 External links:    
 ------------   
