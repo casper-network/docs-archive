@@ -22,7 +22,7 @@ Upgrading smart contracts require 2 pieces:
 1. An upgrade function needs to be present in the contract when the contract is *first deployed*. Without this, the contract is immutable, and cannot be changed in the future.
  
 
-Lets start by creating a function our contract can use to upgrade itself with:
+Let's start by creating a function our contract can use to upgrade itself with:
 
 .. code-block:: rust
 
@@ -114,5 +114,5 @@ https://docs.rs/casperlabs-contract/0.6.1/casperlabs_contract/contract_api/stora
 https://github.com/CasperLabs/casper-node/tree/master/smart_contracts   
 
 
-If your looking for more documented sample code, Check out the [contract-upgrade-example](https://github.com/casper-ecosystem/contract-upgrade-example) repository.
+For more documented sample code, Check out the [contract-upgrade-example](https://github.com/casper-ecosystem/contract-upgrade-example) repository.
 
