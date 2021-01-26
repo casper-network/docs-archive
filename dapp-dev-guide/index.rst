@@ -42,3 +42,4 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    solidity
    erc20/index
    kv-storage-tutorial
+   upgrade-tutorial
