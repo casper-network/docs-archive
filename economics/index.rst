@@ -1,7 +1,7 @@
 
 .. _economics:
 
-Overview
+Economics of Our Platform
 =========
 
 Economic activity on our platform can be conceptualized as taking place on four distinct layers, consensus, runtime, ecosystem and the macroeconomy. Each layer, consensus and up, provides a foundation for activity taking place on the next layer. A trust-less platform requires that proper incentives be provided to participants operating each of these layers to ensure that they work together to unlock the value of the platform.
@@ -72,6 +72,6 @@ The inflationary nature of our macroeconomics has two major advantages over enfo
    :maxdepth: 2
    :hidden:
 
-   Economics of Casper <self>
+   Overview <self>
    economicsoverview.rst
    issuance.rst
