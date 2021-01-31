@@ -1,15 +1,13 @@
-Multi-Signature concepts
-========================
+Concepts
+========
 
 The Casper implementation of multiple signatures is unique and allows you to set up and customize access to your account and deployments. 
 
-Many companies handle large transactions and use smart contracts to manage tokens. However, this approach is problematic because the smart contract needs to be audited, secure and requires significant investment to set it up and maintain. 
+Many companies handle large transactions and use smart contracts to manage tokens. However, these contracts need to be audited and secure and require a significant investment in setup and maintenance.
 
-Casper enables you to sign anything with its multi-signature (multi-sig) implementation. For example, you do not need a multi-sig wallet to call a feature from a smart contract. Instead, you can sign your account with Casper's multi-sig capability.
+Casper enables you to sign anything with its multi-signature (multi-sig) implementation. For example, you do not need a multi-sig wallet to call a feature from a smart contract. Instead, you can use the multi-sig feature at the account level and sign your account with multiple keys.
 
-You can set up your account using `the Casper permissions model <http://localhost:8000/implementation/accounts.html#permissions-model>`_. 
-
-An `account <http://localhost:8000/implementation/accounts.html>`_ is a cryptographically secured gateway into the CasperLabs system. 
+Your `account <http://localhost:8000/implementation/accounts.html>`_ is a cryptographically secured gateway into the CasperLabs system, and you can set it up using `the Casper permissions model <http://localhost:8000/implementation/accounts.html#permissions-model>`_. 
 
 The account contains associated keys and action thresholds:
 

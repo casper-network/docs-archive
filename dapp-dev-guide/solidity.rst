@@ -2,9 +2,6 @@
 Solidity to Rust Transpiler
 ===========================
 
-tl;dr
------
-
 **Introducing Caspiler - Transpile Solidity to Rust and access the cool features of Casper!**
 
 Smart Contracts at CasperLabs

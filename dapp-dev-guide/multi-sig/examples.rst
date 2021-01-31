@@ -1,18 +1,21 @@
-Examples with multi-signature
-=============================
+Additional Scenarios
+====================
 
-This section walks you through scenarios where accounts have multiple associated keys for signing transactions at various thresholds.
+This section walks you through additional scenarios where accounts have multiple associated keys for signing transactions at various thresholds.
 
-In the image below, the `nctl tool <https://github.com/CasperLabs/casper-node/blob/master/utils/nctl/README.md>`_ set up a local Casper network to display the structure of the faucet account.
+The `nctl tool <https://github.com/CasperLabs/casper-node/blob/master/utils/nctl/README.md>`_ set up a local Casper network to display the faucet account structure in the image below.
 
 .. image:: ../../assets/tutorials/multisig/account_example.png
+  :alt: The faucet account details as setup by nctl..
 
 | 
 
-1) One key signing all transactions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Scenario 1: signing transactions with a single key
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this example, only one key can sign transactions in the name of this account. The key is "account-hash-a1…" under the associated_keys. If you sign the transaction using "account-hash-a1…", the signed transaction will have a weight equal to 1. For deployments or key management, the weight required is also 1. Therefore, the associated key meets the deployment and key management thresholds and can perform both actions.
+In this example, only one key can sign transactions in the name of this account. The key is "account-hash-a1…" under the `associated_keys`. If you sign the transaction using "account-hash-a1…", the signed transaction will have a `weight` equal to 1. For deployments or key management, the weight required is also 1. Therefore, the associated key meets the deployment and key management thresholds and can perform both actions.
+
+**Faucet account in scenario 1:**
 
 .. code-block:: sh
 
@@ -39,11 +42,13 @@ In this example, only one key can sign transactions in the name of this account.
    }
 
 
-2) Special keys for deployments
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Scenario 2: deploying with special keys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this example, you have two keys. One key can only perform deployments, and the second key can perform key management and deployments.  The key with account hash a1 can deploy and make account changes, but the second key with account hash b2 can only deploy and cannot make any account changes.
-    
+In this example, you have two keys. One key can only perform deployments, while the second key can perform key management and deployments. The key with account hash *a1* can deploy and make account changes, but the second key with account hash *b2* can only deploy.
+
+**Faucet account in scenario 2:**
+
 .. code-block:: sh
 
  {
@@ -62,7 +67,7 @@ In this example, you have two keys. One key can only perform deployments, and th
                     "weight": 2
                 },
                 {
-                    "account_hash": "account-hash-b2…",
+                    "account_hash": "account-hash-b2…", // a deployment key
                     "weight": 1
                 }
             ],
@@ -75,10 +80,12 @@ In this example, you have two keys. One key can only perform deployments, and th
 
 
 
-3) Multiple keys signing a transaction
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Scenario 3: signing transactions with multiple keys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Some transactions require multiple associated keys. In this example, the two associated keys have weight 1. To make changes to the account, you need to use both keys to sign the transaction. However, for deployment, each key can sign separately.
+Sometimes you will require multiple associated keys to execute a transaction. In this example, we have two associated keys with a weight equal to 1. To make changes to the account, you need to use both keys to sign the transaction. However, for deployment, each key can sign separately and perform deployments independently.
+
+**Faucet account in scenario 3:**
 
 .. code-block:: sh
 
@@ -94,12 +101,12 @@ Some transactions require multiple associated keys. In this example, the two ass
          },
          "associated_keys": [
             {
-               "account_hash": "account-hash-a1…",
-               "weight": 1
+               "account_hash": "account-hash-a1…", 
+               "weight": 1   // can deploy, but needs to sign with b2
             },
             {
                "account_hash": "account-hash-b2…",
-               "weight": 1
+               "weight": 1   // can deploy, but needs to sign with a1
             }
          ],
          "main_purse": "uref-1234…",
@@ -108,14 +115,16 @@ Some transactions require multiple associated keys. In this example, the two ass
    }
  }
 
-4) Two out of three accounts signing a transaction
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Scenario 4: managing lost or stolen keys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this example, two out of three associated keys need to sign a transaction. 
+In this example, you need two out of three associated keys to sign a transaction. 
 Consider a transaction where you have one key in your browser, one key on your mobile phone, and one key in your safe. To do a transaction, first, you sign it with your browser extension (for example, Metamask). Afterward, a notification appears on your mobile phone requesting you to approve the transaction. With these two keys, you can complete the transaction.
 However, what if you lose the two keys on your browser and phone? 
-Also, what if someone finds your browser and phone? They can perform deployments, but they cannot change the account details.
-In this setup, you can use the safe key to remove the lost keys from the account because the safe key's weight is 3.
+Or, what if someone steals your browser and phone?
+In this case, you can use the safe key to remove the lost or stolen keys from the account. Notice that the safe key's weight is 3, which gives you the option to manage your account and add or remove keys. Also, the stolen or lost keys can only enable deployments, and in this case, no one can use them to change your account.
+
+**Faucet account in scenario 4:**
 
 .. code-block:: sh
 
@@ -131,15 +140,15 @@ In this setup, you can use the safe key to remove the lost keys from the account
          },
          "associated_keys": [
             {
-               "account_hash": "account-hash-a1…",  //browser
+               "account_hash": "account-hash-a1…",  // a browser key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-b2…",  //mobile
+               "account_hash": "account-hash-b2…",  // a mobile key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-c3…",  //safe
+               "account_hash": "account-hash-c3…",  // a safe key
                "weight": 3
             }
          ],
@@ -149,10 +158,12 @@ In this setup, you can use the safe key to remove the lost keys from the account
    }
  }
 
-5) Having multiple safe keys
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Scenario 5: managing accounts with multiple keys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This example builds upon the previous example, where you can set up multiple safe keys. The additional safe keys can be in the bank, under your mattress, or encrypted on your computer.
+This example builds upon the previous example, where you can set up multiple safe keys for account management. In this scenario, the safe keys have the weight required to manage your keys and account.
+
+**Faucet account in scenario 5:**
 
 .. code-block:: sh
 
@@ -168,23 +179,23 @@ This example builds upon the previous example, where you can set up multiple saf
          },
          "associated_keys": [
             {
-               "account_hash": "account-hash-a1…",  // browser
+               "account_hash": "account-hash-a1…",  // a browser key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-b2…",  // mobile
+               "account_hash": "account-hash-b2…",  // a mobile key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-c3…",  // safe 1
+               "account_hash": "account-hash-c3…",  // a safe key 1
                "weight": 3
             },
             {
-               "account_hash": "account-hash-d3…",  // safe 2
+               "account_hash": "account-hash-d4…",  // a safe key 2
                "weight": 3
             },
             {
-               "account_hash": "account-hash-e3…",  // safe 3
+               "account_hash": "account-hash-e5…",  // a safe key 3
                "weight": 3
             }
          ],
@@ -194,10 +205,12 @@ This example builds upon the previous example, where you can set up multiple saf
    }
  }
 
-6) Deploying as the same account
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Scenario 6: losing your primary account key
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This example outlines that it doesn't matter which key you use to sign. You will always deploy as the same account. You can throw away the private key of your account (although maybe not recommended), and you would still be able to execute transactions.
+Suppose you lose your account key; in this case, "account-hash-00…", you can set up other keys to execute transactions. Although not recommended, you can throw away the private key of your account or set its weight to zero, and you would still be able to execute transactions if your faucet account has backup keys that can perform key management.
+
+**Faucet account in scenario 6:**
 
 .. code-block:: sh
 
@@ -213,27 +226,27 @@ This example outlines that it doesn't matter which key you use to sign. You will
          },
          "associated_keys": [
             {
-               "account_hash": "account-hash-00…", // my account
+               "account_hash": "account-hash-00…", // the account key
                "weight": 0
             },
             {
-               "account_hash": "account-hash-a1…", // browser
+               "account_hash": "account-hash-a1…", // a browser key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-b2…", // mobile
+               "account_hash": "account-hash-b2…", // a mobile key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-c3…", // safe 1
+               "account_hash": "account-hash-c3…", // a safe key 1
                "weight": 3
             },
             {
-               "account_hash": "account-hash-d3…", // safe 2
+               "account_hash": "account-hash-d4…", // a safe key 2
                "weight": 3
             },
             {
-               "account_hash": "account-hash-e3…", // safe 3
+               "account_hash": "account-hash-e5…", // a safe key 3
                "weight": 3
             }
          ],
@@ -243,61 +256,3 @@ This example outlines that it doesn't matter which key you use to sign. You will
    }
  }
 
-
-7) Blocking your account
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-In this example, the user has accidentally blocked the account. The deployment threshold is 2, but the account has only one associated key with a weight set to 1. It is essential to have a sufficient number of keys to perform key management. Otherwise, account recovery will not be possible, as we do not support inactive accounts' recovery. This example will hopefully help you avoid this scenario.
-
-.. code-block:: sh
-
- {
-   "api_version": "1.0.0",
-   "merkle_proof": "01000…..11",
-   "stored_value": {
-      "Account": {
-         "account_hash": "account-hash-a1…",
-         "action_thresholds": {
-            "deployment": 2,
-            "key_management": 2
-         },
-         "associated_keys": [
-            {
-               "account_hash": "account-hash-a1…",
-               "weight": 1
-            }
-         ],
-         "main_purse": "uref-1234…",
-         "named_keys": []
-      }
-   }
- }
-
-8) Deployments blocked temporarily
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In this example, the user has accidentally blocked the deployments, but the associated key can change the deployment threshold from 2 to 1. The key_management threshold is 1, which enables the associated key to change the threshold of any action. [http://localhost:8000/implementation/accounts.html#key-management-actions]
-
-.. code-block:: sh
-
- {
-   "api_version": "1.0.0",
-   "merkle_proof": "01000…..11",
-   "stored_value": {
-      "Account": {
-         "account_hash": "account-hash-a1…",
-         "action_thresholds": {
-            "deployment": 2,
-            "key_management": 1
-         },
-         "associated_keys": [
-            {
-               "account_hash": "account-hash-a1…",
-               "weight": 1
-            }
-         ],
-         "main_purse": "uref-1234…",
-         "named_keys": []
-      }
-   }
- }
