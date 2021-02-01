@@ -114,5 +114,7 @@ https://docs.rs/casperlabs-contract/0.6.1/casperlabs_contract/contract_api/stora
 https://github.com/CasperLabs/casper-node/tree/master/smart_contracts   
 
 
-For more documented sample code, Check out the [contract-upgrade-example](https://github.com/casper-ecosystem/contract-upgrade-example) repository.
+For more documented sample code, Check out the contract-upgrade-example repository here:      
+https://github.com/casper-ecosystem/contract-upgrade-example
+
 
