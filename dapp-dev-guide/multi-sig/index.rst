@@ -1,14 +1,9 @@
 Multi-Signature Tutorial
 ========================
 
-This tutorial covers an example of key management. You will set up a smart contract, a client that will invoke the contract, and a local test network to test key management end-to-end. As a result, you will learn to:
+In this tutorial, you will learn to use `Casper's permissions model <../../implementation/accounts.html#permissions-model>`_ to sign transactions with multiple keys. The code for this tutorial is available in `GitHub <https://github.com/casper-ecosystem/keys-manager>`_. The sample code creates a smart contract and a sample client that invokes the multi-signature feature on a local Casper network.
 
-* Use the multi-signature (multi-sig) feature on the Casper network
-* Create a smart contract and sign transactions with multiple keys
-
-You will explore `various permissions <../../implementation/accounts.html#permissions-model>`_ and sign transactions with multiple signatures. 
-
-The final code is available in GitHub under `Casper Keys Manager <https://github.com/casper-ecosystem/keys-manager>`_.
+**Table of Contents**
 
 .. toctree::
 
@@ -17,4 +12,3 @@ The final code is available in GitHub under `Casper Keys Manager <https://github
    client
    testing
    examples
-

@@ -1,77 +1,61 @@
 Testing your Client
 ===================
 
-You will now test your client using the `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ tool on your local Casper network with five nodes.
+You will now test your client using `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ and `Clarity <https://github.com/CasperLabs/clarity>`_. Clarity will run against your local nctl network and will help you interact with your local blockchain.
 
 Prerequisites
 ^^^^^^^^^^^^^
 * You have completed all the previous sections, and your local network is up and running using the `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ tool.
+* Install `yarn <https://yarnpkg.com/getting-started>`_ if you do not have it on your machine.
+
+Commands
+^^^^^^^^
+
+Clone the `Clarity <https://github.com/CasperLabs/clarity>`_ repository:
 
 .. code-block:: bash
 
-    $node src/keys-manager.js
+    $ git clone https://github.com/CasperLabs/clarity
 
-
-When the deployment accounts sign the transaction, they can use the faucet account to transfer tokens and perform the deployment since their combined weight is 2, which meets the deployment threshold. Here is the current account structure:
+Navigate to the root of the clarity directory and run:
 
 .. code-block:: bash
 
- {
-	“api_version”: “1.0.0”,
-	“merkle_proof”: “01000…..11”,
-	“stored_value”: {
-		“Account”: {
-			“account_hash”: “account-hash-da11…”,
-			“action_thresholds”: {
-				“deployment”: 2,
-				“key_management”: 3
-			},
-			“associated_keys”: [
-				{
-					“account_hash”: “account-hash-1…”, // faucet account
-					“weight”: 3
-				},
-				{
-					“account_hash”: “account-hash-2…”, // deploy account 1
-					“weight”: 1
-				},
-				{
-					“account_hash”: “account-hash-3…”, // deploy account 2
-					“weight”: 1
-				}
-			],
-			“main_purse”: “uref-1234…”,
-			“named_keys”: []
-		}
-	}
- }
+    $ yarn install
+    $ yarn build
 
-After the transfer, the client code removes the deployment accounts, and we are left with the following structure:
+Clarity contains an event store, which you will use as a data source in your testing. The event store receives data from the node, which is saved in a SQL database.
 
-.. code-block:: sh
+Open a new terminal tab and start the event store by running these commands:
 
- {
-	“api_version”: “1.0.0”,
-	“merkle_proof”: “01000…..11”,
-	“stored_value”: {
-		“Account”: {
-			“account_hash”: “account-hash-da11…”,
-			“action_thresholds”: {
-				“deployment”: 2,
-				“key_management”: 3
-			},
-			“associated_keys”: [
-				{
-					“account_hash”: “account-hash-1…”, // faucet account
-					“weight”: 3
-				}
-			],
-			“main_purse”: “uref-1234…”,
-			“named_keys”: []
-		}
-	}
- }
+.. code-block:: bash
 
-You can employ the same strategy in your own account implementation, or customize the multi-signature feature to your needs. 
+    $ cd packages/event_store
+    $ rm developement_sqlite.db    // Removes old SQL data
+    $ npm run start-web-server     // Starts the event store
 
-We offer some additional use cases in the next section.
+Open another terminal tab and start processing the event stream:
+
+.. code-block:: bash
+
+    $ npm run start-event-handler  // Starts the event processing
+
+Install the CasperLabs SDK for JavaScript:
+
+.. code-block:: bash
+
+   $ git clone https://github.com/casper-ecosystem/casper-client-sdk-docs
+   $ npm install casper-client-sdk --save
+
+Navigate to your ``/keys-manager/client/src`` folder and run the ``keys-manager.js`` using ``node``:
+
+.. code-block:: bash
+
+    $ node keys-manager.js
+
+
+Congratulations! You have completed the tutorial.
+
+You can now employ a similar strategy to set up your account using multiple keys.
+
+We offer some additional examples of account management in the next section.

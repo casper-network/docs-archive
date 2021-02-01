@@ -2,12 +2,10 @@ Client Example
 ==============
 This section covers an example client that invokes a smart contract for key management. In addition to the main account, the client code will add two additional accounts to perform deployments. The two deployment accounts will perform deployments but will not be able to add another account.
 
-You will test your client using the `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ tool on a local Casper network with five nodes.
-
 Prerequisites
 ^^^^^^^^^^^^^
-* You have compiled the `example contract and client <https://github.com/casper-ecosystem/keys-manager>`_ for key management.
-* You have set up the `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ tool.
+* You have compiled the `example contract <https://github.com/casper-ecosystem/keys-manager>`_ for key management
+* You have set up the `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ tool
 
 Setting up the Network
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -60,28 +58,130 @@ The rest of the code in this file creates functions for account management, fund
 
 **Setting up the Account using a Key Manager**
 
-Next, open the ``keys-manager.js`` file to see how the client code implements key management.
+Next, open the ``keys-manager.js`` file to explore how the client code implements key management.
 
-    // 1. Set mainAccount's weight to 3.
 Set the weight for the main account to 3.
 
-    // 2. Set Keys Management Threshold to 3.
-Set the key management threshold to 3. With this key, you can manage keys and, therefore, the entire account.
+.. code-block:: javascript
 
-    // 3. Set Deploy Threshold to 2.
+	deploy = utils.keys.setKeyWeightDeploy(mainAccount, mainAccount, 3);
+
+Set the key management threshold for the main account to 3. With this threshold, you can manage other keys and have control over the entire account.
+
+.. code-block:: javascript
+
+	deploy = utils.keys.setKeyManagementThresholdDeploy(mainAccount, 3);
+
 Set the deployment threshold to 2.
 
-    // 4. Add first new key with weight 1.
-Add a second key with weight 1. You cannot do anything with this key alone since all the action thresholds are higher than 1.
+.. code-block:: javascript
 
-   // 5. Add second new key with weight 1.
-Add a third key with weight 1. If you use this key with the second key, you can deploy, since the weights add up to 2.
+	deploy = utils.keys.setDeploymentThresholdDeploy(mainAccount, 2);
 
-    // 6. Make a transfer from mainAccount using only both accounts.
-Transfer tokens from the main account??
+Add a new key with weight 1. You cannot do anything with this key alone since all the action thresholds are higher than 1.
 
-    // 7. Remove first account.
-    // 8. Remove second account.
-Remove the two keys with weight 1.
+.. code-block:: javascript
 
-In the next section, you will test your client and key management implementation.
+	deploy = utils.keys.setKeyWeightDeploy(mainAccount, firstAccount, 1);
+
+Add another key with weight 1. If you use this key with the second key, you can deploy, since the weights add up to 2.
+
+.. code-block:: javascript
+
+	deploy = utils.keys.setKeyWeightDeploy(mainAccount, secondAccount, 1);
+
+Transfer tokens from the main account and perform a deployment. When the deployment accounts sign the transaction, they can transfer funds from the faucet account since their combined weight is 2, which meets the deployment threshold.
+
+.. code-block:: javascript
+
+	deploy = utils.transferDeploy(mainAccount, firstAccount, 1);
+
+If you dive into the `transferDeploy` function, you will see the transfer of funds.
+
+.. code-block:: javascript
+
+ function transferDeploy(fromAccount, toAccount, amount) {
+    let deployParams = new DeployUtil.DeployParams(
+        fromAccount.publicKey,
+        networkName
+    );
+    let transferParams = DeployUtil.ExecutableDeployItem.newTransfer(
+        amount,
+        toAccount.publicKey
+    );
+    let payment = DeployUtil.standardPayment(100000000000);
+    return DeployUtil.makeDeploy(deployParams, transferParams, payment);
+ }
+
+Here is the current account structure:
+
+.. code-block:: sh
+
+ {
+   "api_version": "1.0.0",
+   "merkle_proof": "01000…..11",
+   "stored_value": {
+      "Account": {
+         "account_hash": "account-hash-a1…",
+         "action_thresholds": {
+            "deployment": 2,
+            "key_management": 3
+         },
+         "associated_keys": [
+            {
+               "account_hash": "account-hash-a1…",  // main account key
+               "weight": 3
+            },
+            {
+               "account_hash": "account-hash-b2…",  // first deployment key
+               "weight": 1
+            },
+            {
+               "account_hash": "account-hash-c3…",  // second deployment key
+               "weight": 1
+            }
+         ],
+         "main_purse": "uref-1234…",
+         "named_keys": []
+      }
+    }
+  }
+
+After the above transfer of funds, the client code removes the deployment accounts.
+
+.. code-block:: javascript
+
+	...
+	deploy = utils.keys.setKeyWeightDeploy(mainAccount, firstAccount, 0);
+	...
+	deploy = utils.keys.setKeyWeightDeploy(mainAccount, secondAccount, 0);
+	...
+
+We are left with the following account structure:
+
+.. code-block:: sh
+
+   {
+       "api_version": "1.0.0",
+       "merkle_proof": "01000…..11",
+       "stored_value": {
+          "Account": {
+             "account_hash": "account-hash-a1…",
+                "action_thresholds": {
+                   "deployment": 2,
+                   "key_management": 3
+             },
+             "associated_keys": [
+                {
+                   "account_hash": "account-hash-a1…", // main account key
+                   "weight": 3
+                }
+             ],
+             "main_purse": "uref-1234…",
+             "named_keys": []
+          }
+       }
+   }
+
+
+In the next section, you will test your key management implementation.
