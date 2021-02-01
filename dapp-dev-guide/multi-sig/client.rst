@@ -60,41 +60,71 @@ The rest of the code in this file creates functions for account management, fund
 
 Next, open the ``keys-manager.js`` file to explore how the client code implements key management.
 
-Set the weight for the main account to 3.
+In the code, we set the weight for the main account to 3. The state of the account at this point is shown in the image below.
 
 .. code-block:: javascript
 
 	deploy = utils.keys.setKeyWeightDeploy(mainAccount, mainAccount, 3);
 
-Set the key management threshold for the main account to 3. With this threshold, you can manage other keys and have control over the entire account.
+.. image:: ../../assets/tutorials/multisig/step_1.png
+  :alt: Account state when the weight of the main account is 3.
+
+| 
+
+Next, we set the key management threshold for the main account to 3. With this threshold, you can manage other keys and have control over the entire account.
 
 .. code-block:: javascript
 
 	deploy = utils.keys.setKeyManagementThresholdDeploy(mainAccount, 3);
 
-Set the deployment threshold to 2.
+.. image:: ../../assets/tutorials/multisig/step_2.png
+  :alt: Account state when the key management threshold for the main account is 3.
+
+| 
+
+Next, the client code sets the deployment threshold to 2 for this account.
 
 .. code-block:: javascript
 
 	deploy = utils.keys.setDeploymentThresholdDeploy(mainAccount, 2);
 
-Add a new key with weight 1. You cannot do anything with this key alone since all the action thresholds are higher than 1.
+.. image:: ../../assets/tutorials/multisig/step_3.png
+  :alt: Account state when the key management threshold for the main account is 3.
+
+| 
+
+The next step is to add a new key with weight 1. You cannot do anything with this key alone since all the action thresholds are higher than 1.
 
 .. code-block:: javascript
 
 	deploy = utils.keys.setKeyWeightDeploy(mainAccount, firstAccount, 1);
 
-Add another key with weight 1. If you use this key with the second key, you can deploy, since the weights add up to 2.
+.. image:: ../../assets/tutorials/multisig/step_4.png
+  :alt: Account state when a new key is added with weight 1, for deployment.
+
+| 
+
+We will add another key with weight 1. If you use this key with the second key, you can deploy, since the weights add up to 2.
 
 .. code-block:: javascript
 
 	deploy = utils.keys.setKeyWeightDeploy(mainAccount, secondAccount, 1);
 
-Transfer tokens from the main account and perform a deployment. When the deployment accounts sign the transaction, they can transfer funds from the faucet account since their combined weight is 2, which meets the deployment threshold.
+.. image:: ../../assets/tutorials/multisig/step_5.png
+  :alt: Account state when the a second key is added with weight 1, for deployment.
+
+| 
+
+Next, we will transfer tokens from the main account and perform a deployment. When the deployment accounts sign the transaction, they can transfer funds from the faucet account since their combined weight is 2, which meets the deployment threshold.
 
 .. code-block:: javascript
 
 	deploy = utils.transferDeploy(mainAccount, firstAccount, 1);
+
+.. image:: ../../assets/tutorials/multisig/step_6.png
+  :alt: Image showing the output of the funds transfer.
+
+| 
 
 If you dive into the `transferDeploy` function, you will see the transfer of funds.
 
@@ -113,41 +143,7 @@ If you dive into the `transferDeploy` function, you will see the transfer of fun
     return DeployUtil.makeDeploy(deployParams, transferParams, payment);
  }
 
-Here is the current account structure:
-
-.. code-block:: sh
-
- {
-   "api_version": "1.0.0",
-   "merkle_proof": "01000…..11",
-   "stored_value": {
-      "Account": {
-         "account_hash": "account-hash-a1…",
-         "action_thresholds": {
-            "deployment": 2,
-            "key_management": 3
-         },
-         "associated_keys": [
-            {
-               "account_hash": "account-hash-a1…",  // main account key
-               "weight": 3
-            },
-            {
-               "account_hash": "account-hash-b2…",  // first deployment key
-               "weight": 1
-            },
-            {
-               "account_hash": "account-hash-c3…",  // second deployment key
-               "weight": 1
-            }
-         ],
-         "main_purse": "uref-1234…",
-         "named_keys": []
-      }
-    }
-  }
-
-After the above transfer of funds, the client code removes the deployment accounts.
+After the above transfer of funds, the client code removes both deployment accounts.
 
 .. code-block:: javascript
 
@@ -159,29 +155,9 @@ After the above transfer of funds, the client code removes the deployment accoun
 
 We are left with the following account structure:
 
-.. code-block:: sh
+.. image:: ../../assets/tutorials/multisig/step_8.png
+  :alt: Account state after the deployments accounts were removed.
 
-   {
-       "api_version": "1.0.0",
-       "merkle_proof": "01000…..11",
-       "stored_value": {
-          "Account": {
-             "account_hash": "account-hash-a1…",
-                "action_thresholds": {
-                   "deployment": 2,
-                   "key_management": 3
-             },
-             "associated_keys": [
-                {
-                   "account_hash": "account-hash-a1…", // main account key
-                   "weight": 3
-                }
-             ],
-             "main_purse": "uref-1234…",
-             "named_keys": []
-          }
-       }
-   }
-
+| 
 
 In the next section, you will test your key management implementation.

@@ -47,12 +47,25 @@ Install the CasperLabs SDK for JavaScript:
    $ git clone https://github.com/casper-ecosystem/casper-client-sdk-docs
    $ npm install casper-client-sdk --save
 
-Navigate to your ``/keys-manager/client/src`` folder and run the ``keys-manager.js`` using ``node``:
+Navigate to your ``/keys-manager/client`` folder and run the ``keys-manager.js`` using ``node``. The path of your WASM file is relative to the ``client`` folder, so you need to run the file from here.
 
 .. code-block:: bash
 
-    $ node keys-manager.js
+    $ node src/keys-manager.js
 
+If the code runs successfully, the beginning of the output would look like this:
+
+.. image:: ../../assets/tutorials/multisig/output_begin.png
+  :alt: An image of the beginning of the keys-manager output.
+
+|
+
+Also, the end of the output would include removing the second key and would print the state of the account.
+
+.. image:: ../../assets/tutorials/multisig/output_end.png
+  :alt: An image of the end of the keys-manager output.
+
+|
 
 Congratulations! You have completed the tutorial.
 
