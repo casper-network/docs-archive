@@ -44,3 +44,5 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    erc20/index
    kv-storage-tutorial
    multi-sig/index
+   upgrade-tutorial
+
