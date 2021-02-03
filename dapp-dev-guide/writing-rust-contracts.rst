@@ -23,7 +23,7 @@ Arguments
 ^^^^^^^^^
 
 It's possible to pass arguments to smart contracts. 
-To leverage this feature, use `runtime::get_named_arg <https://docs.rs/casper-contract/latest/casper_contract/contract_api/runtime/fn.get_named_arg.html>`_. Navigate to Documentation->contract_api->runtime for details. 
+To leverage this feature, use `runtime::get_named_arg <https://docs.rs/casper-contract/latest/casper_contract/contract_api/runtime/fn.get_named_arg.html>`_.  
 
 .. code-block:: rust
 
