@@ -101,7 +101,7 @@ The *storage::add_contract_version* function. This function will allow us to dep
 
 
 Read more here: 
-https://docs.rs/casperlabs-contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html
+https://docs.rs/casper-contract/latest/casper_contract/contract_api/storage/fn.add_contract_version.html
 
 
 It is important to include the upgrade function and safeguard the access token from the first deployment of the contract. The access token will be needed for future upgrades.

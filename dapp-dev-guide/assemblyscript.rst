@@ -2,7 +2,7 @@
 Writing AssemblyScript Smart Contracts
 ======================================
 
-CasperLabs maintains `@casperlabs/contract <https://www.npmjs.com/package/@casperlabs/contract>`_ to allow developers to create smart contracts using `AssemblyScript <https://www.npmjs.com/package/assemblyscript>`_. The package source is hosted in the `main CasperLabs repository <https://github.com/CasperLabs/CasperLabs/tree/dev/execution-engine/contract-as>`_.
+CasperLabs maintains `@casperlabs/contract <https://www.npmjs.com/package/@casperlabs/contract>`_ to allow developers to create smart contracts using `AssemblyScript <https://www.npmjs.com/package/assemblyscript>`_. The package source is hosted in the `main CasperLabs repository <https://github.com/CasperLabs/casper-node/tree/master/smart_contracts/contract_as/assembly>`_.
 
 Installation
 ------------
