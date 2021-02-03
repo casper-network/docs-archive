@@ -111,7 +111,7 @@ The Casper VM supports error codes in smart contracts. A contract can stop execu
        runtime::revert(ApiError::PermissionDenied)
    }
 
-Casper has `several built-in error variants <https://crates.io/crates/casper-types/latest/casper_types/>`_ , but it's possible to create a custom set of error codes for your smart contract. These can be passed to ``runtime::revert`` <https://docs.rs/casper-contract/latest/casper_contract/contract_api/runtime/fn.revert.html>`_ via `\ ``ApiError::User(<your error code>)`` <https://docs.rs/casper-types/latest/casper_types/enum.ApiError.html#variant.User>`_.
+Casper has `several built-in error variants <https://crates.io/crates/casper-types/latest/casper_types/>`_ , but it's possible to create a custom set of error codes for your smart contract. These can be passed to ``runtime::revert <https://docs.rs/casper-contract/latest/casper_contract/contract_api/runtime/fn.revert.html>`_ via  `ApiError::User(<your error code>) <https://docs.rs/casper-types/latest/casper_types/enum.ApiError.html#variant.User>`_.
 
 When a contract exits with an error code, the exit code is visible in the Block Explorer.
 
