@@ -7,10 +7,10 @@ tl;dr
 
 **Introducing Caspiler - Transpile Solidity to Rust and access the cool features of Casper!**
 
-Smart Contracts at CasperLabs
+Smart Contracts on Casper
 -----------------------------
 
-The CasperLabs Virtual Machine runs smart contracts that compile to Webassembly. There are two ecosystems that provide compilation targets for webassembly: Rust and AssemblyScript.  CasperLabs provides smart contract libraries to support development for both of these languages. The core development of the Casper Protocol is taking place in Rust, and as a result, there are many Rust tools that make rapid Smart Contracts development possible. It is widely recognized that most smart contracts in use today have been authored in Solidity for the EVM (Ethereum Virtual Machhine).
+The Casper Virtual Machine runs smart contracts that compile to Webassembly. There are two ecosystems that provide compilation targets for webassembly: Rust and AssemblyScript.  CasperLabs provides smart contract libraries to support development for both of these languages. The core development of the Casper Protocol is taking place in Rust, and as a result, there are many Rust tools that make rapid Smart Contracts development possible. It is widely recognized that most smart contracts in use today have been authored in Solidity for the EVM (Ethereum Virtual Machhine).
 
 Solidity
 --------
@@ -28,7 +28,7 @@ We have concluded that Solidity support is much easier and efficient to achieve 
 * Solidity features are easy to express in Rust, which is a much richer language.
 * The shape of CasperLabs DSL is similar to Solidity.
 * The CasperLabs Rust toolchain is something we want to leverage, rather than coding it from scratch.
-* The CasperLabs execution model is different than Ethereum's, therefore it's easier to translate it on the language level, than on the bytecode level.
+* The Casper execution model is different than Ethereum's, therefore it's easier to translate it on the language level, than on the bytecode level.
 
 Solidity to Rust Migration
 --------------------------
@@ -67,7 +67,7 @@ CasperLabs Rust DSL
 
 .. code-block:: Rust
 
-   #[casperlabs_contract]
+   #[casper_contract]
    mod Storage {
 
        #[casperlabs_constructor]
