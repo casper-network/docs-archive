@@ -7,7 +7,7 @@ Many companies handle large transactions and use smart contracts to manage token
 
 Casper enables you to sign anything with its multi-signature (multi-sig) implementation. For example, you do not need a multi-sig wallet to call a feature from a smart contract. Instead, you can use the multi-sig feature at the account level and sign your account with multiple keys.
 
-Your `account <http://localhost:8000/implementation/accounts.html>`_ is a cryptographically secured gateway into the CasperLabs system, and you can set it up using `the Casper permissions model <http://localhost:8000/implementation/accounts.html#permissions-model>`_. 
+Your `Account <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ is a cryptographically secured gateway into the CasperLabs system, and you can set it up using `the Casper Permissions Model <https://docs.casperlabs.io/en/latest/implementation/accounts.html#permissions-model>`_. 
 
 The account contains associated keys and action thresholds:
 
@@ -15,4 +15,4 @@ The account contains associated keys and action thresholds:
 * An account can perform two types of actions: **deployment** and **key management**. 
 * The **action thresholds** in the account data structure set a **weight**, which you must meet to perform an action. 
 
-For more information, see the `permissions model <http://localhost:8000/implementation/accounts.html#permissions-model>`_ in the `accounts <http://localhost:8000/implementation/accounts.html>`_ section.
+For more information, please review the `Blockchain Design <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_.

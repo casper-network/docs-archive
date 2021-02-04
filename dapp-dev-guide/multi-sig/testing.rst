@@ -1,7 +1,7 @@
 Testing your Client
 ===================
 
-You will now test your client using `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ and `Clarity <https://github.com/CasperLabs/clarity>`_. Clarity will run against your local nctl network and will help you interact with your local blockchain.
+You will now test your client using `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_, and you will interact with your local blockchain.
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -11,7 +11,12 @@ Prerequisites
 Commands
 ^^^^^^^^
 
-Clone the `Clarity <https://github.com/CasperLabs/clarity>`_ repository:
+Clone this `GitHub repository <https://github.com/CasperLabs/clarity>`_, which contains two useful tools that you will need for testing:
+
+* An event store that runs as a local webserver
+* An event handler that processes a stream of events from the blockchain
+
+You do not need to follow the entire README file in the above repository. The instructions below are sufficient for this tutorial.
 
 .. code-block:: bash
 

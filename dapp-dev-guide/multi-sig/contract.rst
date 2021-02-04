@@ -43,17 +43,13 @@ In the next section, you will build and prepare the smart contract for deploymen
 Building the Smart Contract
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Install ``cargo-casperlabs`` if you have not done so already. This is a command-line tool for generating a WebAssembly smart contract (or a WASM) in Casper.
-
-.. code-block:: bash
-
-	$ cargo install cargo-casperlabs
+Before building the smart contract for this tutorial, you need to install the `Rust Contract SDK <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_. Make sure you have the `development environment set up <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html#development-environment-setup>`_ before proceeding.
 
 Navigate to the ``keys-manager/contract`` folder and set up the WASM compilation Rust toolchain, which will give you access to all the tools needed for developing smart contracts. 
 
 .. code-block:: bash
 
-	$ cd contract
+	$ cd keys-manager/contract
 	$ rustup install $(cat rust-toolchain)
 	$ rustup target add --toolchain $(cat rust-toolchain) wasm32-unknown-unknown
 
