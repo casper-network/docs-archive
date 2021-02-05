@@ -6,7 +6,7 @@ First clone the contract from GitHub:
 
 .. code-block:: bash
 
-   $ git clone http://github.com/CasperLabs/erc20.git
+   $ git clone https://github.com/casper-ecosystem/erc20
 
 
 Ensure that you have pre-requisites installed. 
