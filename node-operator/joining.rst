@@ -41,19 +41,15 @@ systemd. Start the node with:
 
 .. code-block:: bash
 
-   sudo systemctl start casper-node
+   sudo systemctl start casper-node-launcher
 
 For more information visit `Github <https://github.com/CasperLabs/casper-node/tree/master/resources/production>`_
 
-Step 6: Confirm the Node Proposes Blocks
-----------------------------------------
-
-Once the node catches up to the current era, and it is part of the ``era-validators`` structure in the auction contract, it will propose a block when
-selected as leader.  Look for the node's public key as ``proposer`` for a new block in the ``/status`` endpoint.
+Step 6: Confirm the Node is Syncronized
+---------------------------------------
 
 While the node is synchronizing, the ``/status`` endpoint is available. You will be able to compare this to
-other node's status endpoint ``era_id`` and ``height`` to determine if you are caught up.You will not be able to perform any
-
+other node's status endpoint ``era_id`` and ``height`` to determine if you are caught up. You will not be able to perform any
 ``casper-client`` calls to your ``7777`` RPC port until your node is fully caught up.
 
 
@@ -61,3 +57,7 @@ Step 7: Send the Bonding Request
 --------------------------------
 
 To avoid being ejected for liveness failures, it is critical that the bonding request be sent to the local node only after it has synchronized the protocol state and linear blockchain.  
+
+For this reason it is recommended that you use ``casper-client`` with the default ``--node-address`` which will talk to localhost.
+
+Please see the bonding page to submit a bonding request to change from a syncronized node to a validator.
