@@ -3,26 +3,26 @@
 
 
 Smart Contract Upgrade Tutorial
-==========================
+===============================
 
-This tutorial shows you how to upgrade smart contracts.  
+This tutorial shows you how to upgrade smart contracts. Casper contracts are upgradeable, making it easy for contract authors to add features and fix bugs in smart contracts.
 
-Casper contracts are upgradeable, making it easy for contract authors for add features and fix bugs in smart contracts.
+The process of upgrading a smart contract is simple. All you need is to deploy a new version of the contract and overwrite the old functions with new ones. 
 
-The process of upgrading a smart contract is simple. All that needs to be done is to deploy a new version of the contract and overwrite the old functions with new ones.
+These are the essential steps you need to follow:
 
+#. Deploy the contract with an *upgrade* function
+#. Add an entry point in the *call* function for the *upgrade* function
+#. Add the new features you desire
 
+Here are specific examples of how to implement the upgrade functionality.
 
+Step 1. Deploy the contract with an 'upgrade' function
+-------------------------------------------------------
 
-Upgrade   
-------------   
+When you first deploy the contract, you must include an *upgrade* function. Since the contract is immutable, you cannot add the *upgrade* function after deployment. Without the this function, you cannot upgrade the contract. In other words, you must include the *upgrade* function when you first deploy the contract.
 
-Upgrading smart contracts require 2 pieces:
-
-1. An upgrade function needs to be present in the contract when the contract is *first deployed*. Without this, the contract is immutable, and cannot be changed in the future.
- 
-
-Let's start by creating a function our contract can use to upgrade itself with:
+Start by creating an *upgrade* function in your contract similar to the following example.
 
 .. code-block:: rust
 
@@ -37,9 +37,10 @@ Let's start by creating a function our contract can use to upgrade itself with:
 	}
 
 
-2, An entry point in the call function to the upgrade function. This enables the upgrade function to be invoked in the future.
+Step 2. Add an entry point in the 'call' function 
+-------------------------------------------------
 
-
+Next, you need to add an entry point to the *upgrade* function in the *call* function. This enables the contract execution to invoke the *upgrade* function in the future.
 
 .. code-block:: rust
 
@@ -68,16 +69,17 @@ Let's start by creating a function our contract can use to upgrade itself with:
 	    set_key(CONTRACT_HASH, new_contract_hash);
 	}
 
+Step 3. Add new features
+------------------------
 
-Now this contract can be upgraded with new features and functions:
-
+Now you are ready to upgrade your contract and add the new features and functions you desire.
 
 .. code-block:: rust
 	// Using the package hash and our access token, we're able to    
-	// upgrade our contract with new features and a new functions   
+	// upgrade our contract with new features and new functions   
 
-	    let contract_package: ContractPackageHash = runtime::get_named_arg(ARG_CONTRACT_PACKAGE); // we need to get package hash of our first contract
-	    let _access_token: URef = runtime::get_named_arg("accesstoken"); // our secret access token, we have defined in our first version
+	    let contract_package: ContractPackageHash = runtime::get_named_arg(ARG_CONTRACT_PACKAGE); // Get the package hash of the first contract
+	    let _access_token: URef = runtime::get_named_arg("accesstoken"); // Our secret access token, defined in the first version
 
 	    let entry_points = {
 		let mut entry_points = EntryPoints::new();
@@ -92,29 +94,21 @@ Now this contract can be upgraded with new features and functions:
 		entry_points
 	    };
 
-	    // lets deploy the new version of our contract and replace the old functions with new once.   
+	    // Deploy the new version of the contract and replace the old functions with new one.   
 	    let (_, _) = storage::add_contract_version(contract_package.into(), entry_points, Default::deault());   
 
+The `add_contract_version <https://docs.rs/casperlabs-contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_ API will allow you to deploy a new version of your contract.
 
+Remember, it is essential to include the *upgrade* function and safeguard the access token when you first deploy the contract. You will need the access token for future upgrades.
 
-The *storage::add_contract_version* function. This function will allow us to deploy a new version of our contract.  
+External links
+--------------
 
+* `Sample upgrader <https://github.com/CasperLabs/casper-node/tree/master/smart_contracts/contracts/test/do-nothing-stored-upgrader>`_
+* `API details for add_contract_version <https://docs.rs/casperlabs-contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_
+* `Other examples of smart contracts <https://github.com/CasperLabs/casper-node/tree/master/smart_contracts>`_
 
-Read more here: 
-https://docs.rs/casper-contract/latest/casper_contract/contract_api/storage/fn.add_contract_version.html
-
-
-It is important to include the upgrade function and safeguard the access token from the first deployment of the contract. The access token will be needed for future upgrades.
-
-External links:    
-------------   
-https://github.com/CasperLabs/casper-node/tree/master/smart_contracts/contracts/test/local-state-stored-upgraded   
-https://github.com/CasperLabs/casper-node/tree/master/smart_contracts/contracts/test/local-state-stored-upgrader   
-https://docs.rs/casperlabs-contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html
-https://github.com/CasperLabs/casper-node/tree/master/smart_contracts   
-
-
-For more documented sample code, Check out the contract-upgrade-example repository here:      
-https://github.com/casper-ecosystem/contract-upgrade-example
-
-
+..
+ Commented out until I can find the link that works:
+ For more documented sample code, Check out the contract-upgrade-example repository here:
+ https://github.com/casper-ecosystem/contract-upgrade-example
