@@ -120,6 +120,7 @@ Next, we will transfer tokens from the main account and perform a deployment. Wh
 .. code-block:: javascript
 
 	deploy = utils.transferDeploy(mainAccount, firstAccount, 1);
+	await utils.sendDeploy(deploy, [firstAccount, secondAccount]);
 
 .. image:: ../../assets/tutorials/multisig/step_6.png
   :alt: Image showing the output of the funds transfer.
