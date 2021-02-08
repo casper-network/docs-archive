@@ -56,8 +56,8 @@ other node's status endpoint ``era_id`` and ``height`` to determine if you are c
 Step 7: Send the Bonding Request
 --------------------------------
 
-To avoid being ejected for liveness failures, it is critical that the bonding request be sent to the local node only after it has synchronized the protocol state and linear blockchain.  
+To avoid being ejected for liveness failures, it is critical that the bonding request be sent to the local node only after it has synchronized the protocol state and linear blockchain.
 
 For this reason it is recommended that you use ``casper-client`` with the default ``--node-address`` which will talk to localhost.
 
-Please see the bonding page to submit a bonding request to change from a syncronized node to a validator.
+Please see the bonding page to submit a bonding request to change from a synchronized node to a validating node.

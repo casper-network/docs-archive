@@ -129,7 +129,6 @@ The Casper network is a permissionless, proof of stake network - which implies t
 * Query the status endpoint of a trusted validator ( http://[validator_id]:8888/status )
 * Obtain the hash of a block from the status endpoint.
 * Update the ``config.toml`` for the node to include the trusted hash. There is a field dedicated to this near the top of the file.
-* Ensure that your storage directory is clear.  For the time being, the system requires an empty starting state in order to synchronize.  
 
 Secret Keys
 ^^^^^^^^^^^

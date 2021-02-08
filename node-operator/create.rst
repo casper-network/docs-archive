@@ -16,8 +16,8 @@ The Casper node software creates a genesis block from the following inputs:
 Chainspec.toml
 ^^^^^^^^^^^^^^
 
-A version of the chainspec is downloaded with by a post install script that ships with the debian packages. This pulls
-the file from http://genesis.casperlabs.io/casper-delta/chainspec.toml.
+A version of the chainspec is downloaded by the ``pull_casper_node_version.sh`` script installed with the casper-node-launcher debian package.
+This pulls the chainspec.toml file from the appropriate path at http://genesis.casperlabs.io/.
 
 The production version of the file from which this is based on can be found at ``casper-node/resources/production/chainspec.toml``
 in the code base.  To create a custom network, this file can be updated as desired. Any changes to this file will result in a different genesis hash.
@@ -33,4 +33,4 @@ Information in the file is organized as:
 
 If an account is not bonded at genesis, specify a ``0`` for the bond amount.  
 
-Similar to the chainspec, this is pulled from http://genesis.casperlabs.io/casper-delta/account.csv.
+Similar to the chainspec.toml, this is pulled from the appropriate path at  http://genesis.casperlabs.io/.
