@@ -5,7 +5,7 @@ Basic Node Setup
 Casper Node Launcher
 --------------------
 
-The node is run from the ``casper-node-launcher`` package. This can be installed with a Debian package which also
+The node software is run from the ``casper-node-launcher`` package. This can be installed with a Debian package which also
 creates the casper user, creates directory structures and sets up a systemd unit and logrotate.
 
 The casper-node-launcher Debian package can be obtained from https://bintray.com/casperlabs/debian/casper-node-launcher.
