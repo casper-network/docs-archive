@@ -102,11 +102,11 @@ Sometimes you will require multiple associated keys to execute a transaction. In
          "associated_keys": [
             {
                "account_hash": "account-hash-a1…", 
-               "weight": 1   // can deploy, but needs to sign with b2
+               "weight": 1   // can deploy, but needs to sign with b2 to manage account
             },
             {
                "account_hash": "account-hash-b2…",
-               "weight": 1   // can deploy, but needs to sign with a1
+               "weight": 1   // can deploy, but needs to sign with a1 to manage account
             }
          ],
          "main_purse": "uref-1234…",
