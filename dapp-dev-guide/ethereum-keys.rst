@@ -9,7 +9,7 @@ In this section we'll explore secp256k1, commonly known as Ethereum keys.
 Key Generation
 --------------
 
-The CasperLabs client enables the creation of a new ed25519 key-pair and the coresponding account hash.
+The CasperLabs client enables the creation of a new ed25519 key-pair. 
 
 .. code-block:: bash
 
