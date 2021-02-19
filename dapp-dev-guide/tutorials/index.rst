@@ -1,11 +1,11 @@
 Tutorials
 =========
 
-The following tutorials present several Casper features in depth.
+The following tutorials present several Casper features in depth:
 
 .. toctree::
-   :hidden:
- 
+   :maxdepth: 1
+  
    erc20/index
    kv-storage-tutorial
    multi-sig/index
