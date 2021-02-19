@@ -63,7 +63,7 @@ Next, compile the smart contract and create the WASM file using this command:
 
 If the command were successful, you would find a ``keys-manager.wasm`` file in the following directory structure:
 
-.. image:: ../../assets/tutorials/multisig/keys-manager-wasm.png
+.. image:: ../../../assets/tutorials/multisig/keys-manager-wasm.png
   :width: 350
   :alt: The contract directory structure contains a keys-manager-wasm file.
 

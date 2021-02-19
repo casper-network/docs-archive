@@ -60,14 +60,14 @@ Navigate to your ``/keys-manager/client`` folder and run the ``keys-manager.js``
 
 If the code runs successfully, the beginning of the output would look like this:
 
-.. image:: ../../assets/tutorials/multisig/output_begin.png
+.. image:: ../../../assets/tutorials/multisig/output_begin.png
   :alt: An image of the beginning of the keys-manager output.
 
 |
 
 Also, the end of the output would include removing the second key and would print the state of the account.
 
-.. image:: ../../assets/tutorials/multisig/output_end.png
+.. image:: ../../../assets/tutorials/multisig/output_end.png
   :alt: An image of the end of the keys-manager output.
 
 |
