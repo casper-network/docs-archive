@@ -22,7 +22,7 @@ Navigate to your ``casper-node`` folder and run the following commands.
 
 The network you created with the nctl tool has a special account called a faucet account, which holds your tokens. You will need these tokens to interact with the network. If the network is up and running, you will be able to see your faucet account details.
 
-.. image:: ../../assets/tutorials/multisig/account_example.png
+.. image:: ../../../assets/tutorials/multisig/account_example.png
   :alt: The faucet account details as setup by nctl..
 
 | 
@@ -66,7 +66,7 @@ In the code, we set the weight for the main account to 3. The state of the accou
 
 	deploy = utils.keys.setKeyWeightDeploy(mainAccount, mainAccount, 3);
 
-.. image:: ../../assets/tutorials/multisig/step_1.png
+.. image:: ../../../assets/tutorials/multisig/step_1.png
   :alt: Account state when the weight of the main account is 3.
 
 | 
@@ -77,7 +77,7 @@ Next, we set the key management threshold for the main account to 3. With this t
 
 	deploy = utils.keys.setKeyManagementThresholdDeploy(mainAccount, 3);
 
-.. image:: ../../assets/tutorials/multisig/step_2.png
+.. image:: ../../../assets/tutorials/multisig/step_2.png
   :alt: Account state when the key management threshold for the main account is 3.
 
 | 
@@ -88,7 +88,7 @@ Next, the client code sets the deployment threshold to 2 for this account.
 
 	deploy = utils.keys.setDeploymentThresholdDeploy(mainAccount, 2);
 
-.. image:: ../../assets/tutorials/multisig/step_3.png
+.. image:: ../../../assets/tutorials/multisig/step_3.png
   :alt: Account state when the key management threshold for the main account is 3.
 
 | 
@@ -99,7 +99,7 @@ The next step is to add a new key with weight 1. You cannot do anything with thi
 
 	deploy = utils.keys.setKeyWeightDeploy(mainAccount, firstAccount, 1);
 
-.. image:: ../../assets/tutorials/multisig/step_4.png
+.. image:: ../../../assets/tutorials/multisig/step_4.png
   :alt: Account state when a new key is added with weight 1, for deployment.
 
 | 
@@ -110,7 +110,7 @@ We will add another key with weight 1. If you use this key with the second key, 
 
 	deploy = utils.keys.setKeyWeightDeploy(mainAccount, secondAccount, 1);
 
-.. image:: ../../assets/tutorials/multisig/step_5.png
+.. image:: ../../../assets/tutorials/multisig/step_5.png
   :alt: Account state when the a second key is added with weight 1, for deployment.
 
 | 
@@ -122,7 +122,7 @@ Next, we will transfer tokens from the main account and perform a deployment. Wh
 	deploy = utils.transferDeploy(mainAccount, firstAccount, 1);
 	await utils.sendDeploy(deploy, [firstAccount, secondAccount]);
 
-.. image:: ../../assets/tutorials/multisig/step_6.png
+.. image:: ../../../assets/tutorials/multisig/step_6.png
   :alt: Image showing the output of the funds transfer.
 
 | 
@@ -156,7 +156,7 @@ After the above transfer of funds, the client code removes both deployment accou
 
 We are left with the following account structure:
 
-.. image:: ../../assets/tutorials/multisig/step_8.png
+.. image:: ../../../assets/tutorials/multisig/step_8.png
   :alt: Account state after the deployments accounts were removed.
 
 | 
