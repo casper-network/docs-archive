@@ -29,7 +29,6 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    :hidden:
 
    Introduction <self>
-   getting-help
    setup-of-rust-contract-sdk
    writing-rust-contracts
    contract-dsl/index
@@ -41,8 +40,6 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    execution-error-codes
    ethereum-keys
    solidity
-   erc20/index
-   kv-storage-tutorial
-   multi-sig/index
-   upgrade-tutorial
+   tutorials/index
+   getting-help
 
