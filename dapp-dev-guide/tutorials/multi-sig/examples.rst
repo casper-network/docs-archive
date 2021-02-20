@@ -3,13 +3,6 @@ Additional Scenarios
 
 This section walks you through additional scenarios where accounts have multiple associated keys for signing transactions at various thresholds.
 
-The `nctl tool <https://github.com/CasperLabs/casper-node/blob/master/utils/nctl/README.md>`_ set up a local Casper network to display the faucet account structure in the image below.
-
-.. image:: ../../../assets/tutorials/multisig/account_example.png
-  :alt: The faucet account details as setup by nctl..
-
-| 
-
 Scenario 1: signing transactions with a single key
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
