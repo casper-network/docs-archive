@@ -1,12 +1,12 @@
 
 .. _economics:
 
-Economics of Our Platform
+Economics
 =========
 
-Economic activity on our platform can be conceptualized as taking place on four distinct layers, consensus, runtime, ecosystem and the macroeconomy. Each layer, consensus and up, provides a foundation for activity taking place on the next layer. A trust-less platform requires that proper incentives be provided to participants operating each of these layers to ensure that they work together to unlock the value of the platform.
+Economic activity on Casper can be conceptualized as taking place on four distinct layers, consensus, runtime, ecosystem and the macroeconomy. Each layer, consensus and up, provides a foundation for activity taking place on the next layer. A trust-less platform requires that proper incentives be provided to participants operating each of these layers to ensure that they work together to unlock the value of the platform.
 
-We cannot yet provide formal game theoretic results for our incentive mechanisms, but interested readers can follow our progress with the `Economics of the CasperLabs Blockchain <https://github.com/CasperLabs/Casper-economics-paper` paper.
+We cannot yet provide formal game theoretic results for our incentive mechanisms, but interested readers can follow our progress with the `Economics of the Casper Blockchain <https://github.com/CasperLabs/Casper-economics-paper` paper.
 
 This section of our online documentation is intended only to familiarize the user with our core economics features, rather than to describe their precise implementation and user interface.
 
@@ -35,7 +35,7 @@ The *auction* determines the composition of the validator set for each era of th
 
 *Rewards* (per era) are issued to validators who perform, at their nominal pace, in such a way as to make timely progress on block finalization. These rewards are shared with delegators proportionally to their contributions, net of a cut taken by the validator.
 
-*Evictions* deactivate validators who fail to participate in an era, disabling their bid and suspending their participation until they activate a special entry point in the auction contract.
+*Evictions* deactivate validators who fail to participate in an era, disabling their bid and suspending their participation until they signal readiness to resume particiaption by invoking a special entry point in the auction contract.
 
 Runtime
 ---------
