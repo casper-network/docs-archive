@@ -5,7 +5,7 @@ This section walks you through additional scenarios where accounts have multiple
 
 The `nctl tool <https://github.com/CasperLabs/casper-node/blob/master/utils/nctl/README.md>`_ set up a local Casper network to display the faucet account structure in the image below.
 
-.. image:: ../../assets/tutorials/multisig/account_example.png
+.. image:: ../../../assets/tutorials/multisig/account_example.png
   :alt: The faucet account details as setup by nctl..
 
 | 
