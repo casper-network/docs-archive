@@ -3,13 +3,6 @@ Additional Scenarios
 
 This section walks you through additional scenarios where accounts have multiple associated keys for signing transactions at various thresholds.
 
-The `nctl tool <https://github.com/CasperLabs/casper-node/blob/master/utils/nctl/README.md>`_ set up a local Casper network to display the faucet account structure in the image below.
-
-.. image:: ../../../assets/tutorials/multisig/account_example.png
-  :alt: The faucet account details as setup by nctl..
-
-| 
-
 Scenario 1: signing transactions with a single key
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -24,14 +17,14 @@ In this example, only one key can sign transactions in the name of this account.
        "merkle_proof": "01000…..11",
        "stored_value": {
           "Account": {
-             "account_hash": "account-hash-a1…",
+             "account_address": "account-address-a1…",
                 "action_thresholds": {
                    "deployment": 1,
                    "key_management": 1
              },
              "associated_keys": [
                 {
-                   "account_hash": "account-hash-a1…",
+                   "account_address": "account-address-a1…",
                    "weight": 1
                 }
              ],
@@ -45,7 +38,7 @@ In this example, only one key can sign transactions in the name of this account.
 Scenario 2: deploying with special keys
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this example, you have two keys. One key can only perform deployments, while the second key can perform key management and deployments. The key with account hash *a1* can deploy and make account changes, but the second key with account hash *b2* can only deploy.
+In this example, you have two keys. One key can only perform deployments, while the second key can perform key management and deployments. The key with account address *a1* can deploy and make account changes, but the second key with account address *b2* can only deploy.
 
 **Faucet account in scenario 2:**
 
@@ -56,18 +49,18 @@ In this example, you have two keys. One key can only perform deployments, while 
     "merkle_proof": "01000…..11",
     "stored_value": {
         "Account": {
-            "account_hash": "account-hash-a1…",
+            "account_address": "account-address-a1…",
             "action_thresholds": {
                 "deployment": 1,
                 "key_management": 2
             },
             "associated_keys": [
                 {
-                    "account_hash": "account-hash-a1…",
+                    "account_address": "account-address-a1…",
                     "weight": 2
                 },
                 {
-                    "account_hash": "account-hash-b2…", // a deployment key
+                    "account_address": "account-address-b2…", // a deployment key
                     "weight": 1
                 }
             ],
@@ -94,18 +87,18 @@ Sometimes you will require multiple associated keys to execute a transaction. In
    "merkle_proof": "01000…..11",
    "stored_value": {
       "Account": {
-         "account_hash": "account-hash-a1…",
+         "account_address": "account-address-a1…",
          "action_thresholds": {
             "deployment": 1,
             "key_management": 2
          },
          "associated_keys": [
             {
-               "account_hash": "account-hash-a1…", 
+               "account_address": "account-address-a1…", 
                "weight": 1   // can deploy, but needs to sign with b2 to manage account
             },
             {
-               "account_hash": "account-hash-b2…",
+               "account_address": "account-address-b2…",
                "weight": 1   // can deploy, but needs to sign with a1 to manage account
             }
          ],
@@ -133,22 +126,22 @@ In this case, you can use the safe key to remove the lost or stolen keys from th
    "merkle_proof": "01000…..11",
    "stored_value": {
       "Account": {
-         "account_hash": "account-hash-a1…",
+         "account_address": "account-address-a1…",
          "action_thresholds": {
             "deployment": 2,
             "key_management": 3
          },
          "associated_keys": [
             {
-               "account_hash": "account-hash-a1…",  // a browser key
+               "account_address": "account-address-a1…",  // a browser key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-b2…",  // a mobile key
+               "account_address": "account-address-b2…",  // a mobile key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-c3…",  // a safe key
+               "account_address": "account-address-c3…",  // a safe key
                "weight": 3
             }
          ],
@@ -172,30 +165,30 @@ This example builds upon the previous example, where you can set up multiple saf
    "merkle_proof": "01000…..11",
    "stored_value": {
       "Account": {
-         "account_hash": "account-hash-a1…",
+         "account_address": "account-address-a1…",
          "action_thresholds": {
             "deployment": 2,
             "key_management": 3
          },
          "associated_keys": [
             {
-               "account_hash": "account-hash-a1…",  // a browser key
+               "account_address": "account-address-a1…",  // a browser key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-b2…",  // a mobile key
+               "account_address": "account-address-b2…",  // a mobile key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-c3…",  // a safe key 1
+               "account_address": "account-address-c3…",  // a safe key 1
                "weight": 3
             },
             {
-               "account_hash": "account-hash-d4…",  // a safe key 2
+               "account_address": "account-address-d4…",  // a safe key 2
                "weight": 3
             },
             {
-               "account_hash": "account-hash-e5…",  // a safe key 3
+               "account_address": "account-address-e5…",  // a safe key 3
                "weight": 3
             }
          ],
@@ -219,34 +212,34 @@ Suppose you lose your account key; in this case, "account-hash-00…", you can s
    "merkle_proof": "01000…..11",
    "stored_value": {
       "Account": {
-         "account_hash": "account-hash-00…",
+         "account_address": "account-address-00…",
          "action_thresholds": {
             "deployment": 2,
             "key_management": 3
          },
          "associated_keys": [
             {
-               "account_hash": "account-hash-00…", // the account key
+               "account_address": "account-address-00…", // the account key
                "weight": 0
             },
             {
-               "account_hash": "account-hash-a1…", // a browser key
+               "account_address": "account-address-a1…", // a browser key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-b2…", // a mobile key
+               "account_address": "account-address-b2…", // a mobile key
                "weight": 1
             },
             {
-               "account_hash": "account-hash-c3…", // a safe key 1
+               "account_address": "account-address-c3…", // a safe key 1
                "weight": 3
             },
             {
-               "account_hash": "account-hash-d4…", // a safe key 2
+               "account_address": "account-address-d4…", // a safe key 2
                "weight": 3
             },
             {
-               "account_hash": "account-hash-e5…", // a safe key 3
+               "account_address": "account-address-e5…", // a safe key 3
                "weight": 3
             }
          ],

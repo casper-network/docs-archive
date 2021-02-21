@@ -19,7 +19,7 @@ A blockchain system will need to have a supply of tokens available for the purpo
 
 In addition to the initial supply, the system will have a low rate of inflation, the results of which will be paid out to validators in the form of seigniorage, as described previously in this document.
 
-The number of tokens used as a basis for calculating seigniorage and the above stated allocations is 10 billion.
+The number of tokens used as a basis for calculating seigniorage is 10 billion.
 
 .. _tokens-divisibility:
 
