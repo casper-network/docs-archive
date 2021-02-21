@@ -1,61 +1,112 @@
+Staking Guide
+
 .. role:: raw-html-m2r(raw)
-   :format: htm
+   :format: html
 
 
-The Staking Transaction
+What you need to know before staking:
+=======
+
+Slashing:
+
+Casper does not treat delegated stake differently from node operator(Validator) stake.  If the validator is slashed, all tokens delegated to the validator will also be slashed.
+
+Casper slashes for making inconsistent decisions known as equivocations. Validators that are running a client endorsed by the community 
+
+An equivocating node is slashed at 100%.  All tokens staked to the node are slashed.
+ 
+
+Delegation Rate:
+
+Node operators (Validators) define a commission that they take in exchange for providing staking services.  This commission is represented as a percentage of the rewards that the node operator retains for their services.
+
+Rewards
+
+Validators receive rewards for participating in consensus by voting on blocks sending finality signatures (finalizing blocks).  If a validator is offline, or cannot vote on many blocks, the rewards earned are also reduced. Delegators can only receive a proportional amount of the rewards earned by the validator minus the validator’s commission (Delegation Rate).
+
+Selecting a node for Staking
+
+As a prospective delegator, it is important to select a validating node that you can trust.  Please do your due diligence before you stake your tokens.
+
+
+ 
+Check in on your Stake
+
+It’s recommended that you check in on how your stake is performing from time to time.  If the validator you staked with decides to unbond, your stake will also be unbonded. 
+
+
+Unbonding Period
+
+For security purposes, whenever token is un-staked or un-delegated, the protocol will continue to keep the token locked for a period of 1 day.  This period encompasses the social consensus period.  The time for Social consensus is reserved in the event of a consensus failure or protocol catastrophe.
+
+
+
+Security and Bonding
 --------------------
 
-The most secure way to send a transaction is to compile the contract and send the request to the network. 
-Because the transaction authorizes the token to be locked into the auction contract, it is really important to compile the contract yourself. Here are the steps to do this:
+The most secure way to send a bonding transaction is to compile the contract and send the request to the network. 
+Because the transaction authorizes the bonding purse to be locked into the auction contract, it's really important
+to compile the contract yourself. Here are the steps to do this:
+
 
 * Visit `Github <https://github.com/CasperLabs/casper-node>`_ and fork and clone the repository.
-* Make sure that all dependencies are installed (documented on GitHub).
+* Make sure that all dependencies are installed  (documented on GitHub).
 * Follow the instructions to build the contracts.
-* Create the transaction and deploy it.
-* Check the status of the auction to determine if the bid was accepted.
+* Ensure that the keys you will use for bonding are available & have been funded.
+* Create the bonding transaction & deploy it.
+* Query the system to verify that your bid was accepted.
+* Check the status of the auction to see if you have won a slot.
 
-Building the Delegation Contract
---------------------------------
+Build Add_Bid Contract
+----------------------
 
-Clone the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and build the contracts.
-To build contracts, set up Rust and install all dependencies. Visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
+Because bonding transactions are generic transactions, it's necessary to build the contract that submits a bid.
+Clone the casper-node repository and build the contracts.
+To build contracts, set up Rust & install all dependencies. Visit 'Setting up Rust' in the Developer Guide.
 
-Make sure you build the contracts in release mode.
-
-Example Delegation Transaction
----------------------------
-
-This example shows how to stake your tokens with a specific validator. You need to update the command with the delegation arguments for your scenario.
+Build the contracts in release mode.
 
 .. code-block:: bash
 
-   $ casper-client put-deploy --chain-name delta-10 --node-address http://localhost:7777 -k $HOME/secret_key.pem --session-path  $HOME/casper-node/target/wasm32-      unknown-unknown/release/delegate.wasm  --payment-amount 1000000000  --session-arg "validator:public_key=’VALIDATOR_PUBLIC_KEY_HEX'" --session-arg="amount:u512='AMOUNT'" --session-arg "delegator:public_key='DELEGATOR_PUBLIC_KEY_HEX'"
+   $ make setup-rs
+   $ make build-client-contracts
 
-
-Delegation Arguments
-^^^^^^^^^^^^^^^^^^
-
-The delegate contract accepts 3 arguments:
-
-* **delegator public key**: The public key (in hex) of the account to delegate.  Note: This has to be the matching key to the secret key that signs the deployment.
-* **amount**: This is the amount that is being delegated. 
-* **validator public key**: The public key (in hex) of the validator that the stake will be delegated to.
-
-Checking Transaction Status
+Example Bonding Transaction
 ---------------------------
 
-Since this is a deployment like any other, it is possible to perform ``get-deploy`` using the ``casper-client`` to verify the status of the transaction.
+Note the path to files and keys. Note: the session arguments need to be encased in double quotes, with the parameter values in single quotes.
+Note the required payment amount.  It must contain at least 10 zeros.  Payment amount is specified in motes.
+
+.. code-block:: bash
+
+   casper-client put-deploy --chain-name <CHAIN_NAME> --node-address http://<HOST:PORT> --secret-key /etc/casper/<VALIDATOR_SECRET_KEY>.pem --session-path  $HOME/casper-node/target/wasm32-unknown-unknown/release/add_bid.wasm  --payment-amount 1000000000  --session-arg="public_key:public_key='<VALIDATOR_PUBLIC_KEY_HEX>'" --session-arg="amount:u512='<BID-AMOUNT>'" --session-arg="delegation_rate:u64='<PERCENT_TO_KEEP_FROM_DELEGATORS>'"
+
+Contract Arguments
+^^^^^^^^^^^^^^^^^^
+
+The add_bid contract accepts 3 arguments:
+
+
+* public key: The public key in hex of the account to bond.  Note: This has to be the matching key to the validator secret key that signs the deploy.
+* amount: This is the amount that is being bid. If the bid wins, this will be the validator's initial bond amount.
+* delegation_rate: The percentage of rewards that the validator retains from delegators that delegate their tokens to the node.
+
+Check the Status of the Transaction
+-----------------------------------
+
+Since this is a deployment like any other, it's possible to perform ``get-deploy`` using the client.
 
 .. code-block:: bash
 
    casper-client get-deploy --node-address http://<HOST:PORT> <DEPLOY_HASH>
 
-The above command will return the status of execution.
+Which will return the status of execution.
 
-Checking Validator and Delegation Status
-----------------------------------------
+Check the Status of the bid in the Auction
+------------------------------------------
 
-If the bid wins the auction, the public key and associated bond amount (formerly bid amount) will appear in the auction contract as part of the validator set for a future era. To determine if the bid was accepted, query the auction contract via the Rust ``casper-client``:
+If the bid wins the auction, the public key and associated bond amount (formerly bid amount) will appear in the auction contract as part of the 
+validator set for a future era. To determine if the bid was accepted, query the auction contract via the rust ``casper-client``
 
 .. code-block:: bash
 
@@ -65,74 +116,187 @@ The request returns a response that looks like this:
 
 .. code-block:: bash
 
-   "bid": {
-          "bonding_purse": "uref-5bbf1fe90097a59904f71005fd8f0beeabd0598a559617ec1dac75900b8e726a-007",
-          "delegation_rate": 10,
-          "delegators": [
-            {
-              "delegator": {
-                "bonding_purse": "uref-a2a5252edc708f285da3b6b3339b574782e84dcb42042d6c79ad1c4e5fe4bea0-007",
-                "delegatee": "01fe61249c459693809bf4f789dd38bc3b7772aa4ffaf642cc6993f4a1004df6c1",
-                "reward": "12438241539249672248738838620",
-                "staked_amount": "103388952342890156882919933495"
-              },
-              "public_key": "013e5817d5f88032c759f11eceb570772399a1c279cb5260c06b3e210c27523381"
-            }
-          ],
-          "reward": "11496247653359332605909974274",
-          "staked_amount": "73062616210419139229561465618"
+   {
+  "jsonrpc": "2.0",
+  "result": {
+    "bids": [
+      {
+        "bid": {
+          "bonding_purse": "uref-488a0bbc3c3729f5696965da7a3aeee83805392944e36157909da273255fdb85-007",
+          "delegation_rate": 0,
+          "delegators": [],
+          "release_era": null,
+          "reward": "93328432442428418861229954179737",
+          "staked_amount": "10000000000000000"
         },
-        "public_key": "01fe61249c459693809bf4f789dd38bc3b7772aa4ffaf642cc6993f4a1004df6c1"
+        "public_key": "013f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012"
       },
       {
-
-If your public key and associated amount appear in the ``bid`` data structure, this means that the delegation request has been processed successfully. This does **not** mean the associated validator is part of the validator set. Confirm 
-that the validator that you have selected is part of the ``era_validators`` structure, described below. 
-
-
-.. code-block:: bash
-
-   "era_validators": [
+        "bid": {
+          "bonding_purse": "uref-14e128b099b0c3680100520226e6999b322989586cc22db0630db5ec1329f0a7-007",
+          "delegation_rate": 10,
+          "delegators": [],
+          "release_era": null,
+          "reward": "0",
+          "staked_amount": "9000000000000000"
+        },
+        "public_key": "01405133e73ef2946fe3a2d76a4c75d305a04ad6b969f3c4a8a0d27235eb260f87"
+      },
       {
-        "era_id": 608,
+        "bid": {
+          "bonding_purse": "uref-6c0bf8cee1c0749dd9766376910867a84b2e826eaf6c118fcb0224c7d8d229dd-007",
+          "delegation_rate": 10,
+          "delegators": [],
+          "release_era": null,
+          "reward": "266185120443441810685787",
+          "staked_amount": "100000000"
+        },
+        "public_key": "01524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f"
+      },
+      {
+        "bid": {
+          "bonding_purse": "uref-3880b3daf95f962f57e6a4b1589564abf7deef58a1fb0753d1108316bba7b3d7-007",
+          "delegation_rate": 10,
+          "delegators": [],
+          "release_era": null,
+          "reward": "0",
+          "staked_amount": "9000000000000000"
+        },
+        "public_key": "01a6901408eda702a653805f50060bfe00d5e962747ee7133df64bd7bab50b4643"
+      },
+      {
+        "bid": {
+          "bonding_purse": "uref-5a777c9cd53456b49eecf25dcc13e12ddff4106175a69f8e24a7c9a4c135df0d-007",
+          "delegation_rate": 0,
+          "delegators": [],
+          "release_era": null,
+          "reward": "93328432442428418861229954179737",
+          "staked_amount": "10000000000000000"
+        },
+        "public_key": "01d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e"
+      }
+    ],
+    "block_height": 318,
+    "era_validators": [
+      {
+        "era_id": 20,
         "validator_weights": [
           {
-            "public_key": "01fe61249c459693809bf4f789dd38bc3b7772aa4ffaf642cc6993f4a1004df6c1",
-            "weight": "297466251800051194565831025745"
+            "public_key": "013f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012",
+            "weight": "10000000000000000"
           },
           {
-            "public_key": "0103a5ebf9f685b0960de2dae045846a432868ba7f0dd5f3f57a7fb85a51d6cd39",
-            "weight": "243120176614787190607411148495"
+            "public_key": "01405133e73ef2946fe3a2d76a4c75d305a04ad6b969f3c4a8a0d27235eb260f87",
+            "weight": "9000000000000000"
           },
           {
-            "public_key": "0105463b5afdb735960f85b7cb93aa1d6cf629b882946846b9bc1a7bd39a9441b4",
-            "weight": "271934137216396824082469617541"
+            "public_key": "01524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f",
+            "weight": "100000000"
           },
+          {
+            "public_key": "01a6901408eda702a653805f50060bfe00d5e962747ee7133df64bd7bab50b4643",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e",
+            "weight": "10000000000000000"
+          }
+        ]
+      },
+      {
+        "era_id": 21,
+        "validator_weights": [
+          {
+            "public_key": "013f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012",
+            "weight": "10000000000000000"
+          },
+          {
+            "public_key": "01405133e73ef2946fe3a2d76a4c75d305a04ad6b969f3c4a8a0d27235eb260f87",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f",
+            "weight": "100000000"
+          },
+          {
+            "public_key": "01a6901408eda702a653805f50060bfe00d5e962747ee7133df64bd7bab50b4643",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e",
+            "weight": "10000000000000000"
+          }
+        ]
+      },
+      {
+        "era_id": 22,
+        "validator_weights": [
+          {
+            "public_key": "013f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012",
+            "weight": "10000000000000000"
+          },
+          {
+            "public_key": "01405133e73ef2946fe3a2d76a4c75d305a04ad6b969f3c4a8a0d27235eb260f87",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f",
+            "weight": "100000000"
+          },
+          {
+            "public_key": "01a6901408eda702a653805f50060bfe00d5e962747ee7133df64bd7bab50b4643",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e",
+            "weight": "10000000000000000"
+          }
+        ]
+      },
+      {
+        "era_id": 23,
+        "validator_weights": [
+          {
+            "public_key": "013f774a58f4d40bd9b6cce7e306e53646913860ef2a111d00f0fe7794010c4012",
+            "weight": "10000000000000000"
+          },
+          {
+            "public_key": "01405133e73ef2946fe3a2d76a4c75d305a04ad6b969f3c4a8a0d27235eb260f87",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01524a5f3567d7b5ea17ca518c9d0320fb4a75a28a5eab58d06c755c388f20a19f",
+            "weight": "100000000"
+          },
+          {
+            "public_key": "01a6901408eda702a653805f50060bfe00d5e962747ee7133df64bd7bab50b4643",
+            "weight": "9000000000000000"
+          },
+          {
+            "public_key": "01d62fc9b894218bfbe8eebcc4a28a1fc4cb3a5c6120bb0027207ba8214439929e",
+            "weight": "10000000000000000"
+          }
+        ]
+      }
+    ],
+    "state_root_hash": "c16ba80ea200d786008f8100ea79f9cfeb8d7d5ee8b133eda5a50dcf1c7131e8"
+  },
+  "id": -3624528661787095850
+   }
 
-  
-What if my Validator is not in the Era Validators?
+Note the ``era_id`` and the ``validator_weights`` sections of the response. For a given ``era_id`` a set of validators is defined.  To determine the current era,
+ping the ``/status`` endpoint of a validating node in the network.  This will return the current ``era_id``.  The current ``era_id`` will be listed in the auction
+info response. If the public key associated with a bid appears in the ``validator_weights`` structure for an era, then the account is bonded in that era.
+
+If the Bid doesn't win
 ----------------------
 
-If you observe your delegation request in the ``bid`` structure but do not see the associated validator key in
-``era_validators``, then the validator you selected is not part of the current validator set. In this event, 
-your tokens are not earning rewards unless you undelegate, wait through the unbonding period, and re-delegate
-to another validator.
+If your bid doesn't win a slot in the auction, it is because your bid is too low.  The resolution for this problem is to increase your bid amount.
+It is possible to submit additional bids, to increase the odds of winning a slot. It is also possible to encourage token holders to delegate stake to 
+you for bonding.
 
-Un-delegating
--------------
+Withdrawing a Bid
+-----------------
 
-To unbond (un-delegate) tokens in Casper, a specific transaction is required. The command below shows you how to unbond. You need to update the command with the un-delegation arguments for your scenario. 
+Follow the steps in `Unbonding <https://docs.casperlabs.io/en/latest/node-operator/unbonding.html>`_ to withdraw a bid.
 
-.. code-block:: bash
-
-   $ casper-client put-deploy --chain-name delta-10 --node-address http://localhost:7777 -k $HOME/secret_key.pem --session-path  $HOME/casper-node/target/wasm32-      unknown-unknown/release/undelegate.wasm  --payment-amount 1000000000  --session-arg "validator:public_key=’VALIDATOR_PUBLIC_KEY_HEX'" --session-arg="amount:u512='AMOUNT'" --session-arg "delegator:public_key='DELEGATOR_PUBLIC_KEY_HEX'"
-   
-   
-Un-delegation Arguments
-^^^^^^^^^^^^^^^^^^
-
-The un-delegate contract accepts 3 arguments:
-
-* **delegator public key**: The public key (in hex) of the account to un-delegate.  Note: This has to be the matching key to the secret key that signs the deployment.
-* **amount**: This is the amount that is being un-delegated. 
-* **validator public key**: The public key (in hex) of the validator to which the stake is delegated.   
