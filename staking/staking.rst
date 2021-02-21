@@ -4,16 +4,42 @@ Staking Guide
    :format: html
 
 
-Bonding
+What you need to know before staking:
 =======
 
-It is recommended that a bonding request be sent prior to beginning the synchronization process. Bonding in Casper takes
-place through the auction contract via the ``add_bid.wasm`` contract. The auction runs for a future era, every era. The Chainspec 
-specifies the number of slots available, and the auction will  take the top N slots and create the validator set for the future era.
-In the testnet, era durations are approx. 30 minutes. The entire process takes approximately 3 eras. Therefore, the time of submission
-of a bid, to inclusion in the validator set is a minimum of 90 minutes.\ :raw-html-m2r:`<br>`
-Bonding requests (bids) are transactions like any other. 
-Because they are generic transactions, they are more resistant to censorship.
+Slashing:
+
+Casper does not treat delegated stake differently from node operator(Validator) stake.  If the validator is slashed, all tokens delegated to the validator will also be slashed.
+
+Casper slashes for making inconsistent decisions known as equivocations. Validators that are running a client endorsed by the community 
+
+An equivocating node is slashed at 100%.  All tokens staked to the node are slashed.
+ 
+
+Delegation Rate:
+
+Node operators (Validators) define a commission that they take in exchange for providing staking services.  This commission is represented as a percentage of the rewards that the node operator retains for their services.
+
+Rewards
+
+Validators receive rewards for participating in consensus by voting on blocks sending finality signatures (finalizing blocks).  If a validator is offline, or cannot vote on many blocks, the rewards earned are also reduced. Delegators can only receive a proportional amount of the rewards earned by the validator minus the validator’s commission (Delegation Rate).
+
+Selecting a node for Staking
+
+As a prospective delegator, it is important to select a validating node that you can trust.  Please do your due diligence before you stake your tokens.
+
+
+ 
+Check in on your Stake
+
+It’s recommended that you check in on how your stake is performing from time to time.  If the validator you staked with decides to unbond, your stake will also be unbonded. 
+
+
+Unbonding Period
+
+For security purposes, whenever token is un-staked or un-delegated, the protocol will continue to keep the token locked for a period of 1 day.  This period encompasses the social consensus period.  The time for Social consensus is reserved in the event of a consensus failure or protocol catastrophe.
+
+
 
 Security and Bonding
 --------------------
