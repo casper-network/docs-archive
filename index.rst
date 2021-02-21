@@ -37,3 +37,4 @@ and our token policies.
    economics/index
    dapp-dev-guide/index
    node-operator/index
+   glossary/index
