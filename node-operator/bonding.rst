@@ -5,7 +5,7 @@
 Bonding
 =======
 
-It is recommended that a bonding request be sent prior to beginning the synchronization process. Bonding in Casper takes
+It is recommended that a bonding request be sent once the node has completed the synchronization process. Bonding in Casper takes
 place through the auction contract via the ``add_bid.wasm`` contract. The auction runs for a future era, every era. The Chainspec 
 specifies the number of slots available, and the auction will  take the top N slots and create the validator set for the future era.
 In the testnet, era durations are approx. 30 minutes. The entire process takes approximately 3 eras. Therefore, the time of submission
@@ -17,7 +17,7 @@ Security and Bonding
 --------------------
 
 The most secure way to send a bonding transaction is to compile the contract and send the request to the network. 
-Because the transaction authorizes the bonding purse to be locked into the auction contract, it's really important
+Because the transaction authorizes the token to be locked into the auction contract, it's really important
 to compile the contract yourself. Here are the steps to do this:
 
 
