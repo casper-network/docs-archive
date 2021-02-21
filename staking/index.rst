@@ -14,4 +14,10 @@ Alternatively, it is possible to stake token via an exchange or custody provider
 This guide will outline the steps required to stake the CSPR token on the Casper network.
 
 
+.. toctree::
+   :maxdepth: 2
+
+   economics.rst
+   staking.rst
+
 
