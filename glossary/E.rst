@@ -5,6 +5,10 @@ E
 `A <A.html>`_  `B <B.html>`_  `C <C.html>`_  `D <D.html>`_  `E <E.html>`_  `F <F.html>`_  `G <G.html>`_  `H <H.html>`_  `I <I.html>`_  `J <J.html>`_  `K <K.html>`_  `L <L.html>`_  `M <M.html>`_  `N <N.html>`_  `O <O.html>`_  `P <P.html>`_  `Q <Q.html>`_  `R <R.html>`_  `S <S.html>`_  `T <T.html>`_  `U <U.html>`_  `V <V.html>`_  `W <W.html>`_  `X <X.html>`_  `Y <Y.html>`_  `Z <Z.html>`_  
 ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== 
 
+Era
+^^^
+The protocol proceeds in *eras*. The set of validators and their voting weights are constant during each era and only change when transitioning from one era to the next.
+In sporadic cases, it can happen that consensus on the next era's set of validators has not been reached. In this case, two or more "parallel eras" are started, each with a different set of validators, until the network (or its users manually) has decided which one to follow.
 
 External client
 ^^^^^^^^^^^^^^^

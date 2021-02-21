@@ -15,6 +15,12 @@ A server (= running program) participating in the blockchain P2P network and ser
 #. Execution Engine - this is where the actual **transaction** execution happens in a WASM interpreter. It contains the logic to record updates to the **global state** that **transactions** will do, as well as to apply those updates under the direction of consensus
 #. Storage - this is where the **blockstore** and the **global states** are stored.
 
+You will encounter different types of nodes on the network:
+
+* **Bootstrap node**: a peer node on the P2P network that contains the logic for message passing between nodes on the network (via TCP) and discovering new peers so that they may join the network.
+* **Stand-alone node**: a mode for starting the node in which it does not attempt to connect to another node that is already part of a P2P network (called the bootstrap node). This mode is useful for local testing.
+* **Read-only node**: a type of node on the network that receives and processes blocks but does not create blocks and is not a validator. It is otherwise a fully functioning node, following the consensus protocol to know the current status of the blockDAG (and therefore also the VM state). Such nodes are useful for querying the status of the blockDAG (e.g., to learn information about transaction finalization). 
+
 Node bootstrap
 ^^^^^^^^^^^^^^
-See `Node <N.html#node>`_ COMM - contains the logic for message passing between nodes on the network (via TCP) as well as discovering new peers (via Kademlia).
+In `node <N.html#node>`_ COMM - contains the logic for message passing between nodes on the network (via TCP) as well as discovering new peers (via Kademlia).
