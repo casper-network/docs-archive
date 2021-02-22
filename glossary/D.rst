@@ -24,4 +24,6 @@ A version of the network that can be used for development. Users can run nodes a
 
 Directed acyclic graph
 ^^^^^^^^^^^^^^^^^^^^^^
-A directed acyclic graph is a directed graph that has no cycles. A vertex *v* of a directed graph is said to be reachable from another vertex *u* when there exists a path that starts at *u* and ends at *v*.
+A directed acyclic graph is a directed graph that has no cycles. A vertex *v* of a directed graph is said to be reachable from another vertex *u* when there exists a path that starts at *u* and ends at *v*. 
+
+In the Highway protocol, validators exchange messages in order to reach consensus on proposed blocks and hence validate one of possibly many branches of the produced blockchain. As a way of capturing and spreading the different validators’ knowledge about the already existing messages, it adopts the DAG framework, in which every message broadcast by a validator refers a certain set of messages sent by validators before. 

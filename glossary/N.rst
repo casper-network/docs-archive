@@ -7,7 +7,10 @@ N
 
 Node
 ^^^^^
-A server (= running program) participating in the blockchain P2P network and serving **external clients**. It is constructed of several software components or "layers": Client, COMM, Consensus, Execution Engine, and Storage. 
+
+A Casper node is a physical or virtual device that is participating in the Casper network. They store, validate and preserve the blockchain data.
+
+Nodes are constructed of several software components or layers: Client, COMM, Consensus, Execution Engine, and Storage. 
 
 #. gRPC Client - gRPC interfaces to various node functions, including accepting deploys, creating+proposing **blocks** (not exposed publicly), and querying the **BlockDAG**
 #. COMM - contains the logic for message passing between **nodes** on the network (via TCP) as well as discovering new peers (via Kademlia)
@@ -24,3 +27,7 @@ You will encounter different types of nodes on the network:
 Node bootstrap
 ^^^^^^^^^^^^^^
 In `node <N.html#node>`_ COMM - contains the logic for message passing between nodes on the network (via TCP) as well as discovering new peers (via Kademlia).
+
+Node operator
+^^^^^^^^^^^^^
+Anyone who wishes to run node infrastructure on the Casper network, either as a standalone private network, or as part of the public network.

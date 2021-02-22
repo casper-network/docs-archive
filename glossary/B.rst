@@ -40,6 +40,10 @@ Block creation
 Block creation is the process of computing the deployment results (not contained in a block known by the node) and collecting the results that belong together into a block. The order in which deployments are applied to the global state does not change the outcome.
 Block creation is always followed by "block proposal" (see below) because it does not make sense to create a block without sending it out to the network. Note that only validators can create valid blocks.
 
+Block finality
+^^^^^^^^^^^^^^
+Block finality in the `Highway <H.html#highway>`_ protocol is expressed by a fraction of nodes that would need to break the protocol rules in order for a block to be reverted. During periods of honest participation finality of blocks might reach well beyond 1/3 (as what would be the maximum for classical protocols), up to even 1 (where 1 is complete certainty).
+
 Block gossiping
 ^^^^^^^^^^^^^^^
 Block gossiping occurs when a message containing a block is sent to one or more nodes on the network. In other words, block gossiping is sending a block validated by the current node but created by another node. The terms *block gossiping* and <#block-passing> are interchangeable.

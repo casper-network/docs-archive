@@ -7,8 +7,7 @@ E
 
 Era
 ^^^
-The protocol proceeds in *eras*. The set of validators and their voting weights are constant during each era and only change when transitioning from one era to the next.
-In sporadic cases, it can happen that consensus on the next era's set of validators has not been reached. In this case, two or more "parallel eras" are started, each with a different set of validators, until the network (or its users manually) has decided which one to follow.
+The Highway protocol execution is split into eras, and at the start of each era, every validator is initialized. Validators are forced to store the whole DAG, even the units that were created at the very beginning of the protocol execution. To address the large storage, the protocol execution is divided into eras. In each era, 1000 new blocks are added to the blockchain, and importantly a new instance of Highway is run in every era. The validators only need to store blocks that were finalized in the previous eras and the DAG for the current era. One additional benefit of using eras is that it allows to change the validator set according to some prespecified rules, and hence move the protocol towards the permissionless model.
 
 External client
 ^^^^^^^^^^^^^^^
