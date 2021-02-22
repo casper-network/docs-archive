@@ -29,7 +29,7 @@ Cone
 ^^^^
 Any `directed acyclic graph <D.html#directed-acyclic-graph>`_ allows for defining past and future *cones*, which are sets of all vertices that are reachable from a given vertex *B* by traversing arrows in only one direction.
 
-When looking at the `blockDAG <B.html#blockdag>`_, it is important to remember that edges are always directed towards the *past*: newer blocks point to older blocks. This explains why we avoid using words like *previous* or *ancestors* in the context of a blockDAG, as they may be misleading. To avoid the confusion, we use *future* and *past* as the keywords in this context.
+When looking at the `blockDAG <B.html#blockdag>`_, it is important to remember that edges are always directed towards the *past*: newer blocks point to older blocks. This explains why we avoid using words like *previous* or *ancestors* in the context of a blockDAG, as they may be misleading. To avoid confusion, we use *future* and *past* as the keywords in this context.
 
 * **P-past cone of a block B** is a set of blocks X, such that there exists a P-Graph path from B to X:
   
@@ -55,7 +55,7 @@ When looking at the `blockDAG <B.html#blockdag>`_, it is important to remember t
 
 	  B <---- ...... <---- X
 
-For technical reasons, it is convenient to assume that a zero-length path is legal, so every cone includes the block B. 
+For technical reasons, it is convenient to assume that a zero-length path is legal, so every cone includes block B. 
 
 
 Consensus

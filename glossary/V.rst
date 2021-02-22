@@ -7,11 +7,11 @@ V
 
 Validator
 ^^^^^^^^^
-A `node <N.html#node>`_ that participates in the **consensus** protocol. To become a **validator**, a node must be `bonded <B.html#bonding>`_. 
-The responsibilities of a **validator** include:
+A `node <N.html#node>`_ that participates in the `consensus <C.html#consensus>`_ protocol. To become a validator, a node must be `bonded <B.html#bonding>`_. 
+The responsibilities of a validator include:
 
-* **block creation** & **block proposal**
-* **block validation**
-* **block gossiping**
+* `block creation <B.html#block-creation>`_ and `block proposal <B.html#block-proposal>`_
+* `block validation <B.html#block-validation>`_
+* `block gossiping <B.html#block-gossiping>`_
 
-**Validators** are bonded because they are responsible for progressing the system's state as clients use it (e.g., sending deploys). **Validators** and Stakers can lose their bond (be slashed) for not following the protocol correctly. **Validators** are also paid by creating blocks (also by validating blocks – though this is only indirectly; **validators** cannot be paid if they do not validate by design), giving them more incentive to serve the network correctly. **Validators** and **node operators** are synonymous.
+Validators are bonded because they are responsible for progressing the system's state as clients use it (e.g., sending deploys). Validators and `stakers <S.html#staker>`_ can lose their bond (be slashed) for not following the protocol correctly. Validators are also paid by creating blocks (also by validating blocks – though this is only indirectly; validators cannot be paid if they do not validate by design), giving them more incentive to serve the network correctly. Validators and node operators are synonymous.

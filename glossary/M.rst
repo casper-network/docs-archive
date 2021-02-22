@@ -7,4 +7,4 @@ M
 
 Mainnet
 ^^^^^^^
-The live, decentralized, public Casper platform, with version 1.0. 
+The live, decentralized, and public Casper platform, with version 1.0. 

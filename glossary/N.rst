@@ -8,15 +8,15 @@ N
 Node
 ^^^^^
 
-A Casper node is a physical or virtual device that is participating in the Casper network. They store, validate and preserve the blockchain data.
+A Casper node is a physical or virtual device that is participating in the Casper network. They store, validate, and preserve the blockchain data.
 
 Nodes are constructed of several software components or layers: Client, COMM, Consensus, Execution Engine, and Storage. 
 
-#. gRPC Client - gRPC interfaces to various node functions, including accepting deploys, creating+proposing **blocks** (not exposed publicly), and querying the **BlockDAG**
-#. COMM - contains the logic for message passing between **nodes** on the network (via TCP) as well as discovering new peers (via Kademlia)
-#. Consensus - contains the logic to update the **blockstore** so that agreement is maintained between **nodes**. It also contains logic to detect when **deploys** commute (this enables the use of parallelism in **block** creation and in consensus itself via the **BlockDAG**)
-#. Execution Engine - this is where the actual **transaction** execution happens in a WASM interpreter. It contains the logic to record updates to the **global state** that **transactions** will do, as well as to apply those updates under the direction of consensus
-#. Storage - this is where the **blockstore** and the **global states** are stored.
+#. gRPC Client - gRPC interfaces to various node functions, including accepting deploys, creating+proposing `blocks <B.html#block>`_ (not exposed publicly), and querying the `blockDAG <B.html#blockdag>`_
+#. COMM - contains the logic for message passing between nodes on the network (via TCP) as well as discovering new peers (via Kademlia)
+#. Consensus - contains the logic to update the `blockstore <B.html#blockstore>`_ so that agreement is maintained between nodes. It also contains logic to detect when `deploys <D.html#deploy>`_ commute (this enables the use of parallelism in block creation and in consensus itself via the blockDAG)
+#. Execution Engine - this is where the actual `transaction <T.html#transaction>`_ execution happens in a WASM interpreter. It contains the logic to record updates to the `global state <G.html#global state>`_ that transactions will do, as well as to apply those updates under the direction of consensus.
+#. Storage - this is where the blockstore and the global state are stored.
 
 You will encounter different types of nodes on the network:
 
@@ -30,4 +30,4 @@ In `node <N.html#node>`_ COMM - contains the logic for message passing between n
 
 Node operator
 ^^^^^^^^^^^^^
-Anyone who wishes to run node infrastructure on the Casper network, either as a standalone private network, or as part of the public network.
+Anyone who wishes to run node infrastructure on the Casper network either as a standalone private network, or as part of the public network. Synonymous to a `validator <V.html#validator>`_.

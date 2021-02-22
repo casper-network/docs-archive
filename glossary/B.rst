@@ -9,8 +9,8 @@ Block
 ^^^^^
 Used in two contexts:
 
-#. A data structure containing a collection of transactions; Blocks form the BlockDAG and as such are a primary structure of the blockchain.
-#. A message exchanged between nodes, containing the data structure as explained in (1).
+#. A data structure containing a collection of transactions; Blocks form the BlockDAG and, as such, are a primary structure of the blockchain.
+#. A message that is exchanged between nodes containing the data structure as explained in (1).
 
 Each block has a globally unique ID, achieved by hashing the contents of the block.
 
@@ -18,7 +18,7 @@ Each block points to his parents (one or many) and justification blocks (one or 
 
 Blockchain
 ^^^^^^^^^^^
-Blockchain is a P2P network where the collection of nodes (**validators**) concurrently update a decentralized, shared database. They do this collectively, building an ever-growing chain of **transactions**. For performance reasons, transactions are bundled in **blocks**. According to a particular cooperation protocol (consensus protocol), the collection of `nodes <N.html#node>`_ connected via a P2P network cooperate to maintain this shared database as a single source of truth. The database's current state is called the **global state** and has a sizeable map-like collection.
+Blockchain is a P2P network where the collection of nodes (`validators <V.html#validator>`_) concurrently updates a decentralized, shared database. They do this collectively, building an ever-growing chain of `transactions <T.html#transaction>`_. For performance reasons, transactions are bundled in `blocks <#block>`_. According to a particular cooperation protocol (consensus protocol), the collection of `nodes <N.html#node>`_ connected via a P2P network cooperate to maintain this shared database as a single source of truth. The database's current state is called the `global state <G.html#global-state>`_ and has a sizeable map-like collection.
 
 BlockDAG
 ^^^^^^^^
@@ -33,7 +33,7 @@ Collectively, the collection of all blocks is called a BlockDAG. Every node keep
 
 Blockstore
 ^^^^^^^^^^
-The layer of the node software responsible for storing blocks. This is persisted and can be used to allow a node to recover its state after a crash.
+The layer of the node software responsible for storing blocks. This layer is persisted and can be used to allow a node to recover its state after a crash.
 
 Block creation
 ^^^^^^^^^^^^^^
@@ -54,7 +54,7 @@ See <#block-gossiping>.
 
 Block processing
 ^^^^^^^^^^^^^^^^
-Running the deploys in a block received from another node in order determine the updates made to the global state. Note that this is an essential part of `block validating <B.html#block-validating>`_
+Running the deploys in a block received from another node in order to determine the updates made to the global state. Note that this is an essential part of `block validating <B.html#block-validating>`_
 
 Block proposal
 ^^^^^^^^^^^^^^
@@ -62,14 +62,14 @@ Sending a (newly) created block to the other nodes on the network for potential 
 
 Block time
 ^^^^^^^^^^
-For a block B this is an integer number calculated as a total amount of gas used for executing all transactions that precede block B. Because we have two notions of "precede", there are two notions of block time:
+For a block B this is an integer number calculated as a total amount of gas used for executing all transactions that precede block B. Because we have two notions of *precede*, there are two notions of block time:
 
 * **J-time**: sum of gas burned in J-past-cone of B (excluding transactions in B)
 * **P-time**: sum of gas burned in P-past-cone of B (excluding transactions in B)
 
-Block validating
+Block validation
 ^^^^^^^^^^^^^^^^
-The process of determining the validity of a block obtained from another node on the network. This involves checking all validity conditions including (but not limited to):
+The process of determining the validity of a block obtained from another node on the network. This involves checking all validity conditions, including (but not limited to):
 
 * All required fields are present
 * Signature is valid

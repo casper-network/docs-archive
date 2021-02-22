@@ -7,4 +7,4 @@ W
 
 WebAssembly
 ^^^^^^^^^^^
-WebAssembly (sometimes abbreviated Wasm) is an open standard that defines a portable binary-code format for executable programs, and a corresponding textual assembly language, as well as interfaces for facilitating interactions between such programs and their host environment. The main goal of WebAssembly is to enable high-performance applications on web pages, but the format is designed to be executed and integrated in other environments as well, including standalone ones.
+WebAssembly (sometimes abbreviated Wasm) is an open standard that defines a portable binary-code format for executable programs and a corresponding textual assembly language, as well as interfaces for facilitating interactions between such programs and their host environment. The main goal of WebAssembly is to enable high-performance applications on web pages, but the format is designed to be executed and integrated into other environments as well, including standalone ones.

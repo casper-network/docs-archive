@@ -19,9 +19,9 @@ The Casper platform defines only one token which one can pay for transaction exe
 
 Proof of stake
 ^^^^^^^^^^^^^^
-Proof of stake (PoS) is a type of consensus mechanism by which a cryptocurrency blockchain network achieves distributed consensus. The voting power is proportional to the amount of tokens (digital currency specific to this system). A popular choice in such systems is then to periodically delegate a fixed size committee of participants which then is responsible for running the consensus on which blocks to add to the blockchain.
+Proof of stake (PoS) is a type of consensus mechanism by which a cryptocurrency blockchain network achieves distributed consensus. The voting power is proportional to the number of tokens (digital currency specific to this system). A popular choice in such systems is then to periodically delegate a fixed size committee of participants, which then is responsible for running the consensus on which blocks to add to the blockchain.
 
 Proof of work
 ^^^^^^^^^^^^^
-A mechanism using in Bitcoin and Etherium for incentivizing participation and securing the system. In these protocols, the voting power of a participant is proportional to the amount of computational power possessed.
+A mechanism used in Bitcoin and Etherium for incentivizing participation and securing the system. In these protocols, the voting power of a participant is proportional to the amount of computational power possessed.
 
