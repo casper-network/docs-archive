@@ -11,4 +11,4 @@ See `block finality <B.html#block-finality>`_.
 
 Finality theorem
 ^^^^^^^^^^^^^^^^
-In the Highway protocol, if an honest validator reaches finality with confidence threshold 𝑡 ≥ 𝑓 for a given valid block 𝐵, then no honest validator will ever reach finality with confidence threshold 𝑡 for a block competing with 𝐵.
+In the Highway protocol, if an honest validator reaches finality with confidence threshold t >= f for a given valid block B, then no honest validator will ever reach finality with confidence threshold t for a block competing with B.

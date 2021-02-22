@@ -7,4 +7,4 @@ L
 
 Liveness theorem
 ^^^^^^^^^^^^^^^^
-In the Highway protocol, for every confidence threshold 0 ≤ 𝑡 < 𝑛/3 , if 𝑓 ≤ 𝑡 and 𝑐 < (𝑛−3𝑡)/2 , then the chain of blocks finalized with confidence 𝑡 grows indefinitely for each honest validator.
+In the Highway protocol, for every confidence threshold 0 <= t < n/3 , if f <= t and c < (n-3t)/2, then the chain of blocks finalized with confidence 𝑡 grows indefinitely for each honest validator.
