@@ -34,7 +34,7 @@ Example Delegation Transaction
 
 .. code-block:: bash
 
-   $ casper-client put-deploy --chain-name delta-10 --node-address http://localhost:7777 -k $HOME/secret_key.pem --session-path  $HOME/casper-node/target/wasm32-      unknown-unknown/release/delegate.wasm  --payment-amount 1000000000  --session-arg "validator:public_key=’PUBLIC_KEY_HEX'"   --session-arg="amount:u512='AMOUNT'"    --session-arg "delegator:public_key='DELEGATOR_PUBLIC_KEY_HEX'"
+   $ casper-client put-deploy --chain-name delta-10 --node-address http://localhost:7777 -k $HOME/secret_key.pem --session-path  $HOME/casper-node/target/wasm32-      unknown-unknown/release/delegate.wasm  --payment-amount 1000000000  --session-arg "validator:public_key=’VALIDATOR_PUBLIC_KEY_HEX'" --session-arg="amount:u512='AMOUNT'" --session-arg "delegator:public_key='DELEGATOR_PUBLIC_KEY_HEX'"
 
 
 Delegation Arguments
@@ -49,7 +49,7 @@ The delegate contract accepts 3 arguments:
 Check the Status of the Transaction
 -----------------------------------
 
-Since this is a deployment like any other, it's possible to perform ``get-deploy`` using the client.
+Since this is a deployment like any other, it's possible to perform ``get-deploy`` using the ``casper-client``.
 
 .. code-block:: bash
 
@@ -91,18 +91,19 @@ The request returns a response that looks like this:
       },
       {
 
-
+If your public key and associated amount appears in the ``bid`` data structure, this means that the delegation request 
+has been processed successfully. This does **not** mean the associated validator is part of the validator set. Confirm 
+that the validator that you have selected is part of the ``era_validators``  structure, described here. 
 
 
 .. code-block:: bash
 
-
-  "era_validators": [
+   "era_validators": [
       {
         "era_id": 608,
         "validator_weights": [
           {
-            "public_key": "0101002d7e4744d80e7267281f49596b6c6f45ee513f3a92051b46218b004e3fa6",
+            "public_key": "01fe61249c459693809bf4f789dd38bc3b7772aa4ffaf642cc6993f4a1004df6c1",
             "weight": "297466251800051194565831025745"
           },
           {
@@ -115,19 +116,29 @@ The request returns a response that looks like this:
           },
 
   
-Note the ``era_id`` and the ``validator_weights`` sections of the response. For a given ``era_id`` a set of validators is defined.  To determine the current era,
-ping the ``/status`` endpoint of a validating node in the network.  This will return the current ``era_id``.  The current ``era_id`` will be listed in the auction
-info response. If the public key associated with a bid appears in the ``validator_weights`` structure for an era, then the account is bonded in that era.
-
-If the Bid doesn't win
+What if the Validator Key is not there?
 ----------------------
 
-If your bid doesn't win a slot in the auction, it is because your bid is too low.  The resolution for this problem is to increase your bid amount.
-It is possible to submit additional bids, to increase the odds of winning a slot. It is also possible to encourage token holders to delegate stake to 
-you for bonding.
+If you observe your delegation request in the ``bid`` structure, but do not see the associated validator key in
+``era_validators``, then the validator you selected is not part of the current validator set. In this event, 
+your tokens are not earning rewards unless you undelegate, wait through the unbonding period, and re-delegate
+to another validator.
 
-Withdrawing a Bid
------------------
+Un-delegating
+-------------
 
-Follow the steps in `Unbonding <https://docs.casperlabs.io/en/latest/node-operator/unbonding.html>`_ to withdraw a bid.
+To unbond (un-delegate) tokens in Casper, a specific transaction is required.  
 
+.. code-block:: bash
+
+   $ casper-client put-deploy --chain-name delta-10 --node-address http://localhost:7777 -k $HOME/secret_key.pem --session-path  $HOME/casper-node/target/wasm32-      unknown-unknown/release/undelegate.wasm  --payment-amount 1000000000  --session-arg "validator:public_key=’VALIDATOR_PUBLIC_KEY_HEX'" --session-arg="amount:u512='AMOUNT'" --session-arg "delegator:public_key='DELEGATOR_PUBLIC_KEY_HEX'"
+   
+   
+Un-delegation Arguments
+^^^^^^^^^^^^^^^^^^
+
+The un-delegate contract accepts 3 arguments:
+
+* delegator public key: The public key in hex of the account to un-delegate.  Note: This has to be the matching key to the secret key that signs the deploy.
+* amount: This is the amount that is being un-delegated. 
+* validator public key: The public key in hex of the validator that the stake is delegated to.   
