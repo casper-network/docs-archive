@@ -37,7 +37,9 @@ Node operators (Validators) define a commission that they take in exchange for p
 Rewards
 -------
 
-Validators receive rewards for participating in consensus by voting on blocks sending finality signatures (finalizing blocks).  If a validator is offline, or cannot vote on many blocks, the rewards earned are also reduced. Delegators can only receive a proportional amount of the rewards earned by the validator minus the validator’s commission (Delegation Rate).
+Validators receive rewards for participating in consensus by voting on blocks sending finality signatures (finalizing blocks). There is no precise 'per-block' reward. Rewards are split proportionally among  stakes within an era. If a validator is offline, or cannot vote on many blocks, the rewards earned are also reduced. Delegators can only receive a proportional amount of the rewards earned by the validator minus the validator’s commission (Delegation Rate).
+
+Rewards are distributed at the end of each era.
 
 Selecting a node for Staking
 ----------------------------
@@ -48,7 +50,9 @@ with a validator.
 Check in on your Stake
 ----------------------
 
-It’s recommended that you check in on how your stake is performing from time to time.  If the validator you staked with decides to unbond, your stake will also be unbonded. Make sure that the validator you have selected is performing as per your expectations.
+It’s recommended that you check in on how your stake is performing from time to time.  If the validator you staked with decides to unbond, your stake will also be unbonded. Make sure that the validator you have selected is performing as per your expectations. 
+
+Validators have to win a staking auction by competing with prospective and current validators for a  slot.  This process is permissionless, meanng validators can join andd leave the auction without restrictions, the exception being the unbonding wait period.
 
 
 Unbonding Period
