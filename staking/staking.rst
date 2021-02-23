@@ -70,6 +70,7 @@ validator set for a future era. To determine if the bid was accepted, query the 
 The request returns a response that looks like this:
 
 .. code-block:: bash
+
    "bid": {
           "bonding_purse": "uref-5bbf1fe90097a59904f71005fd8f0beeabd0598a559617ec1dac75900b8e726a-007",
           "delegation_rate": 10,
