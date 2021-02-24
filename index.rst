@@ -35,5 +35,6 @@ and our token policies.
    Home <self
    implementation/index
    economics/index
+   staking/index
    dapp-dev-guide/index
    node-operator/index
