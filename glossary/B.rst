@@ -84,12 +84,8 @@ The amount of money (in crypto-currency) that is allocated by a node in order to
 
 Bonding
 ^^^^^^^
-Depositing money in the Proof-of-Stake (PoS) contract and trying to become a `staker <S.html#staker>`_. The bonding request is a transaction that transfers tokens to the PoS contract. In the next `booking block <B.html#booking-block>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
+Depositing money in the `auction <A.html#auction>`_ contract and try to become a `staker <S.html#staker>`_. The bonding request is a transaction that transfers tokens to the auction contract. In the next `booking block <B.html#booking-block>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
 
 Booking block
 ^^^^^^^^^^^^^
 The first block that is less than 11 days way from the beginning of an era. It defines the new era's validator set, weights, but not yet the leader schedule. Each block between the booking block and the key block contains one random bit that contributes to the seed used for the pseudorandom leader schedule.
-
-Bootstrap node
-^^^^^^^^^^^^^^
-See `node <N.html#node>`_.

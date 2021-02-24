@@ -7,7 +7,11 @@ P
 
 Participate in consensus
 ^^^^^^^^^^^^^^^^^^^^^^^^
-The process of following the `consensus <C.html#consensus>`_ algorithm. The primary participants are `validators <V.html#validators>`_.
+The process of following the `consensus <C.html#consensus>`_ algorithm. The primary participants are `validators <V.html#validator>`_ and `delegators <D.html#delegator>`_.
+
+Payment code
+^^^^^^^^^^^^
+The *payment code* is the `WASM <W.html#webassembly>`_ program that pays the transaction execution fee. 
 
 Peer node
 ^^^^^^^^^
@@ -17,6 +21,10 @@ Primary token
 ^^^^^^^^^^^^^
 The Casper platform defines only one token which one can pay for transaction execution. Presently this is called `CSPR <C.html#cspr>`_.
 
+Private key
+^^^^^^^^^^^
+See `secret key <S.html#secret-key>`_.
+
 Proof of stake
 ^^^^^^^^^^^^^^
 Proof of stake (PoS) is a type of consensus mechanism by which a cryptocurrency blockchain network achieves distributed consensus. The voting power is proportional to the number of tokens (digital currency specific to this system). A popular choice in such systems is then to periodically delegate a fixed size committee of participants, which then is responsible for running the consensus on which blocks to add to the blockchain.
@@ -25,3 +33,6 @@ Proof of work
 ^^^^^^^^^^^^^
 A mechanism used in Bitcoin and Etherium for incentivizing participation and securing the system. In these protocols, the voting power of a participant is proportional to the amount of computational power possessed.
 
+Proto block
+^^^^^^^^^^^
+The block proposed by the leader, which the consensus processes (in `highway <H.html#highway>`_). Only after consensus is complete, the proto block is executed and the global state is updated.

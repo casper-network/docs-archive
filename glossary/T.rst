@@ -37,8 +37,12 @@ A single transaction includes the following information:
 *  **Nonce** – [mandatory] the number which prevents replay attacks by making each signature valid for a single execution
 *  **TTL** - [optional] upper limit for P-time of a block this transaction may be included in
 *  **Block hook** - [optional] semantic dependency of this transaction, expressed as a hash of a block that is 
-*  **Signature** – [mandatory] must be over (payment code, session code, conversion rate, nonce) to ensure a valid execution can only do the operations the user wants to be done.
+*  **Signature** – [mandatory] must be done via a private or secret key (over payment code, session code, conversion rate, nonce), to ensure a valid execution can only do the intended operations.
 
 Transaction execution
 ^^^^^^^^^^^^^^^^^^^^^
 Running a transaction in an instance of a WebAssembly (WASM) interpreter.
+
+Trusted node
+^^^^^^^^^^^^
+A `bonded <B.html#bonding>`_ node that contains the logic for message passing between nodes on the network (via TCP).

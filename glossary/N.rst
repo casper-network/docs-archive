@@ -13,20 +13,15 @@ A Casper node is a physical or virtual device that is participating in the Caspe
 Nodes are constructed of several software components or layers: Client, COMM, Consensus, Execution Engine, and Storage. 
 
 #. gRPC Client - gRPC interfaces to various node functions, including accepting deploys, creating+proposing `blocks <B.html#block>`_ (not exposed publicly), and querying the `blockDAG <B.html#blockdag>`_
-#. COMM - contains the logic for message passing between nodes on the network (via TCP) as well as discovering new peers (via Kademlia)
-#. Consensus - contains the logic to update the `blockstore <B.html#blockstore>`_ so that agreement is maintained between nodes. It also contains logic to detect when `deploys <D.html#deploy>`_ commute (this enables the use of parallelism in block creation and in consensus itself via the blockDAG)
-#. Execution Engine - this is where the actual `transaction <T.html#transaction>`_ execution happens in a WASM interpreter. It contains the logic to record updates to the `global state <G.html#global state>`_ that transactions will do, as well as to apply those updates under the direction of consensus.
+#. COMM - contains the logic for message passing between nodes on the network (via TCP)
+#. Consensus - contains the logic to update the `blockstore <B.html#blockstore>`_ and `global state <G.html#global state>`_ so that agreement is maintained between nodes.
+#. Execution Engine - this is where the actual `transaction <T.html#transaction>`_ execution happens in a WASM interpreter. It contains the logic to record updates to the global state that transactions will do, as well as to apply those updates under the direction of consensus.
 #. Storage - this is where the blockstore and the global state are stored.
 
 You will encounter different types of nodes on the network:
 
-* **Bootstrap node**: a peer node on the P2P network that contains the logic for message passing between nodes on the network (via TCP) and discovering new peers so that they may join the network.
-* **Stand-alone node**: a mode for starting the node in which it does not attempt to connect to another node that is already part of a P2P network (called the bootstrap node). This mode is useful for local testing.
-* **Read-only node**: a type of node on the network that receives and processes blocks but does not create blocks and is not a validator. It is otherwise a fully functioning node, following the consensus protocol to know the current status of the blockDAG (and therefore also the VM state). Such nodes are useful for querying the status of the blockDAG (e.g., to learn information about transaction finalization). 
-
-Node bootstrap
-^^^^^^^^^^^^^^
-In `node <N.html#node>`_ COMM - contains the logic for message passing between nodes on the network (via TCP) as well as discovering new peers (via Kademlia).
+* **Bonded node**: any node that can be trusted on the network.
+* **Unbonded node**: a type of node on the network that receives and processes blocks but does not create blocks and is not a validator. It is otherwise a fully functioning node, following the consensus protocol to know the current status of the blockDAG (and therefore also the VM state). Such nodes are useful for querying the status of the blockDAG (e.g., to learn information about transaction finalization).
 
 Node operator
 ^^^^^^^^^^^^^
