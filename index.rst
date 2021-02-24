@@ -32,8 +32,9 @@ and our token policies.
    :maxdepth: 3
    :titlesonly:
 
-   Home <self
+   Home <self>
    implementation/index
    economics/index
    dapp-dev-guide/index
    node-operator/index
+   faq/index
