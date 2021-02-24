@@ -6,10 +6,8 @@ Bonding
 =======
 
 It is recommended that a bonding request be sent once the node has completed the synchronization process. Bonding in Casper takes
-place through the auction contract via the ``add_bid.wasm`` contract. The auction runs for a future era, every era. The Chainspec 
-specifies the number of slots available, and the auction will  take the top N slots and create the validator set for the future era.
-In the testnet, era durations are approx. 30 minutes. The entire process takes approximately 3 eras. Therefore, the time of submission
-of a bid, to inclusion in the validator set is a minimum of 90 minutes.\ :raw-html-m2r:`<br>`
+place through the auction contract via the ``add_bid.wasm`` contract. The auction runs for a future era, every era. The Chainspec specifies the number of slots available, and the auction will take the top N slots and create the validator set for the future era.
+In the testnet, era durations are approx. 30 minutes. The entire process takes approximately 3 eras. Therefore, the time for bid submission to inclusion in the validator set is a minimum of 90 minutes.\ :raw-html-m2r:`<br>`
 Bonding requests (bids) are transactions like any other. 
 Because they are generic transactions, they are more resistant to censorship.
 
@@ -46,8 +44,8 @@ Build the contracts in release mode.
 Example Bonding Transaction
 ---------------------------
 
-Note the path to files and keys. Note: the session arguments need to be encased in double quotes, with the parameter values in single quotes.
-Note the required payment amount.  It must contain at least 10 zeros.  Payment amount is specified in motes.
+Note the path to files and keys. Note: the session arguments need to be encased in double-quotes, with the parameter values in single quotes.
+Note the required payment amount.  It must contain at least 10 zeros.  The payment amount is specified in motes.
 
 .. code-block:: bash
 
@@ -59,26 +57,23 @@ Contract Arguments
 The add_bid contract accepts 3 arguments:
 
 
-* public key: The public key in hex of the account to bond.  Note: This has to be the matching key to the validator secret key that signs the deploy.
+* public key: The public key in hex of the account to bond.  Note: This has to be the matching key to the validator's secret key that signs the deployment.
 * amount: This is the amount that is being bid. If the bid wins, this will be the validator's initial bond amount.
 * delegation_rate: The percentage of rewards that the validator retains from delegators that delegate their tokens to the node.
 
 Check the Status of the Transaction
 -----------------------------------
 
-Since this is a deployment like any other, it's possible to perform ``get-deploy`` using the client.
+Since this is a deployment like any other, it's possible to perform ``get-deploy`` using the client, which will return the execution status.
 
 .. code-block:: bash
 
    casper-client get-deploy --node-address http://<HOST:PORT> <DEPLOY_HASH>
 
-Which will return the status of execution.
-
 Check the Status of the bid in the Auction
 ------------------------------------------
 
-If the bid wins the auction, the public key and associated bond amount (formerly bid amount) will appear in the auction contract as part of the 
-validator set for a future era. To determine if the bid was accepted, query the auction contract via the rust ``casper-client``
+If the bid wins the auction, the public key and associated bond amount (formerly bid amount) will appear in the auction contract as part of the validator set for a future era. To determine if the bid was accepted, query the auction contract via the rust ``casper-client``
 
 .. code-block:: bash
 
