@@ -1,6 +1,6 @@
 
-Querying
-========
+Querying the Network
+====================
 
 The Casper node supports queries for users and developers to gain insights about transactions sent to the network. When sending a query it is important to note that the request will be routed to a single node in the network.  
 

@@ -1,7 +1,7 @@
-CasperLabs Contract DSL
------------------------
+Casper DSL
+----------
 
-The DSL is a way to help developers avoid boilerplate code.  This boilerplate code is repetitive and well structured,
+The Casper domain-specific language (DSL) for writing contracts is a way to help developers avoid boilerplate code.  This boilerplate code is repetitive and well structured,
 enabling the creation of a DSL that uses macros to create this boilerplate code- which simplifies the creation and standardization of contracts.
 
 The code will be a bit larger after the macros run and the boilerplate code is added into the contract. The macros operate like templates.
