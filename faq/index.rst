@@ -1,6 +1,8 @@
 
 .. _faq:
 
+FAQ
+===
 FAQs regarding the Casper network, CasperLabs, and the CSPR token sale.
 
 Casper Network
