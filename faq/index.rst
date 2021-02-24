@@ -45,11 +45,11 @@ CasperLabs
 
 What’s the difference between CasperLabs and Casper?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-CasperLabs is the development team that is currently building the Casper network. CasperLabs has been developing Casper during its testnet phase, and is currently planning for mainnet launch in Q1 2021. As a public, open-source network, Casper can be developed on and by anyone in addition to the CasperLabs team. 
+CasperLabs is the development team that is currently building the Casper network. CasperLabs has been developing Casper during its testnet phase and is currently planning for mainnet launch in Q1 2021. As a public, open-source network, Casper can be developed on and by anyone in addition to the CasperLabs team. 
 
 What’s the CasperLabs team’s background?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The engineering, executive, business, and marketing teams of CasperLabs are diverse groups of thinkers and builders with decades of experience in internet-scale computing systems, across academia, business, and engineering. `Meet the CasperLabs team <https://casperlabs.io/company/meet-our-team/>`_.
+The engineering, executive, business, and marketing teams of CasperLabs are diverse groups of thinkers and builders with decades of experience in internet-scale computing systems across academia, business, and engineering. `Meet the CasperLabs team <https://casperlabs.io/company/meet-our-team/>`_.
 
 What is CasperLabs’ fundraising history?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -57,7 +57,7 @@ In September 2019, CasperLabs raised a $14.5 million Series A round led by Terre
 
 Who has partnered with CasperLabs to build on the Casper network?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-CasperLabs has established a diverse ecosystem of participants who will be building, staking and validating on Casper from day one, spanning blockchain, enterprise technology and financial services. Among others, CasperLabs has established relationships with BitGo, Huobi, Ledger Leap, Chainlink, Metis and Cardinal Cryptography. Companies including IPwe and Broadleaf are already using the Casper Network to unlock new value by tokenizing existing assets. 
+CasperLabs has established a diverse ecosystem of participants who will be building, staking, and validating on Casper from day one, spanning blockchain, enterprise technology, and financial services. Among others, CasperLabs has established relationships with BitGo, Huobi, Ledger Leap, Chainlink, Metis, and Cardinal Cryptography. Companies including IPwe and Broadleaf are already using the Casper Network to unlock new value by tokenizing existing assets. 
 
 To learn more about how to work within the Casper ecosystem, contact neil@casperlabs.io.
 
