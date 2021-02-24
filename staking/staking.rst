@@ -6,31 +6,26 @@ The Staking Transaction
 --------------------
 
 The most secure way to send a transaction is to compile the contract and send the request to the network. 
-Because the transaction authorizes the token to be locked into the auction contract, it's really important
-to compile the contract yourself. Here are the steps to do this:
-
+Because the transaction authorizes the token to be locked into the auction contract, it is really important to compile the contract yourself. Here are the steps to do this:
 
 * Visit `Github <https://github.com/CasperLabs/casper-node>`_ and fork and clone the repository.
-* Make sure that all dependencies are installed  (documented on GitHub).
+* Make sure that all dependencies are installed (documented on GitHub).
 * Follow the instructions to build the contracts.
-* Create the transaction & deploy it.
-* Check the status of the auction to see if your .
+* Create the transaction and deploy it.
+* Check the status of the auction to determine if the bid was accepted.
 
-Build the Delegate Contract
-----------------------
+Building the Delegation Contract
+--------------------------------
 
-Clone the casper-node repository and build the contracts.
-To build contracts, set up Rust & install all dependencies. Visit 'Setting up Rust' in the Developer Guide.
+Clone the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and build the contracts.
+To build contracts, set up Rust and install all dependencies. Visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
 
-Build the contracts in release mode.
-
-.. code-block:: bash
-
-   $ make setup-rs
-   $ make build-client-contracts
+Make sure you build the contracts in release mode.
 
 Example Delegation Transaction
 ---------------------------
+
+This example shows how to stake your tokens with a specific validator. You need to update the command with the delegation arguments for your scenario.
 
 .. code-block:: bash
 
@@ -42,26 +37,25 @@ Delegation Arguments
 
 The delegate contract accepts 3 arguments:
 
-* delegator public key: The public key in hex of the account to delegate.  Note: This has to be the matching key to the secret key that signs the deploy.
-* amount: This is the amount that is being delegated. 
-* validator public key: The public key in hex of the validator that the stake will be delegated to.
+* **delegator public key**: The public key (in hex) of the account to delegate.  Note: This has to be the matching key to the secret key that signs the deployment.
+* **amount**: This is the amount that is being delegated. 
+* **validator public key**: The public key (in hex) of the validator that the stake will be delegated to.
 
-Check the Status of the Transaction
------------------------------------
+Checking Transaction Status
+---------------------------
 
-Since this is a deployment like any other, it's possible to perform ``get-deploy`` using the ``casper-client``.
+Since this is a deployment like any other, it is possible to perform ``get-deploy`` using the ``casper-client`` to verify the status of the transaction.
 
 .. code-block:: bash
 
    casper-client get-deploy --node-address http://<HOST:PORT> <DEPLOY_HASH>
 
-Which will return the status of execution.
+The above command will return the status of execution.
 
-Check the Status of the Validator and the Delegation
----------------------------------------------
+Checking Validator and Delegation Status
+----------------------------------------
 
-If the bid wins the auction, the public key and associated bond amount (formerly bid amount) will appear in the auction contract as part of the 
-validator set for a future era. To determine if the bid was accepted, query the auction contract via the rust ``casper-client``
+If the bid wins the auction, the public key and associated bond amount (formerly bid amount) will appear in the auction contract as part of the validator set for a future era. To determine if the bid was accepted, query the auction contract via the Rust ``casper-client``:
 
 .. code-block:: bash
 
@@ -92,9 +86,8 @@ The request returns a response that looks like this:
       },
       {
 
-If your public key and associated amount appears in the ``bid`` data structure, this means that the delegation request 
-has been processed successfully. This does **not** mean the associated validator is part of the validator set. Confirm 
-that the validator that you have selected is part of the ``era_validators``  structure, described here. 
+If your public key and associated amount appear in the ``bid`` data structure, this means that the delegation request has been processed successfully. This does **not** mean the associated validator is part of the validator set. Confirm 
+that the validator that you have selected is part of the ``era_validators`` structure, described below. 
 
 
 .. code-block:: bash
@@ -117,10 +110,10 @@ that the validator that you have selected is part of the ``era_validators``  str
           },
 
   
-What if the Validator Key is not there?
+What if my Validator is not in the Era Validators?
 ----------------------
 
-If you observe your delegation request in the ``bid`` structure, but do not see the associated validator key in
+If you observe your delegation request in the ``bid`` structure but do not see the associated validator key in
 ``era_validators``, then the validator you selected is not part of the current validator set. In this event, 
 your tokens are not earning rewards unless you undelegate, wait through the unbonding period, and re-delegate
 to another validator.
@@ -128,7 +121,7 @@ to another validator.
 Un-delegating
 -------------
 
-To unbond (un-delegate) tokens in Casper, a specific transaction is required.  
+To unbond (un-delegate) tokens in Casper, a specific transaction is required. The command below shows you how to unbond. You need to update the command with the un-delegation arguments for your scenario. 
 
 .. code-block:: bash
 
@@ -140,6 +133,6 @@ Un-delegation Arguments
 
 The un-delegate contract accepts 3 arguments:
 
-* delegator public key: The public key in hex of the account to un-delegate.  Note: This has to be the matching key to the secret key that signs the deploy.
-* amount: This is the amount that is being un-delegated. 
-* validator public key: The public key in hex of the validator that the stake is delegated to.   
+* **delegator public key**: The public key (in hex) of the account to un-delegate.  Note: This has to be the matching key to the secret key that signs the deployment.
+* **amount**: This is the amount that is being un-delegated. 
+* **validator public key**: The public key (in hex) of the validator to which the stake is delegated.   
