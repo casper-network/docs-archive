@@ -42,7 +42,7 @@ A *deploy* represents a request from a user to perform computation on our platfo
    -  the ``blake2b256`` hash of the body
 
 -  Deploy hash: the ``blake2b256`` hash of the Header
--  Approvals: the set of signatures which have signed the deploy hash, these are xsused in the :ref:`account permissions model <accounts-associated-keys-weights>`
+-  Approvals: the set of signatures which have signed the deploy hash, these are used in the :ref:`account permissions model <accounts-associated-keys-weights>`
 
 Each deploy is an atomic piece of computation in the sense that, whatever effects a deploy would have on the global state must be entirely included in a block or the entire deploy must not be included in a block.
 

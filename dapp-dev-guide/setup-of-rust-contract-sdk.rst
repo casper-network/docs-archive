@@ -1,12 +1,13 @@
-Setting Up the Rust Contract SDK
-********************************
-The SDK is the easiest way to get started with Smart Contract development. This guide will walk you through the steps to get set up.
+Getting Started
+===============
+
+The Rust contract SDK is the easiest way to get started with smart contract development. This guide will walk you through the steps to set up your development environment.
 
 Prerequisites 
 ^^^^^^^^^^^^^
 
 Install Rust
-^^^^^^^^^^^^^^^^
+##############
 The recommended way to from the `official Rust guide <https://www.rust-lang.org/tools/install>`_ to install Rust is by using :code:`curl`
 
 .. code::
@@ -16,7 +17,7 @@ The recommended way to from the `official Rust guide <https://www.rust-lang.org/
 
 It is also possible to use brew or apt to install Rust.
 
-Update cmake
+Update Cmake
 ############
 Version 3.14.1 or greater is required.
 
@@ -39,14 +40,14 @@ macOS with :code:`brew`
 
 For more details follow the `official downloads page <https://developers.google.com/protocol-buffers/docs/downloads>`_.
 
-SDK
-^^^^^^^^^^^^^^^^
+Video Tutorial
+^^^^^^^^^^^^^^
 
-For a video walkthrough of these steps, feel free to check out this quick start video.
+For a video walkthrough of these steps, feel free to check out this quick-start video.
 
 .. raw:: html 
 
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/P8ljeSxg4NA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <iframe width="560" height="315" src="https://www.youtube.com/watch?v=XZsc7YiJ12M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 Available Packages
@@ -58,15 +59,15 @@ There are three crates we publish to support Rust development of Smart Contracts
 *  `Casper Test Support <https://crates.io/crates/casper-engine-test-support>`_ - in-memory virtual machine you can test your smart contracts against.
 *  `Casper Types <https://crates.io/crates/casper-types>`_ - library with types we use across the Rust ecosystem.
 
-API Level Documentation for Smart Contracts
-###########################################
+API Documentation for Smart Contracts
+#####################################
 
-Each of the crates ships with API documentation and examples for each of the functions. Docs are located at `https://docs.rs <https://docs.rs/releases/search?query=casper>`_.  The contract API documentation is specific for a given version, ex: for version 0.5.1 is located at: `https://docs.rs/casper-contract/0.1.0`
+Each of the crates ships with API documentation and examples for each of the functions. Docs are located at `https://docs.rs <https://docs.rs/releases/search?query=casper>`_.  The contract API documentation is specific for a given version, ex: for version 0.5.1 is located at: `https://docs.rs/casper-contract/0.1.0`.
 
 Development Environment Setup
 #############################
 
-The best & fastest way to set up a Casper Rust Smart Contract project is to use :code:`cargo-casper`.  When you use this, it will set the project up with a simple contract and a runtime environment/testing framework with a simple test. It's possible to use this configuration in your CI/CD pipeline as well. 
+The best and fastest way to set up a Casper Rust Smart Contract project is to use :code:`cargo-casper`.  When you use this, it will set the project up with a simple contract and a runtime environment/testing framework with a simple test. It's possible to use this configuration in your CI/CD pipeline as well. 
 
 .. code::
 
@@ -75,7 +76,7 @@ The best & fastest way to set up a Casper Rust Smart Contract project is to use 
 
 This step will create two crates called :code:`contract` and :code:`tests` inside a new folder called :code:`my-project`. This is a complete basic smart contract that saves a value, passed as an argument, on the blockchain. The tests crate provides a runtime environment of the Casper virtual machine, and a basic test of the smart contract.
 
-Compiling to wasm
+Compiling to WASM
 #################
 
 The Casper blockchain uses WebAssembly (Wasm) in its runtime environment.  Compilation targets for Wasm are available for Rust, giving developers access to all the tools in the Rust ecosystem when developing smart contracts.
