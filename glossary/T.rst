@@ -43,6 +43,10 @@ Transaction execution
 ^^^^^^^^^^^^^^^^^^^^^
 Running a transaction in an instance of a WebAssembly (WASM) interpreter.
 
+Transaction fees
+^^^^^^^^^^^^^^^^
+Ensure that the users compensate validators for performing their computations. Transaction fees are awarded to the block creator. Because we expect to launch with First-In-First-Out (FIFO) ordering of deployments, it can be assumed that one unit of gas will be priced at one mote until future changes to deploy orders are implemented.
+
 Trusted node
 ^^^^^^^^^^^^
 A `bonded <B.html#bonding>`_ node that contains the logic for message passing between nodes on the network (via TCP).

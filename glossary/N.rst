@@ -26,3 +26,7 @@ You will encounter different types of nodes on the network:
 Node operator
 ^^^^^^^^^^^^^
 Anyone who wishes to run node infrastructure on the Casper network either as a standalone private network, or as part of the public network. Synonymous to a `validator <V.html#validator>`_.
+
+Nonce
+^^^^^
+The number which prevents replay attacks by making each signature valid for a single execution.

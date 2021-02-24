@@ -32,7 +32,3 @@ A WebAssembly (WASM) program that the network stores as a value in the global st
 Staker
 ^^^^^^
 A person that deposits tokens in the `proof-of-stake <P.html#proof-of-stake>`_ contract. Sometimes a staker is also a `validator <V.html#validator>`_ or a `delegator <D.html#delegator>`_. Stakers take on the slashing risk in exchange for rewards. Stakers will deposit their `tokens <T.html#token>`_ by sending a bonding request in the form of a transaction (deployment) to the system. If a validator is `slashed <#slashing>`_, the staker will lose their tokens.
-
-Stand-alone node
-^^^^^^^^^^^^^^^^^
-See `node <N.html#node>`_.

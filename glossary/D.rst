@@ -28,7 +28,7 @@ The **external client** sends a deploy hoping that the network will execute the 
 
 Devnet
 ^^^^^^
-A version of the network that can be used for development. Users can run nodes and connect to a public bootstrap node, validators/node operators can spin up nodes, and developers can deploy and execute smart contracts.
+A version of the network that can be used for development. Users can run nodes and connect to a public trusted node, validators/node operators can spin up nodes, and developers can deploy and execute smart contracts.
 
 Directed acyclic graph
 ^^^^^^^^^^^^^^^^^^^^^^
