@@ -1,14 +1,11 @@
 
-Writing Rust Contracts on Casper
-================================
+Rust
+====
 
-Smart Contracts
----------------
+This section explains step by step how to write a new smart contract on Casper.  Start with ``main.rs`` from the previous section.
 
-This section explains step by step how to write a new smart contract.  Start with ``main.rs`` from the previous section.
-
-Basic Smart Contract
-^^^^^^^^^^^^^^^^^^^^
+A Basic Smart Contract in Rust
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Casper VM executes a smart contract by calling the ``call`` function specified in the contract. If the function is missing, the smart contract is not valid. The simplest possible example is an empty ``call`` function.
 

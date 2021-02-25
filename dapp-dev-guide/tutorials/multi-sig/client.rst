@@ -5,13 +5,11 @@ This section covers an example client that invokes a smart contract for key mana
 Prerequisites
 ^^^^^^^^^^^^^
 * You have compiled the `example contract <https://github.com/casper-ecosystem/keys-manager>`_ for key management
-* You have set up the `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ tool
+* You have set up the `NCTL <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ tool according to the `NCTL guide <dapp-dev-guide/setup-nctl>`_
 
-Setting up the Network
-^^^^^^^^^^^^^^^^^^^^^^^
-You can use the `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ tool to set up a local network for this tutorial.
-
-Navigate to your ``casper-node`` folder and run the following commands.
+Setting up a local Casper Network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Navigate to your ``casper-node`` folder and run the following NCTL commands.
 
 .. code-block:: bash
 
@@ -19,7 +17,7 @@ Navigate to your ``casper-node`` folder and run the following commands.
 	$ nctl-assets-setup
 	$ nctl-start
 
-The network you created with the nctl tool has a special account called a faucet account, which holds your tokens. You will need these tokens to interact with the network. If the network is up and running, you can see your faucet account details with the command below.
+The network you created with the NCTL tool has a special account called a faucet account, which holds your tokens. You will need these tokens to interact with the network. If the network is up and running, you can see your faucet account details with the command below.
 
 .. code-block:: bash
 
@@ -37,7 +35,7 @@ Variable                  Description                                       Valu
 nodeUrl                   The URL of the first node in your local network.  http://localhost:40101/rpc
 eventStoreUrl             The URL where events are posted.                  http://localhost:3000
 wasmPath                  The path of the compiled WASM contract.           ../contract/target/wasm32-unknown-unknown/release/keys-manager.wasm
-networkName               The name of your local network set up by nctl.    casper-net-1
+networkName               The name of your local network set up by NCTL.    casper-net-1
 ========================  ================================================  =============
 
 Specify your faucet account path on the following line. Replace <ENTER_YOUR_PATH> with your path.

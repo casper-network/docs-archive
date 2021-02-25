@@ -1,11 +1,11 @@
 
-Writing AssemblyScript Smart Contracts
-======================================
+AssemblyScript
+==============
 
-CasperLabs maintains `@casperlabs/contract <https://www.npmjs.com/package/@casperlabs/contract>`_ to allow developers to create smart contracts using `AssemblyScript <https://www.npmjs.com/package/assemblyscript>`_. The package source is hosted in the `main CasperLabs repository <https://github.com/CasperLabs/casper-node/tree/master/smart_contracts/contract_as/assembly>`_.
+CasperLabs maintains the `@casperlabs/contract <https://www.npmjs.com/package/@casperlabs/contract>`_ to allow developers to create smart contracts using `AssemblyScript <https://www.npmjs.com/package/assemblyscript>`_. The package source is hosted in the `main CasperLabs repository <https://github.com/CasperLabs/casper-node/tree/master/smart_contracts/contract_as/assembly>`_.
 
 Installation
-------------
+^^^^^^^^^^^^
 
 For each smart contract it's necessary to create a project directory and initialize it.
 
@@ -27,12 +27,12 @@ Then install assembly script and this package in the project directory.
    npm install --save @casperlabs/contract
 
 Contract API Documentation
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Assemblyscript contract API documentation can be found at https://www.npmjs.com/package/@casperlabs/contract
 
 Usage
------
+^^^^^
 
 Add script entries for assembly script to your project's ``package.json``\ ; note that your contract name is used
 for the name of the wasm file.

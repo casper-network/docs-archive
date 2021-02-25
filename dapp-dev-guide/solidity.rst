@@ -1,6 +1,6 @@
 
-Solidity to Rust Transpiler
-===========================
+Transpiling Solidity to Rust
+============================
 
 **Introducing Caspiler - Transpile Solidity to Rust and access the cool features of Casper!**
 
