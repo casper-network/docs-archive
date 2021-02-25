@@ -303,7 +303,7 @@ following parameters:
 -  ``target_block_hashes`` is typically the hashes of the new Blocks the node was
    notified about, but if multiple iterations are needed to find the connection
    points then they can be further back the DAG.
--  ``known_block_hashes`` can be supplied by the caller to provide an early exist
+-  ``known_block_hashes`` can be supplied by the caller to provide an early exit
    criteria for the traversal. These can, for example, include the hashes close to
    the tip of the callers DAG, forks, last Blocks seen from validators, and
    approved Blocks (i.e., Blocks with a high safety threshold).
@@ -312,7 +312,7 @@ following parameters:
    iterations when we have to go back *beyond* the callers approved blocks, in
    which case it might be difficult to pick known hashes.
 
-The result should be a partial traversal of the DAG in *reverse BFS order*
+The result should be a partial traversal of the DAG in *reverse breadth-first search order*
 returning a stream of ``BlockSummaries`` that the caller can partially verify,
 merge into its DAG of pending Blocks, then recursively call
 ``StreamAncestorBlockSummaries`` on any Block that didn’t connect with a known
@@ -562,7 +562,7 @@ brevity but they do the same thing as the ones on the left side.
 
 
 Deploy Gossiping
----------------
+----------------
 
 With certain consensus protocols, nodes can only produce blocks when its their turn to do so.
 To make sure that users can send their deploys to any node and see them included in the next
