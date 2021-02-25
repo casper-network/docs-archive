@@ -1,5 +1,5 @@
-Developer Guide
-====================
+Developers
+==========
 
 This guide is designed to support developers getting started with the development of smart contracts on the Casper blockchain in AssemblyScript or Rust. For Rust, there is a contract development kit that includes a runtime environment, reference documentation, and test framework. You can install our environment locally, create and test Smart Contracts with our Smart Contracts and Test Libraries, and use these libraries to build your own applications.
 

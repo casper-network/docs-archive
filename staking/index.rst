@@ -1,7 +1,7 @@
 .. role:: raw-html-m2r(raw)
    :format: html
 
-Staking on Casper
+Staking
 =======
 
 A feature of Proof-of-Stake protocols is that token holders can actively participate in the protocol 
