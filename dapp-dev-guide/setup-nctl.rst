@@ -156,7 +156,7 @@ Instructions for MacOS and Linux:
 .. code-block:: bash
 
    (env) $ bash
-   (env) $ source casper-node/utils/nctl/activate
+   (env) $ source ./utils/nctl/activate
 
 **Step 13.** Compile the NCTL binary scripts. The following command compiles both the *casper-node* and the *casper-client* in release mode.
 
