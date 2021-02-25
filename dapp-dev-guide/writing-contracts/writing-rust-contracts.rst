@@ -34,7 +34,7 @@ To leverage this feature, use `runtime::get_named_arg <https://docs.rs/casper-co
 Storage
 ^^^^^^^
 
-Saving and reading values to and from the blockchain is a manual process in Casper. It requires more code to be written, but also provides a lot of flexibility. The storage system works similarly to a file system in an operating system.  Let's say we have a string ``"Hello Casper!"`` that needs to be saved. To do this, use the text editor, create a new file, paste the string in and save it under a name in some directory. The pattern is similar on the Casper blockchain. First you have to save your value to the memory using `storage::new_turef <https://docs.rs/casper-contract/latest/casper_contract/contract_api/storage/fn.new_turef.html>`_. This returns a reference to the memory object that holds the ``"Hello Casper!"`` value. You could use this reference to update the value to something else. It's like a file. Secondly you have to save the reference under a human-readable string using `runtime::put_key <https://docs.rs/casper-contract/latest/casper_contract/contract_api/runtime/fn.put_key.html>`_. It's like giving a name to the file. The following function implements this scenario:
+Saving and reading values to and from the blockchain is a manual process in Casper. It requires more code to be written, but also provides a lot of flexibility. The storage system works similarly to a file system in an operating system.  Let's say we have a string ``"Hello Casper!"`` that needs to be saved. To do this, use the text editor, create a new file, paste the string in and save it under a name in some directory. The pattern is similar on the Casper blockchain. First you have to save your value to the memory using `storage::new_uref <https://docs.rs/casper-contract/latest/casper_contract/contract_api/storage/fn.new_uref.html>`_. This returns a reference to the memory object that holds the ``"Hello Casper!"`` value. You could use this reference to update the value to something else. It's like a file. Secondly you have to save the reference under a human-readable string using `runtime::put_key <https://docs.rs/casper-contract/latest/casper_contract/contract_api/runtime/fn.put_key.html>`_. It's like giving a name to the file. The following function implements this scenario:
 
 .. code-block:: rust
 
@@ -42,7 +42,7 @@ Saving and reading values to and from the blockchain is a manual process in Casp
 
    fn store(value: String) {
        // Store `value` under a new unforgeable reference.
-       let value_ref = storage::new_turef(value);
+       let value_ref = storage::new_uref(value);
 
        // Wrap the unforgeable reference in a `Key`.
        let value_key: Key = value_ref.into();
