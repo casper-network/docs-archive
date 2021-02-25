@@ -1,6 +1,6 @@
 
-Calling Contracts
-=================
+Blockchain Contracts
+====================
 
 The most efficient way to use blockchain is to store (install) your contract on the system and then call it.  This section outlines the steps to do this.
 

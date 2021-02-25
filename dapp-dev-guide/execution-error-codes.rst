@@ -2,6 +2,8 @@
 Execution Error Codes
 =====================
 
+This section covers smart contract execution error codes.
+
 As mentioned in `Writing Rust Contracts <writing-rust-contracts.html#using-error-codes>`_\ , smart contracts can exit with an error code defined by an `ApiError <https://docs.rs/casper-types/latest/casper_types/enum.ApiError.html>`_.  Descriptions of each variant are found `here <https://docs.rs/casper-types/latest/casper_types/enum.ApiError.html#variants>`_ and include the following sub-types:
 
 
