@@ -15,7 +15,7 @@ Node operators (`validators <V.html#validator>`_) define a commission that they 
 
 Delegator
 ^^^^^^^^^
-Delegators are users who participate in the platform's security by delegating their tokens to validators, which adds to their weight, and collecting a part of the rewards proportional to their delegations, net of a cut ("delegation rate") that is collected by the validator.
+Delegators are users who participate in the platform's security by delegating their tokens to validators (which adds to their weight) and collecting a part of the rewards proportional to their delegations, net of a cut ("delegation rate") that is collected by the validator.
 
 Deploy
 ^^^^^^

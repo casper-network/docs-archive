@@ -7,7 +7,7 @@ S
 
 Secret key
 ^^^^^^^^^^
-A cryptographic and confidential key that signs transactions to ensure a valid execution can only do the user's intended operations.
+A cryptographic and confidential key that signs transactions to ensure their correct execution (carrying out only the user's intended operations).
 
 Seigniorage
 ^^^^^^^^^^^

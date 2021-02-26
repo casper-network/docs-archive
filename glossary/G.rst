@@ -7,7 +7,7 @@ G
 
 Gas
 ^^^
-Gas is the virtual currency for calculating the cost of transaction execution. The cost of a transaction is expressed as a given amount of gas consumed and can be seen intuitively as some cycles of the virtual processor that has to be used to run the computation defined as the transaction's code.
+Gas is the virtual currency for calculating the cost of transaction execution. The transaction cost is expressed as a given amount of gas consumed and can be seen intuitively as some cycles of the virtual processor that has to be used to run the computation defined as the transaction's code.
 
 Genesis
 ^^^^^^^

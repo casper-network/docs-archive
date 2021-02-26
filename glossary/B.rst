@@ -9,7 +9,7 @@ Block
 ^^^^^
 Used in two contexts:
 
-#. A data structure containing a collection of transactions; Blocks form the BlockDAG and, as such, are a primary structure of the blockchain.
+#. A data structure containing a collection of transactions. Blocks form the BlockDAG and, as such, are a primary structure of the blockchain.
 #. A message that is exchanged between nodes containing the data structure as explained in (1).
 
 Each block has a globally unique ID, achieved by hashing the contents of the block.
@@ -54,7 +54,7 @@ See <#block-gossiping>.
 
 Block processing
 ^^^^^^^^^^^^^^^^
-Running the deploys in a block received from another node in order to determine the updates made to the global state. Note that this is an essential part of `block validating <B.html#block-validating>`_
+Block processing consists of running the deploys in a block received from another node to determine updates to the global state. Note that this is an essential part of `block validating <B.html#block-validating>`_.
 
 Block proposal
 ^^^^^^^^^^^^^^
@@ -62,14 +62,14 @@ Sending a (newly) created block to the other nodes on the network for potential 
 
 Block time
 ^^^^^^^^^^
-For a block B this is an integer number calculated as a total amount of gas used for executing all transactions that precede block B. Because we have two notions of *precede*, there are two notions of block time:
+For a block B, block time is an integer number calculated as a total amount of gas used for executing all transactions that precede block B. Because we have two notions of *precede*, there are two notions of block time:
 
 * **J-time**: sum of gas burned in J-past-cone of B (excluding transactions in B)
 * **P-time**: sum of gas burned in P-past-cone of B (excluding transactions in B)
 
 Block validation
 ^^^^^^^^^^^^^^^^
-The process of determining the validity of a block obtained from another node on the network. This involves checking all validity conditions, including (but not limited to):
+The process of determining the validity of a block obtained from another node on the network. Block validation involves checking all validity conditions, including (but not limited to):
 
 * All required fields are present
 * Signature is valid
