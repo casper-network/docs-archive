@@ -47,7 +47,7 @@ For a video walkthrough of these steps, feel free to check out this quick-start 
 
 .. raw:: html 
 
-   <iframe width="560" height="315" src="https://www.youtube.com/embed?v=XZsc7YiJ12M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed?v=XZsc7YiJ12M&list=PL8oWxbJ-csErqfzYvbWsMUr4IvwRVenni&index=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 Available Packages
