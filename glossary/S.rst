@@ -32,3 +32,7 @@ A WebAssembly (WASM) program that the network stores as a value in the global st
 Staker
 ^^^^^^
 A person that deposits tokens in the `proof-of-stake <P.html#proof-of-stake>`_ contract. Sometimes a staker is also a `validator <V.html#validator>`_ or a `delegator <D.html#delegator>`_. Stakers take on the slashing risk in exchange for rewards. Stakers will deposit their `tokens <T.html#token>`_ by sending a bonding request in the form of a transaction (deployment) to the system. If a validator is `slashed <#slashing>`_, the staker will lose their tokens.
+
+Staking
+^^^^^^^
+A feature of Proof-of-Stake protocols that allows token holders to actively participate in the protocol, thus securing the network. The `Staking Guide <https://docs.casperlabs.io/en/latest/staking/index.html>`_ highlights the steps required to stake the CSPR token on the Casper network.

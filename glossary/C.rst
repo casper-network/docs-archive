@@ -70,4 +70,4 @@ A compilation unit in Rust. A crate can be compiled into a binary or into a libr
 
 CSPR
 ^^^^
-CSPR is the Casper token pre-defined on the Casper network and used to pay for transaction execution.
+CSPR is the Casper token pre-defined on the Casper network and used to pay for transaction execution and for `staking <S.html#staking>`_ (securing the network).

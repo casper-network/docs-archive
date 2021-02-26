@@ -88,4 +88,5 @@ Depositing money in the `auction <A.html#auction>`_ contract and try to become a
 
 Booking block
 ^^^^^^^^^^^^^
-The first block that is less than 11 days way from the beginning of an era. It defines the new era's validator set, weights, but not yet the leader schedule. Each block between the booking block and the key block contains one random bit that contributes to the seed used for the pseudorandom leader schedule.
+The first block in an era, which considers the `auction delay <A.html#auction-delay>`_. In other words, the last block of era N is the booking block for era N + `auction delay <A.html#auction-delay>`_ + 1, where the auction delay is the number of full eras that pass between the booking block and the era whose validator set it defines. The auction delay is configurable and can be several eras long.
+

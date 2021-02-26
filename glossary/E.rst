@@ -19,4 +19,4 @@ Any hardware/software connecting to a Node for the purpose of sending deploys or
 
 Eviction
 ^^^^^^^^
-Deactivate validators who fail to participate in an era, disabling their bid and suspending their participation until they signal readiness to resume participation by invoking a particular entry point in the auction contract.
+Validators that fail to participate in `era <E.html#era>`_ will have their bid deactivated by the protocol, suspending their participation until they signal readiness to resume participation by invoking a method in the `auction contract <A.html#auction-contract>`_.
