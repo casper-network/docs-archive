@@ -7,4 +7,4 @@ O
 
 Operator
 ^^^^^^^^
-See `node operator <N.html#node-operator>`_. or `validator <V.html#validator>`_.
+See `node operator <N.html#node-operator>`_ or `validator <V.html#validator>`_.

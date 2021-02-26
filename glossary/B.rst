@@ -16,25 +16,6 @@ Each block has a globally unique ID, achieved by hashing the contents of the blo
 
 Each block points to his parents (one or many) and justification blocks (one or many). Parents are a subset of justifications. An exception is the Genesis block, which has no parents and no justifications.
 
-Blockchain
-^^^^^^^^^^^
-Blockchain is a P2P network where the collection of nodes (`validators <V.html#validator>`_) concurrently updates a decentralized, shared database. They do this collectively, building an ever-growing chain of `transactions <T.html#transaction>`_. For performance reasons, transactions are bundled in `blocks <#block>`_. According to a particular cooperation protocol (consensus protocol), the collection of `nodes <N.html#node>`_ connected via a P2P network cooperate to maintain this shared database as a single source of truth. The database's current state is called the `global state <G.html#global-state>`_ and has a sizeable map-like collection.
-
-BlockDAG
-^^^^^^^^
-A directed acyclic graph, where the vertices are the blocks. There are two types of graphs:
-
-* **P-Graph**: given an edge AB, where A and B are the vertices, block B mentions A in its list of parent blocks.
-* **J-Graph**: given an edge AB, where A and B are the vertices, block B mentions A in its list of justifications blocks.
-
-A P-Graph is a subgraph of a J-Graph because the list of justifications must include the parent node.
-
-Collectively, the collection of all blocks is called a BlockDAG. Every node keeps a "local" view of the BlockDAG, attempting to capture and include all the updates across the nodes' P2P network. In other words, a node continually tries to catch up with the evolution of the BlockDAG, which is happening when the validators attempt to create new blocks.
-
-Blockstore
-^^^^^^^^^^
-The layer of the node software responsible for storing blocks. This layer is persisted and can be used to allow a node to recover its state after a crash.
-
 Block creation
 ^^^^^^^^^^^^^^
 Block creation is the process of computing the deployment results (not contained in a block known by the node) and collecting the results that belong together into a block. The order in which deployments are applied to the global state does not change the outcome.
@@ -77,6 +58,25 @@ The process of determining the validity of a block obtained from another node on
 * Choice of parent block(s) follow from justifications (fork-choice correctness)
 * Deploys' update to VM state is as reported by the block (see "block processing")
 * Bonds map matches the PoS contract state
+
+Blockchain
+^^^^^^^^^^^
+Blockchain is a P2P network where the collection of nodes (`validators <V.html#validator>`_) concurrently updates a decentralized, shared database. They do this collectively, building an ever-growing chain of `transactions <T.html#transaction>`_. For performance reasons, transactions are bundled in `blocks <#block>`_. According to a particular cooperation protocol (consensus protocol), the collection of `nodes <N.html#node>`_ connected via a P2P network cooperate to maintain this shared database as a single source of truth. The database's current state is called the `global state <G.html#global-state>`_ and has a sizeable map-like collection.
+
+BlockDAG
+^^^^^^^^
+A directed acyclic graph, where the vertices are the blocks. There are two types of graphs:
+
+* **P-Graph**: given an edge AB, where A and B are the vertices, block B mentions A in its list of parent blocks.
+* **J-Graph**: given an edge AB, where A and B are the vertices, block B mentions A in its list of justifications blocks.
+
+A P-Graph is a subgraph of a J-Graph because the list of justifications must include the parent node.
+
+Collectively, the collection of all blocks is called a BlockDAG. Every node keeps a "local" view of the BlockDAG, attempting to capture and include all the updates across the nodes' P2P network. In other words, a node continually tries to catch up with the evolution of the BlockDAG, which is happening when the validators attempt to create new blocks.
+
+Blockstore
+^^^^^^^^^^
+The layer of the node software responsible for storing blocks. This layer is persisted and can be used to allow a node to recover its state after a crash.
 
 Bond
 ^^^^
