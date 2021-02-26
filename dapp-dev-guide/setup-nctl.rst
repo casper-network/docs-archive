@@ -16,7 +16,7 @@ If you prefer a video walkthrough of this guide, you can check out this video.
 
 .. raw:: html 
 
-   <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Vg3tr5iScPY&t=1s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed?v=Vg3tr5iScPY&list=PL8oWxbJ-csErqfzYvbWsMUr4IvwRVenni&index=2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Installing a Virtual Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
