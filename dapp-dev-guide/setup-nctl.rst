@@ -149,13 +149,12 @@ Instructions for MacOS and Linux:
 
    (env) $ git clone https://github.com/CasperLabs/casper-node
  
-**Step 12.** Invoke the *bash* shell and activate the NCTL environment.
+**Step 12.** Activate the NCTL environment with the following command.
 
 Instructions for MacOS and Linux:
 
 .. code-block:: bash
 
-   (env) $ bash
    (env) $ source casper-node/utils/nctl/activate
 
 **Step 13.** Compile the NCTL binary scripts. The following command compiles both the *casper-node* and the *casper-client* in release mode.
