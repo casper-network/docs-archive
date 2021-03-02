@@ -16,7 +16,7 @@ If you prefer a video walkthrough of this guide, you can check out this video.
 
 .. raw:: html 
 
-   <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Vg3tr5iScPY&t=1s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed?v=Vg3tr5iScPY&list=PL8oWxbJ-csErqfzYvbWsMUr4IvwRVenni&index=2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Installing a Virtual Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -149,13 +149,12 @@ Instructions for MacOS and Linux:
 
    (env) $ git clone https://github.com/CasperLabs/casper-node
  
-**Step 12.** Invoke the *bash* shell and activate the NCTL environment.
+**Step 12.** Activate the NCTL environment with the following command.
 
 Instructions for MacOS and Linux:
 
 .. code-block:: bash
 
-   (env) $ bash
    (env) $ source casper-node/utils/nctl/activate
 
 **Step 13.** Compile the NCTL binary scripts. The following command compiles both the *casper-node* and the *casper-client* in release mode.
