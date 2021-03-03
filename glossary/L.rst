@@ -5,6 +5,8 @@ L
 `A <A.html>`_  `B <B.html>`_  `C <C.html>`_  `D <D.html>`_  `E <E.html>`_  `F <F.html>`_  `G <G.html>`_  `H <H.html>`_  `I <I.html>`_  `J <J.html>`_  `K <K.html>`_  `L <L.html>`_  `M <M.html>`_  `N <N.html>`_  `O <O.html>`_  `P <P.html>`_  `Q <Q.html>`_  `R <R.html>`_  `S <S.html>`_  `T <T.html>`_  `U <U.html>`_  `V <V.html>`_  `W <W.html>`_  `X <X.html>`_  `Y <Y.html>`_  `Z <Z.html>`_  
 ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== 
 
-Liveness theorem
-^^^^^^^^^^^^^^^^
-In the Highway protocol, for every confidence threshold 0 <= t < n/3 , if f <= t and c < (n-3t)/2, then the chain of blocks finalized with confidence t grows indefinitely for each honest validator.
+Liveness
+^^^^^^^^
+A necessary property of a consensus protocol: that agreement is always eventually achieved (under certain assumptions).
+
+If the protocol is not live, the blockchain does not grow anymore, and the network stalls.

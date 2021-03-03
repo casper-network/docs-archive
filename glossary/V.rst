@@ -15,4 +15,4 @@ The responsibilities of a validator include:
 * `block validation <B.html#block-validation>`_
 * `block gossiping <B.html#block-gossiping>`_
 
-Validators are bonded because they are responsible for progressing the system's state as clients use it (e.g., sending deploys). Validators and `stakers <S.html#staker>`_ can lose their bond (be slashed) for not following the protocol correctly. Validators are also paid for by creating blocks (also by validating blocks – though this is only indirectly; validators cannot be paid for if they do not validate by design), giving them more incentive to serve the network correctly. Validators and node operators are synonymous.
+Validators are bonded because they are responsible for progressing the system's state as clients use it (e.g., sending deploys). Validators and `stakers <S.html#staker>`_ can lose their bond (be slashed) for not following the protocol correctly. Validators are also paid for by creating blocks (also by validating blocks – though this is only indirectly; validators cannot be paid for if they do not validate by design), giving them more incentive to serve the network correctly.

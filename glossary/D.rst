@@ -22,10 +22,6 @@ Deploy
 An **external client to node** message that includes two transactions:
 
 #. **payment transaction** - executed to buy gas for the execution of main **transaction**
-#. **main transaction** - the actual piece of software that does the actual processing changing the global state
+#. **main transaction** - the piece of software that does the actual processing changing the global state
 
 The **external client** sends a deploy hoping that the network will execute the main transaction against the blockchain.
-
-Devnet
-^^^^^^
-A version of the network that can be used for development. Users can run nodes and connect to a public trusted node, validators/node operators can spin up nodes, and developers can deploy and execute smart contracts.

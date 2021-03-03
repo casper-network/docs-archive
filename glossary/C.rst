@@ -13,10 +13,6 @@ Casper network
 ^^^^^^^^^^^^^^
 The Casper network is a Proof-of-Stake blockchain that allows validators to stake the Casper native token CSPR on the network. Validators receive CSPR as an incentive for continuing to maintain and secure the network. CSPR rewards are distributed as blocks are validated into existence and organized into eras.
 
-Casper runtime
-^^^^^^^^^^^^^^
-Enables developers to use a seamless workflow for authoring and testing their smart contracts. This environment can also be used for continuous integration, enabling Rust smart contracts to be managed using development best practices.
-
 CBC
 ^^^
 Correct by construction. CBC Casper is a family of consensus algorithms developed by Vlad Zamfir.
@@ -27,7 +23,13 @@ A collection of configuration settings describing the state of the system at gen
 
 Consensus
 ^^^^^^^^^
-An algorithm used to mandate agreement between all nodes. Casper uses the `Highway <https://docs.casperlabs.io/en/latest/theory/highway.html>`_ algorithm in the *CBC Casper* family of consensus algorithms. The algorithm for securing an agreement is what is known as *consensus*. The consensus layer contains the algorithm, but the algorithm should not be confused with the consensus layer.
+An algorithm used to mandate agreement on the `blockchain <B.html#blockchain>`_ between all nodes. The blockchain, although being built in a decentralized way, eventually converges so that all nodes eventually agree on whether a given block is part of the chain or not.
+
+Casper uses the `Highway <https://docs.casperlabs.io/en/latest/theory/highway.html>`_ algorithm in the *CBC Casper* family of consensus algorithms. The algorithm for securing an agreement is what is known as *consensus*. The consensus layer contains the algorithm, but the algorithm should not be confused with the consensus layer.
+
+Contract runtime
+^^^^^^^^^^^^^^^^
+Enables developers to use a seamless workflow for authoring and testing their `smart contracts <S.html#smart-contracts>`_. This environment can also be used for continuous integration, enabling Rust smart contracts to be managed using development best practices.
 
 Crate
 ^^^^^
@@ -35,4 +37,4 @@ A compilation unit in Rust. A crate can be compiled into a binary or into a libr
 
 CSPR
 ^^^^
-CSPR is the Casper token pre-defined on the Casper network and used to pay for transaction execution and for `staking <S.html#staking>`_ (securing the network).
+CSPR is the Casper token pre-defined on the Casper network and used to pay for transaction execution and for `staking <S.html#staking>`_ (securing the network). The total number of CSPR tokens is 10 billion.

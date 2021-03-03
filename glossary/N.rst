@@ -10,14 +10,6 @@ Node
 
 A Casper node is a physical or virtual device that is participating in the Casper network. They store, validate, and preserve the blockchain data.
 
-Nodes are constructed of several software components or layers: Client, COMM, Consensus, Execution Engine, and Storage. 
-
-#. gRPC Client - gRPC interfaces to various node functions, including accepting deploys, creating+proposing `blocks <B.html#block>`_ (not exposed publicly), and querying the `blockchain <B.html#blockchain>`_
-#. COMM - contains the logic for message passing between nodes on the network (via TCP)
-#. Consensus - contains the logic to update the `blockstore <B.html#blockstore>`_ and `global state <G.html#global state>`_ so that agreement is maintained between nodes.
-#. Execution Engine - this is where the actual `transaction <T.html#transaction>`_ execution happens in a WASM interpreter. It contains the logic to record updates to the global state that transactions will do, as well as to apply those updates under the direction of consensus.
-#. Storage - this is where the blockstore and the global state are stored.
-
 You will encounter different types of nodes on the network:
 
 * **Bonded node**: any node that can be trusted on the network.
@@ -25,8 +17,4 @@ You will encounter different types of nodes on the network:
 
 Node operator
 ^^^^^^^^^^^^^
-Anyone who wishes to run node infrastructure on the Casper network either as a standalone private network or as part of the public network. Synonymous to a `validator <V.html#validator>`_.
-
-Nonce
-^^^^^
-The number that prevents replay attacks by making each signature valid for a single execution.
+Anyone who wishes to run node infrastructure on the Casper network either as a standalone private network or as part of the public network.

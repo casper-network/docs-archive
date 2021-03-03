@@ -11,7 +11,7 @@ Gas is the virtual currency for calculating the cost of transaction execution. T
 
 Genesis
 ^^^^^^^
-The first `block <B.html#block>`_ in the `blockchain <B.html#blockchain>`_. P-future-chain of Genesis includes all blocks ever created.
+The state of the virtual machine at the beginning of the blockchain.
 
 Global state
 ^^^^^^^^^^^^
@@ -21,4 +21,4 @@ When thinking of a `blockchain <B.html#blockchain>`_ as a shared database, the g
 
 Technically, a `global state <G.html#global-state>`_ is a (possibly extensive) collection of key-value pairs, where the keys are references (Refs), and the values are large binary objects (BLOBs).
 
-For every `block <B.html#block>`_ B in the `blockchain <B.html#blockchain>`_, one can compute the `global state <G.html#global-state>`_ achieved by executing all `transactions <T.html#transaction>`_ in this block and its parent blocks (recursively). This global state is a global state, as seen by block B.
+For every `block <B.html#block>`_ B in the `blockchain <B.html#blockchain>`_, one can compute the `global state <G.html#global-state>`_ achieved by executing all `transactions <T.html#transaction>`_ in this block and its ancestors. The `root hash <R.html#root-hash>`_ identifying this state is stored in every executed block.

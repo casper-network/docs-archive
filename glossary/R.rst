@@ -7,15 +7,11 @@ R
 
 Reward
 ^^^^^^
-Validators receive rewards for participating in consensus by voting on blocks sending finality signatures (finalizing blocks). There is no precise per-block reward. Rewards are split proportionally among stakes within an era. If a validator is offline or cannot vote on many blocks, the rewards earned are also reduced. Delegators can only receive a proportional amount of the validator's rewards minus the validator’s commission (Delegation Rate). Rewards are distributed at the end of each era.
+Validators receive rewards for participating in consensus and finalizing blocks. There is no precise per-block reward. Rewards are split proportionally among stakes within an era. If a validator is offline or cannot vote on many blocks, the rewards earned are also reduced. Delegators can only receive a proportional amount of the validator's rewards minus the validator’s commission (Delegation Rate). Rewards are distributed at the end of each era.
 
 Root hash
 ^^^^^^^^^
 The root node of the hash tree (or `Merkle tree <M.html#merkle-tree>`_) of all the transactions in a block.
-
-Runtime
-^^^^^^^
-The Casper runtime layer encompasses deployment and execution of `smart contracts <S.html#smart-contracts>`_, `session code <S.html#session-code>`_, and other activity that performs computation on the `global state <G.html#global-state>`_. 
 
 Rust
 ^^^^

@@ -22,13 +22,15 @@ Block creation means computing the deployment results and collecting the results
 
 The `block proposal <B.html#block-proposal>`_ happens first, and the proposed `proto block <P.html#proto-block>`_ contains a set of deploys that have not been executed yet.
 
-Only after consensus on a *proto block* has been reached, the deploys are executed. The resulting new global state `root hash <R.html#root-hash>`_ is put into an actual block, together with the executed deploys.
+Only after consensus on a *proto block* has been reached, the deploys are executed. The resulting new global state `root hash <R.html#root hash>`_ is put into an actual block, together with the executed deploys.
 
 Note that only validators can create valid blocks.
 
 Block finality
 ^^^^^^^^^^^^^^
-Block finality in the `Highway <H.html#highway>`_ protocol is expressed by a fraction of nodes that would need to break the protocol rules in order for a block to be reverted. During periods of honest participation finality of blocks might reach well beyond 1/3 (as what would be the maximum for classical protocols), up to even 1 (where 1 is complete certainty).
+A block is "finalized" if the validators agree on adding it to the blockchain.
+
+There are different levels of *finality* in the `Highway <H.html#highway>`_ protocol. A finalized block has a fault-tolerance *F*, expressed as a fraction of the total stake. For an observer to see a conflicting block as finalized, several validators whose total stake exceeds *F* would have to collude and show different information in a way that would ultimately be detected and punished (see `slashing <S.html#slashing>`_).
 
 Block gossiping
 ^^^^^^^^^^^^^^^
@@ -48,14 +50,7 @@ Sending a (newly) created block to the other nodes on the network for potential 
 
 Block validation
 ^^^^^^^^^^^^^^^^
-The process of determining the validity of a block obtained from another node on the network. Block validation involves checking all validity conditions, including (but not limited to):
-
-* All required fields are present
-* Signature is valid
-* Signature is from a bonded participant
-* Choice of parent block(s) follow from justifications (fork-choice correctness)
-* Deploys' update to VM state is as reported by the block (see "block processing")
-* Bonds map matches the PoS contract state
+The process of determining the validity of a block obtained from another node on the network.
 
 Blockchain
 ^^^^^^^^^^^
@@ -71,9 +66,9 @@ The amount of money (in crypto-currency) that is allocated by a node in order to
 
 Bonding
 ^^^^^^^
-Depositing money in the `auction <A.html#auction>`_ contract and try to become a `staker <S.html#staker>`_. The bonding request is a transaction that transfers tokens to the auction contract. In the next `booking block <B.html#booking-block>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
+Depositing money in the `auction contract<A.html#auction-contract>`_ and try to become a `staker <S.html#staker>`_. The bonding request is a transaction that transfers tokens to the auction contract. In the next `booking block <B.html#booking-block>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
 
 Booking block
 ^^^^^^^^^^^^^
-The first block in an era, which considers the `auction delay <A.html#auction-delay>`_. In other words, the last block of era N is the booking block for era N + `auction delay <A.html#auction-delay>`_ + 1, where the auction delay is the number of full eras that pass between the booking block and the era whose validator set it defines. The auction delay is configurable and can be several eras long.
+The booking block for an era is the block that determines the era's validator set. In it, the `auction contract<A.html#auction-contract>`_ selects the highest bidders to be the future era's validators. There is a configurable delay, the *auction_delay*, which is the number of eras between the booking block and the era to which it applies. The booking block is always a switch block, so the booking block for era *N + auction_delay + 1* is the last block of era *N*.
 

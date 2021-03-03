@@ -7,4 +7,4 @@ H
 
 Highway
 ^^^^^^^
-A consensus protocol achieving strong optimistic finality that is flexible by allowing validators to use different confidence thresholds to convince themselves that a given block is *finalized*. Casper operates using a Proof-of-Stake consensus mechanism per the Highway Protocol, which is a specification of Correct-by-Construction Casper (CBC Casper). The full paper is found in GitHub: https://github.com/CasperLabs/highway.
+A consensus protocol that allows clients to use different confidence thresholds to convince themselves that a given block is *finalized*. The full paper is found in GitHub: https://github.com/CasperLabs/highway.

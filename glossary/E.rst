@@ -11,7 +11,9 @@ The ecosystem layer in Casper encompasses dApp design and operation.
 
 Era
 ^^^
-The Highway protocol execution is split into eras, and at the start of each era, every validator is initialized. Validators are forced to store the whole DAG, even the units created at the beginning of the protocol execution. The protocol execution is divided into eras to address the large storage required. In each era, 1000 new blocks are added to the blockchain, and importantly a new instance of Highway is run in every era. The validators only need to store blocks that were finalized in the previous eras and the DAG for the current era. One additional benefit of using eras is that it allows changing the validator set according to some prespecified rules and, hence, moving the protocol towards the permissionless model.
+A period of time during which the validator set does not change.
+
+In the Casper Network, validators cannot join and leave at any point in time, but only at era boundaries. An era's validators are determined using an `auction <A.html#auction>`_. At the beginning of the era, the validators create a new instance of the Highway protocol and run this consensus protocol until they finalize the era's last block (see `booking block <B.html#booking-block>`_).
 
 Eviction
 ^^^^^^^^

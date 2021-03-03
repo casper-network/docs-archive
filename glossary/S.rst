@@ -17,13 +17,9 @@ Session code
 ^^^^^^^^^^^^
 The *session code* is a field contained in a deployment directive. The *session code* contains the code the user wishes to execute against the blockchain.  When the session code executes, it performs a transaction. 
 
-Shard
-^^^^^
-A shard is a subset of the blocks and transactions that have to be processed by only a specific subset of validators.
-
 Slashing
 ^^^^^^^^
-In Proof-of-Stake, the deposit acts as collateral. The validator guarantees that it correctly follows the protocol. If the validator node creates an equivocation or fails to send messages for too long, the deposited amount gets "slashed," i.e., a part of it is removed.
+In Proof-of-Stake, the deposit acts as collateral. The validator guarantees that it correctly follows the protocol. If the validator node violates the protocol, the deposited amount gets *slashed*, i.e., a part of it is removed.
 
 Smart contract
 ^^^^^^^^^^^^^^

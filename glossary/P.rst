@@ -7,7 +7,7 @@ P
 
 Participate in consensus
 ^^^^^^^^^^^^^^^^^^^^^^^^
-The process of following the `consensus <C.html#consensus>`_ algorithm. The primary participants are `validators <V.html#validator>`_ and `delegators <D.html#delegator>`_.
+The process of following the `consensus <C.html#consensus>`_ algorithm. The primary participants are `validators <V.html#validator>`_, bonded with their stake and part of the validator set for that particular era. `Delegators <D.html#delegator>`_ participate indirectly by delegating their tokens to one or more of these validators and contributing by increasing the total stake that ensures the security of the network.
 
 Payment code
 ^^^^^^^^^^^^
@@ -19,17 +19,17 @@ A node on a peer-to-peer (P2P) network.
 
 Primary token
 ^^^^^^^^^^^^^
-The Casper platform defines only one token which one can pay for transaction execution. Presently this is called `CSPR <C.html#cspr>`_.
+See `CSPR <C.html#cspr>`_.
 
 Private key
 ^^^^^^^^^^^
 See `secret key <S.html#secret-key>`_.
 
-Proof of stake
+Proof-of-Stake
 ^^^^^^^^^^^^^^
-Proof of stake (PoS) is a type of consensus mechanism by which a cryptocurrency blockchain network achieves distributed consensus. The voting power is proportional to the number of tokens (digital currency specific to this system). A popular choice in such systems is to periodically delegate a fixed size committee of participants, which then is responsible for running the consensus on which blocks to add to the blockchain.
+Proof-of-Stake (PoS) is a mechanism by which a cryptocurrency blockchain network achieves permissionless-ness. The voting power in consensus is proportional to the number of staked tokens (digital currency specific to this system). The validator vouches with their tokens for the correct operation of their node. A popular choice in such systems is to periodically (once per era, in our case) delegate a fixed size committee of participants, which then is responsible for running the consensus on which blocks to add to the blockchain.
 
-Proof of work
+Proof-of-Work
 ^^^^^^^^^^^^^
 A mechanism used in Bitcoin and Etherium for incentivizing participation and securing the system. In these protocols, a participant's voting power is proportional to the amount of computational power possessed.
 
@@ -40,3 +40,5 @@ The Proof-of-Stake (PoS) contract holds on to transaction fees for the time whil
 Proto block
 ^^^^^^^^^^^
 The block proposed by the leader, which the consensus processes (in `highway <H.html#highway>`_). Only after consensus is complete, the proto block is executed, and the global state is updated.
+
+A leader is selected from the validator set of that era for each round. The chance of getting selected as a leader is in proportion to the stake one has in that era.
