@@ -12,7 +12,7 @@ A Casper node is a physical or virtual device that is participating in the Caspe
 
 Nodes are constructed of several software components or layers: Client, COMM, Consensus, Execution Engine, and Storage. 
 
-#. gRPC Client - gRPC interfaces to various node functions, including accepting deploys, creating+proposing `blocks <B.html#block>`_ (not exposed publicly), and querying the `blockDAG <B.html#blockdag>`_
+#. gRPC Client - gRPC interfaces to various node functions, including accepting deploys, creating+proposing `blocks <B.html#block>`_ (not exposed publicly), and querying the `blockchain <B.html#blockchain>`_
 #. COMM - contains the logic for message passing between nodes on the network (via TCP)
 #. Consensus - contains the logic to update the `blockstore <B.html#blockstore>`_ and `global state <G.html#global state>`_ so that agreement is maintained between nodes.
 #. Execution Engine - this is where the actual `transaction <T.html#transaction>`_ execution happens in a WASM interpreter. It contains the logic to record updates to the global state that transactions will do, as well as to apply those updates under the direction of consensus.
@@ -21,7 +21,7 @@ Nodes are constructed of several software components or layers: Client, COMM, Co
 You will encounter different types of nodes on the network:
 
 * **Bonded node**: any node that can be trusted on the network.
-* **Unbonded node**: a type of node on the network that receives and processes blocks but does not create blocks and is not a validator. It is otherwise a fully functioning node, following the consensus protocol to know the current status of the blockDAG (and therefore also the VM state). Such nodes are useful for querying the status of the blockDAG (e.g., to learn information about transaction finalization).
+* **Unbonded node**: a type of node on the network that receives and processes blocks but does not create blocks and is not a validator. It is otherwise a fully functioning node, following the consensus protocol to know the current status of the blockchain (and therefore also the VM state). Such nodes are useful for querying the status of the blockchain (e.g., to learn information about transaction finalization).
 
 Node operator
 ^^^^^^^^^^^^^

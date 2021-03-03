@@ -25,44 +25,9 @@ Chainspec
 ^^^^^^^^^
 A collection of configuration settings describing the state of the system at genesis and upgrades to basic system functionality (including system contracts and gas costs) occurring after `genesis <G.html#genesis>`_.
 
-Cone
-^^^^
-Any `directed acyclic graph <D.html#directed-acyclic-graph>`_ allows for defining past and future *cones*, which are sets of all vertices that are reachable from a given vertex *B* by traversing arrows in only one direction.
-
-When looking at the `blockDAG <B.html#blockdag>`_, it is essential to remember that edges are always directed towards the *past*: newer blocks point to older blocks. We avoid using words like *previous* or *ancestors* in the context of a blockDAG, as they may be misleading. To avoid confusion, we use *future* and *past* as the keywords in this context.
-
-* **P-past cone of a block B** is a set of blocks X, such that there exists a P-Graph path from B to X:
-  
-  .. code-block:: bash
-
-	  X <---- ...... <---- B
-
-* **P-future-cone of a block B** is a set of blocks X, such that there exists a P-Graph path from X to B:
-  
-  .. code-block:: bash
-
-	  B <---- ...... <---- X
-
-* **J-past-cone of a block B** is a set of blocks X, such that there exists a J-Graph path from B to X:
-  
-  .. code-block:: bash
-
-	  X <---- ...... <---- B
-
-* **J-future-cone of a block B** is a set of blocks X, such that there exists a J-Graph path from X to B:
-  
-  .. code-block:: bash
-
-	  B <---- ...... <---- X
-
-For technical reasons, it is convenient to assume that a zero-length path is legal, so every cone includes block B. 
-
-
 Consensus
 ^^^^^^^^^
-An algorithm used to mandate agreement on the `blockDAG <B.html#blockdag>`_ between all nodes. The blockDAG, although being built in a decentralized way, eventually converges so that all nodes eventually agree on whether a given block B is part of the blockDAG or not, and what is the `J-past-cone <C.html#cone>`_ and `P-past-cone <C.html#cone>`_ of B.
-
-Casper uses the `Highway <https://docs.casperlabs.io/en/latest/theory/highway.html>`_ algorithm in the *CBC Casper* family of consensus algorithms. The algorithm for securing an agreement is what is known as *consensus*. The consensus layer contains the algorithm, but the algorithm should not be confused with the consensus layer.
+An algorithm used to mandate agreement between all nodes. Casper uses the `Highway <https://docs.casperlabs.io/en/latest/theory/highway.html>`_ algorithm in the *CBC Casper* family of consensus algorithms. The algorithm for securing an agreement is what is known as *consensus*. The consensus layer contains the algorithm, but the algorithm should not be confused with the consensus layer.
 
 Crate
 ^^^^^

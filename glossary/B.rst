@@ -9,7 +9,7 @@ Block
 ^^^^^
 Used in two contexts:
 
-#. A data structure containing a collection of transactions. Blocks form the BlockDAG and, as such, are a primary structure of the blockchain.
+#. A data structure containing a collection of transactions. Blocks form the primary structure of the blockchain.
 #. A message that is exchanged between nodes containing the data structure as explained in (1).
 
 Each block has a globally unique ID, achieved by hashing the contents of the block.
@@ -39,7 +39,7 @@ Block processing consists of running the deploys in a block received from anothe
 
 Block proposal
 ^^^^^^^^^^^^^^
-Sending a (newly) created block to the other nodes on the network for potential inclusion in the DAG. Note that this term applies to NEW blocks only. 
+Sending a (newly) created block to the other nodes on the network for potential inclusion in the blockchain. Note that this term applies to NEW blocks only. 
 
 Block time
 ^^^^^^^^^^
@@ -62,17 +62,6 @@ The process of determining the validity of a block obtained from another node on
 Blockchain
 ^^^^^^^^^^^
 Blockchain is a P2P network where the collection of nodes (`validators <V.html#validator>`_) concurrently updates a decentralized, shared database. They do this collectively, building an ever-growing chain of `transactions <T.html#transaction>`_. For performance reasons, transactions are bundled in `blocks <#block>`_. According to a particular cooperation protocol (consensus protocol), the collection of `nodes <N.html#node>`_ connected via a P2P network cooperate to maintain this shared database as a single source of truth. The database's current state is called the `global state <G.html#global-state>`_ and has a sizeable map-like collection.
-
-BlockDAG
-^^^^^^^^
-A directed acyclic graph, where the vertices are the blocks. There are two types of graphs:
-
-* **P-Graph**: given an edge AB, where A and B are the vertices, block B mentions A in its list of parent blocks.
-* **J-Graph**: given an edge AB, where A and B are the vertices, block B mentions A in its list of justifications blocks.
-
-A P-Graph is a subgraph of a J-Graph because the list of justifications must include the parent node.
-
-Collectively, the collection of all blocks is called a BlockDAG. Every node keeps a "local" view of the BlockDAG, attempting to capture and include all the updates across the nodes' P2P network. In other words, a node continually tries to catch up with the evolution of the BlockDAG, which is happening when the validators attempt to create new blocks.
 
 Blockstore
 ^^^^^^^^^^

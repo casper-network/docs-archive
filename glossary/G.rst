@@ -21,4 +21,4 @@ When thinking of a `blockchain <B.html#blockchain>`_ as a shared database, the g
 
 Technically, a `global state <G.html#global-state>`_ is a (possibly extensive) collection of key-value pairs, where the keys are references (Refs), and the values are large binary objects (BLOBs).
 
-For every `block <B.html#block>`_ B in the `blockDAG <B.html#blockdag>`_, one can compute the `global state <G.html#global-state>`_ achieved by executing all `transactions <T.html#transaction>`_ in this block and its parent blocks (recursively, using the past-cone path). This global state is a global state, as seen by block B.
+For every `block <B.html#block>`_ B in the `blockchain <B.html#blockchain>`_, one can compute the `global state <G.html#global-state>`_ achieved by executing all `transactions <T.html#transaction>`_ in this block and its parent blocks (recursively). This global state is a global state, as seen by block B.
