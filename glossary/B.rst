@@ -18,8 +18,13 @@ Each block points to its parent. An exception is the first block, which has no p
 
 Block creation
 ^^^^^^^^^^^^^^
-Block creation is the process of computing the deployment results (not contained in a block known by the node) and collecting the results that belong together into a block. The order in which deployments are applied to the global state does not change the outcome.
-Block creation is always followed by "block proposal" (see below) because it does not make sense to create a block without sending it out to the network. Note that only validators can create valid blocks.
+Block creation means computing the deployment results and collecting the results that belong together into a block. We follow a process called *execution after consensus*. 
+
+The `block proposal <B.html#block-proposal>`_ happens first, and the proposed `proto block <P.html#proto-block>`_ contains a set of deploys that have not been executed yet.
+
+Only after consensus on a *proto block* has been reached, the deploys are executed. The resulting new global state `root hash <R.html#root-hash>`_ is put into an actual block, together with the executed deploys.
+
+Note that only validators can create valid blocks.
 
 Block finality
 ^^^^^^^^^^^^^^

@@ -8,3 +8,7 @@ M
 Mainnet
 ^^^^^^^
 The live, decentralized, and public Casper platform, with version 1.0. 
+
+Merkle tree
+^^^^^^^^^^^
+A hash tree in which every leaf node is labelled with the cryptographic hash of a data block, and every non-leaf node is labelled with the cryptographic hash of the labels of its child nodes.
