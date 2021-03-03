@@ -39,14 +39,7 @@ Block processing consists of running the deploys in a block received from anothe
 
 Block proposal
 ^^^^^^^^^^^^^^
-Sending a (newly) created block to the other nodes on the network for potential inclusion in the blockchain. Note that this term applies to NEW blocks only. 
-
-Block time
-^^^^^^^^^^
-For a block B, block time is an integer number calculated as a total amount of gas used for executing all transactions that precede block B. Because we have two notions of *precede*, there are two notions of block time:
-
-* **J-time**: sum of gas burned in J-past-cone of B (excluding transactions in B)
-* **P-time**: sum of gas burned in P-past-cone of B (excluding transactions in B)
+Sending a (newly) created block to the other nodes on the network for potential inclusion in the blockchain. Note that this term applies to NEW blocks only.
 
 Block validation
 ^^^^^^^^^^^^^^^^
