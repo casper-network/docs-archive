@@ -14,7 +14,7 @@ Used in two contexts:
 
 Each block has a globally unique ID, achieved by hashing the contents of the block.
 
-Each block points to his parents (one or many) and justification blocks (one or many). Parents are a subset of justifications. An exception is the Genesis block, which has no parents and no justifications.
+Each block points to its parent. An exception is the first block, which has no parent.
 
 Block creation
 ^^^^^^^^^^^^^^
