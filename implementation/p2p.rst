@@ -5,12 +5,12 @@ Network Communication
 
 .. _communications-discovery:
 
-Nodes form a peer-to-peer network are continually communicating with each other to reach a *consensus* about the blockchain state. A node is not necessarily a single physical machine. Still, it appears as a single logical entity to the rest of its peers by having a unique ID and address where it responds to incoming network traffic.
+Nodes form a peer-to-peer network are continually communicating with each other to reach *consensus* about the blockchain state. A node is not necessarily a single physical machine. Still, it appears as a single logical entity to the rest of its peers by having a unique ID and address where it responds to incoming network traffic.
 
 Identity
 --------
 
-Each node has an identity on the network based on the fingerprint of the public key of a self-signed TLS certificate; however, this is not the same as its identity in the consensus process. A node generates a new private key each time it starts, ensuring a unique ID.
+Each node has an identity on the network (which is not the same as its identity in the consensus process). The network identity (ID) is based on the fingerprint of the public key of a self-signed TLS certificate. A node generates a new private key each time it starts, ensuring a unique ID.
 
 Each identity is linked with an address, which is an IP and port pair where the node is reachable. This address is also called an endpoint.
 
@@ -32,7 +32,7 @@ Network
 
 As soon as a node has connected to one node in the network, it partakes in `Node Discovery`_. In general, any node will attempt to connect to any other node on the network it finds as described above, leading to a fully connected network.
 
-Two classes of data transfers happen in the network; broadcasts and gossiping. A broadcast message is sent once, without guarantees, to its connected nodes. The process of gossiping is described further below.
+Two classes of data transfers happen in the network; broadcasts and gossiping. A broadcast message is sent once, without guarantees, to all the nodes connected to it. The process of gossiping is described further below.
 
 In general, only consensus messages, which are only sent by active validators, are broadcast. Everything else is gossipped.
 
@@ -59,7 +59,7 @@ Through this process, a message will spread to almost all nodes over time.
 Requesting missing data
 -----------------------
 
-While gossiping and broadcasting are sufficient to distribute data across the network in most cases, nodes can also request missing data from peers should they require it. A common example is a missing deployment from a block.
+While gossiping and broadcasting are sufficient to distribute data across the network in most cases, nodes can also request missing data from peers should they require it. A common example is a missing deploy from a block.
 
 Validation
 ~~~~~~~~~~
