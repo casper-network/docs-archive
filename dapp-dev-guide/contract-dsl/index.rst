@@ -1,15 +1,13 @@
-Casper DSL
-----------
+The Casper DSL
+==============
 
-The Casper domain-specific language (DSL) for writing contracts is a way to help developers avoid boilerplate code.  This boilerplate code is repetitive and well structured,
-enabling the creation of a DSL that uses macros to create this boilerplate code- which simplifies the creation and standardization of contracts.
+The Casper Domain-Specific Language (DSL) for writing smart contracts is a tool to help developers more easily and quickly write human-readable code. It is a series of macros designed around object-oriented programming (OOP) principles. The macros conceal much of the repetitive boilerplate code necessary for proper contract compilation, operating much like templates seen in other object-oriented languages.
 
-The code will be a bit larger after the macros run and the boilerplate code is added into the contract. The macros operate like templates.
+However, if you are an experienced Rust developer, you may find that you want to forgo using the DSL as you start getting familiar with Casper development. For advanced use cases, the boilerplate code could very well become sub-optimal. Regardless, though, we recommend that you start with the DSL to see the typical workflow while you are getting familiar with the ecosystem.
 
-The macros work with Contract Headers (released as part of the 0.20 release).  Contracts created prior to 0.20 will need to be upgraded to use the macros.
+The macros work with *contract headers* released in version 0.20. Contracts created before release 0.20 will need to be upgraded to use macros.
 
-Table of Contents
-#################
+**Table of Contents**
 
 .. toctree::
    :maxdepth: 2
