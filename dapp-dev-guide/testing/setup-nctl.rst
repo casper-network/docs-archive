@@ -1,6 +1,6 @@
 Testing Contracts with NCTL
 ===========================
-NCTL stands for network/node control. NCTL is a CLI application you can use to set up and control multiple local Casper networks during development. Many developers wish to spin up relatively small test networks to localize their testing. Adopting a standardized approach in the community is also helpful for troubleshooting and reporting issues.
+NCTL stands for network/node control. `NCTL <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ is a CLI application you can use to set up and control multiple local Casper networks during development. Many developers wish to spin up relatively small test networks to localize their testing. Adopting a standardized approach in the community is also helpful for troubleshooting and reporting issues.
 
 Prerequisites 
 ^^^^^^^^^^^^^
