@@ -179,7 +179,7 @@ Several other NCTL commands are available via aliases for execution from within 
 
 You should see the new directory *utils/nctl/assets*, with the following structure.
 
-.. image:: ../assets/nctl/assets_setup.png
+.. image:: ../../assets/nctl/assets_setup.png
   :width: 200
   :alt: Image showing the folders created by nctl.
 
@@ -187,8 +187,8 @@ You should see the new directory *utils/nctl/assets*, with the following structu
 
 Here is the command line output you would expect.
 
-.. image:: ../assets/nctl/nctl_output.png
-  :alt: Image showing successful nctl.
+.. image:: ../../assets/nctl/nctl_output.png
+  :alt: Image showing successful nctl output.
 
 | 
 
