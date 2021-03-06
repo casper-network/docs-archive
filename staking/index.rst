@@ -1,6 +1,7 @@
 .. role:: raw-html-m2r(raw)
    :format: html
 
+=======
 Staking on Casper
 =======
 
