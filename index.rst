@@ -32,7 +32,6 @@ and our token policies.
    :maxdepth: 3
    :titlesonly:
 
-   Home <self>
    implementation/index
    economics/index
    staking/index
