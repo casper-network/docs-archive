@@ -17,9 +17,9 @@ Delegator
 ^^^^^^^^^
 Delegators are users who participate in the platform's security by delegating their tokens to validators (which adds to their weight) and collecting a part of the rewards proportional to their delegations, net of a cut ("delegation rate") that is collected by the validator.
 
-Deploy
-^^^^^^
-An **external client to node** message that includes two transactions:
+Deployment
+^^^^^^^^^^
+A deployment or deploy, in short, is an **external client to node** message that includes two transactions:
 
 #. **payment transaction** - executed to buy gas for the execution of main transaction
 #. **main transaction** - the piece of software that does the actual processing changing the global state
