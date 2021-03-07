@@ -56,8 +56,8 @@ Blockchain
 ^^^^^^^^^^^
 Blockchain is a P2P network where the collection of nodes (`validators <V.html#validator>`_) concurrently updates a decentralized, shared database. They do this collectively, building an ever-growing chain of `transactions <T.html#transaction>`_. For performance reasons, transactions are bundled in `blocks <#block>`_. According to a particular cooperation protocol (consensus protocol), the collection of `nodes <N.html#node>`_ connected via a P2P network cooperate to maintain this shared database as a single source of truth. The database's current state is called the `global state <G.html#global-state>`_ and has a sizeable map-like collection.
 
-Blockstore
-^^^^^^^^^^
+Block store
+^^^^^^^^^^^
 The layer of the node software responsible for storing blocks. This layer is persisted and can be used to allow a node to recover its state after a crash.
 
 Bond
