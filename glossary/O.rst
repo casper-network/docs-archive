@@ -7,4 +7,10 @@ O
 
 Operator
 ^^^^^^^^
-See `node operator <N.html#node-operator>`_ or `validator <V.html#validator>`_.
+Anyone running a node is an operator. 
+
+An operator that has staked a bid but does not currently have a validator slot is a *staked operator*.
+
+An operator whose bid has won a validator slot in the auction for a specific era is a `validator <V.html#validator>`_ in that era.
+
+It is common for a *staked operator* to win an auction slot for many eras in a row and thus be a validator for a range of eras.

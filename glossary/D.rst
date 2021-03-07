@@ -21,7 +21,7 @@ Deploy
 ^^^^^^
 An **external client to node** message that includes two transactions:
 
-#. **payment transaction** - executed to buy gas for the execution of main **transaction**
+#. **payment transaction** - executed to buy gas for the execution of main transaction
 #. **main transaction** - the piece of software that does the actual processing changing the global state
 
 The **external client** sends a deploy hoping that the network will execute the main transaction against the blockchain.
