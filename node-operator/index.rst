@@ -1,5 +1,5 @@
-Node Operator Guide
-===================
+Operators
+=========
 
 Operators that wish to run node infrastructure on the Casper network, either as a standalone private network, or as part of the public network should explore this guide.
 

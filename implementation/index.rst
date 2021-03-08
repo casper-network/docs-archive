@@ -1,5 +1,5 @@
-Blockchain Design
-=================
+Design
+======
 
 .. toctree::
    :maxdepth: 2
