@@ -47,11 +47,11 @@ Gossiping is a process of distributing a value across the entire network without
 
 The process can be summarized as follows:
 
-Given a message `M` to gossip, the desired saturation `S,` and an infection limit `L`:
+Given a message `M` to gossip, the desired saturation `S`, and an infection limit `L`:
 
 1. Pick a subset `T` of `k` nodes from all currently connected nodes.
-2. Send `M` to each node in `T,` noting which nodes were already infected (a node is considered infected if it already had received or known `M`).
-3. For every node shown as already infected, add another random node outside to `T` and send it `M,` again noting the response.
+2. Send `M` to each node in `T`, noting which nodes were already infected (a node is considered infected if it already had received or known `M`).
+3. For every node shown as already infected, add another random node outside to `T` and send it `M`, again noting the response.
 4. End when we confirm infection of `L` new nodes or encountered `S` already infected nodes.
 
 Through this process, a message will spread to almost all nodes over time.
