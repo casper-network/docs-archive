@@ -9,8 +9,8 @@ There is a custom implementation to serialize data structures used by the Casper
 
 Block
 -----
-A proto-block after execution, with the resulting post-state-hash.  This is the core component of the Casper linear blockchain. The defintions and serialization for a ProtoBlock are defined below.
-A block is programmtically defined as follows:
+A proto-block after execution, with the resulting post-state-hash.  This is the core component of the Casper linear blockchain. The definitions and serialization for a ProtoBlock are defined below.
+A block is programmatically defined as follows:
 
 .. code:: rust
 
@@ -21,16 +21,16 @@ A block is programmtically defined as follows:
     }
 
 * hash: A hash over the body of the Block.
-* header: The header of the block which contains information about the contents of the block with additional metadata.
+* header: The header of the block that contains information about the contents of the block with additional metadata.
 * body: The body of the block contains the proposer of the block and hashes of deploys and transfers contained within it.
 
 Block hash
 ~~~~~~~~~~~
-The blockhash is a Digest over the contents of the Block Header. The BlockHash serialises as the byte representation of the hash itself.
+The block hash is a Digest over the contents of the Block Header. The BlockHash serialises as the byte representation of the hash itself.
 
 Block header
 ~~~~~~~~~~~~
-The header portion of a Block, programmtically, it is defined as follows:
+The header portion of a Block, programmatically, is defined as follows:
 
 .. code:: rust 
 
@@ -55,24 +55,24 @@ The header portion of a Block, programmtically, it is defined as follows:
 * ``era_end``: contains Equivocation and reward information to be included in the terminal finalized block.
 * ``timestamp``: The timestamp from when the proto block was proposed.
 * ``era_id``: Era ID in which this block was created.
-* ``height``: The height of this block, i.e. the number of ancestors.
+* ``height``: The height of this block, i.e., the number of ancestors.
 * ``protocol_version``: The version of the Casper network when this block was proposed.
 
-When serializing the ``BlockHeader``, we create a buffer which contains the serialized representations of each of the header fields. 
+When serializing the ``BlockHeader``, we create a buffer that contains the serialized representations of each of the header fields. 
 
 *  ``parent_hash`` serializes to the byte representation of the parent hash. The serialized buffer of the ``parent_hash`` is 32 bytes long.
 *  ``state_root_hash`` serializes to the byte representation of the ``state root hash``. The serialized buffer of the ``state_root_hash`` is 32 bytes long.
 *  ``body_hash`` is the serialized representation of the hash of the block. The serialized buffer of the ``body_hash`` is 32 bytes long.
 *  ``random_bit`` is serialized as a single byte; true maps to 1, while false maps to 0.
 *  ``accumulated_seed`` serializes to the byte representation of the parent Hash. The serialized buffer of the ``accumulated_hash`` is 32 bytes long.
-*  ``era_end`` is an optional field. Thus if the field is set as ``None`` it serialises to ``0``. The serialization of the other case is described in the follow section. 
-*  ``timestamp`` serialises as a single ``u64`` value. The serialization of a ``u64`` value is desribed in its own section, below. 
-*  ``era_id`` serialises as a single ``u64`` value. The serialization of a ``u64`` value is desribed in its own section, below. 
-*  ``proposer`` serialises to the byte representation of the ``PublicKey``. If the ``PublicKey`` is an Ed25519 key, then the first byte within the serialized buffer is ``1`` followed by the bytes of the key itself, else, in the case of Secp256k1, the first byte is ``2``. 
+*  ``era_end`` is an optional field. Thus if the field is set as ``None``, it serialises to ``0``. The serialization of the other case is described in the following section. 
+*  ``timestamp`` serialises as a single ``u64`` value. The serialization of a ``u64`` value is described in its own section below. 
+*  ``era_id`` serialises as a single ``u64`` value. The serialization of a ``u64`` value is described in its own section below. 
+*  ``proposer`` serialises to the byte representation of the ``PublicKey``. If the ``PublicKey`` is an Ed25519 key, then the first byte within the serialized buffer is ``1`` followed by the bytes of the key itself; else, in the case of Secp256k1, the first byte is ``2``. 
 
 EraEnd
 ~~~~~~~
-`EraEnd` as represented within the block header is a struct containing two fields.
+`EraEnd` as represented within the block header, is a struct containing two fields.
 
 .. code:: rust
 
@@ -83,21 +83,21 @@ EraEnd
         next_era_validator_weights: BTreeMap<PublicKey, U512>,
     }
 
-`EraEnd` contains two fields as shown above, the first is termed as the `EraReport` and contains information relevant to that current era. The second is a map of the weights of the validators for the following era.
+`EraEnd` contains two fields, as shown above. The first is termed as the `EraReport` and contains information relevant to that current era. The second is a map of the weights of the validators for the following era.
 
 `EraReport` itself contains two fields:
 
     * ``equivocatiors``: A vector of ``PublicKey``.
     * ``rewards``: A Binary Tree Map of ``PublicKey`` and ``u64``.
 
-When serializing an EraReport, the buffer is first filled with the indiviual serialization of the PublicKey contained within the vector.
+When serializing an EraReport, the buffer is first filled with the individual serialization of the PublicKey contained within the vector.
 
-* If the ``PublicKey`` is an ``Ed25519`` key, the first byte within the buffer is a ``1`` followed by the indiviual bytes of the serialized key.
-* If the ``PublicKey`` is an ``Secp256k1`` key, the first byte within the buffer is a ``2`` followed by the indiviual bytes of the serialized key. 
+* If the ``PublicKey`` is an ``Ed25519`` key, the first byte within the buffer is a ``1`` followed by the individual bytes of the serialized key.
+* If the ``PublicKey`` is an ``Secp256k1`` key, the first byte within the buffer is a ``2`` followed by the individual bytes of the serialized key. 
 
-When serializing the overarching struct of `EraEnd` we first allocate a buffer, which contains the serialized representation of the `EraReport` as described above followed by the serialized BTreeMap.
+When serializing the overarching struct of `EraEnd`, we first allocate a buffer, which contains the serialized representation of the `EraReport` as described above, followed by the serialized BTreeMap.
 
-It should be noted that `EraEnd` is an optional field, thus the above scheme only applies if there is an `EraEnd`; if there is no era end, then the field simply serializes to `0`
+It should be noted that `EraEnd` is an optional field. Thus the above scheme only applies if there is an `EraEnd`; if there is no era end, then the field simply serializes to `0`.
 
 
 Body
@@ -116,11 +116,11 @@ The body portion of the Block, programmatically defined as:
 * ``deploy_hashes``: Is a vector of hex-encoded hashes identifying Deploys included in this Block.
 * ``transfer_hashes``: Is a vector of hex-encoded hashes identifying Transfers included in this Block.
 
-When we serialize the `BlockBody` we create a buffer which contains the serialized representations of the indiviual fields present within the block.
+When we serialize the `BlockBody`, we create a buffer that contains the serialized representations of the individual fields present within the block.
 
-* ``proposer``: serialises to the byte representation of the PublicKey. If the PublicKey is an Ed25519 key, then the first byte within the serialized buffer is 1 followed by the bytes of the key itself, else, in the case of Secp256k1, the first byte is 2.
-* ``deploy_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the amount of deploy hashes present within the body.
-* ``transfer_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the amount of transfers present within the body.
+* ``proposer``: serialises to the byte representation of the PublicKey. If the PublicKey is an Ed25519 key, then the first byte within the serialized buffer is 1 followed by the bytes of the key itself; else, in the case of Secp256k1, the first byte is 2.
+* ``deploy_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the number of deploy hashes present within the body.
+* ``transfer_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the number of transfers present within the body.
 
 
 .. _serialization-standard-deploy:
@@ -128,7 +128,7 @@ When we serialize the `BlockBody` we create a buffer which contains the serializ
 Deploy
 ------
 A deploy is a data structure containing a smart contract along with the requester's signature(s). Additionally, the deploy header contains additional metadata about the deploy itself.
-A deploy is programmtically defined as follows
+A deploy is programmatically defined as follows:
 
 .. code:: rust
 
@@ -148,7 +148,7 @@ A deploy is programmtically defined as follows
 * Payment: The payment code for contained smart contract.
 * Session: The stored contract itself.
 * Approvals: A list of signatures:
-* is_valid: A flag that marks the validity of the deploy. Do note that is the only field within the struct that is not serialized.
+* is_valid: A flag that marks the validity of the deploy. Note that it is the only field within the struct that is not serialized.
 
 Deploy-Hash
 ~~~~~~~~~~~~
@@ -170,16 +170,16 @@ The deploy header is defined as
         chain_name: String,
     }
 
-- Account is defined as enum which can either contain an Ed25519 key or secp256k1 key.
-- An Ed25519 key is serialized as buffer of bytes with the leading byte being ``1`` for Ed25519
+- Account is defined as enum, which can either contain an Ed25519 key or secp256k1 key.
+- An Ed25519 key is serialized as a buffer of bytes, with the leading byte being ``1`` for Ed25519
 - Thus an Ed25519 key ``4dd8edb64cad4bd472f2ab8b0409392306c14b45f5b47ac0c295da461d09b18a`` serializes to ``0x01200000004dd8edb64cad4bd472f2ab8b0409392306c14b45f5b47ac0c295da461d09b18a``
-- Correspondingly a Secp256k1 key is serialized as a buffer of bytes with the leading byte being ``2``
+- Correspondingly, a Secp256k1 key is serialized as a buffer of bytes, with the leading byte being ``2``
 - Thus an Secp256k1 key ``0365dc07a060cac57c98cdeab9a659e097458d4e72899b4bec4f1b230d57a70d72`` serializes as ``0x02210000000365dc07a060cac57c98cdeab9a659e097458d4e72899b4bec4f1b230d57a70d72``
-- A timestamp is struct that is unary tuple containing a ``u64`` value. This value is a count of the milliseconds since the UNIX epoch. Thus the value ``1603994401469`` serializes as ``0xbd3a847575010000``
+- A timestamp is a struct that is a unary tuple containing a ``u64`` value. This value is a count of the milliseconds since the UNIX epoch. Thus the value ``1603994401469`` serializes as ``0xbd3a847575010000``
 - The gas is ``u64`` value which is serialized as ``u64`` CLValue discussed below.
-- Body hash is a hash over the contents of the deploy body which includes the payment, session and approval fields. Its serialization is the byte representation of the hash itself.
-- Dependencies is a vector of deploy hashes referencing deploys that must execute before the current deploy can be executed. It serializes as a buffer containing the indiviual serialization of each DeployHash within the Vector.
-- Chain name is a human readable string describing the name of the chain as detailed in the chainspec. It is serialized as a String CLValue described below.
+- Body hash is a hash over the contents of the deploy body, which includes the payment, session, and approval fields. Its serialization is the byte representation of the hash itself.
+- Dependencies is a vector of deploy hashes referencing deploys that must execute before the current deploy can be executed. It serializes as a buffer containing the individual serialization of each DeployHash within the Vector.
+- Chain name is a human-readable string describing the name of the chain as detailed in the chainspec. It is serialized as a String CLValue described below.
 
 Payment & Session
 ~~~~~~~~~~~~~~~~~
@@ -254,11 +254,12 @@ Payment and Session are both defined as ``ExecutableDeployItems``. ``ExecutableD
 
 is_valid
 ~~~~~~~~
-This is the only field within the Deploy which is not serialized.
+This is the only field within the Deploy that is not serialized.
 
 Deploy Serialization at High Level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-A deploy as described below
+
+Consider the following deploy:
 
 .. code:: json
 
@@ -296,7 +297,9 @@ A deploy as described below
     ]
     }
 
-will Serialize to ``0x20000000000000002640413b0a9f9179d6ae0c7424335483682a4a240a71b0e438be07796c68548b0000000020000000000000008e8560906e20ac3059fbc0498a86a9f775d51d54c0b36d00c830c4e29a6587f74cbaf97475010000d23c14000000000053000000000000002000000000000000cf0e5d669745d5acea0abb8ee784ee55adf26afc3a3f2e9b8523115a65de679a030000000000000020000000000000005315e77c1cfeb0d6f3b60e863daeffbfcf6ebd3ea85b288b9ca49290391063952000000000000000c753ec013bb77522a210c7fed68c359308f0d9536c00216c2ddd5b3442835a0320000000000000008fc364a7266ee2c0a17e8c7f86f3fdcc2b1d590fa5c61e969bf2bf18113666430e000000000000006361737065722d6578616d706c650000000012000000000000009babcba5d0afbe3f06c2adbd907e61f179fb1500000000000000831728a0fe7862148d71cb5dc812c89c01965d1849050000001e000000000000009d836ba4cc5b272c362ecdf4c70e1bed0401bbb8bcee18c7ca13945e8f7301000000000000000000000020000000000000008e8560906e20ac3059fbc0498a86a9f775d51d54c0b36d00c830c4e29a6587f7000000004000000000000000fb9a66c5ad0fe86bc5c5afb98dad6f1dde1b82af7ca7522866b558ccc516b020ce2e5d6728c760c72bd5b7c2c5b9c62cc4f0743edd3ac519679342fc5f7d2c03``
+The above deploy will serialize to:
+
+``0x20000000000000002640413b0a9f9179d6ae0c7424335483682a4a240a71b0e438be07796c68548b0000000020000000000000008e8560906e20ac3059fbc0498a86a9f775d51d54c0b36d00c830c4e29a6587f74cbaf97475010000d23c14000000000053000000000000002000000000000000cf0e5d669745d5acea0abb8ee784ee55adf26afc3a3f2e9b8523115a65de679a030000000000000020000000000000005315e77c1cfeb0d6f3b60e863daeffbfcf6ebd3ea85b288b9ca49290391063952000000000000000c753ec013bb77522a210c7fed68c359308f0d9536c00216c2ddd5b3442835a0320000000000000008fc364a7266ee2c0a17e8c7f86f3fdcc2b1d590fa5c61e969bf2bf18113666430e000000000000006361737065722d6578616d706c650000000012000000000000009babcba5d0afbe3f06c2adbd907e61f179fb1500000000000000831728a0fe7862148d71cb5dc812c89c01965d1849050000001e000000000000009d836ba4cc5b272c362ecdf4c70e1bed0401bbb8bcee18c7ca13945e8f7301000000000000000000000020000000000000008e8560906e20ac3059fbc0498a86a9f775d51d54c0b36d00c830c4e29a6587f7000000004000000000000000fb9a66c5ad0fe86bc5c5afb98dad6f1dde1b82af7ca7522866b558ccc516b020ce2e5d6728c760c72bd5b7c2c5b9c62cc4f0743edd3ac519679342fc5f7d2c03``
 
 
 .. _serialization-standard-values:
@@ -323,9 +326,7 @@ for each variant is as follows:
 - ``Account`` is ``1``
 - ``Contract`` is ``2``
 
-The details of ``CLType`` serialization is in the following section. Using the
-serialization format for ``CLValue`` as a basis, we can succinctly write the
-serialization rules for contracts and accounts:
+The details of ``CLType`` serialization are in the following section. Using the serialization format for ``CLValue`` as a basis, we can succinctly write the serialization rules for contracts and accounts:
 
 - contracts serialize in the same way as data with ``CLType`` equal to
   ``Tuple3(List(U8), Map(String, Key), Tuple3(U32, U32, U32))``;
@@ -333,20 +334,14 @@ serialization rules for contracts and accounts:
 - accounts serialize in the same way as data with ``CLType`` equal to
   ``Tuple5(FixedList(U8, 32), Map(String, Key), URef, Map(FixedList(U8, 32), U8), Tuple2(U8, U8))``.
 
-Note: ``Tuple5`` is not a presently supported ``CLType``, however it is clear
-how to generalize the rules for ``Tuple1``, ``Tuple2``, ``Tuple3`` to any size
-tuple.
+Note: ``Tuple5`` is not a presently supported ``CLType``. However it is clear how to generalize the rules for ``Tuple1``, ``Tuple2``, ``Tuple3`` to any size tuple.
 
-Note: links to further serialization examples and a reference implementation are
-found in :ref:`Appendix B <appendix-b>`.
+Note: links to further serialization examples and a reference implementation are found in :ref:`Appendix B <appendix-b>`.
 
 ``CLValue``
 ~~~~~~~~~~~
 
-``CLValue`` is used to describe data that is used by smart contracts. This could
-be as a local state variable, input argument or return value. A ``CLValue``
-consists of two parts: a ``CLType`` describing the type of the value, and an
-array of bytes which represent the data in our serialization format.
+``CLValue`` is used to describe data that is used by smart contracts. This could be as a local state variable, input argument, or return value. A ``CLValue`` consists of two parts: a ``CLType`` describing the type of the value and an array of bytes which represent the data in our serialization format.
 
 ``CLType`` is described by the following recursive data type:
 
@@ -392,12 +387,7 @@ following rules (this defines the CasperLabs serialization format):
    - E.g. ``7u32`` serializes as ``0x07000000``
    - E.g. ``1024u32`` serializes as ``0x00040000``
 
-- Wider numeric values (i.e. ``U128``, ``U256``, ``U512``) serialize as: one
-  byte given the length of the subsequent number (in bytes), followed by the two's
-  complement representation with little-endian byte order. The number of bytes
-  should be chosen as small as possible to represent the given number. This is
-  done to reduce the size of the serialization in the case of small numbers
-  represented within a wide data type.
+- Wider numeric values (i.e. ``U128``, ``U256``, ``U512``) serialize as one byte given the length of the subsequent number (in bytes), followed by the two's complement representation with little-endian byte order. The number of bytes should be chosen as small as possible to represent the given number. This is done to reduce the size of the serialization in the case of small numbers represented within a wide data type.
 
    - E.g. ``U512::from(7)`` serializes as ``0x0107``
    - E.g. ``U512::from(1024)`` serializes as ``0x020004``
@@ -405,15 +395,11 @@ following rules (this defines the CasperLabs serialization format):
 
 - Unit serializes to an empty byte array.
 
-- Strings serialize as a 32-bit integer representing the length in bytes (note:
-  this might be different than the number of characters since special characters,
-  such as emojis, take more than one byte), followed by the UTF-8 encoding of the
-  characters in the string.
+- Strings serialize as a 32-bit integer representing the length in bytes (note: this might be different than the number of characters since special characters, such as emojis, take more than one byte), followed by the UTF-8 encoding of the characters in the string.
 
    - E.g. ``"Hello, World!"`` serializes as ``0x0d00000048656c6c6f2c20576f726c6421``
 
-- Optional values serialize with a single byte tag, followed by the
-  serialization of the value it self. The tag is equal to ``0`` if the value is
+- Optional values serialize with a single byte tag, followed by the serialization of the value itself. The tag is equal to ``0`` if the value is
   missing, and ``1`` if it is present.
 
    - E.g. ``None`` serializes as ``0x00``
@@ -426,15 +412,11 @@ following rules (this defines the CasperLabs serialization format):
    - E.g. ``List()`` serializes as ``0x00000000``
    - E.g. ``List(1u32, 2u32, 3u32)`` serializes as ``0x03000000010000000200000003000000``
 
-- A fixed-length list of values serializes as simply the concatenation of the
-  serialized elements. Unlike a variable-length list, the length is not included
-  in the serialization because it is statically known by the type of the value.
+- A fixed-length list of values serializes as simply the concatenation of the serialized elements. Unlike a variable-length list, the length is not included in the serialization because it is statically known by the type of the value.
 
    - E.g. ``[1u32, 2u32, 3u32]`` serializes as ``0x010000000200000003000000``
 
-- A ``Result`` serializes as a single byte tag followed by the serialization of
-  the contained value. The tag is equal to ``1`` for the success variant and ``0``
-  for the error variant.
+- A ``Result`` serializes as a single byte tag followed by the serialization of the contained value. The tag is equal to ``1`` for the success variant and ``0`` for the error variant.
 
    - E.g. ``Ok(314u64)`` serializes as ``0x013a01000000000000``
    - E.g. ``Err("Uh oh")`` serializes as ``0x00050000005568206f68``
@@ -447,13 +429,10 @@ following rules (this defines the CasperLabs serialization format):
      ``0x010000000d00000048656c6c6f2c20576f726c642101``
 
 - A ``Map`` serializes as a list of key-value tuples. There must be a
-  well-defined ordering on the keys, and in the serialization the pairs are listed
-  in ascending order. This is done to ensure determinism in the serialization, as
+  well-defined ordering on the keys, and in the serialization the pairs are listed in ascending order. This is done to ensure determinism in the serialization, as
   ``Map`` data structures can be unordered.
 
-- ``URef`` values serialize as the concatenation of its address (which is a
-  fixed-length list of ``u8``) and a single byte tag representing the access
-  rights. Access rights are converted as follows:
+- ``URef`` values serialize as the concatenation of its address (which is a fixed-length list of ``u8``) and a single byte tag representing the access rights. Access rights are converted as follows:
 
 +--------------------+---------------+
 | Access Rights      | Serialization |
@@ -476,19 +455,11 @@ following rules (this defines the CasperLabs serialization format):
 +--------------------+---------------+
 
 - ``Key`` values serialize as a single byte tag representing the variant,
-  followed by the serialization of the data that variant contains. For most
-  variants this is simply a fixed-length 32 byte array. The exception is
-  ``Key::URef`` which contains a ``URef``, so its data serializes per the
-  description above. The tags are as follows: ``Key::Account`` serializes as
+  followed by the serialization of the data that variant contains. For most variants, this is simply a fixed-length 32-byte array. The exception is
+  ``Key::URef``, which contains a ``URef``, so its data serializes per the description above. The tags are as follows: ``Key::Account`` serializes as
   ``0``, ``Key::Hash`` as ``1``, ``Key::URef`` as ``2``.
 
-``CLType`` itself also has rules for serialization. A ``CLType`` serializes as a
-single byte tag, followed by the concatenation of serialized inner types, if any
-(e.g. lists, and tuples have inner types). ``FixedList`` is a minor exception
-because it also includes the length in the type, however this simply means that
-the length included in the serialization as well (as a 32-bit integer, per the
-serialization rules above), following the serialization of the inner type. The
-tags are as follows:
+``CLType`` itself also has rules for serialization. A ``CLType`` serializes as a single-byte tag, followed by the concatenation of serialized inner types, if any (e.g., lists, and tuples have inner types). ``FixedList`` is a minor exception because it also includes the length in the type; however, this simply means that the length included in the serialization as well (as a 32-bit integer, per the serialization rules above), following the serialization of the inner type. The tags are as follows:
 
 +---------------+-------------------+
 | ``CLType``    | Serialization Tag |
@@ -538,20 +509,15 @@ tags are as follows:
 | ``Any``       |                21 |
 +---------------+-------------------+
 
-A complete ``CLValue``, including both the data and the type can also be
-serialized (in order to store it in the global state). This is done by
-concatenating: the serialization of the length (as a 32-bit integer) of the
-serialized data (in bytes), the serialized data itself, and the serialization of
-the type.
+A complete ``CLValue``, including both the data and the type, can also be serialized (in order to store it in the global state). This is done by concatenating: the serialization of the length (as a 32-bit integer) of the
+serialized data (in bytes), the serialized data itself, and the serialization of the type.
 
 .. _global-state-contracts:
 
 Contracts
 ~~~~~~~~~
 
-Contracts are a special value type because they contain the on-chain logic of
-the applications running on the CasperLabs system. A *contract* contains the
-following data:
+Contracts are a special value type because they contain the on-chain logic of the applications running on the CasperLabs system. A *contract* contains the following data:
 
 -  a `wasm module <https://webassembly.org/docs/modules/>`__
 -  a collection of named keys
@@ -565,17 +531,16 @@ a list of all supported functions can be found in :ref:`Appendix A
 
 Note: though the ``call`` function signature has no arguments and no return
 value, within the ``call`` function body the ``get_named_arg`` runtime function can be
-used to accept arguments (by ordinal) and the ``ret`` runtime function can be used
+used to accept arguments (by ordinal), and the ``ret`` runtime function can be used
 to return a single ``CLValue`` to the caller.
 
 The named keys are used to give human-readable names to keys in the global state
-which are important to the contract. For example, the hash key of another
+, which are important to the contract. For example, the hash key of another
 contract it frequently calls may be stored under a meaningful name. It is also
-used to store the ``URef``\ s which are known to the contract (see below
+used to store the ``URef``\ s, which are known to the contract (see below
 section on Permissions for details).
 
-
 The protocol version says which version of the CasperLabs protocol this contract
-was compiled to be compatible with. Contracts which are not compatible with the
+was compiled to be compatible with. Contracts that are not compatible with the
 active major protocol version will not be executed by any node in the CasperLabs
 network.
