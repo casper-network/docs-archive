@@ -17,14 +17,12 @@ A block is programmtically defined as follows
     pub struct Block {
         hash: BlockHash,
         header: BlockHeader,
-        body: (), 
-        proofs: Vec<Signature>,
+        body: BlockBody,
     }
 
 * hash: A hash over the body of the Block.
 * header: The header of the block which contains information about the contents of the block with additional metadata.
-* body: Currently empty 
-* proofs: An array/vector of signatures over the Block. 
+* body: The body of the block contains the proposer of the block and hashes of deploys and transfers contained within it.
 
 Block hash
 ~~~~~~~~~~~
@@ -40,34 +38,31 @@ The header portion of a Block, programmtically, it is defined as follows:
         parent_hash: BlockHash,
         state_root_hash: Digest,
         body_hash: Digest,
-        deploy_hashes: Vec<DeployHash>,
         random_bit: bool,
         accumulated_seed: Digest,
         era_end: Option<EraEnd>,
         timestamp: Timestamp,
         era_id: EraId,
         height: u64,
-        proposer: PublicKey,
+        protocol_version: ProtocolVersion,
     }
 
 * ``parent_hash``: is the hash of the parent block
 * ``state_root_hash``: is the current State Root hash
-* ``body_hash``: is the serialized representation of a unit type, ``()``, its serialization is described below
-* ``deploy_hashes``: is a vector of hex-encoded hashes identifying Deploys included in this Block
-* ``random_bit``: is a boolean whose serialization is desribed below
+* ``body_hash``: the hash of the block body.
+* ``random_bit``: is a boolean whose serialization is desribed below.
 * ``accumulated_seed``: A seed needed for initializing a future era.
 * ``era_end``: contains Equivocation and reward information to be included in the terminal finalized block.
 * ``timestamp``: The timestamp from when the proto block was proposed.
 * ``era_id``: Era ID in which this block was created.
 * ``height``: The height of this block, i.e. the number of ancestors.
-* ``proposer``: The PublicKey which proposed this block. 
+* ``protocol_version``: The version of the Casperlabs platform when this block was proposed.
 
 When serializing the ``BlockHeader``, we create a buffer which contains the serialized representations of each of the header fields. 
 
 *  ``parent_hash`` serializes to the byte representation of the parent hash. The serialized buffer of the ``parent_hash`` is 32 bytes long.
 *  ``state_root_hash`` serializes to the byte representation of the ``state root hash``. The serialized buffer of the ``state_root_hash`` is 32 bytes long.
-*  ``body_hash`` is the serialized representation of the unit type ``()``. Its serialization is described in detail in the CLValue section. 
-*  ``deploy_hashes`` serialises to the byte representation of all the ``deploy_hashes`` within the block header. Its length is ```32 * n``, where n denotes the amount of deploy hashes present within the header.
+*  ``body_hash`` is the serialized representation of the hash of the block. The serialized buffer of the ``body_hash`` is 32 bytes long.
 *  ``random_bit`` is serialized as a single byte; true maps to 1, while false maps to 0.
 *  ``accumulated_seed`` serializes to the byte representation of the parent Hash. The serialized buffer of the ``accumulated_hash`` is 32 bytes long.
 *  ``era_end`` is an optional field. Thus if the field is set as ``None`` it serialises to ``0``. The serialization of the other case is described in the follow section. 
@@ -79,93 +74,52 @@ EraEnd
 ~~~~~~~
 `EraEnd` as represented within the block header is a struct containing two fields.
 
-* ``equivocatiors``: A vector of ``PublicKey``. 
-* ``rewards``: A Binary Tree Map of ``PublicKey`` and ``u64``.
+.. code:: rust
 
-When serializing an EraEnd, the buffer is first filled with the indiviual serialization of the PublicKey's contained within the vector. 
+        pub struct EraEnd {
+        /// The era end information.
+        era_report: EraReport,
+        /// The validator weights for the next era.
+        next_era_validator_weights: BTreeMap<PublicKey, U512>,
+    }
+
+`EraEnd` contains two fields as show above, the first is termed as the `EraReport` and contains information relevant to that current era. The second is a map of the weights of the validators for the following era.
+
+`EraReport` itself contains two fields:
+
+    * ``equivocatiors``: A vector of ``PublicKey``.
+    * ``rewards``: A Binary Tree Map of ``PublicKey`` and ``u64``.
+
+When serializing an EraReport, the buffer is first filled with the indiviual serialization of the PublicKey's contained within the vector.
 
 * If the ``PublicKey`` is an ``Ed25519`` key, the first byte within the buffer is a ``1`` followed by the indiviual bytes of the serialized key.
 * If the ``PublicKey`` is an ``Secp256k1`` key, the first byte within the buffer is a ``2`` followed by the indiviual bytes of the serialized key. 
 
+When serializing the over-arching struct of `EraEnd` we first allocate a buffer, which contains the serialized representation of the `EraReport` as described above followed by the serialized BTreeMap.
+
+It should be noted that `EraEnd` is an optional field, thus the above scheme only applies if there is an `EraEnd`, if there is no era end, then the field simply serializes to `0`
+
+
 Body
 ~~~~
-The ``Body`` of the Block is an empty field and NOT included in the serialization of the block. It should be noted that the ``Header`` contains a hash over the empty ``()``, but the actual serialized block does not.
+The body portion of the Block, programmatically defined as.
 
+.. code:: rust
 
-Proofs
-~~~~~~
-``Proofs`` is a field within the block which contains a vector of ``Signature``\'s over the ``Block``. 
-
-* If the ``Signature`` is of the ``Ed25519`` variant, then the serialized buffer contains ``1`` as the first byte, followed by the byte representation of the signature.
-* If the ``Signature`` is of the ``Secp256k1`` variant, then the serialised buffer contains ``2`` as the first byte, followed by the byte representation of the signature,
-
-Eg:
-In the case of ``Ed25519``:
-
-* ``4a249f895c01a2a12fbf4f613d071ff00883711612d66a18f27cec9d543fd18777b4e6f94eae3c8c9ee0b5b19ce886d255be5fcaf826f5b49ddf50e1df550809`` 
-
-will serialize to
-
-* ``014a249f895c01a2a12fbf4f613d071ff00883711612d66a18f27cec9d543fd18777b4e6f94eae3c8c9ee0b5b19ce886d255be5fcaf826f5b49ddf50e1df550809``
-
-In the case of ``Secp256k1``:
-
-* ``0392ded56f5f0b8c78b7da2fa24c14fbede711a287360a9502e356750ef156d03ea32ab3260e8ea5dcc9093831e1e0dce253c277db9dad07505283e2c2895d83``
-
-will serialize to
-
-* ``020392ded56f5f0b8c78b7da2fa24c14fbede711a287360a9502e356750ef156d03ea32ab3260e8ea5dcc9093831e1e0dce253c277db9dad07505283e2c2895d83``
-
-High Level View
-~~~~~~~~~~~~~~~
-Thus, considering the information a block:
-
-.. code:: json
-
-    Block {
-        hash: BlockHash(
-            02a001d6e43acbc1b03a4153c42ff18cd71cc4d9284c2b75049659434077a5f2,
-        ),
-        header: BlockHeader {
-            parent_hash: BlockHash(
-                8f36c8dde6e934b7c69211bcea976ea98950af33bb9c49fbbd93094ee385103f,
-            ),
-            state_root_hash: 7d65cb919feb758f17c55a51b1cec92d88a34505488208d4f3a79486baf1f6c2,
-            body_hash: 0e5751c026e543b2e8ab2eb06099daa1d1e5df47778f7787faab45cdf12fe3a8,
-            deploy_hashes: [
-                DeployHash(
-                    f521be360817ce55ab958456a4cb24378391b65b3fe0e082d61271e61995558b,
-                ),
-                DeployHash(
-                    105cbace2cd583000e983d14f902592d74568a45c5faf3c85324bcca31056d96,
-                ),
-                DeployHash(
-                    572c4cf29d8fd86b41555f6bfc62dfaa93bf8f5134a703ec1f5c5bb75c2f1f79,
-                ),
-            ],
-            random_bit: false,
-            accumulated_seed: cff903daf62d5c301fd0960e26eab14a0aa500d832539c3db88fecf90fbe69a2,
-            era_end: None,
-            timestamp: Timestamp(
-                1605887386442,
-            ),
-            era_id: EraId(
-                3,
-            ),
-            height: 32,
-            proposer: PublicKey::Ed25519(7fdb6db5c5386a89e349085e167805c075cca3e063a27d6b9df9b8bf5d001757),
-        },
-        body: (),
-        proofs: [
-            Signature::Ed25519(0a76e180987668221e4999ba2ab127478933f6e646a52b8371851018237e27a720c152161e13cad62ab41262db7b7ac7c16969999829945a80f9bff35847fb07),
-            Signature::Ed25519(018214f999a79346c5b15eb88669ad7a0814b44e4bbdf641630513e9d3af8cc26c7e9e1342b24ae38566de9ed90ffe479dd316a84ae922c1bd6bafd998be3302),
-            Signature::Secp256k1(f678f89b914537618bf548fc880eb63a7e8033b08a5f2f6bfdb55f5eac9b053029148305e187a8d591293b59840533422dec92cfb9899660fc040797aadeecbc),
-        ],
+    pub struct BlockBody {
+        proposer: PublicKey,
+        deploy_hashes: Vec<DeployHash>,
+        transfer_hashes: Vec<DeployHash>,
     }
 
-will serialize to:
+* ``proposer``: The PublicKey which proposed this block.
+* ``deploy_hashes``: Is a vector of hex-encoded hashes identifying Deploys included in this Block.
+* ``transfer_hashes``: Is a vector of hex-encoded hashes identifying Transfers included in this Block.
 
-``02a001d6e43acbc1b03a4153c42ff18cd71cc4d9284c2b75049659434077a5f28f36c8dde6e934b7c69211bcea976ea98950af33bb9c49fbbd93094ee385103f7d65cb919feb758f17c55a51b1cec92d88a34505488208d4f3a79486baf1f6c20e5751c026e543b2e8ab2eb06099daa1d1e5df47778f7787faab45cdf12fe3a803000000f521be360817ce55ab958456a4cb24378391b65b3fe0e082d61271e61995558b105cbace2cd583000e983d14f902592d74568a45c5faf3c85324bcca31056d96572c4cf29d8fd86b41555f6bfc62dfaa93bf8f5134a703ec1f5c5bb75c2f1f7900cff903daf62d5c301fd0960e26eab14a0aa500d832539c3db88fecf90fbe69a2004ae358e6750100000300000000000000200000000000000001200000007fdb6db5c5386a89e349085e167805c075cca3e063a27d6b9df9b8bf5d00175703000000010a76e180987668221e4999ba2ab127478933f6e646a52b8371851018237e27a720c152161e13cad62ab41262db7b7ac7c16969999829945a80f9bff35847fb0701018214f999a79346c5b15eb88669ad7a0814b44e4bbdf641630513e9d3af8cc26c7e9e1342b24ae38566de9ed90ffe479dd316a84ae922c1bd6bafd998be33020240000000f678f89b914537618bf548fc880eb63a7e8033b08a5f2f6bfdb55f5eac9b053029148305e187a8d591293b59840533422dec92cfb9899660fc040797aadeecbc``
+When we serialize the `BlockBody` we create a buffer which contains the serialized representations of the indiviual fields present within the block.
+* ``proposer``: serialises to the byte representation of the PublicKey. If the PublicKey is an Ed25519 key, then the first byte within the serialized buffer is 1 followed by the bytes of the key itself, else, in the case of Secp256k1, the first byte is 2.
+* ``deploy_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n, where n denotes the amount of deploy hashes present within the body.
+* ``transfer_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n, where n denotes the amount of transfers present within the body.
 
 
 .. _serialization-standard-deploy:
