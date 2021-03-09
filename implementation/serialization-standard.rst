@@ -1,6 +1,6 @@
 .. _serialization-standard-head:
 
-Serialization standard
+Serialization Standard
 ======================
 There is a custom implementation to serialize data structures used by the Casper Node to their byte representation. This document details and describes the way in which this custom serialization is implemented, allowing developers to build their own library that implements the custom serialization.
 
@@ -10,7 +10,7 @@ There is a custom implementation to serialize data structures used by the Casper
 Block
 -----
 A proto-block after execution, with the resulting post-state-hash.  This is the core component of the Casper linear blockchain. The defintions and serialization for a ProtoBlock are defined below.
-A block is programmtically defined as follows
+A block is programmtically defined as follows:
 
 .. code:: rust
 
@@ -50,13 +50,13 @@ The header portion of a Block, programmtically, it is defined as follows:
 * ``parent_hash``: is the hash of the parent block
 * ``state_root_hash``: is the current State Root hash
 * ``body_hash``: the hash of the block body.
-* ``random_bit``: is a boolean whose serialization is desribed below.
+* ``random_bit``: is a boolean whose serialization is described below.
 * ``accumulated_seed``: A seed needed for initializing a future era.
 * ``era_end``: contains Equivocation and reward information to be included in the terminal finalized block.
 * ``timestamp``: The timestamp from when the proto block was proposed.
 * ``era_id``: Era ID in which this block was created.
 * ``height``: The height of this block, i.e. the number of ancestors.
-* ``protocol_version``: The version of the Casperlabs platform when this block was proposed.
+* ``protocol_version``: The version of the Casper network when this block was proposed.
 
 When serializing the ``BlockHeader``, we create a buffer which contains the serialized representations of each of the header fields. 
 
@@ -83,26 +83,26 @@ EraEnd
         next_era_validator_weights: BTreeMap<PublicKey, U512>,
     }
 
-`EraEnd` contains two fields as show above, the first is termed as the `EraReport` and contains information relevant to that current era. The second is a map of the weights of the validators for the following era.
+`EraEnd` contains two fields as shown above, the first is termed as the `EraReport` and contains information relevant to that current era. The second is a map of the weights of the validators for the following era.
 
 `EraReport` itself contains two fields:
 
     * ``equivocatiors``: A vector of ``PublicKey``.
     * ``rewards``: A Binary Tree Map of ``PublicKey`` and ``u64``.
 
-When serializing an EraReport, the buffer is first filled with the indiviual serialization of the PublicKey's contained within the vector.
+When serializing an EraReport, the buffer is first filled with the indiviual serialization of the PublicKey contained within the vector.
 
 * If the ``PublicKey`` is an ``Ed25519`` key, the first byte within the buffer is a ``1`` followed by the indiviual bytes of the serialized key.
 * If the ``PublicKey`` is an ``Secp256k1`` key, the first byte within the buffer is a ``2`` followed by the indiviual bytes of the serialized key. 
 
-When serializing the over-arching struct of `EraEnd` we first allocate a buffer, which contains the serialized representation of the `EraReport` as described above followed by the serialized BTreeMap.
+When serializing the overarching struct of `EraEnd` we first allocate a buffer, which contains the serialized representation of the `EraReport` as described above followed by the serialized BTreeMap.
 
-It should be noted that `EraEnd` is an optional field, thus the above scheme only applies if there is an `EraEnd`, if there is no era end, then the field simply serializes to `0`
+It should be noted that `EraEnd` is an optional field, thus the above scheme only applies if there is an `EraEnd`; if there is no era end, then the field simply serializes to `0`
 
 
 Body
 ~~~~
-The body portion of the Block, programmatically defined as.
+The body portion of the Block, programmatically defined as:
 
 .. code:: rust
 
@@ -117,9 +117,10 @@ The body portion of the Block, programmatically defined as.
 * ``transfer_hashes``: Is a vector of hex-encoded hashes identifying Transfers included in this Block.
 
 When we serialize the `BlockBody` we create a buffer which contains the serialized representations of the indiviual fields present within the block.
+
 * ``proposer``: serialises to the byte representation of the PublicKey. If the PublicKey is an Ed25519 key, then the first byte within the serialized buffer is 1 followed by the bytes of the key itself, else, in the case of Secp256k1, the first byte is 2.
-* ``deploy_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n, where n denotes the amount of deploy hashes present within the body.
-* ``transfer_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n, where n denotes the amount of transfers present within the body.
+* ``deploy_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the amount of deploy hashes present within the body.
+* ``transfer_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the amount of transfers present within the body.
 
 
 .. _serialization-standard-deploy:
