@@ -106,7 +106,7 @@ To learn about options for generating keys, include ``--help`` when running the 
 
 .. code-block:: bash
 
-   casper-client keygen /etc/casper/validator_keys
+   sudo casper-client keygen /etc/casper/validator_keys
 
 More about keys and key generation can be found in ``/etc/casper/validator_keys/README.md`` if ``casper-node-lancher``
 was installed from the debian package.
