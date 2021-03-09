@@ -70,19 +70,19 @@ In the code, we set the weight for the primary account to 3.
 
 	deploy = utils.keys.setKeyWeightDeploy(mainAccount, mainAccount, 3);
 
-At this point, we expect the following account structure.
+At this point, we expect an account structure similar to the following, with real account addresses replacing the sample addresses:
 
 .. code-block:: sh
 
    "Account": {
-   "account_address": "account-address-…",
+   "account_address": "account-address-123…",
       "action_thresholds": {
          "deployment": 1,
          "key_management": 1
    },
    "associated_keys": [
       {
-         "account_address": "account-address-1…”,
+         "account_address": "account-address-123…",
          "weight": 3
       }
    ],
@@ -97,17 +97,19 @@ Next, we set the key management threshold for the main account to 3. With this t
 
 	deploy = utils.keys.setKeyManagementThresholdDeploy(mainAccount, 3);
 
+We expect an account structure similar to this:
+
 .. code-block:: sh
 
    "Account": {
-   "account_address": "account-address-…",
+   "account_address": "account-address-123…",
       "action_thresholds": {
          "deployment": 1,
          "key_management": 3
    },
    "associated_keys": [
       {
-         "account_address": "account-address-1…”,
+         "account_address": "account-address-123…",
          "weight": 3
       }
    ],
@@ -121,17 +123,19 @@ Next, the client code sets the deployment threshold to 2 for this account.
 
 	deploy = utils.keys.setDeploymentThresholdDeploy(mainAccount, 2);
 
+We expect an account structure similar to this:
+
 .. code-block:: sh
 
    "Account": {
-   "account_address": "account-address-…",
+   "account_address": "account-address-123…",
       "action_thresholds": {
          "deployment": 2,
          "key_management": 3
    },
    "associated_keys": [
       {
-         "account_address": "account-address-1…”,
+         "account_address": "account-address-123…",
          "weight": 3
       }
    ],
@@ -145,21 +149,23 @@ The next step is to add a new key with weight 1. You cannot do anything with thi
 
 	deploy = utils.keys.setKeyWeightDeploy(mainAccount, firstAccount, 1);
 
+We expect this account structure, with a new associated key and account address:
+
 .. code-block:: sh
 
    "Account": {
-   "account_address": "account-address-…",
+   "account_address": "account-address-123…",
       "action_thresholds": {
          "deployment": 1,
          "key_management": 3
    },
    "associated_keys": [
       {
-         "account_address": "account-address-1…”,
+         "account_address": "account-address-123…",
          "weight": 3
       },
       {
-         "account_address": "account-address-2…”,
+         "account_address": "account-address-456…",
          "weight": 1
       }
    ],
@@ -173,25 +179,27 @@ We will add another key with weight 1. If you use this key with the second key, 
 
 	deploy = utils.keys.setKeyWeightDeploy(mainAccount, secondAccount, 1);
 
+We expect an account structure similar to the following:
+
 .. code-block:: sh
 
    "Account": {
-   "account_address": "account-address-…",
+   "account_address": "account-address-123…",
       "action_thresholds": {
          "deployment": 1,
          "key_management": 3
    },
    "associated_keys": [
       {
-         "account_address": "account-address-1…”,
+         "account_address": "account-address-123…",
          "weight": 3
       },
       {
-         "account_address": "account-address-2…”,
+         "account_address": "account-address-456…",
          "weight": 1
       },
       {
-         "account_address": "account-address-3…”,
+         "account_address": "account-address-789…",
          "weight": 1
       }
    ],
@@ -238,19 +246,19 @@ After the above transfer of funds, the client code removes both deployment accou
 	deploy = utils.keys.setKeyWeightDeploy(mainAccount, secondAccount, 0);
 	...
 
-At this point, we expect the following account structure.
+At this point, we expect the following account structure:
 
 .. code-block:: sh
 
    "Account": {
-   "account_address": "account-address-…",
+   "account_address": "account-address-123…",
       "action_thresholds": {
          "deployment": 1,
          "key_management": 3
    },
    "associated_keys": [
       {
-         "account_address": "account-address-1…”,
+         "account_address": "account-address-123…",
          "weight": 3
       }
    ],

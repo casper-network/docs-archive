@@ -37,4 +37,5 @@ and our token policies.
    staking/index
    dapp-dev-guide/index
    node-operator/index
+   glossary/index
    faq/index
