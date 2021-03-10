@@ -34,7 +34,7 @@ A block is structurally defined as follows:
 
 Block hash
 ~~~~~~~~~~~
-The block hash is a Digest over the contents of the Block Header. The BlockHash serialises as the byte representation of the hash itself.
+The block hash is a Digest over the contents of the Block Header. The BlockHash serializes as the byte representation of the hash itself.
 
 Block header
 ~~~~~~~~~~~~
@@ -73,10 +73,10 @@ When serializing the ``BlockHeader``, we create a buffer that contains the seria
 *  ``body_hash`` is the serialized representation of the hash of the block. The serialized buffer of the ``body_hash`` is 32 bytes long.
 *  ``random_bit`` is serialized as a single byte; true maps to 1, while false maps to 0.
 *  ``accumulated_seed`` serializes to the byte representation of the parent Hash. The serialized buffer of the ``accumulated_hash`` is 32 bytes long.
-*  ``era_end`` is an optional field. Thus if the field is set as ``None``, it serialises to ``0``. The serialization of the other case is described in the following section. 
-*  ``timestamp`` serialises as a single ``u64`` value. The serialization of a ``u64`` value is described in its own section below. 
-*  ``era_id`` serialises as a single ``u64`` value. The serialization of a ``u64`` value is described in its own section below. 
-*  ``proposer`` serialises to the byte representation of the ``PublicKey``. If the ``PublicKey`` is an Ed25519 key, then the first byte within the serialized buffer is ``1`` followed by the bytes of the key itself; else, in the case of Secp256k1, the first byte is ``2``. 
+*  ``era_end`` is an optional field. Thus if the field is set as ``None``, it serializes to ``0``. The serialization of the other case is described in the following section. 
+*  ``timestamp`` serializes as a single ``u64`` value. The serialization of a ``u64`` value is described in its own section below. 
+*  ``era_id`` serializes as a single ``u64`` value. The serialization of a ``u64`` value is described in its own section below. 
+*  ``proposer`` serializes to the byte representation of the ``PublicKey``. If the ``PublicKey`` is an Ed25519 key, then the first byte within the serialized buffer is ``1`` followed by the bytes of the key itself; else, in the case of Secp256k1, the first byte is ``2``. 
 
 EraEnd
 ~~~~~~~
@@ -95,7 +95,7 @@ EraEnd
 
 `EraReport` itself contains two fields:
 
-    * ``equivocatiors``: A vector of ``PublicKey``.
+    * ``equivocators``: A vector of ``PublicKey``.
     * ``rewards``: A Binary Tree Map of ``PublicKey`` and ``u64``.
 
 When serializing an EraReport, the buffer is first filled with the individual serialization of the PublicKey contained within the vector.
@@ -126,9 +126,9 @@ The body portion of the Block, is structurally defined as:
 
 When we serialize the `BlockBody`, we create a buffer that contains the serialized representations of the individual fields present within the block.
 
-* ``proposer``: serialises to the byte representation of the PublicKey. If the PublicKey is an Ed25519 key, then the first byte within the serialized buffer is 1 followed by the bytes of the key itself; else, in the case of Secp256k1, the first byte is 2.
-* ``deploy_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the number of deploy hashes present within the body.
-* ``transfer_hashes``: serialises to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the number of transfers present within the body.
+* ``proposer``: serializes to the byte representation of the PublicKey. If the PublicKey is an Ed25519 key, then the first byte within the serialized buffer is 1 followed by the bytes of the key itself; else, in the case of Secp256k1, the first byte is 2.
+* ``deploy_hashes``: serializes to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the number of deploy hashes present within the body.
+* ``transfer_hashes``: serializes to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the number of transfers present within the body.
 
 
 .. _serialization-standard-deploy:
@@ -160,7 +160,7 @@ A deploy is structurally defined as follows:
 
 Deploy-Hash
 ~~~~~~~~~~~~
-The Deploy hash is a Digest over the contents of the Deploy header. The Deploy Hash serialises as the byte representation of the hash itself.
+The Deploy hash is a Digest over the contents of the Deploy header. The Deploy Hash serializes as the byte representation of the hash itself.
 
 Deploy-Header
 ~~~~~~~~~~~~~
@@ -250,15 +250,15 @@ Payment and Session are both defined as ``ExecutableDeployItems``. ``ExecutableD
     - ``StoredContractByName { name: "U5A74bSZH8abT8HqVaK9", entry_point: "gIetSxltnRDvMhWdxTqQ", args: 07beadc3da884faa17454a }``
     - ``0x0214000000553541373462535a483861625438487156614b39140000006749657453786c746e5244764d685764785471510b00000007beadc3da884faa17454a``
 
-- StoredVersionedContractByHash serializes such that the first byte within the serialized buffer is 3u8. However, the field version within the enum serializes as a Option CLValue, i.e if the value is None as shown in the example, it serializes to 0, else it serialises the inner u32 value which is described below.
+- StoredVersionedContractByHash serializes such that the first byte within the serialized buffer is 3u8. However, the field version within the enum serializes as a Option CLValue, i.e if the value is None as shown in the example, it serializes to 0, else it serializes the inner u32 value which is described below.
     - ``StoredVersionedContractByHash { hash: b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423, version: None, entry_point: "PsLz5c7JsqT8BK8ll0kF", args: 3d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8 }``
     - ``0x03b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423001400000050734c7a3563374a73715438424b386c6c306b463b0000003d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8``
 
-- StoredVersionedContractByName serializes such that the first byte within the serialized buffer is 4u8. The name and entry_point are serialised as a String CLValue, with the Option version field serializing to 0 if the value is None, else it serialises the inner u32 value as described below.
+- StoredVersionedContractByName serializes such that the first byte within the serialized buffer is 4u8. The name and entry_point are serialized as a String CLValue, with the Option version field serializing to 0 if the value is None, else it serializes the inner u32 value as described below.
     - ``StoredVersionedContractByName { name: "lWJWKdZUEudSakJzw1tn", version: Some(1632552656), entry_point: "S1cXRT3E1jyFlWBAIVQ8", args: 9975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8 }``
     - ``0x04140000006c574a574b645a5545756453616b4a7a7731746e01d0c64e61140000005331635852543345316a79466c57424149565138270000009975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8``
 
-- Transfer serialises such that the first byte within the serialised buffer contains is 5u8, with the remaining bytes of the buffer containing the bytes contained within the args field of Transfer.
+- Transfer serializes such that the first byte within the serialized buffer contains is 5u8, with the remaining bytes of the buffer containing the bytes contained within the args field of Transfer.
 
 is_valid
 ~~~~~~~~
