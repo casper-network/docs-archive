@@ -375,7 +375,7 @@ Note: links to further serialization examples and a reference implementation are
    }
 
 All data which can be assigned a (non-``Any``) ``CLType`` can be serialized according to the
-following rules (this defines the CasperLabs serialization format):
+following rules (this defines the Casper serialization format):
 
 - Boolean values serialize as a single byte; ``true`` maps to ``1``, while ``false`` maps to ``0``.
 
@@ -517,7 +517,7 @@ serialized data (in bytes), the serialized data itself, and the serialization of
 Contracts
 ~~~~~~~~~
 
-Contracts are a special value type because they contain the on-chain logic of the applications running on the CasperLabs system. A *contract* contains the following data:
+Contracts are a special value type because they contain the on-chain logic of the applications running on the Casper network. A *contract* contains the following data:
 
 -  a `wasm module <https://webassembly.org/docs/modules/>`__
 -  a collection of named keys
@@ -525,7 +525,7 @@ Contracts are a special value type because they contain the on-chain logic of th
 
 The wasm module must contain a function named ``call`` which takes no arguments
 and returns no values. This is the main entry point into the contract. Moreover,
-the module may import any of the functions supported by the CasperLabs runtime;
+the module may import any of the functions supported by the Casper runtime;
 a list of all supported functions can be found in :ref:`Appendix A
 <appendix-a>`.
 
@@ -540,7 +540,7 @@ contract it frequently calls may be stored under a meaningful name. It is also
 used to store the ``URef``\ s, which are known to the contract (see below
 section on Permissions for details).
 
-The protocol version says which version of the CasperLabs protocol this contract
+The protocol version says which version of the Casper protocol this contract
 was compiled to be compatible with. Contracts that are not compatible with the
-active major protocol version will not be executed by any node in the CasperLabs
+active major protocol version will not be executed by any node in the Casper
 network.
