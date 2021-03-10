@@ -69,7 +69,7 @@ If you successfully ran the two tests (``should_run`` and ``should_update``), t
 
 Using the Makefile
 ^^^^^^^^^^^^^^^^^^
-If you examine the repository contents, you’ll see that there is a Makefile. This is an alternative to using a build script, as we did in the `Getting guide <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_. To duplicate the steps we took above, you would simply run the following two commands in your terminal:
+If you examine the repository contents, you’ll see that there is a Makefile. This is an alternative to using a build script, as we did in the `Getting Started guide <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_. To duplicate the steps we took above, you would simply run the following two commands in your terminal:
 
 .. code-block:: bash
 
