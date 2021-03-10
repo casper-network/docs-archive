@@ -9,7 +9,15 @@ There is a custom implementation to serialize data structures used by the Casper
 
 Block
 -----
-A proto-block after execution, with the resulting post-state-hash.  This is the core component of the Casper linear blockchain. The definitions and serialization for a ProtoBlock are defined below.
+A block is the core component of the Casper linear blockchain, used in two contexts:
+
+#. A data structure containing a collection of transactions. Blocks form the primary structure of the blockchain.
+#. A message that is exchanged between nodes containing the data structure as explained in (1).
+
+Each block has a globally unique ID, achieved by hashing the contents of the block.
+
+Each block points to its parent. An exception is the first block, which has no parent.
+
 A block is structurally defined as follows:
 
 .. code:: rust
@@ -53,7 +61,7 @@ The header portion of a Block, structurally, is defined as follows:
 * ``random_bit``: is a boolean whose serialization is described below.
 * ``accumulated_seed``: A seed needed for initializing a future era.
 * ``era_end``: contains Equivocation and reward information to be included in the terminal finalized block.
-* ``timestamp``: The timestamp from when the proto block was proposed.
+* ``timestamp``: The timestamp from when the block was proposed.
 * ``era_id``: Era ID in which this block was created.
 * ``height``: The height of this block, i.e., the number of ancestors.
 * ``protocol_version``: The version of the Casper network when this block was proposed.
@@ -76,7 +84,7 @@ EraEnd
 
 .. code:: rust
 
-        pub struct EraEnd {
+    pub struct EraEnd {
         /// The era end information.
         era_report: EraReport,
         /// The validator weights for the next era.
