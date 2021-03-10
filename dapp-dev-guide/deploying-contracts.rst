@@ -107,7 +107,7 @@ As described above, a basic deployment must provide some essential information. 
 
 If your deployment command is correct, expect to see a success message that looks like this:
 
-.. code-block::
+.. code-block:: bash
 
    {"api_version":"1.0.0","deploy_hash":"8c3068850354c2788c1664ac6a275ee575c8823676b4308851b7b3e1fe4e3dcc"}
 

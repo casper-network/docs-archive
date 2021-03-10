@@ -27,7 +27,7 @@ set_key_weight            Set a weight for a specific key.
 add_or_update_key         Add or update a key, given the key and the weight.
 add_key                   Add a specific key.
 remove_key_if_exists      Remove a key if it exists.
-set_threshold             Set the threshold for key management and deployments, give the permission level and associated weight.
+set_threshold             Set the threshold for key management and deployments, given the permission level and associated weight.
 ========================  ============= 
 
 You will find a construct to handle the contract arguments in ``api.rs``.
