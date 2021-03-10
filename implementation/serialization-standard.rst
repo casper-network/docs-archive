@@ -10,7 +10,7 @@ There is a custom implementation to serialize data structures used by the Casper
 Block
 -----
 A proto-block after execution, with the resulting post-state-hash.  This is the core component of the Casper linear blockchain. The definitions and serialization for a ProtoBlock are defined below.
-A block is programmatically defined as follows:
+A block is structurally defined as follows:
 
 .. code:: rust
 
@@ -30,7 +30,7 @@ The block hash is a Digest over the contents of the Block Header. The BlockHash 
 
 Block header
 ~~~~~~~~~~~~
-The header portion of a Block, programmatically, is defined as follows:
+The header portion of a Block, structurally, is defined as follows:
 
 .. code:: rust 
 
@@ -102,7 +102,7 @@ It should be noted that `EraEnd` is an optional field. Thus the above scheme onl
 
 Body
 ~~~~
-The body portion of the Block, programmatically defined as:
+The body portion of the Block, is structurally defined as:
 
 .. code:: rust
 
@@ -128,7 +128,7 @@ When we serialize the `BlockBody`, we create a buffer that contains the serializ
 Deploy
 ------
 A deploy is a data structure containing a smart contract along with the requester's signature(s). Additionally, the deploy header contains additional metadata about the deploy itself.
-A deploy is programmatically defined as follows:
+A deploy is structurally defined as follows:
 
 .. code:: rust
 
