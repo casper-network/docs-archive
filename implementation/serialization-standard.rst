@@ -2,7 +2,7 @@
 
 Serialization Standard
 ======================
-There is a custom implementation to serialize data structures used by the Casper Node to their byte representation. This document details and describes the way in which this custom serialization is implemented, allowing developers to build their own library that implements the custom serialization.
+We provide a custom implementation to serialize data structures used by the Casper node to their byte representation. This document details how this custom serialization is implemented, allowing developers to build their own library that implements the custom serialization.
 
 
 .. _serialization-standard-block:
@@ -30,7 +30,7 @@ A block is structurally defined as follows:
 
 * hash: A hash over the body of the Block.
 * header: The header of the block that contains information about the contents of the block with additional metadata.
-* body: The body of the block contains the proposer of the block and hashes of deploys and transfers contained within it.
+* body: The block's body contains the proposer of the block and hashes of deploys and transfers contained within it.
 
 Block hash
 ~~~~~~~~~~~
@@ -91,7 +91,7 @@ EraEnd
         next_era_validator_weights: BTreeMap<PublicKey, U512>,
     }
 
-`EraEnd` contains two fields, as shown above. The first is termed as the `EraReport` and contains information relevant to that current era. The second is a map of the weights of the validators for the following era.
+`EraEnd` contains two fields, as shown above. The first is termed as the `EraReport` and contains information relevant to that current era. The second is a map of the weights of the validators for the next era.
 
 `EraReport` itself contains two fields:
 
@@ -105,12 +105,12 @@ When serializing an EraReport, the buffer is first filled with the individual se
 
 When serializing the overarching struct of `EraEnd`, we first allocate a buffer, which contains the serialized representation of the `EraReport` as described above, followed by the serialized BTreeMap.
 
-It should be noted that `EraEnd` is an optional field. Thus the above scheme only applies if there is an `EraEnd`; if there is no era end, then the field simply serializes to `0`.
+Note that `EraEnd` is an optional field. Thus the above scheme only applies if there is an `EraEnd`; if there is no era end, the field simply serializes to `0`.
 
 
 Body
 ~~~~
-The body portion of the Block, is structurally defined as:
+The body portion of the block, is structurally defined as:
 
 .. code:: rust
 
@@ -135,7 +135,7 @@ When we serialize the `BlockBody`, we create a buffer that contains the serializ
 
 Deploy
 ------
-A deploy is a data structure containing a smart contract along with the requester's signature(s). Additionally, the deploy header contains additional metadata about the deploy itself.
+A deploy is a data structure containing a smart contract and the requester's signature(s). Additionally, the deploy header contains additional metadata about the deploy itself.
 A deploy is structurally defined as follows:
 
 .. code:: rust
@@ -164,7 +164,7 @@ The Deploy hash is a Digest over the contents of the Deploy header. The Deploy H
 
 Deploy-Header
 ~~~~~~~~~~~~~
-The deploy header is defined as
+The deploy header is defined as:
 
 .. code:: rust
 
@@ -192,7 +192,7 @@ The deploy header is defined as
 Payment & Session
 ~~~~~~~~~~~~~~~~~
 
-Payment and Session are both defined as ``ExecutableDeployItems``. ``ExecutableDeployItems`` is an enum described as follows
+Payment and Session are both defined as ``ExecutableDeployItems``. ``ExecutableDeployItems`` is an enum described as follows:
 
 .. code:: rust
 
@@ -262,7 +262,7 @@ Payment and Session are both defined as ``ExecutableDeployItems``. ``ExecutableD
 
 is_valid
 ~~~~~~~~
-This is the only field within the Deploy that is not serialized.
+This is the only field within the deploy that is not serialized.
 
 Deploy Serialization at High Level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -315,14 +315,13 @@ The above deploy will serialize to:
 Values
 ------
 
-A value stored in the global state is a ``StoredValue``. A ``StoredValue`` is
-one of three possible variants:
+A value stored in the global state is a ``StoredValue``. A ``StoredValue`` is one of three possible variants:
 
 - A ``CLValue``
 - A contract
 - An account
 
-We discuss ``CLValue`` and contract in more detail below, details about
+We discuss ``CLValue`` and contract in more detail below. Details about
 accounts can be found in :ref:`accounts-head`.
 
 Each ``StoredValue`` is serialized when written to the global state. The
@@ -349,7 +348,7 @@ Note: links to further serialization examples and a reference implementation are
 ``CLValue``
 ~~~~~~~~~~~
 
-``CLValue`` is used to describe data that is used by smart contracts. This could be as a local state variable, input argument, or return value. A ``CLValue`` consists of two parts: a ``CLType`` describing the type of the value and an array of bytes which represent the data in our serialization format.
+``CLValue`` is used to describe data that is used by smart contracts. This could be as a local state variable, input argument, or return value. A ``CLValue`` consists of two parts: a ``CLType`` describing the type of the value and an array of bytes representing the data in our serialization format.
 
 ``CLType`` is described by the following recursive data type:
 
@@ -395,7 +394,7 @@ following rules (this defines the Casper serialization format):
    - E.g. ``7u32`` serializes as ``0x07000000``
    - E.g. ``1024u32`` serializes as ``0x00040000``
 
-- Wider numeric values (i.e. ``U128``, ``U256``, ``U512``) serialize as one byte given the length of the subsequent number (in bytes), followed by the two's complement representation with little-endian byte order. The number of bytes should be chosen as small as possible to represent the given number. This is done to reduce the size of the serialization in the case of small numbers represented within a wide data type.
+- Wider numeric values (i.e. ``U128``, ``U256``, ``U512``) serialize as one byte given the length of the next number (in bytes), followed by the two's complement representation with little-endian byte order. The number of bytes should be chosen as small as possible to represent the given number. This is done to reduce the serialization size when small numbers are represented within a wide data type.
 
    - E.g. ``U512::from(7)`` serializes as ``0x0107``
    - E.g. ``U512::from(1024)`` serializes as ``0x020004``
@@ -420,7 +419,7 @@ following rules (this defines the Casper serialization format):
    - E.g. ``List()`` serializes as ``0x00000000``
    - E.g. ``List(1u32, 2u32, 3u32)`` serializes as ``0x03000000010000000200000003000000``
 
-- A fixed-length list of values serializes as simply the concatenation of the serialized elements. Unlike a variable-length list, the length is not included in the serialization because it is statically known by the type of the value.
+- A fixed-length list of values serializes as the concatenation of the serialized elements. Unlike a variable-length list, the length is not included in the serialization because it is statically known by the type of the value.
 
    - E.g. ``[1u32, 2u32, 3u32]`` serializes as ``0x010000000200000003000000``
 
@@ -437,7 +436,7 @@ following rules (this defines the Casper serialization format):
      ``0x010000000d00000048656c6c6f2c20576f726c642101``
 
 - A ``Map`` serializes as a list of key-value tuples. There must be a
-  well-defined ordering on the keys, and in the serialization the pairs are listed in ascending order. This is done to ensure determinism in the serialization, as
+  well-defined ordering on the keys, and in the serialization, the pairs are listed in ascending order. This is done to ensure determinism in the serialization, as
   ``Map`` data structures can be unordered.
 
 - ``URef`` values serialize as the concatenation of its address (which is a fixed-length list of ``u8``) and a single byte tag representing the access rights. Access rights are converted as follows:
@@ -464,10 +463,10 @@ following rules (this defines the Casper serialization format):
 
 - ``Key`` values serialize as a single byte tag representing the variant,
   followed by the serialization of the data that variant contains. For most variants, this is simply a fixed-length 32-byte array. The exception is
-  ``Key::URef``, which contains a ``URef``, so its data serializes per the description above. The tags are as follows: ``Key::Account`` serializes as
+  ``Key::URef``, which contains a ``URef``; so its data serializes per the description above. The tags are as follows: ``Key::Account`` serializes as
   ``0``, ``Key::Hash`` as ``1``, ``Key::URef`` as ``2``.
 
-``CLType`` itself also has rules for serialization. A ``CLType`` serializes as a single-byte tag, followed by the concatenation of serialized inner types, if any (e.g., lists, and tuples have inner types). ``FixedList`` is a minor exception because it also includes the length in the type; however, this simply means that the length included in the serialization as well (as a 32-bit integer, per the serialization rules above), following the serialization of the inner type. The tags are as follows:
+``CLType`` itself also has rules for serialization. A ``CLType`` serializes as a single-byte tag, followed by the concatenation of serialized inner types, if any (e.g., lists and tuples have inner types). ``FixedList`` is a minor exception because it also includes the length in the type. However, the length is included in the serialization (as a 32-bit integer, per the serialization rules above), following the serialization of the inner type. The tags are as follows:
 
 +---------------+-------------------+
 | ``CLType``    | Serialization Tag |
@@ -517,7 +516,7 @@ following rules (this defines the Casper serialization format):
 | ``Any``       |                21 |
 +---------------+-------------------+
 
-A complete ``CLValue``, including both the data and the type, can also be serialized (in order to store it in the global state). This is done by concatenating: the serialization of the length (as a 32-bit integer) of the
+A complete ``CLValue``, including both the data and the type, can also be serialized (to store it in the global state). This is done by concatenating: the serialization of the length (as a 32-bit integer) of the
 serialized data (in bytes), the serialized data itself, and the serialization of the type.
 
 .. _global-state-contracts:
@@ -531,24 +530,10 @@ Contracts are a special value type because they contain the on-chain logic of th
 -  a collection of named keys
 -  a protocol version
 
-The wasm module must contain a function named ``call`` which takes no arguments
-and returns no values. This is the main entry point into the contract. Moreover,
-the module may import any of the functions supported by the Casper runtime;
-a list of all supported functions can be found in :ref:`Appendix A
-<appendix-a>`.
+The wasm module must contain a function named ``call`` which takes no arguments and returns no values. This is the main entry point into the contract. Moreover, the module may import any of the functions supported by the Casper runtime; a list of all supported functions can be found in :ref:`Appendix A <appendix-a>`.
 
-Note: though the ``call`` function signature has no arguments and no return
-value, within the ``call`` function body the ``get_named_arg`` runtime function can be
-used to accept arguments (by ordinal), and the ``ret`` runtime function can be used
-to return a single ``CLValue`` to the caller.
+Note: though the ``call`` function signature has no arguments and no return value, within the ``call`` function body the ``get_named_arg`` runtime function can be used to accept arguments (by ordinal), and the ``ret`` runtime function can be used to return a single ``CLValue`` to the caller.
 
-The named keys are used to give human-readable names to keys in the global state
-, which are important to the contract. For example, the hash key of another
-contract it frequently calls may be stored under a meaningful name. It is also
-used to store the ``URef``\ s, which are known to the contract (see below
-section on Permissions for details).
+The named keys are used to give human-readable names to keys in the global state, which are essential to the contract. For example, the hash key of another contract it frequently calls may be stored under a meaningful name. It is also used to store the ``URef``\ s, which are known to the contract (see the section on Permissions for details).
 
-The protocol version says which version of the Casper protocol this contract
-was compiled to be compatible with. Contracts that are not compatible with the
-active major protocol version will not be executed by any node in the Casper
-network.
+Each contract specifies the Casper protocol version with which the contract should be compatible. Any node in the Casper network will not execute contracts that are not compatible with the active major protocol version.
