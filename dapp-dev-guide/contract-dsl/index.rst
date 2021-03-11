@@ -5,8 +5,6 @@ The Casper Domain-Specific Language (DSL) for writing smart contracts is a tool 
 
 However, if you are an experienced Rust developer, you may find that you want to forgo using the DSL as you start getting familiar with Casper development. For advanced use cases, the boilerplate code could very well become sub-optimal. Regardless, though, we recommend that you start with the DSL to see the typical workflow while you are getting familiar with the ecosystem.
 
-The macros work with *contract headers* released in version 0.20. Contracts created before release 0.20 will need to be upgraded to use macros.
-
 **Table of Contents**
 
 .. toctree::

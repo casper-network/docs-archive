@@ -1,6 +1,6 @@
-Testing Contracts with NCTL
-===========================
-NCTL stands for network/node control. `NCTL <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ is a CLI application you can use to set up and control multiple local Casper networks during development. Many developers wish to spin up relatively small test networks to localize their testing. Adopting a standardized approach in the community is also helpful for troubleshooting and reporting issues.
+Local Network Testing
+=====================
+NCTL stands for network/node control. `NCTL <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ is a CLI application you can use to set up and control multiple local Casper networks during development. Many developers wish to spin up relatively small test networks to localize their testing before deploying to the blockchain. Adopting a standardized approach in the community is also helpful for troubleshooting and reporting issues.
 
 Prerequisites 
 ^^^^^^^^^^^^^
@@ -179,7 +179,7 @@ Several other NCTL commands are available via aliases for execution from within 
 
 You should see the new directory *utils/nctl/assets*, with the following structure.
 
-.. image:: ../../assets/nctl/assets_setup.png
+.. image:: ../assets/nctl/assets_setup.png
   :width: 200
   :alt: Image showing the folders created by nctl.
 
@@ -187,7 +187,7 @@ You should see the new directory *utils/nctl/assets*, with the following structu
 
 Here is the command line output you would expect.
 
-.. image:: ../../assets/nctl/nctl_output.png
+.. image:: ../assets/nctl/nctl_output.png
   :alt: Image showing successful nctl output.
 
 | 

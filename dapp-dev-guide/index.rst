@@ -32,7 +32,8 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    setup-of-rust-contract-sdk
    contract-dsl/index
    writing-contracts/index
-   testing/index
+   testing
+   setup-nctl
    deploying-contracts
    calling-contracts
    querying
