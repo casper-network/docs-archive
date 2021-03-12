@@ -11,7 +11,7 @@ A type of cryptocurrency that represents an asset. See `CSPR <C.html#cspr>`_.
 
 Transaction
 ^^^^^^^^^^^
-See `deployment <D.html#deployment>`_.
+See `deploy <D.html#deploy>`_.
 
 Trusted node
 ^^^^^^^^^^^^

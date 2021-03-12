@@ -17,11 +17,15 @@ Delegator
 ^^^^^^^^^
 Delegators are users who participate in the platform's security by delegating their tokens to validators (which adds to their weight) and collecting a part of the rewards proportional to their delegations, net of a cut ("delegation rate") that is collected by the validator.
 
-Deployment
-^^^^^^^^^^
-A deployment or deploy, in short, is an **external client to node** message that includes two transactions:
+Deploy
+^^^^^^
+A deployment or deploy, in short, is a message from an external client to a `node <N.html#node>`_. The message contains a smart contract to be stored on the chain, along with the requester's signature(s) and other essential properties for execution:
 
-#. **payment transaction** - executed to buy gas for the execution of main transaction
-#. **main transaction** - the piece of software that does the actual processing changing the global state
+* A *hash* of the serialized header for this deploy
+* A *header* describing the account, blockchain, and deploy properties
+* The smart contract to be stored on the blockchain; the execution will change the `global state <G.html#global-state>`_
+* A transfer to buy gas for contract execution
+* A list containing the requester's signature(s)
+* A flag returning true if and only if the deploy hash is correct, the body hash is correct, and all approvals are valid signatures of the deploy hash.
 
-The **external client** sends a deploy hoping that the network will execute the main transaction against the blockchain.
+The external client sends a deploy hoping that the network will execute the smart contract against the `blockchain <B.html#blockchain>`_. The implementation details are in `GitHub <https://github.com/CasperLabs/casper-node/blob/master/node/src/types/deploy.rs#L475>`_.
