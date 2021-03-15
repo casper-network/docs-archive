@@ -153,9 +153,9 @@ A deploy is structurally defined as follows:
 
 * Hash: The hash of the deploy header.
 * Header: Contains metadata about the deploy. The structure of the header is detailed further in this document.
-* Payment: The payment code for contained smart contract.
-* Session: The stored contract itself.
-* Approvals: A list of signatures:
+* Payment: The payment code for the smart contract contained in the deploy.
+* Session: The smart contract to be stored on the blockchain.
+* Approvals: A list containing the requester's signature(s).
 * is_valid: A flag that marks the validity of the deploy. Note that it is the only field within the struct that is not serialized.
 
 Deploy-Hash
