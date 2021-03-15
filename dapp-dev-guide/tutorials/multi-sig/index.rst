@@ -10,5 +10,4 @@ In this tutorial, you will learn to use `Casper's permissions model <https://doc
    introduction
    contract
    client
-   testing
    examples
