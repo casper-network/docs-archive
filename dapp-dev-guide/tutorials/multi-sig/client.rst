@@ -2,6 +2,8 @@ Client Example
 ==============
 This section covers an example client that invokes a smart contract for key management. In addition to the main account, the client code will add two additional accounts to perform deployments. The two deployment accounts will perform deployments but will not be able to add another account.
 
+You will test your client using `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_, and you will interact with your local blockchain.
+
 Prerequisites
 ^^^^^^^^^^^^^
 * You have compiled the `example contract <https://github.com/casper-ecosystem/keys-manager>`_ for key management
@@ -26,6 +28,11 @@ The network you created with the NCTL tool has a special account called a faucet
 Setting up the Client
 ^^^^^^^^^^^^^^^^^^^^^^^
 Navigate to your ``keys-manager/client/src`` folder and open the ``utils.js`` file to explore the configuration needed for your client to communicate with the network.
+
+.. code-block:: bash
+
+   $ cd keys-manager/client/src
+   $ open -e utils.js
 
 This client code expects a compiled WASM file in the ``contract`` folder and a local network called ``casper-net-1`` with the following configuration.
 
@@ -56,13 +63,31 @@ Next, close the ``utils.js`` file and install the JavaScript packages in the ``k
 
 .. code-block:: bash
 
+   $ cd ..
    $ npm install
 
 
+Testing the Client
+^^^^^^^^^^^^^^^^^^
 
-**Setting up the Account using a Key Manager**
+Navigate to your ``/keys-manager/client`` folder and run the ``keys-manager.js`` using ``node``. Your WASM file's path is relative to the ``client`` folder, so you need to run the file from here.
 
-If you would like to explore how the client code implements key management, open the ``keys-manager.js`` file.
+.. code-block:: bash
+
+   $ node src/keys-manager.js
+
+If the code works, the beginning of the output will look like this: 
+
+.. image:: ../../../assets/tutorials/multisig/output_begin.png
+  :alt: An image of the beginning of the keys-manager output.
+
+You can match the output against the expected output described below.
+   
+
+Exploring the Client Code
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you would like to explore the client output and how the client code implements key management, open the client output and the ``keys-manager.js`` file side by side.
 
 In the code, we set the weight for the primary account to 3. 
 
@@ -266,4 +291,8 @@ At this point, we expect the following account structure:
    "named_keys": []
  }
 
-In the next section, you will test your key management implementation.
+Congratulations! You have completed the tutorial.
+   
+You can now employ a similar strategy to set up your account using multiple keys.
+    
+We offer some additional examples of account management in the next section.
