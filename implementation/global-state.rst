@@ -1,4 +1,4 @@
-.. _global-state-head:
+git l.. _global-state-head:
 
 Global State
 ============
