@@ -594,7 +594,7 @@ Serialization for ``Key``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Given the different variants for the over-arching ``Key`` data-type, each of the different variants are serailized differently.
-This section of this chapter details how the individual variants are serialized. Each of the key variants are serialize the identifier.
+This section of this chapter details how the individual variants are serialized.
 The leading byte of the serialized buffer acts a tag indicating the serialized variant.
 
 +--------------------+-------------------+
