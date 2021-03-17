@@ -74,7 +74,7 @@ The block header contains the following fields:
 Body
 ~~~~
 
-The block body contains a **ordererd** list of ``DeployHashes`` which refer to deploys. A deploy can be broadly categorized as either a transfer or some unit of work (e.g a smart contract sent to the network for execution) that affect change to :ref:`Global State<global-state-intro>`.
+The block body contains a **ordererd** list of ``DeployHashes`` which refer to deploys, and an ordered list of ``DeployHashes`` for native transfers (which are specialized deploys that only transfer token between accounts). All deploys, including a specialization such as native transfer, can be broadly categorized as some unit of work that when executed and committed affect change to global state :ref:`Global State<global-state-intro>`.
 It should be noted that a block can be *empty* and not contain any deploys. The block body also contains the public key of the validator that proposed the block.
 
 Refer to the :ref:`Deploy Serialization Standard <serialization-standard-deploy>` for additional information on deploys and how they are serialized.
