@@ -34,7 +34,7 @@ The header portion of a Block, structurally, is defined as follows:
 
 * ``parent_hash``: is the hash of the parent block
 * ``state_root_hash``: is the current State Root hash
-* ``body_hash``: the hash of the block body.
+* ``body_hash``: the hash of the block header.
 * ``random_bit``: is a boolean whose serialization is described below.
 * ``accumulated_seed``: A seed needed for initializing a future era.
 * ``era_end``: contains Equivocation and reward information to be included in the terminal finalized block.
