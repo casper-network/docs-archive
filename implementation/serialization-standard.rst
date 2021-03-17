@@ -33,7 +33,7 @@ Block header
 The header portion of a Block, structurally, is defined as follows:
 
 * ``parent_hash``: is the hash of the parent block
-* ``state_root_hash``: is the current State Root hash
+* ``state_root_hash``: is the current global state root hash produced by executing this block's body
 * ``body_hash``: the hash of the block header.
 * ``random_bit``: is a boolean whose serialization is described below.
 * ``accumulated_seed``: A seed needed for initializing a future era.
@@ -101,12 +101,11 @@ A deploy is a data structure containing a smart contract and the requester's sig
 A deploy is structurally defined as follows:
 
 
-* Hash: The hash of the deploy header.
-* Header: Contains metadata about the deploy. The structure of the header is detailed further in this document.
-* Payment: The payment code for contained smart contract.
-* Session: The stored contract itself.
-* Approvals: A list of signatures:
-* is_valid: A flag that marks the validity of the deploy. Note that it is the only field within the struct that is not serialized.
+* ``hash``: The hash of the deploy header.
+* ``header``: Contains metadata about the deploy. The structure of the header is detailed further in this document.
+* ``payment``: The payment code for contained smart contract.
+* ``session``: The stored contract itself.
+* ``approvals``: A list of signatures:
 
 Deploy-Hash
 ~~~~~~~~~~~~
@@ -115,17 +114,13 @@ The Deploy hash is a Digest over the contents of the Deploy header. The Deploy H
 Deploy-Header
 ~~~~~~~~~~~~~
 
-
-- Account is defined as enum, which can either contain an Ed25519 key or secp256k1 key.
-- An Ed25519 key is serialized as a buffer of bytes, with the leading byte being ``1`` for Ed25519
-- Thus an Ed25519 key ``4dd8edb64cad4bd472f2ab8b0409392306c14b45f5b47ac0c295da461d09b18a`` serializes to ``0x01200000004dd8edb64cad4bd472f2ab8b0409392306c14b45f5b47ac0c295da461d09b18a``
-- Correspondingly, a Secp256k1 key is serialized as a buffer of bytes, with the leading byte being ``2``
-- Thus an Secp256k1 key ``0365dc07a060cac57c98cdeab9a659e097458d4e72899b4bec4f1b230d57a70d72`` serializes as ``0x02210000000365dc07a060cac57c98cdeab9a659e097458d4e72899b4bec4f1b230d57a70d72``
-- A timestamp is a struct that is a unary tuple containing a ``u64`` value. This value is a count of the milliseconds since the UNIX epoch. Thus the value ``1603994401469`` serializes as ``0xbd3a847575010000``
-- The gas is ``u64`` value which is serialized as ``u64`` CLValue discussed below.
-- Body hash is a hash over the contents of the deploy body, which includes the payment, session, and approval fields. Its serialization is the byte representation of the hash itself.
-- Dependencies is a vector of deploy hashes referencing deploys that must execute before the current deploy can be executed. It serializes as a buffer containing the individual serialization of each DeployHash within the Vector.
-- Chain name is a human-readable string describing the name of the chain as detailed in the chainspec. It is serialized as a String CLValue described below.
+- ``account``: A supported public key variant (currently either ``Ed25519`` or ``Secp256k1``).. An ``Ed25519`` key is serialized as a buffer of bytes, with the leading byte being ``1`` for ``Ed25519``, with remainder of the buffer containing the byte representation of the signature. Correspondingly, a ``Secp256k1`` key is serialized as a buffer of bytes, with the leading byte being ``2``.
+- ``timestamp``: A timestamp is a struct that is a unary tuple containing a ``u64`` value. This value is a count of the milliseconds since the UNIX epoch. Thus the value ``1603994401469`` serializes as ``0xbd3a847575010000``
+- ``ttl``: The **Time to live** is defined as the amount of time for which deploy is considered valid. The ``ttl`` serializes in the same manner as the timestamp.
+- ``gas_price``: The gas is ``u64`` value which is serialized as ``u64`` CLValue discussed below.
+- ``body_hash``: Body hash is a hash over the contents of the deploy body, which includes the payment, session, and approval fields. Its serialization is the byte representation of the hash itself.
+- ``dependencies``: Dependencies is a vector of deploy hashes referencing deploys that must execute before the current deploy can be executed. It serializes as a buffer containing the individual serialization of each DeployHash within the Vector.
+- ``chain_name``: Chain name is a human-readable string describing the name of the chain as detailed in the chainspec. It is serialized as a String CLValue described below.
 
 Payment & Session
 ~~~~~~~~~~~~~~~~~
@@ -474,30 +469,16 @@ Note: though the ``call`` function signature has no arguments and no return valu
 
 The named keys are used to give human-readable names to keys in the global state, which are essential to the contract. For example, the hash key of another contract it frequently calls may be stored under a meaningful name. It is also used to store the ``URef``\ s, which are known to the contract (see the section on Permissions for details).
 
-Each contract specifies the Casper protocol version with which the contract should be compatible. Any node in the Casper network will not execute contracts that are not compatible with the active major protocol version.
-
-The “global state” is the storage layer for the blockchain. All accounts,
-contracts, and any associated data they have are stored in the global state. Our
-global state has the semantics of a key-value store (with additional permissions
-logic, since not all users can access all values in the same way). Each block
-causes changes to this global state because of the execution of the deploys it
-contains. In order for validators to efficiently judge the correctness of these
-changes, information about the new state needs to be communicated succinctly.
-Moreover, we need to be able to communicate pieces of the global state to users,
-while allowing them to verify the correctness of the parts they receive. For
-these reasons, the key-value store is implemented as a
-:ref:`Merkle trie <global-state-trie>`.
-
-In this chapter we describe what constitutes a “key”, what constitutes a
-“value”, the permissions model for the keys, and the Merkle trie
-structure.
+Each contract specifies the Casper protocol version that was active when the contract was written to global state.
 
 .. _serialization-standard-state-keys:
 
 Keys
 ----
 
-A *key* in the global state is one of the following data types:
+In this chapter we describe what constitutes a “key”, the permissions model for the keys, and how they are serialized.
+
+A *key* in the :ref:`Global State<global-state-intro>` is one of the following data types:
 
 -  32-byte account identifier (called an “account identity key”)
 -  32-byte immutable contract identifier (called a “hash key”)
@@ -509,8 +490,6 @@ A *key* in the global state is one of the following data types:
 -  32-byte Auction bid identifier
 -  32-byte Auction withdraw identifier
 -  32-byte Era validator identifier
-
-We cover each of these key types in more detail in the sections that follow.
 
 .. _global-state-account-key:
 
@@ -541,17 +520,9 @@ allow each contract stored in the same deploy to have a unique key.
 Unforgable Reference (``URef``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This key type is used for storing any type of value except ``Account``.
-Additionally, ``URef``\ s used in contracts carry permission information with them
-to prevent unauthorized usage of the value stored under the key. This permission
-information is tracked by the runtime, meaning that if a malicious contract
-attempts to produce a ``URef`` with permissions that contract does not actually
-have, we say the contract has attempted to “forge” the unforgable reference, and
-the runtime will raise a forged ``URef`` error. Permissions for a ``URef`` can be
-given across contract calls, allowing data stored under a ``URef`` to be shared in
-a controlled way. The 32-byte identifier representing the key is generated
-randomly by the runtime (see :ref:`Execution Semantics <execution-semantics-urefs>` for
-for more information).
+``URef`` broadly speaking can be used to store values and manage permissions to interact with the value stored under the ``URef``.
+Refer to the :ref:`Unforgable Reference<uref-head>` section for details on how ``URefs`` are managed.
+
 
 .. _serialization-standard-transfer-key:
 
@@ -623,7 +594,33 @@ Serialization for ``Key``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Given the different variants for the over-arching ``Key`` data-type, each of the different variants are serailized differently.
-This section of this chapter details how the indiviual variants are serialized. Each of the key variants are serialize the identifier.
+This section of this chapter details how the individual variants are serialized. Each of the key variants are serialize the identifier.
+The leading byte of the serialized buffer acts a tag indicating the serialized variant.
+
++--------------------+-------------------+
+| ``Key``            | Serialization Tag |
++====================+===================+
+| ``Account``        |                 0 |
++--------------------+-------------------+
+| ``Hash``           |                 1 |
++--------------------+-------------------+
+| ``URef``           |                 2 |
++--------------------+-------------------+
+| ``Transfer``       |                 3 |
++--------------------+-------------------+
+| ``DeployInfo``     |                 4 |
++--------------------+-------------------+
+| ``EraInfo``        |                 5 |
++--------------------+-------------------+
+| ``Balance``        |                 6 |
++--------------------+-------------------+
+| ``Bid``            |                 7 |
++--------------------+-------------------+
+| ``Withdraw``       |                 8 |
++--------------------+-------------------+
+| ``EraValidators``  |                 9 |
++--------------------+-------------------+
+
 
 - ``Account`` serializes as a 32 byte long buffer containing the byte representation of the underlying ``AccountHash``
 - ``Hash`` serializes as a 32 byte long buffer containing the byte representation of the underlying ``Hash`` itself.
@@ -645,14 +642,13 @@ Permissions
 There are three types of actions which can be done on a value: read, write, add.
 The reason for add to be called out separately from write is to allow for
 commutativity checking. The available actions depends on the key type and the
-context. Additionally, we define a **System** which indicates that the particular ``Key`` is not available through any external FFI and is used by the system internally.
+context. Some key types only allow controlled access by smart contracts via the contract api, and other key types refer to values produced and used by the system itself and are not accessible to smart contracts at all but can be read via off-chain queries.
 This is summarized in the table below:
 
 +-----------------------------------+-----------------------------------+
 | Key Type                          | Available Actions                 |
 +===================================+===================================+
-| Account                           | Read + Add if the context is the  |
-|                                   | current account otherwise None    |
+| Account                           | Read + Add (via API)              |
 +-----------------------------------+-----------------------------------+
 | Hash                              | Read                              |
 +-----------------------------------+-----------------------------------+
@@ -673,35 +669,6 @@ This is summarized in the table below:
 | EraValidators                     | System                            |
 +-----------------------------------+-----------------------------------+
 
-The serialization for ``Access Rights`` is detailed in the :ref:`CLValues<serialization-standard-values>` section.
-
-.. _serialization-standard-urefs-permissions:
-
-Permissions for ``URef``\ s
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In the runtime, a ``URef`` carries its own permissions called ``AccessRights``.
-Additionally, the runtime tracks what ``AccessRights`` would be valid for each
-``URef`` to have in each context. As mentioned above, if a malicious contract
-attempts to use a ``URef`` with ``AccessRights`` that are not valid in its
-context, then the runtime will raise an error; this is what enforces the
-security properties of all keys. By default, in all contexts, all ``URef``\ s
-are invalid (both with any ``AccessRights``, or no ``AccessRights``); however, a
-``URef`` can be added to a context in the following ways:
-
--  it can exist in a set of “known” ``URef``\ s
--  it can be freshly created by the runtime via the ``new_uref`` function
--  for called contracts, it can be passed in by the caller via the arguments to
-   ``call_contract``
--  it can be returned back to the caller from ``call_contract`` via the ``ret``
-   function
-
-Note: that only valid ``URef``\ s may be added to the known ``URef``\ s or cross call
-boundaries; this means the system cannot be tricked into accepted a forged
-``URef`` by getting it through a contract or stashing it in the known ``URef``\ s.
-
-The ability to pass ``URef``\ s between contexts via ``call_contract`` / ``ret``, allows
-them to be used to share state among a fixed number of parties, while keeping it
-private from all others.
+Refer to :ref:`URef permissions<uref-permissions>` on how permissions are handled in the case of ``URef``\ s.
 
 
