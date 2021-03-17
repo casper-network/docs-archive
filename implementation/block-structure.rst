@@ -74,17 +74,13 @@ The block header contains the following fields:
 Body
 ~~~~
 
-The block body contains a list of the deploys processed as part of this block. A processed deploy contains the following information:
+The block body contains a **ordererd** list of ``DeployHashes`` which refer to deploys. A deploy can be broadly categorized as either a transfer or some unit of work (e.g a smart contract sent to the network for execution) that changes the value of the ``state_root_hash``
+It should be noted that a block can be *empty* and not contain any deploys. The block body also contains the public key of the validator that proposed the block.
 
--  a copy of the `deploy
-   message <https://github.com/CasperLabs/CasperLabs/blob/c78e35f4d8f0f7fd9b8cf45a4b17a630ae6ab18f/protobuf/io/casperlabs/casper/consensus/consensus.proto#L24>`__
-   which was executed (see :ref:`Execution Semantics <execution-semantics-deploys>` for
-   more information about deploys and how they are executed)
--  the :ref:`amount of gas spent <execution-semantics-gas>` during its execution
--  a flag indicating whether the deploy encountered an error
--  a string for an error message (if applicable)
+Refer to the :ref:`Deploy Serialization Standard <serialization-standard-deploy>` for additional information on deploys and how they are serialized.
+Refer to :ref:`Block Serialization Standard <serialization-standard-block>` for how blocks are serialized.
 
 Signature
 ~~~~~~~~~
 
-The block signature cryptographically proves the block was created by the validator who’s public key is contained in the header. The signature is created using a specified algorithm (currently only `Ed25519 <https://en.wikipedia.org/wiki/EdDSA#Ed25519>`__ is supported), and is signed over the ``block_hash`` so that it is unique to that block.
+The block signature cryptographically proves the block was created by the validator who’s public key is contained in the header. The signature is created using a specified algorithm, and is signed over the ``block_hash``.

@@ -20,14 +20,6 @@ Each block points to its parent. An exception is the first block, which has no p
 
 A block is structurally defined as follows:
 
-.. code:: rust
-
-    pub struct Block {
-        hash: BlockHash,
-        header: BlockHeader,
-        body: BlockBody,
-    }
-
 * hash: A hash over the body of the Block.
 * header: The header of the block that contains information about the contents of the block with additional metadata.
 * body: The block's body contains the proposer of the block and hashes of deploys and transfers contained within it.
@@ -39,21 +31,6 @@ The block hash is a Digest over the contents of the Block Header. The BlockHash 
 Block header
 ~~~~~~~~~~~~
 The header portion of a Block, structurally, is defined as follows:
-
-.. code:: rust 
-
-    pub struct BlockHeader {
-        parent_hash: BlockHash,
-        state_root_hash: Digest,
-        body_hash: Digest,
-        random_bit: bool,
-        accumulated_seed: Digest,
-        era_end: Option<EraEnd>,
-        timestamp: Timestamp,
-        era_id: EraId,
-        height: u64,
-        protocol_version: ProtocolVersion,
-    }
 
 * ``parent_hash``: is the hash of the parent block
 * ``state_root_hash``: is the current State Root hash
@@ -82,16 +59,8 @@ EraEnd
 ~~~~~~~
 `EraEnd` as represented within the block header, is a struct containing two fields.
 
-.. code:: rust
 
-    pub struct EraEnd {
-        /// The era end information.
-        era_report: EraReport,
-        /// The validator weights for the next era.
-        next_era_validator_weights: BTreeMap<PublicKey, U512>,
-    }
-
-`EraEnd` contains two fields, as shown above. The first is termed as the `EraReport` and contains information relevant to that current era. The second is a map of the weights of the validators for the next era.
+`EraEnd` contains two fields. The first is termed as the `EraReport` and contains information relevant to that current era. The second is a map of the weights of the validators for the next era.
 
 `EraReport` itself contains two fields:
 
@@ -112,13 +81,6 @@ Body
 ~~~~
 The body portion of the block, is structurally defined as:
 
-.. code:: rust
-
-    pub struct BlockBody {
-        proposer: PublicKey,
-        deploy_hashes: Vec<DeployHash>,
-        transfer_hashes: Vec<DeployHash>,
-    }
 
 * ``proposer``: The PublicKey which proposed this block.
 * ``deploy_hashes``: Is a vector of hex-encoded hashes identifying Deploys included in this Block.
@@ -138,18 +100,6 @@ Deploy
 A deploy is a data structure containing a smart contract and the requester's signature(s). Additionally, the deploy header contains additional metadata about the deploy itself.
 A deploy is structurally defined as follows:
 
-.. code:: rust
-
-    pub struct Deploy {
-        hash: DeployHash,
-        header: DeployHeader,
-        payment: ExecutableDeployItem,
-        session: ExecutableDeployItem,
-        approvals: Vec<Approval>,
-        #[serde(skip)]
-        is_valid: Option<bool>, 
-    }
-
 
 * Hash: The hash of the deploy header.
 * Header: Contains metadata about the deploy. The structure of the header is detailed further in this document.
@@ -164,19 +114,7 @@ The Deploy hash is a Digest over the contents of the Deploy header. The Deploy H
 
 Deploy-Header
 ~~~~~~~~~~~~~
-The deploy header is defined as:
 
-.. code:: rust
-
-    pub struct DeployHeader {
-        account: PublicKey,
-        timestamp: Timestamp,
-        ttl: TimeDiff,
-        gas_price: u64,
-        body_hash: Digest,
-        dependencies: Vec<DeployHash>,
-        chain_name: String,
-    }
 
 - Account is defined as enum, which can either contain an Ed25519 key or secp256k1 key.
 - An Ed25519 key is serialized as a buffer of bytes, with the leading byte being ``1`` for Ed25519
@@ -537,3 +475,233 @@ Note: though the ``call`` function signature has no arguments and no return valu
 The named keys are used to give human-readable names to keys in the global state, which are essential to the contract. For example, the hash key of another contract it frequently calls may be stored under a meaningful name. It is also used to store the ``URef``\ s, which are known to the contract (see the section on Permissions for details).
 
 Each contract specifies the Casper protocol version with which the contract should be compatible. Any node in the Casper network will not execute contracts that are not compatible with the active major protocol version.
+
+The “global state” is the storage layer for the blockchain. All accounts,
+contracts, and any associated data they have are stored in the global state. Our
+global state has the semantics of a key-value store (with additional permissions
+logic, since not all users can access all values in the same way). Each block
+causes changes to this global state because of the execution of the deploys it
+contains. In order for validators to efficiently judge the correctness of these
+changes, information about the new state needs to be communicated succinctly.
+Moreover, we need to be able to communicate pieces of the global state to users,
+while allowing them to verify the correctness of the parts they receive. For
+these reasons, the key-value store is implemented as a
+:ref:`Merkle trie <global-state-trie>`.
+
+In this chapter we describe what constitutes a “key”, what constitutes a
+“value”, the permissions model for the keys, and the Merkle trie
+structure.
+
+.. _serialization-standard-state-keys:
+
+Keys
+----
+
+A *key* in the global state is one of the following data types:
+
+-  32-byte account identifier (called an “account identity key”)
+-  32-byte immutable contract identifier (called a “hash key”)
+-  32-byte reference identifier (called an “unforgable reference”)
+-  32-byte transfer identifier
+-  32-byte deploy information identifier
+-  32-byte Era information identifier
+-  32-byte purse balance identifier
+-  32-byte Auction bid identifier
+-  32-byte Auction withdraw identifier
+-  32-byte Era validator identifier
+
+We cover each of these key types in more detail in the sections that follow.
+
+.. _global-state-account-key:
+
+Account identity key
+~~~~~~~~~~~~~~~~~~~~
+
+This key type is used specifically for accounts in the global state. All
+accounts in the system must be stored under an account identity key, and no
+other type. The 32-byte identifier which represents this key is derived from the
+``blake2b256`` hash of the public key used to create the associated account (see
+:ref:`Accounts <accounts-associated-keys-weights>` for more information).
+
+.. _serialization-standard-hash-key:
+
+Hash key
+~~~~~~~~
+
+This key type is used for storing contracts immutably. Once a contract is
+written under a hash key, that contract can never change. The 32-byte identifier
+representing this key is derived from the ``blake2b256`` hash of the deploy hash
+(see :ref:`block-structure-head` for more information) concatenated
+with a 4-byte sequential ID. The ID begins at zero for each deploy and
+increments by 1 each time a contract is stored. The purpose of this ID is to
+allow each contract stored in the same deploy to have a unique key.
+
+.. _serialization-standard-uref:
+
+Unforgable Reference (``URef``)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This key type is used for storing any type of value except ``Account``.
+Additionally, ``URef``\ s used in contracts carry permission information with them
+to prevent unauthorized usage of the value stored under the key. This permission
+information is tracked by the runtime, meaning that if a malicious contract
+attempts to produce a ``URef`` with permissions that contract does not actually
+have, we say the contract has attempted to “forge” the unforgable reference, and
+the runtime will raise a forged ``URef`` error. Permissions for a ``URef`` can be
+given across contract calls, allowing data stored under a ``URef`` to be shared in
+a controlled way. The 32-byte identifier representing the key is generated
+randomly by the runtime (see :ref:`Execution Semantics <execution-semantics-urefs>` for
+for more information).
+
+.. _serialization-standard-transfer-key:
+
+Transfer Key
+~~~~~~~~~~~~~
+
+This key type is used specifically for transfers in the global state. All
+transfers in the system must be stored under a transfer key, and no
+other type. The 32-byte identifier which represents this key is derived from the
+``blake2b256`` hash of the transfer address associated with the given transfer
+
+.. _serialization-standard-deploy-info-key:
+
+DeployInfo Key
+~~~~~~~~~~~~~~~
+
+This key type is used specifically for storing information related to deploys in the global state.
+Information for the a given deploy is stored under this key only.
+The 32-byte identifier which represents this key is derived from the
+``blake2b256`` hash of the deploy itself.
+
+.. _serialization-standard-era-info-key:
+
+EraInfo Key
+~~~~~~~~~~~~
+This key type is used specifically for storing information related to the ``Auction`` metadata for a particular era.
+The underlying data type stored under this is a vector of the allocation of seigniorage for that given era.
+The identifier for this key is a new type which wraps around the primitive ``u64`` data type and co-relates
+to the era number when the auction information was stored.
+
+.. _serialization-standard-balance-key:
+
+Balance Key
+~~~~~~~~
+This key type is used to store information related to the balance of a given purse. All purse balances are stored using this key.
+The 32-byte identifier which represents this key is derived from the Address of the URef which relates to the purse.
+
+.. _serialization-standard-bid-key:
+
+Bid Key
+~~~~
+
+This key type is used specifically for storing information related auction bids in the global state.
+Information for the bids is stored under this key only. The 32-byte identifier which represents this key is derived from the
+``blake2b256`` hash of the public key used to create the associated account (see
+:ref:`Accounts <accounts-associated-keys-weights>` for more information).
+
+.. _serialization-standard-withdraw-key:
+
+Withdraw Key
+~~~~~~~~~
+
+This key type is used specifically for storing information related auction withdraws in the global state.
+Information for the withdraws is stored under this key only. The 32-byte identifier which represents this key is derived from the
+``blake2b256`` hash of the public key used to create the associated account (see
+:ref:`Accounts <accounts-associated-keys-weights>` for more information).
+
+.. _serialization-standard-era-validators-key:
+
+EraValidators Key
+~~~~~~~~~~~~~~~~~~~~~~
+This key type is used specifically for storing information related to the set validators for a given era within global state.
+Information for validator sets for a given era is stored under this key only. The identifier for this key is a wrapper around
+the primitive ``u64`` which corresponds to the era number for a given validator set.
+
+.. _serialization-standard-serialization-key:
+
+Serialization for ``Key``
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Given the different variants for the over-arching ``Key`` data-type, each of the different variants are serailized differently.
+This section of this chapter details how the indiviual variants are serialized. Each of the key variants are serialize the identifier.
+
+- ``Account`` serializes as a 32 byte long buffer containing the byte representation of the underlying ``AccountHash``
+- ``Hash`` serializes as a 32 byte long buffer containing the byte representation of the underlying ``Hash`` itself.
+- ``URef`` is a tuple that contains the address of the URef and the access rights to that ``URef``. The serialized representation of the ``URef`` is 33 bytes long. The first 32 bytes are the byte representation of the ``URef`` address and the last byte contains the bits corresponding to the access rights of the ``URef``. Refer to the :ref:`CLValue<serialization-standard-values>` section of this chapter for details on how ``AccessRights`` are serialized.
+- ``Transfer`` serializes as a 32 byte long buffer containing the byte representation of the hash of the transfer.
+- ``DeployInfo`` serializes as 32 byte long buffer containing the byte representation of the Deploy hash. See the Deploy section above for how Deploy hashes are serialized.
+- ``EraInfo`` serializes a ``u64`` primitive type by adding additional padding. The serialized buffer is 32 bytes long with the leading 24 bytes as 0 padding, and the following 8 bytes contain a Lower endian byte representation of ``u64``.
+- ``Balance`` serializes as 32 byte long buffer containing the byte representation of the URef address.
+- ``Bid`` and ``Withdraw`` both contain the ``AccountHash`` as their identifier, therefore they serialize in the same manner as the ``Account`` variant.
+- ``EraValidators`` also uses the padded serialization in the same manner as ``EraInfo``.
+
+
+
+.. _serialization-standard-permissions:
+
+Permissions
+-----------
+
+There are three types of actions which can be done on a value: read, write, add.
+The reason for add to be called out separately from write is to allow for
+commutativity checking. The available actions depends on the key type and the
+context. Additionally, we define a **System** which indicates that the particular ``Key`` is not available through any external FFI and is used by the system internally.
+This is summarized in the table below:
+
++-----------------------------------+-----------------------------------+
+| Key Type                          | Available Actions                 |
++===================================+===================================+
+| Account                           | Read + Add if the context is the  |
+|                                   | current account otherwise None    |
++-----------------------------------+-----------------------------------+
+| Hash                              | Read                              |
++-----------------------------------+-----------------------------------+
+| URef                              | Read + Write and/or Add           |
++-----------------------------------+-----------------------------------+
+| Transfer                          | System                            |
++-----------------------------------+-----------------------------------+
+| Deploy                            | System                            |
++-----------------------------------+-----------------------------------+
+| EraInfo                           | System                            |
++-----------------------------------+-----------------------------------+
+| Balance                           | Read (via API)                    |
++-----------------------------------+-----------------------------------+
+| Bid                               | System                            |
++-----------------------------------+-----------------------------------+
+| Withdraw                          | System                            |
++-----------------------------------+-----------------------------------+
+| EraValidators                     | System                            |
++-----------------------------------+-----------------------------------+
+
+The serialization for ``Access Rights`` is detailed in the :ref:`CLValues<serialization-standard-values>` section.
+
+.. _serialization-standard-urefs-permissions:
+
+Permissions for ``URef``\ s
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the runtime, a ``URef`` carries its own permissions called ``AccessRights``.
+Additionally, the runtime tracks what ``AccessRights`` would be valid for each
+``URef`` to have in each context. As mentioned above, if a malicious contract
+attempts to use a ``URef`` with ``AccessRights`` that are not valid in its
+context, then the runtime will raise an error; this is what enforces the
+security properties of all keys. By default, in all contexts, all ``URef``\ s
+are invalid (both with any ``AccessRights``, or no ``AccessRights``); however, a
+``URef`` can be added to a context in the following ways:
+
+-  it can exist in a set of “known” ``URef``\ s
+-  it can be freshly created by the runtime via the ``new_uref`` function
+-  for called contracts, it can be passed in by the caller via the arguments to
+   ``call_contract``
+-  it can be returned back to the caller from ``call_contract`` via the ``ret``
+   function
+
+Note: that only valid ``URef``\ s may be added to the known ``URef``\ s or cross call
+boundaries; this means the system cannot be tricked into accepted a forged
+``URef`` by getting it through a contract or stashing it in the known ``URef``\ s.
+
+The ability to pass ``URef``\ s between contexts via ``call_contract`` / ``ret``, allows
+them to be used to share state among a fixed number of parties, while keeping it
+private from all others.
+
+
