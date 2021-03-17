@@ -29,7 +29,6 @@ A block consists of the following:
 -  a ``block_hash``
 -  a header
 -  a body
--  a signature
 
 Each of these are detailed in the subsequent sections.
 
@@ -74,13 +73,9 @@ The block header contains the following fields:
 Body
 ~~~~
 
-The block body contains a **ordererd** list of ``DeployHashes`` which refer to deploys, and an ordered list of ``DeployHashes`` for native transfers (which are specialized deploys that only transfer token between accounts). All deploys, including a specialization such as native transfer, can be broadly categorized as some unit of work that when executed and committed affect change to global state :ref:`Global State<global-state-intro>`.
-It should be noted that a block can be *empty* and not contain any deploys. The block body also contains the public key of the validator that proposed the block.
+The block body contains a **ordered** list of ``DeployHashes`` which refer to deploys, and an **ordered** list of ``DeployHashes`` for native transfers (which are specialized deploys that only transfer token between accounts). All deploys, including a specialization such as native transfer, can be broadly categorized as some unit of work that when executed and committed affect change to global state :ref:`Global State<global-state-intro>`.
+It should be noted that a valid block may contain no deploys and / or native transfers. The block body also contains the public key of the validator that proposed the block.
 
 Refer to the :ref:`Deploy Serialization Standard <serialization-standard-deploy>` for additional information on deploys and how they are serialized.
 Refer to :ref:`Block Serialization Standard <serialization-standard-block>` for how blocks are serialized.
 
-Signature
-~~~~~~~~~
-
-The block signature cryptographically proves the block was created by the validator who’s public key is contained in the header. The signature is created using a specified algorithm, and is signed over the ``block_hash``.
