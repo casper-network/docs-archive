@@ -141,7 +141,7 @@ description of the functions available for contracts to import, see :ref:`Append
 -  Reading / writing from global state
 
    -  ``read``, ``write``, ``add`` functions allow working with exiting
-      :ref:`URefs <global-state-uref>`
+      :ref:`URefs <uref-head>`
    -  ``new_uref`` allows creating a new ``URef`` initialized with a given value (see
       section below about how ``URef``\ s are generated)
    -  ``read_local``, ``write_local``, ``add_local`` allow working with
