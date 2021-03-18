@@ -19,4 +19,6 @@ Delegators are users who participate in the platform's security by delegating th
 
 Deploy
 ^^^^^^
-A deployment or deploy, in short, is a message from an external client to a `node <N.html#node>`_ containing a smart contract to be stored on the chain, along with the requester's signature(s) and other properties for executing the deploy. The external client sends a deploy hoping that the network will execute the smart contract against the `blockchain <B.html#blockchain>`_. Review the `deploy data structure <https://docs.casperlabs.io/en/latest/implementation/serialization-standard.html?highlight=deploy#deploy>`_ and the `deploy implementation <https://github.com/CasperLabs/casper-node/blob/master/node/src/types/deploy.rs#L475>`_ for more details.
+All deploys can be broadly categorized as some unit of work that, when executed and committed, affects change to the `global state <G.html#global-state>`_. Deploys include specializations such as native transfers.
+
+Review the `deploy data structure <https://docs.casperlabs.io/en/latest/implementation/serialization-standard.html?highlight=deploy#deploy>`_ and the `deploy implementation <https://github.com/CasperLabs/casper-node/blob/master/node/src/types/deploy.rs#L475>`_ for more details.
