@@ -19,15 +19,15 @@ To create ``secp256k1`` keys, commonly known as Ethereum keys, follow these step
 
    $ tree secp256k1-keys/
    secp256k1-keys/
-   ├── public-key-hex
-   ├── secret-key.pem
-   └── public-key.pem
+   ├── public_key.pem
+   ├── public_key_hex
+   └── secret_key.pem
 
 Looking at the public-key-hex file, we see that ``secp256k1`` public hex keys start with `02` in Casper:
 
 .. code-block:: bash
 
-   ~/ethtest$ cat public_key_hex
+   $ cat secp256k1-keys/public_key_hex
    020287e1a79d0d9f3196391808a8b3e5007895f43cde679e4c960e7e9b92841bb98d
 
 
@@ -44,15 +44,15 @@ It is also possible to create ``ed25519`` keys, which use the Edwards-curve Digi
 
    $ tree ed25519-keys/
    ed25519-keys/
-   ├── public-key-hex
-   ├── secret-key.pem
-   └── public-key.pem
-   
+   ├── public_key.pem
+   ├── public_key_hex
+   └── secret_key.pem
+
 Looking at the public-key-hex file, we see that keys of this type are pre-pended with `01`:
 
 .. code-block:: bash
 
-   ~/ed25519-keys$ cat public_key_hex
+   $ cat ed25519-keys/public_key_hex
    011724c5c8e2404ca01c872e1bbd9202a0114e5d143760f685086a5cffe261dabd
 
 
@@ -75,8 +75,7 @@ The Rust `casper-client` provides an example of how this works. Pre-pending the 
 
 .. code-block:: bash
 
-   casper-client transfer --node-address http://localhost:7777 --chain-name casper -t 020470fecd1f7ae5c1cd53a52c4ca88cd5b76c2926d7e1d831addaa2a64bea9cc3ede6a8e9981c609ee7ab7e3fa37ba914f2fc52f6eea9b746b6fe663afa96750d66
-   -a 10000000000 -k /home/mykeys/secret_key.pem -p 10000
+   casper-client transfer --node-address http://localhost:7777 --chain-name casper -t 020470fecd1f7ae5c1cd53a52c4ca88cd5b76c2926d7e1d831addaa2a64bea9cc3ede6a8e9981c609ee7ab7e3fa37ba914f2fc52f6eea9b746b6fe663afa96750d66 -a 10000000000 -k /home/mykeys/secret_key.pem -p 10000
 
 The Rust `casper-client` requires the secret key to be in `PEM` format to send a transaction from this account. If you want to use existing Ethereum keys with the Rust client, a conversion to `PEM` format is needed.
 
@@ -90,7 +89,7 @@ To install these components, do the following:
    $ sudo apt install nodejs
    $ npm install key-encoder
 
-Then create the JS script ``convert-to-pem.js`` using `vi` or `nano` and include these contents:
+Then create the JS script ``convert-to-pem.js`` using `vi` or `nano` and include this content:
 
 .. code-block:: bash
 
