@@ -37,7 +37,7 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    calling-contracts
    querying
    execution-error-codes
-   ethereum-keys
+   keys
    solidity
    tutorials/index
    getting-help
