@@ -20,49 +20,40 @@ Each block points to its parent. An exception is the first block, which has no p
 
 A block is structurally defined as follows:
 
-* hash: A hash over the body of the Block.
-* header: The header of the block that contains information about the contents of the block with additional metadata.
-* body: The block's body contains the proposer of the block and hashes of deploys and transfers contained within it.
+* ``hash``: A hash over the header of the block.
+* ``header``: The header of the block that contains information about the contents of the block with additional metadata.
+* ``body``: The block's body contains the proposer of the block and hashes of deploys and transfers contained within it.
 
 Block hash
 ~~~~~~~~~~~
-The block hash is a Digest over the contents of the Block Header. The BlockHash serializes as the byte representation of the hash itself.
+The block hash is a ``Digest`` over the contents of the block Header. The ``BlockHash`` serializes as the byte representation of the hash itself.
 
 Block header
 ~~~~~~~~~~~~
-The header portion of a Block, structurally, is defined as follows:
+The header portion of a block, structurally, is defined as follows:
 
-* ``parent_hash``: is the hash of the parent block
-* ``state_root_hash``: is the current global state root hash produced by executing this block's body
-* ``body_hash``: the hash of the block header.
-* ``random_bit``: is a boolean whose serialization is described below.
-* ``accumulated_seed``: A seed needed for initializing a future era.
-* ``era_end``: contains Equivocation and reward information to be included in the terminal finalized block.
-* ``timestamp``: The timestamp from when the block was proposed.
-* ``era_id``: Era ID in which this block was created.
-* ``height``: The height of this block, i.e., the number of ancestors.
-* ``protocol_version``: The version of the Casper network when this block was proposed.
+* ``parent_hash``: is the hash of the parent block. It serializes to the byte representation of the parent hash. The serialized buffer of the ``parent_hash`` is 32 bytes long.
+* ``state_root_hash``: is the global state root hash produced by executing this block's body. It serializes to the byte representation of the ``state root hash``. The serialized buffer of the ``state_root_hash`` is 32 bytes long.
+* ``body_hash``: the hash of the block body. It serializes to the byte representation of the body hash. The serialized buffer of the ``body_hash`` is 32 bytes long.
+* ``random_bit``: is a boolean needed for initializing a future era. It is serialized as a single byte; true maps to 1, while false maps to 0.
+* ``accumulated_seed``: A seed needed for initializing a future era. It serializes to the byte representation of the parent Hash. The serialized buffer of the ``accumulated_hash`` is 32 bytes long.
+* ``era_end``: contains equivocation and reward information to be included in the terminal finalized block. It is an optional field. Thus if the field is set as ``None``, it serializes to `0`. The serialization of the other case is described in the :ref:`EraEnd<serialization-standard-era-end>` .
+* ``timestamp``: The timestamp from when the block was proposed. It serializes as a single ``u64`` value. The serialization of a ``u64`` value is described in in the :ref:`CLValues<serialization-standard-values>` section.
+* ``era_id``: Era ID in which this block was created. It serializes as a single ``u64`` value.
+* ``height``: The height of this block, i.e., the number of ancestors. It serializes as a single ``u64`` value.
+* ``protocol_version``: The version of the Casper network when this block was proposed. It is 3-element tuple containing ``u32`` values. It serializes as a buffer containing the three ``u32`` serialized values. Refer to the :ref:`CLValues<serialization-standard-values>` section on how ``u32`` values are serialized.
 
-When serializing the ``BlockHeader``, we create a buffer that contains the serialized representations of each of the header fields. 
 
-*  ``parent_hash`` serializes to the byte representation of the parent hash. The serialized buffer of the ``parent_hash`` is 32 bytes long.
-*  ``state_root_hash`` serializes to the byte representation of the ``state root hash``. The serialized buffer of the ``state_root_hash`` is 32 bytes long.
-*  ``body_hash`` is the serialized representation of the hash of the block. The serialized buffer of the ``body_hash`` is 32 bytes long.
-*  ``random_bit`` is serialized as a single byte; true maps to 1, while false maps to 0.
-*  ``accumulated_seed`` serializes to the byte representation of the parent Hash. The serialized buffer of the ``accumulated_hash`` is 32 bytes long.
-*  ``era_end`` is an optional field. Thus if the field is set as ``None``, it serializes to ``0``. The serialization of the other case is described in the following section. 
-*  ``timestamp`` serializes as a single ``u64`` value. The serialization of a ``u64`` value is described in its own section below. 
-*  ``era_id`` serializes as a single ``u64`` value. The serialization of a ``u64`` value is described in its own section below. 
-*  ``proposer`` serializes to the byte representation of the ``PublicKey``. If the ``PublicKey`` is an Ed25519 key, then the first byte within the serialized buffer is ``1`` followed by the bytes of the key itself; else, in the case of Secp256k1, the first byte is ``2``. 
+.. _serialization-standard-era-end:
 
 EraEnd
 ~~~~~~~
-`EraEnd` as represented within the block header, is a struct containing two fields.
+``EraEnd`` as represented within the block header, is a struct containing two fields.
 
+* ``era_report``: The first field is termed as ``EraReport`` and contains information about equivocators and rewards for an era.
+* ``next_era_validator_weights``: The second field is map for the validators and their weights for the era to follow.
 
-`EraEnd` contains two fields. The first is termed as the `EraReport` and contains information relevant to that current era. The second is a map of the weights of the validators for the next era.
-
-`EraReport` itself contains two fields:
+``EraReport`` itself contains two fields:
 
     * ``equivocators``: A vector of ``PublicKey``.
     * ``rewards``: A Binary Tree Map of ``PublicKey`` and ``u64``.
@@ -72,9 +63,9 @@ When serializing an EraReport, the buffer is first filled with the individual se
 * If the ``PublicKey`` is an ``Ed25519`` key, the first byte within the buffer is a ``1`` followed by the individual bytes of the serialized key.
 * If the ``PublicKey`` is an ``Secp256k1`` key, the first byte within the buffer is a ``2`` followed by the individual bytes of the serialized key. 
 
-When serializing the overarching struct of `EraEnd`, we first allocate a buffer, which contains the serialized representation of the `EraReport` as described above, followed by the serialized BTreeMap.
+When serializing the overarching struct of ``EraEnd``, we first allocate a buffer, which contains the serialized representation of the ``EraReport`` as described above, followed by the serialized BTreeMap.
 
-Note that `EraEnd` is an optional field. Thus the above scheme only applies if there is an `EraEnd`; if there is no era end, the field simply serializes to `0`.
+Note that ``EraEnd`` is an optional field. Thus the above scheme only applies if there is an ``EraEnd``; if there is no era end, the field simply serializes to `0`.
 
 
 Body
@@ -83,14 +74,14 @@ The body portion of the block, is structurally defined as:
 
 
 * ``proposer``: The PublicKey which proposed this block.
-* ``deploy_hashes``: Is a vector of hex-encoded hashes identifying Deploys included in this Block.
-* ``transfer_hashes``: Is a vector of hex-encoded hashes identifying Transfers included in this Block.
+* ``deploy_hashes``: Is a vector of hex-encoded hashes identifying Deploys included in this block.
+* ``transfer_hashes``: Is a vector of hex-encoded hashes identifying Transfers included in this block.
 
-When we serialize the `BlockBody`, we create a buffer that contains the serialized representations of the individual fields present within the block.
+When we serialize the ``BlockBody``, we create a buffer that contains the serialized representations of the individual fields present within the block.
 
-* ``proposer``: serializes to the byte representation of the PublicKey. If the PublicKey is an Ed25519 key, then the first byte within the serialized buffer is 1 followed by the bytes of the key itself; else, in the case of Secp256k1, the first byte is 2.
-* ``deploy_hashes``: serializes to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the number of deploy hashes present within the body.
-* ``transfer_hashes``: serializes to the byte representation of all the deploy_hashes within the block header. Its length is `32 * n`, where n denotes the number of transfers present within the body.
+* ``proposer``: serializes to the byte representation of the ``PublicKey``. If the ``PublicKey`` is an ``Ed25519`` key, then the first byte within the serialized buffer is 1 followed by the bytes of the key itself; else, in the case of ``Secp256k1``, the first byte is 2.
+* ``deploy_hashes``: serializes to the byte representation of all the deploy_hashes within the block header. Its length is ``32 * n``, where n denotes the number of deploy hashes present within the body.
+* ``transfer_hashes``: serializes to the byte representation of all the deploy_hashes within the block header. Its length is ``32 * n``, where n denotes the number of transfers present within the body.
 
 
 .. _serialization-standard-deploy:
@@ -114,7 +105,7 @@ The Deploy hash is a Digest over the contents of the Deploy header. The Deploy H
 Deploy-Header
 ~~~~~~~~~~~~~
 
-- ``account``: A supported public key variant (currently either ``Ed25519`` or ``Secp256k1``).. An ``Ed25519`` key is serialized as a buffer of bytes, with the leading byte being ``1`` for ``Ed25519``, with remainder of the buffer containing the byte representation of the signature. Correspondingly, a ``Secp256k1`` key is serialized as a buffer of bytes, with the leading byte being ``2``.
+- ``account``: A supported public key variant (currently either ``Ed25519`` or ``Secp256k1``). An ``Ed25519`` key is serialized as a buffer of bytes, with the leading byte being ``1`` for ``Ed25519``, with remainder of the buffer containing the byte representation of the signature. Correspondingly, a ``Secp256k1`` key is serialized as a buffer of bytes, with the leading byte being ``2``.
 - ``timestamp``: A timestamp is a struct that is a unary tuple containing a ``u64`` value. This value is a count of the milliseconds since the UNIX epoch. Thus the value ``1603994401469`` serializes as ``0xbd3a847575010000``
 - ``ttl``: The **Time to live** is defined as the amount of time for which deploy is considered valid. The ``ttl`` serializes in the same manner as the timestamp.
 - ``gas_price``: The gas is ``u64`` value which is serialized as ``u64`` CLValue discussed below.
@@ -193,9 +184,14 @@ Payment and Session are both defined as ``ExecutableDeployItems``. ``ExecutableD
 
 - Transfer serializes such that the first byte within the serialized buffer contains is 5u8, with the remaining bytes of the buffer containing the bytes contained within the args field of Transfer.
 
-is_valid
-~~~~~~~~
-This is the only field within the deploy that is not serialized.
+Approval
+~~~~~~~~~
+
+Approval contains two fields:
+
+* ``signer``: The public key of the approvals signer. It serializes to the byte representation of the ``PublicKey``. If the ``PublicKey`` is an ``Ed25519`` key, then the first byte within the serialized buffer is 1 followed by the bytes of the key itself; else, in the case of ``Secp256k1``, the first byte is 2.
+* ``signature``: The approval signature, which serializes as the byte representation of the ``Signature``. The fist byte within the signature is 1 in the case of an ``Ed25519`` signature or 2 in the case of ``Secp256k1``.
+
 
 Deploy Serialization at High Level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -520,7 +516,7 @@ allow each contract stored in the same deploy to have a unique key.
 Unforgable Reference (``URef``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-``URef`` broadly speaking can be used to store values and manage permissions to interact with the value stored under the ``URef``.
+``URef`` broadly speaking can be used to store values and manage permissions to interact with the value stored under the ``URef``. ``URef`` is a tuple which contains the address under which the values are stored and the Access rights to the ``URef``.
 Refer to the :ref:`Unforgable Reference<uref-head>` section for details on how ``URefs`` are managed.
 
 

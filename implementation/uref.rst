@@ -25,10 +25,10 @@ In the runtime, a ``URef`` carries its own permissions called ``AccessRights``.
 Additionally, the runtime tracks what ``AccessRights`` would be valid for each
 ``URef`` to have in each context. As mentioned above, if a malicious contract
 attempts to use a ``URef`` with ``AccessRights`` that are not valid in its
-context, then the runtime will raise an error; this is what enforces the
-security properties of all keys. By default, in all contexts, all ``URef``\ s
-are invalid (both with any ``AccessRights``, or no ``AccessRights``); however, a
-``URef`` can be added to a context in the following ways:
+context, then the runtime will raise an error; this is what enforces the security properties of all URefs used as a key.
+By default, in all contexts, all ``URef``\ s
+are assumed invalid regardless of declared AccessRights and are checked against the executing context for validity upon each attempted usage in session or smart contract logic.
+A ``URef`` can only be added to a context by the host logic, in the following ways:
 
 -  it can exist in a set of “known” ``URef``\ s
 -  it can be freshly created by the runtime via the ``new_uref`` function
