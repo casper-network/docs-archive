@@ -144,8 +144,6 @@ description of the functions available for contracts to import, see :ref:`Append
       :ref:`URefs <uref-head>`
    -  ``new_uref`` allows creating a new ``URef`` initialized with a given value (see
       section below about how ``URef``\ s are generated)
-   -  ``read_local``, ``write_local``, ``add_local`` allow working with
-      :ref:`local keys <global-state-local-key>`
    -  ``store_function`` allows writing a contract under a :ref:`hash key <global-state-hash-key>`
    -  ``get_uref``, ``list_known_urefs``, ``add_uref``, ``remove_uref`` allow working with
       the :ref:`named keys <global-state-contracts>` of the current context
