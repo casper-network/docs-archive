@@ -10,15 +10,6 @@ Introduction
 
 A *block* is the primary data structure by which network nodes communicate information about the state of the Casper Network. We briefly describe here the format of this data structure.
 
-.. _block-structure-proto:
-
-Protobuf definition
--------------------
-
-Messages between nodes are communicated using `Google’s protocol
-buffers <https://developers.google.com/protocol-buffers/>`__. The complete definition of a block in this format can be `found on
-GitHub <https://github.com/CasperLabs/CasperLabs/blob/c78e35f4d8f0f7fd9b8cf45a4b17a630ae6ab18f/protobuf/io/casperlabs/casper/consensus/consensus.proto#L111>`__ ; the description here is only meant to provide an overview of the block format; the protobuf definition is authoritative.
-
 .. _block-structure-data:
 
 Data fields
@@ -35,7 +26,7 @@ Each of these fields is detailed in the subsequent sections.
 ``block_hash``
 ~~~~~~~~~~~~~~
 
-The ``block_hash`` is the ``blake2b256`` hash of the header (serialized according to the protobuf specification).
+The ``block_hash`` is the ``blake2b256`` hash of the header.
 
 Header
 ~~~~~~
@@ -59,8 +50,7 @@ The block header contains the following fields:
       block (``post_state_hash``)
    -  the list of currently bonded validators, and their stakes
 
--  the ``blake2b256`` hash of the body of the block (serialized according to the
-   protobuf specification)
+-  the ``blake2b256`` hash of the body of the block
 -  the time the block was created
 -  the protocol version the block was executed with
 -  the number of deploys in the block
