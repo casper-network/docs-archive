@@ -295,7 +295,7 @@ Note: links to further serialization examples and a reference implementation are
       U512, // unsigned 512-bit integer primitive
       Unit, // singleton value without additional semantics
       String, // e.g. "Hello, World!"
-      URef, // unforgable reference (see above)
+      URef, // unforgeable reference (see above)
       Key, // global state key (see above)
       Option(CLType), // optional value of the given type
       List(CLType), // list of values of the given type (e.g. Vec in rust)
@@ -478,7 +478,7 @@ A *key* in the :ref:`Global State<global-state-intro>` is one of the following d
 
 -  32-byte account identifier (called an “account identity key”)
 -  32-byte immutable contract identifier (called a “hash key”)
--  32-byte reference identifier (called an “unforgable reference”)
+-  32-byte reference identifier (called an “unforgeable reference”)
 -  32-byte transfer identifier
 -  32-byte deploy information identifier
 -  32-byte Era information identifier
@@ -513,11 +513,11 @@ allow each contract stored in the same deploy to have a unique key.
 
 .. _serialization-standard-uref:
 
-Unforgable Reference (``URef``)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unforgeable Reference (``URef``)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``URef`` broadly speaking can be used to store values and manage permissions to interact with the value stored under the ``URef``. ``URef`` is a tuple which contains the address under which the values are stored and the Access rights to the ``URef``.
-Refer to the :ref:`Unforgable Reference<uref-head>` section for details on how ``URefs`` are managed.
+Refer to the :ref:`Unforgeable Reference<uref-head>` section for details on how ``URefs`` are managed.
 
 
 .. _serialization-standard-transfer-key:
