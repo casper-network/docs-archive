@@ -2,7 +2,7 @@
 
 Serialization Standard
 ======================
-We provide a custom implementation to serialize data structures used by the Casper node to their byte representation. This document details how this custom serialization is implemented, allowing developers to build their own library that implements the custom serialization.
+We provide a custom implementation to serialize data structures used by the Casper node to their byte representation. This document details how this custom serialization is implemented, allowing developers to build a library that implements the custom serialization.
 
 
 .. _serialization-standard-block:
@@ -70,7 +70,7 @@ Note that ``EraEnd`` is an optional field. Thus the above scheme only applies if
 
 Body
 ~~~~
-The body portion of the block, is structurally defined as:
+The body portion of the block is structurally defined as:
 
 
 * ``proposer``: The PublicKey which proposed this block.
@@ -100,7 +100,7 @@ A deploy is structurally defined as follows:
 
 Deploy-Hash
 ~~~~~~~~~~~~
-The Deploy hash is a Digest over the contents of the Deploy header. The Deploy Hash serializes as the byte representation of the hash itself.
+The deploy hash is a digest over the contents of the deploy header. The deploy hash serializes as the byte representation of the hash itself.
 
 Deploy-Header
 ~~~~~~~~~~~~~
@@ -162,23 +162,29 @@ Payment and Session are both defined as ``ExecutableDeployItems``. ``ExecutableD
         },
     }
 
+
 - Module Bytes are serialized such that the first byte within the serialized buffer is ``0`` with the rest of the buffer containing the bytes present.
+    
     - ``ModuleBytes { module_bytes: "[72 bytes]", args: 434705a38470ec2b008bb693426f47f330802f3bd63588ee275e943407649d3bab1898897ab0400d7fa09fe02ab7b7e8ea443d28069ca557e206916515a7e21d15e5be5eb46235f5 }`` will serialize to
     - ``0x0048000000420481b0d5a665c8a7678398103d4333c684461a71e9ee2a13f6e859fb6cd419ed5f8876fc6c3e12dce4385acc777edf42dcf8d8d844bf6a704e5b2446750559911a4a328d649ddd48000000434705a38470ec2b008bb693426f47f330802f3bd63588ee275e943407649d3bab1898897ab0400d7fa09fe02ab7b7e8ea443d28069ca557e206916515a7e21d15e5be5eb46235f5``
 
-- StoredContractByHash serializes such that the first byte within the serialized buffer is 1u8. This is followed by the byte representation of the remain fields.
+- StoredContractByHash serializes such that the first byte within the serialized buffer is 1u8. This is followed by the byte representation of the remaining fields.
+    
     - ``StoredContractByHash { hash: c4c411864f7b717c27839e56f6f1ebe5da3f35ec0043f437324325d65a22afa4, entry_point: "pclphXwfYmCmdITj8hnh", args: d8b59728274edd2334ea328b3292ed15eaf9134f9a00dce31a87d9050570fb0267a4002c85f3a8384d2502733b2e46f44981df85fed5e4854200bbca313e3bca8d888a84a76a1c5b1b3d236a12401a2999d3cad003c9b9d98c92ab1850 }``
     - ``0x01c4c411864f7b717c27839e56f6f1ebe5da3f35ec0043f437324325d65a22afa41400000070636c7068587766596d436d6449546a38686e685d000000d8b59728274edd2334ea328b3292ed15eaf9134f9a00dce31a87d9050570fb0267a4002c85f3a8384d2502733b2e46f44981df85fed5e4854200bbca313e3bca8d888a84a76a1c5b1b3d236a12401a2999d3cad003c9b9d98c92ab1850``
 
-- StoredContractByName serializes such that the first byte within the serialized buffer is 2u8. This followed by the indiviual byte representation of the remaining fields.
+- StoredContractByName serializes such that the first byte within the serialized buffer is 2u8. This is followed by the individual byte representation of the remaining fields.
+    
     - ``StoredContractByName { name: "U5A74bSZH8abT8HqVaK9", entry_point: "gIetSxltnRDvMhWdxTqQ", args: 07beadc3da884faa17454a }``
     - ``0x0214000000553541373462535a483861625438487156614b39140000006749657453786c746e5244764d685764785471510b00000007beadc3da884faa17454a``
 
-- StoredVersionedContractByHash serializes such that the first byte within the serialized buffer is 3u8. However, the field version within the enum serializes as a Option CLValue, i.e if the value is None as shown in the example, it serializes to 0, else it serializes the inner u32 value which is described below.
+- StoredVersionedContractByHash serializes such that the first byte within the serialized buffer is 3u8. However, the field version within the enum serializes as an Option CLValue, i.e., if the value is None as shown in the example, it serializes to 0, else it serializes the inner u32 value, which is described below.
+    
     - ``StoredVersionedContractByHash { hash: b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423, version: None, entry_point: "PsLz5c7JsqT8BK8ll0kF", args: 3d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8 }``
     - ``0x03b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423001400000050734c7a3563374a73715438424b386c6c306b463b0000003d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8``
 
-- StoredVersionedContractByName serializes such that the first byte within the serialized buffer is 4u8. The name and entry_point are serialized as a String CLValue, with the Option version field serializing to 0 if the value is None, else it serializes the inner u32 value as described below.
+- StoredVersionedContractByName serializes such that the first byte within the serialized buffer is 4u8. The name and entry_point are serialized as a String CLValue, with the Option version field serializing to 0 if the value is None; else, it serializes the inner u32 value as described below.
+    
     - ``StoredVersionedContractByName { name: "lWJWKdZUEudSakJzw1tn", version: Some(1632552656), entry_point: "S1cXRT3E1jyFlWBAIVQ8", args: 9975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8 }``
     - ``0x04140000006c574a574b645a5545756453616b4a7a7731746e01d0c64e61140000005331635852543345316a79466c57424149565138270000009975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8``
 
@@ -270,7 +276,7 @@ The details of ``CLType`` serialization are in the following section. Using the 
 - accounts serialize in the same way as data with ``CLType`` equal to
   ``Tuple5(FixedList(U8, 32), Map(String, Key), URef, Map(FixedList(U8, 32), U8), Tuple2(U8, U8))``.
 
-Note: ``Tuple5`` is not a presently supported ``CLType``. However it is clear how to generalize the rules for ``Tuple1``, ``Tuple2``, ``Tuple3`` to any size tuple.
+Note: ``Tuple5`` is not a presently supported ``CLType``. However, it is clear how to generalize the rules for ``Tuple1``, ``Tuple2``, ``Tuple3`` to any size tuple.
 
 Note: links to further serialization examples and a reference implementation are found in :ref:`Appendix B <appendix-b>`.
 
@@ -459,20 +465,20 @@ Contracts are a special value type because they contain the on-chain logic of th
 -  a collection of named keys
 -  a protocol version
 
-The wasm module must contain a function named ``call`` which takes no arguments and returns no values. This is the main entry point into the contract. Moreover, the module may import any of the functions supported by the Casper runtime; a list of all supported functions can be found in :ref:`Appendix A <appendix-a>`.
+The wasm module must contain a function named ``call``, which takes no arguments and returns no values. This is the main entry point into the contract. Moreover, the module may import any of the functions supported by the Casper runtime; a list of all supported functions can be found in :ref:`Appendix A <appendix-a>`.
 
-Note: though the ``call`` function signature has no arguments and no return value, within the ``call`` function body the ``get_named_arg`` runtime function can be used to accept arguments (by ordinal), and the ``ret`` runtime function can be used to return a single ``CLValue`` to the caller.
+Note: though the ``call`` function signature has no arguments and no return value, within the ``call`` function body, the ``get_named_arg`` runtime function can be used to accept arguments (by ordinal), and the ``ret`` runtime function can be used to return a single ``CLValue`` to the caller.
 
 The named keys are used to give human-readable names to keys in the global state, which are essential to the contract. For example, the hash key of another contract it frequently calls may be stored under a meaningful name. It is also used to store the ``URef``\ s, which are known to the contract (see the section on Permissions for details).
 
-Each contract specifies the Casper protocol version that was active when the contract was written to global state.
+Each contract specifies the Casper protocol version that was active when the contract was written to the global state.
 
 .. _serialization-standard-state-keys:
 
 Keys
 ----
 
-In this chapter we describe what constitutes a “key”, the permissions model for the keys, and how they are serialized.
+In this chapter, we describe what constitutes a “key”, the permissions model for the keys, and how they are serialized.
 
 A *key* in the :ref:`Global State<global-state-intro>` is one of the following data types:
 
@@ -484,7 +490,7 @@ A *key* in the :ref:`Global State<global-state-intro>` is one of the following d
 -  32-byte Era information identifier
 -  32-byte purse balance identifier
 -  32-byte Auction bid identifier
--  32-byte Auction withdraw identifier
+-  32-byte Auction withdrawal identifier
 -  32-byte Era validator identifier
 
 .. _global-state-account-key:
@@ -494,7 +500,7 @@ Account identity key
 
 This key type is used specifically for accounts in the global state. All
 accounts in the system must be stored under an account identity key, and no
-other type. The 32-byte identifier which represents this key is derived from the
+other types. The 32-byte identifier which represents this key is derived from the
 ``blake2b256`` hash of the public key used to create the associated account (see
 :ref:`Accounts <accounts-associated-keys-weights>` for more information).
 
@@ -508,7 +514,7 @@ written under a hash key, that contract can never change. The 32-byte identifier
 representing this key is derived from the ``blake2b256`` hash of the deploy hash
 (see :ref:`block-structure-head` for more information) concatenated
 with a 4-byte sequential ID. The ID begins at zero for each deploy and
-increments by 1 each time a contract is stored. The purpose of this ID is to
+increments by one each time a contract is stored. The purpose of this ID is to
 allow each contract stored in the same deploy to have a unique key.
 
 .. _serialization-standard-uref:
@@ -526,7 +532,7 @@ Transfer Key
 ~~~~~~~~~~~~~
 
 This key type is used specifically for transfers in the global state. All
-transfers in the system must be stored under a transfer key, and no
+transfers in the system must be stored under a transfer key and no
 other type. The 32-byte identifier which represents this key is derived from the
 ``blake2b256`` hash of the transfer address associated with the given transfer
 
@@ -536,7 +542,7 @@ DeployInfo Key
 ~~~~~~~~~~~~~~~
 
 This key type is used specifically for storing information related to deploys in the global state.
-Information for the a given deploy is stored under this key only.
+Information for a given deploy is stored under this key only.
 The 32-byte identifier which represents this key is derived from the
 ``blake2b256`` hash of the deploy itself.
 
@@ -546,7 +552,7 @@ EraInfo Key
 ~~~~~~~~~~~~
 This key type is used specifically for storing information related to the ``Auction`` metadata for a particular era.
 The underlying data type stored under this is a vector of the allocation of seigniorage for that given era.
-The identifier for this key is a new type which wraps around the primitive ``u64`` data type and co-relates
+The identifier for this key is a new type that wraps around the primitive ``u64`` data type and co-relates
 to the era number when the auction information was stored.
 
 .. _serialization-standard-balance-key:
@@ -554,14 +560,14 @@ to the era number when the auction information was stored.
 Balance Key
 ~~~~~~~~
 This key type is used to store information related to the balance of a given purse. All purse balances are stored using this key.
-The 32-byte identifier which represents this key is derived from the Address of the URef which relates to the purse.
+The 32-byte identifier which represents this key is derived from the Address of the URef, which relates to the purse.
 
 .. _serialization-standard-bid-key:
 
 Bid Key
 ~~~~
 
-This key type is used specifically for storing information related auction bids in the global state.
+This key type is used specifically for storing information related to auction bids in the global state.
 Information for the bids is stored under this key only. The 32-byte identifier which represents this key is derived from the
 ``blake2b256`` hash of the public key used to create the associated account (see
 :ref:`Accounts <accounts-associated-keys-weights>` for more information).
@@ -571,8 +577,8 @@ Information for the bids is stored under this key only. The 32-byte identifier w
 Withdraw Key
 ~~~~~~~~~
 
-This key type is used specifically for storing information related auction withdraws in the global state.
-Information for the withdraws is stored under this key only. The 32-byte identifier which represents this key is derived from the
+This key type is used specifically for storing information related to auction withdraws in the global state.
+Information for the withdrawals is stored under this key only. The 32-byte identifier which represents this key is derived from the
 ``blake2b256`` hash of the public key used to create the associated account (see
 :ref:`Accounts <accounts-associated-keys-weights>` for more information).
 
@@ -580,7 +586,7 @@ Information for the withdraws is stored under this key only. The 32-byte identif
 
 EraValidators Key
 ~~~~~~~~~~~~~~~~~~~~~~
-This key type is used specifically for storing information related to the set validators for a given era within global state.
+This key type is used specifically for storing information related to the set validators for a given era within the global state.
 Information for validator sets for a given era is stored under this key only. The identifier for this key is a wrapper around
 the primitive ``u64`` which corresponds to the era number for a given validator set.
 
@@ -589,9 +595,9 @@ the primitive ``u64`` which corresponds to the era number for a given validator 
 Serialization for ``Key``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Given the different variants for the over-arching ``Key`` data-type, each of the different variants are serailized differently.
+Given the different variants for the over-arching ``Key`` data-type, each of the different variants is serialized differently.
 This section of this chapter details how the individual variants are serialized.
-The leading byte of the serialized buffer acts a tag indicating the serialized variant.
+The leading byte of the serialized buffer acts as a tag indicating the serialized variant.
 
 +--------------------+-------------------+
 | ``Key``            | Serialization Tag |
@@ -617,17 +623,15 @@ The leading byte of the serialized buffer acts a tag indicating the serialized v
 | ``EraValidators``  |                 9 |
 +--------------------+-------------------+
 
-
 - ``Account`` serializes as a 32 byte long buffer containing the byte representation of the underlying ``AccountHash``
 - ``Hash`` serializes as a 32 byte long buffer containing the byte representation of the underlying ``Hash`` itself.
-- ``URef`` is a tuple that contains the address of the URef and the access rights to that ``URef``. The serialized representation of the ``URef`` is 33 bytes long. The first 32 bytes are the byte representation of the ``URef`` address and the last byte contains the bits corresponding to the access rights of the ``URef``. Refer to the :ref:`CLValue<serialization-standard-values>` section of this chapter for details on how ``AccessRights`` are serialized.
+- ``URef`` is a tuple that contains the address of the URef and the access rights to that ``URef``. The serialized representation of the ``URef`` is 33 bytes long. The first 32 bytes are the byte representation of the ``URef`` address, and the last byte contains the bits corresponding to the access rights of the ``URef``. Refer to the :ref:`CLValue<serialization-standard-values>` section of this chapter for details on how ``AccessRights`` are serialized.
 - ``Transfer`` serializes as a 32 byte long buffer containing the byte representation of the hash of the transfer.
 - ``DeployInfo`` serializes as 32 byte long buffer containing the byte representation of the Deploy hash. See the Deploy section above for how Deploy hashes are serialized.
 - ``EraInfo`` serializes a ``u64`` primitive type by adding additional padding. The serialized buffer is 32 bytes long with the leading 24 bytes as 0 padding, and the following 8 bytes contain a Lower endian byte representation of ``u64``.
 - ``Balance`` serializes as 32 byte long buffer containing the byte representation of the URef address.
-- ``Bid`` and ``Withdraw`` both contain the ``AccountHash`` as their identifier, therefore they serialize in the same manner as the ``Account`` variant.
+- ``Bid`` and ``Withdraw`` both contain the ``AccountHash`` as their identifier; therefore, they serialize in the same manner as the ``Account`` variant.
 - ``EraValidators`` also uses the padded serialization in the same manner as ``EraInfo``.
-
 
 
 .. _serialization-standard-permissions:
@@ -635,10 +639,10 @@ The leading byte of the serialized buffer acts a tag indicating the serialized v
 Permissions
 -----------
 
-There are three types of actions which can be done on a value: read, write, add.
-The reason for add to be called out separately from write is to allow for
-commutativity checking. The available actions depends on the key type and the
-context. Some key types only allow controlled access by smart contracts via the contract api, and other key types refer to values produced and used by the system itself and are not accessible to smart contracts at all but can be read via off-chain queries.
+There are three types of actions that can be done on a value: read, write, add.
+The reason for *add* to be called out separately from *write* is to allow for
+commutativity checking. The available actions depend on the key type and the
+context. Some key types only allow controlled access by smart contracts via the contract API, and other key types refer to values produced and used by the system itself and are not accessible to smart contracts at all but can be read via off-chain queries.
 This is summarized in the table below:
 
 +-----------------------------------+-----------------------------------+
