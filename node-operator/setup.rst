@@ -27,12 +27,11 @@ The installation of ``casper-node-launcher``, ``casper-node``, and ``casper-clie
 
 Two main folders are relevant for our software: ``/etc/casper`` and ``/var/lib/casper``.
 
-Also, the default location for executables from the Debian package install is ``/usr/bin``.
-
 The following is the state of the filesystem after installing the ``casper-client`` and ``casper-node-launcher`` Debian packages, and also after running the script */etc/casper/pull_casper_node_version.sh*.
 
 ``/usr/bin``
 ~~~~~~~~~~~~~
+The default location for executables from the Debian package install is ``/usr/bin``.
 
 * ``casper-client`` - A client for interacting with the Casper network
 * ``casper-node-launcher`` - The launcher application which starts the ``casper-node`` as a child process
