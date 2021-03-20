@@ -2,8 +2,8 @@
    :format: html
 
 
-Testing Contracts Locally
-=========================
+Testing Contracts
+=================
 
 As part of the Casper local Rust contract development environment we provide an in-memory virtual machine you can run your contract against. A full node is not required for testing.  The testing framework is designed to be used in the following way:
 
