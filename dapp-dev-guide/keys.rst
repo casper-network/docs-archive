@@ -79,8 +79,6 @@ The Rust `casper-client` provides an example of how this works. Pre-pending the 
 
 The Rust `casper-client` requires the secret key to be in `PEM` format to send a transaction from this account. If you want to use existing Ethereum keys with the Rust client, a conversion to `PEM` format is needed.
 
-Also, it is possible to create clients or serialize your deploys.
-
 The following example is a JS script that generates a `PEM` file, using `key encoder <https://github.com/blockstack/key-encoder-js>`_ and node.js.
 To install these components, do the following:
 
