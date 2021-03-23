@@ -46,6 +46,10 @@ Install the pre-requisites for building smart contracts:
 
 .. code::
 
+    sudo apt install libssl-dev
+    sudo apt install pkg-config
+    sudo apt install build-essential
+    
     sudo apt purge --auto-remove cmake
     wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
     sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ focal main'   
@@ -54,9 +58,6 @@ Install the pre-requisites for building smart contracts:
 
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-    sudo apt install libssl-dev
-    sudo apt install pkg-config
-    sudo apt install build-essential
 
 
 Build the Smart Contracts
