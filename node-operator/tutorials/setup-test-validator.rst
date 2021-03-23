@@ -80,7 +80,7 @@ Build the Smart Contracts
 
     .. code::
     
-        git checkout release-0.7.6
+        git checkout release-0.9.4
 
 #. Build the contracts
 

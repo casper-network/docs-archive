@@ -169,7 +169,7 @@ Re-build the smart contracts required to bond to the network.
 
     .. code::
 
-        git checkout release-0.7.6
+        git checkout release-0.9.4
 
 #. Remove previous builds
 
