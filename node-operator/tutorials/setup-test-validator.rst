@@ -118,14 +118,24 @@ Generate your Keys
 
 Create an Account
 ~~~~~~~~~~~~~~~~~
-Go to `Clarity <https://clarity.casperlabs.io/#/accounts>`_ and login using your Github or Google account. Click the *Import Key* button and select the file containing the hex representation of your public key -- the **public_key_hex** file. Give it a name and click *Save*.  
+Go to `Clarity <https://clarity.casperlabs.io/#/accounts>`_ and login using your Github or Google account. Click the *Import Key* button and select the file containing your public key -- the **public_key.pem** file. Give it a name and click *Save*.  
 
 Fund your Account
 ~~~~~~~~~~~~~~~~~
-To fund an account, visit the `Faucet <https://clarity.casperlabs.io/#/faucet>`_ page. Select the account you want to fund and select *Request Tokens*. Wait until the request transaction succeeds.
+To fund an account, visit the `Faucet <https://clarity.casperlabs.io/#/faucet>`_ page. Select the account you want to fund and select *Request Tokens*. Wait until the request transaction succeeds and the *Status* column shows a green checkmark.
 
 Configuring and Running the Node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Setting the Node Version
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Set an environment variable defining the version of the node package you want to set up. For `1.0.0`, use `1_0_0`:
+
+.. code::
+
+    CASPER_VERSION=1_0_0
+
 
 Set up the Node Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -133,7 +143,8 @@ Set up the Node Configuration
 .. code::
  
     cd /etc/casper
-    sudo -u casper ./pull_casper_node_version.sh $CASPER_VERSION
+    sudo -u casper ./pull_casper_node_version.sh $CASPER_VERSION casper
+
 
 Get a Known Validator IP
 ~~~~~~~~~~~~~~~~~~~~~~~~~
