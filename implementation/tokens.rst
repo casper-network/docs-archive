@@ -56,7 +56,7 @@ The ``AccessRights`` of the :ref:`URefs <global-state-urefs-permissions>`
 permissions model determine what actions are allowed to be performed
 when using a ``URef`` associated with a purse.
 
-As all ``URef``\ s are unforgable, the only way to interact with
+As all ``URef``\ s are unforgeable, the only way to interact with
 a purse is for a ``URef`` with appropriate ``AccessRights``
 to be given to the current context in a valid way (see ``URef`` permissions for details).
 
