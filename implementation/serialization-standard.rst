@@ -207,42 +207,59 @@ Consider the following deploy:
 .. code:: json
 
     {
-    "hash": "2640413b0a9f9179d6ae0c7424335483682a4a240a71b0e438be07796c68548b",
-    "header": {
-        "account": "018e8560906e20ac3059fbc0498a86a9f775d51d54c0b36d00c830c4e29a6587f7",
-        "timestamp": "2020-10-29T15:28:44.620Z",
-        "ttl": "22m 6s 290ms",
-        "gas_price": 83,
-        "body_hash": "cf0e5d669745d5acea0abb8ee784ee55adf26afc3a3f2e9b8523115a65de679a",
-        "dependencies": [
-        "5315e77c1cfeb0d6f3b60e863daeffbfcf6ebd3ea85b288b9ca4929039106395",
-        "c753ec013bb77522a210c7fed68c359308f0d9536c00216c2ddd5b3442835a03",
-        "8fc364a7266ee2c0a17e8c7f86f3fdcc2b1d590fa5c61e969bf2bf1811366643"
-        ],
-        "chain_name": "casper-example"
-    },
-    "payment": {
-        "ModuleBytes": {
-        "module_bytes": "9babcba5d0afbe3f06c2adbd907e61f179fb",
-        "args": "831728a0fe7862148d71cb5dc812c89c01965d1849"
-        }
-    },
-    "session": {
-        "Transfer": {
-        "args": "9d836ba4cc5b272c362ecdf4c70e1bed0401bbb8bcee18c7ca13945e8f73"
-        }
-    },
-    "approvals": [
-        {
-        "signer": "018e8560906e20ac3059fbc0498a86a9f775d51d54c0b36d00c830c4e29a6587f7",
-        "signature": "01fb9a66c5ad0fe86bc5c5afb98dad6f1dde1b82af7ca7522866b558ccc516b020ce2e5d6728c760c72bd5b7c2c5b9c62cc4f0743edd3ac519679342fc5f7d2c03"
-        }
-    ]
+        "hash": "01da3c604f71e0e7df83ff1ab4ef15bb04de64ca02e3d2b78de6950e8b5ee187",
+        "header": {
+            "account": "01d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900c",
+            "timestamp": "2020-11-17T00:39:24.072Z",
+            "ttl": "1h",
+            "gas_price": 1,
+            "body_hash": "4811966d37fe5674a8af4001884ea0d9042d1c06668da0c963769c3a01ebd08f",
+            "dependencies": [
+                "0101010101010101010101010101010101010101010101010101010101010101"
+            ],
+            "chain_name": "casper-example"
+        },
+        "payment": {
+            "StoredContractByName": {
+            "name": "casper-example",
+            "entry_point": "example-entry-point",
+            "args": [
+                [
+                    "quantity",
+                    {
+                        "cl_type": "I32",
+                        "bytes": "e8030000",
+                        "parsed": 1000
+                    }
+                ]
+            ]
+            }
+        },
+        "session": {
+            "Transfer": {
+            "args": [
+                [
+                    "amount",
+                    {
+                        "cl_type": "I32",
+                        "bytes": "e8030000",
+                        "parsed": 1000
+                    }
+                ]
+            ]
+            }
+        },
+        "approvals": [
+            {
+                "signer": "01d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900c",
+                "signature": "012dbf03817a51794a8e19e0724884075e6d1fbec326b766ecfa6658b41f81290da85e23b24e88b1c8d9761185c961daee1adab0649912a6477bcd2e69bd91bd08"
+            }
+        ]
     }
 
 The above deploy will serialize to:
 
-``0x20000000000000002640413b0a9f9179d6ae0c7424335483682a4a240a71b0e438be07796c68548b0000000020000000000000008e8560906e20ac3059fbc0498a86a9f775d51d54c0b36d00c830c4e29a6587f74cbaf97475010000d23c14000000000053000000000000002000000000000000cf0e5d669745d5acea0abb8ee784ee55adf26afc3a3f2e9b8523115a65de679a030000000000000020000000000000005315e77c1cfeb0d6f3b60e863daeffbfcf6ebd3ea85b288b9ca49290391063952000000000000000c753ec013bb77522a210c7fed68c359308f0d9536c00216c2ddd5b3442835a0320000000000000008fc364a7266ee2c0a17e8c7f86f3fdcc2b1d590fa5c61e969bf2bf18113666430e000000000000006361737065722d6578616d706c650000000012000000000000009babcba5d0afbe3f06c2adbd907e61f179fb1500000000000000831728a0fe7862148d71cb5dc812c89c01965d1849050000001e000000000000009d836ba4cc5b272c362ecdf4c70e1bed0401bbb8bcee18c7ca13945e8f7301000000000000000000000020000000000000008e8560906e20ac3059fbc0498a86a9f775d51d54c0b36d00c830c4e29a6587f7000000004000000000000000fb9a66c5ad0fe86bc5c5afb98dad6f1dde1b82af7ca7522866b558ccc516b020ce2e5d6728c760c72bd5b7c2c5b9c62cc4f0743edd3ac519679342fc5f7d2c03``
+``01d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900ca856a4d37501000080ee36000000000001000000000000004811966d37fe5674a8af4001884ea0d9042d1c06668da0c963769c3a01ebd08f0100000001010101010101010101010101010101010101010101010101010101010101010e0000006361737065722d6578616d706c6501da3c604f71e0e7df83ff1ab4ef15bb04de64ca02e3d2b78de6950e8b5ee187020e0000006361737065722d6578616d706c65130000006578616d706c652d656e7472792d706f696e7401000000080000007175616e7469747904000000e803000001050100000006000000616d6f756e7404000000e8030000010100000001d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900c012dbf03817a51794a8e19e0724884075e6d1fbec326b766ecfa6658b41f81290da85e23b24e88b1c8d9761185c961daee1adab0649912a6477bcd2e69bd91bd08``
 
 
 .. _serialization-standard-values:
