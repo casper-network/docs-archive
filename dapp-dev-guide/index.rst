@@ -3,12 +3,12 @@ Developers
 
 This guide is designed to support developers getting started with the development of smart contracts on the Casper blockchain in AssemblyScript or Rust. For Rust, there is a contract development kit that includes a runtime environment, reference documentation, and test framework. You can install our environment locally, create and test Smart Contracts with our Smart Contracts and Test Libraries, and use these libraries to build your own applications.
 
-It is recommended you have prior knowledge about Unix-based operating systems, like GNU/Linux or macOS, and programming knowledge with
+It is recommended you have prior knowledge about Unix-based operating systems, like GNU/Linux or macOS, and programming knowledge with:
 
-* Rust,
-* AssemblyScript,
-* JavaScript (optional),
-* Python (optional).
+* Rust
+* AssemblyScript
+* JavaScript (optional)
+* Python (optional)
 
 The topics on the index include present and future documentation initiatives in our roadmap and are organized so that you will be able to:
 
@@ -30,7 +30,6 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
 
    Introduction <self>
    setup-of-rust-contract-sdk
-   contract-dsl/index
    writing-contracts/index
    testing
    setup-nctl
