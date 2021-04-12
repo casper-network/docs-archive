@@ -40,6 +40,7 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    execution-error-codes
    keys
    solidity
+   sdk/index
    tutorials/index
    getting-help
 
