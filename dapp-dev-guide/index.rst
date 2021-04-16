@@ -38,7 +38,8 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    querying
    execution-error-codes
    keys
-   solidity
    tutorials/index
    getting-help
 
+..
+   TODO re-write the solidity section and add it back when it is ready.
