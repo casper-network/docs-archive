@@ -1,5 +1,9 @@
 This tutorial reviews an implementation of the ERC-20 standard for Casper.
 
+..
+    TODO: re-write this tutorial without DSL. Include it back in the tutorials folder.
+
+
 ERC-20 Standard
 ---------------
 
@@ -23,8 +27,7 @@ The example ERC-20 is located in `GitHub <https://github.com/casper-ecosystem/er
 Required Crates
 ---------------
 
-This is a rust contract. In rust, the keyword ``use`` is like an ``include`` statement in C/C++. Casper contracts require a few crates to be included.
-They are:
+This is a Rust contract. In rust, the keyword ``use`` is like an ``include`` statement in C/C++. Casper contracts require a few crates to be included:
 
 * casperlabs_contract_macros: The Casper DSL that includes the boilerplate code needed for every contract
 * contract: The Casper contract API for runtime and storage

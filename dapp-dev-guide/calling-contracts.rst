@@ -1,29 +1,59 @@
+Calling Contracts
+=================
 
-Contracts on the Blockchain
-===========================
-
-The most efficient way to use blockchain is to store (install) your contract on the system and then call it.  This section outlines the steps to do this.
+The most efficient way to use blockchain is to store (install) your contract on the system and then call it. This section outlines the steps to do this.
 
 Installing a Smart Contract
 ---------------------------
 
-The Contracts DSL provides all the necessary boilerplate code that is needed to install a contract.
-The ``#[casperlabs_contract]`` macro sets up the contract name so it can be called using the name in subsequent deploys. 
-Deploy the smart contract through the ``put-deploy`` command and send in the compiled wasm as ``--session code``.
+First, set up the contract name so you can call it using the name in subsequent deploys. The following code sample uses ``sample_contract`` as the contract name.
+
+.. code-block:: rust
+
+   let contract_hash = storage::add_contract_version(contract_package_hash, 
+                                                     entry_points, 
+                                                     Default::default());
+   runtime::put_key("sample_contract", contract_hash.into());
+   let contract_hash_pack = storage::new_uref(contract_hash);
+   runtime::put_key("sample_contract_hash", contract_hash_pack.into());
+   runtime::call_contract::<()>(contract_hash, "store_hello_world", {
+      let mut named_args = RuntimeArgs::new();
+      named_args.insert("s", s);
+      named_args.insert("a", a);
+      named_args
+   });
+
+Next, deploy the smart contract using the ``put-deploy`` command and send in the compiled wasm as ``--session code``.
 
 Calling a Contract by Name & Entry Point
 ----------------------------------------
 
-To call a contract by its' name use the ``session-name`` option. The Contracts DSL makes it possible to create entry points in the contract, which can then be invoked in the contract via the entry point. The ``#[casperlabs_method]`` macro sets up the entry point name. 
+To call a contract by its name, run the ``put-deploy`` command using the ``session-name`` option:
 
 .. code-block:: bash
 
    casper-client put-deploy --session-name <NAME> --session-entry-point <FUNCTION_NAME>
 
-Calling a Contract by Hash & Entry Point
+It is possible to create entry points in the contract, which you can invoke while the contract lives on the blockchain. The following code shows you an example entry point:
+
+.. code-block:: rust
+
+   fn __store_u64() {
+      let u: u64 = bar();
+      let int_ref: URef = storage::new_uref(u);
+      let int_key: Key = int_ref.into();
+      runtime::put_key(INT_KEY, int_key)
+   }
+   #[no_mangle]
+   fn store_u64() {
+      __store_u64()
+   }
+
+
+Calling a Contract by Hash and Entry Point
 ----------------------------------------
 
-After deploying a contract and querying global state, a contract's hash can be used to call it in a new deploy. An entry point is required when calling a contract by its' hash. 
+After deploying a contract and querying the global state, you can use a contract's hash to call it in a new deploy. An entry point is required when calling a contract by its hash. 
 
 .. code-block:: bash
 

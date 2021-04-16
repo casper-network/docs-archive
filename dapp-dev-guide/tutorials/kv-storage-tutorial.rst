@@ -1,6 +1,8 @@
 .. role:: raw-html-m2r(raw)
    :format: html
 
+..
+    TODO: re-write this tutorial without DSL. Include it back in the tutorials folder.
 
 Key Value Storage Tutorial
 ==========================
