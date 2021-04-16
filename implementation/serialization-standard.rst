@@ -645,7 +645,7 @@ The leading byte of the serialized buffer acts as a tag indicating the serialize
 - ``URef`` is a tuple that contains the address of the URef and the access rights to that ``URef``. The serialized representation of the ``URef`` is 33 bytes long. The first 32 bytes are the byte representation of the ``URef`` address, and the last byte contains the bits corresponding to the access rights of the ``URef``. Refer to the :ref:`CLValue<serialization-standard-values>` section of this chapter for details on how ``AccessRights`` are serialized.
 - ``Transfer`` serializes as a 32 byte long buffer containing the byte representation of the hash of the transfer.
 - ``DeployInfo`` serializes as 32 byte long buffer containing the byte representation of the Deploy hash. See the Deploy section above for how Deploy hashes are serialized.
-- ``EraInfo`` serializes a ``u64`` primitive type by adding additional padding. The serialized buffer is 32 bytes long with the leading 24 bytes as 0 padding, and the following 8 bytes contain a Lower endian byte representation of ``u64``.
+- ``EraInfo`` serializes a ``u64`` primitive type by adding additional padding. The serialized buffer is 32 bytes long with the leading 24 bytes as 0 padding, and the following 8 bytes contain a little-endian byte representation of ``u64``.
 - ``Balance`` serializes as 32 byte long buffer containing the byte representation of the URef address.
 - ``Bid`` and ``Withdraw`` both contain the ``AccountHash`` as their identifier; therefore, they serialize in the same manner as the ``Account`` variant.
 - ``EraValidators`` also uses the padded serialization in the same manner as ``EraInfo``.
