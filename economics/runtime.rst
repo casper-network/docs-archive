@@ -11,7 +11,7 @@ Any finite resource on a publicly accessible computer network must be rate-limit
 Consensus before execution & basics of payment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Highway protocol in its mainnet implementation reaches consensus on a block *before* the block is executed. This introduces a subtle difference from platforms like Ethereum. Deploys sent to the Casper network can only be selected only on the basis of claimed, rather than used, gas. Consequently, to incentivize user-side optimization and to prevent exhaustion of block space by poorly optimized deploys, the platform provides no refunds for unused gas.
+The Highway protocol in its mainnet implementation reaches consensus on a block *before* the block is executed. This introduces a subtle difference from platforms like Ethereum. Deploys sent to the Casper network can only be selected on the basis of claimed, rather than used, gas. Consequently, to incentivize user-side optimization and to prevent exhaustion of block space by poorly optimized deploys, the platform provides no refunds for unused gas.
 
 Additionally, because we allow complex payment code, there is a minimal amount of CSPR that must be present in the user account, to ensure that the payment computation is covered. Further balance checks may be introduced in the future.
 
@@ -20,12 +20,12 @@ Costs and limits
 
 Gas cost is a measure of relative time used by different primitive operations of the execution engine, which is also assumed to be additive. By additivity, we mean that the time to execute a program is approximately proportional the sum of gas expended by the opcodes and functions called within the program. Casper assigns gas costs both to primitive execution engine opcodes and to certain more complex *host side* functions that are callable from within the execution engine context. Gas costs for opcodes and host side functions are specified in the chainspec and may vary according to arguments.
 
-It is expected that the current gas cost table will be refined over time to reflect time use more closely, with updates introduces in future upgrades. It is also anticipated that, with the introduction of state pruning, storage will come to be costed explicitly and separately from compute time.
+It is expected that the current gas cost table will be refined over time to reflect time use more closely, with updates introduced in future upgrades. It is also anticipated that, with the introduction of state pruning, storage will come to be costed explicitly and separately from compute time.
 
 Lanes
 ^^^^^
 
-Block gas limit is split into two lanes, one for native transfers and one for general deploys.
+Block gas limit is split into two lanes, one for native transfers and one for general deploys. The number of transfers, which cost a fixed amount of gas, is governed directly by the *block_max_transfer_count* chainspec parameter (set to 2500 at mainnet launch).
 
 Gas fees
 --------
@@ -35,7 +35,7 @@ At mainnet launch, the price of gas is fixed at 1 mote per 1 unit of gas.
 Fee allocation
 ^^^^^^^^^^^^^^
 
-All fees from a particular block accrue to its proposed. This incentivizes block production and allows major dApps to execute their own deploys for free, provided they operate a validator node and are comfortable with the latency introduced by validator scheduling.
+All fees from a particular block accrue to its proposer. This incentivizes non-empty block production and allows major dApps to execute their own deploys for free, provided they operate a validator node and are comfortable with the latency introduced by validator scheduling.
 
 Spot pricing
 ^^^^^^^^^^^^
