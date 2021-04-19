@@ -5,11 +5,11 @@ The Casper network is a Proof-of-Stake blockchain that allows validators to stak
 
 *Consensus mechanism:* Casper operates using a Proof-of-Stake consensus mechanism per the `Highway Protocol <https://github.com/CasperLabs/highway>`_, which is a specification of Correct-by-Construction Casper (CBC Casper).
 
-*Number of validators:* The Casper Delta testnet supports up to 100 validators on the network. This number is chosen to strike a balance between performance and decentralization. This platform parameter can be increased through upgrades as development continues and performance improves. Validators can stake on the Casper network through a process of permission-less bonding by participating in an auction for the validator slot.
+*Number of validators:* The Casper network supports up to 100 validators on the network. This number is chosen to strike a balance between performance and decentralization. This platform parameter can be increased through upgrades as development continues and performance improves. Validators can stake on the Casper network through a process of permission-less bonding by participating in an auction for the validator slot.
            
 *Permission-less bonding:* For validators to begin staking and earning rewards, they must win a staking auction by competing with current and prospective validators to supply one of the forthcoming top stakes for a given era. This process is permission-less, meaning validators can join and leave the auction without restrictions, except for a waiting period to unlock staked tokens.
           
-*Unbonding:* To detach from the Casper Delta testnet takes 7 eras for both validators and delegators. Neither validators nor delegators receive rewards during the 7 eras required for unbonding, as they are not actively contributing to the network's security during that time.
+*Unbonding:* To detach from the Casper network takes 7 eras for both validators and delegators. Neither validators nor delegators receive rewards during the 7 eras required for unbonding, as they are not actively contributing to the network's security during that time.
 
 *Eras and block times:* An era on Casper is roughly 2 hours long. The block time on today's testnet is approximately two minutes. Casper's Highway protocol allows validators to propose blocks as quickly as network conditions allow, subject to a platform-wide limit that may be adjusted with upgrades. We anticipate block times to last between thirty seconds and eight minutes.
            
