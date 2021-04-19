@@ -487,11 +487,12 @@ A *key* in the :ref:`Global State<global-state-intro>` is one of the following d
 -  32-byte reference identifier (called an “unforgeable reference”)
 -  32-byte transfer identifier
 -  32-byte deploy information identifier
--  32-byte Era information identifier
 -  32-byte purse balance identifier
 -  32-byte Auction bid identifier
 -  32-byte Auction withdrawal identifier
--  32-byte Era validator identifier
+
+The one exception to note here is the identifier for ``EraInfo`` which actually serializes as ``u64`` value with an additional byte for the tag.
+
 
 .. _global-state-account-key:
 
@@ -582,13 +583,6 @@ Information for the withdrawals is stored under this key only. The 32-byte ident
 ``blake2b256`` hash of the public key used to create the associated account (see
 :ref:`Accounts <accounts-associated-keys-weights>` for more information).
 
-.. _serialization-standard-era-validators-key:
-
-EraValidators Key
-~~~~~~~~~~~~~~~~~~~~~~
-This key type is used specifically for storing information related to the set validators for a given era within the global state.
-Information for validator sets for a given era is stored under this key only. The identifier for this key is a wrapper around
-the primitive ``u64`` which corresponds to the era number for a given validator set.
 
 .. _serialization-standard-serialization-key:
 
@@ -620,18 +614,16 @@ The leading byte of the serialized buffer acts as a tag indicating the serialize
 +--------------------+-------------------+
 | ``Withdraw``       |                 8 |
 +--------------------+-------------------+
-| ``EraValidators``  |                 9 |
-+--------------------+-------------------+
+
 
 - ``Account`` serializes as a 32 byte long buffer containing the byte representation of the underlying ``AccountHash``
 - ``Hash`` serializes as a 32 byte long buffer containing the byte representation of the underlying ``Hash`` itself.
 - ``URef`` is a tuple that contains the address of the URef and the access rights to that ``URef``. The serialized representation of the ``URef`` is 33 bytes long. The first 32 bytes are the byte representation of the ``URef`` address, and the last byte contains the bits corresponding to the access rights of the ``URef``. Refer to the :ref:`CLValue<serialization-standard-values>` section of this chapter for details on how ``AccessRights`` are serialized.
 - ``Transfer`` serializes as a 32 byte long buffer containing the byte representation of the hash of the transfer.
 - ``DeployInfo`` serializes as 32 byte long buffer containing the byte representation of the Deploy hash. See the Deploy section above for how Deploy hashes are serialized.
-- ``EraInfo`` serializes a ``u64`` primitive type by adding additional padding. The serialized buffer is 32 bytes long with the leading 24 bytes as 0 padding, and the following 8 bytes contain a Lower endian byte representation of ``u64``.
+- ``EraInfo`` serializes a ``u64`` primitive type containing Lower endian byte representation of ``u64``.
 - ``Balance`` serializes as 32 byte long buffer containing the byte representation of the URef address.
 - ``Bid`` and ``Withdraw`` both contain the ``AccountHash`` as their identifier; therefore, they serialize in the same manner as the ``Account`` variant.
-- ``EraValidators`` also uses the padded serialization in the same manner as ``EraInfo``.
 
 
 .. _serialization-standard-permissions:
@@ -666,8 +658,7 @@ This is summarized in the table below:
 +-----------------------------------+-----------------------------------+
 | Withdraw                          | System                            |
 +-----------------------------------+-----------------------------------+
-| EraValidators                     | System                            |
-+-----------------------------------+-----------------------------------+
+
 
 Refer to :ref:`URef permissions<uref-permissions>` on how permissions are handled in the case of ``URef``\ s.
 
