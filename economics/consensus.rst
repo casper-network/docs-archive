@@ -6,7 +6,7 @@ Highway consensus is a continuous, trust-less process that has a fixed set of va
 Entry
 -----
 
-Several eras after genesis, the system settles into selecting a set of validators several eras in advance, governed by the *auction_delay* chainspec parameter. This is done by means of a stake auction that selects a fixed number, governed by the *validator_slots* chainspec parameter, of highest bids at the time of the auction, conducted in the switch block. After *auction_delay* eras, the winning validators become the validating set for the new era.
+Several eras after genesis, the system settles into selecting a set of validators several eras in advance, governed by the *auction_delay* chainspec parameter (set to 1 at mainnet launch). This is done by means of a stake auction that selects a fixed number, governed by the *validator_slots* chainspec parameter, of highest bids at the time of the auction, conducted in the switch block. After *auction_delay* eras, the winning validators become the validating set for the new era.
 
 Bids
 ^^^^
@@ -38,16 +38,16 @@ Issuance of new tokens and their distribution to validators incentivizes work ev
 
 CSPR is issued at a fixed rate and distributed to validators (and, indirectly, delegators) in proportion to their stake. This is analogous to block rewards in Proof of Work blockchains, except for a couple of differences:
 
-- The growth of CSPR supply is exponential instead of linear
+- The growth of CSPR supply is exponential
 - Issuance takes into account slashed CSPR
 
 With slashing disabled, we can compute block rewards starting with following formula
 
 .. code-block::
 
-   supply(i) = initial_supply * (1 + issuance_rate)^(i / ticks_per_year)
+   supply(i) = initial_supply * (1 + issuance_rate)^(tick_at_era_start(i) / ticks_per_year)
 
-where :code:`i = 1, 2, ...` is the era's index, :code:`initial_supply` is the number of CSPR at genesis, :code:`issuance_rate` is the annual rate at which new CSPR is minted, and :code:`ticks_per_year = 365*24*60*60*1000 = 31_536_000_000`.
+where :code:`i = 0, 1, ...` is the era's index, :code:`initial_supply` is the number of CSPR at genesis, :code:`issuance_rate` is the annual rate at which new CSPR is minted, and :code:`ticks_per_year = 365*24*60*60*1000 = 31_536_000_000`.
 
 We introduce the *round issuance rate* (corresponding to the chainspec parameter *round_seigniorage_rate*)
 
