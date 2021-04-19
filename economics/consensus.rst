@@ -11,7 +11,7 @@ Several eras after genesis, the system settles into selecting a set of validator
 Bids
 ^^^^
 
-Each bid is an agglomeration of tokens from a prospective or current validator and its delegators. Bids and delegations can be freely increased, but withdrawal is subject to an unbonding period governed by the *unbonding_delay* chainspec parameter. Unbonding tokens are not considered during the auction. Consequently, the exact amount of the bid, which translates into protocol weight for winning validators, can vary within an era, with the bids visible in the switch block determining the winners.
+Each bid is a collection of tokens from a prospective or current validator and its delegators, considered in the auction as a single total. Bids and delegations can be freely increased, but withdrawal is subject to an unbonding period governed by the *unbonding_delay* chainspec parameter. Unbonding tokens are not considered during the auction. Consequently, the exact amount of the bid, which translates into protocol weight for winning validators, can vary within an era, with the bids visible in the switch block determining the winners.
 
 Each bid is associated with a delegation rate, which can be changed at any time, and activity status. Both of these are described in subsequent sub-sections.
 
@@ -81,11 +81,9 @@ It should be noted that switch blocks are not visible to the issuance calculatio
 Participation schedule
 ++++++++++++++++++++++
 
-The participation schedule is segmented into rounds, which are in turn allocated dynamically according to the validators' exponents and a deterministic (randomized at era start) assignments of validators to milliseconds of an era. A validator with the round exponent :code:`n` has to participate in rounds that repeat every :code:`2^n` ticks.
+The participation schedule is segmented into rounds, which are in turn allocated dynamically according to the validators' exponents and a deterministic (randomized at era start) assignment of validators to milliseconds of an era. A validator with the round exponent :code:`n` has to participate in rounds that repeat every :code:`2^n` ticks.
 
 Each validator is assessed according to their own round exponent. All assigned validators become eligible to receive tokens as long as the block gets finalized with messages that were sent within each validator's own round.
-
-We dictate a minimum assigned weight for all rounds. Rounds that meet the requirement are said to be *feasible*, and the ones that do not are said to be *infeasible*. Blocks proposed in infeasible rounds do not receive any rewards.
 
 Eligibility
 +++++++++++
@@ -98,7 +96,7 @@ Once a block has been proposed and enough time has passed, the history of messag
 Inactivity
 ^^^^^^^^^^
 
-Validators who send no messages during the era are marked as inactive and cease to participate in the auction until sending a special deploy that reactivates their bid.
+Validators who send no messages during an entire era are marked as inactive and cease to participate in the auction until sending a special deploy that reactivates their bid.
 
 Slashing
 ^^^^^^^^
@@ -108,4 +106,4 @@ Please review our `Equivocator Policy <https://github.com/CasperLabs/ceps/blob/m
 Founding validators
 -------------------
 
-Founding validators are subject to token lock-up, which prevents them from withdrawing any tokens from their bids for 90 days, then releases their genesis bid tokens in weekly steps, linearly, over the course of a further 180 days.
+Founding validators are subject to token lock-up, which prevents them from withdrawing any tokens from their bids for 90 days, then releases their genesis bid tokens in weekly steps, linearly, over the course of a further 90 days.
