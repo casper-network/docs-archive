@@ -9,76 +9,130 @@ This tutorial walks through how to design a simple contract that creates a key t
 This example will show you how to store a u64, string, account hash, or U512 value.\ :raw-html-m2r:`<br>`
 The code is available in the `Casper Ecosystem GitHub <https://github.com/casper-ecosystem/kv-storage-contract>`_.  `Get Started in GitPod <https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-contract>`_
 
-This tutorial will also provide some insight into how to use the Casperlabs smart contract DSL and how contract headers work.
 
 The Contract
 ------------
 
-Lets start by understanding the structure of the contract itself. Here we create a contract using the ``casperlabs_contract`` macro and name it ``kvstorage_contract``.
-This is the name under which the contract package will be stored. The next macro we see is the ``casperlabs_constructor``\ , 
-since the a key-value contract is slightly stateless in nature, initialization is not required. 
-However, because ``casperlabs_constructor`` is a required element, we simply create an empty function.
+Lets start by understanding the structure of the contract itself. Here we create a contract using the ``casper_contract`` macro and name it ``kvstorage_contract``.
+This is the name under which the contract package will be stored. Since the key-value contract is slightly stateless in nature, initialization is not required.
 
 .. code-block:: rust
 
 
-   #[casperlabs_contract]
-   mod kvstorage_contract {
+   #[no_mangle]
+    pub extern "C" fn store_u64() {
+        let name: String = runtime::get_named_arg("name");
+        let value: u64 = runtime::get_named_arg("value");
+        set_key(name.as_str(), value);
+    }
 
-       #[casperlabs_constructor]
-       fn init() {}
+    #[no_mangle]
+    pub extern "C" fn store_u512() {
+        let name: String = runtime::get_named_arg("name");
+        let value: U512 = runtime::get_named_arg("value");
+        set_key(name.as_str(), value);
+    }
 
-       #[casperlabs_method]
-       fn store_u64(name: String, value: u64) {
-           set_key(name.as_str(), value);
-       }
+    #[no_mangle]
+    pub extern "C" fn store_string() {
+        let name: String = runtime::get_named_arg("name");
+        let value: String = runtime::get_named_arg("value");
+        set_key(name.as_str(), value);
+    }
 
-       #[casperlabs_method]
-       fn get_u64(name: String) -> u64 {
-           key(name.as_str())
-       }
+    #[no_mangle]
+    pub extern "C" fn store_account_hash() {
+        let name: String = runtime::get_named_arg("name");
+        let value: AccountHash = runtime::get_named_arg("value");
+        set_key(name.as_str(), value);
+    }
 
-       #[casperlabs_method]
-       fn get_string(name: String) -> String {
-           key(name.as_str())
-       }
+    #[no_mangle]
+    pub extern "C" fn store_bytes() {
+        let name: String = runtime::get_named_arg("name");
+        let value: Vec<u8> = runtime::get_named_arg("value");
+        set_key(name.as_str(), value);
+    }
 
-       #[casperlabs_method]
-       fn store_u512(name: String, value: U512) {
-           set_key(name.as_str(), value);
-       }
+    #[no_mangle]
+    pub extern "C" fn call() {
+        let (contract_package_hash, _) = storage::create_contract_package_at_hash();
+        let mut entry_points = EntryPoints::new();
 
-       #[casperlabs_method]
-       fn store_string(name: String, value: String) {
-           set_key(name.as_str(), value);
-       }
+        entry_points.add_entry_point(EntryPoint::new(
+            String::from("store_u64"),
+            vec![
+                Parameter::new("name", CLType::String),
+                Parameter::new("value", CLType::U64),
+            ],
+            CLType::Unit,
+            EntryPointAccess::Public,
+            EntryPointType::Contract,
+        ));
 
-       #[casperlabs_method]
-       fn store_account_hash(name: String, value: AccountHash) {
-           set_key(name.as_str(), value);
-       }
+        entry_points.add_entry_point(EntryPoint::new(
+            String::from("store_u512"),
+            vec![
+                Parameter::new("name", CLType::String),
+                Parameter::new("value", CLType::U512),
+            ],
+            CLType::Unit,
+            EntryPointAccess::Public,
+            EntryPointType::Contract,
+        ));
 
-       fn key<T: FromBytes + CLTyped>(name: &str) -> T {
-           let key = runtime::get_key(name)
-               .unwrap_or_revert()
-               .try_into()
-               .unwrap_or_revert();
-           storage::read(key).unwrap_or_revert().unwrap_or_revert()
-       }
+        entry_points.add_entry_point(EntryPoint::new(
+            String::from("store_string"),
+            vec![
+                Parameter::new("name", CLType::String),
+                Parameter::new("value", CLType::String),
+            ],
+            CLType::Unit,
+            EntryPointAccess::Public,
+            EntryPointType::Contract,
+        ));
 
-       fn set_key<T: ToBytes + CLTyped>(name: &str, value: T) {
-           match runtime::get_key(name) {
-               Some(key) => {
-                   let key_ref = key.try_into().unwrap_or_revert();
-                   storage::write(key_ref, value);
-               }
-               None => {
-                   let key = storage::new_uref(value).into();
-                   runtime::put_key(name, key);
-               }
-           }
-       }
-   }
+        entry_points.add_entry_point(EntryPoint::new(
+            String::from("store_account_hash"),
+            vec![
+                Parameter::new("name", CLType::String),
+                Parameter::new("value", AccountHash::cl_type()),
+            ],
+            CLType::Unit,
+            EntryPointAccess::Public,
+            EntryPointType::Contract,
+        ));
+
+        entry_points.add_entry_point(EntryPoint::new(
+            String::from("store_bytes"),
+            vec![
+                Parameter::new("name", CLType::String),
+                Parameter::new("value", CLType::List(Box::new(CLType::U8))),
+            ],
+            CLType::Unit,
+            EntryPointAccess::Public,
+            EntryPointType::Contract,
+        ));
+
+        let (contract_hash, _) =
+            storage::add_contract_version(contract_package_hash, entry_points, Default::default());
+        runtime::put_key("kvstorage_contract", contract_hash.into());
+        let contract_hash_pack = storage::new_uref(contract_hash);
+        runtime::put_key("kvstorage_contract_hash", contract_hash_pack.into())
+    }
+
+    fn set_key<T: ToBytes + CLTyped>(name: &str, value: T) {
+        match runtime::get_key(name) {
+            Some(key) => {
+                let key_ref = key.try_into().unwrap_or_revert();
+                storage::write(key_ref, value);
+            }
+            None => {
+                let key = storage::new_uref(value).into();
+                runtime::put_key(name, key);
+            }
+        }
+    }
 
 Testing the Contract
 --------------------
