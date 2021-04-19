@@ -9,7 +9,7 @@ Gas allocation
 Any finite resource on a publicly accessible computer network must be rate-limited, as, otherwise, overuse of this resource is an attack vector. This is a minimal requirement for platform security. However, rate-limiting, implemented on our platform as a simple block gas limit with several lanes, leaves the platform with the problem of fairly and efficiently allocating the gas. We are continuing research on the optimal structure for spot and futures gas markets and interested readers should consult the relevant CEPs. In the meantime, this section outlines some basic features of the platform that would underpin any allocation scheme.
 
 Consensus before execution & basics of payment
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Highway protocol in its mainnet implementation reaches consensus on a block *before* the block is executed. This introduces a subtle difference from platforms like Ethereum. Deploys sent to the Casper network can only be selected only on the basis of claimed, rather than used, gas. Consequently, to incentivize user-side optimization and to prevent exhaustion of block space by poorly optimized deploys, the platform provides no refunds for unused gas.
 
