@@ -58,7 +58,7 @@ Validators have to win a staking auction by competing with prospective and curre
 Unbonding Period
 ----------------
 
-For security purposes, whenever a token is un-staked or un-delegated, the protocol will continue to keep the token locked for 1 day.
+For security purposes, whenever a token is un-staked or un-delegated, the protocol will continue to keep the token locked for 14 hours.
 
 
 Next Steps
