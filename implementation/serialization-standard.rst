@@ -491,7 +491,7 @@ A *key* in the :ref:`Global State<global-state-intro>` is one of the following d
 -  32-byte Auction bid identifier
 -  32-byte Auction withdrawal identifier
 
-The one exception to note here is the identifier for ``EraInfo`` which actually serializes as ``u64`` value with an additional byte for the tag.
+The one exception to note here is the identifier for ``EraInfo``, which actually serializes as a ``u64`` value with an additional byte for the tag.
 
 
 .. _global-state-account-key:
@@ -621,7 +621,7 @@ The leading byte of the serialized buffer acts as a tag indicating the serialize
 - ``URef`` is a tuple that contains the address of the URef and the access rights to that ``URef``. The serialized representation of the ``URef`` is 33 bytes long. The first 32 bytes are the byte representation of the ``URef`` address, and the last byte contains the bits corresponding to the access rights of the ``URef``. Refer to the :ref:`CLValue<serialization-standard-values>` section of this chapter for details on how ``AccessRights`` are serialized.
 - ``Transfer`` serializes as a 32 byte long buffer containing the byte representation of the hash of the transfer.
 - ``DeployInfo`` serializes as 32 byte long buffer containing the byte representation of the Deploy hash. See the Deploy section above for how Deploy hashes are serialized.
-- ``EraInfo`` serializes a ``u64`` primitive type containing Lower endian byte representation of ``u64``.
+- ``EraInfo`` serializes a ``u64`` primitive type containing the little-endian byte representation of ``u64``.
 - ``Balance`` serializes as 32 byte long buffer containing the byte representation of the URef address.
 - ``Bid`` and ``Withdraw`` both contain the ``AccountHash`` as their identifier; therefore, they serialize in the same manner as the ``Account`` variant.
 
