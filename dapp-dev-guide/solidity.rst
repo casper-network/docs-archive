@@ -89,7 +89,7 @@ ERC20
 -----
 
 It is possible to transpile a complex Smart Contracts like ERC20 Token.
-Full example with tests can be found in this `GitHub repository <https://github.com/casper-ecosystem/erc20-solidity>`_.
+Full example with tests can be found in this `GitHub repository <https://github.com/casper-ecosystem/erc20>`_.
 
 Deploying to Testnet.
 ^^^^^^^^^^^^^^^^^^^^^

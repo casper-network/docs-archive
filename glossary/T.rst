@@ -11,8 +11,4 @@ A type of cryptocurrency that represents an asset. See `CSPR <C.html#cspr>`_.
 
 Transaction
 ^^^^^^^^^^^
-See `deployment <D.html#deployment>`_.
-
-Trusted node
-^^^^^^^^^^^^
-A `bonded <B.html#bonding>`_ node that contains the logic for message passing between nodes on the network (via TCP).
+See `deploy <D.html#deploy>`_.

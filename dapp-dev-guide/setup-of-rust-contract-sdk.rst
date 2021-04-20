@@ -75,32 +75,6 @@ CMake is a popular build tool that we will utilize, and you may very well have i
    CMake suite maintained and supported by Kitware (kitware.com/cmake).
 
 
-**2. Google Protobuf Compiler**
-
-Next, we need to install ``protoc``, which is used for serializing structured data. Installation on MacOS or Linux is shown below, but other operating systems should refer to the documentation: https://google.github.io/proto-lens/installing-protoc.html.
-
-
-Linux with :code:`apt`: 
-
-.. code::
-
-   sudo apt install protobuf-compiler
-
-
-MacOS with :code:`brew`:
-
-.. code::
-
-   brew install protobuf
-
-Once the Google protobuf compiler is installed, you can check your version:
-
-.. code::
-
-   $ protoc --version
-   libprotoc 3.14.0
-
-
 Development Environment Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
