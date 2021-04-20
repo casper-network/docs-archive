@@ -5,16 +5,16 @@
 Key Value Storage Tutorial
 ==========================
 
-This tutorial walks through how to design a simple contract that creates a key that stores a CLType value. 
-This example will show you how to store a u64, string, account hash, or U512 value.\ :raw-html-m2r:`<br>`
-The code is available in the `Casper Ecosystem GitHub <https://github.com/casper-ecosystem/kv-storage-contract>`_.  `Get Started in GitPod <https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-contract>`_
+This tutorial covers a simple contract, which creates a key that stores a ``CLType`` value. This example will show you how to store a *u64*, *string*, *account hash*, or *U512* value.
+
+The code is available in the `Casper Ecosystem GitHub <https://github.com/casper-ecosystem/kv-storage-contract>`_. Or, you can get started in `GitPod <https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-contract>`_.
 
 
 The Contract
 ------------
 
-Lets start by understanding the structure of the contract itself. Here we create a contract using the ``casper_contract`` macro and name it ``kvstorage_contract``.
-This is the name under which the contract package will be stored. Since the key-value contract is slightly stateless in nature, initialization is not required.
+Let's start by understanding the structure of the contract itself. Here we create a contract and name it ``kvstorage_contract``.
+The contract package will be stored under this name on the blockchain. Since the key-value contract is slightly stateless, initialization is not required.
 
 .. code-block:: rust
 
