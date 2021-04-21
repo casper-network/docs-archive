@@ -22,11 +22,9 @@ Please read the following sections carefully before staking tokens on the Casper
 Slashing
 --------
 
-Casper does not treat delegated stake differently from validator stake.  If the validator is slashed, all tokens delegated to the validator will also be slashed.
+Presently Casper does not slash for equivocations.  If a node equivocates, its' messages are ignored by the rest of the validators for the balance of the era and made inactive. A node running the software provided by the Casper Association will terminate once it detects that it has equivocated. Future work includes locking an equivocating validator's stake for an extended duration of time, effectively penalizing the validator.  
 
-Casper slashes for making inconsistent decisions, known as equivocations. Equivocations can happen if a validator is not careful with keys and spins up duplicate nodes or if a validator is malicious and tries to attack the network. 
-
-An equivocating node is slashed at 100%.  All tokens staked to the node are slashed.
+Casper does not treat validator stake differently than delegator stake for security reasons.
  
 
 Delegation Rate
