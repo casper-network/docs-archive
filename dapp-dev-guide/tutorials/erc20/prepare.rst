@@ -6,7 +6,7 @@ First clone the contract from GitHub:
 
 .. code-block:: bash
 
-   $ git clone https://github.com/casper-ecosystem/erc20
+   $ git clone https://github.com/casper-ecosystem/erc20 && cd erc20
 
 
 Ensure that you have pre-requisites installed. 
@@ -31,5 +31,5 @@ Verify your setup by compiling ``contract`` crate and executing ``cargo test`` o
 
 .. code-block:: bash
 
-   $ cargo build --release -p contract 
-   $ cargo test -p tests
+   $ make build-contract
+   $ make test
