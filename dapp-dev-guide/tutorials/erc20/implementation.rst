@@ -60,7 +60,7 @@ When the contract is deployed, it must be initialized with some values; this is 
         let tokenSymbol: String = runtime::get_named_arg("tokenSymbol");
         let tokenTotalSupply: U256 = runtime::get_named_arg("tokenTotalSupply");
 
-        ....
+        ...
 
         let mut named_keys = NamedKeys::new();
         named_keys.insert("_name".to_string(), storage::new_uref(tokenName).into());
