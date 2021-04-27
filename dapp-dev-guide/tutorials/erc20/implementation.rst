@@ -3,15 +3,15 @@ ERC-20 Implementation
 
 The ERC-20 standard is defined in `an Ethereum Improvement Proposal (EIP) <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#>`_. Read it carefully, as it defines the methods we have implemented:
 
-* allowance
-* approve
-* balance_of
-* decimals
-* name
-* symbol
-* total_supply
-* transfer
-* transfer_from
+* `allowance <#the-total-supply-balance-of-and-allowance-functions>`_
+* `approve <#the-approve-and-transfer-from-functions>`_
+* `balance_of <#the-total-supply-balance-of-and-allowance-functions>`_
+* `decimals <#the-name-symbol-and-decimals-functions>`_
+* `name <#the-name-symbol-and-decimals-functions>`_
+* `symbol <#the-name-symbol-and-decimals-functions>`_
+* `total_supply <#the-total-supply-balance-of-and-allowance-functions>`_
+* `transfer <#the-transfer-function>`_
+* `transfer_from <#the-approve-and-transfer-from-functions>`_
 
 Cloning the Example Contract
 ----------------------------
@@ -74,6 +74,8 @@ When the contract is deployed, it must be initialized with some values; this is 
         runtime::put_key("ERC20_hash", storage::new_uref(contract_hash).into());
     }
  
+The ``name``, ``symbol``, and ``decimals`` functions
+----------------------------------------------------
 
 We then also add a few helper functions to set and retrieve values from the contract. Notice that these helper functions reference each of the ``set_key`` definitions when the contract is deployed; a generic ``get_key`` function to retrieve values is also used.
 
