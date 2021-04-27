@@ -5,14 +5,13 @@ ERC-20 Standard
 
 The ERC-20 standard is defined in `an Ethereum Improvement Proposal (EIP) <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#>`_. Read it carefully, as it defines the methods we have implemented:
 
-
-* name
-* symbol
-* decimals
-* total_supply
-* balance_of
 * allowance
 * approve
+* balance_of
+* decimals
+* name
+* symbol
+* total_supply
 * transfer
 * transfer_from
 
@@ -29,7 +28,7 @@ This is a rust contract. In rust, the keyword ``use`` is like an ``include`` sta
 They are:
 
 * contract: The Casper contract API for runtime and storage
-* types: Thhe Casper contract type system
+* types: The Casper contract type system
 
 .. code-block:: rust
 
@@ -54,7 +53,7 @@ They are:
 Contract Initialization
 -----------------------
 
-When the contract is deployed it must be initialized with some values, this is done with the help of the ``call()`` function. The contract is initialized with a name, symbol, decimals, starting balances and the starting token supply.
+When the contract is deployed, it must be initialized with some values; this is done with the help of the ``call()`` function. The contract is initialized with a name, symbol, decimals, starting balances, and the starting token supply.
 
 .. code-block:: rust
 
@@ -79,7 +78,7 @@ When the contract is deployed it must be initialized with some values, this is d
     }
  
 
-We then also add a few helper functions to set, and retrieve values from the contract. Notice that each of these helper functions reference each of the ``set_key`` definitions when the contract is deployed, and a generic ``get_key`` function to retrieve values is used.
+We then also add a few helper functions to set and retrieve values from the contract. Notice that these helper functions reference each of the ``set_key`` definitions when the contract is deployed; a generic ``get_key`` function to retrieve values is also used.
 
 .. code-block:: rust
 
@@ -102,11 +101,10 @@ We then also add a few helper functions to set, and retrieve values from the con
     }
 
 
-Total Supply, Balance and Allowance
+Total Supply, Balance, and Allowance
 -----------------------------------
 
-Here are some of the ERC-20 methods. Below is the implementation of ``balance_of``\ , ``total_supply`` and ``allowance``. The allowance method enables owners to 
-specify an amount that can be spent by a spender account.
+Here are some of the ERC-20 methods. Below is the implementation of ``balance_of`` , ``total_supply``, and ``allowance``. The allowance method enables owners to specify an amount that a spender account can spend.
 
 .. code-block:: rust
 
@@ -135,7 +133,7 @@ specify an amount that can be spent by a spender account.
 Transfer
 --------
 
-Here is the ``transfer`` method, which makes it possible to transfer tokens from ``sender`` address to ``recipient`` address. If the ``sender`` address has enough balance then tokens should be transferred to the ``recipient`` address.
+Here is the ``transfer`` method, which makes it possible to transfer tokens from the ``sender`` address to the ``recipient`` address. If the ``sender`` address has enough balance, then tokens should be transferred to the ``recipient`` address.
 
 .. code-block:: rust
 
@@ -173,7 +171,7 @@ This is used when multiple keys are authorized to perform deployments from an ac
         set_key(&allowance_key(&owner, &spender), amount);
     }
 
-``transfer_from`` allows to spend approved amount of tokens.
+``transfer_from`` allows spending an approved amount of tokens.
 
 .. code-block:: rust
 
