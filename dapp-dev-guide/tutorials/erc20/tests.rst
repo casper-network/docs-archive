@@ -2,7 +2,13 @@
 Testing the Contract Implementation
 ===================================
 
-This section reviews the `Casper Engine Test Support <https://crates.io/crates/casper-engine-test-support>`_ crate used for testing the ERC-20 contract against the Casper execution environment. We will review the two files that set up this testing framework. The following is an example of a complete test.
+This section reviews the `Casper Engine Test Support <https://crates.io/crates/casper-engine-test-support>`_ crate used for testing the ERC-20 contract against the Casper execution environment. We will review the two files that set up the testing framework. 
+
+* ``tests/src/erc20.rs`` - sets up the testing context and creates helper functions used by unit tests 
+* ``tests/src/tests.rs`` - contains the unit tests
+* ``tests/src/lib.rs`` - links the above files together and is required by the Rust toolchain
+
+The following is an example of a complete test.
 
 .. code-block:: rust
 
@@ -15,18 +21,12 @@ This section reviews the `Casper Engine Test Support <https://crates.io/crates/c
         assert_eq!(t.balance_of(t.bob), amount);
     }
 
-In the `Casper Engine Test Support <https://crates.io/crates/casper-engine-test-support>`_ crate we have the following files:
-
-* ``tests/src/erc20.rs`` - sets up the testing context and creates helper functions used by unit tests 
-* ``tests/src/tests.rs`` - contains the unit tests
-* ``tests/src/lib.rs`` - required by rust toolchain.  Links the other two files together
-
-The ``tests`` crate has a ``build.rs`` file, which is effectively a custom build script. It is executed every time before running the tests. It compiles the ``contract`` crate in *release* mode for your convenience and copies the ``contract.wasm`` file to the ``tests/wasm`` directory. In practice, that means you only need to run ``cargo test -p tests`` during development.
+The ``tests`` crate has a ``build.rs`` file, which is effectively a custom build script. It is executed every time before running the tests. It compiles the ``contract`` crate in *release* mode for your convenience and copies the ``contract.wasm`` file to the ``tests/wasm`` directory. In practice, that means you only need to run the **make test** command during development.
 
 Configuring the Test Package
 ------------------------------
 
-We define a ``tests`` package in the ``tests/Cargo.toml`` file.
+First, define a ``tests`` package in the ``tests/Cargo.toml`` file.
 
 .. code-block:: toml
 
@@ -57,7 +57,7 @@ The following code initializes the global state with all the data and methods th
 
 .. code-block:: rust
 
-   // tests/src/erc20.rs
+   // File tests/src/erc20.rs
 
     pub mod token_cfg {
         use super::*;
@@ -81,12 +81,12 @@ The following code initializes the global state with all the data and methods th
 Deploying the contract
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The next step is to define the ``ERC20Contract`` struct that has its own VM instance and implements ERC-20 methods. This struct should hold a ``TestContext`` of its own. The *token contract* hash and the *erc20_indirect session code* hash won’t change after the contract is deployed. This code snippet builds the context and includes the compiled ``contract.wasm`` binary that is being tested. This function creates new instance of the ``ERC20Contract`` with the accounts ``ali``\ , ``bob`` and ``joe`` having positive initial balance. 
+The next step is to define the ``ERC20Contract`` struct that has its own VM instance and implements ERC-20 methods. This struct should hold a ``TestContext`` of its own. The *token contract* hash and the *erc20_indirect session code* hash won’t change after the contract is deployed. This code snippet builds the context and includes the compiled ``contract.wasm`` binary that is being tested. This function creates a new instance of the ``ERC20Contract`` with the accounts ``ali``\ , ``bob`` and ``joe`` having a positive initial balance. 
 The contract is deployed using the ``ali`` account.
 
 .. code-block:: rust
 
-    // tests/src/erc20.rs
+    // File tests/src/erc20.rs
 
     // the contract struct
     pub struct Token {
@@ -335,7 +335,7 @@ Add these functions to a file called ``tests/src/tests.rs``.
 Running the Tests
 -----------------
 
-Next, we will configure the ``lib.rs`` file to run everything via the *cargo* command. Within the ``tests/src/lib.rs`` file, add the following lines, which tell *cargo* which files to use when running the tests.
+Next, we will configure the ``lib.rs`` file to run everything via the *make test* command. Within the ``tests/src/lib.rs`` file, add the following lines:
 
 .. code-block:: rust
 
