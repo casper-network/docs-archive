@@ -1,7 +1,5 @@
-This tutorial reviews an implementation of the ERC-20 standard for Casper.
-
-ERC-20 Standard
----------------
+ERC-20 Implementation
+=====================
 
 The ERC-20 standard is defined in `an Ethereum Improvement Proposal (EIP) <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#>`_. Read it carefully, as it defines the methods we have implemented:
 
@@ -15,17 +13,16 @@ The ERC-20 standard is defined in `an Ethereum Improvement Proposal (EIP) <https
 * transfer
 * transfer_from
 
-Clone the Example Contract
----------------------------------
+Cloning the Example Contract
+----------------------------
 
 The example ERC-20 is located in `GitHub <https://github.com/casper-ecosystem/erc20>`_.
 
 
-Required Crates
----------------
+Installing the Required Crates
+------------------------------
 
-This is a rust contract. In rust, the keyword ``use`` is like an ``include`` statement in C/C++. Casper contracts require a few crates to be included.
-They are:
+This is a Rust contract. In Rust, the keyword ``use`` is like an ``include`` statement in C/C++. Casper contracts require a few crates to be included. They are:
 
 * contract: The Casper contract API for runtime and storage
 * types: The Casper contract type system
@@ -50,8 +47,8 @@ They are:
     };
 
 
-Contract Initialization
------------------------
+Initializing the Contract
+-------------------------
 
 When the contract is deployed, it must be initialized with some values; this is done with the help of the ``call()`` function. The contract is initialized with a name, symbol, decimals, starting balances, and the starting token supply.
 
@@ -101,10 +98,12 @@ We then also add a few helper functions to set and retrieve values from the cont
     }
 
 
-Total Supply, Balance, and Allowance
------------------------------------
+The ``total_supply``, ``balance_of``, and ``allowance`` functions
+-----------------------------------------------------------------
 
-Here are some of the ERC-20 methods. Below is the implementation of ``balance_of`` , ``total_supply``, and ``allowance``. The allowance method enables owners to specify an amount that a spender account can spend.
+Let's explore the implementation of some key ERC-20 methods: ``balance_of``, ``total_supply``, and ``allowance``. 
+
+The ``allowance`` method enables owners to specify an amount that a spender account can spend.
 
 .. code-block:: rust
 
@@ -130,8 +129,8 @@ Here are some of the ERC-20 methods. Below is the implementation of ``balance_of
     }
    
 
-Transfer
---------
+The ``transfer`` function
+-------------------------
 
 Here is the ``transfer`` method, which makes it possible to transfer tokens from the ``sender`` address to the ``recipient`` address. If the ``sender`` address has enough balance, then tokens should be transferred to the ``recipient`` address.
 
@@ -153,10 +152,9 @@ Here is the ``transfer`` method, which makes it possible to transfer tokens from
         set_key(&recipient_key, new_recipient_balance);
     }
 
-Approve and Transfer From
--------------------------
-Here are the functions ``approve`` and ``transfer_from``. ``approve`` is used to allow another address to spend tokens on my behalf.
-This is used when multiple keys are authorized to perform deployments from an account.
+The ``approve`` and ``transfer_from`` functions
+-----------------------------------------------
+Here are the functions ``approve`` and ``transfer_from``. ``approve`` is used to allow another address to spend tokens on one's behalf. This is used when multiple keys are authorized to perform deployments from an account.
 
 .. code-block:: rust
 
@@ -193,9 +191,9 @@ This is used when multiple keys are authorized to perform deployments from an ac
         );
     }
    
-Put and Get Functions
----------------------
-These functions are generic Casper storage write and read methods. Implement these one time for the contract and then call them as needed.
+The ``get_key`` and ``set_key`` functions
+-----------------------------------------
+The ``get_key`` and ``set_key`` functions are generic Casper storage write and read methods. Implement these one time for the contract and then call them as needed.
 
 .. code-block:: rust
 
@@ -223,9 +221,9 @@ These functions are generic Casper storage write and read methods. Implement the
    }
    
 
-Formatting Helper functions
----------------------------
-These functions format the balances and account information from the internal representation into strings.
+Other Helper Functions
+----------------------
+The ``balance_key`` and ``allowance_key ``functions format the balances and account information from their internal representation into strings.
 
 .. code-block:: rust
 

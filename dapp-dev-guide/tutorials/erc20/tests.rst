@@ -1,10 +1,8 @@
 
-Smart Contract Tests
-====================
+Testing the Contract Implementation
+===================================
 
-In this section we'll review the `Casper Engine Test Support <https://crates.io/crates/casperlabs-engine-test-support>`_ crate that tests the ERC-20 smart contract against the execution environment that Casper uses in production.  Here we will review the 2 files set up the testing framework for the ERC20 contract.  
-
-The following is an example of a finished test.
+This section reviews the `Casper Engine Test Support <https://crates.io/crates/casper-engine-test-support>`_ crate used for testing the ERC-20 contract against the Casper execution environment. We will review the two files that set up this testing framework. The following is an example of a complete test.
 
 .. code-block:: rust
 
@@ -17,17 +15,18 @@ The following is an example of a finished test.
         assert_eq!(t.balance_of(t.bob), amount);
     }
 
+In the `Casper Engine Test Support <https://crates.io/crates/casper-engine-test-support>`_ crate we have the following files:
 
-* ``tests/src/erc20.rs`` - sets up testing context and creates helper functions used by unit tests 
+* ``tests/src/erc20.rs`` - sets up the testing context and creates helper functions used by unit tests 
 * ``tests/src/tests.rs`` - contains the unit tests
-* ``tests/src/lib.rs`` - required by rust toolchain.  Links the other 2 files together
+* ``tests/src/lib.rs`` - required by rust toolchain.  Links the other two files together
 
-The ``tests`` crate has a ``build.rs`` file: effectively a custom build script. It's executed every time before running tests and it compiles ``contract`` crate in release mode for your convenience and copies the ``contract.wasm`` file to ``tests/wasm`` directory. In practice, that means we only need to run ``cargo test -p tests`` during the development.
+The ``tests`` crate has a ``build.rs`` file, which is effectively a custom build script. It is executed every time before running the tests. It compiles the ``contract`` crate in *release* mode for your convenience and copies the ``contract.wasm`` file to the ``tests/wasm`` directory. In practice, that means you only need to run ``cargo test -p tests`` during development.
 
-Cargo.toml
------------------
+Configuring the Test Package
+------------------------------
 
-Defines a ``tests`` package at ``tests/Cargo.toml``.
+We define a ``tests`` package in the ``tests/Cargo.toml`` file.
 
 .. code-block:: toml
 
@@ -45,16 +44,16 @@ Defines a ``tests`` package at ``tests/Cargo.toml``.
     [features]
     default = ["casper-contract/std", "casper-types/std", "casper-contract/test-support"]
 
-The ERC20.rs Logic for Testing
----------------------------------
+Describing the Logic for Testing
+--------------------------------
 
-In order to test the smart contract, it's important to set up the starting state of the blockchain, deploy the compiled contract to this starting state, and create additional deploys for each of the methods in the contract.  This file contains all of the methods that simulates a real world deployment to store the contract in the blockchain as well as transactions that invoke each of the methods in the contract.
+To test the smart contract, specify the starting state of the blockchain, deploy the compiled contract to this starting state, and create additional deploys for each of the methods in the contract. This file contains all of the methods that simulate a real-world deployment (to store the contract in the blockchain) and transactions to invoke each of the methods in the contract.
 
-Set Up the Testing Context
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Setting up the testing context
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Start with defining constants like method names, key names and account addresses that will be reused across tests. 
-This initializes the global state with all the data and methods that the smart contract needs in order to run properly.  
+Start with defining the required constants that you will reuse in your tests (i.e., method names, key names, and account addresses). 
+The following code initializes the global state with all the data and methods that the smart contract needs to run correctly.  
 
 .. code-block:: rust
 
@@ -79,14 +78,10 @@ This initializes the global state with all the data and methods that the smart c
         pub joe: AccountHash,
     }
 
-Deploying the Contract
-^^^^^^^^^^^^^^^^^^^^^^
+Deploying the contract
+^^^^^^^^^^^^^^^^^^^^^^^
 
-The next step is to define the ``ERC20Contract`` struct that has its' own VM instance and implements ERC-20 methods.
-This struct should hold a ``TestContext`` of its own. The token contract hash and the erc20_indirect session code 
-hash won’t change after the contract is deployed, so it’s handy to have it available. This code snippet builds 
-the context and includes the compiled ``contract.wasm`` binary that is being tested. This function creates new 
-instance of ``ERC20Contract`` with ``ali``\ , ``bob`` and ``joe`` having positive initial balance. 
+The next step is to define the ``ERC20Contract`` struct that has its own VM instance and implements ERC-20 methods. This struct should hold a ``TestContext`` of its own. The *token contract* hash and the *erc20_indirect session code* hash won’t change after the contract is deployed. This code snippet builds the context and includes the compiled ``contract.wasm`` binary that is being tested. This function creates new instance of the ``ERC20Contract`` with the accounts ``ali``\ , ``bob`` and ``joe`` having positive initial balance. 
 The contract is deployed using the ``ali`` account.
 
 .. code-block:: rust
@@ -139,14 +134,11 @@ The contract is deployed using the ``ali`` account.
             }
         }
 
-Querying the System
-^^^^^^^^^^^^^^^^^^^
+Querying the network
+^^^^^^^^^^^^^^^^^^^^^
 
-The above step has simulated a real deploy on the network. This code snippet describes 
-how to query for the hash of the contract. Contracts are deployed under the context of an account. 
-Since the deployment was created under thhe context of ``self.ali``\ , this is what is queried here. 
-The ``query_contract`` function uses ``query`` to lookup named keys. It will be used to implement ``balance_of``\ , 
-``total_supply`` and ``allowance`` checks.
+The previous step has simulated a real deploy on the network. The next code snippet describes how to query the network to find the hash of the contract. Contracts are deployed under the context of an account. 
+Since the deployment was created under the context of ``self.ali``\ , this is what we query here. The ``query_contract`` function uses ``query`` to lookup named keys. It will be used to implement the ``balance_of``\ , ``total_supply`` and ``allowance`` checks.
 
 .. code-block:: rust
 
@@ -174,7 +166,7 @@ The ``query_contract`` function uses ``query`` to lookup named keys. It will be 
             }
         }
 
-        // Here we call the helper function to query on specific named keys defined in the contract.
+        // Here, we call the helper function to query on named keys defined in the contract.
 
         // Returns the name of the token
         pub fn name(&self) -> String {
@@ -191,10 +183,10 @@ The ``query_contract`` function uses ``query`` to lookup named keys. It will be 
             self.query_contract("_decimals").unwrap()
         }
 
-Invoking methods in the Contract
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Invoking contract methods
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This code snippet describes a generic way to call a specific entry point in the contract. 
+The following code snippet describes a generic way to call a specific entry point in the contract. 
 
 .. code-block:: rust
 
@@ -208,8 +200,9 @@ This code snippet describes a generic way to call a specific entry point in the 
             self.context.run(session);
         }
 
-Invoke each of the getter methods in the Contract.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Invoking the contract methods**
+
+Here is how to invoke each of the methods in the contract:
 
 .. code-block:: rust
 
@@ -263,19 +256,15 @@ Invoke each of the getter methods in the Contract.
             );
         }
 
-The tests.rs File with Unit Tests
----------------------------------
+Creating Unit Tests
+-------------------
 
-Unit Tests
-^^^^^^^^^^
-
-Now that we have a testing context, we can use this context and create unit tests that test 
-the contract code by invoking the functions defined in  ``tests/src/erc20.rs``.
-Add these functions to ``tests/src/tests.rs``.
+Now that we have a testing context, we can use it to create unit tests for the contract code by invoking the functions defined in  ``tests/src/erc20.rs``.
+Add these functions to a file called ``tests/src/tests.rs``.
 
 .. code-block:: rust
 
-    // tests/src/tests.rs
+    // File tests/src/tests.rs
 
     use crate::erc20::{token_cfg, Sender, Token};
 
@@ -342,11 +331,11 @@ Add these functions to ``tests/src/tests.rs``.
         t.transfer_from(t.ali, t.joe, amount, Sender(t.bob));
     }
 
-Configure lib.rs to run everything via cargo
---------------------------------------------
 
-Within the ``tests/src/lib.rs`` file, add the following lines.
-This tells cargo which files to use when running the tests.
+Running the Tests
+-----------------
+
+Next, we will configure the ``lib.rs`` file to run everything via the *cargo* command. Within the ``tests/src/lib.rs`` file, add the following lines, which tell *cargo* which files to use when running the tests.
 
 .. code-block:: rust
 
@@ -356,11 +345,11 @@ This tells cargo which files to use when running the tests.
     #[cfg(test)]
     pub mod erc20;
 
-Run the Tests!
---------------
-
-Run tests to verify they work. This is run via ``bash``.  If you are using a Rust IDE, it's also possible to configure it to run the tests.
+Next, run the tests:
 
 .. code-block:: bash
 
    $ make test
+
+
+This example uses ``bash``.  If you are using a Rust IDE, you need to configure it to run the tests.

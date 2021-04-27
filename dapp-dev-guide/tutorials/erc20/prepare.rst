@@ -1,6 +1,6 @@
 
-Prepare
-=======
+Preparation
+===========
 
 First clone the contract from GitHub: 
 
