@@ -38,15 +38,15 @@ It is possible to create entry points in the contract, which you can invoke whil
 
 .. code-block:: rust
 
-   fn __store_u64() {
-      let u: u64 = bar();
-      let int_ref: URef = storage::new_uref(u);
-      let int_key: Key = int_ref.into();
-      runtime::put_key(INT_KEY, int_key)
-   }
    #[no_mangle]
-   fn store_u64() {
-      __store_u64()
+   pub extern "C" fn store_u64() {
+      read_and_store::<u64>();
+   }
+
+   fn read_and_store<T: CLTyped + FromBytes + ToBytes>() {
+      let name: String = runtime::get_named_arg("name");
+      let value: T = runtime::get_named_arg("value");
+      set_key(name.as_str(), value);
    }
 
 
