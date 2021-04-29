@@ -19,7 +19,7 @@ Measuring computational work
 Computation is all done in a `WebAssembly (wasm) <https://webassembly.org/>`__
 interpreter, allowing any programming language which compiles to wasm to become
 a smart contract language for the CasperLabs blockchain. Similar to Ethereum, we use ``Gas`` to measure computational work in a way which is consistent from node to node in the CasperLabs network. Each wasm instruction is
-`assigned <https://github.com/CasperLabs/CasperLabs/blob/1b382d5e5d2f8923c245c3844e4a6c372441c939/execution-engine/engine-wasm-prep/src/wasm_costs.rs#L9>`__
+`assigned <https://github.com/CasperLabs/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/shared/wasm_config.rs#L15>`_
 a ``Gas`` value, and the amount of gas spent is tracked by the runtime with each instruction executed by the interpreter. All executions are finite because each has a finite *gas limit* that specifies the maximum amount of gas that can be spent before
 the computation is terminated by the runtime. How this limit is determined is discussed in more detail below.
 
@@ -74,7 +74,7 @@ to execute deploys.
 
 Payment code ultimately provides its payment by performing a
 :ref:`token transfer <tokens-mint-interface>` into the
-`proof-of-stake contract’s payment purse <https://github.com/CasperLabs/CasperLabs/blob/1b382d5e5d2f8923c245c3844e4a6c372441c939/execution-engine/contracts/system/pos/src/lib.rs#L319>`__. If payment is not given or not enough is transferred, then payment execution is not considered successful. In this case the effects of the payment code on the
+`Handle Payment contract’s payment purse <https://github.com/CasperLabs/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/types/src/system/handle_payment/mod.rs#L65>`__. If payment is not given or not enough is transferred, then payment execution is not considered successful. In this case the effects of the payment code on the
 global state are reverted and the cost of the computation is covered by motes
 taken from the offending account’s main purse.
 
@@ -141,11 +141,9 @@ description of the functions available for contracts to import, see :ref:`Append
 -  Reading / writing from global state
 
    -  ``read``, ``write``, ``add`` functions allow working with exiting
-      :ref:`URefs <global-state-uref>`
+      :ref:`URefs <uref-head>`
    -  ``new_uref`` allows creating a new ``URef`` initialized with a given value (see
       section below about how ``URef``\ s are generated)
-   -  ``read_local``, ``write_local``, ``add_local`` allow working with
-      :ref:`local keys <global-state-local-key>`
    -  ``store_function`` allows writing a contract under a :ref:`hash key <global-state-hash-key>`
    -  ``get_uref``, ``list_known_urefs``, ``add_uref``, ``remove_uref`` allow working with
       the :ref:`named keys <global-state-contracts>` of the current context
