@@ -14,8 +14,7 @@ First, set up the contract name so you can call it using the name in subsequent 
                                                      entry_points, 
                                                      Default::default());
    runtime::put_key("sample_contract", contract_hash.into());
-   let contract_hash_pack = storage::new_uref(contract_hash);
-   runtime::put_key("sample_contract_hash", contract_hash_pack.into());
+ 
    runtime::call_contract::<()>(contract_hash, "store_hello_world", {
       let mut named_args = RuntimeArgs::new();
       named_args.insert("s", s);
