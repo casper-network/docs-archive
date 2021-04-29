@@ -5,57 +5,39 @@ Appendix
 
 .. _appendix-a:
 
-A - List of possible function imports
--------------------------------------
+A - Casper Rust Library
+-----------------------
 
-The following functions can be imported into a wasm module which is meant to be
-used as a contract on the CasperLabs system. These functions give a contract
-access to features specific to the CasperLabs platform that are not supported by
-general wasm (e.g. accessing the global state, creating new ``URef``\ s). Note that
-these are defined and automatically imported if the `CasperLabs rust
-library <https://crates.io/crates/casperlabs-contract-ffi>`__ is used to develop
-the contract; these functions should only be used directly by those writing
-libraries to support developing contracts for CasperLabs in other programming
-languages.
-
-For an up to date description of exported functions please visit `casperlabs_contract <https://docs.rs/casperlabs-contract/latest/casperlabs_contract/ext_ffi/index.html>`__ crate docs.
+Casper provides low-level bindings for host-side (“external”) functions for developers creating smart contracts in other programming languages. Developers can import these functions into a wasm module used as a contract on the Casper Network. Thus, the contract will have access to features specific to the Casper platform which are not supported by general wasm instructions (e.g., accessing the global state, creating new ``URef``\ s). These are defined and automatically imported if the `Casper Rust library <https://crates.io/crates/casper-contract>`__ is used to develop the contract. For an up-to-date description of exported functions, please visit the `casper-contract <https://docs.rs/casper-contract/latest/casper_contract/ext_ffi/index.html>`__ crate documentation.
 
 .. _appendix-b:
 
-B - Serialization format
+B - Serialization Format
 ------------------------
 
-The CasperLabs serialization format is used to pass data between wasm and the
-CasperLabs host runtime. It is also used to persist global state data in the
-Merkle trie. The definition of this format is described in the
-:ref:`Global State <global-state-values>` section.
+The Casper serialization format is used to transfer data between wasm and the Casper host runtime. It is also used to persist global-state data in the Merkle trie. The definition of this format is described in the :ref:`global state <global-state-head>` section.
 
-A Rust reference implementation for those implementing this spec in another
-language can be found here:
+A Rust reference implementation for those implementing this specification in another programming language can be found here:
 
--  `bytesrepr.rs <https://docs.rs/casperlabs-types/0.2.0/casperlabs_types/bytesrepr/index.html>`__
--  `cl_value.rs <https://docs.rs/casperlabs-types/0.2.0/src/casperlabs_types/cl_value.rs.html>`__
--  `account.rs <https://docs.rs/casperlabs-engine-shared/0.3.0/casperlabs_engine_shared/account/struct.Account.html>`__
--  `contract.rs <https://docs.rs/casperlabs-engine-shared/0.3.0/casperlabs_engine_shared/contract/struct.Contract.html>`__
--  `uint.rs <https://docs.rs/casperlabs-types/0.2.0/src/casperlabs_types/uint.rs.html>`__
+-  `bytesrepr <https://docs.rs/casper-types/latest/casper_types/bytesrepr/index.html>`_
+-  `cl_value.rs <https://docs.rs/casper-types/latest/src/casper_types/cl_value.rs.html>`_
+-  `account <https://docs.rs/casper-types/latest/casper_types/account/index.html>`_
+-  `contract <https://docs.rs/casper-types/latest/casper_types/contracts/struct.Contract.html>`_
+-  `uint.rs <https://docs.rs/casper-types/latest/src/casper_types/uint.rs.html>`_
 
 Additionally, examples of all data types and their serializations are found in
-our `main GitHub repository
-<https://github.com/CasperLabs/CasperLabs/blob/dev/models/src/test/resources/CLSerialization.toml>`__. These
-examples are meant to form a standard set of tests for any implementation of the
-serialization format. An implementation of these example as tests is found in
-our `Scala code base
-<https://github.com/CasperLabs/CasperLabs/blob/dev/models/src/test/scala/io/casperlabs/models/cltype/StandardCLSerializationTest.scala>`__.
+the `GitHub code base <https://github.com/CasperLabs/casper-node/blob/553b9f11eb3b1e8043acfe3fa04005d951047c4a/types/src/bytesrepr.rs#L26>`_. These
+examples include a set of useful `serialization tests <https://github.com/CasperLabs/casper-node/blob/553b9f11eb3b1e8043acfe3fa04005d951047c4a/types/src/bytesrepr.rs#L1189>`_.
 
 .. _appendix-c:
 
-C - Parallel execution as commuting functions
----------------------------------------------
+C - Parallel Execution 
+----------------------
 
 Introduction
 ~~~~~~~~~~~~
 
-The state of the CasperLabs system is represented by the :ref:`global state <global-state-head>`.
+The state of the Casper Network is represented by the :ref:`global state <global-state-head>`.
 The evolution of this state is captured by the blockchain itself, and eventually
 agreed upon by all nodes in the network via the consensus mechanism. In this
 section we are concerned with only a single step of that evolution. We think of
@@ -78,8 +60,7 @@ describe how it is used to enable parallel execution.
 Computation as functions on the global state
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As discussed in the introduction, we think of computation on the CasperLabs
-platform as being functions from the global state, :math:`G`, to itself.
+As discussed in the introduction, we think of computation on the Casper platform as being functions from the global state, :math:`G`, to itself.
 Naturally, we can compose two such functions, to obtain another function. This
 corresponds to sequential execution. For example, you can think of the sequence
 ``payment_code -> session_code`` as being the composition of two individual
@@ -114,16 +95,15 @@ global state. Thus we can execute multiple deploys in parallel and later combine
 their outputs (more on this later).
 
 .. |TrackingCopy| replace:: ``TrackingCopy``
-.. _TrackingCopy: https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/execution-engine/engine-core/src/tracking_copy/mod.rs
+.. _TrackingCopy: https://github.com/CasperLabs/casper-node/blob/master/execution_engine/src/core/tracking_copy/mod.rs
 
 .. |Transforms| replace:: ``Transform``\ s
-.. _Transforms: https://docs.rs/casperlabs-engine-shared/0.3.0/casperlabs_engine_shared/transform/enum.Transform.html
+.. _Transforms: https://github.com/CasperLabs/casper-node/blob/553b9f11eb3b1e8043acfe3fa04005d951047c4a/execution_engine/src/shared/transform.rs#L63
 
-The way this is modeled in the
-`rust reference implementation <https://docs.rs/casperlabs-engine-core/0.2.0/casperlabs_engine_core/>`__
+The way this is modeled in the Casper execution engine
 is via the |TrackingCopy|_. Executing deploys (and the contracts they
 call) read/write from the |TrackingCopy|_ instead of the global state
-directly; the |TrackingCopy|_ *tracks* the operations and returns the
+directly. The |TrackingCopy|_ *tracks* the operations and returns the
 |Transforms|_ which act on each key in the global state effected by
 the execution. Using the nomenclature from the theory, this collection
 of keys and transforms describes a function :math:`f: G \rightarrow G`
@@ -186,7 +166,7 @@ case where the initial value was ``7``.
     details). Replacing a ``Write`` with a ``Read`` still has great
     benefits for parallel exectuion because reads do commute with one
     another, while writes do not. This optimization in the reduced
-    traces is `applied in our reference implementation <https://github.com/CasperLabs/CasperLabs/blob/v0.14.0/execution-engine/engine-core/src/engine_state/execution_result.rs#L314>`__.
+    traces is `applied in our reference implementation <https://github.com/CasperLabs/casper-node/blob/master/execution_engine/src/core/engine_state/execution_result.rs#L439>`__.
 
 Constructing the post-state from parallel execution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
