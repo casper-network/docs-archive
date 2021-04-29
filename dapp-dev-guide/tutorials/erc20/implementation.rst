@@ -63,13 +63,20 @@ When the contract is deployed, it must be initialized with some values; this is 
         ...
 
         let mut named_keys = NamedKeys::new();
-        named_keys.insert("_name".to_string(), storage::new_uref(tokenName).into());
-        named_keys.insert("_symbol".to_string(), storage::new_uref(tokenSymbol).into());
-        named_keys.insert("_decimals".to_string(), storage::new_uref(18u8).into());
-        named_keys.insert("_totalSupply".to_string(), storage::new_uref(tokenTotalSupply).into());
-        named_keys.insert(balance_key(&runtime::get_caller()), storage::new_uref(tokenTotalSupply).into());
+        named_keys.insert("name".to_string(), storage::new_uref(tokenName).into());
+        named_keys.insert("symbol".to_string(), storage::new_uref(tokenSymbol).into());
+        named_keys.insert("decimals".to_string(), storage::new_uref(18u8).into());
+        named_keys.insert(
+            "total_supply".to_string(),
+            storage::new_uref(tokenTotalSupply).into(),
+        );
+        named_keys.insert(
+            balance_key(&runtime::get_caller()),
+            storage::new_uref(tokenTotalSupply).into(),
+        );
 
-        let (contract_hash, _) = storage::new_locked_contract(entry_points, Some(named_keys), None, None);
+        let (contract_hash, _) =
+            storage::new_locked_contract(entry_points, Some(named_keys), None, None);
         runtime::put_key("ERC20", contract_hash.into());
         runtime::put_key("ERC20_hash", storage::new_uref(contract_hash).into());
     }
@@ -83,19 +90,19 @@ We then also add a few helper functions to set and retrieve values from the cont
 
     #[no_mangle]
     pub extern "C" fn name() {
-        let val: String = get_key("_name");
+        let val: String = get_key("name");
         ret(val)
     }
 
     #[no_mangle]
     pub extern "C" fn symbol() {
-        let val: String = get_key("_symbol");
+        let val: String = get_key("symbol");
         ret(val)
     }
 
     #[no_mangle]
     pub extern "C" fn decimals() {
-        let val: u8 = get_key("_decimals");
+        let val: u8 = get_key("decimals");
         ret(val)
     }
 
@@ -111,7 +118,7 @@ The ``allowance`` method enables owners to specify an amount that a spender acco
 
     #[no_mangle]
     pub extern "C" fn total_supply() {
-        let val: U256 = get_key("_totalSupply");
+        let val: U256 = get_key("total_supply");
         ret(val)
     }
 
@@ -229,10 +236,10 @@ The ``balance_key`` and ``allowance_key ``functions format the balances and acco
 
 .. code-block:: rust
 
-   fn balance_key(account: &AccountHash) -> String {
-    format!("_balances_{}", account)
-   }
+    fn balance_key(account: &AccountHash) -> String {
+        format!("balances_{}", account)
+    }
 
-   fn allowance_key(owner: &AccountHash, sender: &AccountHash) -> String {
-    format!("_allowances_{}_{}", owner, sender)
-   }
+    fn allowance_key(owner: &AccountHash, sender: &AccountHash) -> String {
+        format!("allowances_{}_{}", owner, sender)
+    }
