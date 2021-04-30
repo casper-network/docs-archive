@@ -61,7 +61,7 @@ The above command will create three files:
 
 1. ``secret_key.pem`` - PEM encoded secret key
 2. ``public_key.pem`` - PEM encoded public key
-3. ``public_key_hex`` - Hash of the public key that is stored in the blockchain
+3. ``public_key_hex`` - Hex encoded string of the public key
 
 **Important Note**: SAVE your keys to a safe place, preferably offline.
 
@@ -80,9 +80,9 @@ Save these three files for each account and note the location where they are dow
 
 1. ``<Account-Name>_secret_key.pem`` - PEM encoded secret key
 2. ``<Account-Name>_public_key.pem`` - PEM encoded public key
-3. ``<Account-Name>_public_key_hex`` - Hash of the public key that is stored in the blockchain
+3. ``<Account-Name>_public_key_hex`` - Hex encoded string of the public key
 
-**Note**: You need the account hash (`<Account-Name>_public_key_hex`) in order to verify your account balance when querying the blockchain later.
+**Note**: You need the `<Account-Name>_public_key_hex` in order to verify your account balance when querying the blockchain later.
 
 Fund your Account
 ^^^^^^^^^^^^^^^^^
