@@ -1,67 +1,92 @@
 
 CSPR Transfer Workflow
-================
+======================
 
 This document describes a sample workflow for transferring tokens and verifying their transfer on a Casper network as of `Release-1.0.0 <https://github.com/CasperLabs/casper-node/tree/release-1.0.0>`_ .
 
 Requirements
-~~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 In order to follow the steps detailed below, the following is required:
 
-1. A compatible client
-2. Two accounts (one source, one target)
-3. The IP address of a node on the target
+1. A compatible client or SDK such as the `JavaScript SDK <https://www.npmjs.com/package/casper-client-sdk>`_, `Java SDK <https://github.com/cnorburn/casper-java-sdk>`_, or GoLang SDK (location forthcoming)
+2. The public key (hex) of 2 accounts (one source account, one target account)
+3. A node RPC endpoint to send the transaction
 
-CasperLabs Client
-******************
+The Rust Casper Client
+^^^^^^^^^^^^^^^^^^^^^^
 
-Download the client `here <https://github.com/CasperLabs/casper-node/tree/release-1.0.0/client>`_
+For the purposes of this document, the Rust Casper client will be used. Download the client `here <https://github.com/CasperLabs/casper-node/tree/release-1.0.0/client>`_.
 
-Note: The client can print out `help` information which provides an up to date list of supported commands. You can also check the help information for each individual command.
+The client can print out `help` information which provides an up to date list of supported commands. You can also check the help information for each individual command.
 
 .. code-block:: bash
 
     $ casper-client <command> --help
 
 Setting up Accounts on Testnet
-******************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+It is recommended to start the integration by using the `Casper testnet <https://docs.cspr.community/docs/testnet.html>`_.
 
-Accounts for the testnet can be created using the block explorer, `Clarity`.
+Accounts for the testnet can be created using the Rust Casper client, or the block explorer, `Clarity <https://clarity-testnet-old.make.services/#/>`_. 
 
-Start by creating an account on clarity using the given link:
-`Create Account <https://clarity-testnet.make.services/#/accounts>`_
+You need to create one account for the source of the transfer and one for the target account.
 
-Create one account for the source of the transfer and one for the target account.
+Option 1: Account setup using the Casper client
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Save the three files for each account:
+Use the Rust Casper client to setup your accounts.
+
+.. code-block:: bash
+
+    $ casper-client <TODO>
+
+Next, upload the public key to `Clarity <https://clarity-testnet-old.make.services/#/>`_.
+
+<TODO>
+
+Now you are ready to fund your account by `requesting tokens <#fund-your-account>`_.
+
+Option 2: Account setup using Clarity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Start by creating an account on Clarity using the `Create Account <https://clarity-testnet-old.make.services/#/accounts>`_ link.
+
+Save these three files for each account and note the location where they are saved:
 
 1. ``<Account-Name>`` _secret_key.pem (PEM encoded secret key)
 2. ``<Account-Name>`` _public_key.pem (PEM encoded public key)
 3. ``<Account-Name>`` _public_key_hex (Hex encoded string of the public key)
 
-and note the location where they are saved.
-
 Note: You will need the hex-encoded string of the public key in many cases.
 Obtain the string by reading the ``<Account-Name>`` _public_key_hex file.
 
-Fund both the target and source accounts using the ``[Request tokens]`` button on the Faucet page to receive tokens.
-`Faucet Page <https://clarity-testnet.make.services/#/faucet>`_
+Fund your Account
+^^^^^^^^^^^^^^^^^
 
-Acquire Node IP address
-***********************
+Next, you need to fund the source account using the ``[Request tokens]`` button on the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to receive tokens.
 
-You can get an IP address of a node on the network by visiting the `Peers <https://clarity-testnet.make.services/#/peers>`_ page.
-You will see a list of peers and select the IP of any peer on the list.
+Acquire Node IP Address
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Note: If the selected peer is blocking the port pick a different peer and try again.
+Option 1: Find a node using the Client
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Transfer
-~~~~~~~~
+<TODO>
 
-RPC requests are sent to a node's RPC endpoint ``http://<peer-ip-address>:7777/rpc`` , including transfers which are a specialized type of deploy.
+Option 2: Find a node using Clarity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following command demonstrates how to transfer from a source account to a target account using the rust client, by sending a request to the selected node's RPC endpoint.
+You can get an IP address of a node on the network by visiting the `Peers Page <https://cspr.live/tools/peers>`_. You will see a list of peers and you can select the IP of any peer on the list.
+
+Note: If the selected peer is blocking the port, pick a different peer and try again.
+
+Transfer Funds
+^^^^^^^^^^^^^^
+
+RPC requests are sent to a node's RPC endpoint ``http://<peer-ip-address>:7777/rpc``, including transfers which are a special type of deploy.
+
+The following command demonstrates how to transfer from a source account to a target account using the Rust client, by sending a request to the selected node's RPC endpoint.
 
 ::
 
@@ -70,7 +95,7 @@ The following command demonstrates how to transfer from a source account to a ta
         --node-address http://<peer-ip-address>:7777/rpc \
         --amount <amount-to-transfer> \
         --secret-key <source-account-secret-key>.pem \
-        --chain-name casper-test \
+        --chain-name casper \
         --payment-amount 10000 \
         --target-account <hex-encoded-target-account-public-key>
 
@@ -171,14 +196,13 @@ The following command demonstrates how to transfer from a source account to a ta
 
     </details>
 
-Note: We will use the returned `deploy_hash` to query information about the transfer deploy.
+|
+Note: Save the returned `deploy_hash` from the output to query information about the transfer deploy later.
 
+Deploy Status
+~~~~~~~~~~~~~
 
-Get-Deploy
-~~~~~~~~~~
-
-We will now use the deploy hash to get more information about the status of the deploy.
-
+Once a transaction (deploy) has been submitted to the network, it is possible to check the status of execution by using ``get-deploy``.
 
 ::
 
@@ -199,8 +223,8 @@ We will now use the deploy hash to get more information about the status of the 
     "jsonrpc": "2.0",
     "method": "info_get_deploy",
     "params": {
-    "deploy_hash": "ec2d477a532e00b08cfa9447b7841a645a27d34ee12ec55318263617e5740713"
-    }
+      "deploy_hash": "ec2d477a532e00b08cfa9447b7841a645a27d34ee12ec55318263617e5740713"
+      }
     }
 
 .. code-block:: json
@@ -406,20 +430,18 @@ We will now use the deploy hash to get more information about the status of the 
 
     </details>
 
-Note there is two field in this response that interests us:
+|
+Note there are two fields in this response that interest us:
 
-1. ``"result"."execution_results"[0]."transfers[0]"``
-2. ``"result"."execution_results"[0]."block_hash"``
-
-The first is the address of the executed transfer that the source account initiated. We will use it to look up additional information about the transfer.
-The second contains the block hash of the block that included our transfer. We will require the `state_root_hash` of this block to lookup information about the accounts and their balances.
+1. ``"result"."execution_results"[0]."transfers[0]"`` - the address of the executed transfer that the source account initiated. We will use it to look up additional information about the transfer
+2. ``"result"."execution_results"[0]."block_hash"`` - contains the block hash of the block that included our transfer. We will require the `state_root_hash` of this block to lookup information about the accounts and their balances
 
 Note: Transfer addresses use a ``transfer-`` string prefix.
 
-Get-Block
-~~~~~~~~~~
+Block State-Root Hash
+~~~~~~~~~~~~~~~~~~~~~
 
-We will use the ``block_hash`` to query and retrieve the block that contains our deploy for its ``state_root_hash``
+We will use the ``block_hash`` to query and retrieve the block that contains our deploy. Afterwards, we will retrieve the root hash of the global state trie for this block, also known as the block's ``state_root_hash``. We will use the ``state_root_hash`` to look up various values, like the source and destination account and their balances.
 
 ::
 
@@ -504,17 +526,15 @@ We will use the ``block_hash`` to query and retrieve the block that contains our
 
     </details>
 
-
+|
 Note there is one field in this response that interests us:
 
-``"result"."block"."header"."state_root_hash"``
+- ``"result"."block"."header"."state_root_hash"`` - contains the root hash of the global state trie for this block
 
-This contains the root hash of the global state trie for this block. We will use this to look up various values, like the source and destination account and their balances.
+Query the Source Account
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Query (Source Account)
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Using the global state hash of the block containing our transfer deployment and the public key of the target account, we will query for information about the ``Source`` account.
+Next, we will query for information about the ``Source`` account, using the global-state hash of the block containing our transfer and the public key of the target account.
 
 ::
 
@@ -575,16 +595,15 @@ Using the global state hash of the block containing our transfer deployment and 
     </details>
 
 
+|
 Note there is one field in this response that interests us:
 
-``"result"."stored_value"."Account"."main_purse"``
+- ``"result"."stored_value"."Account"."main_purse"`` - the address of the main purse containing the sender’s tokens. This purse is the source of the tokens transferred in this example
 
-This value is the address of the main purse containing the sender’s tokens. This purse is the source of the tokens transferred in this example.
+Query the Target Account
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Query (Target Account)
-~~~~~~~~~~~~~~~~~~~~~~
-
-We will repeat the above step to query information about the target account.
+We will repeat the previous step to query information about the target account.
 
 ::
 
@@ -643,12 +662,11 @@ We will repeat the above step to query information about the target account.
 
     </details>
 
-
-
-GetBalance (Source Purse)
+| 
+Get Source Account Balance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now that we have the address of the ``Source`` purse, we can get its balance.
+Now that we have the address of the ``Source`` purse, we can get its balance using the ``get-balance`` command. In the following sample output, the balance of the ``Source`` account is 5000000000 motes.
 
 ::
 
@@ -691,11 +709,9 @@ Now that we have the address of the ``Source`` purse, we can get its balance.
 
     </details>
 
-We can now see the balance of the ``Source`` account.
-
-
-GetBalance (Target Purse)
-~~~~~~~~~~~~~~~~~~~~~~~~~
+| 
+Get Target Account Balance
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Similarly, now that we have the address of the target purse, we can get its balance.
 
@@ -740,11 +756,11 @@ Similarly, now that we have the address of the target purse, we can get its bala
 
     </details>
 
+|
+Query Transfer Details
+~~~~~~~~~~~~~~~~~~~~~~
 
-Query (Transfer)
-~~~~~~~~~~~~~~~~~
-
-We will use the ``transfer-<address>`` to query for details about the transfer.
+We will use the ``transfer-<address>`` to query additional details about the transfer.
 
 ::
 
@@ -799,19 +815,20 @@ We will use the ``transfer-<address>`` to query for details about the transfer.
 
     </details>
 
-Here we can see information about the transfer we conducted: its deploy hash, the account which executed the transfer, the source and target purses and the target account as well.
-Using this we can verify our transfer executed successfully.
-
+|
+Here we can see more information about the transfer we conducted: its deploy hash, the account which executed the transfer, the source and target purses and the target account as well. Using this additional information, we can verify our transfer executed successfully.
 
 List RPCs
-~~~~~~~~~
+^^^^^^^^^
 
-The above example uses RPC calls to execute and then verify the transfer. There are additional RPC calls that can be made to compose other use cases.
-There is an RPC call that can be made to the endpoint which lists the RPC calls which are supported by that version of the node.
+The example above uses RPC calls to execute and then verify the transfer. There are additional RPC calls that you can make to address other use cases.
+
+The following command lists all the RPC calls that the node supports:
 
 ::
 
     $ casper-client list-rpcs
 
 The endpoint returns an OpenRPC compliant document which describes all the RPC calls available and provides examples for the RPCs as well.
-Please be sure to query this specific endpoint as it provides the up-to-date information on interacting with the RPC endpoint.
+
+Please be sure to query this specific endpoint as it provides up-to-date information on interacting with the RPC endpoint.
