@@ -28,7 +28,7 @@ Setting up Accounts on Testnet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 We recommended starting your integration by using the `Casper testnet <https://docs.cspr.community/docs/testnet.html>`_.
 
-Accounts for the testnet can be created using the Rust Casper client or the block explorer, `Clarity <https://clarity-testnet-old.make.services/#/>`_. 
+Accounts for the testnet can be created using the Rust Casper client or `the Block Explorer <https://testnet.cspr.live/#/>`_.
 
 You need to create one account for the source of the transfer and one for the target account.
 
@@ -51,19 +51,16 @@ The above command will create three files:
 
 **Important Note**: SAVE your keys to a safe place, preferably offline.
 
-Next, go to `Clarity <https://testnet.cspr.live/#/>`_ to upload your public key. Log in using your Github or Google account. 
-
-Click the “Import Key” button and select your public key file *public_key.pem*. Give it a name and hit “Save”. 
+Next, go to `the Block Explorer <https://testnet.cspr.live/#/>`_ to upload your public key. Using the Signer, upload the *public_key.pem* file.
 
 **Important Note**: Do NOT, EVER, upload your secret key.
 
 Now you are ready to fund your account and `request tokens <#fund-your-account>`_.
 
-Option 2: Account setup using Clarity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Option 2: Account setup using the Block Explorer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Visit the block explorer at <https://testnet.cspr.live/#/>`_ and select 'Sign In'.  You will be prompted to connect the Casper Signer. 
-Then create your account keys in the Signer. Make sure you select the option to 'Download'.
+Visit the Block Explorer at `<https://testnet.cspr.live/#/>`_ and select "Sign In".  You will be prompted to connect the Casper Signer. Then create your account keys in the Signer. Make sure you select the option to "Download".
 
 Save these three files for each account and note the location where they are downloaded. We recommend moving your keys to a safe location, preferably offline.
 
