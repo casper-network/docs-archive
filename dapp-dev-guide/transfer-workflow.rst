@@ -73,6 +73,8 @@ Option 1: Find a node using the Client
 
 <TODO>
 
+Now you are ready `to transfer funds <#transfer-funds>`_.
+
 Option 2: Find a node using Clarity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -831,3 +833,21 @@ The following command lists all the RPC calls that the node supports:
 The endpoint returns an OpenRPC compliant document that describes all the RPC calls available and provides examples for the RPCs.
 
 Please be sure to query this specific endpoint as it provides up-to-date information on interacting with the RPC endpoint.
+
+..
+  FAQ
+  ^^^
+  This section covers frequently asked questions and our recommendations.
+
+  Question 1
+  ~~~~~~~~~~
+  Answer here
+
+  Question 2
+  ~~~~~~~~~~
+  Answer here
+
+  Question 3
+  ~~~~~~~~~~
+  Answer here
+
