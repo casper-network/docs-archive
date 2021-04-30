@@ -51,36 +51,39 @@ The above command will create three files:
 
 **Important Note**: SAVE your keys to a safe place, preferably offline.
 
-Next, go to `Clarity <https://clarity-testnet-old.make.services/#/>`_ to upload your public key. Log in using your Github or Google account. 
+Next, go to `Clarity <https://testnet.cspr.live/#/>`_ to upload your public key. Log in using your Github or Google account. 
 
 Click the “Import Key” button and select your public key file *public_key.pem*. Give it a name and hit “Save”. 
 
-**Important Note**: Do NOT, EVER, upload your private key.
+**Important Note**: Do NOT, EVER, upload your secret key.
 
 Now you are ready to fund your account and `request tokens <#fund-your-account>`_.
 
 Option 2: Account setup using Clarity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Start by creating an account on Clarity using the `Create Account <https://clarity-testnet-old.make.services/#/accounts>`_ link.
+Visit the block explorer at <https://testnet.cspr.live/#/>`_ and select 'Sign In'.  You will be prompted to connect the Casper Signer. 
+Then create your account keys in the Signer. Make sure you select the option to 'Download'.
 
 Save these three files for each account and note the location where they are downloaded. We recommend moving your keys to a safe location, preferably offline.
 
 1. ``<Account-Name>_secret_key.pem`` - PEM encoded secret key
 2. ``<Account-Name>_public_key.pem`` - PEM encoded public key
-3. ``<Account-Name> _public_key_hex`` - Hex encoded string of the public key
+3. ``<Account-Name>_public_key_hex`` - Hex encoded string of the public key
+4. ``<Account-Hash>_account_hash`` - Hash of the public key that is stored in the blockchain. 
 
-**Note**: You will need the hex-encoded string of the public key in many cases. Obtain the string by reading the ``<Account-Name>`` _public_key_hex file.
+**Note**: You will need the hex-encoded string of the public key. Obtain the string by reading the ``<Account-Name>`` _public_key_hex file.
+**Note**: You need the account hash in order to verify your account balance when querying the blockchain later.
 
 Fund your Account
 ^^^^^^^^^^^^^^^^^
 
-Next, you need to fund the source account using the ``[Request tokens]`` button on the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to receive tokens.
+Next, you need to fund the source account using the ``[Request tokens]`` button on the `Faucet Page <https://clarity-testnet-old.make.services>`_ to receive tokens.
 
 Acquire Node IP Address
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-You can get an IP address of a node on the network by visiting the `Peers Page <https://cspr.live/tools/peers>`_. You will see a list of peers, and you can select the IP of any peer on the list.
+You can get an IP address of a node on the network by visiting the `Peers Page <https://testnet.cspr.live/tools/peers>`_. You will see a list of peers, and you can select the IP of any peer on the list.
 
 **Note**: If the selected peer is blocking the port, pick a different peer and try again.
 
