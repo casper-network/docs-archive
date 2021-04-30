@@ -96,6 +96,8 @@ You can get an IP address of a node on the network by visiting the `Peers Page <
 
 **Note**: If the selected peer is blocking the port, pick a different peer and try again.
 
+You also have the option to run your own un-bonded peer on the network. Follow the `Casper How-To Guides <https://docs.cspr.community/>`_ for the testnet or mainnet, and skip the last step, which bonds the node to the network.
+
 Transfer Funds
 ^^^^^^^^^^^^^^
 
