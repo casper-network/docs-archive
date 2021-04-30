@@ -870,7 +870,7 @@ Deploy Processing
 ~~~~~~~~~~~~~~~~~
 **Question**: How do I know that a deploy was finalized?
 
-**Answer**: If a deploy was executed, then it has been finalized. If the deploy status comes back as null, that means the deploy has not been executed yet. Once the deploy executes, it is finalized, and no other confirmation is needed. Exchanges that are not running a read-only node must also keep track of `finality signatures <#finality-signatures>`_ to prevent any attacks from high-risk nodes. It is best to monitor deploy-processing status via polling.
+**Answer**: If a deploy was executed, then it has been finalized. If the deploy status comes back as null, that means the deploy has not been executed yet. Once the deploy executes, it is finalized, and no other confirmation is needed. Exchanges that are not running a read-only node must also keep track of `finality signatures <#finality-signatures>`_ to prevent any attacks from high-risk nodes.
 
 Finality Signatures
 ~~~~~~~~~~~~~~~~~~~
@@ -884,7 +884,7 @@ The EventStore
 ~~~~~~~~~~~~~~
 **Question**: What is the EventStore? 
 
-**Answer**: The the CasperLabs/event-store has been deprecated and is incompatible with the node event stream. It is best to monitor deploy processing status via polling.
+**Answer**: The CasperLabs/event-store has been deprecated and is incompatible with the node event stream. It is best to monitor deploy processing status via polling port 9999, which is the event stream port of a node: ``http://<peer-ip-address>:9999``. Push the events of interest into a database for future reference. In this process, you can also get the associated finality signatures of the block of interest.
 
 deploy_hash vs. transfer_hash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
