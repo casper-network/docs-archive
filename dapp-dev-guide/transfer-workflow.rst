@@ -7,7 +7,7 @@ This document describes a sample workflow for transferring tokens and verifying 
 Requirements
 ^^^^^^^^^^^^
 
-In order to follow the steps detailed below, the following is required:
+To follow the steps in this document, you will need:
 
 1. A compatible client or SDK such as the `JavaScript SDK <https://www.npmjs.com/package/casper-client-sdk>`_, `Java SDK <https://github.com/cnorburn/casper-java-sdk>`_, or GoLang SDK (location forthcoming)
 2. The public key (hex) of 2 accounts (one source account, one target account)
@@ -16,9 +16,9 @@ In order to follow the steps detailed below, the following is required:
 The Rust Casper Client
 ^^^^^^^^^^^^^^^^^^^^^^
 
-For the purposes of this document, the Rust Casper client will be used. Download the client `here <https://github.com/CasperLabs/casper-node/tree/release-1.0.0/client>`_.
+In this document, we will use the Rust Casper client. You can download the client `here <https://github.com/CasperLabs/casper-node/tree/release-1.0.0/client>`_.
 
-The client can print out `help` information which provides an up to date list of supported commands. You can also check the help information for each individual command.
+The Casper client can print out `help` information which provides an up-to-date list of supported commands. You can also check the help information for each command:
 
 .. code-block:: bash
 
@@ -26,16 +26,16 @@ The client can print out `help` information which provides an up to date list of
 
 Setting up Accounts on Testnet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-It is recommended to start the integration by using the `Casper testnet <https://docs.cspr.community/docs/testnet.html>`_.
+We recommended starting your integration by using the `Casper testnet <https://docs.cspr.community/docs/testnet.html>`_.
 
-Accounts for the testnet can be created using the Rust Casper client, or the block explorer, `Clarity <https://clarity-testnet-old.make.services/#/>`_. 
+Accounts for the testnet can be created using the Rust Casper client or the block explorer, `Clarity <https://clarity-testnet-old.make.services/#/>`_. 
 
 You need to create one account for the source of the transfer and one for the target account.
 
 Option 1: Account setup using the Casper client
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use the Rust Casper client to setup your accounts.
+This option describes how you can use the Rust Casper client to set up your accounts.
 
 .. code-block:: bash
 
@@ -58,8 +58,7 @@ Save these three files for each account and note the location where they are sav
 2. ``<Account-Name>`` _public_key.pem (PEM encoded public key)
 3. ``<Account-Name>`` _public_key_hex (Hex encoded string of the public key)
 
-Note: You will need the hex-encoded string of the public key in many cases.
-Obtain the string by reading the ``<Account-Name>`` _public_key_hex file.
+Note: You will need the hex-encoded string of the public key in many cases. Obtain the string by reading the ``<Account-Name>`` _public_key_hex file.
 
 Fund your Account
 ^^^^^^^^^^^^^^^^^
@@ -77,7 +76,7 @@ Option 1: Find a node using the Client
 Option 2: Find a node using Clarity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can get an IP address of a node on the network by visiting the `Peers Page <https://cspr.live/tools/peers>`_. You will see a list of peers and you can select the IP of any peer on the list.
+You can get an IP address of a node on the network by visiting the `Peers Page <https://cspr.live/tools/peers>`_. You will see a list of peers, and you can select the IP of any peer on the list.
 
 Note: If the selected peer is blocking the port, pick a different peer and try again.
 
@@ -86,7 +85,7 @@ Transfer Funds
 
 RPC requests are sent to a node's RPC endpoint ``http://<peer-ip-address>:7777/rpc``, including transfers which are a special type of deploy.
 
-The following command demonstrates how to transfer from a source account to a target account using the Rust client, by sending a request to the selected node's RPC endpoint.
+The following command demonstrates how to transfer from a source account to a target account using the Rust client by sending a request to the selected node's RPC endpoint.
 
 ::
 
@@ -202,7 +201,7 @@ Note: Save the returned `deploy_hash` from the output to query information about
 Deploy Status
 ~~~~~~~~~~~~~
 
-Once a transaction (deploy) has been submitted to the network, it is possible to check the status of execution by using ``get-deploy``.
+Once a transaction (deploy) has been submitted to the network, it is possible to check its execution status using ``get-deploy``.
 
 ::
 
@@ -434,14 +433,14 @@ Once a transaction (deploy) has been submitted to the network, it is possible to
 Note there are two fields in this response that interest us:
 
 1. ``"result"."execution_results"[0]."transfers[0]"`` - the address of the executed transfer that the source account initiated. We will use it to look up additional information about the transfer
-2. ``"result"."execution_results"[0]."block_hash"`` - contains the block hash of the block that included our transfer. We will require the `state_root_hash` of this block to lookup information about the accounts and their balances
+2. ``"result"."execution_results"[0]."block_hash"`` - contains the block hash of the block that included our transfer. We will require the `state_root_hash` of this block to look up information about the accounts and their balances
 
 Note: Transfer addresses use a ``transfer-`` string prefix.
 
-Block State-Root Hash
-~~~~~~~~~~~~~~~~~~~~~
+State Root Hash
+~~~~~~~~~~~~~~~~
 
-We will use the ``block_hash`` to query and retrieve the block that contains our deploy. Afterwards, we will retrieve the root hash of the global state trie for this block, also known as the block's ``state_root_hash``. We will use the ``state_root_hash`` to look up various values, like the source and destination account and their balances.
+We will use the ``block_hash`` to query and retrieve the block that contains our deploy. Afterward, we will retrieve the root hash of the global state trie for this block, also known as the block's ``state_root_hash``. We will use the ``state_root_hash`` to look up various values, like the source and destination account and their balances.
 
 ::
 
@@ -666,7 +665,7 @@ We will repeat the previous step to query information about the target account.
 Get Source Account Balance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now that we have the address of the ``Source`` purse, we can get its balance using the ``get-balance`` command. In the following sample output, the balance of the ``Source`` account is 5000000000 motes.
+Now that we have the ``Source`` purse address, we can get its balance using the ``get-balance`` command. In the following sample output, the balance of the ``Source`` account is 5000000000 motes.
 
 ::
 
@@ -760,7 +759,7 @@ Similarly, now that we have the address of the target purse, we can get its bala
 Query Transfer Details
 ~~~~~~~~~~~~~~~~~~~~~~
 
-We will use the ``transfer-<address>`` to query additional details about the transfer.
+We will use the ``transfer-<address>`` to query more details about the transfer.
 
 ::
 
@@ -816,10 +815,10 @@ We will use the ``transfer-<address>`` to query additional details about the tra
     </details>
 
 |
-Here we can see more information about the transfer we conducted: its deploy hash, the account which executed the transfer, the source and target purses and the target account as well. Using this additional information, we can verify our transfer executed successfully.
+Here we can see more information about the transfer we conducted: its deploy hash, the account which executed the transfer, the source and target purses, and the target account. Using this additional information, we can verify that our transfer was executed successfully.
 
-List RPCs
-^^^^^^^^^
+Other Available RPCs
+^^^^^^^^^^^^^^^^^^^^
 
 The example above uses RPC calls to execute and then verify the transfer. There are additional RPC calls that you can make to address other use cases.
 
@@ -829,6 +828,6 @@ The following command lists all the RPC calls that the node supports:
 
     $ casper-client list-rpcs
 
-The endpoint returns an OpenRPC compliant document which describes all the RPC calls available and provides examples for the RPCs as well.
+The endpoint returns an OpenRPC compliant document that describes all the RPC calls available and provides examples for the RPCs.
 
 Please be sure to query this specific endpoint as it provides up-to-date information on interacting with the RPC endpoint.
