@@ -37,28 +37,40 @@ Option 1: Account setup using the Casper client
 
 This option describes how you can use the Rust Casper client to set up your accounts.
 
+Execute the following command to generate your keys:
+
 .. code-block:: bash
 
-    $ casper-client <TODO>
+    $ sudo -u casper casper-client keygen .
 
-Next, upload the public key to `Clarity <https://clarity-testnet-old.make.services/#/>`_.
+The above command will create three files:
 
-<TODO>
+1. ``secret_key.pem`` - PEM encoded secret key)
+2. ``public_key.pem`` - PEM encoded public key)
+3. ``public_key_hex`` - Hex encoded string of the public key)
 
-Now you are ready to fund your account by `requesting tokens <#fund-your-account>`_.
+**Important Note**: SAVE your keys to a safe place, preferably offline.
+
+Next, go to `Clarity <https://clarity-testnet-old.make.services/#/>`_ to upload your public key. Log in using your Github or Google account. 
+
+Click the “Import Key” button and select your public key file *public_key.pem*. Give it a name and hit “Save”. 
+
+**Important Note**: Do NOT, EVER, upload your private key.
+
+Now you are ready to fund your account and `request tokens <#fund-your-account>`_.
 
 Option 2: Account setup using Clarity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Start by creating an account on Clarity using the `Create Account <https://clarity-testnet-old.make.services/#/accounts>`_ link.
 
-Save these three files for each account and note the location where they are saved:
+Save these three files for each account and note the location where they are downloaded. We recommend moving your keys to a safe location, preferrably offline.
 
-1. ``<Account-Name>`` _secret_key.pem (PEM encoded secret key)
-2. ``<Account-Name>`` _public_key.pem (PEM encoded public key)
-3. ``<Account-Name>`` _public_key_hex (Hex encoded string of the public key)
+1. ``<Account-Name>_secret_key.pem`` - PEM encoded secret key
+2. ``<Account-Name>_public_key.pem`` - PEM encoded public key
+3. ``<Account-Name> _public_key_hex`` - Hex encoded string of the public key
 
-Note: You will need the hex-encoded string of the public key in many cases. Obtain the string by reading the ``<Account-Name>`` _public_key_hex file.
+**Note**: You will need the hex-encoded string of the public key in many cases. Obtain the string by reading the ``<Account-Name>`` _public_key_hex file.
 
 Fund your Account
 ^^^^^^^^^^^^^^^^^
@@ -80,7 +92,7 @@ Option 2: Find a node using Clarity
 
 You can get an IP address of a node on the network by visiting the `Peers Page <https://cspr.live/tools/peers>`_. You will see a list of peers, and you can select the IP of any peer on the list.
 
-Note: If the selected peer is blocking the port, pick a different peer and try again.
+**Note**: If the selected peer is blocking the port, pick a different peer and try again.
 
 Transfer Funds
 ^^^^^^^^^^^^^^
@@ -198,7 +210,7 @@ The following command demonstrates how to transfer from a source account to a ta
     </details>
 
 |
-Note: Save the returned `deploy_hash` from the output to query information about the transfer deploy later.
+**Note**: Save the returned `deploy_hash` from the output to query information about the transfer deploy later.
 
 Deploy Status
 ~~~~~~~~~~~~~
@@ -432,12 +444,12 @@ Once a transaction (deploy) has been submitted to the network, it is possible to
     </details>
 
 |
-Note there are two fields in this response that interest us:
+There are two fields in this response that interest us:
 
 1. ``"result"."execution_results"[0]."transfers[0]"`` - the address of the executed transfer that the source account initiated. We will use it to look up additional information about the transfer
 2. ``"result"."execution_results"[0]."block_hash"`` - contains the block hash of the block that included our transfer. We will require the `state_root_hash` of this block to look up information about the accounts and their balances
 
-Note: Transfer addresses use a ``transfer-`` string prefix.
+**Note**: Transfer addresses use a ``transfer-`` string prefix.
 
 State Root Hash
 ~~~~~~~~~~~~~~~~
@@ -528,7 +540,7 @@ We will use the ``block_hash`` to query and retrieve the block that contains our
     </details>
 
 |
-Note there is one field in this response that interests us:
+There is one field in this response that interests us:
 
 - ``"result"."block"."header"."state_root_hash"`` - contains the root hash of the global state trie for this block
 
@@ -597,7 +609,7 @@ Next, we will query for information about the ``Source`` account, using the glob
 
 
 |
-Note there is one field in this response that interests us:
+There is one field in this response that interests us:
 
 - ``"result"."stored_value"."Account"."main_purse"`` - the address of the main purse containing the sender’s tokens. This purse is the source of the tokens transferred in this example
 
