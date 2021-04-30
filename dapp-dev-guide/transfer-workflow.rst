@@ -80,16 +80,6 @@ Next, you need to fund the source account using the ``[Request tokens]`` button 
 Acquire Node IP Address
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Option 1: Find a node using the Client
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-<TODO>
-
-Now you are ready `to transfer funds <#transfer-funds>`_.
-
-Option 2: Find a node using Clarity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 You can get an IP address of a node on the network by visiting the `Peers Page <https://cspr.live/tools/peers>`_. You will see a list of peers, and you can select the IP of any peer on the list.
 
 **Note**: If the selected peer is blocking the port, pick a different peer and try again.
