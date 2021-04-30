@@ -64,7 +64,7 @@ Option 2: Account setup using Clarity
 
 Start by creating an account on Clarity using the `Create Account <https://clarity-testnet-old.make.services/#/accounts>`_ link.
 
-Save these three files for each account and note the location where they are downloaded. We recommend moving your keys to a safe location, preferrably offline.
+Save these three files for each account and note the location where they are downloaded. We recommend moving your keys to a safe location, preferably offline.
 
 1. ``<Account-Name>_secret_key.pem`` - PEM encoded secret key
 2. ``<Account-Name>_public_key.pem`` - PEM encoded public key
@@ -93,7 +93,7 @@ The ``transfer`` command below demonstrates how to transfer from a source accoun
 
 **Parameters for the transfer request**:
 
-- ``id`` - optional field to identify the transfer request. It can store an integer or string. If the *id* is not provided, a random value will be assigned
+- ``id`` - an optional field to identify the transfer request. It can store an integer or a string. If the *id* is not provided, a random value will be assigned
 - ``node-address`` - the selected node's RPC endpoint
 - ``amount`` - the amount to be transferred
 - ``secret-key`` - the secret key of the source account providing the funds
@@ -693,7 +693,7 @@ Now that we have the source purse address, we can get its balance using the ``ge
 
 **Parameters for the get-balance request**:
 
-- ``id`` - optional field to identify the transfer request. It can store an integer or string. If the *id* is not provided, a random value will be assigned
+- ``id`` - an optional field to identify the transfer request. It can store an integer or string. If the *id* is not provided, a random value will be assigned
 - ``node-address`` - the selected node's RPC endpoint
 - ``state-root-hash`` - the root hash of the global state trie for the block containing the transfer
 - ``purse-uref`` - the purse address of the source account
@@ -863,20 +863,51 @@ The endpoint returns an OpenRPC compliant document that describes all the RPC ca
 
 Please be sure to query this specific endpoint as it provides up-to-date information on interacting with the RPC endpoint.
 
-..
-  FAQ
-  ^^^
-  This section covers frequently asked questions and our recommendations.
 
-  Question 1
-  ~~~~~~~~~~
-  Answer here
+FAQ
+^^^
+This section covers frequently asked questions and our recommendations.
 
-  Question 2
-  ~~~~~~~~~~
-  Answer here
+Deploy Processing
+~~~~~~~~~~~~~~~~~
+**Question**: How do I know that a deploy was finalized?
 
-  Question 3
-  ~~~~~~~~~~
-  Answer here
+**Answer**: If a deploy was executed, then it has been finalized. If the deploy status comes back as null, that means the deploy has not been executed yet. Once the deploy executes, it is finalized, and no other confirmation is needed. Exchanges that are not running a read-only node must also keep track of `finality signatures <#finality-signatures>`_ to prevent any attacks from high-risk nodes. It is best to monitor deploy-processing status via polling.
 
+Finality Signatures
+~~~~~~~~~~~~~~~~~~~
+**Question**: When are finality signatures needed?
+
+**Answer**: Finality signatures are confirmations from validators that they have executed the transaction. Exchanges should be asserting finality by collecting the weight of two-thirds of transaction signatures. If an exchange runs a read-only node, it can collect these finality signatures from its node. Otherwise, the exchange must assert finality by collecting finality signatures and have proper monitoring infrastructure to prevent a Byzantine attack. 
+
+Suppose an exchange connects to someone else's node RPC to send transactions to the network. In this case, the node is considered high risk, and the exchange must assert finality by checking to see how many validators have run the transactions in the network.
+
+The EventStore
+~~~~~~~~~~~~~~
+**Question**: What is the EventStore? 
+
+**Answer**: The the CasperLabs/event-store has been deprecated and is incompatible with the node event stream. It is best to monitor deploy processing status via polling.
+
+deploy_hash vs. transfer_hash
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Question**: How is a deploy_hash different than a transfer_hash?
+
+**Answer**: Essentially, there is no difference between a `deploy_hash` and a `transfer_hash` since they are both deploy transactions. However, the platform is labeling the subset of deploys which are transfers, to filter transfers from other types of deploys. In other words, a `transfer_hash` is a native transfer, while a `deploy_hash` is another kind of deploy.
+
+account-hex vs. account-hash
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Question**: Should a customer see the account-hex or the account-hash?
+
+**Answer**: Exchange customers or end-users only need to see the `account-hex`. They do not need to know the `account_hash`. The `account_hash` is needed in the backend to verify transactions. Store the `account-hash` to query and monitor the account. Customers do not need to know this value, so to simplify their experience, we recommend storing both values and displaying only the `account-hex`.
+
+Example Deploy
+~~~~~~~~~~~~~~
+**Question**: Can you provide an example of a deploy?
+
+**Answer**: You can find a *testDeploy* reference in `GitHub <https://github.com/casper-ecosystem/casper-client-sdk/blob/master/test/lib/DeployUtil.test.ts#L5>`_.
+
+Operating with Keys
+~~~~~~~~~~~~~~~~~~~
+**Question**: How should we work with the PEM keys?
+
+**Answer**: The `Keys API <https://casper-ecosystem.github.io/casper-client-sdk/modules/_lib_keys_.html>`_ provides methods for `Ed25519` and `Secp256K1` keys. Also, review the tests in `GitHub <https://github.com/casper-ecosystem/casper-client-sdk/blob/master/test/lib/Keys.test.ts#L39>`_ and the `Working with Keys <https://docs.casperlabs.io/en/latest/dapp-dev-guide/keys.html>`_ documentation.
