@@ -89,7 +89,19 @@ Transfer Funds
 
 RPC requests are sent to a node's RPC endpoint ``http://<peer-ip-address>:7777/rpc``, including transfers which are a special type of deploy.
 
-The following command demonstrates how to transfer from a source account to a target account using the Rust client by sending a request to the selected node's RPC endpoint.
+The ``transfer`` command below demonstrates how to transfer from a source account to a target account using the Rust client by sending a request to the selected node's RPC endpoint.
+
+**Parameters for the transfer request**:
+
+- ``id`` - optional field to identify the transfer request. It can store an integer or string. If the *id* is not provided, a random value will be assigned
+- ``node-address`` - the selected node's RPC endpoint
+- ``amount`` - the amount to be transferred
+- ``secret-key`` - the secret key of the source account providing the funds
+- ``chain-name`` - the network where you want to create an account
+  - The *chain-name* for testnet is **casper-test**
+  - The *chain-name* for mainnet is **casper**
+- ``payment-amount`` - token transfers of CSPR cost exactly 10000 gas
+- target-account - the hex-encoded public key of the recipient
 
 ::
 
@@ -205,7 +217,16 @@ The following command demonstrates how to transfer from a source account to a ta
 Deploy Status
 ~~~~~~~~~~~~~
 
-Once a transaction (deploy) has been submitted to the network, it is possible to check its execution status using ``get-deploy``.
+Once a transaction (deploy) has been submitted to the network, it is possible to check its execution status using ``get-deploy``. 
+
+If the ``execution_results`` in the output are null, the transaction hasn't run yet. Transactions are finalized upon execution.
+
+There are two fields in this response that interest us:
+
+1. ``"result"."execution_results"[0]."transfers[0]"`` - the address of the executed transfer that the source account initiated. We will use it to look up additional information about the transfer
+2. ``"result"."execution_results"[0]."block_hash"`` - contains the block hash of the block that included our transfer. We will require the `state_root_hash` of this block to look up information about the accounts and their balances
+
+**Note**: Transfer addresses use a ``transfer-`` string prefix.
 
 ::
 
@@ -434,17 +455,16 @@ Once a transaction (deploy) has been submitted to the network, it is possible to
     </details>
 
 |
-There are two fields in this response that interest us:
 
-1. ``"result"."execution_results"[0]."transfers[0]"`` - the address of the executed transfer that the source account initiated. We will use it to look up additional information about the transfer
-2. ``"result"."execution_results"[0]."block_hash"`` - contains the block hash of the block that included our transfer. We will require the `state_root_hash` of this block to look up information about the accounts and their balances
-
-**Note**: Transfer addresses use a ``transfer-`` string prefix.
 
 State Root Hash
 ~~~~~~~~~~~~~~~~
 
 We will use the ``block_hash`` to query and retrieve the block that contains our deploy. Afterward, we will retrieve the root hash of the global state trie for this block, also known as the block's ``state_root_hash``. We will use the ``state_root_hash`` to look up various values, like the source and destination account and their balances.
+
+There is one field in the response that interests us:
+
+- ``"result"."block"."header"."state_root_hash"`` - contains the root hash of the global state trie for this block
 
 ::
 
@@ -530,14 +550,16 @@ We will use the ``block_hash`` to query and retrieve the block that contains our
     </details>
 
 |
-There is one field in this response that interests us:
 
-- ``"result"."block"."header"."state_root_hash"`` - contains the root hash of the global state trie for this block
 
 Query the Source Account
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Next, we will query for information about the ``Source`` account, using the global-state hash of the block containing our transfer and the public key of the target account.
+
+There is one field in the response that interests us:
+
+- ``"result"."stored_value"."Account"."main_purse"`` - the address of the main purse containing the sender’s tokens. This purse is the source of the tokens transferred in this example
 
 ::
 
@@ -599,9 +621,7 @@ Next, we will query for information about the ``Source`` account, using the glob
 
 
 |
-There is one field in this response that interests us:
 
-- ``"result"."stored_value"."Account"."main_purse"`` - the address of the main purse containing the sender’s tokens. This purse is the source of the tokens transferred in this example
 
 Query the Target Account
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -669,7 +689,14 @@ We will repeat the previous step to query information about the target account.
 Get Source Account Balance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now that we have the ``Source`` purse address, we can get its balance using the ``get-balance`` command. In the following sample output, the balance of the ``Source`` account is 5000000000 motes.
+Now that we have the source purse address, we can get its balance using the ``get-balance`` command. In the following sample output, the balance of the source account is 5000000000 motes.
+
+**Parameters for the get-balance request**:
+
+- ``id`` - optional field to identify the transfer request. It can store an integer or string. If the *id* is not provided, a random value will be assigned
+- ``node-address`` - the selected node's RPC endpoint
+- ``state-root-hash`` - the root hash of the global state trie for the block containing the transfer
+- ``purse-uref`` - the purse address of the source account
 
 ::
 
