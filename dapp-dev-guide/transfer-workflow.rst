@@ -2,7 +2,7 @@
 CSPR Transfer Workflow
 ======================
 
-This document describes a sample workflow for transferring tokens and verifying their transfer on a Casper network as of `Release-1.0.0 <https://github.com/CasperLabs/casper-node/tree/release-1.0.0>`_ .
+This document describes a sample workflow for transferring tokens and verifying their transfer on a Casper network as of `Release-1.0.0 <https://github.com/CasperLabs/casper-node/tree/release-1.0.0>`_.
 
 Requirements
 ^^^^^^^^^^^^
@@ -41,7 +41,7 @@ Execute the following command to generate your keys:
 
 .. code-block:: bash
 
-    $ sudo -u casper casper-client keygen .
+    $ casper-client keygen .
 
 The above command will create three files:
 
