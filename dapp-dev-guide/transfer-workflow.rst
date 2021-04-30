@@ -28,7 +28,7 @@ Setting up Accounts on Testnet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 We recommended starting your integration by using the `Casper testnet <https://docs.cspr.community/docs/testnet.html>`_.
 
-Accounts for the testnet can be created using the Rust Casper client or `the Block Explorer <https://testnet.cspr.live/#/>`_.
+Accounts for the testnet can be created using the Rust Casper client or `the Block Explorer <https://clarity-testnet-old.make.services/#/>`_.
 
 You need to create one account for the source of the transfer and one for the target account.
 
@@ -45,13 +45,13 @@ Execute the following command to generate your keys:
 
 The above command will create three files:
 
-1. ``secret_key.pem`` - PEM encoded secret key)
-2. ``public_key.pem`` - PEM encoded public key)
-3. ``public_key_hex`` - Hex encoded string of the public key)
+1. ``secret_key.pem`` - PEM encoded secret key
+2. ``public_key.pem`` - PEM encoded public key
+3. ``public_key_hex`` - Hash of the public key that is stored in the blockchain
 
 **Important Note**: SAVE your keys to a safe place, preferably offline.
 
-Next, go to `the Block Explorer <https://testnet.cspr.live/#/>`_ to upload your public key. Using the Signer, upload the *public_key.pem* file.
+Next, go to `the Block Explorer <https://clarity-testnet-old.make.services/#/>`_ to upload your public key. Log in using your Github or Google account. 
 
 **Important Note**: Do NOT, EVER, upload your secret key.
 
@@ -60,22 +60,20 @@ Now you are ready to fund your account and `request tokens <#fund-your-account>`
 Option 2: Account setup using the Block Explorer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Visit the Block Explorer at `<https://testnet.cspr.live/#/>`_ and select "Sign In".  You will be prompted to connect the Casper Signer. Then create your account keys in the Signer. Make sure you select the option to "Download".
+Start by creating an account on Clarity using the `Create Account <https://clarity-testnet-old.make.services/#/accounts>`_ link.
 
-Save these three files for each account and note the location where they are downloaded. We recommend moving your keys to a safe location, preferably offline.
+Save these three files for each account and note the location where they are downloaded. We recommend moving your keys to a safe location, preferrably offline.
 
 1. ``<Account-Name>_secret_key.pem`` - PEM encoded secret key
 2. ``<Account-Name>_public_key.pem`` - PEM encoded public key
-3. ``<Account-Name>_public_key_hex`` - Hex encoded string of the public key
-4. ``<Account-Hash>_account_hash`` - Hash of the public key that is stored in the blockchain. 
+3. ``<Account-Name>_public_key_hex`` - Hash of the public key that is stored in the blockchain
 
-**Note**: You will need the hex-encoded string of the public key. Obtain the string by reading the ``<Account-Name>`` _public_key_hex file.
-**Note**: You need the account hash in order to verify your account balance when querying the blockchain later.
+**Note**: You need the account hash (`<Account-Name>_public_key_hex`) in order to verify your account balance when querying the blockchain later.
 
 Fund your Account
 ^^^^^^^^^^^^^^^^^
 
-Next, you need to fund the source account using the ``[Request tokens]`` button on the `Faucet Page <https://clarity-testnet-old.make.services>`_ to receive tokens.
+Next, you need to fund the source account using the ``[Request tokens]`` button on the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to receive tokens.
 
 Acquire Node IP Address
 ^^^^^^^^^^^^^^^^^^^^^^^
