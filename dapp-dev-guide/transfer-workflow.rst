@@ -56,7 +56,7 @@ Execute the following command to generate your keys:
 
     casper-client keygen .
 
-The above command will create three files:
+The above command will create three files in the current working directory:
 
 1. ``secret_key.pem`` - PEM encoded secret key
 2. ``public_key.pem`` - PEM encoded public key
