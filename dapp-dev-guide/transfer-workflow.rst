@@ -949,7 +949,7 @@ The following command lists all the JSON-RPC calls that the node supports:
 
 ::
 
-    casper-client list-rpcs
+    casper-client list-rpcs --node-address http://<peer-ip-address>:7777
 
 The endpoint returns an OpenRPC compliant document that describes all the JSON-RPC calls available and provides examples for the RPCs. Please be sure to query this specific endpoint as it provides up-to-date information on interacting with the RPC endpoint.
 
