@@ -16,15 +16,20 @@ To follow the steps in this document, you will need:
 The Rust Casper Client
 ^^^^^^^^^^^^^^^^^^^^^^
 
-In this document, we will use the Rust Casper client to transfer tokens. You can find the client in the `casper-node repository <https://github.com/casper-network/casper-node/tree/release-1.0.0/client>`_. Use these commands to install it:
+In this document, we will use the Rust Casper client to transfer tokens. You can find the client in the `casper-node repository <https://github.com/casper-network/casper-node/tree/release-1.0.0/client>`_. 
+
+On Linux, you can run this command to install the Casper client:
 
 .. code-block:: bash
 
-    $ git clone https://github.com/casper-network/casper-node
-    $ cd casper-node
-    $ git checkout release-1.0.0
-    $ cd client
-    $ cargo run --release -- help
+    $ cargo install casper-client
+
+On macOS and Ubuntu, you need to run these commands to install the Casper client using a specific nightly version of the compiler:
+
+.. code-block:: bash
+
+  $ rustup toolchain install nightly 
+  $ cargo +nightly install casper-client
 
 The Casper client can print out `help` information, which provides an up-to-date list of supported commands. 
 
