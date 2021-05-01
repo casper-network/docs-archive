@@ -71,6 +71,8 @@ Next, go to `the Block Explorer <https://clarity-testnet-old.make.services/#/>`_
 
 Now you are ready to fund your account and `request tokens <#fund-your-account>`_.
 
+**Important Note**: Responses from the node may contain ``AccountHashes`` instead of the direct hex encoded public key. Use the ``account-address`` command in the Rust client to generate the account hash using a hex-encoded public key.
+
 Option 2: Account setup using the Block Explorer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
