@@ -106,7 +106,7 @@ You also have the option to run your own un-bonded peer on the network. Follow t
 Transfer Funds
 ^^^^^^^^^^^^^^
 
-Clients can communicate with nodes on the network via JSON-RPC requests sent to a node's RPC endpoint ``http://<peer-ip-address>:7777/rpc``. JSON-RPC requests include transfers which are a special type of deploy.
+Clients can communicate with nodes on the network via JSON-RPC requests sent to a node's RPC endpoint ``http://<peer-ip-address>:7777``. JSON-RPC requests include transfers which are a special type of deploy.
 
 The ``transfer`` command below demonstrates how to transfer from a source account to a target account using the Rust client by sending a request to the selected node's RPC endpoint.
 
@@ -128,7 +128,7 @@ Important fields in the request:
 
     casper-client transfer \
         --id 1234511111 \
-        --node-address http://<peer-ip-address>:7777/rpc \
+        --node-address http://<peer-ip-address>:7777 \
         --amount <amount-to-transfer> \
         --secret-key <source-account-secret-key>.pem \
         --chain-name casper \
@@ -262,7 +262,7 @@ There are two fields in this response that interest us:
 
     casper-client get-deploy \
           --id 1234522222 \
-          --node-address http://<peer-ip-address>:7777/rpc \
+          --node-address http://<peer-ip-address>:7777 \
           <deploy-hash>
 
 .. raw:: html
@@ -510,7 +510,7 @@ There is one field in the response that interests us:
 
     casper-client get-block \
           --id 1234533333 \
-          --node-address http://<peer-ip-address>:7777/rpc \
+          --node-address http://<peer-ip-address>:7777 \
           --block-identifier <block-hash> \
 
 .. raw:: html
@@ -617,7 +617,7 @@ There is one field in the response that interests us:
 
     casper-client query-state \
       --id 12344444 \
-      --node-address http://<peer-ip-address>:7777/rpc \
+      --node-address http://<peer-ip-address>:7777 \
       --state-root-hash <state-root-hash> \
       --key <hex-encoded-source-account-public-key>
 
@@ -768,7 +768,7 @@ Important fields in the request:
 
     casper-client get-balance \
           --id 12346666 \
-          --node-address http://<peer-ip-address>:7777/rpc \
+          --node-address http://<peer-ip-address>:7777 \
           --state-root-hash <state-root-hash> \
           --purse-uref <source-account-purse-uref>
 
@@ -826,7 +826,7 @@ Important fields in the request:
 
     casper-client get-balance \
           --id 12347777 \
-          --node-address http://<peer-ip-address>:7777/rpc \
+          --node-address http://<peer-ip-address>:7777 \
           --state-root-hash <state-root-hash> \
           --purse-uref <target-account-purse-uref>
 
@@ -885,7 +885,7 @@ account hash, contract address hash, URef, transfer hash or deploy-info hash.
 
     casper-client query-state \
           --id 12348888 \
-          --node-address http://<peer-ip-address>:7777/rpc \
+          --node-address http://<peer-ip-address>:7777 \
           --state-root-hash <state-root-hash> \
           --key transfer-<address>
 
