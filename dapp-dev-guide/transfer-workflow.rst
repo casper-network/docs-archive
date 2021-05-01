@@ -22,26 +22,26 @@ On Linux, you can run this command to install the Casper client:
 
 .. code-block:: bash
 
-    $ cargo install casper-client
+    cargo install casper-client
 
 On macOS and Ubuntu, you need to run these commands to install the Casper client using a specific nightly version of the compiler:
 
 .. code-block:: bash
 
-  $ rustup toolchain install nightly 
-  $ cargo +nightly install casper-client
+  rustup toolchain install nightly 
+  cargo +nightly install casper-client
 
 The Casper client can print out `help` information, which provides an up-to-date list of supported commands. 
 
 .. code-block:: bash
 
-    $ casper-client --help
+    casper-client --help
 
 **Important**: For each command, you can use `help` to get the up-to-date arguments and descriptions:
 
 .. code-block:: bash
 
-    $ casper-client <command> --help
+    casper-client <command> --help
 
 Setting up Accounts on Testnet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -60,7 +60,7 @@ Execute the following command to generate your keys:
 
 .. code-block:: bash
 
-    $ casper-client keygen .
+    casper-client keygen .
 
 The above command will create three files:
 
@@ -126,7 +126,7 @@ Important fields in the request:
 
 ::
 
-    $ casper-client transfer \
+    casper-client transfer \
         --id 1234511111 \
         --node-address http://<peer-ip-address>:7777/rpc \
         --amount <amount-to-transfer> \
@@ -260,7 +260,7 @@ There are two fields in this response that interest us:
 
 ::
 
-    $ casper-client get-deploy \
+    casper-client get-deploy \
           --id 1234522222 \
           --node-address http://<peer-ip-address>:7777/rpc \
           <deploy-hash>
@@ -508,7 +508,7 @@ There is one field in the response that interests us:
 
 ::
 
-    $ casper-client get-block \
+    casper-client get-block \
           --id 1234533333 \
           --node-address http://<peer-ip-address>:7777/rpc \
           --block-identifier <block-hash> \
@@ -615,7 +615,7 @@ There is one field in the response that interests us:
 
 ::
 
-    $ casper-client query-state \
+    casper-client query-state \
       --id 12344444 \
       --node-address http://<peer-ip-address>:7777/rpc \
       --state-root-hash <state-root-hash> \
@@ -692,7 +692,7 @@ Important fields in the request:
 
 ::
 
-    $ casper-client query-state \
+    casper-client query-state \
           --id 123455555 \
           --state-root-hash <state-root-hash> \
           --key <hex-encoded-target-account-public-key>
@@ -766,7 +766,7 @@ Important fields in the request:
 
 ::
 
-    $ casper-client get-balance \
+    casper-client get-balance \
           --id 12346666 \
           --node-address http://<peer-ip-address>:7777/rpc \
           --state-root-hash <state-root-hash> \
@@ -824,7 +824,7 @@ Important fields in the request:
 
 ::
 
-    $ casper-client get-balance \
+    casper-client get-balance \
           --id 12347777 \
           --node-address http://<peer-ip-address>:7777/rpc \
           --state-root-hash <state-root-hash> \
@@ -883,7 +883,7 @@ account hash, contract address hash, URef, transfer hash or deploy-info hash.
 
 ::
 
-    $ casper-client query-state \
+    casper-client query-state \
           --id 12348888 \
           --node-address http://<peer-ip-address>:7777/rpc \
           --state-root-hash <state-root-hash> \
@@ -950,7 +950,7 @@ The following command lists all the JSON-RPC calls that the node supports:
 
 ::
 
-    $ casper-client list-rpcs
+    casper-client list-rpcs
 
 The endpoint returns an OpenRPC compliant document that describes all the JSON-RPC calls available and provides examples for the RPCs. Please be sure to query this specific endpoint as it provides up-to-date information on interacting with the RPC endpoint.
 
