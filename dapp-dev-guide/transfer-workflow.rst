@@ -16,27 +16,26 @@ To follow the steps in this document, you will need:
 The Rust Casper Client
 ^^^^^^^^^^^^^^^^^^^^^^
 
-In this document, we will use the Rust Casper client to transfer tokens. You can find the client in the `casper-node repository <https://github.com/casper-network/casper-node/tree/release-1.0.0/client>`_. Use these commands to install it:
+In this document, we will use the Rust Casper client to transfer tokens. You can find the client on `crates.io <https://crates.io/crates/casper-client>`_. 
+
+Run the commands below to install the Casper client on most flavors of Linux and macOS. You will need the nightly version of the compiler.
 
 .. code-block:: bash
 
-    $ git clone https://github.com/casper-network/casper-node
-    $ cd casper-node
-    $ git checkout release-1.0.0
-    $ cd client
-    $ cargo run --release -- help
+  rustup toolchain install nightly 
+  cargo +nightly install casper-client
 
 The Casper client can print out `help` information, which provides an up-to-date list of supported commands. 
 
 .. code-block:: bash
 
-    $ casper-client --help
+    casper-client --help
 
 **Important**: For each command, you can use `help` to get the up-to-date arguments and descriptions:
 
 .. code-block:: bash
 
-    $ casper-client <command> --help
+    casper-client <command> --help
 
 Setting up Accounts on Testnet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,9 +54,9 @@ Execute the following command to generate your keys:
 
 .. code-block:: bash
 
-    $ casper-client keygen .
+    casper-client keygen .
 
-The above command will create three files:
+The above command will create three files in the current working directory:
 
 1. ``secret_key.pem`` - PEM encoded secret key
 2. ``public_key.pem`` - PEM encoded public key
@@ -103,13 +102,13 @@ You also have the option to run your own un-bonded peer on the network. Follow t
 Transfer Funds
 ^^^^^^^^^^^^^^
 
-Clients can communicate with nodes on the network via JSON-RPC requests sent to a node's RPC endpoint ``http://<peer-ip-address>:7777/rpc``. JSON-RPC requests include transfers which are a special type of deploy.
+Clients can communicate with nodes on the network via JSON-RPC requests sent to a node's RPC endpoint ``http://<peer-ip-address>:7777``. JSON-RPC requests include transfers which are a special type of deploy.
 
 The ``transfer`` command below demonstrates how to transfer from a source account to a target account using the Rust client by sending a request to the selected node's RPC endpoint.
 
 You can use the optional ``id`` field in the request to tag the transaction and to correlate it to your back-end storage. For example, you might store transactions in a database in a Transaction table. The primary key of this table could be a TransactionID. You can set the ``id`` in the transfer request below to be the TransactionID from your database table. This way you can use the optional ``id`` field to identify and track transactions in your platform.
 
-Important fields in the request:
+**Important request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
@@ -123,19 +122,25 @@ Important fields in the request:
 
 ::
 
-    $ casper-client transfer \
+    casper-client transfer \
         --id 1234511111 \
-        --node-address http://<peer-ip-address>:7777/rpc \
+        --node-address http://<peer-ip-address>:7777 \
         --amount <amount-to-transfer> \
         --secret-key <source-account-secret-key>.pem \
         --chain-name casper \
         --payment-amount 10000 \
         --target-account <hex-encoded-target-account-public-key>
 
+**Important response fields:**
+
+- ``"result"."deploy_hash"`` - the address of the executed transfer, needed to look up additional information about the transfer
+
+**Note**: Save the returned `deploy_hash` from the output to query information about the transfer deploy later.
+
 .. raw:: html
 
     <details>
-    <summary>A JSON-RPC request and response are generated.</summary>
+    <summary>Explore the JSON-RPC request and response generated.</summary>
 
 **JSON-RPC Request**:
 
@@ -234,7 +239,6 @@ Important fields in the request:
     </details>
 
 |
-**Note**: Save the returned `deploy_hash` from the output to query information about the transfer deploy later.
 
 Deploy Status
 ~~~~~~~~~~~~~
@@ -243,29 +247,30 @@ Once a transaction (deploy) has been submitted to the network, it is possible to
 
 If the ``execution_results`` in the output are null, the transaction hasn't run yet. Transactions are finalized upon execution.
 
-Important fields in the request:
+**Important request fields:**
 
 - ``id`` - <STRING OR INTEGER> JSON-RPC identifier, applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT>Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 
-There are two fields in this response that interest us:
-
-1. ``"result"."execution_results"[0]."transfers[0]"`` - the address of the executed transfer that the source account initiated. We will use it to look up additional information about the transfer
-2. ``"result"."execution_results"[0]."block_hash"`` - contains the block hash of the block that included our transfer. We will require the `state_root_hash` of this block to look up information about the accounts and their balances
-
-**Note**: Transfer addresses use a ``transfer-`` string prefix.
-
 ::
 
-    $ casper-client get-deploy \
+    casper-client get-deploy \
           --id 1234522222 \
-          --node-address http://<peer-ip-address>:7777/rpc \
+          --node-address http://<peer-ip-address>:7777 \
           <deploy-hash>
+
+
+**Important response fields:**
+
+- ``"result"."execution_results"[0]."transfers[0]"`` - the address of the executed transfer that the source account initiated. We will use it to look up additional information about the transfer
+- ``"result"."execution_results"[0]."block_hash"`` - contains the block hash of the block that included our transfer. We will require the `state_root_hash` of this block to look up information about the accounts and their balances
+
+**Note**: Transfer addresses use a ``transfer-`` string prefix.
 
 .. raw:: html
 
     <details>
-    <summary>A JSON-RPC request and response are generated.</summary>
+    <summary>Explore the JSON-RPC request and response generated.</summary>
 
 **JSON-RPC Request**:
 
@@ -493,27 +498,27 @@ State Root Hash
 
 We will use the ``block_hash`` to query and retrieve the block that contains our deploy. Afterward, we will retrieve the root hash of the global state trie for this block, also known as the block's ``state_root_hash``. We will use the ``state_root_hash`` to look up various values, like the source and destination account and their balances.
 
-Important fields in the request:
+**Important request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 - ``block-identifier`` - <HEX STRING OR INTEGER> Hex-encoded block hash or height of the block. If not given, the last block added to the chain as known at the given node will be used
 
-There is one field in the response that interests us:
-
-- ``"result"."block"."header"."state_root_hash"`` - contains the root hash of the global state trie for this block
-
 ::
 
-    $ casper-client get-block \
+    casper-client get-block \
           --id 1234533333 \
-          --node-address http://<peer-ip-address>:7777/rpc \
+          --node-address http://<peer-ip-address>:7777 \
           --block-identifier <block-hash> \
+
+**Important response fields:**
+
+- ``"result"."block"."header"."state_root_hash"`` - contains the root hash of the global state trie for this block
 
 .. raw:: html
 
     <details>
-    <summary>A JSON-RPC request and response are generated.</summary>
+    <summary>Explore the JSON-RPC request and response generated.</summary>
 
 **JSON-RPC Request**:
 
@@ -599,29 +604,29 @@ Query the Source Account
 
 Next, we will query for information about the ``Source`` account, using the global-state hash of the block containing our transfer and the public key of the target account.
 
-Important fields in the request:
+**Important request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 - ``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root
 - ``key`` - <FORMATTED STRING or PATH> The base key for the query. This must be a properly formatted public key, account hash, contract address hash, URef, transfer hash or deploy-info hash.
 
-There is one field in the response that interests us:
-
-- ``"result"."stored_value"."Account"."main_purse"`` - the address of the main purse containing the sender’s tokens. This purse is the source of the tokens transferred in this example
-
 ::
 
-    $ casper-client query-state \
+    casper-client query-state \
       --id 12344444 \
-      --node-address http://<peer-ip-address>:7777/rpc \
+      --node-address http://<peer-ip-address>:7777 \
       --state-root-hash <state-root-hash> \
       --key <hex-encoded-source-account-public-key>
+
+**Important response fields:**
+
+- ``"result"."stored_value"."Account"."main_purse"`` - the address of the main purse containing the sender’s tokens. This purse is the source of the tokens transferred in this example
 
 .. raw:: html
 
     <details>
-    <summary>A JSON-RPC request and response are generated.</summary>
+    <summary>Explore the JSON-RPC request and response generated.</summary>
 
 **JSON-RPC Request**:
 
@@ -681,7 +686,7 @@ Query the Target Account
 
 We will repeat the previous step to query information about the target account. 
 
-Important fields in the request:
+**Important request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root
@@ -689,7 +694,7 @@ Important fields in the request:
 
 ::
 
-    $ casper-client query-state \
+    casper-client query-state \
           --id 123455555 \
           --state-root-hash <state-root-hash> \
           --key <hex-encoded-target-account-public-key>
@@ -697,7 +702,7 @@ Important fields in the request:
 .. raw:: html
 
     <details>
-    <summary>A JSON-RPC request and response are generated.</summary>
+    <summary>Explore the JSON-RPC request and response generated.</summary>
 
 **JSON-RPC Request**:
 
@@ -754,7 +759,7 @@ Get Source Account Balance
 
 Now that we have the source purse address, we can get its balance using the ``get-balance`` command. In the following sample output, the balance of the source account is 5000000000 motes.
 
-Important fields in the request:
+**Important request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
@@ -763,16 +768,16 @@ Important fields in the request:
 
 ::
 
-    $ casper-client get-balance \
+    casper-client get-balance \
           --id 12346666 \
-          --node-address http://<peer-ip-address>:7777/rpc \
+          --node-address http://<peer-ip-address>:7777 \
           --state-root-hash <state-root-hash> \
           --purse-uref <source-account-purse-uref>
 
 .. raw:: html
 
     <details>
-    <summary>A JSON-RPC request and response are generated.</summary>
+    <summary>Explore the JSON-RPC request and response generated.</summary>
 
 **JSON-RPC Request**:
 
@@ -812,7 +817,7 @@ Get Target Account Balance
 
 Similarly, now that we have the address of the target purse, we can get its balance. 
 
-Important fields in the request:
+**Important request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
@@ -821,16 +826,16 @@ Important fields in the request:
 
 ::
 
-    $ casper-client get-balance \
+    casper-client get-balance \
           --id 12347777 \
-          --node-address http://<peer-ip-address>:7777/rpc \
+          --node-address http://<peer-ip-address>:7777 \
           --state-root-hash <state-root-hash> \
           --purse-uref <target-account-purse-uref>
 
 .. raw:: html
 
     <details>
-    <summary>A JSON-RPC request and response are generated.</summary>
+    <summary>Explore the JSON-RPC request and response generated.</summary>
 
 **JSON-RPC Request**:
 
@@ -870,26 +875,25 @@ Query Transfer Details
 
 We will use the ``transfer-<address>`` to query more details about the transfer.
 
-Important fields in the request:
+**Important request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 - ``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root
-- ``key`` - <FORMATTED STRING or PATH> The base key for the query. This must be a properly formatted public key,
-account hash, contract address hash, URef, transfer hash or deploy-info hash.
+- ``key`` - <FORMATTED STRING or PATH> The base key for the query. This must be a properly formatted public key, account hash, contract address hash, URef, transfer hash or deploy-info hash.
 
 ::
 
-    $ casper-client query-state \
+    casper-client query-state \
           --id 12348888 \
-          --node-address http://<peer-ip-address>:7777/rpc \
+          --node-address http://<peer-ip-address>:7777 \
           --state-root-hash <state-root-hash> \
           --key transfer-<address>
 
 .. raw:: html
 
     <details>
-    <summary>A JSON-RPC request and response are generated.</summary>
+    <summary>Explore the JSON-RPC request and response generated.</summary>
 
 **JSON-RPC Request**:
 
@@ -947,7 +951,7 @@ The following command lists all the JSON-RPC calls that the node supports:
 
 ::
 
-    $ casper-client list-rpcs
+    casper-client list-rpcs --node-address http://<peer-ip-address>:7777
 
 The endpoint returns an OpenRPC compliant document that describes all the JSON-RPC calls available and provides examples for the RPCs. Please be sure to query this specific endpoint as it provides up-to-date information on interacting with the RPC endpoint.
 
