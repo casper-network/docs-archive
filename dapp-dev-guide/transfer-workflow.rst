@@ -106,6 +106,10 @@ Clients can communicate with nodes on the network via JSON-RPC requests sent to 
 
 The ``transfer`` command below demonstrates how to transfer from a source account to a target account using the Rust client by sending a request to the selected node's RPC endpoint.
 
+You can use the optional ``transfer-id`` field in the request to tag the transaction and to correlate it to your back-end storage. For example, you might store transactions in a database in a Transaction table. The primary key of this table could be a TransactionID. You can set the ``transfer-id`` in the transfer request below to be the TransactionID from your database table. This way you can use the optional ``transfer-id`` field to identify and track transactions in your platform.
+
+**Note**: ``transfer-id`` is a ``u64`` field and can be set using the optional ``--transfer-id`` flag in the example command below.
+
 **Important request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
