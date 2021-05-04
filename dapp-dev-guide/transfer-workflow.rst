@@ -12,6 +12,8 @@ To follow the steps in this document, you will need:
 1. A compatible client or SDK such as the `JavaScript SDK <https://www.npmjs.com/package/casper-client-sdk>`_, `Java SDK <https://github.com/cnorburn/casper-java-sdk>`_, or GoLang SDK (location forthcoming)
 2. The public key (hex) of 2 accounts (one source account, one target account)
 3. A node RPC endpoint to send the transaction
+4. The transfer amount needs to be 2.5 CSPR or more
+5. The transfer will cost 0.0001 CSPR (10000 motes)  
 
 The Rust Casper Client
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -106,6 +108,11 @@ Clients can communicate with nodes on the network via JSON-RPC requests sent to 
 
 The ``transfer`` command below demonstrates how to transfer from a source account to a target account using the Rust client by sending a request to the selected node's RPC endpoint.
 
+**Transfer Requirements**:
+
+1. Each transfer amount needs to be 2.5 CSPR or more
+2. Each transfer costs 0.0001 CSPR (10000 motes). The transfer cost is fixed, and a different ``payment-amount`` will be ignored
+
 You can use the optional ``transfer-id`` field in the request to tag the transaction and to correlate it to your back-end storage. For example, you might store transactions in a database in a Transaction table. The primary key of this table could be a TransactionID. You can set the ``transfer-id`` in the transfer request below to be the TransactionID from your database table. This way you can use the optional ``transfer-id`` field to identify and track transactions in your platform.
 
 **Note**: ``transfer-id`` is a ``u64`` field and can be set using the optional ``--transfer-id`` flag in the example command below.
@@ -119,8 +126,7 @@ You can use the optional ``transfer-id`` field in the request to tag the transac
 - ``chain-name`` - Name of the chain, to avoid the deploy from being accidentally or maliciously included in a different chain
   - The *chain-name* for testnet is **casper-test**
   - The *chain-name* for mainnet is **casper**
-- ``payment-amount`` - If provided, uses the standard-payment system contract rather than custom payment Wasm. Token transfers of CSPR cost exactly 10000 gas
-- ``target-account`` - <HEX STRING> Hex-encoded public key of the account from which the main purse will be used as the target.
+- ``target-account`` - <HEX STRING> Hex-encoded public key of the account from which the main purse will be used as the target
 
 ::
 
@@ -130,7 +136,6 @@ You can use the optional ``transfer-id`` field in the request to tag the transac
         --amount <amount-to-transfer> \
         --secret-key <source-account-secret-key>.pem \
         --chain-name casper \
-        --payment-amount 10000 \
         --target-account <hex-encoded-target-account-public-key>
 
 **Important response fields:**
