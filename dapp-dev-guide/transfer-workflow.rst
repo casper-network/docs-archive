@@ -127,6 +127,7 @@ You can use the optional ``transfer-id`` field in the request to tag the transac
   - The *chain-name* for testnet is **casper-test**
   - The *chain-name* for mainnet is **casper**
 - ``target-account`` - <HEX STRING> Hex-encoded public key of the account from which the main purse will be used as the target
+- ``transfer-id`` <64-BIT INTEGER> user-defined transfer id
 
 ::
 
