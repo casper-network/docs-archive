@@ -11,7 +11,7 @@ There are a few pre-requisites to doing this:
 
 * A Client that communicates with the network
 * The private key for the account that pays for the deployment
-* Token to pay for the deployment on the network in the account associated with the private key.
+* Token to pay for the deployment on the network in the account associated with the private key..
 
 This section will help you get set up with each pre-requisite.
 
