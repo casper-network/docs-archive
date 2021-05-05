@@ -113,14 +113,14 @@ The ``transfer`` command below demonstrates how to transfer from a source accoun
 1. Each transfer amount needs to be 2.5 CSPR or more
 2. Each transfer costs 0.0001 CSPR (10000 motes). The transfer cost is fixed, and a different ``payment-amount`` will be ignored
 
-You can use the optional ``transfer-id`` field in the request to tag the transaction and to correlate it to your back-end storage. For example, you might store transactions in a database in a Transaction table. The primary key of this table could be a TransactionID. You can set the ``transfer-id`` in the transfer request below to be the TransactionID from your database table. This way you can use the optional ``transfer-id`` field to identify and track transactions in your platform.
+When sending a transfer, **use the required ``transfer-id`` field in the request to identify and track transactions** in your platform. For example, you might store transactions in a database in a Transaction table. The primary key of this table could be a TransactionID. You can set the ``transfer-id`` in the transfer request below to be the TransactionID from your database table. This way, you can use the ``transfer-id`` field to tag the transaction and correlate it to your back-end storage.
 
-**Note**: ``transfer-id`` is a ``u64`` field and can be set using the optional ``--transfer-id`` flag in the example command below.
+**Note**: ``transfer-id`` is a ``u64`` field and can be set using the required ``--transfer-id`` flag in the example command below.
 
 **Important request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
-- ``transfer-id`` - <64-BIT INTEGER> Optional user-defined transfer id
+- ``transfer-id`` - <64-BIT INTEGER> Required user-defined transfer id
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 - ``amount`` - <512-BIT INTEGER> The number of motes to transfer
 - ``secret-key`` - Path to secret key file
