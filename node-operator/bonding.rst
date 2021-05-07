@@ -2,8 +2,8 @@
    :format: html
 
 
-Bonding
-=======
+Bonding to the Network
+======================
 
 It is recommended that a bonding request be sent once the node has completed the synchronization process. Bonding in Casper takes
 place through the auction contract via the ``add_bid.wasm`` contract. The auction runs for a future era, every era. The Chainspec specifies the number of slots available, and the auction will take the top N slots and create the validator set for the future era.

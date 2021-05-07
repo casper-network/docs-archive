@@ -1,16 +1,70 @@
 
-Basic Node Setup
-================
+Setting up a Node
+=================
 
+This document describes the components and processes needed to set up a node on the Casper Network. For a quick-start guide, follow the `Casper How-To Guides <https://docs.cspr.community/>`_ or the video tutorial below. In addition, we recommend reviewing the documentation below to understand how a Casper node is structured and how it functions.
+  
+Video Tutorial
+^^^^^^^^^^^^^^
+
+To get started with a brief video, the following tutorial walks through setting up a validator node on the *casper-test* network using Ubuntu 20.04. This video tutorial complements this documentation, as you will be able to see the expected commands and output. 
+
+.. raw:: html 
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed?v=BN6C4C1T_TY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Prerequisites
+^^^^^^^^^^^^^
+#. Add the Casper repository to *apt* in Ubuntu using these commands:
+   
+.. code-block:: bash
+
+    echo "deb https://repo.casperlabs.io/releases" bionic main | sudo tee -a /etc/apt/sources.list.d/casper.list
+    curl -O https://repo.casperlabs.io/casper-repo-pubkey.asc
+    sudo apt-key add casper-repo-pubkey.asc
+    sudo apt update
+
+Installing the Node
+^^^^^^^^^^^^^^^^^^^
+To install the Casper node software, you need to install the ``casper-node-launcher`` and the ``casper-client`` with these commands:
+
+.. code-block:: bash
+
+   sudo apt install casper-node-launcher -y
+   sudo apt install casper-client -y
+   
+   
 Casper Node Launcher
---------------------
+~~~~~~~~~~~~~~~~~~~~
+The ``casper-node-launcher`` is a binary which runs and upgrades the *casper-node* of the Casper Network. The source code is available here: https://github.com/casper-network/casper-node-launcher.
 
-The node software is run from the ``casper-node-launcher`` package. This can be installed with a Debian package which also
-creates the Casper user, creates directory structures and sets up a *systemd* unit and *logrotate*.
+On startup, the launcher either tries to read its previously cached state from disk, or assumes a fresh start. On a fresh start, the launcher searches for the lowest installed version of *casper-node* and starts running it in validator mode.
 
-The casper-node-launcher Debian package can be obtained from https://bintray.com/casperlabs/debian/casper-node-launcher.
+The installation of the ``casper-node-launcher`` creates the Casper user and the necessary directory structures. It also sets up a *systemd* unit and *logrotate*.
 
-You can also build from source: https://github.com/CasperLabs/casper-node-launcher. However, all of the setup and pull of casper-node releases will be manual.
+Client Installation
+~~~~~~~~~~~~~~~~~~~
+
+A Rust client called ``casper-client`` needs to be installed from https://crates.io/crates/casper-client.
+
+Run the command below to install the Casper client on most flavors of Linux.
+
+.. code-block:: bash
+
+    sudo apt install casper-client -y
+
+The Casper client can print out `help` information, which provides an up-to-date list of supported commands. 
+
+.. code-block:: bash
+
+    casper-client --help
+
+For each command, you can also use `help` to get the up-to-date arguments and descriptions:
+
+.. code-block:: bash
+
+    casper-client <command> --help
+
 
 File Locations
 ^^^^^^^^^^^^^^
@@ -93,10 +147,10 @@ This is the location for larger and variable data for the ``casper-node``, organ
         * **unit_\*** - The node creates one of these files per era
 
 
-Upgrade Operation
-^^^^^^^^^^^^^^^^^
+Upgrading the Node
+^^^^^^^^^^^^^^^^^^
 
-The ``chainspec.toml`` contains a section to indicate what era the given ``casper-node`` version should start running.
+The ``chainspec.toml`` contains a section indicating what era the given ``casper-node`` version should start running.
 
 .. code-block::
 
@@ -104,18 +158,16 @@ The ``chainspec.toml`` contains a section to indicate what era the given ``caspe
     # This protocol version becomes active at the start of this era.
     era_id = 0
 
-At every block finalization, the ``casper-node`` looks for newly configured versions.  When a new version is configured,
-the running node will look at future era_id in the ``chainspec.toml`` file.  This will be the era before where the current
-casper-node will cleanly shut down.
+At every block finalization, the ``casper-node`` looks for newly configured versions.  When a new version is configured, the running node looks at the future era_id in the ``chainspec.toml`` file.  This will be the era before where the current ``casper-node`` will cleanly shut down.
 
-The ``casper-node-launcher`` will detect a clean exit 0 condition and start the next version ``casper-node``.
+The ``casper-node-launcher`` will detect a clean exit 0 condition and start the next version of the ``casper-node``.
 
-You can choose to build from source. If you opt to do this, please ensure that the correct software version (tag) is used.
+If you choose to build `from source <https://github.com/casper-network/casper-node-launcher>`_, please ensure that the correct software version (tag) is used.
 
-Node Version Installation
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Installing Specific Node Versions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Included with ``casper-node-launcher`` debian package are two scripts to help with installing ``casper-node`` versions.
+Included with the ``casper-node-launcher`` package are two scripts to help with installing ``casper-node`` versions.
 
 ``/etc/casper/pull_casper_node_version.sh`` will pull ``bin.tar.gz`` and ``config.tar.gz`` from genesis.casperlabs.io.
 
@@ -133,57 +185,63 @@ and possibly ``accounts.csv`` and other files.
 This will remove the arcive files and run ``/etc/casper/config_from_example.sh 1_0_2`` to create a
 ``config.toml`` from the ``config-example.toml``.
 
-Client Installation
-^^^^^^^^^^^^^^^^^^^
 
-The ``casper-client`` can be installed from https://bintray.com/casperlabs/debian/casper-client.  Download and install
-the correct version using ``sudo apt install``.
+Creating Keys
+^^^^^^^^^^^^^
 
-Create Keys
-^^^^^^^^^^^
+The Rust client generates keys via the ``keygen`` command.  The process generates two *.pem* files and one *text* file.
 
-The Rust client generates keys via the ``keygen`` command.  The process generates 2 *pem* files and 1 *text* file.
 To learn about options for generating keys, include ``--help`` when running the ``keygen`` command.
 
 .. code-block:: bash
 
    sudo casper-client keygen /etc/casper/validator_keys
 
-More about keys and key generation can be found in ``/etc/casper/validator_keys/README.md`` if ``casper-node-lancher``
-was installed from the Debian package.
+More about keys and key generation can be found in the ``/etc/casper/validator_keys/README.md`` if the ``casper-node-lancher`` was installed using *apt* in Ubuntu.
 
-Config File
------------
 
-One ``config.toml`` file will need to exist for each ``casper-node`` version installed.  It should be located in the
-``/etc/casper/[m_n_p]/`` directory where ``m_n_p`` is the current semantic version.  This can be created from ``config-example.toml`` by
-using ``/etc/casper/config_from_example.sh [m_n_p]`` where ``[m_n_p]`` is replaced current version with underscores.
+Configuring the Node
+^^^^^^^^^^^^^^^^^^^^
 
-Below are some fields you may find in the ``config.toml`` that you may want or need to adjust.
+A ``config.toml`` file needs to exist for each `casper-node` version installed.  This configuration file should be located in the ``/etc/casper/[m_n_p]/`` directory, where `m_n_p` is the current semantic version.  The ``config.toml`` can be created from ``config-example.toml`` generated by running the following script. Replace ``[m_n_p]`` with the current version, using underscores:
+
+.. code-block:: bash
+
+   /etc/casper/config_from_example.sh [m_n_p]
+
+Below are some fields you may find in the ``config.toml`` you may need to adjust.
+
 
 Trusted Hash for Synchronizing
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Casper network is a permissionless, proof of stake network - which implies that validators can come and go from the network.  The implication is that, after a point in time, historical data could have less security if it is retrieved from ‘any node’ on the network.  Therefore, joining the network has to be from a trusted source, a bonded validator.  The system will start from the hash from a recent block and then work backward from that block to obtain the deploys and finalized blocks from the linear block store.  Here is the process to get the trusted hash:
+The Casper Network is a permissionless, Proof-of-Stake network, which implies that validators can come and go from the network.  The implication is that, after a point in time, historical data could have less security if it is retrieved from ‘any node’ on the network. Therefore, joining the network has to be from a trusted source, a bonded validator. The system will start from the hash from a recent block and then work backward from that block to obtain the deploys and finalized blocks from the linear block store. Here is the process to get the trusted hash:
 
-* Find a list of trusted validators.  
+* Find a list of trusted validators  
 * Query the status endpoint of a trusted validator ( http://[validator_id]:8888/status )
-* Obtain the hash of a block from the status endpoint.
-* Update the ``config.toml`` for the node to include the trusted hash. There is a field dedicated to this near the top of the file.
+* Obtain the hash of a block from the status endpoint
+* Update the ``config.toml`` for the node to include the trusted hash. There is a field dedicated to this near the top of the file
+
 
 Secret Keys
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 Provide the path to the secret keys for the node.  This is set to ``etc/casper/validator_keys/`` by default.
 
+
 Networking & Gossiping
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
-The node requires a publicly accessible IP address.  We do not recommend NAT at this time. Specify the public IP address of the node.
-If you use the ``config_from_example.sh`` external services are called to find your IP and this is inserted into the created ``config.toml``.
+The node requires a publicly accessible IP address.  We do not recommend NAT at this time. Specify the public IP address of the node. If you use the ``config_from_example.sh``, external services are called to find your IP, and this is inserted into the ``config.toml`` generated.
 
-Default values are specified in the file if you want to change them:
 
-* Specify the port that will be used for status  & deploys
+Ports and Known Addresses
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can update the following default port values specified in the ``config.toml`` file:
+
+* Specify the port that will be used for status & deploys
 * Specify the port used for networking 
-* Known_addresses - these are the bootstrap nodes. No need to change these.
+
+**Note**: known_addresses specify the bootstrap nodes, and there is no need to change these addresses.
+
