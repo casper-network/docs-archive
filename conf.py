@@ -89,7 +89,7 @@ html_theme = 'pydata_sphinx_theme'
 # html_theme = 'alabaster'
 # html_theme = 'press'
 
-html_logo = "assets/casperlabs_logo.svg"
+html_logo = "assets/CasperLabs_Logo_redblack.png"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
