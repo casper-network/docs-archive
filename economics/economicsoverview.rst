@@ -1,5 +1,5 @@
-Casper staking crib sheet
---------
+Casper Staking Guide
+--------------------
 
 The Casper network is a Proof-of-Stake blockchain that allows validators to stake the Casper native token CSPR on the network. Validators receive CSPR as an incentive for continuing to maintain and secure the network. CSPR rewards are distributed as blocks are validated into existence and organized into eras.
 
@@ -11,7 +11,7 @@ The Casper network is a Proof-of-Stake blockchain that allows validators to stak
           
 *Unbonding:* To detach from the Casper network takes 7 eras for both validators and delegators. Neither validators nor delegators receive rewards during the 7 eras required for unbonding, as they are not actively contributing to the network's security during that time.
 
-*Eras and block times:* An era on Casper is roughly 2 hours long. The block time on today's testnet is approximately two minutes. Casper's Highway protocol allows validators to propose blocks as quickly as network conditions allow, subject to a platform-wide limit that may be adjusted with upgrades. We anticipate block times to last between thirty seconds and eight minutes.
+*Eras and block times:* An era on Casper is roughly 2 hours long. The block time on today's testnet is approximately 1 minute. Casper's Highway protocol allows validators to propose blocks as quickly as network conditions allow, subject to a platform-wide limit that may be adjusted with upgrades. We anticipate block times to last between thirty seconds and eight minutes.
            
 *Block rewards:* Block time is orthogonal to rewards, so there is no precise reward per-block. The number of rewards is split proportionally among stakes and reduced for failure to participate in the protocol promptly.
 

@@ -13,7 +13,7 @@ Consensus before execution & basics of payment
 
 The Highway protocol in its mainnet implementation reaches consensus on a block *before* the block is executed. This introduces a subtle difference from platforms like Ethereum. Deploys sent to the Casper network can only be selected on the basis of claimed, rather than used, gas. Consequently, to incentivize user-side optimization and to prevent exhaustion of block space by poorly optimized deploys, the platform provides no refunds for unused gas.
 
-Additionally, because we allow complex payment code, there is a minimal amount of CSPR that must be present in the user account, to ensure that the payment computation is covered. Further balance checks may be introduced in the future.
+Additionally, a minimal amount of CSPR must be present in the user account, to ensure that the payment computation is covered. Further balance checks may be introduced in the future.
 
 Costs and limits
 ^^^^^^^^^^^^^^^^

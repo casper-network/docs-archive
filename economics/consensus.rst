@@ -96,7 +96,7 @@ Once a block has been proposed and enough time has passed, the history of messag
 Inactivity
 ^^^^^^^^^^
 
-Validators who send no messages during an entire era are marked as inactive and cease to participate in the auction until sending a special deploy that reactivates their bid.
+Validators who send no messages during an entire era are marked as inactive and cease to participate in the auction until they send a special deploy that reactivates their bid.
 
 Slashing
 ^^^^^^^^

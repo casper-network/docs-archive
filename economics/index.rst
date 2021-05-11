@@ -24,14 +24,10 @@ Agents (consensus layer)
 
 *Delegators* are users who participate in the platform's security by delegating their tokens to validators, which adds to their weight, and collecting a part of the rewards proportional to their delegations, net of a cut ("delegation rate") that is collected by the validator.
 
-*Operators* can be designated by validators to perform the computational tasks required by the protocol, with the validator's stake now vouching for the operator's correctness.
-
 Incentives (consensus layer)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *auction* determines the composition of the validator set for each era of the protocol. It is a "first-price" (winning bids become stakes) auction with a fixed number of spots, chosen to balance security with performance (generally, the platform will run slower with more validators). Because rewards are proportional to the stake, it is expected that this competitive mechanism will provide a powerful impetus for staking as many tokens as possible.
-
-*Slashing* ensures that the platform remains safe by burning all tokens staked by validators who equivocate.
 
 *Rewards* (per era) are issued to validators who perform, at their nominal pace, in such a way as to make timely progress on block finalization. These rewards are shared with delegators proportionally to their contributions, net of a cut taken by the validator.
 
@@ -64,9 +60,9 @@ The ecosystem layer encompasses dApp design and operation. CasperLabs maintains 
 Macroeconomy
 ------------
 
-Casper's macroeconomics refers to the activity in the cryptocurrency markets, where CSPR can be treated as one cryptoasset among many rather than a computational platform. Our token economics are different from those of "digital gold" tokens like Bitcoin, designed to be scarce. Our tokens are minted from a fixed starting basis, which is accounted for by tokens distributed to genesis validators, employees, community and held for future distributions. The total supply of tokens grows at a fixed annual percentage rate from this basis, net of slashed tokens.
+Casper's macroeconomics refers to the activity in the cryptocurrency markets, where CSPR can be treated as one cryptoasset among many rather than a computational platform. Our token economics are different from those of "digital gold" tokens like Bitcoin, designed to be scarce. Our tokens are minted from a fixed starting basis, which is accounted for by tokens distributed to genesis validators, employees, community and held for future distributions. The total supply of tokens grows at a fixed annual percentage rate from this basis.
 
-The inflationary nature of our macroeconomics has two significant advantages over enforced scarcity. Inflation incentivizes token holders to stake or delegate their tokens, a behavior we explicitly support with our delegation feature. Additionally, spending tokens on real economic activity on the platform is relatively more attractive to hoarding tokens in anticipation of speculative gain.
+The inflationary nature of our macroeconomics has two significant advantages over enforced scarcity. Inflation incentivizes token holders to stake or delegate their tokens, a behavior we explicitly support with our delegation feature. Additionally, because Casper is a general purpose computation platform, it is important to supply tokens for the support of real economic activity on the platform and to discourage hoarding tokens in expectation of speculative gain.
 
 .. toctree::
    :maxdepth: 2
