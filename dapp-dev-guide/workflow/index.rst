@@ -3,15 +3,17 @@ Workflows
 
 This section contains guides that highlight key features and capabilities of the Casper system.
 
-.. toctree::
+=================================================================  ==================================================================================
+  Title                                                            Description
+=================================================================  ==================================================================================
+`Direct Native Token Transfer <workflow/transfer-workflow.html>`_  A guide to performing a direct transfer of CSPR tokens from one account to another
+`Multi-Signatures for Deployment <workflow/setup.html>`_           A guide to setting up an account for two-party signature deploys
+=================================================================  ==================================================================================
 
+**Table of Contents**
+
+.. toctree::
+   :maxdepth: 2
+ 
    transfer-workflow
    setup
-
-
-================================================================  ================================================================================
-  Title                                                           Description
-================================================================  ================================================================================
-`Direct Native Token Transfer <workflow/transfer-workflow.html>`_ A guide to perform a direct transfer of CSPR token from one account to the other
-`Multi-signatures for Deployment <workflow/setup.html>`_          A guide to setup an account for two party signature deploys
-================================================================  =================================================================================
