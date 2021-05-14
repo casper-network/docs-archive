@@ -1,7 +1,8 @@
-Multi-Signature Setup
-=====================
+Two Party Multi-Signature
+==========================
 
-This document describes a workflow wherein an account can be configured to require multisig to send deploys to a Casper network.
+This guide details how an account can be configured to have a two party multi-signature scheme to send deploys.
+
 
 Requirements
 ^^^^^^^^^^^^
