@@ -1,8 +1,7 @@
-Two Party Multi-Signature
-==========================
+Multi-Signature Deploys
+=======================
 
-This guide details how an account can be configured to have a two party multi-signature scheme to send deploys.
-
+This guide details how you can configure an account to have a two-party multi-signature scheme for sending deploys.
 
 Requirements
 ^^^^^^^^^^^^
@@ -11,10 +10,13 @@ To follow the steps in this document, you will need:
 
 1. A compatible client or SDK such as the `JavaScript SDK <https://www.npmjs.com/package/casper-client-sdk>`_, `Java SDK <https://github.com/cnorburn/casper-java-sdk>`_, or GoLang SDK (location forthcoming)
 2. Two separate accounts
-    - Main account (MA), the account you own and will manage
-    - An Associated account (AA), the account which will sign deploys alongside your account in multsig, this account could be any third party with whom you wish to sign deploys. E.g the Casper association.
-3. A node RPC endpoint
-4. A contract to alter your account structure. <TODO-Link-Contract-Here>
+    - A **main account** (MA), the account you own and manage
+    - An **associated account** (AA), the account which can sign deploys alongside your account in a multi-signature deploy. This account could be any third party with whom you wish to sign deploys, e.g., the Casper Association
+3. A node RPC endpoint from the Casper network
+4. A contract to alter your account structure
+
+..
+  <TODO-Link-Contract-Above>
 
 The Rust Casper Client
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -114,7 +116,10 @@ You can get an IP address of a node on the network by visiting the `Peers Page <
 Example Contract
 ^^^^^^^^^^^^^^^^
 
-Retrieve the contract from the link and enter the contract directory. There will be a ``Makefile`` that will contain the build commands to compile the contract to WASM.
+..
+  TODO add a contract link below
+
+Retrieve the contract from this link and open the contract directory. You will find a ``Makefile`` that contains the build commands necessary to compile the contract to WASM.
 
 To build the contract run:
 
@@ -122,11 +127,7 @@ To build the contract run:
 
     make build-contract
 
-The compiled WASM will be saved to
-
-::
-
-    target/wasm32-unknown-unknown/release/contract.wasm
+The compiled WASM will be saved on this path: ``target/wasm32-unknown-unknown/release/contract.wasm``.
 
 
 Configuring the Main Account
@@ -135,25 +136,19 @@ Configuring the Main Account
 Action Thresholds
 ~~~~~~~~~~~~~~~~~
 
-Each account within a Casper network has action thresholds that manage permissions to deploy and manage the account.
-These action thresholds are termed as ``deployment`` and ``key_management`` respectively. Each threshold defines the minimum weight
-that one or a combination of one or more keys must have to either:
+Each account within a Casper Network has action thresholds that manage permissions to deploy and manage the account. These action thresholds are named ``deployment`` and ``key_management`` respectively. Each threshold defines the minimum weight that one or a combination of keys must have to either:
 
-1. Send a deploy to the network.
-2. Manage the account to edit the state of the keys within the account.
+1. Send a deploy to the network
+2. Manage the account to edit the state of the keys within the account
 
-In order to achieve multi-sig we require that the combined weight of the main-key and associated key is either greater than or equal to
-the ``deployment`` action-threshold.
-
-We can do this having the weight of each key be half the ``deployment`` threshold.
+To use the multi-signature (multi-sig) feature in Casper, we require that the *main key* and *associated key*'s combined weight is greater than or equal to the deployment threshold. We can do this by having each key's weight equal to half of the deployment threshold.
 
 Contract Description
 ~~~~~~~~~~~~~~~~~~~~~
 
-We can run a simple session contract that will execute within the context our main account. Below is body of the contract that will be compiled to WASM and then sent to the network as part of a deploy.
+We can run a simple session contract that will execute within the context of our main account. Below is the contract body that will be compiled to WASM and then sent to the network as part of a deploy.
 
-**Important Note**: The contract example will setup a very specific account configuration and is not a general purpose contract.
-
+**Important Note**: This contract example will set up a particular account configuration and is not a general-purpose contract.
 
 ::
 
@@ -183,20 +178,24 @@ We can run a simple session contract that will execute within the context our ma
     }
 
 
-In order to enforce ``multisig`` for our main account, the contract will execute **2** crucial steps:
+The contract will execute **2 crucial steps** to enforce the multi-sig feature for your main account:
 
 1. Add the associated key to the account with a weight ``1``
-2. Raise the ``action threshold`` for ``deployment`` to ``2`` such that the weight is split equally between both the main and associated account.
+2. Raise the ``action threshold`` for ``deployment`` to ``2``, such that the deploy weight is split equally between the main and associated account
 
-**Important Note**: The action thresholds for deploys cannot be greater than the action threshold for ``key management``. Therefore we raise the ``key management`` threshold to allow us to raise the ``deployment``
-threshold; by default both thresholds are set to ``1``
+**Important Note**: The action thresholds for deploys cannot be greater than the action threshold for ``key management``. Therefore we need to raise the ``key management`` threshold to raise the ``deployment`` threshold. By default, action thresholds are set to ``1``.
 
 Contract Execution
 ~~~~~~~~~~~~~~~~~~
 
-We execute the wasm that will alter the account to our specifications in one single deploy. We can send the deploy to the network using the Casperlabs rust client.
-The contract takes the account hash of the Associated as an argument labelled as ``deployment-account``. This argument can be passed using the ``--session-arg`` flag in the rust client.
-An example deployment is given below:
+Here is how you can execute the WASM file that will alter the account to your specifications in one single deploy. You have the option to send the deploy to the network using the Casper Rust client. There are a few fields that you need to fill in:
+
+1. ``node-address`` - An IP address of a node on the network (see `previous section <acquire-node-ip-address>`_)
+2. ``secret-key`` - The file name containing the secret key of the Main Account
+3. ``chain-name`` - The chain-name to the network where you wish to send the deploy (this example uses the Testnet)
+4. ``payment-amount`` - The cost of the deploy
+5. ``session-path`` - The path to the contract WASM
+6. ``session-arg`` - The contract takes the account hash of the Associated account as an argument labeled ``deployment-account``. You can pass this argument using the ``--session-arg`` flag in the Rust client
 
 ::
 
@@ -215,10 +214,10 @@ An example deployment is given below:
 
 **Note**: Save the returned ``deploy_hash`` from the output to query information about execution status.
 
-Confirming execution and Account status
+Confirming Execution and Account Status
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We can confirm that the contract executed successfully by using the deploy hash from the previous step.
+We can confirm that the contract was executed successfully by using the deploy hash from the previous step.
 
 ::
 
@@ -228,9 +227,9 @@ We can confirm that the contract executed successfully by using the deploy hash 
 
 **Important response fields:**
 
-- ``"result"."execution_results"[0]."block_hash"`` - contains the block hash of the block that included our deploy. We will require the `state_root_hash` of this block to look up information about the account and confirm whether the account has been setup correctly.
+- ``"result"."execution_results"[0]."block_hash"`` - contains the block hash of the block that included our deploy. We will require the `state_root_hash` of this block to look up information about the account and confirm whether the account has been set up correctly
 
-We will use the block_hash to query and retrieve the block that contains our deploy. Afterward, we will retrieve the root hash of the global state trie for this block, also known as the block’s state_root_hash. We will use the state_root_hash to look up the account.
+We will use the block_hash to query and retrieve the block that contains our deploy. Afterward, we will retrieve the root hash of the global state trie for this block, also known as the block’s state_root_hash. Finally, we will use the state_root_hash to look up the account.
 
 ::
 
@@ -252,7 +251,7 @@ We will use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Ma
     --state-root-hash <state-root-hash-from-block> \
     --key <hex-encoded-public-key-MA>
 
-**Output**
+**Example Output**
 
 ::
 
@@ -287,9 +286,9 @@ We will use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Ma
     }
 
 
-In the above example we can see that there are two keys listed within ``associated-keys``, these are the account hashes for the Associated Account, and the Main Account respectively.
-Each of the keys has a weight of ``1``, since the action threshold for ``deployment`` is set to ``2``, neither account would be able to sign and send a deploy individually.
-Thus to send the deploy from the Main account, the deploy would have to be signed by the secret keys of each account to reach the required threshold.
+In the above example, we can see two keys listed within the ``associated-keys`` section; these are the account hashes for the Associated Account and the Main Account, respectively.
+Each of the keys weights ``1``. Since the action threshold for ``deployment`` is set to ``2``, neither account is able to sign and send a deploy individually.
+Thus to send the deploy from the Main account, the deploy needs to be signed by the secret keys of each account to reach the required threshold.
 
-Details about various scenarios in which multiple associated keys can be setup is discusse in the examples section.
+Details about various scenarios in which multiple associated keys can be setup is discussed in the examples section.
 

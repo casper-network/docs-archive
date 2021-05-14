@@ -1,4 +1,4 @@
-Direct native Token Transfer
+Direct Native Token Transfer
 ============================
 
 This document describes a sample workflow for transferring tokens and verifying their transfer on a Casper network as of `Release-1.0.0 <https://github.com/CasperLabs/casper-node/tree/release-1.0.0>`_.
