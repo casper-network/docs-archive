@@ -190,7 +190,7 @@ Contract Execution
 
 Here is how you can execute the WASM file that will alter the account to your specifications in one single deploy. You have the option to send the deploy to the network using the Casper Rust client. There are a few fields that you need to fill in:
 
-1. ``node-address`` - An IP address of a node on the network (see `previous section <acquire-node-ip-address>`_)
+1. ``node-address`` - An IP address of a node on the network (see `previous section <#acquire-node-ip-address>`_)
 2. ``secret-key`` - The file name containing the secret key of the Main Account
 3. ``chain-name`` - The chain-name to the network where you wish to send the deploy (this example uses the Testnet)
 4. ``payment-amount`` - The cost of the deploy
@@ -290,5 +290,5 @@ In the above example, we can see two keys listed within the ``associated-keys`` 
 Each of the keys weights ``1``. Since the action threshold for ``deployment`` is set to ``2``, neither account is able to sign and send a deploy individually.
 Thus to send the deploy from the Main account, the deploy needs to be signed by the secret keys of each account to reach the required threshold.
 
-Details about various scenarios in which multiple associated keys can be setup is discussed in the examples section.
+Details about various scenarios in which multiple associated keys can be setup is discussed in `the examples section of the Multi-Signature Tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-sig/examples.html>`_.
 
