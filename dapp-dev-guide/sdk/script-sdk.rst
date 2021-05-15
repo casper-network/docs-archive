@@ -21,10 +21,12 @@ You can find basic examples for how to use this library in the ``test`` director
 
 Usage Examples
 ^^^^^^^^^^^^^^
-Here we outline a few of the essential tasks you can accomplish with the JavaScript SDK:
+In this section, we outline a couple of essential tasks you can accomplish with the JavaScript SDK:
 
-# Generating account keys to sign your deploys
-# Sending a transfer
+* Generating account keys
+* Sending a transfer
+
+For a complete implementation example, read the `Multi-Signature Tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-sig/index.html>`_, which uses the JavaScript SDK.
 
 Generating Account Keys
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -173,3 +175,7 @@ Then, you can reconstruct the deploy object using this function:
 .. code-block:: javascript
 
     const deployFromJson = DeployUtil.deployFromJson(jsonFromDeploy);
+
+Additional Resources
+~~~~~~~~~~~~~~~~~~~~
+If you are looking for additional examples, another great resource is the `BitGo JS implementation <https://github.com/BitGo/BitGoJS/tree/master/modules/account-lib/src/coin/cspr>`_.
