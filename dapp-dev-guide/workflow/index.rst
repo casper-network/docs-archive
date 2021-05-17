@@ -7,7 +7,7 @@ This section contains guides that highlight key features and capabilities of the
   Title                                                            Description
 =================================================================  ==================================================================================
 `Direct Native Token Transfer <transfer-workflow.html>`_           A guide to performing a direct transfer of CSPR tokens from one account to another
-`Multi-Signatures for Deployment <setup.html>`_                    A guide to setting up an account for two-party signature deploys
+`Two Party Multi-Signatures for Deployment <setup.html>`_          A guide to setting up an account for two-party signature deploys
 =================================================================  ==================================================================================
 
 **Table of Contents**

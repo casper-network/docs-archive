@@ -1,5 +1,5 @@
-Multi-Signature Deploys
-=======================
+Two Party Multi-Signature Deploys
+=================================
 
 This guide details how you can configure an account to have a two-party multi-signature scheme for sending deploys.
 
