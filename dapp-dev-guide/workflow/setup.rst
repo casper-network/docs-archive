@@ -15,8 +15,6 @@ To follow the steps in this document, you will need:
 3. A node RPC endpoint from the Casper network
 4. A contract to alter your account structure
 
-..
-  <TODO-Link-Contract-Above>
 
 The Rust Casper Client
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -117,7 +115,7 @@ Example Contract
 ^^^^^^^^^^^^^^^^
 
 ..
-  TODO add a contract link below
+  https://github.com/casper-ecosystem/two-party-multi-sig
 
 Retrieve the contract from this link and open the contract directory. You will find a ``Makefile`` that contains the build commands necessary to compile the contract to WASM.
 
