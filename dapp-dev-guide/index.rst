@@ -39,8 +39,8 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    execution-error-codes
    keys
    sdk/index
-   transfer-workflow
    tutorials/index
+   workflow/index
    getting-help
 
 ..
