@@ -94,7 +94,7 @@ Account Hashes and Public Keys
 
 To follow the steps you will require the ``AccountHash`` and the ``hex-encoded-public-key`` for each individual account. The rust client provides a command that will provide the account hash for a given public key.
 
-::
+.. code-block:: bash
 
     casper-client account-address --public-key <path-to-public-key-hex>/public_key_hex
 
@@ -114,16 +114,18 @@ You can get an IP address of a node on the network by visiting the `Peers Page <
 Example Contract
 ^^^^^^^^^^^^^^^^
 
-..
-  https://github.com/casper-ecosystem/two-party-multi-sig
+Retrieve the contract `from this link <https://github.com/casper-ecosystem/two-party-multi-sig>`_ and open the ``contract`` directory . 
 
-Retrieve the contract from this link and open the contract directory. You will find a ``Makefile`` that contains the build commands necessary to compile the contract to WASM.
+.. code-block:: bash
 
-To build the contract run:
+  git clone https://github.com/casper-ecosystem/two-party-multi-sig  
+  cd two-party-multi-sig/contract
 
-::
+You will find a ``Makefile`` that contains the build commands necessary to compile the contract to WASM. To build the contract, run:
 
-    make build-contract
+.. code-block:: bash
+
+  make build-contract
 
 The compiled WASM will be saved on this path: ``target/wasm32-unknown-unknown/release/contract.wasm``.
 
@@ -148,7 +150,7 @@ We can run a simple session contract that will execute within the context of our
 
 **Important Note**: This contract example will set up a particular account configuration and is not a general-purpose contract.
 
-::
+.. code-block:: rust
 
     #![no_main]
     use casper_contract::{
@@ -195,7 +197,7 @@ Here is how you can execute the WASM file that will alter the account to your sp
 5. ``session-path`` - The path to the contract WASM
 6. ``session-arg`` - The contract takes the account hash of the Associated account as an argument labeled ``deployment-account``. You can pass this argument using the ``--session-arg`` flag in the Rust client
 
-::
+.. code-block:: bash
 
     casper-client put-deploy \
     --node-address http://<peer-ip-address>:7777/rpc \
@@ -217,7 +219,7 @@ Confirming Execution and Account Status
 
 We can confirm that the contract was executed successfully by using the deploy hash from the previous step.
 
-::
+.. code-block:: bash
 
     casper-client get-deploy \
     --node-addres http://<peer-ip-address>:7777/rpc \
@@ -229,7 +231,7 @@ We can confirm that the contract was executed successfully by using the deploy h
 
 We will use the block_hash to query and retrieve the block that contains our deploy. Afterward, we will retrieve the root hash of the global state trie for this block, also known as the block’s state_root_hash. Finally, we will use the state_root_hash to look up the account.
 
-::
+.. code-block:: bash
 
     casper-client get-block \
     --node-address http://<peer-ip-address>:7777/rpc \
@@ -242,7 +244,7 @@ We will use the block_hash to query and retrieve the block that contains our dep
 
 We will use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Main account to query the network for the account and check its configuration.
 
-::
+.. code-block:: bash
 
     casper-client query-state \
     --node-address http://<peer-ip-address>:7777/rpc \
@@ -251,7 +253,7 @@ We will use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Ma
 
 **Example Output**
 
-::
+.. code-block:: json
 
     {
       "id": 1126043166167626077,
