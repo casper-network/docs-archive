@@ -114,14 +114,14 @@ You can get an IP address of a node on the network by visiting the `Peers Page <
 Example Contract
 ^^^^^^^^^^^^^^^^
 
-Retrieve the contract `from this link <https://github.com/casper-ecosystem/two-party-multi-sig>`_ and open the ``contract`` directory . 
+Retrieve the contract `from this link <https://github.com/casper-ecosystem/two-party-multi-sig>`_ and open the ``two-party-multi-sig`` directory. You will find a ``Makefile`` that contains the build commands necessary to compile the contract to WASM.
 
 .. code-block:: bash
-
+  
+  cd two-party-multi-sig
   git clone https://github.com/casper-ecosystem/two-party-multi-sig  
-  cd two-party-multi-sig/contract
 
-You will find a ``Makefile`` that contains the build commands necessary to compile the contract to WASM. To build the contract, run:
+ To build the contract, run the following command:
 
 .. code-block:: bash
 
