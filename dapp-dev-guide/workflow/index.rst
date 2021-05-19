@@ -17,3 +17,4 @@ This section contains guides that highlight key features and capabilities of the
  
    transfer-workflow
    two-party-multi-sig
+   delegate
