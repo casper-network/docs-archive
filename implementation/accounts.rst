@@ -8,13 +8,13 @@ Accounts
 Introduction
 ------------
 
-An *account* is a cryptographically secured gateway into the CasperLabs system
+An *account* is a cryptographically secured gateway into the Casper system
 used by entities outside the blockchain (e.g., off-chain components of
 blockchain-based applications, individual users). All user activity on the
-CasperLabs blockchain (i.e., “deploys”) must originate from an account. Each
+Casper blockchain (i.e., “deploys”) must originate from an account. Each
 account has its own context where it can locally store information (e.g.,
 references to useful contracts, metrics, aggregated data from other parts of the
-blockchain). Each account also has a “main purse” where it can hold CasperLabs
+blockchain). Each account also has a “main purse” where it can hold Casper
 tokens (see :ref:`Tokens <tokens-purses-and-accounts>` for more information).
 
 In this chapter we describe the permission model for accounts, their local
@@ -138,13 +138,12 @@ relevant to the user owning the account.
 Functions for interacting with an account
 -----------------------------------------
 
-The `CasperLabs rust library <https://crates.io/crates/casperlabs-contract-ffi>`__ contains several functions for working with the various account features:
+The `Casper Rust library <https://docs.rs/casper-contract/1.0.1/casper_contract/ext_ffi/index.html>`__ contains several functions for working with the various account features:
 
--  ``add_associated_key``
--  ``remove_associated_key``
--  ``update_associated_key``
--  ``set_action_threshold``
--  ``main_purse``
--  ``list_named_keys``
--  ``get_named_key``
--  ``add_named_key``
+-  ``casper_add_associated_key``
+-  ``casper_remove_associated_key``
+-  ``casper_update_associated_key``
+-  ``casper_set_action_threshold``
+-  ``casper_get_balance``
+-  ``casper_load_named_keys``
+-  ``casper_get_named_arg``

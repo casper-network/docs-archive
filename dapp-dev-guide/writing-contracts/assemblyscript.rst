@@ -2,12 +2,14 @@
 AssemblyScript
 ==============
 
-CasperLabs maintains the `@casperlabs/contract <https://www.npmjs.com/package/@casperlabs/contract>`_ to allow developers to create smart contracts using `AssemblyScript <https://www.npmjs.com/package/assemblyscript>`_. The package source is hosted in the `main CasperLabs repository <https://github.com/CasperLabs/casper-node/tree/master/smart_contracts/contract_as/assembly>`_.
+CasperLabs maintains the `casper-contract <https://www.npmjs.com/package/casper-contract>`_ to allow developers to create smart contracts using `AssemblyScript <https://www.npmjs.com/package/assemblyscript>`_. The package source is hosted in the `main Casper Network repository <https://github.com/casper-network/casper-node/tree/master/smart_contracts/contract_as/assembly>`_.
 
 Installation
 ^^^^^^^^^^^^
 
-For each smart contract it's necessary to create a project directory and initialize it.
+For each smart contract, it is necessary to create a project directory and initialize it.
+
+The ``npm init`` process prompts for various details about the project. Answer as you see fit, but you may safely default everything except ``name``, which needs to be specified. In this guide, we will refer to the contract name as ``your-contract-name``.
 
 .. code-block:: sh
 
@@ -15,27 +17,22 @@ For each smart contract it's necessary to create a project directory and initial
    cd project
    npm init
 
-The ``npm init`` process prompts for various details about the project;
-answer as you see fit but you may safely default everything except ``name`` which should follow the convention of
-``your-contract-name``.
-
-Then install assembly script and this package in the project directory.
+Then install AssemblyScript and this package in the project directory.
 
 .. code-block:: sh
 
    npm install --save-dev assemblyscript@0.9.1
-   npm install --save @casperlabs/contract
+   npm install --save casper-contract
 
 Contract API Documentation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Assemblyscript contract API documentation can be found at https://www.npmjs.com/package/@casperlabs/contract
+The Assemblyscript contract API documentation can be found at https://www.npmjs.com/package/casper-contract.
 
 Usage
 ^^^^^
 
-Add script entries for assembly script to your project's ``package.json``\ ; note that your contract name is used
-for the name of the wasm file.
+Add script entries for AssemblyScript to your project's ``package.json``. Note that your contract name is used for the name of the WASM file. Replace *your-contract-name* with the name of your contract.
 
 .. code-block:: json
 
@@ -50,7 +47,7 @@ for the name of the wasm file.
      ...
    }
 
-In the project root, create an ``index.js`` file with the following contents:
+In the project root, create an ``index.js`` file with the following contents. Replace *your-contract-name* with the name of your contract.
 
 .. code-block:: js
 
@@ -70,7 +67,7 @@ In the project root, create an ``index.js`` file with the following contents:
        get: () => new WebAssembly.Instance(compiled, imports).exports
    });
 
-Create an ``assembly/tsconfig.json`` file in the following way:
+Next, create a directory called ``assembly``, and in that directory, create a file called  ``tsconfig.json`` in the following way:
 
 .. code-block:: json
 
@@ -84,30 +81,29 @@ Create an ``assembly/tsconfig.json`` file in the following way:
 Sample smart contract
 ^^^^^^^^^^^^^^^^^^^^^
 
-Create a ``assembly/index.ts`` file. This is where the code for the contract has to go.
+In the ``assembly`` directory, also create an ``index.ts`` file, where the code for the contract needs to go.
 
-You can use the following sample snippet which demonstrates a very simple smart contract that immediately returns an error, which will write a message to a block if executed on the CasperLabs platform.
+You can use the following sample snippet, which demonstrates a simple smart contract that immediately returns an error and writes a message to a block when executed on the Casper Network.
 
 .. code-block:: typescript
 
    //@ts-nocheck
-   import {Error, ErrorCode} from "@casperlabs/contract/error";
+   import {Error, ErrorCode} from "casper-contract/error";
 
    // simplest possible feedback loop
    export function call(): void {
        Error.fromErrorCode(ErrorCode.None).revert(); // ErrorCode: 1
    }
 
-If you prefer a more complicated first contract, you can look at example contracts on the `CasperLabs <https://github.com/CasperLabs/CasperLabs/tree/master/execution-engine/contracts-as/examples>`_ github repository for inspiration.
+If you prefer a more complicated first contract, you can look at example contracts on the `Casper Ecosystem GitHub <https://github.com/casper-ecosystem>`_ repository for inspiration.
 
-Compile to wasm
+Compile to WASM
 ^^^^^^^^^^^^^^^
 
-To compile the contract to wasm, use npm to run the asbuild script from the project root.
+To compile the contract to WASM, use *npm* to run the *asbuild* script from the project root:
 
 .. code-block::
 
    npm run asbuild
 
-If the build is successful, there will be a ``dist`` folder in the root folder and in it
-should be ``your-contract-name.wasm``
+If the build is successful, there will be a ``dist`` folder in the ``root`` folder and in it should be ``your-contract-name.wasm``.
