@@ -15,7 +15,7 @@ To follow the steps detailed within this document you will need:
 3. A node RPC endpoint to send the delegation deploys.
 4. The public key of a validator on the same network
 5. The delegation contract to execute on the network
-6. The undelegation contract to later undelegate if needed.
+
 
 
 The first three requirements are covered in the `Direct Native Token Transfer section <https://docs.casperlabs.io/en/latest/dapp-dev-guide/workflow/transfer-workflow.html#requirements>`_.
@@ -202,78 +202,5 @@ Below is an example of the structure
 
 
 In the above example we see the public keys of the active validators in Era ``9``.
-
-
-Executing the Undelegation request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Sending the Undelegation Deploy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Once the undelegate WASM has been compilied, we can deploy the WASM in a similar manner to how we deployed the delegation request.
-
-Below is an example using the Rust Casper client:
-
-::
-
-    casper-client put-deploy \
-    --node-address http://<peer-ip-addres>:7777/rpc \
-    --chain-name casper \
-    --session-path <path-to-wasm>/undelegate.wasm \
-    --payment-amount 250000000000 \
-    --session-arg "validator:public_key='<hex-encoded-validator-public-key>'" \
-    --session-arg "amount:u512='<amount-to-delegate>'"
-    --session-arg "delegator:public_key='<hex-encoded-public-key>'" \
-    --secret-key <delegator-secret-key>.pem
-
-
-**Note**: The arguments remain the same, however in this case we deploy the ``undelegate.wasm`` instead of ``delegate``.
-
-Asserting the undelegation
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-We will use the Rust Casper Client to first check the execution of the undelegation deploy and then subsequently query the auction state to confirm the withdrawal of the delegated tokens.
-
-::
-
-    casper-client get-deploy \
-    --node-address http://<peer-ip-address>:7777/rpc \
-    <undelegation-deploy-hash>
-
-A successful undelegation deploy will contain a ``WriteWithdraw`` transform within the execution results, similar to the ``WriteBid`` transform we saw in the delegation deploy.
-
-Below is a sample of successful execution.
-
-::
-
-                {
-                  "key": "withdraw-093d69e49af06167265325b6ffe90d8e9e766431c1919f3351c18de0975701c1",
-                  "transform": {
-                    "WriteWithdraw": [
-                      {
-                        "amount": "1",
-                        "bonding_purse": "uref-ca9247ad56a4d5be70484303133e2d6db97f7d7385772155763749af98ace0b0-007",
-                        "era_of_creation": 68,
-                        "unbonder_public_key": "010c7fef89bf1fc38363bd2ec20bbfb5e1152d6a9579c8847615c59c7e461ece89",
-                        "validator_public_key": "0102db4e11bccb3f9d823c82b9389625d383867d00d09b343043cdbe5ca56dd1fd"
-                      }
-                    ]
-                  }
-                },
-
-
-
-We can also check the status of the Auction to confirm that our bid has been withdrawn.
-
-::
-
-    casper-client get-auction-info \
-    --node-address http://<peer-ip-address>:7777/rpc
-
-If the public key and the amount are absent from the ``bids`` structure then we can safely assert that we have indeed un-delegated from the validator.
-
-**Important Note**: You can also check your account balance on the `Block Explorer <https://cspr.live/>`_ and additionally verify that the balance has increased
-by the amount of tokens that were undelegated.
 
 
