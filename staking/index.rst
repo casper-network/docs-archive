@@ -65,4 +65,4 @@ Next Steps
 .. toctree::
    :maxdepth: 2
 
-   staking.rst
+   ../dapp-dev-guide/workflow/delegate.rst
