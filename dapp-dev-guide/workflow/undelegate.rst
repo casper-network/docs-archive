@@ -14,7 +14,7 @@ To follow the steps detailed within this document you will need:
 4. The public key of a validator on the same network
 5. The undelegation wasm to execute on the network
 
-Refer to the `Delegation Workflow <link-to-delegation>`_ for steps to fulfil these requirements.
+Refer to the `Delegation Workflow <delegation.html>`_ for steps to fulfil these requirements.
 
 Executing the Undelegation request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

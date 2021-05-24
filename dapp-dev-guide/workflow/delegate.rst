@@ -16,9 +16,7 @@ To follow the steps detailed within this document you will need:
 4. The public key of a validator on the same network
 5. The delegation contract to execute on the network
 
-
-
-The first three requirements are covered in the `Direct Native Token Transfer section <https://docs.casperlabs.io/en/latest/dapp-dev-guide/workflow/transfer-workflow.html#requirements>`_.
+Visit the `Pre-requisites <setup.html>`_ section to complete the first three requirements.
 
 In live networks such as Mainnet, a pre-existing account will have to transfer CSPR tokens to finalize the process of setting up an account.
 
@@ -60,7 +58,8 @@ Once the contracts have been built, you will need the ``delegate.wasm`` to creat
 Sending the Delegation Deploy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once you have the ``delegate.wasm`` you can create a deploy which will execute the delegation request.
+Once you have the ``delegate.wasm`` from a **trusted** source you can create a deploy which will execute the delegation request.
+
 
 Below is an example deployment of the delegation request:
 
