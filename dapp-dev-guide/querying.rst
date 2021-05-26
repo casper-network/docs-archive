@@ -186,6 +186,34 @@ Returns this information about the block:
      }
    }
 
+Deploy Status
+-------------
+
+Once a transaction (deploy) has been submitted to the network, it is possible to check its execution status using ``get-deploy``.
+
+If the ``execution_results`` in the output are null, the transaction hasn't run yet. Transactions are finalized upon execution.
+
+**Important request fields:**
+
+- ``id`` - <STRING OR INTEGER> JSON-RPC identifier, applied to the request and returned in the response. If not provided, a random integer will be assigned
+- ``node-address`` - <HOST:PORT>Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
+
+::
+
+    casper-client get-deploy \
+          --id 2 \
+          --node-address http://<peer-ip-address>:7777 \
+          <deploy-hash>
+
+
+
+
+
+
+
+
+
+
 Querying the State for the Address of a contract
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
