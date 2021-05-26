@@ -1,7 +1,7 @@
-Delegation Workflow
-===================
+Delegating Tokens to a Validator
+================================
 
-This document details a workflow where an account holder on the Casper network can delegate their tokens to validators
+This document details a workflow where an account holder on the Casper network can delegate their tokens to a validator
 on a Casper network.
 
 
@@ -10,7 +10,7 @@ Requirements
 
 To follow the steps detailed within this document you will need:
 
-1. A compatible client or SDK such as the `JavaScript SDK <https://www.npmjs.com/package/casper-client-sdk>`_, `Java SDK <https://github.com/cnorburn/casper-java-sdk>`_, or GoLang SDK (location forthcoming)
+1. The Casper command line client
 2. An account on a Casper network
 3. A node RPC endpoint to send the delegation deploys.
 4. The public key of a validator on the same network
@@ -18,13 +18,10 @@ To follow the steps detailed within this document you will need:
 
 Visit the `Pre-requisites <setup.html>`_ section to complete the first three requirements.
 
-In live networks such as Mainnet, a pre-existing account will have to transfer CSPR tokens to finalize the process of setting up an account.
-
-
 Acquire Validator Public Key
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can get the public key of a validator on the network by visiting the `Validators Page <https://cspr.live/validators>`_. You will see a list of validators present on the network and their stake within the network.
+You can get the public key of a validator on Mainnet by visiting the `Validators on Mainnet <https://cspr.live/validators>`_, or `Validators on Testnet <https://testnet.cspr.live/validators>`_ for validators on testnet. You will see a list of validators present on the network and their stake within the network.
 You can click on any validator present on the list to see more information about the validator. Note the public key of the validator you wish to delegate to.
 
 Each validator page will show the delegation (commission) rate, this represents the percentage of **your** reward share that the validator will retain.
@@ -40,13 +37,10 @@ plus any additional rewards earned through the delegation process.
 The active validator set is constantly rotating, therefore when delegating to a validator be sure to remember that the validator you selected may have been rotated out of the set.
 
 
-Executing the Delegation Request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Building The Delegation WASM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We recommend first testing the following steps on our official Testnet before performing these steps in a live environment like the Casper mainnet.
-
-Building the Delegation Contract
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In the case that the ``delegate.wasm`` cannot be obtained from a trusted source, it is recommended to build the WASM yourself.
 
 Clone the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and build the contracts.
 To build contracts, set up Rust and install all dependencies. Visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
@@ -54,6 +48,13 @@ To build contracts, set up Rust and install all dependencies. Visit `Setting up 
 Once the contracts have been built, you will need the ``delegate.wasm`` to create a deploy that we will initiate the delegation process. The WASM can be found in the
 
 ``target/wasm32-unknown-unknown/release`` path.
+
+
+
+Executing the Delegation Request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We recommend first testing the following steps on our official Testnet before performing these steps in a live environment like the Casper mainnet.
 
 Sending the Delegation Deploy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

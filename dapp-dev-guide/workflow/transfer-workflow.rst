@@ -1,5 +1,5 @@
-Direct Native Token Transfer
-============================
+Direct Token Transfer
+=====================
 
 This document describes a sample workflow for transferring tokens and verifying their transfer on a Casper network as of `Release-1.0.0 <https://github.com/CasperLabs/casper-node/tree/release-1.0.0>`_.
 
@@ -8,15 +8,11 @@ Requirements
 
 To follow the steps in this document, you will need:
 
-1. A compatible client or SDK such as the `JavaScript SDK <https://www.npmjs.com/package/casper-client-sdk>`_, `Java SDK <https://github.com/cnorburn/casper-java-sdk>`_, or GoLang SDK (location forthcoming)
+1. The Casper command line client
 2. The public key (hex) of 2 accounts (one source account, one target account)
 3. A node RPC endpoint to send the transaction
-4. The transfer amount needs to be 2.5 CSPR or more
-5. The transfer will cost 0.0001 CSPR (10000 motes)  
-
 
 Visit the `Pre-requisites <setup.html>`_ section to complete the first three requirements.
-
 
 Transfer Funds
 ^^^^^^^^^^^^^^
@@ -29,15 +25,12 @@ The ``transfer`` command below demonstrates how to transfer from a source accoun
 
 1. Each transfer amount needs to be 2.5 CSPR or more
 2. Each transfer costs 0.0001 CSPR (10000 motes). The transfer cost is fixed, and a different ``payment-amount`` will be ignored
-
-When sending a transfer, **use the required ``transfer-id`` field in the request to identify and track transactions** in your platform. For example, you might store transactions in a database in a Transaction table. The primary key of this table could be a TransactionID. You can set the ``transfer-id`` in the transfer request below to be the TransactionID from your database table. This way, you can use the ``transfer-id`` field to tag the transaction and correlate it to your back-end storage.
-
-**Note**: ``transfer-id`` is a ``u64`` field and can be set using the required ``--transfer-id`` flag in the example command below.
+3. The account balance must at least contain the amount of tokens to transfer plus the fixed transfer cost.
 
 **Important request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
-- ``transfer-id`` - <64-BIT INTEGER> Required user-defined transfer id
+- ``transfer-id`` - <64-BIT INTEGER>  The ``transfer-id`` is a memo field, marking additional information about the recipient and is necessary when transferring token to some recipients. For example, if depositing token into an account where off chain management is used to keep track of individual sub-balances, it is necessary to provide a memo id uniquely identifying the actual recipient. If this not necessary for a given recipient, you may pass ``0`` or some ``u64`` value that is meaningful to you.
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 - ``amount`` - <512-BIT INTEGER> The number of motes to transfer
 - ``secret-key`` - Path to secret key file
@@ -56,6 +49,7 @@ When sending a transfer, **use the required ``transfer-id`` field in the request
         --secret-key <source-account-secret-key>.pem \
         --chain-name casper \
         --target-account <hex-encoded-target-account-public-key>
+
 
 **Important response fields:**
 

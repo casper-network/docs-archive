@@ -1,5 +1,5 @@
-Undelegation Workflow
-=====================
+Undelegating Tokens from a Validator
+====================================
 
 This document details a workflow where tokens delegated to a validator on a Casper network can be undelegated.
 
@@ -8,20 +8,30 @@ Requirements
 
 To follow the steps detailed within this document you will need:
 
-1. A compatible client or SDK such as the `JavaScript SDK <https://www.npmjs.com/package/casper-client-sdk>`_, `Java SDK <https://github.com/cnorburn/casper-java-sdk>`_, or GoLang SDK (location forthcoming)
+1. The Casper command line client
 2. An account on a Casper network
 3. A node RPC endpoint to send the delegation deploys.
 4. The public key of a validator on the same network
-5. The undelegation wasm to execute on the network
+5. Have previously delegated tokens to a validator on the network
+6. The undelegation wasm to execute on the network
 
 Refer to the `Delegation Workflow <delegation.html>`_ for steps to fulfil these requirements.
 
-Executing the Undelegation request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Building The Undelegation WASM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the case that the ``undelegate.wasm`` cannot be obtained from a trusted source, it is recommended to build the WASM yourself.
+
+Clone the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and build the contracts.
+To build contracts, set up Rust and install all dependencies. Visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
+
+Once the contracts have been built, you will need the ``undelegate.wasm`` to create a deploy that we will initiate the un-delegation process. The WASM can be found in the
+
+``target/wasm32-unknown-unknown/release`` path.
+
 
 Sending the Undelegation Deploy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Once the undelegate WASM has been compilied, we can deploy the WASM in a similar manner to how we deployed the delegation request.
 
@@ -59,7 +69,7 @@ Below is an example using the Rust Casper client:
 **Note**: There is an optional ``--ttl`` field that also specifies the duration of time for which the deploy will be valid.
 
 Asserting the undelegation
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We can use the Rust Casper client to generate an RPC request to query for the auction state.
 The subsequent RPC response will confirm that the undelegation request was successfully executed.
@@ -103,5 +113,8 @@ Below is a sample of successful execution.
                 },
 
 
-**Important Note**: You can also check your account balance on the `Block Explorer <https://cspr.live/>`_ and additionally verify that the balance has increased
+You can also check your account balance on the `Block Explorer <https://cspr.live/>`_ and additionally verify that the balance has increased
 by the amount of tokens that were undelegated.
+
+**Important Note**: After un-delegating tokens from a validator, you must wait for the unbonding period to lapse before re-delegating tokens to either the same validator or a different validator.
+

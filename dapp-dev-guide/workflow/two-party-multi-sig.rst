@@ -8,7 +8,7 @@ Requirements
 
 To follow the steps in this document, you will need:
 
-1. A compatible client or SDK such as the `JavaScript SDK <https://www.npmjs.com/package/casper-client-sdk>`_, `Java SDK <https://github.com/cnorburn/casper-java-sdk>`_, or GoLang SDK (location forthcoming)
+1. The Casper command line client
 2. Two separate accounts
     - A **main account** (MA), the account you own and manage
     - An **associated account** (AA), the account which can sign deploys alongside your account in a multi-signature deploy. This account could be any third party with whom you wish to sign deploys, e.g., the Casper Association
@@ -91,19 +91,19 @@ The contract will execute **2 crucial steps** to enforce the multi-sig feature f
 1. Add the associated key to the account with a weight ``1``
 2. Raise the ``action threshold`` for ``deployment`` to ``2``, such that the deploy weight is split equally between the main and associated account
 
-**Important Note**: The action thresholds for deploys cannot be greater than the action threshold for ``key management``. Therefore we need to raise the ``key management`` threshold to raise the ``deployment`` threshold. By default, action thresholds are set to ``1``.
+The action thresholds for deploys cannot be greater than the action threshold for ``key management``. Therefore we need to raise the ``key management`` threshold to raise the ``deployment`` threshold. By default, action thresholds are set to ``1``.
 
 Contract Execution
 ~~~~~~~~~~~~~~~~~~
 
-Here is how you can execute the WASM file that will alter the account to your specifications in one single deploy. You have the option to send the deploy to the network using the Casper Rust client. There are a few fields that you need to fill in:
+Here is how you can execute the WASM file that will alter the account to your specifications in one single deploy. You have the option to send the deploy to the network using the Casper command line client. There are a few fields that you need to fill in:
 
-1. ``node-address`` - An IP address of a node on the network (see `previous section <#acquire-node-ip-address>`_)
+1. ``node-address`` - An IP address of a node on the network
 2. ``secret-key`` - The file name containing the secret key of the Main Account
 3. ``chain-name`` - The chain-name to the network where you wish to send the deploy (this example uses the Testnet)
 4. ``payment-amount`` - The cost of the deploy
 5. ``session-path`` - The path to the contract WASM
-6. ``session-arg`` - The contract takes the account hash of the Associated account as an argument labeled ``deployment-account``. You can pass this argument using the ``--session-arg`` flag in the Rust client
+6. ``session-arg`` - The contract takes the account hash of the Associated account as an argument labeled ``deployment-account``. You can pass this argument using the ``--session-arg`` flag in the command line client
 
 .. code-block:: bash
 
@@ -125,30 +125,11 @@ Here is how you can execute the WASM file that will alter the account to your sp
 Confirming Execution and Account Status
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We can confirm that the contract was executed successfully by using the deploy hash from the previous step.
+To check that our account was configured correctly we need the state root hash corresponding to the block that contains our deploy.
+To obtain the hash, we must:
 
-.. code-block:: bash
-
-    casper-client get-deploy \
-    --node-addres http://<peer-ip-address>:7777/rpc \
-    <deploy-hash>
-
-**Important response fields:**
-
-- ``"result"."execution_results"[0]."block_hash"`` - contains the block hash of the block that included our deploy. We will require the `state_root_hash` of this block to look up information about the account and confirm whether the account has been set up correctly
-
-We will use the block_hash to query and retrieve the block that contains our deploy. Afterward, we will retrieve the root hash of the global state trie for this block, also known as the block’s state_root_hash. Finally, we will use the state_root_hash to look up the account.
-
-.. code-block:: bash
-
-    casper-client get-block \
-    --node-address http://<peer-ip-address>:7777/rpc \
-    --block-identifer <block-hash>
-
-**Important response fields:**
-
-- ``"result"."block"."header"."state_root_hash"`` - contains the root hash of the global state trie for this block
-
+1. Confirm the execution status of the deploy and obtain the hash of the block containing it. (Refer `Checking Deploy Status <https://docs.casperlabs.io/en/latest/dapp-dev-guide/workflow/transfer-workflow.html#deploy-status>`_)
+2. Query the block containing the deploy to obtain the corresponding ``state_root_hash`` (Refer `Getting Block Information <https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html#getting-block-information>`_)
 
 We will use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Main account to query the network for the account and check its configuration.
 
