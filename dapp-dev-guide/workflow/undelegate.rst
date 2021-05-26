@@ -23,19 +23,24 @@ Building The Undelegation WASM
 In the case that the ``undelegate.wasm`` cannot be obtained from a trusted source, it is recommended to build the WASM yourself.
 
 Clone the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and build the contracts.
-To build contracts, set up Rust and install all dependencies. Visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
+To build contracts, set up Rust and install all dependencies, visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
 
-Once the contracts have been built, you will need the ``undelegate.wasm`` to create a deploy that we will initiate the un-delegation process. The WASM can be found in the
+Once the contracts have been built, you will need the ``undelegate.wasm`` to create a deploy that we will initiate the un-delegation process.
 
-``target/wasm32-unknown-unknown/release`` path.
+The WASM can be found in:
+
+::
+
+    target/wasm32-unknown-unknown/release
 
 
 Sending the Undelegation Deploy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once the undelegate WASM has been compilied, we can deploy the WASM in a similar manner to how we deployed the delegation request.
+To initiate the undelegation process we must send a deploy containing the ``undelegate.wasm`` to the network.
 
-Below is an example using the Rust Casper client:
+
+Below is an example using the Casper command line client:
 
 ::
 
@@ -57,21 +62,22 @@ Below is an example using the Rust Casper client:
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 - ``secret-key`` - Path to secret key file
 - ``chain-name`` - Name of the chain, to avoid the deploy from being accidentally or maliciously included in a different chain
-  - The *chain-name* for testnet is **casper-test**
-  - The *chain-name* for mainnet is **casper**
+
+    - The *chain-name* for testnet is **casper-test**
+    - The *chain-name* for mainnet is **casper**
+
 - ``session-path`` - The path to where the ``delegate.wasm`` is located
 - ``session-arg`` - The arguments to the ``delegate`` execution
 
-    - The argument ``validator`` is the public key of the validator to whom the tokens will be delegated to
-    - The argument ``amount`` is the amount of tokens to be delegated
-    - The argument ``delegator`` is the public key of the account delegating tokens to a validator
+    - The argument ``validator`` is the public key of the validator from whom the tokens will be undelegated
+    - The argument ``amount`` is the amount of tokens to be undelegated
+    - The argument ``delegator`` is the public key of the account undelegating tokens from a validator
 
-**Note**: There is an optional ``--ttl`` field that also specifies the duration of time for which the deploy will be valid.
 
 Asserting the undelegation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We can use the Rust Casper client to generate an RPC request to query for the auction state.
+We can use the Casper command line client to generate an RPC request to query for the auction state.
 The subsequent RPC response will confirm that the undelegation request was successfully executed.
 
 
@@ -113,8 +119,10 @@ Below is a sample of successful execution.
                 },
 
 
-You can also check your account balance on the `Block Explorer <https://cspr.live/>`_ and additionally verify that the balance has increased
-by the amount of tokens that were undelegated.
+If your account is on the official Testnet or Mainnet, you can use the Block explorer to look up your account balance and see the tokens have been added to your balance.
+
+1. `Testnet explorer <https://testnet.cspr.live/>`_
+2. `Mainnet explorer <https://cspr.live/>`_
 
 **Important Note**: After un-delegating tokens from a validator, you must wait for the unbonding period to lapse before re-delegating tokens to either the same validator or a different validator.
 

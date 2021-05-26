@@ -43,11 +43,15 @@ Building The Delegation WASM
 In the case that the ``delegate.wasm`` cannot be obtained from a trusted source, it is recommended to build the WASM yourself.
 
 Clone the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and build the contracts.
-To build contracts, set up Rust and install all dependencies. Visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
+To build contracts, set up Rust and install all dependencies, visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
 
-Once the contracts have been built, you will need the ``delegate.wasm`` to create a deploy that we will initiate the delegation process. The WASM can be found in the
+Once the contracts have been built, you will need the ``delegate.wasm`` to create a deploy that we will initiate the delegation process.
 
-``target/wasm32-unknown-unknown/release`` path.
+The WASM can be found in:
+
+::
+
+    target/wasm32-unknown-unknown/release
 
 
 
@@ -84,8 +88,10 @@ Below is an example deployment of the delegation request:
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 - ``secret-key`` - Path to secret key file
 - ``chain-name`` - Name of the chain, to avoid the deploy from being accidentally or maliciously included in a different chain
-  - The *chain-name* for testnet is **casper-test**
-  - The *chain-name* for mainnet is **casper**
+
+    - The *chain-name* for testnet is **casper-test**
+    - The *chain-name* for mainnet is **casper**
+
 - ``session-path`` - The path to where the ``delegate.wasm`` is located
 - ``session-arg`` - The arguments to the ``delegate`` execution
 
@@ -93,19 +99,18 @@ Below is an example deployment of the delegation request:
     - The argument ``amount`` is the amount of tokens to be delegated
     - The argument ``delegator`` is the public key of the account delegating tokens to a validator
 
-**Note**: There is an optional ``--ttl`` field that also specifies the duration of time for which the deploy will be valid.
 
 **Important response fields:**
 
 - ``"result"."deploy_hash"`` - the address of the executed delegation request.
 
 Save the returned `deploy_hash` from the output to query information about the delegation deploy later.
-Refer to `Deploy Status <https://docs.casperlabs.io/en/latest/dapp-dev-guide/workflow/transfer-workflow.html#deploy-status>`_ section on how deploy executions can be confirmed.
+Refer to `Deploy Status <http://127.0.0.1:8000/dapp-dev-guide/querying.html#deploy-status>`_ section on how deploy executions can be confirmed.
 
 Confirming the Delegation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once the deploy has been executed, we can query for Auction information to confirm our delegation. We can use the Rust Casper client to create an RPC request to query the auction.
+Once the deploy has been executed, we can query for Auction information to confirm our delegation. We can use the Casper command line client to create an RPC request to query the auction.
 
 Below is an example of querying:
 
@@ -154,7 +159,7 @@ Checking Validator Status
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once we have delegated to a validator we must also check that the validator is part of the active validator set. If a validator is part of the set,
-their public key will be present in the auction information. We can use the Rust casper client to create an RPC request to obtain Auction information
+their public key will be present in the auction information. We can use the Casper command line client to create an RPC request to obtain Auction information
 and assert that the selected validator is part of the set.
 
 ::
@@ -203,4 +208,4 @@ Below is an example of the structure
 
 In the above example we see the public keys of the active validators in Era ``9``.
 
-
+Note: Delegation rewards are only earned for when validators are part of the active set. This information is time sensitive, therefore a validator selected today may not be part of the set tomorrow. Keep this in mind when creating a delegation request.

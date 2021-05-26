@@ -12,14 +12,14 @@ To follow the steps in this document, you will need:
 2. The public key (hex) of 2 accounts (one source account, one target account)
 3. A node RPC endpoint to send the transaction
 
-Visit the `Pre-requisites <setup.html>`_ section to complete the first three requirements.
+Visit the `Pre-requisites <setup.html>`_ section to complete these requirements.
 
-Transfer Funds
-^^^^^^^^^^^^^^
+Transfer Tokens
+^^^^^^^^^^^^^^^
 
 Clients can communicate with nodes on the network via JSON-RPC requests sent to a node's RPC endpoint ``http://<peer-ip-address>:7777``. JSON-RPC requests include transfers which are a special type of deploy.
 
-The ``transfer`` command below demonstrates how to transfer from a source account to a target account using the Rust client by sending a request to the selected node's RPC endpoint.
+The ``transfer`` command below demonstrates how to transfer from a source account to a target account using the Casper command line  client by sending a request to the selected node's RPC endpoint.
 
 **Transfer Requirements**:
 
@@ -35,8 +35,10 @@ The ``transfer`` command below demonstrates how to transfer from a source accoun
 - ``amount`` - <512-BIT INTEGER> The number of motes to transfer
 - ``secret-key`` - Path to secret key file
 - ``chain-name`` - Name of the chain, to avoid the deploy from being accidentally or maliciously included in a different chain
-  - The *chain-name* for testnet is **casper-test**
-  - The *chain-name* for mainnet is **casper**
+
+    - The *chain-name* for testnet is **casper-test**
+    - The *chain-name* for mainnet is **casper**
+
 - ``target-account`` - <HEX STRING> Hex-encoded public key of the account from which the main purse will be used as the target
 
 ::
@@ -158,27 +160,12 @@ The ``transfer`` command below demonstrates how to transfer from a source accoun
 
     </details>
 
-|
+
 
 Deploy Status
 ~~~~~~~~~~~~~
 
-Once a transaction (deploy) has been submitted to the network, it is possible to check its execution status using ``get-deploy``. 
-
-If the ``execution_results`` in the output are null, the transaction hasn't run yet. Transactions are finalized upon execution.
-
-**Important request fields:**
-
-- ``id`` - <STRING OR INTEGER> JSON-RPC identifier, applied to the request and returned in the response. If not provided, a random integer will be assigned
-- ``node-address`` - <HOST:PORT>Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
-
-::
-
-    casper-client get-deploy \
-          --id 2 \
-          --node-address http://<peer-ip-address>:7777 \
-          <deploy-hash>
-
+Refer to the Section on `querying deploys <http://127.0.0.1:8000/dapp-dev-guide/querying.html#deploy-status>`_ within the network to check the execution status of the transfer.
 
 **Important response fields:**
 
@@ -893,12 +880,6 @@ Finality Signatures
 **Answer**: Finality signatures are confirmations from validators that they have executed the transaction. Exchanges should be asserting finality by collecting the weight of two-thirds of transaction signatures. If an exchange runs a read-only node, it can collect these finality signatures from its node. Otherwise, the exchange must assert finality by collecting finality signatures and have proper monitoring infrastructure to prevent a Byzantine attack. 
 
 Suppose an exchange connects to someone else's node RPC to send transactions to the network. In this case, the node is considered high risk, and the exchange must assert finality by checking to see how many validators have run the transactions in the network.
-
-The EventStore
-~~~~~~~~~~~~~~
-**Question**: What is the EventStore? 
-
-**Answer**: The CasperLabs/event-store has been deprecated and is incompatible with the node event stream. It is best to monitor deploy processing status via polling port 9999, which is the event stream port of a node: ``http://<peer-ip-address>:9999``. Push the events of interest into a database for future reference. In this process, you can also get the associated finality signatures of the block of interest.
 
 deploy_hash vs. transfer_hash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

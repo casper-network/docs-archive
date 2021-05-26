@@ -25,17 +25,22 @@ Example Contract
 Retrieve the contract `from this link <https://github.com/casper-ecosystem/two-party-multi-sig>`_ and open the ``two-party-multi-sig`` directory. You will find a ``Makefile`` that contains the build commands necessary to compile the contract to WASM.
 
 .. code-block:: bash
-  
-  cd two-party-multi-sig
-  git clone https://github.com/casper-ecosystem/two-party-multi-sig  
 
- To build the contract, run the following command:
+    git clone https://github.com/casper-ecosystem/two-party-multi-sig
+    cd two-party-multi-sig
+
+
+To build the contract, run the following command:
 
 .. code-block:: bash
 
   make build-contract
 
-The compiled WASM will be saved on this path: ``target/wasm32-unknown-unknown/release/contract.wasm``.
+The compiled WASM will be saved on this path:
+
+::
+
+    target/wasm32-unknown-unknown/release/contract.wasm
 
 
 Configuring the Main Account
@@ -56,7 +61,7 @@ Contract Description
 
 We can run a simple session contract that will execute within the context of our main account. Below is the contract body that will be compiled to WASM and then sent to the network as part of a deploy.
 
-**Important Note**: This contract example will set up a particular account configuration and is not a general-purpose contract.
+**Important Note**: This contract example will set up a specific account configuration and is not a general-purpose contract.
 
 .. code-block:: rust
 
@@ -128,7 +133,7 @@ Confirming Execution and Account Status
 To check that our account was configured correctly we need the state root hash corresponding to the block that contains our deploy.
 To obtain the hash, we must:
 
-1. Confirm the execution status of the deploy and obtain the hash of the block containing it. (Refer `Checking Deploy Status <https://docs.casperlabs.io/en/latest/dapp-dev-guide/workflow/transfer-workflow.html#deploy-status>`_)
+1. Confirm the execution status of the deploy and obtain the hash of the block containing it. (Refer `Checking Deploy Status <http://127.0.0.1:8000/dapp-dev-guide/querying.html#deploy-status>`_)
 2. Query the block containing the deploy to obtain the corresponding ``state_root_hash`` (Refer `Getting Block Information <https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html#getting-block-information>`_)
 
 We will use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Main account to query the network for the account and check its configuration.
@@ -176,7 +181,7 @@ We will use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Ma
 
 
 In the above example, we can see two keys listed within the ``associated-keys`` section; these are the account hashes for the Associated Account and the Main Account, respectively.
-Each of the keys weights ``1``. Since the action threshold for ``deployment`` is set to ``2``, neither account is able to sign and send a deploy individually.
+Each key has a weight of ``1``, since the action threshold for ``deployment`` is set to ``2``, neither account is able to sign and send a deploy individually.
 Thus to send the deploy from the Main account, the deploy needs to be signed by the secret keys of each account to reach the required threshold.
 
 Details about various scenarios in which multiple associated keys can be setup is discussed in `the examples section of the Multi-Signature Tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-sig/examples.html>`_.

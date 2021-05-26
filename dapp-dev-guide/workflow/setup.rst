@@ -8,7 +8,6 @@ This section covers:
 1. Setting up and installing the official Rust Casper client
 2. Setting up accounts on a Casper network
 3. Acquiring the IP address of a peer on the official Testnet or Mainnet
-4. Querying deploys to check the execution status of deploys.
 
 The Rust Casper Client
 ^^^^^^^^^^^^^^^^^^^^^^
