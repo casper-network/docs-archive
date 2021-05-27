@@ -45,20 +45,21 @@ Building the Smart Contract
 
 Before building the smart contract for this tutorial, you need to install the `Rust Contract SDK <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_. Make sure you have the `development environment set up <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html#development-environment-setup>`_ before proceeding.
 
-Navigate to the ``keys-manager/contract`` folder and set up the WASM compilation Rust toolchain, which will give you access to all the tools needed for developing smart contracts. 
+Navigate to the ``keys-manager`` folder and set up the WASM compilation Rust toolchain, which will give you access to all the tools needed for developing smart contracts. 
 
 .. code-block:: bash
 
-	$ cd keys-manager/contract
+	$ cd keys-manager
 	$ rustup install $(cat rust-toolchain)
 	$ rustup target add --toolchain $(cat rust-toolchain) wasm32-unknown-unknown
 
-Notice that the ``contract`` folder contains a ``Cargo.toml`` file, which defines a smart contract called ``keys-manager``. The ``cargo build`` command will invoke this file to generate the corresponding WASM file.
+Next, open the ``contract`` folder and notice that it contains a ``Cargo.toml`` file, which defines a smart contract called ``keys-manager``. The ``cargo build`` command will invoke this file to generate the corresponding WASM file.
 
-Next, compile the smart contract and create the WASM file using this command:
+Compile the smart contract and create the WASM file using these commands:
 
 .. code-block:: bash
 
+	$ cd contract
 	$ cargo build --release
 
 If the command were successful, you would find a ``keys-manager.wasm`` file in the following directory structure:
