@@ -5,7 +5,7 @@ Highway consensus is a continuous, trust-less process where a fixed set of valid
 
 Entry
 -----
-Several eras after genesis, the system selects a set of validators using a stake auction process. The auction takes place in the last block of an era, also called a switch block. An auction contract governs the validator selection process, and a *chainspec* configuration file specifies a few key parameters:
+After genesis, the system selects a set of validators using a stake auction process. The auction takes place in the last block of an era, also called a switch block. An auction contract governs the validator selection process, and a *chainspec* configuration file specifies a few key parameters:
 
 - The ``auction_delay`` specifies the amount of time that needs to pass before the system enables a new set of validators. For example, the `auction_delay` is 1 for Mainnet. Therefore, after a delay of 1 era, the winning validators become the validating set for the new era.
 - The ``validator_slots`` parameter specifies how many validators can win an auction. The auction selects a fixed number of validators based on their highest bids.
@@ -14,7 +14,7 @@ Several eras after genesis, the system selects a set of validators using a stake
 Bids
 ^^^^
 
-Each bid is a collection of tokens from a prospective or current validator and its delegators, considered in the auction as a single total. Bids and delegations can increase freely, but withdrawals are subject to an unbonding period governed by the ``unbonding_delay`` chainspec parameter. The auction process does not take into account unbonded tokens. Consequently, the exact amount of the bid, which translates into protocol weight for winning validators, can vary within an era. The bids are visible in the switch block that determines the winners.
+Each bid is a collection of tokens from a prospective or current validator and its delegators, considered in the auction as a single total. Bids and delegations can increase freely, but withdrawals are subject to an unbonding period governed by the ``unbonding_delay`` chainspec parameter. Tokens that are in the unbonding period are not part of the sum total considered in the auction. Consequently, the exact amount of the bid, which translates into protocol weight for winning validators, can vary within an era. The bids are visible in the switch block that determines the winners.
 
 Each bid contains a delegation rate and activity status. The delegation rate can change at any time. Both of these properties are described further in this document.
 
@@ -23,7 +23,7 @@ Delegation
 
 Delegation allows third parties to participate in consensus by adding weight to their preferred validators. Rewards received by validators are distributed in proportion to tokens bid and delegated. The current or prospective validator responsible for the bid receives a portion of the delegator rewards set by the delegation rate.
 
-At Mainnet launch, delegation is unrestricted. Interested readers should review `CEP #29 <https://github.com/CasperLabs/ceps/pull/29>`_, which proposes delegation caps.
+Currently, delegation is unrestricted. Interested readers should review `CEP #29 <https://github.com/CasperLabs/ceps/pull/29>`_, which proposes delegation caps.
 
 Incentives
 ----------
@@ -39,17 +39,17 @@ Participation
 
 Issuance of new tokens and their distribution to validators incentivizes work even under low transaction load.
 
-CSPR is issued at a fixed rate and distributed to validators (and, indirectly, delegators) in proportion to their stake. This is analogous to block rewards in Proof-of-Work blockchains, except for a couple of differences:
+CSPR is issued at a fixed rate and distributed to validators (and, indirectly, delegators) in proportion to their stake. This is analogous to block rewards in Proof-of-Work blockchains, outlining the following:
 
 - The growth of CSPR supply is exponential
 - Issuance takes into account slashed CSPR
 
 With slashing disabled, we can compute block rewards starting with the formula below, where we have these parameters:
 
-- ``i = 0, 1, ...`` is the era's index
-- ``initial_supply`` is the number of CSPR at genesis
-- ``issuance_rate`` is the annual rate at which new CSPR tokens are minted
-- ``ticks_per_year = 365*24*60*60*1000 = 31_536_000_000``
+- ``i`` - the era's index as a positive integer [0, 1, 2, ..., n]
+- ``initial_supply`` - the number of CSPR at genesis
+- ``issuance_rate`` - the annual rate at which new CSPR tokens are minted
+- ``ticks_per_year`` - a number equal to 31,536,000,000 calculated as 365*24*60*60*1000 = 31,536,000,000
 
 .. code-block::
 

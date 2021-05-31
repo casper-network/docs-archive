@@ -17,8 +17,8 @@ The Casper network is a Proof-of-Stake blockchain that allows validators to stak
 
 **Reward cycle:** Rewards are distributed to validators and delegators once per era.
 
-**Token supply and inflation:** There will be ten billion CSPR on the mainnet at the time of genesis. The target annual supply growth rate is 8%.
+**Token supply and inflation:** Mainnet launched with ten billion CSPR at the time of genesis. The target annual supply growth rate is 8%.
 
-**Annual reward percentage:** Validators on the Casper network earn between 10% and 20% of their staked CSPR in the first year of the mainnet operation, with regular participation under expected network conditions. The growth of individual stakes is dependent on total active stake, as only a fixed number of tokens is created per era.
+**Annual reward percentage:** Validators on the Casper network earn between 10% and 20% of their staked CSPR in the first year of the Mainnet operation, with regular participation under expected network conditions. The growth of individual stakes is dependent on total active stake, as only a fixed number of tokens is created per era.
 
 Please visit the `Staking Guide <https://docs.casperlabs.io/en/latest/staking/index.html>`_ for further details on the staking mechanism.

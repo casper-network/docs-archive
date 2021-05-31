@@ -11,7 +11,7 @@ Any finite resource on a publicly accessible computer network must be rate-limit
 Consensus before execution & basics of payment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Highway protocol in its mainnet implementation reaches consensus on a block *before* the block is executed, introducing a subtle difference from platforms like Ethereum. In addition, deploys sent to the Casper network can only be selected based on claimed, rather than used, gas. Consequently, to incentivize user-side optimization and prevent block space exhaustion by poorly optimized deploys, the platform provides no refunds for unused gas.
+The Highway protocol in its Mainnet implementation reaches consensus on a block *before* the block is executed, introducing a subtle difference from platforms like Ethereum. In addition, deploys sent to the Casper network can only be selected based on claimed, rather than used, gas. Consequently, to incentivize user-side optimization and prevent block space exhaustion by poorly optimized deploys, the platform provides no refunds for unused gas.
 
 Additionally, a minimal amount of CSPR must be present in the user account to ensure that the payment computation is covered. The community may introduce additional balance checks in the future.
 
