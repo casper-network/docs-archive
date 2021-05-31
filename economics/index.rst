@@ -1,8 +1,10 @@
 
 .. _economics:
 
-Overview of economics
+Economics
 =========
+
+This page presents an overview of the Casper economics.
 
 Casper's economic activity can be conceptualized as taking place on four distinct layers: consensus, runtime, ecosystem, and the macroeconomy. Each layer, consensus and up, provides a foundation for the activity taking place on the next layer. A trust-less platform requires that proper incentives be provided to participants operating each of these layers to ensure that they work together to unlock the platform's value.
 
