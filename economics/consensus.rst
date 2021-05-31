@@ -1,63 +1,69 @@
 Consensus economics
 ===================
 
-Highway consensus is a continuous, trust-less process that has a fixed set of validators engage in scheduled communication to advance the linear chain of finalized blocks, which represents the agreed upon history of changes to the global state. The fixed set of validators may change at each era boundary. The economics of this layer revolve around selection of sets of validators for each era and incentivization of participation according to the schedule.
+Highway consensus is a continuous, trust-less process where a fixed set of validators engage in scheduled communication to advance the linear chain of finalized blocks, representing the history of changes to the global state of the blockchain. The fixed set of validators may change at each era boundary. The economics of this layer revolve around validator selection and incentivization of participation according to the schedule.
 
 Entry
 -----
+Several eras after genesis, the system selects a set of validators using a stake auction process. The auction takes place in the last block of an era, also called a switch block. An auction contract governs the validator selection process, and a *chainspec* configuration file specifies a few key parameters:
 
-Several eras after genesis, the system settles into selecting a set of validators several eras in advance, governed by the *auction_delay* chainspec parameter (set to 1 at mainnet launch). This is done by means of a stake auction that selects a fixed number, governed by the *validator_slots* chainspec parameter, of highest bids at the time of the auction, conducted in the switch block. After *auction_delay* eras, the winning validators become the validating set for the new era.
+- The ``auction_delay`` specifies the amount of time that needs to pass before the system enables a new set of validators. For example, the `auction_delay` is 1 for Mainnet. Therefore, after a delay of 1 era, the winning validators become the validating set for the new era.
+- The ``validator_slots`` parameter specifies how many validators can win an auction. The auction selects a fixed number of validators based on their highest bids.
+
 
 Bids
 ^^^^
 
-Each bid is a collection of tokens from a prospective or current validator and its delegators, considered in the auction as a single total. Bids and delegations can be freely increased, but withdrawal is subject to an unbonding period governed by the *unbonding_delay* chainspec parameter. Unbonding tokens are not considered during the auction. Consequently, the exact amount of the bid, which translates into protocol weight for winning validators, can vary within an era, with the bids visible in the switch block determining the winners.
+Each bid is a collection of tokens from a prospective or current validator and its delegators, considered in the auction as a single total. Bids and delegations can increase freely, but withdrawals are subject to an unbonding period governed by the ``unbonding_delay`` chainspec parameter. The auction process does not take into account unbonded tokens. Consequently, the exact amount of the bid, which translates into protocol weight for winning validators, can vary within an era. The bids are visible in the switch block that determines the winners.
 
-Each bid is associated with a delegation rate, which can be changed at any time, and activity status. Both of these are described in subsequent sub-sections.
+Each bid contains a delegation rate and activity status. The delegation rate can change at any time. Both of these properties are described further in this document.
 
 Delegation
 ^^^^^^^^^^
 
-Delegation allows third parties to participate in consensus by adding weight to their preferred validators. Rewards received by validators are distributed in proportion to tokens bid and delegated, with the current or prospective validator responsible for the bid receiving a portion of the delegator rewards set by the delegation rate.
+Delegation allows third parties to participate in consensus by adding weight to their preferred validators. Rewards received by validators are distributed in proportion to tokens bid and delegated. The current or prospective validator responsible for the bid receives a portion of the delegator rewards set by the delegation rate.
 
-At mainnet launch, delegation is unrestricted. Interested readers should review `CEP #29 <https://github.com/CasperLabs/ceps/pull/29>`_, which proposes delegation caps.
+At Mainnet launch, delegation is unrestricted. Interested readers should review `CEP #29 <https://github.com/CasperLabs/ceps/pull/29>`_, which proposes delegation caps.
 
 Incentives
 ----------
 
-Correct operation of the Highway protocol requires the economics of the platform to incentivize non-equivocation, for safety, and participation, for liveness. Participation consists of on-time block proposal and timely responses to block proposals.
+Correct operation of the Highway protocol requires the economics of the platform to incentivize non-equivocation for safety and participation for liveness. Participation consists of on-time block proposals and timely responses to block proposals.
 
-Safety may be incentivized through slashing for equivocation. This feature is currently disabled, but may be reactivated in the future.
+Safety may be incentivized through slashing for equivocation. This feature is currently disabled but may be reactivated in the future.
 
-Participation is incentivized by scaling rewards for on-time proposals and responses, taking into account the speed of finalization. All rewards are added directly to the corresponding bids and delegations.
+The network incentivizes participation by scaling rewards for on-time proposals and responses, taking into account the speed of finalizing blocks. All rewards are added directly to the corresponding bids and delegations.
 
 Participation
 ^^^^^^^^^^^^^
 
 Issuance of new tokens and their distribution to validators incentivizes work even under low transaction load.
 
-CSPR is issued at a fixed rate and distributed to validators (and, indirectly, delegators) in proportion to their stake. This is analogous to block rewards in Proof of Work blockchains, except for a couple of differences:
+CSPR is issued at a fixed rate and distributed to validators (and, indirectly, delegators) in proportion to their stake. This is analogous to block rewards in Proof-of-Work blockchains, except for a couple of differences:
 
 - The growth of CSPR supply is exponential
 - Issuance takes into account slashed CSPR
 
-With slashing disabled, we can compute block rewards starting with following formula
+With slashing disabled, we can compute block rewards starting with the formula below, where we have these parameters:
+
+- ``i = 0, 1, ...`` is the era's index
+- ``initial_supply`` is the number of CSPR at genesis
+- ``issuance_rate`` is the annual rate at which new CSPR tokens are minted
+- ``ticks_per_year = 365*24*60*60*1000 = 31_536_000_000``
 
 .. code-block::
 
    supply(i) = initial_supply * (1 + issuance_rate)^(tick_at_era_start(i) / ticks_per_year)
 
-where :code:`i = 0, 1, ...` is the era's index, :code:`initial_supply` is the number of CSPR at genesis, :code:`issuance_rate` is the annual rate at which new CSPR is minted, and :code:`ticks_per_year = 365*24*60*60*1000 = 31_536_000_000`.
-
-We introduce the *round issuance rate* (corresponding to the chainspec parameter *round_seigniorage_rate*)
+We introduce the *round issuance rate* (corresponding to the chainspec parameter ``round_seigniorage_rate``) with this formula:
 
 .. code-block::
 
    round_issuance_rate = pow(1 + issuance_rate, 2^minimum_round_exponent / ticks_per_year) - 1
 
-which is the annual issuance rate adjusted to a single round of length determined by chainspec parameter *minimum_round_exponent*. For illustration, an exponent of 14 corresponds to a round length of roughly 16 seconds.
+The *round issuance rate* is the annual issuance rate adjusted to a single round of length determined by the chainspec parameter ``minimum_round_exponent``. For illustration, an exponent of 14 corresponds to a round length of roughly 16 seconds.
 
-Finally, the base round reward is computed as
+Finally, the base round reward is computed as:
 
 .. code-block::
 
@@ -68,35 +74,33 @@ This value gives us the maximum amount of CSPR that the validators can collectiv
 Distribution
 ~~~~~~~~~~~~~~~~~~~
 
-Validators receive tokens for proposing and finalizing blocks, according to their performance. The concept of weight is crucial for understanding this distribution scheme:
+Validators receive tokens for proposing and finalizing blocks according to their performance. The concept of weight is crucial for understanding this distribution scheme:
 
 - **Weight:** A validator's bonded stake, used in consensus
-- **Assigned weight of a block/round:** The total stake of validators that are scheduled to participate on a block
-- **Participated weight of a block/round:** The total stake of validators that actually end up participating, or sending messages to finalize a block before their respective rounds end
+- **Assigned weight of a block/round:** The total stake of validators scheduled to participate in a block
+- **Participated weight of a block/round:** The total stake of validators that end up participating or sending messages to finalize a block before the end of their respective round
 
-To determine eligibility, we look at **on-time finalization (OTF)**. Validators should finalize blocks on time, by sending required messages before their respective rounds end.
+To determine eligibility, we look at **on-time finalization (OTF)**. Validators should finalize blocks on time by sending required messages before the end of their respective round.
 
-It should be noted that switch blocks are not visible to the issuance calculation (as it is performed in the switch block itself for each era) and, consequently, no tokens are issued for switch blocks.
+Switch blocks are not visible to the issuance calculation (as this calculation is performed in the switch block itself for each era), and, consequently, no tokens are issued for switch blocks.
 
 Participation schedule
 ++++++++++++++++++++++
 
-The participation schedule is segmented into rounds, which are in turn allocated dynamically according to the validators' exponents and a deterministic (randomized at era start) assignment of validators to milliseconds of an era. A validator with the round exponent :code:`n` has to participate in rounds that repeat every :code:`2^n` ticks.
+The participation schedule is segmented into rounds, which are allocated dynamically according to the validators' exponents and a deterministic (randomized at era start) assignment of validators to milliseconds of an era. Thus, a validator with the round exponent ``n`` must participate in rounds that repeat every ``2^n`` ticks.
 
-Each validator is assessed according to their own round exponent. All assigned validators become eligible to receive tokens as long as the block gets finalized with messages that were sent within each validator's own round.
+Each validator is assessed according to its round exponent. All assigned validators become eligible to receive tokens as long as the block gets finalized with messages sent within each validator's round.
 
 Eligibility
 +++++++++++
 
-Once a block has been proposed and enough time has passed, the history of messages can be examined to detect whether the block was indeed finalized on time, according to the conditions given above.
+Once a block has been proposed and enough time has passed, the message log can be examined to detect whether the block was finalized on time, according to the conditions given above. If the block was *not* finalized on time, validators receive a fraction of the expected tokens, governed by the ``reduced_reward_multiplier`` chainspec parameter. If the block was finalized on time, assigned validators share the reward proportionally to their stake, regardless of whether they have sent messages or not.
 
-- If the block is *not* finalized on time, validators receive a fraction of the tokens, governed by the *reduced_reward_multiplier* chainspec parameter
-- If the block is finalized on time, assigned validators share the reward proportionally to stake, regardless of whether they have sent messages or not
 
 Inactivity
 ^^^^^^^^^^
 
-Validators who send no messages during an entire era are marked as inactive and cease to participate in the auction until they send a special deploy that reactivates their bid.
+Validators who send no messages during an entire era are marked as inactive and cease participating in the auction until they send a special deploy that reactivates their bid.
 
 Slashing
 ^^^^^^^^
@@ -106,4 +110,4 @@ Please review our `Equivocator Policy <https://github.com/CasperLabs/ceps/blob/m
 Founding validators
 -------------------
 
-Founding validators are subject to token lock-up, which prevents them from withdrawing any tokens from their bids for 90 days, then releases their genesis bid tokens in weekly steps, linearly, over the course of a further 90 days.
+Founding validators are subject to token lock-up, which prevents them from withdrawing any tokens from their bids for 90 days, then releases their genesis bid tokens in weekly steps, linearly, over an additional 90 days.
