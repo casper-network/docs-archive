@@ -24,12 +24,12 @@ Agents (consensus layer)
 
 *Validators* are responsible for maintaining platform security by building an ever-growing chain of finalized blocks, backing this chain's security with their stakes. Their importance (often referred to as "weight") both to protocol operation and security is, in fact, equal to their stake, which includes both their own and delegated tokens.
 
-*Delegators* are users who participate in the platform's security by delegating their tokens to validators, which adds to their weight, and collecting a part of the rewards proportional to their delegations, net of a cut ("delegation rate") that is collected by the validator.
+*Delegators* are users who participate in the platform's security by delegating their tokens to validators, which adds to their weight and collecting a part of the rewards proportional to their delegations, net of a cut ("delegation rate") that is collected by the validator.
 
 Incentives (consensus layer)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *auction* determines the composition of the validator set for each era of the protocol. It is a "first-price" (winning bids become stakes) auction with a fixed number of spots, chosen to balance security with performance (generally, the platform will run slower with more validators). Because rewards are proportional to the stake, it is expected that this competitive mechanism will provide a powerful impetus for staking as many tokens as possible.
+The *auction* determines the composition of the validator set for each era of the protocol. It is a "first-price" (winning bids become stakes) auction with a fixed number of spots chosen to balance security with performance (generally, the platform will run slower with more validators). Because rewards are proportional to the stake, we expect this competitive mechanism to provide a powerful impetus for staking as many tokens as possible.
 
 *Rewards* (per era) are issued to validators who perform, at their nominal pace, in such a way as to make timely progress on block finalization. These rewards are shared with delegators proportionally to their contributions, net of a cut taken by the validator.
 
@@ -38,9 +38,9 @@ The *auction* determines the composition of the validator set for each era of th
 Runtime
 ---------
 
-The runtime layer encompasses deployment and execution of smart contracts, session code, and other activity that performs computation on the global state. This suggests potential markets for finite platform resources, such as markets for computing time and storage. Such markets could ensure that resources are allocated to their highest-value uses. Currently, however, we limit ourselves to metering compute time, measured as gas. Gas can be conceptualized as relative time use of different WASM operations and host-side functions. Use of storage is also presently assigned a gas cost. We do not currently have a pricing mechanism for metered gas, although an outstanding Casper Improvement Proposal (`CEP #22 <https://github.com/CasperLabs/ceps/pull/22>`_) suggests the implementation of a first-price gas auction similar to Ethereum's. The initial mainnet deploy selection mechanism will be based on FIFO.
+The runtime layer encompasses the deployment and execution of smart contracts, session code, and other activity that performs computation on the global state. This suggests potential markets for finite platform resources, such as markets for computing time and storage. Such markets could ensure that resources are allocated to their highest-value uses. Currently, however, we limit ourselves to `metering computing time <https://docs.casperlabs.io/en/latest/implementation/execution-semantics.html#measuring-computational-work>`_, measured as gas. Gas can be conceptualized as relative time use of different WASM operations and host-side functions. Use of storage is also presently assigned a gas cost. We do not currently have a pricing mechanism for metered gas, although an outstanding Casper Enhancement Proposal (`CEP #22 <https://github.com/CasperLabs/ceps/pull/22>`_) suggests the implementation of a first-price gas auction similar to Ethereum's. The initial mainnet deploy selection mechanism will be based on FIFO.
 
-We expect to continue work on runtime resource markets, particularly gas futures (`CEP #17 <https://github.com/CasperLabs/ceps/pull/17>`_) after mainnet launch.
+We expect to continue work on runtime resource markets, particularly gas futures (`CEP #17 <https://github.com/CasperLabs/ceps/pull/17>`_).
 
 Agents (consensus layer)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -62,9 +62,9 @@ The ecosystem layer encompasses dApp design and operation. CasperLabs maintains 
 Macroeconomy
 ------------
 
-Casper's macroeconomics refers to the activity in the cryptocurrency markets, where CSPR can be treated as one cryptoasset among many rather than a computational platform. Our token economics are different from those of "digital gold" tokens like Bitcoin, designed to be scarce. Our tokens are minted from a fixed starting basis, which is accounted for by tokens distributed to genesis validators, employees, community and held for future distributions. The total supply of tokens grows at a fixed annual percentage rate from this basis.
+Casper's macroeconomics refers to the activity in the cryptocurrency markets, where CSPR can be treated as one cryptoasset among many rather than a computational platform. Our token economics are different from those of "digital gold" tokens like Bitcoin, designed to be scarce. Our tokens are minted from a fixed starting basis, which is accounted for by tokens distributed to genesis validators, employees, community members and held for future distributions. The total supply of tokens grows at a fixed annual percentage rate from this basis.
 
-The inflationary nature of our macroeconomics has two significant advantages over enforced scarcity. Inflation incentivizes token holders to stake or delegate their tokens, a behavior we explicitly support with our delegation feature. Additionally, because Casper is a general purpose computation platform, it is important to supply tokens for the support of real economic activity on the platform and to discourage hoarding tokens in expectation of speculative gain.
+The inflationary nature of our macroeconomics has two significant advantages over enforced scarcity. Inflation incentivizes token holders to stake or delegate their tokens, a behavior we explicitly support with our delegation feature. Additionally, because Casper is a general-purpose computing platform, it is essential to supply tokens to support actual economic activity on the platform and discourage hoarding tokens in expectation of speculative gain.
 
 .. toctree::
    :maxdepth: 2
