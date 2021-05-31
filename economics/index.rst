@@ -73,4 +73,4 @@ The inflationary nature of our macroeconomics has two significant advantages ove
    Overview <self>
    consensus.rst
    runtime.rst
-   economicsoverview.rst
+   stakingconcepts.rst
