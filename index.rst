@@ -19,6 +19,7 @@ Rust is the primary programming language for smart contracts on the Casper block
 `Staking Guide <staking/index.html>`_                             Participate in the protocol by staking CSPR tokens with a validator in the Casper Network 
 `Glossary <glossary/index.html>`_                                 Explore key definitions in the context of the Casper Network  
 `FAQ <faq/index.html>`_                                           Find answers regarding the Casper Network, CasperLabs, and the CSPR token sale  
+`Changelog <changelog.html>`_                                     Review past technical releases and changelogs for the Casper Network 
 ================================================================  ========================================================================
    
 
