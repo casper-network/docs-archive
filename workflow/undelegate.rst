@@ -1,26 +1,25 @@
-Undelegating Tokens from a Validator
-====================================
+Undelegating Tokens
+===================
 
 This document details a workflow where tokens delegated to a validator on a Casper network can be undelegated.
 
 Requirements
 ^^^^^^^^^^^^
 
-To follow the steps detailed within this document you will need:
+This workflow assumes:
 
-1. The Casper command line client
-2. An account on a Casper network
-3. A node RPC endpoint to send the delegation deploys.
-4. The public key of a validator on the same network
-5. Have previously delegated tokens to a validator on the network
-6. The undelegation wasm to execute on the network
+1. You meet the `prerequisites <setup.html>`_
+2. Are using the Casper command line client
+3. The undelegation contract or WASM to execute on the network
+4. A valid ``node-address``.
+5. Have previously deployed a smart contract to a Casper network (Refer: `Deploying Contracts <https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-contracts.html>`_)
+6. Have previously delegated tokens to a validator
 
-Refer to the `Delegation Workflow <delegation.html>`_ for steps to fulfil these requirements.
 
 Building The Undelegation WASM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the case that the ``undelegate.wasm`` cannot be obtained from a trusted source, it is recommended to build the WASM yourself.
+If you cannot obtain the ``undelegate.wasm`` from a trusted source, you can build the WASM yourself.
 
 Clone the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and build the contracts.
 To build contracts, set up Rust and install all dependencies, visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
@@ -37,7 +36,7 @@ The WASM can be found in:
 Sending the Undelegation Deploy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To initiate the undelegation process we must send a deploy containing the ``undelegate.wasm`` to the network.
+To initiate the undelegation process, send a deploy containing the ``undelegate.wasm`` to the network.
 
 
 Below is an example using the Casper command line client:
@@ -56,7 +55,7 @@ Below is an example using the Casper command line client:
 
 **Note** The delegator public key and the secret key that signs the deploy must be part of the same keypair.
 
-**Important request fields:**
+**Request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
@@ -88,35 +87,12 @@ Check the status of the Auction to confirm that our bid has been withdrawn.
     casper-client get-auction-info \
     --node-address http://<peer-ip-address>:7777/rpc
 
+**Request fields**:
+
+- ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
+
+
 If the public key and the amount are absent from the ``bids`` structure then we can safely assert that we have indeed un-delegated from the validator.
-
-
-::
-
-    casper-client get-deploy \
-    --node-address http://<peer-ip-address>:7777/rpc \
-    <undelegation-deploy-hash>
-
-A successful undelegation deploy will contain a ``WriteWithdraw`` transform within the execution results, similar to the ``WriteBid`` transform we saw in the delegation deploy.
-
-Below is a sample of successful execution.
-
-::
-
-                {
-                  "key": "withdraw-093d69e49af06167265325b6ffe90d8e9e766431c1919f3351c18de0975701c1",
-                  "transform": {
-                    "WriteWithdraw": [
-                      {
-                        "amount": "1",
-                        "bonding_purse": "uref-ca9247ad56a4d5be70484303133e2d6db97f7d7385772155763749af98ace0b0-007",
-                        "era_of_creation": 68,
-                        "unbonder_public_key": "010c7fef89bf1fc38363bd2ec20bbfb5e1152d6a9579c8847615c59c7e461ece89",
-                        "validator_public_key": "0102db4e11bccb3f9d823c82b9389625d383867d00d09b343043cdbe5ca56dd1fd"
-                      }
-                    ]
-                  }
-                },
 
 
 If your account is on the official Testnet or Mainnet, you can use the Block explorer to look up your account balance and see the tokens have been added to your balance.

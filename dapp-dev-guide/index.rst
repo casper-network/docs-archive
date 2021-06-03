@@ -35,12 +35,10 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    setup-nctl
    deploying-contracts
    calling-contracts
-   querying
    execution-error-codes
    keys
    sdk/index
    tutorials/index
-   workflow/index
    getting-help
 
 ..

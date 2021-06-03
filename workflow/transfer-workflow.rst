@@ -1,38 +1,45 @@
 Direct Token Transfer
 =====================
 
-This document describes a sample workflow for transferring tokens and verifying their transfer on a Casper network as of `Release-1.0.0 <https://github.com/CasperLabs/casper-node/tree/release-1.0.0>`_.
+This workflow describes how to use the Casper command line client to transfer tokens between ``Accounts`` on a Casper network.
 
-Requirements
-^^^^^^^^^^^^
+This workflow assumes:
 
-To follow the steps in this document, you will need:
+1. You meet the `prerequisites <setup.html>`_
+2. Are using the Casper command line client
+3. Have a source ``PublicKey`` hex and a target ``PublicKey`` hex
+4. A valid ``node-address``.
 
-1. The Casper command line client
-2. The public key (hex) of 2 accounts (one source account, one target account)
-3. A node RPC endpoint to send the transaction
+Additionally, you must be able to sign a ``Deploy`` for the source ``Account``.
 
-Visit the `Pre-requisites <setup.html>`_ section to complete these requirements.
+Transfer
+^^^^^^^^
 
-Transfer Tokens
-^^^^^^^^^^^^^^^
+``transfer`` allows you to move CSPR from one ``Account`` to another as denominated in `Motes <http://127.0.0.1:8000/implementation/tokens.html?highlight=motes#divisibility-of-tokens>`_. ``Motes`` is a denomination of the cryptocurrency CSPR (1 CSPR = 100000000000 ``Motes``).
 
-Clients can communicate with nodes on the network via JSON-RPC requests sent to a node's RPC endpoint ``http://<peer-ip-address>:7777``. JSON-RPC requests include transfers which are a special type of deploy.
+For transfers of at least 2.5 CSPR (250000000000 ``Motes``) tokens from a single sender to a single recipient on a Casper network, the most efficient option is to use the direct transfer capability.
 
-The ``transfer`` command below demonstrates how to transfer from a source account to a target account using the Casper command line  client by sending a request to the selected node's RPC endpoint.
+transfer command
+~~~~~~~~~~~~~~~~
 
-**Transfer Requirements**:
+::
 
-1. Each transfer amount needs to be 2.5 CSPR or more
-2. Each transfer costs 0.0001 CSPR (10000 motes). The transfer cost is fixed, and a different ``payment-amount`` will be ignored
-3. The account balance must at least contain the amount of tokens to transfer plus the fixed transfer cost.
+    casper-client transfer \
+        --id 1 \
+        --transfer-id 123456789012345 \
+        --node-address http://<node-ip-address>:7777 \
+        --amount <amount-to-transfer> \
+        --secret-key <source-account-secret-key>.pem \
+        --chain-name casper \
+        --target-account <hex-encoded-target-account-public-key>
 
-**Important request fields:**
+
+**Request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
-- ``transfer-id`` - <64-BIT INTEGER>  The ``transfer-id`` is a memo field, marking additional information about the recipient and is necessary when transferring token to some recipients. For example, if depositing token into an account where off chain management is used to keep track of individual sub-balances, it is necessary to provide a memo id uniquely identifying the actual recipient. If this not necessary for a given recipient, you may pass ``0`` or some ``u64`` value that is meaningful to you.
-- ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
-- ``amount`` - <512-BIT INTEGER> The number of motes to transfer
+- ``transfer-id`` - <64-BIT INTEGER>  The ``transfer-id`` is a memo field, providing additional information about the recipient which is necessary when transferring token to some recipients. For example, if depositing token into an account where off chain management is used to keep track of individual sub-balances, it is necessary to provide a memo id uniquely identifying the actual recipient. If this not necessary for a given recipient, you may pass ``0`` or some ``u64`` value that is meaningful to you.
+- ``node-address`` - <HOST:PORT> Hostname or IP and port of a node on a network bound to a JSON-RPC endpoint [default:http://localhost:7777]
+- ``amount`` - <512-BIT INTEGER> The number of motes to transfer (1 CSPR = 100000000000 ``Motes``)
 - ``secret-key`` - Path to secret key file
 - ``chain-name`` - Name of the chain, to avoid the deploy from being accidentally or maliciously included in a different chain
 
@@ -40,17 +47,6 @@ The ``transfer`` command below demonstrates how to transfer from a source accoun
     - The *chain-name* for mainnet is **casper**
 
 - ``target-account`` - <HEX STRING> Hex-encoded public key of the account from which the main purse will be used as the target
-
-::
-
-    casper-client transfer \
-        --id 1 \
-        --transfer-id 123456789012345 \
-        --node-address http://<peer-ip-address>:7777 \
-        --amount <amount-to-transfer> \
-        --secret-key <source-account-secret-key>.pem \
-        --chain-name casper \
-        --target-account <hex-encoded-target-account-public-key>
 
 
 **Important response fields:**
@@ -164,6 +160,8 @@ The ``transfer`` command below demonstrates how to transfer from a source accoun
 
 Deploy Status
 ~~~~~~~~~~~~~
+
+``Transfers`` on a Casper network are only executed after it has been included into a finalized ``Block``.
 
 Refer to the Section on `querying deploys <http://127.0.0.1:8000/dapp-dev-guide/querying.html#deploy-status>`_ within the network to check the execution status of the transfer.
 
@@ -403,24 +401,29 @@ Refer to the Section on `querying deploys <http://127.0.0.1:8000/dapp-dev-guide/
 State Root Hash
 ~~~~~~~~~~~~~~~~
 
-We will use the ``block_hash`` to query and retrieve the block that contains our deploy. Afterward, we will retrieve the root hash of the global state trie for this block, also known as the block's ``state_root_hash``. We will use the ``state_root_hash`` to look up various values, like the source and destination account and their balances.
+The state of information like the balance of an ``Account`` on a Casper blockchain is stored in its `Global State <https://docs.casperlabs.io/en/latest/implementation/global-state.html>`_
 
-**Important request fields:**
+We will use the ``block_hash`` to query and retrieve the ``Block`` that contains our ``Deploy``. We will use the ``state_root_hash`` to look up various values, like the source and destination account and their balances.
 
-- ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
-- ``node-address`` <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
-- ``block-identifier`` - <HEX STRING OR INTEGER> Hex-encoded block hash or height of the block. If not given, the last block added to the chain as known at the given node will be used
 
 ::
 
     casper-client get-block \
           --id 3 \
-          --node-address http://<peer-ip-address>:7777 \
+          --node-address http://<node-ip-address>:7777 \
           --block-identifier <block-hash> \
+
+
+**Request fields:**
+
+- ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
+- ``node-address`` <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
+- ``block-identifier`` - <HEX STRING OR INTEGER> Hex-encoded block hash or height of the block. If not given, the last block added to the chain as known at the given node will be used
+
 
 **Important response fields:**
 
-- ``"result"."block"."header"."state_root_hash"`` - contains the root hash of the global state trie for this block
+- ``"result"."block"."header"."state_root_hash"`` - contains the ``state-root-hash`` for this block
 
 .. raw:: html
 
@@ -509,22 +512,24 @@ We will use the ``block_hash`` to query and retrieve the block that contains our
 Query the Source Account
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Next, we will query for information about the ``Source`` account, using the global-state hash of the block containing our transfer and the public key of the target account.
+Next, we will query for information about the ``Source`` account, using the ``state-root-hash`` of the block containing our transfer and the public key of the target account.
 
-**Important request fields:**
+::
+
+    casper-client query-state \
+      --id 4 \
+      --node-address http://<node-ip-address>:7777 \
+      --state-root-hash <state-root-hash> \
+      --key <hex-encoded-source-account-public-key>
+
+
+**Request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 - ``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root
 - ``key`` - <FORMATTED STRING or PATH> The base key for the query. This must be a properly formatted public key, account hash, contract address hash, URef, transfer hash or deploy-info hash.
 
-::
-
-    casper-client query-state \
-      --id 4 \
-      --node-address http://<peer-ip-address>:7777 \
-      --state-root-hash <state-root-hash> \
-      --key <hex-encoded-source-account-public-key>
 
 **Important response fields:**
 
@@ -593,18 +598,19 @@ Query the Target Account
 
 We will repeat the previous step to query information about the target account. 
 
-**Important request fields:**
-
-- ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
-- ``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root
-- ``key`` - <FORMATTED STRING or PATH> The base key for the query. This must be a properly formatted public key, account hash, contract address hash, URef, transfer hash or deploy-info hash.
-
 ::
 
     casper-client query-state \
           --id 5 \
           --state-root-hash <state-root-hash> \
           --key <hex-encoded-target-account-public-key>
+
+**Request fields:**
+
+- ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
+- ``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root
+- ``key`` - <FORMATTED STRING or PATH> The base key for the query. This must be a properly formatted public key, account hash, contract address hash, URef, transfer hash or deploy-info hash.
+
 
 .. raw:: html
 
@@ -664,22 +670,26 @@ We will repeat the previous step to query information about the target account.
 Get Source Account Balance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now that we have the source purse address, we can get its balance using the ``get-balance`` command. In the following sample output, the balance of the source account is 5000000000 motes.
+All ``Accounts`` on a Casper system have a purse associated with the Casper system mint, which we call the main purse. The balance associated with a given purse is recorded to ``Global State`` and the value can be queried using the ``URef`` associated with the purse
 
-**Important request fields:**
+Now that we have the source purse address, we can get its balance using the ``get-balance`` command.
+
+::
+
+    casper-client get-balance \
+          --id 6 \
+          --node-address http://<node-ip-address>:7777 \
+          --state-root-hash <state-root-hash> \
+          --purse-uref <source-account-purse-uref>
+
+
+**Request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 - ``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root
 - ``purse-uref`` - <FORMATTED STRING> The URef under which the purse is stored. This must be a properly formatted URef "uref-<HEX STRING>-<THREE DIGIT INTEGER>"
 
-::
-
-    casper-client get-balance \
-          --id 6 \
-          --node-address http://<peer-ip-address>:7777 \
-          --state-root-hash <state-root-hash> \
-          --purse-uref <source-account-purse-uref>
 
 .. raw:: html
 
@@ -724,20 +734,22 @@ Get Target Account Balance
 
 Similarly, now that we have the address of the target purse, we can get its balance. 
 
-**Important request fields:**
+::
+
+    casper-client get-balance \
+          --id 7 \
+          --node-address http://<node-ip-address>:7777 \
+          --state-root-hash <state-root-hash> \
+          --purse-uref <target-account-purse-uref>
+
+
+**Request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 - ``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root
 - ``purse-uref`` - <FORMATTED STRING> The URef under which the purse is stored. This must be a properly formatted URef "uref-<HEX STRING>-<THREE DIGIT INTEGER>"
 
-::
-
-    casper-client get-balance \
-          --id 7 \
-          --node-address http://<peer-ip-address>:7777 \
-          --state-root-hash <state-root-hash> \
-          --purse-uref <target-account-purse-uref>
 
 .. raw:: html
 
@@ -780,22 +792,26 @@ Similarly, now that we have the address of the target purse, we can get its bala
 Query Transfer Details
 ~~~~~~~~~~~~~~~~~~~~~~
 
+``Deploys`` in a Casper network can contain multiple ``Transfers`` within it, when such a ``Deploy`` is executed, the information about each individual ``Transfers`` is written to ``Global State``. Each ``Transfer`` can be uniquely identified by a hash which is known as the ``transfer-address`` and is a formatted string with a ``transfer-`` prefix.
+
 We will use the ``transfer-<address>`` to query more details about the transfer.
-
-**Important request fields:**
-
-- ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
-- ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
-- ``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root
-- ``key`` - <FORMATTED STRING or PATH> The base key for the query. This must be a properly formatted public key, account hash, contract address hash, URef, transfer hash or deploy-info hash.
 
 ::
 
     casper-client query-state \
           --id 8 \
-          --node-address http://<peer-ip-address>:7777 \
+          --node-address http://<node-ip-address>:7777 \
           --state-root-hash <state-root-hash> \
           --key transfer-<address>
+
+**Request fields:**
+
+- ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
+- ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
+- ``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root
+- ``key`` - <FORMATTED STRING or PATH> The base key for the query. This must be a properly formatted transfer address; "transfer-<address>"
+
+
 
 .. raw:: html
 
@@ -847,60 +863,5 @@ We will use the ``transfer-<address>`` to query more details about the transfer.
     </details>
 
 |
-Here we can see more information about the transfer we conducted: its deploy hash, the account which executed the transfer, the source and target purses, and the target account. Using this additional information, we can verify that our transfer was executed successfully.
+The query responds with more information about the transfer we conducted: its deploy hash, the account which executed the transfer, the source and target purses, and the target account. Using this additional information, we can verify that our transfer was executed successfully.
 
-Other Available RPCs
-^^^^^^^^^^^^^^^^^^^^
-
-The example above uses JSON-RPC calls to execute and then verify the transfer. There are additional JSON-RPC calls that you can make to address other use cases.
-
-The following command lists all the JSON-RPC calls that the node supports:
-
-::
-
-    casper-client list-rpcs --node-address http://<peer-ip-address>:7777
-
-The endpoint returns an OpenRPC compliant document that describes all the JSON-RPC calls available and provides examples for the RPCs. Please be sure to query this specific endpoint as it provides up-to-date information on interacting with the RPC endpoint.
-
-
-FAQ
-^^^
-This section covers frequently asked questions and our recommendations.
-
-Deploy Processing
-~~~~~~~~~~~~~~~~~
-**Question**: How do I know that a deploy was finalized?
-
-**Answer**: If a deploy was executed, then it has been finalized. If the deploy status comes back as null, that means the deploy has not been executed yet. Once the deploy executes, it is finalized, and no other confirmation is needed. Exchanges that are not running a read-only node must also keep track of `finality signatures <#finality-signatures>`_ to prevent any attacks from high-risk nodes.
-
-Finality Signatures
-~~~~~~~~~~~~~~~~~~~
-**Question**: When are finality signatures needed?
-
-**Answer**: Finality signatures are confirmations from validators that they have executed the transaction. Exchanges should be asserting finality by collecting the weight of two-thirds of transaction signatures. If an exchange runs a read-only node, it can collect these finality signatures from its node. Otherwise, the exchange must assert finality by collecting finality signatures and have proper monitoring infrastructure to prevent a Byzantine attack. 
-
-Suppose an exchange connects to someone else's node RPC to send transactions to the network. In this case, the node is considered high risk, and the exchange must assert finality by checking to see how many validators have run the transactions in the network.
-
-deploy_hash vs. transfer_hash
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-**Question**: How is a deploy_hash different than a transfer_hash?
-
-**Answer**: Essentially, there is no difference between a `deploy_hash` and a `transfer_hash` since they are both deploy transactions. However, the platform is labeling the subset of deploys which are transfers, to filter transfers from other types of deploys. In other words, a `transfer_hash` is a native transfer, while a `deploy_hash` is another kind of deploy.
-
-account-hex vs. account-hash
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-**Question**: Should a customer see the account-hex or the account-hash?
-
-**Answer**: Exchange customers or end-users only need to see the `account-hex`. They do not need to know the `account_hash`. The `account_hash` is needed in the backend to verify transactions. Store the `account-hash` to query and monitor the account. Customers do not need to know this value, so to simplify their experience, we recommend storing both values and displaying only the `account-hex`.
-
-Example Deploy
-~~~~~~~~~~~~~~
-**Question**: Can you provide an example of a deploy?
-
-**Answer**: You can find a *testDeploy* reference in `GitHub <https://github.com/casper-ecosystem/casper-client-sdk/blob/master/test/lib/DeployUtil.test.ts#L5>`_.
-
-Operating with Keys
-~~~~~~~~~~~~~~~~~~~
-**Question**: How should we work with the PEM keys?
-
-**Answer**: The `Keys API <https://casper-ecosystem.github.io/casper-client-sdk/modules/_lib_keys_.html>`_ provides methods for `Ed25519` and `Secp256K1` keys. Also, review the tests in `GitHub <https://github.com/casper-ecosystem/casper-client-sdk/blob/master/test/lib/Keys.test.ts#L39>`_ and the `Working with Keys <https://docs.casperlabs.io/en/latest/dapp-dev-guide/keys.html>`_ documentation.
