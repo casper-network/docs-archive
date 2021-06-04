@@ -15,7 +15,7 @@ The auction determines the composition of the validator set for each era of the 
 
 Auction contract
 ^^^^^^^^^^^^^^^^
-The auction contract acts as a front-end user interface to the `auction <auction>`_ by directly accepting bids from validators and delegators. It also contains the logic necessary for carrying out the auction.
+The auction contract acts as a front-end user interface to the `auction <A.html#auction>`_ by directly accepting bids from validators and delegators. It also contains the logic necessary for carrying out the auction.
 
 Auction delay
 ^^^^^^^^^^^^
