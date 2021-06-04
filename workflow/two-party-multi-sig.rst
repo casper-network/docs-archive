@@ -3,13 +3,13 @@ Two Party Multi-Signature Deploys
 
 `Accounts <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ on a Casper network can associate other ``Accounts`` to allow or require a multiple signature scheme for ``Deploys``.
 
-This workflow describes how a trivial two-party multi-signature scheme for ``  can be enforced for an ``Account`` on a Casper network using a smart contract.
+This workflow describes how a trivial two-party multi-signature scheme for signing and sending ``Deploys``  can be enforced for an ``Account`` on a Casper network.
 
 This workflow assumes:
 
 1. You meet the `prerequisites <setup.html>`_
 2. Are using the Casper command line client
-3. Have a Main Account (**MA**) ``PublicKey`` hex and an Associated Account (**AA**) ``PublicKey`` hex
+3. Have a Main (**MA**) ``PublicKey`` hex and a ``PublicKey`` hex (**AA**) to associate
 4. Have a valid ``node-address``.
 5. Have previously deployed a smart contract to a Casper network (Refer: `Deploying Contracts <https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-contracts.html>`_)
 
@@ -182,7 +182,7 @@ We will use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Ma
     }
 
 
-In the above example, we can see two keys listed within the ``associated-keys`` section; these are the account hashes for the Associated Account and the Main Account, respectively.
+In the above example, we can see the ``AccountHashes`` listed within the ``associated-keys`` section.
 Each key has a weight of ``1``, since the action threshold for ``deployment`` is set to ``2``, neither account is able to sign and send a deploy individually.
 Thus to send the deploy from the Main account, the deploy needs to be signed by the secret keys of each account to reach the required threshold.
 
