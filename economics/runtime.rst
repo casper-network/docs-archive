@@ -1,7 +1,7 @@
 Runtime Economics
 =================
 
-The economics of the runtime layer intend to incentivize efficient allocation of computational resources, primarily CPU time, to users. Pending state pruning implementation, disk space use is treated as CPU time usage and charged, irreversibly, per byte written. Currently, gas is allocated according to a first-in, first-out model for deploys, with a fixed price of 1 mote (1/10^9 part of a CSPR token) per 1 unit of gas.
+The economics of the runtime layer should incentivize efficient allocation of computational resources, primarily CPU time, to users. Pending state pruning implementation, disk space use is treated as CPU time usage and charged, irreversibly, per byte written. Currently, gas is allocated according to a first-in, first-out model for deploys, with a fixed price of 1 mote (1/10^9 part of a CSPR token) per 1 unit of gas.
 
 Gas allocation
 --------------
@@ -25,7 +25,7 @@ We expect to refine the current gas cost table to reflect time use more closely,
 Lanes
 ^^^^^
 
-The block gas limit is split into two lanes, one for native transfers and one for general deploys. The number of transfers, which cost a fixed amount of gas, is governed directly by the ``block_max_transfer_count`` chainspec parameter, set to 2500 motes when Mainnet launched.
+The block gas limit is split into two lanes, one for native transfers and one for general deploys. The number of transfers, which cost a fixed amount of gas, is governed directly by the ``block_max_transfer_count`` chainspec parameter, set to 2500 when Mainnet launched.
 
 Gas fees
 --------
