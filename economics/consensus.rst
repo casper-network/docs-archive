@@ -94,7 +94,7 @@ Each validator is assessed according to its round exponent. All assigned validat
 Eligibility
 +++++++++++
 
-Once a block has been proposed and enough time has passed, the common history of protocol messages can be examined to detect whether the block was finalized on time, according to the conditions given above. If the block was *not* finalized on time, validators receive a fraction of the expected tokens, governed by the ``reduced_reward_multiplier`` chainspec parameter. If the block was finalized on time, assigned validators share the reward proportionally to their stake, regardless of whether they have sent messages or not.
+Once a block has been proposed and enough time has passed, the history of protocol messages can be examined to detect whether the block was finalized on time, according to the conditions given above. If the block was *not* finalized on time, validators receive a fraction of the expected tokens, governed by the ``reduced_reward_multiplier`` chainspec parameter. If the block was finalized on time, assigned validators share the reward proportionally to their stake, regardless of whether they have sent messages or not.
 
 
 Inactivity
