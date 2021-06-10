@@ -9,106 +9,101 @@ This tutorial shows you how to upgrade smart contracts. Casper contracts are upg
 
 The process of upgrading a smart contract is simple. All you need is to deploy a new version of the contract and overwrite the old functions with new ones. 
 
-These are the essential steps you need to follow:
-
-#. Deploy the contract with an *upgrade* function
-#. Add an entry point in the *call* function for the *upgrade* function
-#. Add the new features you desire
-
 Here are specific examples of how to implement the upgrade functionality.
 
-Step 1. Deploy the contract with an 'upgrade' function
--------------------------------------------------------
-
-When you first deploy the contract, you must include an *upgrade* function. Since the contract is immutable, you cannot add the *upgrade* function after deployment. Without the this function, you cannot upgrade the contract. In other words, you must include the *upgrade* function when you first deploy the contract.
-
-Start by creating an *upgrade* function in your contract similar to the following example.
-
-.. code-block:: rust
-
-	#[no_mangle]
-	pub extern "C" fn upgrade_me() {
-	    let installer_package: ContractPackageHash = runtime::get_named_arg("installer_package");
-	    let contract_package: ContractPackageHash = get_key(CONTRACT_PACKAGE);
-	 
-	    runtime::call_versioned_contract(installer_package, None, "install", runtime_args! {
-		"contract_package" => contract_package,
-	    })
-	}
-
-
-Step 2. Add an entry point in the 'call' function 
+Step 1. Deploy the initial contract.
 -------------------------------------------------
 
-Next, you need to add an entry point to the *upgrade* function in the *call* function. This enables the contract execution to invoke the *upgrade* function in the future.
+.. code-block:: rust
+
+    /// Original getter function that returns to the caller that this contract is "first"
+    #[no_mangle]
+    pub extern "C" fn get_message() {
+        runtime::ret(CLValue::from_t(String::from("first")).unwrap_or_revert());
+    }
+
+    #[no_mangle]
+    pub extern "C" fn call() {
+        // Introduce a singular, public "get_message" entry point.
+        let mut entry_points = EntryPoints::new();
+        entry_points.add_entry_point(EntryPoint::new(
+            "get_message",
+            vec![],
+            CLType::String,
+            EntryPointAccess::Public,
+            EntryPointType::Contract,
+        ));
+
+        // Introduce the contract itself to the account, and save it's package hash and access token
+        // to the account's storage as "messenger_package_hash" and "messanger_access_token" respectively.
+        let _ = storage::new_contract(
+            entry_points,
+            None,
+            Some("messenger_package_hash".to_string()),
+            Some("messanger_access_token".to_string()),
+        );
+    }
+
+Step 2. Upgrade the contract.
+-------------------------------------------------
 
 .. code-block:: rust
 
-	#[no_mangle]
-	pub extern "C" fn call() {
-	    let (contract_package, access_token) = storage::create_contract_package_at_hash();
+    /// Upgraded version of the version getter fuction, returning "second" proving,
+    /// that the contract has gained and upgraded version.
+    #[no_mangle]
+    pub extern "C" fn get_message() {
+        runtime::ret(CLValue::from_t("second".to_string()).unwrap_or_revert());
+    }
 
-	    let entry_points = {
-		let mut entry_points = EntryPoints::new();
-		let upgradefunction = EntryPoint::new(
-		    "upgrade_me",
-		    vec![],
-		    CLType::Unit,
-		    EntryPointAccess::Public,
-		    EntryPointType::Contract,
-		);
-		entry_points.add_entry_point(upgradefunction);
-	...
-	    let mut named_keys = NamedKeys::new();
-	    named_keys.insert(ACCESS_TOKEN.to_string(), access_token.into());
-	    named_keys.insert(CONTRACT_PACKAGE.to_string(), storage::new_uref(contract_package).into());
-	    let (new_contract_hash, _) = storage::add_contract_version(contract_package, entry_points, named_keys);
+    #[no_mangle]
+    pub extern "C" fn call() {
+        // Add entrypoint that will overwrite the one in the original contract
+        let mut entry_points = EntryPoints::new();
+        entry_points.add_entry_point(EntryPoint::new(
+            "get_message",
+            vec![],
+            CLType::String,
+            EntryPointAccess::Public,
+            EntryPointType::Contract,
+        ));
 
-	    runtime::put_key(CONTRACT_NAME, new_contract_hash.into());
-	    set_key(CONTRACT_PACKAGE, contract_package); // stores contract package hash under account's named key
-	    set_key(CONTRACT_HASH, new_contract_hash);
-	}
+        // Get the package hash of the originally deployed contract.
+        let messanger_package_hash: ContractPackageHash = runtime::get_key("messenger_package_hash")
+            .unwrap_or_revert()
+            .into_hash()
+            .unwrap()
+            .into();
 
-Step 3. Add new features
-------------------------
+        // Overwrite the original contract with the new entry points. This works
+        // because the original code stored the required access token into the accounts storage.
+        let _ = storage::add_contract_version(messanger_package_hash, entry_points, Default::default());
+    }
 
-Now you are ready to upgrade your contract and add the new features and functions you desire.
+Step 3. Test
+-------------------------------------------------
+
+The testing scenario looks like that.
 
 .. code-block:: rust
-	// Using the package hash and our access token, we're able to    
-	// upgrade our contract with new features and new functions   
 
-	    let contract_package: ContractPackageHash = runtime::get_named_arg(ARG_CONTRACT_PACKAGE); // Get the package hash of the first contract
-	    let _access_token: URef = runtime::get_named_arg("accesstoken"); // Our secret access token, defined in the first version
+    #[test]
+    fn test_simple_upgrade() {
+        // Setup test context
+        let mut upgrade_test = ContractUpgrader::setup();
+        // Introduce the original contract to the test system.
+        upgrade_test.deploy_contract("messanger_v1_install.wasm");
+        // Check for version 1 of the contract in the system.
+        upgrade_test.assert_msg("first");
 
-	    let entry_points = {
-		let mut entry_points = EntryPoints::new();
-		let gettext = EntryPoint::new(
-		    METHOD_SET_TEXT,
-		    vec![],
-		    CLType::Unit,
-		    EntryPointAccess::Public,
-		    EntryPointType::Contract,
-		);
-		entry_points.add_entry_point(gettext);
-		entry_points
-	    };
-
-	    // Deploy the new version of the contract and replace the old functions with new one.   
-	    let (_, _) = storage::add_contract_version(contract_package.into(), entry_points, Default::deault());   
-
-The `add_contract_version <https://docs.rs/casperlabs-contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_ API will allow you to deploy a new version of your contract.
-
-Remember, it is essential to include the *upgrade* function and safeguard the access token when you first deploy the contract. You will need the access token for future upgrades.
+        // Deploy upgrader that overwrites the original contract.
+        upgrade_test.deploy_contract("messanger_v2_upgrade.wasm");
+        // Check whether the contract has been changed to version 2.
+        upgrade_test.assert_msg("second");
+    }
 
 External links
 --------------
 
-* `Sample upgrader <https://github.com/CasperLabs/casper-node/tree/master/smart_contracts/contracts/test/do-nothing-stored-upgrader>`_
-* `API details for add_contract_version <https://docs.rs/casperlabs-contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_
-* `Other examples of smart contracts <https://github.com/CasperLabs/casper-node/tree/master/smart_contracts>`_
-
-..
- Commented out until I can find the link that works:
- For more documented sample code, Check out the contract-upgrade-example repository here:
- https://github.com/casper-ecosystem/contract-upgrade-example
+* `Full example <https://github.com/casper-ecosystem/contract-upgrade-example>`_
+* `API details for add_contract_version <https://docs.rs/casper-contract/latest/casper_contract/contract_api/storage/fn.add_contract_version.html>`_
