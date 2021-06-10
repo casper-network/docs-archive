@@ -5,7 +5,7 @@
 Deploying Contracts
 ===================
 
-Ultimately, smart contracts are meant to run on the blockchain.  Once your smart contract is complete, it's time to deploy the contract to the blockchain. 
+Ultimately, smart contracts are meant to run on the blockchain.  Once your smart contract is complete, it's time to deploy the contract to the blockchain.
 There are a few pre-requisites to doing this:
 
 
@@ -18,7 +18,7 @@ This section will help you get set up with each pre-requisite.
 Client
 ------
 
-The client software communicates with the network to transmit your deployments to the network. Clients can be created for any application platform, such as JavaScript or Python. The official client for Casper is a Rust client.  
+The client software communicates with the network to transmit your deployments to the network. Clients can be created for any application platform, such as JavaScript or Python. The official client for Casper is a Rust client.
 
 **Ensure that your client matches the version of the network you intend to deploy to.**
 
@@ -43,7 +43,7 @@ Building from Source
 Check the Client Version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-There is an official Rust client, that works with the Delta Testnet. 
+There is an official Rust client, that works with the Delta Testnet.
 
 To check the client version run:
 
@@ -87,14 +87,14 @@ Sending a Deployment to the Delta Testnet
 -----------------------------------------
 
 The easiest way to deploy a contract is to use an existing public network.  CasperLabs provides a Testnet for this.
-The Testnet is operated by external validators that can accept transactions.  
+The Testnet is operated by external validators that can accept transactions.
 
 Obtain Token
 ^^^^^^^^^^^^
 
 To send a deploy to the network, create keys and obtain token.
-Token can be obtained via a faucet or by a participant that has token.  Connect to our `Discord <https://discordapp.com/invite/Q38s3Vh>`_ to get token via 
-an existing participant.  
+Token can be obtained via a faucet or by a participant that has token.  Connect to our `Discord <https://discordapp.com/invite/Q38s3Vh>`_ to get token via
+an existing participant.
 
 A Basic Deployment using the Command Line (Rust Client)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -116,7 +116,7 @@ Note: Each deploy gets a unique hash.  This is part of the cryptographic securit
 Check Deploy Status
 ^^^^^^^^^^^^^^^^^^^
 
-Once the network has received the deployment, it will queue up in the system before being listed in a block for execution.  Sending a transaction (deployment) to the network does not mean that the transaction processed successfully.  Therefore, it's important to check to see that the contract executed properly, and that the block was finalized. 
+Once the network has received the deployment, it will queue up in the system before being listed in a block for execution.  Sending a transaction (deployment) to the network does not mean that the transaction processed successfully.  Therefore, it's important to check to see that the contract executed properly, and that the block was finalized.
 
 .. code-block:: bash
 
@@ -155,7 +155,7 @@ Which will return a data structure like this:
          "ModuleBytes": {
            "args": "00000000",
            "Module_bytes":
-   CONTRACT BYTECODE 
+   CONTRACT BYTECODE
     }
        }
      },
@@ -165,10 +165,10 @@ Which will return a data structure like this:
          "result": {
            "cost": "164645",
            "effect": {
-             "operations": { 
+             "operations": {
    LIST OF OPERATIONS
                          },
-             "transforms": { 
+             "transforms": {
    LIST OF TRANSFORMS
                              }
                },
@@ -229,15 +229,31 @@ From this data structure we can observe some properties about the deploy (some o
 
 It is also possible to check the contract's state by performing a ``query-state`` command using the client.
 
+A Note about Gas Prices
+^^^^^^^^^^^^^^^^^^^^^^^
+
+If you notice in the put-deploy command above, we supplied a payment amount argument:
+
+.. code-block:: bash
+
+  --payment-amount 10000000
+
+But the actual execution cost was only ``164645`` when it was run on the chain!
+
+A common question that frequently arises is: "How do I know what the payment amount (gas cost) should be?" The honest answer is that we are hard at work to create tools to help you estimate your costs. Currently, we recommend using the `NCTL <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_ tool on your local machine or the testnet to deploy your contracts in a test environment. As you just saw, you can check a deploy status and roughly see how much it would actually cost when deployed.
+
+You can estimate the costs in this way, and then add a small buffer in case the network state has changed. So in this example above, you might have chosen to set the payment to 175000 or 200000, rather than the 10000000 that was used.
+
+
 Advanced Deployments
 ^^^^^^^^^^^^^^^^^^^^
 
-CasperLabs supports complex deployments.  
+CasperLabs supports complex deployments.
 
 Using Arguments with Deployments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Casper contracts support arguments for deployments, which enables powerful capabilities for smart contract.  The casper client provides some examples on
+Casper contracts support arguments for deployments, which enables powerful capabilities for smart contract development.  The casper client provides some examples on
 how to do this:
 
 .. code-block:: bash
@@ -256,5 +272,5 @@ Every account can associate multiple keys with it and give each a weight. Collec
 * ``sign-deploy``  - signs a deploy with given private key
 * ``send-deploy``  - sends a deploy to CasperLabs node
 
-To make a deploy signed with multiple keys: first create the deploy with ``make-deploy``. This generates a deploy file that can be sent to the other signers, who 
+To make a deploy signed with multiple keys: first create the deploy with ``make-deploy``. This generates a deploy file that can be sent to the other signers, who
 then sign it with their keys by calling ``sign-deploy`` for each key. Signatures need to be gathered on the deploy one after another, untill all requisite parties have signed the deploy.  Finally the signed deploy is sent to the node with ``send-deploy`` for processing by the network.
