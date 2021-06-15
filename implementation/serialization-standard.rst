@@ -414,10 +414,10 @@ following rules (this defines the Casper serialization format):
 | ``READ_ADD_WRITE`` |            7  |
 +--------------------+---------------+
 
-- ``PublicKey`` serializes as a single byte tag representing the algorithm followed by 32 bytes of the ``PublicKey`` itself
+- ``PublicKey`` serializes as a single byte tag representing the algorithm followed by 32 bytes of the ``PublicKey`` itself:
 
     - If the ``PublicKey`` is an ``Ed25519`` key, the single tag byte is ``1`` followed by the individual bytes of the serialized key.
-    - If the ``PublicKey`` is an ``Secp256k1`` key, the single tag byte is a ``2`` followed by the individual bytes of the serialized key.
+    - If the ``PublicKey`` is a ``Secp256k1`` key, the single tag byte is a ``2`` followed by the individual bytes of the serialized key.
 
 
 - ``Key`` values serialize as a single byte tag representing the variant,
