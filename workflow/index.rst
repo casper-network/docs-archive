@@ -1,4 +1,4 @@
-Workflows
+How To's
 ==========
 
 This section contains guides that highlight key features and capabilities of the Casper system.

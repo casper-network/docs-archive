@@ -3,9 +3,6 @@ Undelegating Tokens
 
 This document details a workflow where tokens delegated to a validator on a Casper network can be undelegated.
 
-Requirements
-^^^^^^^^^^^^
-
 This workflow assumes:
 
 1. You meet the `prerequisites <setup.html>`_
@@ -19,9 +16,7 @@ This workflow assumes:
 Building The Undelegation WASM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you cannot obtain the ``undelegate.wasm`` from a trusted source, you can build the WASM yourself.
-
-Clone the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and build the contracts.
+Obtain the ``undelegate.wasm`` by cloning the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and building the contracts.
 To build contracts, set up Rust and install all dependencies, visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
 
 Once the contracts have been built, you will need the ``undelegate.wasm`` to create a deploy that we will initiate the un-delegation process.
@@ -36,8 +31,7 @@ The WASM can be found in:
 Sending the Undelegation Deploy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To initiate the undelegation process, send a deploy containing the ``undelegate.wasm`` to the network.
-
+Send a deploy containing the ``undelegate.wasm`` to the network to initiate the undelegation process.
 
 Below is an example using the Casper command line client:
 

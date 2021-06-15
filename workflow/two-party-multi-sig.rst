@@ -28,11 +28,11 @@ Each ``Account`` within a Casper Network has has two action thresholds that mana
 1. Send a deploy to the network; determined by the ``deployment`` threshold
 2. Edit the ``associated keys`` and the ``action thresholds``; determined by the ``key_management`` threshold
 
-To enforce multi-signature (multi-sig) feature for an ``Account`` on a Casper network, we require that the *main key* and *associated key*'s combined weight is greater than or equal to the ``deployment`` threshold. We can do this by having each key's weight equal to half of the ``deployment`` threshold.
+To enforce multi-signature (multi-sig) feature for an ``Account`` on a Casper network, the *main key* and *associated key*'s combined weight must be greater than or equal to the ``deployment`` threshold. This can be achieved by having each key's weight equal to half of the ``deployment`` threshold.
 
 
-Contract Description
-^^^^^^^^^^^^^^^^^^^^
+Code Description
+^^^^^^^^^^^^^^^^^
 
 You can run session code that will execute within the context of your main account. Below is the code that will be compiled to WASM and then sent to the network as part of a deploy.
 
@@ -69,12 +69,12 @@ You can run session code that will execute within the context of your main accou
 The contract will execute **2 crucial steps** to enforce the multi-sig scheme for your main account:
 
 1. Add the associated key to the ``Account`` by adding the ``AccountHash`` of the **AA**  to
-2. Raise the ``action threshold`` for ``deployment`` to ``2``, such that the weight required to send a ``Deploy`` is split equally between the Main and Associated ``Account``
+2. Raise the ``action threshold`` for ``deployment`` to ``2``, such that the weight required to send a ``Deploy`` is split equally between the keys associated with the ``Account``
 
-The action thresholds for deploys cannot be greater than the action threshold for ``key management``. Therefore we need to raise the ``key management`` threshold to raise the ``deployment`` threshold. By default, action thresholds are set to ``1``.
+The action thresholds for deploys cannot be greater than the action threshold for ``key management``. By default, action thresholds are set to ``1``.
 
-Contract Execution
-^^^^^^^^^^^^^^^^^^
+Code Execution
+^^^^^^^^^^^^^^^
 
 The state of the ``Account`` can be altered by sending a ``Deploy`` which executes WASM that will associate the ``AccountHash`` of the **AA**.
 
@@ -132,13 +132,13 @@ Confirming Execution and Account Status
 
 The state of information like the ``Account`` configuration on a Casper blockchain is stored in a `Merkle Tree <https://docs.casperlabs.io/en/latest/glossary/M.html#merkle-tree>`_ and is a snapshot of the blockchain's `Global State <https://docs.casperlabs.io/en/latest/implementation/global-state.html>`_. The representation of ``Global State`` for a given ``Block`` can be computed by executing the ``Deploys`` (including ``Transfers``) within the ``Block`` and its ancestors. The root node of the Merkle Tree identifying a particular state is called the ``state-root-hash`` and is stored in every executed ``Block``.
 
-To check that our account was configured correctly we need the ``state-root-hash`` corresponding to the block that contains our deploy.
-To obtain the ``state-root-hash``, we must:
+To check that your account was configured correctly, you need the ``state-root-hash`` corresponding to the block that contains your deploy.
+To obtain the ``state-root-hash``:
 
 1. Confirm the execution status of the deploy and obtain the hash of the block containing it. (Refer `Checking Deploy Status <http://127.0.0.1:8000/dapp-dev-guide/querying.html#deploy-status>`_)
 2. Query the block containing the deploy to obtain the corresponding ``state_root_hash`` (Refer `Getting Block Information <https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html#getting-block-information>`_)
 
-We will use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Main account to query the network for the account and check its configuration.
+Use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Main account to query the network for the account and check its configuration.
 
 .. code-block:: bash
 
@@ -182,7 +182,7 @@ We will use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Ma
     }
 
 
-In the above example, we can see the ``AccountHashes`` listed within the ``associated-keys`` section.
+In the above example, you can see the ``AccountHashes`` listed within the ``associated-keys`` section.
 Each key has a weight of ``1``, since the action threshold for ``deployment`` is set to ``2``, neither account is able to sign and send a deploy individually.
 Thus to send the deploy from the Main account, the deploy needs to be signed by the secret keys of each account to reach the required threshold.
 

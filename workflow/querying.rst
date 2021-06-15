@@ -2,7 +2,7 @@
 Querying the Network
 ====================
 
-The Casper node supports queries for users and developers to gain obtain information stored on the blockchain. When sending a query it is important to note that the request will be routed to a single node in the network.
+The Casper node supports queries for users and developers to obtain information stored on the blockchain. When sending a query it is important to note that the request will be routed to a single node in the network.
 
 This document assumes:
 
@@ -17,15 +17,23 @@ There are several types of data that can be requested from a node.
 * Block info.
 * Deploy info.
 
-Obtaining the Global State Hash
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Obtaining the Global State Root Hash
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The state of the system transitions with each block that is created. Therefore, it's important to first obtain the latest global state hash.
+
+Queries made to ``Global State`` require the ``state-root-hash``.
 
 ::
 
    casper-client get-state-root-hash \
+        --id 1 \
         --node-address http://<node-ip-address>:7777/rpc
+
+**Request fields:**
+
+- ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
+- ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 
 
 .. raw:: html
@@ -75,7 +83,7 @@ Querying an Account
 
     casper-client query-state \
       --id 4 \
-      --node-address http://<peer-ip-address>:7777 \
+      --node-address http://<node-ip-address>:7777 \
       --state-root-hash <state-root-hash> \
       --key <hex-encoded-source-account-public-key>
 
@@ -153,7 +161,7 @@ Use the URef of the ``main_purse`` to query the balance of the ``Account``.
 
     casper-client get-balance \
           --id 6 \
-          --node-address http://<peer-ip-address>:7777 \
+          --node-address http://<node-ip-address>:7777 \
           --state-root-hash <state-root-hash> \
           --purse-uref <source-account-purse-uref>
 
@@ -215,7 +223,7 @@ It is possible to obtain detailed block information from the system.  To do this
 
     casper-client get-block \
           --id 3 \
-          --node-address http://<peer-ip-address>:7777 \
+          --node-address http://<node-ip-address>:7777 \
           --block-identifier <block-hash> \
 
 
@@ -322,14 +330,14 @@ If the ``execution_results`` in the output are null, the transaction hasn't run 
 
     casper-client get-deploy \
           --id 2 \
-          --node-address http://<peer-ip-address>:7777 \
+          --node-address http://<node-ip-address>:7777 \
           <deploy-hash>
 
 **Request fields:**
 
 - ``id`` - <STRING OR INTEGER> JSON-RPC identifier, applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT>Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
-
+- ``deploy-hash`` - <HEX STRING OR INTEGER> Hex-encoded hash of the ``Deploy``
 
 
 

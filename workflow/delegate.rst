@@ -4,10 +4,6 @@ Delegating Tokens
 This document details a workflow where an ``Account`` holder on the Casper network can delegate their tokens to a validator
 on a Casper network.
 
-
-Requirements
-^^^^^^^^^^^^
-
 This workflow assumes:
 
 1. You meet the `prerequisites <setup.html>`_
@@ -21,10 +17,7 @@ This workflow assumes:
 Building The Delegation WASM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To initiate the delegation process, send a deploy containing the ``delegate.wasm`` to the network.
-
-
-Clone the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and build the contracts.
+Obtain the ``undelegate.wasm`` by cloning the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and building the contracts.
 To build contracts, set up Rust and install all dependencies, visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
 
 Once the contracts have been built the ``delegate.wasm`` can be used to create a deploy that we will initiate the delegation process.
@@ -36,8 +29,8 @@ The WASM can be found in:
     target/wasm32-unknown-unknown/release
 
 
-Acquire Validator Public Key
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Acquiring Validator Public Key
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The official Testnet and Mainnet provide a browser based block explorer to lookup the list of validators within their respective networks.
 
@@ -72,8 +65,7 @@ We recommend first testing the following steps on our official Testnet before pe
 Sending the Delegation Deploy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once you have the ``delegate.wasm`` from a **trusted** source you can create a deploy which will execute the delegation request.
-
+Send a deploy containing the ``delegate.wasm`` to the network to initiate the delegation process.
 
 Below is an example deployment of the delegation request:
 
