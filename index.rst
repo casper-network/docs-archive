@@ -31,8 +31,8 @@ Rust is the primary programming language for smart contracts on the Casper block
    :maxdepth: 3
    :titlesonly:
 
-   dapp-dev-guide/index
    workflow/index
+   dapp-dev-guide/index
    node-operator/index
    implementation/index
    economics/index
