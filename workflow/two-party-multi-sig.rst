@@ -1,34 +1,34 @@
-Two Party Multi-Signature Deploys
+Two-Party Multi-Signature Deploys
 =================================
 
-`Accounts <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ on a Casper network can associate other ``Accounts`` to allow or require a multiple signature scheme for ``Deploys``.
+`Accounts <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ on a Casper Network can associate other ``Accounts`` to allow or require a multiple signature scheme for ``Deploys``.
 
-This workflow describes how a trivial two-party multi-signature scheme for signing and sending ``Deploys``  can be enforced for an ``Account`` on a Casper network.
+This workflow describes how a trivial two-party multi-signature scheme for signing and sending ``Deploys``  can be enforced for an ``Account`` on a Casper Network.
 
 This workflow assumes:
 
 1. You meet the `prerequisites <setup.html>`_
-2. Are using the Casper command line client
+2. You are using the Casper command-line client
 3. Have a Main (**MA**) ``PublicKey`` hex and a ``PublicKey`` hex (**AA**) to associate
 4. Have a valid ``node-address``.
-5. Have previously deployed a smart contract to a Casper network (Refer: `Deploying Contracts <https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-contracts.html>`_)
+5. Have previously deployed a smart contract to a Casper Network (Refer: `Deploying Contracts <https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-contracts.html>`_)
 
 
 Configuring the Main Account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**CAUTION**: Incorrect configurations of the ``Account`` could render it defunct and unusable. It is highly recommended to first execute any changes to an ``Account`` in a test environment like, Testnet, before performing them in live environment like, Mainnet.
+**CAUTION**: Incorrect configurations of the ``Account`` could render it defunct and unusable. It is highly recommended to first execute any changes to an ``Account`` in a test environment like Testnet, before performing them in a live environment like Mainnet.
 
 Each ``Account`` has an ``associated_keys`` field which is a list containing the ``AccountHash`` and its weight for every associated ``Account``. ``Accounts`` can be associated by adding the ``AccountHash`` to the ``associated_keys`` field.
 
-``Accounts`` on a Casper network assign weights to keys associated with the ``Account``. This weight must be greater than or equal to a set value for a single key to either sign a ``Deploy`` or edit the state of the ``Account``. This set value is labelled as the ``action_threshold`` for the ``Account``.
+``Accounts`` on a Casper Network assign weights to keys associated with the ``Account``. This weight must be greater than or equal to a set value for a single key to either sign a ``Deploy`` or edit the state of the ``Account``. This set value is labeled as the ``action_threshold`` for the ``Account``.
 
-Each ``Account`` within a Casper Network has has two action thresholds that manage the permissions to send ``Deploys`` or manage the account. Each threshold defines the minimum weight that a single key or a combination of keys must have to either:
+Each ``Account`` within a Casper Network has two action thresholds that manage the permissions to send ``Deploys`` or manage the account. Each threshold defines the minimum weight that a single key or a combination of keys must have to either:
 
 1. Send a deploy to the network; determined by the ``deployment`` threshold
 2. Edit the ``associated keys`` and the ``action thresholds``; determined by the ``key_management`` threshold
 
-To enforce multi-signature (multi-sig) feature for an ``Account`` on a Casper network, the *main key* and *associated key*'s combined weight must be greater than or equal to the ``deployment`` threshold. This can be achieved by having each key's weight equal to half of the ``deployment`` threshold.
+To enforce the multi-signature (multi-sig) feature for an ``Account`` on a Casper Network, the *main key* and *associated key*'s combined weight must be greater than or equal to the ``deployment`` threshold. This can be achieved by having each key's weight equal to half of the ``deployment`` threshold.
 
 
 Code Description
@@ -61,7 +61,7 @@ You can run session code that will execute within the context of your main accou
         // Therefore update the key management threshold value.
         account::set_action_threshold(ActionType::KeyManagement, Weight::new(2)).unwrap_or_revert();
 
-        // Set the deployment threshold to 2 enforcing multisig to send deploys.
+        // Set the deployment threshold to 2, enforcing multi-sig to send deploys.
         account::set_action_threshold(ActionType::Deployment, Weight::new(2)).unwrap_or_revert();
     }
 
@@ -78,7 +78,7 @@ Code Execution
 
 The state of the ``Account`` can be altered by sending a ``Deploy`` which executes WASM that will associate the ``AccountHash`` of the **AA**.
 
-For the purposes of this guide, a smart contract has been written and is stored in its `Github Repository <https://github.com/casper-ecosystem/two-party-multi-sig>`_. The repository contains a ``Makefile`` with the build commands necessary to compile the contract to generate the necessary WASM.
+For this guide, a smart contract has been written and is stored in its `Github Repository <https://github.com/casper-ecosystem/two-party-multi-sig>`_. The repository contains a ``Makefile`` with the build commands necessary to compile the contract to generate the necessary WASM.
 
 .. code-block:: bash
 
@@ -99,7 +99,7 @@ The compiled WASM will be saved on this path:
     target/wasm32-unknown-unknown/release/contract.wasm
 
 
-The Casper command line client can be used to send the complied WASM to the network for execution.
+The Casper command-line client can be used to send the compiled WASM to the network for execution.
 
 
 .. code-block:: bash
@@ -187,4 +187,3 @@ Each key has a weight of ``1``, since the action threshold for ``deployment`` is
 Thus to send the deploy from the Main account, the deploy needs to be signed by the secret keys of each account to reach the required threshold.
 
 Details about various scenarios in which multiple associated keys can be setup is discussed in `the examples section of the Multi-Signature Tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-sig/examples.html>`_.
-
