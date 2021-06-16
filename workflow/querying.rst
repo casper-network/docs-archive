@@ -2,29 +2,26 @@
 Querying the Network
 ====================
 
-The Casper node supports queries for users and developers to obtain information stored on the blockchain. When sending a query it is important to note that the request will be routed to a single node in the network.
+The Casper node supports queries for users and developers to obtain information stored on the blockchain. 
 
 This document assumes:
 
-1. You have met the `prerequisites <http://127.0.0.1:8000/workflow/setup.html>`_
+1. You have met the `prerequisites <setup.html>`_
+2. You are familiar with the structure of the `Global State and the Blockchain Design <https://docs.casperlabs.io/en/latest/implementation/index.html>`_ to query data from the network
 
+When sending a query, it is important to note that the request will be routed to a single node in the network. You can request several types of data from a node:
 
-The structure of Global state and the Blockchain Design can be found `here <https://docs.casperlabs.io/en/latest/implementation/index.html>`_. Being familiar with this will help understanding how to query data from the network.
-
-There are several types of data that can be requested from a node. 
-
-* Account info.
-* Block info.
-* Deploy info.
+* Account details
+* Block information
+* Deploy information
 
 Obtaining the Global State Root Hash
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Since the system state changes with each block created, obtaining the latest global state hash is essential before querying information from a node.
 
-The state of the system transitions with each block that is created. Therefore, it's important to first obtain the latest global state hash.
+All queries made to global state require the ``state-root-hash``,  which you can obtain with this command:
 
-Queries made to ``Global State`` require the ``state-root-hash``.
-
-::
+.. code-block:: bash
 
    casper-client get-state-root-hash \
         --id 1 \
@@ -77,9 +74,9 @@ Queries made to ``Global State`` require the ``state-root-hash``.
 Querying an Account
 ^^^^^^^^^^^^^^^^^^^
 
-`Accounts <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ are stored in the ``Global State`` and can be queried using the ``query-state`` command.
+`Accounts <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ are stored in the global state and can be queried using the ``query-state`` command:
 
-::
+.. code-block:: bash
 
     casper-client query-state \
       --id 4 \
@@ -154,10 +151,11 @@ Querying an Account
 
     </details>
 
+|
 
-Use the URef of the ``main_purse`` to query the balance of the ``Account``.
+You can use the URef of the ``main_purse`` to query the account balance. The balance returned is in motes (the unit that makes up the Casper token). 
 
-::
+.. code-block:: bash
 
     casper-client get-balance \
           --id 6 \
@@ -212,14 +210,12 @@ Use the URef of the ``main_purse`` to query the balance of the ``Account``.
     </details>
 
 
-Note: The balance returned is in motes (the unit that makes up the Casper token). 
-
 Querying Blocks
 ^^^^^^^^^^^^^^^
 
-It is possible to obtain detailed block information from the system.  To do this, obtain the hash of the block of interest and send this query to a node in the network: As an Example:
+It is possible to obtain detailed block information from the system.  To do this, obtain the hash of the block of interest and send this query to a node in the network. Here is an example:
 
-::
+.. code-block:: bash
 
     casper-client get-block \
           --id 3 \
@@ -322,11 +318,9 @@ It is possible to obtain detailed block information from the system.  To do this
 Querying Deploys
 ^^^^^^^^^^^^^^^^
 
-Once a ``Deploy`` has been submitted to the network, it is possible to check its execution status using ``get-deploy``.
+Once you submit a deploy to the network, you can check its execution status using ``get-deploy``. If the ``execution_results`` in the output are null, the transaction has not run yet. Note that transactions are finalized upon execution.
 
-If the ``execution_results`` in the output are null, the transaction hasn't run yet. Transactions are finalized upon execution.
-
-::
+.. code-block:: bash
 
     casper-client get-deploy \
           --id 2 \
@@ -337,7 +331,4 @@ If the ``execution_results`` in the output are null, the transaction hasn't run 
 
 - ``id`` - <STRING OR INTEGER> JSON-RPC identifier, applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``node-address`` - <HOST:PORT>Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
-- ``deploy-hash`` - <HEX STRING OR INTEGER> Hex-encoded hash of the ``Deploy``
-
-
-
+- ``deploy-hash`` - <HEX STRING OR INTEGER> Hex-encoded hash of the deploy
