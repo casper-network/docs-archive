@@ -20,9 +20,7 @@ Obtain the ``undelegate.wasm`` by cloning the `casper-node <https://github.com/C
 
 To build contracts, set up Rust, and install all dependencies. Visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide for step-by-step instructions.
 
-Once you build the contracts, you can use the ``delegate.wasm`` to create a deploy that will initiate the delegation process.
-
-The WASM can be found in:
+Once you build the contracts, you can use the ``delegate.wasm`` to create a deploy that will initiate the delegation process. The WASM can be found in:
 
 ::
 
@@ -53,7 +51,6 @@ Additionally, any rewards earned are re-delegated by default to the validator fr
 plus any additional rewards earned through the delegation process.
 
 The active validator set is constantly rotating; therefore, when delegating to a validator, remember that the validator you selected may have been rotated out of the set.
-
 
 
 Executing the Delegation Request

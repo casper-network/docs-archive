@@ -1,27 +1,26 @@
 Undelegating Tokens
-===================
+====================
 
 This document details a workflow where tokens delegated to a validator on a Casper network can be undelegated.
 
 This workflow assumes:
 
 1. You meet the `prerequisites <setup.html>`_
-2. Are using the Casper command line client
-3. The undelegation contract or WASM to execute on the network
-4. A valid ``node-address``.
-5. Have previously deployed a smart contract to a Casper network (Refer: `Deploying Contracts <https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-contracts.html>`_)
-6. Have previously delegated tokens to a validator
+2. You are using the Casper command-line client
+3. You have an undelegation contract or WASM to execute on the network
+4. You have a valid ``node-address``
+5. You have previously `deployed a smart contract <https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-contracts.html>`_ to a Casper Network
+6. You have delegated tokens to a validator
 
 
 Building The Undelegation WASM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Obtain the ``undelegate.wasm`` by cloning the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and building the contracts.
-To build contracts, set up Rust and install all dependencies, visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide.
 
-Once the contracts have been built, you will need the ``undelegate.wasm`` to create a deploy that we will initiate the un-delegation process.
+To build contracts, set up Rust, and install all dependencies. Visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide for step-by-step instructions.
 
-The WASM can be found in:
+Once you build the contracts, you can use the ``undelegate.wasm`` to create a deploy that will initiate the undelegation process. The WASM can be found in:
 
 ::
 
@@ -33,9 +32,9 @@ Sending the Undelegation Deploy
 
 Send a deploy containing the ``undelegate.wasm`` to the network to initiate the undelegation process.
 
-Below is an example using the Casper command line client:
+Below is an example of an undelegation request using the Casper command-line client:
 
-::
+.. code-block:: bash
 
     casper-client put-deploy \
     --node-address http://<peer-ip-addres>:7777/rpc \
@@ -47,7 +46,7 @@ Below is an example using the Casper command line client:
     --session-arg "delegator:public_key='<hex-encoded-public-key>'" \
     --secret-key <delegator-secret-key>.pem
 
-**Note** The delegator public key and the secret key that signs the deploy must be part of the same keypair.
+**Note** The delegator's public key and the secret key that signs the deploy must be part of the same key pair. 
 
 **Request fields:**
 
@@ -63,20 +62,18 @@ Below is an example using the Casper command line client:
 - ``session-arg`` - The arguments to the ``delegate`` execution
 
     - The argument ``validator`` is the public key of the validator from whom the tokens will be undelegated
-    - The argument ``amount`` is the amount of tokens to be undelegated
+    - The argument ``amount`` is the number of tokens to be undelegated
     - The argument ``delegator`` is the public key of the account undelegating tokens from a validator
 
 
-Asserting the undelegation
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Asserting the Undelegation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We can use the Casper command line client to generate an RPC request to query for the auction state.
-The subsequent RPC response will confirm that the undelegation request was successfully executed.
+You can use the Casper command-line client to generate an RPC request to query the auction state. The subsequent RPC response will confirm that the undelegation request was successfully executed. 
 
+Here is how you can check the status of the auction to confirm that your bid was withdrawn:
 
-Check the status of the Auction to confirm that our bid has been withdrawn.
-
-::
+.. code-block:: bash
 
     casper-client get-auction-info \
     --node-address http://<peer-ip-address>:7777/rpc
@@ -85,14 +82,11 @@ Check the status of the Auction to confirm that our bid has been withdrawn.
 
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP service is running [default:http://localhost:7777]
 
+If the public key and the amount are absent from the ``bids`` structure, we can safely assert that we have indeed undelegated from the validator.
 
-If the public key and the amount are absent from the ``bids`` structure then we can safely assert that we have indeed un-delegated from the validator.
-
-
-If your account is on the official Testnet or Mainnet, you can use the Block explorer to look up your account balance and see the tokens have been added to your balance.
+If your account is on the official Testnet or Mainnet, you can use the block explorer to look up your account balance and see that the tokens have been added to your balance:
 
 1. `Testnet explorer <https://testnet.cspr.live/>`_
 2. `Mainnet explorer <https://cspr.live/>`_
 
-**Important Note**: After un-delegating tokens from a validator, you must wait for the unbonding period to lapse before re-delegating tokens to either the same validator or a different validator.
-
+**Important Note**: After undelegating tokens from a validator, you must wait for the unbonding period to lapse before re-delegating tokens to either the same validator or a different validator.

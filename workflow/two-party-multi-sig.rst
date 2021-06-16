@@ -9,10 +9,9 @@ This workflow assumes:
 
 1. You meet the `prerequisites <setup.html>`_
 2. You are using the Casper command-line client
-3. Have a Main (**MA**) ``PublicKey`` hex and a ``PublicKey`` hex (**AA**) to associate
-4. Have a valid ``node-address``.
-5. Have previously deployed a smart contract to a Casper Network (Refer: `Deploying Contracts <https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-contracts.html>`_)
-
+3. You have a Main (**MA**) ``PublicKey`` hex and a ``PublicKey`` hex (**AA**) to associate
+4. You have a valid ``node-address``
+5. You have previously `deployed a smart contract <https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-contracts.html>`_ to a Casper Network
 
 Configuring the Main Account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

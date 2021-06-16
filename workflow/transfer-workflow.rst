@@ -7,9 +7,9 @@ This workflow describes how to use the Casper command line client to transfer to
 This workflow assumes:
 
 1. You meet the `prerequisites <setup.html>`_
-2. Are using the Casper command line client
-3. Have a source ``PublicKey`` hex and a target ``PublicKey`` hex
-4. A valid ``node-address``.
+2. You are using the Casper command-line client
+3. You have a source ``PublicKey`` hex and a target ``PublicKey`` hex
+4. You have a valid ``node-address``
 
 Additionally, you must be able to sign a ``Deploy`` for the source ``Account``.
 
