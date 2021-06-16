@@ -2,8 +2,8 @@
 Getting Help
 ------------
 
-FAQ
-^^^
+Frequently Asked Questions
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 This section covers frequently asked questions and our recommendations.
 
 Deploy Processing
@@ -45,23 +45,23 @@ Operating with Keys
 **Answer**: The `Keys API <https://casper-ecosystem.github.io/casper-client-sdk/modules/_lib_keys_.html>`_ provides methods for `Ed25519` and `Secp256K1` keys. Also, review the tests in `GitHub <https://github.com/casper-ecosystem/casper-client-sdk/blob/master/test/lib/Keys.test.ts#L39>`_ and the `Working with Keys <https://docs.casperlabs.io/en/latest/dapp-dev-guide/keys.html>`_ documentation.
 
 
+Useful Resources
+^^^^^^^^^^^^^^^^
+CasperLabs makes available the following resources for you to connect and get support:
 
 
-CasperLabs makes available the following resources for you to connect and get support where you can:
+* On our `Discord Channel <https://discordapp.com/invite/mpZ9AYD>`_, connect live with members of our Engineering Team available to support you with the progress of your projects
+* Join the `CasperLabs Community Forum <https://forums.casperlabs.io/>`_ that includes technical discussions on using Casper features, obtain support, and pose questions to the CasperLabs Core Engineering Team
+* Subscribe to the `CasperLabs Official Telegram Channel <https://t.me/CasperLabs>`_ for general information and updates about our platform
 
+If you find issues related to the smart contracts maintained by CasperLabs, file an issue in the `Casper Ecosystem repository <https://github.com/casper-ecosystem/>`_. 
 
-* Connect live with members of our Engineering Team on our `Discord Channel <https://discordapp.com/invite/mpZ9AYD>`_ available to support you with the progress of your projects.
-* Join the `CasperLabs Community Forum <https://forums.casperlabs.io/>`_ that includes Technical discussions on using the CasperLabs features, obtain support, and pose questions to the CasperLabs core development team.
-* Subscribe to CasperLabs Official `Telegram channel <https://t.me/CasperLabs>`_ for general information and update notifications about our platform.
+For other issues, search the main `CasperLabs repository <https://github.com/CasperLabs>`_ and file the issue in the related project.
 
-If you have issues and bugs related to CasperLabs maintained smart contracts, you can `file an issue on our main GitHub repository <https://github.com/CasperLabs/CasperLabs/issues/new>`_\ , or `whichever repository the issue is related to <https://github.com/CasperLabs>`_.
+Otherwise, use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk>`_ for situations such as:
 
-Otherwise, if you...
-
-
-* have questions that are not issues,
-* need technical support,
-* want to give feedback, or suggestions for improvement,
-* or participate in a bounty,
-
-you can use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk>`_.
+* questions that are not issues
+* needing technical support
+* wanting to give feedback
+* suggesting improvements
+* participating in a bounty

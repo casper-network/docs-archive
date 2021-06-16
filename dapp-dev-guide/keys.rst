@@ -71,7 +71,9 @@ To use existing Ethereum keys, the Casper VM  needs to know that the key is a ``
 
 The Rust `casper-client` provides an example of how this works. Pre-pending the public key with a `02` indicates the key is a ``secp256k1`` key.  
  
-**Example**: The following transaction sends 100 CSPR
+**Example**: 
+
+The following transaction sends 100 CSPR.
 
 .. code-block:: bash
 
