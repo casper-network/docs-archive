@@ -319,6 +319,7 @@ Note: links to further serialization examples and a reference implementation are
       Unit, // singleton value without additional semantics
       String, // e.g. "Hello, World!"
       URef, // unforgeable reference (see above)
+      PublicKey // A Casper system PublicKey type
       Key, // global state key (see above)
       Option(CLType), // optional value of the given type
       List(CLType), // list of values of the given type (e.g. Vec in rust)
@@ -412,6 +413,12 @@ following rules (this defines the Casper serialization format):
 +--------------------+---------------+
 | ``READ_ADD_WRITE`` |            7  |
 +--------------------+---------------+
+
+- ``PublicKey`` serializes as a single byte tag representing the algorithm followed by 32 bytes of the ``PublicKey`` itself:
+
+    - If the ``PublicKey`` is an ``Ed25519`` key, the single tag byte is ``1`` followed by the individual bytes of the serialized key.
+    - If the ``PublicKey`` is a ``Secp256k1`` key, the single tag byte is a ``2`` followed by the individual bytes of the serialized key.
+
 
 - ``Key`` values serialize as a single byte tag representing the variant,
   followed by the serialization of the data that variant contains. For most variants, this is simply a fixed-length 32-byte array. The exception is
