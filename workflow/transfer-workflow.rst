@@ -1,7 +1,7 @@
 Direct Token Transfer
 =====================
 
-This workflow describes how to use the Casper command line client to transfer tokens between ``Accounts`` on a Casper network.
+This workflow describes how to use the Casper command-line client to transfer tokens between accounts on a Casper Network. 
 
 
 This workflow assumes:
@@ -10,20 +10,18 @@ This workflow assumes:
 2. You are using the Casper command-line client
 3. You have a source ``PublicKey`` hex and a target ``PublicKey`` hex
 4. You have a valid ``node-address``
-
-Additionally, you must be able to sign a ``Deploy`` for the source ``Account``.
+5. You must be able to sign a deploy for the source account
 
 Transfer
 ^^^^^^^^
 
-``transfer`` allows you to move CSPR from one ``Account`` to another as denominated in `Motes <http://127.0.0.1:8000/implementation/tokens.html?highlight=motes#divisibility-of-tokens>`_. ``Motes`` is a denomination of the cryptocurrency CSPR (1 CSPR = 100000000000 ``Motes``).
+The ``transfer`` command allows you to move CSPR from one account to another as denominated in `Motes <https://docs.casperlabs.io/en/latest/implementation/tokens.html?highlight=motes#divisibility-of-tokens>`_. A `Mote` is a denomination of the cryptocurrency CSPR, where 1 CSPR = 100,000,000,000 Motes.
 
-For transfers of at least 2.5 CSPR (250000000000 ``Motes``) tokens from a single sender to a single recipient on a Casper network, the most efficient option is to use the direct transfer capability.
+For transfers of at least 2.5 CSPR (250,000,000,000 Motes) from a single sender to a single recipient on a Casper network, the most efficient option is to use the direct transfer capability.
 
-transfer command
-~~~~~~~~~~~~~~~~
+**Direct transfer example**:
 
-::
+.. code-block:: bash
 
     casper-client transfer \
         --id 1 \
@@ -38,7 +36,7 @@ transfer command
 **Request fields:**
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
-- ``transfer-id`` - <64-BIT INTEGER>  The ``transfer-id`` is a memo field, providing additional information about the recipient which is necessary when transferring token to some recipients. For example, if depositing token into an account where off chain management is used to keep track of individual sub-balances, it is necessary to provide a memo id uniquely identifying the actual recipient. If this not necessary for a given recipient, you may pass ``0`` or some ``u64`` value that is meaningful to you.
+- ``transfer-id`` - <64-BIT INTEGER>  The ``transfer-id`` is a memo field, providing additional information about the recipient, which is necessary when transferring tokens to some recipients. For example, if depositing tokens into an account where off-chain management keeps track of individual sub-balances, it is necessary to provide a memo id uniquely identifying the actual recipient. If this is not necessary for a given recipient, you may pass ``0`` or some ``u64`` value that is meaningful to you
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of a node on a network bound to a JSON-RPC endpoint [default:http://localhost:7777]
 - ``amount`` - <512-BIT INTEGER> The number of motes to transfer (1 CSPR = 100000000000 ``Motes``)
 - ``secret-key`` - Path to secret key file
@@ -162,9 +160,9 @@ transfer command
 Deploy Status
 ~~~~~~~~~~~~~
 
-``Transfers`` on a Casper network are only executed after it has been included into a finalized ``Block``.
+A transfer on a Casper Network is only executed after it has been included in a finalized block.
 
-Refer to the Section on `querying deploys <http://127.0.0.1:8000/dapp-dev-guide/querying.html#deploy-status>`_ within the network to check the execution status of the transfer.
+Refer to the Section on `querying deploys <querying.html#deploy-status>`_ within the network to check the execution status of the transfer.
 
 **Important response fields:**
 
@@ -402,12 +400,11 @@ Refer to the Section on `querying deploys <http://127.0.0.1:8000/dapp-dev-guide/
 State Root Hash
 ~~~~~~~~~~~~~~~~
 
-The state of information like the balance of an ``Account`` on a Casper blockchain is stored in its `Global State <https://docs.casperlabs.io/en/latest/implementation/global-state.html>`_
+State information like the balance of an account on a Casper blockchain is stored in the `Global State <https://docs.casperlabs.io/en/latest/implementation/global-state.html>`_.
 
-We will use the ``block_hash`` to query and retrieve the ``Block`` that contains our ``Deploy``. We will use the ``state_root_hash`` to look up various values, like the source and destination account and their balances.
+We will use the ``get-block`` command and the ``block_hash`` to query and retrieve the block that contains our deploy. We will use the ``state_root_hash`` from the response to look up various values, like the source and destination account and their balances.
 
-
-::
+.. code-block:: bash
 
     casper-client get-block \
           --id 3 \
@@ -513,9 +510,9 @@ We will use the ``block_hash`` to query and retrieve the ``Block`` that contains
 Query the Source Account
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Next, we will query for information about the ``Source`` account, using the ``state-root-hash`` of the block containing our transfer and the public key of the target account.
+Next, we will query for information about the `Source` account, using the ``state-root-hash`` of the block containing our transfer and the public key of the `Target` account.
 
-::
+.. code-block:: bash
 
     casper-client query-state \
       --id 4 \
@@ -597,9 +594,9 @@ Next, we will query for information about the ``Source`` account, using the ``st
 Query the Target Account
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We will repeat the previous step to query information about the target account. 
+We will repeat the previous step to query information about the `Target` account. 
 
-::
+.. code-block:: bash
 
     casper-client query-state \
           --id 5 \
@@ -610,7 +607,7 @@ We will repeat the previous step to query information about the target account.
 
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root
-- ``key`` - <FORMATTED STRING or PATH> The base key for the query. This must be a properly formatted public key, account hash, contract address hash, URef, transfer hash or deploy-info hash.
+- ``key`` - <FORMATTED STRING or PATH> The base key for the query. This must be a properly formatted public key, account hash, contract address hash, URef, transfer hash, or deploy-info hash.
 
 
 .. raw:: html
@@ -671,11 +668,11 @@ We will repeat the previous step to query information about the target account.
 Get Source Account Balance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All ``Accounts`` on a Casper system have a purse associated with the Casper system mint, which we call the main purse. The balance associated with a given purse is recorded to ``Global State`` and the value can be queried using the ``URef`` associated with the purse
+All accounts on a Casper system have a purse associated with the Casper system mint, which we call the `main purse`. The balance associated with a given purse is recorded in the global state, and the value can be queried using the ``URef`` associated with the purse.
 
-Now that we have the source purse address, we can get its balance using the ``get-balance`` command.
+Now that we have the source purse address, we can get its balance using the ``get-balance`` command:
 
-::
+.. code-block:: bash
 
     casper-client get-balance \
           --id 6 \
@@ -793,11 +790,11 @@ Similarly, now that we have the address of the target purse, we can get its bala
 Query Transfer Details
 ~~~~~~~~~~~~~~~~~~~~~~
 
-``Deploys`` in a Casper network can contain multiple ``Transfers`` within it, when such a ``Deploy`` is executed, the information about each individual ``Transfers`` is written to ``Global State``. Each ``Transfer`` can be uniquely identified by a hash which is known as the ``transfer-address`` and is a formatted string with a ``transfer-`` prefix.
+Deploys in a Casper Network can contain multiple transfers. When such a deploy is executed, the information about each individual transfer is written to the global state. Each transfer can be uniquely identified by a hash known as the ``transfer-address``, a formatted string with a ``transfer-`` prefix.
 
 We will use the ``transfer-<address>`` to query more details about the transfer.
 
-::
+.. code-block:: bash
 
     casper-client query-state \
           --id 8 \
@@ -864,5 +861,5 @@ We will use the ``transfer-<address>`` to query more details about the transfer.
     </details>
 
 |
-The query responds with more information about the transfer we conducted: its deploy hash, the account which executed the transfer, the source and target purses, and the target account. Using this additional information, we can verify that our transfer was executed successfully.
+The query responds with more information about the transfer we conducted: its deploy hash, the account which executed the transfer, the source, and target purses, and the target account. Using this additional information, we can verify that our transfer was executed successfully.
 
