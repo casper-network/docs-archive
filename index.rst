@@ -12,6 +12,7 @@ We present the Casper Network, a new Turing-complete smart-contract platform, ba
 Rust is the primary programming language for smart contracts on the Casper blockchain because of its good support for compilation to wasm. However, the platform does not make assumptions about the source language and supports libraries facilitating contract development in other programming languages having wasm as a compile target. Other essential features include an account permissions model that allows the recovery of lost keys and a permissions model to securely share state between accounts and contracts (without expensive cryptographic checks). We also provide discussions of the economics of our proof-of-stake implementation and our token policies.
 
 ================================================================  ========================================================================  
+`How To's <workflow/index.html>`_                                 Guides for interacting with the Casper Network
 `Developers <dapp-dev-guide/index.html>`_                         Get started with smart contract development on the Casper blockchain in AssemblyScript or Rust 
 `Node Operators <node-operator/index.html>`_                      Run node infrastructure on the Casper Network
 `Design <implementation/index.html>`_                             Understand the architecture of the Casper Network, including network communication, execution semantics, account management, block structure, global state, serialization, unforgeable references, and tokens 
@@ -31,6 +32,7 @@ Rust is the primary programming language for smart contracts on the Casper block
    :maxdepth: 3
    :titlesonly:
 
+   workflow/index
    dapp-dev-guide/index
    node-operator/index
    implementation/index
@@ -38,3 +40,4 @@ Rust is the primary programming language for smart contracts on the Casper block
    staking/index
    glossary/index
    faq/index
+

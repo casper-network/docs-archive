@@ -1,5 +1,5 @@
-Working with Keys
-=================
+Working with Cryptographic Keys
+===============================
 
 The Casper platform supports two types of signatures for creating accounts and signing transactions: ``secp256k1`` and ``ed25519``. You can generate keys using the Casper client in both formats. It is also possible to work with existing Ethereum keys.
 
@@ -71,7 +71,9 @@ To use existing Ethereum keys, the Casper VM  needs to know that the key is a ``
 
 The Rust `casper-client` provides an example of how this works. Pre-pending the public key with a `02` indicates the key is a ``secp256k1`` key.  
  
-**Example**: The following transaction sends 100 CSPR to an Ethereum address.
+**Example**: 
+
+The following transaction sends 100 CSPR.
 
 .. code-block:: bash
 

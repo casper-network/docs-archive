@@ -24,6 +24,91 @@ First, set up the contract name so you can call it using the name in subsequent 
 
 Next, deploy the smart contract using the ``put-deploy`` command and send in the compiled wasm as ``--session code``.
 
+
+Querying Global State for the Address of a Contract
+---------------------------------------------------
+
+The ``query-state`` command is a generic query against `global state <https://docs.casperlabs.io/en/latest/glossary/G.html#global-state>`_. Earlier, we queried global state for the account's main purse. Here, we query the state of a contract. We can do so by including the contract address rather than the account public key in the ``query-state`` command.
+
+Here we query to get the address of an ERC20 contract from Global State.
+
+Step 1: Get the Latest Global State Hash
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We need to obtain the global state hash after our contract has been deployed to the network.
+
+.. code-block:: bash
+
+   casper-client get-state-root-hash --node-address http://NODE:PORT | jq -r
+
+Step 2: Query State
+~~~~~~~~~~~~~~~~~~~
+
+Take the global state hash from Step 1 and include it here, along with the account public key that created the contract.
+
+.. code-block:: bash
+
+   casper-client query-state --node-address http://NODE:PORT -k <PUBLIC KEY IN  HEX> -s <STATE_ROOT_HASH>
+
+Example Result
+~~~~~~~~~~~~~~
+
+If there is a contract stored in an account, it will appear under ``named-keys``.
+
+.. code-block:: bash
+
+   casper-client query-state --node-address http://localhost:7777 -k 016af0262f67aa93a225d9d57451023416e62aaa8391be8e1c09b8adbdef9ac19d -s 0c3aaf547a55dd500c6c9bbd42bae45e97218f70a45fee6bf8ab04a89ccb9adb |jq -r
+   {
+     "api_version": "1.0.0",
+     "stored_value": {
+       "Account": {
+         "account_hash": "804af75bc8161e1ec4189e7d4441eb1bf1047ff6fc13b1d71026f34c5f96f937",
+         "action_thresholds": {
+           "deployment": 1,
+           "key_management": 1
+         },
+         "associated_keys": [
+           {
+             "account_hash": "804af75bc8161e1ec4189e7d4441eb1bf1047ff6fc13b1d71026f34c5f96f937",
+             "weight": 1
+           }
+         ],
+         "main_purse": "uref-439d5326bf89bd34d3b2c924b3af2f5e233298b473d5bd8b54fab61ccef6c003-007",
+         "named_keys": {
+           "ERC20": "hash-d527103687bfe3188caf02f1e487bfb8f60bfc01068921f7db24db72a313cedb",
+           "ERC20_hash": "uref-80d9d36d628535f0bc45ae4d28b0228f9e07f250c3e85a85176dba3fc76371ce-007",
+
+         }
+       }
+     }
+   }
+
+Step 3: Query the contract State
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Now that we have the hash of the contract, we can query the contract's internal state. To do this, we pass in the contract's hash and the global state hash.  If we look at the ERC20 contract, we see a token name specified as ``_name``.  We can query for the value stored here.
+
+.. code-block:: bash
+
+   casper-client query-state --node-address http://localhost:7777 -k hash-d527103687bfe3188caf02f1e487bfb8f60bfc01068921f7db24db72a313cedb -s 0c3aaf547a55dd500c6c9bbd42bae45e97218f70a45fee6bf8ab04a89ccb9adb -q _name | jq -r
+
+And we should see something like this:
+
+.. code-block:: bash
+
+   {
+     "api_version": "1.0.0",
+     "stored_value": {
+       "CLValue": {
+         "bytes": "0b000000e280984d65646861e28099",
+         "cl_type": "String"
+       }
+     }
+   }
+
+**Note**: This result is returned as bytes. These bytes need to be deserialized into the correct CLType in a smart contract or a dApp. Refer to `casper-types <https://docs.rs/casperlabs-types/latest/casperlabs_types/bytesrepr/index.html>`_ to find the latest APIs for deserialization.
+
+
 Calling a Contract by Name & Entry Point
 ----------------------------------------
 
