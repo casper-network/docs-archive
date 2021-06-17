@@ -1,33 +1,33 @@
 Two-Party Multi-Signature Deploys
 =================================
 
-`Accounts <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ on a Casper Network can associate other ``Accounts`` to allow or require a multiple signature scheme for ``Deploys``.
+`Accounts <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ on a Casper Network can associate other accounts to allow or require a multiple signature scheme for deploys.
 
-This workflow describes how a trivial two-party multi-signature scheme for signing and sending ``Deploys``  can be enforced for an ``Account`` on a Casper Network.
+This workflow describes how a trivial two-party multi-signature scheme for signing and sending deploys can be enforced for an account on a Casper Network.
 
 This workflow assumes:
 
 1. You meet the `prerequisites <setup.html>`_
 2. You are using the Casper command-line client
-3. You have a Main (**MA**) ``PublicKey`` hex and a ``PublicKey`` hex (**AA**) to associate
+3. You have a main ``PublicKey`` hex (**MA**) and a ``PublicKey`` hex to associate (**AA**)
 4. You have a valid ``node-address``
 5. You have previously `deployed a smart contract <https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-contracts.html>`_ to a Casper Network
 
 Configuring the Main Account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**CAUTION**: Incorrect configurations of the ``Account`` could render it defunct and unusable. It is highly recommended to first execute any changes to an ``Account`` in a test environment like Testnet, before performing them in a live environment like Mainnet.
+**CAUTION**: Incorrect account configurations could render accounts defunct and unusable. It is highly recommended to first execute any changes to an account in a test environment like Testnet, before performing them in a live environment like Mainnet.
 
-Each ``Account`` has an ``associated_keys`` field which is a list containing the ``AccountHash`` and its weight for every associated ``Account``. ``Accounts`` can be associated by adding the ``AccountHash`` to the ``associated_keys`` field.
+Each account has an ``associated_keys`` field which is a list containing the account address and its weight for every associated account. Accounts can be associated by adding the account address to the ``associated_keys`` field.
 
-``Accounts`` on a Casper Network assign weights to keys associated with the ``Account``. This weight must be greater than or equal to a set value for a single key to either sign a ``Deploy`` or edit the state of the ``Account``. This set value is labeled as the ``action_threshold`` for the ``Account``.
+An account on a Casper Network assigns weights to keys associated with it. For a single key to sign a deploy or edit the state of the account, its weight must be greater than or equal to a set threshold. The thresholds are labeled as the ``action_thresholds`` for the account.
 
-Each ``Account`` within a Casper Network has two action thresholds that manage the permissions to send ``Deploys`` or manage the account. Each threshold defines the minimum weight that a single key or a combination of keys must have to either:
+Each account within a Casper Network has two action thresholds that manage the permissions to send deploys or manage the account. Each threshold defines the minimum weight that a single key or a combination of keys must have, to either:
 
 1. Send a deploy to the network; determined by the ``deployment`` threshold
-2. Edit the ``associated keys`` and the ``action thresholds``; determined by the ``key_management`` threshold
+2. Edit the ``associated keys`` and the ``action_thresholds``; determined by the ``key_management`` threshold
 
-To enforce the multi-signature (multi-sig) feature for an ``Account`` on a Casper Network, the *main key* and *associated key*'s combined weight must be greater than or equal to the ``deployment`` threshold. This can be achieved by having each key's weight equal to half of the ``deployment`` threshold.
+To enforce the multi-signature (multi-sig) feature for an account on a Casper Network, the *main key* and *associated key*'s combined weight must be greater than or equal to the ``deployment`` threshold. This can be achieved by having each key's weight equal to half of the ``deployment`` threshold.
 
 
 Code Description
@@ -35,7 +35,7 @@ Code Description
 
 You can run session code that will execute within the context of your main account. Below is the code that will be compiled to WASM and then sent to the network as part of a deploy.
 
-**Note**: This contract example will set up a specific account configuration and is not a general-purpose contract.
+**Note**: The following contract example will set up a specific account configuration and is not a general-purpose contract.
 
 .. code-block:: rust
 
@@ -67,17 +67,17 @@ You can run session code that will execute within the context of your main accou
 
 The contract will execute **2 crucial steps** to enforce the multi-sig scheme for your main account:
 
-1. Add the associated key to the ``Account`` by adding the ``AccountHash`` of the **AA**  to
-2. Raise the ``action threshold`` for ``deployment`` to ``2``, such that the weight required to send a ``Deploy`` is split equally between the keys associated with the ``Account``
+1. Add the associated key **AA** to the account
+2. Raise the ``deployment`` threshold to ``2``, such that the weight required to send a deploy is split equally between the keys associated with the account
 
-The action thresholds for deploys cannot be greater than the action threshold for ``key management``. By default, action thresholds are set to ``1``.
+The action thresholds for deploys cannot be greater than the action threshold for key management. By default, action thresholds are set to ``1``.
 
 Code Execution
 ^^^^^^^^^^^^^^^
 
-The state of the ``Account`` can be altered by sending a ``Deploy`` which executes WASM that will associate the ``AccountHash`` of the **AA**.
+The state of the account can be altered by sending a deploy which executes the WASM that will associate the **AA** account address.
 
-For this guide, a smart contract has been written and is stored in its `Github Repository <https://github.com/casper-ecosystem/two-party-multi-sig>`_. The repository contains a ``Makefile`` with the build commands necessary to compile the contract to generate the necessary WASM.
+For this guide, a smart contract has been written and is stored in its `Github Repository <https://github.com/casper-ecosystem/two-party-multi-sig>`_. The repository contains a `Makefile` with the build commands necessary to compile the contract to generate the necessary WASM.
 
 .. code-block:: bash
 
@@ -129,15 +129,15 @@ The Casper command-line client can be used to send the compiled WASM to the netw
 Confirming Execution and Account Status
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The state of information like the ``Account`` configuration on a Casper blockchain is stored in a `Merkle Tree <https://docs.casperlabs.io/en/latest/glossary/M.html#merkle-tree>`_ and is a snapshot of the blockchain's `Global State <https://docs.casperlabs.io/en/latest/implementation/global-state.html>`_. The representation of ``Global State`` for a given ``Block`` can be computed by executing the ``Deploys`` (including ``Transfers``) within the ``Block`` and its ancestors. The root node of the Merkle Tree identifying a particular state is called the ``state-root-hash`` and is stored in every executed ``Block``.
+Account configuration on a Casper blockchain is stored in a `Merkle Tree <https://docs.casperlabs.io/en/latest/glossary/M.html#merkle-tree>`_ and is a snapshot of the blockchain's `Global State <https://docs.casperlabs.io/en/latest/implementation/global-state.html>`_. The representation of global state for a given block can be computed by executing the deploys (including transfers) within the block and its ancestors. The root node of the Merkle Tree identifying a particular state is called the ``state-root-hash`` and is stored in every executed block.
 
 To check that your account was configured correctly, you need the ``state-root-hash`` corresponding to the block that contains your deploy.
-To obtain the ``state-root-hash``:
+To obtain the ``state-root-hash``, you need to:
 
-1. Confirm the execution status of the deploy and obtain the hash of the block containing it. (Refer `Checking Deploy Status <http://127.0.0.1:8000/dapp-dev-guide/querying.html#deploy-status>`_)
-2. Query the block containing the deploy to obtain the corresponding ``state_root_hash`` (Refer `Getting Block Information <https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html#getting-block-information>`_)
+1. `Confirm the execution status of the deploy <querying.html#querying-deploys>`_ and obtain the hash of the block containing it
+2. `Query the block containing the deploy <querying.html#querying-blocks>`_ to obtain the corresponding ``state_root_hash``
 
-Use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Main account to query the network for the account and check its configuration.
+Use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the main account to query the network for the account and check its configuration.
 
 .. code-block:: bash
 
@@ -181,7 +181,7 @@ Use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the Main accou
     }
 
 
-In the above example, you can see the ``AccountHashes`` listed within the ``associated-keys`` section.
+In the above example, you can see the account addresses listed within the ``associated_keys`` section.
 Each key has a weight of ``1``, since the action threshold for ``deployment`` is set to ``2``, neither account is able to sign and send a deploy individually.
 Thus to send the deploy from the Main account, the deploy needs to be signed by the secret keys of each account to reach the required threshold.
 
