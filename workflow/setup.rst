@@ -38,16 +38,16 @@ Setting up an Account
 
 The process of creating an `Account <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ can be divided into two steps:
 
-1. Cryptographic key generation for the ``Account``
-2. Funding the ``Account``
+1. Cryptographic key generation for the account
+2. Funding the account
 
-The Casper blockchain uses an on-chain ``Account`` based model, uniquely identified by an ``AccountHash`` derived from a specific ``PublicKey``.
+The Casper blockchain uses an on-chain account-based model, uniquely identified by an ``AccountHash`` derived from a specific ``PublicKey``.
 
 By default, a transactional interaction with the blockchain takes the form of a ``Deploy`` cryptographically signed by the key-pair corresponding to the ``PublicKey`` used to create the account.
 
-Accounts can be created using the Casper command-line client. Alternatively, some Casper networks such as the official Testnet and Mainnet provide a browser-based block explorer that allows ``Account`` creation.
+Accounts can be created using the Casper command-line client. Alternatively, some Casper networks such as the official Testnet and Mainnet provide a browser-based block explorer that allows account creation.
 
-A cryptographic key-pair will be created when using either the Casper command-line client or a block explorer to create an ``Account`` on the blockchain. This process generates three files for each ``Account``:
+A cryptographic key-pair will be created when using either the Casper command-line client or a block explorer to create an account on the blockchain. This process generates three files for each account:
 
 1. A PEM encoded secret key
 2. A PEM encoded public key
@@ -103,20 +103,20 @@ You will be prompted to save three files for your new account; carefully choose 
 Fund your Account
 ~~~~~~~~~~~~~~~~~
 
-Once the cryptographic key-pair for the ``Account`` has been generated, the ``Account`` must be funded so it can be created on chain.
+Once the cryptographic key-pair for the account has been generated, the account must be funded so it can be created on chain.
 
-In Testnet, you can fund the ``Account`` by using ``[Request tokens]`` button on the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to receive tokens.
+In Testnet, you can fund the account by using the *Request tokens* button on the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to receive tokens.
 
-In Mainnet, a pre-existing ``Account`` will have to transfer CSPR tokens to finalize the process of setting up an account.
+In Mainnet, a pre-existing account will have to transfer CSPR tokens to finalize the process of setting up an account.
 
-In Mainnet, CSPR tokens transferred to the ``AccountHash`` corresponding to your ``PublicKey`` will automatically create your ``Account`` (if it does not already exist). Currently, this is the only way an ``Account`` can be created.
+In Mainnet, CSPR tokens transferred to the ``AccountHash`` corresponding to your ``PublicKey`` will automatically create your account (if it does not already exist). Currently, this is the only way an account can be created.
 
 Acquire Node Address from network peers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Clients can interact with a node on the blockchain via requests sent to that node's JSON-RPC endpoint, ``http://<node-ip-address>:7777`` by default.
 
-The node address is the IP of the ``peer``.
+The node address is the IP of a peer node.
 
 Both the official testnet and Mainnet provide block explorers that provide a list of IP addresses of nodes on their respective networks.
 
