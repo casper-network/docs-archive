@@ -9,7 +9,7 @@ To install this library using Node.js, run the following command:
 
 .. code-block:: bash
 
-    npm install casper-client-sdk --save
+    npm install casper-js-sdk@next --save
 
 Tests
 ^^^^^
@@ -46,7 +46,7 @@ This example shows you how to use the SDK to generate account keys to sign your 
         const { publicKey, privateKey } = edKeyPair;
     
         // Get account-address from public key
-        const accountAddress = publicKey.toAccountHex();
+        const accountAddress = publicKey.toHex();
     
         // Get account-hash (Uint8Array) from public key
         const accountHash = publicKey.toAccountHash();
@@ -69,7 +69,7 @@ This example shows you how to use the SDK to generate account keys to sign your 
 
     const newAccountAddress = createAccountKeys();
 
-After generating the keys with this code, you can create an account on https://testnet.cspr.live/ and upload the key stored in the file ``casper_keys/<account-address>_public.pem``.
+After generating the keys with this code, you can add them to the `CasperLabs Signer Chrome extension <https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en-US>`_ and use them to sign your transactions.
 
 
 Sending a Transfer
@@ -84,9 +84,9 @@ The ``sendTransfer`` function below will return a ``transfer-hash`` which you ca
     const fs = require("fs");
     const path = require("path");
     const axios = require("axios");
-    const casperClientSDK = require("casper-client-sdk");
+    const casperClientSDK = require("casper-js-sdk");
 
-    const { Keys, CasperClient, PublicKey, DeployUtil } = require("casper-client-sdk");
+    const { Keys, CasperClient, CLPublicKey, DeployUtil } = require("casper-client-sdk");
 
     const RPC_API = 'http://159.65.203.12:7777/rpc';
     const STATUS_API = 'http://159.65.203.12:8888';
@@ -131,7 +131,7 @@ The ``sendTransfer`` function below will return a ``transfer-hash`` which you ca
     );
 
     // We create a public key from account-address (it is the hex representation of the public-key with an added prefix)
-    const toPublicKey = PublicKey.fromHex(to);
+    const toPublicKey = CLPublicKey.fromHex(to);
 
     const session = DeployUtil.ExecutableDeployItem.newTransfer(
         amount,
