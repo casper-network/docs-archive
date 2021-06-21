@@ -15,9 +15,9 @@ This workflow assumes:
 Transfer
 ^^^^^^^^
 
-The ``transfer`` command allows you to move CSPR from one account to another as denominated in `Motes <https://docs.casperlabs.io/en/latest/implementation/tokens.html?highlight=motes#divisibility-of-tokens>`_. A `Mote` is a denomination of the cryptocurrency CSPR, where 1 CSPR = 100,000,000 Motes.
+The ``transfer`` command allows you to move CSPR from one account to another as denominated in `Motes <https://docs.casperlabs.io/en/latest/implementation/tokens.html?highlight=motes#divisibility-of-tokens>`_. A `Mote` is a denomination of the cryptocurrency CSPR, where 1 CSPR = 1,000,000,000 Motes.
 
-For transfers of at least 2.5 CSPR (250,000,000 Motes) from a single sender to a single recipient on a Casper network, the most efficient option is to use the direct transfer capability.
+For transfers of at least 2.5 CSPR (2,500,000,000 Motes) from a single sender to a single recipient on a Casper network, the most efficient option is to use the direct transfer capability.
 
 **Direct transfer example**:
 
@@ -38,7 +38,7 @@ For transfers of at least 2.5 CSPR (250,000,000 Motes) from a single sender to a
 - ``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the request and returned in the response. If not provided, a random integer will be assigned
 - ``transfer-id`` - <64-BIT INTEGER>  The ``transfer-id`` is a memo field, providing additional information about the recipient, which is necessary when transferring tokens to some recipients. For example, if depositing tokens into an account where off-chain management keeps track of individual sub-balances, it is necessary to provide a memo id uniquely identifying the actual recipient. If this is not necessary for a given recipient, you may pass ``0`` or some ``u64`` value that is meaningful to you
 - ``node-address`` - <HOST:PORT> Hostname or IP and port of a node on a network bound to a JSON-RPC endpoint [default:http://localhost:7777]
-- ``amount`` - <512-BIT INTEGER> The number of motes to transfer (1 CSPR = 100000000000 ``Motes``)
+- ``amount`` - <512-BIT INTEGER> The number of motes to transfer (1 CSPR = 1,000,000,000 ``Motes``)
 - ``secret-key`` - Path to secret key file
 - ``chain-name`` - Name of the chain, to avoid the deploy from being accidentally or maliciously included in a different chain
 
