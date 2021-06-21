@@ -69,7 +69,7 @@ This example shows you how to use the SDK to generate account keys to sign your 
 
     const newAccountAddress = createAccountKeys();
 
-After generating the keys with this code, you can add them to Casper Signer and use to sign transaction.
+After generating the keys with this code, you can add them to the `CasperLabs Signer Chrome extension <https://chrome.google.com/webstore/detail/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en-US>`_ and use them to sign your transactions.
 
 
 Sending a Transfer
