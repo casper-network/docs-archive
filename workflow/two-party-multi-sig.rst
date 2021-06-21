@@ -107,7 +107,7 @@ The Casper command-line client can be used to send the compiled WASM to the netw
     --node-address http://<peer-ip-address>:7777/rpc \
     --secret-key <secret-key-MA>.pem \
     --chain-name casper-test \
-    --payment-amount 250000000000 \
+    --payment-amount 2500000000 \
     --session-path <path-to-contract-wasm> \
     --session-arg "deployment-account:account_hash='account-hash-<hash-AA>'"
 
