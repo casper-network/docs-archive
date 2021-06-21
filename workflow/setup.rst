@@ -51,7 +51,7 @@ A cryptographic key-pair will be created when using either the Casper command-li
 
 1. A PEM encoded secret key
 2. A PEM encoded public key
-3. A hex-encoded string representation of the public key
+3. A hexadecimal-encoded string representation of the public key
 
 We recommend saving these files securely.
 
@@ -76,13 +76,13 @@ The above command will create three files in the current working directory:
 
 1. ``secret_key.pem`` - PEM encoded secret key
 2. ``public_key.pem`` - PEM encoded public key
-3. ``public_key_hex`` - Hex encoded string of the public key
+3. ``public_key_hex`` - Hexadecimal-encoded string of the public key
 
 **Note**: SAVE your keys to a safe place, preferably offline.
 
 Once the keys for the account have been generated, the accounts can be funded to finish the process of creating an account.
 
-**Note**: Responses from the node contain ``AccountHashes`` instead of the direct hex-encoded public key. For traceability, it is important to generate the account hash and store this value locally. The account hash is a ``Blake2B`` hash of the public hex key.
+**Note**: Responses from the node contain ``AccountHashes`` instead of the direct hexadecimal-encoded public key. For traceability, it is important to generate the account hash and store this value locally. The account hash is a ``Blake2B`` hash of the public hexadecimal-encoded string.
 
 Option 2: Key generation using a Block Explorer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -97,7 +97,7 @@ You will be prompted to save three files for your new account; carefully choose 
 
 1. ``<Account-Name>_secret_key.pem`` - PEM encoded secret key
 2. ``<Account-Name>_public_key.pem`` - PEM encoded public key
-3. ``<Account-Name>_public_key_hex`` - Hex encoded string of the public key
+3. ``<Account-Name>_public_key_hex`` - Hexadecimal-encoded string of the public key
 
 
 Fund your Account
@@ -107,9 +107,7 @@ Once the cryptographic key-pair for the account has been generated, the account 
 
 In Testnet, you can fund the account by using the *Request tokens* button on the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to receive tokens.
 
-In Mainnet, a pre-existing account will have to transfer CSPR tokens to finalize the process of setting up an account.
-
-In Mainnet, CSPR tokens transferred to the ``AccountHash`` corresponding to your ``PublicKey`` will automatically create your account (if it does not already exist). Currently, this is the only way an account can be created.
+In Mainnet, a pre-existing account will have to transfer CSPR tokens to finalize the process of setting up an account. The *Source* account needs to transfer CSPR tokens to the hexadecimal-encoded public key of the *Target* account. This transfer will automatically create the *Target* account if it does not exist. Currently, this is the only way an account can be created on Mainnet.
 
 Acquire Node Address from network peers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
