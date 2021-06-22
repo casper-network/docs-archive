@@ -1,7 +1,7 @@
 TypeScript/JavaScript SDK
 =========================
 
-The `TypeScript/JavaScript SDK <https://casper-ecosystem.github.io/casper-client-sdk/>`_ allows developers to interact with the Casper Network using TypeScript or JavaScript. This page covers different examples of using the SDK.
+The `TypeScript/JavaScript SDK <https://casper-ecosystem.github.io/casper-js-sdk/>`_ allows developers to interact with the Casper Network using TypeScript or JavaScript. This page covers different examples of using the SDK.
 
 Installation
 ^^^^^^^^^^^^
@@ -37,7 +37,7 @@ This example shows you how to use the SDK to generate account keys to sign your 
 
     const fs = require("fs");
     const path = require("path");
-    const { Keys } = require("casper-client-sdk");
+    const { Keys } = require("casper-js-sdk");
 
     const createAccountKeys = () => {
 
@@ -86,7 +86,7 @@ The ``sendTransfer`` function below will return a ``transfer-hash`` which you ca
     const axios = require("axios");
     const casperClientSDK = require("casper-js-sdk");
 
-    const { Keys, CasperClient, CLPublicKey, DeployUtil } = require("casper-client-sdk");
+    const { Keys, CasperClient, CLPublicKey, DeployUtil } = require("casper-js-sdk");
 
     const RPC_API = 'http://159.65.203.12:7777/rpc';
     const STATUS_API = 'http://159.65.203.12:8888';
