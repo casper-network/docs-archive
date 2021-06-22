@@ -42,7 +42,7 @@ Operating with Keys
 ~~~~~~~~~~~~~~~~~~~
 **Question**: How should we work with the PEM keys?
 
-**Answer**: The `Keys API <https://casper-ecosystem.github.io/casper-js-sdk/modules/_lib_keys_.html>`_ provides methods for `Ed25519` and `Secp256K1` keys. Also, review the tests in `GitHub <https://github.com/casper-ecosystem/casper-js-sdk/blob/master/test/lib/Keys.test.ts#L39>`_ and the `Working with Keys <https://docs.casperlabs.io/en/latest/dapp-dev-guide/keys.html>`_ documentation.
+**Answer**: The `Keys API <https://casper-ecosystem.github.io/casper-js-sdk/next/modules/_lib_keys_.html>`_ provides methods for `Ed25519` and `Secp256K1` keys. Also, review the tests in `GitHub <https://github.com/casper-ecosystem/casper-js-sdk/blob/master/test/lib/Keys.test.ts#L39>`_ and the `Working with Keys <https://docs.casperlabs.io/en/latest/dapp-dev-guide/keys.html>`_ documentation.
 
 
 Useful Resources
