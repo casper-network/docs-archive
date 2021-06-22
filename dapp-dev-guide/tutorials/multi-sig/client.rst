@@ -27,7 +27,7 @@ The network you created with the NCTL tool has a special account called a faucet
 
 Setting up the Client
 ^^^^^^^^^^^^^^^^^^^^^^^
-Navigate to your ``keys-manager/client/`` folder and create the ``.env`` file to specify configuration needed for your client to communicate with the network.
+Navigate to your ``keys-manager/client/`` folder and create the ``.env`` file to specify the configuration needed for your client to communicate with the network.
 
 .. code-block:: bash
 
@@ -35,15 +35,13 @@ Navigate to your ``keys-manager/client/`` folder and create the ``.env`` file to
    $ touch .env
    $ open -e .env
 
-This client code by default expects a compiled WASM file in the ``contract`` folder and a local network called ``casper-net-1``.
-If you are following this tutorial, you only need to configure ``BASE_KEY_PATH`` which is the absolute path to your faucet account.
-So the ``.env`` file can look like this (replace <ENTER_YOUR_PATH> with your path).
+This client code, by default, expects a compiled WASM file in the ``contract`` folder and a local network called ``casper-net-1``. In this tutorial, you only need to configure the ``BASE_KEY_PATH``, the absolute path to your faucet account. So, your ``.env`` file will contain only one entry for the ``BASE_KEY_PATH`` and would look like this (replacing <ENTER_YOUR_PATH> with your path):
 
-.. code-block:: bash
+::
 
-	BASE_KEY_PATH=<ENTER_YOUR_PATH>/casper-node/utils/nctl/assets/net-1/faucet/
+   BASE_KEY_PATH=<ENTER_YOUR_PATH>/casper-node/utils/nctl/assets/net-1/faucet/
 
-Another environtment variables that can be set are below
+You can set other environment variables described in the table below.
 
 ========================  ============================================================  =============
 Variable                  Description                                                   Default value
@@ -56,7 +54,7 @@ PAYMENT_AMOUNT            Number of motes that will be used as payment for deplo
 TRANSFER_AMOUNT           Number of motes that will be used for native test transfers.  ``2500000000``
 ========================  ============================================================  =============
 
-Next, close the ``.env`` file and install the JavaScript packages in the ``keys-manager/client`` folder.
+Next, close the ``.env`` file and install the JavaScript packages in the ``keys-manager/client`` folder with the following command.
 
 .. code-block:: bash
 
