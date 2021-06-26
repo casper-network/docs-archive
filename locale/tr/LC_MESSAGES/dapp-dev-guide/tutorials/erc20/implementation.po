@@ -1,0 +1,185 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:2
+msgid "ERC-20 Implementation"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:4
+msgid ""
+"The ERC-20 standard is defined in `an Ethereum Improvement Proposal (EIP)"
+" <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#>`_. Read "
+"it carefully, as it defines the methods we have implemented:"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:6
+msgid "`allowance <#the-total-supply-balance-of-and-allowance-functions>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:7
+msgid "`approve <#the-approve-and-transfer-from-functions>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:8
+msgid "`balance_of <#the-total-supply-balance-of-and-allowance-functions>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:9
+msgid "`decimals <#the-name-symbol-and-decimals-functions>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:10
+msgid "`name <#the-name-symbol-and-decimals-functions>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:11
+msgid "`symbol <#the-name-symbol-and-decimals-functions>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:12
+msgid "`total_supply <#the-total-supply-balance-of-and-allowance-functions>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:13
+msgid "`transfer <#the-transfer-function>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:14
+msgid "`transfer_from <#the-approve-and-transfer-from-functions>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:17
+msgid "Cloning the Example Contract"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:19
+msgid ""
+"An example ERC-20 for Casper is located in `GitHub <https://github.com"
+"/casper-ecosystem/erc20>`_."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:23
+msgid "Installing the Required Crates"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:25
+msgid ""
+"This is a Rust contract. In Rust, the keyword ``use`` is like an "
+"``include`` statement in C/C++. Casper contracts require a few crates to "
+"be included. They are:"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:27
+msgid "contract: The Casper contract API for runtime and storage"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:28
+msgid "types: The Casper contract type system"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:51
+msgid "Initializing the Contract"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:53
+msgid ""
+"When the contract is deployed, it must be initialized with some values; "
+"this is done with the help of the ``call()`` function. The contract is "
+"initialized with a name, symbol, decimals, starting balances, and the "
+"starting token supply."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:85
+msgid "The ``name``, ``symbol``, and ``decimals`` functions"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:87
+msgid ""
+"We then also add a few helper functions to set and retrieve values from "
+"the contract. Notice that these helper functions reference each of the "
+"``set_key`` definitions when the contract is deployed; a generic "
+"``get_key`` function to retrieve values is also used."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:111
+msgid "The ``total_supply``, ``balance_of``, and ``allowance`` functions"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:113
+msgid ""
+"Let's explore the implementation of some key ERC-20 methods: "
+"``balance_of``, ``total_supply``, and ``allowance``."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:115
+msgid ""
+"The ``allowance`` method enables owners to specify an amount that a "
+"spender account can spend."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:142
+msgid "The ``transfer`` function"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:144
+msgid ""
+"Here is the ``transfer`` method, which makes it possible to transfer "
+"tokens from the ``sender`` address to the ``recipient`` address. If the "
+"``sender`` address has enough balance, then tokens should be transferred "
+"to the ``recipient`` address."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:165
+msgid "The ``approve`` and ``transfer_from`` functions"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:166
+msgid ""
+"Here are the functions ``approve`` and ``transfer_from``. ``approve`` is "
+"used to allow another address to spend tokens on one's behalf. This is "
+"used when multiple keys are authorized to perform deployments from an "
+"account."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:181
+msgid "``transfer_from`` allows spending an approved amount of tokens."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:204
+msgid "The ``get_key`` and ``set_key`` functions"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:205
+msgid ""
+"The ``get_key`` and ``set_key`` functions are generic Casper storage "
+"write and read methods. Implement these one time for the contract and "
+"then call them as needed."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:234
+msgid "Other Helper Functions"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:235
+msgid ""
+"The ``balance_key`` and ``allowance_key ``functions format the balances "
+"and account information from their internal representation into strings."
+msgstr ""
+

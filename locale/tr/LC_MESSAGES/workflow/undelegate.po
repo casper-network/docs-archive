@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../workflow/undelegate.rst:2
+msgid "Undelegating Tokens"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:4
+msgid ""
+"This document details a workflow where tokens delegated to a validator on"
+" a Casper network can be undelegated."
+msgstr ""
+
+#: ../../workflow/undelegate.rst:6
+msgid "This workflow assumes:"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:8
+msgid "You meet the `prerequisites <setup.html>`_"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:9
+msgid "You are using the Casper command-line client"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:10
+msgid "You have an undelegation contract or WASM to execute on the network"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:11
+msgid "You have a valid ``node-address``"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:12
+msgid ""
+"You have previously `deployed a smart contract "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ to a Casper Network"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:13
+msgid "You have delegated tokens to a validator"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:17
+msgid "Building The Undelegation WASM"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:19
+msgid ""
+"Obtain the ``undelegate.wasm`` by cloning the `casper-node "
+"<https://github.com/CasperLabs/casper-node>`_ repository and building the"
+" contracts."
+msgstr ""
+
+#: ../../workflow/undelegate.rst:21
+msgid ""
+"To build contracts, set up Rust, and install all dependencies. Visit "
+"`Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide"
+"/setup-of-rust-contract-sdk.html>`_ in the Developer Guide for step-by-"
+"step instructions."
+msgstr ""
+
+#: ../../workflow/undelegate.rst:23
+msgid ""
+"Once you build the contracts, you can use the ``undelegate.wasm`` to "
+"create a deploy that will initiate the undelegation process. The WASM can"
+" be found in:"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:31
+msgid "Sending the Undelegation Deploy"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:33
+msgid ""
+"Send a deploy containing the ``undelegate.wasm`` to the network to "
+"initiate the undelegation process."
+msgstr ""
+
+#: ../../workflow/undelegate.rst:35
+msgid ""
+"Below is an example of an undelegation request using the Casper command-"
+"line client:"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:49
+msgid ""
+"**Note** The delegator's public key and the secret key that signs the "
+"deploy must be part of the same key pair."
+msgstr ""
+
+#: ../../workflow/undelegate.rst:51
+msgid "**Request fields:**"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:53
+msgid ""
+"``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the "
+"request and returned in the response. If not provided, a random integer "
+"will be assigned"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:54 ../../workflow/undelegate.rst:83
+msgid ""
+"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which "
+"HTTP service is running [default:http://localhost:7777]"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:55
+msgid "``secret-key`` - Path to secret key file"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:56
+msgid ""
+"``chain-name`` - Name of the chain, to avoid the deploy from being "
+"accidentally or maliciously included in a different chain"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:58
+msgid "The *chain-name* for testnet is **casper-test**"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:59
+msgid "The *chain-name* for mainnet is **casper**"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:61
+msgid "``session-path`` - The path to where the ``delegate.wasm`` is located"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:62
+msgid "``session-arg`` - The arguments to the ``delegate`` execution"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:64
+msgid ""
+"The argument ``validator`` is the public key of the validator from whom "
+"the tokens will be undelegated"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:65
+msgid "The argument ``amount`` is the number of tokens to be undelegated"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:66
+msgid ""
+"The argument ``delegator`` is the public key of the account undelegating "
+"tokens from a validator"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:70
+msgid "Asserting the Undelegation"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:72
+msgid ""
+"You can use the Casper command-line client to generate an RPC request to "
+"query the auction state. The subsequent RPC response will confirm that "
+"the undelegation request was successfully executed."
+msgstr ""
+
+#: ../../workflow/undelegate.rst:74
+msgid ""
+"Here is how you can check the status of the auction to confirm that your "
+"bid was withdrawn:"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:81
+msgid "**Request fields**:"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:85
+msgid ""
+"If the public key and the amount are absent from the ``bids`` structure, "
+"we can safely assert that we have indeed undelegated from the validator."
+msgstr ""
+
+#: ../../workflow/undelegate.rst:87
+msgid ""
+"If your account is on the official Testnet or Mainnet, you can use the "
+"block explorer to look up your account balance and see that the tokens "
+"have been added to your balance:"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:89
+msgid "`Testnet explorer <https://testnet.cspr.live/>`_"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:90
+msgid "`Mainnet explorer <https://cspr.live/>`_"
+msgstr ""
+
+#: ../../workflow/undelegate.rst:92
+msgid ""
+"**Important Note**: After undelegating tokens from a validator, you must "
+"wait for the unbonding period to lapse before re-delegating tokens to "
+"either the same validator or a different validator."
+msgstr ""
+

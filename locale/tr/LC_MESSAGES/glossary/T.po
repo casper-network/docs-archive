@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../glossary/T.rst:2
+msgid "T"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`A <A.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`B <B.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`C <C.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`D <D.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`E <E.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`F <F.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`G <G.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`H <H.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`I <I.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`J <J.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`K <K.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`L <L.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`M <M.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`N <N.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`O <O.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`P <P.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`Q <Q.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`R <R.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`S <S.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`T <T.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`U <U.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`V <V.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`W <W.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`X <X.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`Y <Y.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:5
+msgid "`Z <Z.html>`_"
+msgstr ""
+
+#: ../../glossary/T.rst:9
+msgid "Token"
+msgstr ""
+
+#: ../../glossary/T.rst:10
+msgid ""
+"A type of cryptocurrency that represents an asset. See `CSPR "
+"<C.html#cspr>`_."
+msgstr ""
+
+#: ../../glossary/T.rst:13
+msgid "Transaction"
+msgstr ""
+
+#: ../../glossary/T.rst:14
+msgid "See `deploy <D.html#deploy>`_."
+msgstr ""
+
