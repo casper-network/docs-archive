@@ -1,0 +1,214 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../glossary/S.rst:2
+msgid "S"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`A <A.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`B <B.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`C <C.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`D <D.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`E <E.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`F <F.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`G <G.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`H <H.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`I <I.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`J <J.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`K <K.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`L <L.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`M <M.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`N <N.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`O <O.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`P <P.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`Q <Q.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`R <R.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`S <S.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`T <T.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`U <U.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`V <V.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`W <W.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`X <X.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`Y <Y.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:5
+msgid "`Z <Z.html>`_"
+msgstr ""
+
+#: ../../glossary/S.rst:9
+msgid "Secret key"
+msgstr ""
+
+#: ../../glossary/S.rst:10
+msgid ""
+"A cryptographic and confidential key that signs transactions to ensure "
+"their correct execution (carrying out only the user's intended "
+"operations)."
+msgstr ""
+
+#: ../../glossary/S.rst:13
+msgid "Seigniorage"
+msgstr ""
+
+#: ../../glossary/S.rst:14
+msgid ""
+"The reward mechanism by which validators are rewarded for participating "
+"in consensus. New tokens are minted and given to validators."
+msgstr ""
+
+#: ../../glossary/S.rst:17
+msgid "Session code"
+msgstr ""
+
+#: ../../glossary/S.rst:18
+msgid ""
+"The *session code* is a field contained in a deployment directive. The "
+"*session code* contains the code the user wishes to execute against the "
+"blockchain.  When the session code executes, it performs a transaction."
+msgstr ""
+
+#: ../../glossary/S.rst:21
+msgid "Slashing"
+msgstr ""
+
+#: ../../glossary/S.rst:22
+msgid ""
+"In Proof-of-Stake, the deposit acts as collateral. The validator "
+"guarantees that it correctly follows the protocol. If the validator node "
+"violates the protocol, the deposited amount gets *slashed*, i.e., a part "
+"of it is removed."
+msgstr ""
+
+#: ../../glossary/S.rst:25
+msgid "Smart contract"
+msgstr ""
+
+#: ../../glossary/S.rst:26
+msgid ""
+"A WebAssembly (WASM) program that the network stores as a value in the "
+"global state. The execution of a smart contract causes changes to the "
+"global state. A smart contract can be invoked by a transaction or by "
+"another smart contract. Smart contracts can declare input data as the "
+"arguments of a function. When invoking a smart contract, one must provide"
+" the input values."
+msgstr ""
+
+#: ../../glossary/S.rst:29
+msgid "Staker"
+msgstr ""
+
+#: ../../glossary/S.rst:30
+msgid ""
+"A person that deposits tokens in the `proof-of-stake <P.html#proof-of-"
+"stake>`_ contract. A staker is either a `validator <V.html#validator>`_ "
+"or a `delegator <D.html#delegator>`_. Stakers take on the slashing risk "
+"in exchange for rewards. Stakers will deposit their `tokens "
+"<T.html#token>`_ by sending a bonding request in the form of a "
+"transaction (deployment) to the system. If a validator is `slashed "
+"<#slashing>`_, the staker will lose their tokens."
+msgstr ""
+
+#: ../../glossary/S.rst:33
+msgid "Staking"
+msgstr ""
+
+#: ../../glossary/S.rst:34
+msgid ""
+"A feature of Proof-of-Stake protocols that allows token holders to "
+"actively participate in the protocol, thus securing the network. The "
+"`Staking Guide "
+"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ highlights "
+"the steps required to stake the CSPR token on the Casper network."
+msgstr ""
+

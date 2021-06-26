@@ -1,0 +1,392 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../workflow/transfer-workflow.rst:2
+msgid "Direct Token Transfer"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:4
+msgid ""
+"This workflow describes how to use the Casper command-line client to "
+"transfer tokens between accounts on a Casper Network."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:7
+msgid "This workflow assumes:"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:9
+msgid "You meet the `prerequisites <setup.html>`_"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:10
+msgid "You are using the Casper command-line client"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:11
+msgid "You have a source ``PublicKey`` hex and a target ``PublicKey`` hex"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:12
+msgid "You have a valid ``node-address``"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:13
+msgid "You must be able to sign a deploy for the source account"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:16
+msgid "Transfer"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:18
+msgid ""
+"The ``transfer`` command allows you to move CSPR from one account to "
+"another as denominated in `Motes "
+"<https://docs.casperlabs.io/en/latest/implementation/tokens.html?highlight=motes"
+"#divisibility-of-tokens>`_. A `Mote` is a denomination of the "
+"cryptocurrency CSPR, where 1 CSPR = 1,000,000,000 Motes."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:20
+msgid ""
+"For transfers of at least 2.5 CSPR (2,500,000,000 Motes) from a single "
+"sender to a single recipient on a Casper network, the most efficient "
+"option is to use the direct transfer capability."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:22
+msgid "**Direct transfer example**:"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:36
+#: ../../workflow/transfer-workflow.rst:415
+#: ../../workflow/transfer-workflow.rst:524
+#: ../../workflow/transfer-workflow.rst:606
+#: ../../workflow/transfer-workflow.rst:684
+#: ../../workflow/transfer-workflow.rst:744
+#: ../../workflow/transfer-workflow.rst:805
+msgid "**Request fields:**"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:38
+#: ../../workflow/transfer-workflow.rst:417
+#: ../../workflow/transfer-workflow.rst:526
+#: ../../workflow/transfer-workflow.rst:608
+#: ../../workflow/transfer-workflow.rst:686
+#: ../../workflow/transfer-workflow.rst:746
+#: ../../workflow/transfer-workflow.rst:807
+msgid ""
+"``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the "
+"request and returned in the response. If not provided, a random integer "
+"will be assigned"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:39
+msgid ""
+"``transfer-id`` - <64-BIT INTEGER>  The ``transfer-id`` is a memo field, "
+"providing additional information about the recipient, which is necessary "
+"when transferring tokens to some recipients. For example, if depositing "
+"tokens into an account where off-chain management keeps track of "
+"individual sub-balances, it is necessary to provide a memo id uniquely "
+"identifying the actual recipient. If this is not necessary for a given "
+"recipient, you may pass ``0`` or some ``u64`` value that is meaningful to"
+" you"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:40
+msgid ""
+"``node-address`` - <HOST:PORT> Hostname or IP and port of a node on a "
+"network bound to a JSON-RPC endpoint [default:http://localhost:7777]"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:41
+msgid ""
+"``amount`` - <512-BIT INTEGER> The number of motes to transfer (1 CSPR = "
+"1,000,000,000 ``Motes``)"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:42
+msgid "``secret-key`` - Path to secret key file"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:43
+msgid ""
+"``chain-name`` - Name of the chain, to avoid the deploy from being "
+"accidentally or maliciously included in a different chain"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:45
+msgid "The *chain-name* for testnet is **casper-test**"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:46
+msgid "The *chain-name* for mainnet is **casper**"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:48
+msgid ""
+"``target-account`` - <HEX STRING> Hex-encoded public key of the account "
+"from which the main purse will be used as the target"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:51
+#: ../../workflow/transfer-workflow.rst:167
+#: ../../workflow/transfer-workflow.rst:422
+#: ../../workflow/transfer-workflow.rst:532
+msgid "**Important response fields:**"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:53
+msgid ""
+"``\"result\".\"deploy_hash\"`` - the address of the executed transfer, "
+"needed to look up additional information about the transfer"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:55
+msgid ""
+"**Note**: Save the returned `deploy_hash` from the output to query "
+"information about the transfer deploy later."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:62
+#: ../../workflow/transfer-workflow.rst:179
+#: ../../workflow/transfer-workflow.rst:431
+#: ../../workflow/transfer-workflow.rst:541
+#: ../../workflow/transfer-workflow.rst:618
+#: ../../workflow/transfer-workflow.rst:697
+#: ../../workflow/transfer-workflow.rst:757
+#: ../../workflow/transfer-workflow.rst:819
+msgid "**JSON-RPC Request**:"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:141
+#: ../../workflow/transfer-workflow.rst:192
+#: ../../workflow/transfer-workflow.rst:447
+#: ../../workflow/transfer-workflow.rst:556
+#: ../../workflow/transfer-workflow.rst:633
+#: ../../workflow/transfer-workflow.rst:711
+#: ../../workflow/transfer-workflow.rst:771
+#: ../../workflow/transfer-workflow.rst:834
+msgid "**JSON-RPC Response**:"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:161
+msgid "Deploy Status"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:163
+msgid ""
+"A transfer on a Casper Network is only executed after it has been "
+"included in a finalized block."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:165
+msgid ""
+"Refer to the Section on `querying deploys <querying.html#deploy-status>`_"
+" within the network to check the execution status of the transfer."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:169
+msgid ""
+"``\"result\".\"execution_results\"[0].\"transfers[0]\"`` - the address of"
+" the executed transfer that the source account initiated. We will use it "
+"to look up additional information about the transfer"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:170
+msgid ""
+"``\"result\".\"execution_results\"[0].\"block_hash\"`` - contains the "
+"block hash of the block that included our transfer. We will require the "
+"`state_root_hash` of this block to look up information about the accounts"
+" and their balances"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:172
+msgid "**Note**: Transfer addresses use a ``transfer-`` string prefix."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:401
+msgid "State Root Hash"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:403
+msgid ""
+"State information like the balance of an account on a Casper blockchain "
+"is stored in the `Global State "
+"<https://docs.casperlabs.io/en/latest/implementation/global-"
+"state.html>`_."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:405
+msgid ""
+"We will use the ``get-block`` command and the ``block_hash`` to query and"
+" retrieve the block that contains our deploy. We will use the "
+"``state_root_hash`` from the response to look up various values, like the"
+" source and destination account and their balances."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:418
+msgid ""
+"``node-address`` <HOST:PORT> Hostname or IP and port of node on which "
+"HTTP service is running [default:http://localhost:7777]"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:419
+msgid ""
+"``block-identifier`` - <HEX STRING OR INTEGER> Hex-encoded block hash or "
+"height of the block. If not given, the last block added to the chain as "
+"known at the given node will be used"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:424
+msgid ""
+"``\"result\".\"block\".\"header\".\"state_root_hash\"`` - contains the "
+"``state-root-hash`` for this block"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:511
+msgid "Query the Source Account"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:513
+msgid ""
+"Next, we will query for information about the `Source` account, using the"
+" ``state-root-hash`` of the block containing our transfer and the public "
+"key of the `Target` account."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:527
+#: ../../workflow/transfer-workflow.rst:687
+#: ../../workflow/transfer-workflow.rst:747
+#: ../../workflow/transfer-workflow.rst:808
+msgid ""
+"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which "
+"HTTP service is running [default:http://localhost:7777]"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:528
+#: ../../workflow/transfer-workflow.rst:609
+#: ../../workflow/transfer-workflow.rst:688
+#: ../../workflow/transfer-workflow.rst:748
+#: ../../workflow/transfer-workflow.rst:809
+msgid "``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:529
+msgid ""
+"``key`` - <FORMATTED STRING or PATH> The base key for the query. This "
+"must be a properly formatted public key, account hash, contract address "
+"hash, URef, transfer hash or deploy-info hash."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:534
+msgid ""
+"``\"result\".\"stored_value\".\"Account\".\"main_purse\"`` - the address "
+"of the main purse containing the sender’s tokens. This purse is the "
+"source of the tokens transferred in this example"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:595
+msgid "Query the Target Account"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:597
+msgid ""
+"We will repeat the previous step to query information about the `Target` "
+"account."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:610
+msgid ""
+"``key`` - <FORMATTED STRING or PATH> The base key for the query. This "
+"must be a properly formatted public key, account hash, contract address "
+"hash, URef, transfer hash, or deploy-info hash."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:669
+msgid "Get Source Account Balance"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:671
+msgid ""
+"All accounts on a Casper system have a purse associated with the Casper "
+"system mint, which we call the `main purse`. The balance associated with "
+"a given purse is recorded in the global state, and the value can be "
+"queried using the ``URef`` associated with the purse."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:673
+msgid ""
+"Now that we have the source purse address, we can get its balance using "
+"the ``get-balance`` command:"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:689
+#: ../../workflow/transfer-workflow.rst:749
+msgid ""
+"``purse-uref`` - <FORMATTED STRING> The URef under which the purse is "
+"stored. This must be a properly formatted URef \"uref-<HEX STRING>-<THREE"
+" DIGIT INTEGER>\""
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:731
+msgid "Get Target Account Balance"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:733
+msgid ""
+"Similarly, now that we have the address of the target purse, we can get "
+"its balance."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:791
+msgid "Query Transfer Details"
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:793
+msgid ""
+"Deploys in a Casper Network can contain multiple transfers. When such a "
+"deploy is executed, the information about each individual transfer is "
+"written to the global state. Each transfer can be uniquely identified by "
+"a hash known as the ``transfer-address``, a formatted string with a "
+"``transfer-`` prefix."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:795
+msgid ""
+"We will use the ``transfer-<address>`` to query more details about the "
+"transfer."
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:810
+msgid ""
+"``key`` - <FORMATTED STRING or PATH> The base key for the query. This "
+"must be a properly formatted transfer address; \"transfer-<address>\""
+msgstr ""
+
+#: ../../workflow/transfer-workflow.rst:864
+msgid ""
+"The query responds with more information about the transfer we conducted:"
+" its deploy hash, the account which executed the transfer, the source, "
+"and target purses, and the target account. Using this additional "
+"information, we can verify that our transfer was executed successfully."
+msgstr ""
+

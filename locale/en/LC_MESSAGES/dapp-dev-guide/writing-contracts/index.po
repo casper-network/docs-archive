@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:2
+msgid "Writing Smart Contracts"
+msgstr ""
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:4
+msgid ""
+"This section shows you how to write smart contracts in Rust and "
+"WebAssembly (WASM)."
+msgstr ""
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:15
+msgid "Title"
+msgstr ""
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:15
+msgid "Description"
+msgstr ""
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:17
+msgid "`Rust contracts <writing-rust-contracts.html>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:17
+msgid "Smart contract examples in Rust"
+msgstr ""
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:18
+msgid "`WebAssembly contracts <assemblyscript.html>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:18
+msgid "Smart contract examples in WASM"
+msgstr ""
+
