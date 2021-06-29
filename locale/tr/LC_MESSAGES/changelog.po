@@ -3,49 +3,65 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:45+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../changelog.rst:2
 msgid "Changelog"
-msgstr ""
+msgstr "Değişim Günlüğü"
 
 #: ../../changelog.rst:4
 msgid ""
 "This page is a reference library for all the past technical releases and "
-"changelogs for the Casper Network. Click on the links below to see "
-"details about the released versions such as release dates, key changes "
-"and milestones completed, known issues, and calls to action for "
-"validators, dApp developers, contract authors, and exchanges."
+"changelogs for the Casper Network. Click on the links below to see details "
+"about the released versions such as release dates, key changes and "
+"milestones completed, known issues, and calls to action for validators, dApp"
+" developers, contract authors, and exchanges."
 msgstr ""
+"Bu sayfa, Casper Network için geçmiş tüm teknik sürümler ve değişim "
+"günlükleri için bir başvuru kütüphanesidir. Yayım tarihleri, önemli "
+"değişiklikler ve tamamlanan kilometre taşları, bilinen sorunlar ile "
+"birlikte, doğrulayıcılar, dApp geliştiricileri, kontrat yazarları ve "
+"borsalar için yapılan eylem çağrıları gibi yayınlanan sürümlerle ilgili "
+"ayrıntıları görmek için aşağıdaki bağlantılara tıklayın."
 
 #: ../../changelog.rst:6
 msgid ""
 "Visit the `technical roadmap <https://github.com/casper-"
 "network/roadmap/projects/2>`_ and the `engineering status "
-"<https://github.com/casper-network/roadmap/wiki/Current-Status>`_ pages "
-"to review the work currently in progress."
+"<https://github.com/casper-network/roadmap/wiki/Current-Status>`_ pages to "
+"review the work currently in progress."
 msgstr ""
+"Devam eden çalışmaları gözden geçirmek için `teknik yol haritası "
+"<https://github.com/casper-network/roadmap/projects/2>`_ ve `mühendislik "
+"durumu <https://github.com/casper-network/roadmap/wiki/Current-Status>`_ "
+"sayfalarını ziyaret edin."
 
 #: ../../changelog.rst:9
 msgid "Casper Network Release Notes"
-msgstr ""
+msgstr "Casper Network Sürüm Notları"
 
 #: ../../changelog.rst:12
 msgid ""
 "`Version 1.2.0 <https://medium.com/casper-association/technical-release-"
 "notes-and-changelog-for-1-2-0-26bbe921ab51>`_"
 msgstr ""
-
+"`Sürüm 1.2.0 <https://medium.com/casper-association/technical-release-notes-"
+"and-changelog-for-1-2-0-26bbe921ab51>`_"
