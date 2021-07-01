@@ -3,57 +3,75 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:45+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../archived/contract-dsl-archived/index.rst:13
 msgid "Introduction"
-msgstr ""
+msgstr "Giriş"
 
 #: ../../archived/contract-dsl-archived/index.rst:2
 msgid "The Casper DSL"
-msgstr ""
+msgstr "Casper DSL"
 
 #: ../../archived/contract-dsl-archived/index.rst:4
 msgid ""
-"The Casper Domain-Specific Language (DSL) for writing smart contracts is "
-"a tool to help developers more easily and quickly write human-readable "
-"code. It is a series of macros designed around object-oriented "
-"programming (OOP) principles. The macros conceal much of the repetitive "
-"boilerplate code necessary for proper contract compilation, operating "
-"much like templates seen in other object-oriented languages."
+"The Casper Domain-Specific Language (DSL) for writing smart contracts is a "
+"tool to help developers more easily and quickly write human-readable code. "
+"It is a series of macros designed around object-oriented programming (OOP) "
+"principles. The macros conceal much of the repetitive boilerplate code "
+"necessary for proper contract compilation, operating much like templates "
+"seen in other object-oriented languages."
 msgstr ""
+"Akıllı kontratlar yazmak için Casper Etki Alanına Özgü Dil (DSL), "
+"geliştiricilerin daha kolay ve hızlı bir şekilde okunabilir kod yazmasına "
+"yardımcı olan bir araçtır. DSL, Nesne Yönelimli Programlama (OOP) ilkelerine"
+" dayalı tasarlanmış bir dizi makrodur. Makrolar, diğer nesne yönelimli "
+"dillerde görülen şablonlara çok benzer şekilde çalışarak, uygun kontrat "
+"derlemesi için gerekli olan tekrarlayan standart kodun çoğunu içerir."
 
 #: ../../archived/contract-dsl-archived/index.rst:6
 msgid ""
 "However, if you are an experienced Rust developer, you may find that you "
 "want to forgo using the DSL as you start getting familiar with Casper "
-"development. For advanced use cases, the boilerplate code could very well"
-" become sub-optimal. Regardless, though, we recommend that you start with"
-" the DSL to see the typical workflow while you are getting familiar with "
-"the ecosystem."
+"development. For advanced use cases, the boilerplate code could very well "
+"become sub-optimal. Regardless, though, we recommend that you start with the"
+" DSL to see the typical workflow while you are getting familiar with the "
+"ecosystem."
 msgstr ""
+"Ancak, deneyimli bir Rust geliştiricisiyseniz, Casper geliştirmeye alışmaya "
+"başladığınızda DSL'yi kullanmaktan vazgeçmek isteyebilirsiniz. Gelişmiş "
+"kullanım durumları için, standart kod çok iyi bir temel olabilir. Yine de, "
+"ekosisteme alışırken tipik iş akışını görmek için DSL ile başlamanızı "
+"tavsiye ederiz."
 
 #: ../../archived/contract-dsl-archived/index.rst:8
 msgid ""
-"The macros work with *contract headers* released as part of version 0.20."
-" Contracts created before release 0.20 will need to be upgraded to use "
+"The macros work with *contract headers* released as part of version 0.20. "
+"Contracts created before release 0.20 will need to be upgraded to use "
 "macros."
 msgstr ""
+"Makrolar, 0.20 sürümünün bir parçası olarak yayımlanan *kontrat başlıkları* "
+"ile çalışır. 0.20 sürümünden önce oluşturulan kontratların, makroları "
+"kullanmak için yükseltilmesi gerekir."
 
 #: ../../archived/contract-dsl-archived/index.rst:11
 msgid "Table of Contents"
-msgstr ""
-
+msgstr "İçindekiler Tablosu"
