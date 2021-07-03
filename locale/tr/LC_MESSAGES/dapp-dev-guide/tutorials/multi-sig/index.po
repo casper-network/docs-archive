@@ -3,37 +3,46 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/index.rst:2
 msgid "Multi-Signature Tutorial"
-msgstr ""
+msgstr "Çoklu-İmza Dersi"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/index.rst:4
 msgid ""
 "In this tutorial, you will learn to use `Casper's permissions model "
 "<https://docs.casperlabs.io/en/latest/implementation/accounts.html"
-"#permissions-model>`_ to sign transactions with multiple keys. The code "
-"for this tutorial is available in `GitHub <https://github.com/casper-"
-"ecosystem/keys-manager>`_. The sample code creates a smart contract and a"
-" sample client that invokes the multi-signature feature on a local Casper"
-" network."
+"#permissions-model>`_ to sign transactions with multiple keys. The code for "
+"this tutorial is available in `GitHub <https://github.com/casper-ecosystem"
+"/keys-manager>`_. The sample code creates a smart contract and a sample "
+"client that invokes the multi-signature feature on a local Casper network."
 msgstr ""
+"Bu derste, birden çok anahtarla işlemleri imzalamak için `Casper'ın izin "
+"modelini <https://docs.casperlabs.io/en/latest/implementation/accounts.html"
+"#permissions-model>`_ kullanmayı öğreneceksiniz. Bu dersin kodlarını, "
+"`GitHub <https://github.com/casper-ecosystem/keys-manager>`_'da "
+"bulabilirsiniz. Örnek kodlar, bir akıllı kontrat ve yerel bir Casper ağında "
+"çoklu-imza özelliğinden yararlanan bir istemci örneği oluşturur."
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/index.rst:6
 msgid "**Table of Contents**"
-msgstr ""
-
+msgstr "**İçindekiler Tablosu**"
