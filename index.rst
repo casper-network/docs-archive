@@ -7,6 +7,8 @@
 Casper Documentation
 ************************
 
+<HERE IS WHERE ALBERT CAN ADD THE INTRO>
+
 We present the Casper Network, a new Turing-complete smart-contract platform, backed by a Proof-of-Stake (PoS) consensus algorithm and WebAssembly (wasm). The network is a permissionless, decentralized, public blockchain. The consensus protocol is called Highway, and the complete paper is found in GitHub: https://github.com/CasperLabs/highway. The consensus protocol allows clients to use different confidence thresholds to convince themselves that a given block is *finalized*. This protocol is built on Vlad Zamfir's `correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-casper-paper>`_ research. 
 
 Rust is the primary programming language for smart contracts on the Casper blockchain because of its good support for compilation to wasm. However, the platform does not make assumptions about the source language and supports libraries facilitating contract development in other programming languages having wasm as a compile target. Other essential features include an account permissions model that allows the recovery of lost keys and a permissions model to securely share state between accounts and contracts (without expensive cryptographic checks). We also provide discussions of the economics of our proof-of-stake implementation and our token policies.
