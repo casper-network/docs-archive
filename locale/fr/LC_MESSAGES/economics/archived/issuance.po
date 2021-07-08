@@ -1,0 +1,247 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../economics/archived/issuance.rst:2
+msgid "Issuance"
+msgstr "Émission"
+
+#: ../../economics/archived/issuance.rst:4
+msgid ""
+"Issuance provides a base level of payments for validators, so that they are "
+"compensated for their work even if there is not a lot of demand for using "
+"the network. By issuing new CSPR for validators, we ensure that the network "
+"is secured by sufficient stake, even without the transaction fees."
+msgstr ""
+"L'émission fournit un niveau de base de paiements pour les validateurs, de "
+"sorte qu'ils sont rémunérés pour leur travail même s'il n'y a pas beaucoup "
+"de demande pour utiliser le réseau. En émettant de nouveaux jetons CSPR pour"
+" les validateurs, nous nous assurons que le réseau est sécurisé par des "
+"fonds (stake) suffisants, même sans les frais de transaction."
+
+#: ../../economics/archived/issuance.rst:6
+msgid ""
+"CSPR is issued at a fixed rate and distributed to validators in proportion "
+"to their stake. This is analogous to block rewards in Proof of Work "
+"blockchains, except for a couple of differences:"
+msgstr ""
+"Les jetons CSPR sont émis à un taux fixe et distribués aux validateurs en "
+"proportion de leur mise. Ceci est analogue aux récompenses de bloc dans les "
+"blockchains Proof of Work, à quelques différences près :"
+
+#: ../../economics/archived/issuance.rst:8
+msgid "The growth of CSPR supply is exponential instead of linear."
+msgstr "La croissance de l'offre de CSPR est exponentielle et non linéaire."
+
+#: ../../economics/archived/issuance.rst:9
+msgid "Issuance takes into account slashed CSPR."
+msgstr ""
+"L'émission tient compte de la réduction des jetons CSPR due au 'slashing'"
+
+#: ../../economics/archived/issuance.rst:11
+msgid ""
+"If there were no slashing, we would have computed block rewards according to"
+" the following formula"
+msgstr ""
+"S'il n'y avait pas eu de 'slashing', nous aurions calculé les récompenses "
+"par blocs selon la formule suivante"
+
+#: ../../economics/archived/issuance.rst:17
+msgid ""
+"where :code:`i = 1, 2, ...` and so on is the era's index, "
+":code:`initial_supply` is the number of CSPR at the Mainnet launch, "
+":code:`issuance_rate` is the annual rate at which new CSPR is minted, and "
+":code:`ticks_per_year = 365*24*60*60*1000 = 31_536_000_000`."
+msgstr ""
+"où :code:`i = 1, 2, ...` etc  est l'indice de l'ère (era),\n"
+":code:`initial_supply` est le nombre de jetons CSPR au lancement du Mainnet, \n"
+":code:`issuance_rate` est le taux annuel auquel les nouveaux CSPR sont émis (minted), et :code:`ticks_per_year = 365*24*60*60*1000 = 31_536_000_000`."
+
+#: ../../economics/archived/issuance.rst:19
+msgid ""
+"However, we have to factor in slashed tokens too when we issue new CSPR. To "
+"this end, we keep track of minted and slashed CSPR at the end of each era:"
+msgstr ""
+"Cependant, nous devons également prendre en compte la réduction des jetons "
+"due au slashing lorsque nous émettons de nouveaux jetons CSPR. À cette fin, "
+"nous gardons la trace des jetons CSPR émis et détruits à la fin de chaque "
+"ère (era) :"
+
+#: ../../economics/archived/issuance.rst:26
+msgid ""
+"where :code:`rewards(i)` is the total CSPR minted per issuance during era "
+":code:`i`, and :code:`slashings(i)` is the total CSPR slashed during era "
+":code:`i`. All of these quantities can be derived objectively from the "
+"history of the global state."
+msgstr ""
+"où :code:`rewards(i)` est le total des jetons CSPR émis(minted) pendant "
+"l'ère :code:`i`, et :code:`slashings(i)` est le total des jetons CSPR perdus"
+" à cause du slashing pendant l'ère :code:`i`. Toutes ces quantités peuvent "
+"être dérivées objectivement de l'histoire de l'état global."
+
+#: ../../economics/archived/issuance.rst:28
+msgid "We introduce *round issuance rate*"
+msgstr "Nous introduisons le *taux d'émission rond*. (round issuance rate)"
+
+#: ../../economics/archived/issuance.rst:34
+msgid ""
+"which is the yearly issuance rate adjusted to a single round, whose length "
+"is defined by the protocol parameter :code:`minimum_round_exponent = 14`. "
+"This gives us a round length of roughly 16 seconds."
+msgstr ""
+"qui est le taux d'émission annuel ajusté à un seul tour, dont la longueur "
+"est définie par le paramètre de protocole :code:`minimum_round_exponent = "
+"14`. Cela nous donne une longueur de tour d'environ 16 secondes."
+
+#: ../../economics/archived/issuance.rst:36
+msgid "Finally, the base round reward is computed as"
+msgstr "Enfin, la récompense du tour de base est calculée comme suit"
+
+#: ../../economics/archived/issuance.rst:42
+msgid ""
+"This value gives us the maximum amount of CSPR that the validators can "
+"receive from a proposed block."
+msgstr ""
+"Cette valeur nous donne la quantité maximale de jetons CSPR que les "
+"validateurs peuvent recevoir d'un bloc proposé."
+
+#: ../../economics/archived/issuance.rst:45
+msgid "Reward Distribution"
+msgstr "Distribution des récompenses  (rewards)"
+
+#: ../../economics/archived/issuance.rst:47
+msgid ""
+"Validators are rewarded for proposing and finalizing blocks, according to "
+"their performance. The concept of weight is crucial for understanding reward"
+" distribution:"
+msgstr ""
+"Les validateurs sont récompensés pour avoir proposé et finalisé des blocs, "
+"en fonction de leurs performances. Le concept de ''poids'' est crucial pour "
+"comprendre la distribution des récompenses :"
+
+#: ../../economics/archived/issuance.rst:49
+msgid "**Weight:** A validator's bonded stake, used in consensus."
+msgstr ""
+"**Poids:** Un enjeu (stake) lié au validateur, utilisé dans le consensus."
+
+#: ../../economics/archived/issuance.rst:50
+msgid ""
+"**Assigned weight of a block/round:** The total stake of validators that are"
+" scheduled to participate on a block."
+msgstr ""
+"**Poids assigné d'un bloc/tour:** La mise totale des validateurs qui sont "
+"programmés pour participer à un bloc."
+
+#: ../../economics/archived/issuance.rst:51
+msgid ""
+"**Participated weight of a block/round:** The total stake of validators that"
+" actually end up participating. Here, *participating* means sending messages"
+" to finalize a block before their respective rounds end."
+msgstr ""
+"**Poids des participants d'un bloc/ronde:** La participation totale des "
+"validateurs qui finissent par participer. Ici, *participer* signifie envoyer"
+" des messages pour finaliser un bloc avant la fin de leurs tours (rounds) "
+"respectifs."
+
+#: ../../economics/archived/issuance.rst:53
+msgid ""
+"To determine the validators' eligibility to receive rewards from a proposed "
+"block, we look at **on-time finalization (OTF)**. Validators should finalize"
+" blocks on time, by sending required messages before their respective rounds"
+" end."
+msgstr ""
+"Pour déterminer l'éligibilité des validateurs à recevoir des récompenses "
+"d'un bloc proposé, nous examinons la **finalisation à temps (on-time "
+"finalization =OTF)**. Les validateurs doivent finaliser les blocs à temps, "
+"en envoyant les messages requis avant la fin de leurs tours respectifs."
+
+#: ../../economics/archived/issuance.rst:57
+msgid "Participation Schedule"
+msgstr "Calendrier de participation"
+
+#: ../../economics/archived/issuance.rst:59
+msgid ""
+"The schedule with which validators send messages are determined by the "
+"validators' rounds, which are in turn determined by their round exponents. A"
+" validator with the round exponent :code:`n` has to participate in rounds "
+"that repeat every :code:`2^n` ticks."
+msgstr ""
+"La fréquence à laquelle les validateurs envoient des messages est déterminée"
+" par les tours (rounds) des validateurs, qui sont à leur tour déterminés par"
+" leurs exposants de tour. Un validateur avec l'exposant de tour :code:`n` "
+"doit participer à des tours qui se répètent tous les :code:`2^n` ticks."
+
+#: ../../economics/archived/issuance.rst:61
+msgid ""
+"Each validator is assessed according to their own round exponent. All "
+"assigned validators become eligible to receive rewards as long as the block "
+"gets finalized with messages that were sent within each validator's own "
+"round."
+msgstr ""
+"Chaque validateur est évalué en fonction de son propre exposant de tour. "
+"Tous les validateurs assignés deviennent éligibles pour recevoir des "
+"récompenses tant que le bloc est finalisé avec des messages qui ont été "
+"envoyés pendant le tour de chaque validateur."
+
+#: ../../economics/archived/issuance.rst:63
+msgid ""
+"We dictate a minimum assigned weight for all rounds. Rounds that meet the "
+"requirement are said to be *feasible*, and the ones that do not are said to "
+"be *infeasible*. Blocks proposed in infeasible rounds do not receive any "
+"rewards."
+msgstr ""
+"Nous imposons un poids minimum assigné pour tous tours (rounds). Les tours "
+"qui remplissent cette condition sont dits *faisables*, et ceux qui ne le "
+"font pas sont dits *infaisables*. Les blocs proposés dans les tours "
+"infaisables ne reçoivent aucune récompense."
+
+#: ../../economics/archived/issuance.rst:66
+msgid "Reward Eligibility"
+msgstr "Eligibilité aux récompenses (rewards)"
+
+#: ../../economics/archived/issuance.rst:68
+msgid ""
+"Once a block has been proposed and enough time has passed, the history of "
+"messages can be examined to detect whether the block was indeed finalized on"
+" time, according to the conditions given above."
+msgstr ""
+"Une fois qu'un bloc a été proposé et qu'un temps suffisant s'est écoulé, "
+"l'historique des messages peut être examiné pour détecter si le bloc a bien "
+"été finalisé à temps, selon les conditions données ci-dessus."
+
+#: ../../economics/archived/issuance.rst:70
+msgid ""
+"If the block is *not* finalized on time, validators do not receive any "
+"rewards. The tokens allocated for the block are simply burned."
+msgstr ""
+"Si le bloc n'est *pas* finalisé à temps, les validateurs ne reçoivent aucune"
+" récompense. Les jetons alloués pour le bloc sont simplement brûlés."
+
+#: ../../economics/archived/issuance.rst:71
+msgid ""
+"If the block is finalized on time, assigned validators share the reward pro "
+"rata, regardless of whether they have sent messages or not."
+msgstr ""
+"Si le bloc est finalisé à temps, les validateurs assignés partagent la "
+"récompense au prorata, qu'ils aient envoyé des messages ou non."
