@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../workflow/index.rst:2
+msgid "How To's"
+msgstr "Guide pratique"
+
+#: ../../workflow/index.rst:4
+msgid ""
+"This section contains guides that highlight key features and capabilities of"
+" the Casper system."
+msgstr ""
+"Cette section contient des guides qui mettent en évidence les principales "
+"caractéristiques et capacités du système Casper."
+
+#: ../../workflow/index.rst:7
+msgid "Title"
+msgstr "Titre"
+
+#: ../../workflow/index.rst:7
+msgid "Description"
+msgstr "Description"
+
+#: ../../workflow/index.rst:9
+msgid "`Prerequisites <setup.html>`_"
+msgstr "'Prérequis <setup.html>`_"
+
+#: ../../workflow/index.rst:9
+msgid "A guide to fulfilling prerequisites needed for various workflows"
+msgstr "Un guide pour remplir les prérequis nécessaires à divers workflows"
+
+#: ../../workflow/index.rst:10
+msgid "`Querying the Casper Network <querying.html>`_"
+msgstr "'Interroger le réseau Casper  <querying.html>`_"
+
+#: ../../workflow/index.rst:10
+msgid "A guide to querying for information on a Casper blockchain"
+msgstr "Guide pour la recherche d'informations sur la blockchain Casper"
+
+#: ../../workflow/index.rst:11
+msgid "`Direct Native Token Transfer <transfer-workflow.html>`_"
+msgstr "'Transfert direct de jetons natifs <transfer-workflow.html>`_"
+
+#: ../../workflow/index.rst:11
+msgid ""
+"A guide to performing a direct transfer of CSPR tokens from one account to "
+"another"
+msgstr ""
+"Guide pour effectuer un transfert direct de jetons CSPR d'un compte à un "
+"autre"
+
+#: ../../workflow/index.rst:12
+msgid ""
+"`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_"
+msgstr ""
+"'Multi-signatures bi-parties pour le déploiement <two-party-multi-"
+"sig.html>`_"
+
+#: ../../workflow/index.rst:12
+msgid "A guide to setting up an account for two-party signature deploys"
+msgstr ""
+"Guide pour la configuration d'un compte pour les déploiements de signature "
+"bi-partie"
+
+#: ../../workflow/index.rst:13
+msgid "`Delegating Tokens <delegate.html>`_"
+msgstr "'Délégation de jetons <delegate.html>`_"
+
+#: ../../workflow/index.rst:13
+msgid "A guide to delegating tokens to a Validator on a Casper Network"
+msgstr ""
+"Guide pour la délégation de jetons à un validateur sur le réseau Casper"
+
+#: ../../workflow/index.rst:14
+msgid "`Un-delegating Tokens <undelegate.html>`_"
+msgstr "'Retrait des jetons délégués <undelegate.html>`"
+
+#: ../../workflow/index.rst:14
+msgid "A guide to un-delegating tokens from a Validator on a Casper Network"
+msgstr ""
+"Un guide pour retirer les jetons délégués à un validateur sur le réseau "
+"Casper."
+
+#: ../../workflow/index.rst:17
+msgid "**Table of Contents**"
+msgstr "**Table des matières**"
