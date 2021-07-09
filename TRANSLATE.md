@@ -30,3 +30,10 @@ Follow the steps below to get your own language added to the translations list:
 3. Join the [Casper Translators group](https://t.me/joinchat/9prJkTdxBM82NTI0) to coordinate with your fellow translators. Ping the translation project coordinator, and introduce yourself to get your language added.
 4. If all goes well, you will become the coordinator of the newly added language. Then you can start translating immediately, and you will also be responsible for recruiting new translators and reviewers to your language's team.
 5. After you have your first file completely translated, reviewed and merged on GitHub, ping the coordinator of the translation project to get your translated documentation published.
+
+## Tips
+
+* Make use of the translation memory and the glossary on the translation platform. **Consistency is the key!**
+  * As you translate the documentation to your language, a translation memory is automatically built based on your translations. When you select a string to translate on the platform, it brings up a list of existing translations which have a similar source string. If it's 100% match, and the context/meaning is right (it's your responsibility to judge as the translator), then you can just copy & paste the existing translation. If the match rate is lower, you can still copy & paste the old translation to use it as a starting point for your translation.
+* Never ever directly use machine-translated content. Though, it may help at certain cases to have a better understanding.
+* Be careful about the special characters. `, ', and " are different characters. Respect the original string in their uses.
