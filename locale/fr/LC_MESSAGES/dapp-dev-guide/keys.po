@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/keys.rst:2
+msgid "Working with Cryptographic Keys"
+msgstr "Travailler avec des clés cryptographiques"
+
+#: ../../dapp-dev-guide/keys.rst:4
+msgid ""
+"The Casper platform supports two types of signatures for creating accounts "
+"and signing transactions: ``secp256k1`` and ``ed25519``. You can generate "
+"keys using the Casper client in both formats. It is also possible to work "
+"with existing Ethereum keys."
+msgstr ""
+"La plateforme Casper prend en charge deux types de signatures pour la "
+"création de comptes et la signature de transactions : ``secp256k1`` et "
+"``ed25519``. on peut générer des clés à l'aide du client Casper dans les "
+"deux formats. Il est également possible de travailler avec des clés "
+"Ethereum."
+
+#: ../../dapp-dev-guide/keys.rst:7
+msgid "Key Generation"
+msgstr "Generation des clés"
+
+#: ../../dapp-dev-guide/keys.rst:10
+msgid "Ethereum Keys"
+msgstr "Clés Ethereum"
+
+#: ../../dapp-dev-guide/keys.rst:11
+msgid ""
+"To create ``secp256k1`` keys, commonly known as Ethereum keys, follow these "
+"steps:"
+msgstr ""
+"Pour créer des clés ``secp256k1``, communément appelées clés Ethereum, "
+"suivre ces étapes :"
+
+#: ../../dapp-dev-guide/keys.rst:26
+msgid ""
+"Looking at the public-key-hex file, we see that ``secp256k1`` public hex "
+"keys start with `02` in Casper:"
+msgstr ""
+"En examinant le fichier 'public-key-hex', on voit que les clés publiques "
+"hexadecimales ``secp256k1`` commencent par `02` dans Casper :"
+
+#: ../../dapp-dev-guide/keys.rst:35
+msgid "EdDSA Keys"
+msgstr "Clés EdDSA"
+
+#: ../../dapp-dev-guide/keys.rst:36
+msgid ""
+"It is also possible to create ``ed25519`` keys, which use the Edwards-curve "
+"Digital Signature Algorithm (EdDSA). To generate EdDSA keys, follow these "
+"steps:"
+msgstr ""
+"Il est également possible de créer des clés ``ed25519``, qui utilisent "
+"l'algorithme de signature numérique Edwards-curve (EdDSA). Pour générer des "
+"clés EdDSA, suivre ces étapes :"
+
+#: ../../dapp-dev-guide/keys.rst:51
+msgid ""
+"Looking at the public-key-hex file, we see that keys of this type are pre-"
+"pended with `01`:"
+msgstr ""
+"En examinant le fichier 'public-key-hex', nous voyons que les clés de ce "
+"type sont précédées de `01` :"
+
+#: ../../dapp-dev-guide/keys.rst:60
+msgid "Working with Existing Ethereum Keys"
+msgstr "Travailler avec des clés Ethereum existantes"
+
+#: ../../dapp-dev-guide/keys.rst:62
+msgid ""
+"It is also possible to use existing Ethereum keys in Casper. Here is an "
+"example set of Ethereum keys and their corresponding address:"
+msgstr ""
+"Il est également possible d'utiliser des clés Ethereum existantes dans "
+"Casper. Voici un exemple d'ensemble de clés Ethereum et de leur adresse "
+"correspondante :"
+
+#: ../../dapp-dev-guide/keys.rst:70
+msgid ""
+"To use existing Ethereum keys, the Casper VM  needs to know that the key is "
+"a ``secp256k1`` type."
+msgstr ""
+"Pour utiliser des clés Ethereum existantes, la machine virtuelle (VM) Casper"
+" doit savoir que la clé est de type \"secp256k1\"."
+
+#: ../../dapp-dev-guide/keys.rst:72
+msgid ""
+"The Rust `casper-client` provides an example of how this works. Pre-pending "
+"the public key with a `02` indicates the key is a ``secp256k1`` key."
+msgstr ""
+"Le client Rust `casper-client` fournit un exemple montrant comment cela "
+"fonctionne. La clé publique précédée d'un `02` indique que la clé est une "
+"clé ``secp256k1``."
+
+#: ../../dapp-dev-guide/keys.rst:74
+msgid "**Example**:"
+msgstr "**Exemple**:"
+
+#: ../../dapp-dev-guide/keys.rst:76
+msgid "The following transaction sends 100 CSPR."
+msgstr "La transaction suivante envoie 100 CSPR."
+
+#: ../../dapp-dev-guide/keys.rst:82
+msgid ""
+"The Rust `casper-client` requires the secret key to be in `PEM` format to "
+"send a transaction from this account. If you want to use existing Ethereum "
+"keys with the Rust client, a conversion to `PEM` format is needed."
+msgstr ""
+"Le `casper-client` de Rust requiert que la clé secrète soit au format `PEM` "
+"pour envoyer une transaction depuis ce compte. Pour utiliser des clés "
+"Ethereum existantes avec le client Rust, une conversion au format `PEM` est "
+"nécessaire."
+
+#: ../../dapp-dev-guide/keys.rst:84
+msgid ""
+"The following example is a JS script that generates a `PEM` file, using `key"
+" encoder <https://github.com/blockstack/key-encoder-js>`_ and node.js. To "
+"install these components, do the following:"
+msgstr ""
+"L'exemple suivant est un script JS qui génère un fichier `PEM`, en utilisant"
+" `key encoder <https://github.com/blockstack/key-encoder-js>`_ et node.js. "
+"Pour installer ces composants, procéder comme suit :"
+
+#: ../../dapp-dev-guide/keys.rst:92
+msgid ""
+"Then create the JS script ``convert-to-pem.js`` using `vi` or `nano` and "
+"include this content:"
+msgstr ""
+"Créer ensuite le script JS ``convert-to-pem.js`` en utilisant `vi` ou `nano`"
+" et inclure ce contenu :"
+
+#: ../../dapp-dev-guide/keys.rst:102
+msgid ""
+"Then run the script using node.js. Name the secret key something different."
+msgstr ""
+"Ensuite, exécuter le script en utilisant node.js. Donner un nom différent à "
+"la clé secrète."
+
+#: ../../dapp-dev-guide/keys.rst:108
+msgid "To view the secret key, use `cat`:"
+msgstr "Pour voir la clé secrète, utiliser `cat` :"
