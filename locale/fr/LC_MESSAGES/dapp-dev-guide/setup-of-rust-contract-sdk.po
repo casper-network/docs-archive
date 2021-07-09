@@ -1,0 +1,426 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:2
+msgid "Getting Started"
+msgstr "Démarrage"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:4
+msgid ""
+"This guide covers the basic tools you will need to set up your first Casper "
+"smart contract. You will also be able to build a sample smart contract and "
+"run a few basic tests on it on your local machine."
+msgstr ""
+"Ce guide couvre les outils de base dont vous aurez besoin pour configurer "
+"votre premier contrat intelligent Casper. Vous serez également en mesure de "
+"créer un exemple de contrat intelligent et d'effectuer quelques tests de "
+"base sur votre machine locale."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:6
+msgid ""
+"Casper’s blockchain is built upon the Rust programming language and compiles"
+" down to WebAssembly. The Rust contract SDK is the easiest way to get "
+"started with smart contract development. This guide will walk you through "
+"the steps to set up your development environment and build your first "
+"contract."
+msgstr ""
+"La blockchain de Casper est construite autour du langage de programmation "
+"Rust et se compile avec WebAssembly. Le kit de développement de contrat Rust"
+" est le moyen le plus simple de se lancer dans le développement de contrats "
+"intelligents. Ce guide vous accompagnera à travers les étapes pour "
+"configurer votre environnement de développement et construire votre premier "
+"contrat."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:9
+msgid "Video Tutorial"
+msgstr "Tutoriel vidéo"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:11
+msgid ""
+"For a video walkthrough of this guide, feel free to check out this quick-"
+"start video."
+msgstr ""
+"Pour une présentation vidéo de ce guide, n'hésitez pas à consulter cette "
+"vidéo de prise en main rapide."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:19
+msgid "Prerequisites"
+msgstr "Prérequis"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:22
+msgid "Installing Rust"
+msgstr "Installation de Rust"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:23
+msgid ""
+"Install the `Rust programming language <https://www.rust-lang.org>`_ if you "
+"don’t already have it on your computer."
+msgstr ""
+"Installer le langage de programmation `Rust <https://www.rust-lang.org>`_ si"
+" on l'a pas déjà sur votre machine."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:25
+msgid ""
+"The `official Rust guide <https://www.rust-lang.org/tools/install>`_ "
+"recommends installing Rust by using ``curl``:"
+msgstr ""
+"Le `guide officiel de Rust <https://www.rust-lang.org/tools/install>`_ "
+"recommande d'installer Rust en utilisant ``curl`` :"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:31
+msgid ""
+"You can also use ``brew`` on MacOS or ``apt`` on Linux to install Rust."
+msgstr ""
+"On peut également utiliser ``brew`` sur MacOS ou ``apt`` sur Linux pour "
+"installer Rust."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:33
+msgid ""
+"You will need to customize the build so that you are installing the nightly "
+"build as your default toolchain. Once you finish installing Rust, check your"
+" version:"
+msgstr ""
+"On doit personnaliser la construction (build) pour mettre en place la "
+"construction nocturne automatisée (nightly build) comme chaîne d'outils ( "
+"toolchain) par défaut. Une fois l'installation de Rust terminée, vérifier la"
+" version :"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:39
+msgid ""
+"Your terminal output should resemble something like the following (note: at "
+"the time of the writing of this tutorial, the latest version of Rust was "
+"1.23.1 and may differ for you):"
+msgstr ""
+"La sortie du terminal devrait ressembler à quelque chose comme ce qui suit "
+"(note : au moment de l'écriture de ce tutoriel, la dernière version de Rust "
+"était 1.23.1 et peut différer pour vous) :"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:48
+msgid "**Casper Rust Packages**"
+msgstr "**Casper Rust Packages**"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:50
+msgid ""
+"We publish three crates on `crates.io <https://crates.io/>`_ to support "
+"smart contract development with Rust:"
+msgstr ""
+"Nous publions trois 'crates' sur `crates.io <https://crates.io/>`_ pour "
+"supporter le développement de contrats intelligents avec Rust :"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:52
+msgid ""
+"`Casper Contract <https://crates.io/crates/casper-contract>`_ - a library "
+"supporting communication with the blockchain. This is the main library you "
+"will need to write smart contracts."
+msgstr ""
+"`Casper Contract <https://crates.io/crates/casper-contract>`_ - une "
+"librairie supportant la communication avec la blockchain. C'est la "
+"principale librairie dont vous aurez besoin pour écrire des contrats "
+"intelligents."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:53
+msgid ""
+"`Casper Test Support <https://crates.io/crates/casper-engine-test-support>`_"
+" - an in-memory virtual machine against which you can test your smart "
+"contracts."
+msgstr ""
+"`Casper Test Support <https://crates.io/crates/casper-engine-test-support>`_"
+" - une machine virtuelle en mémoire sur laquelle on peut tester des contrats"
+" intelligents."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:54
+msgid ""
+"`Casper Types <https://crates.io/crates/casper-types>`_ - a library with "
+"types we use across the Rust ecosystem."
+msgstr ""
+"`Casper Types <https://crates.io/crates/casper-types>`_ - une librairie avec"
+" des 'types' que nous utilisons à travers l'écosystème Rust."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:56
+msgid ""
+"A crate is a compilation unit, which can be compiled into a binary or a "
+"library."
+msgstr ""
+"Un 'crate' est une unité de compilation, qui peut être compilée en un "
+"binaire ou une librairie."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:58
+msgid "**API Documentation for Smart Contracts**"
+msgstr "**Documentation API pour les contrats intelligents**"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:60
+msgid ""
+"Each of the Casper crates comes with API documentation and examples for each"
+" function, located at `https://docs.rs "
+"<https://docs.rs/releases/search?query=casper>`_. The contract API "
+"documentation is specific for a given version. For example, you can find "
+"documentation for version **0.7.6** at `<https://docs.rs/casper-"
+"contract/0.7.6>`_."
+msgstr ""
+"Chacune des 'crate' Casper est fournie avec une documentation API et des "
+"exemples pour chaque fonction, disponibles sur `https://docs.rs "
+"<https://docs.rs/releases/search?query=casper>`_. La documentation de l'API "
+"du contrat est spécifique à une version donnée. Par exemple, on peut trouver"
+" la documentation pour la version **0.7.6** à `<https://docs.rs/casper-"
+"contract/0.7.6>`_."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:64
+msgid "Installing Dependencies"
+msgstr "Installation des dépendances"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:66
+msgid "**1. CMake**"
+msgstr "**1. CMake**"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:68
+msgid ""
+"CMake is a popular build tool that we will utilize, and you may very well "
+"have it already installed. If you do, make sure that you have the latest "
+"version (currently 3.19.4). If you need to install or upgrade it, follow the"
+" steps located here: https://cmake.org/install/. Once installed, check your "
+"version as shown below. It should resemble this output:"
+msgstr ""
+"CMake est un outil de construction (build tool) courant que nous "
+"utiliserons, et il est fort possible que vous l'ayez déjà installé. Si c'est"
+" le cas, assurez-vous que vous avez la dernière version (actuellement "
+"3.19.4). Si vous devez l'installer ou le mettre à jour, suivez les étapes "
+"indiquées ici : https://cmake.org/install/. Une fois installé, vérifiez la "
+"version comme indiqué ci-dessous. Elle devrait ressembler à cette sortie :"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:79
+msgid "Development Environment Setup"
+msgstr "Configuration de l'environnement de développement"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:82
+msgid "Installing the Casper Crates"
+msgstr "Installation des 'Crates' Casper"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:83
+msgid ""
+"The best and fastest way to set up a Casper Rust Smart Contract project is "
+"to use :code:`cargo-casper`.  When you use this, it will set the project up "
+"with a simple contract, a runtime environment and a testing framework with a"
+" simple test. *Cargo* is a build system and package manager for Rust (much "
+"like *pip* if you are familiar with Python). It is possible to use this "
+"configuration in your CI/CD pipeline as well."
+msgstr ""
+"Le meilleur moyen et le plus rapide de mettre en place un projet de contrat "
+"intelligent Casper Rust est d'utiliser :code:`cargo-casper`. Lorsque vous "
+"l'utilisez, le projet sera configuré avec un contrat simple, un "
+"environnement d'exécution et un environnement de test avec un test simple. "
+"*Cargo* est un système de construction et un gestionnaire de paquets pour "
+"Rust (un peu comme *pip* si vous êtes familier avec Python). Il est possible"
+" d'utiliser cette configuration dans votre pipeline CI/CD également."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:91
+msgid "Creating a Project"
+msgstr "Créer un projet"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:92
+msgid ""
+"You can create a new sample project very easily with the Casper crate. For "
+"example, let’s say that I want to create a project named **my-project** for "
+"this tutorial (you can choose a different name if you wish), then I can "
+"simply run the command:"
+msgstr ""
+"Vous pouvez créer un nouveau projet type très facilement avec la 'crate' "
+"Casper. Par exemple, disons que l'on veut créer un projet nommé **my-"
+"project** pour ce tutoriel (vous pouvez choisir un nom différent si vous le "
+"souhaitez), alors on peut simplement exécuter la commande"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:98
+msgid ""
+"If you look inside the newly-created *my-project* folder, you will find two "
+"crates: ``contract`` and ``tests``. This is a complete basic smart contract "
+"that saves a value, passed as an argument, on the blockchain. The ``tests`` "
+"crate provides a runtime environment of the Casper virtual machine, and a "
+"basic smart contract test."
+msgstr ""
+"Si vous examinez le dossier *my-project* nouvellement créé, vous trouverez "
+"deux 'crates' : ``contract'' et ``tests''. Il s'agit d'un contrat "
+"intelligent de base complet qui enregistre une valeur, passée en argument, "
+"sur la blockchain. Le crate ``tests`` fournit un environnement d'exécution "
+"de la machine virtuelle Casper, et un test du contrat intelligent de base."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:101
+msgid "Compiling to WASM"
+msgstr "Compilation en WASM (WebAssembly)"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:103
+msgid ""
+"The Casper blockchain uses WebAssembly (WASM) in its runtime environment. "
+"Compilation targets for WASM are available for Rust, giving developers "
+"access to all the Rust ecosystem tools when developing smart contracts."
+msgstr ""
+"La blockchain Casper utilise WebAssembly (WASM) dans son environnement "
+"d'exécution. Des cibles (targets) de compilation pour WASM sont disponibles "
+"pour Rust et permettent aux développeurs d'accéder à tous les outils de "
+"l'écosystème Rust lors du développement de contrats intelligents."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:105
+msgid ""
+"Casper contracts support Rust tooling such as :code:`clippy` for linting "
+"contracts. Feel free to use them!"
+msgstr ""
+"Les contrats Casper supportent des outils Rust tels que :code:`clippy` pour "
+"la vérification des contrats. N'hésitez pas à les utiliser !"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:107
+msgid ""
+"The project requires a specific nightly version of Rust and requires a WASM "
+"target to be added to that Rust version. You can see more information by "
+"running:"
+msgstr ""
+"Le projet nécessite une version nocturne spécifique de Rust et exige qu'une "
+"cible (target) WASM soit ajoutée à cette version de Rust. Vous pouvez avoir "
+"plus d'informations en exécutant :"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:113
+msgid ""
+"To build the project, go into the ``contract`` folder, install the Rust "
+"toolchain and specify the target build as WebAssembly (wasm32):"
+msgstr ""
+"Pour construire le projet, aller dans le dossier ``contract``, installer la "
+"chaîne d'outils Rust (toolchain) et spécifier la cible de construction comme"
+" WebAssembly (wasm32) :"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:123
+msgid "Build the Contract"
+msgstr "Construire le contrat"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:125
+msgid ""
+"The next step is to compile the smart contract into WASM. Inside the "
+"contract folder, run the following command:"
+msgstr ""
+"L'étape suivante consiste à compiler le contrat intelligent dans WASM. Dans "
+"le dossier du contrat, exécuter la commande suivante :"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:131
+msgid ""
+"**NOTE: It's important to build the contract using ``--release`` as a debug "
+"build will produce a contract which is much larger and more expensive to "
+"execute.**"
+msgstr ""
+"**NOTE : Il est important de construire le contrat en utilisant "
+"``--release`` car une construction de type 'debug' produira un contrat "
+"beaucoup plus gros et plus coûteux à exécuter**."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:133
+msgid ""
+"Inside of the folder, you will now see a *target* folder that will contain "
+"the compiled smart contract named *contract.wasm* at :code:`my-"
+"project/contract/target/wasm32-unknown-unknown/release/contract.wasm`."
+msgstr ""
+"À l'intérieur du dossier, on verra maintenant un dossier *target* qui "
+"contient le contrat intelligent compilé et nommé *contract.wasm* à :code"
+":`my-project/contract/target/wasm32-unknown-unknown/release/contract.wasm`."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:137
+msgid "Test the Contract"
+msgstr "Testez le contrat"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:139
+msgid ""
+"In addition to creating the contract, the Casper crate also automatically "
+"created sample tests in the *my-project/tests* folder."
+msgstr ""
+"En plus de créer le contrat, la 'crate' Casper a automatiquement créé des "
+"exemples de tests dans le dossier *my-project/tests*."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:141
+msgid ""
+"The Casper local environment provides an in-memory virtual machine against "
+"which you can run your contract for testing. When you run the test crate, it"
+" will automatically build the smart contract in release mode and then run a "
+"series of tests against it in the Casper runtime environment. The custom "
+"build script is named ``build.rs`` if you are interested in looking more "
+"into it."
+msgstr ""
+"L'environnement local Casper propose une machine virtuelle embarquée (en "
+"mémoire) sur laquelle on peut exécuter le contrat pour le tester. Lorsque on"
+" exécute la 'crate' test, il construit automatiquement le contrat "
+"intelligent en mode release, puis exécute une série de tests dans "
+"l'environnement d'exécution Casper. Le script de construction personnalisé "
+"est nommé ``build.rs`` si on souhaite en savoir plus."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:143
+msgid ""
+"**Note**: Since the test script automatically builds the contract, during "
+"development you only need to run the command ``cargo test`` without the need"
+" for ``cargo build``."
+msgstr ""
+"**Note** : Comme le script de test construit automatiquement le contrat, "
+"pendant le développement, il suffit d'exécuter la commande ``cargo test`` "
+"sans avoir besoin de ``cargo build``."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:145
+msgid ""
+"A successful test run indicates that your smart contract environment is set "
+"up correctly."
+msgstr ""
+"Un test réussi indique que votre environnement de contrat intelligent est "
+"correctement configuré."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:152
+msgid ""
+"After the compilation finishes, the test should run and you should see "
+"output similar to this message in your terminal:"
+msgstr ""
+"Une fois la compilation terminée, le test devrait s'exécuter et on devrait "
+"voir une sortie similaire à ce message dans le terminal :"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:161
+msgid ""
+"As a brief example, open up *my-project/contract/src/main.rs* in your "
+"editor, modify the *KEY* value in the contract, and then rerun the ``cargo "
+"test`` command. You should observe that the smart contract recompiles and "
+"the test fails now."
+msgstr ""
+"À titre d'exemple, ouvrir *my-project/contract/src/main.rs* dans un éditeur,"
+" modifier la valeur *KEY* dans le contrat, puis ré-exécuter la commande "
+"``cargo test``. On devrait observer que le contrat intelligent se recompile "
+"et que le test échoue maintenant."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:164
+msgid "Rust Resources"
+msgstr "Resources Rust"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:166
+msgid "These Rust resources are excellent and we highly recommend them:"
+msgstr ""
+"Ces ressources Rust sont excellentes et nous les recommandons vivement :"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:168
+msgid "https://doc.rust-lang.org/book/foreword.html"
+msgstr "https://doc.rust-lang.org/book/foreword.html"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:169
+msgid "https://rustwasm.github.io/docs/book/"
+msgstr "https://rustwasm.github.io/docs/book/"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:170
+msgid "https://doc.rust-lang.org/stable/rust-by-example"
+msgstr "https://doc.rust-lang.org/stable/rust-by-example"
