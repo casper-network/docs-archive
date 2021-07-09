@@ -70,8 +70,7 @@ msgstr ""
 "kurtarılmasına izin veren bir hesap izinleri modeli ve hesaplar ve "
 "kontratlar arasında (masraflı şifreleme denetimleri olmadan) durumu güvenli "
 "bir şekilde paylaşmak için bir izin modeli bulunur. Ayrıca, hisse kanıtı "
-"uygulamamızın ve token politikalarımızın ekonomisinin tartışılmasını "
-"sağlıyoruz."
+"uygulamamızın ekonomik yönü ve token politikalarımızdan da bahsedilmektedir."
 
 #: ../../index.rst:15
 msgid "`How To's <workflow/index.html>`_"
@@ -90,16 +89,16 @@ msgid ""
 "Get started with smart contract development on the Casper blockchain in "
 "AssemblyScript or Rust"
 msgstr ""
-"AssemblyScript veya Rust'taki Casper blokzincirinde akıllı kontrat "
+"Casper blokzinciri üzerinde, AssemblyScript ya da Rust ile akıllı kontrat "
 "geliştirmeye başlayın"
 
 #: ../../index.rst:17
 msgid "`Node Operators <node-operator/index.html>`_"
-msgstr "`Düğüm İşleçleri <node-operator/index.html>`_"
+msgstr "`Düğüm Operatörleri <node-operator/index.html>`_"
 
 #: ../../index.rst:17
 msgid "Run node infrastructure on the Casper Network"
-msgstr "Casper Network'te düğüm altyapısını çalıştırın"
+msgstr "Casper Network'te düğüm (node) altyapısını çalıştırın"
 
 #: ../../index.rst:18
 msgid "`Design <implementation/index.html>`_"
@@ -136,8 +135,8 @@ msgid ""
 "Participate in the protocol by staking CSPR tokens with a validator in the "
 "Casper Network"
 msgstr ""
-"Casper Network'te bir doğrulayıcı ile CSPR token'lerini stake ederek "
-"protokole katılın"
+"Casper Network'te bir doğrulayıcı (validatör) ile CSPR token'lerini stake "
+"ederek protokole katılın"
 
 #: ../../index.rst:21
 msgid "`Glossary <glossary/index.html>`_"
