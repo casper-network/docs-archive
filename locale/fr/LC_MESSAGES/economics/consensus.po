@@ -1,0 +1,442 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../economics/consensus.rst:2
+msgid "Consensus Economics"
+msgstr "Économie du Consensus"
+
+#: ../../economics/consensus.rst:4
+msgid ""
+"Highway consensus is a continuous, trust-less process where a fixed set of "
+"validators engage in scheduled communication to advance the linear chain of "
+"finalized blocks, representing the history of changes to the global state of"
+" the blockchain. The fixed set of validators may change at each era "
+"boundary. The economics of this layer revolve around validator selection and"
+" incentivization of participation according to the schedule."
+msgstr ""
+"Le consensus Highway est un processus continu et sans confiance dans lequel "
+"un ensemble fixe de validateurs s'engage dans une communication programmée "
+"pour faire avancer la chaîne linéaire de blocs finalisés, représentant "
+"l'historique des changements de l'état global de la blockchain. L'ensemble "
+"fixe de validateurs peut changer à chaque limite d'ère. L'économie de cette "
+"couche tourne autour de la sélection des validateurs et de l'incitation à la"
+" participation selon le calendrier."
+
+#: ../../economics/consensus.rst:7
+msgid "Entry"
+msgstr "Entrée"
+
+#: ../../economics/consensus.rst:8
+msgid ""
+"After genesis, the system selects a set of validators using a stake auction "
+"process. The auction takes place in the last block of an era, also called a "
+"switch block. An auction contract governs the validator selection process, "
+"and a *chainspec* configuration file specifies a few key parameters:"
+msgstr ""
+"Après la genèse (Genesis), le système sélectionne un ensemble de validateurs"
+" à l'aide d'un processus d'enchères de mise (stake). L'enchère a lieu dans "
+"le dernier bloc d'une ère, également appelé bloc de commutation (switch "
+"block). Un contrat d'enchères régit le processus de sélection des "
+"validateurs, et un fichier de configuration *chainspec* spécifie quelques "
+"paramètres clés :"
+
+#: ../../economics/consensus.rst:10
+msgid ""
+"The ``auction_delay`` specifies the amount of time that needs to pass before"
+" the system enables a new set of validators. For example, the "
+"`auction_delay` is 1 for Mainnet. Therefore, after a delay of 1 era, the "
+"winning validators become the validating set for the new era."
+msgstr ""
+"Le ``auction_delay`` indique le temps qui doit s'écouler avant que le "
+"système n'active un nouvel ensemble de validateurs. Par exemple, le "
+"``auction_delay`` est de 1 pour Mainnet. Par conséquent, après un délai de 1"
+" ère, les validateurs gagnants deviennent le jeu de validateurs pour la "
+"nouvelle ère."
+
+#: ../../economics/consensus.rst:11
+msgid ""
+"The ``validator_slots`` parameter specifies how many validators can win an "
+"auction. The auction selects a fixed number of validators based on their "
+"highest bids."
+msgstr ""
+"Le paramètre ``validator_slots`` indique le nombre de validateurs pouvant "
+"remporter une enchère. L'enchère sélectionne un nombre fixe de validateurs "
+"en fonction des mises (bids) les plus élevées."
+
+#: ../../economics/consensus.rst:15
+msgid "Bids"
+msgstr "Offres (Bids)"
+
+#: ../../economics/consensus.rst:17
+msgid ""
+"Each bid is a collection of tokens from a prospective or current validator "
+"and its delegators, considered in the auction as a single total. Bids and "
+"delegations can increase freely, but withdrawals are subject to an unbonding"
+" period governed by the ``unbonding_delay`` chainspec parameter. Tokens that"
+" are in the unbonding period are not part of the sum total considered in the"
+" auction. Consequently, the exact amount of the bid, which translates into "
+"protocol weight for winning validators, can vary within an era. The bids are"
+" visible in the switch block that determines the winners."
+msgstr ""
+"Chaque offre est un ensemble de jetons provenant d'un validateur potentiel "
+"ou actuel et de ses délégués, considérés dans l'enchère comme un seul total."
+" Les offres et les délégations peuvent augmenter librement, mais les "
+"retraits sont soumis à une période de désolidarisation régie par le "
+"paramètre chainspec ``unbonding_delay``. Les jetons qui se trouvent dans la "
+"période de désolidarisation ne font pas partie de la somme totale prise en "
+"compte dans l'enchère. Par conséquent, le montant exact de l'enchère, qui se"
+" traduit par un poids protocolaire pour les validateurs gagnants, peut "
+"varier au cours d'une ère. Les enchères sont visibles dans le bloc de "
+"commutation qui détermine les gagnants."
+
+#: ../../economics/consensus.rst:19
+msgid ""
+"Each bid contains a delegation rate and activity status. The delegation rate"
+" can change at any time. Both of these properties are described further in "
+"this document."
+msgstr ""
+"Chaque offre contient un taux de délégation et un statut d'activité. Le taux"
+" de délégation peut changer à tout moment. Ces deux propriétés sont décrites"
+" plus loin dans ce document."
+
+#: ../../economics/consensus.rst:22
+msgid "Delegation"
+msgstr "Délégation"
+
+#: ../../economics/consensus.rst:24
+msgid ""
+"Delegation allows third parties to participate in consensus by adding weight"
+" to their preferred validators. Rewards received by validators are "
+"distributed in proportion to tokens bid and delegated. The current or "
+"prospective validator responsible for the bid receives a portion of the "
+"delegator rewards set by the delegation rate."
+msgstr ""
+"La délégation permet à des tiers de participer au consensus en ajoutant du "
+"poids à leurs validateurs préférés. Les récompenses reçues par les "
+"validateurs sont distribuées en proportion des jetons offerts et délégués. "
+"Le validateur actuel ou futur responsable de l'offre reçoit une partie des "
+"récompenses du délégataire fixées par le taux de délégation."
+
+#: ../../economics/consensus.rst:26
+msgid ""
+"Currently, delegation is unrestricted. Interested readers should review `CEP"
+" #29 <https://github.com/CasperLabs/ceps/pull/29>`_, which proposes "
+"delegation caps."
+msgstr ""
+"Actuellement, la délégation est sans restriction. Les lecteurs intéressés "
+"peuvent consulter `CEP #29 <https://github.com/CasperLabs/ceps/pull/29>`_, "
+"qui propose des plafonds de délégation."
+
+#: ../../economics/consensus.rst:29
+msgid "Incentives"
+msgstr "Incitations"
+
+#: ../../economics/consensus.rst:31
+msgid ""
+"Correct operation of the Highway protocol requires the economics of the "
+"platform to incentivize non-equivocation for safety and participation for "
+"liveness. Participation consists of on-time block proposals and timely "
+"responses to block proposals."
+msgstr ""
+"Le bon fonctionnement du protocole Highway exige que l'économie de la "
+"plateforme récompense la ''non-equivocation'' pour la sécurité et la "
+"participation pour la vivacité du réseau. La participation consiste à "
+"proposer des blocs à temps et à répondre à temps aux propositions de blocs."
+
+#: ../../economics/consensus.rst:33
+msgid ""
+"Safety may be incentivized through slashing for equivocation. This feature "
+"is currently disabled but may be reactivated in the future."
+msgstr ""
+"La sécurité peut être encouragée par le biais du 'slashing for "
+"equivocation'. Cette fonctionnalité est actuellement désactivée mais "
+"pourrait être réactivée à l'avenir."
+
+#: ../../economics/consensus.rst:35
+msgid ""
+"The network incentivizes participation by scaling rewards for on-time "
+"proposals and responses, taking into account the speed of finalizing blocks."
+" All rewards are added directly to the corresponding bids and delegations."
+msgstr ""
+"Le réseau incite à la participation en échelonnant les récompenses pour le "
+"respect des délais des propositions et des réponses, en tenant compte de la "
+"vitesse de finalisation des blocs. Toutes les récompenses sont ajoutées "
+"directement aux offres et délégations correspondantes."
+
+#: ../../economics/consensus.rst:38
+msgid "Participation"
+msgstr ""
+"Le réseau incite à la participation en échelonnant les récompenses pour le "
+"respect des délais des propositions et des réponses, en tenant compte de la "
+"vitesse de finalisation des blocs. Toutes les récompenses sont ajoutées "
+"directement aux offres et délégations correspondantes."
+
+#: ../../economics/consensus.rst:40
+msgid ""
+"Issuance of new tokens and their distribution to validators incentivizes "
+"work even under low transaction load."
+msgstr ""
+"L'émission de nouveaux jetons et leur distribution aux validateurs incitent "
+"à travailler même en cas de faible charge de transaction."
+
+#: ../../economics/consensus.rst:42
+msgid ""
+"CSPR is issued at a fixed rate and distributed to validators (and, "
+"indirectly, delegators) in proportion to their stake. This is analogous to "
+"block rewards in Proof-of-Work blockchains, outlining the following:"
+msgstr ""
+"Les CSPR sont émis à un taux fixe et distribués aux validateurs (et, "
+"indirectement, aux délégués) en proportion de leur mise. Ceci est analogue "
+"aux récompenses de bloc dans les blockchains Proof-of-Work, en décrivant ce "
+"qui suit :"
+
+#: ../../economics/consensus.rst:44
+msgid "The growth of CSPR supply is exponential"
+msgstr "La croissance de l'offre de CSPR est exponentielle."
+
+#: ../../economics/consensus.rst:45
+msgid "Issuance takes into account slashed CSPR"
+msgstr "L'émission tient compte de la réduction du CSPR due au slashing"
+
+#: ../../economics/consensus.rst:47
+msgid ""
+"With slashing disabled, we can compute block rewards starting with the "
+"formula below, where we have these parameters:"
+msgstr ""
+"Avec le 'slashing' désactivé, nous pouvons calculer les récompenses par "
+"blocs à l'aide de la formule ci-dessous, avec ces paramètres :"
+
+#: ../../economics/consensus.rst:49
+msgid "``i`` - the era's index as a positive integer [0, 1, 2, ..., n]"
+msgstr "``i`` - l'indice de l'ère , nombre entier positif  [0, 1, 2, ..., n]"
+
+#: ../../economics/consensus.rst:50
+msgid "``initial_supply`` - the number of CSPR at genesis"
+msgstr "``initial_supply`` - le nombre de CSPR à la genèse (Genesis)."
+
+#: ../../economics/consensus.rst:51
+msgid ""
+"``issuance_rate`` - the annual rate at which new CSPR tokens are minted"
+msgstr ""
+"``issuance_rate`` - le taux annuel auquel les nouveaux jetons CSPR sont émis"
+" (minted)."
+
+#: ../../economics/consensus.rst:52
+msgid ""
+"``ticks_per_year`` - a number equal to 31,536,000,000 calculated as "
+"365*24*60*60*1000 = 31,536,000,000"
+msgstr ""
+"``ticks_per_year`` - un nombre égal à 31 536 000 000 calculé comme suit : "
+"365*24*60*60*1000 = 31 536 000 000"
+
+#: ../../economics/consensus.rst:58
+msgid ""
+"We introduce the *round issuance rate* (corresponding to the chainspec "
+"parameter ``round_seigniorage_rate``) with this formula:"
+msgstr ""
+"Nous introduisons le *round issuance rate* (correspondant au paramètre "
+"chainspec ``round_seigniorage_rate``) avec cette formule :"
+
+#: ../../economics/consensus.rst:64
+msgid ""
+"The *round issuance rate* is the annual issuance rate adjusted to a single "
+"round of length determined by the chainspec parameter "
+"``minimum_round_exponent``. For illustration, an exponent of 14 corresponds "
+"to a round length of roughly 16 seconds."
+msgstr ""
+"Le *round issuance rate* est le taux d'émission annuel ajusté à un seul tour"
+" d'une longueur déterminée par le paramètre chainspec "
+"``minimum_round_exponent``. À titre d'exemple, un exposant de 14 correspond "
+"à une durée de tour d'environ 16 secondes."
+
+#: ../../economics/consensus.rst:66
+msgid "Finally, the base round reward is computed as:"
+msgstr "Enfin, la récompense du tour de base est calculée comme suit :"
+
+#: ../../economics/consensus.rst:72
+msgid ""
+"This value gives us the maximum amount of CSPR that the validators can "
+"collectively receive from a proposed block."
+msgstr ""
+"Cette valeur nous donne la quantité maximale de CSPR que les validateurs "
+"peuvent collectivement recevoir d'un bloc proposé."
+
+#: ../../economics/consensus.rst:75
+msgid "Distribution"
+msgstr "Distribution"
+
+#: ../../economics/consensus.rst:77
+msgid ""
+"Validators receive tokens for proposing and finalizing blocks according to "
+"their performance. The concept of weight is crucial for understanding this "
+"distribution scheme:"
+msgstr ""
+"Les validateurs reçoivent des jetons pour récompenser la proposition et "
+"finalisation des blocs en fonction de leurs performances. Le concept de "
+"poids est crucial pour comprendre ce schéma de distribution :"
+
+#: ../../economics/consensus.rst:79
+msgid "**Weight:** A validator's bonded stake, used in consensus"
+msgstr ""
+"**Poids:** Un enjeu (bonded stake) lié au validateur, utilisé dans le "
+"consensus."
+
+#: ../../economics/consensus.rst:80
+msgid ""
+"**Assigned weight of a block/round:** The total stake of validators "
+"scheduled to participate in a block"
+msgstr ""
+"**Poids assigné d'un bloc/tour:** La mise totale des validateurs prévus pour"
+" participer à un bloc."
+
+#: ../../economics/consensus.rst:81
+msgid ""
+"**Participated weight of a block/round:** The total stake of validators that"
+" end up participating or sending messages to finalize a block before the end"
+" of their respective round"
+msgstr ""
+"**Poids des participants d'un bloc/tour:** La participation totale des "
+"validateurs qui finissent par participer ou envoyer des messages pour "
+"finaliser un bloc avant la fin de leur tour (round) respectif."
+
+#: ../../economics/consensus.rst:83
+msgid ""
+"To determine eligibility, we look at **on-time finalization (OTF)**. "
+"Validators should finalize blocks on time by sending required messages "
+"before the end of their respective round."
+msgstr ""
+"Pour déterminer l'éligibilité, nous examinons la **finalisation à temps "
+"(OTF)** (on-time finalization ). Les validateurs doivent finaliser les blocs"
+" à temps en envoyant les messages requis avant la fin de leur tour "
+"respectif."
+
+#: ../../economics/consensus.rst:85
+msgid ""
+"Switch blocks are not visible to the issuance calculation (as this "
+"calculation is performed in the switch block itself for each era), and, "
+"consequently, no tokens are issued for switch blocks."
+msgstr ""
+"Les blocs de commutation ne sont pas visibles pour le calcul d'émission (car"
+" ce calcul est effectué dans le bloc de commutation lui-même pour chaque "
+"ère), et, par conséquent, aucun jeton n'est émis pour les blocs de "
+"commutation."
+
+#: ../../economics/consensus.rst:88
+msgid "Participation schedule"
+msgstr "Calendrier de participation"
+
+#: ../../economics/consensus.rst:90
+msgid ""
+"The participation schedule is segmented into rounds, which are allocated "
+"dynamically according to the validators' exponents and a deterministic "
+"(randomized at era start) assignment of validators to milliseconds of an "
+"era. Thus, a validator with the round exponent ``n`` must participate in "
+"rounds that repeat every ``2^n`` ticks."
+msgstr ""
+"Le calendrier de participation est segmenté en tours, qui sont alloués "
+"dynamiquement en fonction des exposants des validateurs et d'une affectation"
+" déterministe (randomisée au début de l'ère) des validateurs aux "
+"millisecondes d'une ère. Ainsi, un validateur avec l'exposant de tour ``n`` "
+"doit participer à des tours qui se répètent tous les ``2^n`` ticks."
+
+#: ../../economics/consensus.rst:92
+msgid ""
+"Each validator is assessed according to its round exponent. All assigned "
+"validators become eligible to receive tokens as long as the block gets "
+"finalized with messages sent within each validator's round."
+msgstr ""
+"Chaque validateur est évalué en fonction de son exposant de tour. Tous les "
+"validateurs assignés deviennent éligibles pour recevoir des jetons tant que "
+"le bloc est finalisé avec des messages envoyés pendant le tour de chaque "
+"validateur."
+
+#: ../../economics/consensus.rst:95
+msgid "Eligibility"
+msgstr "Eligibilité"
+
+#: ../../economics/consensus.rst:97
+msgid ""
+"Once a block has been proposed and enough time has passed, the history of "
+"protocol messages can be examined to detect whether the block was finalized "
+"on time, according to the conditions given above. If the block was *not* "
+"finalized on time, validators receive a fraction of the expected tokens, "
+"governed by the ``reduced_reward_multiplier`` chainspec parameter. If the "
+"block was finalized on time, assigned validators share the reward "
+"proportionally to their stake, regardless of whether they have sent messages"
+" or not."
+msgstr ""
+"Une fois qu'un bloc a été proposé et qu'un temps suffisant s'est écoulé, "
+"l'historique des messages du protocole peut être examiné pour détecter si le"
+" bloc a été finalisé à temps, selon les conditions données ci-dessus. Si le "
+"bloc n'a *pas* été finalisé à temps, les validateurs reçoivent une fraction "
+"des jetons attendus, régie par le paramètre de chainspec "
+"``reduced_reward_multiplier``. Si le bloc a été finalisé à temps, les "
+"validateurs assignés se partagent la récompense proportionnellement à leur "
+"mise, qu'ils aient envoyé des messages ou non."
+
+#: ../../economics/consensus.rst:101
+msgid "Inactivity"
+msgstr "Inactivité"
+
+#: ../../economics/consensus.rst:103
+msgid ""
+"Validators who send no messages during an entire era are marked as inactive "
+"and cease participating in the auction until they send a special deploy that"
+" reactivates their bid."
+msgstr ""
+"Les validateurs qui n'envoient aucun message pendant toute une ère sont "
+"marqués comme inactifs et cessent de participer à l'enchère jusqu'à ce "
+"qu'ils envoient un déploiement spécial qui réactive leur offre."
+
+#: ../../economics/consensus.rst:106
+msgid "Slashing"
+msgstr "Slashing"
+
+#: ../../economics/consensus.rst:108
+msgid ""
+"Please review our `Equivocator Policy "
+"<https://github.com/CasperLabs/ceps/blob/master/text/0038-equivocator-"
+"policy.md>`_. We are currently conducting research into the utility of "
+"slashing as an incentive mechanism."
+msgstr ""
+"Consulter notre `Equivocator "
+"Policy<https://github.com/CasperLabs/ceps/blob/master/text/0038-equivocator-"
+"policy.md>`_. Nous menons actuellement des recherches sur l'utilité du "
+"slashing comme mécanisme d'incitation."
+
+#: ../../economics/consensus.rst:111
+msgid "Founding validators"
+msgstr "Validateurs fondateurs"
+
+#: ../../economics/consensus.rst:113
+msgid ""
+"Founding validators are subject to token lock-up, which prevents them from "
+"withdrawing any tokens from their bids for 90 days, then releases their "
+"genesis bid tokens in weekly steps, linearly, over an additional 90 days."
+msgstr ""
+"Les validateurs fondateurs sont soumis à un verrouillage des jetons, qui les"
+" empêche de retirer des jetons de leurs offres pendant 90 jours, puis "
+"libèrent leurs jetons d'offre de genèse par étapes hebdomadaires, de manière"
+" linéaire, sur 90 jours supplémentaires."
