@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:2
+msgid "ERC-20 Tutorial"
+msgstr "Tutoriel ERC-20"
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:4
+msgid ""
+"This tutorial reviews an implementation of the ERC-20 standard for Casper."
+msgstr ""
+"Ce tutoriel passe en revue une implémentation de la norme ERC-20 pour "
+"Casper."
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:6
+msgid ""
+"Most smart-contract developers are familiar with ERC-20 standard, which "
+"comes from the Ethereum ecosystem. This standard is well established for "
+"building new tokens based on smart contracts. In this tutorial, we will "
+"implement the ERC-20 standard for the Casper blockchain."
+msgstr ""
+"La plupart des développeurs de contrats intelligents connaissent la norme "
+"ERC-20, qui provient de l'écosystème Ethereum. Cette norme est bien établie "
+"pour la construction de nouveaux tokens basés sur des smart contracts. Dans "
+"ce tutoriel, nous allons mettre en œuvre la norme ERC-20 pour la blockchain "
+"Casper."
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:8
+msgid ""
+"The code for this tutorial is available in `GitHub <https://github.com"
+"/casper-ecosystem/erc20>`_. If you haven't read `Writing Rust Contracts on "
+"Casper <https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-"
+"contracts/writing-rust-contracts.html>`_ , we recommend you start there."
+msgstr ""
+"Le code de ce tutoriel est disponible dans `GitHub <https://github.com"
+"/casper-ecosystem/erc20>`_. Si vous n'avez pas lu `Writing Rust Contracts on"
+" Casper <https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-"
+"contracts/writing-rust-contracts.html>`_ , nous vous recommandons de "
+"commencer par là."
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:10
+msgid "**Tutorial Content**"
+msgstr "**Contenu du tutoriel**"
