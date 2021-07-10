@@ -93,8 +93,9 @@ msgid ""
 "<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
 "sdk.html>`_ before setting up the DSL."
 msgstr ""
-"Veuillez utiliser le SDK Rust pour créer votre projet de contrat intelligent. \n"
-"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ avant de configurer le DSL."
+"Veuillez utiliser le SDK Rust pour créer votre projet de contrat "
+"intelligent. <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-"
+"rust-contract-sdk.html>`_ avant de configurer le DSL."
 
 #: ../../archived/contract-dsl-archived/getting-started.rst:25
 msgid "Getting the Macros"
