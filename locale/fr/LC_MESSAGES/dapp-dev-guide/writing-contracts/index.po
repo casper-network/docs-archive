@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:2
+msgid "Writing Smart Contracts"
+msgstr "Ecriture de contrats intelligents"
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:4
+msgid ""
+"This section shows you how to write smart contracts in Rust and WebAssembly "
+"(WASM)."
+msgstr ""
+"Cette section vous montre comment écrire des contrats intelligents en Rust "
+"et WebAssembly (WASM)."
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:15
+msgid "Title"
+msgstr "Titre"
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:15
+msgid "Description"
+msgstr "Description"
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:17
+msgid "`Rust contracts <writing-rust-contracts.html>`_"
+msgstr "`Contrats Rust <writing-rust-contracts.html>`_"
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:17
+msgid "Smart contract examples in Rust"
+msgstr "Exemples de contrats intelligents en Rust"
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:18
+msgid "`WebAssembly contracts <assemblyscript.html>`_"
+msgstr "`Contracts  WebAssembly<assemblyscript.html>`_"
+
+#: ../../dapp-dev-guide/writing-contracts/index.rst:18
+msgid "Smart contract examples in WASM"
+msgstr "Exemples de contrats intelligents en WASM"
