@@ -84,7 +84,7 @@ msgstr "Guides pour interagir avec le réseau Casper"
 
 #: ../../index.rst:16
 msgid "`Developers <dapp-dev-guide/index.html>`_"
-msgstr "'Développeurs <dapp-dev-guide/index.html>`_"
+msgstr "`Développeurs <dapp-dev-guide/index.html>`_"
 
 #: ../../index.rst:16
 msgid ""
@@ -96,7 +96,7 @@ msgstr ""
 
 #: ../../index.rst:17
 msgid "`Node Operators <node-operator/index.html>`_"
-msgstr "'Opérateurs de nœuds <node-operator/index.html>`_"
+msgstr "`Opérateurs de nœuds <node-operator/index.html>`_"
 
 #: ../../index.rst:17
 msgid "Run node infrastructure on the Casper Network"
@@ -104,7 +104,7 @@ msgstr "Mise en place d'une infrastructure de nœud sur le réseau Casper"
 
 #: ../../index.rst:18
 msgid "`Design <implementation/index.html>`_"
-msgstr "'Conception  <implementation/index.html>`_"
+msgstr "`Conception <implementation/index.html>`_"
 
 #: ../../index.rst:18
 msgid ""
@@ -119,7 +119,7 @@ msgstr ""
 
 #: ../../index.rst:19
 msgid "`Economics <economics/index.html>`_"
-msgstr "'Économie <economics/index.html>`_"
+msgstr "`Economie <economics/index.html>`_"
 
 #: ../../index.rst:19
 msgid ""
@@ -131,7 +131,7 @@ msgstr ""
 
 #: ../../index.rst:20
 msgid "`Staking Guide <staking/index.html>`_"
-msgstr "'Guide du Staking  <staking/index.html>`_"
+msgstr "`Guide du Staking  <staking/index.html>`_"
 
 #: ../../index.rst:20
 msgid ""
@@ -143,7 +143,7 @@ msgstr ""
 
 #: ../../index.rst:21
 msgid "`Glossary <glossary/index.html>`_"
-msgstr "'Glossaire <glossary/index.html>`_"
+msgstr "`Glossaire <glossary/index.html>`_"
 
 #: ../../index.rst:21
 msgid "Explore key definitions in the context of the Casper Network"
@@ -163,7 +163,7 @@ msgstr ""
 
 #: ../../index.rst:23
 msgid "`Changelog <changelog.html>`_"
-msgstr "'Historique des modifications   <changelog.html>`_"
+msgstr "`Historique des modifications   <changelog.html>`_"
 
 #: ../../index.rst:23
 msgid "Review past technical releases and changelogs for the Casper Network"
