@@ -45,7 +45,7 @@ msgstr "Description"
 
 #: ../../workflow/index.rst:9
 msgid "`Prerequisites <setup.html>`_"
-msgstr "'Prérequis <setup.html>`_"
+msgstr "`Prérequis  <setup.html>`_"
 
 #: ../../workflow/index.rst:9
 msgid "A guide to fulfilling prerequisites needed for various workflows"
@@ -53,7 +53,7 @@ msgstr "Un guide pour remplir les prérequis nécessaires à divers workflows"
 
 #: ../../workflow/index.rst:10
 msgid "`Querying the Casper Network <querying.html>`_"
-msgstr "'Interroger le réseau Casper  <querying.html>`_"
+msgstr "`Interroger le réseau Casper  <querying.html>`_"
 
 #: ../../workflow/index.rst:10
 msgid "A guide to querying for information on a Casper blockchain"
@@ -61,7 +61,7 @@ msgstr "Guide pour la recherche d'informations sur la blockchain Casper"
 
 #: ../../workflow/index.rst:11
 msgid "`Direct Native Token Transfer <transfer-workflow.html>`_"
-msgstr "'Transfert direct de jetons natifs <transfer-workflow.html>`_"
+msgstr "`Transfert direct de jetons natifs <transfer-workflow.html>`_"
 
 #: ../../workflow/index.rst:11
 msgid ""
@@ -75,7 +75,7 @@ msgstr ""
 msgid ""
 "`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_"
 msgstr ""
-"'Multi-signatures bi-parties pour le déploiement <two-party-multi-"
+"`Multi-signatures bi-parties pour le déploiement <two-party-multi-"
 "sig.html>`_"
 
 #: ../../workflow/index.rst:12
@@ -86,7 +86,7 @@ msgstr ""
 
 #: ../../workflow/index.rst:13
 msgid "`Delegating Tokens <delegate.html>`_"
-msgstr "'Délégation de jetons <delegate.html>`_"
+msgstr "`Délégation de jetons  <delegate.html>`_"
 
 #: ../../workflow/index.rst:13
 msgid "A guide to delegating tokens to a Validator on a Casper Network"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: ../../workflow/index.rst:14
 msgid "`Un-delegating Tokens <undelegate.html>`_"
-msgstr "'Retrait des jetons délégués <undelegate.html>`"
+msgstr "`Retrait des jetons délégués  <undelegate.html>`_"
 
 #: ../../workflow/index.rst:14
 msgid "A guide to un-delegating tokens from a Validator on a Casper Network"
