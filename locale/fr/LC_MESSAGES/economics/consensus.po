@@ -187,11 +187,7 @@ msgstr ""
 
 #: ../../economics/consensus.rst:38
 msgid "Participation"
-msgstr ""
-"Le réseau incite à la participation en échelonnant les récompenses pour le "
-"respect des délais des propositions et des réponses, en tenant compte de la "
-"vitesse de finalisation des blocs. Toutes les récompenses sont ajoutées "
-"directement aux offres et délégations correspondantes."
+msgstr "Participation"
 
 #: ../../economics/consensus.rst:40
 msgid ""
@@ -421,8 +417,8 @@ msgid ""
 "policy.md>`_. We are currently conducting research into the utility of "
 "slashing as an incentive mechanism."
 msgstr ""
-"Consulter notre `Equivocator "
-"Policy<https://github.com/CasperLabs/ceps/blob/master/text/0038-equivocator-"
+"Consulter notre `Equivocator Policy  "
+"<https://github.com/CasperLabs/ceps/blob/master/text/0038-equivocator-"
 "policy.md>`_. Nous menons actuellement des recherches sur l'utilité du "
 "slashing comme mécanisme d'incitation."
 
