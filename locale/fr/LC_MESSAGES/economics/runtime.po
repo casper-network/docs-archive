@@ -1,0 +1,214 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../economics/runtime.rst:2
+msgid "Runtime Economics"
+msgstr "Économie de l'exécution (Runtime Economics)"
+
+#: ../../economics/runtime.rst:4
+msgid ""
+"The economics of the runtime layer should incentivize efficient allocation "
+"of computational resources, primarily CPU time, to users. Pending state "
+"pruning implementation, disk space use is treated as CPU time usage and "
+"charged, irreversibly, per byte written. Currently, gas is allocated "
+"according to a first-in, first-out model for deploys, with a fixed price of "
+"1 mote (1/10^9 part of a CSPR token) per 1 unit of gas."
+msgstr ""
+"L'économie de la couche d'exécution doit inciter à une allocation efficace "
+"des ressources informatiques, principalement du temps CPU, aux utilisateurs."
+" En attendant la mise en œuvre de l'élagage d'état, l'utilisation de "
+"l'espace disque est traitée comme l'utilisation du temps CPU et facturée, de"
+" manière irréversible, par octet écrit. Actuellement, le gaz est alloué "
+"selon le modèle du premier entré, premier sorti (FIFO) pour les "
+"déploiements, avec un prix fixe de 1 mote (1/10^9 partie d'un jeton CSPR) "
+"pour 1 unité de gaz."
+
+#: ../../economics/runtime.rst:7
+msgid "Gas allocation"
+msgstr "Allocation du gaz"
+
+#: ../../economics/runtime.rst:9
+msgid ""
+"Any finite resource on a publicly accessible computer network must be rate-"
+"limited, as, otherwise, overuse of this resource is an attack vector -- a "
+"minimal requirement for platform security. However, rate-limiting, "
+"implemented on our platform as a simple block gas limit with several lanes, "
+"leaves the platform with the problem of fairly and efficiently allocating "
+"the gas. We are researching the optimal structure for spot and futures gas "
+"markets, and interested readers should consult the relevant `CEPs "
+"<https://github.com/CasperLabs/ceps>`_. In the meantime, this section "
+"outlines some basic features of the platform that would underpin any "
+"allocation scheme."
+msgstr ""
+"Toute ressource finie sur un réseau informatique accessible au public doit "
+"être limitée en débit, sinon, la surexploitation de cette ressource "
+"constitue un vecteur d'attaque -- une exigence minimale pour la sécurité de "
+"la plate-forme. Cependant, la limitation du débit, mise en œuvre sur notre "
+"plate-forme sous la forme d'une simple limite de gaz en bloc avec plusieurs "
+"voies, laisse à la plate-forme la gestion du problème de l'allocation "
+"équitable et efficace du gaz. Nous recherchons la structure optimale pour "
+"les marchés du gaz au comptant et à terme, et les lecteurs intéressés "
+"peuvent consulter les `CEPs <https://github.com/CasperLabs/ceps>`_ "
+"pertinents. En attendant, cette section décrit certaines caractéristiques "
+"essentielles de la plate-forme qui sont à la base de tout système "
+"d'allocation."
+
+#: ../../economics/runtime.rst:12
+msgid "Consensus before execution & basics of payment"
+msgstr "Consensus avant l'exécution et principes de base du paiement"
+
+#: ../../economics/runtime.rst:14
+msgid ""
+"The Highway protocol in its Mainnet implementation reaches consensus on a "
+"block *before* the block is executed, introducing a subtle difference from "
+"platforms like Ethereum. In addition, deploys sent to the Casper network can"
+" only be selected based on claimed, rather than used, gas. Consequently, to "
+"incentivize user-side optimization and prevent block space exhaustion by "
+"poorly optimized deploys, the platform provides no refunds for unused gas."
+msgstr ""
+"Le protocole Highway, dans son implémentation Mainnet, atteint un consensus "
+"sur un bloc *avant* que celui-ci ne soit exécuté, ce qui introduit une "
+"différence subtile avec des plateformes comme Ethereum. En outre, les "
+"déploiements envoyés au réseau Casper ne peuvent être sélectionnés que sur "
+"la base du gaz réclamé, et non utilisé. Par conséquent, afin d'encourager "
+"l'optimisation du côté utilisateur et d'empêcher l'épuisement de l'espace de"
+" bloc par des déploiements mal optimisés, la plateforme ne prévoit aucun "
+"remboursement pour le gaz inutilisé."
+
+#: ../../economics/runtime.rst:16
+msgid ""
+"Additionally, a minimal amount of CSPR must be present in the user account "
+"to ensure that the payment computation is covered. The community may "
+"introduce additional balance checks in the future."
+msgstr ""
+"En outre, un montant minimal de CSPR doit être présent sur le compte de "
+"l'utilisateur pour garantir que le calcul du paiement est couvert. La "
+"communauté peut introduire des contrôles de solde supplémentaires à "
+"l'avenir."
+
+#: ../../economics/runtime.rst:19
+msgid "Costs and limits"
+msgstr "Coûts et limites"
+
+#: ../../economics/runtime.rst:21
+msgid ""
+"Gas cost is a measure of relative time used by different primitive "
+"operations of the execution engine, which is also assumed to be additive. By"
+" additivity, we mean that the time to execute a program is approximately "
+"proportional to the sum of gas expended by the opcodes and functions called "
+"within the program. Casper assigns gas costs to primitive execution engine "
+"opcodes and specific more complex *host-side* functions that are callable "
+"from within the execution engine context. Gas costs for opcodes and host-"
+"side functions are specified in the chainspec and may vary according to "
+"arguments."
+msgstr ""
+"Le coût du gaz est une mesure du temps relatif utilisé par les différentes "
+"opérations primitives du moteur d'exécution, qui est également supposé être "
+"additif. Par additivité, nous entendons que le temps d'exécution d'un "
+"programme est approximativement proportionnel à la somme des gaz dépensés "
+"par les 'opcodes' et les fonctions appelés dans le programme. Casper "
+"attribue des coûts de gaz aux 'opcodes' primitifs du moteur d'exécution et "
+"aux fonctions spécifiques plus complexes *côté hôte* qui peuvent être "
+"appelées depuis le contexte du moteur d'exécution. Les coûts des gaz pour "
+"les 'opcodes' et les fonctions côté hôte sont spécifiés dans le chainspec et"
+" peuvent varier en fonction des arguments."
+
+#: ../../economics/runtime.rst:23
+msgid ""
+"We expect to refine the current gas cost table to reflect time use more "
+"closely, with updates introduced in future upgrades. We also anticipate "
+"that, with the introduction of state pruning, storage costs will be "
+"calculated separately from computing time."
+msgstr ""
+"Nous prévoyons d'améliorer le tableau actuel des coûts du gaz afin de "
+"refléter plus fidèlement l'utilisation du temps, avec des améliorations "
+"introduites dans les futures mises à jour. Nous prévoyons également que, "
+"avec l'introduction de l'élagage des États ( state pruning), les coûts de "
+"stockage seront calculés séparément du temps de calcul."
+
+#: ../../economics/runtime.rst:26
+msgid "Lanes"
+msgstr "Voies (Lanes)"
+
+#: ../../economics/runtime.rst:28
+msgid ""
+"The block gas limit is split into two lanes, one for native transfers and "
+"one for general deploys. The number of transfers, which cost a fixed amount "
+"of gas, is governed directly by the ``block_max_transfer_count`` chainspec "
+"parameter, set to 2500 when Mainnet launched."
+msgstr ""
+"La limite de gaz du bloc est divisée en deux voies, une pour les transferts "
+"natifs et une pour les déploiements généraux. Le nombre de transferts, qui "
+"coûtent une quantité fixe de gaz, est régi directement par le paramètre "
+"chainspec ``block_max_transfer_count``, fixé à 2500 au lancement de Mainnet."
+
+#: ../../economics/runtime.rst:31
+msgid "Gas fees"
+msgstr "Frais de gaz"
+
+#: ../../economics/runtime.rst:33
+msgid "Currently, the price of gas is fixed at 1 mote per 1 unit of gas."
+msgstr "Actuellement, le prix du gaz est fixé à 1 mote pour 1 unité de gaz."
+
+#: ../../economics/runtime.rst:36
+msgid "Fee allocation"
+msgstr "Allocation des frais"
+
+#: ../../economics/runtime.rst:38
+msgid ""
+"All fees from a particular block accrue to its proposer, incentivizing non-"
+"empty block production and allowing major dApps to execute deploys for free,"
+" provided they operate a validator node and are comfortable with the latency"
+" introduced by validator scheduling."
+msgstr ""
+"Tous les frais d'un bloc particulier reviennent à celui qui le propose, ce "
+"qui encourage la production de blocs non vides et permet aux principaux "
+"dApps d'exécuter des déploiements gratuitement, à condition qu'ils "
+"exploitent un nœud de validation et qu'ils soient à l'aise avec la latence "
+"introduite par la programmation des validateurs."
+
+#: ../../economics/runtime.rst:41
+msgid "Spot pricing"
+msgstr "Tarification au comptant (Spot pricing)"
+
+#: ../../economics/runtime.rst:43
+msgid ""
+"Please see `CEP #22 <https://github.com/CasperLabs/ceps/pull/22>`_ for one "
+"potential design of a gas spot market."
+msgstr ""
+"Consulter `CEP #22 <https://github.com/CasperLabs/ceps/pull/22>`_ pour une "
+"conception potentielle d'un marché au comptant du gaz."
+
+#: ../../economics/runtime.rst:46
+msgid "Futures pricing"
+msgstr "Fixation des prix à terme (Futures pricing)"
+
+#: ../../economics/runtime.rst:48
+msgid ""
+"Please see `CEP #17 <https://github.com/CasperLabs/ceps/pull/17>`_ for our "
+"draft proposal of a gas futures market."
+msgstr ""
+"Consulter `CEP #17 <https://github.com/CasperLabs/ceps/pull/17>`_ pour notre"
+" proposition de projet d'un marché à terme du gaz."
