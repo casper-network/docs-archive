@@ -134,8 +134,8 @@ msgid ""
 "**Reward cycle:** Rewards are distributed to validators and delegators once "
 "per era."
 msgstr ""
-"**Cycle des récompenses : ** Les récompenses sont distribuées aux "
-"validateurs et aux délégataires une fois par ère."
+"**Cycle des récompenses:** Les récompenses sont distribuées aux validateurs "
+"et aux délégataires une fois par ère."
 
 #: ../../economics/concepts.rst:20
 msgid ""
