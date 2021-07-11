@@ -53,7 +53,7 @@ msgstr "Exemples de contrats intelligents en Rust"
 
 #: ../../dapp-dev-guide/writing-contracts/index.rst:18
 msgid "`WebAssembly contracts <assemblyscript.html>`_"
-msgstr "`Contracts  WebAssembly<assemblyscript.html>`_"
+msgstr "`Contrats  WebAssembly <assemblyscript.html>`_"
 
 #: ../../dapp-dev-guide/writing-contracts/index.rst:18
 msgid "Smart contract examples in WASM"
