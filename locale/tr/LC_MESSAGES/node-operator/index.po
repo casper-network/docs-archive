@@ -3,42 +3,54 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../node-operator/index.rst:12
 msgid "Introduction"
-msgstr ""
+msgstr "Giriş"
 
 #: ../../node-operator/index.rst:2
 msgid "Operators"
-msgstr ""
+msgstr "Operatörler"
 
 #: ../../node-operator/index.rst:4
 msgid ""
-"Operators that wish to run node infrastructure on the Casper network, "
-"either as a standalone private network, or as part of the public network "
-"should explore this guide."
+"Operators that wish to run node infrastructure on the Casper network, either"
+" as a standalone private network, or as part of the public network should "
+"explore this guide."
 msgstr ""
+"Bağımsız bir özel ağ olarak ya da genel ağın bir parçası olarak Casper ağı "
+"üzerinde düğüm (node) altyapısı çalıştırmak isteyen operatörler bu kılavuzu "
+"incelemelidirler."
 
 #: ../../node-operator/index.rst:6
 msgid ""
 "It is recommended that you have prior knowledge of Unix-based operating "
 "systems and proficiency with systemd and bash scripting.  If you are "
 "unfamiliar with systemd, the `Arch Linux page on systemd "
-"<https://wiki.archlinux.org/index.php/systemd>`_ is a good intro to using"
-" it."
+"<https://wiki.archlinux.org/index.php/systemd>`_ is a good intro to using "
+"it."
 msgstr ""
-
+"Unix temelli sistemler hakkında ön bilginizin olması ve systemd ile bash "
+"betik yazımı hakkında yetkinlik sahibi olmanız tavsiye edilir. Eğer "
+"systemd'ye aşina değilseniz, iyi bir giriş noktası olarak şuradan "
+"yararlanabilirsiniz: `Arch Linux systemd sayfası "
+"<https://wiki.archlinux.org/index.php/systemd>`_"
