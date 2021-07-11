@@ -3,176 +3,193 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../glossary/C.rst:2
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: ../../glossary/C.rst:5
 msgid "`A <A.html>`_"
-msgstr ""
+msgstr "`A <A.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`B <B.html>`_"
-msgstr ""
+msgstr "`B <B.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`C <C.html>`_"
-msgstr ""
+msgstr "`C <C.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`D <D.html>`_"
-msgstr ""
+msgstr "`D <D.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`E <E.html>`_"
-msgstr ""
+msgstr "`E <E.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`F <F.html>`_"
-msgstr ""
+msgstr "`F <F.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`G <G.html>`_"
-msgstr ""
+msgstr "`G <G.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`H <H.html>`_"
-msgstr ""
+msgstr "`H <H.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`I <I.html>`_"
-msgstr ""
+msgstr "`I <I.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`J <J.html>`_"
-msgstr ""
+msgstr "`J <J.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`K <K.html>`_"
-msgstr ""
+msgstr "`K <K.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`L <L.html>`_"
-msgstr ""
+msgstr "`L <L.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`M <M.html>`_"
-msgstr ""
+msgstr "`M <M.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`N <N.html>`_"
-msgstr ""
+msgstr "`N <N.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`O <O.html>`_"
-msgstr ""
+msgstr "`O <O.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`P <P.html>`_"
-msgstr ""
+msgstr "`P <P.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`Q <Q.html>`_"
-msgstr ""
+msgstr "`Q <Q.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`R <R.html>`_"
-msgstr ""
+msgstr "`R <R.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`S <S.html>`_"
-msgstr ""
+msgstr "`S <S.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`T <T.html>`_"
-msgstr ""
+msgstr "`T <T.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`U <U.html>`_"
-msgstr ""
+msgstr "`U <U.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`V <V.html>`_"
-msgstr ""
+msgstr "`V <V.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`W <W.html>`_"
-msgstr ""
+msgstr "`W <W.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`X <X.html>`_"
-msgstr ""
+msgstr "`X <X.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`Y <Y.html>`_"
-msgstr ""
+msgstr "`Y <Y.html>`_"
 
 #: ../../glossary/C.rst:5
 msgid "`Z <Z.html>`_"
-msgstr ""
+msgstr "`Z <Z.html>`_"
 
 #: ../../glossary/C.rst:9
 msgid "Cargo"
-msgstr ""
+msgstr "Cargo"
 
 #: ../../glossary/C.rst:10
 msgid ""
 "Cargo is Rust’s build system and package manager. This tool manages Rust "
 "projects, such as building code and downloading dependencies."
 msgstr ""
+"Cargo, Rust'ın derleme sistemi ve paket yöneticisidir. Bu araç, kod derleme "
+"ve bağımlılıkları indirme gibi işlerde Rust projelerini yönetir."
 
 #: ../../glossary/C.rst:13
 msgid "Casper network"
-msgstr ""
+msgstr "Casper ağı"
 
 #: ../../glossary/C.rst:14
 msgid ""
-"The Casper network is a Proof-of-Stake blockchain that allows validators "
-"to stake the Casper native token CSPR on the network. Validators receive "
-"CSPR as an incentive for continuing to maintain and secure the network. "
-"CSPR rewards are distributed as blocks are validated into existence and "
-"organized into eras."
+"The Casper network is a Proof-of-Stake blockchain that allows validators to "
+"stake the Casper native token CSPR on the network. Validators receive CSPR "
+"as an incentive for continuing to maintain and secure the network. CSPR "
+"rewards are distributed as blocks are validated into existence and organized"
+" into eras."
 msgstr ""
+"Casper ağı, doğrulayıcıların ağ üzerinde Casper yerel tokeni CSPR'yi stake "
+"etmesine izin veren bir Hisse Kanıtı (PoS) blok zinciridir. Doğrulayıcılar, "
+"ağın bakımını ve güvenliğini sağlamaya devam etmek için bir teşvik olarak "
+"CSPR alır. CSPR ödülleri, bloklar oluşturulup dönemler (era) halinde "
+"organize edildikçe dağıtılır."
 
 #: ../../glossary/C.rst:17
 msgid "CBC"
-msgstr ""
+msgstr "CBC"
 
 #: ../../glossary/C.rst:18
 msgid ""
 "Correct by construction. CBC Casper is a family of consensus algorithms "
 "developed by Vlad Zamfir."
 msgstr ""
+"Yapısı itibariyle doğru (correct by construction). CBC Casper, Vlad Zamfir "
+"tarafından geliştirilen bir mutabakat algoritmaları ailesidir."
 
 #: ../../glossary/C.rst:21
 msgid "Chainspec"
-msgstr ""
+msgstr "Zincir Belirtimi (Chainspec)"
 
 #: ../../glossary/C.rst:22
 msgid ""
-"A collection of configuration settings describing the state of the system"
-" at genesis and upgrades to basic system functionality (including system "
+"A collection of configuration settings describing the state of the system at"
+" genesis and upgrades to basic system functionality (including system "
 "contracts and gas costs) occurring after `genesis <G.html#genesis>`_."
 msgstr ""
+"Sistemin doğuş (genesis) anındaki durumunu ve `genesis <G.html#genesis>`_ "
+"sonrası  temel sistem işlevselliğine (sistem kontratları ve gaz maliyetleri "
+"dahil) gelen yükseltmeleri tanımlayan yapılandırma ayarları koleksiyonudur."
 
 #: ../../glossary/C.rst:25
 msgid "Consensus"
-msgstr ""
+msgstr "Mutabakat"
 
 #: ../../glossary/C.rst:26
 msgid ""
@@ -181,48 +198,67 @@ msgid ""
 "built in a decentralized way, eventually converges so that all nodes "
 "eventually agree on whether a given block is part of the chain or not."
 msgstr ""
+"Tüm düğümler arasında `blokzincir <B.html#blockchain>`_ üzerinde anlaşmayı "
+"zorunlu kılmak için kullanılan bir algoritma. Blokzincir, merkezi olmayan "
+"bir şekilde inşa edilmiş olmasına rağmen, sonunda tüm düğümlerin belirli bir"
+" bloğun zincirin bir parçası olup olmadığı konusunda anlaşmaya varmasıyla "
+"sonuçlanır."
 
 #: ../../glossary/C.rst:28
 msgid ""
 "Casper uses the `Highway "
-"<https://docs.casperlabs.io/en/latest/theory/highway.html>`_ algorithm in"
-" the *CBC Casper* family of consensus algorithms. The algorithm for "
-"securing an agreement is what is known as *consensus*. The consensus "
-"layer contains the algorithm, but the algorithm should not be confused "
-"with the consensus layer."
+"<https://docs.casperlabs.io/en/latest/theory/highway.html>`_ algorithm in "
+"the *CBC Casper* family of consensus algorithms. The algorithm for securing "
+"an agreement is what is known as *consensus*. The consensus layer contains "
+"the algorithm, but the algorithm should not be confused with the consensus "
+"layer."
 msgstr ""
+"Casper, mutabakat algoritmalarının *CBC Casper* aliesindeki `Highway "
+"<https://docs.casperlabs.io/en/latest/theory/highway.html>`_ algoritmasını "
+"kullanır. Bir anlaşmayı güvence altına almak için kullanılan algoritma, "
+"*mutabakat* olarak bilinen şeydir. Mutabakat katmanı algoritmayı içerir, "
+"ancak algoritma mutabakat katmanıyla karıştırılmamalıdır."
 
 #: ../../glossary/C.rst:31
 msgid "Contract runtime"
-msgstr ""
+msgstr "Kontrat çalışma zamanı"
 
 #: ../../glossary/C.rst:32
 msgid ""
 "Enables developers to use a seamless workflow for authoring and testing "
-"their `smart contracts <S.html#smart-contracts>`_. This environment can "
-"also be used for continuous integration, enabling Rust smart contracts to"
-" be managed using development best practices."
+"their `smart contracts <S.html#smart-contracts>`_. This environment can also"
+" be used for continuous integration, enabling Rust smart contracts to be "
+"managed using development best practices."
 msgstr ""
+"Geliştiricilerin, `akıllı kontratlarını <S.html#smart-contracts>`_ yazmak ve"
+" test etmek için sorunsuz bir iş akışı kullanmasını sağlar. Bu ortam, "
+"sürekli entegrasyon için de kullanılabilir ve Rust akıllı kontratlarının en "
+"iyi geliştirme uygulamaları kullanılarak yönetilebilmesini sağlar."
 
 #: ../../glossary/C.rst:35
 msgid "Crate"
-msgstr ""
+msgstr "Paket (Crate)"
 
 #: ../../glossary/C.rst:36
 msgid ""
-"A compilation unit in Rust. A crate can be compiled into a binary or into"
-" a library. By default, *rustc*, the compiler for the Rust programming "
+"A compilation unit in Rust. A crate can be compiled into a binary or into a "
+"library. By default, *rustc*, the compiler for the Rust programming "
 "language, will produce a binary from a crate."
 msgstr ""
+"Rust'ta bir derleme birimi. Bir paket (crate), bir ikili dosya veya bir "
+"kütüphane şeklinde derlenebilir. Varsayılan olarak, Rust programlama dilinin"
+" derleyicisi olan *rustc*, bir paketten bir ikili dosya üretecektir."
 
 #: ../../glossary/C.rst:39
 msgid "CSPR"
-msgstr ""
+msgstr "CSPR"
 
 #: ../../glossary/C.rst:40
 msgid ""
-"CSPR is the Casper token pre-defined on the Casper network and used to "
-"pay for transaction execution and for `staking <S.html#staking>`_ "
-"(securing the network). The total number of CSPR tokens is 10 billion."
+"CSPR is the Casper token pre-defined on the Casper network and used to pay "
+"for transaction execution and for `staking <S.html#staking>`_ (securing the "
+"network). The total number of CSPR tokens is 10 billion."
 msgstr ""
-
+"CSPR, Casper ağında önceden tanımlanmış Casper tokenidir ve işlem yürütme ve"
+" `stake etme <S.html#stake>`_ (ağın güvenliğini sağlama) için ödeme yapmak "
+"için kullanılır. Toplam CSPR token sayısı 10 milyardır."
