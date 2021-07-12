@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../glossary/V.rst:2
+msgid "V"
+msgstr "V"
+
+#: ../../glossary/V.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/V.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/V.rst:9
+msgid "Validator"
+msgstr "Validateur"
+
+#: ../../glossary/V.rst:10
+msgid ""
+"Validators are responsible for maintaining platform security by building an "
+"ever-growing chain of finalized blocks, backing this chain's security with "
+"their stakes. Their importance (often referred to as \"weight\") both to "
+"protocol operation and security is, in fact, equal to their stake, which "
+"includes both their own and delegated tokens."
+msgstr ""
+"*Les validateurs* sont responsables du maintien de la sécurité de la plate-"
+"forme en construisant une chaîne de blocs finalisés qui ne cesse de croître,"
+" et en garantissant la sécurité de cette chaîne par leur mise (stake). Leur "
+"importance (souvent appelée \"poids\") pour le fonctionnement et la sécurité"
+" du protocole est, en fait, égale à leur enjeu, qui comprend à la fois leurs"
+" propres jetons et ceux qui leur sont délégués."
+
+#: ../../glossary/V.rst:12
+msgid "The responsibilities of a validator include:"
+msgstr "Les responsabilités d'un validateur comprennent :"
+
+#: ../../glossary/V.rst:14
+msgid ""
+"`block creation <B.html#block-creation>`_ and `block proposal <B.html#block-"
+"proposal>`_"
+msgstr ""
+"`création des blocs <B.html#block-creation>_ et `proposition des blocs "
+"<B.html#block-proposal>`_"
+
+#: ../../glossary/V.rst:15
+msgid "`block validation <B.html#block-validation>`_"
+msgstr "`validation des blocs <B.html#block-validation>`_."
+
+#: ../../glossary/V.rst:16
+msgid "`block gossiping <B.html#block-gossiping>`_"
+msgstr "`block gossiping <B.html#block-gossiping>`_"
+
+#: ../../glossary/V.rst:18
+msgid ""
+"Validators are bonded because they are responsible for progressing the "
+"system's state as clients use it (e.g., sending deploys). Validators and "
+"`stakers <S.html#staker>`_ can lose their bond (be slashed) for not "
+"following the protocol correctly. Validators are also paid for by creating "
+"blocks (also by validating blocks – though this is only indirectly; "
+"validators cannot be paid for if they do not validate by design), giving "
+"them more incentive to serve the network correctly."
+msgstr ""
+"Les validateurs sont liés (engagés) parce qu'ils sont responsables de la "
+"progression de l'état du système au fur et à mesure que les clients "
+"l'utilisent (par exemple, en envoyant des déploiements). Les validateurs et "
+"les `stakers <S.html#staker>`_ peuvent perdre leur engagement (être slashés)"
+" s'ils ne suivent pas correctement le protocole. Les validateurs sont "
+"également payés en créant des blocs (également en validant des blocs - bien "
+"que ce ne soit qu'indirectement ; les validateurs ne peuvent pas être payés "
+"s'ils ne valident pas par conception), ce qui les incite davantage à servir "
+"le réseau correctement."
