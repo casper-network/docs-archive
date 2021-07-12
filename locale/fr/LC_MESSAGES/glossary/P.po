@@ -1,0 +1,267 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../glossary/P.rst:2
+msgid "P"
+msgstr "P"
+
+#: ../../glossary/P.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/P.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/P.rst:9
+msgid "Participate in consensus"
+msgstr "Participer au consensus"
+
+#: ../../glossary/P.rst:10
+msgid ""
+"The process of following the `consensus <C.html#consensus>`_ algorithm. The "
+"primary participants are `validators <V.html#validator>`_, bonded with their"
+" stake and part of the validator set for that particular era. `Delegators "
+"<D.html#delegator>`_ participate indirectly by delegating their tokens to "
+"one or more of these validators and contributing by increasing the total "
+"stake that ensures the security of the network."
+msgstr ""
+"Le processus consistant à suivre l'algorithme du `consensus "
+"<C.html#consensus>`_. Les principaux participants sont les `validateurs "
+"<V.html#validateur>`_, liés à leur enjeu et faisant partie de l'ensemble des"
+" validateurs pour cette ère particulière. Les `délégateurs "
+"<D.html#delegateur>`_ participent indirectement en déléguant leurs jetons à "
+"un ou plusieurs de ces validateurs et contribuent en augmentant la mise "
+"totale qui assure la sécurité du réseau."
+
+#: ../../glossary/P.rst:13
+msgid "Payment code"
+msgstr "Code de paiement"
+
+#: ../../glossary/P.rst:14
+msgid ""
+"The *payment code* is the `WASM <W.html#webassembly>`_ program that pays the"
+" transaction execution fee."
+msgstr ""
+"Le *code de paiement* est le programme `WASM <W.html#webassembly>`_ qui paie"
+" les frais d'exécution de la transaction."
+
+#: ../../glossary/P.rst:17
+msgid "Peer node"
+msgstr "Nœud pair"
+
+#: ../../glossary/P.rst:18
+msgid "A node on a peer-to-peer (P2P) network."
+msgstr "Un nœud sur un réseau peer-to-peer (P2P)."
+
+#: ../../glossary/P.rst:21
+msgid "Primary token"
+msgstr "Jeton primaire"
+
+#: ../../glossary/P.rst:22
+msgid "See `CSPR <C.html#cspr>`_."
+msgstr "Voir `CSPR <C.html#cspr>`_."
+
+#: ../../glossary/P.rst:25
+msgid "Private key"
+msgstr "Clé privée"
+
+#: ../../glossary/P.rst:26
+msgid "See `secret key <S.html#secret-key>`_."
+msgstr "Voir `clé secrète <S.html#secret-key>`_."
+
+#: ../../glossary/P.rst:29
+msgid "Proof-of-Stake"
+msgstr "Preuve d'enjeu (Proof-of-Stake)"
+
+#: ../../glossary/P.rst:30
+msgid ""
+"Proof-of-Stake (PoS) is a mechanism by which a cryptocurrency blockchain "
+"network achieves permissionless-ness. The voting power in consensus is "
+"proportional to the number of staked tokens (digital currency specific to "
+"this system). The validator vouches with their tokens for the correct "
+"operation of their node. A popular choice in such systems is to periodically"
+" (once per era, in our case) delegate a fixed size committee of "
+"participants, which then is responsible for running the consensus on which "
+"blocks to add to the blockchain."
+msgstr ""
+"La preuve d'enjeu (Proof-of-Stake, PoS) est un mécanisme par lequel un "
+"réseau blockchain de crypto-monnaies fonctionne sans permission (sans "
+"authorisation). Le pouvoir de vote dans le consensus est proportionnel au "
+"nombre de jetons misés (stakés). Le validateur se porte garant avec ses "
+"jetons du bon fonctionnement de son nœud. Un choix populaire dans de tels "
+"systèmes est de déléguer périodiquement (une fois par ère, dans notre cas) "
+"un comité de taille fixe de participants (validateurs), qui sera alors "
+"responsable de l'exécution du consensus sur les blocs à ajouter à la "
+"blockchain."
+
+#: ../../glossary/P.rst:33
+msgid "Proof-of-Work"
+msgstr "Preuve de travail (Proof-of-Work)"
+
+#: ../../glossary/P.rst:34
+msgid ""
+"A mechanism used in Bitcoin and Etherium for incentivizing participation and"
+" securing the system. In these protocols, a participant's voting power is "
+"proportional to the amount of computational power possessed."
+msgstr ""
+"Mécanisme utilisé dans Bitcoin et Etherium pour encourager la participation "
+"et sécuriser le système. Dans ces protocoles, le pouvoir de vote d'un "
+"participant est proportionnel à la quantité de puissance de calcul qu'il "
+"possède."
+
+#: ../../glossary/P.rst:37
+msgid "Proof-of-Stake contract"
+msgstr "Contrat de preuve d'enjeu "
+
+#: ../../glossary/P.rst:38
+msgid ""
+"The Proof-of-Stake (PoS) contract holds on to transaction fees for the time "
+"while the state transition is happening (contracts are being executed). The "
+"PoS contract remits the transaction fees to the block proposer."
+msgstr ""
+"Le contrat de preuve d'enjeu (PoS) conserve les frais de transaction pendant"
+" la durée de la transition d'état (les contrats sont exécutés). Le contrat "
+"PoS remet les frais de transaction au proposant du bloc."
+
+#: ../../glossary/P.rst:41
+msgid "Proto block"
+msgstr "Bloc proto"
+
+#: ../../glossary/P.rst:42
+msgid ""
+"The block proposed by the leader, which the consensus processes (in `highway"
+" <H.html#highway>`_). Only after consensus is complete, the proto block is "
+"executed, and the global state is updated."
+msgstr ""
+"Le bloc proposé par le leader, que le consensus traite (dans `highway "
+"<H.html#highway>`_). Ce n'est qu'une fois le consensus terminé que le bloc "
+"proto est exécuté, et que l'état global est mis à jour."
+
+#: ../../glossary/P.rst:44
+msgid ""
+"A leader is selected from the validator set of that era for each round. The "
+"chance of getting selected as a leader is in proportion to the stake one has"
+" in that era."
+msgstr ""
+"Un leader est sélectionné dans l'ensemble des validateurs de cette ère pour "
+"chaque tour. La chance d'être sélectionné comme leader est proportionnelle à"
+" la participation (stake) que l'on a dans cette ère."
