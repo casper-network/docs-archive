@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../staking/index.rst:6
+msgid "Staking"
+msgstr "Staking"
+
+#: ../../staking/index.rst:8
+msgid ""
+"A feature of Proof-of-Stake protocols is that token holders can actively "
+"participate in the protocol through a mechanism known as **staking**."
+msgstr ""
+"Une caractéristique des protocoles Proof-of-Stake est que les détenteurs de "
+"jetons peuvent participer activement au protocole par le biais d'un "
+"mécanisme appelé **staking**."
+
+#: ../../staking/index.rst:11
+msgid ""
+"Persons that hold their private keys can choose to stake their tokens with "
+"any validator in the Casper network. Alternatively, it is possible to stake "
+"tokens via an exchange or custody provider as well."
+msgstr ""
+"Les personnes qui détiennent leurs clés privées peuvent choisir de staker "
+"leurs jetons auprès de n'importe quel validateur du réseau Casper. Il est "
+"également possible de staker des jetons au sein d'un marché d'échange ou "
+"chez d'un prestataire de services (custody provider )."
+
+#: ../../staking/index.rst:14
+msgid ""
+"This guide will outline the steps required to stake the CSPR token on the "
+"Casper network."
+msgstr ""
+"Ce guide présente les étapes nécessaires pour staker les jeton CSPR sur le "
+"réseau Casper."
+
+#: ../../staking/index.rst:18
+msgid "What you need to know before staking"
+msgstr "Ce que vous devez savoir avant de staker"
+
+#: ../../staking/index.rst:20
+msgid ""
+"Please read the following sections carefully before staking tokens on the "
+"Casper network."
+msgstr ""
+"Veuillez lire attentivement les sections suivantes avant de staker des "
+"jetons sur le réseau Casper."
+
+#: ../../staking/index.rst:23
+msgid "Slashing"
+msgstr "Slashing"
+
+#: ../../staking/index.rst:25
+msgid ""
+"Presently Casper does not slash for equivocations.  If a node equivocates, "
+"its' messages are ignored by the rest of the validators for the balance of "
+"the era and made inactive. A node running the software provided by the "
+"Casper Association will terminate once it detects that it has equivocated. "
+"Future work includes locking an equivocating validator's stake for an "
+"extended duration of time, effectively penalizing the validator."
+msgstr ""
+"À l'heure actuelle, Casper ne 'slashe' pas en cas d'éjection. Si un noeud "
+"est éjecté, ses messages sont ignorés par le reste des validateurs pour le "
+"reste de l'ère et il est rendu inactif. Un nœud qui exécute le logiciel "
+"fourni par l'association Casper s'arrête dès qu'il détecte son éjection. Les"
+" travaux futurs comprennent le verrouillage de l'enjeu d'un validateur "
+"éjecté pour une durée prolongée, ce qui pénalise efficacement le validateur."
+
+#: ../../staking/index.rst:27
+msgid ""
+"Casper does not treat validator stake differently than delegator stake for "
+"security reasons."
+msgstr ""
+"Pour des raisons de sécurité, Casper ne traite pas la mise (stake) du "
+"validateur différemment de la mise du délégant."
+
+#: ../../staking/index.rst:31
+msgid "Delegation Rate"
+msgstr "Taux de délégation"
+
+#: ../../staking/index.rst:33
+msgid ""
+"Node operators (Validators) define a commission that they take in exchange "
+"for providing staking services.  This commission is represented as a "
+"percentage of the rewards that the node operator retains for their services."
+msgstr ""
+"Les opérateurs de nœuds (validateurs) définissent une commission qu'ils "
+"prennent en échange de la fourniture du service de staking. Cette commission"
+" est représentée par un pourcentage des récompenses que l'opérateur de nœud "
+"conserve pour ce service."
+
+#: ../../staking/index.rst:36
+msgid "Rewards"
+msgstr "Récompenses"
+
+#: ../../staking/index.rst:38
+msgid ""
+"Validators receive rewards for participating in consensus by voting on "
+"blocks sending finality signatures (finalizing blocks). There is no precise "
+"*per-block* reward. Rewards are split proportionally among stakes within an "
+"era. If a validator is offline or cannot vote on many blocks, the rewards "
+"earned are also reduced. Delegators can only receive a proportional amount "
+"of the validator's rewards minus the validator’s commission (Delegation "
+"Rate)."
+msgstr ""
+"Les validateurs reçoivent des récompenses pour leur participation au "
+"consensus et la finalisation des blocs. Il n'y a pas de récompense précise "
+"par bloc. Les récompenses sont réparties proportionnellement entre les "
+"enjeux d'une ère. Si un validateur est hors ligne ou ne peut pas voter sur "
+"de nombreux blocs, les récompenses gagnées sont réduites. Les déléguants ne "
+"peuvent recevoir qu'un montant proportionnel des récompenses du validateur "
+"moins la commission du validateur (taux de délégation). Les récompenses sont"
+" distribuées à la fin de chaque ère."
+
+#: ../../staking/index.rst:40
+msgid "Rewards are distributed at the end of each era."
+msgstr "Les récompenses sont distribuées à la fin de chaque ère."
+
+#: ../../staking/index.rst:43
+msgid "Selecting a node for Staking"
+msgstr "Sélection d'un nœud pour le staking"
+
+#: ../../staking/index.rst:45
+msgid ""
+"As a prospective delegator, it is important to select a validating node that"
+" you can trust.  Please do your due diligence before you stake your tokens "
+"with a validator."
+msgstr ""
+"En tant que délégataire potentiel, il est important de choisir un nœud de "
+"validation en qui vous pouvez avoir confiance. Veuillez faire preuve de "
+"diligence avant de placer vos jetons auprès d'un validateur."
+
+#: ../../staking/index.rst:49
+msgid "Check in on your Stake"
+msgstr "Vérifiez votre Stake."
+
+#: ../../staking/index.rst:51
+msgid ""
+"It’s recommended that you check in on how your stake is performing from time"
+" to time.  If the validator you staked with decides to unbond, your stake "
+"will also be unbonded. Make sure that the validator you have selected is "
+"performing as per your expectations."
+msgstr ""
+"Il est recommandé de vérifier de temps en temps la performance de votre "
+"stake. Si le validateur avec lequel vous avez misé décide de se désengager, "
+"votre mise sera également désengagée. Assurez-vous que le validateur que "
+"vous avez choisi fonctionne conformément à vos attentes."
+
+#: ../../staking/index.rst:53
+msgid ""
+"Validators have to win a staking auction by competing with prospective and "
+"current validators for a  slot.  This process is permissionless, meaning "
+"validators can join and leave the auction without restrictions, except the "
+"unbonding wait period."
+msgstr ""
+"Les validateurs doivent remporter une enchère de staking en concourant avec "
+"les validateurs actuels et potentiels pour un faire partie des validateurs. "
+"Ce processus est sans permission, ce qui signifie que les validateurs "
+"peuvent rejoindre et quitter l'enchère sans restriction, à l'exception de la"
+" période d'attente de désolidarisation."
+
+#: ../../staking/index.rst:57
+msgid "Unbonding Period"
+msgstr "Période de désolidarisation (désengagement)"
+
+#: ../../staking/index.rst:59
+msgid ""
+"For security purposes, whenever a token is un-staked or un-delegated, the "
+"protocol will continue to keep the token locked for 14 hours."
+msgstr ""
+"Pour des raisons de sécurité, chaque fois qu'un jeton n'est plus staké ou "
+"n'est plus délégué, le protocole continuera à le maintenir verrouillé "
+"pendant 14 heures."
+
+#: ../../staking/index.rst:63
+msgid "Next Steps"
+msgstr "Étapes suivantes"
