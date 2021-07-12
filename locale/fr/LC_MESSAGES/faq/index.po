@@ -269,11 +269,7 @@ msgstr ""
 
 #: ../../faq/index.rst:61
 msgid "Who has partnered with CasperLabs to build on the Casper network?"
-msgstr ""
-"En septembre 2019, CasperLabs a levé 14,5 millions de dollars fonds (Serie A"
-" round) . Cette levée de fonds a été dirigée par Terren Piezer avec la "
-"participation de Consensus Capital, Axiom Holdings Group et Digital "
-"Strategies, MW Partners, et plus encore."
+msgstr "Qui s'est associé à CasperLabs pour développer le réseau Casper ?"
 
 #: ../../faq/index.rst:62
 msgid ""
