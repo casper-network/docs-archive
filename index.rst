@@ -14,11 +14,7 @@ What is Casper?
 
 Casper is a new Turing-complete smart-contract platform, backed by a Proof-of-Stake (PoS) consensus algorithm and WebAssembly (wasm). The network is a permissionless, decentralized, public blockchain.
 
-The Casper Network’s consensus protocol is called Highway. The consensus protocol allows clients to use different confidence thresholds to convince themselves that a given block is *finalized*. This protocol is built on Vlad Zamfir's `correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-casper-paper>`_ research.
-
-.. admonition:: Note 
-  
-  More details on the network's consensus protocol can be found at `GitHub <https://github.com/CasperLabs/highway>`_.
+The Casper Network’s consensus protocol is called `Highway <https://github.com/CasperLabs/highway>`_. The consensus protocol allows clients to use different confidence thresholds to convince themselves that a given block is *finalized*. This protocol is built on Vlad Zamfir's `correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-casper-paper>`_ research.
 
 To add, the Casper Network is optimized for enterprise and developer adoption. While leveraging blockchain technology, the network seeks to accelerate business operations via unique features like predictable network fees, upgradeable contracts, on-chain governance, privacy flexibility, and developer-friendly languages. 
 
