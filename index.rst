@@ -7,27 +7,23 @@
 Welcome to the Casper Network
 ******************************
 
-This resource gives an overview of the Casper project. Here is brief highlight of key aspects of the project.
+This article provides an overview of the Casper project.
 
 What is Casper?
 ***************
 
-Casper is a new Turing-complete smart-contract platform, backed by a Proof-of-Stake (PoS) consensus algorithm and WebAssembly (wasm). The network is a permissionless, decentralized, public blockchain.
+Casper is a new Turing-complete smart-contracting platform, backed by a Proof-of-Stake (PoS) consensus algorithm and WebAssembly (WASM). The network is a permissionless, decentralized, public blockchain.
 
-The Casper Network’s consensus protocol is called Highway. The consensus protocol allows clients to use different confidence thresholds to convince themselves that a given block is *finalized*. This protocol is built on Vlad Zamfir's `correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-casper-paper>`_ research.
+The network's consensus protocol is called `Highway <https://arxiv.org/pdf/2101.02159.pdf>`_, and it has several benefits over classic Byzantine Fault Tolerant (BFT) consensus protocols. First, Highway allows networks to reach higher thresholds of *finality*, meaning that more blocks are finalized, and validators agree to add them to the blockchain. Second, the protocol achieves flexibility by expressing block finality in ways not possible in BFT models. This protocol is built on Vlad Zamfir's `correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-casper-paper>`_ research.
 
-.. admonition:: Note 
-  
-  More details on the network's consensus protocol can be found at `GitHub <https://github.com/CasperLabs/highway>`_.
+Additionally, the Casper Network is optimized for enterprise and developer adoption. While leveraging blockchain technology, the network seeks to accelerate business operations via unique features like predictable network fees, upgradeable contracts, on-chain governance, privacy flexibility, and developer-friendly languages. 
 
-To add, the Casper Network is optimized for enterprise and developer adoption. While leveraging blockchain technology, the network seeks to accelerate business operations via unique features like predictable network fees, upgradeable contracts, on-chain governance, privacy flexibility, and developer-friendly languages. 
+Casper also solves the scalability trilemma. Notably, the network is optimized for security, decentralization, and high throughput. All this is achieved while evolving to provide leading solutions for open-source projects and enterprises.
 
-Casper also solves the scalability trilemma. Notably, the network is optimized for security, decentralization, and high throughput. All this is achieved while evolving to provide leading solutions in developer and enterprise blockchain.
+Why choose Casper?
+******************
 
-Why Casper?
-***********
-
-Casper has core features and strengths that enable developers and enterprises to leap the benefits of blockchain technology. 
+Casper has core features and strengths that enable developers and enterprises to reap the benefits of blockchain technology. 
 
 Upgradeable Contracts
 ~~~~~~~~~~~~~~~~~~~~~
@@ -37,7 +33,7 @@ Casper allows the direct upgrading of on-chain smart contracts, eliminating the 
 Developer-Friendly Language
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Casper Network’s development ecosystem is designed to support WebAssembly, rather than being written in proprietary languages like Solidity. This feature simplifies the development path for enterprises and development teams that want to build on the Casper Network
+Casper Network’s development ecosystem is designed to support WebAssembly, rather than being written in proprietary languages like Solidity. This feature simplifies the development path for enterprises and development teams that want to build on the Casper Network.
 
 .. admonition:: Note 
   
@@ -62,11 +58,13 @@ Casper’s PoS network also supports scalability mechanisms like sharding. With 
 Why go for Casper’s Blockchain?
 *******************************
 
-The Casper Network employs the Highway Protocol. Highway has several benefits over the classic Byzantine Fault Tolerant consensus protocol. First, Highway allows networks to reach higher thresholds of finality. Second, the protocol achieves flexibility by expressing block finality in ways not possible in BFT models. This feature is made possible by the `Highway Protocol <https://arxiv.org/pdf/2101.02159.pdf>`_. 
+Casper relies on a group of validators to verify transactions and uphold the network. Unlike Proof-of-Work networks, which need to centralize validators for economies of scale, Casper allows for the geographical decentralization of validators. Casper validators verify transactions based on staked tokens and receive CSPR rewards for participating in the PoS consensus mechanism. CSPR is the native token on the Casper Network.
 
+Where can I learn more?
+***********************
 
-Important Sections
-******************
+Follow the links below to learn more about the Casper Network.
+
 ================================================================  ========================================================================
 `How To's <workflow/index.html>`_                                 Guides for interacting with the Casper Network
 `Developers <dapp-dev-guide/index.html>`_                         Get started with smart contract development on the Casper blockchain in AssemblyScript or Rust 
