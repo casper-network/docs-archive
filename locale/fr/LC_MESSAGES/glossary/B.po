@@ -1,0 +1,406 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../glossary/B.rst:2
+msgid "B"
+msgstr "B"
+
+#: ../../glossary/B.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/B.rst:9
+msgid "Block"
+msgstr "Bloc"
+
+#: ../../glossary/B.rst:10
+msgid "Used in two contexts:"
+msgstr "Utilisé dans deux contextes :"
+
+#: ../../glossary/B.rst:12
+msgid ""
+"A data structure containing a collection of transactions. Blocks form the "
+"primary structure of the blockchain."
+msgstr ""
+"Une structure de données contenant une collection de transactions. Les blocs"
+" constituent la structure primaire de la blockchain."
+
+#: ../../glossary/B.rst:13
+msgid ""
+"A message that is exchanged between nodes containing the data structure as "
+"explained in (1)."
+msgstr ""
+"Un message qui est échangé entre les nœuds contenant la structure de données"
+" comme expliqué dans (1)."
+
+#: ../../glossary/B.rst:15
+msgid ""
+"Each block has a globally unique ID, achieved by hashing the contents of the"
+" block."
+msgstr ""
+"Chaque bloc possède un identifiant unique (ID), obtenu par hachage du "
+"contenu du bloc."
+
+#: ../../glossary/B.rst:17
+msgid ""
+"Each block points to its parent. An exception is the first block, which has "
+"no parent."
+msgstr ""
+"Chaque bloc pointe vers son parent ,exception faite du premier bloc, qui n'a"
+" pas de parent."
+
+#: ../../glossary/B.rst:20
+msgid "Block creation"
+msgstr "Création de blocs"
+
+#: ../../glossary/B.rst:21
+msgid ""
+"Block creation means computing the deployment results and collecting the "
+"results that belong together into a block. We follow a process called "
+"*execution after consensus*."
+msgstr ""
+"La création de blocs consiste à calculer les résultats du déploiement et à "
+"rassembler les résultats qui vont ensemble dans un bloc. Nous suivons un "
+"processus appelé *execution after consensus*."
+
+#: ../../glossary/B.rst:23
+msgid ""
+"The `block proposal <B.html#block-proposal>`_ happens first, and the "
+"proposed `proto block <P.html#proto-block>`_ contains a set of deploys that "
+"have not been executed yet."
+msgstr ""
+"La `proposition de bloc <B.html#block-proposal>`_ arrive en premier, et le "
+"`proto bloc proposé <P.html#proto-block>`_ contient un ensemble de "
+"déploiements qui n'ont pas encore été exécutés."
+
+#: ../../glossary/B.rst:25
+msgid ""
+"Only after consensus on a *proto block* has been reached, the deploys are "
+"executed. The resulting new global state `root hash <R.html#root hash>`_ is "
+"put into an actual block, together with the executed deploys."
+msgstr ""
+"Ce n'est qu'après qu'un consensus sur un *proto block* a été atteint que les"
+" déploiements sont exécutés. Le nouvel état global résultant `root hash "
+"<R.html#root hash>`_ est mis dans un bloc réel, avec l'exécution des "
+"déploiements."
+
+#: ../../glossary/B.rst:27
+msgid "Note that only validators can create valid blocks."
+msgstr "Notez que seuls les validateurs peuvent créer des blocs valides."
+
+#: ../../glossary/B.rst:30
+msgid "Block finality"
+msgstr "Finalité du bloc"
+
+#: ../../glossary/B.rst:31
+msgid ""
+"A block is \"finalized\" if the validators agree on adding it to the "
+"blockchain."
+msgstr ""
+"Un bloc est \"finalisé\" si les validateurs sont d'accord pour l'ajouter à "
+"la blockchain."
+
+#: ../../glossary/B.rst:33
+msgid ""
+"There are different levels of *finality* in the `Highway <H.html#highway>`_ "
+"protocol. A finalized block has a fault-tolerance *F*, expressed as a "
+"fraction of the total stake. For an observer to see a conflicting block as "
+"finalized, several validators whose total stake exceeds *F* would have to "
+"collude and show different information in a way that would ultimately be "
+"detected and punished (see `slashing <S.html#slashing>`_)."
+msgstr ""
+"Il existe différents niveaux de *finalité* (finality) dans le protocole "
+"`Highway <H.html#highway>`_. Un bloc finalisé a une tolérance de faute *F*, "
+"exprimée comme une fraction de la mise totale. Pour qu'un observateur puisse"
+" voir un bloc conflictuel comme finalisé, il faudrait que plusieurs "
+"validateurs dont l'enjeu total dépasse *F* s'entendent et montrent des "
+"informations différentes d'une manière qui serait finalement détectée et "
+"punie (voir `slashing <S.html#slashing>`_)."
+
+#: ../../glossary/B.rst:36
+msgid "Block gossiping"
+msgstr "Le 'Block gossiping'"
+
+#: ../../glossary/B.rst:37
+msgid ""
+"Block gossiping occurs when a message containing a block is sent to one or "
+"more nodes on the network. In other words, block gossiping is sending a "
+"block validated by the current node but created by another node. The terms "
+"*block gossiping* and <#block-passing> are interchangeable."
+msgstr ""
+"le 'Block gossiping' se produit lorsqu'un message contenant un bloc est "
+"envoyé à un ou plusieurs nœuds du réseau. En d'autres termes, le 'Block "
+"gossiping' consiste à envoyer un bloc validé par le nœud actuel mais créé "
+"par un autre nœud. Les termes *block gossiping* et <#block-passing> sont "
+"interchangeables."
+
+#: ../../glossary/B.rst:40
+msgid "Block passing"
+msgstr "Passage de bloc"
+
+#: ../../glossary/B.rst:41
+msgid "See <#block-gossiping>."
+msgstr "Voir <#block-gossiping>."
+
+#: ../../glossary/B.rst:44
+msgid "Block processing"
+msgstr "Traitement des blocs"
+
+#: ../../glossary/B.rst:45
+msgid ""
+"Block processing consists of running the deploys in a block received from "
+"another node to determine updates to the global state. Note that this is an "
+"essential part of `block validating <B.html#block-validating>`_."
+msgstr ""
+"Le traitement des blocs consiste à exécuter les déploiements dans un bloc "
+"reçu d'un autre nœud pour déterminer les mises à jour de l'état global. "
+"Notez que c'est une partie essentielle de la `validation de bloc <B.html"
+"#block-validating>`_."
+
+#: ../../glossary/B.rst:48
+msgid "Block proposal"
+msgstr "Proposition de bloc"
+
+#: ../../glossary/B.rst:49
+msgid ""
+"Sending a (newly) created block to the other nodes on the network for "
+"potential inclusion in the blockchain. Note that this term applies to NEW "
+"blocks only."
+msgstr ""
+"Envoi d'un bloc (nouvellement) créé aux autres nœuds du réseau pour une "
+"inclusion potentielle dans la blockchain. Notez que ce terme s'applique "
+"uniquement aux NOUVEAUX blocs"
+
+#: ../../glossary/B.rst:52
+msgid "Block validation"
+msgstr "Validation des blocs"
+
+#: ../../glossary/B.rst:53
+msgid ""
+"The process of determining the validity of a block obtained from another "
+"node on the network."
+msgstr ""
+"Le processus de détermination de la validité d'un bloc obtenu d'un autre "
+"nœud du réseau."
+
+#: ../../glossary/B.rst:56
+msgid "Blockchain"
+msgstr "Blockchain"
+
+#: ../../glossary/B.rst:57
+msgid ""
+"Blockchain is a P2P network where the collection of nodes (`validators "
+"<V.html#validator>`_) concurrently updates a decentralized, shared database."
+" They do this collectively, building an ever-growing chain of `transactions "
+"<T.html#transaction>`_. For performance reasons, transactions are bundled in"
+" `blocks <#block>`_. According to a particular cooperation protocol "
+"(consensus protocol), the collection of `nodes <N.html#node>`_ connected via"
+" a P2P network cooperate to maintain this shared database as a single source"
+" of truth. The database's current state is called the `global state <G.html"
+"#global-state>`_ and has a sizeable map-like collection."
+msgstr ""
+"Blockchain est un réseau P2P où la collection de nœuds (`validateurs "
+"<V.html#validateur>`_) met à jour simultanément une base de données "
+"décentralisée et partagée. Ils le font collectivement, en construisant une "
+"chaîne toujours croissante de `transactions <T.html#transaction>`_. Pour des"
+" raisons de performance, les transactions sont regroupées en `blocs "
+"<#bloc>`_. Selon un protocole de coopération particulier (protocole de "
+"consensus), la collection de `nœuds <N. html#nœud>`_ connectés via un réseau"
+" P2P coopèrent pour maintenir cette base de données partagée comme une "
+"source unique de vérité. L'état actuel de la base de données est appelé "
+"`état global <G.html#global-state>`_ et possède une collection de cartes de "
+"taille importante."
+
+#: ../../glossary/B.rst:60
+msgid "Block store"
+msgstr "Mémoire de blocs"
+
+#: ../../glossary/B.rst:61
+msgid ""
+"The layer of the node software responsible for storing blocks. This layer is"
+" persisted and can be used to allow a node to recover its state after a "
+"crash."
+msgstr ""
+"La couche du logiciel du nœud responsable du stockage des blocs. Cette "
+"couche est persistante et peut être utilisée pour permettre à un nœud de "
+"récupérer son état après un crash."
+
+#: ../../glossary/B.rst:64
+msgid "Bond"
+msgstr "Caution (Bond)"
+
+#: ../../glossary/B.rst:65
+msgid ""
+"The amount of money (in crypto-currency) that is allocated by a node in "
+"order to participate in `consensus <C.html#consensus>`_ (and to be a "
+"`validator <V.html#validator>`_)."
+msgstr ""
+"Le montant d'argent (en crypto-monnaie) qui est alloué par un nœud afin de "
+"participer au `consensus <C.html#consensus>`_ (et d'être un `validateur "
+"<V.html#validateur>`_)."
+
+#: ../../glossary/B.rst:68
+msgid "Bonding"
+msgstr "Cautionnement (Bonding)"
+
+#: ../../glossary/B.rst:69
+msgid ""
+"Depositing money in the `auction contract<A.html#auction-contract>`_ and try"
+" to become a `staker <S.html#staker>`_. The bonding request is a transaction"
+" that transfers tokens to the auction contract. In the next `booking block "
+"<B.html#booking-block>`_, a new set of validators is determined, with "
+"weights according to their deposits. This new set becomes active in the "
+"era(s) using that booking block."
+msgstr ""
+"Déposer de l'argent dans le `contrat d'enchères<A.html#contrat d'enchères>`_"
+" et essayer de devenir un `staker <S.html#staker>`_. La demande de "
+"cautionnement est une transaction qui transfère des jetons vers le contrat "
+"d'enchères. Dans le prochain `bloc de réservation <B.html#bloc de "
+"réservation>`_, un nouvel ensemble de validateurs est déterminé, avec des "
+"poids en fonction de leurs dépôts. Ce nouvel ensemble devient actif dans la "
+"ou les ère(s) utilisant ce bloc de réservation."
+
+#: ../../glossary/B.rst:72
+msgid "Booking block"
+msgstr "Bloc de réservation (Booking block)"
+
+#: ../../glossary/B.rst:73
+msgid ""
+"The booking block for an era is the block that determines the era's "
+"validator set. In it, the `auction contract<A.html#auction-contract>`_ "
+"selects the highest bidders to be the future era's validators. There is a "
+"configurable delay, the *auction_delay*, which is the number of eras between"
+" the booking block and the era to which it applies. The booking block is "
+"always a switch block, so the booking block for era *N + auction_delay + 1* "
+"is the last block of era *N*."
+msgstr ""
+"Le bloc de réservation d'une ère est le bloc qui détermine l'ensemble des "
+"validateurs de l'ère. Dans ce bloc, le `contrat d'enchère<A.html#contrat "
+"d'enchère>`_ sélectionne les meilleurs enchérisseurs pour être les "
+"validateurs de la future ère. Il y a un délai configurable, le "
+"*auction_delay*, qui est le nombre d'ères entre le bloc de réservation et "
+"l'ère à laquelle il s'applique. Le bloc de réservation est toujours un bloc "
+"de commutation, donc le bloc de réservation pour l'ère *N + auction_delay + "
+"1* est le dernier bloc de l'ère *N*."
