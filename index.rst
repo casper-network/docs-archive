@@ -39,24 +39,18 @@ Casper Network’s development ecosystem is designed to support WebAssembly, rat
   
   Rust is the primary programming language for smart contracts on the Casper blockchain because of its good support for compilation to wasm. However, the platform does not make assumptions about the source language and supports libraries facilitating contract development in other programming languages having wasm as a compile target. 
   
-  Other essential features include an account permissions model that allows the recovery of lost keys and a permissions model to securely share state between accounts and contracts (without expensive cryptographic checks). The Casper Network resource also provides discussions of the economics of proof-of-stake implementation and the network’s token policies.
+Account Management
+~~~~~~~~~~~~~~~~~~
+
+Other essential features include an account permissions model that allows the recovery of lost keys and a permissions model to securely share state between accounts and contracts (without expensive cryptographic checks). 
 
 Predictable Network Fees
 ~~~~~~~~~~~~~~~~~~~~~~~~ 
 
 Casper seeks to eliminate volatility and improve developer and enterprise experiences by establishing transparent, consistent, and predictable gas prices. This feature seeks to promote active and diverse network behaviour.
 
-How Casper Works?
-*****************
-
-Casper relies on a group of validators to verify transactions and uphold the network. Unlike Proof-of-Work networks, which need to centralize validators for economies of scale, the Casper Network allows for geographical decentralization of validators. That’s because PoS validators have a different hardware setup, and they participate in verifying transactions based on staked tokens. 
-
-Validators on the Casper Network receive CSPR rewards for participating in the PoS consensus mechanism. (CSPR is Casper Network’s native token).
-
-Casper’s PoS network also supports scalability mechanisms like sharding. With sharding, Casper improves overall throughput by allowing the network to process many transactions concurrently.
-
-Why go for Casper’s Blockchain?
-*******************************
+How does Casper Work?
+*********************
 
 Casper relies on a group of validators to verify transactions and uphold the network. Unlike Proof-of-Work networks, which need to centralize validators for economies of scale, Casper allows for the geographical decentralization of validators. Casper validators verify transactions based on staked tokens and receive CSPR rewards for participating in the PoS consensus mechanism. CSPR is the native token on the Casper Network.
 
