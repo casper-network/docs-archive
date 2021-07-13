@@ -1,0 +1,317 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../implementation/p2p.rst:4
+msgid "Network Communication"
+msgstr "Communication en réseau"
+
+#: ../../implementation/p2p.rst:8
+msgid ""
+"Nodes form a peer-to-peer network are continually communicating with each "
+"other to reach *consensus* about the blockchain state. A node is not "
+"necessarily a single physical machine. Still, it appears as a single logical"
+" entity to the rest of its peers by having a unique ID and address where it "
+"responds to incoming network traffic."
+msgstr ""
+"Les nœuds forment un réseau peer-to-peer et communiquent continuellement "
+"entre eux pour parvenir à un *consensus* sur l'état de la blockchain. Un "
+"nœud n'est pas nécessairement une machine physique unique. Cependant, il "
+"apparaît comme une entité logique unique au reste de ses pairs en ayant un "
+"ID unique et une adresse où il répond au trafic réseau entrant."
+
+#: ../../implementation/p2p.rst:11
+msgid "Identity"
+msgstr "Identité"
+
+#: ../../implementation/p2p.rst:13
+msgid ""
+"Each node has an identity on the network (which is not the same as its "
+"identity in the consensus process). The network identity (ID) is based on "
+"the fingerprint of the public key of a self-signed TLS certificate. A node "
+"generates a new private key each time it starts, ensuring a unique ID."
+msgstr ""
+"Chaque nœud a une identité sur le réseau (qui n'est pas la même que son "
+"identité dans le processus de consensus). L'identité du réseau (ID) est "
+"basée sur l'empreinte de la clé publique d'un certificat TLS auto-signé. Un "
+"nœud génère une nouvelle clé privée à chaque démarrage, ce qui garantit une "
+"identité unique."
+
+#: ../../implementation/p2p.rst:15
+msgid ""
+"Each identity is linked with an address, which is an IP and port pair where "
+"the node is reachable. This address is also called an endpoint."
+msgstr ""
+"Chaque identité est liée à une adresse, qui est une paire IP et port où le "
+"nœud est joignable. Cette adresse est également appelée point de terminaison"
+" (endpoint)."
+
+#: ../../implementation/p2p.rst:18
+msgid "Inter-node connections"
+msgstr "Connexions inter-nœuds"
+
+#: ../../implementation/p2p.rst:20
+msgid ""
+"Should a node want to connect to another node with a known endpoint, it "
+"opens a TLS connection to the endpoint's address. In the context of common "
+"TLS terminology, this makes the connecting node the *client* and the remote "
+"node the *server* for this connection."
+msgstr ""
+"Si un nœud veut se connecter à un autre nœud avec un point de terminaison "
+"(endpoint) connu, il ouvre une connexion TLS à l'adresse du point de "
+"terminaison. Dans le contexte de la terminologie TLS, cela fait du nœud se "
+"connectant le *client* et du nœud distant le *serveur* de cette connexion."
+
+#: ../../implementation/p2p.rst:22
+msgid ""
+"During connection setup, the client checks the server's certificate, "
+"matching the endpoint's expected public identity to ensure we have connected"
+" to the right node. Additionally, the TLS parameters of the connection and "
+"certificate are required to contain the same ciphers, digests, etc., to "
+"protect against downgrade attacks."
+msgstr ""
+"Pendant l'établissement de la connexion, le client vérifie le certificat du "
+"serveur, en faisant correspondre l'identité publique attendue du point de "
+"terminaison (endpoint) pour s'assurer que nous nous sommes connectés au bon "
+"nœud. En outre, les paramètres TLS de la connexion et du certificat doivent "
+"contenir les mêmes ' ciphers', 'digests', etc. afin de se protéger contre "
+"les attaques."
+
+#: ../../implementation/p2p.rst:24
+msgid ""
+"Simultaneously, the connecting node sends its certificate as the client "
+"certificate, allowing the server to perform the same check-in reverse and "
+"establish the client's ID. At the end of the process, both nodes can be sure"
+" to which peer they are connected."
+msgstr ""
+"Simultanément, le nœud 'client' envoie son certificat en tant que certificat"
+" du client, ce qui permet au nœud 'serveur' d'effectuer le même contrôle "
+"inverse et d'établir l'identité du client. À la fin du processus, les deux "
+"nœuds sont sûrs de savoir à quel pair ils sont connectés."
+
+#: ../../implementation/p2p.rst:26
+msgid ""
+"Once a connection is established, the server will immediately seek to "
+"connect back to a node based on its endpoint (see `Node Discovery`_ on how "
+"the server finds endpoints) if it is a one-way connection. If a "
+"bidirectional connection setup cannot be established within a certain amount"
+" of time, all peer ID connections are dropped."
+msgstr ""
+"Une fois qu'une connexion est établie, le serveur cherche immédiatement à se"
+" reconnecter à un noeud en fonction de son point de terminaison (voir "
+"`Découverte des nœuds`_ sur la façon dont le serveur trouve les points de "
+"terminaison) s'il s'agit d'une connexion unidirectionnelle. Si une connexion"
+" bidirectionnelle ne peut pas être établie dans un certain laps de temps, "
+"toutes les connexions de type peer ID sont abandonnées."
+
+#: ../../implementation/p2p.rst:28
+msgid ""
+"Connections are used for sending messages one-way only; only the node "
+"initiating a connection will send messages on it."
+msgstr ""
+"Les connexions sont utilisées pour envoyer des messages dans un seul sens ; "
+"seul le nœud qui initie une connexion peut envoyer des messages sur celle-"
+"ci."
+
+#: ../../implementation/p2p.rst:31
+msgid "Network"
+msgstr "Réseau"
+
+#: ../../implementation/p2p.rst:33
+msgid ""
+"As soon as a node has connected to one node in the network, it partakes in "
+"`Node Discovery`_. In general, any node will attempt to connect to any other"
+" node on the network it finds as described above, leading to a fully "
+"connected network."
+msgstr ""
+"Dès qu'un nœud s'est connecté à un autre nœud du réseau, il participe à la "
+"`Découverte des nœuds`_. En général, tout nœud tente de se connecter à tout "
+"autre nœud du réseau qu'il trouve comme décrit ci-dessus, ce qui conduit à "
+"un réseau entièrement connecté."
+
+#: ../../implementation/p2p.rst:35
+msgid ""
+"Two classes of data transfers happen in the network; broadcasts and "
+"gossiping. A broadcast message is sent once, without guarantees, to all the "
+"nodes connected to it. The process of gossiping is described further below."
+msgstr ""
+"Deux classes de transferts de données se produisent dans le réseau : "
+"'broadcasts' (diffusions) et 'gossiping' . Un message broadcast est envoyé "
+"une fois, sans garantie, à tous les nœuds qui lui sont connectés. Le "
+"processus de 'gossiping' est décrit plus loin."
+
+#: ../../implementation/p2p.rst:37
+msgid ""
+"In general, only consensus messages, which are only sent by active "
+"validators, are broadcast. Everything else is gossipped."
+msgstr ""
+"En général, seuls les messages de consensus, qui ne sont envoyés que par les"
+" validateurs actifs, sont de type 'broadcast'. Tout le reste est de type "
+"'gossiping'."
+
+#: ../../implementation/p2p.rst:42
+msgid "Gossiping"
+msgstr "Gossiping"
+
+#: ../../implementation/p2p.rst:44
+msgid ""
+"Multiple types of objects are gossipped, the most prominent ones being "
+"blocks, deploys, and endpoints (see `Identity`_). Each of these objects is "
+"immutable and can be identified by a unique hash."
+msgstr ""
+"Plusieurs types d'objets sont 'gossipés', les plus importants étant les "
+"blocs, les déploiements et les endpoints (voir `Identité`_). Chacun de ces "
+"objets est immuable et peut être identifié par un hash unique."
+
+#: ../../implementation/p2p.rst:46
+msgid ""
+"Gossiping is a process of distributing a value across the entire network "
+"without directly sending it to each node. This process allows only a subset "
+"of nodes to be connected to the original sender and spreading the bandwidth "
+"and processing requirements across the network at the cost of latency and "
+"overall bandwidth consumed."
+msgstr ""
+"Le Gossiping est un processus qui consiste à distribuer une valeur sur "
+"l'ensemble du réseau sans l'envoyer directement à chaque nœud. Ce processus "
+"permet de ne connecter qu'un sous-ensemble de nœuds à l'expéditeur initial "
+"et de répartir les besoins en bande passante et en traitement sur l'ensemble"
+" du réseau, au prix de la latence et de la bande passante globale consommée."
+
+#: ../../implementation/p2p.rst:48
+msgid "The process can be summarized as follows:"
+msgstr "Le processus peut être résumé comme suit :"
+
+#: ../../implementation/p2p.rst:50
+msgid ""
+"Given a message `M` to gossip, the desired saturation `S`, and an infection "
+"limit `L`:"
+msgstr ""
+"Étant donné un message `M` à 'gossiper', la saturation souhaitée `S`, et une"
+" limite d'infection `L` :"
+
+#: ../../implementation/p2p.rst:52
+msgid "Pick a subset `T` of `k` nodes from all currently connected nodes."
+msgstr ""
+"Choisir un sous-ensemble `T` de `k` noeuds parmi tous les noeuds "
+"actuellement connectés."
+
+#: ../../implementation/p2p.rst:53
+msgid ""
+"Send `M` to each node in `T`, noting which nodes were already infected (a "
+"node is considered infected if it already had received or known `M`)."
+msgstr ""
+"Envoyer `M` à chaque nœud de `T`, en notant les nœuds déjà infectés (un nœud"
+" est considéré comme infecté s'il a déjà reçu ou connu `M`)."
+
+#: ../../implementation/p2p.rst:54
+msgid ""
+"For every node shown as already infected, add another random node outside to"
+" `T` and send it `M`, again noting the response."
+msgstr ""
+"Pour chaque nœud indiqué comme étant déjà infecté, ajoutez un autre nœud "
+"aléatoire à l'extérieur de `T` et envoyez-lui `M`, en notant à nouveau la "
+"réponse."
+
+#: ../../implementation/p2p.rst:55
+msgid ""
+"End when we confirm infection of `L` new nodes or encountered `S` already "
+"infected nodes."
+msgstr ""
+"On arrête quand on confirme l'infection de `L` nouveaux noeuds ou qu'on "
+"atteint `S` noeuds déjà infectés."
+
+#: ../../implementation/p2p.rst:57
+msgid ""
+"Through this process, a message will spread to almost all nodes over time."
+msgstr ""
+"Grâce à ce processus, un message se répandra à presque tous les nœuds au fil"
+" du temps."
+
+#: ../../implementation/p2p.rst:60
+msgid "Requesting missing data"
+msgstr "Demande de données manquantes"
+
+#: ../../implementation/p2p.rst:62
+msgid ""
+"While gossiping and broadcasting are sufficient to distribute data across "
+"the network in most cases, nodes can also request missing data from peers "
+"should they require it. A common example is a missing deploy from a block."
+msgstr ""
+"Si le 'gossiping' et le 'broadcasting' suffisent à distribuer les données "
+"sur le réseau dans la plupart des cas, les nœuds peuvent également demander "
+"des données manquantes à leurs pairs s'ils en ont besoin. Un exemple courant"
+" est le déploiement manquant d'un bloc."
+
+#: ../../implementation/p2p.rst:65
+msgid "Validation"
+msgstr "Validation"
+
+#: ../../implementation/p2p.rst:67
+msgid ""
+"Objects have a concept of dependencies. For example, a block depends on all "
+"the deploys whose hashes are listed inside it. A node considers any object "
+"valid if all of its dependencies are available on the local node."
+msgstr ""
+"Les objets ont un concept de dépendances. Par exemple, un bloc dépend de "
+"tous les déploiements dont les hashs sont listés à l'intérieur. Un nœud "
+"considère qu'un objet est valide si toutes ses dépendances sont disponibles "
+"sur le nœud local."
+
+#: ../../implementation/p2p.rst:69
+msgid ""
+"Should a node receive an object from a peer that is not valid yet, it will "
+"attempt to complete its validation before processing it further. In the case"
+" of gossiping, this means pausing the gossiping of the object until all its "
+"dependencies can be retrieved."
+msgstr ""
+"Si un nœud reçoit un objet non encore valide d'un pair , il tentera de "
+"compléter sa validation avant de le traiter. Dans le cas du 'gossiping', "
+"cela signifie la mise en pause du 'gossiping' sur cet objet jusqu'à ce que "
+"toutes ses dépendances soient récupérées."
+
+#: ../../implementation/p2p.rst:71
+msgid ""
+"Any node is responsible for only propagating valid objects. Should a node "
+"not retrieve all missing dependencies of an object from the peer that sent "
+"it, it may punish the peer for doing so."
+msgstr ""
+"Tout nœud est responsable de ne propager que des objets valides. Si un nœud "
+"ne récupère pas toutes les dépendances manquantes d'un objet auprès du pair "
+"qui l'a envoyé, il peut le punir pour cela."
+
+#: ../../implementation/p2p.rst:74
+msgid "Node Discovery"
+msgstr "Découverte des nœuds"
+
+#: ../../implementation/p2p.rst:76
+msgid ""
+"Node discovery happens by each node periodically gossiping its public "
+"address. Upon receiving an address via gossip, each node immediately tries "
+"to establish a connection to it and notes the resulting endpoint, if "
+"successful."
+msgstr ""
+"La découverte des nœuds se fait par le biais de chaque nœud qui communique "
+"périodiquement son adresse publique. Lorsqu'il reçoit une adresse via "
+"'gossip', un nœud essaie immédiatement d'établir une connexion avec cette "
+"adresse et mémorise son point de terminaison (endpoint) en cas de succès."
