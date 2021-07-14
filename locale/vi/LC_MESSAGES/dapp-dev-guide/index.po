@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/index.rst:27
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../dapp-dev-guide/index.rst:2
+msgid "Developers"
+msgstr "Nhà phát triển"
+
+#: ../../dapp-dev-guide/index.rst:4
+msgid ""
+"This guide is designed to support developers getting started with the "
+"development of smart contracts on the Casper blockchain in AssemblyScript or"
+" Rust. For Rust, there is a contract development kit that includes a runtime"
+" environment, reference documentation, and test framework. You can install "
+"our environment locally, create and test Smart Contracts with our Smart "
+"Contracts and Test Libraries, and use these libraries to build your own "
+"applications."
+msgstr ""
+"Hướng dẫn này được thiết kế để hỗ trợ các nhà phát triển bắt đầu phát triển "
+"các hợp đồng thông minh trên chuỗi khối Casper trong AssemblyScript hoặc "
+"Rust. Đối với Rust, có một bộ phát triển hợp đồng bao gồm môi trường chạy "
+"thời gian thực, tài liệu tham khảo và nền tảng kiểm thử. Bạn có thể cài đặt "
+"cục bộ môi trường của chúng tôi, tạo và kiểm thử Hợp đồng thông minh với Hợp"
+" đồng thông minh và Thư viện kiểm thử của chúng tôi, đồng thời sử dụng các "
+"thư viện này để xây dựng các ứng dụng của riêng bạn."
+
+#: ../../dapp-dev-guide/index.rst:6
+msgid ""
+"It is recommended you have prior knowledge about Unix-based operating "
+"systems, like GNU/Linux or macOS, and programming knowledge with:"
+msgstr ""
+"Bạn nên có kiến thức trước về hệ điều hành dựa trên Unix, như GNU / Linux "
+"hoặc macOS và kiến thức lập trình với:"
+
+#: ../../dapp-dev-guide/index.rst:8
+msgid "Rust"
+msgstr "Rust"
+
+#: ../../dapp-dev-guide/index.rst:9
+msgid "AssemblyScript"
+msgstr "AssemblyScript"
+
+#: ../../dapp-dev-guide/index.rst:10
+msgid "JavaScript (optional)"
+msgstr "JavaScript (tuỳ chọn)"
+
+#: ../../dapp-dev-guide/index.rst:11
+msgid "Python (optional)"
+msgstr "Python (tuỳ chọn)"
+
+#: ../../dapp-dev-guide/index.rst:13
+msgid ""
+"The topics on the index include present and future documentation initiatives"
+" in our roadmap and are organized so that you will be able to:"
+msgstr ""
+"Các chủ đề trong chỉ mục bao gồm các tài liệu khởi tạo hiện tại và tương lai"
+" trong lộ trình của chúng tôi và được sắp xếp để bạn có thể:"
+
+#: ../../dapp-dev-guide/index.rst:15
+msgid "Understand what CasperLabs is building."
+msgstr "Hiểu những gì CasperLabs đang xây dựng."
+
+#: ../../dapp-dev-guide/index.rst:16
+msgid "Learn how to build and operate applications on the platform."
+msgstr "Tìm hiểu cách xây dựng và vận hành các ứng dụng trên nền tảng."
+
+#: ../../dapp-dev-guide/index.rst:17
+msgid "Learn how to set up the CasperLabs environment locally."
+msgstr "Tìm hiểu cách thiết lập môi trường CasperLabs cục bộ."
+
+#: ../../dapp-dev-guide/index.rst:18
+msgid "Work with our Contracts API to access our Rust resources."
+msgstr ""
+"Làm việc với API hợp đồng của chúng tôi để truy cập tài nguyên Rust của "
+"chúng tôi. "
+
+#: ../../dapp-dev-guide/index.rst:19
+msgid "Learn how to create and test Smart Contracts with our libraries."
+msgstr ""
+"Tìm hiểu cách tạo và kiểm tra Hợp đồng thông minh với các thư viện của chúng"
+" tôi."
+
+#: ../../dapp-dev-guide/index.rst:20
+msgid "Work with the multi-signature capability to sign transactions."
+msgstr "Làm việc với khả năng đa chữ ký để ký các giao dịch."
+
+#: ../../dapp-dev-guide/index.rst:22
+msgid ""
+"The motivation for our roadmap is inspired by feedback we are receiving from"
+" your recommendations. We hope you continue to provide your feedback as you "
+"embark on this journey with us -- we look forward to building a "
+"decentralized future together."
+msgstr ""
+"Động lực cho lộ trình của chúng tôi được truyền cảm hứng từ phản hồi mà "
+"chúng tôi nhận được từ các đề xuất của bạn. Chúng tôi hy vọng bạn tiếp tục "
+"cung cấp phản hồi của mình khi bạn bắt đầu cuộc hành trình này với chúng tôi"
+" - chúng tôi mong muốn cùng nhau xây dựng một tương lai phi tập trung."
+
+#: ../../dapp-dev-guide/index.rst:24
+msgid ""
+"`Coding Standards and Review "
+"<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
+"cover best practices and recommendations following our coding standards, "
+"code reviews and publishing your code to our GitHub."
+msgstr ""
+"`Tiêu chuẩn và đánh giá mã "
+"<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
+"cover best practices and recommendations following our coding standards, "
+"code reviews and publishing your code to our GitHub.bao gồm các bài thực "
+"hành hay nhất và đề xuất tuân theo các tiêu chuẩn mã hóa, đánh giá mã và "
+"xuất bản mã của bạn lên GitHub của chúng tôi."
