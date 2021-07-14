@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:2
+msgid "ERC-20 Tutorial"
+msgstr "Hướng dẫn ERC-20"
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:4
+msgid ""
+"This tutorial reviews an implementation of the ERC-20 standard for Casper."
+msgstr "Hướng dẫn này đánh giá việc triển khai tiêu chuẩn ERC-20 cho Casper."
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:6
+msgid ""
+"Most smart-contract developers are familiar with ERC-20 standard, which "
+"comes from the Ethereum ecosystem. This standard is well established for "
+"building new tokens based on smart contracts. In this tutorial, we will "
+"implement the ERC-20 standard for the Casper blockchain."
+msgstr ""
+"Hầu hết các nhà phát triển hợp đồng thông minh đều quen thuộc với tiêu chuẩn"
+" ERC-20, xuất phát từ hệ sinh thái Ethereum. Tiêu chuẩn này được thiết lập "
+"tốt để xây dựng các mã thông báo mới dựa trên các hợp đồng thông minh. Trong"
+" hướng dẫn này, chúng tôi sẽ triển khai tiêu chuẩn ERC-20 cho chuỗi khối "
+"Casper."
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:8
+msgid ""
+"The code for this tutorial is available in `GitHub <https://github.com"
+"/casper-ecosystem/erc20>`_. If you haven't read `Writing Rust Contracts on "
+"Casper <https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-"
+"contracts/writing-rust-contracts.html>`_ , we recommend you start there."
+msgstr ""
+"Mã cho hướng dẫn này có sẵn tại `GitHub <https://github.com/casper-"
+"ecosystem/erc20>`_. Nếu bạn chưa đọc `Viết Hợp đồng Rust trên Casper "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-contracts"
+"/writing-rust-contracts.html>`_ , chúng tôi khuyên bạn nên bắt đầu từ đó."
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:10
+msgid "**Tutorial Content**"
+msgstr "**Nội dung hướng dẫn**"
