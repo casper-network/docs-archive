@@ -3,145 +3,153 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../glossary/M.rst:2
 msgid "M"
-msgstr ""
+msgstr "M"
 
 #: ../../glossary/M.rst:5
 msgid "`A <A.html>`_"
-msgstr ""
+msgstr "`A <A.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`B <B.html>`_"
-msgstr ""
+msgstr "`B <B.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`C <C.html>`_"
-msgstr ""
+msgstr "`C <C.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`D <D.html>`_"
-msgstr ""
+msgstr "`D <D.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`E <E.html>`_"
-msgstr ""
+msgstr "`E <E.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`F <F.html>`_"
-msgstr ""
+msgstr "`F <F.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`G <G.html>`_"
-msgstr ""
+msgstr "`G <G.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`H <H.html>`_"
-msgstr ""
+msgstr "`H <H.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`I <I.html>`_"
-msgstr ""
+msgstr "`I <I.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`J <J.html>`_"
-msgstr ""
+msgstr "`J <J.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`K <K.html>`_"
-msgstr ""
+msgstr "`K <K.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`L <L.html>`_"
-msgstr ""
+msgstr "`L <L.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`M <M.html>`_"
-msgstr ""
+msgstr "`M <M.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`N <N.html>`_"
-msgstr ""
+msgstr "`N <N.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`O <O.html>`_"
-msgstr ""
+msgstr "`O <O.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`P <P.html>`_"
-msgstr ""
+msgstr "`P <P.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`Q <Q.html>`_"
-msgstr ""
+msgstr "`Q <Q.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`R <R.html>`_"
-msgstr ""
+msgstr "`R <R.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`S <S.html>`_"
-msgstr ""
+msgstr "`S <S.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`T <T.html>`_"
-msgstr ""
+msgstr "`T <T.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`U <U.html>`_"
-msgstr ""
+msgstr "`U <U.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`V <V.html>`_"
-msgstr ""
+msgstr "`V <V.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`W <W.html>`_"
-msgstr ""
+msgstr "`W <W.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`X <X.html>`_"
-msgstr ""
+msgstr "`X <X.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`Y <Y.html>`_"
-msgstr ""
+msgstr "`Y <Y.html>`_"
 
 #: ../../glossary/M.rst:5
 msgid "`Z <Z.html>`_"
-msgstr ""
+msgstr "`Z <Z.html>`_"
 
 #: ../../glossary/M.rst:9
 msgid "Mainnet"
-msgstr ""
+msgstr "Ana ağ (Mainnet)"
 
 #: ../../glossary/M.rst:10
 msgid "The live, decentralized, and public Casper platform, with version 1.0."
-msgstr ""
+msgstr "Canlı, merkeziyetsiz ve herkese açık Casper platformu sürüm 1.0."
 
 #: ../../glossary/M.rst:13
 msgid "Merkle tree"
-msgstr ""
+msgstr "Merkle ağacı"
 
 #: ../../glossary/M.rst:14
 msgid ""
-"A hash tree in which every leaf node is labelled with the cryptographic "
-"hash of a data block, and every non-leaf node is labelled with the "
-"cryptographic hash of the labels of its child nodes."
+"A hash tree in which every leaf node is labelled with the cryptographic hash"
+" of a data block, and every non-leaf node is labelled with the cryptographic"
+" hash of the labels of its child nodes."
 msgstr ""
-
+"Her yaprak düğümün bir veri bloğunun kriptografik özeti (hash) ile "
+"etiketlendiği ve her yaprak olmayan düğümün alt düğümlerinin etiketlerinin "
+"kriptografik özeti (hash) ile etiketlendiği bir karma ağaç."
