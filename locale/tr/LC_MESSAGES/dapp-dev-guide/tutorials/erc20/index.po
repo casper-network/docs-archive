@@ -3,28 +3,35 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# ilker <bilkerarslan40@gmail.com>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../dapp-dev-guide/tutorials/erc20/index.rst:2
 msgid "ERC-20 Tutorial"
-msgstr ""
+msgstr "ERC-20 Eğitimi"
 
 #: ../../dapp-dev-guide/tutorials/erc20/index.rst:4
-msgid "This tutorial reviews an implementation of the ERC-20 standard for Casper."
-msgstr ""
+msgid ""
+"This tutorial reviews an implementation of the ERC-20 standard for Casper."
+msgstr "Bu eğitim, Casper için ERC-20 standardının bir uyarlamasını inceler."
 
 #: ../../dapp-dev-guide/tutorials/erc20/index.rst:6
 msgid ""
@@ -33,16 +40,24 @@ msgid ""
 "building new tokens based on smart contracts. In this tutorial, we will "
 "implement the ERC-20 standard for the Casper blockchain."
 msgstr ""
+"Akıllı sözleşme geliştiricilerinin çoğu, Ethereum ekosisteminden gelen "
+"ERC-20 standardına aşinadır. Bu standart, akıllı kontratlara dayalı yeni "
+"tokenler oluşturmak için sağlam bir şekilde yapılandırılmıştır. Bu eğitimde,"
+" ERC-20 standardını, Casper blokzinciri için uygulayacağız."
 
 #: ../../dapp-dev-guide/tutorials/erc20/index.rst:8
 msgid ""
 "The code for this tutorial is available in `GitHub <https://github.com"
-"/casper-ecosystem/erc20>`_. If you haven't read `Writing Rust Contracts "
-"on Casper <https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-"
+"/casper-ecosystem/erc20>`_. If you haven't read `Writing Rust Contracts on "
+"Casper <https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-"
 "contracts/writing-rust-contracts.html>`_ , we recommend you start there."
 msgstr ""
+"Bu eğitimdeki kod, `GitHub <https://github.com/casper-ecosystem/erc20>`_ 'da"
+" mevcuttur. Eğer `Casper'da Rust Kontratları Yazma "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-contracts"
+"/writing-rust-contracts.html>`_'yı okumadıysanız, buradan başlamanızı "
+"tavsiye ederiz."
 
 #: ../../dapp-dev-guide/tutorials/erc20/index.rst:10
 msgid "**Tutorial Content**"
-msgstr ""
-
+msgstr "**Eğitim İçeriği**"
