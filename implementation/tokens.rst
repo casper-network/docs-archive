@@ -15,7 +15,7 @@ This chapter describes how we define tokens and how one can use them on the Casp
 Token Generation and Distribution
 ---------------------------------
 
-A blockchain system generally needs to have a supply of tokens available to pay for computation and reward validators for processing transactions on the network. The initial supply at the launch of Mainnet was 10 billion CSPR, the current supply is available `here <https://api.cspr.live/supply>`_. In addition to the initial supply, the system will have a low rate of inflation, the results of which will be paid out to validators in the form of seigniorage.
+A blockchain system generally needs to have a supply of tokens available to pay for computation and reward validators for processing transactions on the network. The initial supply at the launch of Mainnet was 10 billion CSPR. The current supply is available `here <https://api.cspr.live/supply>`_. In addition to the initial supply, the system will have a low rate of inflation, the results of which will be paid out to validators in the form of seigniorage.
 
 The number of tokens used as a basis for calculating seigniorage is 10 billion.
 
