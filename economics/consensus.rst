@@ -49,7 +49,7 @@ With slashing disabled, we can compute block rewards starting with the formula b
 - ``i`` - the era's index as a positive integer [0, 1, 2, ..., n]
 - ``initial_supply`` - the number of CSPR at genesis
 - ``issuance_rate`` - the annual rate at which new CSPR tokens are minted
-- ``ticks_per_year`` - a number equal to 31,536,000,000 calculated as 365*24*60*60*1000 = 31,536,000,000
+- ``ticks_per_year`` - the number of milliseconds in a year equal to 31,536,000,000
 
 .. code-block::
 
