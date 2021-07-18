@@ -3,187 +3,239 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../theory/index.rst:54
 msgid "Introduction"
-msgstr ""
+msgstr "Giriş"
 
 #: ../../theory/index.rst:5
 msgid "Theory"
-msgstr ""
+msgstr "Teori"
 
 #: ../../theory/index.rst:7
 msgid ""
-"This is version 3.0 of technical specification and it corresponds to "
-"April 2020 release of our platform (\"Alpha Testnet\")."
+"This is version 3.0 of technical specification and it corresponds to April "
+"2020 release of our platform (\"Alpha Testnet\")."
 msgstr ""
+"Bu, teknik özelliklerin 3.0 sürümüdür ve platformumuzun (\"Alpha Testnet\") "
+"Nisan 2020 sürümüne karşılık gelmektedir."
 
 #: ../../theory/index.rst:10
-msgid "To build a proof-of-stake blockchain, one must follow this general recipe:"
+msgid ""
+"To build a proof-of-stake blockchain, one must follow this general recipe:"
 msgstr ""
+"Hisse kanıtı blokzinciri oluşturmak için şu genel tarifi takip etmek "
+"gerekir:"
 
 #: ../../theory/index.rst:12
 msgid ""
-"Pick the core consensus protocol (a machinery that allows to do "
-"distributed selection of one element from a finite set)."
+"Pick the core consensus protocol (a machinery that allows to do distributed "
+"selection of one element from a finite set)."
 msgstr ""
+"Çekirdek mutabakat protokolünü seçin (sonlu bir kümeden bir elemanın dağıtık"
+" seçimini yapmaya izin veren bir makine)."
 
 #: ../../theory/index.rst:14
 msgid ""
 "Pick the model of transactions ledger (transactions and blocks structure "
 "show up here)."
 msgstr ""
+"İşlem defteri modelini seçin (işlemler ve blok yapısı burada gösterilir)."
 
 #: ../../theory/index.rst:15
 msgid ""
-"Apply the core consensus to the ledger, i.e. establish consensus-based "
-"way of extending the ledger by blockchain participants. Ensure that "
-"liveness theorem can be proven for the resulting design."
+"Apply the core consensus to the ledger, i.e. establish consensus-based way "
+"of extending the ledger by blockchain participants. Ensure that liveness "
+"theorem can be proven for the resulting design."
 msgstr ""
+"Çekirdek mutabakatı deftere uygulayın, yani defteri blokzincir katılımcıları"
+" tarafından genişletmenin mutabakata dayalı bir yolunu oluşturun. Elde "
+"edilen tasarım için canlılık teoreminin kanıtlanabildiğinden emin olun."
 
 #: ../../theory/index.rst:17
 msgid "Plug-in stakes management solution."
-msgstr ""
+msgstr "Hisse yönetimi çözümünü ekleyin."
 
 #: ../../theory/index.rst:18
 msgid ""
-"Plug-in the suitable computing model (i.e. smart contracts virtual "
-"machine)."
+"Plug-in the suitable computing model (i.e. smart contracts virtual machine)."
 msgstr ""
+"Uygun bilgi işlem modelini ekleyin (yani akıllı kontratlar sanal makinesi)."
 
 #: ../../theory/index.rst:20
 msgid ""
-"The \"Theory\" chapter explains how we approached steps (1) ... (4) in "
-"the abstract way, while implementation-level details are specified in "
-"\"CasperLabs Blockchain Design\" chapter. The outline of material "
-"presented is:"
+"The \"Theory\" chapter explains how we approached steps (1) ... (4) in the "
+"abstract way, while implementation-level details are specified in "
+"\"CasperLabs Blockchain Design\" chapter. The outline of material presented "
+"is:"
 msgstr ""
+"\"Teori\" bölümü, (1) ... (4) adımlarına soyut bir şekilde nasıl "
+"yaklaştığımızı açıklarken, uygulama düzeyindeki ayrıntılar \"CasperLabs "
+"Blokzincir Tasarımı\" bölümünde belirtilmiştir. Sunulan belgenin ana "
+"hatları:"
 
 #: ../../theory/index.rst:23
 msgid ""
-"**Abstract Casper Consensus** - presents the core consensus protocol we "
-"use; concepts such as estimator, finality and fault-tolerance threshold "
-"and summits are explained"
+"**Abstract Casper Consensus** - presents the core consensus protocol we use;"
+" concepts such as estimator, finality and fault-tolerance threshold and "
+"summits are explained"
 msgstr ""
+"**Soyut Casper Mutabakatı** - kullandığımız temel mutabakat protokolünü "
+"sunar; tahmin edici, kesinlik ve hata tolerans eşiği ve zirveler gibi "
+"kavramlar açıklanır"
 
 #: ../../theory/index.rst:25
 msgid ""
 "**Brickdag** - introduces the transactions ledger structure - bricks, "
 "blocks, ballots, parents tree and justifications graph"
 msgstr ""
+"**Brickdag** - işlem defteri yapısını tanıtır - kalıplar, bloklar, oy "
+"pusulaları, ana ağaç ve gerekçeler grafiği"
 
 #: ../../theory/index.rst:27
 msgid ""
-"**Leaders and rounds** - explains the mechanics of \"Flat Highway\", i.e."
-" when the set of validators is fixed"
+"**Leaders and rounds** - explains the mechanics of \"Flat Highway\", i.e. "
+"when the set of validators is fixed"
 msgstr ""
+"**Liderler ve turlar** - \"Flat Highway\"in mekaniğini açıklar, mesela "
+"doğrulayıcı seti sabitlendiğinde"
 
 #: ../../theory/index.rst:28
 msgid ""
-"**Fork choice and finality** - applies the abstract Casper consensus to "
-"the brickdag"
+"**Fork choice and finality** - applies the abstract Casper consensus to the "
+"brickdag"
 msgstr ""
+"**Çatal seçimi ve kesinlik** - soyut Casper mutabakatını brickdag'a uygular"
 
 #: ../../theory/index.rst:29
 msgid "**Eras** - describes how we do stake management in Highway"
-msgstr ""
+msgstr "**Dönemler** - Hightway'de hisse yönetimini nasıl yaptığımızı açıklar"
 
 #: ../../theory/index.rst:30
 msgid ""
-"**Known limitations and features planned for ver 4.0** - sketches changes"
-" we anticipate to hit version 4.0 of this spec"
+"**Known limitations and features planned for ver 4.0** - sketches changes we"
+" anticipate to hit version 4.0 of this spec"
 msgstr ""
+"**4.0 sürümü için bilinen sınırlamalar ve planlanan özellikler** - bu "
+"belirtimin 4.0 sürümüne ulaşmasını beklediğimiz taslaklar değişiklikler"
 
 #: ../../theory/index.rst:33
 msgid "Research trace"
-msgstr ""
+msgstr "Araştırma izi"
 
 #: ../../theory/index.rst:35
 msgid ""
-"The consensus solution used in CasperLabs blockchain is a latest "
-"achievement of a research path that can be traced back to the 1980’s. "
-"Important milestones on this path are:"
+"The consensus solution used in CasperLabs blockchain is a latest achievement"
+" of a research path that can be traced back to the 1980’s. Important "
+"milestones on this path are:"
 msgstr ""
+"CasperLabs blokzincirde kullanılan mutabakat çözümü, 1980'lere kadar "
+"izlenebilen bir araştırma yolunun en son başarısıdır. Bu yoldaki önemli "
+"kilometre taşları şunlardır:"
 
 #: ../../theory/index.rst:38
 msgid "1980: The problem of byzantine consensus defined (Lamport, Shostak)"
-msgstr ""
+msgstr "1980: Byzantine mutabakatı sorunu tanımlandı (Lamport, Shostak)"
 
 #: ../../theory/index.rst:39
 msgid ""
-"1985: Impossibility of distributed consensus with one faulty process "
-"theorem (Fischer, Lynch, Paterson)"
+"1985: Impossibility of distributed consensus with one faulty process theorem"
+" (Fischer, Lynch, Paterson)"
 msgstr ""
+"1985: Tek bir hatalı süreç teoremi ile dağıtılmış mutabakatın imkansızlığı "
+"(Fischer, Lynch, Paterson)"
 
 #: ../../theory/index.rst:40
 msgid "1997: Proof-of-Work invented (Hashcash system)"
-msgstr ""
+msgstr "1997: İş Kanıtı icat edildi (Hashcash sistemi)"
 
 #: ../../theory/index.rst:41
 msgid ""
 "1999: “Practical Byzantine Fault Tolerance” (PBFT) algorithm (Castro, "
 "Liskov)"
 msgstr ""
+"1999: “Pratik Byzantine Hata Toleransı” (PBFT) algoritması (Castro, Liskov)"
 
 #: ../../theory/index.rst:42
 msgid "2008: Bitcoin invented (Satoshi Nakamoto)"
-msgstr ""
+msgstr "2008: Bitcoin icat edildi (Satoshi Nakamoto)"
 
 #: ../../theory/index.rst:43
-msgid "2012: First proof-of-stake cryptocurrency system created (Peercoin system)"
+msgid ""
+"2012: First proof-of-stake cryptocurrency system created (Peercoin system)"
 msgstr ""
+"2012: İlk hisse kanıtı kripto para birimi sistemi oluşturuldu (Peercoin "
+"sistemi)"
 
 #: ../../theory/index.rst:44
 msgid ""
-"2013: Ethereum invented - cryptocurrency idea generalized to a "
-"decentralized general-purpose computing platform (Vitalik Buterin)"
+"2013: Ethereum invented - cryptocurrency idea generalized to a decentralized"
+" general-purpose computing platform (Vitalik Buterin)"
 msgstr ""
+"2013: Ethereum icat edildi - merkezi olmayan genel amaçlı bir bilgi işlem "
+"platformuna genelleştirilmiş kripto para birimi fikri (Vitalik Buterin)"
 
 #: ../../theory/index.rst:46
 msgid ""
 "2013: “Greedy Heaviest Observed Subtree” (GHOST) algorithm introduced "
 "(Sompolinsky, Zohar)"
 msgstr ""
+"2013: “Greedy Heaviest Observed Subtree” (GHOST) algoritması tanıtıldı "
+"(Sompolinsky, Zohar)"
 
 #: ../../theory/index.rst:47
 msgid ""
 "2015: Blockchain idea extended to “block DAG” - “Inclusive Block Chain "
 "Protocols” (Lewenberg, Sompolinsky, Zohar)"
 msgstr ""
+"2015: Blokzincir fikri “blok DAG” - “Kapsayıcı Blok Zincir Protokolleri” "
+"(Lewenberg, Sompolinsky, Zohar) olarak genişletildi"
 
 #: ../../theory/index.rst:48
 msgid ""
 "2017: First draft version of Casper protocol spec published (Ethereum "
 "research group, Vlad Zamfir)"
 msgstr ""
+"2017: Casper protokol spesifikasyonunun ilk taslak versiyonu yayımlandı "
+"(Ethereum araştırma grubu, Vlad Zamfir)"
 
 #: ../../theory/index.rst:49
 msgid ""
-"Jul 2018: First implementation of proof-of-stake blockchain built on "
-"Casper-GHOST-Blockdag combination attempted"
+"Jul 2018: First implementation of proof-of-stake blockchain built on Casper-"
+"GHOST-Blockdag combination attempted"
 msgstr ""
+"Temmuz 2018: Casper-GHOST-Blockdag kombinasyonu üzerine kurulu hisse kanıtı "
+"blokzincirin ilk uygulaması denendi"
 
 #: ../../theory/index.rst:50
 msgid ""
-"Dec 2018: CBC Casper protocol 1.0 specification (Ethereum research group,"
-" Vlad Zamfir)"
+"Dec 2018: CBC Casper protocol 1.0 specification (Ethereum research group, "
+"Vlad Zamfir)"
 msgstr ""
+"Aralık 2018: CBC Casper protokolü 1.0 belirtimi (Ethereum araştırma grubu, "
+"Vlad Zamfir)"
 
 #: ../../theory/index.rst:51
 msgid "Sep 2019: Highway Protocol (Daniel Kane, Vlad Zamfir, Andreas Fackler)"
 msgstr ""
-
+"Eylül 2019: Highway Protokolü (Daniel Kane, Vlad Zamfir, Andreas Fackler)"
