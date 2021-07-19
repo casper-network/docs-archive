@@ -1,0 +1,178 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../implementation/global-state.rst:4
+msgid "Global State"
+msgstr "État global"
+
+#: ../../implementation/global-state.rst:9
+msgid "Introduction"
+msgstr "Introduction"
+
+#: ../../implementation/global-state.rst:11
+msgid ""
+"The “global state” is the storage layer for the blockchain. All accounts, "
+"contracts, and any associated data they have are stored in the global state."
+" Our global state has the semantics of a key-value store (with additional "
+"permissions logic since not all users can access all values in the same "
+"way). Refer to :ref:`Keys and Permissions <serialization-standard-state-"
+"keys>` for further information on keys. Each block causes changes to this "
+"global state because of the execution of the deploys it contains. For "
+"validators to efficiently judge the correctness of these changes, "
+"information about the new state needs to be communicated succinctly. "
+"Moreover, we need to communicate pieces of the global state to users while "
+"allowing them to verify the correctness of the parts they receive. For these"
+" reasons, the key-value store is implemented as a :ref:`Merkle trie <global-"
+"state-trie>`."
+msgstr ""
+"L'\"état global\" est la couche de stockage de la blockchain. Tous les "
+"comptes, les contrats et toutes les données qui leur sont associées sont "
+"stockés dans l'état global. Notre état global a la sémantique d'un store "
+"clé-valeur (avec une logique de permissions supplémentaires puisque tous les"
+" utilisateurs ne peuvent pas accéder à toutes les valeurs de la même "
+"manière). Voir  :ref:`Keys and Permissions <serialization-standard-state-"
+"keys>` pour plus d'informations sur les clés. Chaque bloc entraîne des "
+"modifications de cet état global en raison de l'exécution des déploiements "
+"qu'il contient. Pour que les validateurs puissent juger efficacement de "
+"l'exactitude de ces changements, les informations sur le nouvel état doivent"
+" être communiquées de manière succincte. De plus, nous devons communiquer "
+"des parties de l'état global aux utilisateurs tout en leur permettant de "
+"vérifier l'exactitude des parties qu'ils reçoivent. Pour ces raisons, le "
+"store clé-valeur est implémenté en tant que :ref:`Merkle trie <global-state-"
+"trie>`."
+
+#: ../../implementation/global-state.rst:26
+msgid "Merkle trie structure"
+msgstr "Structure de l'arbre de Merkle"
+
+#: ../../implementation/global-state.rst:28
+msgid ""
+"At a high level, a Merkle trie is a key-value store data structure that can "
+"be shared piece-wise in a verifiable way (via a construction called a Merkle"
+" proof). Each node is labeled by the hash of its data. Leaf nodes are "
+"labeled with the hash of their data. Non-leaf nodes are labeled with the "
+"hash of the labels of their child nodes."
+msgstr ""
+"À un niveau élevé, un arbre de Merkle est une structure de données de "
+"stockage clé-valeur qui peut être partagée par morceaux de manière "
+"vérifiable (via une construction appelée preuve de Merkle). Chaque nœud est "
+"étiqueté par le hachage de ses données. Les nœuds feuilles sont étiquetés "
+"avec le hachage de leurs données. Les nœuds non-feuilles sont étiquetés avec"
+" le hachage des étiquettes de leurs nœuds enfants."
+
+#: ../../implementation/global-state.rst:31
+msgid ""
+"Our implementation of the trie has radix of 256, meaning each branch node "
+"can have up to 256 children. A path through the tree can be an array of "
+"bytes, and serialization directly links a key with a path through the tree "
+"as its associated value."
+msgstr ""
+"Notre implémentation de l'arbre a un 'radix' de 256, ce qui signifie que "
+"chaque nœud de branche peut avoir jusqu'à 256 enfants. Un chemin à travers "
+"l'arbre peut être un tableau d'octets, et la sérialisation lie directement "
+"une clé avec un chemin à travers l'arbre comme valeur associée."
+
+#: ../../implementation/global-state.rst:33
+msgid "Formally, a trie node is one of the following:"
+msgstr "Formellement, un nœud d'arbre est l'un des éléments suivants :"
+
+#: ../../implementation/global-state.rst:35
+msgid "a leaf, which includes a key and a value"
+msgstr "un feuillet, qui comprend une clé et une valeur"
+
+#: ../../implementation/global-state.rst:36
+msgid ""
+"a branch, which has up to 256 ``blake2b256`` hashes, pointing to up to 256 "
+"other nodes in the trie (recall each node is labeled by its hash)"
+msgstr ""
+"une branche, qui a jusqu'à 256 hashs ``blake2b256``, pointant vers jusqu'à "
+"256 autres noeuds dans l'arbre (rappelons que chaque noeud est étiqueté par "
+"son hash)."
+
+#: ../../implementation/global-state.rst:38
+msgid ""
+"an extension node, which includes a byte array (called the affix) and a "
+"``blake2b256`` hash pointing to another node in the trie"
+msgstr ""
+"un noeud d'extension, qui comprend un tableau d'octets (appelé affix) et un "
+"hash ``blake2b256`` pointant vers un autre noeud dans l'arbre"
+
+#: ../../implementation/global-state.rst:41
+msgid ""
+"The purpose of the extension node is to allow path compression. Consider an "
+"example where all keys use the same first four bytes for values in the trie."
+" In this case, it would be inefficient to traverse through four branch nodes"
+" where there is only one choice; instead, the root node of the trie could be"
+" an extension node with affix equal to those first four bytes and pointer to"
+" the first non-trivial branch node."
+msgstr ""
+"L'objectif du nœud d'extension est de permettre la compression des chemins "
+"(path compression). Prenons un exemple où toutes les clés utilisent les "
+"mêmes quatre premiers octets pour les valeurs dans l'arbre. Dans ce cas, il "
+"serait inefficace de traverser quatre nœuds de branche où il n'y a qu'un "
+"seul choix ; au lieu de cela, le nœud racine de la table pourrait être un "
+"nœud d'extension avec un 'affix' égal à ces quatre premiers octets et un "
+"pointeur vers le premier nœud de branche non trivial."
+
+#: ../../implementation/global-state.rst:46
+msgid "The rust implementation of our trie can be found on GitHub:"
+msgstr "L'implémentation rust de notre 'arbre' peut être trouvée sur GitHub :"
+
+#: ../../implementation/global-state.rst:48
+msgid ""
+"`definition of the trie data structure <https://github.com/CasperLabs"
+"/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie/mod.rs#L320>`_"
+msgstr ""
+"`définition de la structure de données de l'arbre "
+"<https://github.com/CasperLabs/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie/mod.rs#L320>`_"
+
+#: ../../implementation/global-state.rst:49
+msgid ""
+"`reading from the trie <https://github.com/CasperLabs/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L37>`_"
+msgstr ""
+"`Lire sur l'arbre <https://github.com/CasperLabs/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L37>`_"
+
+#: ../../implementation/global-state.rst:50
+msgid ""
+"`writing to the trie <https://github.com/CasperLabs/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L638>`_"
+msgstr ""
+"``Écrire sur l'arbre <https://github.com/CasperLabs/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L638>`_"
+
+#: ../../implementation/global-state.rst:52
+msgid ""
+"Note: Conceptually, each block has its trie because the state changes based "
+"on the deploys it contains. For this reason, our implementation has a notion"
+" of a ``TrieStore``, which allows us to look up the root node for each trie."
+msgstr ""
+"Note : Conceptuellement, chaque bloc a son arbre car l'état change en "
+"fonction des déploiements qu'il contient. Pour cette raison, notre "
+"implémentation a une notion de ``TrieStore``, qui nous permet de chercher le"
+" noeud racine pour chaque arbre (trie)."
