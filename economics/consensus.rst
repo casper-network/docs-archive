@@ -28,7 +28,7 @@ Currently, delegation is unrestricted. Interested readers should review `CEP #29
 Incentives
 ----------
 
-Correct operation of the Highway protocol requires the economics of the platform to decentivize equivocation for safety and participation for liveness. Participation consists of on-time block proposals and timely responses to block proposals.
+Correct operation of the Highway protocol requires the economics of the platform to discourage equivocation for safety and incentivize participation for liveness. Participation consists of on-time block proposals and timely responses to block proposals.
 
 Safety may be incentivized through slashing for equivocation. This feature is currently disabled but may be reactivated in the future.
 
