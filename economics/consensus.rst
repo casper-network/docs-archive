@@ -28,7 +28,7 @@ Currently, delegation is unrestricted. Interested readers should review `CEP #29
 Incentives
 ----------
 
-Correct operation of the Highway protocol requires the economics of the platform to incentivize non-equivocation for safety and participation for liveness. Participation consists of on-time block proposals and timely responses to block proposals.
+Correct operation of the Highway protocol requires the economics of the platform to discourage equivocation for safety and incentivize participation for liveness. Participation consists of on-time block proposals and timely responses to block proposals.
 
 Safety may be incentivized through slashing for equivocation. This feature is currently disabled but may be reactivated in the future.
 
@@ -49,7 +49,7 @@ With slashing disabled, we can compute block rewards starting with the formula b
 - ``i`` - the era's index as a positive integer [0, 1, 2, ..., n]
 - ``initial_supply`` - the number of CSPR at genesis
 - ``issuance_rate`` - the annual rate at which new CSPR tokens are minted
-- ``ticks_per_year`` - a number equal to 31,536,000,000 calculated as 365*24*60*60*1000 = 31,536,000,000
+- ``ticks_per_year`` - the number of milliseconds in a year equal to 31,536,000,000
 
 .. code-block::
 
@@ -59,7 +59,7 @@ We introduce the *round issuance rate* (corresponding to the chainspec parameter
 
 .. code-block::
 
-   round_issuance_rate = pow(1 + issuance_rate, 2^minimum_round_exponent / ticks_per_year) - 1
+   round_issuance_rate = (1 + issuance_rate)^(2^minimum_round_exponent / ticks_per_year) - 1
 
 The *round issuance rate* is the annual issuance rate adjusted to a single round of length determined by the chainspec parameter ``minimum_round_exponent``. For illustration, an exponent of 14 corresponds to a round length of roughly 16 seconds.
 
