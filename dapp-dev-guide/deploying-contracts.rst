@@ -244,6 +244,8 @@ A common question that frequently arises is: "How do I know what the payment amo
 
 You can estimate the costs in this way, and then add a small buffer in case the network state has changed. So in this example above, you might have chosen to set the payment to 175000 or 200000, rather than the 10000000 that was used.
 
+Refer `runtime economics <https://docs.casperlabs.io/en/latest/economics/runtime.html?highlight=consensus-before-execution%20model#gas-allocation>`_ section to get more details about gas usage, fees, and refunding mechanisms.
+
 
 Advanced Deployments
 ^^^^^^^^^^^^^^^^^^^^

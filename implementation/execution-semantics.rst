@@ -25,6 +25,15 @@ the computation is terminated by the runtime. How this limit is determined is di
 
 Although computation is measured in ``Gas``, we still take payment for computation in :ref:`motes <tokens-divisibility>`. Therefore, there is a conversion rate between ``Gas`` and motes. How this conversion rate is determined is discussed elsewhere.
 
+.. _execution-semantics-gas-refunding:
+
+.. Note::
+
+   Please note that Casper will not refund any amount of unused gas. 
+
+   This decision is taken to incentivizing the `Casper Runtime Economics <https://docs.casperlabs.io/en/latest/economics/runtime.html?highlight=consensus-before-execution%20model#runtime-economics>`_ by efficiently allocating the computational resources. The `consensus-before-execution model <https://docs.casperlabs.io/en/latest/economics/runtime.html?highlight=consensus-before-execution%20model#consensus-before-execution-basics-of-payment>`_ implements the mechanism to encourage the optimized gas consumption from the user-side and to prevent the overuse of block space by poorly handled deploys.
+   
+
 .. _execution-semantics-deploys:
 
 Deploys
@@ -53,7 +62,8 @@ Phases of deploy execution
 
 A deploy is executed in distinct *phases* in order to accommodate paying for computation in a flexible way. The phases of a deploy are payment, session, and finalization. During the payment phase, the payment code is executed. If it is successful, then the sessions code is executed during the session phase. And, finally (independent of whether session code was executed), the finalization phase is executed, which does some bookkeeping around payment. 
 
-In particular, the finalization phase refunds the user any unspent ``Gas`` originally purchased (after converting back to motes), and moves the remaining payment into the rewards pool for the validators. The finalization phase does not include any user-defined logic, it is merely upkeep for the system.
+According to new amendments, the finalization phase does not refund the user any unspent ``Gas`` originally purchased (after converting back to motes). Please refer :ref:`gas refunding <execution-semantics-gas-refunding>` section for more details. 
+The finalization phase does not include any user-defined logic, it is merely upkeep for the system.
 
 .. _execution-semantics-payment:
 
