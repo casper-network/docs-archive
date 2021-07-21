@@ -10,7 +10,7 @@ First, download `the example contract and client <https://github.com/casper-ecos
 
 .. code-block:: bash
 
-	$ git clone https://github.com/casper-ecosystem/keys-manager
+	git clone https://github.com/casper-ecosystem/keys-manager
 
 The smart contract above can help you manage your account. You can add keys and remove keys from your account, define weights for each key, and set thresholds for key management and network deployments. 
 
@@ -49,9 +49,9 @@ Navigate to the ``keys-manager`` folder and set up the WASM compilation Rust too
 
 .. code-block:: bash
 
-	$ cd keys-manager
-	$ rustup install $(cat rust-toolchain)
-	$ rustup target add --toolchain $(cat rust-toolchain) wasm32-unknown-unknown
+	cd keys-manager
+	rustup install $(cat rust-toolchain)
+	rustup target add --toolchain $(cat rust-toolchain) wasm32-unknown-unknown
 
 Next, open the ``contract`` folder and notice that it contains a ``Cargo.toml`` file, which defines a smart contract called ``keys-manager``. The ``cargo build`` command will invoke this file to generate the corresponding WASM file.
 
@@ -59,8 +59,8 @@ Compile the smart contract and create the WASM file using these commands:
 
 .. code-block:: bash
 
-	$ cd contract
-	$ cargo build --release
+	cd contract
+	cargo build --release
 
 If the command were successful, you would find a ``keys-manager.wasm`` file in the following directory structure:
 
