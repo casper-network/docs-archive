@@ -15,15 +15,14 @@ Navigate to your ``casper-node`` folder and run the following NCTL commands.
 
 .. code-block:: bash
 
-	$ nctl-compile
-	$ nctl-assets-setup
-	$ nctl-start
+	nctl-compile
+	nctl-assets-setup && nctl-start
 
 The network you created with the NCTL tool has a special account called a faucet account, which holds your tokens. You will need these tokens to interact with the network. If the network is up and running, you can see your faucet account details with the command below.
 
 .. code-block:: bash
 
-	$ nctl-view-faucet-account
+	nctl-view-faucet-account
 
 Setting up the Client
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -31,9 +30,9 @@ Navigate to your ``keys-manager/client/`` folder and create the ``.env`` file to
 
 .. code-block:: bash
 
-   $ cd keys-manager/client/
-   $ touch .env
-   $ open -e .env
+   cd keys-manager/client/
+   touch .env
+   open -e .env
 
 This client code, by default, expects a compiled WASM file in the ``contract`` folder and a local network called ``casper-net-1``. In this tutorial, you only need to configure the ``BASE_KEY_PATH``, the absolute path to your faucet account. So, your ``.env`` file will contain only one entry for the ``BASE_KEY_PATH`` and would look like this (replacing <ENTER_YOUR_PATH> with your path):
 
@@ -58,7 +57,7 @@ Next, close the ``.env`` file and install the JavaScript packages in the ``keys-
 
 .. code-block:: bash
 
-   $ npm install
+   npm install
 
 
 Testing the Client
@@ -68,15 +67,14 @@ Navigate to your ``/keys-manager/client`` folder and run the ``keys-manager`` us
 
 .. code-block:: bash
 
-   $ npm run start:atomic
+   npm run start:atomic
 
 If the code works, the beginning of the output will look like this: 
 
 .. image:: ../../../assets/tutorials/multisig/output_begin.png
   :alt: An image of the beginning of the keys-manager output.
 
-You can match the output against the expected output described below.
-   
+The client takes some time to run, so please wait until you see a *Deploy result*. You can match the rest of the output against the expected output described in the next section.
 
 Exploring the Client Code
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -285,7 +283,7 @@ At this point, we expect the following account structure:
    "named_keys": []
  }
 
-Congratulations! You have completed the tutorial.
+Congratulations! You have completed this tutorial.
    
 You can now employ a similar strategy to set up your account using multiple keys.
     
