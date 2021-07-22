@@ -62,8 +62,7 @@ Phases of deploy execution
 
 A deploy is executed in distinct *phases* in order to accommodate paying for computation in a flexible way. The phases of a deploy are payment, session, and finalization. During the payment phase, the payment code is executed. If it is successful, then the sessions code is executed during the session phase. And, finally (independent of whether session code was executed), the finalization phase is executed, which does some bookkeeping around payment. 
 
-According to new amendments, the finalization phase does not refund the user any unspent ``Gas`` originally purchased (after converting back to motes). Please refer :ref:`gas refunding <execution-semantics-gas-refunding>` section for more details. 
-The finalization phase does not include any user-defined logic, it is merely upkeep for the system.
+According to new amendments, the finalization phase does not refund the user any unspent ``Gas`` originally purchased (after converting back to motes). Please refer to the :ref:`gas refunding <execution-semantics-gas-refunding>` section for more details. The finalization phase does not include any user-defined logic, it is merely upkeep for the system.
 
 .. _execution-semantics-payment:
 
