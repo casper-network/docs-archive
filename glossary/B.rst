@@ -20,7 +20,7 @@ Block creation
 ^^^^^^^^^^^^^^
 Block creation means computing the deployment results and collecting the results that belong together into a block. We follow a process called *execution after consensus*. 
 
-The `block proposal <B.html#block-proposal>`_ happens first, and the proposed `proto block <P.html#proto-block>`_ contains a set of deploys that have not been executed yet.
+The `block proposal <#id2>`_ happens first, and the proposed `proto block <P.html#proto-block>`_ contains a set of deploys that have not been executed yet. 
 
 Only after consensus on a *proto block* has been reached, the deploys are executed. The resulting new global state `root hash <R.html#root hash>`_ is put into an actual block, together with the executed deploys.
 
@@ -42,7 +42,7 @@ See <#block-gossiping>.
 
 Block processing
 ^^^^^^^^^^^^^^^^
-Block processing consists of running the deploys in a block received from another node to determine updates to the global state. Note that this is an essential part of `block validating <B.html#block-validating>`_.
+Block processing consists of running the deploys in a block received from another node to determine updates to the global state. Note that this is an essential part of `block validating <#block-validating>`_.
 
 Block proposal
 ^^^^^^^^^^^^^^
@@ -66,7 +66,7 @@ The amount of money (in crypto-currency) that is allocated by a node in order to
 
 Bonding
 ^^^^^^^
-Depositing money in the `auction contract<A.html#auction-contract>`_ and try to become a `staker <S.html#staker>`_. The bonding request is a transaction that transfers tokens to the auction contract. In the next `booking block <B.html#booking-block>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
+Depositing money in the `auction contract<A.html#auction-contract>`_ and try to become a `staker <S.html#staker>`_. The bonding request is a transaction that transfers tokens to the auction contract. In the next `booking block <#id3>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
 
 Booking block
 ^^^^^^^^^^^^^
