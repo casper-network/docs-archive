@@ -3,153 +3,163 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# ilker <bilkerarslan40@gmail.com>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../glossary/S.rst:2
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #: ../../glossary/S.rst:5
 msgid "`A <A.html>`_"
-msgstr ""
+msgstr "`A <A.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`B <B.html>`_"
-msgstr ""
+msgstr "`B <B.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`C <C.html>`_"
-msgstr ""
+msgstr "`C <C.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`D <D.html>`_"
-msgstr ""
+msgstr "`D <D.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`E <E.html>`_"
-msgstr ""
+msgstr "`E <E.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`F <F.html>`_"
-msgstr ""
+msgstr "`F <F.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`G <G.html>`_"
-msgstr ""
+msgstr "`G <G.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`H <H.html>`_"
-msgstr ""
+msgstr "`H <H.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`I <I.html>`_"
-msgstr ""
+msgstr "`I <I.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`J <J.html>`_"
-msgstr ""
+msgstr "`J <J.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`K <K.html>`_"
-msgstr ""
+msgstr "`K <K.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`L <L.html>`_"
-msgstr ""
+msgstr "`L <L.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`M <M.html>`_"
-msgstr ""
+msgstr "`M <M.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`N <N.html>`_"
-msgstr ""
+msgstr "`N <N.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`O <O.html>`_"
-msgstr ""
+msgstr "`O <O.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`P <P.html>`_"
-msgstr ""
+msgstr "`P <P.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`Q <Q.html>`_"
-msgstr ""
+msgstr "`Q <Q.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`R <R.html>`_"
-msgstr ""
+msgstr "`R <R.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`S <S.html>`_"
-msgstr ""
+msgstr "`S <S.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`T <T.html>`_"
-msgstr ""
+msgstr "`T <T.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`U <U.html>`_"
-msgstr ""
+msgstr "`U <U.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`V <V.html>`_"
-msgstr ""
+msgstr "`V <V.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`W <W.html>`_"
-msgstr ""
+msgstr "`W <W.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`X <X.html>`_"
-msgstr ""
+msgstr "`X <X.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`Y <Y.html>`_"
-msgstr ""
+msgstr "`Y <Y.html>`_"
 
 #: ../../glossary/S.rst:5
 msgid "`Z <Z.html>`_"
-msgstr ""
+msgstr "`Z <Z.html>`_"
 
 #: ../../glossary/S.rst:9
 msgid "Secret key"
-msgstr ""
+msgstr "Gizli anahtar"
 
 #: ../../glossary/S.rst:10
 msgid ""
-"A cryptographic and confidential key that signs transactions to ensure "
-"their correct execution (carrying out only the user's intended "
-"operations)."
+"A cryptographic and confidential key that signs transactions to ensure their"
+" correct execution (carrying out only the user's intended operations)."
 msgstr ""
+"Doğru şekilde yürütüldüğünden emin olmak için işlemleri imzalayan (yalnızca "
+"kullanıcının amaçlanan işlemlerini gerçekleştiren) kriptografik ve gizli bir"
+" anahtar."
 
 #: ../../glossary/S.rst:13
 msgid "Seigniorage"
-msgstr ""
+msgstr "Senyoraj"
 
 #: ../../glossary/S.rst:14
 msgid ""
-"The reward mechanism by which validators are rewarded for participating "
-"in consensus. New tokens are minted and given to validators."
+"The reward mechanism by which validators are rewarded for participating in "
+"consensus. New tokens are minted and given to validators."
 msgstr ""
+"Doğrulayıcıların mutabakata katılmaları için ödüllendirildiği ödül "
+"mekanizması. Yeni tokenler basılır ve doğrulayıcılara verilir."
 
 #: ../../glossary/S.rst:17
 msgid "Session code"
-msgstr ""
+msgstr "Oturum kodu"
 
 #: ../../glossary/S.rst:18
 msgid ""
@@ -157,58 +167,79 @@ msgid ""
 "*session code* contains the code the user wishes to execute against the "
 "blockchain.  When the session code executes, it performs a transaction."
 msgstr ""
+"*Oturum kodu*, bir dağıtım yönergesinde bulunan bir alandır. *Oturum kodu*, "
+"kullanıcının blokzincir üzerinde yürütmek istediği kodu içerir. Oturum kodu "
+"yürütüldüğünde, bir işlem gerçekleştirir."
 
 #: ../../glossary/S.rst:21
 msgid "Slashing"
-msgstr ""
+msgstr "Kesme (slashing)"
 
 #: ../../glossary/S.rst:22
 msgid ""
-"In Proof-of-Stake, the deposit acts as collateral. The validator "
-"guarantees that it correctly follows the protocol. If the validator node "
-"violates the protocol, the deposited amount gets *slashed*, i.e., a part "
-"of it is removed."
+"In Proof-of-Stake, the deposit acts as collateral. The validator guarantees "
+"that it correctly follows the protocol. If the validator node violates the "
+"protocol, the deposited amount gets *slashed*, i.e., a part of it is "
+"removed."
 msgstr ""
+"Hisse Kanıtında (PoS), mevduat, teminat görevi görür. Doğrulayıcı, protokolü"
+" doğru şekilde takip ettiğini garanti eder. Doğrulayıcı düğüm, protokolü "
+"ihlal ederse, yatırılan miktar *kesilir (slash)*, yani bir kısmı silinir."
 
 #: ../../glossary/S.rst:25
 msgid "Smart contract"
-msgstr ""
+msgstr "Akıllı kontrat"
 
 #: ../../glossary/S.rst:26
 msgid ""
 "A WebAssembly (WASM) program that the network stores as a value in the "
-"global state. The execution of a smart contract causes changes to the "
-"global state. A smart contract can be invoked by a transaction or by "
-"another smart contract. Smart contracts can declare input data as the "
-"arguments of a function. When invoking a smart contract, one must provide"
-" the input values."
+"global state. The execution of a smart contract causes changes to the global"
+" state. A smart contract can be invoked by a transaction or by another smart"
+" contract. Smart contracts can declare input data as the arguments of a "
+"function. When invoking a smart contract, one must provide the input values."
 msgstr ""
+"Ağın küresel durumda bir değer olarak depoladığı bir WebAssembly (WASM) "
+"programı. Akıllı bir kontratın yürütülmesi, küresel durumda değişikliklere "
+"neden olur. Bir akıllı kontrat, bir işlem veya başka bir akıllı kontrat "
+"tarafından çağrılabilir. Akıllı kontratlar, girdi verilerini bir işlevin "
+"argümanları olarak bildirebilir. Bir akıllı kontratı çağırırken, giriş "
+"değerleri sağlanmalıdır."
 
 #: ../../glossary/S.rst:29
 msgid "Staker"
-msgstr ""
+msgstr "Paydaş"
 
 #: ../../glossary/S.rst:30
 msgid ""
 "A person that deposits tokens in the `proof-of-stake <P.html#proof-of-"
-"stake>`_ contract. A staker is either a `validator <V.html#validator>`_ "
-"or a `delegator <D.html#delegator>`_. Stakers take on the slashing risk "
-"in exchange for rewards. Stakers will deposit their `tokens "
-"<T.html#token>`_ by sending a bonding request in the form of a "
-"transaction (deployment) to the system. If a validator is `slashed "
-"<#slashing>`_, the staker will lose their tokens."
+"stake>`_ contract. A staker is either a `validator <V.html#validator>`_ or a"
+" `delegator <D.html#delegator>`_. Stakers take on the slashing risk in "
+"exchange for rewards. Stakers will deposit their `tokens <T.html#token>`_ by"
+" sending a bonding request in the form of a transaction (deployment) to the "
+"system. If a validator is `slashed <#slashing>`_, the staker will lose their"
+" tokens."
 msgstr ""
+"`Hisse kanıtı (PoS) <P.html#proof-of-stake>`_ kontratında token yatıran "
+"kişi. Bir paydaş, ya bir `doğrulayıcı <V.html#validator>`_ ya da bir `yetki "
+"veren <D.html#delegator>`_ olur. Stake yapanlar, ödüller karşılığında "
+"kesilme (slashing) riskini üstlenirler. Paydaşlar, sisteme bir işlem "
+"(dağıtım) şeklinde bir bağlama talebi göndererek `tokenlerini "
+"<T.html#token>`_ yatıracaklardır. Bir doğrulayıcı `kesilirse <#slashing>`_, "
+"paydaş tokenlerini kaybeder."
 
 #: ../../glossary/S.rst:33
 msgid "Staking"
-msgstr ""
+msgstr "Paydaşlık"
 
 #: ../../glossary/S.rst:34
 msgid ""
-"A feature of Proof-of-Stake protocols that allows token holders to "
-"actively participate in the protocol, thus securing the network. The "
-"`Staking Guide "
-"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ highlights "
-"the steps required to stake the CSPR token on the Casper network."
+"A feature of Proof-of-Stake protocols that allows token holders to actively "
+"participate in the protocol, thus securing the network. The `Staking Guide "
+"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ highlights the "
+"steps required to stake the CSPR token on the Casper network."
 msgstr ""
-
+"Token sahiplerinin protokole aktif olarak katılmalarını sağlayan, böylece "
+"ağı güvence altına alan Hisse Kanıtı (PoS) protokollerinin bir özelliği. "
+"`Paydaşlık Kılavuzu "
+"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ CSPR tokenini "
+"Casper ağında stake etmek için gereken adımları vurgular."
