@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:45+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:3
+msgid "Advanced Options"
+msgstr "Tuỳ chọn nâng cao"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:5
+msgid ""
+"Once the base logic of the smart contract is in place, it's desirable to "
+"optimize the contract for the blockchain.  This will require digging into "
+"the actual code that the DSL generates.  This section will describe the "
+"steps to do this.  Once the code has been expanded and then changed, make "
+"sure to remove the macros from the project configuration before saving the "
+"changes."
+msgstr ""
+"Một khi logic cơ sở của hợp đồng thông minh đã có, bạn nên tối ưu hóa hợp "
+"đồng cho chuỗi khối. Điều này sẽ yêu cầu đào sâu vào mã hiện thời mà DSL tạo"
+" ra. Phần này sẽ mô tả các bước để thực hiện việc này. Khi mã đã được mở "
+"rộng và sau đó được thay đổi, hãy đảm bảo xóa macro khỏi cấu hình dự án "
+"trước khi lưu các thay đổi."
+
+#: ../../archived/contract-dsl-archived/advanced.rst:12
+msgid "Debugging Contracts"
+msgstr "Gỡ rối Hợp đồng"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:14
+msgid ""
+"It is possible to debug Rust contracts inside any IDE that supports "
+"breakpoints and watches. Make sure that the IDE supports Rust development "
+"and tools."
+msgstr ""
+"Có thể gỡ lỗi các hợp đồng Rust bên trong bất kỳ IDE nào hỗ trợ các điểm "
+"ngắt và đồng hồ. Đảm bảo rằng IDE hỗ trợ các công cụ và phát triển Rust."
+
+#: ../../archived/contract-dsl-archived/advanced.rst:18
+msgid "Expanding the Code"
+msgstr "Mở rộng mã"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:20
+msgid ""
+"When the rust compiler encounters each of the macros, it 'expands' the code "
+"and adds additional lines of code for each of the macros. The resultant "
+"expanded code is then compiled to the wasm which can then be deployed to the"
+" blockchain."
+msgstr ""
+"Khi trình biên dịch rust gặp từng macro, nó sẽ 'mở rộng' mã và thêm các dòng"
+" mã bổ sung cho từng macro. Mã mở rộng kết quả sau đó được biên dịch thành "
+"wasm, sau đó có thể được triển khai vào chuỗi khối."
+
+#: ../../archived/contract-dsl-archived/advanced.rst:23
+msgid ""
+"The ``cargo expand`` tool will run the macros and append the boilerplate "
+"code to the contract without compiling the code."
+msgstr ""
+"Công cụ ``cargo expand`` sẽ chạy các macro và nối mã bảng ghi sẵn vào hợp "
+"đồng mà không cần biên dịch mã."
+
+#: ../../archived/contract-dsl-archived/advanced.rst:25
+msgid "Install the tooling with the following command:"
+msgstr "Cài đặt công cụ bằng lệnh sau:"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:31
+msgid "Run this command in the folder containing the smart contract code:"
+msgstr "Chạy lệnh này trong thư mục chứa mã hợp đồng thông minh:"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:38
+msgid "Example Simple Counter Contract"
+msgstr "Ví dụ hợp đồng tính toán cơ bản"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:40
+msgid ""
+"Running ``cargo-expand`` on the simple counter contract yeilds this output:"
+msgstr ""
+"Chạy ``cargo-expand`` trên hợp đồng tính toán đơn giản sẽ tạo ra kết quả "
+"này:"
