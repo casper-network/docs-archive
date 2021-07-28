@@ -66,7 +66,7 @@ The amount of money (in crypto-currency) that is allocated by a node in order to
 
 Bonding
 ^^^^^^^
-Depositing money in the `auction contract<A.html#auction-contract>`_ and try to become a `staker <S.hml#staker>`_. The bonding request is a transaction that transfers tokens to the auction contract. In the next `booking block <#id3>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
+Depositing money in the `auction contract <A.html#auction-contract>`_ and try to become a `staker <S.hml#staker>`_. The bonding request is a transaction that transfers tokens to the auction contract. In the next `booking block <#id3>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
 
 
 Booking block
