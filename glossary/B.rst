@@ -34,11 +34,11 @@ There are different levels of *finality* in the `Highway <H.html#highway>`_ prot
 
 Block gossiping
 ^^^^^^^^^^^^^^^
-Block gossiping occurs when a message containing a block is sent to one or more nodes on the network. In other words, block gossiping is sending a block validated by the current node but created by another node. The terms *block gossiping* and <#block-passing> are interchangeable.
+Block gossiping occurs when a message containing a block is sent to one or more nodes on the network. In other words, block gossiping is sending a block validated by the current node but created by another node. The terms *block gossiping* and *`block-passing <#block-passing>`_. are interchangeable.
 
 Block passing
 ^^^^^^^^^^^^^
-See <#block-gossiping>.
+See `block-gossiping <#block-gossiping>`_.
 
 Block processing
 ^^^^^^^^^^^^^^^^
@@ -66,9 +66,10 @@ The amount of money (in crypto-currency) that is allocated by a node in order to
 
 Bonding
 ^^^^^^^
-Depositing money in the `auction contract<A.html#auction-contract>`_ and try to become a `staker <S.html#staker>`_. The bonding request is a transaction that transfers tokens to the auction contract. In the next `booking block <#id3>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
+Depositing money in the `auction contract<A.html#auction-contract>`_ and try to become a `staker <S.hml#staker>`_. The bonding request is a transaction that transfers tokens to the auction contract. In the next `booking block <#id3>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
+
 
 Booking block
 ^^^^^^^^^^^^^
-The booking block for an era is the block that determines the era's validator set. In it, the `auction contract<A.html#auction-contract>`_ selects the highest bidders to be the future era's validators. There is a configurable delay, the *auction_delay*, which is the number of eras between the booking block and the era to which it applies. The booking block is always a switch block, so the booking block for era *N + auction_delay + 1* is the last block of era *N*.
+The booking block for an era is the block that determines the era's validator set. In it, the `auction contract <A.html#auction-contract>`_ selects the highest bidders to be the future era's validators. There is a configurable delay, the *auction_delay*, which is the number of eras between the booking block and the era to which it applies. The booking block is always a switch block, so the booking block for era *N + auction_delay + 1* is the last block of era *N*.
 
