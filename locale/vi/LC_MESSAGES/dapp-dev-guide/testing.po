@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/testing.rst:6
+msgid "Testing Contracts"
+msgstr "Kiểm thử Hợp đồng"
+
+#: ../../dapp-dev-guide/testing.rst:8
+msgid ""
+"As part of the Casper local Rust contract development environment we provide"
+" an in-memory virtual machine you can run your contract against. A full node"
+" is not required for testing.  The testing framework is designed to be used "
+"in the following way:"
+msgstr ""
+"Là một phần của môi trường phát triển hợp đồng Rust cục bộ trên Casper, "
+"chúng tôi cung cấp một máy ảo trong bộ nhớ mà bạn có thể chạy hợp đồng của "
+"mình. Một nút đầy đủ không cần thiết để thử nghiệm. Nền tảng thử nghiệm được"
+" thiết kế để sử dụng theo cách sau:"
+
+#: ../../dapp-dev-guide/testing.rst:11
+msgid "Initialize the system (context)."
+msgstr "Khởi tạo hệ thống (ngữ cảnh)."
+
+#: ../../dapp-dev-guide/testing.rst:12
+msgid "Deploy or call the smart contract."
+msgstr "Triển khai hoặc gọi hợp đồng thông minh."
+
+#: ../../dapp-dev-guide/testing.rst:13
+msgid ""
+"Query the context for changes and assert the result data matches expected "
+"values."
+msgstr ""
+"Truy vấn ngữ cảnh cho các thay đổi và xác nhận dữ liệu kết quả khớp với các "
+"giá trị mong đợi."
+
+#: ../../dapp-dev-guide/testing.rst:15
+msgid ""
+"It is also possible to create build scripts with this environment and set up"
+" continuous integration for contract code.\\ :raw-html-m2r:`<br>` This "
+"environment enables the testing of blockchain enabled systems from end to "
+"end."
+msgstr ""
+"Cũng có thể tạo script xây dựng với môi trường này và thiết lập tích hợp "
+"liên tục cho mã hợp đồng.\\ :raw-html-m2r:`<br>` Môi trường này cho phép thử"
+" nghiệm các hệ thống hỗ trợ blockchain từ đầu đến cuối."
+
+#: ../../dapp-dev-guide/testing.rst:19
+msgid "The TestContext for Rust Contracts"
+msgstr "TestContext cho Hợp đồng Rust"
+
+#: ../../dapp-dev-guide/testing.rst:21
+msgid ""
+"A  `TestContext <https://docs.rs/casper-engine-test-"
+"support/latest/casper_engine_test_support/struct.TestContext.html>`_ "
+"provides a virtual machine instance. It should be a mutable object as its "
+"internal data will change with each deploy. It's also important to set an "
+"initial balance for the account to use for deploys, as the system requires a"
+" balance in order to create an account."
+msgstr ""
+"`TestContext <https://docs.rs/casper-engine-test-"
+"support/latest/casper_engine_test_support/struct.TestContext.html>`_ cung "
+"cấp một phiên bản máy ảo. Nó phải là một đối tượng có thể thay đổi vì dữ "
+"liệu bên trong của nó sẽ thay đổi với mỗi lần triển khai. Điều quan trọng là"
+" phải đặt dự phòng ban đầu cho tài khoản để sử dụng cho các đợt triển khai, "
+"vì hệ thống yêu cầu số dư để tạo tài khoản."
+
+#: ../../dapp-dev-guide/testing.rst:31
+msgid "Account is type of ``[u8; 32]``. Balance is type of ``U512``."
+msgstr "Tài khoản là kiểu ``[u8; 32]``. Số dư là kiểu ``U512``."
+
+#: ../../dapp-dev-guide/testing.rst:34
+msgid "Running the Rust Smart Contract"
+msgstr "Chạy Hợp đồng Thông minh Rust"
+
+#: ../../dapp-dev-guide/testing.rst:36
+msgid ""
+"Before the contract can be deployed to the context, the request has to be "
+"prepared. A request is referred to as a `Session <https://docs.rs/casper-"
+"engine-test-"
+"support/latest/casper_engine_test_support/struct.Session.html>`_. Each "
+"session call has 4 elements:"
+msgstr ""
+"Trước khi hợp đồng có thể được triển khai đến ngữ cảnh, yêu cầu phải được "
+"chuẩn bị. Một yêu cầu được gọi là `Session <https://docs.rs/casper-engine-"
+"test-support/latest/casper_engine_test_support/struct.Session.html>`_. Mỗi "
+"cuộc gọi phiên có 4 phần tử:"
+
+#: ../../dapp-dev-guide/testing.rst:39
+msgid "A Wasm file path."
+msgstr "Đường dẫn tệp Wasm."
+
+#: ../../dapp-dev-guide/testing.rst:40
+msgid "A list of arguments."
+msgstr "Danh sách các đối số."
+
+#: ../../dapp-dev-guide/testing.rst:41
+msgid "The account context for execution."
+msgstr "Tài khoản ngữ cảnh để thực thi."
+
+#: ../../dapp-dev-guide/testing.rst:42
+msgid "The list of keys that authorize the call."
+msgstr "Danh sách các khoá cho phép cuộc gọi."
+
+#: ../../dapp-dev-guide/testing.rst:44
+msgid "Here is an example of a prepared request:"
+msgstr "Dưới đây là một ví dụ về một yêu cầu đã chuẩn bị:"
+
+#: ../../dapp-dev-guide/testing.rst:59
+msgid "Executing ``run`` will panic if the code execution fails."
+msgstr ""
+"Việc thực thi ``run`` sẽ gây lo ngại nếu quá trình thực thi mã không thành "
+"công."
+
+#: ../../dapp-dev-guide/testing.rst:62
+msgid "Query and Assert"
+msgstr "Truy vấn và Xác thực"
+
+#: ../../dapp-dev-guide/testing.rst:64
+msgid ""
+"The smart contract creates a new value ``\"hello world\"`` under the key "
+"``\"special_value\"``. Using the ``query`` function it's possible to extract"
+" this value from the global state of the blockchain."
+msgstr ""
+"Hợp đồng thông minh tạo ra một giá trị mới ``\"hello world\"`` dưới khóa "
+"``\"special_value\"``. Sử dụng hàm ``query``, bạn có thể trích xuất giá trị "
+"này từ trạng thái toàn cục của chuỗi khối."
+
+#: ../../dapp-dev-guide/testing.rst:74
+msgid ""
+"Note that the ``expected_value`` is a ``String`` type lifted to the "
+"``Value`` type. It was also possible to map ``returned_value`` to the "
+"``String`` type."
+msgstr ""
+"Lưu ý rằng ``expected_value`` là kiểu ``String`` được nâng lên thành kiểu "
+"``Value``. Cũng có thể ánh xạ ``returned_value`` thành kiểu ``String``."
+
+#: ../../dapp-dev-guide/testing.rst:77
+msgid "Final Test"
+msgstr "Kiểm thử lần cuối"
+
+#: ../../dapp-dev-guide/testing.rst:79
+msgid ""
+"The code below is the simple test generated by `cargo-casper "
+"<https://crates.io/crates/cargo-casper>`_ (found in "
+"``tests/src/integration_tests.rs`` of a project created by the tool)."
+msgstr ""
+"Đoạn mã dưới đây là bài kiểm thử đơn giản được tạo bởi  `cargo-casper "
+"<https://crates.io/crates/cargo-casper>`_ (trong "
+"``tests/src/integration_tests.rs`` của một dự án được tạo bởi công cụ)."
