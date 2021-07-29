@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/getting-help.rst:3
+msgid "Getting Help"
+msgstr "Tìm kiếm Trợ giúp"
+
+#: ../../dapp-dev-guide/getting-help.rst:6
+msgid "Frequently Asked Questions"
+msgstr "Câu hỏi thường gặp"
+
+#: ../../dapp-dev-guide/getting-help.rst:7
+msgid ""
+"This section covers frequently asked questions and our recommendations."
+msgstr "Phần này bao gồm các câu hỏi thường gặp và khuyến nghị của chúng tôi."
+
+#: ../../dapp-dev-guide/getting-help.rst:10
+msgid "Deploy Processing"
+msgstr "Triển khai tiến trình"
+
+#: ../../dapp-dev-guide/getting-help.rst:11
+msgid "**Question**: How do I know that a deploy was finalized?"
+msgstr ""
+"**Câu hỏi**: Làm cách nào để biết rằng một lệnh triển khai đã được hoàn tất?"
+
+#: ../../dapp-dev-guide/getting-help.rst:13
+msgid ""
+"**Answer**: If a deploy was executed, then it has been finalized. If the "
+"deploy status comes back as null, that means the deploy has not been "
+"executed yet. Once the deploy executes, it is finalized, and no other "
+"confirmation is needed. Exchanges that are not running a read-only node must"
+" also keep track of `finality signatures <#finality-signatures>`_ to prevent"
+" any attacks from high-risk nodes."
+msgstr ""
+"**Trả lời**: Nếu một triển khai đã được thực thi, thì nó đã được hoàn tất. "
+"Nếu trạng thái triển khai trả lại là null, điều đó có nghĩa là triển khai "
+"vẫn chưa được thực hiện. Sau khi triển khai thực thi, nó sẽ được hoàn tất và"
+" không cần xác nhận nào khác. Các trao đổi không chạy nút chỉ đọc cũng cần "
+"theo dõi `finality signatures <#finality-signatures>`_để ngăn chặn bất kỳ "
+"cuộc tấn công nào từ các nút có nguy cơ cao."
+
+#: ../../dapp-dev-guide/getting-help.rst:16
+msgid "Finality Signatures"
+msgstr "Chữ ký cuối cùng"
+
+#: ../../dapp-dev-guide/getting-help.rst:17
+msgid "**Question**: When are finality signatures needed?"
+msgstr "**Câu hỏi**: Khi nào thì cần chữ ký cuối cùng?"
+
+#: ../../dapp-dev-guide/getting-help.rst:19
+msgid ""
+"**Answer**: Finality signatures are confirmations from validators that they "
+"have executed the transaction. Exchanges should be asserting finality by "
+"collecting the weight of two-thirds of transaction signatures. If an "
+"exchange runs a read-only node, it can collect these finality signatures "
+"from its node. Otherwise, the exchange must assert finality by collecting "
+"finality signatures and have proper monitoring infrastructure to prevent a "
+"Byzantine attack."
+msgstr ""
+"**Trả lời**: Chữ ký cuối cùng là xác nhận từ người xác thực rằng họ đã thực "
+"hiện giao dịch. Các trao đổi nên xác nhận tính cuối cùng bằng cách thu thập "
+"trọng số của hai phần ba chữ ký giao dịch. Nếu một trao đổi chạy một nút chỉ"
+" đọc, nó có thể thu thập các chữ ký cuối cùng này từ nút của nó. Nếu không, "
+"trao đổi này phải xác nhận tính chính thức bằng cách thu thập chữ ký cuối "
+"cùng và có cơ sở hạ tầng giám sát thích hợp để ngăn chặn một cuộc tấn công "
+"Byzantine."
+
+#: ../../dapp-dev-guide/getting-help.rst:21
+msgid ""
+"Suppose an exchange connects to someone else's node RPC to send transactions"
+" to the network. In this case, the node is considered high risk, and the "
+"exchange must assert finality by checking to see how many validators have "
+"run the transactions in the network."
+msgstr ""
+"Giả sử một trao đổi kết nối với nút RPC của người khác để gửi các giao dịch "
+"đến mạng. Trong trường hợp này, nút được coi là có rủi ro cao và trao đổi "
+"xác nhận tính cuối cùng bằng cách kiểm tra xem có bao nhiêu trình xác thực "
+"đã chạy các giao dịch trong mạng."
+
+#: ../../dapp-dev-guide/getting-help.rst:24
+msgid "deploy_hash vs. transfer_hash"
+msgstr "deploy_hash so với transfer_hash"
+
+#: ../../dapp-dev-guide/getting-help.rst:25
+msgid "**Question**: How is a deploy_hash different than a transfer_hash?"
+msgstr "**Câu hỏi**: deploy_hash khác với transfer_hash như thế nào?"
+
+#: ../../dapp-dev-guide/getting-help.rst:27
+msgid ""
+"**Answer**: Essentially, there is no difference between a `deploy_hash` and "
+"a `transfer_hash` since they are both deploy transactions. However, the "
+"platform is labeling the subset of deploys which are transfers, to filter "
+"transfers from other types of deploys. In other words, a `transfer_hash` is "
+"a native transfer, while a `deploy_hash` is another kind of deploy."
+msgstr ""
+"**Trả lời**: Về cơ bản, không có sự khác biệt giữa `deploy_hash` và` "
+"transfer_hash` vì cả hai đều đang triển khai các giao dịch. Tuy nhiên, nền "
+"tảng đang gắn nhãn cho tập con các việc triển khai là chuyển giao, để lọc "
+"chuyển giao từ các loại triển khai khác. Nói cách khác, một `transfer_hash` "
+"là một chuyển giao gốc, trong khi một `deploy_hash` là một loại triển khai "
+"khác."
+
+#: ../../dapp-dev-guide/getting-help.rst:30
+msgid "account-hex vs. account-hash"
+msgstr "account-hex so với account-hash"
+
+#: ../../dapp-dev-guide/getting-help.rst:31
+msgid ""
+"**Question**: Should a customer see the account-hex or the account-hash?"
+msgstr "**Câu hỏi**: Khách hàng nên xem account-hex hay account-hash?"
+
+#: ../../dapp-dev-guide/getting-help.rst:33
+msgid ""
+"**Answer**: Exchange customers or end-users only need to see the `account-"
+"hex`. They do not need to know the `account_hash`. The `account_hash` is "
+"needed in the backend to verify transactions. Store the `account-hash` to "
+"query and monitor the account. Customers do not need to know this value, so "
+"to simplify their experience, we recommend storing both values and "
+"displaying only the `account-hex`."
+msgstr ""
+"**Trả lời**: Khách hàng phần trao đổi hoặc người dùng cuối chỉ cần xem "
+"`account-hex`. Họ không cần biết `account_hash`. Cần có `account_hash` ở "
+"phía lớp sau để xác minh các giao dịch. Lưu trữ `account-hash` để truy vấn "
+"và giám sát tài khoản. Khách hàng không cần biết giá trị này, vì vậy để đơn "
+"giản hóa trải nghiệm của họ, chúng tôi khuyên bạn nên lưu trữ cả hai giá trị"
+" và chỉ hiển thị `account-hex`."
+
+#: ../../dapp-dev-guide/getting-help.rst:36
+msgid "Example Deploy"
+msgstr "Ví dụ triển khai"
+
+#: ../../dapp-dev-guide/getting-help.rst:37
+msgid "**Question**: Can you provide an example of a deploy?"
+msgstr "**Câu hỏi**: Bạn có thể cung cấp một ví dụ về triển khai không?"
+
+#: ../../dapp-dev-guide/getting-help.rst:39
+msgid ""
+"**Answer**: You can find a *testDeploy* reference in `GitHub "
+"<https://github.com/casper-ecosystem/casper-js-"
+"sdk/blob/next/test/lib/DeployUtil.test.ts#L5>`_."
+msgstr ""
+"**Trả lời**: Bạn có thể thấy *testDeploy* tham chiếu tại `GitHub "
+"<https://github.com/casper-ecosystem/casper-js-"
+"sdk/blob/next/test/lib/DeployUtil.test.ts#L5>`_."
+
+#: ../../dapp-dev-guide/getting-help.rst:42
+msgid "Operating with Keys"
+msgstr "Thao tác với Khoá"
+
+#: ../../dapp-dev-guide/getting-help.rst:43
+msgid "**Question**: How should we work with the PEM keys?"
+msgstr "**Câu hỏi**: Chúng ta nên làm việc với các khóa PEM như thế nào?"
+
+#: ../../dapp-dev-guide/getting-help.rst:45
+msgid ""
+"**Answer**: The `Keys API <https://casper-ecosystem.github.io/casper-js-"
+"sdk/next/modules/_lib_keys_.html>`_ provides methods for `Ed25519` and "
+"`Secp256K1` keys. Also, review the tests in `GitHub <https://github.com"
+"/casper-ecosystem/casper-js-sdk/blob/next/test/lib/Keys.test.ts#L39>`_ and "
+"the `Working with Keys <https://docs.casperlabs.io/en/latest/dapp-dev-"
+"guide/keys.html>`_ documentation."
+msgstr ""
+"**Trả lời**: `Keys API <https://casper-ecosystem.github.io/casper-js-"
+"sdk/next/modules/_lib_keys_.html>`_ cung cấp các phương thức cho khoá "
+"`Ed25519` và `Secp256K1`. Ngoài ra, hãy xem các bài kiểm thử tại `GitHub "
+"<https://github.com/casper-ecosystem/casper-js-"
+"sdk/blob/next/test/lib/Keys.test.ts#L39>`_ và tài liệu `Working with Keys "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/keys.html>`."
+
+#: ../../dapp-dev-guide/getting-help.rst:49
+msgid "Useful Resources"
+msgstr "Tài nguyên hữu ích"
+
+#: ../../dapp-dev-guide/getting-help.rst:50
+msgid ""
+"CasperLabs makes available the following resources for you to connect and "
+"get support:"
+msgstr "CasperLabs cung cấp các tài nguyên sau để bạn kết nối và nhận hỗ trợ:"
+
+#: ../../dapp-dev-guide/getting-help.rst:53
+msgid ""
+"On our `Discord Channel <https://discordapp.com/invite/mpZ9AYD>`_, connect "
+"live with members of our Engineering Team available to support you with the "
+"progress of your projects"
+msgstr ""
+"Trên `Kênh Discord <https://discordapp.com/invite/mpZ9AYD>`_ của chúng tôi, "
+"kết nối trực tiếp với các thành viên trong Nhóm kỹ thuật, chúng tôi sẵn sàng"
+" hỗ trợ về tiến độ các dự án của bạn"
+
+#: ../../dapp-dev-guide/getting-help.rst:54
+msgid ""
+"Join the `CasperLabs Community Forum <https://forums.casperlabs.io/>`_ that "
+"includes technical discussions on using Casper features, obtain support, and"
+" pose questions to the CasperLabs Core Engineering Team"
+msgstr ""
+"Tham gia `CasperLabs Community Forum <https://forums.casperlabs.io/>`_ bao "
+"gồm các cuộc thảo luận kỹ thuật về cách sử dụng các tính năng của Casper, "
+"nhận hỗ trợ và đặt câu hỏi cho Nhóm kỹ thuật chính của CasperLabs"
+
+#: ../../dapp-dev-guide/getting-help.rst:55
+msgid ""
+"Subscribe to the `CasperLabs Official Telegram Channel "
+"<https://t.me/CasperLabs>`_ for general information and updates about our "
+"platform"
+msgstr ""
+"Đăng ký `Kênh Telegram chính thức của CasperLab <https://t.me/CasperLabs>`_ "
+"để biết thông tin chung và cập nhật về nền tảng của chúng tôi"
+
+#: ../../dapp-dev-guide/getting-help.rst:57
+msgid ""
+"If you find issues related to the smart contracts maintained by CasperLabs, "
+"file an issue in the `Casper Ecosystem repository <https://github.com"
+"/casper-ecosystem/>`_."
+msgstr ""
+"Nếu bạn tìm thấy các vấn đề liên quan đến các hợp đồng thông minh do "
+"CasperLabs đang hỗ trợ, hãy gửi vấn đề vào `Casper Ecosystem repository "
+"<https://github.com/casper-ecosystem/>`_."
+
+#: ../../dapp-dev-guide/getting-help.rst:59
+msgid ""
+"For other issues, search the main `CasperLabs repository "
+"<https://github.com/CasperLabs>`_ and file the issue in the related project."
+msgstr ""
+"Đối với các sự cố khác, hãy tìm kiếm `Kho chứa chính của CasperLabs "
+"<https://github.com/CasperLabs>`_ và gửi sự cố vào dự án liên quan."
+
+#: ../../dapp-dev-guide/getting-help.rst:61
+msgid ""
+"Otherwise, use our `Jira Service Desk "
+"<https://casperlabs.atlassian.net/servicedesk>`_ for situations such as:"
+msgstr ""
+"Nếu không, hãy sử dụng `Jira Service Desk "
+"<https://casperlabs.atlassian.net/servicedesk>`_ của chúng tôi cho các "
+"trường hợp như:"
+
+#: ../../dapp-dev-guide/getting-help.rst:63
+msgid "questions that are not issues"
+msgstr "những câu hỏi không phải là vấn đề"
+
+#: ../../dapp-dev-guide/getting-help.rst:64
+msgid "needing technical support"
+msgstr "cần hỗ trợ kỹ thuật"
+
+#: ../../dapp-dev-guide/getting-help.rst:65
+msgid "wanting to give feedback"
+msgstr "muốn đưa ra phản hồi"
+
+#: ../../dapp-dev-guide/getting-help.rst:66
+msgid "suggesting improvements"
+msgstr "đề xuất cải tiến"
+
+#: ../../dapp-dev-guide/getting-help.rst:67
+msgid "participating in a bounty"
+msgstr "tham gia nhận thưởng"
