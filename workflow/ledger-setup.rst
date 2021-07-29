@@ -44,7 +44,7 @@ You can now use the Ledger device with Web wallet. Follow these steps:
 4. Click on **Connect** button in the **Ledger** section.
 5. Click on **Connect to Ledger wallet** button.
 6. Select an account you want to use.
-7. Now, your Ledger device is connected to the web wallet.
+7. Now, your Ledger device is connected to the Web wallet.
 
 View account details
 ~~~~~~~~~~~~~~~~~~~~
