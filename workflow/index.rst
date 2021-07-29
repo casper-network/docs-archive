@@ -4,14 +4,14 @@ How To's
 User Guides
 ^^^^^^^^^^^
 
-The *User Guides* contain step-by-step instructions for interacting with the Casper blockchain.
+These user guides contain step-by-step instructions for interacting with the Casper blockchain.
 
 * `Ledger setup <ledger-setup.html>`_: a guide to setting up your Ledger device
 
 Developer Guides
 ^^^^^^^^^^^^^^^^
 
-The *Developer Guides* highlight key features and capabilities of the Casper system.
+These developer guides highlight key features and capabilities of the Casper system.
 
 * `Prerequisites <setup.html>`_: setup needed for various workflows
 * `Querying the Casper Network <querying.html>`_: querying information on a Casper blockchain
