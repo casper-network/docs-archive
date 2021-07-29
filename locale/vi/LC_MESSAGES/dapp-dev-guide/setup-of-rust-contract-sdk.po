@@ -1,0 +1,416 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:2
+msgid "Getting Started"
+msgstr "Bắt đầu"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:4
+msgid ""
+"This guide covers the basic tools you will need to set up your first Casper "
+"smart contract. You will also be able to build a sample smart contract and "
+"run a few basic tests on it on your local machine."
+msgstr ""
+"Hướng dẫn này bao gồm các công cụ cơ bản bạn sẽ cần để thiết lập hợp đồng "
+"thông minh Casper đầu tiên của mình. Bạn cũng sẽ có thể xây dựng một hợp "
+"đồng thông minh mẫu và chạy một vài thử nghiệm cơ bản về hợp đồng đó trên "
+"máy cục bộ của mình."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:6
+msgid ""
+"Casper’s blockchain is built upon the Rust programming language and compiles"
+" down to WebAssembly. The Rust contract SDK is the easiest way to get "
+"started with smart contract development. This guide will walk you through "
+"the steps to set up your development environment and build your first "
+"contract."
+msgstr ""
+"Chuỗi khối của Casper được xây dựng dựa trên ngôn ngữ lập trình Rust và được"
+" biên dịch thành WebAssembly. SDK hợp đồng Rust là cách dễ nhất để bắt đầu "
+"với việc phát triển hợp đồng thông minh. Hướng dẫn này sẽ hướng dẫn bạn các "
+"bước để thiết lập môi trường phát triển và xây dựng hợp đồng đầu tiên của "
+"bạn."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:9
+msgid "Video Tutorial"
+msgstr "Video hướng dẫn"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:11
+msgid ""
+"For a video walkthrough of this guide, feel free to check out this quick-"
+"start video."
+msgstr "Để xem hướng dẫn bằng video, vui lòng xem video bắt đầu nhanh này."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:19
+msgid "Prerequisites"
+msgstr "Điều kiện cần"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:22
+msgid "Installing Rust"
+msgstr "Cài đặt Rust"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:23
+msgid ""
+"Install the `Rust programming language <https://www.rust-lang.org>`_ if you "
+"don’t already have it on your computer."
+msgstr ""
+"Cài đặt ngôn ngữ lập trình Rust <https://www.rust-lang.org>`_ nếu bạn chưa "
+"có trên máy tính của mình."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:25
+msgid ""
+"The `official Rust guide <https://www.rust-lang.org/tools/install>`_ "
+"recommends installing Rust by using ``curl``:"
+msgstr ""
+"`Hướng dẫn chính thức về Rust <https://www.rust-lang.org/tools/install>`_ "
+"khuyên bạn nên cài đặt Rust bằng cách sử dụng ``curl``:"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:31
+msgid ""
+"You can also use ``brew`` on MacOS or ``apt`` on Linux to install Rust."
+msgstr ""
+"Bạn cũng có thể sử dụng ``brew`` trên MacOS hoặc ``apt`` trên Linux để cài "
+"đặt Rust."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:33
+msgid ""
+"You will need to customize the build so that you are installing the nightly "
+"build as your default toolchain. Once you finish installing Rust, check your"
+" version:"
+msgstr ""
+"Bạn sẽ cần phải tùy chỉnh bản dựng do bạn đang cài đặt bản dựng đêm làm "
+"chuỗi công cụ mặc định của mình. Sau khi bạn cài đặt xong Rust, hãy kiểm tra"
+" phiên bản của bạn:"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:39
+msgid ""
+"Your terminal output should resemble something like the following (note: at "
+"the time of the writing of this tutorial, the latest version of Rust was "
+"1.23.1 and may differ for you):"
+msgstr ""
+"Trên màn hình thiết bị của bạn sẽ hiển thị giống như sau (lưu ý: tại thời "
+"điểm viết hướng dẫn này, phiên bản mới nhất của Rust là 1.23.1 và có thể "
+"khác đối với bạn):"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:48
+msgid "**Casper Rust Packages**"
+msgstr "**Gói Rust của Casper**"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:50
+msgid ""
+"We publish three crates on `crates.io <https://crates.io/>`_ to support "
+"smart contract development with Rust:"
+msgstr ""
+"Chúng tôi xuất bản ba gói trên ``crates.io <https://crates.io/>`_ để hỗ trợ "
+"phát triển hợp đồng thông minh với Rust:"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:52
+msgid ""
+"`Casper Contract <https://crates.io/crates/casper-contract>`_ - a library "
+"supporting communication with the blockchain. This is the main library you "
+"will need to write smart contracts."
+msgstr ""
+"`Casper Contract <https://crates.io/crates/casper-contract>`_ - một thư viện"
+" hỗ trợ giao tiếp với chuỗi khối. Đây là thư viện chính mà bạn sẽ cần để "
+"viết các hợp đồng thông minh."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:53
+msgid ""
+"`Casper Test Support <https://crates.io/crates/casper-engine-test-support>`_"
+" - an in-memory virtual machine against which you can test your smart "
+"contracts."
+msgstr ""
+"`Hỗ trợ kiểm thử Casper <https://crates.io/crates/casper-engine-test-"
+"support>`_ - một máy ảo của bộ nhớ trong mà bạn có thể kiểm thử các hợp đồng"
+" thông minh của mình."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:54
+msgid ""
+"`Casper Types <https://crates.io/crates/casper-types>`_ - a library with "
+"types we use across the Rust ecosystem."
+msgstr ""
+"`Casper Types <https://crates.io/crates/casper-types>`_ - một thư viện với "
+"các kiểu mà chúng tôi sử dụng trong hệ sinh thái Rust."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:56
+msgid ""
+"A crate is a compilation unit, which can be compiled into a binary or a "
+"library."
+msgstr ""
+"Một gói là một đơn vị biên dịch, có thể được biên dịch thành một tệp nhị "
+"phân hoặc một thư viện."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:58
+msgid "**API Documentation for Smart Contracts**"
+msgstr "**Tài liệu API cho Hợp đồng thông minh**"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:60
+msgid ""
+"Each of the Casper crates comes with API documentation and examples for each"
+" function, located at `https://docs.rs "
+"<https://docs.rs/releases/search?query=casper>`_. The contract API "
+"documentation is specific for a given version. For example, you can find "
+"documentation for version **0.7.6** at `<https://docs.rs/casper-"
+"contract/0.7.6>`_."
+msgstr ""
+"Mỗi gói Casper đi kèm với tài liệu API và ví dụ cho từng chức năng, có tại "
+"`https://docs.rs <https://docs.rs/releases/search?query=casper>`_. Tài liệu "
+"API hợp đồng dành riêng cho một phiên bản nhất định. Ví dụ: bạn có thể tìm "
+"tài liệu cho phiên bản ** 0.7.6 ** tại `<https://docs.rs/casper-"
+"contract/0.7.6>`_."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:64
+msgid "Installing Dependencies"
+msgstr "Cài đặt các phần phụ thuộc"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:66
+msgid "**1. CMake**"
+msgstr "**1. CMake**"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:68
+msgid ""
+"CMake is a popular build tool that we will utilize, and you may very well "
+"have it already installed. If you do, make sure that you have the latest "
+"version (currently 3.19.4). If you need to install or upgrade it, follow the"
+" steps located here: https://cmake.org/install/. Once installed, check your "
+"version as shown below. It should resemble this output:"
+msgstr ""
+"CMake là một công cụ xây dựng phổ biến mà chúng tôi sẽ sử dụng và rất có thể"
+" bạn đã cài đặt nó. Nếu bạn làm vậy, hãy đảm bảo rằng bạn có phiên bản mới "
+"nhất (hiện tại là 3.19.4). Nếu bạn cần cài đặt hoặc nâng cấp nó, hãy làm "
+"theo các bước có tại đây: https://cmake.org/install/. Sau khi cài đặt, hãy "
+"kiểm tra phiên bản của bạn như hình dưới đây. Nó sẽ giống như thế này:"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:79
+msgid "Development Environment Setup"
+msgstr "Thiết lập môi trường phát triển"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:82
+msgid "Installing the Casper Crates"
+msgstr "Cài đặt Casper Crates"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:83
+msgid ""
+"The best and fastest way to set up a Casper Rust Smart Contract project is "
+"to use :code:`cargo-casper`.  When you use this, it will set the project up "
+"with a simple contract, a runtime environment and a testing framework with a"
+" simple test. *Cargo* is a build system and package manager for Rust (much "
+"like *pip* if you are familiar with Python). It is possible to use this "
+"configuration in your CI/CD pipeline as well."
+msgstr ""
+"Cách tốt nhất và nhanh nhất để thiết lập dự án Hợp đồng thông minh Casper "
+"Rust là sử dụng :code:`cargo-casper`. Khi bạn sử dụng, nó sẽ thiết lập dự án"
+" với một hợp đồng đơn giản, một môi trường thời gian chạy và một khung kiểm "
+"thử với một bài kiểm tra đơn giản. *Cargo* là một hệ thống xây dựng và trình"
+" quản lý gói cho Rust (giống như *pip* nếu bạn đã quen thuộc với Python). "
+"Bạn cũng có thể sử dụng cấu hình này trong hệ thống CI/CD của mình."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:91
+msgid "Creating a Project"
+msgstr "Tạo một dự án"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:92
+msgid ""
+"You can create a new sample project very easily with the Casper crate. For "
+"example, let’s say that I want to create a project named **my-project** for "
+"this tutorial (you can choose a different name if you wish), then I can "
+"simply run the command:"
+msgstr ""
+"Bạn có thể tạo một dự án mẫu mới rất dễ dàng với gói Casper. Ví dụ: giả sử "
+"tôi muốn tạo một dự án có tên **my-project** cho hướng dẫn này (bạn có thể "
+"chọn một tên khác nếu muốn), sau đó tôi có thể chỉ cần chạy lệnh:"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:98
+msgid ""
+"If you look inside the newly-created *my-project* folder, you will find two "
+"crates: ``contract`` and ``tests``. This is a complete basic smart contract "
+"that saves a value, passed as an argument, on the blockchain. The ``tests`` "
+"crate provides a runtime environment of the Casper virtual machine, and a "
+"basic smart contract test."
+msgstr ""
+"Nếu bạn nhìn vào bên trong thư mục *my-project* mới được tạo, bạn sẽ thấy "
+"hai gói: `` hợp đồng`` và ``thử nghiệm``. Đây là một hợp đồng thông minh cơ "
+"bản hoàn chỉnh giúp lưu một giá trị, được thông qua như một đối số trên "
+"blockchain. Gói ``tests`` cung cấp môi trường thời gian chạy của máy ảo "
+"Casper và kiểm tra hợp đồng thông minh cơ bản."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:101
+msgid "Compiling to WASM"
+msgstr "Biên dịch sang WASM"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:103
+msgid ""
+"The Casper blockchain uses WebAssembly (WASM) in its runtime environment. "
+"Compilation targets for WASM are available for Rust, giving developers "
+"access to all the Rust ecosystem tools when developing smart contracts."
+msgstr ""
+"Chuỗi khối Casper sử dụng WebAssembly (WASM) trong môi trường thời gian chạy"
+" của nó. Khả năng biên dịch sang WASM có sẵn trong Rust, cho phép các nhà "
+"phát triển truy cập vào tất cả các công cụ của hệ sinh thái Rust khi phát "
+"triển các hợp đồng thông minh."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:105
+msgid ""
+"Casper contracts support Rust tooling such as :code:`clippy` for linting "
+"contracts. Feel free to use them!"
+msgstr ""
+"Hợp đồng Casper hỗ trợ công cụ Rust như: :code:`clippy` cho các hợp đồng "
+"linting. Hãy sử dụng chúng!"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:107
+msgid ""
+"The project requires a specific nightly version of Rust and requires a WASM "
+"target to be added to that Rust version. You can see more information by "
+"running:"
+msgstr ""
+"Dự án yêu cầu một phiên bản Rust hàng đêm riêng và yêu cầu thêm đích WASM "
+"vào phiên bản Rust đó. Bạn có thể xem thêm thông tin bằng cách chạy:"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:113
+msgid ""
+"To build the project, go into the ``contract`` folder, install the Rust "
+"toolchain and specify the target build as WebAssembly (wasm32):"
+msgstr ""
+"Để xây dựng dự án, hãy vào thư mục ``contract``, cài đặt chuỗi công cụ Rust "
+"và chỉ định xây dựng đích là WebAssembly (wasm32):"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:123
+msgid "Build the Contract"
+msgstr "Xây dựng Hợp đồng"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:125
+msgid ""
+"The next step is to compile the smart contract into WASM. Inside the "
+"contract folder, run the following command:"
+msgstr ""
+"Bước tiếp theo là biên dịch hợp đồng thông minh thành WASM. Bên trong thư "
+"mục hợp đồng, hãy chạy lệnh sau:"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:131
+msgid ""
+"**NOTE: It's important to build the contract using ``--release`` as a debug "
+"build will produce a contract which is much larger and more expensive to "
+"execute.**"
+msgstr ""
+"**LƯU Ý: Điều quan trọng là xây dựng hợp đồng bằng cách sử dụng "
+"``--release`` như bản dựng gỡ rối sẽ tạo ra một hợp đồng lớn hơn và đắt hơn "
+"nhiều để thực hiện.**"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:133
+msgid ""
+"Inside of the folder, you will now see a *target* folder that will contain "
+"the compiled smart contract named *contract.wasm* at :code:`my-"
+"project/contract/target/wasm32-unknown-unknown/release/contract.wasm`."
+msgstr ""
+"Bên trong thư mục, bây giờ bạn sẽ thấy một thư mục *đích* sẽ chứa hợp đồng "
+"thông minh đã biên dịch có tên là *contract.wasm* tại :code:`my-"
+"project/contract/target/wasm32-unknown-unknown/release/contract.wasm`."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:137
+msgid "Test the Contract"
+msgstr "Kiểm thử Hợp đồng"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:139
+msgid ""
+"In addition to creating the contract, the Casper crate also automatically "
+"created sample tests in the *my-project/tests* folder."
+msgstr ""
+"Ngoài việc tạo hợp đồng, gói Casper cũng tự động tạo các bài kiểm thử mẫu "
+"trong thư mục *my-project/tests*."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:141
+msgid ""
+"The Casper local environment provides an in-memory virtual machine against "
+"which you can run your contract for testing. When you run the test crate, it"
+" will automatically build the smart contract in release mode and then run a "
+"series of tests against it in the Casper runtime environment. The custom "
+"build script is named ``build.rs`` if you are interested in looking more "
+"into it."
+msgstr ""
+"Môi trường cục bộ Casper cung cấp một máy ảo trong bộ nhớ mà bạn có thể chạy"
+" hợp đồng của mình để thử nghiệm. Khi bạn chạy gói thử nghiệm, nó sẽ tự động"
+" xây dựng hợp đồng thông minh ở chế độ phát hành và sau đó chạy một loạt các"
+" thử nghiệm đối với nó trong môi trường thời gian chạy Casper. Tập lệnh xây "
+"dựng tùy chỉnh được đặt tên là ``build.rs`` nếu bạn muốn tìm hiểu thêm về "
+"nó."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:143
+msgid ""
+"**Note**: Since the test script automatically builds the contract, during "
+"development you only need to run the command ``cargo test`` without the need"
+" for ``cargo build``."
+msgstr ""
+"**Lưu ý**: Vì tập lệnh thử nghiệm tự động xây dựng hợp đồng, trong quá trình"
+" phát triển, bạn chỉ cần chạy lệnh ``cargo test``  mà không cần ``cargo "
+"build``."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:145
+msgid ""
+"A successful test run indicates that your smart contract environment is set "
+"up correctly."
+msgstr ""
+"Quá trình chạy thử nghiệm thành công cho thấy rằng môi trường hợp đồng thông"
+" minh của bạn được thiết lập chính xác."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:152
+msgid ""
+"After the compilation finishes, the test should run and you should see "
+"output similar to this message in your terminal:"
+msgstr ""
+"Sau khi quá trình biên dịch kết thúc, quá trình kiểm tra sẽ chạy và bạn sẽ "
+"thấy đầu ra tương tự như thông báo này trong màn hình của mình:"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:161
+msgid ""
+"As a brief example, open up *my-project/contract/src/main.rs* in your "
+"editor, modify the *KEY* value in the contract, and then rerun the ``cargo "
+"test`` command. You should observe that the smart contract recompiles and "
+"the test fails now."
+msgstr ""
+"Ví dụ ngắn gọn, hãy mở *my-project/contract/src/main.rs*  trong trình soạn "
+"thảo của bạn, sửa đổi giá trị *KEY* trong hợp đồng, sau đó chạy lại lệnh "
+"``cargo test``. Bạn nên quan sát rằng hợp đồng thông minh sẽ biên dịch lại "
+"và kiểm tra không thành công ngay bây giờ."
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:164
+msgid "Rust Resources"
+msgstr "Tài nguyên Rust"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:166
+msgid "These Rust resources are excellent and we highly recommend them:"
+msgstr ""
+"Các tài nguyên Rust này rất tuyệt vời và chúng tôi đặc biệt khuyên bạn nên "
+"sử dụng chúng:"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:168
+msgid "https://doc.rust-lang.org/book/foreword.html"
+msgstr "https://doc.rust-lang.org/book/foreword.html"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:169
+msgid "https://rustwasm.github.io/docs/book/"
+msgstr "https://rustwasm.github.io/docs/book/"
+
+#: ../../dapp-dev-guide/setup-of-rust-contract-sdk.rst:170
+msgid "https://doc.rust-lang.org/stable/rust-by-example"
+msgstr "https://doc.rust-lang.org/stable/rust-by-example"
