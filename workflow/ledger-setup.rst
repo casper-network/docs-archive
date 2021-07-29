@@ -1,7 +1,7 @@
 Ledger Setup
 ============
 
-A Ledger Device is a hardware wallet that is considered one of the most secure ways to store your digital assets. Ledger uses an offline, or cold storage, method of generating private keys, making it a preferred method for many crypto users. This guide will help you to connect your Ledger device to the Casper web wallet (https://cspr.live). The Casper web wallet enables you to send and receive CSPR tokens.
+A Ledger Device is a hardware wallet that is considered one of the most secure ways to store your digital assets. Ledger uses an offline, or cold storage, method of generating private keys, making it a preferred method for many crypto users. This guide will help you to connect your Ledger device to the Casper Web wallet (https://cspr.live). The Casper Web wallet enables you to send and receive CSPR tokens.
 
 If you need help, we're available on the following services:
 
