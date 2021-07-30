@@ -1,0 +1,326 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../faq/index.rst:5
+msgid "FAQ"
+msgstr "FAQ"
+
+#: ../../faq/index.rst:6
+msgid ""
+"FAQs regarding the Casper network, CasperLabs, and the CSPR token sale."
+msgstr "Câu hỏi thường gặp về mạng Casper, CasperLabs và việc bán token CSPR."
+
+#: ../../faq/index.rst:9
+msgid "Casper Network"
+msgstr "Casper Network"
+
+#: ../../faq/index.rst:12
+msgid "What is Casper?"
+msgstr "Casper là gì?"
+
+#: ../../faq/index.rst:13
+msgid ""
+"Casper is an open-source Proof-of-Stake blockchain network built off the CBC"
+" (`Correct-by-Construction <https://github.com/cbc-casper/cbc-casper-"
+"paper>`_) Casper specification originally established by early Ethereum "
+"developers. The Casper network is optimized for enterprise and developer "
+"adoption by focusing on unique features like upgradeable contracts, "
+"predictable network fees, privacy flexibility, on-chain governance, and "
+"developer-friendly languages. Casper solves the scalability trilemma by "
+"allowing development teams to build with confidence that the network will "
+"optimize for security, decentralization, and high throughput."
+msgstr ""
+"Casper là mạng blockchain Proof-of-Stake mã nguồn mở được xây dựng dựa trên "
+"CBC  (`Correct-by-Construction <https://github.com/cbc-casper/cbc-casper-"
+"paper>`_) Đặc điểm kỹ thuật của Casper ban đầu được thiết lập bởi các nhà "
+"phát triển Ethereum ban đầu. Mạng Casper được tối ưu hóa để doanh nghiệp và "
+"nhà phát triển chấp nhận bằng cách tập trung vào các tính năng độc đáo như "
+"hợp đồng có thể nâng cấp, phí mạng có thể đoán trước, tính linh hoạt của "
+"quyền riêng tư, quản trị trên chuỗi và ngôn ngữ thân thiện với nhà phát "
+"triển. Casper giải quyết vấn đề nan giải về khả năng mở rộng bằng cách cho "
+"phép các nhóm phát triển xây dựng với niềm tin rằng mạng sẽ tối ưu hóa cho "
+"bảo mật, phân quyền và thông lượng cao."
+
+#: ../../faq/index.rst:16
+msgid "When is Casper’s mainnet launch?"
+msgstr "Khi nào ra mắt mạng chính của Casper?"
+
+#: ../../faq/index.rst:17
+msgid "Casper’s mainnet launch will occur in Q1 2021."
+msgstr "Mạng chính của Casper ra mắt vào Q1 2021."
+
+#: ../../faq/index.rst:20
+msgid ""
+"How does Casper solve the trilemma of security, decentralization, and "
+"scalability?"
+msgstr ""
+"Làm cách nào để Casper giải quyết vấn đề nan giải về bảo mật, phân quyền và "
+"khả năng mở rộng?"
+
+#: ../../faq/index.rst:21
+msgid ""
+"As a Proof-of-Stake (PoS) network, Casper relies on a set of validators to "
+"uphold the network. PoS validators do not require the same hardware setup as"
+" Proof-of-Work networks, allowing validators to be more geographically "
+"decentralized and eliminating the centralizing pressures of economies of "
+"scale. PoS also enables scalability mechanisms like sharding, a forthcoming "
+"feature to allow the network to process multiple transactions "
+"simultaneously, improving overall throughput."
+msgstr ""
+"Là một mạng Proof-of-Stake (PoS), Casper dựa vào một tập hợp các nhà xác "
+"thực để duy trì mạng. Nhà xác thực PoS không yêu cầu thiết lập phần cứng "
+"giống như mạng Proof-of-Work, cho phép nhà xác thực được phân cấp về mặt địa"
+" lý hơn và loại bỏ áp lực tập trung hóa lợi thế kinh tế theo quy mô. PoS "
+"cũng cho phép các cơ chế khả năng mở rộng như sharding, một tính năng sắp ra"
+" mắt để cho phép mạng xử lý nhiều giao dịch đồng thời, cải thiện thông lượng"
+" tổng thể."
+
+#: ../../faq/index.rst:24
+msgid "What is unique about Casper’s blockchain architecture?"
+msgstr "Kiến trúc chuỗi khối của Casper có gì độc đáo?"
+
+#: ../../faq/index.rst:25
+msgid ""
+"The Highway Protocol is the specific implementation of PoS that supports the"
+" Casper network. Highway has two primary benefits over classic Byzantine "
+"Fault Tolerant consensus mechanisms. First, Highway enables the network to "
+"reach higher thresholds of finality. Second, it achieves flexibility in a "
+"way not possible in typical BFT models. `Learn more about Highway "
+"<https://blog.casperlabs.io/the-casper-network-highway-consensus-"
+"protocol/>`_."
+msgstr ""
+"Giao thức Highway là triển khai cụ thể của PoS mà hỗ trợ mạng Casper. "
+"Highway có hai lợi ích chính so với cơ chế đồng thuận Byzantine Fault "
+"Tolerant cổ điển. Đầu tiên, Highway cho phép mạng đạt đến ngưỡng cuối cùng "
+"cao hơn. Thứ hai, nó đạt được tính linh hoạt theo cách không thể có trong "
+"các mô hình BFT điển hình. `Tìm hiểu thêm về Highway "
+"<https://blog.casperlabs.io/the-casper-network-highway-consensus-"
+"protocol/>`_."
+
+#: ../../faq/index.rst:28
+msgid "Why is Casper a good fit for enterprises and developers?"
+msgstr "Tại sao Casper lại phù hợp với các doanh nghiệp và nhà phát triển?"
+
+#: ../../faq/index.rst:29
+msgid ""
+"Casper is optimized for enterprise and developers through three main "
+"features: upgradeable contracts, developer-friendly languages, and "
+"forthcoming predictable network fees."
+msgstr ""
+"Casper được tối ưu hóa cho doanh nghiệp và nhà phát triển thông qua ba tính "
+"năng chính: hợp đồng có thể nâng cấp, ngôn ngữ thân thiện với nhà phát triển"
+" và phí mạng sắp tới có thể dự đoán."
+
+#: ../../faq/index.rst:31
+msgid ""
+"**Upgradeable Contracts**. Casper enables on-chain smart contracts to be "
+"directly upgraded, removing the need for complex and migration processes and"
+" making it easier to patch smart contract vulnerabilities."
+msgstr ""
+"**Hợp đồng có thể nâng cấp**. Casper cho phép các hợp đồng thông minh trên "
+"chuỗi được nâng cấp trực tiếp, loại bỏ nhu cầu về các quy trình phức tạp và "
+"di chuyển, đồng thời giúp vá các lỗ hổng hợp đồng thông minh dễ dàng hơn."
+
+#: ../../faq/index.rst:33
+msgid ""
+"**Developer-Friendly Languages**. Casper supports developers building with "
+"WebAssembly. The network’s development ecosystem is designed to be familiar "
+"to existing Web2 developers instead of being written in a proprietary "
+"language like Solidity. This provides an easier path for developers and "
+"businesses to start building with Casper immediately."
+msgstr ""
+"**Ngôn ngữ thân thiện với nhà phát triển**. Casper hỗ trợ các nhà phát triển"
+" xây dựng bằng WebAssembly. Hệ sinh thái phát triển của mạng được thiết kế "
+"để quen thuộc với các nhà phát triển Web2 hiện tại thay vì được viết bằng "
+"ngôn ngữ độc quyền như Solidity. Điều này cung cấp một con đường dễ dàng hơn"
+" cho các nhà phát triển và doanh nghiệp để bắt đầu xây dựng với Casper ngay "
+"lập tức."
+
+#: ../../faq/index.rst:35
+msgid ""
+"**Predictable Network Fees (In Development)**. Casper intends to incentivize"
+" active and diverse network behavior by establishing consistent, "
+"predictable, and transparent gas costs - eliminating volatility and "
+"improving both developer and user experience."
+msgstr ""
+"**Phí mạng có thể đoán trước (Đang phát triển)**. Casper dự định khuyến "
+"khích hành vi mạng đa dạng và tích cực bằng cách thiết lập chi phí gas nhất "
+"quán, có thể dự đoán và minh bạch - loại bỏ sự biến động và cải thiện trải "
+"nghiệm của cả nhà phát triển và người dùng."
+
+#: ../../faq/index.rst:38
+msgid "What’s an example of the Casper network in use?"
+msgstr "Ví dụ về mạng Casper đang được sử dụng là gì?"
+
+#: ../../faq/index.rst:39
+msgid ""
+"IPwe is a global patent registry currently building on the Casper network. "
+"CasperLabs and IPwe have partnered to build a chain of custody (CoC) "
+"solution for public patent records. The “CoC Solution” will use the Casper "
+"public blockchain to store, secure, and trace patent data. `Learn more "
+"<https://blog.casperlabs.io/intellectual-property-and-patent-assets-on-"
+"casper/>`_."
+msgstr ""
+"IPwe là cơ quan đăng ký bằng sáng chế toàn cầu hiện đang được xây dựng trên "
+"mạng Casper. CasperLabs và IPwe đã hợp tác để xây dựng giải pháp chuỗi nguồn"
+" gốc sản phẩm (CoC) cho các hồ sơ bằng sáng chế công khai. “Giải pháp CoC” "
+"sẽ sử dụng chuỗi khối công cộng Casper để lưu trữ, bảo mật và theo dõi dữ "
+"liệu bằng sáng chế. `Learn more <https://blog.casperlabs.io/intellectual-"
+"property-and-patent-assets-on-casper/>`_."
+
+#: ../../faq/index.rst:42
+msgid "How can I learn more about the Casper network?"
+msgstr "Làm cách nào để tìm hiểu thêm về mạng Casper?"
+
+#: ../../faq/index.rst:43
+msgid ""
+"Visit the `CasperLabs website <https://casperlabs.io/>`_, `read the blog "
+"<https://blog.casperlabs.io/>`_, and `join our community "
+"<https://casperlabs.io/community/>`_."
+msgstr ""
+"Truy cập `CasperLabs website <https://casperlabs.io/>`_, `đọc blog "
+"<https://blog.casperlabs.io/>`_, và `tham gia cộng đồng chúng tôi "
+"<https://casperlabs.io/community/>`_."
+
+#: ../../faq/index.rst:46
+msgid "CasperLabs"
+msgstr "CasperLabs"
+
+#: ../../faq/index.rst:49
+msgid "What’s the difference between CasperLabs and Casper?"
+msgstr "Sự khác biệt giữa CasperLabs và Casper là gì?"
+
+#: ../../faq/index.rst:50
+msgid ""
+"CasperLabs is the development team that is currently building the Casper "
+"network. CasperLabs has been developing Casper during its testnet phase and "
+"is currently planning for mainnet launch in Q1 2021. As a public, open-"
+"source network, Casper can be developed on and by anyone in addition to the "
+"CasperLabs team."
+msgstr ""
+"CasperLabs là nhóm phát triển hiện đang xây dựng mạng Casper. CasperLabs đã "
+"và đang phát triển Casper trong giai đoạn testnet của mình và hiện đang lên "
+"kế hoạch ra mắt mainnet vào quý 1 năm 2021. Là một mạng công cộng, mã nguồn "
+"mở, Casper có thể được phát triển bởi bất kỳ ai ngoài nhóm CasperLabs."
+
+#: ../../faq/index.rst:53
+msgid "What’s the CasperLabs team’s background?"
+msgstr "Nền tảng của nhóm CasperLabs là gì?"
+
+#: ../../faq/index.rst:54
+msgid ""
+"The engineering, executive, business, and marketing teams of CasperLabs are "
+"diverse groups of thinkers and builders with decades of experience in "
+"internet-scale computing systems across academia, business, and engineering."
+" `Meet the CasperLabs team <https://casperlabs.io/company/meet-our-team/>`_."
+msgstr ""
+"Các nhóm kỹ thuật, điều hành, kinh doanh và tiếp thị của CasperLabs là những"
+" nhóm nhà tư tưởng và nhà xây dựng đa dạng với nhiều thập kỷ kinh nghiệm với"
+" các hệ thống máy tính quy mô internet trên khắp các học viện, kinh doanh và"
+" kỹ thuật. `Gặp gỡ nhóm CasperLabs <https://casperlabs.io/company/meet-our-"
+"team/>`_."
+
+#: ../../faq/index.rst:57
+msgid "What is CasperLabs’ fundraising history?"
+msgstr "Lịch sử gây quỹ của CasperLabs thế nào?"
+
+#: ../../faq/index.rst:58
+msgid ""
+"In September 2019, CasperLabs raised a $14.5 million Series A round led by "
+"Terren Piezer with participation from Consensus Capital, Axiom Holdings "
+"Group, and Digital Strategies, MW Partners, and more."
+msgstr ""
+"Vào tháng 9 năm 2019, CasperLabs đã huy động được 14,5 triệu đô la vòng "
+"Series A do Terren Piezer dẫn đầu với sự tham gia của Consensus Capital, "
+"Axiom Holdings Group và Digital Strategies, MW Partners, v.v."
+
+#: ../../faq/index.rst:61
+msgid "Who has partnered with CasperLabs to build on the Casper network?"
+msgstr "Ai đã hợp tác với CasperLabs để xây dựng trên mạng Casper?"
+
+#: ../../faq/index.rst:62
+msgid ""
+"CasperLabs has established a diverse ecosystem of participants who will be "
+"building, staking, and validating on Casper from day one, spanning "
+"blockchain, enterprise technology, and financial services. Among others, "
+"CasperLabs has established relationships with BitGo, Huobi, Ledger Leap, "
+"Chainlink, Metis, and Cardinal Cryptography. Companies including IPwe and "
+"Broadleaf are already using the Casper Network to unlock new value by "
+"tokenizing existing assets."
+msgstr ""
+"CasperLabs đã thiết lập một hệ sinh thái đa dạng gồm những người tham gia, "
+"những người sẽ xây dựng, stake và xác thực trên Casper ngay từ ngày đầu "
+"tiên, mở rộng chuỗi khối, công nghệ doanh nghiệp và dịch vụ tài chính. Trong"
+" số những người khác, CasperLabs đã thiết lập mối quan hệ với BitGo, Huobi, "
+"Ledger Leap, Chainlink, Metis và Cardinal Cryptography. Các công ty bao gồm "
+"IPwe và Broadleaf đã sử dụng Mạng Casper để mở khóa giá trị mới bằng cách "
+"token hóa các tài sản hiện có."
+
+#: ../../faq/index.rst:64
+msgid ""
+"To learn more about how to work within the Casper ecosystem, contact "
+"neil@casperlabs.io."
+msgstr ""
+"Để tìm hiểu thêm về cách hoạt động trong hệ sinh thái Casper, hãy liên hệ "
+"với neil@casperlabs.io."
+
+#: ../../faq/index.rst:67
+msgid "CSPR Token"
+msgstr "CSPR Token"
+
+#: ../../faq/index.rst:70
+msgid "What is CSPR, and its role in the Casper network?"
+msgstr "CSPR là gì và vai trò của nó trong mạng Casper?"
+
+#: ../../faq/index.rst:71
+msgid ""
+"CSPR is the native token to the Casper network. As a Proof-of-Stake "
+"blockchain, Casper relies on CSPR to reward the validators that participate "
+"in the PoS consensus mechanism to secure and uphold the network. Casper "
+"users also rely on CSPR to pay network fees for on-chain actions. For "
+"example, each token transfer costs 0.0001 CSPR (10000 motes) and the amount "
+"transferred needs to be 2.5 CSPR or more."
+msgstr ""
+"CSPR là mã thông báo gốc của mạng Casper. Là một blockchain Proof-of-Stake, "
+"Casper dựa vào CSPR để thưởng cho những người xác thực tham gia vào cơ chế "
+"đồng thuận PoS để bảo mật và duy trì mạng. Người dùng Casper cũng dựa vào "
+"CSPR để trả phí mạng cho các hành động trên chuỗi. Ví dụ: mỗi lần chuyển mã "
+"thông báo có giá 0,0001 CSPR (10000 motes) và số tiền được chuyển cần phải "
+"từ 2,5 CSPR trở lên."
+
+#: ../../faq/index.rst:74
+msgid ""
+"Where can I find information about CSPR, the supply, the allocation, and the"
+" sale?"
+msgstr ""
+"Tôi có thể tìm thông tin về CSPR, nguồn cung cấp, phân bổ và bán ở đâu?"
+
+#: ../../faq/index.rst:75
+msgid ""
+"The Casper Association has launched its CSPR token sale. Head to "
+"`casper.network <https://casper.network/>`_ to learn more."
+msgstr ""
+"Hiệp hội Casper đã triển khai bán mã thông báo CSPR của mình. Truy cập "
+"`casper.network <https://casper.network/>`_ để tìm hiểu thêm."
