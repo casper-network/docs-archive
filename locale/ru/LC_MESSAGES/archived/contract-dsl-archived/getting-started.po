@@ -1,0 +1,208 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:45+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:3
+msgid "Getting Started with the DSL"
+msgstr "Начало работы с DSL"
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:5
+msgid ""
+"Since the DSL uses macros, it works like templates in the smart contract, so"
+" it's necessary to tell the Rust compiler where the macros are located for "
+"each smart contract. The aim of this guide is to describe how to configure "
+"the smart contract to use the DSL."
+msgstr ""
+"Так как доменный язык DSL использует макросы, он работает как темплейты в "
+"смарт-контрактах. Поэтому необходимо указывать компилятору Rust, где "
+"расположены макросы для каждого контракта. Этот гайд описывает, как "
+"сконфигурировать смарт-контракт для использования DSL. "
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:10
+msgid "About the DSL"
+msgstr "О языке DSL "
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:12
+msgid "The DSL is designed specifically for Rust Smart Contrats."
+msgstr "DSL специально разработан под смарт-контракты на Rust. "
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:15
+msgid ""
+"The ``constructor_macro`` creates the code that sets up the contract in the "
+"runtime and locates the contract in the runtime when execution begins (this "
+"is the deploy function that creates the entry point & stores the deploy hash"
+" stored under some function name in the runtime).  Think of the function "
+"templated by the constructor macro as your ``main`` function, while the "
+"contract macro sets up the function definitions within the calls."
+msgstr ""
+"С помощью ``constructor_macro`` создается код, который устанавливает "
+"контракт в рабочую среду и размещает в ней, когда начинается исполнение "
+"программы (это развертывающая функция, которая создает точку входа и хранит "
+"хэш от развертывания в виде специальной функции в рабочей среде). Считайте "
+"функцию, сформированную ``constructor_macro`` своей основной функцией, в то "
+"время как contract macro создает определения функций внутри вызовов. "
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:16
+msgid ""
+"The ``contract_macro`` generates the code for the headers for each of the "
+"entry points that use it."
+msgstr ""
+" ``contract_macro`` генерирует код заголовков для каждой точки входа которую"
+" вы используете."
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:17
+msgid ""
+"The ``casperlabs_method`` creates an entry point for any function in your "
+"contract."
+msgstr ""
+"``casperlabs_method`` создает точку входа для любой функции в вашем "
+"контракте."
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:20
+msgid "Pre-Requisites - Set up the Rust SDK"
+msgstr "Предварительные требования - установка Rust SDK"
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:22
+msgid ""
+"Please use the Rust SDK to `create your smart contract project "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_ before setting up the DSL."
+msgstr ""
+"Пожалуйста, используйте Rust SDK для  `create your smart contract project "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_  перед настройкой DSL"
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:25
+msgid "Getting the Macros"
+msgstr "Получение макросов"
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:27
+msgid ""
+"The source code for the macros is located at `GitHub "
+"<https://github.com/CasperLabs/casperlabs_contract_macro>`_. To import the "
+"macros, include a line in the ``Cargo.toml`` file in the ``/contract`` "
+"folder for your smart contract. The entry needs to appear in the\\ "
+"``[dependencies]`` section.  This entry will import the macros into your "
+"project. There are a few sources for the macros."
+msgstr ""
+"Исходный код для макросов расположен по адресу  `GitHub "
+"<https://github.com/CasperLabs/casperlabs_contract_macro>`_.  Для того чтобы"
+" импортировать макрос, добавьте строку в файл ``Cargo.toml``  в папке "
+"``/contract``  вашего смарт-контракта. Запись должна появиться в разделе  "
+"``[dependencies]`` . Эта запись импортирует макросы в ваш проект. Есть "
+"несколько источников макросов. "
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:33
+msgid "From Crates.io"
+msgstr "Crates.io"
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:35
+msgid ""
+"To use the crate available on `crates.io "
+"<https://crates.io/crates/casperlabs_contract_macro>`_ include the following"
+" entry in the ``Cargo.toml`` file for the smart contract."
+msgstr ""
+"Для использования контейнеров доступных в  `crates.io "
+"<https://crates.io/crates/casperlabs_contract_macro>`_  добавьте следующую "
+"запись в  файл ``Cargo.toml``  для смарт-контракта."
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:43
+msgid "From Github"
+msgstr "Github"
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:45
+msgid ""
+"To obtain the macros from Github, include this entry in ``Cargo.toml``\\ :"
+msgstr ""
+"Чтобы получить макросы с Github, включите эту запись в ``Cargo.toml``\\ :"
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:52
+msgid "Local package"
+msgstr "Локальный пакет"
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:54
+msgid "This example ``Cargo.toml`` entry uses a local path for the macros:"
+msgstr ""
+"В этом примере ``Cargo.toml``  в записи используется локальный путь для "
+"макроса."
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:61
+msgid "Using the DSL"
+msgstr "Использование DSL"
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:63
+msgid ""
+"To use the DSL, simply add the following line to the ``use`` section of the "
+"contract."
+msgstr ""
+"Для использования DSL, просто добавьте следующую линию в раздел ``use`` "
+"контракта."
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:69
+msgid ""
+"This line can go after the last ``use`` line in the blank contract created "
+"by ``cargo-casperlabs``."
+msgstr ""
+"Эта линия располагается под последней линией раздела ``use`` в бланке "
+"контракта, созданного с ``cargo-casperlabs``."
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:71
+msgid ""
+"Remember, if you are using the crates.io package, you may have to use the "
+"package as ``casperlabs_contract_macro``. This depends entirely on how you "
+"import the package in your ``Cargo.toml`` file"
+msgstr ""
+"Запомните, если вы используете пакет crates.io, вам возможно понадобится "
+"использовать пакет как ``casperlabs_contract_macro``. Это полностью зависит "
+"от того, как вы импортируете пакет данных в файл ``Cargo.toml`` ."
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:76
+msgid ""
+"The following contract creates a counter in storage. Each time the contract "
+"is invoked, the counter is incremented by 1."
+msgstr ""
+"Следующий контракт создает счетчик в хранилище. При каждом обращении к "
+"контракту счетчик инкрементируется на 1. "
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:160
+msgid ""
+"If you set up your contract using ``cargo-casperlabs`` you can test your "
+"contract using the local runtime."
+msgstr ""
+"Если вы настроите контракт с использованием ``cargo-casperlabs``, вы сможете"
+" протестировать контракт внутри рабочей среды. "
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:162
+msgid ""
+"Set up the runtime following the steps in the `testing </./dapp-dev-"
+"guide/testing.md>`_ section of this guide to set up the runtime context."
+msgstr ""
+"Настройте контекст рабочей среды, следуя шагам в секции `testing </./dapp-"
+"dev-guide/testing.md>`_ этого гайда. "
+
+#: ../../archived/contract-dsl-archived/getting-started.rst:165
+msgid ""
+"The following test will check whether or not the tutorial contract is "
+"working properly:"
+msgstr "Следующий тест проверит правильность работы учебного контракта:"
