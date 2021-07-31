@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../node-operator/hardware.rst:3
+msgid "Recommended Hardware Specifications"
+msgstr "Spécifications matérielles recommandées"
+
+#: ../../node-operator/hardware.rst:6
+msgid "System Requirements"
+msgstr "Configuration système requise"
+
+#: ../../node-operator/hardware.rst:8
+msgid "MainNet and TestNet"
+msgstr "MainNet et TestNet"
+
+#: ../../node-operator/hardware.rst:10
+msgid "4 Cores"
+msgstr "4 Cores"
+
+#: ../../node-operator/hardware.rst:11
+msgid "32 GB Ram"
+msgstr "32 GO de  Ram"
+
+#: ../../node-operator/hardware.rst:12
+msgid "1 TB disk"
+msgstr "1 TO  de disque"
+
+#: ../../node-operator/hardware.rst:14
+msgid ""
+"Linux machine running Ubuntu 18.04 or 20.04 with a Rust build environment. "
+"Reference `https://github.com/Casperlabs/casper-node "
+"<https://github.com/Casperlabs/casper-node>`_ for details."
+msgstr ""
+"Machine Linux exécutant Ubuntu 18.04 ou 20.04 avec un environnement de "
+"construction Rust. Référence `https://github.com/Casperlabs/casper-node "
+"<https://github.com/Casperlabs/casper-node>`_ pour les détails."
