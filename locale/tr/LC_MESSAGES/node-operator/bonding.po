@@ -3,197 +3,258 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../node-operator/bonding.rst:6
 msgid "Bonding"
-msgstr ""
+msgstr "Bağlanma"
 
 #: ../../node-operator/bonding.rst:8
 msgid ""
-"It is recommended that a bonding request be sent once the node has "
-"completed the synchronization process. Bonding in Casper takes place "
-"through the auction contract via the ``add_bid.wasm`` contract. The "
-"auction runs for a future era, every era. The Chainspec specifies the "
-"number of slots available, and the auction will take the top N slots and "
-"create the validator set for the future era. In the testnet, era "
-"durations are approx. 30 minutes. The entire process takes approximately "
-"3 eras. Therefore, the time for bid submission to inclusion in the "
-"validator set is a minimum of 90 minutes.\\ :raw-html-m2r:`<br>` Bonding "
-"requests (bids) are transactions like any other. Because they are generic"
-" transactions, they are more resistant to censorship."
+"It is recommended that a bonding request be sent once the node has completed"
+" the synchronization process. Bonding in Casper takes place through the "
+"auction contract via the ``add_bid.wasm`` contract. The auction runs for a "
+"future era, every era. The Chainspec specifies the number of slots "
+"available, and the auction will take the top N slots and create the "
+"validator set for the future era. In the testnet, era durations are approx. "
+"30 minutes. The entire process takes approximately 3 eras. Therefore, the "
+"time for bid submission to inclusion in the validator set is a minimum of 90"
+" minutes.\\ :raw-html-m2r:`<br>` Bonding requests (bids) are transactions "
+"like any other. Because they are generic transactions, they are more "
+"resistant to censorship."
 msgstr ""
+"Bağlanma talebinin, düğümün ağ ile eşlenme süreci tamamlandıktan sonra "
+"gönderilmesi önerilir. Casper'da bağlanma süreci, ``add_bid.wasm`` kontratı "
+"yoluyla, müzayede kontratı üzerinden gerçekleşir. Müzayede, her dönemde, bir"
+" sonraki dönem için gerçekleşir. Chainspec, kullanılabilir yuva sayısını "
+"belirtir ve müzayede, en yüksek N adet yuvayı alarak gelecek dönem için "
+"doğrulayıcı kümesini oluşturur. Test ağında (Testnet), dönem uzunlukları "
+"yaklaşık olarak 30 dakikadır. Tüm süreç yaklaşık olarak 3 dönemde "
+"tamamlanır. Dolayısıyla, doğrulayıcı kümesine dahil olmak için teklif "
+"gönderme süresi en az 90 dakikadır.\\ :raw-html-m2r:`<br>` Bağlanma "
+"talepleri (teklifler), ağdaki diğer işlemlerden farksızdır. Genel işlemler "
+"oldukları için sansüre karşı daha dirençlidirler."
 
 #: ../../node-operator/bonding.rst:15
 msgid "Security and Bonding"
-msgstr ""
+msgstr "Güvenlik ve Bağlanma"
 
 #: ../../node-operator/bonding.rst:17
 msgid ""
-"The most secure way to send a bonding transaction is to compile the "
-"contract and send the request to the network. Because the transaction "
-"authorizes the token to be locked into the auction contract, it's really "
-"important to compile the contract yourself. Here are the steps to do "
-"this:"
+"The most secure way to send a bonding transaction is to compile the contract"
+" and send the request to the network. Because the transaction authorizes the"
+" token to be locked into the auction contract, it's really important to "
+"compile the contract yourself. Here are the steps to do this:"
 msgstr ""
+"Bağlanma işlemini göndermenin en güvenli yolu, kontratı derlemek ve talebi "
+"ağa göndermektir. İşlem, tokenin müzayede kontratına kilitlenmesine izin "
+"verdiğinden, sözleşmeyi kendiniz derlemeniz gerçekten önemlidir. Bunu yapmak"
+" için adımlar şunlardır:"
 
 #: ../../node-operator/bonding.rst:22
 msgid ""
 "Visit `Github <https://github.com/CasperLabs/casper-node>`_ and fork and "
 "clone the repository."
 msgstr ""
+"`Github <https://github.com/CasperLabs/casper-node>`_ adresimizi ziyaret "
+"edin ve kod deposunu çatallayıp klonlayın."
 
 #: ../../node-operator/bonding.rst:23
 msgid "Make sure that all dependencies are installed  (documented on GitHub)."
 msgstr ""
+"Tüm bağımlılıkların kurulu olduğundan emin olun (GitHub üzerinde "
+"belgelendirilmiştir)."
 
 #: ../../node-operator/bonding.rst:24
 msgid "Follow the instructions to build the contracts."
-msgstr ""
+msgstr "Kontratları derlemek için yönergeleri takip edin."
 
 #: ../../node-operator/bonding.rst:25
 msgid ""
 "Ensure that the keys you will use for bonding are available & have been "
 "funded."
 msgstr ""
+"Bağlanma işlemi için kullanacağınız anahtarların kullanılabilir durumda ve "
+"pozitif bakiyeli olduğundan emin olun."
 
 #: ../../node-operator/bonding.rst:26
 msgid "Create the bonding transaction & deploy it."
-msgstr ""
+msgstr "Bağlanma işlemini oluşturun ve ağa dağıtın."
 
 #: ../../node-operator/bonding.rst:27
 msgid "Query the system to verify that your bid was accepted."
-msgstr ""
+msgstr "Teklifinizin kabul edildiğinden emin olmak için sistemi sorgulayın."
 
 #: ../../node-operator/bonding.rst:28
 msgid "Check the status of the auction to see if you have won a slot."
 msgstr ""
+"Bir yuva kazanıp kazanmadığınızı görmek için müzayede durumunu kontrol edin."
 
 #: ../../node-operator/bonding.rst:31
 msgid "Build Add_Bid Contract"
-msgstr ""
+msgstr "Add_Bid Kontratını Derleyin"
 
 #: ../../node-operator/bonding.rst:33
 msgid ""
 "Because bonding transactions are generic transactions, it's necessary to "
-"build the contract that submits a bid. Clone the casper-node repository "
-"and build the contracts. To build contracts, set up Rust & install all "
+"build the contract that submits a bid. Clone the casper-node repository and "
+"build the contracts. To build contracts, set up Rust & install all "
 "dependencies. Visit 'Setting up Rust' in the Developer Guide."
 msgstr ""
+"Bağlanma işlemleri genel işlemler olduğundan, teklif veren kontratın "
+"oluşturulması gerekir. casper-node kod deposunu klonlayın ve kontratları "
+"derleyin. Kontratları derlemek için Rust'ı ve tüm bağımlılıkları kurun. "
+"Geliştirici Kılavuzunda 'Rust Kurulumu' bölümünü ziyaret edin."
 
 #: ../../node-operator/bonding.rst:37
 msgid "Build the contracts in release mode."
-msgstr ""
+msgstr "Kontratları yayım kipinde derleyin."
 
 #: ../../node-operator/bonding.rst:45
 msgid "Example Bonding Transaction"
-msgstr ""
+msgstr "Örnek Bağlanma İşlemi"
 
 #: ../../node-operator/bonding.rst:47
 msgid ""
 "Note the path to files and keys. Note: the session arguments need to be "
-"encased in double-quotes, with the parameter values in single quotes. "
-"Note the required payment amount.  It must contain at least 10 zeros.  "
-"The payment amount is specified in motes."
+"encased in double-quotes, with the parameter values in single quotes. Note "
+"the required payment amount.  It must contain at least 10 zeros.  The "
+"payment amount is specified in motes."
 msgstr ""
+"Dosyaların ve anahtarların yolunu not edin. Not: oturum argümanlarının çift "
+"tırnak içine alınması ve parametre değerlerinin tek tırnak içine alınması "
+"gerekir. Gerekli ödeme tutarını not edin. Bu değer en az 10 sıfır "
+"içermelidir. Ödeme tutarı mote olarak belirtilir."
 
 #: ../../node-operator/bonding.rst:55
 msgid "Contract Arguments"
-msgstr ""
+msgstr "Kontrat Argümanları"
 
 #: ../../node-operator/bonding.rst:57
 msgid "The add_bid contract accepts 3 arguments:"
-msgstr ""
+msgstr "add_bid kontratı, 3 argüman kabul eder:"
 
 #: ../../node-operator/bonding.rst:60
 msgid ""
-"public key: The public key in hex of the account to bond.  Note: This has"
-" to be the matching key to the validator's secret key that signs the "
+"public key: The public key in hex of the account to bond.  Note: This has to"
+" be the matching key to the validator's secret key that signs the "
 "deployment."
 msgstr ""
+"public key: Bağlanma işlemini yapacak hesabın, hex biçiminde genel anahtarı "
+"(adresi). Not: Bu genel anahtar, dağıtımı imzalayacak doğrulayıcı gizli "
+"anahtarı ile eşleşmelidir."
 
 #: ../../node-operator/bonding.rst:61
 msgid ""
-"amount: This is the amount that is being bid. If the bid wins, this will "
-"be the validator's initial bond amount."
+"amount: This is the amount that is being bid. If the bid wins, this will be "
+"the validator's initial bond amount."
 msgstr ""
+"amount: Teklif miktarını belirtir. Eğer teklif açık arttırmayı kazanırsa, bu"
+" miktar doğrulayıcının ilk bağ miktarı olacaktır."
 
 #: ../../node-operator/bonding.rst:62
 msgid ""
-"delegation_rate: The percentage of rewards that the validator retains "
-"from delegators that delegate their tokens to the node."
+"delegation_rate: The percentage of rewards that the validator retains from "
+"delegators that delegate their tokens to the node."
 msgstr ""
+"delegation_rate: Tokenleri için bu düğümü yetkilendiren kullanıcıların "
+"kazandığı ödüllerden, doğrulayıcının alacağı pay yüzdesidir."
 
 #: ../../node-operator/bonding.rst:65
 msgid "Check the Status of the Transaction"
-msgstr ""
+msgstr "İşlem Durumunu Kontrol Edin"
 
 #: ../../node-operator/bonding.rst:67
 msgid ""
-"Since this is a deployment like any other, it's possible to perform "
-"``get-deploy`` using the client, which will return the execution status."
+"Since this is a deployment like any other, it's possible to perform ``get-"
+"deploy`` using the client, which will return the execution status."
 msgstr ""
+"Bu da diğer dağıtımlardan farksız olduğu için, istemciyi kullanarak ``get-"
+"deploy`` çalıştırmak mümkündür; bu, yürütme durumunu döndürecektir."
 
 #: ../../node-operator/bonding.rst:74
 msgid "Check the Status of the bid in the Auction"
-msgstr ""
+msgstr "Teklifin Müzayededeki Durumunu Kontrol Edin"
 
 #: ../../node-operator/bonding.rst:76
 msgid ""
 "If the bid wins the auction, the public key and associated bond amount "
 "(formerly bid amount) will appear in the auction contract as part of the "
-"validator set for a future era. To determine if the bid was accepted, "
-"query the auction contract via the rust ``casper-client``"
+"validator set for a future era. To determine if the bid was accepted, query "
+"the auction contract via the rust ``casper-client``"
 msgstr ""
+"Teklif açık artırmayı kazanırsa, açık anahtar ve ilişkili bağ tutarı (önceki"
+" teklif tutarı), gelecekteki bir dönem için doğrulayıcının bir parçası "
+"olarak açık artırma kontratında görünecektir. Teklifin kabul edilip "
+"edilmediğini belirlemek için, açık artırma kontratını rust ``casper-client``"
+" aracılığıyla sorgulayın."
 
 #: ../../node-operator/bonding.rst:82
 msgid "The request returns a response that looks like this:"
-msgstr ""
+msgstr "Bu talep, şuna benzer bir yanıt döndürür:"
 
 #: ../../node-operator/bonding.rst:254
 msgid ""
-"Note the ``era_id`` and the ``validator_weights`` sections of the "
-"response. For a given ``era_id`` a set of validators is defined.  To "
-"determine the current era, ping the ``/status`` endpoint of a validating "
-"node in the network.  This will return the current ``era_id``.  The "
-"current ``era_id`` will be listed in the auction info response. If the "
-"public key associated with a bid appears in the ``validator_weights`` "
-"structure for an era, then the account is bonded in that era."
+"Note the ``era_id`` and the ``validator_weights`` sections of the response. "
+"For a given ``era_id`` a set of validators is defined.  To determine the "
+"current era, ping the ``/status`` endpoint of a validating node in the "
+"network.  This will return the current ``era_id``.  The current ``era_id`` "
+"will be listed in the auction info response. If the public key associated "
+"with a bid appears in the ``validator_weights`` structure for an era, then "
+"the account is bonded in that era."
 msgstr ""
+"Yanıtın ``era_id`` ve ``validator_weights`` kısımlarını not alın. Verilen "
+"herhangi bir ``era_id`` için, bir doğrulayıcılar kümesi tanımlanmıştır. "
+"Geçerli dönemi belirlemek için, ağdaki doğrulayıcı bir düğümün ``/status`` "
+"uç noktasını sorgulayın. Bu geçerli ``era_id`` değerini döndürecektir. "
+"``era_id`` değeri, müzayede bilgileri yanıtında listelenmiş olacaktır. Eğer "
+"bir teklif ile ilişkili bir açık anahtar, bir dönemin ``validator_weights`` "
+"yapısında görülürse, bu hesap o dönemde bağlanmış demektir."
 
 #: ../../node-operator/bonding.rst:259
 msgid "If the Bid doesn't win"
-msgstr ""
+msgstr "Eğer Teklif Müzayedeyi Kazanamazsa"
 
 #: ../../node-operator/bonding.rst:261
 msgid ""
-"If your bid doesn't win a slot in the auction, it is because your bid is "
-"too low.  The resolution for this problem is to increase your bid amount."
-" It is possible to submit additional bids, to increase the odds of "
-"winning a slot. It is also possible to encourage token holders to "
-"delegate stake to you for bonding."
+"If your bid doesn't win a slot in the auction, it is because your bid is too"
+" low.  The resolution for this problem is to increase your bid amount. It is"
+" possible to submit additional bids, to increase the odds of winning a slot."
+" It is also possible to encourage token holders to delegate stake to you for"
+" bonding."
 msgstr ""
+"Teklifiniz müzayedede bir yer kazanamazsa, bunun nedeni teklifinizin çok "
+"düşük olmasıdır. Bu sorunun çözümü, teklif tutarınızı artırmaktır. Bir yuva "
+"kazanma şansını artırmak için ek teklifler vermek mümkündür. Token "
+"sahiplerini, bağlanma için hisselerine sizi yetkilendirmeye teşvik etmek de "
+"mümkündür."
 
 #: ../../node-operator/bonding.rst:266
 msgid "Withdrawing a Bid"
-msgstr ""
+msgstr "Teklifi Geri Çekmek"
 
 #: ../../node-operator/bonding.rst:268
 msgid ""
-"Follow the steps in `Unbonding <https://docs.casperlabs.io/en/latest"
-"/node-operator/unbonding.html>`_ to withdraw a bid."
+"Follow the steps in `Unbonding <https://docs.casperlabs.io/en/latest/node-"
+"operator/unbonding.html>`_ to withdraw a bid."
 msgstr ""
-
+"Bir teklifi geri çekmek için, `Çözme <https://docs.casperlabs.io/en/latest"
+"/node-operator/unbonding.html>`_ adımlarını takip edin."
