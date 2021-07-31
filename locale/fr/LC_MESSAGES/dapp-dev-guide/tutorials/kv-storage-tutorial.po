@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:6
+msgid "Key Value Storage Tutorial"
+msgstr "Tutoriel sur le stockage des valeurs clés"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:8
+msgid ""
+"This tutorial covers a simple contract, which creates a key that stores a "
+"``CLType`` value. This example will show you how to store a *u64*, *string*,"
+" *account hash*, or *U512* value."
+msgstr ""
+"Ce tutoriel couvre un contrat simple, qui crée une clé qui stocke une valeur"
+" ``CLType``. Cet exemple vous montrera comment stocker une valeur *u64*, "
+"*string*, *account hash* ou *U512*."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:10
+msgid ""
+"The code is available in the `Casper Ecosystem GitHub <https://github.com"
+"/casper-ecosystem/kv-storage-contract>`_. Or, you can get started in `GitPod"
+" <https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-"
+"contract>`_."
+msgstr ""
+"Le code est disponible dans le `Casper Ecosystem GitHub <https://github.com"
+"/casper-ecosystem/kv-storage-contract>`_. Ou, vous pouvez commencer dans "
+"`GitPod <https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-"
+"contract>`_."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:14
+msgid "The Contract"
+msgstr "Le Contrat"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:16
+msgid ""
+"Let's start by understanding the structure of the contract itself. Here we "
+"create a contract and name it ``kvstorage_contract``. The contract package "
+"will be stored under this name on the blockchain. Since the key-value "
+"contract is slightly stateless, initialization is not required."
+msgstr ""
+"Commençons par comprendre la structure du contrat lui-même. Ici, nous créons"
+" un contrat et le nommons ``kvstorage_contract``. Le package du contrat sera"
+" stocké sous ce nom sur la blockchain. Comme le contrat clé-valeur (key-"
+"value) est légèrement stateless (sans état), l'initialisation n'est pas "
+"nécessaire."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:138
+msgid "Testing the Contract"
+msgstr "Test du Contrat"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:140
+msgid ""
+"The CasperLabs Contracts SDK supports local testing of smart contracts. This"
+" tutorial will cover how to test the u64 key-value function. This can be "
+"easily adapted it for other types also."
+msgstr ""
+"Le kit SDK CasperLabs Contracts prend en charge les tests locaux des "
+"contrats intelligents. Ce tutoriel explique comment tester la fonction clé-"
+"valeur u64. Il peut être facilement adapté à d'autres types de fonctions."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:143
+msgid ""
+"In order to test the contract, the value must be stored, and the contract "
+"has to be deployed. Here is some sample code for these steps:"
+msgstr ""
+"Afin de tester le contrat, la valeur doit être stockée, et le contrat doit "
+"être déployé. Voici un exemple de code pour ces étapes :"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:198
+msgid "Write Unit Tests"
+msgstr "Ecriture de tests unitaires"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:200
+msgid ""
+"With these functions in place, it's possible to start writing tests for the "
+"contract."
+msgstr ""
+"Une fois ces fonctions en place, il est possible de commencer à écrire des "
+"tests pour le contrat."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:231
+msgid "Running Locally"
+msgstr "Execution en local"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:233
+msgid ""
+"It's possible to run the unit tests locally- if you have set up the contract"
+" using `cargo-casperlabs <https://crates.io/cargo-casperlabs>`_. The steps "
+"to set up the SDK are in the guide."
+msgstr ""
+"Il est possible d'exécuter les tests unitaires localement - si vous avez "
+"configuré le contrat en utilisant `cargo-casperlabs <https://crates.io"
+"/cargo-casperlabs>`_. Les étapes pour mettre en place le SDK sont dans le "
+"guide."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:241
+msgid "Deploying to the Testnet and Interacting with the Contract"
+msgstr "Déploiement sur le Testnet et interaction avec le contrat"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:243
+msgid ""
+"When working with the testnet, create an account in `CLarity "
+"<https://clarity.casperlabs.io>`_ and fund it using the faucet. Download the"
+" private key and use the key to sign the deployment. It's possible to create"
+" keys using the rust client as well."
+msgstr ""
+"Lorsque vous travaillez avec le testnet, créez un compte dans `cspr.live "
+"<https://testnet.cspr.live>`_ et alimentez-le en utilisant faucet. "
+"Téléchargez la clé privée et utilisez la clé pour signer le déploiement. Il "
+"est possible de créer des clés en utilisant le client rust également."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:246
+msgid "Deploy the Contract"
+msgstr "Déployer le contrat"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:248
+msgid ""
+"After the contract has been compiled, it's time to deploy the compiled wasm "
+"to the network. This action installs the contract in the blockchain. Once "
+"the contract is deployed, the client can retrieve the contract session hash "
+"as well as the blockhash where the contract is deployed."
+msgstr ""
+"Une fois que le contrat a été compilé, il est temps de déployer le wasm "
+"compilé sur le réseau. Cette action installe le contrat dans la blockchain. "
+"Une fois le contrat déployé, le client peut récupérer le hash de session du "
+"contrat ainsi que le blockhash où le contrat est déployé."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:251
+msgid ""
+"```casper-client put-deploy --chain-name :raw-html-m2r:`<CHAIN-NAME>` "
+"--node-address http://\\ :raw-html-m2r:`<HOST>`\\ :\\ :raw-html-m2r:`<PORT>`"
+" --secret-key /home/keys/secretkey.pem --session-path  $HOME/kv-storage-"
+"contract/target/wasm32-unknown-unknown/release/contract.wasm  --payment-"
+"amount 1000000000000"
+msgstr ""
+"```casper-client put-deploy --chain-name :raw-html-m2r:`<CHAIN-NAME>` "
+"--node-address http://\\ :raw-html-m2r:`<HOST>`\\ :\\ :raw-html-m2r:`<PORT>`"
+" --secret-key /home/keys/secretkey.pem --session-path  $HOME/kv-storage-"
+"contract/target/wasm32-unknown-unknown/release/contract.wasm  --payment-"
+"amount 1000000000000"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:269
+msgid "If the deploy works, a response similar this will be returned:"
+msgstr ""
+"Si le déploiement fonctionne, une réponse similaire à celle-ci sera renvoyée"
+" :"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:276
+msgid "Query the Contract On Chain"
+msgstr "Interroger le contrat sur la chaîne (On Chain)"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:278
+msgid ""
+"Contracts can be executed under different contexts. In this example, when "
+"the contract is deployed, it runs in the context of a ``Contract`` and not a"
+" ``Session``. This means that all stored keys are not stored under the "
+"account hash, but within the context of the contract. Therefore when we "
+"query to retrieve the value under a key, we are actually querying "
+"``AccountHash/kvstorage_contract/<key-name>`` and not just ``AccountHash"
+"/<key-name>``."
+msgstr ""
+"Les contrats peuvent être exécutés dans différents contextes. Dans cet "
+"exemple, lorsque le contrat est déployé, il s'exécute dans le contexte d'un "
+"``Contrat`` et non d'une ``Session``. Cela signifie que toutes les clés "
+"stockées ne sont pas stockées sous le hash du compte, mais dans le contexte "
+"du contrat. Par conséquent, lorsque nous interrogeons pour récupérer la "
+"valeur d'une clé, nous interrogeons en fait ``AccountHash/kvstorage_contract"
+"/<key-name>`` et non ``AccountHash/<key-name>``."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:284
+msgid ""
+"You must first find the block hash for the block that contains your deploy. "
+"Once you have the requisite block hash, then you can use ``casper-client`` "
+"to retrieve the session hash"
+msgstr ""
+"Vous devez d'abord trouver le block hash du bloc qui contient votre "
+"déploiement. Une fois que vous avez le hash de bloc requis, vous pouvez "
+"utiliser ``casper-client`` pour récupérer le hash de session."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:287
+msgid ""
+"Reading a value is simple enough, we obtain the block hash under which the "
+"value, is stored, and then\\ :raw-html-m2r:`<br>` using that block hash, and"
+" the ``query-state`` command you can easily retrieve and value that was "
+"stored under a named key. Please reference the `Querying Section "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html>`_ for "
+"details. An example global state query looks like this:"
+msgstr ""
+"La lecture d'une valeur est assez simple, nous obtenons le block hash sous "
+"lequel la valeur, est stockée, et puis\\ :raw-html-m2r:`<br>` en utilisant "
+"ce block hash , et la commande ``query-state`` vous pouvez facilement "
+"récupérer et la valeur qui a été stockée sous une clé nommée. Veuillez vous "
+"référer à la section `Querying Section <https://docs.casperlabs.io/en/latest"
+"/dapp-dev-guide/querying.html>`_ pour plus de détails. Un exemple de requête"
+" d'état global ressemble à ceci :"
