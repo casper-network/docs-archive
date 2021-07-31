@@ -1,0 +1,343 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../implementation/accounts.rst:4
+msgid "Accounts"
+msgstr "Tài khoản"
+
+#: ../../implementation/accounts.rst:9
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../implementation/accounts.rst:11
+msgid ""
+"An *account* is a cryptographically secured gateway into the Casper system "
+"used by entities outside the blockchain (e.g., off-chain components of "
+"blockchain-based applications, individual users). All user activity on the "
+"Casper blockchain (i.e., “deploys”) must originate from an account. Each "
+"account has its own context where it can locally store information (e.g., "
+"references to useful contracts, metrics, aggregated data from other parts of"
+" the blockchain). Each account also has a “main purse” where it can hold "
+"Casper tokens (see :ref:`Tokens <tokens-purses-and-accounts>` for more "
+"information)."
+msgstr ""
+"*Tài khoản* là một cổng được bảo mật bằng mật mã vào hệ thống Casper được sử"
+" dụng bởi các thực thể bên ngoài chuỗi khối (ví dụ: các thành phần ngoài "
+"chuỗi của các ứng dụng dựa trên chuỗi khối, người dùng cá nhân). Tất cả hoạt"
+" động của người dùng trên chuỗi khối Casper (tức là “triển khai”) phải bắt "
+"nguồn từ một tài khoản. Mỗi tài khoản có ngữ cảnh riêng nơi nó có thể lưu "
+"trữ cục bộ thông tin (ví dụ: tham chiếu đến các hợp đồng hữu ích, chỉ số, dữ"
+" liệu tổng hợp từ các phần khác của chuỗi khối). Mỗi tài khoản cũng có một "
+"“ví chính” nơi nó có thể chứa các mã thông báo Casper (xem :ref:`Tokens "
+"<tokens-purses-and-accounts>` để biết thêm thông tin)."
+
+#: ../../implementation/accounts.rst:20
+msgid ""
+"In this chapter we describe the permission model for accounts, their local "
+"storage capabilities, and briefly mention some runtime functions for "
+"interacting with accounts."
+msgstr ""
+"Trong chương này, chúng tôi mô tả mô hình quyền cho tài khoản, khả năng lưu "
+"trữ cục bộ của chúng và đề cập ngắn gọn một số chức năng thời gian chạy để "
+"tương tác với tài khoản."
+
+#: ../../implementation/accounts.rst:27
+msgid "The ``Account`` data structure"
+msgstr "Cấu trúc dữ liệu ``Tài khoản``"
+
+#: ../../implementation/accounts.rst:29
+msgid "An ``Account`` contains the following data:"
+msgstr "``Tài khoản`` chứa dữ liệu sau:"
+
+#: ../../implementation/accounts.rst:31
+msgid ""
+"A collection of named keys (this plays the same role as the named keys in a "
+":ref:`stored contract <global-state-contracts>`)"
+msgstr ""
+"Tập hợp các khóa được đặt tên (điều này đóng vai trò giống như các khóa được"
+" đặt tên trong  :ref:`hợp đồng được lưu trữ <global-state-contracts>`)"
+
+#: ../../implementation/accounts.rst:33
+msgid "A ``URef`` representing the account’s “main purse”"
+msgstr "Một ``URef`` đại diện cho “ví chính” của tài khoản"
+
+#: ../../implementation/accounts.rst:34
+msgid "A collections of “associated keys” (see below for more information)"
+msgstr ""
+"Bộ sưu tập các \"khóa được liên kết\" (xem bên dưới để biết thêm thông tin)"
+
+#: ../../implementation/accounts.rst:35
+msgid "“Action thresholds” (see below for more information)"
+msgstr "“Ngưỡng hành động” (xem bên dưới để biết thêm thông tin)"
+
+#: ../../implementation/accounts.rst:40
+msgid "Permissions model"
+msgstr "Mô hình quyền"
+
+#: ../../implementation/accounts.rst:45
+msgid "Actions and thresholds"
+msgstr "Các hành động và ngưỡng"
+
+#: ../../implementation/accounts.rst:47
+msgid ""
+"There are two types of actions an account can perform: a deployment, and key"
+" management. A deployment is simply executing some code on the blockchain, "
+"while key management involves changing the associated keys (which will be "
+"described in more detail later). Key management cannot be performed "
+"independently, as all effects to the blockchain must come via a deploy; "
+"therefore, a key management action implies that a deployment action is also "
+"taking place. The ``ActionThresholds`` contained in the ``Account`` data "
+"structure set a ``Weight`` which must be met in order to perform that "
+"action. How these weight thresholds can be met is described in the next "
+"section. Since a key management action requires a deploy action, the key "
+"management threshold should always be greater than or equal to the deploy "
+"threshold."
+msgstr ""
+"Có hai loại hành động mà tài khoản có thể thực hiện: triển khai và quản lý "
+"khóa. Việc triển khai chỉ đơn giản là thực thi một số mã trên chuỗi khối, "
+"trong khi quản lý khóa liên quan đến việc thay đổi các khóa được liên kết "
+"(sẽ được mô tả chi tiết hơn ở phần sau). Quản lý khóa không thể được thực "
+"hiện độc lập, vì tất cả các tác động đối với chuỗi khối phải thông qua một "
+"triển khai; do đó, một hành động quản lý chính ngụ ý rằng một hành động "
+"triển khai cũng đang diễn ra. Ngưỡng hành động (``ActionThresholds``) có "
+"trong cấu trúc dữ liệu tài khoản (``Account``) đặt trọng số (``Weight``) "
+"phải được đáp ứng để thực hiện hành động đó. Cách đáp ứng các ngưỡng trọng "
+"số này được mô tả trong phần tiếp theo. Vì một hành động quản lý khóa yêu "
+"cầu một hành động triển khai, nên ngưỡng quản lý khóa phải luôn lớn hơn hoặc"
+" bằng ngưỡng triển khai."
+
+#: ../../implementation/accounts.rst:62
+msgid "Associated keys and weights"
+msgstr "Các khoá được liên kết và trọng số"
+
+#: ../../implementation/accounts.rst:64
+msgid ""
+"As mentioned in the introduction, accounts are secured via cryptography. The"
+" *associated keys* of an account are the set of public keys which are "
+"allowed to provide signatures on deploys for that account. Each associated "
+"key has a weight; these weights are used to meet the action thresholds "
+"provided in the previous section. Each deploy must be signed by one or more "
+"keys associated with the account that deploy is for, and the sum of the "
+"weights of those keys must be greater than or equal to the deployment "
+"threshold weight for that account. We call the keys that have signed a "
+"deploy the “authorizing keys”. Similarly, if that deploy contains any key "
+"management actions (detailed below), then the sum of the weights of the "
+"authorizing keys must be greater than or equal to the key management action "
+"threshold of the account."
+msgstr ""
+"Như đã đề cập trong phần giới thiệu, các tài khoản được bảo mật thông qua "
+"mật mã. *Các khóa được liên kết* của tài khoản là tập hợp các khóa công khai"
+" được phép cung cấp chữ ký khi triển khai cho tài khoản đó. Mỗi khóa liên "
+"quan có một trọng số; các trọng số này được sử dụng để đáp ứng các ngưỡng "
+"hành động được cung cấp trong phần trước. Mỗi triển khai phải được ký bởi "
+"một hoặc nhiều khóa được liên kết với tài khoản triển khai và tổng trọng số "
+"của các khóa đó phải lớn hơn hoặc bằng trọng số ngưỡng triển khai cho tài "
+"khoản đó. Chúng tôi gọi các khóa đã ký triển khai là “khóa ủy quyền”. Tương "
+"tự, nếu triển khai đó chứa bất kỳ hành động quản lý khóa nào (chi tiết bên "
+"dưới), thì tổng trọng số của các khóa ủy quyền phải lớn hơn hoặc bằng ngưỡng"
+" hành động quản lý khóa của tài khoản."
+
+#: ../../implementation/accounts.rst:76
+msgid ""
+"Note: that any key may be used to help authorize any action; there are no "
+"“special keys”, all keys contribute their weight in exactly the same way."
+msgstr ""
+"Lưu ý: bất kỳ khóa nào cũng có thể được sử dụng để giúp ủy quyền bất kỳ hành"
+" động nào; không có “khoá đặc biệt”, tất cả các khoá đều đóng góp trọng số "
+"của chúng theo cùng một cách."
+
+#: ../../implementation/accounts.rst:81
+msgid "Key management actions"
+msgstr "Các hành động quản lý khoá"
+
+#: ../../implementation/accounts.rst:83
+msgid ""
+"A *key management action* is any change to any of the permissions parameters"
+" for the account. This includes the following:"
+msgstr ""
+"*Hành động quản lý khóa* là bất kỳ thay đổi nào đối với bất kỳ thông số "
+"quyền nào đối với tài khoản. Điều này bao gồm những điều sau:"
+
+#: ../../implementation/accounts.rst:86
+msgid "adding or removing an associated key;"
+msgstr "thêm hoặc xóa một khóa được liên kết;"
+
+#: ../../implementation/accounts.rst:87
+msgid "changing the weight of an associated key;"
+msgstr "thay đổi trọng số của khoá được liên kết;"
+
+#: ../../implementation/accounts.rst:88
+msgid "changing the threshold of any action."
+msgstr "thay đổi ngưỡng của bất kỳ hành động nào."
+
+#: ../../implementation/accounts.rst:90
+msgid ""
+"Key management actions have validity rules which prevent a user from locking"
+" themselves out of their account. For example, it is not allowed to set a "
+"threshold larger than the sum of the weights of all associated keys."
+msgstr ""
+"Các hành động quản lý khoá có các quy tắc hợp lệ ngăn người dùng tự khóa tài"
+" khoản của họ. Ví dụ: không được phép đặt ngưỡng lớn hơn tổng trọng số của "
+"tất cả các khóa liên quan."
+
+#: ../../implementation/accounts.rst:97
+msgid "Account security and recovery using key management"
+msgstr "Bảo mật và khôi phục tài khoản bằng cách sử dụng quản lý khóa"
+
+#: ../../implementation/accounts.rst:99
+msgid ""
+"The purpose of this permissions model is to enable keeping accounts safe "
+"from lost or stolen keys, while allowing usage of capabilities of modern "
+"mobile devices. For example, it may be convenient to sign deploys from a "
+"smart phone in day-to-day usage, and this can be done without worrying about"
+" the repercussions of losing the phone. The recommended setup would be to "
+"have a low-weight key on the phone, only just enough for the deploy "
+"threshold, but not enough for key management, then if the phone is lost or "
+"stolen, a key management action using other associated keys from another "
+"device (e.g., a home computer) can be used to remove the lost associated key"
+" and add a key which resides on a replacement phone."
+msgstr ""
+"Mục đích của mô hình quyền này là cho phép giữ an toàn cho tài khoản khỏi bị"
+" mất hoặc bị đánh cắp khóa, đồng thời cho phép sử dụng các khả năng của các "
+"thiết bị di động hiện đại. Ví dụ: có thể thuận tiện khi đăng ký triển khai "
+"từ điện thoại thông minh trong việc sử dụng hàng ngày và điều này có thể "
+"được thực hiện mà không phải lo lắng về hậu quả của việc mất điện thoại. "
+"Thiết lập được đề xuất sẽ là có một khóa trọng số thấp trên điện thoại, chỉ "
+"đủ cho ngưỡng triển khai, nhưng không đủ để quản lý khóa, sau đó nếu điện "
+"thoại bị mất hoặc bị đánh cắp, hành động quản lý khóa bằng cách sử dụng các "
+"khóa được liên kết khác từ người khác thiết bị (ví dụ: máy tính gia đình) có"
+" thể được sử dụng để xóa khóa được liên kết đã mất và thêm khóa nằm trên "
+"điện thoại thay thế."
+
+#: ../../implementation/accounts.rst:102
+msgid ""
+"Note: that it is extremely important to ensure there will always be access "
+"to a sufficient number of keys to perform the key management action, "
+"otherwise future recovery will be impossible (we currently do not support "
+"“inactive recovery”)."
+msgstr ""
+"Lưu ý: điều cực kỳ quan trọng là phải đảm bảo luôn có quyền truy cập vào đủ "
+"số lượng khóa để thực hiện hành động quản lý khóa, nếu không việc khôi phục "
+"trong tương lai là không thể (chúng tôi hiện không hỗ trợ \"phục hồi không "
+"hiện hoạt - inactive recovery\")."
+
+#: ../../implementation/accounts.rst:110
+msgid "Creating an account"
+msgstr "Tạo một tài khoản"
+
+#: ../../implementation/accounts.rst:112
+msgid ""
+"Account creation happens automatically when there is a :ref:`token transfer "
+"<tokens-purses-and-accounts>` to a yet unused :ref:`identity key <global-"
+"state-account-key>`. When an account is first created, the balance of its "
+"main purse is equal to the number of tokens transferred, its action "
+"thresholds are equal to 1, and there is one associated key (equal to the "
+"public key used to derive the identity key) with weight 1."
+msgstr ""
+"Việc tạo tài khoản sẽ tự động xảy ra khi :ref: `chuyển token <tokens-purses-"
+"and-accounts>` sang :ref:`khoá định danh <global-state-account-key>` chưa sử"
+" dụng. Khi một tài khoản được tạo lần đầu tiên, số dư trong ví chính của tài"
+" khoản đó bằng số lượng token được chuyển, ngưỡng hành động của nó bằng 1 và"
+" có một khóa được liên kết (bằng với khóa công khai được sử dụng để lấy khóa"
+" định danh) với trọng số 1."
+
+#: ../../implementation/accounts.rst:122
+msgid "The account context"
+msgstr "Ngữ cảnh tài khoản"
+
+#: ../../implementation/accounts.rst:124
+msgid ""
+"A deploy is a user request to perform some execution on the blockchain (see "
+":ref:`Execution Semantics <execution-semantics-deploys>` for more "
+"information). It contains “payment code” and “session code” which are "
+"contracts that contain the logic to be executed. These contracts are "
+"executed in the context of the account of the deploy. This means these "
+"contracts use the named keys of the account and use the account’s local "
+"storage (i.e., the “root” for the :ref:`local keys <global-state-local-key>`"
+" come from the account identity key)."
+msgstr ""
+"Triển khai là một yêu cầu của người dùng để thực hiện một số lệnh trên chuỗi"
+" khối (xem :ref: `Ý nghĩa thực thi (Execution Semantics) <execution-"
+"semantics-deploys>` để biết thêm thông tin). Nó chứa “mã thanh toán” và “mã "
+"phiên” là các hợp đồng chứa logic được thực thi. Các hợp đồng này được thực "
+"hiện trong ngữ cảnh tài khoản triển khai. Điều này có nghĩa là các hợp đồng "
+"này sử dụng các khóa được đặt tên của tài khoản và sử dụng nơi lưu cục bộ "
+"của tài khoản (tức là “gốc” cho :ref:`khoá cục bộ (local keys) <global-"
+"state-local-key>` có từ khoá định danh của tài khoản)."
+
+#: ../../implementation/accounts.rst:132
+msgid ""
+"Note: that other contracts called from the session code by ``call_contract``"
+" are executed in their own context, not the account context. This means, an "
+"account (with logic contained in session code) can be used to locally store "
+"information relevant to the user owning the account."
+msgstr ""
+"Lưu ý: các hợp đồng khác được gọi từ mã phiên bởi ``call_contract`` được "
+"thực thi trong ngữ cảnh riêng của chúng, không phải trong ngữ cảnh tài "
+"khoản. Điều này có nghĩa là, một tài khoản (với logic có trong mã phiên) có "
+"thể được sử dụng để lưu trữ cục bộ thông tin liên quan đến người dùng sở hữu"
+" tài khoản."
+
+#: ../../implementation/accounts.rst:139
+msgid "Functions for interacting with an account"
+msgstr "Các chức năng tương tác với tài khoản"
+
+#: ../../implementation/accounts.rst:141
+msgid ""
+"The `Casper Rust library <https://docs.rs/casper-"
+"contract/1.0.1/casper_contract/ext_ffi/index.html>`__ contains several "
+"functions for working with the various account features:"
+msgstr ""
+"`Thư viện Casper Rust <https://docs.rs/casper-"
+"contract/1.0.1/casper_contract/ext_ffi/index.html>`__  chứa một số hàm để "
+"làm việc với các tính năng tài khoản khác nhau:"
+
+#: ../../implementation/accounts.rst:143
+msgid "``casper_add_associated_key``"
+msgstr "``casper_add_associated_key``"
+
+#: ../../implementation/accounts.rst:144
+msgid "``casper_remove_associated_key``"
+msgstr "``casper_remove_associated_key``"
+
+#: ../../implementation/accounts.rst:145
+msgid "``casper_update_associated_key``"
+msgstr "``casper_remove_associated_key``"
+
+#: ../../implementation/accounts.rst:146
+msgid "``casper_set_action_threshold``"
+msgstr "``casper_set_action_threshold``"
+
+#: ../../implementation/accounts.rst:147
+msgid "``casper_get_balance``"
+msgstr "``casper_get_balance``"
+
+#: ../../implementation/accounts.rst:148
+msgid "``casper_load_named_keys``"
+msgstr "``casper_load_named_keys``"
+
+#: ../../implementation/accounts.rst:149
+msgid "``casper_get_named_arg``"
+msgstr "``casper_get_named_arg``"
