@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:6
+msgid "Smart Contract Upgrade Tutorial"
+msgstr "Tutoriel sur la mise à jour d'un contrat intelligent"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:8
+msgid ""
+"This tutorial shows you how to upgrade smart contracts. Casper contracts are"
+" upgradeable, making it easy for contract authors to add features and fix "
+"bugs in smart contracts."
+msgstr ""
+"Ce tutoriel vous montre comment mettre à jour des contrats intelligents. Les"
+" contrats Casper peuvent être mis à jour, ce qui permet aux auteurs de "
+"contrats d'ajouter facilement des fonctionnalités et de corriger des bugs "
+"dans les contrats intelligents."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:10
+msgid ""
+"The process of upgrading a smart contract is simple. All you need is to "
+"deploy a new version of the contract and overwrite the old functions with "
+"new ones."
+msgstr ""
+"Le processus de mise à jour d'un contrat intelligent est simple. Il suffit "
+"de déployer une nouvelle version du contrat et de remplacer les anciennes "
+"fonctions par les nouvelles."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:12
+msgid "These are the essential steps you need to follow:"
+msgstr "Voici les étapes essentielles que vous devez suivre :"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:14
+msgid "Deploy the contract with an *upgrade* function"
+msgstr "Déployer le contrat avec une fonction *upgrade*"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:15
+msgid "Add an entry point in the *call* function for the *upgrade* function"
+msgstr ""
+"Ajouter un point d'entrée dans la fonction *call* pour la fonction *upgrade*"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:16
+msgid "Add the new features you desire"
+msgstr "Ajoutez les nouvelles fonctionnalités que vous souhaitez"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:18
+msgid ""
+"Here are specific examples of how to implement the upgrade functionality."
+msgstr ""
+"Voici des exemples concrets de la manière de mettre en œuvre la "
+"fonctionnalité de mise à jour."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:21
+msgid "Step 1. Deploy the contract with an 'upgrade' function"
+msgstr "Étape 1. Déployez le contrat avec une fonction de 'upgrade'"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:23
+msgid ""
+"When you first deploy the contract, you must include an *upgrade* function. "
+"Since the contract is immutable, you cannot add the *upgrade* function after"
+" deployment. Without the this function, you cannot upgrade the contract. In "
+"other words, you must include the *upgrade* function when you first deploy "
+"the contract."
+msgstr ""
+"Lorsque vous déployez le contrat pour la première fois, vous devez inclure "
+"une fonction *upgrade*. Le contrat étant immuable, vous ne pouvez pas "
+"ajouter la fonction *upgrade* après le déploiement. Sans cette fonction, "
+"vous ne pouvez pas mettre à jour le contrat. En d'autres termes, vous devez "
+"inclure la fonction *upgrade* lors du premier déploiement du contrat."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:25
+msgid ""
+"Start by creating an *upgrade* function in your contract similar to the "
+"following example."
+msgstr ""
+"Commencez par créer une fonction *upgrade* dans votre contrat semblable à "
+"l'exemple suivant."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:41
+msgid "Step 2. Add an entry point in the 'call' function"
+msgstr "Étape 2. Ajoutez un point d'entrée dans la fonction 'call'."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:43
+msgid ""
+"Next, you need to add an entry point to the *upgrade* function in the *call*"
+" function. This enables the contract execution to invoke the *upgrade* "
+"function in the future."
+msgstr ""
+"Ensuite, vous devez ajouter un point d'entrée à la fonction *upgrade* dans "
+"la fonction *call*. Cela permet à l'exécution du contrat d'invoquer la "
+"fonction *upgrade* à l'avenir."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:73
+msgid "Step 3. Add new features"
+msgstr "Étape 3. Ajoutez de nouvelles fonctionnalités"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:75
+msgid ""
+"Now you are ready to upgrade your contract and add the new features and "
+"functions you desire."
+msgstr ""
+"Vous êtes maintenant prêt à mettre à jour votre contrat et à ajouter les "
+"nouvelles capacités et fonctions que vous souhaitez."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:100
+msgid ""
+"The `add_contract_version <https://docs.rs/casperlabs-"
+"contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_"
+" API will allow you to deploy a new version of your contract."
+msgstr ""
+"L'API `add_contract_version <https://docs.rs/casperlabs-"
+"contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_"
+" vous permettra de déployer une nouvelle version de votre contrat."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:102
+msgid ""
+"Remember, it is essential to include the *upgrade* function and safeguard "
+"the access token when you first deploy the contract. You will need the "
+"access token for future upgrades."
+msgstr ""
+"N'oubliez pas qu'il est essentiel d'inclure la fonction *upgrade* et de "
+"sauvegarder le jeton d'accès lors du premier déploiement du contrat. Vous "
+"aurez besoin du jeton d'accès pour les futures mises à niveau."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:105
+msgid "External links"
+msgstr "Liens externes"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:107
+msgid ""
+"`Sample upgrader <https://github.com/CasperLabs/casper-"
+"node/tree/master/smart_contracts/contracts/test/do-nothing-stored-"
+"upgrader>`_"
+msgstr ""
+"`Sample upgrader <https://github.com/CasperLabs/casper-"
+"node/tree/master/smart_contracts/contracts/test/do-nothing-stored-"
+"upgrader>`_"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:108
+msgid ""
+"`API details for add_contract_version <https://docs.rs/casperlabs-"
+"contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_"
+msgstr ""
+"`Détails de l'API pour add_contract_version <https://docs.rs/casperlabs-"
+"contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:109
+msgid ""
+"`Other examples of smart contracts <https://github.com/CasperLabs/casper-"
+"node/tree/master/smart_contracts>`_"
+msgstr ""
+"`Autres exemples de contrats intelligents <https://github.com/CasperLabs"
+"/casper-node/tree/master/smart_contracts>`_"
