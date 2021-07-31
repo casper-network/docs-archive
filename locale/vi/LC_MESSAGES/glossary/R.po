@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../glossary/R.rst:2
+msgid "R"
+msgstr "R"
+
+#: ../../glossary/R.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/R.rst:9
+msgid "Reward"
+msgstr "Phần thưởng"
+
+#: ../../glossary/R.rst:10
+msgid ""
+"Validators receive rewards for participating in consensus and finalizing "
+"blocks. There is no precise per-block reward. Rewards are split "
+"proportionally among stakes within an era. If a validator is offline or "
+"cannot vote on many blocks, the rewards earned are also reduced. Delegators "
+"can only receive a proportional amount of the validator's rewards minus the "
+"validator’s commission (Delegation Rate). Rewards are distributed at the end"
+" of each era."
+msgstr ""
+"Người xác thực sẽ nhận được phần thưởng khi tham gia vào các đồng thuận và "
+"hoàn thành khối. Không có phần thưởng chính xác cho mỗi khối. Phần thưởng "
+"được chia theo tỷ lệ giữa các cổ phần trong một thời đại. Nếu người xác thực"
+" ngoại tuyến hoặc không thể bỏ phiếu cho nhiều khối, phần thưởng kiếm được "
+"cũng bị giảm. Người ủy quyền chỉ có thể nhận được một lượng tương ứng với "
+"phần thưởng của người xác thực trừ đi hoa hồng của người xác nhận (Tỷ lệ ủy "
+"quyền). Phần thưởng được phân phối vào cuối mỗi kỷ nguyên."
+
+#: ../../glossary/R.rst:13
+msgid "Root hash"
+msgstr "Root hash"
+
+#: ../../glossary/R.rst:14
+msgid ""
+"The root node of the hash tree (or `Merkle tree <M.html#merkle-tree>`_) of "
+"all the transactions in a block."
+msgstr ""
+"Nút gốc của cây băm (hoặc `Cây Merkle  <M.html#merkle-tree>`_) của tất cả "
+"các giao dịch trong một khối."
+
+#: ../../glossary/R.rst:17
+msgid "Rust"
+msgstr "Rust"
+
+#: ../../glossary/R.rst:18
+msgid ""
+"A programming language similar to C++, designed for performance and safety, "
+"especially safe concurrency."
+msgstr ""
+"Một ngôn ngữ lập trình tương tự như C ++, được thiết kế cho hiệu suất và an "
+"toàn, đặc biệt là thực hiện đồng thời an toàn."
+
+#: ../../glossary/R.rst:21
+msgid "Rustdocs"
+msgstr "Rustdocs"
+
+#: ../../glossary/R.rst:22
+msgid ""
+"As part of the Rust development environment, the Rustdocs describe the the "
+"`Casper contracts library <https://docs.rs/casperlabs-contract/>`_, the "
+"`Casper types library <https://docs.rs/casperlabs-types/>`_, and the `Casper"
+" test support library <https://docs.rs/casperlabs-engine-test-support/>`_."
+msgstr ""
+"Là một phần của môi trường phát triển Rust, Rustdocs mô tả `thư viện hợp "
+"đồng Casper <https://docs.rs/casperlabs-contract/>`_, `Kiểu thư việnc Casper"
+" <https://docs.rs/casperlabs-types/>`_, và `Thư viện hỗ trợ kiểm thử Casper "
+"<https://docs.rs/casperlabs-engine-test-support/>`_."
