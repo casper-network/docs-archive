@@ -1,0 +1,411 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:49+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../workflow/two-party-multi-sig.rst:2
+msgid "Two-Party Multi-Signature Deploys"
+msgstr "Déploiements de multi-signatures à deux parties"
+
+#: ../../workflow/two-party-multi-sig.rst:4
+msgid ""
+"`Accounts "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ on a "
+"Casper Network can associate other accounts to allow or require a multiple "
+"signature scheme for deploys."
+msgstr ""
+"`Les Comptes "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ sur un"
+" réseau Casper peuvent associer d'autres comptes pour autoriser ou exiger un"
+" schéma de signature multiple pour les déploiements."
+
+#: ../../workflow/two-party-multi-sig.rst:6
+msgid ""
+"This workflow describes how a trivial two-party multi-signature scheme for "
+"signing and sending deploys can be enforced for an account on a Casper "
+"Network."
+msgstr ""
+"Ce workflow décrit comment un schéma trivial de multi-signatures à deux "
+"parties pour la signature et l'envoi de déploiements peut être mis en œuvre "
+"pour un compte sur un réseau Casper."
+
+#: ../../workflow/two-party-multi-sig.rst:8
+msgid "This workflow assumes:"
+msgstr "Ce workflow suppose :"
+
+#: ../../workflow/two-party-multi-sig.rst:10
+msgid "You meet the `prerequisites <setup.html>`_"
+msgstr "Vous remplissez les `pré-requis <setup.html>`_"
+
+#: ../../workflow/two-party-multi-sig.rst:11
+msgid "You are using the Casper command-line client"
+msgstr "Vous utilisez le client en ligne de commande Casper"
+
+#: ../../workflow/two-party-multi-sig.rst:12
+msgid ""
+"You have a main ``PublicKey`` hex (**MA**) and a ``PublicKey`` hex to "
+"associate (**AA**)"
+msgstr ""
+"Vous avez un hex de ``PublicKey`` principal (**MA**) et un hex de "
+"``PublicKey`` à associer (**AA**)"
+
+#: ../../workflow/two-party-multi-sig.rst:13
+msgid "You have a valid ``node-address``"
+msgstr "Vous avez une ``node-address`` valide."
+
+#: ../../workflow/two-party-multi-sig.rst:14
+msgid ""
+"You have previously `deployed a smart contract "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ to a Casper Network"
+msgstr ""
+"Vous avez précédemment `déployé un contrat intelligent "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ sur un Réseau Casper"
+
+#: ../../workflow/two-party-multi-sig.rst:17
+msgid "Configuring the Main Account"
+msgstr "Configurer le compte principal"
+
+#: ../../workflow/two-party-multi-sig.rst:19
+msgid ""
+"**CAUTION**: Incorrect account configurations could render accounts defunct "
+"and unusable. It is highly recommended to first execute any changes to an "
+"account in a test environment like Testnet, before performing them in a live"
+" environment like Mainnet."
+msgstr ""
+"**CAUTION** : Des configurations de compte incorrectes peuvent rendre les "
+"comptes défectueux et inutilisables. Il est fortement recommandé d'exécuter "
+"toute modification d'un compte dans un environnement de test comme Testnet, "
+"avant de l'exécuter dans un environnement réel comme Mainnet."
+
+#: ../../workflow/two-party-multi-sig.rst:21
+msgid ""
+"Each account has an ``associated_keys`` field which is a list containing the"
+" account address and its weight for every associated account. Accounts can "
+"be associated by adding the account address to the ``associated_keys`` "
+"field."
+msgstr ""
+"Chaque compte a un champ ``associated_keys`` qui est une liste contenant "
+"l'adresse du compte et son poids pour chaque compte associé. Les comptes "
+"peuvent être associés en ajoutant l'adresse du compte au champ "
+"``associated_keys``."
+
+#: ../../workflow/two-party-multi-sig.rst:23
+msgid ""
+"An account on a Casper Network assigns weights to keys associated with it. "
+"For a single key to sign a deploy or edit the state of the account, its "
+"weight must be greater than or equal to a set threshold. The thresholds are "
+"labeled as the ``action_thresholds`` for the account."
+msgstr ""
+"Un compte sur un réseau Casper attribue des poids aux clés qui lui sont "
+"associées. Pour qu'une clé unique puisse signer un déploiement ou modifier "
+"l'état du compte, son poids doit être supérieur ou égal à un seuil défini. "
+"Les seuils sont appelés ``action_thresholds`` pour le compte."
+
+#: ../../workflow/two-party-multi-sig.rst:25
+msgid ""
+"Each account within a Casper Network has two action thresholds that manage "
+"the permissions to send deploys or manage the account. Each threshold "
+"defines the minimum weight that a single key or a combination of keys must "
+"have, to either:"
+msgstr ""
+"Chaque compte au sein d'un réseau Casper possède deux seuils d'action qui "
+"gèrent les autorisations d'envoyer des déploiements ou de gérer le compte. "
+"Chaque seuil définit le poids minimum qu'une clé unique ou une combinaison "
+"de clés doit avoir, pour soit :"
+
+#: ../../workflow/two-party-multi-sig.rst:27
+msgid ""
+"Send a deploy to the network; determined by the ``deployment`` threshold"
+msgstr ""
+"Envoyer un déploiement sur le réseau ; déterminé par le seuil de "
+"``deployment``"
+
+#: ../../workflow/two-party-multi-sig.rst:28
+msgid ""
+"Edit the ``associated keys`` and the ``action_thresholds``; determined by "
+"the ``key_management`` threshold"
+msgstr ""
+"Modifier les ``associated keys`` et les ``action_thresholds``; déterminés "
+"par le seuil ``key_management``"
+
+#: ../../workflow/two-party-multi-sig.rst:30
+msgid ""
+"To enforce the multi-signature (multi-sig) feature for an account on a "
+"Casper Network, the *main key* and *associated key*'s combined weight must "
+"be greater than or equal to the ``deployment`` threshold. This can be "
+"achieved by having each key's weight equal to half of the ``deployment`` "
+"threshold."
+msgstr ""
+"Pour appliquer la fonction de signature multiple (multi-sig) à un compte sur"
+" un réseau Casper, le poids combiné de la *clé principale* et de la *clé "
+"associée* doit être supérieur ou égal au seuil de ``deployment``. Pour ce "
+"faire, le poids de chaque clé doit être égal à la moitié du seuil de "
+"``deployment``"
+
+#: ../../workflow/two-party-multi-sig.rst:34
+msgid "Code Description"
+msgstr "Description du Code"
+
+#: ../../workflow/two-party-multi-sig.rst:36
+msgid ""
+"You can run session code that will execute within the context of your main "
+"account. Below is the code that will be compiled to WASM and then sent to "
+"the network as part of a deploy."
+msgstr ""
+"Vous pouvez faire tourner un code de session qui s'exécutera dans le "
+"contexte de votre compte principal. Vous trouverez ci-dessous le code qui "
+"sera compilé en WASM, puis envoyé au réseau dans le cadre d'un déploiement."
+
+#: ../../workflow/two-party-multi-sig.rst:38
+msgid ""
+"**Note**: The following contract example will set up a specific account "
+"configuration and is not a general-purpose contract."
+msgstr ""
+"**Note** : L'exemple de contrat suivant met en place une configuration de "
+"compte spécifique et n'est pas un contrat à usage général."
+
+#: ../../workflow/two-party-multi-sig.rst:68
+msgid ""
+"The contract will execute **2 crucial steps** to enforce the multi-sig "
+"scheme for your main account:"
+msgstr ""
+"Le contrat exécutera **2 étapes cruciales** pour appliquer le schéma multi-"
+"sig pour votre compte principal :"
+
+#: ../../workflow/two-party-multi-sig.rst:70
+msgid "Add the associated key **AA** to the account"
+msgstr "Ajouter la clé associée **AA** au compte"
+
+#: ../../workflow/two-party-multi-sig.rst:71
+msgid ""
+"Raise the ``deployment`` threshold to ``2``, such that the weight required "
+"to send a deploy is split equally between the keys associated with the "
+"account"
+msgstr ""
+"Augmenter le seuil de ``deployment`` à ``2``, de sorte que le poids requis "
+"pour envoyer un déploiement soit réparti de manière égale entre les clés "
+"associées au compte."
+
+#: ../../workflow/two-party-multi-sig.rst:73
+msgid ""
+"The action thresholds for deploys cannot be greater than the action "
+"threshold for key management. By default, action thresholds are set to "
+"``1``."
+msgstr ""
+"Les seuils d'action pour les déploiements ne peuvent pas être supérieurs au "
+"seuil d'action pour la gestion des clés. Par défaut, les seuils d'action "
+"sont fixés à ``1``."
+
+#: ../../workflow/two-party-multi-sig.rst:76
+msgid "Code Execution"
+msgstr "L'exécution du Code"
+
+#: ../../workflow/two-party-multi-sig.rst:78
+msgid ""
+"The state of the account can be altered by sending a deploy which executes "
+"the WASM that will associate the **AA** account address."
+msgstr ""
+"L'état du compte peut être modifié en envoyant un deploy qui exécute le WASM"
+" qui associera l'adresse du compte **AA**."
+
+#: ../../workflow/two-party-multi-sig.rst:80
+msgid ""
+"For this guide, a smart contract has been written and is stored in its "
+"`Github Repository <https://github.com/casper-ecosystem/two-party-multi-"
+"sig>`_. The repository contains a `Makefile` with the build commands "
+"necessary to compile the contract to generate the necessary WASM."
+msgstr ""
+"Pour ce guide, un contrat intelligent a été écrit et est stocké dans son "
+"`Dépôt Github <https://github.com/casper-ecosystem/two-party-multi-sig>`_. "
+"Le dépôt contient un `Makefile` avec les commandes de build nécessaires pour"
+" compiler le contrat afin de générer le WASM nécessaire."
+
+#: ../../workflow/two-party-multi-sig.rst:88
+msgid "To build the contract, run the following command:"
+msgstr "Pour construire le contrat, exécutez la commande suivante :"
+
+#: ../../workflow/two-party-multi-sig.rst:94
+msgid "The compiled WASM will be saved on this path:"
+msgstr "Le WASM compilé sera sauvegardé dans :"
+
+#: ../../workflow/two-party-multi-sig.rst:101
+msgid ""
+"The Casper command-line client can be used to send the compiled WASM to the "
+"network for execution."
+msgstr ""
+"Le client en ligne de commande Casper peut être utilisé pour envoyer le WASM"
+" compilé au réseau pour exécution."
+
+#: ../../workflow/two-party-multi-sig.rst:115
+msgid "``node-address`` - An IP address of a node on the network"
+msgstr ""
+"``node-address`` - An IP address of a node on the networkAdresse IP d'un "
+"nœud du réseau"
+
+#: ../../workflow/two-party-multi-sig.rst:116
+msgid ""
+"``secret-key`` - The file name containing the secret key of the Main Account"
+msgstr ""
+"``secret-key`` - Le nom du fichier contenant la clé secrète du compte "
+"principal"
+
+#: ../../workflow/two-party-multi-sig.rst:117
+msgid ""
+"``chain-name`` - The chain-name to the network where you wish to send the "
+"deploy (this example uses the Testnet)"
+msgstr ""
+"``chain-name`` - Le nom de la chaîne du réseau où vous souhaitez envoyer le "
+"déploiement (cet exemple utilise le Testnet)."
+
+#: ../../workflow/two-party-multi-sig.rst:118
+msgid "``payment-amount`` - The cost of the deploy"
+msgstr "``payment-amount`` - Le coût du déploiement"
+
+#: ../../workflow/two-party-multi-sig.rst:119
+msgid "``session-path`` - The path to the contract WASM"
+msgstr "``session-path`` - Le chemin vers le contrat WASM"
+
+#: ../../workflow/two-party-multi-sig.rst:120
+msgid ""
+"``session-arg`` - The contract takes the account hash of the Associated "
+"account as an argument labeled ``deployment-account``. You can pass this "
+"argument using the ``--session-arg`` flag in the command line client"
+msgstr ""
+"``session-arg`` - Le contrat prend le hash du compte associé comme argument "
+"intitulé ``deployment-account``. Vous pouvez passer cet argument en "
+"utilisant le flag ``--session-arg`` dans le client de la ligne de commande"
+
+#: ../../workflow/two-party-multi-sig.rst:123
+msgid "**Important response fields:**"
+msgstr "**Paramètres importants de la réponse:**"
+
+#: ../../workflow/two-party-multi-sig.rst:125
+msgid ""
+"``\"result\".\"deploy_hash\"`` - the address of the executed deploy, needed "
+"to look up additional information about the transfer"
+msgstr ""
+"``\"result\".\"deploy_hash\"`` - l'adresse du déploiement exécuté, "
+"nécessaire pour rechercher des informations supplémentaires sur le transfert"
+
+#: ../../workflow/two-party-multi-sig.rst:127
+msgid ""
+"**Note**: Save the returned ``deploy_hash`` from the output to query "
+"information about execution status."
+msgstr ""
+"**Note** : Enregistrer le ``deploy_hash`` retourné pour demander des "
+"informations sur le statut d'exécution."
+
+#: ../../workflow/two-party-multi-sig.rst:130
+msgid "Confirming Execution and Account Status"
+msgstr "Confirmation de l'exécution et du statut du compte"
+
+#: ../../workflow/two-party-multi-sig.rst:132
+msgid ""
+"Account configuration on a Casper blockchain is stored in a `Merkle Tree "
+"<https://docs.casperlabs.io/en/latest/glossary/M.html#merkle-tree>`_ and is "
+"a snapshot of the blockchain's `Global State "
+"<https://docs.casperlabs.io/en/latest/implementation/global-state.html>`_. "
+"The representation of global state for a given block can be computed by "
+"executing the deploys (including transfers) within the block and its "
+"ancestors. The root node of the Merkle Tree identifying a particular state "
+"is called the ``state-root-hash`` and is stored in every executed block."
+msgstr ""
+"La configuration du compte sur une blockchain Casper est stockée dans un "
+"`Arbre Merkle <https://docs.casperlabs.io/en/latest/glossary/M.html#merkle-"
+"tree>`_ et constitue un snapshot de ` l'Etat global "
+"<https://docs.casperlabs.io/en/latest/implementation/global-state.html>`_ de"
+" la blockchain. La représentation de l'état global pour un bloc donné peut "
+"être calculée en exécutant les déploiements (y compris les transferts) dans "
+"le bloc et ses ancêtres. Le nœud racine de l'arbre de Merkle identifiant un "
+"état particulier est appelé le ``state-root-hash`` et est stocké dans chaque"
+" bloc exécuté."
+
+#: ../../workflow/two-party-multi-sig.rst:134
+msgid ""
+"To check that your account was configured correctly, you need the ``state-"
+"root-hash`` corresponding to the block that contains your deploy. To obtain "
+"the ``state-root-hash``, you need to:"
+msgstr ""
+"Pour vérifier que votre compte a été configuré correctement, vous avez "
+"besoin du ``state-root-hash`` correspondant au bloc qui contient votre "
+"déploiement. Pour obtenir le ``state-root-hash``, vous devez :"
+
+#: ../../workflow/two-party-multi-sig.rst:137
+msgid ""
+"`Confirm the execution status of the deploy <querying.html#querying-"
+"deploys>`_ and obtain the hash of the block containing it"
+msgstr ""
+"`Confirmer l'état d'exécution du déploiement <querying.html#querying-"
+"deploys>`_ et obtenir le hash du bloc qui le contient."
+
+#: ../../workflow/two-party-multi-sig.rst:138
+msgid ""
+"`Query the block containing the deploy <querying.html#querying-blocks>`_ to "
+"obtain the corresponding ``state_root_hash``"
+msgstr ""
+"`Interroger le bloc contenant le déploiement <querying.html#querying-"
+"blocks>`_ pour obtenir le ``state_root_hash`` correspondant."
+
+#: ../../workflow/two-party-multi-sig.rst:140
+msgid ""
+"Use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the main "
+"account to query the network for the account and check its configuration."
+msgstr ""
+"Utiliser le ``state_root_hash`` et le ``hex-encoded-public-key`` du compte "
+"principal pour rechercher le compte sur le réseau et vérifier sa "
+"configuration."
+
+#: ../../workflow/two-party-multi-sig.rst:149
+msgid "**Example Output**"
+msgstr "**Exemple de sortie**:"
+
+#: ../../workflow/two-party-multi-sig.rst:184
+msgid ""
+"In the above example, you can see the account addresses listed within the "
+"``associated_keys`` section. Each key has a weight of ``1``, since the "
+"action threshold for ``deployment`` is set to ``2``, neither account is able"
+" to sign and send a deploy individually. Thus to send the deploy from the "
+"Main account, the deploy needs to be signed by the secret keys of each "
+"account to reach the required threshold."
+msgstr ""
+"Dans l'exemple ci-dessus, vous pouvez voir les adresses des comptes listées "
+"dans la section ``associated_keys``. Chaque clé a un poids de ``1``, puisque"
+" le seuil d'action pour ``deployment`` est fixé à ``2``, aucun des comptes "
+"n'est capable de signer et d'envoyer un deploy individuellement. Ainsi, pour"
+" envoyer le déploiement depuis le compte principal, le déploiement doit être"
+" signé par les clés secrètes de chaque compte pour atteindre le seuil "
+"requis."
+
+#: ../../workflow/two-party-multi-sig.rst:188
+msgid ""
+"Details about various scenarios in which multiple associated keys can be "
+"setup is discussed in `the examples section of the Multi-Signature Tutorial "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-"
+"sig/examples.html>`_."
+msgstr ""
+"Les détails sur les différents scénarios dans lesquels plusieurs clés "
+"associées peuvent être configurées sont discutés dans la section `exemples "
+"du Tutoriel Multi-Signatures <https://docs.casperlabs.io/en/latest/dapp-dev-"
+"guide/tutorials/multi-sig/examples.html>`_."
