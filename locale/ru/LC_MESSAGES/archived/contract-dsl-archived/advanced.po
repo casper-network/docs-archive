@@ -1,0 +1,100 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:45+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:3
+msgid "Advanced Options"
+msgstr "Продвинутые опции"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:5
+msgid ""
+"Once the base logic of the smart contract is in place, it's desirable to "
+"optimize the contract for the blockchain.  This will require digging into "
+"the actual code that the DSL generates.  This section will describe the "
+"steps to do this.  Once the code has been expanded and then changed, make "
+"sure to remove the macros from the project configuration before saving the "
+"changes."
+msgstr ""
+"Когда базовая логика смарт-контракта оптимизирована, следует оптимизировать "
+"контракт под блокчейн. Для этого потребуется погрузиться в код, генерируемый"
+" DSL. В данном разделе описываются шаги, как это сделать. Как только код "
+"будет расширен и изменен, обязательно удалите макросы из конфигурации "
+"проекта и сохраните изменения. "
+
+#: ../../archived/contract-dsl-archived/advanced.rst:12
+msgid "Debugging Contracts"
+msgstr "Отладка контрактов"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:14
+msgid ""
+"It is possible to debug Rust contracts inside any IDE that supports "
+"breakpoints and watches. Make sure that the IDE supports Rust development "
+"and tools."
+msgstr ""
+"Отладить Rust-контракты можно в любой интегрированной среде разработки, "
+"которая поддерживает методы точек остановки и наблюдения. Убедитесь, что "
+"среда разработки поддерживает инструменты разработки и Rust."
+
+#: ../../archived/contract-dsl-archived/advanced.rst:18
+msgid "Expanding the Code"
+msgstr "Расширение кода "
+
+#: ../../archived/contract-dsl-archived/advanced.rst:20
+msgid ""
+"When the rust compiler encounters each of the macros, it 'expands' the code "
+"and adds additional lines of code for each of the macros. The resultant "
+"expanded code is then compiled to the wasm which can then be deployed to the"
+" blockchain."
+msgstr ""
+"Когда компилятор rust обнаруживает все макросы, он \"расширяет\" код и "
+"добавляет дополнительные строки к каждому макросу. Итоговый расширенный код "
+"встраивается в двоичный файл WASM, который затем может быть развернут в "
+"блокчейне. "
+
+#: ../../archived/contract-dsl-archived/advanced.rst:23
+msgid ""
+"The ``cargo expand`` tool will run the macros and append the boilerplate "
+"code to the contract without compiling the code."
+msgstr ""
+"Утилита ``cargo expand`` запустит макросы и присоединит шаблонный код к "
+"контракту, не компилируя сам код. "
+
+#: ../../archived/contract-dsl-archived/advanced.rst:25
+msgid "Install the tooling with the following command:"
+msgstr "Установите инструментарий с помощью следующей команды:"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:31
+msgid "Run this command in the folder containing the smart contract code:"
+msgstr "Запустите команду в папке, содержащей код смарт-контракта:"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:38
+msgid "Example Simple Counter Contract"
+msgstr "Пример контракта - простой счетчик"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:40
+msgid ""
+"Running ``cargo-expand`` on the simple counter contract yeilds this output:"
+msgstr ""
+"Запуск ``cargo-expand`` в контракте простого счетчика выдает следующий "
+"результат:"
