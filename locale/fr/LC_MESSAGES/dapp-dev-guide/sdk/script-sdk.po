@@ -1,0 +1,177 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:2
+msgid "TypeScript/JavaScript SDK"
+msgstr "TypeScript/JavaScript SDK"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:4
+msgid ""
+"The `TypeScript/JavaScript SDK <https://casper-ecosystem.github.io/casper-"
+"js-sdk/>`_ allows developers to interact with the Casper Network using "
+"TypeScript or JavaScript. This page covers different examples of using the "
+"SDK."
+msgstr ""
+"Le `TypeScript/JavaScript SDK <https://casper-ecosystem.github.io/casper-js-"
+"sdk/>`_ permet aux développeurs d'interagir avec le réseau Casper en "
+"utilisant TypeScript ou JavaScript. Cette page couvre différents exemples "
+"d'utilisation du SDK."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:7
+msgid "Installation"
+msgstr "Installation"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:8
+msgid "To install this library using Node.js, run the following command:"
+msgstr ""
+"Pour installer cette librairie en utilisant Node.js, exécutez la commande "
+"suivante :"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:15
+msgid "Tests"
+msgstr "Tests"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:16
+msgid ""
+"You can find basic examples for how to use this library in the ``test`` "
+"directory. To run the tests, use this command:"
+msgstr ""
+"Vous pouvez trouver des exemples de base pour l'utilisation de cette "
+"librairie dans le répertoire ``test``. Pour exécuter les tests, utilisez "
+"cette commande :"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:23
+msgid "Usage Examples"
+msgstr "Exemples d'utilisation"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:24
+msgid ""
+"In this section, we outline a couple of essential tasks you can accomplish "
+"with the JavaScript SDK:"
+msgstr ""
+"Dans cette section, nous présentons quelques tâches essentielles que vous "
+"pouvez accomplir avec le SDK JavaScript :"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:26
+msgid "Generating account keys"
+msgstr "Génération de clés de compte"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:27
+msgid "Sending a transfer"
+msgstr "Envoyer un transfert"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:29
+msgid ""
+"For a complete implementation example, read the `Multi-Signature Tutorial "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-"
+"sig/index.html>`_, which uses the JavaScript SDK."
+msgstr ""
+"Pour un exemple complet de mise en œuvre, lisez le `Tutoriel de la multi-"
+"signature <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials"
+"/multi-sig/index.html>`_, qui utilise le SDK JavaScript."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:32
+msgid "Generating Account Keys"
+msgstr "Génération de clés de compte"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:34
+msgid ""
+"This example shows you how to use the SDK to generate account keys to sign "
+"your deploy."
+msgstr ""
+"Cet exemple vous montre comment utiliser le SDK pour générer des clés de "
+"compte afin de signer votre déploiement."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:72
+msgid ""
+"After generating the keys with this code, you can add them to the "
+"`CasperLabs Signer Chrome extension "
+"<https://chrome.google.com/webstore/detail/casperlabs-"
+"signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en-US>`_ and use them to sign "
+"your transactions."
+msgstr ""
+"Après avoir généré les clés avec ce code, vous pouvez les ajouter à "
+"l'extension Chrome `CasperLabs Signer "
+"<https://chrome.google.com/webstore/detail/casperlabs-"
+"signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en-US>`_ et les utiliser pour "
+"signer vos transactions."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:76
+msgid "Sending a Transfer"
+msgstr "Envoyer un transfert"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:78
+msgid ""
+"This code block shows you how to define and send a transfer on the Casper "
+"Network. Replace the ``account-address`` in the code below with the sender's"
+" account address."
+msgstr ""
+"Ce bloc de code vous montre comment définir et envoyer un transfert sur le "
+"réseau Casper. Remplacez ``account-address``dans le code ci-dessous par "
+"l'adresse du compte de l'expéditeur."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:80
+msgid ""
+"The ``sendTransfer`` function below will return a ``transfer-hash`` which "
+"you can check on https://testnet.cspr.live/."
+msgstr ""
+"La fonction ``sendTransfer`` ci-dessous renvoie un ``transfer-hash`` que "
+"vous pouvez vérifier sur https://testnet.cspr.live/."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:164
+msgid ""
+"**Note**: At any moment, you can serialize the deploy from this example to "
+"JSON to accomplish whatever you want (store it, send it, etc.)."
+msgstr ""
+"**Note** : À tout moment, vous pouvez sérialiser le déploiement de cet "
+"exemple en JSON pour accomplir ce que vous voulez (le stocker, l'envoyer, "
+"etc.)."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:166
+msgid "Here is the code you can use to serialize the deploy:"
+msgstr ""
+"Voici le code que vous pouvez utiliser pour sérialiser le déploiement :"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:173
+msgid "Then, you can reconstruct the deploy object using this function:"
+msgstr ""
+"Ensuite, vous pouvez reconstruire l'objet de déploiement en utilisant cette "
+"fonction :"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:180
+msgid "Additional Resources"
+msgstr "Ressources supplémentaires"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:181
+msgid ""
+"If you are looking for additional examples, another great resource is the "
+"`BitGo JS implementation "
+"<https://github.com/BitGo/BitGoJS/tree/master/modules/account-"
+"lib/src/coin/cspr>`_."
+msgstr ""
+"Si vous recherchez des exemples supplémentaires, une autre excellente "
+"ressource est l'implémentation `BitGo JS "
+"<https://github.com/BitGo/BitGoJS/tree/master/modules/account-"
+"lib/src/coin/cspr>`_."
