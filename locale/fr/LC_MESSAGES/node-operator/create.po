@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../node-operator/create.rst:3
+msgid "Setting up a Network"
+msgstr "Mise en place d'un réseau"
+
+#: ../../node-operator/create.rst:5
+msgid ""
+"It's possible to create a new network or join an existing network.  This "
+"page will outline the basics for creating a new network."
+msgstr ""
+"Il est possible de créer un nouveau réseau ou de rejoindre un réseau "
+"existant. Cette page présente les principes de base de la création d'un "
+"nouveau réseau."
+
+#: ../../node-operator/create.rst:8
+msgid "The Chain Specification"
+msgstr "Spécification de la chaîne"
+
+#: ../../node-operator/create.rst:10
+msgid ""
+"The Casper node software creates a genesis block from the following inputs:"
+msgstr ""
+"Le logiciel du nœud Casper crée un bloc de genèse (genesis block) à partir "
+"des entrées suivantes :"
+
+#: ../../node-operator/create.rst:13
+msgid "chainspec.toml"
+msgstr "chainspec.toml"
+
+#: ../../node-operator/create.rst:14
+msgid "accounts.toml"
+msgstr "accounts.toml"
+
+#: ../../node-operator/create.rst:17
+msgid "Chainspec.toml"
+msgstr "Chainspec.toml"
+
+#: ../../node-operator/create.rst:19
+msgid ""
+"A version of the chainspec is downloaded by the "
+"``pull_casper_node_version.sh`` script installed with the casper-node-"
+"launcher debian package. This pulls the chainspec.toml file from the "
+"appropriate path at http://genesis.casperlabs.io/."
+msgstr ""
+"Une version du chainspec est téléchargée par le script "
+"``pull_casper_node_version.sh`` installé avec le package debian de casper-"
+"node-launcher. Il extrait le fichier chainspec.toml du chemin approprié à "
+"l'adresse http://genesis.casperlabs.io/."
+
+#: ../../node-operator/create.rst:22
+msgid ""
+"The production version of the file from which this is based on can be found "
+"at ``casper-node/resources/production/chainspec.toml`` in the code base.  To"
+" create a custom network, this file can be updated as desired. Any changes "
+"to this file will result in a different genesis hash. Refer to the file "
+"itself for detailed documentation on each of the variables in the file."
+msgstr ""
+"La version de production du fichier peut être trouvée à ``casper-"
+"node/resources/production/chainspec.toml`` dans la base de code. Pour créer "
+"un réseau personnalisé, ce fichier peut être mis à jour comme vous le "
+"souhaitez. Toute modification de ce fichier entraînera un hash de genèse "
+"différent (genesis hash.). Reportez-vous au fichier lui-même pour une "
+"documentation détaillée sur chacune des variables du fichier."
+
+#: ../../node-operator/create.rst:27
+msgid "Accounts.toml"
+msgstr "Accounts.toml"
+
+#: ../../node-operator/create.rst:29
+msgid ""
+"This file contains the genesis validator set information, starting accounts "
+"and associated balances and bond amounts."
+msgstr ""
+"Ce fichier contient les informations du jeu de validateurs genesis, les "
+"comptes de départ et les soldes et montants des obligations (bond) associés."
+
+#: ../../node-operator/create.rst:31
+msgid ""
+"If an account is not bonded at genesis, specify a ``0`` for the bond amount."
+msgstr ""
+"Si un compte n'est pas cautionné (bonded) à genesis, spécifiez un ``0`` pour"
+" le montant de la caution( bond)."
+
+#: ../../node-operator/create.rst:33
+msgid ""
+"Similar to the chainspec.toml, this is pulled from the appropriate path at  "
+"http://genesis.casperlabs.io/."
+msgstr ""
+"Comme pour le fichier chainspec.toml, il est extrait du chemin approprié à "
+"l'adresse http://genesis.casperlabs.io/."
