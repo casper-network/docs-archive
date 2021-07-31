@@ -3,52 +3,60 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../node-operator/create.rst:3
 msgid "Setting up a Network"
-msgstr ""
+msgstr "Bir Ağ Kurmak"
 
 #: ../../node-operator/create.rst:5
 msgid ""
 "It's possible to create a new network or join an existing network.  This "
 "page will outline the basics for creating a new network."
 msgstr ""
+"Yeni bir ağ oluşturmak ya da var olan bir ağa katılmak mümkündür. Bu sayfa, "
+"yeni bir ağ oluşturmanın temellerini ortaya koyacaktır."
 
 #: ../../node-operator/create.rst:8
 msgid "The Chain Specification"
-msgstr ""
+msgstr "Zincir Belirtimi"
 
 #: ../../node-operator/create.rst:10
 msgid ""
-"The Casper node software creates a genesis block from the following "
-"inputs:"
+"The Casper node software creates a genesis block from the following inputs:"
 msgstr ""
+"Casper düğüm yazılımı, aşağıdaki girdileri kullanarak bir doğuş (genesis) "
+"bloku oluşturur:"
 
 #: ../../node-operator/create.rst:13
 msgid "chainspec.toml"
-msgstr ""
+msgstr "chainspec.toml"
 
 #: ../../node-operator/create.rst:14
 msgid "accounts.toml"
-msgstr ""
+msgstr "accounts.toml"
 
 #: ../../node-operator/create.rst:17
 msgid "Chainspec.toml"
-msgstr ""
+msgstr "Chainspec.toml"
 
 #: ../../node-operator/create.rst:19
 msgid ""
@@ -57,36 +65,49 @@ msgid ""
 "launcher debian package. This pulls the chainspec.toml file from the "
 "appropriate path at http://genesis.casperlabs.io/."
 msgstr ""
+"casper-node-launcher debian paketi ile birlikte kurulmuş olan "
+"``pull_casper_node_version.sh`` betiği tarafından, bir chainspec sürümü "
+"indirilir. Bu işlem, http://genesis.casperlabs.io/ adresindeki uygun dosya "
+"yolundan, chainspec.toml dosyasını çeker."
 
 #: ../../node-operator/create.rst:22
 msgid ""
-"The production version of the file from which this is based on can be "
-"found at ``casper-node/resources/production/chainspec.toml`` in the code "
-"base.  To create a custom network, this file can be updated as desired. "
-"Any changes to this file will result in a different genesis hash. Refer "
-"to the file itself for detailed documentation on each of the variables in"
-" the file."
+"The production version of the file from which this is based on can be found "
+"at ``casper-node/resources/production/chainspec.toml`` in the code base.  To"
+" create a custom network, this file can be updated as desired. Any changes "
+"to this file will result in a different genesis hash. Refer to the file "
+"itself for detailed documentation on each of the variables in the file."
 msgstr ""
+"Bunun temel aldığı dosyanın üretim ortamı sürümü, kod tabanındaki ``casper-"
+"node/resources/production/chainspec.toml`` konumunda bulunabilir. "
+"Özelleştirilmiş bir ağ oluşturmak için, bu dosya arzu edilen şekilde "
+"güncellenebilir. Bu dosyada yapılan her tür değişiklik, farklı bir doğuş "
+"(genesis) özetini sonuç verecektir. Dosyadaki her bir değişkenin ayrıntılı "
+"belgelendirmesi için, dosyanın içine bakınız."
 
 #: ../../node-operator/create.rst:27
 msgid "Accounts.toml"
-msgstr ""
+msgstr "Accounts.toml"
 
 #: ../../node-operator/create.rst:29
 msgid ""
-"This file contains the genesis validator set information, starting "
-"accounts and associated balances and bond amounts."
+"This file contains the genesis validator set information, starting accounts "
+"and associated balances and bond amounts."
 msgstr ""
+"Bu dosyada, doğuştaki doğrulayıcı kümesi bilgileri, başlangıç hesapları ve "
+"ilişkili hesaplar ile bağ miktarları bulunur."
 
 #: ../../node-operator/create.rst:31
 msgid ""
-"If an account is not bonded at genesis, specify a ``0`` for the bond "
-"amount."
+"If an account is not bonded at genesis, specify a ``0`` for the bond amount."
 msgstr ""
+"Eğer bir hesap doğuş anında bağlı değilse, bağ miktarına ``0`` değerini "
+"giriniz."
 
 #: ../../node-operator/create.rst:33
 msgid ""
-"Similar to the chainspec.toml, this is pulled from the appropriate path "
-"at  http://genesis.casperlabs.io/."
+"Similar to the chainspec.toml, this is pulled from the appropriate path at  "
+"http://genesis.casperlabs.io/."
 msgstr ""
-
+"chainspec.toml dosyasına benzer şekilde, bu da http://genesis.casperlabs.io/"
+" adresindeki uygun dosya yolundan çekilir."
