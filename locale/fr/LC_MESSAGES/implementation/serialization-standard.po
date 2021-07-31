@@ -1,0 +1,1951 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../implementation/serialization-standard.rst:4
+msgid "Serialization Standard"
+msgstr "Normes de sérialisation"
+
+#: ../../implementation/serialization-standard.rst:5
+msgid ""
+"We provide a custom implementation to serialize data structures used by the "
+"Casper node to their byte representation. This document details how this "
+"custom serialization is implemented, allowing developers to build a library "
+"that implements the custom serialization."
+msgstr ""
+"Nous fournissons une implémentation personnalisée pour sérialiser les "
+"structures de données utilisées par le nœud Casper vers leur représentation "
+"en octets. Ce document détaille l'implémentation de cette sérialisation "
+"personnalisée, permettant aux développeurs de construire une librairie qui "
+"implémente la sérialisation personnalisée."
+
+#: ../../implementation/serialization-standard.rst:11
+msgid "Block"
+msgstr "Bloc"
+
+#: ../../implementation/serialization-standard.rst:12
+msgid ""
+"A block is the core component of the Casper linear blockchain, used in two "
+"contexts:"
+msgstr ""
+"Un bloc est le composant central de la blockchain linéaire Casper, utilisé "
+"dans deux contextes :"
+
+#: ../../implementation/serialization-standard.rst:14
+msgid ""
+"A data structure containing a collection of transactions. Blocks form the "
+"primary structure of the blockchain."
+msgstr ""
+"Une structure de données contenant une collection de transactions. Les blocs"
+" constituent la structure primaire de la blockchain."
+
+#: ../../implementation/serialization-standard.rst:15
+msgid ""
+"A message that is exchanged between nodes containing the data structure as "
+"explained in (1)."
+msgstr ""
+"Un message qui est échangé entre les nœuds contenant la structure de données"
+" comme expliqué dans (1)."
+
+#: ../../implementation/serialization-standard.rst:17
+msgid ""
+"Each block has a globally unique ID, achieved by hashing the contents of the"
+" block."
+msgstr ""
+"Chaque bloc possède un identifiant unique au monde, obtenu par hachage du "
+"contenu du bloc."
+
+#: ../../implementation/serialization-standard.rst:19
+msgid ""
+"Each block points to its parent. An exception is the first block, which has "
+"no parent."
+msgstr ""
+"Chaque bloc pointe vers son parent. L'exception est le premier bloc, qui n'a"
+" pas de parent."
+
+#: ../../implementation/serialization-standard.rst:21
+msgid "A block is structurally defined as follows:"
+msgstr "Un bloc est structurellement défini comme suit :"
+
+#: ../../implementation/serialization-standard.rst:23
+msgid "``hash``: A hash over the header of the block."
+msgstr "``hash``: Un hash de l'en-tête du bloc."
+
+#: ../../implementation/serialization-standard.rst:24
+msgid ""
+"``header``: The header of the block that contains information about the "
+"contents of the block with additional metadata."
+msgstr ""
+"``En-tête`` (header): L'en-tête du bloc qui contient des informations sur le"
+" contenu du bloc avec des métadonnées supplémentaires."
+
+#: ../../implementation/serialization-standard.rst:25
+msgid ""
+"``body``: The block's body contains the proposer of the block and hashes of "
+"deploys and transfers contained within it."
+msgstr ""
+"``corps`` (body) : Le corps du bloc contient l'auteur du bloc et les hashs "
+"des déploiements et transferts qu'il contient."
+
+#: ../../implementation/serialization-standard.rst:28
+msgid "Block hash"
+msgstr "Hash du bloc"
+
+#: ../../implementation/serialization-standard.rst:29
+msgid ""
+"The block hash is a ``Digest`` over the contents of the block Header. The "
+"``BlockHash`` serializes as the byte representation of the hash itself."
+msgstr ""
+"Le hash de bloc est un ``Digest`` sur le contenu de l'en-tête de bloc. Le "
+"``BlockHash`` est sérialisé comme la représentation en octets du hash lui-"
+"même."
+
+#: ../../implementation/serialization-standard.rst:32
+msgid "Block header"
+msgstr "En-tête de bloc"
+
+#: ../../implementation/serialization-standard.rst:33
+msgid "The header portion of a block, structurally, is defined as follows:"
+msgstr ""
+"La partie en-tête d'un bloc, structurellement, est définie comme suit :"
+
+#: ../../implementation/serialization-standard.rst:35
+msgid ""
+"``parent_hash``: is the hash of the parent block. It serializes to the byte "
+"representation of the parent hash. The serialized buffer of the "
+"``parent_hash`` is 32 bytes long."
+msgstr ""
+"``parent_hash``: est le hash du bloc parent. Il se sérialise en une "
+"représentation en octets du hash du parent. Le tampon (buffer) sérialisé du "
+"``parent_hash`` a une longueur de 32 octets."
+
+#: ../../implementation/serialization-standard.rst:36
+msgid ""
+"``state_root_hash``: is the global state root hash produced by executing "
+"this block's body. It serializes to the byte representation of the ``state "
+"root hash``. The serialized buffer of the ``state_root_hash`` is 32 bytes "
+"long."
+msgstr ""
+"``state_root_hash``: est le hash racine de l'état global produit par "
+"l'exécution du corps de ce bloc. Il se sérialise en une représentation en "
+"octets du ``state root hash`` . Le buffer sérialisé du ``state_root_hash`` a"
+" une longueur de 32 octets."
+
+#: ../../implementation/serialization-standard.rst:37
+msgid ""
+"``body_hash``: the hash of the block body. It serializes to the byte "
+"representation of the body hash. The serialized buffer of the ``body_hash`` "
+"is 32 bytes long."
+msgstr ""
+"``body_hash``: est le hash du corps du bloc. Il se sérialise en une "
+"représentation en octets du hash du parent. Le tampon (buffer) sérialisé du "
+"``parent_hash`` a une longueur de 32 octets."
+
+#: ../../implementation/serialization-standard.rst:38
+msgid ""
+"``random_bit``: is a boolean needed for initializing a future era. It is "
+"serialized as a single byte; true maps to 1, while false maps to 0."
+msgstr ""
+"``random_bit`` : est un booléen nécessaire pour initialiser une future ère. "
+"Il est sérialisé sous la forme d'un seul octet ; true (vrai) correspond à 1 "
+"et false (faux) à 0."
+
+#: ../../implementation/serialization-standard.rst:39
+msgid ""
+"``accumulated_seed``: A seed needed for initializing a future era. It "
+"serializes to the byte representation of the parent Hash. The serialized "
+"buffer of the ``accumulated_hash`` is 32 bytes long."
+msgstr ""
+"``accumulated_seed``: Une graine (seed) nécessaire pour initialiser une ère "
+"future. Il se sérialise dans la représentation en octets du Hash parent. Le "
+"buffer sérialisé du ``accumulated_hash`` a une longueur de 32 octets."
+
+#: ../../implementation/serialization-standard.rst:40
+msgid ""
+"``era_end``: contains equivocation and reward information to be included in "
+"the terminal finalized block. It is an optional field. Thus if the field is "
+"set as ``None``, it serializes to `0`. The serialization of the other case "
+"is described in the :ref:`EraEnd<serialization-standard-era-end>` ."
+msgstr ""
+"``era_end``: contient des informations sur l'équivoque et la récompense à "
+"inclure dans le bloc terminal finalisé. Il s'agit d'un champ facultatif. Par"
+" conséquent, si le champ est défini comme ``None``, il est sérialisé à `0`. "
+"La sérialisation de l'autre cas est décrite dans le :ref:`EraEnd"
+"<serialization-standard-era-end>` ."
+
+#: ../../implementation/serialization-standard.rst:41
+msgid ""
+"``timestamp``: The timestamp from when the block was proposed. It serializes"
+" as a single ``u64`` value. The serialization of a ``u64`` value is "
+"described in in the :ref:`CLValues<serialization-standard-values>` section."
+msgstr ""
+"``timestamp``: Le timestamp à partir duquel le bloc a été proposé. Il est "
+"sérialisé sous la forme d'une valeur unique ``u64``. La sérialisation d'une "
+"valeur ``u64`` est décrite dans la section :ref:`CLValues<serialization-"
+"standard-values>`."
+
+#: ../../implementation/serialization-standard.rst:42
+msgid ""
+"``era_id``: Era ID in which this block was created. It serializes as a "
+"single ``u64`` value."
+msgstr ""
+"``era_id`` : ID de l'ère dans laquelle ce bloc a été créé. Il est sérialisé "
+"sous la forme d'une valeur unique ``u64``."
+
+#: ../../implementation/serialization-standard.rst:43
+msgid ""
+"``height``: The height of this block, i.e., the number of ancestors. It "
+"serializes as a single ``u64`` value."
+msgstr ""
+"``height``: La hauteur de ce bloc, c'est-à-dire le nombre d'ancêtres. Elle "
+"est sérialisée sous la forme d'une valeur unique ``u64``."
+
+#: ../../implementation/serialization-standard.rst:44
+msgid ""
+"``protocol_version``: The version of the Casper network when this block was "
+"proposed. It is 3-element tuple containing ``u32`` values. It serializes as "
+"a buffer containing the three ``u32`` serialized values. Refer to the "
+":ref:`CLValues<serialization-standard-values>` section on how ``u32`` values"
+" are serialized."
+msgstr ""
+"``protocol_version``: La version du réseau Casper lorsque ce bloc a été "
+"proposé. Il s'agit d'un tuple à 3 éléments contenant des valeurs ``u32``. Il"
+" se sérialise comme un buffer contenant les trois valeurs ``u32`` "
+"sérialisées. Se référer à la section :ref:`CLValues<serialization-standard-"
+"values>` sur comment les valeurs ``u32`` sont sérialisées."
+
+#: ../../implementation/serialization-standard.rst:50
+msgid "EraEnd"
+msgstr "EraEnd"
+
+#: ../../implementation/serialization-standard.rst:51
+msgid ""
+"``EraEnd`` as represented within the block header, is a struct containing "
+"two fields."
+msgstr ""
+"``EraEnd`` tel que représenté dans l'en-tête du bloc, est un struct "
+"contenant deux champs."
+
+#: ../../implementation/serialization-standard.rst:53
+msgid ""
+"``era_report``: The first field is termed as ``EraReport`` and contains "
+"information about equivocators and rewards for an era."
+msgstr ""
+"``era_report``: Le premier champ est appelé ``EraReport`` et contient des "
+"informations sur les équivoques et les récompenses pour une ère."
+
+#: ../../implementation/serialization-standard.rst:54
+msgid ""
+"``next_era_validator_weights``: The second field is map for the validators "
+"and their weights for the era to follow."
+msgstr ""
+"``next_era_validator_weights``: Le deuxième champ est une map pour les "
+"validateurs et leurs poids pour l'ère à suivre."
+
+#: ../../implementation/serialization-standard.rst:56
+msgid "``EraReport`` itself contains two fields:"
+msgstr "``EraReport`` contient lui-même deux champs :"
+
+#: ../../implementation/serialization-standard.rst:58
+msgid "``equivocators``: A vector of ``PublicKey``."
+msgstr "``equivocators``: Un vecteur de ``PublicKey``."
+
+#: ../../implementation/serialization-standard.rst:59
+msgid "``rewards``: A Binary Tree Map of ``PublicKey`` and ``u64``."
+msgstr ""
+"``rewards``: Une map d'arbre binaire (Binary Tree Map) de ``PublicKey`` et "
+"``u64``."
+
+#: ../../implementation/serialization-standard.rst:61
+msgid ""
+"When serializing an EraReport, the buffer is first filled with the "
+"individual serialization of the PublicKey contained within the vector."
+msgstr ""
+"Lors de la sérialisation d'un EraReport, le buffer est d'abord rempli avec "
+"la sérialisation individuelle de la PublicKey contenue dans le vecteur."
+
+#: ../../implementation/serialization-standard.rst:63
+msgid ""
+"If the ``PublicKey`` is an ``Ed25519`` key, the first byte within the buffer"
+" is a ``1`` followed by the individual bytes of the serialized key."
+msgstr ""
+"Si la ``PublicKey` est une clé ``Ed25519``, le premier octet du buffer est "
+"un ``1`` suivi des différents octets de la clé sérialisée."
+
+#: ../../implementation/serialization-standard.rst:64
+msgid ""
+"If the ``PublicKey`` is an ``Secp256k1`` key, the first byte within the "
+"buffer is a ``2`` followed by the individual bytes of the serialized key."
+msgstr ""
+"Si la ``PublicKey` est une clé ``Secp256k1``, le premier octet du buffer est"
+" un ``2`` suivi des différents octets de la clé sérialisée."
+
+#: ../../implementation/serialization-standard.rst:66
+msgid ""
+"When serializing the overarching struct of ``EraEnd``, we first allocate a "
+"buffer, which contains the serialized representation of the ``EraReport`` as"
+" described above, followed by the serialized BTreeMap."
+msgstr ""
+"Lors de la sérialisation de la structure globale de ``EraEnd``, nous "
+"allouons d'abord un buffer, qui contient la représentation sérialisée de "
+"``EraReport`` comme décrit ci-dessus, suivie de la BTreeMap sérialisée."
+
+#: ../../implementation/serialization-standard.rst:68
+msgid ""
+"Note that ``EraEnd`` is an optional field. Thus the above scheme only "
+"applies if there is an ``EraEnd``; if there is no era end, the field simply "
+"serializes to `0`."
+msgstr ""
+"Notez que ``EraEnd`` est un champ optionnel. Ainsi, le schéma ci-dessus ne "
+"s'applique que s'il y a un ``EraEnd`` ; s'il n'y a pas de fin d'ère, le "
+"champ est simplement sérialisé à `0`."
+
+#: ../../implementation/serialization-standard.rst:72
+msgid "Body"
+msgstr "Corps"
+
+#: ../../implementation/serialization-standard.rst:73
+msgid "The body portion of the block is structurally defined as:"
+msgstr ""
+"La partie corps (body) du bloc est structurellement définie comme suit :"
+
+#: ../../implementation/serialization-standard.rst:76
+msgid "``proposer``: The PublicKey which proposed this block."
+msgstr "``proposer``: La clé publique qui a proposé ce bloc."
+
+#: ../../implementation/serialization-standard.rst:77
+msgid ""
+"``deploy_hashes``: Is a vector of hex-encoded hashes identifying Deploys "
+"included in this block."
+msgstr ""
+"``deploy_hashes``: Est un vecteur de hashs en hexadécimal identifiant les "
+"déploiements inclus dans ce bloc."
+
+#: ../../implementation/serialization-standard.rst:78
+msgid ""
+"``transfer_hashes``: Is a vector of hex-encoded hashes identifying Transfers"
+" included in this block."
+msgstr ""
+"``transfer_hashes``: Est un vecteur de hashs en hexadécimal identifiant les "
+"Transferts inclus dans ce bloc."
+
+#: ../../implementation/serialization-standard.rst:80
+msgid ""
+"When we serialize the ``BlockBody``, we create a buffer that contains the "
+"serialized representations of the individual fields present within the "
+"block."
+msgstr ""
+"Lorsque nous sérialisons le ``BlockBody``, nous créons un buffer qui "
+"contient les représentations sérialisées des champs individuels présents "
+"dans le bloc."
+
+#: ../../implementation/serialization-standard.rst:82
+msgid ""
+"``proposer``: serializes to the byte representation of the ``PublicKey``. If"
+" the ``PublicKey`` is an ``Ed25519`` key, then the first byte within the "
+"serialized buffer is 1 followed by the bytes of the key itself; else, in the"
+" case of ``Secp256k1``, the first byte is 2."
+msgstr ""
+"``proposer``: sérialise la représentation en octets de la ``PublicKey``. Si "
+"la ``PublicKey`` est une clé ``Ed25519``, alors le premier octet du tampon "
+"sérialisé est 1 suivi des octets de la clé elle-même ; sinon, dans le cas de"
+" ``Secp256k1``, le premier octet est 2."
+
+#: ../../implementation/serialization-standard.rst:83
+msgid ""
+"``deploy_hashes``: serializes to the byte representation of all the "
+"deploy_hashes within the block header. Its length is ``32 * n``, where n "
+"denotes the number of deploy hashes present within the body."
+msgstr ""
+"``deploy_hashes``: sérialise la représentation en octets de tous les "
+"deploy_hashes dans l'en-tête du bloc. Sa longueur est de ``32 * n``, où n "
+"désigne le nombre de hashs deploy présents dans le corps."
+
+#: ../../implementation/serialization-standard.rst:84
+msgid ""
+"``transfer_hashes``: serializes to the byte representation of all the "
+"deploy_hashes within the block header. Its length is ``32 * n``, where n "
+"denotes the number of transfers present within the body."
+msgstr ""
+"``transfer_hashes``: sérialise la représentation en octets de tous les "
+"deploy_hash dans l'en-tête du bloc. Sa longueur est de ``32 * n``, où n "
+"désigne le nombre de transferts présents dans le corps."
+
+#: ../../implementation/serialization-standard.rst:90
+#: ../../implementation/serialization-standard.rst:675
+msgid "Deploy"
+msgstr "Déploiement "
+
+#: ../../implementation/serialization-standard.rst:91
+msgid ""
+"A deploy is a data structure containing a smart contract and the requester's"
+" signature(s). Additionally, the deploy header contains additional metadata "
+"about the deploy itself. A deploy is structurally defined as follows:"
+msgstr ""
+"Un déploiement est une structure de données contenant un contrat intelligent"
+" et la ou les signatures du demandeur. En outre, l'en-tête du déploiement "
+"contient des métadonnées supplémentaires sur le déploiement lui-même. La "
+"structure d'un déploiement est définie comme suit :"
+
+#: ../../implementation/serialization-standard.rst:95
+msgid "``hash``: The hash of the deploy header."
+msgstr "``hash``: Le hash de l'en-tête de déploiement."
+
+#: ../../implementation/serialization-standard.rst:96
+msgid ""
+"``header``: Contains metadata about the deploy. The structure of the header "
+"is detailed further in this document."
+msgstr ""
+"``header``: Contient des métadonnées sur le déploiement. La structure de l"
+"'en-tête est détaillée plus loin dans ce document."
+
+#: ../../implementation/serialization-standard.rst:97
+msgid "``payment``: The payment code for contained smart contract."
+msgstr ""
+"``payment``: Le code de paiement pour le contrat intelligent contenu dans le"
+" déploiement."
+
+#: ../../implementation/serialization-standard.rst:98
+msgid "``session``: The stored contract itself."
+msgstr "``session``: Le contrat stocké lui-même."
+
+#: ../../implementation/serialization-standard.rst:99
+msgid "``approvals``: A list of signatures:"
+msgstr "``approvals``: Une liste de signatures :"
+
+#: ../../implementation/serialization-standard.rst:102
+msgid "Deploy-Hash"
+msgstr "Deploy-Hash"
+
+#: ../../implementation/serialization-standard.rst:103
+msgid ""
+"The deploy hash is a digest over the contents of the deploy header. The "
+"deploy hash serializes as the byte representation of the hash itself."
+msgstr ""
+"Le hash de déploiement est un digest du contenu de l'en-tête de déploiement."
+" Le hash deploy est sérialisé comme la représentation en octets du hash lui-"
+"même."
+
+#: ../../implementation/serialization-standard.rst:106
+msgid "Deploy-Header"
+msgstr "Deploy-Header"
+
+#: ../../implementation/serialization-standard.rst:108
+msgid ""
+"``account``: A supported public key variant (currently either ``Ed25519`` or"
+" ``Secp256k1``). An ``Ed25519`` key is serialized as a buffer of bytes, with"
+" the leading byte being ``1`` for ``Ed25519``, with remainder of the buffer "
+"containing the byte representation of the signature. Correspondingly, a "
+"``Secp256k1`` key is serialized as a buffer of bytes, with the leading byte "
+"being ``2``."
+msgstr ""
+"``account`` : Une variante de clé publique supportée (actuellement soit "
+"``Ed25519`` soit ``Secp256k1``). Une clé ``Ed25519`` est sérialisée sous la "
+"forme d'un buffer d'octets, l'octet de tête étant ``1`` pour ``Ed25519``, le"
+" reste du buffer contenant la représentation en octets de la signature. De "
+"même, une clé ``Secp256k1``est sérialisée sous forme de buffer d'octets, "
+"l'octet de tête étant ``2``."
+
+#: ../../implementation/serialization-standard.rst:109
+msgid ""
+"``timestamp``: A timestamp is a struct that is a unary tuple containing a "
+"``u64`` value. This value is a count of the milliseconds since the UNIX "
+"epoch. Thus the value ``1603994401469`` serializes as ``0xbd3a847575010000``"
+msgstr ""
+"``timestamp``: Un timestamp est un tuple unaire contenant une valeur "
+"``u64``. Cette valeur est un décompte des millisecondes depuis UNIX epoch. "
+"Ainsi, la valeur ``1603994401469`` est sérialisée en ``0xbd3a847575010000``"
+
+#: ../../implementation/serialization-standard.rst:110
+msgid ""
+"``ttl``: The **Time to live** is defined as the amount of time for which "
+"deploy is considered valid. The ``ttl`` serializes in the same manner as the"
+" timestamp."
+msgstr ""
+"``ttl``: Le **Time to live** est défini comme la durée pendant laquelle le "
+"déploiement est considéré comme valide. Le ``ttl`` se sérialise de la même "
+"manière que le timestamp."
+
+#: ../../implementation/serialization-standard.rst:111
+msgid ""
+"``gas_price``: The gas is ``u64`` value which is serialized as ``u64`` "
+"CLValue discussed below."
+msgstr ""
+"``gas_price``: Le gaz est une valeur ``u64`` qui est sérialisée comme "
+"``u64`` CLValue discuté ci-dessous."
+
+#: ../../implementation/serialization-standard.rst:112
+msgid ""
+"``body_hash``: Body hash is a hash over the contents of the deploy body, "
+"which includes the payment, session, and approval fields. Its serialization "
+"is the byte representation of the hash itself."
+msgstr ""
+"``body_hash``: Le hash du corps est un hash du contenu du corps du "
+"déploiement, qui comprend les champs de paiement, de session et "
+"d'approbation. Sa sérialisation est la représentation en octets du hash lui-"
+"même."
+
+#: ../../implementation/serialization-standard.rst:113
+msgid ""
+"``dependencies``: Dependencies is a vector of deploy hashes referencing "
+"deploys that must execute before the current deploy can be executed. It "
+"serializes as a buffer containing the individual serialization of each "
+"DeployHash within the Vector."
+msgstr ""
+"``dependencies``: 'Dependencies' est un vecteur de hashs de déploiement "
+"référençant les déploiements qui doivent s'exécuter avant que le déploiement"
+" actuel puisse être exécuté. Il se sérialise comme un buffer contenant la "
+"sérialisation individuelle de chaque DeployHash dans le vecteur."
+
+#: ../../implementation/serialization-standard.rst:114
+msgid ""
+"``chain_name``: Chain name is a human-readable string describing the name of"
+" the chain as detailed in the chainspec. It is serialized as a String "
+"CLValue described below."
+msgstr ""
+"``chain_name``: Le nom de la chaîne est une chaîne de caractères décrivant "
+"le nom de la chaîne tel qu'il est détaillé dans le chainspec. Il est "
+"sérialisé sous la forme d'une CLValue de type String décrite ci-dessous."
+
+#: ../../implementation/serialization-standard.rst:117
+msgid "Payment & Session"
+msgstr "Paiement & Session"
+
+#: ../../implementation/serialization-standard.rst:119
+msgid ""
+"Payment and Session are both defined as ``ExecutableDeployItems``. "
+"``ExecutableDeployItems`` is an enum described as follows:"
+msgstr ""
+"Paiement et Session sont tous deux définis en tant que "
+"``ExecutableDeployItems`'. ``ExecutableDeployItems`` est un enum décrit "
+"comme suit :"
+
+#: ../../implementation/serialization-standard.rst:166
+msgid ""
+"Module Bytes are serialized such that the first byte within the serialized "
+"buffer is ``0`` with the rest of the buffer containing the bytes present."
+msgstr ""
+"Module Bytes sont sérialisés de telle sorte que le premier octet du buffer "
+"sérialisé est ``0``, le reste du buffer contenant les octets présents."
+
+#: ../../implementation/serialization-standard.rst:168
+msgid ""
+"``ModuleBytes { module_bytes: \"[72 bytes]\", args: "
+"434705a38470ec2b008bb693426f47f330802f3bd63588ee275e943407649d3bab1898897ab0400d7fa09fe02ab7b7e8ea443d28069ca557e206916515a7e21d15e5be5eb46235f5"
+" }`` will serialize to"
+msgstr ""
+"``ModuleBytes { module_bytes: \"[72 bytes]\", args: "
+"434705a38470ec2b008bb693426f47f330802f3bd63588ee275e943407649d3bab1898897ab0400d7fa09fe02ab7b7e8ea443d28069ca557e206916515a7e21d15e5be5eb46235f5"
+" }`` sera sérialisé en"
+
+#: ../../implementation/serialization-standard.rst:169
+msgid ""
+"``0x0048000000420481b0d5a665c8a7678398103d4333c684461a71e9ee2a13f6e859fb6cd419ed5f8876fc6c3e12dce4385acc777edf42dcf8d8d844bf6a704e5b2446750559911a4a328d649ddd48000000434705a38470ec2b008bb693426f47f330802f3bd63588ee275e943407649d3bab1898897ab0400d7fa09fe02ab7b7e8ea443d28069ca557e206916515a7e21d15e5be5eb46235f5``"
+msgstr ""
+"``0x0048000000420481b0d5a665c8a7678398103d4333c684461a71e9ee2a13f6e859fb6cd419ed5f8876fc6c3e12dce4385acc777edf42dcf8d8d844bf6a704e5b2446750559911a4a328d649ddd48000000434705a38470ec2b008bb693426f47f330802f3bd63588ee275e943407649d3bab1898897ab0400d7fa09fe02ab7b7e8ea443d28069ca557e206916515a7e21d15e5be5eb46235f5``"
+
+#: ../../implementation/serialization-standard.rst:171
+msgid ""
+"StoredContractByHash serializes such that the first byte within the "
+"serialized buffer is 1u8. This is followed by the byte representation of the"
+" remaining fields."
+msgstr ""
+"StoredContractByHash se sérialise de telle sorte que le premier octet du "
+"buffer sérialisé est 1u8. Il est suivi par la représentation en octets des "
+"autres champs."
+
+#: ../../implementation/serialization-standard.rst:173
+msgid ""
+"``StoredContractByHash { hash: "
+"c4c411864f7b717c27839e56f6f1ebe5da3f35ec0043f437324325d65a22afa4, "
+"entry_point: \"pclphXwfYmCmdITj8hnh\", args: "
+"d8b59728274edd2334ea328b3292ed15eaf9134f9a00dce31a87d9050570fb0267a4002c85f3a8384d2502733b2e46f44981df85fed5e4854200bbca313e3bca8d888a84a76a1c5b1b3d236a12401a2999d3cad003c9b9d98c92ab1850"
+" }``"
+msgstr ""
+"``StoredContractByHash { hash: "
+"c4c411864f7b717c27839e56f6f1ebe5da3f35ec0043f437324325d65a22afa4, "
+"entry_point: \"pclphXwfYmCmdITj8hnh\", args: "
+"d8b59728274edd2334ea328b3292ed15eaf9134f9a00dce31a87d9050570fb0267a4002c85f3a8384d2502733b2e46f44981df85fed5e4854200bbca313e3bca8d888a84a76a1c5b1b3d236a12401a2999d3cad003c9b9d98c92ab1850"
+" }``"
+
+#: ../../implementation/serialization-standard.rst:174
+msgid ""
+"``0x01c4c411864f7b717c27839e56f6f1ebe5da3f35ec0043f437324325d65a22afa41400000070636c7068587766596d436d6449546a38686e685d000000d8b59728274edd2334ea328b3292ed15eaf9134f9a00dce31a87d9050570fb0267a4002c85f3a8384d2502733b2e46f44981df85fed5e4854200bbca313e3bca8d888a84a76a1c5b1b3d236a12401a2999d3cad003c9b9d98c92ab1850``"
+msgstr ""
+"``0x01c4c411864f7b717c27839e56f6f1ebe5da3f35ec0043f437324325d65a22afa41400000070636c7068587766596d436d6449546a38686e685d000000d8b59728274edd2334ea328b3292ed15eaf9134f9a00dce31a87d9050570fb0267a4002c85f3a8384d2502733b2e46f44981df85fed5e4854200bbca313e3bca8d888a84a76a1c5b1b3d236a12401a2999d3cad003c9b9d98c92ab1850``"
+
+#: ../../implementation/serialization-standard.rst:176
+msgid ""
+"StoredContractByName serializes such that the first byte within the "
+"serialized buffer is 2u8. This is followed by the individual byte "
+"representation of the remaining fields."
+msgstr ""
+"StoredContractByName est sérialisé de telle sorte que le premier octet du "
+"buffer sérialisé est 2u8. Il est suivi de la représentation individuelle en "
+"octets des champs restants."
+
+#: ../../implementation/serialization-standard.rst:178
+msgid ""
+"``StoredContractByName { name: \"U5A74bSZH8abT8HqVaK9\", entry_point: "
+"\"gIetSxltnRDvMhWdxTqQ\", args: 07beadc3da884faa17454a }``"
+msgstr ""
+"``StoredContractByName { name: \"U5A74bSZH8abT8HqVaK9\", entry_point: "
+"\"gIetSxltnRDvMhWdxTqQ\", args: 07beadc3da884faa17454a }``"
+
+#: ../../implementation/serialization-standard.rst:179
+msgid ""
+"``0x0214000000553541373462535a483861625438487156614b39140000006749657453786c746e5244764d685764785471510b00000007beadc3da884faa17454a``"
+msgstr ""
+"``0x0214000000553541373462535a483861625438487156614b39140000006749657453786c746e5244764d685764785471510b00000007beadc3da884faa17454a``"
+
+#: ../../implementation/serialization-standard.rst:181
+msgid ""
+"StoredVersionedContractByHash serializes such that the first byte within the"
+" serialized buffer is 3u8. However, the field version within the enum "
+"serializes as an Option CLValue, i.e., if the value is None as shown in the "
+"example, it serializes to 0, else it serializes the inner u32 value, which "
+"is described below."
+msgstr ""
+"StoredVersionedContractByHash se sérialise de telle sorte que le premier "
+"octet du buffer sérialisé est 3u8. Cependant, la version du champ dans "
+"l'enum est sérialisée comme une Option CLValue, c'est-à-dire que si la "
+"valeur est None comme indiqué dans l'exemple, elle est sérialisée à 0, sinon"
+" elle sérialise la valeur u32 interne, qui est décrite ci-dessous."
+
+#: ../../implementation/serialization-standard.rst:183
+msgid ""
+"``StoredVersionedContractByHash { hash: "
+"b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423, version: "
+"None, entry_point: \"PsLz5c7JsqT8BK8ll0kF\", args: "
+"3d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8"
+" }``"
+msgstr ""
+"``StoredVersionedContractByHash { hash: "
+"b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423, version: "
+"None, entry_point: \"PsLz5c7JsqT8BK8ll0kF\", args: "
+"3d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8"
+" }``"
+
+#: ../../implementation/serialization-standard.rst:184
+msgid ""
+"``0x03b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423001400000050734c7a3563374a73715438424b386c6c306b463b0000003d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8``"
+msgstr ""
+"``0x03b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423001400000050734c7a3563374a73715438424b386c6c306b463b0000003d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8``"
+
+#: ../../implementation/serialization-standard.rst:186
+msgid ""
+"StoredVersionedContractByName serializes such that the first byte within the"
+" serialized buffer is 4u8. The name and entry_point are serialized as a "
+"String CLValue, with the Option version field serializing to 0 if the value "
+"is None; else, it serializes the inner u32 value as described below."
+msgstr ""
+"StoredVersionedContractByName est sérialisé de telle sorte que le premier "
+"octet du buffer sérialisé soit 4u8. Le name et le entry_pointsont sérialisés"
+" sous la forme d'une chaîne CLValue, le champ Option version étant sérialisé"
+" à 0 si la valeur est None ; sinon, il sérialise la valeur interne u32 comme"
+" décrit ci-dessous."
+
+#: ../../implementation/serialization-standard.rst:188
+msgid ""
+"``StoredVersionedContractByName { name: \"lWJWKdZUEudSakJzw1tn\", version: "
+"Some(1632552656), entry_point: \"S1cXRT3E1jyFlWBAIVQ8\", args: "
+"9975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8"
+" }``"
+msgstr ""
+"``StoredVersionedContractByName { name: \"lWJWKdZUEudSakJzw1tn\", version: "
+"Some(1632552656), entry_point: \"S1cXRT3E1jyFlWBAIVQ8\", args: "
+"9975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8"
+" }``"
+
+#: ../../implementation/serialization-standard.rst:189
+msgid ""
+"``0x04140000006c574a574b645a5545756453616b4a7a7731746e01d0c64e61140000005331635852543345316a79466c57424149565138270000009975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8``"
+msgstr ""
+"``0x04140000006c574a574b645a5545756453616b4a7a7731746e01d0c64e61140000005331635852543345316a79466c57424149565138270000009975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8``"
+
+#: ../../implementation/serialization-standard.rst:191
+msgid ""
+"Transfer serializes such that the first byte within the serialized buffer "
+"contains is 5u8, with the remaining bytes of the buffer containing the bytes"
+" contained within the args field of Transfer."
+msgstr ""
+"Transfer est sérialisé de telle sorte que le premier octet du buffer "
+"sérialisé contient 5u8, les autres octets du buffer contenant les octets "
+"contenus dans le champ args de Transfer."
+
+#: ../../implementation/serialization-standard.rst:194
+msgid "Approval"
+msgstr "Approbation (Approval)"
+
+#: ../../implementation/serialization-standard.rst:196
+msgid "Approval contains two fields:"
+msgstr "Approval contient deux champs :"
+
+#: ../../implementation/serialization-standard.rst:198
+msgid ""
+"``signer``: The public key of the approvals signer. It serializes to the "
+"byte representation of the ``PublicKey``. If the ``PublicKey`` is an "
+"``Ed25519`` key, then the first byte within the serialized buffer is 1 "
+"followed by the bytes of the key itself; else, in the case of ``Secp256k1``,"
+" the first byte is 2."
+msgstr ""
+"``signer``: La clé publique du signataire des approbations. Elle se "
+"sérialise en la représentation en octets de la ``PublicKey``. Si la "
+"``PublicKey``` est une clé ``Ed25519``, alors le premier octet dans le "
+"tampon sérialisé est 1 suivi des octets de la clé elle-même ; sinon, dans le"
+" cas de ``Secp256k1``, le premier octet est 2."
+
+#: ../../implementation/serialization-standard.rst:199
+msgid ""
+"``signature``: The approval signature, which serializes as the byte "
+"representation of the ``Signature``. The fist byte within the signature is 1"
+" in the case of an ``Ed25519`` signature or 2 in the case of ``Secp256k1``."
+msgstr ""
+"``signature``: La signature de l'approbation, qui se sérialise comme la "
+"représentation en octets de la ``Signature``. Le premier octet de la "
+"signature est 1 dans le cas d'une signature ``Ed25519`` ou 2 dans le cas de "
+"``Secp256k1`'."
+
+#: ../../implementation/serialization-standard.rst:203
+msgid "Deploy Serialization at High Level"
+msgstr "Déployer la sérialisation à haut niveau"
+
+#: ../../implementation/serialization-standard.rst:205
+msgid "Consider the following deploy:"
+msgstr "Considérez le déploiement suivant :"
+
+#: ../../implementation/serialization-standard.rst:260
+msgid "The above deploy will serialize to:"
+msgstr "Le déploiement ci-dessus sera sérialisé en :"
+
+#: ../../implementation/serialization-standard.rst:262
+msgid ""
+"``01d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900ca856a4d37501000080ee36000000000001000000000000004811966d37fe5674a8af4001884ea0d9042d1c06668da0c963769c3a01ebd08f0100000001010101010101010101010101010101010101010101010101010101010101010e0000006361737065722d6578616d706c6501da3c604f71e0e7df83ff1ab4ef15bb04de64ca02e3d2b78de6950e8b5ee187020e0000006361737065722d6578616d706c65130000006578616d706c652d656e7472792d706f696e7401000000080000007175616e7469747904000000e803000001050100000006000000616d6f756e7404000000e8030000010100000001d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900c012dbf03817a51794a8e19e0724884075e6d1fbec326b766ecfa6658b41f81290da85e23b24e88b1c8d9761185c961daee1adab0649912a6477bcd2e69bd91bd08``"
+msgstr ""
+"``01d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900ca856a4d37501000080ee36000000000001000000000000004811966d37fe5674a8af4001884ea0d9042d1c06668da0c963769c3a01ebd08f0100000001010101010101010101010101010101010101010101010101010101010101010e0000006361737065722d6578616d706c6501da3c604f71e0e7df83ff1ab4ef15bb04de64ca02e3d2b78de6950e8b5ee187020e0000006361737065722d6578616d706c65130000006578616d706c652d656e7472792d706f696e7401000000080000007175616e7469747904000000e803000001050100000006000000616d6f756e7404000000e8030000010100000001d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900c012dbf03817a51794a8e19e0724884075e6d1fbec326b766ecfa6658b41f81290da85e23b24e88b1c8d9761185c961daee1adab0649912a6477bcd2e69bd91bd08``"
+
+#: ../../implementation/serialization-standard.rst:268
+msgid "Values"
+msgstr "Valeurs"
+
+#: ../../implementation/serialization-standard.rst:270
+msgid ""
+"A value stored in the global state is a ``StoredValue``. A ``StoredValue`` "
+"is one of three possible variants:"
+msgstr ""
+"Une valeur stockée dans l'état global est une ``StoredValue``. Une "
+"``StoredValue`` est l'une des trois variantes possibles :"
+
+#: ../../implementation/serialization-standard.rst:272
+msgid "A ``CLValue``"
+msgstr "Une ``CLValue``"
+
+#: ../../implementation/serialization-standard.rst:273
+msgid "A contract"
+msgstr "Un contrat"
+
+#: ../../implementation/serialization-standard.rst:274
+msgid "An account"
+msgstr "Un compte"
+
+#: ../../implementation/serialization-standard.rst:276
+msgid ""
+"We discuss ``CLValue`` and contract in more detail below. Details about "
+"accounts can be found in :ref:`accounts-head`."
+msgstr ""
+"Nous discutons de ``CLValue`` et du contrat plus en détail ci-dessous. Les "
+"détails sur les comptes peuvent être trouvés dans :ref:`accounts-head`."
+
+#: ../../implementation/serialization-standard.rst:279
+msgid ""
+"Each ``StoredValue`` is serialized when written to the global state. The "
+"serialization format consists of a single byte tag, indicating which variant"
+" of ``StoredValue`` it is, followed by the serialization of that variant.  "
+"The tag for each variant is as follows:"
+msgstr ""
+"Chaque ``StoredValue`` est sérialisée lorsqu'elle est écrite dans l'état "
+"global. Le format de sérialisation consiste en un tag d'un seul octet, "
+"indiquant de quelle variante de ``StoredValue`` il s'agit, suivi de la "
+"sérialisation de cette variante. Le tag de chaque variante est comme suit :"
+
+#: ../../implementation/serialization-standard.rst:284
+msgid "``CLValue`` is ``0``"
+msgstr "``CLValue`` est ``0``"
+
+#: ../../implementation/serialization-standard.rst:285
+msgid "``Account`` is ``1``"
+msgstr "``Account`` est ``1``"
+
+#: ../../implementation/serialization-standard.rst:286
+msgid "``Contract`` is ``2``"
+msgstr "``Contract`` est ``2``"
+
+#: ../../implementation/serialization-standard.rst:288
+msgid ""
+"The details of ``CLType`` serialization are in the following section. Using "
+"the serialization format for ``CLValue`` as a basis, we can succinctly write"
+" the serialization rules for contracts and accounts:"
+msgstr ""
+"Les détails de la sérialisation de ``CLType`` sont dans la section suivante."
+" En utilisant le format de sérialisation pour ``CLValue`` comme base, nous "
+"pouvons écrire succinctement les règles de sérialisation pour les contrats "
+"et les comptes :"
+
+#: ../../implementation/serialization-standard.rst:290
+msgid ""
+"contracts serialize in the same way as data with ``CLType`` equal to "
+"``Tuple3(List(U8), Map(String, Key), Tuple3(U32, U32, U32))``;"
+msgstr ""
+"les contrat se sérialisent de la même manière que les données dont le "
+"``CLType`` est égal à ``Tuple3(List(U8), Map(String, Key), Tuple3(U32, U32, "
+"U32))`` ;"
+
+#: ../../implementation/serialization-standard.rst:293
+msgid ""
+"accounts serialize in the same way as data with ``CLType`` equal to "
+"``Tuple5(FixedList(U8, 32), Map(String, Key), URef, Map(FixedList(U8, 32), "
+"U8), Tuple2(U8, U8))``."
+msgstr ""
+"Les comptes se sérialisent de la même manière que les données dont le "
+"``CLType`` est égal à ``Tuple5(FixedList(U8, 32), Map(String, Key), URef, "
+"Map(FixedList(U8, 32), U8), Tuple2(U8, U8))``."
+
+#: ../../implementation/serialization-standard.rst:296
+msgid ""
+"Note: ``Tuple5`` is not a presently supported ``CLType``. However, it is "
+"clear how to generalize the rules for ``Tuple1``, ``Tuple2``, ``Tuple3`` to "
+"any size tuple."
+msgstr ""
+"Note : ``Tuple5`` n'est pas un ``CLType`` actuellement supporté. Cependant, "
+"il est clair comment généraliser les règles pour ``Tuple1``, ``Tuple2``, "
+"``Tuple3`` à n'importe quelle taille de tuple."
+
+#: ../../implementation/serialization-standard.rst:298
+msgid ""
+"Note: links to further serialization examples and a reference implementation"
+" are found in :ref:`Appendix B <appendix-b>`."
+msgstr ""
+"Note : des liens vers d'autres exemples de sérialisation et une "
+"implémentation de référence se trouvent dans :ref:`Annexe B <appendix-b>`."
+
+#: ../../implementation/serialization-standard.rst:301
+msgid "``CLValue``"
+msgstr "``CLValue``"
+
+#: ../../implementation/serialization-standard.rst:303
+msgid ""
+"``CLValue`` is used to describe data that is used by smart contracts. This "
+"could be as a local state variable, input argument, or return value. A "
+"``CLValue`` consists of two parts: a ``CLType`` describing the type of the "
+"value and an array of bytes representing the data in our serialization "
+"format."
+msgstr ""
+"``CLValue`` est utilisé pour décrire les données qui sont utilisées par les "
+"contrats intelligents. Il peut s'agir d'une variable d'état locale, d'un "
+"argument d'entrée ou d'une valeur de retour. Une ``CLValue`` se compose de "
+"deux parties : un ``CLType`` décrivant le type de la valeur et un tableau "
+"d'octets représentant les données dans notre format de sérialisation."
+
+#: ../../implementation/serialization-standard.rst:305
+msgid "``CLType`` is described by the following recursive data type:"
+msgstr "``CLType`` est décrit par le type de données récursif suivant :"
+
+#: ../../implementation/serialization-standard.rst:337
+msgid ""
+"All data which can be assigned a (non-``Any``) ``CLType`` can be serialized "
+"according to the following rules (this defines the Casper serialization "
+"format):"
+msgstr ""
+"Toutes les données auxquelles on peut attribuer un ``CLType`` (non- ``Any``)"
+" peuvent être sérialisées selon les règles suivantes (ceci définit le format"
+" de sérialisation Casper) :"
+
+#: ../../implementation/serialization-standard.rst:340
+msgid ""
+"Boolean values serialize as a single byte; ``true`` maps to ``1``, while "
+"``false`` maps to ``0``."
+msgstr ""
+"Les valeurs booléennes sont sérialisées sous la forme d'un seul octet ; "
+"``true`` correspond à ``1``, tandis que ``false`` correspond à ``0``."
+
+#: ../../implementation/serialization-standard.rst:342
+msgid ""
+"Numeric values consisting of 64 bits or less serialize in the two's "
+"complement representation with little-endian byte order, and the appropriate"
+" number of bytes for the bit-width."
+msgstr ""
+"Les valeurs numériques composées de 64 bits ou moins sont sérialisées dans "
+"la représentation du complément à deux avec l'ordre des octets little-"
+"endian, et le nombre d'octets approprié pour la largeur des bits."
+
+#: ../../implementation/serialization-standard.rst:346
+msgid "E.g. ``7u8`` serializes as ``0x07``"
+msgstr "Ex. ``7u8`` se serialise en ``0x07``"
+
+#: ../../implementation/serialization-standard.rst:347
+msgid "E.g. ``7u32`` serializes as ``0x07000000``"
+msgstr "Ex. ``7u32`` se sérialise en ``0x07000000``"
+
+#: ../../implementation/serialization-standard.rst:348
+msgid "E.g. ``1024u32`` serializes as ``0x00040000``"
+msgstr "Ex. ``1024u32`` se sérialise en ``0x00040000``"
+
+#: ../../implementation/serialization-standard.rst:350
+msgid ""
+"Wider numeric values (i.e. ``U128``, ``U256``, ``U512``) serialize as one "
+"byte given the length of the next number (in bytes), followed by the two's "
+"complement representation with little-endian byte order. The number of bytes"
+" should be chosen as small as possible to represent the given number. This "
+"is done to reduce the serialization size when small numbers are represented "
+"within a wide data type."
+msgstr ""
+"Les valeurs numériques larges (par exemple ``U128``, ``U256``, ``U512``) "
+"sont sérialisées sous la forme d'un octet donné par la longueur du nombre "
+"suivant (en octets), suivi de la représentation du complément à deux dans "
+"l'ordre des octets little-endian. Le nombre d'octets doit être choisi aussi "
+"petit que possible pour représenter le nombre donné. Cela permet de réduire "
+"la taille de la sérialisation lorsque de petits nombres sont représentés "
+"dans un type de données large."
+
+#: ../../implementation/serialization-standard.rst:352
+msgid "E.g. ``U512::from(7)`` serializes as ``0x0107``"
+msgstr "Ex. ``U512::from(7)`` se sérialise en  ``0x0107``"
+
+#: ../../implementation/serialization-standard.rst:353
+msgid "E.g. ``U512::from(1024)`` serializes as ``0x020004``"
+msgstr "Ex. ``U512::from(1024)`` se sérialise en ``0x020004``"
+
+#: ../../implementation/serialization-standard.rst:354
+msgid ""
+"E.g. ``U512::from(\"123456789101112131415\")`` serializes as "
+"``0x0957ff1ada959f4eb106``"
+msgstr ""
+"Ex. ``U512::from(\"123456789101112131415\")`` se sérialise "
+"en``0x0957ff1ada959f4eb106``"
+
+#: ../../implementation/serialization-standard.rst:356
+msgid "Unit serializes to an empty byte array."
+msgstr "Unit se sérialise en un tableau d'octets vide."
+
+#: ../../implementation/serialization-standard.rst:358
+msgid ""
+"Strings serialize as a 32-bit integer representing the length in bytes "
+"(note: this might be different than the number of characters since special "
+"characters, such as emojis, take more than one byte), followed by the UTF-8 "
+"encoding of the characters in the string."
+msgstr ""
+"Les chaînes de caractère sont sérialisées sous la forme d'un nombre entier "
+"de 32 bits représentant la longueur en octets (remarque : ce nombre peut "
+"être différent du nombre de caractères, car les caractères spéciaux, tels "
+"que les emojis, prennent plus d'un octet), suivi de l'encodage UTF-8 des "
+"caractères de la chaîne."
+
+#: ../../implementation/serialization-standard.rst:360
+msgid ""
+"E.g. ``\"Hello, World!\"`` serializes as "
+"``0x0d00000048656c6c6f2c20576f726c6421``"
+msgstr ""
+"Ex. ``\"Hello, World!\"`` se sérialise en "
+"``0x0d00000048656c6c6f2c20576f726c6421``"
+
+#: ../../implementation/serialization-standard.rst:362
+msgid ""
+"Optional values serialize with a single byte tag, followed by the "
+"serialization of the value itself. The tag is equal to ``0`` if the value is"
+" missing, and ``1`` if it is present."
+msgstr ""
+"Les 'Optional' sont sérialisées avec un tag d'un octet, suivie de la "
+"sérialisation de la valeur elle-même. Le tag est égale à ``0`` si la valeur "
+"est manquante, et à ``1`` si elle est présente."
+
+#: ../../implementation/serialization-standard.rst:365
+msgid "E.g. ``None`` serializes as ``0x00``"
+msgstr "Ex. ``None`` se sérialise en ``0x00``"
+
+#: ../../implementation/serialization-standard.rst:366
+msgid "E.g. ``Some(10u32)`` serializes as ``0x010a000000``"
+msgstr "Ex. ``Some(10u32)`` se sérialise en ``0x010a000000``"
+
+#: ../../implementation/serialization-standard.rst:368
+msgid ""
+"A list of values serializes as a 32-bit integer representing the number of "
+"elements in the list (note this differs from strings where it gives the "
+"number of *bytes*), followed by the concatenation of each serialized "
+"element."
+msgstr ""
+"Une liste de valeurs se sérialise sous la forme d'un nombre entier de 32 "
+"bits représentant le nombre d'éléments de la liste (notez que cela diffère "
+"des chaînes de caractères où l'on donne le nombre d'*octets*), suivi de la "
+"concaténation de chaque élément sérialisé."
+
+#: ../../implementation/serialization-standard.rst:372
+msgid "E.g. ``List()`` serializes as ``0x00000000``"
+msgstr "Ex. ``List()`` se sérialise en  ``0x00000000``"
+
+#: ../../implementation/serialization-standard.rst:373
+msgid ""
+"E.g. ``List(1u32, 2u32, 3u32)`` serializes as "
+"``0x03000000010000000200000003000000``"
+msgstr ""
+"Ex. ``List(1u32, 2u32, 3u32)`` se sérialise en "
+"``0x03000000010000000200000003000000``"
+
+#: ../../implementation/serialization-standard.rst:375
+msgid ""
+"A fixed-length list of values serializes as the concatenation of the "
+"serialized elements. Unlike a variable-length list, the length is not "
+"included in the serialization because it is statically known by the type of "
+"the value."
+msgstr ""
+"Une liste de valeurs de longueur fixe se sérialise comme la concaténation "
+"des éléments sérialisés. Contrairement à une liste à longueur variable, la "
+"longueur n'est pas incluse dans la sérialisation car elle est connue de "
+"manière statique par le type de la valeur."
+
+#: ../../implementation/serialization-standard.rst:377
+msgid ""
+"E.g. ``[1u32, 2u32, 3u32]`` serializes as ``0x010000000200000003000000``"
+msgstr ""
+"Ex. ``[1u32, 2u32, 3u32]`` se sérialise en ``0x010000000200000003000000``"
+
+#: ../../implementation/serialization-standard.rst:379
+msgid ""
+"A ``Result`` serializes as a single byte tag followed by the serialization "
+"of the contained value. The tag is equal to ``1`` for the success variant "
+"and ``0`` for the error variant."
+msgstr ""
+"Un ``Result`` se sérialise sous la forme d'un tag d'un octet suivie de la "
+"sérialisation de la valeur contenue. Le tag est égale à ``1`` pour la "
+"variante succès et ``0`` pour la variante erreur."
+
+#: ../../implementation/serialization-standard.rst:381
+msgid "E.g. ``Ok(314u64)`` serializes as ``0x013a01000000000000``"
+msgstr "Ex. ``Ok(314u64)`` se sérialise en ``0x013a01000000000000``"
+
+#: ../../implementation/serialization-standard.rst:382
+msgid "E.g. ``Err(\"Uh oh\")`` serializes as ``0x00050000005568206f68``"
+msgstr "Ex. ``Err(\"Uh oh\")`` se sérialise en ``0x00050000005568206f68``"
+
+#: ../../implementation/serialization-standard.rst:384
+msgid ""
+"Tuples serialize as the concatenation of their serialized elements. Similar "
+"to ``FixedList`` the number of elements is not included in the serialization"
+" because it is statically known in the type."
+msgstr ""
+"Les tuples se sérialisent comme la concaténation de leurs éléments "
+"sérialisés. Comme pour ``FixedList``, le nombre d'éléments n'est pas inclus "
+"dans la sérialisation car il est statiquement connu dans le type."
+
+#: ../../implementation/serialization-standard.rst:388
+msgid ""
+"E.g. ``(1u32, \"Hello, World!\", true)`` serializes as "
+"``0x010000000d00000048656c6c6f2c20576f726c642101``"
+msgstr ""
+"Ex. ``(1u32, \"Hello, World!\", true)`` se sérialise en "
+"``0x010000000d00000048656c6c6f2c20576f726c642101``"
+
+#: ../../implementation/serialization-standard.rst:391
+msgid ""
+"A ``Map`` serializes as a list of key-value tuples. There must be a well-"
+"defined ordering on the keys, and in the serialization, the pairs are listed"
+" in ascending order. This is done to ensure determinism in the "
+"serialization, as ``Map`` data structures can be unordered."
+msgstr ""
+"Une \"Map\" se sérialise comme une liste de tuples clé-valeur. Il doit y "
+"avoir un ordre bien défini sur les clés, et dans la sérialisation, les "
+"paires sont listées par ordre croissant. Ceci est fait pour assurer le "
+"déterminisme dans la sérialisation, car les structures de données ``Map`` "
+"peuvent être non ordonnées."
+
+#: ../../implementation/serialization-standard.rst:395
+msgid ""
+"``URef`` values serialize as the concatenation of its address (which is a "
+"fixed-length list of ``u8``) and a single byte tag representing the access "
+"rights. Access rights are converted as follows:"
+msgstr ""
+"Les valeurs ``URef'' se sérialisent comme la concaténation de leur adresse "
+"(qui est une liste de longueur fixe de ``u8'') et d'un tag d'un octet "
+"représentant les droits d'accès. Les droits d'accès sont convertis comme "
+"suit :"
+
+#: ../../implementation/serialization-standard.rst:398
+msgid "Access Rights"
+msgstr "Access Rights"
+
+#: ../../implementation/serialization-standard.rst:398
+msgid "Serialization"
+msgstr "Serialization"
+
+#: ../../implementation/serialization-standard.rst:400
+msgid "``NONE``"
+msgstr "``NONE``"
+
+#: ../../implementation/serialization-standard.rst:400
+#: ../../implementation/serialization-standard.rst:433
+#: ../../implementation/serialization-standard.rst:623
+msgid "0"
+msgstr "0"
+
+#: ../../implementation/serialization-standard.rst:402
+msgid "``READ``"
+msgstr "``READ``"
+
+#: ../../implementation/serialization-standard.rst:402
+#: ../../implementation/serialization-standard.rst:435
+#: ../../implementation/serialization-standard.rst:625
+msgid "1"
+msgstr "1"
+
+#: ../../implementation/serialization-standard.rst:404
+msgid "``WRITE``"
+msgstr "``WRITE``"
+
+#: ../../implementation/serialization-standard.rst:404
+#: ../../implementation/serialization-standard.rst:437
+#: ../../implementation/serialization-standard.rst:627
+msgid "2"
+msgstr "2"
+
+#: ../../implementation/serialization-standard.rst:406
+msgid "``READ_WRITE``"
+msgstr "``READ_WRITE``"
+
+#: ../../implementation/serialization-standard.rst:406
+#: ../../implementation/serialization-standard.rst:439
+#: ../../implementation/serialization-standard.rst:629
+msgid "3"
+msgstr "3"
+
+#: ../../implementation/serialization-standard.rst:408
+msgid "``ADD``"
+msgstr "``ADD``"
+
+#: ../../implementation/serialization-standard.rst:408
+#: ../../implementation/serialization-standard.rst:441
+#: ../../implementation/serialization-standard.rst:631
+msgid "4"
+msgstr "4"
+
+#: ../../implementation/serialization-standard.rst:410
+msgid "``READ_ADD``"
+msgstr "``READ_ADD``"
+
+#: ../../implementation/serialization-standard.rst:410
+#: ../../implementation/serialization-standard.rst:443
+#: ../../implementation/serialization-standard.rst:633
+msgid "5"
+msgstr "5"
+
+#: ../../implementation/serialization-standard.rst:412
+msgid "``ADD_WRITE``"
+msgstr "``ADD_WRITE``"
+
+#: ../../implementation/serialization-standard.rst:412
+#: ../../implementation/serialization-standard.rst:445
+#: ../../implementation/serialization-standard.rst:635
+msgid "6"
+msgstr "6"
+
+#: ../../implementation/serialization-standard.rst:414
+msgid "``READ_ADD_WRITE``"
+msgstr "``READ_ADD_WRITE``"
+
+#: ../../implementation/serialization-standard.rst:414
+#: ../../implementation/serialization-standard.rst:447
+#: ../../implementation/serialization-standard.rst:637
+msgid "7"
+msgstr "7"
+
+#: ../../implementation/serialization-standard.rst:417
+msgid ""
+"``PublicKey`` serializes as a single byte tag representing the algorithm "
+"followed by 32 bytes of the ``PublicKey`` itself:"
+msgstr ""
+"La ``PublicKey`` est sérialisée sous la forme d'un tag d'un octet "
+"représentant l'algorithme, suivie de 32 octets de la ``PublicKey`` elle-même"
+" :"
+
+#: ../../implementation/serialization-standard.rst:419
+msgid ""
+"If the ``PublicKey`` is an ``Ed25519`` key, the single tag byte is ``1`` "
+"followed by the individual bytes of the serialized key."
+msgstr ""
+"Si la ``PublicKey``est une clé ``Ed25519``, l'octet de tag unique est ``1`` "
+"suivi des octets individuels de la clé sérialisée."
+
+#: ../../implementation/serialization-standard.rst:420
+msgid ""
+"If the ``PublicKey`` is a ``Secp256k1`` key, the single tag byte is a ``2`` "
+"followed by the individual bytes of the serialized key."
+msgstr ""
+"Si la ``PublicKey``est une clé ``Secp256k1``, l'octet de tag unique est "
+"``2`` suivi des octets individuels de la clé sérialisée."
+
+#: ../../implementation/serialization-standard.rst:423
+msgid ""
+"``Key`` values serialize as a single byte tag representing the variant, "
+"followed by the serialization of the data that variant contains. For most "
+"variants, this is simply a fixed-length 32-byte array. The exception is "
+"``Key::URef``, which contains a ``URef``; so its data serializes per the "
+"description above. The tags are as follows: ``Key::Account`` serializes as "
+"``0``, ``Key::Hash`` as ``1``, ``Key::URef`` as ``2``."
+msgstr ""
+"Les valeurs \"Key\" sont sérialisées sous la forme d'un tag d'un seul octet "
+"représentant la variante, suivi de la sérialisation des données que cette "
+"variante contient. Pour la plupart des variantes, il s'agit simplement d'un "
+"tableau de 32 octets de longueur fixe. L'exception est ``Key::URef``, qui "
+"contient un ``URef`` ; ses données sont donc sérialisées selon la "
+"description ci-dessus. Les tags sont les suivantes : ``Key::Account`` se "
+"sérialise comme ``0``, ``Key::Hash`` comme ``1``, ``Key::URef`` comme ``2``."
+
+#: ../../implementation/serialization-standard.rst:428
+msgid ""
+"``CLType`` itself also has rules for serialization. A ``CLType`` serializes "
+"as a single-byte tag, followed by the concatenation of serialized inner "
+"types, if any (e.g., lists and tuples have inner types). ``FixedList`` is a "
+"minor exception because it also includes the length in the type. However, "
+"the length is included in the serialization (as a 32-bit integer, per the "
+"serialization rules above), following the serialization of the inner type. "
+"The tags are as follows:"
+msgstr ""
+"``CLType`` lui-même a également des règles pour la sérialisation. Un "
+"``CLType`` se sérialise comme un tag d'un seul octet, suivi de la "
+"concaténation de types internes sérialisés, s'il y en a (par exemple, les "
+"listes et les tuples ont des types internes). ``FixedList`` est une "
+"exception mineure car il inclut également la longueur dans le type. "
+"Cependant, la longueur est incluse dans la sérialisation (en tant qu'entier "
+"de 32 bits, conformément aux règles de sérialisation ci-dessus), après la "
+"sérialisation du type interne. Les tags sont les suivants :"
+
+#: ../../implementation/serialization-standard.rst:431
+msgid "``CLType``"
+msgstr "``CLType``"
+
+#: ../../implementation/serialization-standard.rst:431
+#: ../../implementation/serialization-standard.rst:621
+msgid "Serialization Tag"
+msgstr "Tag de sérialisation"
+
+#: ../../implementation/serialization-standard.rst:433
+msgid "``Bool``"
+msgstr "``Bool``"
+
+#: ../../implementation/serialization-standard.rst:435
+msgid "``I32``"
+msgstr "``I32``"
+
+#: ../../implementation/serialization-standard.rst:437
+msgid "``I64``"
+msgstr "``I64``"
+
+#: ../../implementation/serialization-standard.rst:439
+msgid "``U8``"
+msgstr "``U8``"
+
+#: ../../implementation/serialization-standard.rst:441
+msgid "``U32``"
+msgstr "``U32``"
+
+#: ../../implementation/serialization-standard.rst:443
+msgid "``U64``"
+msgstr "``U64``"
+
+#: ../../implementation/serialization-standard.rst:445
+msgid "``U128``"
+msgstr "``U128``"
+
+#: ../../implementation/serialization-standard.rst:447
+msgid "``U256``"
+msgstr "``U256``"
+
+#: ../../implementation/serialization-standard.rst:449
+msgid "``U512``"
+msgstr "``U512``"
+
+#: ../../implementation/serialization-standard.rst:449
+#: ../../implementation/serialization-standard.rst:639
+msgid "8"
+msgstr "8"
+
+#: ../../implementation/serialization-standard.rst:451
+msgid "``Unit``"
+msgstr "``Unit``"
+
+#: ../../implementation/serialization-standard.rst:451
+msgid "9"
+msgstr "9"
+
+#: ../../implementation/serialization-standard.rst:453
+msgid "``String``"
+msgstr "``String``"
+
+#: ../../implementation/serialization-standard.rst:453
+msgid "10"
+msgstr "10"
+
+#: ../../implementation/serialization-standard.rst:455
+#: ../../implementation/serialization-standard.rst:627
+msgid "``URef``"
+msgstr "``URef``"
+
+#: ../../implementation/serialization-standard.rst:455
+msgid "11"
+msgstr "11"
+
+#: ../../implementation/serialization-standard.rst:457
+#: ../../implementation/serialization-standard.rst:621
+msgid "``Key``"
+msgstr "``Key``"
+
+#: ../../implementation/serialization-standard.rst:457
+msgid "12"
+msgstr "12"
+
+#: ../../implementation/serialization-standard.rst:459
+msgid "``Option``"
+msgstr "``Option``"
+
+#: ../../implementation/serialization-standard.rst:459
+msgid "13"
+msgstr "13"
+
+#: ../../implementation/serialization-standard.rst:461
+msgid "``List``"
+msgstr "``List``"
+
+#: ../../implementation/serialization-standard.rst:461
+msgid "14"
+msgstr "14"
+
+#: ../../implementation/serialization-standard.rst:463
+msgid "``FixedList``"
+msgstr "``FixedList``"
+
+#: ../../implementation/serialization-standard.rst:463
+msgid "15"
+msgstr "15"
+
+#: ../../implementation/serialization-standard.rst:465
+msgid "``Result``"
+msgstr "``Result``"
+
+#: ../../implementation/serialization-standard.rst:465
+msgid "16"
+msgstr "16"
+
+#: ../../implementation/serialization-standard.rst:467
+msgid "``Map``"
+msgstr "``Map``"
+
+#: ../../implementation/serialization-standard.rst:467
+msgid "17"
+msgstr "17"
+
+#: ../../implementation/serialization-standard.rst:469
+msgid "``Tuple1``"
+msgstr "``Tuple1``"
+
+#: ../../implementation/serialization-standard.rst:469
+msgid "18"
+msgstr "18"
+
+#: ../../implementation/serialization-standard.rst:471
+msgid "``Tuple2``"
+msgstr "``Tuple2``"
+
+#: ../../implementation/serialization-standard.rst:471
+msgid "19"
+msgstr "19"
+
+#: ../../implementation/serialization-standard.rst:473
+msgid "``Tuple3``"
+msgstr "``Tuple3``"
+
+#: ../../implementation/serialization-standard.rst:473
+msgid "20"
+msgstr "20"
+
+#: ../../implementation/serialization-standard.rst:475
+msgid "``Any``"
+msgstr "``Any``"
+
+#: ../../implementation/serialization-standard.rst:475
+msgid "21"
+msgstr "21"
+
+#: ../../implementation/serialization-standard.rst:478
+msgid ""
+"A complete ``CLValue``, including both the data and the type, can also be "
+"serialized (to store it in the global state). This is done by concatenating:"
+" the serialization of the length (as a 32-bit integer) of the serialized "
+"data (in bytes), the serialized data itself, and the serialization of the "
+"type."
+msgstr ""
+"Une ``CLValue`` complète, comprenant à la fois les données et le type, peut "
+"également être sérialisée (pour la stocker dans l'état global). Cela se fait"
+" en concaténant : la sérialisation de la longueur (en tant qu'entier 32 "
+"bits) des données sérialisées (en octets), les données sérialisées elles-"
+"mêmes, et la sérialisation du type."
+
+#: ../../implementation/serialization-standard.rst:484
+msgid "Contracts"
+msgstr "Contrats"
+
+#: ../../implementation/serialization-standard.rst:486
+msgid ""
+"Contracts are a special value type because they contain the on-chain logic "
+"of the applications running on the Casper network. A *contract* contains the"
+" following data:"
+msgstr ""
+"Les Contrats sont un type de valeur particulier car ils contiennent la "
+"logique on-chain des applications fonctionnant sur le réseau Casper. Un "
+"*contract* contient les données suivantes :"
+
+#: ../../implementation/serialization-standard.rst:488
+msgid "a `wasm module <https://webassembly.org/docs/modules/>`__"
+msgstr "un `module wasm  <https://webassembly.org/docs/modules/>`__"
+
+#: ../../implementation/serialization-standard.rst:489
+msgid "a collection of named keys"
+msgstr "une collection de clés nommées (named keys)"
+
+#: ../../implementation/serialization-standard.rst:490
+msgid "a protocol version"
+msgstr "une version du protocole"
+
+#: ../../implementation/serialization-standard.rst:492
+msgid ""
+"The wasm module must contain a function named ``call``, which takes no "
+"arguments and returns no values. This is the main entry point into the "
+"contract. Moreover, the module may import any of the functions supported by "
+"the Casper runtime; a list of all supported functions can be found in "
+":ref:`Appendix A <appendix-a>`."
+msgstr ""
+"Le module wasm doit contenir une fonction nommée ``call``, qui ne prend "
+"aucun argument et ne renvoie aucune valeur. Il s'agit du principal point "
+"d'entrée dans le contrat. De plus, le module peut importer n'importe quelle "
+"fonction supportée par le runtime Casper ; une liste de toutes les fonctions"
+" supportées peut être trouvée dans :ref:`Annexe A <appendix-a>`."
+
+#: ../../implementation/serialization-standard.rst:494
+msgid ""
+"Note: though the ``call`` function signature has no arguments and no return "
+"value, within the ``call`` function body, the ``get_named_arg`` runtime "
+"function can be used to accept arguments (by ordinal), and the ``ret`` "
+"runtime function can be used to return a single ``CLValue`` to the caller."
+msgstr ""
+"Note : bien que la signature de la fonction ``call`` n'ait pas d'arguments "
+"et pas de valeur de retour, dans le corps de la fonction ``call``, la "
+"fonction d'exécution ``get_named_arg`` peut être utilisée pour accepter des "
+"arguments (by ordinal), et la fonction d'exécution ``ret`` peut être "
+"utilisée pour retourner une seule ``CLValue`` à l'appelant."
+
+#: ../../implementation/serialization-standard.rst:496
+msgid ""
+"The named keys are used to give human-readable names to keys in the global "
+"state, which are essential to the contract. For example, the hash key of "
+"another contract it frequently calls may be stored under a meaningful name. "
+"It is also used to store the ``URef``\\ s, which are known to the contract "
+"(see the section on Permissions for details)."
+msgstr ""
+"Les clés nommées sont utilisées pour donner des noms lisibles aux clés de "
+"l'état global, qui sont essentielles au contrat. Par exemple, la clé de hash"
+" d'un autre contrat qu'il appelle fréquemment peut être stockée sous un nom "
+"significatif. Il est également utilisé pour stocker les ``URef``, qui sont "
+"connus du contrat (voir la section sur les permissions pour plus de "
+"détails)."
+
+#: ../../implementation/serialization-standard.rst:498
+msgid ""
+"Each contract specifies the Casper protocol version that was active when the"
+" contract was written to the global state."
+msgstr ""
+"Chaque contrat spécifie la version du protocole Casper qui était active "
+"lorsque le contrat a été écrit dans l'état global."
+
+#: ../../implementation/serialization-standard.rst:503
+msgid "Keys"
+msgstr "Clés"
+
+#: ../../implementation/serialization-standard.rst:505
+msgid ""
+"In this chapter, we describe what constitutes a “key”, the permissions model"
+" for the keys, and how they are serialized."
+msgstr ""
+"Dans ce chapitre, nous décrivons ce qui constitue une \"clé\", le modèle de "
+"permissions pour les clés, et comment elles sont sérialisées."
+
+#: ../../implementation/serialization-standard.rst:507
+msgid ""
+"A *key* in the :ref:`Global State<global-state-intro>` is one of the "
+"following data types:"
+msgstr ""
+"Une *clé* (key) dans le :ref:`Global State<global-state-intro>` est l'un des"
+" types de données suivants :"
+
+#: ../../implementation/serialization-standard.rst:509
+msgid "32-byte account identifier (called an “account identity key”)"
+msgstr " identifiant du compte de type 32-byte (appelé \"account identity key\")"
+
+#: ../../implementation/serialization-standard.rst:510
+msgid "32-byte immutable contract identifier (called a “hash key”)"
+msgstr "Identifiant de contrat immuable de type 32-byte (appelé “hash key”)"
+
+#: ../../implementation/serialization-standard.rst:511
+msgid "32-byte reference identifier (called an “unforgeable reference”)"
+msgstr ""
+"Identifiant de référence de type 32-byte (appelé “unforgeable reference”)"
+
+#: ../../implementation/serialization-standard.rst:512
+msgid "32-byte transfer identifier"
+msgstr "Identifiant de transfert de type 32-byte."
+
+#: ../../implementation/serialization-standard.rst:513
+msgid "32-byte deploy information identifier"
+msgstr "Identifiant d'information de déploiement de type 32-byte"
+
+#: ../../implementation/serialization-standard.rst:514
+msgid "32-byte purse balance identifier"
+msgstr ""
+"Identifiant de solde de porte-monnaie (purse balance identifier)  de type "
+"32-byte"
+
+#: ../../implementation/serialization-standard.rst:515
+msgid "32-byte Auction bid identifier"
+msgstr "Identifiant de l'enchère (Auction bid identifier)  de type 32-byte"
+
+#: ../../implementation/serialization-standard.rst:516
+msgid "32-byte Auction withdrawal identifier"
+msgstr ""
+"Identifiant de retrait d'enchères (Auction withdrawal identifier) de type "
+"32-byte"
+
+#: ../../implementation/serialization-standard.rst:518
+msgid ""
+"The one exception to note here is the identifier for ``EraInfo``, which "
+"actually serializes as a ``u64`` value with an additional byte for the tag."
+msgstr ""
+"La seule exception à noter ici est l'identifiant pour ``EraInfo``, qui est "
+"en fait sérialisé comme une valeur ``u64`` avec un octet supplémentaire pour"
+" le tag."
+
+#: ../../implementation/serialization-standard.rst:524
+msgid "Account identity key"
+msgstr "Account identity key"
+
+#: ../../implementation/serialization-standard.rst:526
+msgid ""
+"This key type is used specifically for accounts in the global state. All "
+"accounts in the system must be stored under an account identity key, and no "
+"other types. The 32-byte identifier which represents this key is derived "
+"from the ``blake2b256`` hash of the public key used to create the associated"
+" account (see :ref:`Accounts <accounts-associated-keys-weights>` for more "
+"information)."
+msgstr ""
+"Ce type de clé est utilisé spécifiquement pour les comptes dans l'état "
+"global. Tous les comptes du système doivent être stockés sous une clé "
+"d'identité de compte (account identity key), et aucun autre type. "
+"L'identifiant de 32 octets qui représente cette clé est dérivé du hachage "
+"``blake2b256`` de la clé publique utilisée pour créer le compte associé. "
+"(voir :ref:`Comptes <accounts-associated-keys-weights>` pour plus "
+"d'information)."
+
+#: ../../implementation/serialization-standard.rst:535
+msgid "Hash key"
+msgstr "Hash key"
+
+#: ../../implementation/serialization-standard.rst:537
+msgid ""
+"This key type is used for storing contracts immutably. Once a contract is "
+"written under a hash key, that contract can never change. The 32-byte "
+"identifier representing this key is derived from the ``blake2b256`` hash of "
+"the deploy hash (see :ref:`block-structure-head` for more information) "
+"concatenated with a 4-byte sequential ID. The ID begins at zero for each "
+"deploy and increments by one each time a contract is stored. The purpose of "
+"this ID is to allow each contract stored in the same deploy to have a unique"
+" key."
+msgstr ""
+"Ce type de clé est utilisé pour stocker les contrats de manière immuable. "
+"Une fois qu'un contrat est écrit sous une clé de hash, ce contrat ne peut "
+"jamais changer. L'identifiant de 32 octets représentant cette clé est dérivé"
+" du hachage ``blake2b256`` du deploy hash (voir :ref:`block-structure-head` "
+"pour plus d'informations) concaténé avec un ID séquentiel de 4 octets. L'ID "
+"commence à zéro pour chaque déploiement et s'incrémente de un à chaque fois "
+"qu'un contrat est stocké. L'objectif de cet ID est de permettre à chaque "
+"contrat stocké dans le même déploiement d'avoir une clé unique."
+
+#: ../../implementation/serialization-standard.rst:548
+msgid "Unforgeable Reference (``URef``)"
+msgstr "Référence infalsifiable (URef)  (Unforgeable Reference )"
+
+#: ../../implementation/serialization-standard.rst:550
+msgid ""
+"``URef`` broadly speaking can be used to store values and manage permissions"
+" to interact with the value stored under the ``URef``. ``URef`` is a tuple "
+"which contains the address under which the values are stored and the Access "
+"rights to the ``URef``. Refer to the :ref:`Unforgeable Reference<uref-head>`"
+" section for details on how ``URefs`` are managed."
+msgstr ""
+"``URef`` peut être utilisé pour stocker des valeurs et gérer les droits "
+"d'interaction avec la valeur stockée sous ``URef``. ``URef`` est un tuple "
+"qui contient l'adresse sous laquelle les valeurs sont stockées et les droits"
+" d'accès à la ``URef``. Reportez-vous à la section :ref:`Unforgeable "
+"Reference<uref-head>` pour plus de détails sur la façon dont les ``URefs'' "
+"sont gérés."
+
+#: ../../implementation/serialization-standard.rst:557
+msgid "Transfer Key"
+msgstr "Transfer Key"
+
+#: ../../implementation/serialization-standard.rst:559
+msgid ""
+"This key type is used specifically for transfers in the global state. All "
+"transfers in the system must be stored under a transfer key and no other "
+"type. The 32-byte identifier which represents this key is derived from the "
+"``blake2b256`` hash of the transfer address associated with the given "
+"transfer"
+msgstr ""
+"Ce type de clé est utilisé spécifiquement pour les transferts dans l'état "
+"global. Tous les transferts dans le système doivent être stockés sous une "
+"clé de transfert et aucun autre type. L'identifiant de 32 octets qui "
+"représente cette clé est dérivé du hachage ``blake2b256`` de l'adresse de "
+"transfert associée au transfert donné."
+
+#: ../../implementation/serialization-standard.rst:567
+msgid "DeployInfo Key"
+msgstr "DeployInfo Key"
+
+#: ../../implementation/serialization-standard.rst:569
+msgid ""
+"This key type is used specifically for storing information related to "
+"deploys in the global state. Information for a given deploy is stored under "
+"this key only. The 32-byte identifier which represents this key is derived "
+"from the ``blake2b256`` hash of the deploy itself."
+msgstr ""
+"Ce type de clé est utilisé spécifiquement pour stocker les informations "
+"relatives aux déploiements dans l'état global. Les informations relatives à "
+"un déploiement donné ne sont stockées que sous cette clé. L'identifiant de "
+"32 octets qui représente cette clé est dérivé du hachage ``blake2b256`` du "
+"déploiement lui-même."
+
+#: ../../implementation/serialization-standard.rst:577
+msgid "EraInfo Key"
+msgstr "EraInfo Key"
+
+#: ../../implementation/serialization-standard.rst:578
+msgid ""
+"This key type is used specifically for storing information related to the "
+"``Auction`` metadata for a particular era. The underlying data type stored "
+"under this is a vector of the allocation of seigniorage for that given era. "
+"The identifier for this key is a new type that wraps around the primitive "
+"``u64`` data type and co-relates to the era number when the auction "
+"information was stored."
+msgstr ""
+"Ce type de clé est utilisé spécifiquement pour stocker les informations de "
+"déploiement dans le rapport global. Les informations relatives à un "
+"déploiement donné ne sont stockées que sous cette clé. L'identifiant de 32 "
+"octets qui représente cette clé est dérivé du hachage ``blake2b256`` du "
+"déploiement lui-même."
+
+#: ../../implementation/serialization-standard.rst:586
+msgid "Balance Key"
+msgstr "Balance Key"
+
+#: ../../implementation/serialization-standard.rst:587
+msgid ""
+"This key type is used to store information related to the balance of a given"
+" purse. All purse balances are stored using this key. The 32-byte identifier"
+" which represents this key is derived from the Address of the URef, which "
+"relates to the purse."
+msgstr ""
+"Ce type de clé est utilisé pour stocker les informations relatives au solde "
+"d'un porte-monnaie donné. Tous les soldes de porte-monnaie sont stockés à "
+"l'aide de cette clé. L'identifiant de 32 octets qui représente cette clé est"
+" dérivé de l'adresse de l'URef, qui se rapporte au porte-monnaie."
+
+#: ../../implementation/serialization-standard.rst:593
+msgid "Bid Key"
+msgstr "Bid Key"
+
+#: ../../implementation/serialization-standard.rst:595
+msgid ""
+"This key type is used specifically for storing information related to "
+"auction bids in the global state. Information for the bids is stored under "
+"this key only. The 32-byte identifier which represents this key is derived "
+"from the ``blake2b256`` hash of the public key used to create the associated"
+" account (see :ref:`Accounts <accounts-associated-keys-weights>` for more "
+"information)."
+msgstr ""
+"Ce type de clé est utilisé spécifiquement pour stocker les informations "
+"relatives aux offres d'enchères dans l'état global. Les informations "
+"relatives aux offres sont stockées sous cette clé uniquement. L'identifiant "
+"de 32 octets qui représente cette clé est dérivé du hachage ``blake2b256`` "
+"de la clé publique utilisée pour créer le compte associé (voir :ref:`Comptes"
+" <accounts-associated-keys-weights>` pour plus d'informations)."
+
+#: ../../implementation/serialization-standard.rst:603
+msgid "Withdraw Key"
+msgstr "Withdraw Key"
+
+#: ../../implementation/serialization-standard.rst:605
+msgid ""
+"This key type is used specifically for storing information related to "
+"auction withdraws in the global state. Information for the withdrawals is "
+"stored under this key only. The 32-byte identifier which represents this key"
+" is derived from the ``blake2b256`` hash of the public key used to create "
+"the associated account (see :ref:`Accounts <accounts-associated-keys-"
+"weights>` for more information)."
+msgstr ""
+"Ce type de clé est utilisé spécifiquement pour stocker les informations "
+"relatives aux retraits d'enchères dans l'état global. Les informations "
+"relatives aux retraits sont stockées sous cette clé uniquement. "
+"L'identifiant de 32 octets qui représente cette clé est dérivé du hachage "
+"``blake2b256`` de la clé publique utilisée pour créer le compte associé "
+"(voir :ref:`Comptes <accounts-associated-keys-weights>` pour plus "
+"d'informations)."
+
+#: ../../implementation/serialization-standard.rst:614
+msgid "Serialization for ``Key``"
+msgstr "Sérialisation pour \"Key\" (clé)"
+
+#: ../../implementation/serialization-standard.rst:616
+msgid ""
+"Given the different variants for the over-arching ``Key`` data-type, each of"
+" the different variants is serialized differently. This section of this "
+"chapter details how the individual variants are serialized. The leading byte"
+" of the serialized buffer acts as a tag indicating the serialized variant."
+msgstr ""
+"Étant donné les différentes variantes du type de données principal ``Key``, "
+"chacune d'entre elles est sérialisée différemment. Cette section de ce "
+"chapitre détaille la façon dont les différentes variantes sont sérialisées. "
+"L'octet de tête du buffer sérialisé agit comme un tag indiquant la variante "
+"sérialisée."
+
+#: ../../implementation/serialization-standard.rst:623
+msgid "``Account``"
+msgstr "``Account``"
+
+#: ../../implementation/serialization-standard.rst:625
+msgid "``Hash``"
+msgstr "``Hash``"
+
+#: ../../implementation/serialization-standard.rst:629
+msgid "``Transfer``"
+msgstr "``Transfer``"
+
+#: ../../implementation/serialization-standard.rst:631
+msgid "``DeployInfo``"
+msgstr "``DeployInfo``"
+
+#: ../../implementation/serialization-standard.rst:633
+msgid "``EraInfo``"
+msgstr "``EraInfo``"
+
+#: ../../implementation/serialization-standard.rst:635
+msgid "``Balance``"
+msgstr "``Balance``"
+
+#: ../../implementation/serialization-standard.rst:637
+msgid "``Bid``"
+msgstr "``Bid``"
+
+#: ../../implementation/serialization-standard.rst:639
+msgid "``Withdraw``"
+msgstr "``Withdraw``"
+
+#: ../../implementation/serialization-standard.rst:643
+msgid ""
+"``Account`` serializes as a 32 byte long buffer containing the byte "
+"representation of the underlying ``AccountHash``"
+msgstr ""
+"``Account`` se sérialise sous la forme d'un tampon de 32 octets contenant la"
+" représentation en octets du ``AccountHash`` sous-jacent."
+
+#: ../../implementation/serialization-standard.rst:644
+msgid ""
+"``Hash`` serializes as a 32 byte long buffer containing the byte "
+"representation of the underlying ``Hash`` itself."
+msgstr ""
+"``Hash``  is serialized as a 32-byte long buffer containing the byte "
+"representation of the underlying ``Hash``  itself."
+
+#: ../../implementation/serialization-standard.rst:645
+msgid ""
+"``URef`` is a tuple that contains the address of the URef and the access "
+"rights to that ``URef``. The serialized representation of the ``URef`` is 33"
+" bytes long. The first 32 bytes are the byte representation of the ``URef`` "
+"address, and the last byte contains the bits corresponding to the access "
+"rights of the ``URef``. Refer to the :ref:`CLValue<serialization-standard-"
+"values>` section of this chapter for details on how ``AccessRights`` are "
+"serialized."
+msgstr ""
+"``URef`` est un tuple qui contient l'adresse de l'URef et les droits d'accès"
+" à cette ``URef``. La représentation sérialisée du ``URef`` est longue de 33"
+" octets. Les 32 premiers octets sont la représentation en octets de "
+"l'adresse du ``URef``, et le dernier octet contient les bits correspondant "
+"aux droits d'accès du ``URef``. Se réferer à la section :ref:`CLValue"
+"<serialization-standard-values>` de ce chapitre pour les détails sur la "
+"sérialisation des  ``AccessRights`` ."
+
+#: ../../implementation/serialization-standard.rst:646
+msgid ""
+"``Transfer`` serializes as a 32 byte long buffer containing the byte "
+"representation of the hash of the transfer."
+msgstr ""
+"``Transfer`` se sérialise sous la forme d'un buffer de 32 octets de long "
+"contenant la représentation en octets du hash du transfert."
+
+#: ../../implementation/serialization-standard.rst:647
+msgid ""
+"``DeployInfo`` serializes as 32 byte long buffer containing the byte "
+"representation of the Deploy hash. See the Deploy section above for how "
+"Deploy hashes are serialized."
+msgstr ""
+"``DeployInfo`` se sérialise sous la forme d'un buffer de 32 octets contenant"
+" la représentation en octets du Deploy hash. Voir la section Deploy ci-"
+"dessus pour savoir comment Deploy les hashs sont sérialisés."
+
+#: ../../implementation/serialization-standard.rst:648
+msgid ""
+"``EraInfo`` serializes a ``u64`` primitive type containing the little-endian"
+" byte representation of ``u64``."
+msgstr ""
+"``EraInfo`` sérialise en un type primitif ``u64`` contenant la "
+"représentation en octets little-endian de ``u64``."
+
+#: ../../implementation/serialization-standard.rst:649
+msgid ""
+"``Balance`` serializes as 32 byte long buffer containing the byte "
+"representation of the URef address."
+msgstr ""
+"``Balance`` se sérialise sous la forme d'un buffer long de 32 octets "
+"contenant la représentation en octets de l'adresse URef."
+
+#: ../../implementation/serialization-standard.rst:650
+msgid ""
+"``Bid`` and ``Withdraw`` both contain the ``AccountHash`` as their "
+"identifier; therefore, they serialize in the same manner as the ``Account`` "
+"variant."
+msgstr ""
+"``Bid`` et ``Withdraw`` contiennent tous deux le ``AccountHash`` comme "
+"identifiant ; par conséquent, ils se sérialisent de la même manière que la "
+"variante ``Account``."
+
+#: ../../implementation/serialization-standard.rst:656
+msgid "Permissions"
+msgstr "Permissions"
+
+#: ../../implementation/serialization-standard.rst:658
+msgid ""
+"There are three types of actions that can be done on a value: read, write, "
+"add. The reason for *add* to be called out separately from *write* is to "
+"allow for commutativity checking. The available actions depend on the key "
+"type and the context. Some key types only allow controlled access by smart "
+"contracts via the contract API, and other key types refer to values produced"
+" and used by the system itself and are not accessible to smart contracts at "
+"all but can be read via off-chain queries. This is summarized in the table "
+"below:"
+msgstr ""
+"Il existe trois types d'actions qui peuvent être effectuées sur une valeur :"
+" lire, écrire, ajouter (read, write, add). La raison pour laquelle *add* est"
+" appelé séparément de *write* est de permettre la vérification de la "
+"commutativité. Les actions disponibles dépendent du type de clé et du "
+"contexte. Certains types de clés ne permettent qu'un accès contrôlé par les "
+"smart contracts via l'API du contrat, et d'autres types de clés font "
+"référence à des valeurs produites et utilisées par le système lui-même et ne"
+" sont pas du tout accessibles aux smart contracts mais peuvent être lues via"
+" des requêtes hors-chaîne (off-chain). Ceci est résumé dans le tableau ci-"
+"dessous :"
+
+#: ../../implementation/serialization-standard.rst:665
+msgid "Key Type"
+msgstr "Key Type"
+
+#: ../../implementation/serialization-standard.rst:665
+msgid "Available Actions"
+msgstr "Actions possibles"
+
+#: ../../implementation/serialization-standard.rst:667
+msgid "Account"
+msgstr "Account"
+
+#: ../../implementation/serialization-standard.rst:667
+msgid "Read + Add (via API)"
+msgstr "Read + Add (via API)"
+
+#: ../../implementation/serialization-standard.rst:669
+msgid "Hash"
+msgstr "Hash"
+
+#: ../../implementation/serialization-standard.rst:669
+msgid "Read"
+msgstr "Read"
+
+#: ../../implementation/serialization-standard.rst:671
+msgid "URef"
+msgstr "URef"
+
+#: ../../implementation/serialization-standard.rst:671
+msgid "Read + Write and/or Add"
+msgstr "Read + Write and/or Add"
+
+#: ../../implementation/serialization-standard.rst:673
+msgid "Transfer"
+msgstr "Transfer"
+
+#: ../../implementation/serialization-standard.rst:673
+#: ../../implementation/serialization-standard.rst:675
+#: ../../implementation/serialization-standard.rst:677
+#: ../../implementation/serialization-standard.rst:681
+#: ../../implementation/serialization-standard.rst:683
+msgid "System"
+msgstr "System"
+
+#: ../../implementation/serialization-standard.rst:677
+msgid "EraInfo"
+msgstr "EraInfo"
+
+#: ../../implementation/serialization-standard.rst:679
+msgid "Balance"
+msgstr "Balance"
+
+#: ../../implementation/serialization-standard.rst:679
+msgid "Read (via API)"
+msgstr "Read (via API)"
+
+#: ../../implementation/serialization-standard.rst:681
+msgid "Bid"
+msgstr "Bid"
+
+#: ../../implementation/serialization-standard.rst:683
+msgid "Withdraw"
+msgstr "Withdraw"
+
+#: ../../implementation/serialization-standard.rst:687
+msgid ""
+"Refer to :ref:`URef permissions<uref-permissions>` on how permissions are "
+"handled in the case of ``URef``\\ s."
+msgstr ""
+"Se référer à :ref:`URef permissions<uref-permissions>` sur la façon dont les"
+" permissions sont gérées dans le cas des ``URef``."
