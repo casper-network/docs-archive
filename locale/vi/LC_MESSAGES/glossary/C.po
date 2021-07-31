@@ -1,0 +1,265 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../glossary/C.rst:2
+msgid "C"
+msgstr "C"
+
+#: ../../glossary/C.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/C.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/C.rst:9
+msgid "Cargo"
+msgstr "Cargo"
+
+#: ../../glossary/C.rst:10
+msgid ""
+"Cargo is Rust’s build system and package manager. This tool manages Rust "
+"projects, such as building code and downloading dependencies."
+msgstr ""
+"Cargo là người quản lý gói và hệ thống bộ dựng của Rust. Công cụ này quản lý"
+" các dự án Rust, chẳng hạn như mã code và tải xuống các phần phụ thuộc."
+
+#: ../../glossary/C.rst:13
+msgid "Casper network"
+msgstr "Casper network (Mạng Casper)"
+
+#: ../../glossary/C.rst:14
+msgid ""
+"The Casper network is a Proof-of-Stake blockchain that allows validators to "
+"stake the Casper native token CSPR on the network. Validators receive CSPR "
+"as an incentive for continuing to maintain and secure the network. CSPR "
+"rewards are distributed as blocks are validated into existence and organized"
+" into eras."
+msgstr ""
+"Mạng Casper là một blockchain Proof-of-Stake cho phép người xác thực đặt cọc"
+" mã thông báo gốc của Casper CSPR trên mạng. Người xác thực nhận được CSPR "
+"như một động lực để tiếp tục duy trì và bảo mật mạng. Phần thưởng CSPR được "
+"phân phối khi các khối được xác thực về sự tồn tại và được tổ chức thành các"
+" thời đại."
+
+#: ../../glossary/C.rst:17
+msgid "CBC"
+msgstr "CBC"
+
+#: ../../glossary/C.rst:18
+msgid ""
+"Correct by construction. CBC Casper is a family of consensus algorithms "
+"developed by Vlad Zamfir."
+msgstr ""
+"Correct by construction. CBC Casper là một nhóm các thuật toán đồng thuận "
+"được phát triển bởi Vlad Zamfir."
+
+#: ../../glossary/C.rst:21
+msgid "Chainspec"
+msgstr "Chainspec"
+
+#: ../../glossary/C.rst:22
+msgid ""
+"A collection of configuration settings describing the state of the system at"
+" genesis and upgrades to basic system functionality (including system "
+"contracts and gas costs) occurring after `genesis <G.html#genesis>`_."
+msgstr ""
+"Tập hợp các cài đặt cấu hình mô tả trạng thái của hệ thống lúc ban đầu và "
+"nâng cấp lên chức năng hệ thống cơ bản (bao gồm hợp đồng hệ thống và chi phí"
+" khí đốt) xảy ra sau `genesis <G.html#genesis>`_."
+
+#: ../../glossary/C.rst:25
+msgid "Consensus"
+msgstr "Consensus (Đồng thuận)"
+
+#: ../../glossary/C.rst:26
+msgid ""
+"An algorithm used to mandate agreement on the `blockchain "
+"<B.html#blockchain>`_ between all nodes. The blockchain, although being "
+"built in a decentralized way, eventually converges so that all nodes "
+"eventually agree on whether a given block is part of the chain or not."
+msgstr ""
+"Một thuật toán được sử dụng để thực hiện thỏa thuận trên chuỗi khối "
+"(`blockchain <B.html#blockchain>`_) giữa tất cả các nút. Chuỗi khối mặc dù "
+"được xây dựng theo cách phi tập trung, cuối cùng cần tập trung để tất cả các"
+" nút cuối cùng đồng ý về việc một khối có phải là một phần của chuỗi hay "
+"không."
+
+#: ../../glossary/C.rst:28
+msgid ""
+"Casper uses the `Highway "
+"<https://docs.casperlabs.io/en/latest/theory/highway.html>`_ algorithm in "
+"the *CBC Casper* family of consensus algorithms. The algorithm for securing "
+"an agreement is what is known as *consensus*. The consensus layer contains "
+"the algorithm, but the algorithm should not be confused with the consensus "
+"layer."
+msgstr ""
+"Casper sử dụng thuật toán `Highway "
+"<https://docs.casperlabs.io/en/latest/theory/highway.html>`_  trong nhóm "
+"thuật toán đồng thuận *CBC Casper*. Thuật toán để đảm bảo một thỏa thuận "
+"được gọi là *sự đồng thuận*. Lớp đồng thuận chứa thuật toán, nhưng không nên"
+" nhầm lẫn thuật toán với lớp đồng thuận."
+
+#: ../../glossary/C.rst:31
+msgid "Contract runtime"
+msgstr "Contract runtime (Thời gian chạy hợp đồng)"
+
+#: ../../glossary/C.rst:32
+msgid ""
+"Enables developers to use a seamless workflow for authoring and testing "
+"their `smart contracts <S.html#smart-contracts>`_. This environment can also"
+" be used for continuous integration, enabling Rust smart contracts to be "
+"managed using development best practices."
+msgstr ""
+"Cho phép các nhà phát triển sử dụng quy trình làm việc liền mạch để tạo và "
+"thử nghiệm các `hợp đồng thông minh <S.html#smart-contracts>`_ của họ. Môi "
+"trường này cũng có thể được sử dụng để tích hợp liên tục, cho phép các hợp "
+"đồng thông minh Rust được quản lý bằng cách sử dụng các phương pháp phát "
+"triển tốt nhất."
+
+#: ../../glossary/C.rst:35
+msgid "Crate"
+msgstr "Crate (Gói)"
+
+#: ../../glossary/C.rst:36
+msgid ""
+"A compilation unit in Rust. A crate can be compiled into a binary or into a "
+"library. By default, *rustc*, the compiler for the Rust programming "
+"language, will produce a binary from a crate."
+msgstr ""
+"Một đơn vị biên dịch trong Rust. Một gói có thể được biên dịch thành một tệp"
+" nhị phân hoặc thành một thư viện. Theo mặc định, *rustc* là trình biên dịch"
+" cho ngôn ngữ lập trình Rust, sẽ tạo ra một tệp nhị phân từ một gói."
+
+#: ../../glossary/C.rst:39
+msgid "CSPR"
+msgstr "CSPR"
+
+#: ../../glossary/C.rst:40
+msgid ""
+"CSPR is the Casper token pre-defined on the Casper network and used to pay "
+"for transaction execution and for `staking <S.html#staking>`_ (securing the "
+"network). The total number of CSPR tokens is 10 billion."
+msgstr ""
+"CSPR là mã thông báo Casper được xác định trước trên mạng Casper và được sử "
+"dụng để thanh toán cho việc thực hiện giao dịch và để `staking "
+"<S.html#staking>`_ (bảo mật mạng). Tổng số token CSPR là 10 tỷ."
