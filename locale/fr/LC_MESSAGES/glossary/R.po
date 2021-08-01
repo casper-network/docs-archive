@@ -156,7 +156,7 @@ msgstr ""
 
 #: ../../glossary/R.rst:13
 msgid "Root hash"
-msgstr "Hash de racine (Root hash)"
+msgstr "Root hash : Hash de racine"
 
 #: ../../glossary/R.rst:14
 msgid ""
