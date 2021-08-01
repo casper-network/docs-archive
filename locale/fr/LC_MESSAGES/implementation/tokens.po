@@ -115,7 +115,7 @@ msgstr ""
 
 #: ../../implementation/tokens.rst:34
 msgid "Mints and Purses"
-msgstr "Minages (mints ) et portes-monnaie"
+msgstr "Minages (mints ) et portes-monnaie (purses)"
 
 #: ../../implementation/tokens.rst:36
 msgid ""
@@ -349,7 +349,7 @@ msgstr ""
 
 #: ../../implementation/tokens.rst:112
 msgid "Purses and Accounts"
-msgstr "Porte-monnaie et comptes"
+msgstr "Porte-monnaie (purses) et comptes"
 
 #: ../../implementation/tokens.rst:114
 msgid ""
@@ -377,7 +377,7 @@ msgstr ""
 "monnaie principaux des comptes. C'est pour cette raison que Casper fournit "
 "une fonction `transfer_to_account <https://docs.rs/casper-"
 "contract/latest/casper_contract/contract_api/system/fn.transfer_to_account.html>`_"
-" qui prend la clé publique utilisée pour dériver le :ref:`identity key "
+" qui prend la clé publique utilisée pour dériver l' :ref:`identity key "
 "<global-state-account-key>` du compte. Cette méthode utilise la fonction de "
 "transfert du mint avec le porte-monnaie principal du compte courant comme "
 "``source`` et le porte-monnaie principal du compte à la clé fournie comme "
