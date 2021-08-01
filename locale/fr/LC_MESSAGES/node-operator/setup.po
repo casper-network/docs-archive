@@ -71,8 +71,8 @@ msgid ""
 "versions and performing upgrades."
 msgstr ""
 "Cette section décrit les répertoires et les fichiers créés par "
-"l'installation Debian de ``casper-node-launcher`', nécessaires pour exécuter"
-" les versions de ``casper-node`' et effectuer les mises à jour."
+"l'installation Debian de ``casper-node-launcher`` , nécessaires pour "
+"exécuter les versions de ``casper-node``  et effectuer les mises à jour."
 
 #: ../../node-operator/setup.rst:20
 msgid ""
