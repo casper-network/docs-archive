@@ -133,7 +133,7 @@ msgstr "`Z <Z.html>`_"
 
 #: ../../glossary/U.rst:9
 msgid "Unbonding"
-msgstr "Désengagement"
+msgstr "Unbonding : Désengagement"
 
 #: ../../glossary/U.rst:10
 msgid ""
