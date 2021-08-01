@@ -133,7 +133,7 @@ msgstr "`Z <Z.html>`_"
 
 #: ../../glossary/T.rst:9
 msgid "Token"
-msgstr "Jeton"
+msgstr "Token : Jeton"
 
 #: ../../glossary/T.rst:10
 msgid ""
