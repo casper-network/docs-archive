@@ -92,7 +92,7 @@ msgstr ""
 
 #: ../../implementation/uref.rst:31
 msgid "it can exist in a set of “known” ``URef``\\ s"
-msgstr "il peut exister dans un ensemble de ``URef`` connus."
+msgstr "il peut exister dans un ensemble de ``URef``  \"connus\"."
 
 #: ../../implementation/uref.rst:32
 msgid "it can be freshly created by the runtime via the ``new_uref`` function"
@@ -112,7 +112,7 @@ msgid ""
 "function"
 msgstr ""
 "il peut être retourné à l'appelant depuis ``call_contract`` via la fonction "
-"``ret`''."
+"``ret``."
 
 #: ../../implementation/uref.rst:38
 msgid ""
