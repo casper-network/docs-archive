@@ -225,7 +225,7 @@ msgstr ""
 "``MAX_PAYMENT_COST`` motes (une constante du système). Pour s'assurer que le"
 " code de paiement paiera pour son propre calcul, nous n'autorisons que les "
 "comptes dont le solde du porte-monnaie principal est supérieur ou égal à "
-"`MAX_PAYMENT_COST``, à exécuter des déploiements."
+"``MAX_PAYMENT_COST``, à exécuter des déploiements."
 
 #: ../../implementation/execution-semantics.rst:75
 msgid ""
@@ -545,7 +545,7 @@ msgid ""
 "``transfer_from_purse_to_purse`` alias for the :ref:`mint’s transfer "
 "function <tokens-mint-interface>`"
 msgstr ""
-"``transfer_from_purse_to_purse`` alias de la:ref:`fonction de transfer de "
+"``transfer_from_purse_to_purse`` alias de la :ref:`fonction de transfert de "
 "minage <tokens-mint-interface>`  (mint)"
 
 #: ../../implementation/execution-semantics.rst:193
