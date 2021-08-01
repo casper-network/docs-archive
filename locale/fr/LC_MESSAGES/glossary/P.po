@@ -154,7 +154,7 @@ msgstr ""
 
 #: ../../glossary/P.rst:13
 msgid "Payment code"
-msgstr "Code de paiement"
+msgstr "Payment code : Code de paiement"
 
 #: ../../glossary/P.rst:14
 msgid ""
@@ -166,7 +166,7 @@ msgstr ""
 
 #: ../../glossary/P.rst:17
 msgid "Peer node"
-msgstr "Nœud pair"
+msgstr "Peer node : Nœud pair"
 
 #: ../../glossary/P.rst:18
 msgid "A node on a peer-to-peer (P2P) network."
@@ -174,7 +174,7 @@ msgstr "Un nœud sur un réseau peer-to-peer (P2P)."
 
 #: ../../glossary/P.rst:21
 msgid "Primary token"
-msgstr "Jeton primaire"
+msgstr "Primary token : Jeton primaire"
 
 #: ../../glossary/P.rst:22
 msgid "See `CSPR <C.html#cspr>`_."
@@ -182,7 +182,7 @@ msgstr "Voir `CSPR <C.html#cspr>`_."
 
 #: ../../glossary/P.rst:25
 msgid "Private key"
-msgstr "Clé privée"
+msgstr "Private key : Clé privée"
 
 #: ../../glossary/P.rst:26
 msgid "See `secret key <S.html#secret-key>`_."
@@ -230,7 +230,7 @@ msgstr ""
 
 #: ../../glossary/P.rst:37
 msgid "Proof-of-Stake contract"
-msgstr "Contrat de preuve d'enjeu "
+msgstr "Proof-of-Stake contract : Contrat de preuve d'enjeu "
 
 #: ../../glossary/P.rst:38
 msgid ""
@@ -244,7 +244,7 @@ msgstr ""
 
 #: ../../glossary/P.rst:41
 msgid "Proto block"
-msgstr "Bloc proto"
+msgstr "Proto block : Bloc proto"
 
 #: ../../glossary/P.rst:42
 msgid ""
