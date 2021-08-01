@@ -174,7 +174,7 @@ msgstr ""
 
 #: ../../glossary/N.rst:19
 msgid "Node operator"
-msgstr "Opérateur de nœud"
+msgstr "Node operator : Opérateur de nœud"
 
 #: ../../glossary/N.rst:20
 msgid "See `operator <O.html#operator>`_."
