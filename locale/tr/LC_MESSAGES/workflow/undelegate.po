@@ -3,50 +3,60 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Furkan Ahmet KARA <furkanahmetkara.fk@gmail.com>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:49+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../workflow/undelegate.rst:2
 msgid "Undelegating Tokens"
-msgstr ""
+msgstr "Tokenlerin Delegasyonunu Geri Alma"
 
 #: ../../workflow/undelegate.rst:4
 msgid ""
-"This document details a workflow where tokens delegated to a validator on"
-" a Casper network can be undelegated."
+"This document details a workflow where tokens delegated to a validator on a "
+"Casper network can be undelegated."
 msgstr ""
+"Bu belge,  tokenlerin bir doğrulayıcıya delegasyonunun yapıldığı bir Casper "
+"ağında tokenlerin delegasyonunun geri alınabildiği iş akışını detaylandırır."
 
 #: ../../workflow/undelegate.rst:6
 msgid "This workflow assumes:"
-msgstr ""
+msgstr "Bu iş akışı şunları varsayar:"
 
 #: ../../workflow/undelegate.rst:8
 msgid "You meet the `prerequisites <setup.html>`_"
-msgstr ""
+msgstr "`Önkoşulları <setup.html>`_ karşılıyorsunuz"
 
 #: ../../workflow/undelegate.rst:9
 msgid "You are using the Casper command-line client"
-msgstr ""
+msgstr "Casper komut satırı istemcisini kullanıyorsunuz"
 
 #: ../../workflow/undelegate.rst:10
 msgid "You have an undelegation contract or WASM to execute on the network"
 msgstr ""
+"Ağ üzerinde yürütmek için delegasyonu geri alma kontratınız veya WASM'niz "
+"var"
 
 #: ../../workflow/undelegate.rst:11
 msgid "You have a valid ``node-address``"
-msgstr ""
+msgstr "Geçeli bir ``node-address``'e sahipsiniz"
 
 #: ../../workflow/undelegate.rst:12
 msgid ""
@@ -54,164 +64,206 @@ msgid ""
 "<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
 "contracts.html>`_ to a Casper Network"
 msgstr ""
+"Daha önce bir Casper Network'e `akıllı kontrat dağıttınız "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_"
 
 #: ../../workflow/undelegate.rst:13
 msgid "You have delegated tokens to a validator"
-msgstr ""
+msgstr "Bir doğrulayıcıya tokenlerin delegasyonunu yaptınız."
 
 #: ../../workflow/undelegate.rst:17
 msgid "Building The Undelegation WASM"
-msgstr ""
+msgstr "Delegasyonu Geri Alma WASM'ini Derleme"
 
 #: ../../workflow/undelegate.rst:19
 msgid ""
 "Obtain the ``undelegate.wasm`` by cloning the `casper-node "
-"<https://github.com/CasperLabs/casper-node>`_ repository and building the"
-" contracts."
+"<https://github.com/CasperLabs/casper-node>`_ repository and building the "
+"contracts."
 msgstr ""
+"`casper-node <https://github.com/CasperLabs/casper-node>`_ deposunu "
+"klonlayarak ve kontratları derleyerek ``undelegate.wasm`` edinin."
 
 #: ../../workflow/undelegate.rst:21
 msgid ""
 "To build contracts, set up Rust, and install all dependencies. Visit "
-"`Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide"
-"/setup-of-rust-contract-sdk.html>`_ in the Developer Guide for step-by-"
-"step instructions."
+"`Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-"
+"of-rust-contract-sdk.html>`_ in the Developer Guide for step-by-step "
+"instructions."
 msgstr ""
+"Kontratları derlemek için Rust'ı ve tüm bağımlılıkları kurun. Adım adım "
+"talimatlar için Geliştirici Kılavuzunda `Rust Kurulumu "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_ sayfasını ziyaret edin."
 
 #: ../../workflow/undelegate.rst:23
 msgid ""
-"Once you build the contracts, you can use the ``undelegate.wasm`` to "
-"create a deploy that will initiate the undelegation process. The WASM can"
-" be found in:"
+"Once you build the contracts, you can use the ``undelegate.wasm`` to create "
+"a deploy that will initiate the undelegation process. The WASM can be found "
+"in:"
 msgstr ""
+"Kontratları bir kere derlediğinizde, delegasyon sürecini başlatacak bir "
+"dağıtım oluşturmak için ``undelegate.wasm``'ı kullanabilirsiniz. WASM şurada"
+" bulunabilir:"
 
 #: ../../workflow/undelegate.rst:31
 msgid "Sending the Undelegation Deploy"
-msgstr ""
+msgstr "Delegasyonu Geri Alma Dağıtımını Göndermek"
 
 #: ../../workflow/undelegate.rst:33
 msgid ""
-"Send a deploy containing the ``undelegate.wasm`` to the network to "
-"initiate the undelegation process."
+"Send a deploy containing the ``undelegate.wasm`` to the network to initiate "
+"the undelegation process."
 msgstr ""
+"Delegasyonu geri alma sürecini başlatmak için ağa ``undelegate.wasm`` içeren"
+" bir dağıtım gönderin. "
 
 #: ../../workflow/undelegate.rst:35
 msgid ""
-"Below is an example of an undelegation request using the Casper command-"
-"line client:"
+"Below is an example of an undelegation request using the Casper command-line"
+" client:"
 msgstr ""
+"Aşağıda, Casper komut satırı istemcisini kullanarak yapılan bir delegasyonu "
+"geri alma isteğine örnek verilmiştir:"
 
 #: ../../workflow/undelegate.rst:49
 msgid ""
-"**Note** The delegator's public key and the secret key that signs the "
-"deploy must be part of the same key pair."
+"**Note** The delegator's public key and the secret key that signs the deploy"
+" must be part of the same key pair."
 msgstr ""
+"**Not** Yetki verenin açık anahtarı ve dağıtımı imzalayan gizli anahtar, "
+"aynı anahtar çiftinin parçası olmalıdır."
 
 #: ../../workflow/undelegate.rst:51
 msgid "**Request fields:**"
-msgstr ""
+msgstr "**Talep alanları:**"
 
 #: ../../workflow/undelegate.rst:53
 msgid ""
 "``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the "
-"request and returned in the response. If not provided, a random integer "
-"will be assigned"
+"request and returned in the response. If not provided, a random integer will"
+" be assigned"
 msgstr ""
+"``id`` - <STRING OR INTEGER> İsteğe uygulanan ve yanıtta döndürülen isteğe "
+"bağlı JSON-RPC tanımlayıcısı .Eğer sağlanmazsa, rastgele bir tam sayı "
+"atanır."
 
 #: ../../workflow/undelegate.rst:54 ../../workflow/undelegate.rst:83
 msgid ""
-"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which "
-"HTTP service is running [default:http://localhost:7777]"
+"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP"
+" service is running [default:http://localhost:7777]"
 msgstr ""
+"``node-address`` - <HOST:PORT> Ana makine adı veya IP ve HTTP hizmetinin "
+"çalıştığı düğümün bağlantı noktası [varsayılan:http://localhost:7777]"
 
 #: ../../workflow/undelegate.rst:55
 msgid "``secret-key`` - Path to secret key file"
-msgstr ""
+msgstr "``secret-key`` - Gizli anahtar dosyasının yolu"
 
 #: ../../workflow/undelegate.rst:56
 msgid ""
 "``chain-name`` - Name of the chain, to avoid the deploy from being "
 "accidentally or maliciously included in a different chain"
 msgstr ""
+"``chain-name`` - Dağıtımın yanlışlıkla veya kötü niyetli olarak farklı bir "
+"zincire dahil edilmesini önlemek için zincirin adı"
 
 #: ../../workflow/undelegate.rst:58
 msgid "The *chain-name* for testnet is **casper-test**"
-msgstr ""
+msgstr "Testnet için *chain-name* değeri **casper-test**'tir"
 
 #: ../../workflow/undelegate.rst:59
 msgid "The *chain-name* for mainnet is **casper**"
-msgstr ""
+msgstr "Mainnet için *chain-name* değeri **casper**dır"
 
 #: ../../workflow/undelegate.rst:61
 msgid "``session-path`` - The path to where the ``delegate.wasm`` is located"
-msgstr ""
+msgstr "``session-path`` - \"delegate.wasm\" dosyasının bulunduğu yere giden yol"
 
 #: ../../workflow/undelegate.rst:62
 msgid "``session-arg`` - The arguments to the ``delegate`` execution"
-msgstr ""
+msgstr "``session-arg`` - ``delegate`` yürütmesi argümanları"
 
 #: ../../workflow/undelegate.rst:64
 msgid ""
-"The argument ``validator`` is the public key of the validator from whom "
-"the tokens will be undelegated"
+"The argument ``validator`` is the public key of the validator from whom the "
+"tokens will be undelegated"
 msgstr ""
+" ``validator`` argümanı, tokenlerin delegasyonunun geri alınacağı "
+"doğrulayıcının genel anahtarıdır."
 
 #: ../../workflow/undelegate.rst:65
 msgid "The argument ``amount`` is the number of tokens to be undelegated"
 msgstr ""
+"``amount`` argümanı, delegasyonu geri alınacak olan tokenlerin sayısıdır"
 
 #: ../../workflow/undelegate.rst:66
 msgid ""
 "The argument ``delegator`` is the public key of the account undelegating "
 "tokens from a validator"
 msgstr ""
+"``delegator`` argümanı, bir doğrulayıcıdan tokenlerin delegasyonunun geri "
+"alınmasını gerçekleştiren hesabın genel anahtarıdır"
 
 #: ../../workflow/undelegate.rst:70
 msgid "Asserting the Undelegation"
-msgstr ""
+msgstr "Delegasyonu Geri Almanın Tamamlanması"
 
 #: ../../workflow/undelegate.rst:72
 msgid ""
 "You can use the Casper command-line client to generate an RPC request to "
-"query the auction state. The subsequent RPC response will confirm that "
-"the undelegation request was successfully executed."
+"query the auction state. The subsequent RPC response will confirm that the "
+"undelegation request was successfully executed."
 msgstr ""
+"Açık artırma durumunu sorgulamak üzere bir RPC isteği oluşturmak için Casper"
+" komut satırı istemcisini kullanabilirsiniz. Sonraki RPC yanıtı, delegasyonu"
+" geri alma isteğinin başarıyla yürütüldüğünü onaylayacaktır."
 
 #: ../../workflow/undelegate.rst:74
 msgid ""
-"Here is how you can check the status of the auction to confirm that your "
-"bid was withdrawn:"
+"Here is how you can check the status of the auction to confirm that your bid"
+" was withdrawn:"
 msgstr ""
+"Teklifinizin geri çekildiğini doğrulamak için açık artırmanın durumunu şu "
+"şekilde kontrol edebilirsiniz:"
 
 #: ../../workflow/undelegate.rst:81
 msgid "**Request fields**:"
-msgstr ""
+msgstr "**Talep alanları**:"
 
 #: ../../workflow/undelegate.rst:85
 msgid ""
-"If the public key and the amount are absent from the ``bids`` structure, "
-"we can safely assert that we have indeed undelegated from the validator."
+"If the public key and the amount are absent from the ``bids`` structure, we "
+"can safely assert that we have indeed undelegated from the validator."
 msgstr ""
+"Açık anahtar ve miktar ``bids`` yapısında yoksa, doğrulayıcıdan gerçekten "
+"delegasyonu geri aldığımızı güvenle söyleyebiliriz."
 
 #: ../../workflow/undelegate.rst:87
 msgid ""
-"If your account is on the official Testnet or Mainnet, you can use the "
-"block explorer to look up your account balance and see that the tokens "
-"have been added to your balance:"
+"If your account is on the official Testnet or Mainnet, you can use the block"
+" explorer to look up your account balance and see that the tokens have been "
+"added to your balance:"
 msgstr ""
+"Hesabınız resmi Testnet veya Mainnet'teyse, hesap bakiyenize bakmak ve "
+"tokenlerin bakiyenize eklendiğini görmek için blok gezginini "
+"kullanabilirsiniz:"
 
 #: ../../workflow/undelegate.rst:89
 msgid "`Testnet explorer <https://testnet.cspr.live/>`_"
-msgstr ""
+msgstr "`Testnet gezgini <https://testnet.cspr.live/>`_"
 
 #: ../../workflow/undelegate.rst:90
 msgid "`Mainnet explorer <https://cspr.live/>`_"
-msgstr ""
+msgstr "`Mainnet gezgini <https://cspr.live/>`_"
 
 #: ../../workflow/undelegate.rst:92
 msgid ""
 "**Important Note**: After undelegating tokens from a validator, you must "
-"wait for the unbonding period to lapse before re-delegating tokens to "
-"either the same validator or a different validator."
+"wait for the unbonding period to lapse before re-delegating tokens to either"
+" the same validator or a different validator."
 msgstr ""
-
+"**Önemli Not**: Bir doğrulayıcıdan tokenlerin delegasyonunu geri aldıktan "
+"sonra, tokenlerin aynı doğrulayıcıya veya farklı bir doğrulayıcıya yeniden "
+"delegasyonunu yapmadan önce çözülme süresinin geçmesini beklemeniz gerekir."
