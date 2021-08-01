@@ -25,7 +25,7 @@ msgstr ""
 
 #: ../../implementation/global-state.rst:4
 msgid "Global State"
-msgstr "État global"
+msgstr "État global (Global State)"
 
 #: ../../implementation/global-state.rst:9
 msgid "Introduction"
@@ -47,7 +47,7 @@ msgid ""
 " reasons, the key-value store is implemented as a :ref:`Merkle trie <global-"
 "state-trie>`."
 msgstr ""
-"L'\"état global\" est la couche de stockage de la blockchain. Tous les "
+"L`\"état global\" est la couche de stockage de la blockchain. Tous les "
 "comptes, les contrats et toutes les données qui leur sont associées sont "
 "stockés dans l'état global. Notre état global a la sémantique d'un store "
 "clé-valeur (avec une logique de permissions supplémentaires puisque tous les"
@@ -163,7 +163,7 @@ msgid ""
 "`writing to the trie <https://github.com/CasperLabs/casper-"
 "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L638>`_"
 msgstr ""
-"``Écrire sur l'arbre <https://github.com/CasperLabs/casper-"
+"`Écrire sur l'arbre <https://github.com/CasperLabs/casper-"
 "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L638>`_"
 
 #: ../../implementation/global-state.rst:52
