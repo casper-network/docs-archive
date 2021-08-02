@@ -159,7 +159,7 @@ msgstr "L'état de la machine virtuelle au début de la blockchain."
 
 #: ../../glossary/G.rst:17
 msgid "Global state"
-msgstr "État global"
+msgstr "Global state : État global"
 
 #: ../../glossary/G.rst:18
 msgid ""
