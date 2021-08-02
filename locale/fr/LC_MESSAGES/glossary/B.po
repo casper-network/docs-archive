@@ -212,7 +212,7 @@ msgstr "Notez que seuls les validateurs peuvent créer des blocs valides."
 
 #: ../../glossary/B.rst:30
 msgid "Block finality"
-msgstr "Finalité du bloc"
+msgstr "Block finality : Finalité du bloc"
 
 #: ../../glossary/B.rst:31
 msgid ""
@@ -241,7 +241,7 @@ msgstr ""
 
 #: ../../glossary/B.rst:36
 msgid "Block gossiping"
-msgstr "Le 'Block gossiping'"
+msgstr "Block gossiping"
 
 #: ../../glossary/B.rst:37
 msgid ""
@@ -258,7 +258,7 @@ msgstr ""
 
 #: ../../glossary/B.rst:40
 msgid "Block passing"
-msgstr "Passage de bloc"
+msgstr "Block passing : Passage de bloc"
 
 #: ../../glossary/B.rst:41
 msgid "See <#block-gossiping>."
@@ -266,7 +266,7 @@ msgstr "Voir <#block-gossiping>."
 
 #: ../../glossary/B.rst:44
 msgid "Block processing"
-msgstr "Traitement des blocs"
+msgstr "Block processing : Traitement des blocs"
 
 #: ../../glossary/B.rst:45
 msgid ""
@@ -281,7 +281,7 @@ msgstr ""
 
 #: ../../glossary/B.rst:48
 msgid "Block proposal"
-msgstr "Proposition de bloc"
+msgstr "Block proposal : Proposition de bloc"
 
 #: ../../glossary/B.rst:49
 msgid ""
@@ -295,7 +295,7 @@ msgstr ""
 
 #: ../../glossary/B.rst:52
 msgid "Block validation"
-msgstr "Validation des blocs"
+msgstr "Block validation : Validation des blocs"
 
 #: ../../glossary/B.rst:53
 msgid ""
@@ -335,7 +335,7 @@ msgstr ""
 
 #: ../../glossary/B.rst:60
 msgid "Block store"
-msgstr "Mémoire de blocs"
+msgstr "Block store : Mémoire de blocs"
 
 #: ../../glossary/B.rst:61
 msgid ""
@@ -349,7 +349,7 @@ msgstr ""
 
 #: ../../glossary/B.rst:64
 msgid "Bond"
-msgstr "Caution (Bond)"
+msgstr "Bond : Caution , Obligation"
 
 #: ../../glossary/B.rst:65
 msgid ""
@@ -363,7 +363,7 @@ msgstr ""
 
 #: ../../glossary/B.rst:68
 msgid "Bonding"
-msgstr "Cautionnement (Bonding)"
+msgstr "Bonding : Cautionnement"
 
 #: ../../glossary/B.rst:69
 msgid ""
@@ -374,8 +374,8 @@ msgid ""
 "weights according to their deposits. This new set becomes active in the "
 "era(s) using that booking block."
 msgstr ""
-"Déposer de l'argent dans le `contrat d'enchères<A.html#contrat d'enchères>`_"
-" et essayer de devenir un `staker <S.html#staker>`_. La demande de "
+"Déposer de l'argent dans le `contrat d'enchères<A.html#auction-contract>`_ "
+"et essayer de devenir un `staker <S.html#staker>`_. La demande de "
 "cautionnement est une transaction qui transfère des jetons vers le contrat "
 "d'enchères. Dans le prochain `bloc de réservation <B.html#bloc de "
 "réservation>`_, un nouvel ensemble de validateurs est déterminé, avec des "
@@ -384,7 +384,7 @@ msgstr ""
 
 #: ../../glossary/B.rst:72
 msgid "Booking block"
-msgstr "Bloc de réservation (Booking block)"
+msgstr "Booking block : Bloc de réservation "
 
 #: ../../glossary/B.rst:73
 msgid ""
@@ -397,8 +397,8 @@ msgid ""
 "is the last block of era *N*."
 msgstr ""
 "Le bloc de réservation d'une ère est le bloc qui détermine l'ensemble des "
-"validateurs de l'ère. Dans ce bloc, le `contrat d'enchère<A.html#contrat "
-"d'enchère>`_ sélectionne les meilleurs enchérisseurs pour être les "
+"validateurs de l'ère. Dans ce bloc, le `contrat d'enchère<A.html#auction-"
+"contract>`_ sélectionne les meilleurs enchérisseurs pour être les "
 "validateurs de la future ère. Il y a un délai configurable, le "
 "*auction_delay*, qui est le nombre d'ères entre le bloc de réservation et "
 "l'ère à laquelle il s'applique. Le bloc de réservation est toujours un bloc "
