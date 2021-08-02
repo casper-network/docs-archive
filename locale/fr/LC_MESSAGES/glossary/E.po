@@ -178,14 +178,14 @@ msgid ""
 "signal readiness to resume participation by invoking a method in the "
 "`auction contract <A.html#auction-contract>`_."
 msgstr ""
-"Les validateurs qui ne participent pas à une ` ère <E.html#era>`_ verront "
+"Les validateurs qui ne participent pas à une `ère <E.html#era>`_ verront "
 "leur offre désactivée par le protocole, suspendant leur participation "
 "jusqu'à ce qu'ils signalent qu'ils sont prêts à reprendre leur participation"
 " en invoquant une méthode du `contrat d'enchère <A.html#auction-contract>`_."
 
 #: ../../glossary/E.rst:23
 msgid "External client"
-msgstr "Client externe"
+msgstr "External client : Client externe"
 
 #: ../../glossary/E.rst:24
 msgid ""
