@@ -3,74 +3,88 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Furkan Ahmet KARA <furkanahmetkara.fk@gmail.com>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../dapp-dev-guide/sdk/index.rst:16
 msgid "Introduction"
-msgstr ""
+msgstr "Giriş"
 
 #: ../../dapp-dev-guide/sdk/index.rst:2
 msgid "SDK Client Libraries"
-msgstr ""
+msgstr "SDK İstemci Kütüphaneleri"
 
 #: ../../dapp-dev-guide/sdk/index.rst:4
 msgid ""
 "This section covers the software development kits (SDKs) available for "
-"interacting with the Casper blockchain. These SDKs are client-side "
-"libraries providing functions or methods (depending on the language) to "
-"interact with the Casper Network. You can use them as a model to develop "
-"your application and accomplish tasks such as generating account keys, "
-"sending transfers, or other blockchain transactions."
+"interacting with the Casper blockchain. These SDKs are client-side libraries"
+" providing functions or methods (depending on the language) to interact with"
+" the Casper Network. You can use them as a model to develop your application"
+" and accomplish tasks such as generating account keys, sending transfers, or"
+" other blockchain transactions."
 msgstr ""
+"Bu bölüm, Casper blokzincir ile etkileşim için mevcut olan yazılım "
+"geliştirme kitlerini (SDK'lar) kapsar. Bu SDK'lar, Casper Network ile "
+"etkileşim kurmak için işlevler veya yöntemler (dile bağlı olarak) sağlayan "
+"istemci tarafı kütüphanelerdir. Uygulamanızı geliştirmek ve hesap "
+"anahtarları oluşturmak, aktarımları göndermek veya diğer blokzincir "
+"işlemleri gibi görevleri gerçekleştirmek için bunları bir model olarak "
+"kullanabilirsiniz."
 
 #: ../../dapp-dev-guide/sdk/index.rst:6
 msgid ""
-"The following table provides links to the SDK documentation, in addition "
-"to the corresponding GitHub repositories."
+"The following table provides links to the SDK documentation, in addition to "
+"the corresponding GitHub repositories."
 msgstr ""
+"Aşağıdaki tablo, ilgili GitHub kod depolarına ek olarak SDK "
+"belgelendirmelerine bağlantılar sağlar."
 
 #: ../../dapp-dev-guide/sdk/index.rst:9
 msgid "SDK Documentation"
-msgstr ""
+msgstr "SDK Belgelendirmesi"
 
 #: ../../dapp-dev-guide/sdk/index.rst:9
 msgid "GitHub Location"
-msgstr ""
+msgstr "GitHub Konumu"
 
 #: ../../dapp-dev-guide/sdk/index.rst:11
 msgid "`TypeScript/JavaScript <script-sdk.html>`_"
-msgstr ""
+msgstr "`TypeScript/JavaScript <script-sdk.html>`_"
 
 #: ../../dapp-dev-guide/sdk/index.rst:11
 msgid "https://github.com/casper-ecosystem/casper-js-sdk/"
-msgstr ""
+msgstr "https://github.com/casper-ecosystem/casper-js-sdk/"
 
 #: ../../dapp-dev-guide/sdk/index.rst:12
 msgid "Java SDK (work in progress)"
-msgstr ""
+msgstr "Java SDK (devam eden çalışma)"
 
 #: ../../dapp-dev-guide/sdk/index.rst:12
 msgid "https://github.com/cnorburn/casper-java-sdk/"
-msgstr ""
+msgstr "https://github.com/cnorburn/casper-java-sdk/"
 
 #: ../../dapp-dev-guide/sdk/index.rst:13
 msgid "Go SDK (work in progress)"
-msgstr ""
+msgstr "Go SDK (devam eden çalışma)"
 
 #: ../../dapp-dev-guide/sdk/index.rst:13
 msgid "https://github.com/casper-ecosystem/casper-golang-sdk/"
-msgstr ""
-
+msgstr "https://github.com/casper-ecosystem/casper-golang-sdk/"
