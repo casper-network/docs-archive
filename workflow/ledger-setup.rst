@@ -113,47 +113,47 @@ Press the right button on your Ledger Device to review the transaction details (
 
 1. Verify the **txn hash** - make sure it matches the value displayed in the Web wallet on `cspr.live <https://cspr.live>`_.
 
-.. image:: ../assets/tutorials/ledger/ledger/3-txn-1.jpg
+.. image:: ../assets/tutorials/ledger/device/3-txn-1.jpg
 
 The *txn hash* value continues on a second screen.
 
-.. image:: ../assets/tutorials/ledger/ledger/4-txn-2.jpg
+.. image:: ../assets/tutorials/ledger/device/4-txn-2.jpg
 
 2. The next page displays transaction **type** - for CSPR transfers that will be **Token transfer**.
 
-.. image:: ../assets/tutorials/ledger/ledger/5-type.jpg
+.. image:: ../assets/tutorials/ledger/device/5-type.jpg
 
 3. Verify the **chain ID**, which identifies the network on which you want to send the transaction.
 
-.. image:: ../assets/tutorials/ledger/ledger/7-chain.jpg
+.. image:: ../assets/tutorials/ledger/device/7-chain.jpg
 
 4. Verify the **account**, which is the public key of the account that initiated the transaction.
 
-.. image:: ../assets/tutorials/ledger/ledger/8-account-1.jpg
+.. image:: ../assets/tutorials/ledger/device/8-account-1.jpg
 
 The *account* value continues on a second screen.
 
-.. image:: ../assets/tutorials/ledger/ledger/9-account-2.jpg
+.. image:: ../assets/tutorials/ledger/device/9-account-2.jpg
 
 5. Verify the **fee**. For CSPR token transfers, that value should be constant and equal to 10 000 motes = 0.00001 CSPR.
 
-.. image:: ../assets/tutorials/ledger/ledger/10-fee.jpg
+.. image:: ../assets/tutorials/ledger/device/10-fee.jpg
 
 6. Verify **target** - **NOTE** this **IS NOT** a public key of the recipient but the hash of that key. Compare the public key with the value in the Web wallet which shows you two fields for the recipient public key and target.".
 
-.. image:: ../assets/tutorials/ledger/ledger/11-target-1.jpg
+.. image:: ../assets/tutorials/ledger/device/11-target-1.jpg
 
 The *target* value continues on a second screen.
 
-.. image:: ../assets/tutorials/ledger/ledger/12-target-2.jpg
+.. image:: ../assets/tutorials/ledger/device/12-target-2.jpg
 
 7. Verify the **amount** you want to transfer.
 
-.. image:: ../assets/tutorials/ledger/ledger/13-amount.jpg
+.. image:: ../assets/tutorials/ledger/device/13-amount.jpg
 
 8. If you approve the transaction, click both buttons on the Ledger device.
 
-.. image:: ../assets/tutorials/ledger/ledger/15-approve.jpg
+.. image:: ../assets/tutorials/ledger/device/15-approve.jpg
 
 After approving the transaction with your Ledger hardware wallet, the `cspr.live <https://cspr.live>`_ Web wallet will display a **Transfer completed** page.
 
