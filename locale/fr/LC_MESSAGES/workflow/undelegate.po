@@ -81,7 +81,7 @@ msgid ""
 "<https://github.com/CasperLabs/casper-node>`_ repository and building the "
 "contracts."
 msgstr ""
-"Obtenez le ``undelegate.wasm`` en clonant le dépôt ``casper-node "
+"Obtenez le ``undelegate.wasm`` en clonant le dépôt `casper-node "
 "<https://github.com/CasperLabs/casper-node>`_ et en construisant les "
 "contrats."
 
