@@ -146,7 +146,7 @@ msgstr ""
 
 #: ../../glossary/C.rst:13
 msgid "Casper network"
-msgstr "Réseau Casper"
+msgstr "Casper network : Réseau Casper"
 
 #: ../../glossary/C.rst:14
 msgid ""
@@ -224,7 +224,7 @@ msgstr ""
 
 #: ../../glossary/C.rst:31
 msgid "Contract runtime"
-msgstr "Exécution des contrats"
+msgstr "Contract runtime : Exécution des contrats"
 
 #: ../../glossary/C.rst:32
 msgid ""
@@ -234,7 +234,7 @@ msgid ""
 "managed using development best practices."
 msgstr ""
 "Permet aux développeurs d'utiliser un flux de travail fluide pour la "
-"création et le test de leurs contrats intelligents <S.html#smart-"
+"création et le test de leurs contrats intelligents `<S.html#smart-"
 "contracts>`_. Cet environnement peut également être utilisé pour "
 "l'intégration continue, ce qui permet de gérer les smart contracts Rust en "
 "utilisant les meilleures pratiques de développement."
