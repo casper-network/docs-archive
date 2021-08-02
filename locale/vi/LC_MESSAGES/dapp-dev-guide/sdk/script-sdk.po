@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:2
+msgid "TypeScript/JavaScript SDK"
+msgstr "TypeScript/JavaScript SDK"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:4
+msgid ""
+"The `TypeScript/JavaScript SDK <https://casper-ecosystem.github.io/casper-"
+"js-sdk/>`_ allows developers to interact with the Casper Network using "
+"TypeScript or JavaScript. This page covers different examples of using the "
+"SDK."
+msgstr ""
+"`TypeScript/JavaScript SDK <https://casper-ecosystem.github.io/casper-js-"
+"sdk/>`_ cho phép các nhà phát triển tương tác với Mạng Casper bằng "
+"TypeScript hoặc JavaScript. Trang này bao gồm các ví dụ khác nhau về việc sử"
+" dụng SDK."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:7
+msgid "Installation"
+msgstr "Cài đặt"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:8
+msgid "To install this library using Node.js, run the following command:"
+msgstr "Để cài đặt thư viện này bằng Node.js, hãy chạy lệnh sau:"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:15
+msgid "Tests"
+msgstr "Kiểm thử"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:16
+msgid ""
+"You can find basic examples for how to use this library in the ``test`` "
+"directory. To run the tests, use this command:"
+msgstr ""
+"Bạn có thể tìm thấy các ví dụ cơ bản về cách sử dụng thư viện này trong thư "
+"mục ``test``. Để chạy các bài kiểm thử, hãy sử dụng lệnh này:"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:23
+msgid "Usage Examples"
+msgstr "Ví dụ sử dụng"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:24
+msgid ""
+"In this section, we outline a couple of essential tasks you can accomplish "
+"with the JavaScript SDK:"
+msgstr ""
+"Trong phần này, chúng tôi phác thảo một số tác vụ cần thiết mà bạn có thể "
+"thực hiện với JavaScript SDK:"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:26
+msgid "Generating account keys"
+msgstr "Tạo khóa tài khoản"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:27
+msgid "Sending a transfer"
+msgstr "Gửi chuyển giao"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:29
+msgid ""
+"For a complete implementation example, read the `Multi-Signature Tutorial "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-"
+"sig/index.html>`_, which uses the JavaScript SDK."
+msgstr ""
+"Để có ví dụ triển khai đầy đủ, hãy đọc `Hướng dẫn về Đa chữ ký "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-"
+"sig/index.html>`_, sử dụng SDK JavaScript."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:32
+msgid "Generating Account Keys"
+msgstr "Tạo khóa tài khoản"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:34
+msgid ""
+"This example shows you how to use the SDK to generate account keys to sign "
+"your deploy."
+msgstr ""
+"Ví dụ này cho bạn thấy cách sử dụng SDK tạo khóa tài khoản để ký triển khai "
+"của bạn."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:72
+msgid ""
+"After generating the keys with this code, you can add them to the "
+"`CasperLabs Signer Chrome extension "
+"<https://chrome.google.com/webstore/detail/casperlabs-"
+"signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en-US>`_ and use them to sign "
+"your transactions."
+msgstr ""
+"Sau khi tạo khóa bằng mã này, bạn có thể thêm chúng vào `Tiện ích mở rộng "
+"CasperLabs Signer của Chrome <https://chrome.google.com/webstore/detail"
+"/casperlabs-signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en-US>`_ và sử dụng "
+"để ký các giao dịch của bạn."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:76
+msgid "Sending a Transfer"
+msgstr "Gửi chuyển giao"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:78
+msgid ""
+"This code block shows you how to define and send a transfer on the Casper "
+"Network. Replace the ``account-address`` in the code below with the sender's"
+" account address."
+msgstr ""
+"Khối mã này chỉ cho bạn cách xác định và gửi chuyển khoản trên Mạng Casper. "
+"Thay thế ``account-address`` trong mã bên dưới bằng địa chỉ tài khoản của "
+"người gửi."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:80
+msgid ""
+"The ``sendTransfer`` function below will return a ``transfer-hash`` which "
+"you can check on https://testnet.cspr.live/."
+msgstr ""
+"Hàm ``sendTransfer`` bên dưới sẽ trả về ``transfer-hash`` mà bạn có thể kiểm"
+" tra tại https://testnet.cspr.live/."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:164
+msgid ""
+"**Note**: At any moment, you can serialize the deploy from this example to "
+"JSON to accomplish whatever you want (store it, send it, etc.)."
+msgstr ""
+"**Lưu ý**: Tại bất kỳ thời điểm nào, bạn có thể tuần tự triển khai từ ví dụ "
+"này sang JSON để thực hiện bất kỳ điều gì bạn muốn (lưu trữ, gửi, v.v.)."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:166
+msgid "Here is the code you can use to serialize the deploy:"
+msgstr "Đây là mã bạn có thể sử dụng để tuần tự triển khai:"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:173
+msgid "Then, you can reconstruct the deploy object using this function:"
+msgstr ""
+"Sau đó, bạn có thể xây dựng lại đối tượng triển khai bằng cách sử dụng hàm "
+"này:"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:180
+msgid "Additional Resources"
+msgstr "Tài nguyên bổ sung"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:181
+msgid ""
+"If you are looking for additional examples, another great resource is the "
+"`BitGo JS implementation "
+"<https://github.com/BitGo/BitGoJS/tree/master/modules/account-"
+"lib/src/coin/cspr>`_."
+msgstr ""
+"Nếu bạn đang tìm kiếm các ví dụ bổ sung, một tài nguyên tuyệt vời khác là "
+"`BitGo JS implementation "
+"<https://github.com/BitGo/BitGoJS/tree/master/modules/account-"
+"lib/src/coin/cspr>`_."
