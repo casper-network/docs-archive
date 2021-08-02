@@ -1,0 +1,174 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../node-operator/joining.rst:3
+msgid "Joining a Running Network"
+msgstr "Tham gia vào Mạng đang chạy"
+
+#: ../../node-operator/joining.rst:5
+msgid ""
+"The Casper network is permissionless, enabling new validators to join the "
+"network and provide additional security to the system. This page will "
+"outline the sequence of recommended steps to spin up a validating node and "
+"successfully join an existing network."
+msgstr ""
+"Mạng Casper là không cần cấp phép, cho phép các nhà xác thực mới tham gia "
+"vào mạng và cung cấp bảo mật bổ sung cho hệ thống. Trang này sẽ trình bày "
+"trình tự các bước được đề xuất để tạo một nút xác thực và tham gia thành "
+"công vào mạng hiện có."
+
+#: ../../node-operator/joining.rst:9
+msgid "Step 1: Provision Hardware"
+msgstr "Bước 1: Cung cấp phần cứng"
+
+#: ../../node-operator/joining.rst:11
+msgid "Visit the Hardware section and provision your node hardware."
+msgstr "Xem mục Phần cứng và cung cấp phần cứng cho nút của bạn."
+
+#: ../../node-operator/joining.rst:14
+msgid "Step 2: Build Contracts & Set Up the Node"
+msgstr "Bước 2: Xây dựng hợp đồng và thiết lập nút"
+
+#: ../../node-operator/joining.rst:16
+msgid ""
+"Visit the Setup section in this guide and configure the software on your "
+"node.  Build all necessary contracts for bonding, retrieving rewards and "
+"unbonding."
+msgstr ""
+"Xem mục Cài đặt trong hướng dẫn này và cấu hình phần mềm trên nút của bạn. "
+"Xây dựng tất cả các hợp đồng cần thiết để góp cổ phần, nhận phần thưởng và "
+"rút cổ phần."
+
+#: ../../node-operator/joining.rst:19
+msgid "Step 3: Create & Fund your Keys for Bonding"
+msgstr "Bước 3: Tạo và nạp tiền cho các Chìa khóa của bạn để cổ phần"
+
+#: ../../node-operator/joining.rst:21
+msgid ""
+"Obtain token to bond your node on to the network & to pay for the bonding "
+"transaction."
+msgstr ""
+"Nhận token để cổ phần nút của bạn với mạng và thanh toán cho giao dịch cổ "
+"phần."
+
+#: ../../node-operator/joining.rst:24
+msgid "Step 4: Update the Trusted Hash"
+msgstr "Bước 4: Cập nhật Hàm băm tin cậy (Trusted Hash)"
+
+#: ../../node-operator/joining.rst:26
+msgid ""
+"The node's ``config.toml`` needs to be updated with a recent trusted hash. "
+"Visit a ``/status`` endpoint of a validating node to obtain a fresh trusted "
+"block hash."
+msgstr ""
+"``config.toml`` của nút cần được cập nhật bằng một hàm băm đáng tin cậy gần "
+"nhất. Xem ``/status``  điểm cuối của một nút xác thực để có được một băm "
+"khối đáng tin cậy mới."
+
+#: ../../node-operator/joining.rst:32
+msgid ""
+"Default port is usually ``8888``  Retrieve the ``last_added_block_info:`` "
+"hash."
+msgstr ""
+"Cổng mặc định thường là ``8888``  Truy xuất hàm băm "
+"``last_added_block_info:``."
+
+#: ../../node-operator/joining.rst:34
+msgid ""
+"A good IP to use above are those listed in your ``config.toml`` as "
+"``known_addresses``."
+msgstr ""
+"IP tốt để sử dụng ở trên là những IP được liệt kê trong ``config.toml`` của "
+"bạn như là ``known_addresses``."
+
+#: ../../node-operator/joining.rst:37
+msgid "Step 5: Start the Node"
+msgstr "Bước 5: Khởi động nút"
+
+#: ../../node-operator/joining.rst:39
+msgid ""
+"Once the node has been added to the list of validators for an upcoming era, "
+"it's time to start the node.  The deb package installs a casper-node service"
+" for systemd. Start the node with:"
+msgstr ""
+"Khi nút đã được thêm vào danh sách nhà xác thực cho một kỷ nguyên sắp tới, "
+"là đã đến lúc bắt đầu nút. Gói deb cài đặt một dịch vụ casper-node cho "
+"systemd. Bắt đầu nút bằng:"
+
+#: ../../node-operator/joining.rst:46
+msgid ""
+"For more information visit `Github <https://github.com/CasperLabs/casper-"
+"node/tree/master/resources/production>`_"
+msgstr ""
+"Để biết thêm thông tin, hãy truy cập `Github <https://github.com/CasperLabs"
+"/casper-node/tree/master/resources/production>`_"
+
+#: ../../node-operator/joining.rst:49
+msgid "Step 6: Confirm the Node is Syncronized"
+msgstr "Bước 6: Xác nhận Nút được Đồng bộ hóa"
+
+#: ../../node-operator/joining.rst:51
+msgid ""
+"While the node is synchronizing, the ``/status`` endpoint is available. You "
+"will be able to compare this to other node's status endpoint ``era_id`` and "
+"``height`` to determine if you are caught up. You will not be able to "
+"perform any ``casper-client`` calls to your ``7777`` RPC port until your "
+"node is fully caught up."
+msgstr ""
+"Trong khi nút đang đồng bộ hóa, ``/status`` của điểm cuối sẽ khả dụng. Bạn "
+"sẽ có thể so sánh trạng thái này này với trạng thái điểm cuối của nút khác "
+"``era_id`` và ``height`` để xác định xem bạn có đồng bộ kịp hay không. Bạn "
+"sẽ không thể thực hiện bất kỳ lệnh gọi ``casper-client`` nào tới cổng RPC "
+"``7777`` của mình cho đến khi nút của bạn được đồng bộ hoàn toàn."
+
+#: ../../node-operator/joining.rst:57
+msgid "Step 7: Send the Bonding Request"
+msgstr "Bước 7: Gửi yêu cầu cổ phần"
+
+#: ../../node-operator/joining.rst:59
+msgid ""
+"To avoid being ejected for liveness failures, it is critical that the "
+"bonding request be sent to the local node only after it has synchronized the"
+" protocol state and linear blockchain."
+msgstr ""
+"Để tránh bị đẩy ra do lỗi liveness, điều quan trọng là yêu cầu cổ phần chỉ "
+"được gửi đến nút cục bộ sau khi nó đã đồng bộ hóa trạng thái giao thức và "
+"chuỗi khối tuyến tính."
+
+#: ../../node-operator/joining.rst:61
+msgid ""
+"For this reason it is recommended that you use ``casper-client`` with the "
+"default ``--node-address`` which will talk to localhost."
+msgstr ""
+"Vì lý do này, bạn nên sử dụng ``casper-client`` với mặc định ``--node-"
+"address`` để nói chuyện với localhost."
+
+#: ../../node-operator/joining.rst:63
+msgid ""
+"Please see the bonding page to submit a bonding request to change from a "
+"synchronized node to a validating node."
+msgstr ""
+"Vui lòng xem trang Góp cổ phần để gửi yêu cầu cổ phần nhằm thay đổi nút được"
+" đồng bộ hóa thành nút xác thực."
