@@ -1,0 +1,461 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../workflow/delegate.rst:2
+msgid "Delegating Tokens"
+msgstr "Uỷ quyền Token"
+
+#: ../../workflow/delegate.rst:4
+msgid ""
+"This document details a workflow where an account holder on the Casper "
+"Network can delegate their tokens to a validator on a Casper Network."
+msgstr ""
+"Tài liệu này trình bày chi tiết quy trình làm việc trong đó chủ tài khoản "
+"trên Mạng Casper có thể ủy quyền mã thông báo của họ cho nhà xác thực trên "
+"Mạng Casper."
+
+#: ../../workflow/delegate.rst:6
+msgid "This workflow assumes:"
+msgstr "Giả định luồng công việc này:"
+
+#: ../../workflow/delegate.rst:8
+msgid "You meet the `prerequisites <setup.html>`_"
+msgstr "Bạn đáp ứng các `điều kiện cần <setup.html>`_"
+
+#: ../../workflow/delegate.rst:9
+msgid "You are using the Casper command-line client"
+msgstr "Bạn đang sử dụng dòng lệnh trên Casper client"
+
+#: ../../workflow/delegate.rst:10
+msgid "You have the public key of a validator on a Casper Network"
+msgstr "Bạn có khóa công khai của nhà xác thực trên Mạng Casper"
+
+#: ../../workflow/delegate.rst:11
+msgid "You have the delegation contract or WASM to execute on the network"
+msgstr "Bạn có hợp đồng ủy quyền hoặc WASM để thực thi trên mạng"
+
+#: ../../workflow/delegate.rst:12
+msgid "You have a valid ``node-address``"
+msgstr "Bạn có một ``node-address``hợp lệ"
+
+#: ../../workflow/delegate.rst:13
+msgid ""
+"You have previously `deployed a smart contract "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ to a Casper Network"
+msgstr ""
+"Trước đây bạn đã `triển khai hợp đồng thông minh "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ trên Mạng Casper"
+
+#: ../../workflow/delegate.rst:17
+msgid "Building The Delegation WASM"
+msgstr "Xây dựng WASM Ủy quyền"
+
+#: ../../workflow/delegate.rst:19
+msgid ""
+"Obtain the ``delegate.wasm`` by cloning the `casper-node "
+"<https://github.com/CasperLabs/casper-node>`_ repository and building the "
+"contracts."
+msgstr ""
+"Có được kho lưu trữ ``delegate.wasm`` bằng cách sao chép `casper-node "
+"<https://github.com/CasperLabs/casper-node>`_ và xây dựng các hợp đồng."
+
+#: ../../workflow/delegate.rst:21
+msgid ""
+"To build contracts, set up Rust, and install all dependencies. Visit "
+"`Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-"
+"of-rust-contract-sdk.html>`_ in the Developer Guide for step-by-step "
+"instructions."
+msgstr ""
+"Để xây dựng hợp đồng, hãy thiết lập Rust và cài đặt tất cả các phần phụ "
+"thuộc. Truy cập vào ``Cài đặt Rust <https://docs.casperlabs.io/en/latest"
+"/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ trong Hướng dẫn dành cho "
+"nhà phát triển để biết từng bước hướng dẫn."
+
+#: ../../workflow/delegate.rst:23
+msgid ""
+"Once you build the contracts, you can use the ``delegate.wasm`` to create a "
+"deploy that will initiate the delegation process. The WASM can be found in:"
+msgstr ""
+"Khi bạn xây dựng các hợp đồng, bạn có thể sử dụng ``delegate.wasm`` để tạo "
+"một triển khai sẽ bắt đầu quá trình ủy quyền. WASM có thể được tìm thấy tại:"
+
+#: ../../workflow/delegate.rst:31
+msgid "Acquiring a Validator's Public Key"
+msgstr "Có được Khóa công khai của Nhà xác thực"
+
+#: ../../workflow/delegate.rst:33
+msgid ""
+"The official Testnet and Mainnet provide a browser-based block explorer to "
+"look up the list of validators within their respective networks:"
+msgstr ""
+"Testnet chính thức và Mainnet cung cấp trình khám phá khối dựa trên trình "
+"duyệt để tra cứu danh sách nhà xác thực trong các mạng tương ứng của chúng:"
+
+#: ../../workflow/delegate.rst:35
+msgid "`Validators on Mainnet <https://cspr.live/validators>`_"
+msgstr "`Nhà xác thực trên Mainnet <https://cspr.live/validators>`_"
+
+#: ../../workflow/delegate.rst:36
+msgid "`Validators on Testnet <https://testnet.cspr.live/validators>`_"
+msgstr "`Nhà xác thực trên Testnet <https://testnet.cspr.live/validators>`_"
+
+#: ../../workflow/delegate.rst:39
+msgid ""
+"You will see a list of validators present on the network and their total "
+"stake (including tokens from other delegators)."
+msgstr ""
+"Bạn sẽ thấy danh sách những người xác thực có mặt trên mạng và tổng số đặt "
+"cọc của họ (bao gồm cả token từ những người ủy quyền khác)."
+
+#: ../../workflow/delegate.rst:41
+msgid ""
+"You can click on any validator listed to see more information about the "
+"validator, including the validator's personal stake."
+msgstr ""
+"Bạn có thể nhấp vào bất kỳ nhà xác thực nào được liệt kê để xem thêm thông "
+"tin về nhà xác thực, bao gồm cả số đặt cọc của người xác thực."
+
+#: ../../workflow/delegate.rst:43
+#, python-format
+msgid ""
+"Each validator will show the delegation rate (commission); this represents "
+"the percentage of **your** reward share that the validator will retain. "
+"Thus, a 10% rate implies that the validator will retain 10% of your reward "
+"share. As a prospective delegator, selecting a validating node that you can "
+"trust and offers a favorable delegation rate is essential. Please do your "
+"due diligence before you stake your tokens with a validator."
+msgstr ""
+"Mỗi nhà xác thực sẽ hiển thị tỷ lệ ủy quyền (hoa hồng); điều này thể hiện "
+"phần trăm **phần thưởng** của bạn mà người xác thực sẽ giữ lại. Do đó, tỷ lệ"
+" 10% ngụ ý rằng người xác thực sẽ giữ lại 10% phần thưởng của bạn. Là một "
+"người ủy quyền tiềm năng, việc chọn một nút xác thực mà bạn có thể tin tưởng"
+" và cung cấp tỷ lệ ủy quyền thuận lợi là điều cần thiết. Vui lòng thực hiện "
+"thẩm định của bạn trước khi bạn đặt cọc token của mình cho nhà xác thực."
+
+#: ../../workflow/delegate.rst:46
+msgid ""
+"Note the ``PublicKey`` of the validator you have selected to delegate your "
+"tokens."
+msgstr ""
+"Lưu ý ```PublicKey`` của nhà xác thực mà bạn đã chọn để ủy quyền token của "
+"mình."
+
+#: ../../workflow/delegate.rst:48
+msgid ""
+"If you observe your delegation request in the bid structure but do not see "
+"the associated validator key in the ``era_validators`` structure, the "
+"validator you selected is not part of the current validator set. In this "
+"event, your tokens will not be earning rewards unless you un-delegate, wait "
+"through the unbonding period, and re-delegate to another validator."
+msgstr ""
+"Nếu bạn quan sát yêu cầu ủy quyền của mình trong cấu trúc giá thầu nhưng "
+"không thấy khóa nhà xác thực được liên kết trong cấu trúc "
+"``era_validators``, thì nhà xác thực bạn đã chọn không phải là một phần của "
+"nhóm nhà xác thực hiện tại. Trong trường hợp này, các token của bạn sẽ không"
+" kiếm được phần thưởng trừ khi bạn hủy ủy quyền, đợi qua khoảng thời gian "
+"hủy kết thúc và ủy quyền lại cho một nhà xác thực khác."
+
+#: ../../workflow/delegate.rst:50
+msgid ""
+"Additionally, any rewards earned are re-delegated by default to the "
+"validator from the initial delegation request. Therefore at the time of un-"
+"delegation, you may want to un-delegate the initial amount plus any "
+"additional rewards earned through the delegation process."
+msgstr ""
+"Ngoài ra, mọi phần thưởng kiếm được đều được ủy quyền lại theo mặc định cho "
+"người xác thực từ yêu cầu ủy quyền ban đầu. Do đó, tại thời điểm hủy ủy "
+"quyền, bạn có thể muốn hủy ủy quyền số đặt cọc ban đầu cộng với bất kỳ phần "
+"thưởng bổ sung nào kiếm được thông qua quá trình ủy quyền."
+
+#: ../../workflow/delegate.rst:53
+msgid ""
+"The active validator set is constantly rotating; therefore, when delegating "
+"to a validator, remember that the validator you selected may have been "
+"rotated out of the set."
+msgstr ""
+"Nhóm nhà xác thực đang hoạt động liên tục thay đổi; do đó, khi ủy quyền cho "
+"nhà xác thực, hãy nhớ rằng nhà xác thực bạn đã chọn có thể đã bị chuyển ra "
+"khỏi nhóm."
+
+#: ../../workflow/delegate.rst:57
+msgid "Executing the Delegation Request"
+msgstr "Thực hiện Yêu cầu Ủy quyền"
+
+#: ../../workflow/delegate.rst:59
+msgid ""
+"We recommend first testing the following steps on our official Testnet "
+"before performing these steps in a live environment like the Casper Mainnet."
+msgstr ""
+"Trước tiên, chúng tôi khuyên bạn nên thử nghiệm các bước sau trên Testnet "
+"chính thức của chúng tôi trước khi thực hiện các bước này trong môi trường "
+"trực tiếp như Casper Mainnet."
+
+#: ../../workflow/delegate.rst:62
+msgid "Sending the Delegation Deploy"
+msgstr "Gửi triển khai Ủy quyền"
+
+#: ../../workflow/delegate.rst:64
+msgid ""
+"Send a deploy containing the ``delegate.wasm`` to the network to initiate "
+"the delegation process. Here is an example deployment of the delegation "
+"request:"
+msgstr ""
+"Gửi một triển khai có chứa ``delegate.wasm`` đến mạng để bắt đầu quá trình "
+"ủy quyền. Dưới đây là một ví dụ về triển khai yêu cầu ủy quyền:"
+
+#: ../../workflow/delegate.rst:78
+msgid ""
+"**Note** The delegator's public key and the secret key that signs the deploy"
+" must be part of the same key pair."
+msgstr ""
+"**Lưu ý** Khóa công khai của người ủy quyền và khóa bí mật đã ký vào triển "
+"khai phải là một phần của cùng một cặp khóa."
+
+#: ../../workflow/delegate.rst:80
+msgid "**Request fields:**"
+msgstr "**Các trường yêu cầu:**"
+
+#: ../../workflow/delegate.rst:82 ../../workflow/delegate.rst:122
+#: ../../workflow/delegate.rst:174
+msgid ""
+"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP"
+" service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT> Tên máy chủ hoặc IP và cổng của nút mà dịch "
+"vụ HTTP đang chạy [default:http://localhost:7777]"
+
+#: ../../workflow/delegate.rst:83
+msgid "``secret-key`` - Path to secret key file"
+msgstr "``secret-key`` - Đường dẫn đến tệp khóa bí mật"
+
+#: ../../workflow/delegate.rst:84
+msgid ""
+"``chain-name`` - Name of the chain, to avoid the deploy from being "
+"accidentally or maliciously included in a different chain"
+msgstr ""
+"``chain-name`` - Tên của chuỗi, để tránh việc triển khai bị đưa vào một "
+"chuỗi khác một cách vô tình hoặc có hại"
+
+#: ../../workflow/delegate.rst:86
+msgid "The *chain-name* for testnet is **casper-test**"
+msgstr "*chain-name* cho mạng thử nghiệm là **casper-test**"
+
+#: ../../workflow/delegate.rst:87
+msgid "The *chain-name* for mainnet is **casper**"
+msgstr "*chain-name* cho mạng chính là **casper**"
+
+#: ../../workflow/delegate.rst:89
+msgid "``session-path`` - The path to where the ``delegate.wasm`` is located"
+msgstr "``session-path`` - Đường dẫn đến vị trí của ``delegate.wasm``"
+
+#: ../../workflow/delegate.rst:90
+msgid "``session-arg`` - The arguments to the ``delegate`` execution"
+msgstr "``session-arg`` - Các đối số để thực thi ``delegate``"
+
+#: ../../workflow/delegate.rst:92
+msgid ""
+"The argument ``validator`` is the public key of the validator to whom the "
+"tokens will be delegated"
+msgstr ""
+"Đối số ``validator`` là khóa công khai của nhà xác thực mà token sẽ được ủy "
+"quyền"
+
+#: ../../workflow/delegate.rst:93
+msgid "The argument ``amount`` is the number of tokens to be delegated"
+msgstr "Đối số ``amount`` là số lượng token được ủy quyền"
+
+#: ../../workflow/delegate.rst:94
+msgid ""
+"The argument ``delegator`` is the public key of the account delegating "
+"tokens to a validator"
+msgstr ""
+"Đối số ``delegator`` là khóa công khai của tài khoản ủy quyền token cho "
+"người xác thực"
+
+#: ../../workflow/delegate.rst:97
+msgid "**Important response fields:**"
+msgstr "**Các trường phản hồi quan trọng:**"
+
+#: ../../workflow/delegate.rst:99
+msgid ""
+"``\"result\".\"deploy_hash\"`` - the address of the executed delegation "
+"request."
+msgstr "``\"result\".\"deploy_hash\"`` - địa chỉ của yêu cầu ủy quyền đã thực hiện."
+
+#: ../../workflow/delegate.rst:101
+msgid ""
+"Save the returned `deploy_hash` from the output to query information about "
+"the delegation deploy later."
+msgstr ""
+"Lưu `deploy_hash` trả về từ đầu ra để truy vấn thông tin về triển khai ủy "
+"quyền sau này."
+
+#: ../../workflow/delegate.rst:103
+msgid ""
+"Refer to the `Deploy Status <querying.html#deploy-status>`_ section to learn"
+" how to confirm that your deploy was executed successfully."
+msgstr ""
+"Tham khảo phần `Trạng thái triển khai  <querying.html#deploy-status>`_ để "
+"tìm hiểu cách xác nhận rằng triển khai của bạn đã được thực hiện thành công."
+
+#: ../../workflow/delegate.rst:106
+msgid "Confirming the Delegation"
+msgstr "Xác nhận Uỷ quyền"
+
+#: ../../workflow/delegate.rst:108
+msgid ""
+"A Casper Network maintains an `auction` where validators `bid` on slots to "
+"become part of the active validator set. Delegation rewards are only earned "
+"for a validator who has won the auction and is part of the active set. Thus "
+"to ensure the delegated tokens can earn rewards, we must first check that:"
+msgstr ""
+"Mạng Casper duy trì một phiên đấu giá (`auction`) trong đó nhà xác thực đặt "
+"giá thầu (`bid`) trên các vị trí để trở thành một phần của nhóm nhà xác thực"
+" đang hoạt động. Phần thưởng ủy quyền chỉ kiếm được cho người xác thực đã "
+"thắng cuộc đấu giá và là một phần của nhóm hoạt động. Do đó, để đảm bảo các "
+"token được ủy quyền có thể kiếm được phần thưởng, trước tiên chúng ta phải "
+"kiểm tra rằng:"
+
+#: ../../workflow/delegate.rst:110
+msgid "Our delegation is part of the `bid` to the `auction`"
+msgstr ""
+"Uỷ quyền của chúng ta là một phần của giá thầu (`bid`) cho phiên đấu giá "
+"(`aution`)"
+
+#: ../../workflow/delegate.rst:111
+msgid "The validator is part of the `active` validator set"
+msgstr "Nhà xác thực là một phần của nhóm nhà xác thực hoạt động (`active``)"
+
+#: ../../workflow/delegate.rst:113
+msgid ""
+"Once the deploy has been executed, we can query the auction for information "
+"to confirm our delegation. We can use the Casper command-line client to "
+"create an RPC request with the following query:"
+msgstr ""
+"Khi việc triển khai đã được thực hiện, chúng ta có thể truy vấn phiên đấu "
+"giá để biết thông tin nhằm xác nhận ủy quyền của chúng ta. Chúng ta có thể "
+"sử dụng dòng lệnh trên Casper client để tạo một yêu cầu RPC với truy vấn "
+"sau:"
+
+#: ../../workflow/delegate.rst:120 ../../workflow/delegate.rst:172
+msgid "**Request fields**:"
+msgstr "**Các trường yêu cầu**:"
+
+#: ../../workflow/delegate.rst:125
+msgid ""
+"The ``get-auction-info`` call will return all the bids currently in the "
+"auction contract and the list of active validators for ``4`` future eras "
+"from the present era."
+msgstr ""
+"Lệnh gọi ``get-auction-info`` sẽ trả về tất cả các giá thầu hiện có trong "
+"hợp đồng đấu giá và danh sách các nhà xác thực đang hoạt động cho kỷ nguyên "
+"tương lai ``4`` từ hiện tại."
+
+#: ../../workflow/delegate.rst:127
+msgid "Below is a sample output:"
+msgstr "Dưới đây là đầu ra mẫu:"
+
+#: ../../workflow/delegate.rst:157
+msgid ""
+"If your public key and associated amount appear in the ``bid`` data "
+"structure, this means that the delegation request has been processed "
+"successfully. However, this does not mean the associated validator is part "
+"of the validator set, so you need to check the validator status."
+msgstr ""
+"Nếu khóa công khai và số tiền liên quan của bạn xuất hiện trong cấu trúc dữ "
+"liệu ``bid``, điều này có nghĩa là yêu cầu ủy quyền đã được xử lý thành "
+"công. Tuy nhiên, điều này không có nghĩa là nhà xác thực được liên kết là "
+"một phần của nhóm nhà xác thực, vì vậy bạn cần kiểm tra trạng thái của nhà "
+"xác thực."
+
+#: ../../workflow/delegate.rst:161
+msgid "Checking Validator Status"
+msgstr "Kiểm tra Trạng thái nhà xác thực"
+
+#: ../../workflow/delegate.rst:163
+msgid ""
+"The auction maintains a field called ``era_validators``, which contains the "
+"validator information for 4 future eras from the current era. An entry for a"
+" specific era lists the ``PublicKeys`` of the active validators for that era"
+" along with their stake in the network."
+msgstr ""
+"Phiên đấu giá duy trì một trường có tên là ``era_validators``,, chứa thông "
+"tin về nhà xác thực cho 4 kỷ nguyên trong tương lai từ kỷ nguyên hiện tại. "
+"Mục nhập cho một kỷ nguyên cụ thể liệt kê ``PublicKeys`` của các nhà xác "
+"thực đang hoạt động cho kỷ nguyên đó cùng với cổ phần của họ trong mạng."
+
+#: ../../workflow/delegate.rst:165
+msgid ""
+"If a validator is part of the set, its public key will be present in the "
+"``era_validators`` field as part of the ``Auction`` data structure. We can "
+"use the Casper command-line client to create an RPC request to obtain "
+"auction information and assert that the selected validator is part of the "
+"active validator set."
+msgstr ""
+"Nếu nhà xác thực là một phần của nhóm, khóa công khai của nó sẽ xuất hiện "
+"trong trường ``era_validators`` như một phần của cấu trúc dữ liệu "
+"``Auction`` Chúng ta có thể sử dụng dòng lệnh trên Casper client để tạo một "
+"yêu cầu RPC nhằm lấy thông tin đấu giá và khẳng định rằng nhà xác thực đã "
+"chọn là một phần của nhóm nhà xác thực đang hoạt động."
+
+#: ../../workflow/delegate.rst:176
+msgid "**Important Response fields**:"
+msgstr "**Các trường phản hồi quan trọng**:"
+
+#: ../../workflow/delegate.rst:178
+msgid ""
+"In the response, check the ``\"auction_state\".\"era_validators\"`` "
+"structure, which should contain the public key of the selected validator for"
+" the era in which the validator will be active."
+msgstr ""
+"Trong phần trả về, hãy kiểm tra cấu trúc "
+"``\"auction_state\".\"era_validators\"``, cấu trúc này phải chứa khóa công "
+"khai của nhà xác thực đã chọn cho thời đại mà nhà xác thực sẽ hoạt động."
+
+#: ../../workflow/delegate.rst:180
+msgid "Below is an example of the ``era_validators`` structure:"
+msgstr "Dưới đây là ví dụ về cấu trúc ``era_validators``:"
+
+#: ../../workflow/delegate.rst:213
+msgid ""
+"In the above example, we see the public keys of the active validators in Era"
+" ``9``."
+msgstr ""
+"Trong ví dụ trên, chúng ta thấy các khóa công khai của nhà xác thực đang "
+"hoạt động trong Kỷ nguyên ``9``."
+
+#: ../../workflow/delegate.rst:215
+msgid ""
+"**Note**: Validators earn delegation rewards only when they are part of the "
+"active set. This information is time-sensitive; therefore, a validator "
+"selected today may not be part of the set tomorrow. Keep this in mind when "
+"creating a delegation request."
+msgstr ""
+"**Lưu ý**: Người xác thực chỉ kiếm được phần thưởng ủy quyền khi họ là một "
+"phần của nhóm hoạt động. Thông tin này nhạy cảm về thời gian; do đó, một "
+"trình xác thực được chọn hôm nay có thể không phải là một phần của nhóm vào "
+"ngày mai. Hãy ghi nhớ điều này khi tạo một yêu cầu ủy quyền."
