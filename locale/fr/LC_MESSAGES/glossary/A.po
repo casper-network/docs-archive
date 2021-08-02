@@ -150,7 +150,7 @@ msgstr ""
 
 #: ../../glossary/A.rst:13
 msgid "Auction"
-msgstr "Enchère"
+msgstr "Auction : Enchère"
 
 #: ../../glossary/A.rst:14
 msgid ""
@@ -170,7 +170,7 @@ msgstr ""
 
 #: ../../glossary/A.rst:17
 msgid "Auction contract"
-msgstr "Contrat d'enchère"
+msgstr "Auction contract : Contrat d'enchère"
 
 #: ../../glossary/A.rst:18
 msgid ""
@@ -185,7 +185,7 @@ msgstr ""
 
 #: ../../glossary/A.rst:21
 msgid "Auction delay"
-msgstr "Délai d'enchère"
+msgstr "Auction delay : Délai d'enchère"
 
 #: ../../glossary/A.rst:22
 msgid ""
