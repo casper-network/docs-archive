@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../theory/index.rst:54
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../theory/index.rst:5
+msgid "Theory"
+msgstr "Lý thuyết"
+
+#: ../../theory/index.rst:7
+msgid ""
+"This is version 3.0 of technical specification and it corresponds to April "
+"2020 release of our platform (\"Alpha Testnet\")."
+msgstr ""
+"Đây là phiên bản 3.0 và đặc điểm kỹ thuật của nó tương ứng với bản phát hành"
+" vào tháng 4 năm 2020 của nền tảng của chúng tôi (\"Alpha Testnet\")."
+
+#: ../../theory/index.rst:10
+msgid ""
+"To build a proof-of-stake blockchain, one must follow this general recipe:"
+msgstr ""
+"Để xây dựng một chuỗi khối bằng chứng cổ phần, người ta phải tuân theo công "
+"thức chung sau:"
+
+#: ../../theory/index.rst:12
+msgid ""
+"Pick the core consensus protocol (a machinery that allows to do distributed "
+"selection of one element from a finite set)."
+msgstr ""
+"Chọn giao thức đồng thuận cốt lõi (bằng máy móc cho phép thực hiện phân tán "
+"một phần tử từ một tập hợp hữu hạn)."
+
+#: ../../theory/index.rst:14
+msgid ""
+"Pick the model of transactions ledger (transactions and blocks structure "
+"show up here)."
+msgstr ""
+"Chọn mô hình sổ cái giao dịch (giao dịch và cấu trúc khối hiển thị tại đây)."
+
+#: ../../theory/index.rst:15
+msgid ""
+"Apply the core consensus to the ledger, i.e. establish consensus-based way "
+"of extending the ledger by blockchain participants. Ensure that liveness "
+"theorem can be proven for the resulting design."
+msgstr ""
+"Áp dụng sự đồng thuận cốt lõi cho sổ cái, tức là thiết lập cách thức mở rộng"
+" sổ cái dựa trên sự đồng thuận của những người tham gia chuỗi khối. Đảm bảo "
+"rằng có thể chứng minh lý thuyết về sự tồn tại của hệ thống cho thiết kế đã "
+"có."
+
+#: ../../theory/index.rst:17
+msgid "Plug-in stakes management solution."
+msgstr "Giải pháp quản lý cổ phần gắn vào (plug-in)."
+
+#: ../../theory/index.rst:18
+msgid ""
+"Plug-in the suitable computing model (i.e. smart contracts virtual machine)."
+msgstr "Gắn vào mô hình máy tính phù hợp (tức là máy ảo hợp đồng thông minh)."
+
+#: ../../theory/index.rst:20
+msgid ""
+"The \"Theory\" chapter explains how we approached steps (1) ... (4) in the "
+"abstract way, while implementation-level details are specified in "
+"\"CasperLabs Blockchain Design\" chapter. The outline of material presented "
+"is:"
+msgstr ""
+"Chương \"Lý thuyết\" giải thích cách chúng tôi tiếp cận các bước (1) ... (4)"
+" theo cách trừu tượng, trong khi chi tiết mức độ triển khai được nêu rõ "
+"trong chương \"Thiết kế chuỗi khối CasperLabs\". Đề cương của tài liệu được "
+"trình bày là:"
+
+#: ../../theory/index.rst:23
+msgid ""
+"**Abstract Casper Consensus** - presents the core consensus protocol we use;"
+" concepts such as estimator, finality and fault-tolerance threshold and "
+"summits are explained"
+msgstr ""
+"**Tóm tắt Đồng thuận của Casper** - trình bày giao thức đồng thuận cốt lõi "
+"mà chúng tôi sử dụng; giải thích khái niệm như công cụ ước tính, mức độ cuối"
+" cùng và ngưỡng chịu lỗi và các mức độ tối đa"
+
+#: ../../theory/index.rst:25
+msgid ""
+"**Brickdag** - introduces the transactions ledger structure - bricks, "
+"blocks, ballots, parents tree and justifications graph"
+msgstr ""
+"**Brickdag** - giới thiệu cấu trúc sổ cái giao dịch - cơ sở, khối, phiếu "
+"bầu, cây lớp trên và biểu đồ diễn giải"
+
+#: ../../theory/index.rst:27
+msgid ""
+"**Leaders and rounds** - explains the mechanics of \"Flat Highway\", i.e. "
+"when the set of validators is fixed"
+msgstr ""
+"**Các nhà lãnh đạo và các lượt** - giải thích cơ chế của \"Flat Highway\"\","
+" tức là khi nhóm các nhà xác thực được xác định trước"
+
+#: ../../theory/index.rst:28
+msgid ""
+"**Fork choice and finality** - applies the abstract Casper consensus to the "
+"brickdag"
+msgstr ""
+"**Chọn nhánh và phần sau cùng ** - áp dụng tóm tắt đồng thuận của Casper cho"
+" brickdag"
+
+#: ../../theory/index.rst:29
+msgid "**Eras** - describes how we do stake management in Highway"
+msgstr ""
+"**Eras** - mô tả cách chúng ta thực hiện quản lý cổ phần trong Highway"
+
+#: ../../theory/index.rst:30
+msgid ""
+"**Known limitations and features planned for ver 4.0** - sketches changes we"
+" anticipate to hit version 4.0 of this spec"
+msgstr ""
+"**Các giới hạn và tính năng đã biết được lên kế hoạch cho phiên bản 4.0** - "
+"các thay đổi phác thảo mà chúng tôi dự đoán sẽ đạt được trong phiên bản 4.0"
+
+#: ../../theory/index.rst:33
+msgid "Research trace"
+msgstr "Nghiên cứu truy vết"
+
+#: ../../theory/index.rst:35
+msgid ""
+"The consensus solution used in CasperLabs blockchain is a latest achievement"
+" of a research path that can be traced back to the 1980’s. Important "
+"milestones on this path are:"
+msgstr ""
+"Giải pháp đồng thuận được sử dụng trong chuỗi khối CasperLabs là thành tựu "
+"mới nhất của một lộ trình nghiên cứu có thể bắt nguồn từ những năm 1980. Các"
+" mốc quan trọng trên con đường này là:"
+
+#: ../../theory/index.rst:38
+msgid "1980: The problem of byzantine consensus defined (Lamport, Shostak)"
+msgstr "1980: Xác định vấn đề của sự đồng thuận byzantine (Lamport, Shostak)"
+
+#: ../../theory/index.rst:39
+msgid ""
+"1985: Impossibility of distributed consensus with one faulty process theorem"
+" (Fischer, Lynch, Paterson)"
+msgstr ""
+"1985: Không thể đạt được sự đồng thuận phân tán với một lý thuyết quy trình "
+"lỗi (Fischer, Lynch, Paterson)"
+
+#: ../../theory/index.rst:40
+msgid "1997: Proof-of-Work invented (Hashcash system)"
+msgstr "1997: Phát minh Proof-of-Work (Hệ thống Hashcash)"
+
+#: ../../theory/index.rst:41
+msgid ""
+"1999: “Practical Byzantine Fault Tolerance” (PBFT) algorithm (Castro, "
+"Liskov)"
+msgstr ""
+"1999: Thuật toán “Practical Byzantine Fault Tolerance” (PBFT) (Castro, "
+"Liskov)"
+
+#: ../../theory/index.rst:42
+msgid "2008: Bitcoin invented (Satoshi Nakamoto)"
+msgstr "2008: Phát minh ra Bitcoin (Satoshi Nakamoto)"
+
+#: ../../theory/index.rst:43
+msgid ""
+"2012: First proof-of-stake cryptocurrency system created (Peercoin system)"
+msgstr ""
+"2012: Hệ thống tiền điện tử bằng chứng cổ phần đầu tiên được tạo (hệ thống "
+"Peercoin)"
+
+#: ../../theory/index.rst:44
+msgid ""
+"2013: Ethereum invented - cryptocurrency idea generalized to a decentralized"
+" general-purpose computing platform (Vitalik Buterin)"
+msgstr ""
+"2013: Phát minh ra Ethereum - ý tưởng tiền điện tử được khái quát hóa thành "
+"một nền tảng máy tính có mục đích chung là phi tập trung (Vitalik Buterin)"
+
+#: ../../theory/index.rst:46
+msgid ""
+"2013: “Greedy Heaviest Observed Subtree” (GHOST) algorithm introduced "
+"(Sompolinsky, Zohar)"
+msgstr ""
+"2013: Giới thiệu thuật toán “Greedy Heaviest Observed Subtree” (GHOST) "
+"(Sompolinsky, Zohar)"
+
+#: ../../theory/index.rst:47
+msgid ""
+"2015: Blockchain idea extended to “block DAG” - “Inclusive Block Chain "
+"Protocols” (Lewenberg, Sompolinsky, Zohar)"
+msgstr ""
+"2015: Ý tưởng chuỗi khối được mở rộng thành “block DAG” - “Inclusive Block "
+"Chain Protocols” (Lewenberg, Sompolinsky, Zohar)"
+
+#: ../../theory/index.rst:48
+msgid ""
+"2017: First draft version of Casper protocol spec published (Ethereum "
+"research group, Vlad Zamfir)"
+msgstr ""
+"2017: Xuất bản phiên bản nháp đầu tiên của thông số kỹ thuật giao thức "
+"Casper (Nhóm nghiên cứu Ethereum, Vlad Zamfir)"
+
+#: ../../theory/index.rst:49
+msgid ""
+"Jul 2018: First implementation of proof-of-stake blockchain built on Casper-"
+"GHOST-Blockdag combination attempted"
+msgstr ""
+"Tháng 6 năm 2018: Đã thử triển khai lần đầu tiên chuỗi khối bằng chứng cổ "
+"phần được xây dựng trên tổ hợp Casper-GHOST-Blockdag"
+
+#: ../../theory/index.rst:50
+msgid ""
+"Dec 2018: CBC Casper protocol 1.0 specification (Ethereum research group, "
+"Vlad Zamfir)"
+msgstr ""
+"Tháng 12 năm 2018: Đặc tả giao thức CBC Casper 1.0 (Nhóm nghiên cứu "
+"Ethereum, Vlad Zamfir)"
+
+#: ../../theory/index.rst:51
+msgid "Sep 2019: Highway Protocol (Daniel Kane, Vlad Zamfir, Andreas Fackler)"
+msgstr ""
+"Tháng 9 năm 2019: Giao thức Highway (Daniel Kane, Vlad Zamfir, Andreas "
+"Fackler)"
