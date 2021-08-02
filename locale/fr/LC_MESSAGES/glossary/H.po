@@ -133,7 +133,7 @@ msgstr "`Z <Z.html>`_"
 
 #: ../../glossary/H.rst:9
 msgid "Highway"
-msgstr "Autoroute"
+msgstr "Highway : Autoroute"
 
 #: ../../glossary/H.rst:10
 msgid ""
