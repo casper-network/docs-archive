@@ -159,7 +159,7 @@ msgid ""
 "`block creation <B.html#block-creation>`_ and `block proposal <B.html#block-"
 "proposal>`_"
 msgstr ""
-"`création des blocs <B.html#block-creation>_ et `proposition des blocs "
+"`création des blocs <B.html#block-creation>`_ et `proposition des blocs "
 "<B.html#block-proposal>`_"
 
 #: ../../glossary/V.rst:15
