@@ -172,7 +172,7 @@ msgstr ""
 
 #: ../../implementation/p2p.rst:42
 msgid "Gossiping"
-msgstr "Gossiping"
+msgstr "Gossiping (bavardage)"
 
 #: ../../implementation/p2p.rst:44
 msgid ""
