@@ -133,7 +133,7 @@ msgstr "`Z <Z.html>`_"
 
 #: ../../glossary/L.rst:9
 msgid "Liveness"
-msgstr "Liveness"
+msgstr "Liveness : Vivacité"
 
 #: ../../glossary/L.rst:10
 msgid ""
