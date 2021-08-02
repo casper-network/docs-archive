@@ -145,7 +145,7 @@ msgstr ""
 
 #: ../../glossary/D.rst:13
 msgid "Delegation rate"
-msgstr "Taux de délégation"
+msgstr "Delegation rate : Taux de délégation"
 
 #: ../../glossary/D.rst:14
 msgid ""
@@ -188,9 +188,9 @@ msgid ""
 "only transfer tokens between accounts."
 msgstr ""
 "Tous les déploiements peuvent être catégorisés comme une unité de travail "
-"qui, lorsqu'elle est exécutée et validée, modifie l'état global (G.html"
-"#global-state). Les déploiements incluent des spécialisations telles que les"
-" transferts natifs, qui ne transfèrent que des jetons entre comptes."
+"qui, lorsqu'elle est exécutée et validée, modifie `l'état global <G.html"
+"#global-state>`_. Les déploiements incluent des spécialisations telles que "
+"les transferts natifs, qui ne transfèrent que des jetons entre comptes."
 
 #: ../../glossary/D.rst:24
 msgid ""
