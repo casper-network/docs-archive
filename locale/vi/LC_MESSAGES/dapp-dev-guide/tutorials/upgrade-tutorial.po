@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:6
+msgid "Smart Contract Upgrade Tutorial"
+msgstr "Hướng dẫn nâng cấp Hợp đồng Thông minh"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:8
+msgid ""
+"This tutorial shows you how to upgrade smart contracts. Casper contracts are"
+" upgradeable, making it easy for contract authors to add features and fix "
+"bugs in smart contracts."
+msgstr ""
+"Hướng dẫn này chỉ cho bạn cách nâng cấp hợp đồng thông minh. Hợp đồng Casper"
+" có thể nâng cấp, giúp các tác giả hợp đồng dễ dàng thêm các tính năng và "
+"sửa lỗi trong hợp đồng thông minh."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:10
+msgid ""
+"The process of upgrading a smart contract is simple. All you need is to "
+"deploy a new version of the contract and overwrite the old functions with "
+"new ones."
+msgstr ""
+"Quá trình nâng cấp hợp đồng thông minh rất đơn giản. Tất cả những gì bạn cần"
+" là triển khai một phiên bản mới của hợp đồng và ghi đè các chức năng cũ "
+"bằng các chức năng mới."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:12
+msgid "These are the essential steps you need to follow:"
+msgstr "Đây là những bước thiết yếu bạn cần làm theo:"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:14
+msgid "Deploy the contract with an *upgrade* function"
+msgstr "Triển khai hợp đồng với chức năng *upgrade*"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:15
+msgid "Add an entry point in the *call* function for the *upgrade* function"
+msgstr "Thêm điểm vào trong hàm *call* cho hàm *upgrade*"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:16
+msgid "Add the new features you desire"
+msgstr "Thêm các tính năng mới mà bạn mong muốn"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:18
+msgid ""
+"Here are specific examples of how to implement the upgrade functionality."
+msgstr "Dưới đây là các ví dụ cụ thể về cách triển khai chức năng nâng cấp."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:21
+msgid "Step 1. Deploy the contract with an 'upgrade' function"
+msgstr "Bước 1. Triển khai hợp đồng với hàm 'upgrade'"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:23
+msgid ""
+"When you first deploy the contract, you must include an *upgrade* function. "
+"Since the contract is immutable, you cannot add the *upgrade* function after"
+" deployment. Without the this function, you cannot upgrade the contract. In "
+"other words, you must include the *upgrade* function when you first deploy "
+"the contract."
+msgstr ""
+"Khi bạn triển khai hợp đồng lần đầu tiên, bạn phải đưa vào hàm *upgrade*. Vì"
+" hợp đồng là bất biến, bạn không thể thêm hàm *upgrade* sau khi triển khai. "
+"Nếu không có hàm này, bạn không thể nâng cấp hợp đồng. Nói cách khác, bạn "
+"phải đưa vào hàm *upgrade* khi bạn triển khai hợp đồng lần đầu tiên."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:25
+msgid ""
+"Start by creating an *upgrade* function in your contract similar to the "
+"following example."
+msgstr ""
+"Bắt đầu bằng cách tạo hàm *upgrade*  trong hợp đồng của bạn tương tự như ví "
+"dụ sau."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:41
+msgid "Step 2. Add an entry point in the 'call' function"
+msgstr "Bước 2. Thêm một điểm vào trong hàm 'gọi'"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:43
+msgid ""
+"Next, you need to add an entry point to the *upgrade* function in the *call*"
+" function. This enables the contract execution to invoke the *upgrade* "
+"function in the future."
+msgstr ""
+"Tiếp theo, bạn cần thêm điểm vào cho hàm *upgrade* trong hàm *call*. Điều "
+"này cho phép thực thi hợp đồng gọi hàm *upgrade* trong tương lai."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:73
+msgid "Step 3. Add new features"
+msgstr "Bước 3. Thêm các tính năng mới"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:75
+msgid ""
+"Now you are ready to upgrade your contract and add the new features and "
+"functions you desire."
+msgstr ""
+"Bây giờ bạn đã sẵn sàng nâng cấp hợp đồng của mình và thêm các tính năng và "
+"chức năng mới mà bạn mong muốn."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:100
+msgid ""
+"The `add_contract_version <https://docs.rs/casperlabs-"
+"contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_"
+" API will allow you to deploy a new version of your contract."
+msgstr ""
+"API `add_contract_version <https://docs.rs/casperlabs-"
+"contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_"
+" sẽ cho phép bạn triển khai phiên bản hợp đồng mới của mình."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:102
+msgid ""
+"Remember, it is essential to include the *upgrade* function and safeguard "
+"the access token when you first deploy the contract. You will need the "
+"access token for future upgrades."
+msgstr ""
+"Hãy nhớ rằng, điều cần thiết là phải đưa vào hàm *upgrade* và bảo vệ truy "
+"cập token khi bạn triển khai hợp đồng lần đầu tiên. Bạn sẽ cần truy cập "
+"token để nâng cấp trong tương lai."
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:105
+msgid "External links"
+msgstr "Liên kết ngoài"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:107
+msgid ""
+"`Sample upgrader <https://github.com/CasperLabs/casper-"
+"node/tree/master/smart_contracts/contracts/test/do-nothing-stored-"
+"upgrader>`_"
+msgstr ""
+"`Ví dụ cập nhật <https://github.com/CasperLabs/casper-"
+"node/tree/master/smart_contracts/contracts/test/do-nothing-stored-"
+"upgrader>`_"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:108
+msgid ""
+"`API details for add_contract_version <https://docs.rs/casperlabs-"
+"contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_"
+msgstr ""
+"`API chi tiết cho add_contract_version <https://docs.rs/casperlabs-"
+"contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:109
+msgid ""
+"`Other examples of smart contracts <https://github.com/CasperLabs/casper-"
+"node/tree/master/smart_contracts>`_"
+msgstr ""
+"`Ví dụ khác của hợp đồng thông minh <https://github.com/CasperLabs/casper-"
+"node/tree/master/smart_contracts>`_"
