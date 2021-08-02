@@ -61,7 +61,7 @@ msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/index.rst:20
 msgid "`Multi-signatures and key recovery <multi-sig/index.html>`_"
-msgstr "`Multi-signatures et récupération de clés <multi-sig/index.html> `_."
+msgstr "`Multi-signatures et récupération de clés <multi-sig/index.html>`_."
 
 #: ../../dapp-dev-guide/tutorials/index.rst:20
 msgid "Learn to sign transactions with multiple keys"
