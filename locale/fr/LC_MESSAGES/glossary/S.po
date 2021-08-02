@@ -133,7 +133,7 @@ msgstr "`Z <Z.html>`_"
 
 #: ../../glossary/S.rst:9
 msgid "Secret key"
-msgstr "Clé secrète"
+msgstr "Secret key : Clé secrète"
 
 #: ../../glossary/S.rst:10
 msgid ""
@@ -159,7 +159,7 @@ msgstr ""
 
 #: ../../glossary/S.rst:17
 msgid "Session code"
-msgstr "Code de session"
+msgstr "Session code : Code de session"
 
 #: ../../glossary/S.rst:18
 msgid ""
@@ -190,7 +190,7 @@ msgstr ""
 
 #: ../../glossary/S.rst:25
 msgid "Smart contract"
-msgstr "Contrat intelligent"
+msgstr "Smart contract : Contrat intelligent"
 
 #: ../../glossary/S.rst:26
 msgid ""
