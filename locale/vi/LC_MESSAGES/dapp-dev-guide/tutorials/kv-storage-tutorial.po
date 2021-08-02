@@ -1,0 +1,213 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:6
+msgid "Key Value Storage Tutorial"
+msgstr "Hướng dẫn lưu trữ giá trị khoá"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:8
+msgid ""
+"This tutorial covers a simple contract, which creates a key that stores a "
+"``CLType`` value. This example will show you how to store a *u64*, *string*,"
+" *account hash*, or *U512* value."
+msgstr ""
+"Hướng dẫn này bao gồm một hợp đồng đơn giản, tạo ra một khóa lưu trữ giá trị"
+" ``CLType``. Ví dụ này sẽ chỉ cho bạn cách lưu trữ giá trị *u64*, *string*, "
+"*account hash*, hoặc *U512* value."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:10
+msgid ""
+"The code is available in the `Casper Ecosystem GitHub <https://github.com"
+"/casper-ecosystem/kv-storage-contract>`_. Or, you can get started in `GitPod"
+" <https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-"
+"contract>`_."
+msgstr ""
+"Mã có sẵn trong `GitHub hệ sinh thái Casper <https://github.com/casper-"
+"ecosystem/kv-storage-contract>`_. Hoặc, bạn có thể bắt đầu trong `GitPod "
+"<https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-"
+"contract>`_."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:14
+msgid "The Contract"
+msgstr "Hợp đồng"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:16
+msgid ""
+"Let's start by understanding the structure of the contract itself. Here we "
+"create a contract and name it ``kvstorage_contract``. The contract package "
+"will be stored under this name on the blockchain. Since the key-value "
+"contract is slightly stateless, initialization is not required."
+msgstr ""
+"Hãy bắt đầu bằng cách hiểu cấu trúc của chính hợp đồng. Ở đây chúng tôi tạo "
+"một hợp đồng và đặt tên là ``kvstorage_contract``. Gói hợp đồng sẽ được lưu "
+"trữ dưới tên này trên chuỗi khối. Vì hợp đồng khóa-giá trị không có trạng "
+"thái nên không bắt buộc phải khởi tạo."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:138
+msgid "Testing the Contract"
+msgstr "Kiểm thử hợp đồng"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:140
+msgid ""
+"The CasperLabs Contracts SDK supports local testing of smart contracts. This"
+" tutorial will cover how to test the u64 key-value function. This can be "
+"easily adapted it for other types also."
+msgstr ""
+"CasperLabs Contracts SDK hỗ trợ thử nghiệm cục bộ các hợp đồng thông minh. "
+"Hướng dẫn này sẽ trình bày cách kiểm thử chức năng khóa-giá trị u64. Nó có "
+"thể dễ dàng điều chỉnh cho các loại khác."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:143
+msgid ""
+"In order to test the contract, the value must be stored, and the contract "
+"has to be deployed. Here is some sample code for these steps:"
+msgstr ""
+"Để kiểm thử hợp đồng, cần lưu trữ giá trị và triển khai hợp đồng. Đây là một"
+" số mã mẫu cho các bước sau:"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:198
+msgid "Write Unit Tests"
+msgstr "Viết kiểm thử đơn vị"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:200
+msgid ""
+"With these functions in place, it's possible to start writing tests for the "
+"contract."
+msgstr ""
+"Với các hàm này, bạn có thể bắt đầu viết các bài kiểm thử cho hợp đồng."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:231
+msgid "Running Locally"
+msgstr "Chạy cục bộ"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:233
+msgid ""
+"It's possible to run the unit tests locally- if you have set up the contract"
+" using `cargo-casperlabs <https://crates.io/cargo-casperlabs>`_. The steps "
+"to set up the SDK are in the guide."
+msgstr ""
+"Có thể chạy các bài kiểm thửu đơn vị cục bộ- nếu bạn đã thiết lập hợp đồng "
+"bằng cách sử dụng `cargo-casperlabs <https://crates.io/cargo-casperlabs>`_. "
+"Các bước để thiết lập SDK có trong hướng dẫn."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:241
+msgid "Deploying to the Testnet and Interacting with the Contract"
+msgstr "Triển khai với Testnet và Tương tác với Hợp đồng"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:243
+msgid ""
+"When working with the testnet, create an account in `CLarity "
+"<https://clarity.casperlabs.io>`_ and fund it using the faucet. Download the"
+" private key and use the key to sign the deployment. It's possible to create"
+" keys using the rust client as well."
+msgstr ""
+"Khi làm việc với testnet, hãy tạo một tài khoản trong `CLarity "
+"<https://clarity.casperlabs.io>`_ và nạp tiền cho nó qua chốt. Tải xuống "
+"khóa cá nhân và sử dụng khóa để ký triển khai. Cũng có thể tạo khóa bằng "
+"rust client"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:246
+msgid "Deploy the Contract"
+msgstr "Triển khai hợp đồng"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:248
+msgid ""
+"After the contract has been compiled, it's time to deploy the compiled wasm "
+"to the network. This action installs the contract in the blockchain. Once "
+"the contract is deployed, the client can retrieve the contract session hash "
+"as well as the blockhash where the contract is deployed."
+msgstr ""
+"Sau khi hợp đồng đã được biên dịch, đã đến lúc triển khai wasm đã biên dịch "
+"vào mạng. Hành động này cài đặt hợp đồng trong chuỗi khối. Sau khi hợp đồng "
+"được triển khai, khách hàng có thể truy xuất mã băm phiên hợp đồng cũng như "
+"blockhash nơi hợp đồng được triển khai."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:251
+msgid ""
+"```casper-client put-deploy --chain-name :raw-html-m2r:`<CHAIN-NAME>` "
+"--node-address http://\\ :raw-html-m2r:`<HOST>`\\ :\\ :raw-html-m2r:`<PORT>`"
+" --secret-key /home/keys/secretkey.pem --session-path  $HOME/kv-storage-"
+"contract/target/wasm32-unknown-unknown/release/contract.wasm  --payment-"
+"amount 1000000000000"
+msgstr ""
+"```casper-client put-deploy --chain-name :raw-html-m2r:`<CHAIN-NAME>` "
+"--node-address http://\\ :raw-html-m2r:`<HOST>`\\ :\\ :raw-html-m2r:`<PORT>`"
+" --secret-key /home/keys/secretkey.pem --session-path  $HOME/kv-storage-"
+"contract/target/wasm32-unknown-unknown/release/contract.wasm  --payment-"
+"amount 1000000000000"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:269
+msgid "If the deploy works, a response similar this will be returned:"
+msgstr ""
+"Nếu triển khai hoạt động, một phản hồi tương tự phản hồi này sẽ được trả "
+"lại:"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:276
+msgid "Query the Contract On Chain"
+msgstr "Truy vấn Hợp đồng trên chuỗi"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:278
+msgid ""
+"Contracts can be executed under different contexts. In this example, when "
+"the contract is deployed, it runs in the context of a ``Contract`` and not a"
+" ``Session``. This means that all stored keys are not stored under the "
+"account hash, but within the context of the contract. Therefore when we "
+"query to retrieve the value under a key, we are actually querying "
+"``AccountHash/kvstorage_contract/<key-name>`` and not just ``AccountHash"
+"/<key-name>``."
+msgstr ""
+"Hợp đồng có thể được thực hiện trong các ngữ cảnh khác nhau. Trong ví dụ "
+"này, khi hợp đồng được triển khai, nó chạy trong ngữ cảnh của "
+"``Contract``chứ không phải là ``Session``. Điều này có nghĩa là tất cả các "
+"khóa được lưu trữ không được lưu trữ dưới dạng băm tài khoản, mà trong ngữ "
+"cảnh của hợp đồng. Do đó, khi chúng ta truy vấn để truy xuất giá trị trong "
+"một khóa, chúng ta thực sự đang truy vấn ``AccountHash/kvstorage_contract"
+"/<key-name>`` chứ không chỉ ``AccountHash/<key-name>``."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:284
+msgid ""
+"You must first find the block hash for the block that contains your deploy. "
+"Once you have the requisite block hash, then you can use ``casper-client`` "
+"to retrieve the session hash"
+msgstr ""
+"Trước tiên, bạn phải tìm băm của khối chứa triển khai của bạn. Khi bạn có "
+"băm khối cần thiết, bạn có thể sử dụng ``casper-client`` để truy xuất phiên "
+"băm"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:287
+msgid ""
+"Reading a value is simple enough, we obtain the block hash under which the "
+"value, is stored, and then\\ :raw-html-m2r:`<br>` using that block hash, and"
+" the ``query-state`` command you can easily retrieve and value that was "
+"stored under a named key. Please reference the `Querying Section "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html>`_ for "
+"details. An example global state query looks like this:"
+msgstr ""
+"Đọc một giá trị đủ đơn giản, chúng tôi nhận được mã băm khối mà giá trị được"
+" lưu trữ, sau đó\\ :raw-html-m2r:`<br>`  bằng cách sử dụng hàm băm khối đó "
+"và lệnh ``query-state`` mà bạn có thể dễ dàng truy xuất và giá trị sẽ được "
+"lưu trữ dưới một khóa được đặt tên. Vui lòng tham khảo `Phần truy vấn "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html>`_ để "
+"biết chi tiết. Một mẫu truy vấn trạng thái toàn cục trông giống như sau:"
