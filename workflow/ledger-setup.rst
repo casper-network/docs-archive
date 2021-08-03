@@ -28,7 +28,7 @@ Install the Casper app on the Ledger device
 4. Find Casper in the app catalog.
 5. Click the Install button of the app.
 6. An installation window appears.
-7. Your device will display "Processing…"
+7. Your device will display **"Processing…"**
 8. The app installation is confirmed.
 
 Use Ledger device with your Web wallet
@@ -41,8 +41,8 @@ You can now use the Ledger device with Web wallet. Follow these steps:
 1. Connect and unlock your Ledger device.
 2. Open the Casper app on your Ledger device.
 3. Go to `cspr.live/sign-in <https://cspr.live/sign-in>`_.
-4. Click on the "Connect" button in the Ledger section.
-5. Click on the "Connect to Ledger wallet" button.
+4. Click on the **Connect** button in the Ledger section.
+5. Click on the **Connect to Ledger wallet** button.
 6. Select an account you want to use.
 7. Now, your Ledger device is connected to the web wallet.
 
@@ -54,7 +54,7 @@ View account details
 .. image:: ../assets/tutorials/ledger/flow/3-view-account.png
 |
 
-3. Click on the "View account" button.
+3. Click on the **View account** button.
 
 .. image:: ../assets/tutorials/ledger/flow/6-view-account-button.png
     :width: 350
@@ -71,8 +71,8 @@ View account balance
 ~~~~~~~~~~~~~~~~~~~~
 You can check your account balance from the Web wallet:
 
-1. Follow the steps described in the "View account details" section.
-2. On the "Liquid Account Balance" row, you will see your latest known account balance.
+1. Follow the steps described in the "View account details" section above.
+2. On the **Liquid Account Balance** row, you will see your latest known account balance.
 
 
 Receive tokens
@@ -80,20 +80,20 @@ Receive tokens
 To receive tokens, you need to provide the sender with the public key of your account. To find it:
 
 1. Open the account details page (see the "View account details" section).
-2. Copy the public key found on the "Public Key" row.
+2. Copy the public key found on the **Public Key** row.
 3. Alternatively, click on the drop-down menu on your account address.
 
 .. image:: ../assets/tutorials/ledger/flow/3-view-account.png
 |
 
-4. Click on the "Copy public key" button.
-5. Share the public key with the sender.
+1. Click on the **Copy public key** button.
+2. Share the public key with the sender.
 
 Send tokens
 ~~~~~~~~~~~
 1. Go to `cspr.live <https://cspr.live>`_.
 2. Sign in with your Ledger device.
-3. Click on "Wallet" and then "Transfer CSPR".
+3. Click on **Wallet** and then **Transfer CSPR**.
 
 .. image:: ../assets/tutorials/ledger/flow/5-transfer-wallet.png
 |
@@ -105,15 +105,15 @@ Send tokens
     :alt: Image showing the transfer details.
 |
 
-5. Click on the "Next" button.
-6. On the next page, click "Confirm and transfer".
+5. Click on the **Next** button.
+6. On the next page, click **Confirm and transfer**.
 
 .. image:: ../assets/tutorials/ledger/cspr-live/2-transfer-confirm.png
     :width: 500
     :alt: Image showing the confirmation page.
 |
 
-7. On the "Sign transaction" page, click on the "Sign with Ledger" button.
+1. On the **Sign transaction** page, click on the **Sign with Ledger** button.
 
 .. image:: ../assets/tutorials/ledger/cspr-live/3-transfer-sign.png
     :width: 500
