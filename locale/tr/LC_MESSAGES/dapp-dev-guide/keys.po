@@ -3,129 +3,162 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Furkan Ahmet KARA <furkanahmetkara.fk@gmail.com>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../dapp-dev-guide/keys.rst:2
 msgid "Working with Cryptographic Keys"
-msgstr ""
+msgstr "Şifreleme Anahtarlarıyla Birlikte Çalışmak"
 
 #: ../../dapp-dev-guide/keys.rst:4
 msgid ""
-"The Casper platform supports two types of signatures for creating "
-"accounts and signing transactions: ``secp256k1`` and ``ed25519``. You can"
-" generate keys using the Casper client in both formats. It is also "
-"possible to work with existing Ethereum keys."
+"The Casper platform supports two types of signatures for creating accounts "
+"and signing transactions: ``secp256k1`` and ``ed25519``. You can generate "
+"keys using the Casper client in both formats. It is also possible to work "
+"with existing Ethereum keys."
 msgstr ""
+"Casper platformu, hesap oluşturmak ve işlemleri imzalamak için iki tür "
+"imzayı destekler: ``secp256k1`` ve ``ed25519``. Casper istemcisini "
+"kullanarak her iki biçimde de anahtarlar oluşturabilirsiniz. Mevcut Ethereum"
+" anahtarları ile çalışmak da mümkündür."
 
 #: ../../dapp-dev-guide/keys.rst:7
 msgid "Key Generation"
-msgstr ""
+msgstr "Anahtar Üretimi"
 
 #: ../../dapp-dev-guide/keys.rst:10
 msgid "Ethereum Keys"
-msgstr ""
+msgstr "Ethereum Anahtarları"
 
 #: ../../dapp-dev-guide/keys.rst:11
 msgid ""
-"To create ``secp256k1`` keys, commonly known as Ethereum keys, follow "
-"these steps:"
+"To create ``secp256k1`` keys, commonly known as Ethereum keys, follow these "
+"steps:"
 msgstr ""
+"Genellikle Ethereum anahtarları olarak bilinen ``secp256k1`` anahtarlarını "
+"oluşturmak için şu adımları izleyin:"
 
 #: ../../dapp-dev-guide/keys.rst:26
 msgid ""
 "Looking at the public-key-hex file, we see that ``secp256k1`` public hex "
 "keys start with `02` in Casper:"
 msgstr ""
+"public-key-hex dosyasına bakarak, Casper'da ``secp256k1`` genel hex "
+"anahtarlarının `02` ile başladığını görürüz:"
 
 #: ../../dapp-dev-guide/keys.rst:35
 msgid "EdDSA Keys"
-msgstr ""
+msgstr "EdDSA Anahtarları"
 
 #: ../../dapp-dev-guide/keys.rst:36
 msgid ""
-"It is also possible to create ``ed25519`` keys, which use the Edwards-"
-"curve Digital Signature Algorithm (EdDSA). To generate EdDSA keys, follow"
-" these steps:"
+"It is also possible to create ``ed25519`` keys, which use the Edwards-curve "
+"Digital Signature Algorithm (EdDSA). To generate EdDSA keys, follow these "
+"steps:"
 msgstr ""
+"Edwards eğrisi Dijital İmza Algoritmasını (EdDSA) kullanan ``ed25519`` "
+"anahtarları oluşturmak da mümkündür. EdDSA anahtarları oluşturmak için şu "
+"adımları izleyin:"
 
 #: ../../dapp-dev-guide/keys.rst:51
 msgid ""
-"Looking at the public-key-hex file, we see that keys of this type are "
-"pre-pended with `01`:"
+"Looking at the public-key-hex file, we see that keys of this type are pre-"
+"pended with `01`:"
 msgstr ""
+"public-key-hex dosyasına bakarak, bu tür anahtarların başlarına `01` "
+"eklendiğini görürüz:"
 
 #: ../../dapp-dev-guide/keys.rst:60
 msgid "Working with Existing Ethereum Keys"
-msgstr ""
+msgstr "Mevcut Ethereum Anahtarlarıyla Çalışmak"
 
 #: ../../dapp-dev-guide/keys.rst:62
 msgid ""
 "It is also possible to use existing Ethereum keys in Casper. Here is an "
 "example set of Ethereum keys and their corresponding address:"
 msgstr ""
+"Casper'da mevcut Ethereum anahtarlarını kullanmak da mümkündür. İşte örnek "
+"bir Ethereum anahtarları seti ve bunlara karşılık gelen adres:"
 
 #: ../../dapp-dev-guide/keys.rst:70
 msgid ""
-"To use existing Ethereum keys, the Casper VM  needs to know that the key "
-"is a ``secp256k1`` type."
+"To use existing Ethereum keys, the Casper VM  needs to know that the key is "
+"a ``secp256k1`` type."
 msgstr ""
+"Mevcut Ethereum anahtarlarını kullanmak için Casper VM'nin anahtarın "
+"``secp256k1`` türünde olduğunu bilmesi gerekir."
 
 #: ../../dapp-dev-guide/keys.rst:72
 msgid ""
-"The Rust `casper-client` provides an example of how this works. Pre-"
-"pending the public key with a `02` indicates the key is a ``secp256k1`` "
-"key."
+"The Rust `casper-client` provides an example of how this works. Pre-pending "
+"the public key with a `02` indicates the key is a ``secp256k1`` key."
 msgstr ""
+"Rust `casper-client` bunun nasıl çalıştığına dair bir örnek sağlar. Genel "
+"anahtarın başına `02` eklenmesi, anahtarın ``secp256k1`` anahtarı olduğunu "
+"gösterir."
 
 #: ../../dapp-dev-guide/keys.rst:74
 msgid "**Example**:"
-msgstr ""
+msgstr "**Örnek**:"
 
 #: ../../dapp-dev-guide/keys.rst:76
 msgid "The following transaction sends 100 CSPR."
-msgstr ""
+msgstr "Aşağıdaki işlem 100 CSPR gönderir."
 
 #: ../../dapp-dev-guide/keys.rst:82
 msgid ""
-"The Rust `casper-client` requires the secret key to be in `PEM` format to"
-" send a transaction from this account. If you want to use existing "
-"Ethereum keys with the Rust client, a conversion to `PEM` format is "
-"needed."
+"The Rust `casper-client` requires the secret key to be in `PEM` format to "
+"send a transaction from this account. If you want to use existing Ethereum "
+"keys with the Rust client, a conversion to `PEM` format is needed."
 msgstr ""
+"Rust  `casper-client`, bu hesaptan bir işlem göndermek için gizli anahtarın "
+"`PEM` biçiminde olmasını gerektirir. Rust istemcisi ile birlikte mevcut "
+"Ethereum anahtarlarını kullanmak istiyorsanız, `PEM` formatına dönüştürme "
+"gereklidir."
 
 #: ../../dapp-dev-guide/keys.rst:84
 msgid ""
-"The following example is a JS script that generates a `PEM` file, using "
-"`key encoder <https://github.com/blockstack/key-encoder-js>`_ and "
-"node.js. To install these components, do the following:"
+"The following example is a JS script that generates a `PEM` file, using `key"
+" encoder <https://github.com/blockstack/key-encoder-js>`_ and node.js. To "
+"install these components, do the following:"
 msgstr ""
+"Aşağıdaki örnek, `anahtar kodlayıcı <https://github.com/blockstack/key-"
+"encoder-js>`_ ve node.js kullanarak bir `PEM`dosyası oluşturan bir JS "
+"betiğidir. Bu bileşenleri yüklemek için aşağıdakileri yapın:"
 
 #: ../../dapp-dev-guide/keys.rst:92
 msgid ""
 "Then create the JS script ``convert-to-pem.js`` using `vi` or `nano` and "
 "include this content:"
 msgstr ""
+"Ardından, `vi` veya `nano` kullanarak  ``convert-to-pem.js`` JS betiğini "
+"oluşturun ve şu içeriği ekleyin:"
 
 #: ../../dapp-dev-guide/keys.rst:102
 msgid ""
-"Then run the script using node.js. Name the secret key something "
-"different."
+"Then run the script using node.js. Name the secret key something different."
 msgstr ""
+"Ardından betiği node.js kullanarak çalıştırın.  Gizli anahtara farklı bir ad"
+" verin."
 
 #: ../../dapp-dev-guide/keys.rst:108
 msgid "To view the secret key, use `cat`:"
-msgstr ""
-
+msgstr "Gizli anahtarı görüntülemek için `cat` kullanın:"
