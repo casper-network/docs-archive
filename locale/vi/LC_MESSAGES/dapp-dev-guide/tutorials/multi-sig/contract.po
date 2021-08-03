@@ -1,0 +1,226 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:2
+msgid "Contract Example"
+msgstr "Ví dụ về hợp đồng"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:4
+msgid "This section covers an example smart contract used for key management."
+msgstr ""
+"Phần này bao gồm một hợp đồng thông minh mẫu được sử dụng để quản lý khóa."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:7
+msgid "Implementing the Smart Contract"
+msgstr "Triển khai Hợp đồng thông minh"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:9
+msgid ""
+"First, download `the example contract and client <https://github.com/casper-"
+"ecosystem/keys-manager>`_ for key management."
+msgstr ""
+"Đầu tiên, hãy tải xuống `hợp đồng mẫu và ứng dụng client <https://github.com"
+"/casper-ecosystem/keys-manager>`_ để quản lý khóa."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:15
+msgid ""
+"The smart contract above can help you manage your account. You can add keys "
+"and remove keys from your account, define weights for each key, and set "
+"thresholds for key management and network deployments."
+msgstr ""
+"Hợp đồng thông minh ở trên có thể giúp bạn quản lý tài khoản của mình. Bạn "
+"có thể thêm khóa và xóa khóa khỏi tài khoản của mình, xác định trọng số cho "
+"từng khóa và đặt ngưỡng cho quản lý khóa và triển khai mạng."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:17
+msgid ""
+"You could also refer to this smart contract as the `account code`. Note that"
+" once you deploy this smart contract, you cannot change it. As a result, you"
+" can rely on its behavior and state as if it were a binding agreement."
+msgstr ""
+"Bạn cũng có thể gọi hợp đồng thông minh này là `mã tài khoản`. Lưu ý rằng "
+"khi bạn triển khai hợp đồng thông minh này, bạn không thể thay đổi nó. Do "
+"đó, bạn có thể dựa vào hành vi và trạng thái của nó như thể đó là một thỏa "
+"thuận ràng buộc."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:19
+msgid ""
+"The account code execution starts in ``main.rs``, where the ``call`` "
+"function calls the ``execute`` function.  This code is similar to a script "
+"that executes and implements your account behavior. Remember that when you "
+"send a contract (WASM file) to the network, the contract execution engine "
+"will invoke the ``call`` function. You will find the details of the "
+"``execute`` function in ``lib.rs``, which defines the smart contract "
+"behavior and its functions."
+msgstr ""
+"Quá trình thực thi mã tài khoản bắt đầu trong ``main.rs``, trong đó hàm "
+"``call`` gọi hàm ``execute`` . Mã này tương tự như script thực thi và triển "
+"khai hoạt động tài khoản của bạn. Hãy nhớ rằng khi bạn gửi một hợp đồng (tệp"
+" WASM) đến mạng, công cụ thực thi hợp đồng sẽ gọi hàm ``call``. Bạn sẽ tìm "
+"thấy chi tiết về hàm ``execute``  trong ``lib.rs`` mà xác định hành vi hợp "
+"đồng thông minh và các chức năng của nó."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:23
+msgid "Function"
+msgstr "Hàm"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:23
+msgid "Description"
+msgstr "Mô tả"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:25
+msgid "execute"
+msgstr "execute"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:25
+msgid "Read arguments and set key weights and action thresholds."
+msgstr "Đọc các đối số, đặt các trọng số và ngưỡng hành động chính."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:26
+msgid "set_key_weight"
+msgstr "set_key_weight"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:26
+msgid "Set a weight for a specific key."
+msgstr "Đặt trọng lượng cho một khóa cụ thể."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:27
+msgid "add_or_update_key"
+msgstr "add_or_update_key"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:27
+msgid "Add or update a key, given the key and the weight."
+msgstr "Thêm hoặc cập nhật một khóa mà đã có khóa và trọng số."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:28
+msgid "add_key"
+msgstr "add_key"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:28
+msgid "Add a specific key."
+msgstr "Thêm một khóa cụ thể."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:29
+msgid "remove_key_if_exists"
+msgstr "remove_key_if_exists"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:29
+msgid "Remove a key if it exists."
+msgstr "Xóa bỏ khóa nếu nó tồn tại."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:30
+msgid "set_threshold"
+msgstr "set_threshold"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:30
+msgid ""
+"Set the threshold for key management and deployments, given the permission "
+"level and associated weight."
+msgstr ""
+"Đặt ngưỡng cho việc triển khai và quản lý khóa, dựa trên cấp độ quyền và "
+"trọng số liên quan."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:33
+msgid ""
+"You will find a construct to handle the contract arguments in ``api.rs``. "
+"Also, possible errors can arise and are defined in ``errors.rs``. You will "
+"see that ``lib.rs`` uses both of these libraries:"
+msgstr ""
+"Bạn sẽ tìm thấy một cấu trúc để xử lý các đối số hợp đồng trong ``api.rs``. "
+"Ngoài ra, có các lỗi có thể phát sinh và sẽ được định nghĩa trong "
+"``errors.rs``. Bạn sẽ thấy rằng ``lib.rs`` sử dụng cả hai thư viện này:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:41
+msgid ""
+"In the next section, you will build and prepare the smart contract for "
+"deployment."
+msgstr ""
+"Trong phần tiếp theo, bạn sẽ xây dựng và chuẩn bị hợp đồng thông minh để "
+"triển khai."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:44
+msgid "Building the Smart Contract"
+msgstr "Xây dựng Hợp đồng thông minh"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:46
+msgid ""
+"Before building the smart contract for this tutorial, you need to install "
+"the `Rust Contract SDK <https://docs.casperlabs.io/en/latest/dapp-dev-guide"
+"/setup-of-rust-contract-sdk.html>`_. Make sure you have the `development "
+"environment set up <https://docs.casperlabs.io/en/latest/dapp-dev-guide"
+"/setup-of-rust-contract-sdk.html#development-environment-setup>`_ before "
+"proceeding."
+msgstr ""
+"Trước khi xây dựng hợp đồng thông minh theo hướng dẫn này, bạn cần cài đặt "
+"`Rust Contract SDK <https://docs.casperlabs.io/en/latest/dapp-dev-guide"
+"/setup-of-rust-contract-sdk.html>`_. Đảm bảo rằng bạn đã `thiết lập môi "
+"trường phát triển <https://docs.casperlabs.io/en/latest/dapp-dev-guide"
+"/setup-of-rust-contract-sdk.html#development-environment-setup>`_ trước khi "
+"tiến hành."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:48
+msgid ""
+"Navigate to the ``keys-manager`` folder and set up the WASM compilation Rust"
+" toolchain, which will give you access to all the tools needed for "
+"developing smart contracts."
+msgstr ""
+"Chuyển đến thư mục ``keys-manager`` và thiết lập chuỗi công cụ Rust biên "
+"dịch WASM, sẽ cung cấp cho bạn quyền truy cập vào tất cả các công cụ cần "
+"thiết để phát triển hợp đồng thông minh."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:56
+msgid ""
+"Next, open the ``contract`` folder and notice that it contains a "
+"``Cargo.toml`` file, which defines a smart contract called ``keys-manager``."
+" The ``cargo build`` command will invoke this file to generate the "
+"corresponding WASM file."
+msgstr ""
+"Tiếp theo, mở thư mục ``contract`` và sẽ thấy nó chứa tệp ``Cargo.toml`` để "
+"định nghĩa một hợp đồng thông minh được gọi là ``keys-manager``. Lệnh "
+"``cargo build`` sẽ gọi tệp này để tạo tệp WASM tương ứng."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:58
+msgid ""
+"Compile the smart contract and create the WASM file using these commands:"
+msgstr "Biên dịch hợp đồng thông minh và tạo tệp WASM bằng các lệnh sau:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:65
+msgid ""
+"If the command were successful, you would find a ``keys-manager.wasm`` file "
+"in the following directory structure:"
+msgstr ""
+"Nếu lệnh thành công, bạn sẽ thấy tệp  ``keys-manager.wasm`` trong cấu trúc "
+"thư mục sau:"
+
+msgid "The contract directory structure contains a keys-manager-wasm file."
+msgstr "Cấu trúc thư mục hợp đồng chứa một tệp key-manager-wasm."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:73
+msgid ""
+"Next, we will review the sample client that invokes this contract to setup "
+"the account and perform key management."
+msgstr ""
+"Tiếp theo, chúng tôi sẽ xem mẫu client gọi hợp đồng này để thiết lập tài "
+"khoản và thực hiện quản lý khóa."
