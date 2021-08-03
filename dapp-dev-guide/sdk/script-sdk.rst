@@ -127,6 +127,7 @@ The ``sendTransfer`` function below will return a ``transfer-hash`` which you ca
     let deployParams = new DeployUtil.DeployParams(
         signKeyPair.publicKey,
         networkName,
+        gasPrice,
         ttl
     );
 
