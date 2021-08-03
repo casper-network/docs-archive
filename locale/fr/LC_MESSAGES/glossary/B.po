@@ -173,7 +173,7 @@ msgstr ""
 
 #: ../../glossary/B.rst:20
 msgid "Block creation"
-msgstr "Création de blocs"
+msgstr "Block creation : Création de blocs"
 
 #: ../../glossary/B.rst:21
 msgid ""
