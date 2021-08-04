@@ -364,8 +364,6 @@ The stake undelegation initiates as soon as the corresponding deploy is signed. 
 Conclusion
 ^^^^^^^^^^
 
-You are done! Congratulations!
-
 By staking your tokens, you help secure the network and earn rewards in return. Thank you for your trust and participation!
 
 You can find additional information on the `docs.cspr.community <https://docs.cspr.community/>`_ website.
