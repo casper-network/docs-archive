@@ -50,7 +50,7 @@ msgid ""
 " query data from the network"
 msgstr ""
 "Vous connaissez la structure du `Global State and the Blockchain Design "
-"<https://docs.casperlabs.io/en/latest/implementation/index.html>`_ pour "
+"<https://docs.casperlabs.io/fr/latest/implementation/index.html>`_ pour "
 "interroger les données du réseau."
 
 #: ../../workflow/querying.rst:12
@@ -144,7 +144,7 @@ msgid ""
 "command:"
 msgstr ""
 "`Les comptes "
-"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ sont "
+"<https://docs.casperlabs.io/fr/latest/implementation/accounts.html>`_ sont "
 "stockés dans l'état global et peuvent être interrogés à l'aide de la "
 "commande ``query-state`` :"
 
