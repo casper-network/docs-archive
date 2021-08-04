@@ -67,7 +67,7 @@ msgid ""
 "contracts.html>`_ to a Casper Network"
 msgstr ""
 "Vous avez précédemment `déployé un contrat intelligent "
-"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"<https://docs.casperlabs.io/fr/latest/dapp-dev-guide/deploying-"
 "contracts.html>`_ sur un Réseau Casper"
 
 #: ../../workflow/delegate.rst:17
@@ -93,7 +93,7 @@ msgid ""
 msgstr ""
 "Pour construire (build) des contrats, configurez Rust, et installez toutes "
 "les dépendances. Consultez `Setting up Rust "
-"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"<https://docs.casperlabs.io/fr/latest/dapp-dev-guide/setup-of-rust-contract-"
 "sdk.html>`_ dans le Guide du développeur pour les instructions détaillées."
 
 #: ../../workflow/delegate.rst:23
