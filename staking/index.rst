@@ -65,4 +65,5 @@ Next Steps
 .. toctree::
    :maxdepth: 2
 
+   ../workflow/staking.rst
    ../workflow/delegate.rst
