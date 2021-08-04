@@ -46,7 +46,7 @@ msgid ""
 "sdk.html>`_."
 msgstr ""
 "Si ce message ne s'affiche pas, vérifier `the Getting Started guide "
-"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"<https://docs.casperlabs.io/fr/latest/dapp-dev-guide/setup-of-rust-contract-"
 "sdk.html>`_."
 
 #: ../../dapp-dev-guide/tutorials/erc20/prepare.rst:27
