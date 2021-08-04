@@ -46,7 +46,7 @@ msgstr ""
 "<https://github.com/CasperLabs/highway>`_. Avoir une unité de valeur est "
 "nécessaire pour faire fonctionner ce système car les utilisateurs doivent "
 "payer pour le calcul, et les validateurs doivent avoir un `stake "
-"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ pour participer "
+"<https://docs.casperlabs.io/fr/latest/staking/index.html>`_ pour participer "
 "à l'enchère (to bond). Dans l'espace blockchain, cette unité de valeur est "
 "un *jeton*."
 
