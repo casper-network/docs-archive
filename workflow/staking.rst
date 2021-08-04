@@ -9,7 +9,7 @@ This video guide covers the process at a high level, but we recommend following 
 
 .. raw:: html 
 
-   <iframe width="560" height="315" src="https://www.youtube.com/embed?v=4C7L5lS284c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/4C7L5lS284c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 |
 
 **Staking**
@@ -76,9 +76,8 @@ If you are using the CasperLabs Signer for the first time, follow these steps to
 5. **IMPORTANT: Download the key files for this account!** Click the hamburger icon and select the **Download Active Key** option.
 
 .. image:: ../assets/tutorials/staking/3.2.5.1.png
-|
-
-.. image:: ../assets/tutorials/staking/3.2.5.2.png
+    :width: 200
+    :align: center 
 |
 
 6. Check that your browser downloaded the following three files:
@@ -90,6 +89,8 @@ If you are using the CasperLabs Signer for the first time, follow these steps to
 If you do not have these three files, you need to enable multiple downloads in your browser. It is crucial to proceed to the next step only if you have all of these files. This screenshot shows the files downloaded for an account called *My-CSPR*:
 
 .. image:: ../assets/tutorials/staking/3.2.6.1.png
+    :width: 300
+    :align: center 
 |
 
 7. **IMPORTANT: Move these files to a secure OFFLINE location!** Do not store them on any device with a wifi connection. We recommend an offline USB or hard drive. Consider backing up these files in multiple locations in case one location becomes compromised.
@@ -106,6 +107,8 @@ If you already have your secret keys and would like to set up and use your walle
 4. Repeat these steps for all the accounts you would like to import into your wallet.
 
 .. image:: ../assets/tutorials/staking/3.3.4.1.png
+    :width: 200
+    :align: center 
 |
 
 Now that you have your CasperLabs Signer wallet, you can continue to connect to the mainnet blockchain.
@@ -115,11 +118,15 @@ Now that you have your CasperLabs Signer wallet, you can continue to connect to 
 Using the active account in the Signer tool, connect to the Casper blockchain by clicking on the **DISCONNECTED** button to toggle the connection.
 
 .. image:: ../assets/tutorials/staking/4.1.png
+    :width: 200
+    :align: center 
 |
 
 Approve the connection by clicking the **CONNECT** button.
 
 .. image:: ../assets/tutorials/staking/4.2.png
+    :width: 200
+    :align: center 
 |
 
 You are now in the block explorer and connected to the Casper blockchain using your active account!
@@ -127,6 +134,8 @@ You are now in the block explorer and connected to the Casper blockchain using y
 Next, click on **View Account** in the top right corner.
 
 .. image:: ../assets/tutorials/staking/4.3.png
+    :width: 300
+    :align: center 
 |
 
 You will see the following fields:
@@ -138,6 +147,8 @@ You will see the following fields:
 * You will also see **Total Rewards Received** on the account page.
 
 .. image:: ../assets/tutorials/staking/4.4.png
+    :width: 800
+    :align: center 
 |
 
 If you wish, you can also explore the *Transfers*, *Deploys*, *Delegations*, and *Staking Rewards* tabs.
@@ -170,11 +181,15 @@ If you already have funds in your Signer wallet, you can skip this section. If y
 2. Go to the **Wallet** tab.
 
 .. image:: ../assets/tutorials/staking/5.1.2.1.png
+    :width: 200
+    :align: center 
 |
 
 3. Click on the **CSPR** section.
 
 .. image:: ../assets/tutorials/staking/5.1.3.1.png
+    :width: 200
+    :align: center 
 |
 
 4. Click on the **Withdraw** button.
@@ -190,6 +205,8 @@ If you already have funds in your Signer wallet, you can skip this section. If y
 6. Enter the **Public Key** in the **Recipient Address** field in the withdrawal request.
 
 .. image:: ../assets/tutorials/staking/5.1.6.1.png
+    :width: 400
+    :align: center 
 |
 
 7. Enter 0 in the **Transfer ID** field or another value that is meaningful to you. **You MUST enter a value or the transfer will fail!**
@@ -209,6 +226,8 @@ You can access the delegation functionality in two ways.
 **Option 1:** Click **Wallet** from the top navigation menu and then click **Delegate**.
 
 .. image:: ../assets/tutorials/staking/6.1.png
+    :width: 200
+    :align: center 
 |
 
 **Option 2:** Click **Validators** from the top navigation menu. From the validators table, click on any validator to access their details. Once you find the validator to which you want to delegate tokens, click the **Delegate** button.
@@ -219,14 +238,18 @@ You can access the delegation functionality in two ways.
 Then follow these instructions to delegate your tokens:
 
 **Step 1 - Delegation Details**
+
 1. Start by choosing the validator to which you want to delegate your tokens. You can search for one using the search box or paste their public key if you have a validator in mind.
 2. Enter the amount of CSPR you would like to delegate.
 3. Click **Next**.
 
 .. image:: ../assets/tutorials/staking/6.3.png
+    :width: 400
+    :align: center 
 |
 
 **Step 2 - Confirm the Transaction**
+
 1. Review the details of the transaction.
 2. Enter the amount you want to delegate.
 3. If everything is correct, click **Next**. If you wish to change something, you can return to the previous step by clicking **Back to step 1**.
@@ -235,9 +258,12 @@ Then follow these instructions to delegate your tokens:
 |
 
 **Step 3 - Sign the Transaction**
+
 1. Click **Sign** with the CasperLabs Signer.
 
 .. image:: ../assets/tutorials/staking/6.5.png
+    :width: 400
+    :align: center 
 |
 
 2. Once the Signer app window opens, **make sure that the Deploy hash in the Signer window matches the Deploy hash in https://cspr.live/ before continuing!**
@@ -248,6 +274,8 @@ Then follow these instructions to delegate your tokens:
 3. Click **Sign** in the Signer window to sign and finalize the transaction. You have completed the delegation.
 
 .. image:: ../assets/tutorials/staking/6.7.png
+    :width: 400
+    :align: center 
 |
 
 The delegation transaction initiates as soon as the corresponding deploy is signed. You can review the details and status of the deploy by clicking **Deploy Details**. Now that you have everything set up, subsequent delegation operations will be much easier.
@@ -269,6 +297,8 @@ If you want to undelegate your tokens, you can do so at any time. Note that the 
 **Option 1:** Click **Wallet** from the top navigation menu and then click **Undelegate Stake**.
 
 .. image:: ../assets/tutorials/staking/8.1.png
+    :width: 200
+    :align: center 
 |
 
 **Option 2:** Click **Validators** from the top navigation menu. From the validators table, click on any validator to access its details. Once you find the validator you wish to undelegate from, click the **Undelegate Stake** button.
@@ -284,18 +314,24 @@ If you want to undelegate your tokens, you can do so at any time. Note that the 
 Then follow these instructions to undelegate your tokens:
 
 **Step 1 - Undelegation Details**
+
 1. Start by choosing the validator from which you want to undelegate your tokens. If a validator is not already selected, you can search for one using the search box. The search box will automatically show you validators with which you have staked.
 
 .. image:: ../assets/tutorials/staking/8.4.png
+    :width: 400
+    :align: center 
 |
 
 2. Enter the amount of Casper tokens you want to undelegate.
 3. Click **Next**.
 
 .. image:: ../assets/tutorials/staking/8.5.png
+    :width: 400
+    :align: center 
 |
 
 **Step 2 - Confirm the Transaction**
+
 1. Review your transaction details.
 2. If everything looks correct, click **Confirm** to undelegate the tokens. If you wish to change something, you can return to the previous step by clicking **Back to step 1**.
 
@@ -303,9 +339,12 @@ Then follow these instructions to undelegate your tokens:
 |
 
 **Step 3 - Sign the Transaction**
+
 1. Click **Sign** with the CasperLabs Signer.
 
 .. image:: ../assets/tutorials/staking/8.7.png
+    :width: 400
+    :align: center 
 |
 
 2. Once the Signer app window opens, **make sure that the Deploy hash in the Signer window matches the Deploy hash in https://cspr.live/ before continuing**!
@@ -316,6 +355,8 @@ Then follow these instructions to undelegate your tokens:
 3. Click **Sign** in the Signer window to sign and finalize the transaction.
 
 .. image:: ../assets/tutorials/staking/8.9.png
+    :width: 400
+    :align: center 
 |
 
 The stake undelegation initiates as soon as the corresponding deploy is signed. It may take 1-2 minutes for the undelegation details to become available. Please note that your undelegated tokens will appear in your account automatically after a 7-era delay, which is approximately 14 hours.
