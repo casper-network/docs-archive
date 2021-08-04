@@ -3,24 +3,29 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Furkan Ahmet KARA <furkanahmetkara.fk@gmail.com>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Furkan Ahmet KARA <furkanahmetkara.fk@gmail.com>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:3
 msgid "AssemblyScript"
-msgstr ""
+msgstr "AssemblyScript"
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:5
 msgid ""
@@ -31,78 +36,105 @@ msgid ""
 "<https://github.com/casper-network/casper-"
 "node/tree/master/smart_contracts/contract_as/assembly>`_."
 msgstr ""
+"CasperLabs, geliştiricilerin  `AssemblyScript "
+"<https://www.npmjs.com/package/assemblyscript>`_ kullanarak akıllı "
+"kontratlar oluşturmasına olanak sağlamak için `casper-contract "
+"<https://www.npmjs.com/package/casper-contract>`_ı muhafaza eder. Paket "
+"kaynağı, `ana Casper Network kod deposu <https://github.com/casper-network"
+"/casper-node/tree/master/smart_contracts/contract_as/assembly>`_. içinde "
+"barındırılır."
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:8
 msgid "Installation"
-msgstr ""
+msgstr "Kurulum"
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:10
 msgid ""
-"For each smart contract, it is necessary to create a project directory "
-"and initialize it."
+"For each smart contract, it is necessary to create a project directory and "
+"initialize it."
 msgstr ""
+"Her akıllı kontrat için bir proje dizini oluşturmak ve onu başlatmak "
+"gereklidir."
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:12
 msgid ""
 "The ``npm init`` process prompts for various details about the project. "
 "Answer as you see fit, but you may safely default everything except "
-"``name``, which needs to be specified. In this guide, we will refer to "
-"the contract name as ``your-contract-name``."
+"``name``, which needs to be specified. In this guide, we will refer to the "
+"contract name as ``your-contract-name``."
 msgstr ""
+"``npm init`` işlemi, proje hakkında çeşitli ayrıntılar için istekte bulunur."
+" Uygun gördüğünüz gibi yanıtlayın, ancak belirtilmesi gereken ``name`` "
+"dışında her şeyi güvenle varsayılan yapabilirsiniz. Bu kılavuzda, kontrat "
+"adına  ``your-contract-name`` olarak atıfta bulunacağız."
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:20
 msgid "Then install AssemblyScript and this package in the project directory."
-msgstr ""
+msgstr "Ardından AssemblyScript ve bu paketi proje dizinine kurun."
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:28
 msgid "Contract API Documentation"
-msgstr ""
+msgstr "Kontrat API Belgelendirmesi"
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:30
 msgid ""
 "The Assemblyscript contract API documentation can be found at "
 "https://www.npmjs.com/package/casper-contract."
 msgstr ""
+"AssemblyScript kontrat API Belgelendirmesi https://www.npmjs.com/package"
+"/casper-contract adresinde bulunabilir"
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:33
 msgid "Usage"
-msgstr ""
+msgstr "Kullanım"
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:35
 msgid ""
-"Add script entries for AssemblyScript to your project's ``package.json``."
-" Note that your contract name is used for the name of the WASM file. "
-"Replace *your-contract-name* with the name of your contract."
+"Add script entries for AssemblyScript to your project's ``package.json``. "
+"Note that your contract name is used for the name of the WASM file. Replace "
+"*your-contract-name* with the name of your contract."
 msgstr ""
+"Projenizin ``package.json`` dosyasına AssemblyScript için betik girdileri "
+"ekleyin. Kontrat adınızın WASM dosyasının adı için kullanıldığını unutmayın."
+" *your-contract-name* kısmını kontrat adınız ile değiştirin."
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:50
 msgid ""
 "In the project root, create an ``index.js`` file with the following "
 "contents. Replace *your-contract-name* with the name of your contract."
 msgstr ""
+"Proje kökünde, aşağıdaki içeriğe sahip bir ``index.js`` dosyası oluşturun. "
+"*your-contract-name* kısmını kontrat adınız ile değiştirin."
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:70
 msgid ""
-"Next, create a directory called ``assembly``, and in that directory, "
-"create a file called  ``tsconfig.json`` in the following way:"
+"Next, create a directory called ``assembly``, and in that directory, create "
+"a file called  ``tsconfig.json`` in the following way:"
 msgstr ""
+"Ardından, ``assembly`` adında bir dizin oluşturun ve bu dizinde aşağıdaki "
+"şekilde ``tsconfig.json`` adında bir dosya oluşturun:"
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:82
 msgid "Sample smart contract"
-msgstr ""
+msgstr "Örnek akıllı kontrat"
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:84
 msgid ""
-"In the ``assembly`` directory, also create an ``index.ts`` file, where "
-"the code for the contract needs to go."
+"In the ``assembly`` directory, also create an ``index.ts`` file, where the "
+"code for the contract needs to go."
 msgstr ""
+"``assembly`` dizininde, kontrat için olan kodun gitmesi gereken bir "
+"``index.ts`` dosyası da oluşturun."
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:86
 msgid ""
-"You can use the following sample snippet, which demonstrates a simple "
-"smart contract that immediately returns an error and writes a message to "
-"a block when executed on the Casper Network."
+"You can use the following sample snippet, which demonstrates a simple smart "
+"contract that immediately returns an error and writes a message to a block "
+"when executed on the Casper Network."
 msgstr ""
+"Casper Network'te yürütüldüğünde hemen bir hata döndüren ve bir bloğa mesaj "
+"yazan basit bir akıllı kontrat gösteren aşağıdaki örnek parçacığı "
+"kullanabilirsiniz."
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:98
 msgid ""
@@ -110,20 +142,26 @@ msgid ""
 "contracts on the `Casper Ecosystem GitHub <https://github.com/casper-"
 "ecosystem>`_ repository for inspiration."
 msgstr ""
+"Daha karmaşık bir ilk kontrat tercih ederseniz, ilham almak için  `Casper "
+"Ecosystem GitHub <https://github.com/casper-ecosystem>`_ kod deposundaki "
+"örnek kontratlara bakabilirsiniz."
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:101
 msgid "Compile to WASM"
-msgstr ""
+msgstr "WASM'e Derleme"
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:103
 msgid ""
-"To compile the contract to WASM, use *npm* to run the *asbuild* script "
-"from the project root:"
+"To compile the contract to WASM, use *npm* to run the *asbuild* script from "
+"the project root:"
 msgstr ""
+"Sözleşmeyi WASM'e derlemek için, proje kökünden olan *asbuild* betiğini "
+"çalıştırmak için *npm* kullanın:"
 
 #: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:109
 msgid ""
-"If the build is successful, there will be a ``dist`` folder in the "
-"``root`` folder and in it should be ``your-contract-name.wasm``."
+"If the build is successful, there will be a ``dist`` folder in the ``root`` "
+"folder and in it should be ``your-contract-name.wasm``."
 msgstr ""
-
+"Derleme başarılı olursa, ``root`` klasörünün içerisinde bir ``dist`` klasörü"
+" olacak ve bunun içinde ```your-contract-name.wasm`` olmalıdır."
