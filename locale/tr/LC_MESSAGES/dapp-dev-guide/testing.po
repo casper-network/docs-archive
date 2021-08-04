@@ -3,120 +3,148 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Furkan Ahmet KARA <furkanahmetkara.fk@gmail.com>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../dapp-dev-guide/testing.rst:6
 msgid "Testing Contracts"
-msgstr ""
+msgstr "Kontratları Test Etmek"
 
 #: ../../dapp-dev-guide/testing.rst:8
 msgid ""
-"As part of the Casper local Rust contract development environment we "
-"provide an in-memory virtual machine you can run your contract against. A"
-" full node is not required for testing.  The testing framework is "
-"designed to be used in the following way:"
+"As part of the Casper local Rust contract development environment we provide"
+" an in-memory virtual machine you can run your contract against. A full node"
+" is not required for testing.  The testing framework is designed to be used "
+"in the following way:"
 msgstr ""
+"Casper yerel Rust kontrat geliştirme ortamının bir parçası olarak, kontratı "
+"çalıştırabileceğiniz bir bellek içi sanal makine sağlıyoruz. Test için tam "
+"bir düğüm gerekli değildir. Test çatısı aşağıdaki şekilde kullanılmak üzere "
+"tasarlanmıştır:"
 
 #: ../../dapp-dev-guide/testing.rst:11
 msgid "Initialize the system (context)."
-msgstr ""
+msgstr "Sistemi başlatın (bağlam)."
 
 #: ../../dapp-dev-guide/testing.rst:12
 msgid "Deploy or call the smart contract."
-msgstr ""
+msgstr "Akıllı kontratı dağıtın veya çağırın."
 
 #: ../../dapp-dev-guide/testing.rst:13
 msgid ""
-"Query the context for changes and assert the result data matches expected"
-" values."
+"Query the context for changes and assert the result data matches expected "
+"values."
 msgstr ""
+"Değişiklikler için bağlamı sorgulayın ve sonuç verilerinin beklenen "
+"değerlerle eşleştiğini teyit edin."
 
 #: ../../dapp-dev-guide/testing.rst:15
 msgid ""
-"It is also possible to create build scripts with this environment and set"
-" up continuous integration for contract code.\\ :raw-html-m2r:`<br>` This"
-" environment enables the testing of blockchain enabled systems from end "
-"to end."
+"It is also possible to create build scripts with this environment and set up"
+" continuous integration for contract code.\\ :raw-html-m2r:`<br>` This "
+"environment enables the testing of blockchain enabled systems from end to "
+"end."
 msgstr ""
+"Bu ortamla derleme betikleri oluşturmak ve kontrat kodu için sürekli "
+"entegrasyon kurmak da mümkündür.\\ :raw-html-m2r:`<br>`  Bu ortam, "
+"blokzincir etkin sistemlerin uçtan uca test edilmesini sağlar."
 
 #: ../../dapp-dev-guide/testing.rst:19
 msgid "The TestContext for Rust Contracts"
-msgstr ""
+msgstr "Rust Kontratları için TestContext"
 
 #: ../../dapp-dev-guide/testing.rst:21
 msgid ""
 "A  `TestContext <https://docs.rs/casper-engine-test-"
 "support/latest/casper_engine_test_support/struct.TestContext.html>`_ "
-"provides a virtual machine instance. It should be a mutable object as its"
-" internal data will change with each deploy. It's also important to set "
-"an initial balance for the account to use for deploys, as the system "
-"requires a balance in order to create an account."
+"provides a virtual machine instance. It should be a mutable object as its "
+"internal data will change with each deploy. It's also important to set an "
+"initial balance for the account to use for deploys, as the system requires a"
+" balance in order to create an account."
 msgstr ""
+"Bir `TestContext <https://docs.rs/casper-engine-test-"
+"support/latest/casper_engine_test_support/struct.TestContext.html>`_ bir "
+"sanal makine örneği sağlar. Dahili verileri her dağıtımda değişeceğinden, "
+"değişken bir nesne olmalıdır. Sistem bir hesap oluşturmak için bir bakiye "
+"gerektirdiğinden, hesabın dağıtımlarda kullanması için bir başlangıç "
+"​​bakiyesi ayarlamak da önemlidir."
 
 #: ../../dapp-dev-guide/testing.rst:31
 msgid "Account is type of ``[u8; 32]``. Balance is type of ``U512``."
-msgstr ""
+msgstr "Hesap ``[u8; 32]`` türündedir. Bakiye ``U512`` türündedir."
 
 #: ../../dapp-dev-guide/testing.rst:34
 msgid "Running the Rust Smart Contract"
-msgstr ""
+msgstr "Rust Akıllı Kontratını Çalıştırmak"
 
 #: ../../dapp-dev-guide/testing.rst:36
 msgid ""
-"Before the contract can be deployed to the context, the request has to be"
-" prepared. A request is referred to as a `Session <https://docs.rs"
-"/casper-engine-test-"
+"Before the contract can be deployed to the context, the request has to be "
+"prepared. A request is referred to as a `Session <https://docs.rs/casper-"
+"engine-test-"
 "support/latest/casper_engine_test_support/struct.Session.html>`_. Each "
 "session call has 4 elements:"
 msgstr ""
+"Kontrat bağlama dağıtılabilir olmadan önce talebin hazırlanmış olması "
+"gerekir. Bir istek, `Oturum <https://docs.rs/casper-engine-test-"
+"support/latest/casper_engine_test_support/struct.Session.html>`_ olarak "
+"adlandırılır. Her oturum çağrısı 4 öğeye sahiptir:"
 
 #: ../../dapp-dev-guide/testing.rst:39
 msgid "A Wasm file path."
-msgstr ""
+msgstr "Bir Wasm dosya yolu."
 
 #: ../../dapp-dev-guide/testing.rst:40
 msgid "A list of arguments."
-msgstr ""
+msgstr "Bir argümanlar listesi."
 
 #: ../../dapp-dev-guide/testing.rst:41
 msgid "The account context for execution."
-msgstr ""
+msgstr "Yürütme için hesap bağlamı."
 
 #: ../../dapp-dev-guide/testing.rst:42
 msgid "The list of keys that authorize the call."
-msgstr ""
+msgstr "Aramayı yetkilendiren anahtarların listesi."
 
 #: ../../dapp-dev-guide/testing.rst:44
 msgid "Here is an example of a prepared request:"
-msgstr ""
+msgstr "İşte bir hazırlanmış istek örneği:"
 
 #: ../../dapp-dev-guide/testing.rst:59
 msgid "Executing ``run`` will panic if the code execution fails."
-msgstr ""
+msgstr "Kod yürütme başarısız olursa ``run`` yürütmek panik yapacaktır."
 
 #: ../../dapp-dev-guide/testing.rst:62
 msgid "Query and Assert"
-msgstr ""
+msgstr "Sorgula ve Teyit Et"
 
 #: ../../dapp-dev-guide/testing.rst:64
 msgid ""
 "The smart contract creates a new value ``\"hello world\"`` under the key "
-"``\"special_value\"``. Using the ``query`` function it's possible to "
-"extract this value from the global state of the blockchain."
+"``\"special_value\"``. Using the ``query`` function it's possible to extract"
+" this value from the global state of the blockchain."
 msgstr ""
+"Akıllı kontrat, ``\"special_value\"`` anahtarının altında yeni bir ``\"hello"
+" world\"`` değeri oluşturur. ``query`` işlevini kullanarak bu değeri "
+"blokzincirinin küresel durumundan çıkarmak mümkündür."
 
 #: ../../dapp-dev-guide/testing.rst:74
 msgid ""
@@ -124,10 +152,13 @@ msgid ""
 "``Value`` type. It was also possible to map ``returned_value`` to the "
 "``String`` type."
 msgstr ""
+"``expected_value`` türünün  ``Value`` türüne yükseltilmiş bir ``String`` "
+"türü olduğuna unutmayın. Ayrıca, ``returned_value`` değerini ``String`` "
+"türüne eşlemek de mümkündü."
 
 #: ../../dapp-dev-guide/testing.rst:77
 msgid "Final Test"
-msgstr ""
+msgstr "Son Test"
 
 #: ../../dapp-dev-guide/testing.rst:79
 msgid ""
@@ -135,4 +166,6 @@ msgid ""
 "<https://crates.io/crates/cargo-casper>`_ (found in "
 "``tests/src/integration_tests.rs`` of a project created by the tool)."
 msgstr ""
-
+"Aşağıdaki kod,  `cargo-casper <https://crates.io/crates/cargo-casper>`_ "
+"tarafından oluşturulan basit testtir (araç tarafından oluşturulan bir "
+"projenin ``tests/src/integration_tests.rs`` kısmı içinde bulunur)."
