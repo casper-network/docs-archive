@@ -76,7 +76,7 @@ msgid ""
 msgstr ""
 "La commande ``transfer`` vous permet de déplacer des CSPR d'un compte à un "
 "autre, libellés en `Motes "
-"<https://docs.casperlabs.io/en/latest/implementation/tokens.html?highlight=motes"
+"<https://docs.casperlabs.io/fr/latest/implementation/tokens.html?highlight=motes"
 "#divisibility-of-tokens>`_. Un `Mote` est une dénomination de la crypto-"
 "monnaie CSPR, où 1 CSPR = 1.000.000.000 Motes."
 
@@ -289,7 +289,7 @@ msgid ""
 msgstr ""
 "Les informations relatives à l'état, comme le solde d'un compte sur une "
 "blockchain Casper, sont stockées dans le `Global State "
-"<https://docs.casperlabs.io/en/latest/implementation/global-state.html>`_."
+"<https://docs.casperlabs.io/fr/latest/implementation/global-state.html>`_."
 
 #: ../../workflow/transfer-workflow.rst:405
 msgid ""
