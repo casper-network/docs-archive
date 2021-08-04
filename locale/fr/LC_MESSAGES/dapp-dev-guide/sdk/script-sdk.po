@@ -89,7 +89,7 @@ msgid ""
 "sig/index.html>`_, which uses the JavaScript SDK."
 msgstr ""
 "Pour un exemple complet de mise en œuvre, lisez le `Tutoriel de la multi-"
-"signature <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials"
+"signature <https://docs.casperlabs.io/fr/latest/dapp-dev-guide/tutorials"
 "/multi-sig/index.html>`_, qui utilise le SDK JavaScript."
 
 #: ../../dapp-dev-guide/sdk/script-sdk.rst:32
