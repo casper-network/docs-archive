@@ -139,7 +139,7 @@ msgstr ""
 "Commençons par définir les constantes requises (c'est-à-dire les noms de "
 "méthodes, les noms de clés et les adresses de comptes). Le code suivant "
 "initialise l'état global `global state "
-"<https://docs.casperlabs.io/en/latest/glossary/G.html#global-state>`_ avec "
+"<https://docs.casperlabs.io/fr/latest/glossary/G.html#global-state>`_ avec "
 "toutes les données et méthodes dont un contrat intelligent a besoin pour "
 "fonctionner correctement."
 
