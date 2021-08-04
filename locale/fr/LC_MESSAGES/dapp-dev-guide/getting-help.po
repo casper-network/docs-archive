@@ -199,7 +199,7 @@ msgstr ""
 " clés `Ed25519` et `Secp256K1`. Passez également en revue les tests dans "
 "`GitHub <https://github.com/casper-ecosystem/casper-js-"
 "sdk/blob/next/test/lib/Keys.test.ts#L39>`_ et la documentation `Working with"
-" Keys <https://docs.casperlabs.io/en/latest/dapp-dev-guide/keys.html>`_."
+" Keys <https://docs.casperlabs.io/fr/latest/dapp-dev-guide/keys.html>`_."
 
 #: ../../dapp-dev-guide/getting-help.rst:49
 msgid "Useful Resources"
