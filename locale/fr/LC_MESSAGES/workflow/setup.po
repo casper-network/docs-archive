@@ -99,7 +99,7 @@ msgid ""
 " divided into two steps:"
 msgstr ""
 "Le processus de création d'un `Compte "
-"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ peut "
+"<https://docs.casperlabs.io/fr/latest/implementation/accounts.html>`_ peut "
 "être divisé en deux étapes :"
 
 #: ../../workflow/setup.rst:41
