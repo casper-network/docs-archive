@@ -180,10 +180,10 @@ msgid ""
 "proceeding."
 msgstr ""
 "Avant de construire le contrat intelligent pour ce tutoriel, vous devez "
-"installer le `Rust Contract SDK <https://docs.casperlabs.io/en/latest/dapp-"
+"installer le `Rust Contract SDK <https://docs.casperlabs.io/fr/latest/dapp-"
 "dev-guide/setup-of-rust-contract-sdk.html>`_. Assurez-vous que vous avez "
 "`l'environnement de développement configuré "
-"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"<https://docs.casperlabs.io/fr/latest/dapp-dev-guide/setup-of-rust-contract-"
 "sdk.html#development-environment-setup>`_ avant de continuer."
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:48
