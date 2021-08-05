@@ -227,7 +227,7 @@ msgstr ""
 "soit un `délégateur <D.html#délégateur>`_. Les stakers assument le risque du"
 " slashing en échange de récompenses. Les Stakers déposeront leurs `tokens "
 "<T.html#token>`_ en envoyant une demande de cautionnement sous forme de "
-"transaction (déploiement) au système. Si un validateur est `slashed "
+"transaction (déploiement) au système. Si un validateur est `slashé "
 "<#slashing>`_, le staker perdra ses jetons."
 
 #: ../../glossary/S.rst:33
