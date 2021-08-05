@@ -127,7 +127,7 @@ msgid ""
 "<https://crates.io/crates/casperlabs_contract_macro>`_ include the following"
 " entry in the ``Cargo.toml`` file for the smart contract."
 msgstr ""
-"Pour utiliser la crate disponible sur `crates.io "
+"Pour utiliser le paquet (crate) disponible sur `crates.io "
 "<https://crates.io/crates/casperlabs_contract_macro>`_ inclure l'entrée "
 "suivante dans le fichier ``Cargo.toml`` pour le contrat intelligent."
 
