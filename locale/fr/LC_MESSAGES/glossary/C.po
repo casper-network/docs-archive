@@ -241,7 +241,7 @@ msgstr ""
 
 #: ../../glossary/C.rst:35
 msgid "Crate"
-msgstr "Crate"
+msgstr "Paquet (Crate)"
 
 #: ../../glossary/C.rst:36
 msgid ""
@@ -249,7 +249,7 @@ msgid ""
 "library. By default, *rustc*, the compiler for the Rust programming "
 "language, will produce a binary from a crate."
 msgstr ""
-"Une unité de compilation en Rust. Une 'crate' peut être compilé en un "
+"Une unité de compilation en Rust. Un packet (crate) peut être compilé en un "
 "binaire ou en une librairie. Par défaut, *rustc*, le compilateur du langage "
 "de programmation Rust, produira un binaire à partir d'une 'crate'."
 
