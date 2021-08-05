@@ -3,280 +3,372 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../implementation/tokens.rst:4
 msgid "Tokens"
-msgstr ""
+msgstr "Tokenler"
 
 #: ../../implementation/tokens.rst:9
 msgid "Introduction"
-msgstr ""
+msgstr "Giriş"
 
 #: ../../implementation/tokens.rst:11
 msgid ""
-"The Casper Network is a decentralized blockchain platform based on a "
-"Proof-of-Stake consensus algorithm called `Highway "
+"The Casper Network is a decentralized blockchain platform based on a Proof-"
+"of-Stake consensus algorithm called `Highway "
 "<https://github.com/CasperLabs/highway>`_. Having a unit of value is "
-"required to make this system work because users must pay for computation,"
-" and validators must have `stake "
-"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In "
-"the blockchain space, this unit of value is a *token*."
+"required to make this system work because users must pay for computation, "
+"and validators must have `stake "
+"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In the "
+"blockchain space, this unit of value is a *token*."
 msgstr ""
+"Casper Network, `Highway <https://github.com/CasperLabs/highway>`_  adı "
+"verilen bir Hisse Kanıtı mutabakat algoritmasına dayanan merkeziyetsiz bir "
+"blokzincir platformudur. Bu sistemin çalışması için bir değer birimine sahip"
+" olunması gerekir, çünkü kullanıcıların hesaplama için ödeme yapması ve "
+"doğrulayıcıların bağ kurmak için `hisseye "
+"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ sahip olması "
+"gerekir. Blokzincir alanında bu değer birimi bir *token*dir."
 
 #: ../../implementation/tokens.rst:13
 msgid ""
-"This chapter describes how we define tokens and how one can use them on "
-"the Casper platform."
+"This chapter describes how we define tokens and how one can use them on the "
+"Casper platform."
 msgstr ""
+"Bu bölüm, tokenleri nasıl tanımladığımızı ve bunları Casper platformunda "
+"nasıl kullanabileceğimizi açıklar."
 
 #: ../../implementation/tokens.rst:16
 msgid "Token Generation and Distribution"
-msgstr ""
+msgstr "Token Üretimi ve Dağıtımı"
 
 #: ../../implementation/tokens.rst:18
 #, python-format
 msgid ""
-"A blockchain system generally needs to have a supply of tokens available "
-"to pay for computation and reward validators for processing transactions "
-"on the network. A great deal of effort has been taken to ensure that no "
-"single individual or entity acquires more than 1% of the tokens from the "
-"onset."
+"A blockchain system generally needs to have a supply of tokens available to "
+"pay for computation and reward validators for processing transactions on the"
+" network. A great deal of effort has been taken to ensure that no single "
+"individual or entity acquires more than 1% of the tokens from the onset."
 msgstr ""
+"Bir blokzincir sisteminin genellikle hesaplama için ödeme yapmak ve ağdaki "
+"işlemleri işlemek amacıyla doğrulayıcıları ödüllendirmek için kullanılabilir"
+" bir token kaynağına sahip olması gerekir. Tek bir kişinin veya kuruluşun, "
+"başlangıçtan itibaren tokenlerin %1'inden fazlasını elde etmemesini sağlamak"
+" için çok çaba sarf edilmiştir."
 
 #: ../../implementation/tokens.rst:20
 msgid ""
 "In addition to the initial supply, the system will have a low rate of "
-"inflation, the results of which will be paid out to validators in the "
-"form of seigniorage."
+"inflation, the results of which will be paid out to validators in the form "
+"of seigniorage."
 msgstr ""
+"İlk arza ek olarak, sistem düşük bir enflasyon oranına sahip olacak ve "
+"sonuçları onaylayıcılara senyoraj şeklinde ödenecek."
 
 #: ../../implementation/tokens.rst:22
 msgid ""
 "The number of tokens used as a basis for calculating seigniorage is 10 "
 "billion."
-msgstr ""
+msgstr "Senyorajın hesaplanmasında temel alınan token sayısı 10 milyardır."
 
 #: ../../implementation/tokens.rst:27
 msgid "Divisibility of Tokens"
-msgstr ""
+msgstr "Tokenlerin Bölünebilirliği"
 
 #: ../../implementation/tokens.rst:29
 msgid ""
 "Typically, a *token* is divisible into some number of parts. We call the "
 "indivisible units which make up the CSPR token *motes*. Each CSPR is "
 "divisible into :math:`10^{9}` motes. To avoid rounding errors, it is "
-"essential to always represent token balances in motes.  In comparison, "
-"Ether is divisible into :math:`10^{18}` parts called Wei."
+"essential to always represent token balances in motes.  In comparison, Ether"
+" is divisible into :math:`10^{18}` parts called Wei."
 msgstr ""
+"Tipik olarak, bir *token* birkaç parçaya bölünebilir. CSPR tokenini "
+"oluşturan bölünmez birimlere *motes* diyoruz. Her CSPR, :math:`10^{9}` "
+"hareketlerine bölünebilir. Tur hatalarından kaçınmak için token bakiyelerini"
+" her zaman mote olarak göstermek önemlidir. Buna karşılık, Ether, Wei adı "
+"verilen :math:`10^{18}` kısımlarına bölünebilir."
 
 #: ../../implementation/tokens.rst:34
 msgid "Mints and Purses"
-msgstr ""
+msgstr "Mint'ler ve Cüzdanlar"
 
 #: ../../implementation/tokens.rst:36
 msgid ""
-"A *mint* is a contract that can produce new motes of a particular type. "
-"We allow for multiple mote types (each of which would have its mint "
-"contract) because we anticipate the existence of a large ecosystem of "
-"different tokens, similar to the way Etherum works with ERC20 tokens. "
-"Casper will deploy a specific mint contract, and it will manage the CSPR "
-"utility token (used for paying for computation and bonding onto the "
-"network). The mint also maintains all the balances for its type of mote. "
-"Each balance is associated with a ``URef``, which acts as a key to "
-"instruct the mint to perform actions on that balance (e.g., transfer "
-"motes). Informally, we will refer to these balances as *purses* and "
-"conceptually represent a container for motes. The ``URef`` is how a purse"
-" is referenced externally, outside the mint."
+"A *mint* is a contract that can produce new motes of a particular type. We "
+"allow for multiple mote types (each of which would have its mint contract) "
+"because we anticipate the existence of a large ecosystem of different "
+"tokens, similar to the way Etherum works with ERC20 tokens. Casper will "
+"deploy a specific mint contract, and it will manage the CSPR utility token "
+"(used for paying for computation and bonding onto the network). The mint "
+"also maintains all the balances for its type of mote. Each balance is "
+"associated with a ``URef``, which acts as a key to instruct the mint to "
+"perform actions on that balance (e.g., transfer motes). Informally, we will "
+"refer to these balances as *purses* and conceptually represent a container "
+"for motes. The ``URef`` is how a purse is referenced externally, outside the"
+" mint."
 msgstr ""
+"Bir *mint*, belirli bir türde yeni mote'lar üretebilen bir kontrattır. "
+"Etherum'un ERC20 tokenleriyle çalışma şekline benzer şekilde, farklı "
+"tokenlerden oluşan geniş bir ekosistemin varlığını tahmin ettiğimiz için "
+"(her biri kendi mint kontratına sahip olacak) birden fazla mote türüne izin "
+"veriyoruz. Casper, belirli bir mint kontratı dağıtacak ve CSPR yardımcı "
+"programı tokenini yönetecek (hesaplama için ödeme yapmak ve ağa bağlanmak "
+"için kullanılır). Mint ayrıca mote türü için tüm bakiyeleri korur. Her "
+"bakiye, mint'e o bakiye üzerinde eylemler gerçekleştirmesi talimatını vermek"
+" için bir anahtar görevi gören bir ``URef`` ile ilişkilendirilir (örneğin, "
+"transfer hamleleri). Gayri resmi olarak, bu bakiyelere *cüzdan* olarak "
+"atıfta bulunacağız ve kavramsal olarak mote için bir konteyneri temsil "
+"edeceğiz. ``URef``, bir cüzdanın mint dışında harici olarak nasıl referans "
+"verildiğidir."
 
 #: ../../implementation/tokens.rst:38
 msgid ""
-"The ``AccessRights`` of the :ref:`URefs <global-state-urefs-permissions>`"
-" permissions model determine what actions are allowed to be performed "
-"when using a ``URef`` associated with a purse."
+"The ``AccessRights`` of the :ref:`URefs <global-state-urefs-permissions>` "
+"permissions model determine what actions are allowed to be performed when "
+"using a ``URef`` associated with a purse."
 msgstr ""
+":ref:`URefs <global-state-urefs-permissions>` izin modelinin  "
+"``AccessRights`` erişim hakları bir cüzdanla ilişkili bir ``URef`` "
+"kullanırken hangi işlemlerin gerçekleştirilmesine izin verildiğini belirler."
 
 #: ../../implementation/tokens.rst:40
 msgid ""
 "As all ``URef``\\ s are unforgeable, so the only way to interact with a "
-"purse is for a ``URef`` with appropriate ``AccessRights`` to be given to "
-"the current context in a valid way (see :ref:`URefs <global-state-urefs-"
+"purse is for a ``URef`` with appropriate ``AccessRights`` to be given to the"
+" current context in a valid way (see :ref:`URefs <global-state-urefs-"
 "permissions>` permissions for details)."
 msgstr ""
+"Tüm ``URef``ler taklit edilemez olduğundan, bir cüzdanla etkileşim kurmanın "
+"tek yolu, uygun ``AccessRights``lara sahip bir ``URef``in mevcut bağlama "
+"geçerli bir şekilde verilmesidir (ayrıntılar için :ref`URefs <global-state-"
+"urefs-permissions>` izinlerine bakın)."
 
 #: ../../implementation/tokens.rst:42
 msgid ""
-"The basic global state options map onto more standard monetary operations"
-" according to the table below:"
+"The basic global state options map onto more standard monetary operations "
+"according to the table below:"
 msgstr ""
+"Temel küresel durum seçenekleri, aşağıdaki tabloya göre daha standart "
+"parasal işlemlerle eşleşir:"
 
 #: ../../implementation/tokens.rst:45
 msgid "Global State Action"
-msgstr ""
+msgstr "Küresel Durum Eylemi"
 
 #: ../../implementation/tokens.rst:45
 msgid "Monetary Action"
-msgstr ""
+msgstr "Parasal Eylem"
 
 #: ../../implementation/tokens.rst:47
 msgid "Add"
-msgstr ""
+msgstr "Ekle"
 
 #: ../../implementation/tokens.rst:47
 msgid "Deposit (i.e. transfer to)"
-msgstr ""
+msgstr "Yatırma (yani para yatırma)"
 
 #: ../../implementation/tokens.rst:48
 msgid "Write"
-msgstr ""
+msgstr "Yaz"
 
 #: ../../implementation/tokens.rst:48
 msgid "Withdraw (i.e. transfer from)"
-msgstr ""
+msgstr "Geri çekme (yani para çekme)"
 
 #: ../../implementation/tokens.rst:49
 msgid "Read"
-msgstr ""
+msgstr "Oku"
 
 #: ../../implementation/tokens.rst:49
 msgid "Balance check"
-msgstr ""
+msgstr "Bakiye kontrolü"
 
 #: ../../implementation/tokens.rst:52
 msgid ""
 "We will use these definitions throughout this chapter to describe the "
 "implementation and usage of tokens on the Casper system."
 msgstr ""
+"Bu tanımları, bu bölümde, tokenlerin Casper sisteminde uygulanmasını ve "
+"kullanımını açıklamak için kullanacağız."
 
 #: ../../implementation/tokens.rst:57
 msgid "The mint Contract Interface"
-msgstr ""
+msgstr "Mint Kontrat Arayüzü"
 
 #: ../../implementation/tokens.rst:59
 msgid ""
-"A valid mint contract exposes the following methods (recall that many "
-"mint implementations may exist, each corresponding to a different "
-"currency):"
+"A valid mint contract exposes the following methods (recall that many mint "
+"implementations may exist, each corresponding to a different currency):"
 msgstr ""
+"Geçerli bir mint kontratı aşağıdaki yöntemleri ortaya çıkarır (her biri "
+"farklı bir para birimine karşılık gelen birçok mint uygulamasının mevcut "
+"olabileceğini hatırlayın):"
 
 #: ../../implementation/tokens.rst:61
-msgid "``transfer(source: URef, target: URef, amount: Motes) -> TransferResult``"
+msgid ""
+"``transfer(source: URef, target: URef, amount: Motes) -> TransferResult``"
 msgstr ""
+"``transfer(source: URef, target: URef, amount: Motes) -> TransferResult``"
 
 #: ../../implementation/tokens.rst:63
 msgid ""
-"``source`` must have at least ``Write`` access rights, ``target`` must "
-"have at least ``Add`` access rights"
+"``source`` must have at least ``Write`` access rights, ``target`` must have "
+"at least ``Add`` access rights"
 msgstr ""
+"``source`` en az ``Yaz`` erişim haklarına sahip olmalı, ``target`` en az "
+"``Ekle`` erişim haklarına sahip olmalıdır"
 
 #: ../../implementation/tokens.rst:65
 msgid ""
-"``TransferResult`` may be a success acknowledgment or an error in the "
-"case of invalid ``source`` or ``target`` or insufficient balance in the "
+"``TransferResult`` may be a success acknowledgment or an error in the case "
+"of invalid ``source`` or ``target`` or insufficient balance in the "
 "``source`` purse"
 msgstr ""
+"``TransferResult`` bir başarı bildirimi ya da geçersiz ``source`` veya "
+"``target`` veya ``source`` cüzdanda yetersiz bakiye olması durumunda bir "
+"hata olabilir"
 
 #: ../../implementation/tokens.rst:68
 msgid "``mint(amount: Motes) -> MintResult``"
-msgstr ""
+msgstr "``mint(amount: Motes) -> MintResult``"
 
 #: ../../implementation/tokens.rst:70
 msgid ""
-"``MintResult`` either gives the created ``URef`` (with full access "
-"rights), which now has a balance equal to the given ``amount``; or an "
-"error due to the minting of new motes not being allowed"
+"``MintResult`` either gives the created ``URef`` (with full access rights), "
+"which now has a balance equal to the given ``amount``; or an error due to "
+"the minting of new motes not being allowed"
 msgstr ""
+"``MintResult`` ya şimdi verilen ``amount``a eşit bakiyeye sahip "
+"oluşturulan``URef``i (tam erişim haklarına sahip); ya da yeni mote'ların "
+"basılmasına izin verilmemesi nedeniyle bir hata verir"
 
 #: ../../implementation/tokens.rst:73
 msgid ""
-"In the Casper mint, only the system account can call ``mint``, and it has"
-" no private key to produce valid cryptographic signatures, which means "
-"only the software itself can execute contracts in the context of the "
-"system account"
+"In the Casper mint, only the system account can call ``mint``, and it has no"
+" private key to produce valid cryptographic signatures, which means only the"
+" software itself can execute contracts in the context of the system account"
 msgstr ""
+"Casper mint'te yalnızca sistem hesabı ``mint``i çağırabilir ve geçerli "
+"kriptografik imzalar üretmek için özel anahtarı yoktur, bu da sistem hesabı "
+"bağlamında yalnızca yazılımın kontratları yürütebileceği anlamına gelir."
 
 #: ../../implementation/tokens.rst:78
 msgid "``create() -> URef``"
-msgstr ""
+msgstr "``create() -> URef``"
 
 #: ../../implementation/tokens.rst:80
 msgid ""
 "a convenience function for ``mint(0)`` which cannot fail because it is "
 "always allowed to create an empty purse"
 msgstr ""
+"``mint(0)`` için her zaman boş bir cüzdan oluşturmaya izin verildiği için "
+"başarısız olamayacak bir kolaylık işlevi"
 
 #: ../../implementation/tokens.rst:83
 msgid "``balance(purse: URef) -> Option<Motes>``"
-msgstr ""
+msgstr "``balance(purse: URef) -> Option<Motes>``"
 
 #: ../../implementation/tokens.rst:85
 msgid "``purse`` must have at least ``Read`` access rights"
-msgstr ""
+msgstr "``purse`` en az ``Oku`` erişim yetkisine sahip olmalıdır"
 
 #: ../../implementation/tokens.rst:86
 msgid ""
-"``BalanceResult`` either returns the number of motes held by the "
-"``purse``, or nothing if the ``URef`` is not valid"
+"``BalanceResult`` either returns the number of motes held by the ``purse``, "
+"or nothing if the ``URef`` is not valid"
 msgstr ""
+"``BalanceResult``, ``purse`` tarafından tutulan mote sayısını döndürür veya "
+"``URef`` geçerli değilse hiçbir şey vermez"
 
 #: ../../implementation/tokens.rst:92
 msgid "Using purse ``URef``\\ s"
-msgstr ""
+msgstr "Cüzdan ``URef``lerini kullanmak"
 
 #: ../../implementation/tokens.rst:94
 msgid ""
-"It is dangerous to pass a purse's ``URef`` with ``Write`` permissions to "
-"a contract. A malicious contract may use that access to take more tokens "
-"than were intended or share that ``URef`` with another contract that was "
-"not meant to have that access. Therefore, if a contract requires a purse "
-"with ``Write`` permissions, it is always recommended to use a “payment "
-"purse” -- a purse used for that single transaction and nothing else. This"
-" ensures that even if the ``URef`` becomes compromised, it does not "
-"contain any more funds than the user intended on giving."
+"It is dangerous to pass a purse's ``URef`` with ``Write`` permissions to a "
+"contract. A malicious contract may use that access to take more tokens than "
+"were intended or share that ``URef`` with another contract that was not "
+"meant to have that access. Therefore, if a contract requires a purse with "
+"``Write`` permissions, it is always recommended to use a “payment purse” -- "
+"a purse used for that single transaction and nothing else. This ensures that"
+" even if the ``URef`` becomes compromised, it does not contain any more "
+"funds than the user intended on giving."
 msgstr ""
+"``Yaz`` izinlerine sahip bir cüzdanın ``URef``ini bir kontrata geçirmek "
+"tehlikelidir. Kötü niyetli bir kontrat, bu erişimi amaçlanandan daha fazla "
+"token almak için kullanabilir veya bu ``URef``i, bu erişime sahip olması "
+"amaçlanmayan başka bir kontratla paylaşabilir. Bu nedenle, bir sözleşme "
+"``Yaz`` izinlerine sahip bir cüzdan gerektiriyorsa, her zaman bir ``ödeme "
+"cüzdanı`` kullanılması önerilir - bu tek işlem için kullanılan bir cüzdan ve"
+" başka bir şey değil. Bu, ``URef`` tehlikeye girse bile, kullanıcının "
+"vermeyi amaçladığından daha fazla para içermemesini sağlar."
 
 #: ../../implementation/tokens.rst:106
 msgid ""
 "To avoid this inconvenience, it is a better practice for application "
-"developers intending to accept payment on-chain to make a version of "
-"their own purse ``URef`` with ``Read`` access rights publicly available. "
-"This allows clients to pay via a transfer using their purse, without "
-"either party exposing ``Write`` access to any purse."
+"developers intending to accept payment on-chain to make a version of their "
+"own purse ``URef`` with ``Read`` access rights publicly available. This "
+"allows clients to pay via a transfer using their purse, without either party"
+" exposing ``Write`` access to any purse."
 msgstr ""
+"Bu rahatsızlıktan kaçınmak için, zincir üzerinden ödemeyi kabul etmek "
+"isteyen uygulama geliştiricileri için kendi cüzdanlarının ``Uref`` sürümünü "
+"``Oku`` erişim haklarıyla herkese açık hale getirmek daha iyi bir "
+"uygulamadır. Bu, müşterilerin herhangi bir cüzdana ``Yaz`` erişimini açığa "
+"çıkarmadan, cüzdanlarını kullanarak transfer yoluyla ödeme yapmalarını "
+"sağlar."
 
 #: ../../implementation/tokens.rst:112
 msgid "Purses and Accounts"
-msgstr ""
+msgstr "Cüzdanlar ve Hesaplar"
 
 #: ../../implementation/tokens.rst:114
 msgid ""
-"All :ref:`accounts-head` on the Casper system have a purse associated "
-"with the Casper system mint, which we call the *main purse*. However, for"
-" security reasons, the ``URef`` of the main purse is only available to "
-"code running in the context of that account (i.e. only in payment or "
-"session code). Therefore, the mint’s ``transfer`` method which accepts "
-"``URef``\\ s is not the most convenient to use when transferring between "
-"account main purses. For this reason, Casper supplies a "
+"All :ref:`accounts-head` on the Casper system have a purse associated with "
+"the Casper system mint, which we call the *main purse*. However, for "
+"security reasons, the ``URef`` of the main purse is only available to code "
+"running in the context of that account (i.e. only in payment or session "
+"code). Therefore, the mint’s ``transfer`` method which accepts ``URef``\\ s "
+"is not the most convenient to use when transferring between account main "
+"purses. For this reason, Casper supplies a `transfer_to_account "
+"<https://docs.rs/casper-"
+"contract/latest/casper_contract/contract_api/system/fn.transfer_to_account.html>`_"
+" function which takes the public key used to derive the :ref:`identity key "
+"<global-state-account-key>` of the account. This function uses the mint "
+"transfer function with the current account’s main purse as the ``source`` "
+"and the main purse of the account at the provided key as the ``target``."
+msgstr ""
+"Casper sistemindeki tüm :ref:`accounts-head`ların, *ana cüzdan* olarak "
+"adlandırdığımız Casper sistemi mint'iyle ilişkili bir cüzdanı vardır. Ancak,"
+" güvenlik nedenleriyle, ana cüzdanın ``URef``i yalnızca o hesap bağlamında "
+"çalışan kod için kullanılabilir (yani yalnızca ödeme veya oturum kodunda). "
+"Bu nedenle, mint'in ``URefs``lerini kabul eden ``transfer`` yöntemi, hesap "
+"ana cüzdanları arasında aktarım yaparken kullanmak için en uygun yöntem "
+"değildir. Bu nedenle Casper, hesabın :ref:`identity key <global-state-"
+"account-key>`ini  türetmek için kullanılan genel anahtarı alan bir "
 "`transfer_to_account <https://docs.rs/casper-"
 "contract/latest/casper_contract/contract_api/system/fn.transfer_to_account.html>`_"
-" function which takes the public key used to derive the :ref:`identity "
-"key <global-state-account-key>` of the account. This function uses the "
-"mint transfer function with the current account’s main purse as the "
-"``source`` and the main purse of the account at the provided key as the "
-"``target``."
-msgstr ""
-
+" işlevi sağlar. Bu işlev, cari hesabın ana cüzdanını ``source`` olarak ve "
+"hesabın ana cüzdanını sağlanan anahtarda ``target`` olarak kullanarak mint "
+"transfer işlevini kullanır."
