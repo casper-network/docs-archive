@@ -3,137 +3,179 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:2
 msgid "Additional Scenarios"
-msgstr ""
+msgstr "Ek Senaryolar"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:4
 msgid ""
 "This section walks you through additional scenarios where accounts have "
 "multiple associated keys for signing transactions at various thresholds."
 msgstr ""
+"Bu bölüm, hesapların çeşitli eşiklerde işlemleri imzalamak için birden çok "
+"ilişkili anahtarı olduğu ek senaryolarda size yol gösterir."
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:7
 msgid "Scenario 1: signing transactions with a single key"
-msgstr ""
+msgstr "Senaryo 1: işlemleri tek bir anahtarla imzalama"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:9
 msgid ""
 "In this example, only one key can sign transactions in the name of this "
-"account. The key is \"account-hash-a1…\" under the `associated_keys`. If "
-"you sign the transaction using \"account-hash-a1…\", the signed "
-"transaction will have a `weight` equal to 1. For deployments or key "
-"management, the weight required is also 1. Therefore, the associated key "
-"meets the deployment and key management thresholds and can perform both "
-"actions."
+"account. The key is \"account-hash-a1…\" under the `associated_keys`. If you"
+" sign the transaction using \"account-hash-a1…\", the signed transaction "
+"will have a `weight` equal to 1. For deployments or key management, the "
+"weight required is also 1. Therefore, the associated key meets the "
+"deployment and key management thresholds and can perform both actions."
 msgstr ""
+"Bu örnekte, bu hesap adına işlemleri yalnızca bir anahtar imzalayabilir. "
+"Anahtar, `associated_keys` altında \"account-hash-a1…\" dir. İşlemi "
+"\"account-hash-a1…\" kullanarak imzalarsanız, imzalanan işlemin 1'e eşit bir"
+" \"ağırlığı\" olacaktır. Dağıtımlar veya anahtar yönetimi için gereken "
+"ağırlık da 1'dir. Bu nedenle, ilişkili anahtar dağıtımı karşılar ve anahtar "
+"yönetim eşikleri ve her iki eylemi de gerçekleştirebilir."
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:11
 msgid "**Faucet account in scenario 1:**"
-msgstr ""
+msgstr "**Senaryo 1'deki musluk hesabı:**"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:39
 msgid "Scenario 2: deploying with special keys"
-msgstr ""
+msgstr "Senaryo 2: özel anahtarlarla dağıtma"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:41
 msgid ""
-"In this example, you have two keys. One key can only perform deployments,"
-" while the second key can perform key management and deployments. The key"
-" with account address *a1* can deploy and make account changes, but the "
+"In this example, you have two keys. One key can only perform deployments, "
+"while the second key can perform key management and deployments. The key "
+"with account address *a1* can deploy and make account changes, but the "
 "second key with account address *b2* can only deploy."
 msgstr ""
+"Bu örnekte iki anahtarınız var. Bir anahtar yalnızca dağıtımları "
+"gerçekleştirebilirken, ikinci anahtar anahtar yönetimi ve dağıtımlarını "
+"gerçekleştirebilir. *a1* hesap adresine sahip anahtar dağıtabilir ve hesap "
+"değişiklikleri yapabilir, ancak *b2* hesap adresine sahip ikinci anahtar "
+"yalnızca dağıtabilir."
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:43
 msgid "**Faucet account in scenario 2:**"
-msgstr ""
+msgstr "**Senaryo 2'deki musluk hesabı:**"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:77
 msgid "Scenario 3: signing transactions with multiple keys"
-msgstr ""
+msgstr "Senaryo 3: işlemleri birden çok anahtarla imzalama"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:79
 msgid ""
 "Sometimes you will require multiple associated keys to execute a "
 "transaction. In this example, we have two associated keys with a weight "
 "equal to 1. To make changes to the account, you need to use both keys to "
-"sign the transaction. However, for deployment, each key can sign "
-"separately and perform deployments independently."
+"sign the transaction. However, for deployment, each key can sign separately "
+"and perform deployments independently."
 msgstr ""
+"Bazen bir işlemi yürütmek için birden fazla ilişkili anahtara ihtiyacınız "
+"olacaktır. Bu örnekte, ağırlığı 1'e eşit olan iki ilişkili anahtarımız var. "
+"Hesapta değişiklik yapmak amacıyla, işlemi imzalamak için her iki anahtarı "
+"da kullanmanız gerekir. Ancak dağıtım için her anahtar ayrı olarak "
+"imzalayabilir ve dağıtımları bağımsız olarak gerçekleştirebilir."
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:81
 msgid "**Faucet account in scenario 3:**"
-msgstr ""
+msgstr "**Senaryo 3'teki musluk hesabı:**"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:112
 msgid "Scenario 4: managing lost or stolen keys"
-msgstr ""
+msgstr "Senaryo 4: kayıp veya çalınan anahtarları yönetme"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:114
 msgid ""
 "In this example, you need two out of three associated keys to sign a "
-"transaction. Consider a transaction where you have one key in your "
-"browser, one key on your mobile phone, and one key in your safe. To do a "
-"transaction, first, you sign it with your browser extension (for example,"
-" Metamask). Afterward, a notification appears on your mobile phone "
-"requesting you to approve the transaction. With these two keys, you can "
-"complete the transaction. However, what if you lose the two keys on your "
-"browser and phone? Or, what if someone steals your browser and phone? In "
-"this case, you can use the safe key to remove the lost or stolen keys "
-"from the account. Notice that the safe key's weight is 3, which gives you"
-" the option to manage your account and add or remove keys. Also, the "
-"stolen or lost keys can only enable deployments, and in this case, no one"
-" can use them to change your account."
+"transaction. Consider a transaction where you have one key in your browser, "
+"one key on your mobile phone, and one key in your safe. To do a transaction,"
+" first, you sign it with your browser extension (for example, Metamask). "
+"Afterward, a notification appears on your mobile phone requesting you to "
+"approve the transaction. With these two keys, you can complete the "
+"transaction. However, what if you lose the two keys on your browser and "
+"phone? Or, what if someone steals your browser and phone? In this case, you "
+"can use the safe key to remove the lost or stolen keys from the account. "
+"Notice that the safe key's weight is 3, which gives you the option to manage"
+" your account and add or remove keys. Also, the stolen or lost keys can only"
+" enable deployments, and in this case, no one can use them to change your "
+"account."
 msgstr ""
+"Bu örnekte, bir işlemi imzalamak için ilişkili üç anahtardan ikisine "
+"ihtiyacınız var. Tarayıcınızda bir anahtar, cep telefonunuzda bir anahtar ve"
+" kasanızda bir anahtar olduğu bir işlemi düşünün. Bir işlem yapmak için önce"
+" tarayıcı eklentinizle (örneğin Metamask) imzalarsınız. Ardından cep "
+"telefonunuzda işlemi onaylamanızı isteyen bir bildirim belirir. Bu iki tuş "
+"ile işlemi tamamlayabilirsiniz. Ancak, tarayıcınızdaki ve telefonunuzdaki "
+"iki anahtarı kaybederseniz ne olur? Ya birisi tarayıcınızı ve telefonunuzu "
+"çalarsa? Bu durumda, kayıp veya çalınan anahtarları hesaptan çıkarmak için "
+"kasa anahtarını kullanabilirsiniz. Kasa anahtarının ağırlığının 3 olduğuna "
+"dikkat edin; bu, size hesabınızı yönetme ve anahtar ekleme veya çıkarma "
+"seçeneği sunar. Ayrıca çalınan veya kaybolan anahtarlar yalnızca dağıtımları"
+" etkinleştirebilir ve bu durumda hiç kimse bunları hesabınızı değiştirmek "
+"için kullanamaz."
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:120
 msgid "**Faucet account in scenario 4:**"
-msgstr ""
+msgstr "**Senaryo 4'teki musluk hesabı:**"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:155
 msgid "Scenario 5: managing accounts with multiple keys"
-msgstr ""
+msgstr "Senaryo 5: birden çok anahtarla hesapları yönetme"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:157
 msgid ""
-"This example builds upon the previous example, where you can set up "
-"multiple safe keys for account management. In this scenario, the safe "
-"keys have the weight required to manage your keys and account."
+"This example builds upon the previous example, where you can set up multiple"
+" safe keys for account management. In this scenario, the safe keys have the "
+"weight required to manage your keys and account."
 msgstr ""
+"Bu örnek, hesap yönetimi için birden çok güvenli anahtar ayarlayabileceğiniz"
+" önceki örneğe dayanmaktadır. Bu senaryoda, kasa anahtarları, "
+"anahtarlarınızı ve hesabınızı yönetmek için gereken ağırlığa sahiptir."
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:159
 msgid "**Faucet account in scenario 5:**"
-msgstr ""
+msgstr "**Senaryo 5'teki musluk hesabı:**"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:202
 msgid "Scenario 6: losing your primary account key"
-msgstr ""
+msgstr "Senaryo 6: birincil hesap anahtarınızı kaybetmek"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:204
 msgid ""
-"Suppose you lose your account key; in this case, \"account-hash-00…\", "
-"you can set up other keys to execute transactions. Although not "
-"recommended, you can throw away the private key of your account or set "
-"its weight to zero, and you would still be able to execute transactions "
-"if your faucet account has backup keys that can perform key management."
+"Suppose you lose your account key; in this case, \"account-hash-00…\", you "
+"can set up other keys to execute transactions. Although not recommended, you"
+" can throw away the private key of your account or set its weight to zero, "
+"and you would still be able to execute transactions if your faucet account "
+"has backup keys that can perform key management."
 msgstr ""
+"Hesap anahtarınızı kaybettiğinizi varsayalım; bu durumda, \"account-"
+"hash-00...\", işlemleri yürütmek için diğer anahtarları ayarlayabilirsiniz. "
+"Tavsiye edilmese de, hesabınızın özel anahtarını atabilir veya ağırlığını "
+"sıfıra ayarlayabilirsiniz ve musluk hesabınızda anahtar yönetimi yapabilen "
+"yedek anahtarlar varsa yine de işlem yapabilirsiniz."
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:206
 msgid "**Faucet account in scenario 6:**"
-msgstr ""
-
+msgstr "**Senaryo 6'daki musluk hesabı:**"
