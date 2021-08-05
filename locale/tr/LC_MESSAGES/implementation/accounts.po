@@ -3,224 +3,308 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../implementation/accounts.rst:4
 msgid "Accounts"
-msgstr ""
+msgstr "Hesaplar"
 
 #: ../../implementation/accounts.rst:9
 msgid "Introduction"
-msgstr ""
+msgstr "Giriş"
 
 #: ../../implementation/accounts.rst:11
 msgid ""
-"An *account* is a cryptographically secured gateway into the Casper "
-"system used by entities outside the blockchain (e.g., off-chain "
-"components of blockchain-based applications, individual users). All user "
-"activity on the Casper blockchain (i.e., “deploys”) must originate from "
-"an account. Each account has its own context where it can locally store "
-"information (e.g., references to useful contracts, metrics, aggregated "
-"data from other parts of the blockchain). Each account also has a “main "
-"purse” where it can hold Casper tokens (see :ref:`Tokens <tokens-purses-"
-"and-accounts>` for more information)."
+"An *account* is a cryptographically secured gateway into the Casper system "
+"used by entities outside the blockchain (e.g., off-chain components of "
+"blockchain-based applications, individual users). All user activity on the "
+"Casper blockchain (i.e., “deploys”) must originate from an account. Each "
+"account has its own context where it can locally store information (e.g., "
+"references to useful contracts, metrics, aggregated data from other parts of"
+" the blockchain). Each account also has a “main purse” where it can hold "
+"Casper tokens (see :ref:`Tokens <tokens-purses-and-accounts>` for more "
+"information)."
 msgstr ""
+"Bir *hesap*, blokzincir dışındaki varlıklar (ör. blokzincir tabanlı "
+"uygulamaların zincir dışı bileşenleri, bireysel kullanıcılar) tarafından "
+"kullanılan, Casper sistemine kriptografik olarak güvenli bir ağ geçididir. "
+"Casper blokzincirindeki tüm kullanıcı etkinlikleri (yani “dağıtımlar”) bir "
+"hesaptan kaynaklanmalıdır. Her hesabın yerel olarak bilgi depolayabileceği "
+"kendi bağlamı vardır (örneğin, faydalı kontratlara referanslar, ölçümler, "
+"blokzincirin diğer bölümlerinden toplanan veriler). Her hesabın ayrıca "
+"Casper tokenlerini tutabileceği bir “ana cüzdanı” vardır (daha fazla bilgi "
+"için :ref:`Tokenler <tokens-purses-and-accounts>`e bakın)."
 
 #: ../../implementation/accounts.rst:20
 msgid ""
-"In this chapter we describe the permission model for accounts, their "
-"local storage capabilities, and briefly mention some runtime functions "
-"for interacting with accounts."
+"In this chapter we describe the permission model for accounts, their local "
+"storage capabilities, and briefly mention some runtime functions for "
+"interacting with accounts."
 msgstr ""
+"Bu bölümde, hesaplar için izin modelini, yerel depolama yeteneklerini "
+"açıklıyoruz ve hesaplarla etkileşim için bazı çalışma zamanı işlevlerinden "
+"kısaca bahsediyoruz."
 
 #: ../../implementation/accounts.rst:27
 msgid "The ``Account`` data structure"
-msgstr ""
+msgstr "``Hesap`` veri yapısı"
 
 #: ../../implementation/accounts.rst:29
 msgid "An ``Account`` contains the following data:"
-msgstr ""
+msgstr "Bir ``Hesap`` şu verileri içerir:"
 
 #: ../../implementation/accounts.rst:31
 msgid ""
-"A collection of named keys (this plays the same role as the named keys in"
-" a :ref:`stored contract <global-state-contracts>`)"
+"A collection of named keys (this plays the same role as the named keys in a "
+":ref:`stored contract <global-state-contracts>`)"
 msgstr ""
+"Adlandırılmış anahtarların bir koleksiyonu (bu, bir :ref:`stored kontrat "
+"<global-state-contracts>` taki adlandırılmış anahtarlarla aynı rolü oynar)"
 
 #: ../../implementation/accounts.rst:33
 msgid "A ``URef`` representing the account’s “main purse”"
-msgstr ""
+msgstr "Hesabın “ana cüzdanını” temsil eden bir ``URef``"
 
 #: ../../implementation/accounts.rst:34
 msgid "A collections of “associated keys” (see below for more information)"
 msgstr ""
+"“İlişkili anahtarlar” koleksiyonu (daha fazla bilgi için aşağıya bakın)"
 
 #: ../../implementation/accounts.rst:35
 msgid "“Action thresholds” (see below for more information)"
-msgstr ""
+msgstr "“Eylem eşikleri” (daha fazla bilgi için aşağıya bakın)"
 
 #: ../../implementation/accounts.rst:40
 msgid "Permissions model"
-msgstr ""
+msgstr "İzin modeli"
 
 #: ../../implementation/accounts.rst:45
 msgid "Actions and thresholds"
-msgstr ""
+msgstr "Eylemler ve eşikler"
 
 #: ../../implementation/accounts.rst:47
 msgid ""
-"There are two types of actions an account can perform: a deployment, and "
-"key management. A deployment is simply executing some code on the "
-"blockchain, while key management involves changing the associated keys "
-"(which will be described in more detail later). Key management cannot be "
-"performed independently, as all effects to the blockchain must come via a"
-" deploy; therefore, a key management action implies that a deployment "
-"action is also taking place. The ``ActionThresholds`` contained in the "
-"``Account`` data structure set a ``Weight`` which must be met in order to"
-" perform that action. How these weight thresholds can be met is described"
-" in the next section. Since a key management action requires a deploy "
-"action, the key management threshold should always be greater than or "
-"equal to the deploy threshold."
+"There are two types of actions an account can perform: a deployment, and key"
+" management. A deployment is simply executing some code on the blockchain, "
+"while key management involves changing the associated keys (which will be "
+"described in more detail later). Key management cannot be performed "
+"independently, as all effects to the blockchain must come via a deploy; "
+"therefore, a key management action implies that a deployment action is also "
+"taking place. The ``ActionThresholds`` contained in the ``Account`` data "
+"structure set a ``Weight`` which must be met in order to perform that "
+"action. How these weight thresholds can be met is described in the next "
+"section. Since a key management action requires a deploy action, the key "
+"management threshold should always be greater than or equal to the deploy "
+"threshold."
 msgstr ""
+"Bir hesabın gerçekleştirebileceği iki tür eylem vardır: dağıtım ve anahtar "
+"yönetimi. Bir dağıtım basitçe blokzincirde bazı kodları yürütürken, anahtar "
+"yönetimi ilişkili anahtarların değiştirilmesini içerir (bu daha sonra daha "
+"ayrıntılı olarak açıklanacaktır). Blokzincire tüm etkilerin bir dağıtım "
+"yoluyla gelmesi gerektiğinden, anahtar yönetimi bağımsız olarak "
+"gerçekleştirilemez; bu nedenle, bir anahtar yönetim eylemi, bir dağıtım "
+"eyleminin de gerçekleştiğini ima eder. ``Hesap`` veri yapısında bulunan "
+"``ActionThresholds`` , bu eylemi gerçekleştirmek için karşılanması gereken "
+"bir ``Ağırlık`` belirler. Bu ağırlık eşiklerinin nasıl karşılanabileceği bir"
+" sonraki bölümde açıklanmaktadır. Bir anahtar yönetimi eylemi bir dağıtım "
+"eylemi gerektirdiğinden, anahtar yönetimi eşiği her zaman dağıtım eşiğinden "
+"büyük veya ona eşit olmalıdır."
 
 #: ../../implementation/accounts.rst:62
 msgid "Associated keys and weights"
-msgstr ""
+msgstr "İlişkili anahtarlar ve ağırlıklar"
 
 #: ../../implementation/accounts.rst:64
 msgid ""
-"As mentioned in the introduction, accounts are secured via cryptography. "
-"The *associated keys* of an account are the set of public keys which are "
-"allowed to provide signatures on deploys for that account. Each "
-"associated key has a weight; these weights are used to meet the action "
-"thresholds provided in the previous section. Each deploy must be signed "
-"by one or more keys associated with the account that deploy is for, and "
-"the sum of the weights of those keys must be greater than or equal to the"
-" deployment threshold weight for that account. We call the keys that have"
-" signed a deploy the “authorizing keys”. Similarly, if that deploy "
-"contains any key management actions (detailed below), then the sum of the"
-" weights of the authorizing keys must be greater than or equal to the key"
-" management action threshold of the account."
+"As mentioned in the introduction, accounts are secured via cryptography. The"
+" *associated keys* of an account are the set of public keys which are "
+"allowed to provide signatures on deploys for that account. Each associated "
+"key has a weight; these weights are used to meet the action thresholds "
+"provided in the previous section. Each deploy must be signed by one or more "
+"keys associated with the account that deploy is for, and the sum of the "
+"weights of those keys must be greater than or equal to the deployment "
+"threshold weight for that account. We call the keys that have signed a "
+"deploy the “authorizing keys”. Similarly, if that deploy contains any key "
+"management actions (detailed below), then the sum of the weights of the "
+"authorizing keys must be greater than or equal to the key management action "
+"threshold of the account."
 msgstr ""
+"Girişte belirtildiği gibi, hesaplar kriptografi ile güvence altına alınır. "
+"Bir hesabın *ilişkili anahtarları*, o hesap için dağıtımlarda imza "
+"sağlamasına izin verilen ortak anahtarlar kümesidir. Her ilişkili anahtarın "
+"bir ağırlığı vardır; bu ağırlıklar, önceki bölümde sağlanan eylem eşiklerini"
+" karşılamak için kullanılır. Her dağıtım, dağıtımın yapıldığı hesapla "
+"ilişkili bir veya daha fazla anahtar tarafından imzalanmalıdır ve bu "
+"anahtarların ağırlıklarının toplamı, o hesabın dağıtım eşiği ağırlığından "
+"büyük veya ona eşit olmalıdır. Bir dağıtımı imzalayan anahtarlara "
+"“yetkilendirme anahtarları” diyoruz. Benzer şekilde, bu dağıtım herhangi bir"
+" anahtar yönetim eylemi içeriyorsa (aşağıda ayrıntılı olarak açıklanmıştır),"
+" yetkilendirme anahtarlarının ağırlıklarının toplamı, hesabın anahtar "
+"yönetimi eylemi eşiğinden büyük veya ona eşit olmalıdır."
 
 #: ../../implementation/accounts.rst:76
 msgid ""
-"Note: that any key may be used to help authorize any action; there are no"
-" “special keys”, all keys contribute their weight in exactly the same "
-"way."
+"Note: that any key may be used to help authorize any action; there are no "
+"“special keys”, all keys contribute their weight in exactly the same way."
 msgstr ""
+"Not: Herhangi bir işlemin yetkilendirilmesine yardımcı olmak için herhangi "
+"bir anahtar kullanılabilir; “özel tuşlar” yoktur, tüm anahtarlar "
+"ağırlıklarına tam olarak aynı şekilde katkıda bulunur."
 
 #: ../../implementation/accounts.rst:81
 msgid "Key management actions"
-msgstr ""
+msgstr "Anahtar yönetim eylemleri"
 
 #: ../../implementation/accounts.rst:83
 msgid ""
-"A *key management action* is any change to any of the permissions "
-"parameters for the account. This includes the following:"
+"A *key management action* is any change to any of the permissions parameters"
+" for the account. This includes the following:"
 msgstr ""
+"*Anahtar yönetimi eylemi*, hesaba ilişkin izin parametrelerinden herhangi "
+"birinde yapılan herhangi bir değişikliktir. Bu, aşağıdakileri içerir:"
 
 #: ../../implementation/accounts.rst:86
 msgid "adding or removing an associated key;"
-msgstr ""
+msgstr "ilişkili bir anahtarın eklenmesi veya çıkarılması;"
 
 #: ../../implementation/accounts.rst:87
 msgid "changing the weight of an associated key;"
-msgstr ""
+msgstr "ilişkili bir anahtarın ağırlığının değiştirilmesi;"
 
 #: ../../implementation/accounts.rst:88
 msgid "changing the threshold of any action."
-msgstr ""
+msgstr "herhangi bir eylemin eşiğini değiştirmek."
 
 #: ../../implementation/accounts.rst:90
 msgid ""
-"Key management actions have validity rules which prevent a user from "
-"locking themselves out of their account. For example, it is not allowed "
-"to set a threshold larger than the sum of the weights of all associated "
-"keys."
+"Key management actions have validity rules which prevent a user from locking"
+" themselves out of their account. For example, it is not allowed to set a "
+"threshold larger than the sum of the weights of all associated keys."
 msgstr ""
+"Anahtar yönetimi eylemlerinin, bir kullanıcının kendisini hesabından "
+"kilitlemesini engelleyen geçerlilik kuralları vardır. Örneğin, ilişkili tüm "
+"anahtarların ağırlıklarının toplamından daha büyük bir eşik ayarlanmasına "
+"izin verilmez."
 
 #: ../../implementation/accounts.rst:97
 msgid "Account security and recovery using key management"
-msgstr ""
+msgstr "Anahtar yönetimini kullanarak hesap güvenliği ve kurtarma"
 
 #: ../../implementation/accounts.rst:99
 msgid ""
 "The purpose of this permissions model is to enable keeping accounts safe "
 "from lost or stolen keys, while allowing usage of capabilities of modern "
 "mobile devices. For example, it may be convenient to sign deploys from a "
-"smart phone in day-to-day usage, and this can be done without worrying "
-"about the repercussions of losing the phone. The recommended setup would "
-"be to have a low-weight key on the phone, only just enough for the deploy"
-" threshold, but not enough for key management, then if the phone is lost "
-"or stolen, a key management action using other associated keys from "
-"another device (e.g., a home computer) can be used to remove the lost "
-"associated key and add a key which resides on a replacement phone."
+"smart phone in day-to-day usage, and this can be done without worrying about"
+" the repercussions of losing the phone. The recommended setup would be to "
+"have a low-weight key on the phone, only just enough for the deploy "
+"threshold, but not enough for key management, then if the phone is lost or "
+"stolen, a key management action using other associated keys from another "
+"device (e.g., a home computer) can be used to remove the lost associated key"
+" and add a key which resides on a replacement phone."
 msgstr ""
+"Bu izin modelinin amacı, modern mobil cihazların yeteneklerinin "
+"kullanılmasına izin verirken, hesapların kayıp veya çalınan anahtarlardan "
+"korunmasını sağlamaktır. Örneğin, günlük kullanımda bir akıllı telefondan "
+"dağıtımları imzalamak uygun olabilir ve bu, telefonu kaybetmenin sonuçları "
+"hakkında endişelenmeden yapılabilir. Önerilen kurulum, telefonda düşük "
+"ağırlıklı bir anahtara sahip ve yalnızca dağıtım eşiği için yeterli olacak, "
+"ancak anahtar yönetimi için yeterli olmayacak, o zaman telefon kaybolur veya"
+" çalınırsa, kayıp ilişkili anahlarlerı kaldırabilen ve yedek telefonda "
+"bulunan bir anahtarı ekleyebilen diğer cihazdan (örneğin, bir ev "
+"bilgisayarı) diğer ilişkili anahtarları kullanan bir anahtar yönetim eylemi "
+"olacaktır. "
 
 #: ../../implementation/accounts.rst:102
 msgid ""
-"Note: that it is extremely important to ensure there will always be "
-"access to a sufficient number of keys to perform the key management "
-"action, otherwise future recovery will be impossible (we currently do not"
-" support “inactive recovery”)."
+"Note: that it is extremely important to ensure there will always be access "
+"to a sufficient number of keys to perform the key management action, "
+"otherwise future recovery will be impossible (we currently do not support "
+"“inactive recovery”)."
 msgstr ""
+"Not: Anahtar yönetimi eylemini gerçekleştirmek için her zaman yeterli sayıda"
+" anahtara erişimin olmasını sağlamak son derece önemlidir, aksi takdirde "
+"gelecekte kurtarma imkansız olacaktır (şu anda “etkin olmayan kurtarmayı” "
+"desteklemiyoruz)."
 
 #: ../../implementation/accounts.rst:110
 msgid "Creating an account"
-msgstr ""
+msgstr "Bir hesap oluşturmak"
 
 #: ../../implementation/accounts.rst:112
 msgid ""
-"Account creation happens automatically when there is a :ref:`token "
-"transfer <tokens-purses-and-accounts>` to a yet unused :ref:`identity key"
-" <global-state-account-key>`. When an account is first created, the "
-"balance of its main purse is equal to the number of tokens transferred, "
-"its action thresholds are equal to 1, and there is one associated key "
-"(equal to the public key used to derive the identity key) with weight 1."
+"Account creation happens automatically when there is a :ref:`token transfer "
+"<tokens-purses-and-accounts>` to a yet unused :ref:`identity key <global-"
+"state-account-key>`. When an account is first created, the balance of its "
+"main purse is equal to the number of tokens transferred, its action "
+"thresholds are equal to 1, and there is one associated key (equal to the "
+"public key used to derive the identity key) with weight 1."
 msgstr ""
+"Henüz kullanılmayan bir :ref:`kimlik anahtarı <global-state-account-key>`na "
+"bir :ref:`token aktarımı <tokens-purses-and-accounts>` olduğunda hesap "
+"oluşturma otomatik olarak gerçekleşir. Bir hesap ilk oluşturulduğunda, ana "
+"cüzdanının bakiyesi aktarılan tokenlerin sayısına eşittir, eylem eşikleri "
+"1'e eşittir ve ağırlığı 1 olan bir ilişkili anahtar (kimlik anahtarını "
+"türetmek için kullanılan ortak anahtara eşit) vardır."
 
 #: ../../implementation/accounts.rst:122
 msgid "The account context"
-msgstr ""
+msgstr "Hesap bağlamı"
 
 #: ../../implementation/accounts.rst:124
 msgid ""
-"A deploy is a user request to perform some execution on the blockchain "
-"(see :ref:`Execution Semantics <execution-semantics-deploys>` for more "
+"A deploy is a user request to perform some execution on the blockchain (see "
+":ref:`Execution Semantics <execution-semantics-deploys>` for more "
 "information). It contains “payment code” and “session code” which are "
 "contracts that contain the logic to be executed. These contracts are "
 "executed in the context of the account of the deploy. This means these "
 "contracts use the named keys of the account and use the account’s local "
-"storage (i.e., the “root” for the :ref:`local keys <global-state-local-"
-"key>` come from the account identity key)."
+"storage (i.e., the “root” for the :ref:`local keys <global-state-local-key>`"
+" come from the account identity key)."
 msgstr ""
+"Bir dağıtım, blokzincirde bir miktar yürütme gerçekleştirmek için bir "
+"kullanıcı isteğidir (daha fazla bilgi için :ref:`Yürütme Semantiği "
+"<execution-semantics-deploys>`ne bakın). Yürütülecek mantığı içeren "
+"kontratlar olan “ödeme kodu” ve “oturum kodu”nu içerir. Bu kontratlar, "
+"dağıtım hesabı bağlamında yürütülür. Bu, bu kontratların hesabın "
+"adlandırılmış anahtarlarını kullandığı ve hesabın yerel deposunu kullandığı "
+"anlamına gelir (yani, :ref:`yerel anahtarlar <global-state-local-key>` için "
+"“root”, hesap kimlik anahtarından gelir)."
 
 #: ../../implementation/accounts.rst:132
 msgid ""
-"Note: that other contracts called from the session code by "
-"``call_contract`` are executed in their own context, not the account "
-"context. This means, an account (with logic contained in session code) "
-"can be used to locally store information relevant to the user owning the "
-"account."
+"Note: that other contracts called from the session code by ``call_contract``"
+" are executed in their own context, not the account context. This means, an "
+"account (with logic contained in session code) can be used to locally store "
+"information relevant to the user owning the account."
 msgstr ""
+"Not: ``call_contract`` tarafından oturum kodundan çağrılan diğer "
+"kontratların, hesap bağlamında değil, kendi bağlamlarında yürütüldüğünü "
+"unutmayın. Bu, hesabın sahibi olan kullanıcıyla ilgili bilgileri yerel "
+"olarak depolamak için bir hesabın (oturum kodunda yer alan mantıkla) "
+"kullanılabileceği anlamına gelir."
 
 #: ../../implementation/accounts.rst:139
 msgid "Functions for interacting with an account"
-msgstr ""
+msgstr "Bir hesapla etkileşim için işlevler"
 
 #: ../../implementation/accounts.rst:141
 msgid ""
@@ -228,32 +312,34 @@ msgid ""
 "contract/1.0.1/casper_contract/ext_ffi/index.html>`__ contains several "
 "functions for working with the various account features:"
 msgstr ""
+"`Casper Rust kitaplığı <https://docs.rs/casper-"
+"contract/1.0.1/casper_contract/ext_ffi/index.html>`__, çeşitli hesap "
+"özellikleriyle çalışmak için çeşitli işlevler içerir:"
 
 #: ../../implementation/accounts.rst:143
 msgid "``casper_add_associated_key``"
-msgstr ""
+msgstr "``casper_add_associated_key``"
 
 #: ../../implementation/accounts.rst:144
 msgid "``casper_remove_associated_key``"
-msgstr ""
+msgstr "``casper_remove_associated_key``"
 
 #: ../../implementation/accounts.rst:145
 msgid "``casper_update_associated_key``"
-msgstr ""
+msgstr "``casper_update_associated_key``"
 
 #: ../../implementation/accounts.rst:146
 msgid "``casper_set_action_threshold``"
-msgstr ""
+msgstr "``casper_set_action_threshold``"
 
 #: ../../implementation/accounts.rst:147
 msgid "``casper_get_balance``"
-msgstr ""
+msgstr "``casper_get_balance``"
 
 #: ../../implementation/accounts.rst:148
 msgid "``casper_load_named_keys``"
-msgstr ""
+msgstr "``casper_load_named_keys``"
 
 #: ../../implementation/accounts.rst:149
 msgid "``casper_get_named_arg``"
-msgstr ""
-
+msgstr "``casper_get_named_arg``"
