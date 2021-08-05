@@ -1,0 +1,633 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../node-operator/setup.rst:3
+msgid "Basic Node Setup"
+msgstr "Thiết lập nút cơ bản"
+
+#: ../../node-operator/setup.rst:6
+msgid "Casper Node Launcher"
+msgstr "Trình khởi chạy nút Casper"
+
+#: ../../node-operator/setup.rst:8
+msgid ""
+"The node software is run from the ``casper-node-launcher`` package. This can"
+" be installed with a Debian package which also creates the Casper user, "
+"creates directory structures and sets up a *systemd* unit and *logrotate*."
+msgstr ""
+"Phần mềm nút được chạy từ gói ``casper-node-launcher``. Điều này có thể được"
+" cài đặt với một gói Debian, và cũng dùng để tạo người dùng Casper, tạo cấu "
+"trúc thư mục và thiết lập đơn vị *systemd* và *logrotate*."
+
+#: ../../node-operator/setup.rst:11
+msgid ""
+"The casper-node-launcher Debian package can be obtained from "
+"https://bintray.com/casperlabs/debian/casper-node-launcher."
+msgstr ""
+"Có thể lấy gói Debian casper-node-launcher từ "
+"https://bintray.com/casperlabs/debian/casper-node-launcher."
+
+#: ../../node-operator/setup.rst:13
+msgid ""
+"You can also build from source: https://github.com/CasperLabs/casper-node-"
+"launcher. However, all of the setup and pull of casper-node releases will be"
+" manual."
+msgstr ""
+"Bạn cũng có thể xây dựng từ nguồn: https://github.com/CasperLabs/casper-"
+"node-launcher. Tuy nhiên, tất cả việc thiết lập và kéo về các bản phát hành "
+"casper-node sẽ là thủ công."
+
+#: ../../node-operator/setup.rst:16
+msgid "File Locations"
+msgstr "Vị trí tệp"
+
+#: ../../node-operator/setup.rst:18
+msgid ""
+"This section describes the directories and files the ``casper-node-"
+"launcher`` Debian install creates, needed for running ``casper-node`` "
+"versions and performing upgrades."
+msgstr ""
+"Phần này mô tả các thư mục và tệp mà bản cài đặt Debian ``casper-node-"
+"launcher``  tạo ra, cần thiết để chạy các phiên bản ``casper-node`` và thực "
+"hiện nâng cấp."
+
+#: ../../node-operator/setup.rst:20
+msgid ""
+"A *casper* user and *casper* group is created during install and used to run"
+" the software."
+msgstr ""
+"Người dùng *casper* và nhóm *casper* được tạo ra trong quá trình cài đặt và "
+"được sử dụng để chạy phần mềm."
+
+#: ../../node-operator/setup.rst:22
+msgid ""
+"Each version of the ``casper-node`` install is located based on the semantic"
+" version with underscores. For example, version *1.0.3* would be represented"
+" by a directory named ``1_0_3``. This convention applies to both binary and "
+"configuration file locations. We will represent versioning with ``[m_n_p]`` "
+"below, representing the major, minor, patch of a semantic version."
+msgstr ""
+"Mỗi phiên bản của cài đặt ``casper-node`` đặt tại thư mục với tên phiên bản "
+"có dấu gạch dưới. Ví dụ: phiên bản *1.0.3* sẽ được thể hiện bởi một thư mục "
+"có tên là ``1_0_3``. Quy ước này áp dụng cho cả vị trí tệp nhị phân và tệp "
+"cấu hình. Chúng tôi sẽ trình bày cách lập phiên bản với ``[m_n_p]`` bên "
+"dưới, thể hiện phiên bản của bản chính, bản phụ, bản vá."
+
+#: ../../node-operator/setup.rst:24
+msgid ""
+"**Note**: multiple versioned folders will exist on a system when upgrades "
+"are setup."
+msgstr ""
+"**Lưu ý**: khi thiết lập nâng cấp hệ thống sẽ tồn tại nhiều thư mục tương "
+"ứng với các phiên bản."
+
+#: ../../node-operator/setup.rst:26
+msgid ""
+"The installation of ``casper-node-launcher``, ``casper-node``, and ``casper-"
+"client`` software is relatively simple, but the process accomplishes many "
+"things behind the scenes. This section describes the installation process "
+"and where the files are stored."
+msgstr ""
+"Việc cài đặt phần mềm``casper-node-launcher``, ``casper-node``, và ``casper-"
+"client`` tương đối đơn giản, nhưng quá trình này hoàn thành nhiều thứ phía "
+"sau. Phần này mô tả quá trình cài đặt và nơi các tệp được lưu trữ."
+
+#: ../../node-operator/setup.rst:28
+msgid ""
+"Two main folders are relevant for our software: ``/etc/casper`` and "
+"``/var/lib/casper``."
+msgstr ""
+"Hai thư mục chính có liên quan đến phần mềm của chúng ta: ``/etc/casper`` "
+"and ``/var/lib/casper``."
+
+#: ../../node-operator/setup.rst:30
+msgid ""
+"The following is the state of the filesystem after installing the ``casper-"
+"client`` and ``casper-node-launcher`` Debian packages, and also after "
+"running the script */etc/casper/pull_casper_node_version.sh*."
+msgstr ""
+"Sau đây là trạng thái của hệ thống tệp sau khi cài đặt gói Debian ``casper-"
+"client`` và ``casper-node-launcher``, và cả sau khi chạy script "
+"*/etc/casper/pull_casper_node_version.sh*."
+
+#: ../../node-operator/setup.rst:33
+msgid "``/usr/bin``"
+msgstr "``/usr/bin``"
+
+#: ../../node-operator/setup.rst:34
+msgid ""
+"The default location for executables from the Debian package install is "
+"``/usr/bin``."
+msgstr ""
+"Vị trí mặc định cho các tệp thực thi từ cài đặt gói Debian là ``/usr/bin``."
+
+#: ../../node-operator/setup.rst:36
+msgid "``casper-client`` - A client for interacting with the Casper network"
+msgstr "``casper-client`` - client để tương tác với mạng Casper"
+
+#: ../../node-operator/setup.rst:37
+msgid ""
+"``casper-node-launcher`` - The launcher application which starts the "
+"``casper-node`` as a child process"
+msgstr ""
+"``casper-node-launcher`` - Ứng dụng launcher khởi động ``casper-node`` dưới "
+"dạng một quá trình con"
+
+#: ../../node-operator/setup.rst:40
+msgid "``/etc/casper``"
+msgstr "``/etc/casper``"
+
+#: ../../node-operator/setup.rst:41
+msgid ""
+"This is the default location for configuration files. It can be overwritten "
+"with the ``CASPER_CONFIG_DIR`` environment variable. The paths in this "
+"document assume the default configuration file location of ``/etc/casper``. "
+"The data is organized as follows:"
+msgstr ""
+"Đây là vị trí mặc định cho các tệp cấu hình. Nó có thể được ghi đè bằng biến"
+" môi trường ``CASPER_CONFIG_DIR``. Các đường dẫn trong tài liệu này giả định"
+" vị trí tệp cấu hình mặc định là ``/etc/casper``. Dữ liệu được sắp xếp như "
+"sau:"
+
+#: ../../node-operator/setup.rst:43
+msgid ""
+"**delete_local_db.sh** - Removes `*.lmdb*` from ``/var/lib/casper/casper-"
+"node``"
+msgstr ""
+"**delete_local_db.sh** - Xóa `*.lmdb*` khỏi ``/var/lib/casper/casper-node``"
+
+#: ../../node-operator/setup.rst:45
+msgid ""
+"**pull_casper_node_version.sh** <protocol_version> <network_name> - Pulls "
+"``bin.tar.gz`` and ``config.tar.gz`` from `genesis.casperlabs.io "
+"<http://genesis.casperlabs.io/>`_ for a protocol package; decompresses them "
+"into ``/var/lib/bin/<protocol_version>`` and "
+"``/etc/casper/<protocol_version>``, and removes the *\\*.tar.gz* files"
+msgstr ""
+"**pull_casper_node_version.sh** <protocol_version> <network_name> - Kéo về "
+"``bin.tar.gz`` và ``config.tar.gz`` từ `genesis.casperlabs.io "
+"<http://genesis.casperlabs.io/>`_ cho gói giao thức; giải nén chúng thành "
+"``/var/lib/bin/<protocol_version>`` và ``/etc/casper/<protocol_version>``, "
+"và xoá các tệp *\\*.tar.gz*"
+
+#: ../../node-operator/setup.rst:47
+msgid ""
+"**config_from_example.sh** <protocol_version> - Gets external an IP to "
+"replace and create the *config.toml* from *config-example.toml*"
+msgstr ""
+"**config_from_example.sh** <protocol_version> - Nhận IP bên ngoài để thay "
+"thế và tạo *config.toml* từ *config-example.toml*"
+
+#: ../../node-operator/setup.rst:49
+msgid ""
+"**casper-node-launcher-state.toml** - This is the local state for the "
+"``casper-node-launcher`` and it is created during the first run"
+msgstr ""
+"**casper-node-launcher-state.toml** - Đây là trạng thái cục bộ cho ``casper-"
+"node-launcher`` và nó được tạo trong lần chạy đầu tiên"
+
+#: ../../node-operator/setup.rst:51
+msgid "``validator_keys`` - The default location for node keys."
+msgstr "``validator_keys`` - Vị trí mặc định cho các khóa nút."
+
+#: ../../node-operator/setup.rst:53
+msgid ""
+"**README.md** - Instructions on how to create validator keys using the "
+"``casper-client``"
+msgstr ""
+"**README.md** - Hướng dẫn về cách tạo khóa của nhà xác thực bằng cách sử "
+"dụng ``casper-client``"
+
+#: ../../node-operator/setup.rst:54
+msgid ""
+"**secret_key.pem** - ``casper-client keygen`` creates this file or it is "
+"manually copied here"
+msgstr ""
+"**secret_key.pem** - ``casper-client keygen`` tạo tệp này hoặc nó được sao "
+"chép thủ công tại đây"
+
+#: ../../node-operator/setup.rst:55
+msgid ""
+"**public_key.pem** - ``casper-client keygen`` creates this file or it is "
+"manually copied here"
+msgstr ""
+"**public_key.pem** - ``casper-client keygen`` tạo tệp này hoặc nó được sao "
+"chép thủ công tại đây"
+
+#: ../../node-operator/setup.rst:56
+msgid ""
+"**public_key_hex** - ``casper-client keygen`` creates this file or it is "
+"manually copied here"
+msgstr ""
+"**public_key_hex** - ``casper-client keygen`` tạo tệp này hoặc nó được sao "
+"chép thủ công tại đây"
+
+#: ../../node-operator/setup.rst:58
+msgid ""
+"``1_0_0`` - created with *pull_casper_node_version.sh 1_0_0 <network_name>* "
+"for genesis files"
+msgstr ""
+"``1_0_0`` - tạo mới với *pull_casper_node_version.sh 1_0_0 <network_name>* "
+"cho các tệp ban đầu"
+
+#: ../../node-operator/setup.rst:60
+msgid "**accounts.toml** - Contains the genesis validators and delegators"
+msgstr "**accounts.toml** - Chứa các nhà xác thực  và ủy quyền gốc"
+
+#: ../../node-operator/setup.rst:61
+msgid ""
+"**chainspec.toml** - Contains the genesis state with the *activation_point* "
+"as a timestamp"
+msgstr ""
+"**chainspec.toml** - Chứa trạng thái ban đầu với *activation_point* làm dấu "
+"thời gian"
+
+#: ../../node-operator/setup.rst:62 ../../node-operator/setup.rst:68
+msgid "**config-example.toml** - Example for creating a *config.toml* file"
+msgstr "**config-example.toml** - Ví dụ để tạo tệp *config.toml*"
+
+#: ../../node-operator/setup.rst:63
+msgid ""
+"**config.toml** - Created by a node operator manually or by running "
+"*config_from_example.sh 1_0_0*"
+msgstr ""
+"**config.toml** - Được tạo bởi một nhà điều hành nút theo cách thủ công hoặc"
+" bằng cách chạy *config_from_example.sh 1_0_0*"
+
+#: ../../node-operator/setup.rst:65
+msgid "``m_n_p`` - *0* to *N* upgrade packages"
+msgstr "``m_n_p`` - *0* tới *N* gói nâng cấp"
+
+#: ../../node-operator/setup.rst:67
+msgid "**chainspec.toml** - Contains the *activation_point* as the Era ID int"
+msgstr "**chainspec.toml** - Chứa *activation_point* như int ID của Era"
+
+#: ../../node-operator/setup.rst:69
+msgid ""
+"**config.toml** - Created by a node operator manually or by running "
+"*config_from_example.sh <protocol_version>*"
+msgstr ""
+"**config.toml** - Được tạo bởi một nhà điều hành nút theo cách thủ công hoặc"
+" bằng cách chạy *config_from_example.sh <protocol_version>*"
+
+#: ../../node-operator/setup.rst:72
+msgid "``/var/lib/casper``"
+msgstr "``/var/lib/casper``"
+
+#: ../../node-operator/setup.rst:73
+msgid ""
+"This is the location for larger and variable data for the ``casper-node``, "
+"organized in the following directories and files:"
+msgstr ""
+"Đây là vị trí cho dữ liệu lớn hơn và biến số cho ```casper-node``, được tổ "
+"chức trong các thư mục và tệp sau:"
+
+#: ../../node-operator/setup.rst:75
+msgid ""
+"``bin`` - The location for storing the versions of ``casper-node`` "
+"executables. This location can be overwritten with the ``CASPER_BIN_DIR`` "
+"environment variable. The paths in this document assume the default of "
+"``/var/lib/casper/bin``."
+msgstr ""
+"``bin`` - Vị trí lưu trữ các phiên bản của tệp thực thi ``casper-node``. Vị "
+"trí này có thể được ghi đè bằng biến môi trường ``CASPER_BIN_DIR``. Giả định"
+" các đường dẫn trong tài liệu này mặc định là ``/var/lib/casper/bin``."
+
+#: ../../node-operator/setup.rst:77
+msgid ""
+"``1_0_0`` - Created with *pull_casper_node_version.sh 1_0_0 <network_name>* "
+"for binaries"
+msgstr ""
+"``1_0_0`` - Tạo mới với *pull_casper_node_version.sh 1_0_0 <network_name>* "
+"cho mã nhị phân"
+
+#: ../../node-operator/setup.rst:79
+msgid "``casper-node`` - Defaults to the Ubuntu 18.04 compatible binary"
+msgstr "``casper-node`` - Mặc định là bản nhị phân tương thích Ubuntu 18.04"
+
+#: ../../node-operator/setup.rst:80
+msgid ""
+"**README.md** - Information about the repository location and the Git hash "
+"used for compilation to allow a rebuild on other platforms"
+msgstr ""
+"**README.md** - Thông tin về vị trí kho lưu trữ và hàm băm Git được sử dụng "
+"để biên dịch để cho phép xây dựng lại trên các nền tảng khác"
+
+#: ../../node-operator/setup.rst:82
+msgid ""
+"``m_n_p`` - *0* to *N* upgrade packages for binaries using "
+"*pull_casper_node_version.sh 1_0_0 <network_name>*"
+msgstr ""
+"``m_n_p`` - *0* tới *N* gói nâng cấp cho các mã nhị phân bằng cách sử dụng "
+"*pull_casper_node_version.sh 1_0_0 <network_name>*"
+
+#: ../../node-operator/setup.rst:84
+msgid ""
+"``casper-node`` -  This is where the given version of the ``casper-node`` "
+"executable lives and is run from the ``casper-node-launcher``."
+msgstr ""
+"``casper-node`` -  Đây là nơi phiên bản cho trước của thực thi đang hoạt "
+"động ``casper-node`` và được chạy từ ``casper-node-launcher``."
+
+#: ../../node-operator/setup.rst:85
+msgid "**README.md**"
+msgstr "**README.md**"
+
+#: ../../node-operator/setup.rst:87
+msgid "``casper-node`` - Local data store and the largest user of disc space"
+msgstr ""
+"``casper-node`` - Kho lưu trữ dữ liệu cục bộ và sử dụng dung lượng đĩa lớn "
+"nhất"
+
+#: ../../node-operator/setup.rst:89
+msgid "**data.lmdb** - Global state of the chain"
+msgstr "**data.lmdb** - Trạng thái toàn cục của chuỗi"
+
+#: ../../node-operator/setup.rst:90
+msgid "**data.lmbd-lock**"
+msgstr "**data.lmbd-lock**"
+
+#: ../../node-operator/setup.rst:91
+msgid "**storage.lmdb** - Blocks, deploys, and everything else"
+msgstr "**storage.lmdb** - Khối, triển khai và mọi thứ khác"
+
+#: ../../node-operator/setup.rst:92
+msgid "**storage.lmdb-lock**"
+msgstr "**storage.lmdb-lock**"
+
+#: ../../node-operator/setup.rst:93
+msgid "**unit_\\*** - The node creates one of these files per era"
+msgstr "**unit_\\*** - Nút tạo ra một trong những tệp này mỗi kỷ nguyên"
+
+#: ../../node-operator/setup.rst:97
+msgid "Upgrade Operation"
+msgstr "Nâng cấp hoạt động"
+
+#: ../../node-operator/setup.rst:99
+msgid ""
+"The ``chainspec.toml`` contains a section to indicate what era the given "
+"``casper-node`` version should start running."
+msgstr ""
+"``chainspec.toml`` chứa một phần để cho biết phiên bản ``casper-node`` đã "
+"cho sẽ bắt đầu chạy từ kỷ nguyên nào."
+
+#: ../../node-operator/setup.rst:107
+msgid ""
+"At every block finalization, the ``casper-node`` looks for newly configured "
+"versions.  When a new version is configured, the running node will look at "
+"future era_id in the ``chainspec.toml`` file.  This will be the era before "
+"where the current casper-node will cleanly shut down."
+msgstr ""
+"Tại mỗi lần hoàn thành khối, ``casper-node`` sẽ tìm kiếm các phiên bản mới "
+"được cấu hình. Khi một phiên bản mới được cấu hình, nút đang chạy sẽ nhìn "
+"vào era_id sắp tới trong tệp ``chainpec.toml```.  Đây sẽ là kỷ nguyên trước "
+"khi nút casper hiện tại sẽ tắt hoàn toàn."
+
+#: ../../node-operator/setup.rst:111
+msgid ""
+"The ``casper-node-launcher`` will detect a clean exit 0 condition and start "
+"the next version ``casper-node``."
+msgstr ""
+"``casper-node-launcher`` sẽ phát hiện điều kiện thoát hoàn toàn 0 và bắt đầu"
+" phiên bản tiếp theo ``casper-node``."
+
+#: ../../node-operator/setup.rst:113
+msgid ""
+"You can choose to build from source. If you opt to do this, please ensure "
+"that the correct software version (tag) is used."
+msgstr ""
+"Bạn có thể chọn xây dựng từ nguồn (source). Nếu bạn chọn làm điều này, hãy "
+"đảm bảo rằng đang sử dụng chính xác phiên bản phần mềm (tag)."
+
+#: ../../node-operator/setup.rst:116
+msgid "Node Version Installation"
+msgstr "Cài đặt phiên bản nút"
+
+#: ../../node-operator/setup.rst:118
+msgid ""
+"Included with ``casper-node-launcher`` debian package are two scripts to "
+"help with installing ``casper-node`` versions."
+msgstr ""
+"Đi kèm với gói debian ``casper-node-launcher`` là hai script để giúp cài đặt"
+" các phiên bản ``casper-node``."
+
+#: ../../node-operator/setup.rst:120
+msgid ""
+"``/etc/casper/pull_casper_node_version.sh`` will pull ``bin.tar.gz`` and "
+"``config.tar.gz`` from genesis.casperlabs.io."
+msgstr ""
+"``/etc/casper/pull_casper_node_version.sh`` sẽ kéo về ``bin.tar.gz`` và "
+"``config.tar.gz`` từ genesis.casperlabs.io."
+
+#: ../../node-operator/setup.rst:122
+msgid "This is invoked with the release version in underscore format such as:"
+msgstr ""
+"Thao tác này được gọi với phiên bản phát hành ở định dạng gạch dưới như đây:"
+
+#: ../../node-operator/setup.rst:128
+msgid ""
+"This will create ``/var/lib/casper/bin/1_0_2/`` and expand the "
+"``bin.tar.gz`` containing at a minimun ``casper-node``."
+msgstr ""
+"Thao tác sẽ tạo ra ``/var/lib/casper/bin/1_0_2/`` và giải nén ``bin.tar.gz "
+"'' tại ``casper-node``."
+
+#: ../../node-operator/setup.rst:130
+msgid ""
+"This will create ``/etc/casper/1_0_2/`` and expand the ``config.tar.gz`` "
+"containing ``chainspec.toml``, ``config-example.toml``, and possibly "
+"``accounts.csv`` and other files."
+msgstr ""
+"Lệnh sẽ tạo ra ``/etc/casper/1_0_2/`` và giải nén ``config.tar.gz`` chứa "
+"``chainspec.toml``, ``config-example.toml``, và có thể ``accounts.csv`` và "
+"những tệp khác."
+
+#: ../../node-operator/setup.rst:133
+msgid ""
+"This will remove the arcive files and run "
+"``/etc/casper/config_from_example.sh 1_0_2`` to create a ``config.toml`` "
+"from the ``config-example.toml``."
+msgstr ""
+"Thao tác sẽ gỡ các tệp lưu trữ và chạy ``/etc/casper/config_from_example.sh "
+"1_0_2`` để tạo ``config.toml`` từ ``config-example.toml``."
+
+#: ../../node-operator/setup.rst:137
+msgid "Client Installation"
+msgstr "Cài đặt Client"
+
+#: ../../node-operator/setup.rst:139
+msgid ""
+"The ``casper-client`` can be installed from "
+"https://bintray.com/casperlabs/debian/casper-client.  Download and install "
+"the correct version using ``sudo apt install``."
+msgstr ""
+"Có thể cài đặt ``casper-client`` từ https://bintray.com/casperlabs/debian"
+"/casper-client. Tải xuống và cài đặt phiên bản bằng cách sử dụng ``sudo apt "
+"install``."
+
+#: ../../node-operator/setup.rst:143
+msgid "Create Keys"
+msgstr "Tạo mới Khoá"
+
+#: ../../node-operator/setup.rst:145
+msgid ""
+"The Rust client generates keys via the ``keygen`` command.  The process "
+"generates 2 *pem* files and 1 *text* file. To learn about options for "
+"generating keys, include ``--help`` when running the ``keygen`` command."
+msgstr ""
+"Clietn Rust tạo khóa thông qua lệnh ``keygen``. Quá trình này tạo ra 2 tệp *"
+" pem* và 1 tệp *text*. Để tìm hiểu về các tùy chọn tạo khóa, hãy thêm vào "
+"``--help```khi chạy lệnh ``keygen``."
+
+#: ../../node-operator/setup.rst:152
+msgid ""
+"More about keys and key generation can be found in "
+"``/etc/casper/validator_keys/README.md`` if ``casper-node-lancher`` was "
+"installed from the Debian package."
+msgstr ""
+"Bạn có thể tìm thêm thông tin về khóa và cách tạo khóa trong "
+"``/etc/casper/validator_keys/README.md`` nếu ``casper-node-lancher`` được "
+"cài đặt từ gói Debian."
+
+#: ../../node-operator/setup.rst:156
+msgid "Config File"
+msgstr "Tệp cấu hình"
+
+#: ../../node-operator/setup.rst:158
+msgid ""
+"One ``config.toml`` file will need to exist for each ``casper-node`` version"
+" installed.  It should be located in the ``/etc/casper/[m_n_p]/`` directory "
+"where ``m_n_p`` is the current semantic version.  This can be created from "
+"``config-example.toml`` by using ``/etc/casper/config_from_example.sh "
+"[m_n_p]`` where ``[m_n_p]`` is replaced current version with underscores."
+msgstr ""
+"Một tệp ``config.toml`` sẽ cần tồn tại cho mỗi phiên bản ``casper-node`` "
+"được cài đặt. Nó phải được đặt trong thư mục ``/etc/casper/[m_n_p]/`` trong "
+"đó ``m_n_p`` là phiên bản hiện tại. Điều này có thể được tạo từ ``config-"
+"example.toml`` bằng cách sử dụng ``/etc/casper/config_from_example.sh "
+"[m_n_p]`` trong đó `` [m_n_p]`` thay thế phiên bản hiện tại bằng dấu gạch "
+"dưới."
+
+#: ../../node-operator/setup.rst:162
+msgid ""
+"Below are some fields you may find in the ``config.toml`` that you may want "
+"or need to adjust."
+msgstr ""
+"Dưới đây là một số trường bạn có thể tìm thấy trong ``config.toml`` mà bạn "
+"có thể muốn hoặc cần điều chỉnh."
+
+#: ../../node-operator/setup.rst:165
+msgid "Trusted Hash for Synchronizing"
+msgstr "Hàm băm tin cậy để đồng bộ hoá"
+
+#: ../../node-operator/setup.rst:167
+msgid ""
+"The Casper network is a permissionless, proof of stake network - which "
+"implies that validators can come and go from the network.  The implication "
+"is that, after a point in time, historical data could have less security if "
+"it is retrieved from ‘any node’ on the network.  Therefore, joining the "
+"network has to be from a trusted source, a bonded validator.  The system "
+"will start from the hash from a recent block and then work backward from "
+"that block to obtain the deploys and finalized blocks from the linear block "
+"store.  Here is the process to get the trusted hash:"
+msgstr ""
+"Mạng Casper là một mạng bằng chứng cổ phần, không cần cấp phép - có nghĩa là"
+" nhà xác thực có thể đến và đi từ mạng. Ngụ ý là, sau một thời gian, dữ liệu"
+" lịch sử có thể kém bảo mật hơn nếu nó được truy xuất từ 'bất kỳ nút nào' "
+"trên mạng. Do đó, việc tham gia mạng phải từ một nguồn đáng tin cậy, một nhà"
+" xác thực đã cổ phần. Hệ thống sẽ bắt đầu từ băm từ một khối gần đây và sau "
+"đó làm việc ngược lại từ khối đó để lấy các khối triển khai và hoàn thành từ"
+" kho lưu trữ khối tuyến tính. Đây là quy trình để lấy băm đáng tin cậy:"
+
+#: ../../node-operator/setup.rst:169
+msgid "Find a list of trusted validators."
+msgstr "Tìm danh sách các nhà xác thực đáng tin cậy."
+
+#: ../../node-operator/setup.rst:170
+msgid ""
+"Query the status endpoint of a trusted validator ( "
+"http://[validator_id]:8888/status )"
+msgstr ""
+"Truy vấn trạng thái cuối của nhà xác thực đáng tin cậy ( "
+"http://[validator_id]:8888/status )"
+
+#: ../../node-operator/setup.rst:171
+msgid "Obtain the hash of a block from the status endpoint."
+msgstr "Lấy băm của một khối từ trạng thái cuối."
+
+#: ../../node-operator/setup.rst:172
+msgid ""
+"Update the ``config.toml`` for the node to include the trusted hash. There "
+"is a field dedicated to this near the top of the file."
+msgstr ""
+"Cập nhật ``config.toml`` cho nút để đưa vào hàm băm đáng tin cậy. Có một "
+"trường dành riêng để đưa vào gần đầu tệp."
+
+#: ../../node-operator/setup.rst:175
+msgid "Secret Keys"
+msgstr "Khoá bí mật"
+
+#: ../../node-operator/setup.rst:177
+msgid ""
+"Provide the path to the secret keys for the node.  This is set to "
+"``etc/casper/validator_keys/`` by default."
+msgstr ""
+"Cung cấp đường dẫn đến các khóa bí mật cho nút. Mặc định là "
+"``etc/casper/validator_keys/``."
+
+#: ../../node-operator/setup.rst:180
+msgid "Networking & Gossiping"
+msgstr "Mạng & Gossiping"
+
+#: ../../node-operator/setup.rst:182
+msgid ""
+"The node requires a publicly accessible IP address.  We do not recommend NAT"
+" at this time. Specify the public IP address of the node. If you use the "
+"``config_from_example.sh`` external services are called to find your IP and "
+"this is inserted into the created ``config.toml``."
+msgstr ""
+"Nút yêu cầu một địa chỉ IP có thể truy cập công khai. Chúng tôi không khuyến"
+" nghị NAT vào lúc này. Chỉ định địa chỉ IP công cộng của nút. Nếu bạn sử "
+"dụng các dịch vụ bên ngoài, ``config_from_example.sh`` sẽ được gọi để tìm IP"
+" của bạn và việc này được chèn vào ``config.toml`` đã tạo."
+
+#: ../../node-operator/setup.rst:185
+msgid "Default values are specified in the file if you want to change them:"
+msgstr ""
+"Các giá trị mặc định được chỉ định trong tệp nếu bạn muốn thay đổi chúng:"
+
+#: ../../node-operator/setup.rst:187
+msgid "Specify the port that will be used for status  & deploys"
+msgstr "Chỉ định cổng sẽ được sử dụng cho trạng thái và triển khai"
+
+#: ../../node-operator/setup.rst:188
+msgid "Specify the port used for networking"
+msgstr "Chỉ định cổng được sử dụng để kết nối mạng"
+
+#: ../../node-operator/setup.rst:189
+msgid ""
+"Known_addresses - these are the bootstrap nodes. No need to change these."
+msgstr ""
+"Known_addresses - đây là các nút bootstrap. Không cần phải thay đổi chúng."
