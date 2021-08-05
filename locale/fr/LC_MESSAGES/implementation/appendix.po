@@ -56,7 +56,7 @@ msgstr ""
 "automatiquement importées si la librairie `Casper Rust' "
 "<https://crates.io/crates/casper-contract>`__ est utilisée pour développer "
 "le contrat. Pour une description actualisée des fonctions exportées, "
-"veuillez consulter la documentation de la 'crate'  `casper-contract "
+"veuillez consulter la documentation de le packet (crate)  `casper-contract "
 "<https://docs.rs/casper-"
 "contract/latest/casper_contract/ext_ffi/index.html>`_."
 
