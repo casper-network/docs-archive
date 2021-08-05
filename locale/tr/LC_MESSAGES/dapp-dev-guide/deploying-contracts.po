@@ -3,368 +3,467 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:6
 msgid "Deploying Contracts"
-msgstr ""
+msgstr "Kontratları Dağıtma"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:8
 msgid ""
-"Ultimately, smart contracts are meant to run on the blockchain.  Once "
-"your smart contract is complete, it's time to deploy the contract to the "
+"Ultimately, smart contracts are meant to run on the blockchain.  Once your "
+"smart contract is complete, it's time to deploy the contract to the "
 "blockchain. There are a few pre-requisites to doing this:"
 msgstr ""
+"Sonuç olarak, akıllı kontratların blokzincir üzerinde çalışması "
+"amaçlanmıştır. Akıllı kontratınız tamamlandığında, kontratı blokzincire "
+"yerleştirme zamanıdır. Bunu yapmak için birkaç ön koşul vardır:"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:12
 msgid "A Client that communicates with the network"
-msgstr ""
+msgstr "Ağ ile iletişim kuran bir İstemci"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:13
 msgid "The private key for the account that pays for the deployment"
-msgstr ""
+msgstr "Dağıtım için ödeme yapan hesabın özel anahtarı"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:14
 msgid ""
 "Token to pay for the deployment on the network in the account associated "
-"with the private key. Each token transfer costs exactly 0.0001 CSPR "
-"(10000 motes). Also, the amount transferred needs to be a minimum of 2.5 "
-"CSPR."
+"with the private key. Each token transfer costs exactly 0.0001 CSPR (10000 "
+"motes). Also, the amount transferred needs to be a minimum of 2.5 CSPR."
 msgstr ""
+"Özel anahtarla ilişkili hesapta ağdaki dağıtım için ödeme yapmak için token."
+" Her token transferinin maliyeti tam olarak 0.0001 CSPR (10000 motes)'dir. "
+"Ayrıca, transfer edilen tutarın minimum 2,5 CSPR olması gerekir."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:16
 msgid "This section will help you get set up with each pre-requisite."
-msgstr ""
+msgstr "Bu bölüm, her bir ön koşulu ayarlamanıza yardımcı olacaktır."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:19
 msgid "Client"
-msgstr ""
+msgstr "İstemci"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:21
 msgid ""
 "The client software communicates with the network to transmit your "
 "deployments to the network. Clients can be created for any application "
-"platform, such as JavaScript or Python. The official client for Casper is"
-" a Rust client."
+"platform, such as JavaScript or Python. The official client for Casper is a "
+"Rust client."
 msgstr ""
+"İstemci yazılımı, dağıtımlarınızı ağa iletmek için ağ ile iletişim kurar. "
+"İstemciler, JavaScript veya Python gibi herhangi bir uygulama platformu için"
+" oluşturulabilir. Casper'ın resmi istemcisi bir Rust istemcisidir."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:23
 #: ../../dapp-dev-guide/deploying-contracts.rst:36
 msgid ""
-"**Ensure that your client matches the version of the network you intend "
-"to deploy to.**"
+"**Ensure that your client matches the version of the network you intend to "
+"deploy to.**"
 msgstr ""
+"**İstemcinizin, dağıtmayı düşündüğünüz ağ sürümüyle eşleştiğinden emin "
+"olun.**"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:26
 msgid "Using Binaries"
-msgstr ""
+msgstr "İkili Kodları Kullanma"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:29
-msgid "**Rust**\\ : `casperlabs-client <https://crates.io/crates/casper-client>`_"
+msgid ""
+"**Rust**\\ : `casperlabs-client <https://crates.io/crates/casper-client>`_"
 msgstr ""
+"**Rust**\\ : `casperlabs-client <https://crates.io/crates/casper-client>`_"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:39
 msgid "Building from Source"
-msgstr ""
+msgstr "Kaynaktan Derlemek"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:41
 msgid ""
 "`Instructions <https://github.com/CasperLabs/casper-"
 "node/tree/master/client>`_"
 msgstr ""
+"`Talimatlar <https://github.com/CasperLabs/casper-node/tree/master/client>`_"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:44
 msgid "Check the Client Version"
-msgstr ""
+msgstr "İstemci Sürümünü Kontrol Edin"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:46
 msgid "There is an official Rust client, that works with the Delta Testnet."
-msgstr ""
+msgstr "Delta Testnet ile çalışan resmi bir Rust istemcisi var."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:48
 msgid "To check the client version run:"
-msgstr ""
+msgstr "İstemci sürümünü kontrol etmek için şunu çalıştırın:"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:54
 msgid ""
-"If you want to send your deployments to an external network, use the "
-"latest released version of the client.  If you are building the client "
-"locally, check the gitHash and ensure it matches the githash of the "
-"network."
+"If you want to send your deployments to an external network, use the latest "
+"released version of the client.  If you are building the client locally, "
+"check the gitHash and ensure it matches the githash of the network."
 msgstr ""
+"Dağıtımlarınızı harici bir ağa göndermek istiyorsanız, istemcinin en son "
+"yayınlanan sürümünü kullanın. İstemciyi yerel olarak oluşturuyorsanız, "
+"gitHash'i kontrol edin ve ağın githash'iyle eşleştiğinden emin olun."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:57
 msgid "Token to Pay for Deployments"
-msgstr ""
+msgstr "Dağıtımlar için Ödenecek Token"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:59
 msgid ""
-"Blockchains are supported by infrastructure providers called "
-"\"Validators\". To use the Validator infrastructure, it's necessary to "
-"acquire token to pay for deployments (transactions). In a testnet, this "
-"is possible by using a faucet.  Alternatively,  accounts can be funded in"
-" Genesis, or token can be transferred from a  Genesis account to a new "
-"account.  In a production system, token is typically acquired by visiting"
-" an exchange."
+"Blockchains are supported by infrastructure providers called \"Validators\"."
+" To use the Validator infrastructure, it's necessary to acquire token to pay"
+" for deployments (transactions). In a testnet, this is possible by using a "
+"faucet.  Alternatively,  accounts can be funded in Genesis, or token can be "
+"transferred from a  Genesis account to a new account.  In a production "
+"system, token is typically acquired by visiting an exchange."
 msgstr ""
+"Blokzincirler, \"Doğrulayıcılar\" adı verilen altyapı sağlayıcıları "
+"tarafından desteklenir. Doğrulayıcı altyapısını kullanmak amacıyla "
+"dağıtımlar (işlemler) için ödeme yapmak üzere token edinilmesi gerekir. Bir "
+"test ağında bu, bir musluk kullanılarak mümkündür. Alternatif olarak, "
+"hesaplar Genesis'te finanse edilebilir veya token bir Genesis hesabından "
+"yeni bir hesaba aktarılabilir. Bir üretim sisteminde, token tipik olarak bir"
+" borsayı ziyaret ederek elde edilir."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:62
 msgid "Target Network"
-msgstr ""
+msgstr "Hedef Ağ"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:64
 msgid ""
-"When sending a deploy, the client needs to know which host will receive "
-"the deployment.  The ``node-address`` and ``chain-name`` parameters "
-"provide this info."
+"When sending a deploy, the client needs to know which host will receive the "
+"deployment.  The ``node-address`` and ``chain-name`` parameters provide this"
+" info."
 msgstr ""
+"Bir dağıtım gönderirken, istemcinin dağıtımı hangi ana bilgisayarın "
+"alacağını bilmesi gerekir. ``node-address`` ve ``chain-name`` parametreleri "
+"bu bilgiyi sağlar."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:67
 msgid "Creating Keys"
-msgstr ""
+msgstr "Anahtar Oluşturma"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:69
 msgid ""
-"Blockchains use asymmetric key encryption to secure transactions. The "
-"secret key used to sign the deployment will be the secret key of the "
-"account that is being used to pay for the transaction.  The transaction "
-"will execute in this account's context unless key delegation and the "
-"``from`` parameter is being used. To create keys using the rust client, "
-"execute the following commandd:"
+"Blockchains use asymmetric key encryption to secure transactions. The secret"
+" key used to sign the deployment will be the secret key of the account that "
+"is being used to pay for the transaction.  The transaction will execute in "
+"this account's context unless key delegation and the ``from`` parameter is "
+"being used. To create keys using the rust client, execute the following "
+"commandd:"
 msgstr ""
+"Blokzincirler, işlemleri güvence altına almak için asimetrik anahtar "
+"şifrelemesi kullanır. Dağıtımı imzalamak için kullanılan gizli anahtar, "
+"işlem için ödeme yapmak için kullanılan hesabın gizli anahtarı olacaktır. "
+"Anahtar delegasyonu ve ``from`` parametresi kullanılmadığı sürece işlem bu "
+"hesabın bağlamında yürütülür. Rust istemcisini kullanarak anahtarlar "
+"oluşturmak için aşağıdaki komutu çalıştırın:"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:76
 msgid "This process will create 3 files:"
-msgstr ""
+msgstr "Bu işlem 3 dosya oluşturacaktır:"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:79
 msgid "secret-key.pem"
-msgstr ""
+msgstr "secret-key.pem"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:80
 msgid "public-key.pem"
-msgstr ""
+msgstr "public-key.pem"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:81
 msgid "public_key_hex"
-msgstr ""
+msgstr "public_key_hex"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:83
 msgid ""
 "When passing in the public key as hex, it's recommended to  ``$(cat "
-"public_key_hex)`` in the transaction, or extract the contents of the "
-"file.\\ :raw-html-m2r:`<br>` Use the secret-key.pem file to sign "
-"transaction."
+"public_key_hex)`` in the transaction, or extract the contents of the file.\\"
+" :raw-html-m2r:`<br>` Use the secret-key.pem file to sign transaction."
 msgstr ""
+"Açık anahtarı onaltılı olarak iletirken, işlemde ``$(cat public_key_hex)`` "
+"kullanılması veya dosyanın içeriğini çıkarmanız önerilir.\\ :raw-html-"
+"m2r:`<br>` İşlemi imzalamak için secret-key.pem dosyasını kullanın."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:87
 msgid "Sending a Deployment to the Delta Testnet"
-msgstr ""
+msgstr "Delta Testnet'e Dağıtım Gönderme"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:89
 msgid ""
-"The easiest way to deploy a contract is to use an existing public "
-"network.  CasperLabs provides a Testnet for this. The Testnet is operated"
-" by external validators that can accept transactions."
+"The easiest way to deploy a contract is to use an existing public network.  "
+"CasperLabs provides a Testnet for this. The Testnet is operated by external "
+"validators that can accept transactions."
 msgstr ""
+"Bir kontratı dağıtmanın en kolay yolu, mevcut bir genel ağı kullanmaktır. "
+"CasperLabs bunun için bir Testnet sağlar. Testnet, işlemleri kabul edebilen "
+"harici doğrulayıcılar tarafından çalıştırılır."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:93
 msgid "Obtain Token"
-msgstr ""
+msgstr "Token Edinmek"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:95
 msgid ""
-"To send a deploy to the network, create keys and obtain token. Token can "
-"be obtained via a faucet or by a participant that has token.  Connect to "
-"our `Discord <https://discordapp.com/invite/Q38s3Vh>`_ to get token via "
-"an existing participant."
+"To send a deploy to the network, create keys and obtain token. Token can be "
+"obtained via a faucet or by a participant that has token.  Connect to our "
+"`Discord <https://discordapp.com/invite/Q38s3Vh>`_ to get token via an "
+"existing participant."
 msgstr ""
+"Ağa bir dağıtım göndermek için anahtarlar oluşturun ve token alın. Token, "
+"bir musluk aracılığıyla veya tokeni olan bir katılımcı tarafından elde "
+"edilebilir. Mevcut bir katılımcı aracılığıyla token almak için `Discord "
+"<https://discordapp.com/invite/Q38s3Vh>`_ sayfamıza bağlanın."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:100
 msgid "A Basic Deployment using the Command Line (Rust Client)"
-msgstr ""
+msgstr "Komut Satırını Kullanan Temel Bir Dağıtım (Rust İstemcisi)"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:102
 msgid ""
 "As described above, a basic deployment must provide some essential "
-"information. Here is an example deployment using the Rust client that "
-"will work with the basic contract we created using the `Contracts SDK for"
-" Rust <writing-rust-contracts>`_. The default port is 7777:"
+"information. Here is an example deployment using the Rust client that will "
+"work with the basic contract we created using the `Contracts SDK for Rust "
+"<writing-rust-contracts>`_. The default port is 7777:"
 msgstr ""
+"Yukarıda açıklandığı gibi, temel bir dağıtım bazı temel bilgileri "
+"sağlamalıdır. İşte `Rust için Kontrat SDK <writing-rust-contracts>`_ "
+"kullanarak oluşturduğumuz temel kontratla çalışacak Rust istemcisini "
+"kullanan örnek bir dağıtım. Varsayılan bağlantı noktası 7777'dir:"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:108
 msgid ""
-"If your deployment command is correct, expect to see a success message "
-"that looks like this:"
+"If your deployment command is correct, expect to see a success message that "
+"looks like this:"
 msgstr ""
+"Dağıtım komutunuz doğruysa, aşağıdakine benzer bir başarı mesajı görmeyi "
+"bekleyin:"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:114
 msgid ""
 "Note: Each deploy gets a unique hash.  This is part of the cryptographic "
-"security of blockchain technology.  No two deploys will ever return the "
-"same hash."
+"security of blockchain technology.  No two deploys will ever return the same"
+" hash."
 msgstr ""
+"Not: Her dağıtım benzersiz bir özet (hash) alır. Bu, blokzincir "
+"teknolojisinin kriptografik güvenliğinin bir parçasıdır. Hiçbir zaman iki "
+"dağıtım aynı özet (hash) değerini döndürmez."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:117
 msgid "Check Deploy Status"
-msgstr ""
+msgstr "Dağıtım Durumunu Kontrol Edin"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:119
 msgid ""
-"Once the network has received the deployment, it will queue up in the "
-"system before being listed in a block for execution.  Sending a "
-"transaction (deployment) to the network does not mean that the "
-"transaction processed successfully.  Therefore, it's important to check "
-"to see that the contract executed properly, and that the block was "
-"finalized."
+"Once the network has received the deployment, it will queue up in the system"
+" before being listed in a block for execution.  Sending a transaction "
+"(deployment) to the network does not mean that the transaction processed "
+"successfully.  Therefore, it's important to check to see that the contract "
+"executed properly, and that the block was finalized."
 msgstr ""
+"Ağ dağıtımı aldıktan sonra, yürütme için bir blokta listelenmeden önce "
+"sistemde sıraya girer. Ağa bir işlem (dağıtım) göndermek, işlemin başarıyla "
+"işlendiği anlamına gelmez. Bu nedenle, kontratın düzgün bir şekilde "
+"yürütüldüğünü ve bloğun kesinleştiğini kontrol etmek önemlidir."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:125
 msgid "Which will return a data structure like this:"
-msgstr ""
+msgstr "Bunun gibi bir veri yapısı döndürecek olan:"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:222
 msgid ""
 "From this data structure we can observe some properties about the deploy "
 "(some of which can be set by the user):"
 msgstr ""
+"Bu veri yapısından dağıtımla ilgili bazı özellikleri gözlemleyebiliriz "
+"(bazıları kullanıcı tarafından ayarlanabilir):"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:225
 msgid "Execution cost 164645 gas"
-msgstr ""
+msgstr "Yürütme maliyeti 164645 yakıt"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:226
 msgid "No errors were returned by the contract"
-msgstr ""
+msgstr "Kontrat tarafından hiçbir hata döndürülmedi"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:227
 msgid "There were no dependencies for this deploy"
-msgstr ""
+msgstr "Bu dağıtım için hiçbir bağımlılık yoktu"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:228
 msgid "The Time to Live was 1 hour"
-msgstr ""
+msgstr "Yaşam Süresi 1 saatti"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:230
 msgid ""
-"It is also possible to check the contract's state by performing a "
-"``query-state`` command using the client."
+"It is also possible to check the contract's state by performing a ``query-"
+"state`` command using the client."
 msgstr ""
+"İstemciyi kullanarak bir ``query-state`` komutu ile kontratın durumunu "
+"kontrol etmek de mümkündür."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:233
 msgid "A Note about Gas Prices"
-msgstr ""
+msgstr "Yakıt Fiyatları Hakkında Bir Not"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:235
 msgid ""
-"If you notice in the put-deploy command above, we supplied a payment "
-"amount argument:"
+"If you notice in the put-deploy command above, we supplied a payment amount "
+"argument:"
 msgstr ""
+"Yukarıdaki put-deploy komutunda fark ederseniz, bir ödeme tutarı argümanı "
+"sağladık:"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:241
 msgid ""
 "But the actual execution cost was only ``164645`` when it was run on the "
 "chain!"
 msgstr ""
+"Ancak, zincir üzerinde çalıştırıldığında gerçek yürütme maliyeti yalnızca "
+"```164645`` idi!"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:243
 msgid ""
 "A common question that frequently arises is: \"How do I know what the "
-"payment amount (gas cost) should be?\" The honest answer is that we are "
-"hard at work to create tools to help you estimate your costs. Currently, "
-"we recommend using the `NCTL <https://docs.casperlabs.io/en/latest/dapp-"
-"dev-guide/setup-nctl.html>`_ tool on your local machine or the testnet to"
-" deploy your contracts in a test environment. As you just saw, you can "
-"check a deploy status and roughly see how much it would actually cost "
-"when deployed."
+"payment amount (gas cost) should be?\" The honest answer is that we are hard"
+" at work to create tools to help you estimate your costs. Currently, we "
+"recommend using the `NCTL <https://docs.casperlabs.io/en/latest/dapp-dev-"
+"guide/setup-nctl.html>`_ tool on your local machine or the testnet to deploy"
+" your contracts in a test environment. As you just saw, you can check a "
+"deploy status and roughly see how much it would actually cost when deployed."
 msgstr ""
+"Sıklıkla ortaya çıkan yaygın bir soru şudur: \"Ödeme tutarının (yakıt "
+"maliyeti) ne olması gerektiğini nasıl bilebilirim?\" Dürüst cevap, "
+"maliyetlerinizi tahmin etmenize yardımcı olacak araçlar oluşturmak için çok "
+"çalışıyoruz. Şu anda, bir test ortamında kontratlarınızı dağıtmak için yerel"
+" makinenizde veya test ağında `NCTL <https://docs.casperlabs.io/en/latest"
+"/dapp-dev-guide/setup-nctl.html>`_ aracını kullanmanızı öneririz. Az önce "
+"gördüğünüz gibi, bir dağıtım durumunu kontrol edebilir ve dağıtıldığında "
+"gerçekte ne kadara mal olacağını kabaca görebilirsiniz."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:245
 msgid ""
-"You can estimate the costs in this way, and then add a small buffer in "
-"case the network state has changed. So in this example above, you might "
-"have chosen to set the payment to 175000 or 200000, rather than the "
-"10000000 that was used."
+"You can estimate the costs in this way, and then add a small buffer in case "
+"the network state has changed. So in this example above, you might have "
+"chosen to set the payment to 175000 or 200000, rather than the 10000000 that"
+" was used."
 msgstr ""
+"Maliyetleri bu şekilde tahmin edebilir ve ardından ağ durumunun değişmesi "
+"durumunda küçük bir tampon ekleyebilirsiniz. Dolayısıyla, yukarıdaki bu "
+"örnekte, ödemeyi kullanılan 10000000 yerine 175000 veya 200000 olarak "
+"ayarlamayı seçmiş olabilirdiniz."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:249
 msgid "Advanced Deployments"
-msgstr ""
+msgstr "Gelişmiş Dağıtımlar"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:251
 msgid "CasperLabs supports complex deployments."
-msgstr ""
+msgstr "CasperLabs, karmaşık dağıtımları destekler."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:254
 msgid "Using Arguments with Deployments"
-msgstr ""
+msgstr "Dağıtımlarla Bağımsız Değişkenleri Kullanma"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:256
 msgid ""
-"Casper contracts support arguments for deployments, which enables "
-"powerful capabilities for smart contract development.  The casper client "
-"provides some examples on how to do this:"
+"Casper contracts support arguments for deployments, which enables powerful "
+"capabilities for smart contract development.  The casper client provides "
+"some examples on how to do this:"
 msgstr ""
+"Casper kontratları, akıllı kontrat geliştirme amacıyla güçlü yetenekler "
+"sağlayan dağıtımlar için argümanları destekler. Casper istemcisi bunun nasıl"
+" yapılacağına dair bazı örnekler sunar:"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:264
 msgid "Creating, signing, and deploying contracts with multiple signatures"
-msgstr ""
+msgstr "Birden çok imzayla kontratlar oluşturma, imzalama ve dağıtma"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:266
 msgid ""
-"The ``deploy`` command on its own provides multiple actions strung "
-"together optimizing for the common case, with the capability to separate "
-"concerns between your key management and deploy creation. See details "
-"about generating account key pairs in the Developer Guide."
+"The ``deploy`` command on its own provides multiple actions strung together "
+"optimizing for the common case, with the capability to separate concerns "
+"between your key management and deploy creation. See details about "
+"generating account key pairs in the Developer Guide."
 msgstr ""
+"``deploy`` komutu tek başına, ortak durum için optimize edilen birden çok "
+"eylemi bir araya getirerek anahtar yönetiminiz ve dağıtım oluşturma "
+"arasındaki endişeleri ayırma yeteneği sağlar. Geliştirici Kılavuzu'nda hesap"
+" anahtarı çiftleri oluşturmaya ilişkin ayrıntılara bakın."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:268
 msgid ""
-"Every account can associate multiple keys with it and give each a weight."
-" Collective weight of signing keys decides whether an action of certain "
-"type can be made. To learn more about how weights and threshholds work, "
-"please review the `Blockchain Design "
-"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_. In"
-" order to collect weight of different associated keys, a deploy has to be"
-" signed by corresponding private keys. The ``put-deploy`` command creates"
-" a deploy, signs it and deploys to the node but doesn't allow for signing"
-" with multiple keys. Therefore, we split ``deploy`` into separate "
-"commands:"
+"Every account can associate multiple keys with it and give each a weight. "
+"Collective weight of signing keys decides whether an action of certain type "
+"can be made. To learn more about how weights and threshholds work, please "
+"review the `Blockchain Design "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_. In "
+"order to collect weight of different associated keys, a deploy has to be "
+"signed by corresponding private keys. The ``put-deploy`` command creates a "
+"deploy, signs it and deploys to the node but doesn't allow for signing with "
+"multiple keys. Therefore, we split ``deploy`` into separate commands:"
 msgstr ""
+"Her hesap, onunla birden fazla anahtarı ilişkilendirebilir ve her birine bir"
+" ağırlık verebilir. İmzalama anahtarlarının toplu ağırlığı, belirli türde "
+"bir eylemin yapılıp yapılamayacağına karar verir. Ağırlıkların ve eşiklerin "
+"nasıl çalıştığı hakkında daha fazla bilgi edinmek için lütfen `Blokzincir "
+"Tasarımı "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>` "
+"sayfasını inceleyin. Farklı ilişkili anahtarların ağırlığını toplamak için, "
+"bir dağıtımın karşılık gelen özel anahtarlarla imzalanması gerekir. ``put-"
+"deploy`` komutu bir dağıtım oluşturur, imzalar ve düğüme dağıtır ancak "
+"birden çok anahtarla imzalamaya izin vermez. Bu nedenle, ``deploy``u ayrı "
+"komutlara böldük:"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:271
 msgid "``make-deploy``  - creates a deploy from input parameters"
-msgstr ""
+msgstr "``make-deploy``  - giriş parametrelerinden bir dağıtım oluşturur"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:272
 msgid "``sign-deploy``  - signs a deploy with given private key"
-msgstr ""
+msgstr "``sign-deploy``  - verilen özel anahtarla bir dağıtımı imzalar"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:273
 msgid "``send-deploy``  - sends a deploy to CasperLabs node"
-msgstr ""
+msgstr "``send-deploy``  - CasperLabs düğümüne bir dağıtım gönderir"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:275
 msgid ""
 "To make a deploy signed with multiple keys: first create the deploy with "
-"``make-deploy``. This generates a deploy file that can be sent to the "
-"other signers, who then sign it with their keys by calling ``sign-"
-"deploy`` for each key. Signatures need to be gathered on the deploy one "
-"after another, untill all requisite parties have signed the deploy.  "
-"Finally the signed deploy is sent to the node with ``send-deploy`` for "
-"processing by the network."
+"``make-deploy``. This generates a deploy file that can be sent to the other "
+"signers, who then sign it with their keys by calling ``sign-deploy`` for "
+"each key. Signatures need to be gathered on the deploy one after another, "
+"untill all requisite parties have signed the deploy.  Finally the signed "
+"deploy is sent to the node with ``send-deploy`` for processing by the "
+"network."
 msgstr ""
-
+"Birden çok anahtarla imzalanmış bir dağıtım yapmak için: önce dağıtımı "
+"``make-deploy`` ile oluşturun. Bu, diğer imzalayıcılara gönderilebilecek bir"
+" dağıtım dosyası oluşturur ve bu dosya daha sonra her bir anahtar için "
+"``sign-deploy``u çağırarak anahtarlarıyla imzalar. Tüm gerekli taraflar "
+"dağıtımı imzalayana kadar dağıtımda imzaların birbiri ardına toplanması "
+"gerekir. Son olarak imzalı dağıtım, ağ tarafından işlenmek üzere ``send-"
+"deploy`` ile düğüme gönderilir."
