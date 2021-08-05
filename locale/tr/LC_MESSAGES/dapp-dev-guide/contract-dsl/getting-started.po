@@ -3,210 +3,273 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:2
 msgid "The DSL Macros"
-msgstr ""
+msgstr "DSL Makroları"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:4
 msgid ""
-"In this guide, we describe how to configure Rust smart contracts to use "
-"the Casper DSL, making it easier for developers to start writing their "
-"smart contracts."
+"In this guide, we describe how to configure Rust smart contracts to use the "
+"Casper DSL, making it easier for developers to start writing their smart "
+"contracts."
 msgstr ""
+"Bu kılavuzda, Rust akıllı kontratlarının Casper DSL'yi kullanacak şekilde "
+"nasıl yapılandırılacağını açıklayarak geliştiricilerin akıllı kontratlarını "
+"yazmaya başlamasını kolaylaştırıyoruz."
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:6
 msgid ""
 "The DSL consists of three macro directives dividing the boilerplate code "
-"between *headers*, *constructor*, and *method blocks*. The smart contract"
-" is being treated much like a class in OOP terms."
+"between *headers*, *constructor*, and *method blocks*. The smart contract is"
+" being treated much like a class in OOP terms."
 msgstr ""
+"DSL, standart kodu *headers*, *constructor* ve *method blocks* şeklinde "
+"bölen üç makro yönergeden oluşur. Akıllı kontrat, OOP açısından bir sınıf "
+"gibi ele alınmaktadır."
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:8
 msgid ""
-"Here is a brief description of the three macros before we take a look at "
-"a sample contract utilizing them:"
+"Here is a brief description of the three macros before we take a look at a "
+"sample contract utilizing them:"
 msgstr ""
+"Bunları kullanan örnek bir sözleşmeye bakmadan önce, üç makronun kısa bir "
+"açıklaması:"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:11
 msgid "Macro"
-msgstr ""
+msgstr "Makro"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:11
 msgid "Instruction"
-msgstr ""
+msgstr "Talimat"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:11
 msgid "Description"
-msgstr ""
+msgstr "Tanım"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:13
 msgid "Contract"
-msgstr ""
+msgstr "Kontrat"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:13
 msgid "``casperlabs_contract``"
-msgstr ""
+msgstr "``casperlabs_contract``"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:13
 msgid ""
-"This macro generates the code for the headers for each of the entry "
-"points that use it. It sits at the very top of the contract module and "
-"includes the necessary code for contract execution."
+"This macro generates the code for the headers for each of the entry points "
+"that use it. It sits at the very top of the contract module and includes the"
+" necessary code for contract execution."
 msgstr ""
+"Bu makro, onu kullanan giriş noktalarının her biri için başlıklar için kod "
+"oluşturur. Kontrat modülünün en üstünde yer alır ve kontratın yürütülmesi "
+"için gerekli kodu içerir."
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:14
 msgid "Constructor"
-msgstr ""
+msgstr "Yapıcı"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:14
 msgid "``casperlabs_constructor``"
-msgstr ""
+msgstr "``casperlabs_constructor``"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:14
 msgid ""
 "This macro creates the code that sets up the contract in the runtime and "
-"locates it when execution begins. Underneath the hood, this is the deploy"
-" function that creates the contract entry point and stores the deploy "
-"hash under a function name in the Casper runtime. You can think of the "
-"function decorated by the constructor macro as the main function of the "
-"contract."
+"locates it when execution begins. Underneath the hood, this is the deploy "
+"function that creates the contract entry point and stores the deploy hash "
+"under a function name in the Casper runtime. You can think of the function "
+"decorated by the constructor macro as the main function of the contract."
 msgstr ""
+"Bu makro, kontratı çalışma zamanında ayarlayan kodu oluşturur ve yürütme "
+"başladığında onu bulur. Arkaplanda, bu, kontrat giriş noktasını oluşturan ve"
+" dağıtım özetini (hash) Casper çalışma zamanında bir işlev adı altında "
+"saklayan dağıtım işlevidir. Yapıcı makrosu tarafından dekore edilen işlevi, "
+"sözleşmenin ana işlevi olarak düşünebilirsiniz."
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:15
 msgid "Method"
-msgstr ""
+msgstr "Yöntem"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:15
 msgid "``casperlabs_method``"
-msgstr ""
+msgstr "``casperlabs_method``"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:15
 msgid ""
-"This macro creates an entry point for any function in your contract that "
-"you wish to expose in the smart contract. Functions that are only used "
+"This macro creates an entry point for any function in your contract that you"
+" wish to expose in the smart contract. Functions that are only used "
 "internally should not be decorated with this macro. Continuing the OOP "
 "metaphor, this directive would essentially be declaring a smart contract "
 "function as being public."
 msgstr ""
+"Bu makro, akıllı kontratta göstermek istediğiniz kontratınızdaki herhangi "
+"bir işlev için bir giriş noktası oluşturur. Sadece dahili olarak kullanılan "
+"fonksiyonlar bu makro ile dekor edilmelidir. OOP metaforunu sürdüren bu "
+"yönerge, esasen bir akıllı kontrat işlevinin halka açık olduğunu ilan ediyor"
+" olacaktır."
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:19
 msgid "Prerequisites"
-msgstr ""
+msgstr "Önkoşullar"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:20
 msgid ""
-"The DSL relies upon working in a Rust contract, which means you need to "
-"have your development environment up and running. In the `Getting Started"
-" section <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-"
-"rust-contract-sdk.html>`_, we compiled and tested a sample contract to "
-"verify our setup was functional. If you have not completed that section, "
-"please complete it before continuing with this guide."
+"The DSL relies upon working in a Rust contract, which means you need to have"
+" your development environment up and running. In the `Getting Started "
+"section <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-"
+"contract-sdk.html>`_, we compiled and tested a sample contract to verify our"
+" setup was functional. If you have not completed that section, please "
+"complete it before continuing with this guide."
 msgstr ""
+"DSL, bir Rust kontratında çalışmaya dayanır, bu da geliştirme ortamınızı "
+"çalışır durumda tutmanız gerektiği anlamına gelir. `Başlarken  bölümünde "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_, kurulumunuzun işlevsel oluğunu doğrulamak için örnek bir "
+"sözleşme derledik ve test ettik. Bu bölümü tamamlamadıysanız, lütfen bu "
+"kılavuza devam etmeden önce tamamlayın."
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:23
 msgid "[Recommended] Getting the Macros"
-msgstr ""
+msgstr "[Önerilen] Makroları Alma"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:24
 msgid ""
 "If you are new to Casper development, we recommend following this guide "
 "using the sample `Hello World <https://github.com/casper-ecosystem/hello-"
 "world>`_ contract. This smart contract Rust file has all the macros in "
-"place, and the configuration is already set up to import the macros for "
-"you."
+"place, and the configuration is already set up to import the macros for you."
 msgstr ""
+"Casper geliştirme konusunda yeniyseniz, `Merhaba Dünya <https://github.com"
+"/casper-ecosystem/hello-world>`_ kontrat örneğini kullanarak bu kılavuzu "
+"izlemenizi öneririz. Bu akıllı kontrat Rust dosyasında tüm makrolar yerinde "
+"ve makroları sizin için içe aktarmak üzere yapılandırma zaten ayarlandı."
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:27
 msgid "[Advanced] Getting the Macros"
-msgstr ""
+msgstr "[Gelişmiş] Makroları Alma"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:28
 msgid ""
 "If you already have been working with Casper contracts and you wish to "
-"simply add the macros to your existing smart contract, then you can "
-"retrieve the macros from `GitHub "
+"simply add the macros to your existing smart contract, then you can retrieve"
+" the macros from `GitHub "
 "<https://github.com/CasperLabs/casperlabs_contract_macro>`_."
 msgstr ""
+"Zaten Casper kontratlarıyla çalışıyorsanız ve makroları mevcut akıllı "
+"kontratınıza eklemek istiyorsanız, makroları `GitHub "
+"<https://github.com/CasperLabs/casperlabs_contract_macro>`_ adresinden "
+"alabilirsiniz."
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:31
 msgid "Importing the Macros"
-msgstr ""
+msgstr "Makroları İçe Aktarma"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:32
 msgid ""
-"The sample contract already has this done for you, but you should know "
-"how to do it for future contracts. To import the macros, just include a "
-"line in the ``Cargo.toml`` file in the *contract* folder of your smart "
-"contract. The entry needs to appear in the *[dependencies]* section of "
-"the file. Then ``cargo`` will import the macros into your project when "
-"you build it."
+"The sample contract already has this done for you, but you should know how "
+"to do it for future contracts. To import the macros, just include a line in "
+"the ``Cargo.toml`` file in the *contract* folder of your smart contract. The"
+" entry needs to appear in the *[dependencies]* section of the file. Then "
+"``cargo`` will import the macros into your project when you build it."
 msgstr ""
+"Örnek kontrat bunu sizin için zaten yaptı, ancak gelecekteki kontratlar için"
+" bunu nasıl yapacağınızı bilmelisiniz. Makroları içe aktarmak için akıllı "
+"kontratınızın *contract* klasöründeki ``Cargo.toml`` dosyasına bir satır "
+"eklemeniz yeterlidir. Girişin, dosyanın *[dependencies]* bölümünde görünmesi"
+" gerekir. Ardından ``cargo``, projenizi oluşturduğunuzda makroları projenize"
+" aktaracaktır."
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:34
 msgid ""
-"For example, if you placed the macros inside your project in a folder "
-"named *contract_macro* next to the *contract* folder, you would add this "
-"line to the dependencies section of the ``Cargo.toml`` file:"
+"For example, if you placed the macros inside your project in a folder named "
+"*contract_macro* next to the *contract* folder, you would add this line to "
+"the dependencies section of the ``Cargo.toml`` file:"
 msgstr ""
+"Örneğin, projenizin içindeki makroları *contract* klasörünün yanında "
+"*contract_macro* adlı bir klasöre yerleştirdiyseniz, bu satırı "
+"``Cargo.toml`` dosyasının bağımlılıklar bölümüne eklersiniz:"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:41
 msgid ""
 "Alternatively, you can get the macros directly from Github without "
 "downloading them:"
 msgstr ""
+"Alternatif olarak, makroları indirmeden doğrudan Github'dan alabilirsiniz:"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:47
 msgid ""
 "This second approach is what the `Hello World <https://github.com/casper-"
-"ecosystem/hello-world>`_ smart contract is utilizing, so if you are "
-"starting there, it has already been done for you."
+"ecosystem/hello-world>`_ smart contract is utilizing, so if you are starting"
+" there, it has already been done for you."
 msgstr ""
+"Bu ikinci yaklaşım, `Merhaba Dünya <https://github.com/casper-ecosystem"
+"/hello-world>`_ akıllı kontratının kullandığı şeydir, yani oradan "
+"başlıyorsanız, sizin için zaten yapılmıştır."
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:50
 msgid "Using the DSL"
-msgstr ""
+msgstr "DSL Kullanmak"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:51
 msgid ""
-"To use the DSL, simply add the following line to the *use section* of the"
-" contract (usually found at the top of the file in *main.rs*):"
+"To use the DSL, simply add the following line to the *use section* of the "
+"contract (usually found at the top of the file in *main.rs*):"
 msgstr ""
+"DSL'yi kullanmak için, kontratın *kullan bölümüne* aşağıdaki satırı "
+"eklemeniz yeterlidir (genellikle dosyanın en üstünde *main.rs* içinde "
+"bulunur):"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:58
 msgid "Examining the Hello World Example"
-msgstr ""
+msgstr "Merhaba Dünya Örneğinin İncelenmesi"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:59
 msgid ""
-"Clone the `Hello World <https://github.com/casper-ecosystem/hello-"
-"world>`_ example contract and open the ``main.rs`` file. Examine the "
-"following section:"
+"Clone the `Hello World <https://github.com/casper-ecosystem/hello-world>`_ "
+"example contract and open the ``main.rs`` file. Examine the following "
+"section:"
 msgstr ""
+"`Merhaba Dünya <https://github.com/casper-ecosystem/hello-world>`_ örnek "
+"kontratını klonlayın ve ``main.rs`` dosyasını açın. Aşağıdaki bölümü "
+"inceleyin:"
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:92
 msgid ""
 "Notice that all three macros are being utilized and that the file is "
-"relatively compact. This is a very simple contract that initializes a key"
-" named *special_value* with the value *hello world* once the contract is "
-"compiled and executed thanks to the constructor macro. The function "
-"*update* is decorated with the ``casperlabs_method`` macro and will thus "
-"be accessible for updating the value. However, notice that *set_key* is "
-"not prefaced with the macro. Since this function is used internally, it "
-"does not need to have an entry point in the Casper runtime."
+"relatively compact. This is a very simple contract that initializes a key "
+"named *special_value* with the value *hello world* once the contract is "
+"compiled and executed thanks to the constructor macro. The function *update*"
+" is decorated with the ``casperlabs_method`` macro and will thus be "
+"accessible for updating the value. However, notice that *set_key* is not "
+"prefaced with the macro. Since this function is used internally, it does not"
+" need to have an entry point in the Casper runtime."
 msgstr ""
-
+"Üç makronun da kullanıldığına ve dosyanın nispeten kompakt olduğuna dikkat "
+"edin. Bu, yapıcı makro sayesinde kontrat derlenip yürütüldükten sonra "
+"*special_value* adlı bir anahtarı *merhaba dünya* değeriyle başlatan çok "
+"basit bir sözleşmedir. *güncelleme* işlevi \"casperlabs_method\" makrosu ile"
+" dekore edilmiştir ve bu nedenle değeri güncellemek için erişilebilir "
+"olacaktır. Ancak, *set_key* bölümünün makro ile başlamadığına dikkat edin. "
+"Bu işlev dahili olarak kullanıldığından, Casper çalışma zamanında bir giriş "
+"noktası olması gerekmez."
