@@ -1,0 +1,327 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../economics/index.rst:69
+msgid "Overview"
+msgstr "Tổng quan"
+
+#: ../../economics/index.rst:5
+msgid "Economics"
+msgstr "Mô hình kinh tế"
+
+#: ../../economics/index.rst:7
+msgid "This page presents an overview of the Casper economics."
+msgstr "Trang này trình bày tổng quan về mô hình kinh tế của Casper."
+
+#: ../../economics/index.rst:9
+msgid ""
+"Casper's economic activity can be conceptualized as taking place on four "
+"distinct layers: consensus, runtime, ecosystem, and the macroeconomy. Each "
+"layer, consensus and up, provides a foundation for the activity taking place"
+" on the next layer. A trust-less platform requires that proper incentives be"
+" provided to participants operating each of these layers to ensure that they"
+" work together to unlock the platform's value."
+msgstr ""
+"Khái niệm hoạt động kinh tế của Casper diễn ra trên bốn lớp riêng biệt: đồng"
+" thuận, thời điểm chạy, hệ sinh thái và kinh tế vĩ mô. Mỗi lớp, sự đồng "
+"thuận trở lên, cung cấp nền tảng cho hoạt động diễn ra ở lớp tiếp theo. Một "
+"nền tảng không cần cấp phép như Casper yêu cầu phải cung cấp các khuyến "
+"khích thích hợp cho những người tham gia vận hành từng lớp này để đảm bảo "
+"rằng họ làm việc cùng nhau để đem lại trị cho nền tảng."
+
+#: ../../economics/index.rst:11
+msgid ""
+"We cannot yet provide formal game-theoretic results for our incentive "
+"mechanisms, but interested readers can follow our progress with the "
+"`Economics of the Casper Blockchain <https://github.com/CasperLabs/Casper-"
+"economics-paper>`_ paper, which will be periodically updated to summarize "
+"ongoing research."
+msgstr ""
+"Chúng tôi chưa thể cung cấp kết quả chính thức cho các cơ chế khuyến khích "
+"của chúng tôi, nhưng độc giả quan tâm có thể theo dõi tiến trình của chúng "
+"tôi với bài viết `Mô hình kinh tế của chuỗi khối Casper "
+"<https://github.com/CasperLabs/Casper-economics-paper>`_, sẽ được cập nhật "
+"định kỳ để tóm tắt các nghiên cứu đang diễn ra."
+
+#: ../../economics/index.rst:13
+msgid ""
+"This section of our online documentation is intended only to familiarize the"
+" user with our core economics features rather than describe their precise "
+"implementation and user interface. Some of the features may not be currently"
+" active."
+msgstr ""
+"Phần này của tài liệu trực tuyến chỉ nhằm mục đích giúp người dùng làm quen "
+"với các đặc điểm kinh tế cốt lõi của chúng tôi hơn là mô tả cách triển khai "
+"chính xác và giao diện người dùng của chúng. Một số tính năng hiện có thể "
+"không hoạt động. "
+
+#: ../../economics/index.rst:16
+msgid "Consensus"
+msgstr "Đồng thuận"
+
+#: ../../economics/index.rst:18
+msgid ""
+"The consensus layer of our platform runs on the Highway flavor of CBC-"
+"Casper. The distinguishing characteristics of this protocol are its safety "
+"and liveness guarantees. Specifically, under the assumptions made in the "
+"`Highway protocol paper <https://github.com/CasperLabs/highway>`_, blocks in"
+" the canonical history cannot be reverted, and new blocks continue to be "
+"added to this history indefinitely. The assumptions, however, require that a"
+" large portion of validators remain online and honest; this assumed behavior"
+" must be incentivized for the platform to remain secure and live."
+msgstr ""
+"Lớp đồng thuận của nền tảng của chúng tôi chạy trên giao thức Highway của "
+"CBC-Casper. Các đặc điểm phân biệt của giao thức này là đảm bảo an toàn và "
+"khả năng hoạt động của nó. Cụ thể, theo các giả định được đưa ra trong "
+"`Highway protocol paper <https://github.com/CasperLabs/highway>`_, các khối"
+" trong lịch sử chuẩn không thể hoàn nguyên và các khối mới tiếp tục được "
+"thêm vào lịch sử này vô hạn. Tuy nhiên, các giả định yêu cầu một phần lớn "
+"các nhà xác thực vẫn trực tuyến và trung thực; việc giả định này phải được "
+"khuyến khích để nền tảng vẫn an toàn và hoạt động tốt."
+
+#: ../../economics/index.rst:20
+msgid ""
+"When discussing consensus, we default to considering it \"one era at a "
+"time,\" unless expressly stated otherwise, in keeping with the Highway "
+"paper. Recall that each era is, effectively, a separate instance of the "
+"protocol."
+msgstr ""
+"Khi thảo luận về sự đồng thuận, chúng tôi mặc định coi đó là \"một kỷ nguyên"
+" tại một thời điểm\", trừ khi được tuyên bố rõ ràng ở hình thức khác, như "
+"nội dung trong bản mô tả Highway. Cần nhớ rằng mỗi kỷ nguyên (era) hay một "
+"quãng thời gian trong Casper, là một ví dụ về giao thức này"
+
+#: ../../economics/index.rst:23 ../../economics/index.rst:46
+msgid "Agents (consensus layer)"
+msgstr "Người trung gian (lớp đồng thuận)"
+
+#: ../../economics/index.rst:25
+msgid ""
+"*Validators* are responsible for maintaining platform security by building "
+"an ever-growing chain of finalized blocks, backing this chain's security "
+"with their stakes. Their importance (often referred to as \"weight\") both "
+"to protocol operation and security is, in fact, equal to their stake, which "
+"includes both their own and delegated tokens."
+msgstr ""
+"*Nhà xác thực* chịu trách nhiệm duy trì bảo mật nền tảng bằng cách xây dựng "
+"một chuỗi các khối hoàn thiện ngày càng phát triển, hỗ trợ bảo mật của chuỗi"
+" này bằng cổ phần của họ. Trên thực tế, tầm quan trọng của họ (thường được "
+"gọi là \"trọng số\") đối với hoạt động và bảo mật của giao thức ngang bằng "
+"với số lượng cổ phần của họ, bao gồm cả token được ủy quyền và riêng của họ."
+
+#: ../../economics/index.rst:27
+msgid ""
+"*Delegators* are users who participate in the platform's security by "
+"delegating their tokens to validators, which adds to their weight and "
+"collecting a part of the rewards proportional to their delegations, net of a"
+" cut (\"delegation rate\") that is collected by the validator."
+msgstr ""
+"*Người ủy quyền* là người dùng tham gia vào bảo mật của nền tảng bằng cách "
+"ủy quyền token của họ cho nhà xác thực, điều này làm tăng thêm trọng số của "
+"họ và thu thập một phần phần thưởng tỷ lệ với ủy quyền của họ, trừ một khoản"
+" cắt giảm (\"tỷ lệ ủy quyền\") mà nhà xác thực thu về. "
+
+#: ../../economics/index.rst:30 ../../economics/index.rst:53
+msgid "Incentives (consensus layer)"
+msgstr "Khuyến khích (lớp đồng thuận)"
+
+#: ../../economics/index.rst:32
+msgid ""
+"The *auction* determines the composition of the validator set for each era "
+"of the protocol. It is a \"first-price\" (winning bids become stakes) "
+"auction with a fixed number of spots chosen to balance security with "
+"performance (generally, the platform will run slower with more validators). "
+"Because rewards are proportional to the stake, we expect this competitive "
+"mechanism to provide a powerful impetus for staking as many tokens as "
+"possible."
+msgstr ""
+"*Phiên đấu giá* xác định thành phần của người xác thực được đặt cho từng kỷ "
+"nguyên của giao thức. Đây là phiên đấu giá cho \"giá đầu tiên\" (giá thầu "
+"thắng cuộc trở thành cổ phần) với một số với một số giao dịch spot (giao "
+"ngay) nhất định được chọn để cân bằng tính bảo mật với hiệu suất (nói chung,"
+" nền tảng sẽ chạy chậm hơn khi có nhiều nhà xác thực hơn). Bởi vì phần "
+"thưởng tỷ lệ thuận với số lượng cổ phần, chúng tôi hy vọng cơ chế cạnh tranh"
+" này sẽ cung cấp động lực mạnh mẽ để cổ phần càng nhiều token càng tốt."
+
+#: ../../economics/index.rst:34
+msgid ""
+"*Rewards* (per era) are issued to validators who perform, at their nominal "
+"pace, in such a way as to make timely progress on block finalization. These "
+"rewards are shared with delegators proportionally to their contributions, "
+"net of a cut taken by the validator."
+msgstr ""
+"*Phần thưởng* (theo kỷ nguyên) được cấp cho những nhà xác thực thực thi với "
+"tốc độ nhanh để đạt được hoàn thiện khối một cách kịp thời. Phần thưởng này "
+"được chia sẻ với người ủy quyền theo tỷ lệ đóng góp của họ, trừ đi một khoản"
+" mà nhà xác thực thu về."
+
+#: ../../economics/index.rst:36
+msgid ""
+"*Evictions* deactivate validators who fail to participate in an era, "
+"disabling their bid and suspending their participation until they signal "
+"readiness to resume participation by invoking a particular entry point in "
+"the auction contract."
+msgstr ""
+"*Trục xuất* sẽ vô hiệu hóa những nhà xác thực không tham gia vào một kỷ "
+"nguyên, vô hiệu hóa giá bid của họ và đình chỉ sự tham gia của họ cho đến "
+"khi họ ra hiệu rằng mình sẵn sàng tiếp tục tham gia bằng cách gọi (invoke) "
+"một điểm vào cụ thể trong hợp đồng đấu giá."
+
+#: ../../economics/index.rst:39
+msgid "Runtime"
+msgstr "Thời điểm chạy"
+
+#: ../../economics/index.rst:41
+msgid ""
+"The runtime layer encompasses the deployment and execution of smart "
+"contracts, session code, and other activity that performs computation on the"
+" global state. This suggests potential markets for finite platform "
+"resources, such as markets for computing time and storage. Such markets "
+"could ensure that resources are allocated to their highest-value uses. "
+"Currently, however, we limit ourselves to `metering computing time "
+"<https://docs.casperlabs.io/en/latest/implementation/execution-"
+"semantics.html#measuring-computational-work>`_, measured as gas. Gas can be "
+"conceptualized as relative time use of different WASM operations and host-"
+"side functions. Use of storage is also presently assigned a gas cost. We do "
+"not currently have a pricing mechanism for metered gas, although an "
+"outstanding Casper Enhancement Proposal (`CEP #22 "
+"<https://github.com/CasperLabs/ceps/pull/22>`_) suggests the implementation "
+"of a first-price gas auction similar to Ethereum's. The initial Mainnet "
+"deploy selection mechanism is based on FIFO."
+msgstr ""
+"Lớp thời điểm chạy chạy (runtime) bao gồm việc triển khai và thực thi các "
+"hợp đồng thông minh, mã phiên và hoạt động thực hiện tính toán ở trạng thái "
+"toàn cục. Điều này cho thấy có nhiều thị trường tiềm năng cho các tài nguyên"
+" nền tảng hữu hạn, chẳng hạn như thị trường cho thời gian tính toán và lưu "
+"trữ. Các thị trường này có thể đảm bảo rằng các nguồn lực được phân bổ và sử"
+" dụng với giá trị cao nhất. Tuy nhiên, hiện tại, chúng tôi chỉ `đo thời gian"
+" tính toán  <https://docs.casperlabs.io/en/latest/implementation/execution-"
+"semantics.html#measuring-computational-work>`_ bằng đơn vị gas. Gas có thể "
+"được khái niệm hóa là thời gian sử dụng tương đối dành cho các hoạt động "
+"WASM khác nhau và các chức năng phía máy chủ. Việc sử dụng kho lưu trữ hiện "
+"cũng được ấn định một lượng chi phí gas. Chúng tôi hiện không có cơ chế định"
+" giá cho gas đo được, mặc dù một Đề xuất cải tiến Casper (`CEP #22 "
+"<https://github.com/CasperLabs/ceps/pull/22>`_) có đề xuất việc thực hiện "
+"đấu giá gas theo giá đầu tiên tương tự như trong Ethereum. Mainnet ban đầu "
+"triển khai cơ chế lựa chọn dựa trên nguyên tăc FIFO (first in first out)"
+
+#: ../../economics/index.rst:43
+msgid ""
+"We expect to continue work on runtime resource markets, particularly gas "
+"futures (`CEP #17 <https://github.com/CasperLabs/ceps/pull/17>`_)."
+msgstr ""
+"Chúng tôi kỳ vọng trong tương lai sẽ tiếp tục nghiên cứu các thị trường tài "
+"nguyên thời gian chạy, đặc biệt là nghiên cứu về gas (`CEP #17 "
+"<https://github.com/CasperLabs/ceps/pull/17>`_)."
+
+#: ../../economics/index.rst:48
+msgid ""
+"*Validators* again play a vital role in this layer since protocol operation "
+"includes construction and validation of new blocks, consisting of deploys "
+"that change the global state, which the validators also maintain."
+msgstr ""
+"*Nhà xác thực* lại đóng một vai trò quan trọng trong lớp này vì hoạt động "
+"của giao thức bao gồm việc xây dựng và xác thực các khối mới, bao gồm các "
+"triển khai thay đổi trạng thái toàn cục - mục tiêu mà nhà xác thực cũng duy "
+"trì."
+
+#: ../../economics/index.rst:50
+msgid ""
+"*Users* execute session and contract code using the platform's computational"
+" resources"
+msgstr ""
+"*Người dùng* thực thi phiên và mã hợp đồng bằng cách sử dụng các tài nguyên "
+"tính toán của nền tảng"
+
+#: ../../economics/index.rst:55
+msgid ""
+"*Transaction fees*, or charges for gas use, ensure that the users compensate"
+" validators for performing their computations. Transaction fees are awarded "
+"to the block creator. Because we expect to launch with FIFO ordering of "
+"deploys, it can be assumed that one unit of gas will be priced at one mote "
+"until future changes to deploy orders are implemented."
+msgstr ""
+"*Phí giao dịch* hoặc phí sử dụng gas, đảm bảo rằng người dùng sẽ đền bù cho "
+"nhà xác thực khi nhà xác thực thực hiện các phép tính của họ. Phí giao dịch "
+"được trao tặng cho người tạo khối. Chúng tôi dự kiến ra mắt trình tự triển "
+"khai FIFO, giả định rằng một đơn vị gas sẽ được định giá ở mức một mote cho "
+"đến khi có thêm thay đổi nào trong yêu cầu triển khai."
+
+#: ../../economics/index.rst:58
+msgid "Ecosystem"
+msgstr "Hệ sinh thái"
+
+#: ../../economics/index.rst:60
+msgid ""
+"The ecosystem layer encompasses dApp design and operation. CasperLabs "
+"maintains multiple partnerships with prospective dApp developers, and we "
+"anticipate devoting significant resources to research the economics of "
+"prospective dApps."
+msgstr ""
+"Lớp hệ sinh thái bao gồm thiết kế và vận hành dApp. CasperLabs duy trì nhiều"
+" mối quan hệ hợp tác với các nhà phát triển dApp tiềm năng và chúng tôi sẽ "
+"dành nguồn lực đáng kể để nghiên cứu tính kinh tế của các dApp triển vọng."
+
+#: ../../economics/index.rst:63
+msgid "Macroeconomy"
+msgstr "Kinh tế vĩ mô"
+
+#: ../../economics/index.rst:65
+msgid ""
+"Casper's macroeconomics refers to the activity in the cryptocurrency "
+"markets, where CSPR can be treated as one cryptoasset among many rather than"
+" a computational platform. Our token economics are different from those of "
+"\"digital gold\" tokens like Bitcoin, designed to be scarce. Our tokens are "
+"minted from a fixed starting basis, which is accounted for by tokens "
+"distributed to genesis validators, employees, community members and held for"
+" future distributions. The total supply of tokens grows at a fixed annual "
+"percentage rate from this basis."
+msgstr ""
+"Kinh tế học vĩ mô của Casper đề cập đến hoạt động trong thị trường tiền điện"
+" tử, nơi CSPR có thể được coi là một tập hợp tiền điện tử trong số nhiều "
+"loại tiền điện tử hơn là một nền tảng tính toán. Về mặt kinh tế, token của "
+"chúng tôi khác với mô hình của các token \"vàng kỹ thuật số\" như Bitcoin, "
+"được thiết kế để khan hiếm. Các token của chúng tôi được mint trên một cơ sở"
+" xác định trước, được tính bằng các token được phân phối cho nhà xác nhận "
+"ban đầu, nhân viên, thành viên cộng đồng và được giữ để phân phối trong "
+"tương lai. Tổng nguồn cung cấp token tăng với tỷ lệ phần trăm cố định hàng "
+"năm trên cơ sở này."
+
+#: ../../economics/index.rst:67
+msgid ""
+"The inflationary nature of our macroeconomics has two significant advantages"
+" over enforced scarcity. Inflation incentivizes token holders to stake or "
+"delegate their tokens, a behavior we explicitly support with our delegation "
+"feature. Additionally, because Casper is a general-purpose computing "
+"platform, it is essential to supply tokens to support actual economic "
+"activity on the platform and discourage hoarding tokens in expectation of "
+"speculative gain."
+msgstr ""
+"Bản chất lạm phát trong kinh tế vĩ mô của chúng ta có hai lợi thế đáng kể. "
+"Lạm phát khuyến khích chủ sở hữu token đặt cọc hoặc ủy quyền token của họ, "
+"đây là hành vi mà chúng tôi hỗ trợ tối đa với tính năng ủy quyền. Ngoài ra, "
+"vì Casper là một nền tảng máy tính có mục đích chung, nên cần phải cung cấp "
+"token để hỗ trợ hoạt động kinh tế thực tế trên nền tảng và không khuyến "
+"khích tích trữ token với kỳ vọng thu được lợi nhuận đầu cơ."
