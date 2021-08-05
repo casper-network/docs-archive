@@ -3,61 +3,75 @@
 # This file is distributed under the same license as the CasperLabs Tech
 # Spec package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CasperLabs Tech Spec \n"
+"Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-26 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-06-26 21:49+0000\n"
+"Last-Translator: Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../workflow/two-party-multi-sig.rst:2
 msgid "Two-Party Multi-Signature Deploys"
-msgstr ""
+msgstr "İki Taraflı Çoklu İmza Dağıtımı"
 
 #: ../../workflow/two-party-multi-sig.rst:4
 msgid ""
 "`Accounts "
-"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ on "
-"a Casper Network can associate other accounts to allow or require a "
-"multiple signature scheme for deploys."
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ on a "
+"Casper Network can associate other accounts to allow or require a multiple "
+"signature scheme for deploys."
 msgstr ""
+"Casper Network'teki `hesaplar "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_, "
+"dağıtımlar için çoklu imza şemasına izin vermek veya bunu zorunlu kılmak "
+"için diğer hesapları ilişkilendirebilir."
 
 #: ../../workflow/two-party-multi-sig.rst:6
 msgid ""
-"This workflow describes how a trivial two-party multi-signature scheme "
-"for signing and sending deploys can be enforced for an account on a "
-"Casper Network."
+"This workflow describes how a trivial two-party multi-signature scheme for "
+"signing and sending deploys can be enforced for an account on a Casper "
+"Network."
 msgstr ""
+"Bu iş akışı, Casper Network'teki bir hesap için dağıtımları imzalamak ve "
+"göndermek için küçük bir iki taraflı çoklu imza şemasının nasıl "
+"uygulanabileceğini açıklar."
 
 #: ../../workflow/two-party-multi-sig.rst:8
 msgid "This workflow assumes:"
-msgstr ""
+msgstr "Bu iş akışı şunları varsayar:"
 
 #: ../../workflow/two-party-multi-sig.rst:10
 msgid "You meet the `prerequisites <setup.html>`_"
-msgstr ""
+msgstr "`Önkoşulları <setup.html>`_ karşılıyorsunuz"
 
 #: ../../workflow/two-party-multi-sig.rst:11
 msgid "You are using the Casper command-line client"
-msgstr ""
+msgstr "Casper komut satırı istemcisini kullanıyorsunuz"
 
 #: ../../workflow/two-party-multi-sig.rst:12
 msgid ""
 "You have a main ``PublicKey`` hex (**MA**) and a ``PublicKey`` hex to "
 "associate (**AA**)"
 msgstr ""
+"(**AA**) lişkilendirilecek bir ana `PublicKey` onaltılı (**MA**) ve bir "
+"`PublicKey` onaltılı var"
 
 #: ../../workflow/two-party-multi-sig.rst:13
 msgid "You have a valid ``node-address``"
-msgstr ""
+msgstr "Geçerli bir ``node-address``iniz var"
 
 #: ../../workflow/two-party-multi-sig.rst:14
 msgid ""
@@ -65,95 +79,129 @@ msgid ""
 "<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
 "contracts.html>`_ to a Casper Network"
 msgstr ""
+"Daha önce bir Casper Network'e `akıllı kontrat dağıttınız "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_"
 
 #: ../../workflow/two-party-multi-sig.rst:17
 msgid "Configuring the Main Account"
-msgstr ""
+msgstr "Ana Hesabı Yapılandırmak"
 
 #: ../../workflow/two-party-multi-sig.rst:19
 msgid ""
-"**CAUTION**: Incorrect account configurations could render accounts "
-"defunct and unusable. It is highly recommended to first execute any "
-"changes to an account in a test environment like Testnet, before "
-"performing them in a live environment like Mainnet."
+"**CAUTION**: Incorrect account configurations could render accounts defunct "
+"and unusable. It is highly recommended to first execute any changes to an "
+"account in a test environment like Testnet, before performing them in a live"
+" environment like Mainnet."
 msgstr ""
+"**DİKKAT**: Yanlış hesap yapılandırmaları, hesapları geçersiz ve "
+"kullanılamaz hale getirebilir. Bir hesaptaki değişiklikleri Mainnet gibi "
+"canlı bir ortamda gerçekleştirmeden önce Testnet gibi bir test ortamında "
+"gerçekleştirmeniz önemle tavsiye edilir."
 
 #: ../../workflow/two-party-multi-sig.rst:21
 msgid ""
-"Each account has an ``associated_keys`` field which is a list containing "
-"the account address and its weight for every associated account. Accounts"
-" can be associated by adding the account address to the "
-"``associated_keys`` field."
+"Each account has an ``associated_keys`` field which is a list containing the"
+" account address and its weight for every associated account. Accounts can "
+"be associated by adding the account address to the ``associated_keys`` "
+"field."
 msgstr ""
+"Her hesabın, hesap adresini ve ilişkili her hesap için ağırlığını içeren bir"
+" liste olan bir `associated_keys`` alanı vardır. Hesaplar, "
+"``associated_keys`` alanına hesap adresi eklenerek ilişkilendirilebilir."
 
 #: ../../workflow/two-party-multi-sig.rst:23
 msgid ""
-"An account on a Casper Network assigns weights to keys associated with "
-"it. For a single key to sign a deploy or edit the state of the account, "
-"its weight must be greater than or equal to a set threshold. The "
-"thresholds are labeled as the ``action_thresholds`` for the account."
+"An account on a Casper Network assigns weights to keys associated with it. "
+"For a single key to sign a deploy or edit the state of the account, its "
+"weight must be greater than or equal to a set threshold. The thresholds are "
+"labeled as the ``action_thresholds`` for the account."
 msgstr ""
+"Casper Network'teki bir hesap, kendisiyle ilişkili anahtarlara ağırlıklar "
+"atar. Tek bir anahtarın bir dağıtımı imzalaması veya hesabın durumunu "
+"düzenlemesi için, ağırlığının belirlenen bir eşikten büyük veya ona eşit "
+"olması gerekir. Eşikler, hesap için ``action_thresholds`` olarak "
+"etiketlenir."
 
 #: ../../workflow/two-party-multi-sig.rst:25
 msgid ""
-"Each account within a Casper Network has two action thresholds that "
-"manage the permissions to send deploys or manage the account. Each "
-"threshold defines the minimum weight that a single key or a combination "
-"of keys must have, to either:"
+"Each account within a Casper Network has two action thresholds that manage "
+"the permissions to send deploys or manage the account. Each threshold "
+"defines the minimum weight that a single key or a combination of keys must "
+"have, to either:"
 msgstr ""
+"Casper Network'teki her hesabın, dağıtım gönderme veya hesabı yönetme "
+"izinlerini yöneten iki eylem eşiği vardır. Her eşik, tek bir anahtarın veya "
+"bir anahtar kombinasyonunun sahip olması gereken minimum ağırlığı tanımlar:"
 
 #: ../../workflow/two-party-multi-sig.rst:27
-msgid "Send a deploy to the network; determined by the ``deployment`` threshold"
-msgstr ""
+msgid ""
+"Send a deploy to the network; determined by the ``deployment`` threshold"
+msgstr "Ağa bir dağıtım gönderin; ``dağıtım`` eşiği tarafından belirlenir"
 
 #: ../../workflow/two-party-multi-sig.rst:28
 msgid ""
-"Edit the ``associated keys`` and the ``action_thresholds``; determined by"
-" the ``key_management`` threshold"
+"Edit the ``associated keys`` and the ``action_thresholds``; determined by "
+"the ``key_management`` threshold"
 msgstr ""
+"``associated keys`` ve ``action_thresholds`` alanlarını düzenleyin; "
+"``key_management`` eşiği tarafından belirlenir"
 
 #: ../../workflow/two-party-multi-sig.rst:30
 msgid ""
 "To enforce the multi-signature (multi-sig) feature for an account on a "
-"Casper Network, the *main key* and *associated key*'s combined weight "
-"must be greater than or equal to the ``deployment`` threshold. This can "
-"be achieved by having each key's weight equal to half of the "
-"``deployment`` threshold."
+"Casper Network, the *main key* and *associated key*'s combined weight must "
+"be greater than or equal to the ``deployment`` threshold. This can be "
+"achieved by having each key's weight equal to half of the ``deployment`` "
+"threshold."
 msgstr ""
+"Casper Network'teki bir hesap için çoklu imza (çoklu imz) özelliğini "
+"uygulamak için, *ana anahtar* ve *associated key*in birleşik ağırlığı, "
+"``dağıtım`` eşiğinden büyük veya ona eşit olmalıdır. Bu, her bir anahtarın "
+"ağırlığının ``dağıtım`` eşiğinin yarısına eşit olmasıyla başarılabilir."
 
 #: ../../workflow/two-party-multi-sig.rst:34
 msgid "Code Description"
-msgstr ""
+msgstr "Kod Açıklama"
 
 #: ../../workflow/two-party-multi-sig.rst:36
 msgid ""
-"You can run session code that will execute within the context of your "
-"main account. Below is the code that will be compiled to WASM and then "
-"sent to the network as part of a deploy."
+"You can run session code that will execute within the context of your main "
+"account. Below is the code that will be compiled to WASM and then sent to "
+"the network as part of a deploy."
 msgstr ""
+"Ana hesabınız bağlamında yürütülecek oturum kodunu çalıştırabilirsiniz. "
+"Aşağıda, WASM'ye derlenecek ve daha sonra bir dağıtımın parçası olarak ağa "
+"gönderilecek olan kod yer almaktadır."
 
 #: ../../workflow/two-party-multi-sig.rst:38
 msgid ""
 "**Note**: The following contract example will set up a specific account "
 "configuration and is not a general-purpose contract."
 msgstr ""
+"**Not**: Aşağıdaki kontrat örneği, belirli bir hesap yapılandırması "
+"oluşturacaktır ve genel amaçlı bir kontrat değildir."
 
 #: ../../workflow/two-party-multi-sig.rst:68
 msgid ""
 "The contract will execute **2 crucial steps** to enforce the multi-sig "
 "scheme for your main account:"
 msgstr ""
+"Kontrat, ana hesabınız için çoklu imza şemasını uygulamak amacıyla **2 "
+"önemli adımı** yürütecektir:"
 
 #: ../../workflow/two-party-multi-sig.rst:70
 msgid "Add the associated key **AA** to the account"
-msgstr ""
+msgstr "İlgili **AA** anahtarını hesaba ekleyin"
 
 #: ../../workflow/two-party-multi-sig.rst:71
 msgid ""
-"Raise the ``deployment`` threshold to ``2``, such that the weight "
-"required to send a deploy is split equally between the keys associated "
-"with the account"
+"Raise the ``deployment`` threshold to ``2``, such that the weight required "
+"to send a deploy is split equally between the keys associated with the "
+"account"
 msgstr ""
+"Dağıtım göndermek için gereken ağırlık, hesapla ilişkili anahtarlar arasında"
+" eşit olarak bölünecek şekilde ``dağıtım`` eşiğini ``2``ye yükseltin"
 
 #: ../../workflow/two-party-multi-sig.rst:73
 msgid ""
@@ -161,16 +209,20 @@ msgid ""
 "threshold for key management. By default, action thresholds are set to "
 "``1``."
 msgstr ""
+"Dağıtımlar için eylem eşikleri, anahtar yönetimi için eylem eşiğinden büyük "
+"olamaz. Varsayılan olarak, eylem eşikleri ``1`` olarak ayarlanmıştır."
 
 #: ../../workflow/two-party-multi-sig.rst:76
 msgid "Code Execution"
-msgstr ""
+msgstr "Kod Çalıştırma"
 
 #: ../../workflow/two-party-multi-sig.rst:78
 msgid ""
-"The state of the account can be altered by sending a deploy which "
-"executes the WASM that will associate the **AA** account address."
+"The state of the account can be altered by sending a deploy which executes "
+"the WASM that will associate the **AA** account address."
 msgstr ""
+"Hesabın durumu, **AA** hesap adresini ilişkilendirecek WASM'yi yürüten bir "
+"dağıtım gönderilerek değiştirilebilir."
 
 #: ../../workflow/two-party-multi-sig.rst:80
 msgid ""
@@ -179,44 +231,51 @@ msgid ""
 "sig>`_. The repository contains a `Makefile` with the build commands "
 "necessary to compile the contract to generate the necessary WASM."
 msgstr ""
+"Bu kılavuz için akıllı bir kontrat yazılmıştır ve `Github Deposunda "
+"<https://github.com/casper-ecosystem/two-party-multi-sig>`_ saklanmaktadır. "
+"Depo, gerekli WASM'yi oluşturmak üzere sözleşmeyi derlemek için gerekli "
+"derleme komutlarını içeren bir `Makefile` dosyası içerir."
 
 #: ../../workflow/two-party-multi-sig.rst:88
 msgid "To build the contract, run the following command:"
-msgstr ""
+msgstr "Kontratı derlemek için aşağıdaki kodu çalıştırın:"
 
 #: ../../workflow/two-party-multi-sig.rst:94
 msgid "The compiled WASM will be saved on this path:"
-msgstr ""
+msgstr "Derlenmiş WASM bu yola kaydedilecektir:"
 
 #: ../../workflow/two-party-multi-sig.rst:101
 msgid ""
-"The Casper command-line client can be used to send the compiled WASM to "
-"the network for execution."
+"The Casper command-line client can be used to send the compiled WASM to the "
+"network for execution."
 msgstr ""
+"Casper komut satırı istemcisi, derlenmiş WASM'yi yürütülmek üzere ağa "
+"göndermek için kullanılabilir."
 
 #: ../../workflow/two-party-multi-sig.rst:115
 msgid "``node-address`` - An IP address of a node on the network"
-msgstr ""
+msgstr "``node-address`` - Ağdaki bir düğümün IP adresi"
 
 #: ../../workflow/two-party-multi-sig.rst:116
 msgid ""
-"``secret-key`` - The file name containing the secret key of the Main "
-"Account"
-msgstr ""
+"``secret-key`` - The file name containing the secret key of the Main Account"
+msgstr "``secret-key`` - Ana Hesabın gizli anahtarını içeren dosya adı"
 
 #: ../../workflow/two-party-multi-sig.rst:117
 msgid ""
-"``chain-name`` - The chain-name to the network where you wish to send the"
-" deploy (this example uses the Testnet)"
+"``chain-name`` - The chain-name to the network where you wish to send the "
+"deploy (this example uses the Testnet)"
 msgstr ""
+"``chain-name`` - Dağıtımı göndermek istediğiniz ağın zincir adı (bu örnek "
+"Testnet'i kullanır)"
 
 #: ../../workflow/two-party-multi-sig.rst:118
 msgid "``payment-amount`` - The cost of the deploy"
-msgstr ""
+msgstr "``payment-amount`` - Dağıtımın maliyeti"
 
 #: ../../workflow/two-party-multi-sig.rst:119
 msgid "``session-path`` - The path to the contract WASM"
-msgstr ""
+msgstr "``session-path`` - WASM kontratına giden yol"
 
 #: ../../workflow/two-party-multi-sig.rst:120
 msgid ""
@@ -224,85 +283,117 @@ msgid ""
 "account as an argument labeled ``deployment-account``. You can pass this "
 "argument using the ``--session-arg`` flag in the command line client"
 msgstr ""
+"``session-arg`` - Kontrat, İlişkili hesabın hesap özetini (hash) "
+"``deployment-account`` etiketli bir bağımsız değişken olarak alır. Bu "
+"argümanı komut satırı istemcisindeki ``--session-arg`` bayrağını kullanarak "
+"iletebilirsiniz."
 
 #: ../../workflow/two-party-multi-sig.rst:123
 msgid "**Important response fields:**"
-msgstr ""
+msgstr "**Önemli yanıt alanları:**"
 
 #: ../../workflow/two-party-multi-sig.rst:125
 msgid ""
-"``\"result\".\"deploy_hash\"`` - the address of the executed deploy, "
-"needed to look up additional information about the transfer"
+"``\"result\".\"deploy_hash\"`` - the address of the executed deploy, needed "
+"to look up additional information about the transfer"
 msgstr ""
+"``\"result\".\"deploy_hash\"`` - yürütülen dağıtımın adresi, transferle "
+"ilgili ek bilgileri aramak için gerekli"
 
 #: ../../workflow/two-party-multi-sig.rst:127
 msgid ""
 "**Note**: Save the returned ``deploy_hash`` from the output to query "
 "information about execution status."
 msgstr ""
+"**Not**: Yürütme durumuyla ilgili sorgu bilgilerine çıktıdan döndürülen "
+"``deploy_hash`` dosyasını kaydedin."
 
 #: ../../workflow/two-party-multi-sig.rst:130
 msgid "Confirming Execution and Account Status"
-msgstr ""
+msgstr "Yürütme ve Hesap Durumunun Onaylanması"
 
 #: ../../workflow/two-party-multi-sig.rst:132
 msgid ""
 "Account configuration on a Casper blockchain is stored in a `Merkle Tree "
-"<https://docs.casperlabs.io/en/latest/glossary/M.html#merkle-tree>`_ and "
-"is a snapshot of the blockchain's `Global State "
-"<https://docs.casperlabs.io/en/latest/implementation/global-"
-"state.html>`_. The representation of global state for a given block can "
-"be computed by executing the deploys (including transfers) within the "
-"block and its ancestors. The root node of the Merkle Tree identifying a "
-"particular state is called the ``state-root-hash`` and is stored in every"
-" executed block."
+"<https://docs.casperlabs.io/en/latest/glossary/M.html#merkle-tree>`_ and is "
+"a snapshot of the blockchain's `Global State "
+"<https://docs.casperlabs.io/en/latest/implementation/global-state.html>`_. "
+"The representation of global state for a given block can be computed by "
+"executing the deploys (including transfers) within the block and its "
+"ancestors. The root node of the Merkle Tree identifying a particular state "
+"is called the ``state-root-hash`` and is stored in every executed block."
 msgstr ""
+"Casper blokzincirdeki hesap yapılandırması, bir `Merkle Ağacında saklanır "
+"<https://docs.casperlabs.io/en/latest/glossary/M.html#merkle-tree>`_ ve "
+"blokzincirin `Küresel Durumunun "
+"<https://docs.casperlabs.io/en/latest/implementation/global-state.html>`_. "
+"bir anlık görüntüsüdür. Belirli bir blok için global durumun temsili, blok "
+"ve ataları içindeki dağıtımlar (transferler dahil) yürütülerek "
+"hesaplanabilir. Belirli bir durumu tanımlayan Merkle Ağacının kök düğümüne "
+"``state-root-hash`` denir ve yürütülen her blokta saklanır."
 
 #: ../../workflow/two-party-multi-sig.rst:134
 msgid ""
-"To check that your account was configured correctly, you need the "
-"``state-root-hash`` corresponding to the block that contains your deploy."
-" To obtain the ``state-root-hash``, you need to:"
+"To check that your account was configured correctly, you need the ``state-"
+"root-hash`` corresponding to the block that contains your deploy. To obtain "
+"the ``state-root-hash``, you need to:"
 msgstr ""
+"Hesabınızın doğru yapılandırıldığını kontrol etmek için, dağıtımınızı içeren"
+" bloğa karşılık gelen``state-root-hash``a ihtiyacınız var. ``state-root-"
+"hash`` elde etmek için yapmanız gerekenler:"
 
 #: ../../workflow/two-party-multi-sig.rst:137
 msgid ""
 "`Confirm the execution status of the deploy <querying.html#querying-"
 "deploys>`_ and obtain the hash of the block containing it"
 msgstr ""
+"`Dağıtımın yürütme durumunu onaylayın <querying.html#querying-deploys>`_ ve "
+"onu içeren bloğun özetini (hash) alın"
 
 #: ../../workflow/two-party-multi-sig.rst:138
 msgid ""
-"`Query the block containing the deploy <querying.html#querying-blocks>`_ "
-"to obtain the corresponding ``state_root_hash``"
+"`Query the block containing the deploy <querying.html#querying-blocks>`_ to "
+"obtain the corresponding ``state_root_hash``"
 msgstr ""
+"Karşılık gelen ``state_root_hash`` elde etmek için `dağıtımı içeren bloğu "
+"sorgulayın <querying.html#querying-blocks>`_"
 
 #: ../../workflow/two-party-multi-sig.rst:140
 msgid ""
-"Use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the "
-"main account to query the network for the account and check its "
-"configuration."
+"Use the ``state_root_hash`` and the ``hex-encoded-public-key`` of the main "
+"account to query the network for the account and check its configuration."
 msgstr ""
+"Hesap için ağı sorgulamak ve yapılandırmasını kontrol etmek için ana hesabın"
+" ``state_root_hash`` ve ``hex-encoding-public-key`` ögelerini kullanın."
 
 #: ../../workflow/two-party-multi-sig.rst:149
 msgid "**Example Output**"
-msgstr ""
+msgstr "**Örnek Çıktı**"
 
 #: ../../workflow/two-party-multi-sig.rst:184
 msgid ""
-"In the above example, you can see the account addresses listed within the"
-" ``associated_keys`` section. Each key has a weight of ``1``, since the "
-"action threshold for ``deployment`` is set to ``2``, neither account is "
-"able to sign and send a deploy individually. Thus to send the deploy from"
-" the Main account, the deploy needs to be signed by the secret keys of "
-"each account to reach the required threshold."
+"In the above example, you can see the account addresses listed within the "
+"``associated_keys`` section. Each key has a weight of ``1``, since the "
+"action threshold for ``deployment`` is set to ``2``, neither account is able"
+" to sign and send a deploy individually. Thus to send the deploy from the "
+"Main account, the deploy needs to be signed by the secret keys of each "
+"account to reach the required threshold."
 msgstr ""
+"Yukarıdaki örnekte, ``associated_keys`` bölümünde listelenen hesap "
+"adreslerini görebilirsiniz. ``Dağıtım`` için eylem eşiği ``2`` olarak "
+"ayarlandığından, her anahtarın ağırlığı ``1``dir, her iki hesap da bir "
+"dağıtımı tek tek imzalayamaz ve gönderemez. Bu nedenle, dağıtımı Ana "
+"hesaptan göndermek için, dağıtımın gerekli eşiğe ulaşması için her hesabın "
+"gizli anahtarları tarafından imzalanması gerekir."
 
 #: ../../workflow/two-party-multi-sig.rst:188
 msgid ""
 "Details about various scenarios in which multiple associated keys can be "
-"setup is discussed in `the examples section of the Multi-Signature "
-"Tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials"
-"/multi-sig/examples.html>`_."
+"setup is discussed in `the examples section of the Multi-Signature Tutorial "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-"
+"sig/examples.html>`_."
 msgstr ""
-
+"Birden çok ilişkili anahtarın ayarlanabileceği çeşitli senaryolarla ilgili "
+"ayrıntılar, `Çoklu İmza Eğitiminin örnekler bölümünde "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-"
+"sig/examples.html>`_ tartışılmaktadır."
