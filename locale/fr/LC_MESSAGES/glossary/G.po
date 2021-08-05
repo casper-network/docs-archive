@@ -166,16 +166,16 @@ msgid ""
 "When thinking of a `blockchain <B.html#blockchain>`_ as a decentralized "
 "computer, the global state is its memory state."
 msgstr ""
-"When thinking of a `blockchain <B.html#blockchain>`_ as a decentralized "
-"computer, the global state is its memory state."
+"Quand on pense à une `blockchain <B.html#blockchain>`_ comme à un ordinateur"
+" décentralisé, l'état global est son état de mémoire."
 
 #: ../../glossary/G.rst:20
 msgid ""
 "When thinking of a `blockchain <B.html#blockchain>`_ as a shared database, "
 "the global state is the snapshot of the database's data."
 msgstr ""
-"When thinking of a `blockchain <B.html#blockchain>`_ as a shared database, "
-"the global state is the snapshot of the database's data."
+"En pensant à une `blockchain <B.html#blockchain>`_ comme une base de données"
+" partagée, l'état global est le snapshot des données de la base."
 
 #: ../../glossary/G.rst:22
 msgid ""
@@ -183,9 +183,9 @@ msgid ""
 "extensive) collection of key-value pairs, where the keys are references "
 "(Refs), and the values are large binary objects (BLOBs)."
 msgstr ""
-"Technically, a `global state <G.html#global-state>`_ is a (possibly "
-"extensive) collection of key-value pairs, where the keys are references "
-"(Refs), and the values are large binary objects (BLOBs)."
+"Techniquement, un `état global <G.html#global-state>`_ est une collection "
+"(éventuellement étendue) de paires clé-valeur, où les clés sont des "
+"références (Refs), et les valeurs des grands objets binaires (BLOBs)."
 
 #: ../../glossary/G.rst:24
 msgid ""
