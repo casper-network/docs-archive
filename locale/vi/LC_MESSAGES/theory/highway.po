@@ -1,0 +1,986 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../theory/highway.rst:2
+msgid "Highway"
+msgstr "Highway"
+
+#: ../../theory/highway.rst:5
+msgid "Motivation"
+msgstr "Động lực"
+
+#: ../../theory/highway.rst:7
+msgid ""
+"For a practically useful decentralized consensus protocol, proofs of two "
+"theorems must be provided:"
+msgstr ""
+"Trên thực tế, một giao thức đồng thuận phi tập trung cần thể hiện được hai "
+"định lý:"
+
+#: ../../theory/highway.rst:10
+msgid ""
+"**safety:** a theorem saying that nodes cannot come up with conflicting "
+"decisions"
+msgstr ""
+"**an toàn (safety):** lý nói rằng các nút không thể đưa ra các quyết định "
+"mâu thuẫn"
+
+#: ../../theory/highway.rst:11
+msgid "**liveness:** a theorem saying that nodes will keep making decisions"
+msgstr ""
+"**hoạt động (liveness):** định lý nói rằng các nút sẽ tiếp tục đưa ra quyết "
+"định"
+
+#: ../../theory/highway.rst:12
+msgid "forever (so, that the blockchain will grow forever)"
+msgstr "mãi mãi (để chuỗi khối sẽ phát triển mãi mãi)"
+
+#: ../../theory/highway.rst:14
+msgid ""
+"The First theorem is just another name for the machinery of finality "
+"detectors. And it is the easy one. The Second theorem tends to be "
+"substantially harder to prove and these difficulties are showing up in "
+"pretty much any blockchain design studied."
+msgstr ""
+"Định lý thứ nhất chỉ là một tên gọi khác của việc tính toán cuối cùng và nó "
+"là một trong những việc dễ dàng. Định lý thứ hai có xu hướng khó chứng minh "
+"hơn đáng kể và những khó khăn này đang xuất hiện trong khá nhiều thiết kế "
+"chuỗi khối được nghiên cứu."
+
+#: ../../theory/highway.rst:19
+msgid ""
+"Despite the fact that the “naive” design of a blockchain described in the "
+"previous chapter can actually be implemented and its observed behavior is "
+"promising, so far we were not successful trying to prove the liveness "
+"theorem for it."
+msgstr ""
+"Mặc dù thực tế là thiết kế \"ngây thơ\" của một chuỗi khối được mô tả trong "
+"chương trước có thể thực sự được triển khai và hành vi quan sát được của nó "
+"là đầy hứa hẹn, cho đến nay chúng tôi đã không thành công khi cố gắng chứng "
+"minh định lý liveness cho nó."
+
+#: ../../theory/highway.rst:23
+msgid ""
+"As part of this effort, we were actively looking for some hardening of "
+"assumptions that would lead to a provably live protocol while maintaining "
+"our key goals intact; i.e. to have a permissionless, fully decentralized, "
+"Casper-based blockchain that is compatible with broadcast-based message "
+"passing and a partially synchronous network."
+msgstr ""
+"Là một phần của nỗ lực này, chúng tôi đã tích cực tìm kiếm một số giả định "
+"vững chắc sẽ dẫn đến một giao thức hoạt động có thể chứng minh được trong "
+"khi vẫn duy trì nguyên vẹn các mục tiêu chính của chúng tôi; nghĩa là có một"
+" chuỗi khối dựa trên Casper không cần cấp phép, hoàn toàn phi tập trung, "
+"tương thích với việc gửi các thông báo và một mạng đồng bộ một phần."
+
+#: ../../theory/highway.rst:29
+msgid ""
+"**Highway** is one of such attempts we found particularly promising. This is"
+" a variant of Casper where the liveness theorem is achieved via constraining"
+" message production with a pseudorandomly generated sequence of leaders "
+"that, in effect leads to a predictable structure of the emerging blockdag."
+msgstr ""
+"**Highway** là một trong những nỗ lực mà chúng tôi thấy đặc biệt hứa hẹn. "
+"Đây là một biến thể của Casper trong đó định lý liveness đạt được thông qua "
+"việc hạn chế gửi thông báo với việc tạo có chủ đích một chuỗi các nhà lãnh "
+"đạo, trên thực tế dẫn đến một cấu trúc dự đoán trước được của blockdag."
+
+#: ../../theory/highway.rst:35
+msgid "Innovations in a nutshell"
+msgstr "Tóm tắt về đổi mới"
+
+#: ../../theory/highway.rst:37
+msgid ""
+"We generally see Highway as an evolution from Naive Casper Blockchain (later"
+" abbreviated as NCB),  where key modifications are:"
+msgstr ""
+"Nhìn chung, chúng tôi coi Highway là một sự phát triển từ Naive Casper "
+"Blockchain (sau này được viết tắt là NCB), nơi các sửa đổi chính là:"
+
+#: ../../theory/highway.rst:40
+msgid "Organize blocks creation around a pseudorandomly generated sequence of"
+msgstr "Tổ chức tạo khối xung quanh một chuỗi được tạo có chủ đích của"
+
+#: ../../theory/highway.rst:41
+msgid ""
+"leaders. Only a leader can produce a block. -  Use variable length of rounds"
+" based on the :math:`2^n` round length idea so that the blockchain network "
+"can self-adjust to achieve optimal performance. -  Replace continuous "
+"bonding/unbonding with an era-based solution. This is necessary to keep the "
+"solution secure (so that attackers cannot tamper with the leader sequence "
+"generator)."
+msgstr ""
+"các nhà lãnh đạo. Chỉ một nhà lãnh đạo mới có thể tạo ra một khối. - Sử dụng"
+" chiều dài vòng thay đổi dựa trên ý tưởng chiều dài vòng :math:`2^n` để mạng"
+" blockchain có thể tự điều chỉnh nhằm đạt được hiệu suất tối ưu. - Thay thế "
+"việc cổ phần / hủy cổ phần liên tục bằng giải pháp mang tính thời đại. Điều "
+"này là cần thiết để giữ cho giải pháp an toàn (để những kẻ tấn công không "
+"thể giả mạo tạo trình tự lãnh đạo)."
+
+#: ../../theory/highway.rst:49
+msgid "New requirements"
+msgstr "Yêu cầu mới"
+
+#: ../../theory/highway.rst:51
+msgid ""
+"Interestingly, in comparison to NCB, we need only one new assumption, "
+"although a tough one - we need that validators have well synchronized real "
+"time clocks."
+msgstr ""
+"Thật thú vị, so với NCB, chúng tôi chỉ cần một giả định mới, mặc dù một giả "
+"định khó - chúng tôi cần các nhà xác thực có đồng hồ thời gian thực được "
+"đồng bộ hóa tốt."
+
+#: ../../theory/highway.rst:54
+msgid ""
+"How to achieve such real-time clocks and how to secure the network against "
+"intended or unintended clock drift is, in general, beyond the scope of this "
+"specification. However, we give some hints on certain simple precautions to "
+"be taken."
+msgstr ""
+"Nói chung, làm thế nào để đạt được đồng hồ thời gian thực như vậy và cách "
+"bảo mật mạng chống lại sự lệch đồng hồ có chủ ý hoặc không chủ ý, nằm ngoài "
+"phạm vi của đặc điểm kỹ thuật này. Tuy nhiên, chúng tôi đưa ra một số gợi ý "
+"về một số biện pháp phòng ngừa đơn giản cần được thực hiện."
+
+#: ../../theory/highway.rst:59
+msgid "Why “Highway”"
+msgstr "Tại sao “Highway”"
+
+#: ../../theory/highway.rst:61
+msgid ""
+"To intuitively capture the key idea of the :math:`2^n` round length trick, "
+"we once imagined a highway, well - a mathematical highway with infinitely "
+"many lanes. Lanes are numbered with integers (all integers, also negative)."
+msgstr ""
+"Để nắm bắt trực quan được ý tưởng chính của chiều dài vòng :math:`2^n`, "
+"chúng tôi đã từng tưởng tượng ra một đường cao tốc - một đường cao tốc toán "
+"học với vô số làn đường. Làn đường được đánh số bằng số nguyên (tất cả các "
+"số nguyên, cả số âm)."
+
+#: ../../theory/highway.rst:65
+msgid ""
+"This highway is different because movement on it takes place in the form of "
+"hops, while the speed of all cars is constant. In any given lane :math:`n`, "
+"a car has to make :math:`2^n` hops to cover a unit distance."
+msgstr ""
+"Đường cao tốc này khác vì chuyển động trên đó diễn ra dưới dạng bước nhảy, "
+"trong khi tốc độ của tất cả các ô tô là không đổi. Trong bất kỳ làn đường "
+"nhất định :math:`n`, một chiếc ô tô phải thực hiện :math:`2^n` bước nhảy để "
+"bao phủ một khoảng cách đơn vị."
+
+#: ../../theory/highway.rst:69
+msgid ""
+"Therefore, if you switch to the lane on your left-hand side, you increase "
+"the frequency of your hopping by a factor of 2. If you switch to your right-"
+"hand side, you decrease the frequency by a factor of 2."
+msgstr ""
+"Do đó, nếu bạn chuyển sang làn đường bên tay trái, bạn sẽ tăng tần suất nhảy"
+" lên hệ số 2. Nếu bạn chuyển sang làn đường bên tay phải, bạn giảm tần số đi"
+" theo hệ số 2."
+
+#: ../../theory/highway.rst:73
+msgid ""
+"You meet cars from the lane on your left-hand side on every jump you make. "
+"For cars on your right-hand side, you meet only every second hop."
+msgstr ""
+"Bạn gặp ô tô từ làn đường bên tay trái của bạn trong mỗi bước nhảy bạn thực "
+"hiện. Đối với ô tô ở phía bên tay phải của bạn, bạn chỉ gặp ở mỗi bước nhảy "
+"thứ hai."
+
+#: ../../theory/highway.rst:77
+msgid "Messages structure"
+msgstr "Cấu trúc thông điệp"
+
+#: ../../theory/highway.rst:80
+msgid ""
+"While we generally keep messages structure established in NCB, we require "
+"the"
+msgstr ""
+"Mặc dù chúng tôi thường giữ cấu trúc thông điệp được thiết lập trong NCB, "
+"chúng tôi yêu cầu"
+
+#: ../../theory/highway.rst:80
+msgid "following additional fields:"
+msgstr "các trường bổ sung sau:"
+
+#: ../../theory/highway.rst:82
+msgid "for every message:"
+msgstr "cho mỗi thông điệp:"
+
+#: ../../theory/highway.rst:84
+msgid "**round-id: Int** - keeps the round id that this message belongs to"
+msgstr "**round-id: Int** - giữ id vòng mà thông điệp này thuộc về"
+
+#: ../../theory/highway.rst:85
+msgid ""
+"**real-time-stamp: Int** - keeps the actual time of creating this message"
+msgstr ""
+"**real-time-stamp: Int** - giữ thời gian thực tế của việc tạo thông điệp này"
+
+#: ../../theory/highway.rst:86
+msgid ""
+"taken from the real-time clock of the sender (must be creation as opposed to"
+" sending because all fields are sealed with a digital signature)"
+msgstr ""
+"được lấy từ đồng hồ thời gian thực của người gửi (phải được tạo chứ không "
+"phải gửi vì tất cả các trường đều được niêm phong bằng chữ ký điện tử)"
+
+#: ../../theory/highway.rst:89
+msgid "for blocks only:"
+msgstr "chỉ dành cho các khối:"
+
+#: ../../theory/highway.rst:91
+msgid ""
+"**magic-bit: Bit** - this is one bit field needed for leaders pseudorandom"
+msgstr ""
+"**magic-bit: Bit** - đây là một trường bit cần thiết cho các nhà lãnh đạo "
+"định trước"
+
+#: ../../theory/highway.rst:92
+msgid "generator seed"
+msgstr "tạo hạt giống (seed)"
+
+#: ../../theory/highway.rst:94
+msgid "for ballots only:"
+msgstr "chỉ dành cho phiếu bầu:"
+
+#: ../../theory/highway.rst:96
+msgid "**message-type: Enum** - one of: LAMBDA_RESPONSE, OMEGA"
+msgstr "**message-type: Enum** - một trong số: LAMBDA_RESPONSE, OMEGA"
+
+#: ../../theory/highway.rst:98
+msgid ""
+"Note: The semantics of these fields is explained later in this document."
+msgstr ""
+"Lưu ý: Ngữ nghĩa của các trường này sẽ được giải thích sau trong tài liệu "
+"này."
+
+#: ../../theory/highway.rst:101
+msgid "Liveness strategy"
+msgstr "Chiến lược hoạt động (liveness)"
+
+#: ../../theory/highway.rst:104
+msgid "Ticks"
+msgstr "Đánh dấu"
+
+#: ../../theory/highway.rst:106
+msgid ""
+"Validators see time in a discrete way, namely - as the number of ticks since"
+" some hardcoded point of real time. For simplicity, we assume that ticks are"
+" just milliseconds since “epoch” -- the Unix time representation standard."
+msgstr ""
+"Nhà xác thực xem thời gian theo cách rời rạc, cụ thể là số lượng đánh dấu kể"
+" từ một số điểm được mã hóa cứng của thời gian thực. Để đơn giản, chúng tôi "
+"giả định rằng số đánh dấu chỉ là mili giây kể từ “kỷ nguyên” - tiêu chuẩn "
+"biểu diễn thời gian Unix."
+
+#: ../../theory/highway.rst:111
+msgid "Leaders"
+msgstr "Nhà lãnh đạo"
+
+#: ../../theory/highway.rst:114
+msgid ""
+"There is a **leader** assigned to every tick. A leader is always one from "
+"the"
+msgstr ""
+"Có một **lãnh đạo** được chỉ định cho mỗi lần đánh dấu. Một nhà lãnh đạo "
+"luôn luôn là một trong những"
+
+#: ../../theory/highway.rst:114
+msgid "currently staked validators."
+msgstr "nhà xác thực đã đặt cọc hiện tại."
+
+#: ../../theory/highway.rst:116
+msgid ""
+"The precise algorithm of calculating who is the leader of given tick is "
+"pretty convoluted and needs a machinery that we will establish step-by-step."
+" For now, it is enough to say that a validator has a recipe to calculate the"
+" leader of every tick."
+msgstr ""
+"Thuật toán chính xác để tính xem ai là người dẫn đầu của tíc tắc nhất định "
+"khá phức tạp và cần một công cụ mà chúng tôi sẽ thiết lập từng bước. Hiện "
+"tại, đủ để nói rằng nhà xác thực có một công thức để tính toán người dẫn đầu"
+" của mỗi lần đánh dấu."
+
+#: ../../theory/highway.rst:122
+msgid "Rounds"
+msgstr "Vòng"
+
+#: ../../theory/highway.rst:125
+msgid ""
+"In a leader based system, rounds are inevitable, because a leader cannot "
+"lead"
+msgstr ""
+"Trong một hệ thống dựa trên nhà lãnh đạo, các vòng là không thể tránh khỏi, "
+"bởi vì một nhà lãnh đạo không thể lãnh đạo"
+
+#: ../../theory/highway.rst:125
+msgid "forever. Hence, it is supposed to lead during a single round."
+msgstr "mãi mãi. Do giả thiết rằng nó dẫn đầu trong một vòng."
+
+#: ../../theory/highway.rst:127
+msgid ""
+"Picking a fixed round length obviously leads to scaling issues. On the other"
+" hand, adjusting round length on-the-fly is tricky."
+msgstr ""
+"Chọn một chiều dài vòng cố định rõ ràng dẫn đến các vấn đề về tỷ lệ. Mặt "
+"khác, việc điều chỉnh độ dài vòng khi đang chạy rất phức tạp."
+
+#: ../../theory/highway.rst:130
+msgid ""
+"In Highway, we approach the problem of automatic adjustment of round length "
+"in a unique and unusual way. Every validator selects a private value "
+":math:`n \\in Int`, which we call **round exponent**. Over time, a validator"
+" will be automatically adjusting this value to optimize its performance and "
+"the performance of the blockchain."
+msgstr ""
+"Trong Highway, chúng tôi tiếp cận vấn đề tự động điều chỉnh độ dài vòng một "
+"cách độc đáo và khác thường. Mọi nhà xác nhận đều chọn một giá trị riêng "
+":math:`n \\in Int`, chúng tôi gọi là **số mũ tròn**. Theo thời gian, nhà xác"
+" thực sẽ tự động điều chỉnh giá trị này để tối ưu hóa hiệu suất của nó và "
+"hiệu suất của chuỗi khối."
+
+#: ../../theory/highway.rst:137
+msgid ""
+"Given a round exponent :math:`n`, the length of a round that a validator "
+"uses"
+msgstr ""
+"Cho một số mũ tròn :math:`n`, độ dài của một vòng mà nhà xác thực sử dụng"
+
+#: ../../theory/highway.rst:137
+msgid "for its operation is :math:`2^n` ticks."
+msgstr "cho hoạt động của nó là :math:`2^n` đánh dấu"
+
+#: ../../theory/highway.rst:139
+msgid ""
+"So, effectively, rounds live in sort of parallel worlds (“lanes of the "
+"highway”), where all validators with same round exponent :math:`n` have the "
+"same schedule of rounds. On the other hand, if we compare two validators, "
+"**Alice** and **Bob**, **Alice** using round exponent :math:`n`, **Bob** "
+"using round exponent :math:`m`, and assuming :math:`n < m`, then:"
+msgstr ""
+"Vì vậy, một cách hiệu quả, các vòng hoạt động trong một loại thế giới song "
+"song (“làn đường của đường cao tốc”), nơi tất cả các nhà xác thực có cùng số"
+" mũ vòng :math:`n` có cùng lịch trình của các vòng. Mặt khác, nếu chúng ta "
+"so sánh hai trình xác thực, **Alice** và **Bob**, **Alice** sử dụng số mũ "
+"tròn :math:`n`, **Bob** sử dụng số mũ tròn :math:`m` và giả sử :math:`n < "
+"m`, thì:"
+
+#: ../../theory/highway.rst:145
+msgid "**Alice** is :math:`2^{m-n}` faster than **Bob**"
+msgstr "**Alice** là :math:`2^{m-n}` nhanh hơn **Bob**"
+
+#: ../../theory/highway.rst:146
+msgid "**Alice** participates in all rounds that **Bob** knows about"
+msgstr "**Alice** tham gia tất cả các vòng mà **Bob** biết"
+
+#: ../../theory/highway.rst:147
+msgid ""
+"**Bob** participates only in some rounds that **Alice** knows about - once"
+msgstr "**Bob** chỉ tham gia một số vòng mà **Alice** biết - một lần"
+
+#: ../../theory/highway.rst:148
+msgid "every :math:`2^{m-n}` **Alice**\\ ’s rounds"
+msgstr "mỗi :math:`2^{m-n}` vòng của **Alice**"
+
+#: ../../theory/highway.rst:150
+msgid ""
+"A round is identified by the tick at which it starts. Of course validators "
+"with different round exponents will differ in perspective on the length of "
+"this round."
+msgstr ""
+"Một vòng được xác định bằng đánh dấu mà nó bắt đầu. Tất nhiên các nhà xác "
+"thực có số mũ của vòng khác nhau sẽ khác nhau về quan điểm độ dài của vòng "
+"này."
+
+#: ../../theory/highway.rst:154
+msgid ""
+"**Example:** Alice has round exponent 5. Bob has round exponent 7. So, in "
+"Alice’s world, rounds have length 32 ticks, while in Bob’s world rounds have"
+" length 128 ticks. Timepoint 2019-09-13T13:13:13.088Z corresponds with tick "
+"1568380393088 and is the beginning of a round for both Alice and Bob. But, "
+"in Alice’s world, this round will only last for 32 milliseconds, while for "
+"Bob this round will last for 128 milliseconds."
+msgstr ""
+"**Ví dụ:** Alice có số mũ tròn 5. Bob có số mũ tròn 7. Vì vậy, trong thế "
+"giới của Alice, các vòng có chiều dài 32 dấu, trong khi trong vòng thế giới "
+"của Bob có chiều dài 128 dấu. Thời điểm 2019-09-13T13: 13: 13.088Z tương ứng"
+" với đánh dấu 1568380393088 và là thời điểm bắt đầu một vòng cho cả Alice và"
+" Bob. Tuy nhiên, trong thế giới của Alice, vòng này sẽ chỉ kéo dài 32 mili "
+"giây, trong khi đối với Bob, vòng này sẽ kéo dài 128 mili giây."
+
+#: ../../theory/highway.rst:162
+msgid "Validator operation"
+msgstr "Hoạt động của nhà xác thực"
+
+#: ../../theory/highway.rst:164
+msgid ""
+"Contrary to NCB, the way ballots are used in Highway is more sophisticated."
+msgstr ""
+"Trái ngược với NCB, cách thức sử dụng phiếu bầu ở Highway phức tạp hơn."
+
+#: ../../theory/highway.rst:166
+msgid ""
+"In NCB a validator only produces ballots to continue participation in "
+"**b-game** after doing unbonding. In Highway, only the round leader is "
+"allowed to produce blocks. So if I am not the leader of current round, I am "
+"going to produce only ballots."
+msgstr ""
+"Trái ngược với NCB, cách thức sử dụng phiếu bầu ở Highway phức tạp hơn."
+
+#: ../../theory/highway.rst:171
+msgid ""
+"In details, local state and operation of a validator is similar to NCB. The "
+"only difference is that we impose very precise rules on when and how to "
+"create new messages."
+msgstr ""
+"Về chi tiết, trạng thái cục bộ và hoạt động của nhà xác thực tương tự như "
+"NCB. Sự khác biệt duy nhất là chúng tôi áp đặt các quy tắc rất chính xác về "
+"thời điểm và cách thức tạo thông điệp mới."
+
+#: ../../theory/highway.rst:176
+msgid "Rule 1: ignore rounds you cannot see"
+msgstr "Quy tắc 1: Bỏ qua các vòng bạn không thể nhìn thấy"
+
+#: ../../theory/highway.rst:178
+msgid ""
+"I operate as if the world is simple and everybody uses the same round "
+"exponent as I am using. Which means that I completely ignore the existence "
+"of rounds starting at ticks not divisible by :math:`2^n`, where :math:`n` is"
+" my round exponent."
+msgstr ""
+"Tôi vận hành như thể thế giới đơn giản và mọi người đều sử dụng số mũ tròn "
+"giống như tôi đang sử dụng. Có nghĩa là tôi hoàn toàn bỏ qua sự tồn tại của "
+"các vòng bắt đầu với đánh dấu không chia hết cho :math:`2^n`, trong đó "
+":math:`n` là số mũ tròn của tôi."
+
+#: ../../theory/highway.rst:184
+msgid "Rule 2: follow the leader sequence"
+msgstr "Quy tắc 2: tuân theo trình tự của người lãnh đạo"
+
+#: ../../theory/highway.rst:187
+msgid ""
+"For every round I use the leader's pseudorandom sequence to figure out the "
+"id"
+msgstr ""
+"Đối với mỗi vòng, tôi sử dụng chuỗi định trước của người lãnh đạo để tìm ra "
+"id"
+
+#: ../../theory/highway.rst:187
+msgid "of a validator which is the leader of this round."
+msgstr "của nhà xác thực là người dẫn đầu của vòng này."
+
+#: ../../theory/highway.rst:190
+msgid "Rule 3: lambda message"
+msgstr "Quy tắc 3: Thông điệp lambda"
+
+#: ../../theory/highway.rst:192
+msgid ""
+"If I am the leader of current round, I produce new block :math:`b`, using "
+"all"
+msgstr ""
+"Nếu tôi là người dẫn đầu của vòng hiện tại, tôi tạo ra khối mới :math:`b`, "
+"sử dụng tất cả"
+
+#: ../../theory/highway.rst:193
+msgid ""
+"tips of my local j-dag as justifications of :math:`b`. Then I broadcast"
+msgstr ""
+"mẹo của j-dag địa phương của tôi như là lời biện minh của :math:`b`. Sau đó,"
+" tôi gửi"
+
+#: ../../theory/highway.rst:194
+msgid ":math:`b` to all validators."
+msgstr ":math:`b` cho tất cả các nhà xác thực."
+
+#: ../../theory/highway.rst:198
+msgid ""
+"We call this message **the lambda message**. There is only one lambda "
+"message"
+msgstr ""
+"Chúng tôi gọi thông điệp này là **thông điệp lambda**. Chỉ có một thông điệp"
+" lambda"
+
+#: ../../theory/highway.rst:197
+msgid ""
+"in every round. Every block :math:`b` is a lambda message of some round, "
+"namely round :math:`b.round\\_id`."
+msgstr ""
+"trong mỗi vòng. Mọi khối :math:`b` là một thông báo lambda của một số vòng, "
+"cụ thể là vòng :math:`b.round\\_id`."
+
+#: ../../theory/highway.rst:201
+msgid "Rule 4: lambda response message"
+msgstr "Quy tắc 4: Thông điệp phản hồi lambda"
+
+#: ../../theory/highway.rst:203
+msgid ""
+"If I am not the leader of the current round, I set up a handler for "
+"receiving the lambda message from this round’s leader. This handler waits "
+"for the lambda message but only up to the end of the current round. If the "
+"lambda message arrives before the end of the current round, I create a "
+"ballot taking as its justifications only the lambda message and my last "
+"message (if I have one)."
+msgstr ""
+"Nếu tôi không phải là người dẫn đầu của vòng hiện tại, tôi đã thiết lập một "
+"trình xử lý để nhận thông điệp lambda từ người đứng đầu của vòng này. Trình "
+"xử lý này chờ thông điệp lambda nhưng chỉ đến cuối vòng hiện tại. Nếu thông "
+"điệp lambda đến trước khi kết thúc vòng hiện tại, tôi sẽ tạo một lá phiếu "
+"lấy lý do chỉ là thông điệp lambda và thông điệp cuối cùng của tôi (nếu tôi "
+"có)."
+
+#: ../../theory/highway.rst:210
+msgid "Rule 5: omega message"
+msgstr "Quy tắc 5: Thông điệp omega"
+
+#: ../../theory/highway.rst:212
+msgid ""
+"Let :math:`j` be the id of current round. At tick :math:`j + omega\\_delay "
+"\\cdot 2^n` I create a ballot :math:`b` using all tips of my local j-dag as "
+"justifications of :math:`b`."
+msgstr ""
+"Đặt :math:`j`  là id của vòng hiện tại. Khi đánh dấu vào :math:`j + "
+"omega\\_delay \\cdot 2^n`  Tôi tạo một lá phiếu :math:`b` bằng cách sử dụng "
+"tất cả các mẹo của j-dag cục bộ của tôi để biện minh cho :math:`b`."
+
+#: ../../theory/highway.rst:216
+msgid ""
+":math:`omega\\_delay \\in(0,1)` is a blockchain parameter - to be picked by "
+"simulation and then hardcoded."
+msgstr ""
+":math:`omega\\_delay \\in(0,1)` là một tham số của chuỗi khối - được chọn "
+"bằng mô phỏng và sau đó được mã hóa cứng."
+
+#: ../../theory/highway.rst:220
+msgid "Adjusting round exponent"
+msgstr "Điều chỉnh số mũ tròn"
+
+#: ../../theory/highway.rst:222
+msgid ""
+"We need to make it clear what the semantics is of adjusting the round "
+"exponent. First, we want to say that the mechanics of messages creation "
+"requires that a validator knows what exponent he was using at any tick. This"
+" can be formalized by saying that for any validator :math:`v` there is a "
+"function :math:`n_v: Int \\to Int`, assigning an exponent to be used by "
+":math:`v` in any given tick."
+msgstr ""
+"Chúng ta cần làm rõ ngữ nghĩa của việc điều chỉnh số mũ tròn là gì. Trước "
+"tiên, chúng tôi muốn nói rằng cơ chế tạo thông điệp yêu cầu nhà xác thực "
+"biết số mũ mà anh ta đang sử dụng tại bất kỳ thời điểm nào. Điều này có thể "
+"được chính thức hóa bằng cách nói rằng đối với bất kỳ nhà xác thực nào "
+":math:`v` có một hàm :math:`n_v: Int \\to Int`, gán một số mũ được sử dụng "
+"bởi :math:`v` trong bất kỳ đánh dấu định trước nào."
+
+#: ../../theory/highway.rst:229
+msgid ""
+"When a validator wants to adjust its round exponent, this must be done at a "
+"tick that happens to be the boundary of both the old-length round and the "
+"new-length round. Mathematically this transforms into saying that :math:`n_v"
+" (i) = n_v(i-1)` unless :math:`i` is a multiple of both :math:`2^{n_v(i)}` "
+"and :math:`2^{n_v(i-1)}`."
+msgstr ""
+"Khi nhà xác thực muốn điều chỉnh số mũ làm tròn, điều này phải được thực "
+"hiện vào thời điểm đánh dấu là ranh giới của cả vòng độ dài cũ và vòng có độ"
+" dài mới. Về mặt toán học, điều này biến đổi thành :math:`n_v (i) = "
+"n_v(i-1)` trừ khi :math:`i` là bội số của cả hai :math:`2^{n_v(i)}` và "
+":math:`2^{n_v(i-1)}`."
+
+#: ../../theory/highway.rst:238
+msgid ""
+"Auto-adjusting of round lengths is based on an internal finalizer which "
+"every"
+msgstr ""
+"Tự động điều chỉnh độ dài vòng dựa trên một công cụ hoàn thiện nội bộ mà mọi"
+
+#: ../../theory/highway.rst:236
+msgid ""
+"validator must maintain. This finalizer would run with the fault tolerance "
+"threshold :math:`ftt` set as blockchain-wide constant (:math:`ftt=1\\%` "
+"sounds like a good candidate value here) and "
+":math:`acknowledgement\\_level=1`."
+msgstr ""
+"nhà xác thực phải duy trì. Trình hoàn thiện này sẽ chạy với ngưỡng chịu lỗi "
+":math:`ftt` được đặt là hằng số trên toàn chuỗi khối (:math:`ftt=1\\%` có lẽ"
+" là một giá trị ứng cử viên tốt ở đây) và :math:`acknowledgement\\_level=1`."
+
+#: ../../theory/highway.rst:240
+msgid ""
+"Now, we finally can define the strategy of auto-adjusting round exponents."
+msgstr ""
+"Bây giờ, cuối cùng chúng ta có thể xác định chiến lược tự động điều chỉnh số"
+" mũ tròn."
+
+#: ../../theory/highway.rst:242
+msgid ""
+"We assume there are two blockchain-wide integer constants, both expressing "
+"the number of rounds:"
+msgstr ""
+"Chúng tôi giả sử có hai hằng số nguyên trên toàn bộ chuỗi khối, cả hai đều "
+"thể hiện số vòng:"
+
+#: ../../theory/highway.rst:245
+msgid "**round-acceleration-period** - every that-many-rounds a validator"
+msgstr ""
+"**round-acceleration-period** - cứ sau nhiều vòng đó là một nhà xác thực"
+
+#: ../../theory/highway.rst:246
+msgid ""
+"decreases its round exponent by :math:`1` (unconditionally) -  **round-"
+"slowdown-period** - if a validator observes that many consecutive rounds "
+"with the lambda message from the round leader not getting finalized, it "
+"increases its round exponent by 1"
+msgstr ""
+"giảm số mũ vòng của nó bằng :math:`1` (vô điều kiện) - **round-slowdown-"
+"period** - nếu nhà xác thực nhận thấy rằng nhiều vòng liên tiếp với thông "
+"điệp lambda từ người dẫn đầu vòng không được hoàn thành, nó sẽ tăng số mũ "
+"của vòng đó lên 1"
+
+#: ../../theory/highway.rst:252
+msgid "Eras"
+msgstr "Kỷ nguyên"
+
+#: ../../theory/highway.rst:255
+msgid "The need for eras"
+msgstr "Sự cần thiết của kỷ nguyên"
+
+#: ../../theory/highway.rst:257
+msgid ""
+"The idea of of eras is to keep the validator weights map constant for a "
+"longer period of time (e.g., a week). Otherwise, it is rather difficult to "
+"establish a pseudorandom leaders sequence all validators agree on. Eras also"
+" plays a crucial role in making the leader selection resistant to attack."
+msgstr ""
+"Ý tưởng về kỷ nguyên là giữ cho bản đồ trọng số của nhà xác thực không đổi "
+"trong một khoảng thời gian dài hơn (ví dụ: một tuần). Nếu không, khá khó để "
+"thiết lập một chuỗi các nhà lãnh đạo định trước mà tất cả những nhà xác thực"
+" đều đồng ý. Kỷ nguyên cũng đóng một vai trò quan trọng trong việc lựa chọn "
+"thủ lĩnh có khả năng chống lại cuộc tấn công."
+
+#: ../../theory/highway.rst:263
+msgid "Boundary of an era"
+msgstr "Ranh giới của một kỷ nguyên"
+
+#: ../../theory/highway.rst:265
+msgid ""
+"**Era length** is just a parameter of the blockchain - expressed as a number"
+" of ticks. We expect a reasonable era length might be 604800000, which is "
+"one week."
+msgstr ""
+"**Era length** chỉ là một tham số của chuỗi khối - được biểu thị bằng một số"
+" đánh dấu. Chúng tôi dự đoán độ dài kỷ nguyên hợp lý có thể là 604800000, "
+"tức là một tuần."
+
+#: ../../theory/highway.rst:268
+msgid ""
+"A message :math:`m` belongs to an era deduced by knowing the era length and "
+"looking at :math:`m.round\\_id`."
+msgstr ""
+"Thông điệp :math:`m` thuộc về một kỷ nguyên được suy ra bằng cách biết độ "
+"dài kỷ nguyên và nhìn vào :math:`m.round\\_id`."
+
+#: ../../theory/highway.rst:272
+msgid "Critical blocks"
+msgstr "Các khối quan trọng"
+
+#: ../../theory/highway.rst:274
+msgid ""
+"Round ids are really Unix timestamps, so main-tree can be now imagined with "
+"time-axis overlayed."
+msgstr ""
+"Id vòng là dấu thời gian Unix, vì vậy cây chính hiện có thể được hình dung "
+"với trục thời gian được bao trùm lên."
+
+#: ../../theory/highway.rst:277
+msgid ""
+"In every era, there are two ticks (with a distance fixed relative to the "
+"beginning of an era):"
+msgstr ""
+"Trong mọi kỷ nguyên, có hai đánh dấu (với khoảng cách cố định so với thời kỳ"
+" đầu của kỷ nguyên):"
+
+#: ../../theory/highway.rst:280
+msgid "**booking-point**"
+msgstr "**booking-point**"
+
+#: ../../theory/highway.rst:281
+msgid "**key-point**"
+msgstr "**key-point**"
+
+#: ../../theory/highway.rst:283
+msgid ""
+"These points are blockchain parameters and **key-point** must be strictly "
+"bigger than **booking-point**."
+msgstr ""
+"Những điểm này là các thông số chuỗi khối và **key-point** phải lớn hơn "
+"**booking-point**."
+
+#: ../../theory/highway.rst:286
+msgid ""
+"Let :math:`era\\_start: Int \\to Int` be a function that assigns to every "
+"tick the beginning of an era this tick belongs to. This function can easily "
+"be calculated as:"
+msgstr ""
+"Hãy để :math:`era\\_start: Int \\to Int` là một hàm gán cho mỗi lần đánh dấu"
+" vào đầu kỷ nguyên mà có đánh dấu này. Hàm này có thể dễ dàng được tính toán"
+" như sau:"
+
+#: ../../theory/highway.rst:290
+msgid "era\\_start(t) = (t / era\\_length) * era\\_length"
+msgstr "era\\_start(t) = (t / era\\_length) * era\\_length"
+
+#: ../../theory/highway.rst:295
+msgid "… where the division is integer division."
+msgstr "… Trong đó phép chia là phép chia số nguyên."
+
+#: ../../theory/highway.rst:297
+msgid ""
+"**Booking block** is any block :math:`b` such that both following conditions"
+" hold:"
+msgstr ""
+"**Booking block** là bất kỳ khối nào :math:`b` sao cho cả hai điều kiện sau "
+"đều giữ nguyên:"
+
+#: ../../theory/highway.rst:299
+msgid ":math:`b.round\\_id \\geqslant era\\_start(b.round\\_id) + booking\\_point`"
+msgstr ":math:`b.round\\_id \\geqslant era\\_start(b.round\\_id) + booking\\_point`"
+
+#: ../../theory/highway.rst:300
+msgid ":math:`b.main\\_parent.round\\_id < era\\_start(b.round\\_id) + booking\\_point`"
+msgstr ""
+":math:`b.main\\_parent.round\\_id < era\\_start(b.round\\_id) + "
+"booking\\_point`"
+
+#: ../../theory/highway.rst:302
+msgid ""
+"It can be explained as the idea that on any path of the main-tree, booking "
+"block is the first block to cross the time defined by **booking-point**, "
+"where we consider “time of a block” to be the tick of the beginning of its "
+"era."
+msgstr ""
+"Có thể được giải thích ý tưởng là trên bất kỳ con đường nào của cây chính, "
+"khối đã đặt chỗ là khối đầu tiên vượt qua thời gian được xác định bởi "
+"**booking-point**, nơi chúng tôi coi “thời gian của khối” là đánh dấu đầu kỷ"
+" nguyên của nó."
+
+#: ../../theory/highway.rst:306
+msgid "By analogy, we are defining a **key block** concept."
+msgstr ""
+"Bằng cách tương tự, chúng tôi đang định nghĩa một khái niệm**key block**."
+
+#: ../../theory/highway.rst:309
+msgid "Leaders sequence"
+msgstr "Trình tự lãnh đạo"
+
+#: ../../theory/highway.rst:311
+msgid ""
+"To have the sequence of leaders that all validators calculate in the same "
+"way, we only need:"
+msgstr ""
+"Để có chuỗi các nhà lãnh đạo mà tất cả các nhà xác thực tính toán theo cùng "
+"một cách, chúng ta chỉ cần:"
+
+#: ../../theory/highway.rst:314
+msgid ""
+"1. Canonical sorting of validators so that a weights map can be converted to"
+" an array of validators in the canonical way. 2. Agreement on pseudorandom "
+"number generator to be used by all validators. 3. Pseudorandom generator "
+"seed."
+msgstr ""
+"1. Sắp xếp hợp quy các nhà xác thực để bản đồ trọng số có thể được chuyển "
+"đổi thành một mảng nhà xác thực theo cách chuẩn. 2. Thỏa thuận về trình tạo "
+"số được định trước và được sử dụng bởi tất cả các nhà xác thực. 3. Định "
+"trước tạo hạt giống (seed)."
+
+#: ../../theory/highway.rst:319
+msgid ""
+"For (1) sorting by validator ids can be used. (2) can be hardcoded. So it is"
+" all about the way we pick the seed."
+msgstr ""
+"Để (1) sắp xếp theo id nhà xác thực có thể được sử dụng. (2) có thể được mã "
+"hóa cứng. Vì vậy, còn lại là về cách chúng ta chọn hạt giống."
+
+#: ../../theory/highway.rst:323
+msgid "The mechanics of an era"
+msgstr "Cơ chế của một kỷ nguyên"
+
+#: ../../theory/highway.rst:326
+msgid "The vision"
+msgstr "Tầm nhìn"
+
+#: ../../theory/highway.rst:328
+msgid "Eras constitute the platform on which two mechanisms work:"
+msgstr "Kỷ nguyên tạo thành nền tảng mà trên đó hai cơ chế hoạt động:"
+
+#: ../../theory/highway.rst:330
+msgid "validators rotation (= bonding/unbonding)"
+msgstr "xoay vòng nhà xác thực (= cổ phần/hủy cổ phần)"
+
+#: ../../theory/highway.rst:331
+msgid "leaders sequence"
+msgstr "trình tự lãnh đạo"
+
+#: ../../theory/highway.rst:333
+msgid "Within a single era:"
+msgstr "Trong một kỷ nguyên duy nhất:"
+
+#: ../../theory/highway.rst:335
+msgid "the weights map is fixed"
+msgstr "cố định bản đồ trọng số"
+
+#: ../../theory/highway.rst:336
+msgid ""
+"the leaders selection functions (assigning a leader to every tick) is fixed"
+msgstr ""
+"cố định các chức năng lựa chọn người lãnh đạo (chỉ định một người lãnh đạo "
+"cho mỗi lần đánh dấu)"
+
+#: ../../theory/highway.rst:338
+msgid ""
+"An era starts at fixed point of real time (fixed tick). We generally expect "
+"that:"
+msgstr ""
+"Một kỷ nguyên bắt đầu tại một thời điểm cố định của thời gian thực (đánh dấu"
+" cố định). Chúng tôi thường kỳ vọng rằng:"
+
+#: ../../theory/highway.rst:340
+msgid ""
+"1. The weights map to be used in this era is defined by a booking block from"
+" :math:`era\\_delay` rounds ago. 2. The random seed to be used in this era "
+"is defined by a key block from :math:`era\\_delay` rounds ago."
+msgstr ""
+"1. Bản đồ trọng số sẽ được sử dụng trong kỷ nguyên này được xác định bởi một"
+" khối đã đặt chỗ từ :math:`era\\_delay`  vòng trước. 2. Hạt giống ngẫu nhiên"
+" được sử dụng trong kỷ nguyên này được xác định bởi một khối khóa từ "
+":math:`era\\_delay` vòng trước."
+
+#: ../../theory/highway.rst:345
+msgid ""
+"Both :math:`era\\_delay` is a blockchain parameter. We expect that "
+"reasonable value for :math:`era\\_delay` is 2."
+msgstr ""
+"Cả hai :math:`era\\_delay` là một tham số của chuỗi khối. Chúng tôi kỳ vọng "
+"giá trị hợp lý cho :math:`era\\_delay` is 2."
+
+#: ../../theory/highway.rst:349
+msgid "Setting the weights map"
+msgstr "Thiết lập bản đồ trọng số"
+
+#: ../../theory/highway.rst:351
+msgid ""
+"Just take weights map as defined in the post-state of the corresponding "
+"booking block."
+msgstr ""
+"Chỉ cần lấy bản đồ trọng số như được xác định ở trạng thái sau của khối đã "
+"đặt chỗ tương ứng."
+
+#: ../../theory/highway.rst:354
+msgid "Setting the random seed for leaders sequence generator"
+msgstr "Thiết lập hạt giống ngẫu nhiên cho trình tạo chuỗi nhà lãnh đạo"
+
+#: ../../theory/highway.rst:356
+msgid ""
+"Take the hash of corresponding key-block, then add all magic bits from main-"
+"tree path-of-blocks between the booking block and the key block (both from "
+"the same era)."
+msgstr ""
+"Lấy băm của khối khóa (key-block) tương ứng, sau đó thêm tất cả các bit từ "
+"đường dẫn cây chính ở giữa khối đã đặt chỗ và khối khóa (cả hai đều từ cùng "
+"một kỷ nguyên)."
+
+#: ../../theory/highway.rst:361
+msgid "Disparation of eras"
+msgstr "Sự mất đi của kỷ nguyên"
+
+#: ../../theory/highway.rst:363
+msgid ""
+"In an era we typically will observe many booking blocks and key blocks, just"
+" because the main-tree is typically not a chain. The expectation here is "
+"that the combination of :math:`era\\_delay` and :math:`key\\_point` together"
+" make enough time between the key block and the beginning of the era it "
+"defines, that the LFB chain of a reasonably strong finalizer will do the "
+"selection of only one “official” key block."
+msgstr ""
+"Trong một kỷ nguyên, chúng ta thường sẽ quan sát nhiều khối đã đặt chỗ và "
+"khối chính, chỉ vì cây chính thường không phải là một chuỗi. Kỳ vọng ở đây "
+"là sự kết hợp của :math:`era\\_delay` và :math:`key\\_point` với nhau tạo ra"
+" đủ thời gian giữa khối khóa và đầu kỷ nguyên mà nó xác định, rằng chuỗi LFB"
+" của một người hoàn thành sẽ thực hiện việc lựa chọn để chỉ một khối khóa "
+"\"chính thức\"."
+
+#: ../../theory/highway.rst:370
+msgid "Let us do a simple calculations:"
+msgstr "Hãy để chúng tôi thực hiện một phép tính đơn giản:"
+
+#: ../../theory/highway.rst:372
+msgid ""
+"Assuming the era length is set to one week - starting Monday and ending "
+"Sunday - and the key point is set to Thursday noon. Also, assume that "
+"“era\\_delay” is 2. This means that key blocks created just after Thursday "
+"noon will control the era that will start 10.5 days later. This is plenty of"
+" time and by that time it is “almost sure” that the progressing LFB chain "
+"will"
+msgstr ""
+"Giả sử độ dài kỷ nguyên được đặt là một tuần - bắt đầu từ Thứ Hai và kết "
+"thúc Chủ Nhật - và thời điểm quan trọng được đặt là trưa Thứ Năm. Ngoài ra, "
+"giả sử rằng “era\\_delay” là 2. Điều này có nghĩa là các khối khóa được tạo "
+"ngay sau trưa Thứ Năm sẽ kiểm soát kỷ nguyên sẽ bắt đầu 10,5 ngày sau đó. "
+"Đây là rất nhiều thời gian và đến thời điểm đó, \"gần như chắc chắn\" rằng "
+"chuỗi LFB đang phát triển sẽ"
+
+#: ../../theory/highway.rst:377
+msgid "pick the “right” key block to be used."
+msgstr "chọn khối khoá \"bên phải\" để sử dụng."
+
+#: ../../theory/highway.rst:379
+msgid ""
+"In the extreme case, however, the finality of the key block might not be "
+"there at the moment of starting the era to be controlled by this block. This"
+msgstr ""
+"Tuy nhiên, trong trường hợp cực đoan, tính chất cuối cùng của khối khóa có "
+"thể không có ở thời điểm bắt đầu kỷ nguyên được kiểm soát bởi khối này. Điều"
+" này"
+
+#: ../../theory/highway.rst:381
+msgid ""
+"is an interesting situation that actually can be handled, although this is "
+"to happen in a “shocking” way. The way to go is to run in parallel all "
+"possible eras - accordingly to all key blocks that are “on the table”. Of "
+"course, these parallel eras must be run as if they are completely "
+"independent blockchains (= separate P2p networks). Eventually, the "
+"progressing LFB chain will materialize only one reality, and so all the "
+"other virtual eras must disappear, so validators will just forget they ever "
+"existed. This is exactly like in quantum mechanics, where at some point only"
+" one version of reality is materializing."
+msgstr ""
+"là một tình huống thú vị thực sự có thể được xử lý, mặc dù điều này xảy ra "
+"theo một cách \"gây sốc\". Cách thực hiện là chạy song song tất cả các kỷ "
+"nguyên có thể - tương ứng với tất cả các khối chính nằm “trên bàn”. Tất "
+"nhiên, các kỷ nguyên song song này phải được chạy như thể chúng là các "
+"blockchains hoàn toàn độc lập (= các mạng P2p riêng biệt). Cuối cùng, chuỗi "
+"LFB đang phát triển sẽ chỉ hiện thực hóa một thực tế và do đó, tất cả các kỷ"
+" nguyên ảo khác phải biến mất, vì vậy người xác thực sẽ quên chúng từng tồn "
+"tại. Điều này giống hệt như trong cơ học lượng tử, ở một thời điểm nào đó "
+"chỉ có một phiên bản của thực tế đang hiện thực hóa."
