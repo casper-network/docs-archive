@@ -1,0 +1,1754 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../theory/abstract-consensus.rst:2
+msgid "Abstract Casper Consensus"
+msgstr "Tóm tắt Đồng thuận Casper"
+
+#: ../../theory/abstract-consensus.rst:5
+msgid "Stating the problem"
+msgstr "Nêu rõ vấn đề"
+
+#: ../../theory/abstract-consensus.rst:7
+msgid ""
+"We are considering a collection of processes - **validators** - "
+"communicating over a message-passing network. Every validator has a "
+"**weight** -- a non-zero integer value representing the \"voting power\"."
+msgstr ""
+"Chúng tôi đang xem xét một tập hợp các tiến trình - **trình xác thực** - "
+"giao tiếp qua mạng truyền thông điệp. Mọi trình xác thực đều có **trọng số**"
+" - một giá trị số nguyên khác 0 đại diện cho \"quyền biểu quyết\"."
+
+#: ../../theory/abstract-consensus.rst:10
+msgid ""
+"The goal validators collectively pursue is to pick a single value from a "
+"finite set :math:`Con` we call the set of **consensus values**. Once the "
+"agreement is achieved, the problem is considered solved (i.e. validators "
+"terminate their operation). We require that :math:`Con` is totally ordered."
+msgstr ""
+"Mục tiêu mà các trình xác thực chung theo đuổi là chọn một giá trị duy nhất "
+"từ một tập hợp hữu hạn :math:`Con` mà chúng tôi gọi là tập hợp **giá trị "
+"đồng thuận**. Sau khi đạt được thỏa thuận, vấn đề được coi là đã được giải "
+"quyết (tức là trình xác thực chấm dứt hoạt động của họ). Chúng tôi yêu cầu "
+"rằng :math:`Con` là hoàn toàn có thứ tự."
+
+#: ../../theory/abstract-consensus.rst:14
+msgid ""
+"The resulting solution of this problem is not a blockchain yet. It is "
+"however a core building block of our blockchain design. The way abstract "
+"consensus is used for building a blockchain is explained in subsequent "
+"chapters."
+msgstr ""
+"Giải pháp kết quả của vấn đề này chưa phải là một chuỗi khối. Tuy nhiên, nó "
+"là một khối xây dựng cốt lõi của thiết kế chuỗi khối của chúng tôi. Cách tóm"
+" tắt sự đồng thuận sử dụng để xây dựng một chuỗi khối được giải thích trong "
+"các chương tiếp theo."
+
+#: ../../theory/abstract-consensus.rst:17
+msgid ""
+"Caution: we use **ACC** as the shortcut for **Abstract Casper Consensus**."
+msgstr ""
+"Chú ý: chúng tôi sử dụng **ACC** làm viết tắt cho **Abstract Casper "
+"Consensus**."
+
+#: ../../theory/abstract-consensus.rst:20
+msgid "Network model"
+msgstr "Mô hình mạng"
+
+#: ../../theory/abstract-consensus.rst:22
+msgid ""
+"We assume a fully asynchronous network model with delivery guarantee and a "
+"single primitive: `broadcast(m)`. Precisely speaking:"
+msgstr ""
+"Chúng tôi giả định có một mô hình mạng hoàn toàn không đồng bộ với việc đảm "
+"bảo phân phối và một thời kỳ nguyên thủy duy nhất :`broadcast(m)`. Nói một "
+"cách chính xác:"
+
+#: ../../theory/abstract-consensus.rst:25
+msgid ""
+"Communication between validators is based on the “broadcast” primitive: at "
+"any time, a validator can broadcast a message :math:`m`."
+msgstr ""
+"Giao tiếp giữa các trình xác thực dựa trên cơ sở \"gửi đi\" thông điệp: bất "
+"kỳ lúc nào, trình xác thực có thể phát một thông điệp :math:`m`."
+
+#: ../../theory/abstract-consensus.rst:27
+msgid ""
+"Once broadcast, the message :math:`m` will be eventually delivered to every "
+"other validator in the network. The delivery will happen exactly once but "
+"with arbitrary delay."
+msgstr ""
+"Sau khi gửi đi, thông điệp :math:`m` cuối cùng sẽ được gửi đến mọi trình xác"
+" thực khác trong mạng. Việc gửi sẽ diễn ra chính xác một lần nhưng có sự "
+"chậm trễ tùy ý."
+
+#: ../../theory/abstract-consensus.rst:30
+msgid ""
+"Given the assumptions above, it follows that the order of delivery generally"
+" is not going to be preserved. In other words when a validator :math:`A` "
+"broadcast sequence of messages :math:`(m_1, m_2, ... m_k)` then another "
+"validator :math:`B` will receive all the messages in the sequence, but with "
+"delivery chronology following arbitrary permutation :math:`p:(1,..,k) "
+"\\rightarrow (1,..,k)`, i.e. :math:`(m_{p(1)}, m_{p(2)}, ... m_{p(k)})`."
+msgstr ""
+"Với các giả định ở trên, thứ tự gửi nói chung sẽ không được giữ nguyên. Nói "
+"cách khác khi trình xác thực :math:`A` truyền phát chuỗi thông điệp "
+":math:`(m_1, m_2, ... m_k)` thì một trình xác thực khác :math:`B` sẽ nhận "
+"được tất cả các thông điệp trong chuỗi, nhưng với trình tự thời gian gửi sau"
+" hoán vị tùy ý :math:`p:(1,..,k) \\rightarrow (1,..,k)`, tức là "
+":math:`(m_{p(1)}, m_{p(2)}, ... m_{p(k)})`."
+
+#: ../../theory/abstract-consensus.rst:36
+#: ../../theory/abstract-consensus.rst:747
+msgid "Messages"
+msgstr "Thông điệp"
+
+#: ../../theory/abstract-consensus.rst:38
+msgid ""
+"All the messages broadcast by validators have the same structure. Every "
+"message :math:`m`:"
+msgstr ""
+"Tất cả các thông điệp được phát bởi trình xác nhận có cấu trúc giống nhau. "
+"Mọi thông điệp :math:`m`:"
+
+#: ../../theory/abstract-consensus.rst:40
+msgid "has unique identifier - :math:`m.id`"
+msgstr "có định danh duy nhất - :math:`m.id`"
+
+#: ../../theory/abstract-consensus.rst:41
+msgid "includes the identifier of the validator who created :math:`m.creator`"
+msgstr "bao gồm định danh của trình xác thực đã tạo :math:`m.creator`"
+
+#: ../../theory/abstract-consensus.rst:42
+msgid ""
+"references messages the creator confirms as seen at the moment of creating "
+":math:`m` - we call this list \"justifications\" - :math:`m.justifications`"
+msgstr ""
+"tham chiếu đến các thông điệp mà người tạo xác nhận như đã thấy tại thời "
+"điểm tạo :math:`m` - chúng tôi gọi danh sách này là \"biện minh\" - "
+":math:`m.justifications`"
+
+#: ../../theory/abstract-consensus.rst:44
+msgid "has a vote:"
+msgstr "có một phiếu bầu:"
+
+#: ../../theory/abstract-consensus.rst:46
+msgid "this means pointing to a some consensus value, or"
+msgstr "điều này có nghĩa là trỏ đến một giá trị đồng thuận nào đó, hoặc"
+
+#: ../../theory/abstract-consensus.rst:47
+msgid "picking no consensus value (i.e. this is \"empty vote\")"
+msgstr "không chọn giá trị đồng thuận (tức là đây là \"phiếu trống\")"
+
+#: ../../theory/abstract-consensus.rst:49
+msgid "is cryptographically signed by the creator"
+msgstr "được ký bằng mật mã bởi người tạo"
+
+#: ../../theory/abstract-consensus.rst:51
+msgid ""
+"The consensus value included in the message is however optional - it is OK "
+"to broadcast an \"empty vote\" message. The semantics of such empty vote is "
+"\"I support my previous vote, unchanged\". If the previous vote is empty, it"
+" counts as \"vote for nothing\"."
+msgstr ""
+"Tuy nhiên, giá trị đồng thuận được bao gồm trong thông điệp là tùy chọn - có"
+" thể phát thông điệp \"phiếu trống\". Ngữ nghĩa của cuộc bỏ phiếu trống như "
+"vậy là \"Tôi ủng hộ phiếu bầu trước đó của tôi, không thay đổi\". Nếu phiếu "
+"bầu trước đó trống, nó được tính là \"không bầu cho gì cả\"."
+
+#: ../../theory/abstract-consensus.rst:55
+msgid ""
+"This is the pseudo-code definition of a message structure (taken from the "
+"reference implementation, which is presented in detail later in this "
+"chapter):"
+msgstr ""
+"Đây là định nghĩa mã giả của cấu trúc thông điệp (lấy từ triển khai tài liệu"
+" tham khảo, được trình bày chi tiết ở phần sau của chương này):"
+
+#: ../../theory/abstract-consensus.rst:71
+msgid "J-dag"
+msgstr "J-dag"
+
+#: ../../theory/abstract-consensus.rst:73
+msgid ""
+"We use the term **snapshot** for a set of messages :math:`M`  that is closed"
+" under taking justifications, i.e. such that:"
+msgstr ""
+"Chúng tôi sử dụng thuật ngữ **ảnh chụp** cho một tập hợp các thông điệp "
+":math:`M` được gói lại dưới sự biện minh, tức là như sau:"
+
+#: ../../theory/abstract-consensus.rst:75
+msgid "\\forall{m \\in M}, m.justifications \\subset M"
+msgstr "\\forall{m \\in M}, m.justifications \\subset M"
+
+#: ../../theory/abstract-consensus.rst:79
+msgid ""
+"Let us consider arbitrary snapshot :math:`M`. We will define the following "
+"acyclic directed graph :math:`jDag(M)`:"
+msgstr ""
+"Chúng ta hãy xem xét ảnh chụp tùy ý :math:`M`. Chúng ta sẽ xác định đồ thị "
+"có hướng xoay chiều sau :math:`jDag(M)`:"
+
+#: ../../theory/abstract-consensus.rst:81
+msgid "vertices = all elements of :math:`M`;"
+msgstr "vertices = tất cả phần tử của :math:`M`;"
+
+#: ../../theory/abstract-consensus.rst:82
+msgid ""
+"edges = all pairs :math:`m_1 \\rightarrow m_2` such that :math:`m_2 \\in "
+"m_1.justifications`."
+msgstr ""
+"edge = tất cả các cặp :math:`m_1 \\rightarrow m_2`  sao cho :math:`m_2 \\in "
+"m_1.justifications`."
+
+#: ../../theory/abstract-consensus.rst:84
+msgid ""
+"Why we claim this graph is acyclic ? Well, because a cycle in this graph "
+"would mean that either time-traveling is possible or a validator managed to "
+"guess an id of some message before that message was actually created. Time-"
+"traveling we preclude on the basis of physics, while guessing of future "
+"message id must be made close-to-impossible via smart implementation of "
+"message identifiers (using message hash should be good enough)."
+msgstr ""
+"Tại sao chúng tôi lại khẳng định đồ thị này là dòng không gian? Chà, bởi vì "
+"một chu kỳ trong biểu đồ này có nghĩa là hoặc có thể du hành thời gian hoặc "
+"trình xác thực quản lý để đoán một id của một số thông điệp trước khi thông "
+"báo đó thực sự được tạo. Việc du hành thời gian được chúng tôi loại trừ dựa "
+"trên cơ sở vật lý, trong khi việc đoán id thông điệp trong tương lai gần như"
+" không thể (sử dụng mã băm thông báo phải đủ tốt)."
+
+#: ../../theory/abstract-consensus.rst:89
+msgid ""
+"We require that every validator maintains a representation of "
+":math:`jDag(M)` reflecting the most up to date knowledge on the ongoing "
+"consensus establishing process. Observe that :math:`jDag(M)` may be "
+"equivalently seen as a POSET because of the well-known equivalence between "
+"transitively closed DAGs and POSETs. In the remainder of this chapter we "
+"blur the difference between :math:`jDag(M)` seen as a DAG and its transitive"
+" closure seen as a POSET. We will use the relation symbols :math:`<` and "
+":math:`\\leqslant` for the implied partial order of :math:`jDag(M)`, where "
+"for two messages :math:`a` and :math:`b` a justification :math:`a \\to b` "
+"implies :math:`b < a`."
+msgstr ""
+"Chúng tôi yêu cầu mọi trình xác thực phải duy trì biểu diễn của "
+":math:`jDag(M)` phản ánh thông tin cập nhật nhất về quá trình thiết lập sự "
+"đồng thuận đang diễn ra. Hãy quan sát rằng :math:`jDag(M)` có thể được xem "
+"tương đương như một POSET vì sự tương đương giữa DAG và POSET đã đóng tạm "
+"thời. Trong phần còn lại của chương này, chúng tôi làm mờ sự khác biệt giữa "
+":math:`jDag(M)` được xem như một DAG và kết thúc bắc cầu việc xem nó là một "
+"POSET. Chúng tôi sẽ sử dụng các ký hiệu quan hệ :math:`<` và "
+":math:`\\leqslant` cho thứ tự từng phần ngụ ý của :math:`jDag(M)`, trong đó "
+"cho hai thông điệp :math:`a` và :math:`b` biện minh :math:`a \\to b` ngụ ý  "
+":math:`b < a`."
+
+#: ../../theory/abstract-consensus.rst:96
+msgid "When :math:`m \\in M`, we define:"
+msgstr "Khi :math:`m \\in M`, chúng tôi xác định:"
+
+#: ../../theory/abstract-consensus.rst:98
+msgid ":math:`jPast(m)` as :math:`\\{x \\in M: x < m \\}`."
+msgstr ":math:`jPast(m)` như :math:`\\{x \\in M: x < m \\}`."
+
+#: ../../theory/abstract-consensus.rst:99
+msgid ":math:`jPastCone(m)` as :math:`\\{x \\in M: x \\leqslant m \\}`."
+msgstr ":math:`jPastCone(m)` như :math:`\\{x \\in M: x \\leqslant m \\}`."
+
+#: ../../theory/abstract-consensus.rst:101
+msgid ""
+"Of course both :math:`jPast(m)` and :math:`jPastCone(m)` are snapshots."
+msgstr ""
+"Tất nhiên cả hai :math:`jPast(m)` và :math:`jPastCone(m)` đều là ảnh chụp "
+"nhanh."
+
+#: ../../theory/abstract-consensus.rst:103
+msgid ""
+"In the context of any snapshot :math:`M` we introduce the following "
+"concepts:"
+msgstr ""
+"Trong ngữ cảnh của bất kỳ ảnh chụp nhanh nào :math:`M`, chúng tôi giới thiệu"
+" các khái niệm sau:"
+
+#: ../../theory/abstract-consensus.rst:106
+msgid "**transitive justification of message m**"
+msgstr "**biện minh bắc cầu của thông điệp m**"
+
+#: ../../theory/abstract-consensus.rst:106
+msgid ""
+"is any message :math:`x` such that :math:`x < m`; we also say that "
+"\":math:`m` has seen :math:`x`\""
+msgstr ""
+"là bất kỳ thông điệp nào :math:`x` sao cho :math:`x < m`; chúng tôi cũng nói"
+" rằng \":math:`m` đã thấy :math:`x`\""
+
+#: ../../theory/abstract-consensus.rst:110
+msgid "**swimlane of validator v**"
+msgstr "**vùng của trình xác thực v**"
+
+#: ../../theory/abstract-consensus.rst:109
+msgid ""
+"or just :math:`swimlane(v,M)` is :math:`\\{m \\in M: m.creator = v\\}`; a "
+"swimlane usually is not a snapshot, nevertheless it inherits the ordering "
+"from  :math:`jDag(M)`, so it can be seen as a DAG and a POSET"
+msgstr ""
+"hoặc chỉ :math:`swimlane(v,M)` là :math:`\\{m \\in M: m.creator = v\\}`; một"
+" vùng thường không phải là một ảnh chụp nhanh, tuy nhiên nó kế thừa thứ tự "
+"từ  :math:`jDag(M)`, vì vậy nó có thể được xem như một DAG và một POSET"
+
+#: ../../theory/abstract-consensus.rst:113
+msgid "**tip**"
+msgstr "**thêm nữa**"
+
+#: ../../theory/abstract-consensus.rst:113
+msgid ""
+"is a maximal element in :math:`jDag(M)`; of course :math:`jDag(M)` can "
+"contain more than one maximal element"
+msgstr ""
+"là một phần tử lớn nhất trong :math:`jDag (M)`; tất nhiên :math:`jDag (M)` "
+"có thể chứa nhiều hơn một phần tử lớn nhất"
+
+#: ../../theory/abstract-consensus.rst:117
+msgid "**validator v is honest in M**"
+msgstr "**trình xác thực v là đúng trong M**"
+
+#: ../../theory/abstract-consensus.rst:116
+msgid ""
+"means :math:`swimlane(v,M)` is empty or it is a nonempty chain; in POSET "
+"language in translates to :math:`swimlane(v,M)` being a (possibly empty) "
+"linear order"
+msgstr ""
+"có nghĩa là :math:`Swimlane (v, M)` trống hoặc nó là một chuỗi rỗng; trong "
+"ngôn ngữ POSET có nghĩa là :math:`swimlane(v,M)` là một thứ tự tuyến tính "
+"(có thể trống)"
+
+#: ../../theory/abstract-consensus.rst:120
+msgid "**validator v is an equivocator in M**"
+msgstr "** validator v là một sự không rõ ràng trong M **"
+
+#: ../../theory/abstract-consensus.rst:120
+msgid "if :math:`v` is not honest in :math:`M`"
+msgstr "Nếu :math:`v` là không đúng trong :math:`M`"
+
+#: ../../theory/abstract-consensus.rst:124
+msgid "**equivocation by v**"
+msgstr "**sự không rõ ràng bởi v**"
+
+#: ../../theory/abstract-consensus.rst:123
+msgid ""
+"is a proof that a validator :math:`v` is not honest; in other words it is a "
+"pair of messages :math:`a,b \\in M`, both created by :math:`v`, such that "
+":math:`\\neg (a < b)` and :math:`\\neg (b < a)`"
+msgstr ""
+"là bằng chứng cho thấy trình xác thực :math:`v` không trung thực; nói cách "
+"khác, nó là một cặp thông điệp :math:`a,b \\in M`, cả hai đều được tạo bởi "
+":math:`v`, sao cho :math:`\\neg (a < b)` và :math:`\\neg (b < a)`"
+
+#: ../../theory/abstract-consensus.rst:128
+msgid "**latest message of a validator v in M**"
+msgstr "**thông điệp cuối cùng của trình xác thực v trong M**"
+
+#: ../../theory/abstract-consensus.rst:127
+msgid ""
+"is any tip in :math:`swimlane(v,M)`; if :math:`v` is honest in :math:`M` "
+"then it has at most one latest message in :math:`M`"
+msgstr ""
+"là bất kỳ phần thêm nào nào trong :math:swimlane(v,M)`; nếu :math:`v` là "
+"đúng trong :math:`M` thì nó có nhiều nhất một thông điệp mới nhất trong "
+":math:`M`"
+
+#: ../../theory/abstract-consensus.rst:131
+msgid "**honest validators in M**"
+msgstr "**trình xác thực trung thực trong M**"
+
+#: ../../theory/abstract-consensus.rst:131
+msgid ":math:`\\{v \\in \\textit{Validators}: \\textit{v is honest in M}\\}`"
+msgstr ":math:`\\{v \\in \\textit{Validators}: \\textit{v là đúng trong M}\\}`"
+
+#: ../../theory/abstract-consensus.rst:135
+msgid "**panorama of M**"
+msgstr "**toàn cảnh của M**"
+
+#: ../../theory/abstract-consensus.rst:134
+msgid ""
+"is a partial function :math:`\\textit{panorama(M)}: \\textit{Validators} "
+"\\rightarrow M`, defined for every validator which is honest in M and "
+"swimlane(v,M) is nonempty, :math:`panorama(M)(v) = \\textit{tip of the "
+"swimlane of v}`"
+msgstr ""
+"là một hàm một phần :math:`\\textit{panorama(M)}: \\textit{Validators} "
+"\\rightarrow M`, được định nghĩa cho mọi trình xác thực là trung thực trong "
+"M và vùng (v, M) là không trống, :math:`panorama(M)(v) = \\textit{phần thêm "
+"của vùng của v}`"
+
+#: ../../theory/abstract-consensus.rst:137
+msgid ""
+"These concepts are illustrated below. Messages are represented with circles."
+" Justifications are represented with arrows. Colors inside a circle "
+"represents consensus values."
+msgstr ""
+"Những khái niệm này được minh họa dưới đây. Thông điệp được thể hiện bằng "
+"các vòng tròn. Các biện minh được thể hiện bằng các mũi tên. Màu sắc bên "
+"trong một vòng tròn thể hiện các giá trị đồng thuận."
+
+#: ../../theory/abstract-consensus.rst:149
+#: ../../theory/abstract-consensus.rst:1182
+msgid "Estimator"
+msgstr "Công cụ ước tính"
+
+#: ../../theory/abstract-consensus.rst:151
+msgid ""
+"Upon creation of a new message :math:`m`, a validator must decide which "
+"consensus value :math:`m` will vote for. We limit the freedom here by "
+"enforcing that the selected consensus value is constrained by the function "
+"called **estimator**:"
+msgstr ""
+"Khi tạo một thông báo mới :math:`m`, trình xác thực phải quyết định giá trị "
+"đồng thuận nào :math:`m` sẽ bỏ phiếu cho. Chúng tôi giới hạn quyền tự do ở "
+"đây bằng cách thực thi rằng giá trị đồng thuận đã chọn bị hạn chế bởi hàm có"
+" tên **estimator**:"
+
+#: ../../theory/abstract-consensus.rst:155
+msgid "\\textit{estimator}: Snapshots \\to Con \\cup \\{ None \\}"
+msgstr "\\textit{estimator}: Snapshots \\to Con \\cup \\{ None \\}"
+
+#: ../../theory/abstract-consensus.rst:159
+msgid ""
+"For any message :math:`m` we say **estimated vote for m** for "
+":math:`\\textit{estimator}(jPast(m))`."
+msgstr ""
+"Đối với bất kỳ thông điệp nào :math:`m` chúng tôi nói **phiếu bầu ước tính "
+"cho m** cho :math:`\\textit{estimator}(jPast(m))`."
+
+#: ../../theory/abstract-consensus.rst:161
+msgid "We enforce the votes by the following rule:"
+msgstr "Chúng tôi thực hiện các phiếu bầu theo quy tắc sau:"
+
+#: ../../theory/abstract-consensus.rst:163
+msgid ""
+"if estimated vote for :math:`m` is not None then must vote for the estimated"
+" vote"
+msgstr ""
+"nếu phiếu bầu ước tính cho :math:`m` không là None thì phải bỏ phiếu cho "
+"phiếu bầu ước tính"
+
+#: ../../theory/abstract-consensus.rst:164
+msgid "otherwise, :math:`m` is allowed to vote for any value in :math:`Con`"
+msgstr ""
+"nếu không, :math:`m` được phép bỏ phiếu cho bất kỳ giá trị nào trong "
+":math:`Con`"
+
+#: ../../theory/abstract-consensus.rst:166
+msgid ""
+"Let us consider any snapshot :math:`M`. The way :math:`estimator(M)` is "
+"calculated goes as follows:"
+msgstr ""
+"Chúng ta hãy xem xét bất kỳ ảnh chụp nhanh nào :math:`M`. Cách "
+":math:`estimator(M)` được tính như sau:"
+
+#: ../../theory/abstract-consensus.rst:168
+msgid "Take the collection :math:`H` of all honest validators in :math:`M`."
+msgstr ""
+"Lấy bộ sưu tập :math:`H` của tất cả các trình xác thực trung thực trong "
+":math:`M`."
+
+#: ../../theory/abstract-consensus.rst:169
+msgid ""
+"Restrict :math:`H` to collection of validators that created at least one "
+"message with non-empty vote - :math:`H'`"
+msgstr ""
+"Hạn chế :math:`H` đối với tập hợp các trình xác thực đã tạo ít nhất một "
+"thông báo với phiếu không trống - :math:`H'`"
+
+#: ../../theory/abstract-consensus.rst:170
+msgid ""
+"If :math:`H'` is empty - return :math:`None`, otherwise - continue "
+"calculation."
+msgstr ""
+"Nếu :math:`H'` trống - trả lại :math:`None`, nếu không - tiếp tục tính toán."
+
+#: ../../theory/abstract-consensus.rst:171
+msgid ""
+"For every validator in :math:`H'` - find its latest message with non-empty "
+"vote."
+msgstr ""
+"Đối với mọi trình xác thực trong :math:`H'` - tìm thông điệp mới nhất của nó"
+" với phiếu bầu không trống."
+
+#: ../../theory/abstract-consensus.rst:172
+msgid ""
+"Sum latest messages by weight; this will end up with a mapping "
+":math:`\\textit{totalVotes}: Con \\to Int`, for every consensus value "
+":math:`c` it returns the sum of weights of validators voting for :math:`c`."
+msgstr ""
+"Tổng số tin nhắn mới nhất theo trọng số; điều này sẽ kết thúc bằng một ánh "
+"xạ :math:`\\textit{totalVotes}: Con \\to Int`, đối với mọi giá trị đồng "
+"thuận  :math:`c`.  nó trả về tổng trọng số của các trình xác thực bỏ phiếu "
+"cho :math:`c`."
+
+#: ../../theory/abstract-consensus.rst:174
+msgid ""
+"Find all points :math:`c \\in Con` such that :math:`\\textit{totalVotes}` "
+"has maximum value at :math:`c`."
+msgstr ""
+"Tìm tất cả các điểm :math:`c \\in Con`  sao cho :math:`\\textit{totalVotes}`"
+" có giá trị lớn nhất tại :math:`c`."
+
+#: ../../theory/abstract-consensus.rst:175
+msgid ""
+"From elements found in the previous step pick maximum element :math:`cmax "
+"\\in Con`. This is where we use the fact that :math:`Con` is finite and "
+"totally ordered."
+msgstr ""
+"Từ các phần tử được tìm thấy ở bước trước, hãy chọn phần tử tối đa "
+":math:`cmax \\in Con`. Đây là nơi chúng ta sử dụng thực tế rằng :math:`Con` "
+"là hữu hạn và hoàn toàn có thứ tự."
+
+#: ../../theory/abstract-consensus.rst:177
+msgid "The result of the estimator is :math:`cmax`."
+msgstr "Kết quả của bộ ước tính là :math:`cmax`."
+
+#: ../../theory/abstract-consensus.rst:180
+msgid "Validity conditions"
+msgstr "Điều kiện hợp lệ"
+
+#: ../../theory/abstract-consensus.rst:182
+msgid ""
+"On reception of a message, every validator must check certain conditions. "
+"Messages not compliant with these conditions are considered invalid and "
+"hence ignored."
+msgstr ""
+"Khi nhận được một thông điệp, mọi trình xác thực phải kiểm tra các điều kiện"
+" nhất định. Thông điệp không tuân thủ các điều kiện này được coi là không "
+"hợp lệ và do đó bị bỏ qua."
+
+#: ../../theory/abstract-consensus.rst:185
+msgid "Formal validation is:"
+msgstr "Xác thực chính thức là:"
+
+#: ../../theory/abstract-consensus.rst:187
+msgid ""
+"message must be correctly structured, following the transport (= binary) "
+"representation"
+msgstr ""
+"thông điệp phải được cấu trúc chính xác, tuân theo biểu diễn truyền tải (= "
+"nhị phân)"
+
+#: ../../theory/abstract-consensus.rst:188
+msgid "checking of the cryptographic signature of message creator"
+msgstr "kiểm tra chữ ký mật mã của người tạo thông điệp"
+
+#: ../../theory/abstract-consensus.rst:190
+msgid "Semantic validation is:"
+msgstr "Xác thực ngữ nghĩa là:"
+
+#: ../../theory/abstract-consensus.rst:192
+msgid ""
+"consensus value :math:`m.vote` must be compliant with applying the estimator"
+" to :math:`jPast(m)`"
+msgstr ""
+"giá trị đồng thuận :math:`m.vote`  phải tuân thủ với việc áp dụng công cụ "
+"ước tính cho :math:`jPast(m)``"
+
+#: ../../theory/abstract-consensus.rst:193
+msgid ""
+"justifications :math:`m.justifications` must reference messages belonging to"
+" distinct swimlanes, i.e. if :math:`j_1`, :math:`j_2` are two justifications"
+" in :math:`m`, then :math:`creator(j_1) \\ne creator(j_2)`"
+msgstr ""
+"biện minh :math:`m.justifications` phải tham chiếu đến các thông báo thuộc "
+"các đường bơi riêng biệt, tức là nếu :math:`j_1`, :math:`j_2` là hai biện "
+"minh trong :math:`m`, thì :math:`creator(j_1) \\ne creator(j_2)`"
+
+#: ../../theory/abstract-consensus.rst:196
+msgid "We explain the concept of \"estimator\" later in this chapter."
+msgstr ""
+"Chúng tôi giải thích khái niệm \"công cụ ước lượng\" ở phần sau của chương "
+"này."
+
+#: ../../theory/abstract-consensus.rst:199
+msgid "Operation of a validator"
+msgstr "Hoạt động của trình xác thực"
+
+#: ../../theory/abstract-consensus.rst:201
+msgid "A validator continuously runs two activities:"
+msgstr "Trình xác thực liên tục chạy hai hoạt động:"
+
+#: ../../theory/abstract-consensus.rst:203
+msgid "**listening loop** - handling messages arriving from the network"
+msgstr "**vòng lặp lắng nghe** - xử lý các tin nhắn đến từ mạng"
+
+#: ../../theory/abstract-consensus.rst:204
+msgid "**publishing loop** - creating and broadcasting new messages"
+msgstr "**vòng lặp xuất bản** - tạo và phát tin nhắn mới"
+
+#: ../../theory/abstract-consensus.rst:206
+msgid "**Listening loop**"
+msgstr "**Vòng lặp nghe**"
+
+#: ../../theory/abstract-consensus.rst:208
+msgid "When a message :math:`m` arrived:"
+msgstr "Khi một thông báo :math:`m` đến:"
+
+#: ../../theory/abstract-consensus.rst:210
+msgid "Formal validation of :math:`m` is performed."
+msgstr "Xác thực chính thức của :math:`m` được thực hiện."
+
+#: ../../theory/abstract-consensus.rst:211
+msgid ""
+"If :math:`textit{m.justifications}` are already present in the local "
+"representation of j-dag then:"
+msgstr ""
+"Nếu :math:`textit{m.justifications}` đã có mặt trong biểu diễn cục bộ của "
+"j-dag thì:"
+
+#: ../../theory/abstract-consensus.rst:213
+msgid "semantic validation of :math:`m` is performed"
+msgstr "xác thực ngữ nghĩa của :math:`m` được thực hiện"
+
+#: ../../theory/abstract-consensus.rst:214
+msgid ":math:`m` is added to the j-dag"
+msgstr ":math:`m` được thêm vào j-dag"
+
+#: ../../theory/abstract-consensus.rst:216
+msgid "otherwise:"
+msgstr "nếu không thì:"
+
+#: ../../theory/abstract-consensus.rst:218
+msgid ""
+":math:`m` is added to the messages buffer, where it waits until all "
+"justifications it references are present in the j-dag"
+msgstr ""
+":math:`m`được thêm vào bộ đệm tin nhắn, nơi nó đợi cho đến khi tất cả các "
+"biện minh mà nó tham chiếu có trong j-dag"
+
+#: ../../theory/abstract-consensus.rst:221
+msgid "On every message added to the local j-dag:"
+msgstr "Trên mỗi tin nhắn được thêm vào j-dag cục bộ:"
+
+#: ../../theory/abstract-consensus.rst:223
+msgid ""
+"Messages buffer is checked for messages that have now all justifications "
+"present in the j-dag and so can be removed from the buffer."
+msgstr ""
+"Bộ đệm thông điệp được kiểm tra đối với các thông điệp mà hiện có biện minh "
+"trong j-dag và do đó có thể được xóa khỏi bộ đệm."
+
+#: ../../theory/abstract-consensus.rst:225
+msgid ""
+"Finality detector analyzes local j-dag to check if the consensus has already"
+" been reached."
+msgstr ""
+"Bộ dò trạng thái cuối cùng đang phân tích j-dag cục bộ để kiểm tra xem đã "
+"đạt được sự đồng thuận chưa."
+
+#: ../../theory/abstract-consensus.rst:227
+msgid "**Publishing loop**"
+msgstr "**Vòng lặp xuất bản**"
+
+#: ../../theory/abstract-consensus.rst:229
+msgid ""
+"We do not determine when exactly a validator decides to create and broadcast"
+" a new message. This is pluggable part of ACC. As soon as a validator, "
+"following its publishing strategy, decides to publish a message, it builds a"
+" new message with:"
+msgstr ""
+"Chúng tôi không xác định chính xác thời điểm trình xác thực quyết định tạo "
+"và phát một thông điệp mới. Đây là phần có thể gắn thêm được của ACC. Ngay "
+"sau khi trình xác thực tuân theo chiến lược xuất bản, quyết định xuất bản "
+"một thông điệp, nó sẽ xây dựng một thông điệp mới với:"
+
+#: ../../theory/abstract-consensus.rst:233
+msgid ""
+"justifications set to tips of all swimlanes, according to local j-dag; in "
+"case of equivocators, i.e. when the corresponding swimlane has more than one"
+" tip - validator picks just one tip (any)"
+msgstr ""
+"sự biện minh được đặt thành phần thêm của tất cả các vùng, theo j-dag địa "
+"phương; trong trường hợp có phần không rõ ràng, tức là khi vùng tương ứng có"
+" nhiều hơn một đầu - trình xác nhận chỉ chọn một đầu (bất kỳ)"
+
+#: ../../theory/abstract-consensus.rst:235
+msgid ""
+"consensus value determined by estimator, as applied to the justifications"
+msgstr ""
+"giá trị đồng thuận được xác định bởi công cụ ước tính, như được áp dụng cho "
+"các biện minh"
+
+#: ../../theory/abstract-consensus.rst:238
+msgid "The concept of finality"
+msgstr "Khái niệm về tính cuối cùng"
+
+#: ../../theory/abstract-consensus.rst:241
+msgid "When the consensus is reached"
+msgstr "Khi đạt được sự đồng thuận"
+
+#: ../../theory/abstract-consensus.rst:243
+msgid ""
+"A validator :math:`v` constantly analyzes its local j-dag to observe a value"
+" :math:`c \\in Con` becoming \"locked\" in the following sense:"
+msgstr ""
+"Trình xác thực :math:`v` liên tục phân tích j-dag cục bộ của nó để quan sát "
+"một giá trị :math:`c \\in Con` trở thành \"bị khóa\" theo ý nghĩa sau:"
+
+#: ../../theory/abstract-consensus.rst:246
+msgid ""
+"from now on, the estimator applied to local j-dag tips will always return "
+":math:`c`"
+msgstr ""
+"kể từ bây giờ, công cụ ước tính được áp dụng cho các phần thêm j-dag cục bộ "
+"sẽ luôn trả về :math:`c`"
+
+#: ../../theory/abstract-consensus.rst:247
+msgid ""
+"the same phenomenon is guaranteed to happen also for other validators "
+"(eventually)"
+msgstr ""
+"hiện tượng tương tự cũng được đảm bảo sẽ xảy ra đối với các trình xác thực "
+"khác (cuối cùng)"
+
+#: ../../theory/abstract-consensus.rst:249
+msgid ""
+"If such locking happens, we say that **consensus value c is now finalized**,"
+" i.e. the consensus was reached with value :math:`c \\in Con` being the "
+"winner."
+msgstr ""
+"Nếu việc khóa như vậy xảy ra, chúng tôi nói rằng **giá trị đồng thuận c hiện"
+" đã được hoàn tất**, tức là đã đạt được sự đồng thuận với giá trị :math:`c "
+"\\in Con` đã thành công."
+
+#: ../../theory/abstract-consensus.rst:253
+msgid "Malicious validators"
+msgstr "Trình xác thực độc hại"
+
+#: ../../theory/abstract-consensus.rst:255
+msgid ""
+"In general - malicious validators can stop consensus from happening. We need"
+" to adjust the concept of finalization so to account for this problem."
+msgstr ""
+"Nói chung - trình xác nhận độc hại có thể ngăn chặn sự đồng thuận xảy ra. "
+"Chúng ta cần điều chỉnh khái niệm để giải quyết vấn đề này."
+
+#: ../../theory/abstract-consensus.rst:258
+msgid "There are 4 ways a validator can expose malicious behaviour:"
+msgstr "Có 4 cách trình xác thực có thể vạch chỉ ra vi độc hại:"
+
+#: ../../theory/abstract-consensus.rst:260
+msgid "Be silent (= stop producing messages)"
+msgstr "Im lặng (= ngừng tạo thông điệp)"
+
+#: ../../theory/abstract-consensus.rst:261
+msgid "Produce malformed messages."
+msgstr "Tạo thông điệp không đúng định dạng."
+
+#: ../../theory/abstract-consensus.rst:262
+msgid ""
+"Violate the condition that a message must vote on a value derived from "
+"justifications via the estimator."
+msgstr ""
+"Vi phạm điều kiện rằng một thông điệp phải bỏ phiếu cho một giá trị có được "
+"từ các biện minh thông qua công cụ ước tính."
+
+#: ../../theory/abstract-consensus.rst:263
+msgid "Equivocate."
+msgstr "Sự không rõ ràng"
+
+#: ../../theory/abstract-consensus.rst:265
+msgid ""
+"Case (3) can really be considered a sub-case of (2), and (2) can be evaded "
+"by assuming that validators reject malformed messages on reception. So, the "
+"only real problems come from (1) and (4):"
+msgstr ""
+"Trường hợp (3) thực sự có thể được coi là một trường hợp phụ của (2) và (2) "
+"có thể được tránh bằng cách giả định rằng trình xác thực từ chối các thông "
+"điệp không đúng định dạng khi tiếp nhận. Vì vậy, vấn đề thực sự duy nhất đến"
+" từ (1) và (4):"
+
+#: ../../theory/abstract-consensus.rst:268
+msgid "Problem (1) is something we are not addressing within ACC."
+msgstr "Vấn đề (1) là vấn đề mà chúng tôi không giải quyết trong ACC."
+
+#: ../../theory/abstract-consensus.rst:269
+msgid ""
+"Problem (4) is something we control explicitly in the finality calculation."
+msgstr ""
+"Vấn đề (4) là vấn đề chúng tôi kiểm soát rõ ràng trong tính toán cuối cùng."
+
+#: ../../theory/abstract-consensus.rst:272
+msgid "Closer look at equivocations"
+msgstr "Xem xét kỹ hơn các điểm không rõ ràng"
+
+#: ../../theory/abstract-consensus.rst:274
+msgid ""
+"Equivocations do break consensus. Intuition for this is clear - if everybody"
+" cheats by concurrently voting for different values, validators will never "
+"come up with a decision the value is finally agreed upon."
+msgstr ""
+"Sự không rõ ràng phá vỡ sự đồng thuận. Trực giác cho điều này là rõ ràng - "
+"nếu mọi người gian lận bằng cách bỏ phiếu đồng thời cho các giá trị khác "
+"nhau, người xác thực sẽ không bao giờ đưa ra quyết định cho giá trị cuối "
+"cùng đã được đồng ý."
+
+#: ../../theory/abstract-consensus.rst:277
+msgid ""
+"It may be not immediately obvious how equivocations are possible in the "
+"context of the rule that the estimator function determines the consensus "
+"value to vote for. It is worth noticing that:"
+msgstr ""
+"Có thể không rõ ràng ngay lập tức về cách sự không rõ có thể thực hiện được "
+"trong bối cảnh quy tắc là chức năng ước tính xác định giá trị đồng thuận để "
+"bỏ phiếu. Cần lưu ý rằng:"
+
+#: ../../theory/abstract-consensus.rst:280
+msgid ""
+"The essence of an equivocation is not about voting for different consensus "
+"values; it is about behaving in a “schizophrenic” way by pretending that “I "
+"have not seen my previous message”."
+msgstr ""
+"Bản chất của sự không rõ rang không phải là bỏ phiếu cho các giá trị đồng "
+"thuận khác nhau; nó là về hành vi theo cách \"phân liệt\" bằng cách giả vờ "
+"rằng \"Tôi chưa thấy thông điệp trước đây của mình\"."
+
+#: ../../theory/abstract-consensus.rst:282
+msgid ""
+"A Validator does not have to reveal all messages actually received. "
+"“Revealing” happens at the creation of a new message - by listing "
+"justifications of this message. The protocol does not prevent a validator "
+"from hiding knowledge, i.e. listing as justifications \"old\" messages."
+msgstr ""
+"Trình xác thực không phải tiết lộ tất cả các tin nhắn thực sự nhận được. "
+"“Tiết lộ” xảy ra khi tạo một tin nhắn mới - bằng cách liệt kê các lý do của "
+"tin nhắn này. Giao thức không ngăn trình xác thực che giấu thông tin, tức là"
+" liệt kê dưới dạng các thông báo \"cũ\" để biện minh."
+
+#: ../../theory/abstract-consensus.rst:285
+msgid ""
+"Technically, to create an equivocation is very easy - all one have to do is "
+"to create a branch own the swimlane. Such a branch is created every time "
+"when for a message :math:`m` its transitive justifications "
+":math:`jPastCone(m)` do not include previous message by :math:`m.creator`."
+msgstr ""
+"Về mặt kỹ thuật, để tạo ra một sự không rõ ràng là rất dễ dàng - tất cả "
+"những gì người ta phải làm là tạo ra một nhánh sở hữu vùng. Nhánh như vậy "
+"được tạo mỗi khi cho một thông điệp :math:`m` biện minh bắc cầu của nó "
+":math:`jPastCone(m)` không bao gồm thông báo trước bởi :math:`m.creator`."
+
+#: ../../theory/abstract-consensus.rst:290
+msgid "Finality criteria"
+msgstr "Tiêu chí cuối cùng"
+
+#: ../../theory/abstract-consensus.rst:292
+msgid ""
+"Let :math:`\\mathcal{M}` be the set of all possible formally correct "
+"messages. Let :math:`\\textit{Snapshots}(\\mathcal{M})` be the set of all "
+"justifications-closed subsets of :math:`\\mathcal{M}`."
+msgstr ""
+"Đặt :math:`\\mathcal{M}` là tập hợp tất cả các thông điệp có thể đúng về mặt"
+" hình thức. Đặt :math:`\\textit{Snapshots}(\\mathcal{M})` là tập hợp của tất"
+" cả các tập hợp con đã đóng của biện minh của :math:`\\mathcal{M}`."
+
+#: ../../theory/abstract-consensus.rst:295
+msgid ""
+"Because of equivocations, finality really means “consensus value :math:`c` "
+"being locked as long as the fraction of honest nodes is sufficiently high”. "
+"We express the “sufficiently high” part by introducing the concept of "
+"**faults tolerance threshold**, or **FTT** in short. This leads us to the "
+"improved definition of finality:"
+msgstr ""
+"Do tính không rõ ràng, tính cuối cùng thực sự có nghĩa là “giá trị đồng "
+"thuận :math:`c` bị khóa miễn là một phần của các nút trung thực đủ cao”. "
+"Chúng tôi thể hiện phần “đủ cao” bằng cách đưa ra khái niệm về **ngưỡng chịu"
+" lỗi**, hay ngắn gọn là ** FTT **. Điều này dẫn chúng ta đến định nghĩa được"
+" sự cải thiện về tính cuối cùng:"
+
+#: ../../theory/abstract-consensus.rst:299
+msgid ""
+"A value :math:`c \\in Con` is finalized in a snapshot :math:`S \\in "
+"\\textit{Snapshots}(\\mathcal{M})` with fault tolerance :math:`t` if:"
+msgstr ""
+"Giá trị  :math:`c \\in Con` được hoàn thành trong một ảnh chụp nhanh "
+":math:`S \\in \\textit{Snapshots}(\\mathcal{M})` với khả năng chịu lỗi "
+":math:`t` nếu:"
+
+#: ../../theory/abstract-consensus.rst:303
+msgid ":math:`\\textit{Estimator}(S) = c`"
+msgstr ":math:`\\textit{Estimator}(S) = c`"
+
+#: ../../theory/abstract-consensus.rst:304
+msgid ""
+"For every snapshot :math:`S \\in \\mathit{Snapshots}(\\mathcal{M})` such "
+"that :math:`S \\subset R` one of the following is true:"
+msgstr ""
+"Đối với mọi ảnh chụp nhanh :math:`S \\in \\mathit{Snapshots}(\\mathcal{M})` "
+"sao cho :math:`S \\subset R` một trong những điều sau là đúng:"
+
+#: ../../theory/abstract-consensus.rst:307
+msgid ":math:`Estimator(R) = c`"
+msgstr ":math:`Estimator(R) = c`"
+
+#: ../../theory/abstract-consensus.rst:308
+msgid ""
+"total weights of equivocators visible in :math:`R` is bigger than :math:`t`"
+msgstr ""
+"tổng trọng lượng của sự không rõ ràng hiển thị trong :math:`R` lớn hơn "
+":math:`t`"
+
+#: ../../theory/abstract-consensus.rst:310
+msgid ""
+"**Finality criterion** is any function :math:`fc: "
+"\\mathit{Snapshots}(\\mathcal{M}) \\times Int \\to C \\cup {EMPTY}` such "
+"that if :math:`fc(S,t) = c` then :math:`c` is finalized in :math:`S` with "
+"fault tolerance :math:`t`."
+msgstr ""
+"**Tiêu chí cuối cùng** là bất kỳ hàm nào :math:`fc: "
+"\\mathit{Snapshots}(\\mathcal{M}) \\times Int \\to C \\cup {EMPTY}` sao cho "
+"nếu :math:`fc(S,t) = c` thì :math:`c` được hoàn thiện trong :math:`S` với "
+"khả năng chịu lỗi :math:`t`."
+
+#: ../../theory/abstract-consensus.rst:313
+msgid ""
+"Intuitively, finality is something that is easy to define mathematically but"
+" potentially hard to discover by an efficient calculation. Therefore in "
+"general we discuss various finality criteria, which are approximations of "
+"finality. Finality criteria may differ by sensitivity (= how they are not "
+"overlooking existing finality) and computational efficacy."
+msgstr ""
+"Về mặt trực quan, tính cuối cùng là thứ dễ xác định bằng toán học nhưng có "
+"khả năng khó phát hiện bằng một phép tính hiệu quả. Do đó, nói chung, chúng "
+"tôi thảo luận về các tiêu chí cuối cùng khác nhau, là những tiêu chí gần "
+"đúng về độ cuối cùng. Các tiêu chí về tính cuối cùng có thể khác nhau theo "
+"độ nhạy (= cách chúng không bỏ qua tính cuối cùng hiện có) và hiệu quả tính "
+"toán."
+
+#: ../../theory/abstract-consensus.rst:319
+msgid "Calculating finality"
+msgstr "Tính toán cuối cùng"
+
+#: ../../theory/abstract-consensus.rst:322
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../theory/abstract-consensus.rst:324
+msgid ""
+"We describe here the criterion of finality codenamed “Summit theory ver 2”. "
+"This criterion has two parameters:"
+msgstr ""
+"Chúng tôi mô tả ở đây tiêu chí về tính cuối cùng có tên mã là \"Lý thuyết "
+"đỉnh phiên bản 2\". Tiêu chí này có hai tham số:"
+
+#: ../../theory/abstract-consensus.rst:326
+msgid ""
+"**ftt: Int** - “absolute” fault tolerance threshold (expressed as total "
+"weight)"
+msgstr ""
+"**ftt: Int** - Ngưỡng chịu lỗi “tuyệt đối” (được biểu thị bằng tổng trọng "
+"số)"
+
+#: ../../theory/abstract-consensus.rst:327
+msgid ""
+"**ack_level: Int** - acknowledgement level; an integer value bigger than "
+"zero"
+msgstr ""
+"**ack_level: Int** - mức độ nhận biết; một giá trị số nguyên lớn hơn 0"
+
+#: ../../theory/abstract-consensus.rst:329
+msgid ""
+"The criterion is centered about the concept of \"summit\". Summits are "
+"subgraphs of j-dag fulfilling certain properties. We will use the term "
+"**k-summit** for a summit formed with acknowledgement level k."
+msgstr ""
+"Tiêu chí tập trung vào khái niệm \"đỉnh\". Đỉnh là các biểu đồ con của j-dag"
+" đáp ứng các thuộc tính nhất định. Chúng tôi sẽ sử dụng thuật ngữ **đỉnh-k**"
+" cho một đỉnh với cấp độ xác nhận k."
+
+#: ../../theory/abstract-consensus.rst:332
+msgid "Once a k-level summit is found, the consensus is achieved."
+msgstr "Sau khi thấy một đỉnh mức k, sự đồng thuận sẽ đạt được."
+
+#: ../../theory/abstract-consensus.rst:335
+msgid "Visual notation"
+msgstr "Ký hiệu trực quan"
+
+#: ../../theory/abstract-consensus.rst:337
+msgid ""
+"To investigate the summit theory we developed a simulator and a visual "
+"notation. Pictures in this chapter are produced with this simulator."
+msgstr ""
+"Để nghiên cứu lý thuyết về đỉnh, chúng tôi đã phát triển một trình mô phỏng "
+"và ký hiệu trực quan. Hình ảnh trong chương này được tạo bằng trình mô phỏng"
+" này."
+
+#: ../../theory/abstract-consensus.rst:340
+msgid "This is an example of 1-summit:"
+msgstr "Đây là một ví dụ về 1 đỉnh:"
+
+#: ../../theory/abstract-consensus.rst:346
+msgid ""
+"The graph corresponds to local j-dag of validator 0 and is visually aligned "
+"by daglevel (so time goes from left to right)."
+msgstr ""
+"Biểu đồ tương ứng với j-dag cục bộ của trình xác thực 0 và được căn chỉnh "
+"trực quan bởi daglevel (vì vậy thời gian đi từ trái sang phải)."
+
+#: ../../theory/abstract-consensus.rst:349
+msgid ""
+"Rectangles on the left represent validators. Swimlane of a validator is "
+"aligned horizontally, so for example swimlane of validator 3 contains "
+"messages 4, 14, 20 and 24. Message 28 is marked with a dashed border - this "
+"means this message was created somewhere in the network but at the moment of"
+" taking the snapshot of local state of validator 0 was not yet delivered to "
+"validator 0."
+msgstr ""
+"Hình chữ nhật bên trái đại diện cho trình xác thực. Vùng của trình xác thực "
+"được căn chỉnh theo chiều ngang, vì vậy, ví dụ: Vùng của trình xác thực 3 "
+"chứa các thông báo 4, 14, 20 và 24. Thông điệp 28 được đánh dấu bằng đường "
+"viền đứt nét - điều này có nghĩa là thông điệp này đã được tạo ở đâu đó "
+"trong mạng nhưng tại thời điểm lấy ảnh chụp nhanh trạng thái cục bộ của "
+"trình xác thực 0 chưa được gửi đến trình xác thực 0."
+
+#: ../../theory/abstract-consensus.rst:354
+msgid "Validator colors are also meaningful:"
+msgstr "Màu của trình xác thực cũng có ý nghĩa:"
+
+#: ../../theory/abstract-consensus.rst:356
+msgid "white - this validator is not part of the summit"
+msgstr "màu trắng - trình xác thực này không phải là một phần của đỉnh"
+
+#: ../../theory/abstract-consensus.rst:357
+msgid "green - this validator is part of the summit"
+msgstr "màu xanh lá cây - trình xác thực này là một phần của đỉnh"
+
+#: ../../theory/abstract-consensus.rst:358
+msgid "red - this is an equivocator"
+msgstr "màu đỏ - đây là một phần không rõ ràng"
+
+#: ../../theory/abstract-consensus.rst:360
+msgid ""
+"The color inside of each message represents the consensus value this message"
+" is voting for."
+msgstr ""
+"Màu bên trong của mỗi thông điệp thể hiện giá trị đồng thuận mà thông điệp "
+"này đang bỏ phiếu."
+
+#: ../../theory/abstract-consensus.rst:362
+msgid ""
+"The color outside represents the information related to summit structure "
+"(explained later in this chapter)."
+msgstr ""
+"Màu sắc bên ngoài đại diện cho thông tin liên quan đến cấu trúc đỉnh (sẽ "
+"giải thích ở phần sau của chương này)."
+
+#: ../../theory/abstract-consensus.rst:365
+msgid "Step 1: Calculate quorum size"
+msgstr "Bước 1: Tính toán quy mô đại diện"
+
+#: ../../theory/abstract-consensus.rst:367
+msgid "Quorum size is an integer value calculated as:"
+msgstr "Kích thước tối đa là một giá trị số nguyên được tính như sau:"
+
+#: ../../theory/abstract-consensus.rst:369
+msgid ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{1}{2}\\left(\\frac{ftt}{1-2^{-k}}+w\\right)\\right)"
+msgstr ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{1}{2}\\left(\\frac{ftt}{1-2^{-k}}+w\\right)\\right)"
+
+#: ../../theory/abstract-consensus.rst:373
+#: ../../theory/abstract-consensus.rst:386
+msgid "… where:"
+msgstr "… khi:"
+
+#: ../../theory/abstract-consensus.rst:375
+msgid ":math:`ftt` - absolute fault tolerance threshold"
+msgstr ":math:`ftt` - ngưỡng chịu lỗi tuyệt đối"
+
+#: ../../theory/abstract-consensus.rst:376
+msgid ":math:`w` - sum of weights of validators"
+msgstr ":math:`w` - tổng trọng số của các trình xác nhận"
+
+#: ../../theory/abstract-consensus.rst:377
+msgid ""
+":math:`k` - desired acknowledgement level of a summit we are trying to find"
+msgstr ""
+":math:`k` - mức độ xác nhận mong muốn của một đỉnh mà chúng tôi đang cố gắng"
+" tìm kiếm"
+
+#: ../../theory/abstract-consensus.rst:378
+msgid ":math:`ceiling` - rounding towards positive infinity"
+msgstr ":math:`ceiling` - làm tròn về phía dương vô cùng"
+
+#: ../../theory/abstract-consensus.rst:380
+msgid ""
+"The formula can be rephrased to use relative ftt instead of absolute ftt:"
+msgstr ""
+"Công thức có thể được diễn đạt lại để sử dụng ftt tương đối thay vì ftt "
+"tuyệt đối:"
+
+#: ../../theory/abstract-consensus.rst:382
+msgid ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{w}{2}\\left(\\frac{rftt}{1-2^{-k}}+1\\right)\\right)"
+msgstr ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{w}{2}\\left(\\frac{rftt}{1-2^{-k}}+1\\right)\\right)"
+
+#: ../../theory/abstract-consensus.rst:388
+msgid ""
+":math:`rftt` - relative fault tolerance threshold (fractional value between "
+"0 and 1); represents the maximal accepted total weight of malicious "
+"validators - as fraction of :math:`w`"
+msgstr ""
+":math:`rftt` - ngưỡng chịu lỗi tương đối (giá trị phân số từ 0 đến 1); đại "
+"diện cho tổng trọng số tối đa được chấp nhận của các trình xác thực độc hại "
+"- như một phần của :math:`w`"
+
+#: ../../theory/abstract-consensus.rst:393
+msgid "Step 2: Find consensus candidate value"
+msgstr "Bước 2: Tìm giá trị ứng viên đồng thuận"
+
+#: ../../theory/abstract-consensus.rst:395
+msgid ""
+"The first step in finding a summit is to apply the estimator to the whole "
+"j-dag. This way the consensus value that gets most votes (by weight) is "
+"found, where the total ordering on :math:`Con` is used as a tie-breaker."
+msgstr ""
+"Bước đầu tiên để tìm đỉnh là áp dụng công cụ ước tính cho toàn bộ j-dag. "
+"Bằng cách này, giá trị đồng thuận nhận được nhiều phiếu bầu nhất (theo trọng"
+" số) được tìm thấy, trong đó tổng thứ tự trên :math:`Con`  được sử dụng như "
+"một quyết định."
+
+#: ../../theory/abstract-consensus.rst:398
+msgid ""
+"Say the value returned by the estimator is :math:`c`. When the total weight "
+"of votes for :math:`c` is less than quorum size, we do not have a summit "
+"yet, so this terminates the summit search ."
+msgstr ""
+"Giả sử giá trị được trả về bởi bộ ước lượng là :math:`c`. Khi tổng số phiếu "
+"bầu cho :math:`c` nhỏ hơn số đại biểu, chúng tôi chưa có đỉnh, vì vậy điều "
+"này sẽ chấm dứt tìm kiếm đỉnh."
+
+#: ../../theory/abstract-consensus.rst:403
+msgid "Step 3: Find 0-level messages"
+msgstr "Bước 3: Tìm thông điệp cấp 0"
+
+#: ../../theory/abstract-consensus.rst:405
+msgid ""
+"**0-level messages for an honest validator v** is a subset of "
+":math:`swimlane(v)` formed by taking all messages voting for :math:`c` which"
+" have no later message by :math:`v` voting for consensus value other than "
+":math:`c`. Please notice that empty votes are considered a continuation of "
+"last non-empty vote."
+msgstr ""
+"**Thông điệp cấp 0 cho trình xác thực trung thực v** là một tập con của "
+":math:`swimlane(v)` được hình thành bằng cách lấy tất cả các thông điệp bỏ "
+"phiếu cho :math:`c` mà không có thông điệp nào sau này bởi :math:`v `bỏ "
+"phiếu cho giá trị đồng thuận khác với :math:`c`. Xin lưu ý rằng phiếu bầu "
+"trống được coi là sự tiếp nối của phiếu bầu không trống cuối cùng."
+
+#: ../../theory/abstract-consensus.rst:409
+msgid ""
+"**0-level messages** is a sum of zero level messages for all hones "
+"validators."
+msgstr ""
+"**Thông điệp cấp 0** là tổng các thông điệp cấp 0 cho tất cả các trình xác "
+"thực trung thực."
+
+#: ../../theory/abstract-consensus.rst:411
+msgid "Let us look again at the example summit:"
+msgstr "Chúng ta hãy nhìn lại ví dụ đỉnh:"
+
+#: ../../theory/abstract-consensus.rst:417
+msgid ""
+"All latest messages vote for consensus value \"white\", so it is clear that "
+"white is the value picked by the estimator."
+msgstr ""
+"Tất cả các thông điệp mới nhất đều bỏ phiếu cho giá trị đồng thuận là "
+"\"trắng\", vì vậy rõ ràng màu trắng là giá trị được chọn bởi công cụ ước "
+"tính."
+
+#: ../../theory/abstract-consensus.rst:419
+msgid ""
+"In the swimlane of validator 2, messages 3 and 9 vote for white, but are not"
+" 0-level, because 2 changed mind later. Also messages 11 and 15 are not "
+"0-level, because they vote for orange. Only messages 19 and 26 are 0-level."
+msgstr ""
+"Trong vòng của trình xác thực 2, thông điệp 3 và 9 bỏ phiếu cho màu trắng, "
+"nhưng không phải là mức 0, vì sau đó 2 đã đổi ý. Ngoài ra, các thông điệp 11"
+" và 15 không phải là mức 0, vì chúng bỏ phiếu cho màu cam. Chỉ có tin nhắn "
+"19 và 26 là 0 cấp."
+
+#: ../../theory/abstract-consensus.rst:422
+msgid ""
+"In the swimlane of validator 1, all messages are 0-level: 2, 13, 22, 23."
+msgstr ""
+"Trong vùng hiển thị của trình xác thực 1, tất cả các thông điệp đều ở mức 0:"
+" 2, 13, 22, 23."
+
+#: ../../theory/abstract-consensus.rst:424
+msgid ""
+"In the swimlane of validator 0 no message is 0-level, because validator 0 is"
+" an equivocator. This becomes clear when we highlight the j-past-cone of "
+"message 25:"
+msgstr ""
+"Trong vùng hiển thị của trình xác thực 0, không có thông điệp nào là cấp 0, "
+"vì trình xác thực 0 là không rõ ràng. Điều này trở nên rõ ràng khi chúng ta "
+"làm nổi bật j-past-cone của thông điệp 25:"
+
+#: ../../theory/abstract-consensus.rst:431
+msgid ""
+"Message 18 is not included in j-past-cone of message 25. Hence - messages 18"
+" and 25 form an equivocation."
+msgstr ""
+"Thông điệp 18 không được bao gồm trong j-past-cone của thông điệp 25. Do đó "
+"- các thông điệp 18 và 25 tạo thành một sự không rõ ràng."
+
+#: ../../theory/abstract-consensus.rst:435
+msgid "J-dag trimmer"
+msgstr "Máy xén J-dag (trimmer)"
+
+#: ../../theory/abstract-consensus.rst:437
+msgid ""
+"We will be working in the context of local j-dag of a fixed validator "
+":math:`v_0 \\in V`. Let :math:`M` be the set of all messages in the local "
+"j-dag of :math:`v_0`."
+msgstr ""
+"Chúng tôi sẽ làm việc trong bối cảnh j-dag cục bộ của trình xác thực cố định"
+" :math:`v_0 \\in V`. Đặt :math:`M` là tập hợp tất cả các thông điệp trong "
+"j-dag cục bộ của :math:`v_0`."
+
+#: ../../theory/abstract-consensus.rst:440
+msgid ""
+"Definition: Let :math:`S \\subset V` be some subset of the validators set. "
+"By **j-dag trimmer** we mean any function :math:`p:S \\to M` such that "
+":math:`\\forall{v \\in S}, p(v).\\textit{creator} = v`"
+msgstr ""
+"Định nghĩa: Cho :math:`S \\subset V` là một số tập hợp con của tập hợp các "
+"trình xác thực. Bởi **j-dag trimmer** chúng ta muốn nói đến bất kỳ hàm nào "
+":math:`p:S \\to M` sao cho :math:`\\forall{v \\in S}, p(v).\\textit{creator}"
+" = v`"
+
+#: ../../theory/abstract-consensus.rst:444
+msgid ""
+"If you think of swimlanes as being \"fibers\" or \"hair\" then having a "
+"trimmer means:"
+msgstr ""
+"Nếu bạn nghĩ rằng các vùng là \"sợi\" hoặc \"tóc\" thì việc có một máy xén "
+"có nghĩa là:"
+
+#: ../../theory/abstract-consensus.rst:446
+msgid "selecting a subset of swimlanes"
+msgstr "chọn một tập hợp con các vùng"
+
+#: ../../theory/abstract-consensus.rst:447
+msgid "picking a \"cutting point\" for every selected swimlane"
+msgstr "chọn một \"điểm cắt\" cho mỗi vùng đã chọn"
+
+#: ../../theory/abstract-consensus.rst:449
+msgid ""
+"When having a trimmer, we will be interested in the all the messages \"cut\""
+" by the trimmer:"
+msgstr ""
+"Khi sở hữu một máy xén, chúng ta sẽ thích thú với tất cả những thông điệp mà"
+" chiếc máy xén “cắt” được:"
+
+#: ../../theory/abstract-consensus.rst:451
+msgid ""
+"Definition: For a j-dag trimmer :math:`p` we introduce the set of messages "
+"**p-messages**:"
+msgstr ""
+"Định nghĩa: Đối với máy xén j-dag :math:`p`, chúng tôi giới thiệu bộ thông "
+"điệp **p-messages**:"
+
+#: ../../theory/abstract-consensus.rst:453
+msgid "\\{m \\in M: m.creator \\in dom(p) \\land p(m.creator) \\leqslant m\\}"
+msgstr "\\{m \\in M: m.creator \\in dom(p) \\land p(m.creator) \\leqslant m\\}"
+
+#: ../../theory/abstract-consensus.rst:457
+msgid ""
+"Observe that a function assigning to any honest validator its oldest 0-level"
+" message is a jdag trimmer. We will call it **the base trimmer** or just "
+"**base**."
+msgstr ""
+"Quan sát rằng một hàm gán cho bất kỳ trình xác thực trung thực nào thì thông"
+" báo cấp 0 cũ nhất của nó là một máy xén jdag. Chúng tôi sẽ gọi nó là **đế "
+"máy xén** hoặc chỉ **đế**."
+
+#: ../../theory/abstract-consensus.rst:465
+msgid "Committee"
+msgstr "Ủy ban"
+
+#: ../../theory/abstract-consensus.rst:467
+msgid "Definition: Let :math:`p` be some j-dag trimmer."
+msgstr "Định nghĩa: Cho :math:`p` là một số máy xén j-dag."
+
+#: ../../theory/abstract-consensus.rst:469
+msgid ""
+"By :math:`weight(S)` we mean the sum of weights of validators in :math:`S`."
+msgstr ""
+"Theo :math:`weight(S)` chúng ta có nghĩa là tổng trọng số của các trình xác "
+"thực trong :math:`S`."
+
+#: ../../theory/abstract-consensus.rst:470
+msgid ""
+"**Support of message m in context p** is a subset :math:`R \\subset S` "
+"obtained by taking all validators :math:`v \\in S` such that "
+":math:`\\textit{panorama}_m(v) \\in \\textit{p-messages}`."
+msgstr ""
+"**Hỗ trợ của thông báo m trong ngữ cảnh** là một tập con :math:`R \\subset "
+"S` thu được bằng cách lấy tất cả các trình xác thực :math:`v \\in S` sao cho"
+" :math:`\\textit{panorama}_m(v) \\in \\textit{p-messages}`."
+
+#: ../../theory/abstract-consensus.rst:472
+msgid ""
+"**1-level message in context p** is a p-message :math:`m` such that the "
+"weight of support of :math:`m` in context :math:`p` is at least "
+":math:`\\textit{quorum}`."
+msgstr ""
+"**Thông điêp 1 cấp trong ngữ cảnh p** là một thông điệp p :math:`m` sao cho "
+"trọng số hỗ trợ của :math:`m` trong ngữ cảnh :math:`p` ít nhất là "
+":math:`\\textit{quorum}`."
+
+#: ../../theory/abstract-consensus.rst:475
+msgid ""
+"Definition: **Committee in context p** is a j-dag trimmer :math:`comm:S \\to"
+" M` such that:"
+msgstr ""
+"Định nghĩa: **Ủy ban trong ngữ cảnh p** là một máy xén j-dag :math:`comm:S "
+"\\to M` sao cho:"
+
+#: ../../theory/abstract-consensus.rst:477
+msgid ":math:`S \\subset dom(p)`"
+msgstr ":math:`S \\subset dom(p)`"
+
+#: ../../theory/abstract-consensus.rst:478
+msgid ""
+"every value :math:`comm(v)` is a 1-level message in context :math:`p|_S` "
+"(i.e. we restrict here :math:`p` to subdomain :math:`S`"
+msgstr ""
+"mọi giá trị :math:`comm(v)` là một thông điệp cấp 1 trong ngữ cảnh "
+":math:`p|_S` (tức là chúng tôi giới hạn ở đây :math:`p` thành miền phụ "
+":math:`S`"
+
+#: ../../theory/abstract-consensus.rst:480
+msgid ":math:`\\textit{weight}(S) \\geqslant \\textit{quorum}`"
+msgstr ":math:`\\textit{weight}(S) \\geqslant \\textit{quorum}`"
+
+#: ../../theory/abstract-consensus.rst:482
+#: ../../theory/abstract-consensus.rst:505
+msgid "**Example:**"
+msgstr "**Ví dụ:**"
+
+#: ../../theory/abstract-consensus.rst:484
+msgid ""
+"In the example below, all validators have equal weight 1, and :math:`ftt=1`."
+" We have the following 1-level committee here:"
+msgstr ""
+"Trong ví dụ dưới đây, tất cả các trình xác thực đều có trọng số bằng nhau 1 "
+"và :math:`ftt=1`. Chúng tôi có ủy ban 1 cấp sau đây:"
+
+#: ../../theory/abstract-consensus.rst:487
+msgid "\\{v_1 \\to m_{23}, v_2 \\to m_{19}, v_3 \\to m_{24}, v_4 \\to m_{21} \\}"
+msgstr "\\{v_1 \\to m_{23}, v_2 \\to m_{19}, v_3 \\to m_{24}, v_4 \\to m_{21} \\}"
+
+#: ../../theory/abstract-consensus.rst:496
+msgid "Step 4: Find k-level summit"
+msgstr "Bước 4: Tìm đỉnh cấp k"
+
+#: ../../theory/abstract-consensus.rst:498
+msgid ""
+"Definition: **k-level summit** is a sequence :math:`(\\textit{comm}_1, "
+"\\textit{comm}_2, ..., \\textit{comm}_k)` such that:"
+msgstr ""
+"Định nghĩa: **đỉnh mức k** là một dãy :math:`(\\textit{comm}_1, "
+"\\textit{comm}_2, ..., \\textit{comm}_k)`  sao cho:"
+
+#: ../../theory/abstract-consensus.rst:500
+msgid ":math:`\\textit{comm}_1` is a committee in context of the base trimmer"
+msgstr ":math:`\\textit{comm}_1` là một ủy ban trong ngữ cảnh của đế máy xén"
+
+#: ../../theory/abstract-consensus.rst:501
+msgid ""
+":math:`\\textit{comm}_i` is a committee in context "
+":math:`\\textit{comm}_{i-1}` for :math:`i=2, ..., k`"
+msgstr ""
+":math:`\\textit{comm}_i` là một ủy ban trong bối cảnh "
+":math:`\\textit{comm}_{i-1}` cho :math:`i=2, ..., k`"
+
+#: ../../theory/abstract-consensus.rst:503
+msgid ""
+"In particular - a committee in context of the base trimmer is 1-level "
+"summit."
+msgstr "Đặc biệt - một ủy ban trong bối cảnh của đế máy xén là đỉnh mức độ 1."
+
+#: ../../theory/abstract-consensus.rst:507
+msgid ""
+"Below is an example of 4-level summit for 8 validators (all having equal "
+"weights 1) with :math:`ftt=2`."
+msgstr ""
+"Dưới đây là ví dụ về đỉnh 4 cấp cho 8 trình xác thực (tất cả đều có trọng số"
+" 1 bằng nhau) với :math:`ftt=2`."
+
+#: ../../theory/abstract-consensus.rst:513
+msgid ""
+"Similarly to summits, messages also have \"acknowledgement levels\". We will"
+" say **K-level message** for a message with acknowledgement level K. "
+"Acknowledgement level for a message is optional. We will use the term "
+"**plain-message** to reference messages that do not have acknowledgement "
+"level."
+msgstr ""
+"Tương tự như các đỉnh, các thông điệp cũng có \"mức độ xác nhận\". Chúng ta "
+"sẽ nói **Thông điệp cấp độ K** đối với thông điệp có cấp độ xác nhận K. Cấp "
+"độ xác nhận đối với thông điệp là tùy chọn. Chúng tôi sẽ sử dụng thuật ngữ "
+"**thông điệp thuần túy** để tham chiếu các thông điệp không có mức xác nhận."
+
+#: ../../theory/abstract-consensus.rst:517
+msgid "The border of a message signals the following information:"
+msgstr "Đường viền của thông điệp báo hiệu thông tin sau:"
+
+#: ../../theory/abstract-consensus.rst:519
+msgid "black border: plain message"
+msgstr "viền đen: thông điệp đơn giản"
+
+#: ../../theory/abstract-consensus.rst:520
+msgid "red border: 0-level message"
+msgstr "viền đỏ: thông điệp cấp 0"
+
+#: ../../theory/abstract-consensus.rst:521
+msgid ""
+"yellow border: :math:`\\textit{comm}_1-\\textit{messages}` that are not "
+":math:`\\textit{comm}_1 \\textit{values}`"
+msgstr ""
+"viền vàng: :math:`\\textit{comm}_1-\\textit{messages}` mà không phải "
+":math:`\\textit{comm}_1 \\textit{values}`"
+
+#: ../../theory/abstract-consensus.rst:522
+msgid ""
+"green border: :math:`\\textit{comm}_2-\\textit{messages}` that are not "
+":math:`\\textit{comm}_2 \\textit{values}`"
+msgstr ""
+"viền xanh là cây: :math:`\\textit{comm}_2-\\textit{messages}` mà không phải "
+":math:`\\textit{comm}_2 \\textit{values}`"
+
+#: ../../theory/abstract-consensus.rst:523
+msgid ""
+"lime border: :math:`\\textit{comm}_3-\\textit{messages}` that are not "
+":math:`\\textit{comm}_3 \\textit{values}`"
+msgstr ""
+"viền màu vôi: :math:`\\textit{comm}_3-\\textit{messages}` mà không phải "
+":math:`\\textit{comm}_3 \\textit{values}`"
+
+#: ../../theory/abstract-consensus.rst:524
+msgid ""
+"blue border: :math:`\\textit{comm}_4-\\textit{messages}` that are not "
+":math:`\\textit{comm}_4 \\textit{values}`"
+msgstr ""
+"viền xanh: :math:`\\textit{comm}_4-\\textit{messages}` mà không phải "
+":math:`\\textit{comm}_4 \\textit{values}`"
+
+#: ../../theory/abstract-consensus.rst:525
+msgid ""
+"dashed border: this message has not arrived yet to validator 0; it is not "
+"part of j-dag as seen by validator 0"
+msgstr ""
+"đường viền đứt nét: thông điệp này chưa đến trình xác thực 0; nó không phải "
+"là một phần của j-dag như được thấy bởi trình xác thực 0"
+
+#: ../../theory/abstract-consensus.rst:527
+msgid "Looking at border colors, it is easy to find subsequent committees."
+msgstr ""
+"Nhìn vào màu sắc đường viền, có thể dễ dàng tìm thấy các ủy ban tiếp theo."
+
+#: ../../theory/abstract-consensus.rst:529
+msgid ":math:`\\textit{comm}_1` is formed by leftmost yellow messages"
+msgstr ""
+":math:`\\textit{comm}_1` được hình thành bởi các thông điệp màu vàng ngoài "
+"cùng bên trái"
+
+#: ../../theory/abstract-consensus.rst:530
+msgid ":math:`\\textit{comm}_2` is formed by leftmost green messages"
+msgstr ""
+":math:`\\textit{comm}_2` được hình thành bởi các thông điệp màu xanh lá cây "
+"ngoài cùng bên trái"
+
+#: ../../theory/abstract-consensus.rst:531
+msgid ":math:`\\textit{comm}_3` is formed by leftmost lime messages"
+msgstr ""
+":math:`\\textit{comm}_3` được hình thành bởi các thông điệp vôi ngoài cùng "
+"bên trái"
+
+#: ../../theory/abstract-consensus.rst:532
+msgid ":math:`\\textit{comm}_4` is formed by leftmost blue messages"
+msgstr ""
+":math:`\\textit{comm}_4` được hình thành bởi các thông điệp màu xanh lam "
+"ngoài cùng bên trái"
+
+#: ../../theory/abstract-consensus.rst:534
+msgid "Leftmost red border messages form the base-trimmer."
+msgstr "Thông điệp viền đỏ ngoài cùng bên trái tạo thành đế máy xén."
+
+#: ../../theory/abstract-consensus.rst:536
+msgid "Caution: search for \"leftmost messages\" separately for every swimlane."
+msgstr ""
+"Lưu ý: tìm kiếm \"thông điệp ngoài cùng bên trái\" riêng biệt cho mỗi vùng."
+
+#: ../../theory/abstract-consensus.rst:539
+msgid "Reference implementation"
+msgstr "Tham khảo triển khai"
+
+#: ../../theory/abstract-consensus.rst:541
+msgid ""
+"In this section we sketch a \"reference\" implementation of Abstract Casper "
+"Consensus. We use Scala syntax for the code, but we limit ourselves to "
+"elementary language features (so it is readable for any developer familiar "
+"with contemporary programming languages)."
+msgstr ""
+"Trong phần này, chúng tôi phác thảo một triển khai \"tham chiếu\" của Tóm "
+"tắt Đồng thuận Casper. Chúng tôi sử dụng cú pháp Scala cho mã, nhưng chúng "
+"tôi giới hạn bản thân ở các tính năng ngôn ngữ cơ bản (vì vậy nó có thể đọc "
+"được đối với bất kỳ nhà phát triển nào quen thuộc với các ngôn ngữ lập trình"
+" hiện đại)."
+
+#: ../../theory/abstract-consensus.rst:545
+msgid "Scala primer for non-scala developers:"
+msgstr "Scala đơn giản cho các nhà phát triển không phải quen thuộc scala:"
+
+#: ../../theory/abstract-consensus.rst:643
+msgid "Common abstractions"
+msgstr "Trừu tượng hoá chung"
+
+#: ../../theory/abstract-consensus.rst:645
+msgid "We use the following type aliases:"
+msgstr "Chúng tôi sử dụng các kiểu alias sau:"
+
+#: ../../theory/abstract-consensus.rst:655
+msgid "We are using the following abstraction of mutable 2-argument relation:"
+msgstr ""
+"Chúng tôi đang sử dụng phần trừu tượng sau của quan hệ 2 đối số có thể thay "
+"đổi:"
+
+#: ../../theory/abstract-consensus.rst:677
+msgid "... and directed acyclic graph:"
+msgstr "... và đồ thị xoay chiều có hướng:"
+
+#: ../../theory/abstract-consensus.rst:738
+msgid ""
+"We say nothing about hashing in use, we just assume that hashes can be seen "
+"as binary arrays:"
+msgstr ""
+"Chúng tôi không nói gì về băm đang được sử dụng, chúng tôi chỉ giả định rằng"
+" băm có thể được coi là mảng nhị phân:"
+
+#: ../../theory/abstract-consensus.rst:749
+msgid "Message structure:"
+msgstr "Cấu trúc thông điệp:"
+
+#: ../../theory/abstract-consensus.rst:762
+msgid "``id: MessageId`` unique identifier - hash of other fields"
+msgstr "``id: MessageId`` mã định danh duy nhất - băm của các trường khác"
+
+#: ../../theory/abstract-consensus.rst:763
+msgid "``creator: Int`` id of the validator that created this message"
+msgstr "``creator: Int`` id của trình xác thực đã tạo thông điệp này"
+
+#: ../../theory/abstract-consensus.rst:764
+msgid ""
+"``previous: Option[MessageId]`` distinguished justification that points to "
+"previous message published by creator"
+msgstr ""
+"``previous: Option[MessageId]`` lời biện minh phân biệt trỏ đến thông điệp "
+"trước đó do người sáng tạo xuất bản"
+
+#: ../../theory/abstract-consensus.rst:765
+msgid ""
+"``justifications: Seq[MessageId]`` collection of messages that the creator "
+"acknowledges as seen at the moment of creation of this message; this "
+"collection may possibly be empty; only message identifiers are kept here"
+msgstr ""
+"``justifications: Seq[MessageId]`` tập hợp các thông điệp mà người tạo thừa "
+"nhận như đã thấy tại thời điểm tạo ra thông điệp này; bộ sưu tập này có thể "
+"trống; chỉ có định danh thông điệp được giữ ở đây"
+
+#: ../../theory/abstract-consensus.rst:767
+msgid ""
+"``vote: Option[Con]`` consensus value this message is voting for; the value "
+"is optional, because we allow empty votes"
+msgstr ""
+"``vote: Option[Con]`` giá trị đồng thuận mà thông điệp này đang bỏ phiếu; "
+"giá trị là tùy chọn, vì chúng tôi cho phép các phiếu bầu trống"
+
+#: ../../theory/abstract-consensus.rst:769
+msgid "``daglevel: Int`` height of this message in justifications DAG"
+msgstr "``daglevel: Int`` chiều cao của thông điệp này trong biện minh DAG"
+
+#: ../../theory/abstract-consensus.rst:771
+msgid "Serialization of messages joins the logical layer and transport layer:"
+msgstr "Việc tuần tự hóa các thông điệp tham gia lớp logic và lớp truyền tải:"
+
+#: ../../theory/abstract-consensus.rst:790
+msgid "Network abstraction"
+msgstr "Trừu tượng hoá mạng"
+
+#: ../../theory/abstract-consensus.rst:792
+msgid "Broadcasting messages:"
+msgstr "Gửi thông điệp:"
+
+#: ../../theory/abstract-consensus.rst:800
+msgid "Receiving messages:"
+msgstr "Nhận thông điệp:"
+
+#: ../../theory/abstract-consensus.rst:809
+msgid "Panoramas"
+msgstr "Toàn cảnh"
+
+#: ../../theory/abstract-consensus.rst:811
+msgid ""
+"We use panoramas to encode the \"perspective on the j-dag as seen from given"
+" message\"."
+msgstr ""
+"Chúng tôi sử dụng ảnh toàn cảnh để mã hóa \"phối cảnh trên j-dag như được "
+"nhìn thấy từ thông điệp đã cho\"."
+
+#: ../../theory/abstract-consensus.rst:837
+msgid "Validator"
+msgstr "Trình xác thực"
+
+#: ../../theory/abstract-consensus.rst:839
+msgid "The abstraction of the estimator:"
+msgstr "Tính trừu tượng của công cụ ước tính:"
+
+#: ../../theory/abstract-consensus.rst:854
+msgid ""
+"... and finality detector (implementing the \"summit theory\" finality "
+"criterion):"
+msgstr ""
+"... và máy dò phát hiện cuối cùng (thực hiện tiêu chuẩn cuối cùng của \"lý "
+"thuyết đỉnh\"):"
+
+#: ../../theory/abstract-consensus.rst:862
+msgid ""
+"The implementation of a validator is complex so we split it into sections."
+msgstr ""
+"Việc triển khai trình xác thực rất phức tạp vì vậy chúng tôi chia nó thành "
+"các phần."
+
+#: ../../theory/abstract-consensus.rst:871
+msgid "**Validator configuration**"
+msgstr "**Cấu hình trình xác thực**"
+
+#: ../../theory/abstract-consensus.rst:883
+msgid "``weightsOfValidators: Map[ValidatorId, Int]`` - weights of validators"
+msgstr ""
+"``weightsOfValidators: Map[ValidatorId, Int]`` - trọng số của trình xác thực"
+
+#: ../../theory/abstract-consensus.rst:884
+msgid "``finalizer: Finalizer`` - finality detector"
+msgstr "``finalizer: Finalizer`` - bộ dò cuối cùng"
+
+#: ../../theory/abstract-consensus.rst:885
+msgid ""
+"``gossipService: GossipService`` - communication layer API used to broadcast"
+" messages"
+msgstr ""
+"``gossipService: GossipService`` - API lớp giao tiếp được sử dụng để phát "
+"thông điệp"
+
+#: ../../theory/abstract-consensus.rst:887
+msgid "**Protocol state**"
+msgstr "**Trạng thái giao thức**"
+
+#: ../../theory/abstract-consensus.rst:907
+msgid ""
+"``messagesBuffer: Relation[Message,MessageId]`` - a buffer of messages "
+"received, but not incorporated into ``jdag`` yet; a pair :math:`(m,j)` in "
+"this relation represents buffered message :math:`m` waiting for not-yet-"
+"received message with id :math:`j`"
+msgstr ""
+"``messagesBuffer: Relation[Message,MessageId]`` - một bộ đệm các tin nhắn đã"
+" nhận, nhưng chưa được kết hợp vào ``jdag``; một cặp :math:`(m,j)` trong "
+"quan hệ này đại diện cho thông điệp được đệm :math:`m` đang chờ thông điệp "
+"chưa nhận được với id :math:`j`"
+
+#: ../../theory/abstract-consensus.rst:910
+msgid ""
+"``jdagGraph`` - representation of :math:`jDag(M)`, where :math:`M` is the "
+"set of all messages known, such that their dependencies are fulfilled; in "
+"other words, before a message :math:`m` can be added to ``jdag``, all "
+"justifications of :math:`m` must be already present in ``jdag``"
+msgstr ""
+"``jdagGraph`` - đại diện của :math:`jDag(M)`, trong đó :math:`M` là tập hợp "
+"tất cả các thông điệp đã biết, sao cho các phụ thuộc của chúng được đáp ứng;"
+" nói cách khác, trước một thông điệp :math:`m` có thể được thêm vào "
+"``jdag``, tất cả các biện minh của :math:`m` phải có trong ``jdag``"
+
+#: ../../theory/abstract-consensus.rst:913
+msgid ""
+"``jdagIdToMessage: mutable.Map[MessageId, Message]`` - indexing of messages "
+"by id"
+msgstr ""
+"``jdagIdToMessage: mutable.Map[MessageId, Message]`` - lập chỉ mục các thông"
+" điệp theo id"
+
+#: ../../theory/abstract-consensus.rst:915
+msgid "**Handling of incoming messages**"
+msgstr "**Xử lý các tin nhắn đến**"
+
+#: ../../theory/abstract-consensus.rst:959
+msgid "**Publishing of new messages**"
+msgstr "**Xuất bản thông điệp mới**"
+
+#: ../../theory/abstract-consensus.rst:1007
+msgid ""
+"**Abstract methods** - i.e. extension points (things outside of this "
+"protocol spec)"
+msgstr ""
+"**Các phương thức trừu tượng** - tức là các điểm mở rộng (những thứ nằm "
+"ngoài giao thức kỹ thuật này)"
+
+#: ../../theory/abstract-consensus.rst:1026
+msgid "**Validation of incoming messages**"
+msgstr "**Xác thực các thông điệp đến**"
+
+#: ../../theory/abstract-consensus.rst:1092
+msgid "**Updating of local j-dag**"
+msgstr "**Cập nhật j-dag cục bộ**"
+
+#: ../../theory/abstract-consensus.rst:1107
+msgid "**Calculating panoramas**"
+msgstr "**Tính toán ảnh toàn cảnh**"
+
+#: ../../theory/abstract-consensus.rst:1238
+msgid "Finality detector"
+msgstr "Máy dò cuối cùng"
+
+#: ../../theory/abstract-consensus.rst:1240
+msgid "Representation of a j-dag trimmer:"
+msgstr "Đại diện của một máy xén j-dag:"
+
+#: ../../theory/abstract-consensus.rst:1252
+msgid "Representation of a summit:"
+msgstr "Mô tả của một đỉnh:"
+
+#: ../../theory/abstract-consensus.rst:1262
+msgid "Implementation of the \"summit theory\" finality criterion:"
+msgstr "Thực hiện tiêu chuẩn cuối cùng của \"lý thuyết đỉnh\":"
