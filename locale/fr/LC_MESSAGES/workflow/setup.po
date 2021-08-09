@@ -316,8 +316,8 @@ msgid ""
 "receive tokens."
 msgstr ""
 "Dans Testnet, vous pouvez approvisionner le compte en utilisant le bouton "
-"*Demander des jetons* sur la `Faucet Page <https://clarity-testnet-"
-"old.make.services/#/faucet>`_ pour recevoir des jetons."
+"*Demander des jetons* sur la `Page Faucet "
+"<https://testnet.cspr.live/tools/faucet>`_ pour recevoir des jetons."
 
 #: ../../workflow/setup.rst:110
 msgid ""
