@@ -248,23 +248,21 @@ Deploy the Contract
 After the contract has been compiled, it's time to deploy the compiled wasm to the network. This action installs the contract in the blockchain.
 Once the contract is deployed, the client can retrieve the contract session hash as well as the blockhash where the contract is deployed.
 
-```casper-client put-deploy --chain-name :raw-html-m2r:`<CHAIN-NAME>` --node-address http://\ :raw-html-m2r:`<HOST>`\ :\ :raw-html-m2r:`<PORT>` --secret-key /home/keys/secretkey.pem --session-path  $HOME/kv-storage-contract/target/wasm32-unknown-unknown/release/contract.wasm  --payment-amount 1000000000000
+.. code-block:: bash
 
-.. code-block::
+    casper-client put-deploy --chain-name :raw-html-m2r:`<CHAIN-NAME>` --node-address http://\ :raw-html-m2r:`<HOST>`\ :\ :raw-html-m2r:`<PORT>` --secret-key /home/keys/secretkey.pem --session-path  $HOME/kv-storage-contract/target/wasm32-unknown-unknown/release/contract.wasm  --payment-amount 1000000000000
 
+**Query the Account & Get the Contract Hash**
 
-   ### Query the Account & Get the Contract Hash
-   The internal state of the blockchain is updated via a series of steps (blocks). All queries of a blockchain must include a `global state hash` which corresponds to the block hash / height of the blockchain.  Visit [Querying the State for the Address of a Contract](https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html).
+The internal state of the blockchain is updated via a series of steps (blocks). All queries of a blockchain must include a `global state hash` which corresponds to the block hash / height of the blockchain.  Visit `Querying the State for the Address of a Contract <https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html>`_.
 
+**Invoke an Entry Point & Set a value**
 
-   ### Invoke an Entry Point & Set a value
+Once the contract is deployed, we can create another deploy, which calls one of the entry points within the contract. To call an entry point, you must first know the name of the entry point or the session hash, which we retrieved from the previous step. The kv-client, has four distinct commands to set key-values for u64, String, U512 and AccountHash.
 
-   Once the contract is deployed, we can create another deploy, which calls one of the entry points within the contract. 
-   To call an entry point, you must first know the name of the entry point or  the session hash, which we retrieved from the previous step. 
-   The kv-client, has four distinct commands to set key-values for u64, String, U512 and AccountHash.
+.. code-block:: bash
 
-   ```bash
-   casper-client put-deploy --session-name kvstorage_contract --session-entry-point store-string --session-arg=name:"string=`test`" --payment-amount 100000000000 --chain-name <CHAIN-NAME> --node-address http://<HOST>:<PORT> --secret-key /home/keys/secretkey.pem
+    casper-client put-deploy --session-name kvstorage_contract --session-entry-point store-string --session-arg=name:"string=`test`" --payment-amount 100000000000 --chain-name <CHAIN-NAME> --node-address http://<HOST>:<PORT> --secret-key /home/keys/secretkey.pem
 
 If the deploy works, a response similar this will be returned:
 
@@ -284,9 +282,9 @@ Therefore when we query to retrieve the value under a key, we are actually query
 You must first find the block hash for the block that contains your deploy.
 Once you have the requisite block hash, then you can use ``casper-client`` to retrieve the session hash
 
-Reading a value is simple enough, we obtain the block hash under which the value, is stored, and then\ :raw-html-m2r:`<br>`
-using that block hash, and the ``query-state`` command you can easily retrieve and value that was stored under a named key.
+Reading a value is simple enough, we obtain the block hash under which the value, is stored, and then using that block hash, and the ``query-state`` command you can easily retrieve and value that was stored under a named key.
 Please reference the `Querying Section <https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html>`_ for details.
+
 An example global state query looks like this:
 
 .. code-block:: bash
