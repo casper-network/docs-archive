@@ -250,7 +250,12 @@ Once the contract is deployed, the client can retrieve the contract session hash
 
 .. code-block:: bash
 
-    casper-client put-deploy --chain-name :raw-html-m2r:`<CHAIN-NAME>` --node-address http://\ :raw-html-m2r:`<HOST>`\ :\ :raw-html-m2r:`<PORT>` --secret-key /home/keys/secretkey.pem --session-path  $HOME/kv-storage-contract/target/wasm32-unknown-unknown/release/contract.wasm  --payment-amount 1000000000000
+    casper-client put-deploy 
+        --chain-name :raw-html-m2r:`<CHAIN-NAME>` 
+        --node-address http://\ :raw-html-m2r:`<HOST>`\ :\ :raw-html-m2r:`<PORT>` 
+        --secret-key /home/keys/secretkey.pem 
+        --session-path  $HOME/kv-storage-contract/target/wasm32-unknown-unknown/release/contract.wasm  
+        --payment-amount 1000000000000
 
 **Query the Account & Get the Contract Hash**
 
@@ -262,7 +267,14 @@ Once the contract is deployed, we can create another deploy, which calls one of 
 
 .. code-block:: bash
 
-    casper-client put-deploy --session-name kvstorage_contract --session-entry-point store-string --session-arg=name:"string=`test`" --payment-amount 100000000000 --chain-name <CHAIN-NAME> --node-address http://<HOST>:<PORT> --secret-key /home/keys/secretkey.pem
+    casper-client put-deploy 
+        --session-name kvstorage_contract 
+        --session-entry-point store-string 
+        --session-arg=name:"string=`test`" 
+        --payment-amount 100000000000 
+        --chain-name <CHAIN-NAME> 
+        --node-address http://<HOST>:<PORT> 
+        --secret-key /home/keys/secretkey.pem
 
 If the deploy works, a response similar this will be returned:
 
