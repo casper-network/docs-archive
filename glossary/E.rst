@@ -13,7 +13,7 @@ Era
 ^^^
 A period of time during which the validator set does not change.
 
-In the Casper Network, validators cannot join and leave at any point in time, but only at era boundaries. An era's validators are determined using an `auction <A.html#auction>`_. At the beginning of the era, the validators create a new instance of the Highway protocol and run this consensus protocol until they finalize the era's last block (see `booking block <B.html#booking-block>`_).
+In the Casper Network, validators cannot join and leave at any point in time, but only at era boundaries. An era's validators are determined using an `auction <A.html#auction>`_. At the beginning of the era, the validators create a new instance of the Highway protocol and run this consensus protocol until they finalize the era's last block (see `booking block <B.html#id7>`_).
 
 Eviction
 ^^^^^^^^

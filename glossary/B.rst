@@ -20,9 +20,9 @@ Block creation
 ^^^^^^^^^^^^^^
 Block creation means computing the deployment results and collecting the results that belong together into a block. We follow a process called *execution after consensus*. 
 
-The `block proposal <B.html#block-proposal>`_ happens first, and the proposed `proto block <P.html#proto-block>`_ contains a set of deploys that have not been executed yet.
+The `block proposal <#id6>`_ happens first, and the proposed `proto block <P.html#proto-block>`_ contains a set of deploys that have not been executed yet. 
 
-Only after consensus on a *proto block* has been reached, the deploys are executed. The resulting new global state `root hash <R.html#root hash>`_ is put into an actual block, together with the executed deploys.
+Only after consensus on a *proto block* has been reached, the deploys are executed. The resulting new global state `root hash <R.html#root-hash>`_ is put into an actual block, together with the executed deploys.
 
 Note that only validators can create valid blocks.
 
@@ -34,15 +34,15 @@ There are different levels of *finality* in the `Highway <H.html#highway>`_ prot
 
 Block gossiping
 ^^^^^^^^^^^^^^^
-Block gossiping occurs when a message containing a block is sent to one or more nodes on the network. In other words, block gossiping is sending a block validated by the current node but created by another node. The terms *block gossiping* and <#block-passing> are interchangeable.
+Block gossiping occurs when a message containing a block is sent to one or more nodes on the network. In other words, block gossiping is sending a block validated by the current node but created by another node. The terms *block gossiping* and *`block-passing <#block-passing>`_. are interchangeable.
 
 Block passing
 ^^^^^^^^^^^^^
-See <#block-gossiping>.
+See `block gossiping <#block-gossiping>`_.
 
 Block processing
 ^^^^^^^^^^^^^^^^
-Block processing consists of running the deploys in a block received from another node to determine updates to the global state. Note that this is an essential part of `block validating <B.html#block-validating>`_.
+Block processing consists of running the deploys in a block received from another node to determine updates to the global state. Note that this is an essential part of `validating blocks <#block-validation>`_.
 
 Block proposal
 ^^^^^^^^^^^^^^
@@ -66,9 +66,10 @@ The amount of money (in crypto-currency) that is allocated by a node in order to
 
 Bonding
 ^^^^^^^
-Depositing money in the `auction contract<A.html#auction-contract>`_ and try to become a `staker <S.html#staker>`_. The bonding request is a transaction that transfers tokens to the auction contract. In the next `booking block <B.html#booking-block>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
+Depositing money in the `auction contract <A.html#auction-contract>`_ and try to become a `staker <S.html#staker>`_. The bonding request is a transaction that transfers tokens to the auction contract. In the next `booking block <#id7>`_, a new set of validators is determined, with weights according to their deposits. This new set becomes active in the era(s) using that booking block.
+
 
 Booking block
 ^^^^^^^^^^^^^
-The booking block for an era is the block that determines the era's validator set. In it, the `auction contract<A.html#auction-contract>`_ selects the highest bidders to be the future era's validators. There is a configurable delay, the *auction_delay*, which is the number of eras between the booking block and the era to which it applies. The booking block is always a switch block, so the booking block for era *N + auction_delay + 1* is the last block of era *N*.
+The booking block for an era is the block that determines the era's validator set. In it, the `auction contract <A.html#auction-contract>`_ selects the highest bidders to be the future era's validators. There is a configurable delay, the *auction_delay*, which is the number of eras between the booking block and the era to which it applies. The booking block is always a switch block, so the booking block for era *N + auction_delay + 1* is the last block of era *N*.
 

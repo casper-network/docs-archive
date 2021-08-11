@@ -29,7 +29,7 @@ Casper uses the `Highway <https://docs.casperlabs.io/en/latest/theory/highway.ht
 
 Contract runtime
 ^^^^^^^^^^^^^^^^
-Enables developers to use a seamless workflow for authoring and testing their `smart contracts <S.html#smart-contracts>`_. This environment can also be used for continuous integration, enabling Rust smart contracts to be managed using development best practices.
+Enables developers to use a seamless workflow for authoring and testing their `smart contracts <S.html#smart-contract>`_. This environment can also be used for continuous integration, enabling Rust smart contracts to be managed using development best practices.
 
 Crate
 ^^^^^
