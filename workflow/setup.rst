@@ -91,13 +91,13 @@ This option is also available on networks that have a block explorer.
 
 For instance, on the official Testnet network the `CSPR.live <https://testnet.cspr.live/>`_ block explorer is available, and the following instructions assume you are using it.
 
-Start by creating an account using the `Create Account <https://clarity-testnet-old.make.services/#/accounts>`_ link. You will be asked to provide a unique name for your account; this is for your convenience and is not stored on chain.
+Start by creating an account using the `Create Account <https://testnet.cspr.live/create-account>`_ link. You will need to download the keys of your new account by clicking on the ``Download Keys`` button. Note that the account is not stored on chain.
 
-You will be prompted to save three files for your new account; carefully choose where you store them. We recommend storing your keys in a secure manner.
+You will be prompted to save the following three files for your new account. These are your keys, so we recommend securely storing them:
 
-1. ``<Account-Name>_secret_key.pem`` - PEM encoded secret key
-2. ``<Account-Name>_public_key.pem`` - PEM encoded public key
-3. ``<Account-Name>_public_key_hex`` - Hexadecimal-encoded string of the public key
+1. ``secret_key.pem`` - PEM encoded secret key
+2. ``public_key.pem`` - PEM encoded public key
+3. ``public_key_hex`` - Hexadecimal-encoded string of the public key
 
 
 Fund your Account
@@ -105,7 +105,7 @@ Fund your Account
 
 Once the cryptographic key-pair for the account has been generated, the account must be funded so it can be created on chain.
 
-In Testnet, you can fund the account by using the *Request tokens* button on the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to receive tokens.
+In Testnet, you can fund the account by using the *Request tokens* button on the `Faucet Page <https://testnet.cspr.live/tools/faucet>`_ to receive tokens.
 
 In Mainnet, a pre-existing account will have to transfer CSPR tokens to finalize the process of setting up an account. The *Source* account needs to transfer CSPR tokens to the hexadecimal-encoded public key of the *Target* account. This transfer will automatically create the *Target* account if it does not exist. Currently, this is the only way an account can be created on Mainnet.
 

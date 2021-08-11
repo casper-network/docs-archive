@@ -240,7 +240,7 @@ The steps to set up the SDK are in the guide.
 Deploying to the Testnet and Interacting with the Contract
 ----------------------------------------------------------
 
-When working with the testnet, create an account in `CLarity <https://clarity.casperlabs.io>`_ and fund it using the faucet. Download the private key and use the key to sign the deployment. It's possible to create keys using the rust client as well.
+When working with the testnet, create an account on `Testnet CSPR Live <https://testnet.cspr.live>`_ and fund it using the faucet. Download the private key and use the key to sign the deployment. It's possible to create keys using the rust client as well.
 
 Deploy the Contract
 ^^^^^^^^^^^^^^^^^^^
