@@ -254,7 +254,7 @@ Once the contract is deployed, the client can retrieve the contract session hash
 
 **Query the Account & Get the Contract Hash**
 
-The internal state of the blockchain is updated via a series of steps (blocks). All queries of a blockchain must include a `global state hash` which corresponds to the block hash / height of the blockchain.  Visit `Querying the State for the Address of a Contract <https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html>`_.
+The internal state of the blockchain is updated via a series of steps (blocks). All queries of a blockchain must include a `global state hash` which corresponds to the block hash / height of the blockchain.  Visit `Querying the address of a contract <https://docs.casperlabs.io/en/latest/dapp-dev-guide/calling-contracts.html#querying-global-state-for-the-address-of-a-contract>`_.
 
 **Invoke an Entry Point & Set a value**
 
@@ -283,7 +283,7 @@ You must first find the block hash for the block that contains your deploy.
 Once you have the requisite block hash, then you can use ``casper-client`` to retrieve the session hash
 
 Reading a value is simple enough, we obtain the block hash under which the value, is stored, and then using that block hash, and the ``query-state`` command you can easily retrieve and value that was stored under a named key.
-Please reference the `Querying Section <https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html>`_ for details.
+Please reference the `Querying Section <https://docs.casperlabs.io/en/latest/dapp-dev-guide/calling-contracts.html#querying-global-state-for-the-address-of-a-contract>`_ for details.
 
 An example global state query looks like this:
 
