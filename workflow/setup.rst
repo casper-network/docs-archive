@@ -91,9 +91,9 @@ This option is also available on networks that have a block explorer.
 
 For instance, on the official Testnet network the `CSPR.live <https://testnet.cspr.live/>`_ block explorer is available, and the following instructions assume you are using it.
 
-Start by creating an account using the `Create Account <https://testnet.cspr.live/create-account>`_ link. You will need to download the keys of your new account by clicking on the ``Download Keys`` button.
+Start by creating an account using the `Create Account <https://testnet.cspr.live/create-account>`_ link. You will need to download the keys of your new account by clicking on the ``Download Keys`` button. Note that the account is not stored on chain.
 
-You will be prompted to save three files for your new account; carefully choose where you store them. We recommend storing your keys in a secure manner.
+You will be prompted to save the following three files for your new account. These are your keys, so we recommend securely storing them:
 
 1. ``secret_key.pem`` - PEM encoded secret key
 2. ``public_key.pem`` - PEM encoded public key
