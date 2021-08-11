@@ -49,7 +49,8 @@ msgid ""
 "Design <https://docs.casperlabs.io/en/latest/implementation/index.html>`_ to"
 " query data from the network"
 msgstr ""
-"Vous connaissez la structure du `Global State and the Blockchain Design "
+"Vous connaissez la structure de `l'Etat Global et la Conception de la "
+"Blockchain "
 "<https://docs.casperlabs.io/fr/latest/implementation/index.html>`_ pour "
 "interroger les données du réseau."
 
@@ -93,7 +94,7 @@ msgid ""
 "All queries made to global state require the ``state-root-hash``,  which you"
 " can obtain with this command:"
 msgstr ""
-"outes les requêtes faites sur l'état global (global state) nécessitent le "
+"Toutes les requêtes faites sur l'état global (global state) nécessitent le "
 "``state-root-hash``, que vous pouvez obtenir avec cette commande :"
 
 #: ../../workflow/querying.rst:30 ../../workflow/querying.rst:88
