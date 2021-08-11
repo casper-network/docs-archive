@@ -7,7 +7,7 @@ D
 
 dApp
 ^^^^
-A distributed application (dApp) is a set of `smart contracts <S.html#smart_contract>`_.
+A distributed application (dApp) is a set of `smart contracts <S.html#smart-contract>`_.
 
 Delegation rate
 ^^^^^^^^^^^^^^^
