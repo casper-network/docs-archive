@@ -5,7 +5,7 @@
 Key-Value Storage Tutorial
 ==========================
 
-This tutorial covers a simple contract, which creates a key that stores a ``CLType`` value. This example will show you how to store a *u64*, *string*, *account hash*, or *U512* value.
+This tutorial covers a simple contract, which creates a key that stores a ``CLType`` value. This example will show you how to store a *U64*, *string*, *account hash*, or *U512* value.
 
 The code is available in the `Casper Ecosystem GitHub <https://github.com/casper-ecosystem/kv-storage-contract>`_. Or, you can get started in `GitPod <https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-contract>`_.
 
@@ -137,7 +137,7 @@ The contract package will be stored under this name on the blockchain. Since the
 Testing the Contract
 --------------------
 
-The Casper Contracts SDK supports local testing of smart contracts. This tutorial will cover how to test the u64 key-value function, which you can adapt for other types.
+The Casper Contracts SDK supports local testing of smart contracts. This tutorial will cover how to test the U64 key-value function, which you can adapt for other types.
 
 To test the contract, you need to deploy the contract and store the value on chain. Here is some sample code to accomplish these steps:
 
@@ -264,7 +264,7 @@ The internal state of the blockchain is updated via a series of steps (blocks). 
 
 Once the contract is deployed, you can create another deploy, which calls one of the entry points within the contract. You must know the entry point's name or the session hash retrieved in the previous step to call an entry point. The command below shows you how to do this. The *session-path* is relative to your system. Specify the path on your machine and then run the command.
 
-The kv-client has four distinct commands to set key-values for u64, String, U512, and AccountHash. In this example, we will use a String.
+The kv-client has four distinct commands to set key-values for U64, string, U512, and account hash. In this example, we will use a String.
 
 .. code-block:: bash
 
