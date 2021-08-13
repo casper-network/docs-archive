@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:3
+msgid "AssemblyScript"
+msgstr "AssemblyScript"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:5
+msgid ""
+"CasperLabs maintains the `casper-contract <https://www.npmjs.com/package"
+"/casper-contract>`_ to allow developers to create smart contracts using "
+"`AssemblyScript <https://www.npmjs.com/package/assemblyscript>`_. The "
+"package source is hosted in the `main Casper Network repository "
+"<https://github.com/casper-network/casper-"
+"node/tree/master/smart_contracts/contract_as/assembly>`_."
+msgstr ""
+"CasperLabs duy trì `casper-contract <https://www.npmjs.com/package/casper-"
+"contract>`_ để cho phép các nhà phát triển tạo các hợp đồng thông minh bằng "
+"cách sử dụng `AssemblyScript "
+"<https://www.npmjs.com/package/assemblyscript>`_. Nguồn của gói được lưu trữ"
+" trong `kho chứa chính Casper Network <https://github.com/casper-network"
+"/casper-node/tree/master/smart_contracts/contract_as/assembly>`_."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:8
+msgid "Installation"
+msgstr "Cài đặt"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:10
+msgid ""
+"For each smart contract, it is necessary to create a project directory and "
+"initialize it."
+msgstr ""
+"Đối với mỗi hợp đồng thông minh, cần tạo một thư mục dự án và khởi tạo nó."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:12
+msgid ""
+"The ``npm init`` process prompts for various details about the project. "
+"Answer as you see fit, but you may safely default everything except "
+"``name``, which needs to be specified. In this guide, we will refer to the "
+"contract name as ``your-contract-name``."
+msgstr ""
+"Tiến trình ``npm init`` gợi nhắc các chi tiết khác nhau về dự án. Có thể trả"
+" lời khi bạn thấy phù hợp, nhưng bạn có thể để mặc định mọi thứ một cách an "
+"toàn, ngoại trừ cần chỉ định ``name``. Trong hướng dẫn này, chúng tôi sẽ gọi"
+" tên hợp đồng là ``your-contract-name``."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:20
+msgid "Then install AssemblyScript and this package in the project directory."
+msgstr "Sau đó cài đặt AssemblyScript và để trong thư mục dự án."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:28
+msgid "Contract API Documentation"
+msgstr "Tài liệu API của hợp đồng"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:30
+msgid ""
+"The Assemblyscript contract API documentation can be found at "
+"https://www.npmjs.com/package/casper-contract."
+msgstr ""
+"Bạn có thể tìm thấy tài liệu API của hợp đồng Assemblyscript tại "
+"https://www.npmjs.com/package/casper-contract."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:33
+msgid "Usage"
+msgstr "Sử dụng"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:35
+msgid ""
+"Add script entries for AssemblyScript to your project's ``package.json``. "
+"Note that your contract name is used for the name of the WASM file. Replace "
+"*your-contract-name* with the name of your contract."
+msgstr ""
+"Thêm các mục nhập script cho AssemblyScript vào ``package.json`` dự án của "
+"bạn. Lưu ý rằng tên hợp đồng của bạn được sử dụng cho tên của tệp WASM. Thay"
+" thế *your-contract-name* bằng tên hợp đồng của bạn."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:50
+msgid ""
+"In the project root, create an ``index.js`` file with the following "
+"contents. Replace *your-contract-name* with the name of your contract."
+msgstr ""
+"Trong thư mục gốc của dự án, hãy tạo tệp ``index.js`` với nội dung sau. Thay"
+" thế *your-contract-name*  bằng tên hợp đồng của bạn."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:70
+msgid ""
+"Next, create a directory called ``assembly``, and in that directory, create "
+"a file called  ``tsconfig.json`` in the following way:"
+msgstr ""
+"Tiếp theo, tạo một thư mục có tên là ``assembly`` và trong thư mục đó, tạo "
+"một tệp có tên là ``tsconfig.json`` theo cách sau:"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:82
+msgid "Sample smart contract"
+msgstr "Ví dụ hợp đồng thông minh"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:84
+msgid ""
+"In the ``assembly`` directory, also create an ``index.ts`` file, where the "
+"code for the contract needs to go."
+msgstr ""
+"Trong thư mục ``assembly``, cũng tạo một tệp ``index.ts``, nơi chứa mã cho "
+"hợp đồng."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:86
+msgid ""
+"You can use the following sample snippet, which demonstrates a simple smart "
+"contract that immediately returns an error and writes a message to a block "
+"when executed on the Casper Network."
+msgstr ""
+"Bạn có thể sử dụng đoạn mã mẫu sau, minh họa một hợp đồng thông minh đơn "
+"giản ngay lập tức trả về lỗi và ghi thông báo vào một khối khi được thực thi"
+" trên Mạng Casper."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:98
+msgid ""
+"If you prefer a more complicated first contract, you can look at example "
+"contracts on the `Casper Ecosystem GitHub <https://github.com/casper-"
+"ecosystem>`_ repository for inspiration."
+msgstr ""
+"Nếu bạn thích hợp đồng đầu tiên phức tạp hơn, bạn có thể xem các hợp đồng "
+"mẫu trên kho lưu trữ `GitHub hệ sinh thái Casper<https://github.com/casper-"
+"ecosystem>`_ để tìm cảm hứng."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:101
+msgid "Compile to WASM"
+msgstr "Biên dịch sang WASM"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:103
+msgid ""
+"To compile the contract to WASM, use *npm* to run the *asbuild* script from "
+"the project root:"
+msgstr ""
+"Để biên dịch hợp đồng sang WASM, hãy sử dụng *npm*  để chạy script *asbuild*"
+" từ gốc dự án:"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:109
+msgid ""
+"If the build is successful, there will be a ``dist`` folder in the ``root`` "
+"folder and in it should be ``your-contract-name.wasm``."
+msgstr ""
+"Nếu xây dựng thành công, sẽ có một thư mục ``dist`` trong thư mục ``root`` "
+"và trong đó phải là `your-contract-name.wasm``."

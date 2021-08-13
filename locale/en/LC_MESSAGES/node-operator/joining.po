@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../node-operator/joining.rst:3
+msgid "Joining a Running Network"
+msgstr ""
+
+#: ../../node-operator/joining.rst:5
+msgid ""
+"The Casper network is permissionless, enabling new validators to join the"
+" network and provide additional security to the system. This page will "
+"outline the sequence of recommended steps to spin up a validating node "
+"and successfully join an existing network."
+msgstr ""
+
+#: ../../node-operator/joining.rst:9
+msgid "Step 1: Provision Hardware"
+msgstr ""
+
+#: ../../node-operator/joining.rst:11
+msgid "Visit the Hardware section and provision your node hardware."
+msgstr ""
+
+#: ../../node-operator/joining.rst:14
+msgid "Step 2: Build Contracts & Set Up the Node"
+msgstr ""
+
+#: ../../node-operator/joining.rst:16
+msgid ""
+"Visit the Setup section in this guide and configure the software on your "
+"node.  Build all necessary contracts for bonding, retrieving rewards and "
+"unbonding."
+msgstr ""
+
+#: ../../node-operator/joining.rst:19
+msgid "Step 3: Create & Fund your Keys for Bonding"
+msgstr ""
+
+#: ../../node-operator/joining.rst:21
+msgid ""
+"Obtain token to bond your node on to the network & to pay for the bonding"
+" transaction."
+msgstr ""
+
+#: ../../node-operator/joining.rst:24
+msgid "Step 4: Update the Trusted Hash"
+msgstr ""
+
+#: ../../node-operator/joining.rst:26
+msgid ""
+"The node's ``config.toml`` needs to be updated with a recent trusted "
+"hash. Visit a ``/status`` endpoint of a validating node to obtain a fresh"
+" trusted block hash."
+msgstr ""
+
+#: ../../node-operator/joining.rst:32
+msgid ""
+"Default port is usually ``8888``  Retrieve the ``last_added_block_info:``"
+" hash."
+msgstr ""
+
+#: ../../node-operator/joining.rst:34
+msgid ""
+"A good IP to use above are those listed in your ``config.toml`` as "
+"``known_addresses``."
+msgstr ""
+
+#: ../../node-operator/joining.rst:37
+msgid "Step 5: Start the Node"
+msgstr ""
+
+#: ../../node-operator/joining.rst:39
+msgid ""
+"Once the node has been added to the list of validators for an upcoming "
+"era, it's time to start the node.  The deb package installs a casper-node"
+" service for systemd. Start the node with:"
+msgstr ""
+
+#: ../../node-operator/joining.rst:46
+msgid ""
+"For more information visit `Github <https://github.com/CasperLabs/casper-"
+"node/tree/master/resources/production>`_"
+msgstr ""
+
+#: ../../node-operator/joining.rst:49
+msgid "Step 6: Confirm the Node is Syncronized"
+msgstr ""
+
+#: ../../node-operator/joining.rst:51
+msgid ""
+"While the node is synchronizing, the ``/status`` endpoint is available. "
+"You will be able to compare this to other node's status endpoint "
+"``era_id`` and ``height`` to determine if you are caught up. You will not"
+" be able to perform any ``casper-client`` calls to your ``7777`` RPC port"
+" until your node is fully caught up."
+msgstr ""
+
+#: ../../node-operator/joining.rst:57
+msgid "Step 7: Send the Bonding Request"
+msgstr ""
+
+#: ../../node-operator/joining.rst:59
+msgid ""
+"To avoid being ejected for liveness failures, it is critical that the "
+"bonding request be sent to the local node only after it has synchronized "
+"the protocol state and linear blockchain."
+msgstr ""
+
+#: ../../node-operator/joining.rst:61
+msgid ""
+"For this reason it is recommended that you use ``casper-client`` with the"
+" default ``--node-address`` which will talk to localhost."
+msgstr ""
+
+#: ../../node-operator/joining.rst:63
+msgid ""
+"Please see the bonding page to submit a bonding request to change from a "
+"synchronized node to a validating node."
+msgstr ""
+

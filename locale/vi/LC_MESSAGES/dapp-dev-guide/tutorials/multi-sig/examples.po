@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:2
+msgid "Additional Scenarios"
+msgstr "Các tình huống bổ sung"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:4
+msgid ""
+"This section walks you through additional scenarios where accounts have "
+"multiple associated keys for signing transactions at various thresholds."
+msgstr ""
+"Phần này sẽ hướng dẫn bạn qua các tình huống bổ sung trong đó tài khoản có "
+"nhiều khóa được liên kết để ký giao dịch ở các ngưỡng khác nhau."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:7
+msgid "Scenario 1: signing transactions with a single key"
+msgstr "Tình huống 1: ký giao dịch bằng một khóa duy nhất"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:9
+msgid ""
+"In this example, only one key can sign transactions in the name of this "
+"account. The key is \"account-hash-a1…\" under the `associated_keys`. If you"
+" sign the transaction using \"account-hash-a1…\", the signed transaction "
+"will have a `weight` equal to 1. For deployments or key management, the "
+"weight required is also 1. Therefore, the associated key meets the "
+"deployment and key management thresholds and can perform both actions."
+msgstr ""
+"Trong ví dụ này, chỉ một khóa có thể ký các giao dịch bằng tên của tài khoản"
+" này. Khóa là \"account-hash-a1…\" trong `associated_keys`. Nếu bạn ký giao "
+"dịch bằng \"account-hash-a1…\", giao dịch đã ký sẽ có `weight` bằng 1. Đối "
+"với triển khai hoặc quản lý khóa, trọng số bắt buộc cũng là 1. Do đó, khóa "
+"được liên kết đáp ứng việc triển khai và ngưỡng quản lý chính và có thể thực"
+" hiện cả hai hành động."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:11
+msgid "**Faucet account in scenario 1:**"
+msgstr "**Tài khoản chốt trong trường hợp 1:**"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:39
+msgid "Scenario 2: deploying with special keys"
+msgstr "Tình huống 2: triển khai với các khóa đặc biệt"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:41
+msgid ""
+"In this example, you have two keys. One key can only perform deployments, "
+"while the second key can perform key management and deployments. The key "
+"with account address *a1* can deploy and make account changes, but the "
+"second key with account address *b2* can only deploy."
+msgstr ""
+"Trong ví dụ này, bạn có hai khóa. Một khóa chỉ có thể thực hiện triển khai, "
+"trong khi khóa thứ hai có thể thực hiện quản lý và triển khai khóa. Khóa có "
+"địa chỉ tài khoản *a1* có thể triển khai và thực hiện thay đổi tài khoản, "
+"nhưng khóa thứ hai có địa chỉ tài khoản *b2* chỉ có thể triển khai."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:43
+msgid "**Faucet account in scenario 2:**"
+msgstr "**Tài khoản chốt trong trường hợp 2:**"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:77
+msgid "Scenario 3: signing transactions with multiple keys"
+msgstr "Tình huống 3: ký giao dịch bằng nhiều khóa"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:79
+msgid ""
+"Sometimes you will require multiple associated keys to execute a "
+"transaction. In this example, we have two associated keys with a weight "
+"equal to 1. To make changes to the account, you need to use both keys to "
+"sign the transaction. However, for deployment, each key can sign separately "
+"and perform deployments independently."
+msgstr ""
+"Đôi khi bạn sẽ yêu cầu nhiều khóa được liên kết để thực hiện một giao dịch. "
+"Trong ví dụ này, chúng tôi có hai khóa được liên kết với trọng số bằng 1. Để"
+" thực hiện các thay đổi đối với tài khoản, bạn cần sử dụng cả hai khóa để ký"
+" giao dịch. Tuy nhiên, để triển khai, mỗi khóa có thể ký riêng và thực hiện "
+"các triển khai một cách độc lập."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:81
+msgid "**Faucet account in scenario 3:**"
+msgstr "**Tài khoản chốt trong trường hợp 3:**"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:112
+msgid "Scenario 4: managing lost or stolen keys"
+msgstr "Tình huống 4: quản lý khóa bị mất hoặc bị đánh cắp"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:114
+msgid ""
+"In this example, you need two out of three associated keys to sign a "
+"transaction. Consider a transaction where you have one key in your browser, "
+"one key on your mobile phone, and one key in your safe. To do a transaction,"
+" first, you sign it with your browser extension (for example, Metamask). "
+"Afterward, a notification appears on your mobile phone requesting you to "
+"approve the transaction. With these two keys, you can complete the "
+"transaction. However, what if you lose the two keys on your browser and "
+"phone? Or, what if someone steals your browser and phone? In this case, you "
+"can use the safe key to remove the lost or stolen keys from the account. "
+"Notice that the safe key's weight is 3, which gives you the option to manage"
+" your account and add or remove keys. Also, the stolen or lost keys can only"
+" enable deployments, and in this case, no one can use them to change your "
+"account."
+msgstr ""
+"Trong ví dụ này, bạn cần hai trong ba khóa được liên kết để ký một giao "
+"dịch. Hãy xem xét một giao dịch mà bạn có một chìa khóa trong trình duyệt, "
+"một chìa khóa trên điện thoại di động và một chìa khóa trong két an toàn. Để"
+" thực hiện một giao dịch, trước tiên, bạn ký nó bằng tiện ích mở rộng trình "
+"duyệt của mình (ví dụ: Metamask). Sau đó, một thông báo xuất hiện trên điện "
+"thoại di động của bạn yêu cầu bạn chấp thuận giao dịch. Với hai chìa khóa "
+"này, bạn có thể hoàn tất giao dịch. Tuy nhiên, nếu bạn bị mất hai khoá trên "
+"trình duyệt và điện thoại thì sao? Hoặc, điều gì sẽ xảy ra nếu ai đó đánh "
+"cắp trình duyệt và điện thoại của bạn? Trong trường hợp này, bạn có thể sử "
+"dụng khóa an toàn để xóa các khóa bị mất hoặc bị đánh cắp khỏi tài khoản. "
+"Lưu ý rằng trọng số của khóa an toàn là 3, điều này cung cấp cho bạn tùy "
+"chọn quản lý tài khoản của mình và thêm hoặc xóa khóa. Ngoài ra, các khóa bị"
+" đánh cắp hoặc bị mất chỉ có thể cho phép triển khai và trong trường hợp "
+"này, không ai có thể sử dụng chúng để thay đổi tài khoản của bạn."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:120
+msgid "**Faucet account in scenario 4:**"
+msgstr "**Tài khoản chốt trong tình huống 4:**"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:155
+msgid "Scenario 5: managing accounts with multiple keys"
+msgstr "Tình huống 5: quản lý tài khoản bằng nhiều khóa"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:157
+msgid ""
+"This example builds upon the previous example, where you can set up multiple"
+" safe keys for account management. In this scenario, the safe keys have the "
+"weight required to manage your keys and account."
+msgstr ""
+"Ví dụ này dựa trên ví dụ trước, nơi bạn có thể thiết lập nhiều khóa an toàn "
+"để quản lý tài khoản. Trong trường hợp này, các khóa an toàn có trọng số cần"
+" thiết để quản lý các khóa và tài khoản của bạn."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:159
+msgid "**Faucet account in scenario 5:**"
+msgstr "**Tài khoản chốt trong trường hợp 5:**"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:202
+msgid "Scenario 6: losing your primary account key"
+msgstr "Tình huống 6: mất khóa tài khoản chính của bạn"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:204
+msgid ""
+"Suppose you lose your account key; in this case, \"account-hash-00…\", you "
+"can set up other keys to execute transactions. Although not recommended, you"
+" can throw away the private key of your account or set its weight to zero, "
+"and you would still be able to execute transactions if your faucet account "
+"has backup keys that can perform key management."
+msgstr ""
+"Giả sử bạn bị mất chìa khóa tài khoản; trong trường hợp này, \"account-"
+"hash-00…\", bạn có thể thiết lập các khóa khác để thực hiện giao dịch. Mặc "
+"dù không được khuyến nghị, bạn có thể vứt bỏ khóa cá nhân của tài khoản hoặc"
+" đặt trọng số của nó thành 0 và bạn vẫn có thể thực hiện các giao dịch nếu "
+"tài khoản chốt của bạn có khóa dự phòng có thể thực hiện quản lý khóa."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:206
+msgid "**Faucet account in scenario 6:**"
+msgstr "**Tài khoản chốt trong tình huống 6:**"

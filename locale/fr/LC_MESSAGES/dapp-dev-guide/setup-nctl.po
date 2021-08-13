@@ -1,0 +1,341 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/setup-nctl.rst:2
+msgid "Local Network Testing"
+msgstr "Test du réseau local"
+
+#: ../../dapp-dev-guide/setup-nctl.rst:3
+msgid ""
+"NCTL stands for network/node control. `NCTL <https://github.com/CasperLabs"
+"/casper-node/tree/master/utils/nctl>`_ is a CLI application you can use to "
+"set up and control multiple local Casper networks during development. Many "
+"developers wish to spin up relatively small test networks to localize their "
+"testing before deploying to the blockchain. Adopting a standardized approach"
+" in the community is also helpful for troubleshooting and reporting issues."
+msgstr ""
+"NCTL est l'abréviation de network/node control. `NCTL "
+"<https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ est une"
+" application CLI (ligne de commande) que l'on peut utiliser pour configurer "
+"et contrôler plusieurs réseaux Casper locaux pendant le développement. De "
+"nombreux développeurs souhaitent faire tourner des réseaux de test "
+"relativement petits pour effectuer des tests locaux avant de les déployer "
+"sur la blockchain. L'adoption d'une approche standardisée au sein de la "
+"communauté est également utile pour le diagnostic et le suivi des incidents."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:6
+msgid "Prerequisites"
+msgstr "Prérequis"
+
+#: ../../dapp-dev-guide/setup-nctl.rst:8
+msgid ""
+"You have completed the `Getting Started section <dapp-dev-guide/setup-of-"
+"rust-contract-sdk>`_, which shows you how to install your development "
+"environment, including tools like *CMake* (version 3.1.4+), *Cargo*, and "
+"*Rust*."
+msgstr ""
+"Vous avez terminé la section `Getting Started section <dapp-dev-guide/setup-"
+"of-rust-contract-sdk>`_, qui montre comment installer votre environnement de"
+" développement, notamment des outils comme *CMake* (version 3.1.4+), *Cargo*"
+" et *Rust*."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:9
+msgid ""
+"Make sure you have `Python 3 installed <https://www.python.org/downloads/>`_"
+" if your operating system does not include Python."
+msgstr ""
+"S'assurer que `Python 3 est installé <https://www.python.org/downloads/>`_ "
+"si votre système d'exploitation (OS) n'inclut pas Python."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:10
+msgid ""
+"To run NCTL, you will also need `the bash shell "
+"<https://www.gnu.org/software/bash/>`_."
+msgstr ""
+"Pour exécuter NCTL, vous aurez également besoin du shell bash `the bash "
+"shell <https://www.gnu.org/software/bash/>`_."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:13
+msgid "Video Tutorial"
+msgstr "Tutoriel vidéo"
+
+#: ../../dapp-dev-guide/setup-nctl.rst:15
+msgid ""
+"If you prefer a video walkthrough of this guide, you can check out this "
+"video."
+msgstr ""
+"Si on préfère une présentation vidéo de ce guide, on peut consulter cette "
+"vidéo."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:22
+msgid "Installing a Virtual Environment"
+msgstr "Installation d'un environnement virtuel (Virtual Environment)"
+
+#: ../../dapp-dev-guide/setup-nctl.rst:23
+msgid ""
+"We will show you how to run NCTL in a virtual environment. If you want to "
+"run NCTL at the system level, you can, but we recommend that you only do "
+"that if you are sure you know what you are doing."
+msgstr ""
+"Nous allons vous montrer comment exécuter NCTL dans un environnement "
+"virtuel. Si vous souhaitez exécuter NCTL au niveau du système, vous pouvez "
+"le faire, mais nous vous recommandons de ne le faire que si vous êtes sûr de"
+" savoir ce que vous faites."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:25
+msgid ""
+"First, you will need to install a set of tools required for running NCTL."
+msgstr ""
+"Tout d'abord, nous devons installer un ensemble d'outils nécessaires à "
+"l'exécution de NCTL."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:27
+msgid ""
+"**Step 1.** The first tool you will need is **pip**, a package manager for "
+"Python. Pip comes with the Python 3 installation from python.org, but if you"
+" do not have it already, follow the steps below or `the full installation "
+"instructions <https://pip.pypa.io/en/stable/installing/>`_."
+msgstr ""
+"**Etape 1.** Le premier outil dont nous aurons aurez besoin est **pip**, un "
+"gestionnaire de paquets pour Python. Pip est fourni avec l'installation de "
+"Python 3 , mais si on ne l'a pas encore, suivre les étapes ci-dessous ou "
+"`les instructions d'installation complètes "
+"<https://pip.pypa.io/en/stable/installing/>`_."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:29
+#: ../../dapp-dev-guide/setup-nctl.rst:44
+#: ../../dapp-dev-guide/setup-nctl.rst:58
+#: ../../dapp-dev-guide/setup-nctl.rst:72
+msgid "Instructions for MacOS:"
+msgstr "Instructions pour  MacOS:"
+
+#: ../../dapp-dev-guide/setup-nctl.rst:36
+#: ../../dapp-dev-guide/setup-nctl.rst:50
+#: ../../dapp-dev-guide/setup-nctl.rst:64
+#: ../../dapp-dev-guide/setup-nctl.rst:80
+msgid "Instructions for Linux:"
+msgstr "Instructions pour  Linux:"
+
+#: ../../dapp-dev-guide/setup-nctl.rst:42
+msgid ""
+"**Step 2.** Install **pkg-config**, a program used to compile and link "
+"against one or more libraries."
+msgstr ""
+"**Etape 2.** Installer **pkg-config**, un programme utilisé pour compiler et"
+" lier une ou plusieurs librairies."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:56
+msgid ""
+"**Step 3.** Install either **libssl-dev** (Linux) or **openssl** (MacOS), "
+"which are toolkits for the Transport Layer Security (TLS) and Secure Sockets"
+" Layer (SSL) protocols. They also serve as general-purpose cryptography "
+"libraries."
+msgstr ""
+"**Installer **libssl-dev** (Linux) ou **openssl** (MacOS), qui sont des "
+"boîtes à outils pour les protocoles Transport Layer Security (TLS) et Secure"
+" Sockets Layer (SSL). Elles servent également de librairies de cryptographie"
+" à usage général."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:70
+msgid ""
+"**Step 4.** You will also need the **gcc** and **g++** compilers, which "
+"usually come as part of developer command-line tools (versions 7.5.0 at the "
+"time of this writing)."
+msgstr ""
+"*On aura également besoin des compilateurs **gcc** et **g++**, qui font "
+"généralement partie des outils de ligne de commande des développeurs "
+"(versions 7.5.0 au moment de la rédaction de ce document)."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:88
+msgid ""
+"**Step 5.** Create and activate a new virtual environment. **Commands "
+"applicable to the virtual environment will be prefixed with (env)**. Run the"
+" following commands to set it up."
+msgstr ""
+"**Etape 5.** Créer et activer un nouvel environnement virtuel. **Les "
+"commandes applicables à l'environnement virtuel seront préfixées par "
+"(env)**. Exécuter les commandes suivantes pour le configurer."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:90
+#: ../../dapp-dev-guide/setup-nctl.rst:100
+#: ../../dapp-dev-guide/setup-nctl.rst:108
+#: ../../dapp-dev-guide/setup-nctl.rst:116
+#: ../../dapp-dev-guide/setup-nctl.rst:124
+#: ../../dapp-dev-guide/setup-nctl.rst:137
+#: ../../dapp-dev-guide/setup-nctl.rst:146
+#: ../../dapp-dev-guide/setup-nctl.rst:154
+#: ../../dapp-dev-guide/setup-nctl.rst:162
+#: ../../dapp-dev-guide/setup-nctl.rst:170
+#: ../../dapp-dev-guide/setup-nctl.rst:199
+msgid "Instructions for MacOS and Linux:"
+msgstr "Instructions pour MacOS et Linux :"
+
+#: ../../dapp-dev-guide/setup-nctl.rst:98
+msgid ""
+"**Step 6.** Inside the virtual environment, upgrade **pip** to the latest "
+"version."
+msgstr ""
+"**Etape 6.** Dans l'environnement virtuel, mettre à jour **pip** à la "
+"dernière version."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:106
+msgid "**Step 7.** Install **jq**, a command-line JSON processor."
+msgstr ""
+"**Etape 7.** Installer **jq**, un processeur JSON en ligne de commande."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:114
+msgid "**Step 8.** Install **supervisor**, a cross-platform process manager."
+msgstr ""
+"**Etape 8.** Installer **supervisor**, un gestionnaire de processus "
+"multiplateforme."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:122
+msgid "**Step 9.** Install **toml**, a configuration file parser."
+msgstr ""
+"**Etape 9.** Installer **toml**, un parseur de fichiers de configuration."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:132
+msgid "Setting up the Network"
+msgstr "Configuration du réseau"
+
+#: ../../dapp-dev-guide/setup-nctl.rst:133
+msgid ""
+"You are now ready to set up and run your local network of Casper nodes."
+msgstr ""
+"Vous êtes maintenant prêt à configurer et à faire fonctionner votre réseau "
+"local de nœuds Casper."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:135
+msgid ""
+"**Step 10.** Clone the *casper-node-launcher* software in your working "
+"directory, which we will call *WORKING_DIRECTORY*. **Very Important!!! "
+"Choose a short path for your working directory**; otherwise, the NCTL tool "
+"will report that the path is too long."
+msgstr ""
+"**Etape 10.** Cloner le projet *casper-node-launcher* dans votre répertoire "
+"de travail, que nous appellerons *WORKING_DIRECTORY*. **Très important ! !! "
+"Choisir un chemin court pour votre répertoire de travail** ; sinon, l'outil "
+"NCTL signalera que le chemin est trop long."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:144
+msgid ""
+"**Step 11.** Next, clone the *casper-node* software, also in your working "
+"directory."
+msgstr ""
+"**Etape 11.** Ensuite, cloner le projet *casper-node* dans votre répertoire "
+"de travail."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:152
+msgid "**Step 12.** Activate the NCTL environment with the following command."
+msgstr "**Etape 12.** Activer l'environnement NCTL avec la commande suivante."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:160
+msgid ""
+"**Step 13.** Compile the NCTL binary scripts. The following command compiles"
+" both the *casper-node* and the *casper-client* in release mode."
+msgstr ""
+"**Étape 13 .** Compiler les scripts binaires NCTL. La commande suivante "
+"compile à la fois *casper-node* et *casper-client* en mode 'release'."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:168
+msgid ""
+"**Step 14.** Set up all the assets required to run a local network, "
+"including binaries, chainspec, config, faucet, and keys. Also, spin up the "
+"network right after. The default network will have 10 nodes, with 5 active "
+"nodes and 5 inactive nodes."
+msgstr ""
+"**Etape 14.** Installer tous les éléments nécessaires au fonctionnement d'un"
+" réseau local, y compris les binaires, chainspec, config, faucet et les "
+"clés. Lancer le réseau juste après. Le réseau par défaut aura 10 noeuds, "
+"avec 5 noeuds actifs et 5 noeuds inactifs."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:176
+msgid ""
+"Once a network is up and running, you can control each node within the "
+"network and add new nodes to the network."
+msgstr ""
+"Une fois qu'un réseau est opérationnel, on peut contrôler chaque nœud du "
+"réseau et ajouter de nouveaux nœuds au réseau."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:178
+msgid ""
+"Several other NCTL commands are available via aliases for execution from "
+"within a terminal session. All such commands are prefixed by *nctl-* and "
+"allow you to perform various tasks."
+msgstr ""
+"Plusieurs autres commandes NCTL sont disponibles via des alias pour une "
+"exécution à partir d'une session de terminal. Toutes ces commandes sont "
+"préfixées par *nctl-* et permettent d'effectuer diverses tâches."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:180
+msgid ""
+"You should see the new directory *utils/nctl/assets*, with the following "
+"structure."
+msgstr ""
+"On devrait voir le nouveau répertoire *utils/nctl/assets*, avec la structure"
+" suivante."
+
+msgid "Image showing the folders created by nctl."
+msgstr "Image montrant les dossiers créés par nctl."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:188
+msgid "Here is the command line output you would expect."
+msgstr ""
+"Voici la sortie de la ligne de commande à laquelle on peut s'attendre."
+
+msgid "Image showing successful nctl output."
+msgstr "Image montrant une sortie nctl réussie."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:196
+msgid "Stopping the Network"
+msgstr "Arrêt du réseau"
+
+#: ../../dapp-dev-guide/setup-nctl.rst:197
+msgid ""
+"**Step 15.** Although not necessary, you can stop and clean the NCTL setup "
+"with the following commands."
+msgstr ""
+"**Etape 15.** Bien que cela ne soit pas nécessaire, on peut arrêter et "
+"nettoyer la configuration NCTL avec les commandes suivantes."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:207
+msgid "Next Steps"
+msgstr "Étapes suivantes"
+
+#: ../../dapp-dev-guide/setup-nctl.rst:208
+msgid ""
+"Explore the `various NCTL commands <https://github.com/CasperLabs/casper-"
+"node/blob/master/utils/nctl/docs/commands.md>`_."
+msgstr ""
+"Explorer les `différentes commandes NCTL <https://github.com/CasperLabs"
+"/casper-node/blob/master/utils/nctl/docs/commands.md>`_."
+
+#: ../../dapp-dev-guide/setup-nctl.rst:209
+msgid ""
+"Explore the `NCTL usage guide <https://github.com/CasperLabs/casper-"
+"node/blob/master/utils/nctl/docs/usage.md>`_."
+msgstr ""
+"Explorer `Le guide d'utilisation du NCTL <https://github.com/CasperLabs"
+"/casper-node/blob/master/utils/nctl/docs/usage.md>`_."

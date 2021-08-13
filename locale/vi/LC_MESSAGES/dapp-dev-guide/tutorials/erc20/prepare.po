@@ -1,0 +1,57 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/tutorials/erc20/prepare.rst:3
+msgid "Preparation"
+msgstr "Chuẩn bị"
+
+#: ../../dapp-dev-guide/tutorials/erc20/prepare.rst:5
+msgid "First clone the contract from GitHub:"
+msgstr "Trước hết hãy sao chép hợp đồng từ GitHub:"
+
+#: ../../dapp-dev-guide/tutorials/erc20/prepare.rst:12
+msgid "Prepare your environment with the following command:"
+msgstr "Chuẩn bị môi trường của bạn bằng lệnh sau:"
+
+#: ../../dapp-dev-guide/tutorials/erc20/prepare.rst:18
+msgid "If your environment is setup correctly, you will see this output:"
+msgstr ""
+"Nếu môi trường của bạn được thiết lập đúng, bạn sẽ thấy thông tin này:"
+
+#: ../../dapp-dev-guide/tutorials/erc20/prepare.rst:25
+msgid ""
+"If you do not see this message, check `the Getting Started guide "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_."
+msgstr ""
+"Nếu bạn không thấy thông báo này, hãy kiểm tra `Hướng dẫn bắt đầu "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_."
+
+#: ../../dapp-dev-guide/tutorials/erc20/prepare.rst:27
+msgid "Next, compile your contract and run the contract unit tests."
+msgstr ""
+"Tiếp theo, biên dịch hợp đồng của bạn và chạy các bài kiểm thử đơn vị cho "
+"hợp đồng."

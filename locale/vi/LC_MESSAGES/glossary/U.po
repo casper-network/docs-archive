@@ -1,0 +1,170 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../glossary/U.rst:2
+msgid "U"
+msgstr "U"
+
+#: ../../glossary/U.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/U.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/U.rst:9
+msgid "Unbonding"
+msgstr "Unbonding"
+
+#: ../../glossary/U.rst:10
+msgid ""
+"Withdrawing money from the `auction <A.html#auction>`_ contract with "
+"*withdraw bid* and possibly ceasing to be a validator. The unbonding request"
+" is a transaction that informs the auction contract that the sender wants to"
+" decrease their deposit. In the next booking block, only the decreased "
+"deposit is considered when determining a future validator set. If it has "
+"been decreased to 0, the sender will not be included in the validator set "
+"anymore. However, the amount only gets transferred to the sender after the "
+"unbonding period. If during that period their node exhibits a fault, the "
+"unbonded amount can still be slashed."
+msgstr ""
+"Rút tiền từ hợp đồng đấu giá (`auction <A.html#auction>`_) với *đặt giá rút*"
+" và có thể không còn là người xác thực. Yêu cầu giảm cổ phần là một giao "
+"dịch thông báo cho hợp đồng đấu giá rằng người gửi muốn giảm tiền đặt cọc "
+"của họ. Trong khối đã đặt chỗ tiếp theo, chỉ xem xét giảm số tiền đặt cọc "
+"khi xác định nhóm người xác thực trong tương lai. Nếu nó đã được giảm xuống "
+"0, người gửi sẽ không được trong nhóm trình xác thực nữa. Tuy nhiên, số tiền"
+" chỉ được chuyển đến người gửi sau khoảng thời gian rút cổ phần. Nếu trong "
+"khoảng thời gian đó, nút của họ có lỗi, số tiền chưa được rút vẫn có thể bị "
+"cắt."
+
+#: ../../glossary/U.rst:15
+msgid "Users"
+msgstr "Users (Người sử dụng)"
+
+#: ../../glossary/U.rst:16
+msgid ""
+"Users execute session and contract code using the platform's computational "
+"resources."
+msgstr ""
+"Người dùng thực thi mã của phiên và hợp đồng bằng cách sử dụng các tài "
+"nguyên tính toán của nền tảng."

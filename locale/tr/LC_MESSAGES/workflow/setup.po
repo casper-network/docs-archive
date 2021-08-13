@@ -1,0 +1,383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../workflow/setup.rst:2
+msgid "Prerequisites"
+msgstr "Önkoşullar"
+
+#: ../../workflow/setup.rst:4
+msgid ""
+"This section explains how to fulfill the prerequisites needed to interact "
+"with a Casper Network."
+msgstr ""
+"Bu bölüm, Casper Network ile etkileşim kurmak için gereken ön koşulların "
+"nasıl yerine getirileceğini açıklar."
+
+#: ../../workflow/setup.rst:6
+msgid "This section covers:"
+msgstr "Bu bölüm şunları kapsar:"
+
+#: ../../workflow/setup.rst:8
+msgid "Installing the official Casper command-line client"
+msgstr "Resmi Casper komut satırı istemcisini yüklemek"
+
+#: ../../workflow/setup.rst:9
+msgid "Setting up an account on a Casper Network"
+msgstr "Casper Network'te hesap oluşturmak"
+
+#: ../../workflow/setup.rst:10
+msgid "Acquiring the IP address of a peer on the official Testnet or Mainnet"
+msgstr "Resmi Testnet veya Mainnet'te bir eşin IP adresini edinmek"
+
+#: ../../workflow/setup.rst:13
+msgid "The Casper command-line client"
+msgstr "Casper komut satırı istemcisi"
+
+#: ../../workflow/setup.rst:15
+msgid ""
+"You can find the client on `crates.io <https://crates.io/crates/casper-"
+"client>`_."
+msgstr ""
+"İstemciyi `crates.io <https://crates.io/crates/casper-client>`_ adresinde "
+"bulabilirsiniz."
+
+#: ../../workflow/setup.rst:17
+msgid ""
+"Run the commands below to install the Casper client on most flavors of Linux"
+" and macOS. You will need the nightly version of the compiler."
+msgstr ""
+"Casper istemcisini Linux ve macOS'un çoğu çeşidine kurmak için aşağıdaki "
+"komutları çalıştırın. Derleyicinin gece sürümüne ihtiyacınız olacak."
+
+#: ../../workflow/setup.rst:24
+msgid ""
+"The Casper client can print out `help` information, which provides an up-to-"
+"date list of supported commands."
+msgstr ""
+"Casper istemcisi, desteklenen komutların güncel bir listesini sağlayan "
+"`help` bilgilerini yazdırabilir."
+
+#: ../../workflow/setup.rst:30
+msgid ""
+"**Important**: For each command, you can use `help` to get the up-to-date "
+"arguments and descriptions:"
+msgstr ""
+"**Önemli**: Her komut için, güncel argümanları ve açıklamaları almak için "
+"`help`i kullanabilirsiniz:"
+
+#: ../../workflow/setup.rst:37
+msgid "Setting up an Account"
+msgstr "Hesap Oluşturmak"
+
+#: ../../workflow/setup.rst:39
+msgid ""
+"The process of creating an `Account "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ can be"
+" divided into two steps:"
+msgstr ""
+"`Hesap <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_"
+" oluşturma süreci iki adıma ayrılabilir:"
+
+#: ../../workflow/setup.rst:41
+msgid "Cryptographic key generation for the account"
+msgstr "Hesap için şifreleme anahtarı oluşturma"
+
+#: ../../workflow/setup.rst:42
+msgid "Funding the account"
+msgstr "Hesabı finanse etmek"
+
+#: ../../workflow/setup.rst:44
+msgid ""
+"The Casper blockchain uses an on-chain account-based model, uniquely "
+"identified by an ``AccountHash`` derived from a specific ``PublicKey``."
+msgstr ""
+"Casper blokzinciri, belirli bir ``PublicKey``den türetilen ``AccountHash`` "
+"ile benzersiz bir şekilde tanımlanan zincir içi hesap tabanlı bir model "
+"kullanır."
+
+#: ../../workflow/setup.rst:46
+msgid ""
+"By default, a transactional interaction with the blockchain takes the form "
+"of a ``Deploy`` cryptographically signed by the key-pair corresponding to "
+"the ``PublicKey`` used to create the account."
+msgstr ""
+"Varsayılan olarak, blokzincir ile bir işlem etkileşimi, hesabı oluşturmak "
+"için kullanılan ``PublicKey``e karşılık gelen anahtar çifti tarafından "
+"kriptografik olarak imzalanmış bir ``Dağıtım`` şeklini alır."
+
+#: ../../workflow/setup.rst:48
+msgid ""
+"Accounts can be created using the Casper command-line client. Alternatively,"
+" some Casper networks such as the official Testnet and Mainnet provide a "
+"browser-based block explorer that allows account creation."
+msgstr ""
+"Hesaplar, Casper komut satırı istemcisi kullanılarak oluşturulabilir. "
+"Alternatif olarak, resmi Testnet ve Mainnet gibi bazı Casper ağları, hesap "
+"oluşturmaya izin veren tarayıcı tabanlı bir blok gezgini sunar."
+
+#: ../../workflow/setup.rst:50
+msgid ""
+"A cryptographic key-pair will be created when using either the Casper "
+"command-line client or a block explorer to create an account on the "
+"blockchain. This process generates three files for each account:"
+msgstr ""
+"Blokzincirde bir hesap oluşturmak için Casper komut satırı istemcisi veya "
+"bir blok gezgini kullanıldığında bir kriptografik anahtar çifti "
+"oluşturulacaktır. Bu işlem, her hesap için üç dosya oluşturur:"
+
+#: ../../workflow/setup.rst:52
+msgid "A PEM encoded secret key"
+msgstr "PEM kodlu bir gizli anahtar"
+
+#: ../../workflow/setup.rst:53
+msgid "A PEM encoded public key"
+msgstr "PEM kodlu bir açık anahtar"
+
+#: ../../workflow/setup.rst:54
+msgid "A hexadecimal-encoded string representation of the public key"
+msgstr ""
+"Açık anahtarın onaltılık olarak kodlanmış halini temsil eden bir dizge"
+
+#: ../../workflow/setup.rst:56
+msgid "We recommend saving these files securely."
+msgstr "Bu dosyaları güvenli bir şekilde kaydetmenizi öneririz."
+
+#: ../../workflow/setup.rst:58
+msgid ""
+"The command-line client provides a command that will give you the account "
+"hash for a given public key."
+msgstr ""
+"Komut satırı istemcisi, size belirli bir açık anahtar için hesap özetini "
+"verecek bir komut sağlar."
+
+#: ../../workflow/setup.rst:65
+msgid "Option 1: Key generation using the Casper client"
+msgstr "Seçenek 1: Casper istemcisini kullanarak anahtar oluşturma"
+
+#: ../../workflow/setup.rst:67
+msgid ""
+"This option describes how you can use the Casper command-line client to set "
+"up your accounts."
+msgstr ""
+"Bu seçenek, hesaplarınızı ayarlamak için Casper komut satırı istemcisini "
+"nasıl kullanabileceğinizi açıklar."
+
+#: ../../workflow/setup.rst:69
+msgid "Execute the following command to generate your keys:"
+msgstr "Anahtarlarınızı oluşturmak için aşağıdaki komutu çalıştırın:"
+
+#: ../../workflow/setup.rst:75
+msgid ""
+"The above command will create three files in the current working directory:"
+msgstr "Yukarıdaki komut, geçerli çalışma dizininde üç dosya oluşturacaktır:"
+
+#: ../../workflow/setup.rst:77
+msgid "``secret_key.pem`` - PEM encoded secret key"
+msgstr "``secret_key.pem`` - PEM kodlu gizli anahtar"
+
+#: ../../workflow/setup.rst:78
+msgid "``public_key.pem`` - PEM encoded public key"
+msgstr "``public_key.pem`` - PEM kodlu açık anahtar"
+
+#: ../../workflow/setup.rst:79
+msgid "``public_key_hex`` - Hexadecimal-encoded string of the public key"
+msgstr ""
+"``public_key_hex`` - Açık anahtarın onaltılık olarak kodlanmış dizgesi"
+
+#: ../../workflow/setup.rst:81
+msgid "**Note**: SAVE your keys to a safe place, preferably offline."
+msgstr ""
+"**Not**: Anahtarlarınızı tercihen çevrimdışı olmak üzere güvenli bir yere "
+"SAKLAYIN."
+
+#: ../../workflow/setup.rst:83
+msgid ""
+"Once the keys for the account have been generated, the accounts can be "
+"funded to finish the process of creating an account."
+msgstr ""
+"Hesabın anahtarları oluşturulduktan sonra, hesap oluşturma sürecini "
+"tamamlamak için hesaplara para yatırılabilir."
+
+#: ../../workflow/setup.rst:85
+msgid ""
+"**Note**: Responses from the node contain ``AccountHashes`` instead of the "
+"direct hexadecimal-encoded public key. For traceability, it is important to "
+"generate the account hash and store this value locally. The account hash is "
+"a ``Blake2B`` hash of the public hexadecimal-encoded string."
+msgstr ""
+"**Not**: Düğümden gelen yanıtlar, doğrudan onaltılık kodlu açık anahtar "
+"yerine ``AccountHashes`` içerir. İzlenebilirlik için hesap özetini (hash) "
+"oluşturmak ve bu değeri yerel olarak depolamak önemlidir. Hesap özeti "
+"(hash), genel onaltılık kodlu dizgenin \"Blake2B\" özet (hash) değeridir."
+
+#: ../../workflow/setup.rst:88
+msgid "Option 2: Key generation using a Block Explorer"
+msgstr "Seçenek 2: Blok Gezgini kullanarak anahtar oluşturma"
+
+#: ../../workflow/setup.rst:90
+msgid "This option is also available on networks that have a block explorer."
+msgstr "Blok gezgini olan ağlarda bu seçenek de mevcuttur."
+
+#: ../../workflow/setup.rst:92
+msgid ""
+"For instance, on the official Testnet network the `CSPR.live "
+"<https://testnet.cspr.live/>`_ block explorer is available, and the "
+"following instructions assume you are using it."
+msgstr ""
+"Örneğin, resmi Testnet ağında `CSPR.live <https://testnet.cspr.live/>`_ blok"
+" tarayıcısı mevcuttur ve aşağıdaki talimatlar onu kullandığınızı varsayar."
+
+#: ../../workflow/setup.rst:94
+msgid ""
+"Start by creating an account using the `Create Account <https://clarity-"
+"testnet-old.make.services/#/accounts>`_ link. You will be asked to provide a"
+" unique name for your account; this is for your convenience and is not "
+"stored on chain."
+msgstr ""
+"`Hesap Oluştur <https://clarity-testnet-old.make.services/#/accounts>`_ "
+"bağlantısını kullanarak bir hesap oluşturarak başlayın. Hesabınız için "
+"benzersiz bir ad vermeniz istenecektir; bu size kolaylık sağlamak içindir ve"
+" zincirde saklanmaz."
+
+#: ../../workflow/setup.rst:96
+msgid ""
+"You will be prompted to save three files for your new account; carefully "
+"choose where you store them. We recommend storing your keys in a secure "
+"manner."
+msgstr ""
+"Yeni hesabınız için üç dosya kaydetmeniz istenecektir; onları nerede "
+"saklayacağınızı dikkatlice seçin. Anahtarlarınızı güvenli bir şekilde "
+"saklamanızı öneririz."
+
+#: ../../workflow/setup.rst:98
+msgid "``<Account-Name>_secret_key.pem`` - PEM encoded secret key"
+msgstr "``<Account-Name>_secret_key.pem`` - PEM kodlu gizli anahtar"
+
+#: ../../workflow/setup.rst:99
+msgid "``<Account-Name>_public_key.pem`` - PEM encoded public key"
+msgstr "``<Account-Name>_public_key.pem`` - PEM kodlu açık anahtar"
+
+#: ../../workflow/setup.rst:100
+msgid ""
+"``<Account-Name>_public_key_hex`` - Hexadecimal-encoded string of the public"
+" key"
+msgstr ""
+"``<Account-Name>_public_key_hex`` - Açık anahtarın onaltılık olarak "
+"kodlanmış dizgesi"
+
+#: ../../workflow/setup.rst:104
+msgid "Fund your Account"
+msgstr "Hesabınıza Para Yatırın"
+
+#: ../../workflow/setup.rst:106
+msgid ""
+"Once the cryptographic key-pair for the account has been generated, the "
+"account must be funded so it can be created on chain."
+msgstr ""
+"Hesap için kriptografik anahtar çifti üretildikten sonra, zincir üzerinde "
+"oluşturulabilmesi için hesabın finanse edilmesi gerekir."
+
+#: ../../workflow/setup.rst:108
+msgid ""
+"In Testnet, you can fund the account by using the *Request tokens* button on"
+" the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to "
+"receive tokens."
+msgstr ""
+"Testnet'te, token almak için `Faucet Sayfasındaki <https://clarity-testnet-"
+"old.make.services/#/faucet>`_ *Token iste* düğmesini kullanarak hesaba para "
+"yatırabilirsiniz."
+
+#: ../../workflow/setup.rst:110
+msgid ""
+"In Mainnet, a pre-existing account will have to transfer CSPR tokens to "
+"finalize the process of setting up an account. The *Source* account needs to"
+" transfer CSPR tokens to the hexadecimal-encoded public key of the *Target* "
+"account. This transfer will automatically create the *Target* account if it "
+"does not exist. Currently, this is the only way an account can be created on"
+" Mainnet."
+msgstr ""
+"Mainnet'te, bir hesap oluşturma sürecini tamamlamak için önceden var olan "
+"bir hesabın CSPR tokeni aktarması gerekecektir. *Kaynak* hesabın, CSPR "
+"tokenlerini *Hedef* hesabın onaltılı olarak kodlanmış açık anahtarına "
+"aktarması gerekir. Bu transfer, mevcut değilse, *Hedef* hesabı otomatik "
+"olarak oluşturacaktır. Şu anda, Mainnet'te bir hesap oluşturulabilmesinin "
+"tek yolu budur."
+
+#: ../../workflow/setup.rst:113
+msgid "Acquire Node Address from network peers"
+msgstr "Ağ eşlerinden Düğüm Adresi alın"
+
+#: ../../workflow/setup.rst:115
+msgid ""
+"Clients can interact with a node on the blockchain via requests sent to that"
+" node's JSON-RPC endpoint, ``http://<node-ip-address>:7777`` by default."
+msgstr ""
+"İstemciler, varsayılan olarak bu düğümün JSON-RPC uç noktasına, ``http"
+"://<node-ip-address>:7777`` gönderilen istekler aracılığıyla blokzincirdeki "
+"bir düğümle etkileşim kurabilir."
+
+#: ../../workflow/setup.rst:117
+msgid "The node address is the IP of a peer node."
+msgstr "Düğüm adresi, bir eş düğümün IP'sidir."
+
+#: ../../workflow/setup.rst:119
+msgid ""
+"Both the official testnet and Mainnet provide block explorers that provide a"
+" list of IP addresses of nodes on their respective networks."
+msgstr ""
+"Hem resmi test ağı hem de Mainnet, kendi ağlarındaki düğümlerin IP "
+"adreslerinin bir listesini sağlayan blok gezgini sunar."
+
+#: ../../workflow/setup.rst:121
+msgid ""
+"You can get the ``node-ip-address`` of a node on the network by visiting the"
+" following block explorers:"
+msgstr ""
+"Aşağıdaki blok gezginlerini ziyaret ederek ağdaki bir düğümün ``node-ip-"
+"address``ini alabilirsiniz:"
+
+#: ../../workflow/setup.rst:123
+msgid "`Peers <https://testnet.cspr.live/tools/peers>`_ on Testnet"
+msgstr "Testnet'te `Eşler <https://testnet.cspr.live/tools/peers>`_"
+
+#: ../../workflow/setup.rst:124
+msgid "`Peers <https://cspr.live/tools/peers>`_ on Mainnet"
+msgstr "Mainnet'te `Eşler <https://cspr.live/tools/peers>`_"
+
+#: ../../workflow/setup.rst:126
+msgid ""
+"You will see a list of peers, and you can select the IP of any peer on the "
+"list."
+msgstr ""
+"Eşlerin bir listesini göreceksiniz ve listedeki herhangi bir eşin IP'sini "
+"seçebilirsiniz."
+
+#: ../../workflow/setup.rst:128
+msgid ""
+"**Note**: If the selected peer is unresponsive, pick a different peer and "
+"try again."
+msgstr ""
+"**Not**: Seçilen eş yanıt vermiyorsa farklı bir eş seçip tekrar deneyin."

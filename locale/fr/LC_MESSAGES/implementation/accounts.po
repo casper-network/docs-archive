@@ -1,0 +1,357 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../implementation/accounts.rst:4
+msgid "Accounts"
+msgstr "Comptes"
+
+#: ../../implementation/accounts.rst:9
+msgid "Introduction"
+msgstr "Introduction"
+
+#: ../../implementation/accounts.rst:11
+msgid ""
+"An *account* is a cryptographically secured gateway into the Casper system "
+"used by entities outside the blockchain (e.g., off-chain components of "
+"blockchain-based applications, individual users). All user activity on the "
+"Casper blockchain (i.e., “deploys”) must originate from an account. Each "
+"account has its own context where it can locally store information (e.g., "
+"references to useful contracts, metrics, aggregated data from other parts of"
+" the blockchain). Each account also has a “main purse” where it can hold "
+"Casper tokens (see :ref:`Tokens <tokens-purses-and-accounts>` for more "
+"information)."
+msgstr ""
+"Un *compte*  (Account) est une passerelle cryptographiquement sécurisée vers"
+" le système Casper, utilisée par des entités extérieures à la blockchain "
+"(par exemple, des composants hors chaîne d'applications basées sur la "
+"blockchain, des utilisateurs individuels). Toute activité d'un utilisateur "
+"sur la blockchain Casper (c'est-à-dire les \"déploiements \") doit provenir "
+"d'un compte. Chaque compte possède son propre contexte dans lequel il peut "
+"stocker localement des informations (par exemple, des références à des "
+"contrats utiles, des métriques, des données agrégées provenant d'autres "
+"parties de la blockchain). Chaque compte dispose également d'un \"porte-"
+"monnaie principal\" (main purse) où il peut conserver les jetons Casper "
+"(voir :ref:`Jetons <tokens-purses-and-accounts>` pour plus d'informations)."
+
+#: ../../implementation/accounts.rst:20
+msgid ""
+"In this chapter we describe the permission model for accounts, their local "
+"storage capabilities, and briefly mention some runtime functions for "
+"interacting with accounts."
+msgstr ""
+"Dans ce chapitre, nous décrivons le modèle de permission pour les comptes, "
+"leurs capacités de stockage local, et nous mentionnons brièvement certaines "
+"fonctions runtime pour interagir avec un compte."
+
+#: ../../implementation/accounts.rst:27
+msgid "The ``Account`` data structure"
+msgstr "La structure de données ``Account``"
+
+#: ../../implementation/accounts.rst:29
+msgid "An ``Account`` contains the following data:"
+msgstr "Un compte , ``Account`` contient les données suivantes :"
+
+#: ../../implementation/accounts.rst:31
+msgid ""
+"A collection of named keys (this plays the same role as the named keys in a "
+":ref:`stored contract <global-state-contracts>`)"
+msgstr ""
+" Une collection de clés nommées (qui joue le même rôle que les clés nommées "
+"dans un :ref:`stored contract<global-state-contracts>`)"
+
+#: ../../implementation/accounts.rst:33
+msgid "A ``URef`` representing the account’s “main purse”"
+msgstr "Un ``URef`` représentant le \"porte monnaie principale\" du compte"
+
+#: ../../implementation/accounts.rst:34
+msgid "A collections of “associated keys” (see below for more information)"
+msgstr ""
+"Une collection de \"clés associées\"  (associated keys) (voir ci-dessous "
+"pour plus d'informations)"
+
+#: ../../implementation/accounts.rst:35
+msgid "“Action thresholds” (see below for more information)"
+msgstr ""
+"\"Seuils d'action\" ou “Action thresholds” (voir ci-dessous pour plus "
+"d'informations)"
+
+#: ../../implementation/accounts.rst:40
+msgid "Permissions model"
+msgstr "Modèle de permissions"
+
+#: ../../implementation/accounts.rst:45
+msgid "Actions and thresholds"
+msgstr "Actions et seuils"
+
+#: ../../implementation/accounts.rst:47
+msgid ""
+"There are two types of actions an account can perform: a deployment, and key"
+" management. A deployment is simply executing some code on the blockchain, "
+"while key management involves changing the associated keys (which will be "
+"described in more detail later). Key management cannot be performed "
+"independently, as all effects to the blockchain must come via a deploy; "
+"therefore, a key management action implies that a deployment action is also "
+"taking place. The ``ActionThresholds`` contained in the ``Account`` data "
+"structure set a ``Weight`` which must be met in order to perform that "
+"action. How these weight thresholds can be met is described in the next "
+"section. Since a key management action requires a deploy action, the key "
+"management threshold should always be greater than or equal to the deploy "
+"threshold."
+msgstr ""
+"Il existe deux types d'actions qu'un compte peut effectuer : les "
+"déploiements et la gestion des clés. Un déploiement consiste simplement à "
+"exécuter du code sur la blockchain, tandis que la gestion des clés implique "
+"la modification des clés associées (qui sera décrite plus en détail "
+"ultérieurement). La gestion des clés ne peut pas être effectuée "
+"indépendamment, car tous les effets sur la blockchain doivent passer par un "
+"déploiement ; par conséquent, une action de gestion des clés implique qu'une"
+" action de déploiement ait également lieu. Les \"Seuils d'action\" ou "
+"``ActionThresholds`` contenus dans la structure de données \"Account\" "
+"définissent un \"Poids\" ou ``Weight`` qui doit être atteint afin "
+"d'effectuer cette action. La façon dont ces seuils de poids peuvent être "
+"atteints est décrite dans la section suivante. Puisqu'une action de gestion "
+"des clés nécessite une action de déploiement, le seuil de gestion des clés "
+"doit toujours être supérieur ou égal au seuil de déploiement."
+
+#: ../../implementation/accounts.rst:62
+msgid "Associated keys and weights"
+msgstr "Clés et poids associés"
+
+#: ../../implementation/accounts.rst:64
+msgid ""
+"As mentioned in the introduction, accounts are secured via cryptography. The"
+" *associated keys* of an account are the set of public keys which are "
+"allowed to provide signatures on deploys for that account. Each associated "
+"key has a weight; these weights are used to meet the action thresholds "
+"provided in the previous section. Each deploy must be signed by one or more "
+"keys associated with the account that deploy is for, and the sum of the "
+"weights of those keys must be greater than or equal to the deployment "
+"threshold weight for that account. We call the keys that have signed a "
+"deploy the “authorizing keys”. Similarly, if that deploy contains any key "
+"management actions (detailed below), then the sum of the weights of the "
+"authorizing keys must be greater than or equal to the key management action "
+"threshold of the account."
+msgstr ""
+"Comme mentionné dans l'introduction, les comptes sont sécurisés par "
+"cryptographie. Les *associated keys* d'un compte sont l'ensemble des clés "
+"publiques qui sont autorisées à fournir des signatures sur les déploiements "
+"pour ce compte. Chaque clé est associée a un poids ; ces poids sont utilisés"
+" pour atteindre les seuils d'action fournis dans la section précédente. "
+"Chaque déploiement doit être signé par une ou plusieurs clés associées au "
+"compte auquel il est destiné, et la somme des poids de ces clés doit être "
+"supérieure ou égale au poids du seuil de déploiement pour ce compte. Nous "
+"appelons les clés qui ont signé un déploiement les \"clés d'autorisation\" "
+"ou “authorizing keys”. De même, si ce déploiement contient des actions de "
+"gestion des clés (détaillées ci-dessous), alors la somme des poids des clés "
+"d'autorisation doit être supérieure ou égale au seuil d'action de gestion "
+"des clés du compte."
+
+#: ../../implementation/accounts.rst:76
+msgid ""
+"Note: that any key may be used to help authorize any action; there are no "
+"“special keys”, all keys contribute their weight in exactly the same way."
+msgstr ""
+"Note : n'importe quelle clé peut être utilisée pour aider à autoriser "
+"n'importe quelle action ; il n'y a pas de \"clé spéciales\" (“special "
+"keys”), toutes les clés apportent leur poids exactement de la même manière."
+
+#: ../../implementation/accounts.rst:81
+msgid "Key management actions"
+msgstr "Actions de gestion des clés"
+
+#: ../../implementation/accounts.rst:83
+msgid ""
+"A *key management action* is any change to any of the permissions parameters"
+" for the account. This includes the following:"
+msgstr ""
+"Une *action de gestion des clés* est toute modification de l'un des "
+"paramètres d'autorisation du compte. Cela inclut les éléments suivants :"
+
+#: ../../implementation/accounts.rst:86
+msgid "adding or removing an associated key;"
+msgstr "ajouter ou supprimer une clé associée ;"
+
+#: ../../implementation/accounts.rst:87
+msgid "changing the weight of an associated key;"
+msgstr "modifier le poids d'une clé associée ;"
+
+#: ../../implementation/accounts.rst:88
+msgid "changing the threshold of any action."
+msgstr "modifier le seuil de toute action."
+
+#: ../../implementation/accounts.rst:90
+msgid ""
+"Key management actions have validity rules which prevent a user from locking"
+" themselves out of their account. For example, it is not allowed to set a "
+"threshold larger than the sum of the weights of all associated keys."
+msgstr ""
+"Les actions de gestion des clés ont des règles de validité qui empêchent un "
+"utilisateur de se bloquer hors de son compte. Par exemple, il n'est pas "
+"permis de fixer un seuil supérieur à la somme des poids de toutes les clés "
+"associées."
+
+#: ../../implementation/accounts.rst:97
+msgid "Account security and recovery using key management"
+msgstr "Sécurité et récupération des comptes à l'aide de la gestion des clés"
+
+#: ../../implementation/accounts.rst:99
+msgid ""
+"The purpose of this permissions model is to enable keeping accounts safe "
+"from lost or stolen keys, while allowing usage of capabilities of modern "
+"mobile devices. For example, it may be convenient to sign deploys from a "
+"smart phone in day-to-day usage, and this can be done without worrying about"
+" the repercussions of losing the phone. The recommended setup would be to "
+"have a low-weight key on the phone, only just enough for the deploy "
+"threshold, but not enough for key management, then if the phone is lost or "
+"stolen, a key management action using other associated keys from another "
+"device (e.g., a home computer) can be used to remove the lost associated key"
+" and add a key which resides on a replacement phone."
+msgstr ""
+"L'objectif de ce modèle de permissions est de protéger les comptes contre la"
+" perte ou le vol de clés, tout en permettant l'utilisation des capacités des"
+" appareils mobiles modernes. Par exemple, il peut être pratique de signer "
+"des déploiements à partir d'un téléphone intelligent dans le cadre d'une "
+"utilisation quotidienne, et cela peut être fait sans se soucier des "
+"répercussions de la perte du téléphone. La configuration recommandée serait "
+"d'avoir une clé de faible poids sur le téléphone, juste assez pour le seuil "
+"de déploiement, mais pas assez pour la gestion des clés, puis si le "
+"téléphone est perdu ou volé, une action de gestion des clés utilisant "
+"d'autres clés associées d'un autre dispositif (par exemple, un ordinateur "
+"personnel) peut être utilisée pour supprimer la clé associée perdue et "
+"ajouter une clé qui réside sur un téléphone de remplacement."
+
+#: ../../implementation/accounts.rst:102
+msgid ""
+"Note: that it is extremely important to ensure there will always be access "
+"to a sufficient number of keys to perform the key management action, "
+"otherwise future recovery will be impossible (we currently do not support "
+"“inactive recovery”)."
+msgstr ""
+"Note : il est extrêmement important de s'assurer que l'on aura toujours "
+"accès à un nombre suffisant de clés pour effectuer l'action de gestion des "
+"clés, sinon la récupération future sera impossible (nous ne supportons pas "
+"actuellement la \"récupération inactive\")."
+
+#: ../../implementation/accounts.rst:110
+msgid "Creating an account"
+msgstr "Création d'un compte"
+
+#: ../../implementation/accounts.rst:112
+msgid ""
+"Account creation happens automatically when there is a :ref:`token transfer "
+"<tokens-purses-and-accounts>` to a yet unused :ref:`identity key <global-"
+"state-account-key>`. When an account is first created, the balance of its "
+"main purse is equal to the number of tokens transferred, its action "
+"thresholds are equal to 1, and there is one associated key (equal to the "
+"public key used to derive the identity key) with weight 1."
+msgstr ""
+"La création de compte se fait automatiquement lorsqu'il y a un "
+":ref:`transfert de token <tokens-purses-and-accounts>` vers une :ref:`clé "
+"d'identité <global-state-account-key>`non encore utilisée. Lorsqu'un compte "
+"est créé pour la première fois, le solde de son porte-monnaie principale est"
+" égal au nombre de jetons transférés, ses seuils d'action sont égaux à 1, et"
+" il y a une clé associée (égale à la clé publique utilisée pour dériver la "
+"clé d'identité) avec un poids de 1."
+
+#: ../../implementation/accounts.rst:122
+msgid "The account context"
+msgstr "Le contexte du compte"
+
+#: ../../implementation/accounts.rst:124
+msgid ""
+"A deploy is a user request to perform some execution on the blockchain (see "
+":ref:`Execution Semantics <execution-semantics-deploys>` for more "
+"information). It contains “payment code” and “session code” which are "
+"contracts that contain the logic to be executed. These contracts are "
+"executed in the context of the account of the deploy. This means these "
+"contracts use the named keys of the account and use the account’s local "
+"storage (i.e., the “root” for the :ref:`local keys <global-state-local-key>`"
+" come from the account identity key)."
+msgstr ""
+"Un déploiement est une requête de l'utilisateur pour exécuter une opération "
+"sur la blockchain (voir :ref:`Sémantiques d'exécution <execution-semantics-"
+"deploys>` pour plus d'informations). Il contient le \"code de paiement\" et "
+"le \"code de session\" qui sont des contrats qui contiennent la logique à "
+"exécuter. Ces contrats sont exécutés dans le contexte du compte du "
+"déploiement. Cela signifie que ces contrats utilisent les clés nommées du "
+"compte et utilisent le stockage local du compte (c'est-à-dire que la "
+"\"racine\" (root) pour les :ref:`clés locales<global-state-local-key>` "
+"provient de la clé d'identité du compte)."
+
+#: ../../implementation/accounts.rst:132
+msgid ""
+"Note: that other contracts called from the session code by ``call_contract``"
+" are executed in their own context, not the account context. This means, an "
+"account (with logic contained in session code) can be used to locally store "
+"information relevant to the user owning the account."
+msgstr ""
+"Note : que les autres contrats appelés depuis le code de session par "
+"``call_contract`` sont exécutés dans leur propre contexte, et non dans celui"
+" du compte. Cela signifie qu'un compte (avec la logique contenue dans le "
+"code de session) peut être utilisé pour stocker localement des informations "
+"pertinentes pour l'utilisateur qui possède ce compte."
+
+#: ../../implementation/accounts.rst:139
+msgid "Functions for interacting with an account"
+msgstr "Fonctions pour interagir avec un compte"
+
+#: ../../implementation/accounts.rst:141
+msgid ""
+"The `Casper Rust library <https://docs.rs/casper-"
+"contract/1.0.1/casper_contract/ext_ffi/index.html>`__ contains several "
+"functions for working with the various account features:"
+msgstr ""
+"La librairie `Casper Rust <https://docs.rs/casper-"
+"contract/1.0.1/casper_contract/ext_ffi/index.html>`__ contient plusieurs "
+"fonctions permettant de travailler avec les différentes fonctionnalités du "
+"compte :"
+
+#: ../../implementation/accounts.rst:143
+msgid "``casper_add_associated_key``"
+msgstr "``casper_add_associated_key``"
+
+#: ../../implementation/accounts.rst:144
+msgid "``casper_remove_associated_key``"
+msgstr "``casper_remove_associated_key``"
+
+#: ../../implementation/accounts.rst:145
+msgid "``casper_update_associated_key``"
+msgstr "``casper_update_associated_key``"
+
+#: ../../implementation/accounts.rst:146
+msgid "``casper_set_action_threshold``"
+msgstr "``casper_set_action_threshold``"
+
+#: ../../implementation/accounts.rst:147
+msgid "``casper_get_balance``"
+msgstr "``casper_get_balance``"
+
+#: ../../implementation/accounts.rst:148
+msgid "``casper_load_named_keys``"
+msgstr "``casper_load_named_keys``"
+
+#: ../../implementation/accounts.rst:149
+msgid "``casper_get_named_arg``"
+msgstr "``casper_get_named_arg``"

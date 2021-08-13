@@ -1,0 +1,275 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../workflow/querying.rst:3
+msgid "Querying the Network"
+msgstr "Truy vấn mạng"
+
+#: ../../workflow/querying.rst:5
+msgid ""
+"The Casper node supports queries for users and developers to obtain "
+"information stored on the blockchain."
+msgstr ""
+"Nút Casper hỗ trợ các truy vấn cho người dùng và nhà phát triển để lấy thông"
+" tin được lưu trữ trên chuỗi khối."
+
+#: ../../workflow/querying.rst:7
+msgid "This document assumes:"
+msgstr "Tài liệu này giả định:"
+
+#: ../../workflow/querying.rst:9
+msgid "You have met the `prerequisites <setup.html>`_"
+msgstr "Bạn đáp ứng các `điều kiện cần <setup.html>`_"
+
+#: ../../workflow/querying.rst:10
+msgid ""
+"You are familiar with the structure of the `Global State and the Blockchain "
+"Design <https://docs.casperlabs.io/en/latest/implementation/index.html>`_ to"
+" query data from the network"
+msgstr ""
+"Bạn đã quen thuộc với cấu trúc của `Ngữ cảnh toàn cục và Thiết kế chuỗi khối"
+" <https://docs.casperlabs.io/en/latest/implementation/index.html>`_  để truy"
+" vấn dữ liệu từ mạng"
+
+#: ../../workflow/querying.rst:12
+msgid ""
+"When sending a query, it is important to note that the request will be "
+"routed to a single node in the network. You can request several types of "
+"data from a node:"
+msgstr ""
+"Khi gửi một truy vấn, điều quan trọng cần lưu ý là yêu cầu sẽ được chuyển "
+"đến một nút duy nhất trong mạng. Bạn có thể yêu cầu một số loại dữ liệu từ "
+"một nút:"
+
+#: ../../workflow/querying.rst:14
+msgid "Account details"
+msgstr "Chi tiết tài khoản"
+
+#: ../../workflow/querying.rst:15
+msgid "Block information"
+msgstr "Thông tin khối"
+
+#: ../../workflow/querying.rst:16
+msgid "Deploy information"
+msgstr "Thông tin triển khai"
+
+#: ../../workflow/querying.rst:19
+msgid "Obtaining the Global State Root Hash"
+msgstr "Lấy Global State Root Hash"
+
+#: ../../workflow/querying.rst:20
+msgid ""
+"Since the system state changes with each block created, obtaining the latest"
+" global state hash is essential before querying information from a node."
+msgstr ""
+"Vì trạng thái hệ thống thay đổi với mỗi khối được tạo ra nên việc lấy mã băm"
+" trạng thái toàn cục mới nhất là điều cần thiết trước khi truy vấn thông tin"
+" từ một nút."
+
+#: ../../workflow/querying.rst:22
+msgid ""
+"All queries made to global state require the ``state-root-hash``,  which you"
+" can obtain with this command:"
+msgstr ""
+"Tất cả các truy vấn được thực hiện cho trạng thái toàn cục yêu cầu `state-"
+"root-hash``, bạn có thể nhận được bằng lệnh này:"
+
+#: ../../workflow/querying.rst:30 ../../workflow/querying.rst:88
+#: ../../workflow/querying.rst:167 ../../workflow/querying.rst:226
+#: ../../workflow/querying.rst:330
+msgid "**Request fields:**"
+msgstr "**Các trường yêu cầu:**"
+
+#: ../../workflow/querying.rst:32 ../../workflow/querying.rst:90
+#: ../../workflow/querying.rst:169 ../../workflow/querying.rst:228
+msgid ""
+"``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the "
+"request and returned in the response. If not provided, a random integer will"
+" be assigned"
+msgstr ""
+"``id`` - <STRING OR INTEGER> Định danh tuỳ chọn JSON-RPC được áp dụng cho "
+"yêu cầu và được trả lại trong phản hồi. Nếu không được cung cấp, một số "
+"nguyên ngẫu nhiên sẽ được chỉ định"
+
+#: ../../workflow/querying.rst:33 ../../workflow/querying.rst:91
+#: ../../workflow/querying.rst:170
+msgid ""
+"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP"
+" service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT> Tên máy chủ hoặc IP và cổng của nút mà dịch "
+"vụ HTTP đang chạy [default:http://localhost:7777]"
+
+#: ../../workflow/querying.rst:41 ../../workflow/querying.rst:105
+#: ../../workflow/querying.rst:180 ../../workflow/querying.rst:242
+msgid "**JSON-RPC Request**:"
+msgstr "**Yêu cầu JSON-RPC**:"
+
+#: ../../workflow/querying.rst:54 ../../workflow/querying.rst:120
+#: ../../workflow/querying.rst:194 ../../workflow/querying.rst:258
+msgid "**JSON-RPC Response**:"
+msgstr "**Phản hồi JSON-RPC**:"
+
+#: ../../workflow/querying.rst:75
+msgid "Querying an Account"
+msgstr "Truy vấn tài khoản"
+
+#: ../../workflow/querying.rst:77
+msgid ""
+"`Accounts "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ are "
+"stored in the global state and can be queried using the ``query-state`` "
+"command:"
+msgstr ""
+"`Tài khoản "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ được "
+"lưu trữ ở trạng thái toàn cục và có thể được truy vấn bằng lệnh ``query-"
+"state``:"
+
+#: ../../workflow/querying.rst:92 ../../workflow/querying.rst:171
+msgid "``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root"
+msgstr ""
+"``state-root-hash`` - <HEX STRING> Hàm băm mã hóa hex của trạng thái gốc"
+
+#: ../../workflow/querying.rst:93
+msgid ""
+"``key`` - <FORMATTED STRING or PATH> The base key for the query. This must "
+"be a properly formatted public key, account hash, contract address hash, "
+"URef, transfer hash or deploy-info hash."
+msgstr ""
+"``key`` - <FORMATTED STRING or PATH> Khóa cơ sở cho truy vấn. Đây phải là "
+"khóa công khai được định dạng đúng, băm tài khoản, băm địa chỉ hợp đồng, "
+"URef, băm chuyển hoặc băm thông tin triển khai."
+
+#: ../../workflow/querying.rst:96 ../../workflow/querying.rst:233
+msgid "**Important response fields:**"
+msgstr "**Các trường phản hồi quan trọng:**"
+
+#: ../../workflow/querying.rst:98
+msgid ""
+"``\"result\".\"stored_value\".\"Account\".\"main_purse\"`` - the address of "
+"the main purse containing the sender’s tokens. This purse is the source of "
+"the tokens transferred in this example"
+msgstr ""
+"``\"result\".\"stored_value\".\"Account\".\"main_purse\"`` - địa chỉ của ví "
+"chính chứa token của người gửi. Ví này là nguồn của các token được chuyển "
+"trong ví dụ này"
+
+#: ../../workflow/querying.rst:156
+msgid ""
+"You can use the URef of the ``main_purse`` to query the account balance. The"
+" balance returned is in motes (the unit that makes up the Casper token)."
+msgstr ""
+"Bạn có thể sử dụng URef của ``main_purse`` để truy vấn số dư tài khoản. Số "
+"dư được trả lại tính bằng motes (đơn vị tạo nên token Casper)."
+
+#: ../../workflow/querying.rst:172
+msgid ""
+"``purse-uref`` - <FORMATTED STRING> The URef under which the purse is "
+"stored. This must be a properly formatted URef \"uref-<HEX STRING>-<THREE "
+"DIGIT INTEGER>\""
+msgstr ""
+"``purse-uref`` - <FORMATTED STRING> URef mà theo đó ví được lưu trữ. Đây "
+"phải là URef được định dạng đúng \"uref-<HEX STRING>-<THREE DIGIT INTEGER>\""
+
+#: ../../workflow/querying.rst:214
+msgid "Querying Blocks"
+msgstr "Truy vấn khối"
+
+#: ../../workflow/querying.rst:216
+msgid ""
+"It is possible to obtain detailed block information from the system.  To do "
+"this, obtain the hash of the block of interest and send this query to a node"
+" in the network. Here is an example:"
+msgstr ""
+"Có thể lấy thông tin khối chi tiết từ hệ thống. Để thực hiện việc này, hãy "
+"lấy mã băm của khối quan bạn tâm và gửi truy vấn này đến một nút trong mạng."
+" Đây là một ví dụ:"
+
+#: ../../workflow/querying.rst:229
+msgid ""
+"``node-address`` <HOST:PORT> Hostname or IP and port of node on which HTTP "
+"service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` <HOST:PORT> Tên máy chủ hoặc IP và cổng của nút mà dịch vụ "
+"HTTP đang chạy [default:http://localhost:7777]"
+
+#: ../../workflow/querying.rst:230
+msgid ""
+"``block-identifier`` - <HEX STRING OR INTEGER> Hex-encoded block hash or "
+"height of the block. If not given, the last block added to the chain as "
+"known at the given node will be used"
+msgstr ""
+"``block-identifier`` - <HEX STRING OR INTEGER> Băm khối được mã hóa hex hoặc"
+" chiều cao của khối. Nếu không được cung cấp, sẽ sử dụng khối cuối cùng được"
+" thêm vào chuỗi như đã biết tại nút"
+
+#: ../../workflow/querying.rst:235
+msgid ""
+"``\"result\".\"block\".\"header\".\"state_root_hash\"`` - contains the "
+"``state-root-hash`` for this block"
+msgstr ""
+"``\"result\".\"block\".\"header\".\"state_root_hash\"`` - chứa ``state-root-"
+"hash`` cho khối này"
+
+#: ../../workflow/querying.rst:319
+msgid "Querying Deploys"
+msgstr "Truy vấn triển khai"
+
+#: ../../workflow/querying.rst:321
+msgid ""
+"Once you submit a deploy to the network, you can check its execution status "
+"using ``get-deploy``. If the ``execution_results`` in the output are null, "
+"the transaction has not run yet. Note that transactions are finalized upon "
+"execution."
+msgstr ""
+"Khi bạn gửi một triển khai đến mạng, bạn có thể kiểm tra trạng thái thực thi"
+" của nó bằng cách sử dụng ``get-deploy``. Nếu ``execution_results``  trong "
+"đầu ra là rỗng, thì giao dịch vẫn chưa chạy. Lưu ý rằng các giao dịch được "
+"hoàn tất khi thực hiện."
+
+#: ../../workflow/querying.rst:332
+msgid ""
+"``id`` - <STRING OR INTEGER> JSON-RPC identifier, applied to the request and"
+" returned in the response. If not provided, a random integer will be "
+"assigned"
+msgstr ""
+"``id`` - <STRING OR INTEGER> Định danh JSON-RPC, được dùng khi yêu cầu và "
+"được phản hồi trả lại. Nếu không được cung cấp, một số nguyên ngẫu nhiên sẽ "
+"được chỉ định"
+
+#: ../../workflow/querying.rst:333
+msgid ""
+"``node-address`` - <HOST:PORT>Hostname or IP and port of node on which HTTP "
+"service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT>Tên máy chủ hoặc IP và cổng của nút mà dịch vụ"
+" HTTP đang chạy [default:http://localhost:7777]"
+
+#: ../../workflow/querying.rst:334
+msgid ""
+"``deploy-hash`` - <HEX STRING OR INTEGER> Hex-encoded hash of the deploy"
+msgstr ""
+"``deploy-hash`` - <HEX STRING OR INTEGER> Băm mã hóa hex của triển khai"

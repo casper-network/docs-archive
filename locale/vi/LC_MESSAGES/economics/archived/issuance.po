@@ -1,0 +1,247 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../economics/archived/issuance.rst:2
+msgid "Issuance"
+msgstr "Phát hành"
+
+#: ../../economics/archived/issuance.rst:4
+msgid ""
+"Issuance provides a base level of payments for validators, so that they are "
+"compensated for their work even if there is not a lot of demand for using "
+"the network. By issuing new CSPR for validators, we ensure that the network "
+"is secured by sufficient stake, even without the transaction fees."
+msgstr ""
+"Việc cung cấp mức thanh toán cơ bản cho người xác thực để họ được thưởng cho"
+" công việc của mình ngay cả khi nhu cầu sử dụng mạng không nhiều. Bằng cách "
+"phát hành CSPR mới cho người xác thực, chúng tôi đảm bảo rằng mạng được bảo "
+"đảm bằng đủ cổ phần, ngay cả khi không có phí giao dịch."
+
+#: ../../economics/archived/issuance.rst:6
+msgid ""
+"CSPR is issued at a fixed rate and distributed to validators in proportion "
+"to their stake. This is analogous to block rewards in Proof of Work "
+"blockchains, except for a couple of differences:"
+msgstr ""
+"CSPR được phát hành với tỷ lệ cố định và được phân phối cho người xác thực "
+"theo tỷ lệ sở hữu của họ. Điều này tương tự để chặn phần thưởng trong "
+"blockchain Proof of Work, ngoại trừ một vài điểm khác biệt:"
+
+#: ../../economics/archived/issuance.rst:8
+msgid "The growth of CSPR supply is exponential instead of linear."
+msgstr ""
+"Sự tăng trưởng của nguồn cung CSPR theo cấp số nhân thay vì tuyến tính."
+
+#: ../../economics/archived/issuance.rst:9
+msgid "Issuance takes into account slashed CSPR."
+msgstr "Việc phát hành có tính đến CSPR bị cắt giảm."
+
+#: ../../economics/archived/issuance.rst:11
+msgid ""
+"If there were no slashing, we would have computed block rewards according to"
+" the following formula"
+msgstr ""
+"Nếu không có phần cắt giảm, chúng tôi sẽ tính toán phần thưởng khối theo "
+"công thức sau"
+
+#: ../../economics/archived/issuance.rst:17
+msgid ""
+"where :code:`i = 1, 2, ...` and so on is the era's index, "
+":code:`initial_supply` is the number of CSPR at the Mainnet launch, "
+":code:`issuance_rate` is the annual rate at which new CSPR is minted, and "
+":code:`ticks_per_year = 365*24*60*60*1000 = 31_536_000_000`."
+msgstr ""
+"trong đó :code:`i = 1, 2, ...` là chỉ mục của thời đại, "
+":code:`initial_supply` là số CSPR tại lúc khởi chạy Mainnet, "
+":code:`issuance_rate` là tỷ lệ hàng năm mà tại đó CSPR mới được tạo ra, và "
+":code:`ticks_per_year = 365*24*60*60*1000 = 31_536_000_000`."
+
+#: ../../economics/archived/issuance.rst:19
+msgid ""
+"However, we have to factor in slashed tokens too when we issue new CSPR. To "
+"this end, we keep track of minted and slashed CSPR at the end of each era:"
+msgstr ""
+"Tuy nhiên, chúng tôi cũng phải tính đến các mã thông báo bị cắt giảm khi "
+"chúng tôi phát hành CSPR mới. Để đạt được mục tiêu này, chúng tôi theo dõi "
+"CSPR được đào và cắt giảm vào cuối mỗi kỷ nguyên:"
+
+#: ../../economics/archived/issuance.rst:26
+msgid ""
+"where :code:`rewards(i)` is the total CSPR minted per issuance during era "
+":code:`i`, and :code:`slashings(i)` is the total CSPR slashed during era "
+":code:`i`. All of these quantities can be derived objectively from the "
+"history of the global state."
+msgstr ""
+"trong đó: :code:`rewards(i)` là tổng số CSPR được tạo ra cho mỗi lần phát "
+"hành trong kỷ nguyên :code:`i` và :code:`slashings(i)` là tổng số CSPR bị "
+"cắt giảm trong kỷ nguyên :code:`i`. Tất cả những đại lượng này có thể được "
+"suy ra một cách khách quan từ lịch sử của trạng thái tổng quát."
+
+#: ../../economics/archived/issuance.rst:28
+msgid "We introduce *round issuance rate*"
+msgstr "Chúng tôi giới thiệu *tỷ lệ phát hành theo vòng*"
+
+#: ../../economics/archived/issuance.rst:34
+msgid ""
+"which is the yearly issuance rate adjusted to a single round, whose length "
+"is defined by the protocol parameter :code:`minimum_round_exponent = 14`. "
+"This gives us a round length of roughly 16 seconds."
+msgstr ""
+"là tỷ lệ phát hành hàng năm được điều chỉnh thành từng vòng một, có độ dài "
+"được xác định bởi tham số giao thức :code:`minimum_round_exponent = 14``. "
+"Điều này cung cấp cho chúng tôi độ dài vòng khoảng 16 giây."
+
+#: ../../economics/archived/issuance.rst:36
+msgid "Finally, the base round reward is computed as"
+msgstr "Cuối cùng, phần thưởng của vòng cơ sở được tính là"
+
+#: ../../economics/archived/issuance.rst:42
+msgid ""
+"This value gives us the maximum amount of CSPR that the validators can "
+"receive from a proposed block."
+msgstr ""
+"Giá trị này cung cấp cho chúng tôi số lượng CSPR tối đa mà người xác thực có"
+" thể nhận được từ một khối được đề xuất."
+
+#: ../../economics/archived/issuance.rst:45
+msgid "Reward Distribution"
+msgstr "Phân phối phần thưởng"
+
+#: ../../economics/archived/issuance.rst:47
+msgid ""
+"Validators are rewarded for proposing and finalizing blocks, according to "
+"their performance. The concept of weight is crucial for understanding reward"
+" distribution:"
+msgstr ""
+"Người xác thực được thưởng cho việc đề xuất và hoàn thiện các khối, tùy theo"
+" hiệu suất của họ. Khái niệm khối lượng là rất quan trọng để hiểu việc phân "
+"phối phần thưởng:"
+
+#: ../../economics/archived/issuance.rst:49
+msgid "**Weight:** A validator's bonded stake, used in consensus."
+msgstr ""
+"**Khối lượng:** Số lượng đã đặt cược (stake) của người xác thực, được sử "
+"dụng cho việc đồng thuận."
+
+#: ../../economics/archived/issuance.rst:50
+msgid ""
+"**Assigned weight of a block/round:** The total stake of validators that are"
+" scheduled to participate on a block."
+msgstr ""
+"**Số lượng đã đăng ký của một khối/vòng:** Tổng số tiền đặt cọc của các nhà "
+"xác nhận được lên kế hoạch tham gia vào một khối."
+
+#: ../../economics/archived/issuance.rst:51
+msgid ""
+"**Participated weight of a block/round:** The total stake of validators that"
+" actually end up participating. Here, *participating* means sending messages"
+" to finalize a block before their respective rounds end."
+msgstr ""
+"**Khối lượng tham gia của một khối/vòng:** Tổng số tiền đặt cọc của những "
+"người xác thực mà thực sự tham gia. Ở đây, *tham gia* có nghĩa là gửi tin để"
+" hoàn thành một khối trước khi các vòng tương ứng kết thúc."
+
+#: ../../economics/archived/issuance.rst:53
+msgid ""
+"To determine the validators' eligibility to receive rewards from a proposed "
+"block, we look at **on-time finalization (OTF)**. Validators should finalize"
+" blocks on time, by sending required messages before their respective rounds"
+" end."
+msgstr ""
+"Để xác định tính đủ điều kiện của người xác thực để nhận phần thưởng từ khối"
+" được đề xuất, chúng tôi xem xét **tổng kết đúng hạn (OTF)**. Người xác thực"
+" nên hoàn thành các khối đúng thời gian, bằng cách gửi các tin được yêu cầu "
+"trước khi các vòng tương ứng của họ kết thúc."
+
+#: ../../economics/archived/issuance.rst:57
+msgid "Participation Schedule"
+msgstr "Kế hoạch tham gia"
+
+#: ../../economics/archived/issuance.rst:59
+msgid ""
+"The schedule with which validators send messages are determined by the "
+"validators' rounds, which are in turn determined by their round exponents. A"
+" validator with the round exponent :code:`n` has to participate in rounds "
+"that repeat every :code:`2^n` ticks."
+msgstr ""
+"Lịch trình mà người xác thực gửi tin được xác định bởi các vòng của người "
+"xác thực, lần lượt được xác định bởi cấp số nhân vòng của họ. Trình xác thực"
+" có cấp số nhân vòng :code:`n` phải tham gia vào các vòng lặp lại mỗi "
+":code:`2^n` tích tắc."
+
+#: ../../economics/archived/issuance.rst:61
+msgid ""
+"Each validator is assessed according to their own round exponent. All "
+"assigned validators become eligible to receive rewards as long as the block "
+"gets finalized with messages that were sent within each validator's own "
+"round."
+msgstr ""
+"Mỗi người xác thực được đánh giá theo cấp số nhân vòng của riêng họ. Tất cả "
+"người xác thực được chỉ định sẽ đủ điều kiện nhận phần thưởng miễn là khối "
+"được hoàn thành với các tin được gửi trong mỗi vòng của trình xác thực "
+"riêng. "
+
+#: ../../economics/archived/issuance.rst:63
+msgid ""
+"We dictate a minimum assigned weight for all rounds. Rounds that meet the "
+"requirement are said to be *feasible*, and the ones that do not are said to "
+"be *infeasible*. Blocks proposed in infeasible rounds do not receive any "
+"rewards."
+msgstr ""
+"Chúng tôi bắt buộc khối lượng tối thiểu được chỉ định cho tất cả các vòng. "
+"Các vòng đáp ứng yêu cầu được cho là *khả thi* và các vòng không đạt là "
+"*không khả thi*. Các khối được đề xuất trong các vòng không khả thi sẽ không"
+" nhận được bất kỳ phần thưởng nào."
+
+#: ../../economics/archived/issuance.rst:66
+msgid "Reward Eligibility"
+msgstr "Phần thưởng khi đủ điều kiện"
+
+#: ../../economics/archived/issuance.rst:68
+msgid ""
+"Once a block has been proposed and enough time has passed, the history of "
+"messages can be examined to detect whether the block was indeed finalized on"
+" time, according to the conditions given above."
+msgstr ""
+"Khi một khối đã được đề xuất và đủ thời gian trôi qua, lịch sử của các tin "
+"có thể được kiểm tra để phát hiện xem khối có thực sự được hoàn thành đúng "
+"thời gian hay không, theo các điều kiện được đưa ra ở trên."
+
+#: ../../economics/archived/issuance.rst:70
+msgid ""
+"If the block is *not* finalized on time, validators do not receive any "
+"rewards. The tokens allocated for the block are simply burned."
+msgstr ""
+"Nếu khối *không* được hoàn thành đúng thời hạn, người xác thực sẽ không nhận"
+" được bất kỳ phần thưởng nào. Các mã thông báo được phân bổ cho khối chỉ đơn"
+" giản là bị đốt cháy."
+
+#: ../../economics/archived/issuance.rst:71
+msgid ""
+"If the block is finalized on time, assigned validators share the reward pro "
+"rata, regardless of whether they have sent messages or not."
+msgstr ""
+"Nếu khối được hoàn thành đúng thời hạn, người xác thực được chỉ định chia sẻ"
+" tỷ lệ phần thưởng, bất kể họ đã gửi tin hay chưa."

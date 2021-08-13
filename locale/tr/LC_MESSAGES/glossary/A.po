@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../glossary/A.rst:2
+msgid "A"
+msgstr "A"
+
+#: ../../glossary/A.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/A.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/A.rst:9
+msgid "AssemblyScript"
+msgstr "AssemblyScript"
+
+#: ../../glossary/A.rst:10
+msgid ""
+"AssemblyScript is a TypeScript-based programming language (JavaScript with "
+"static types) that is optimized for WebAssembly and compiled to WebAssembly "
+"using *asc*, the reference AssemblyScript compiler. It is developed by the "
+"AssemblyScript Project and the AssemblyScript community."
+msgstr ""
+"AssemblyScript, WebAssembly için optimize edilmiş ve referans AssemblyScript"
+" derleyicisi olan *asc* kullanılarak WebAssembly'de derlenen TypeScript "
+"tabanlı bir programlama dilidir (statik tipte JavaScript)."
+
+#: ../../glossary/A.rst:13
+msgid "Auction"
+msgstr "Açık Arttırma"
+
+#: ../../glossary/A.rst:14
+msgid ""
+"The auction determines the composition of the validator set for each era of "
+"the protocol. It is a \"first-price\" auction (where winning bids become "
+"stakes) with a fixed number of spots chosen to balance security with "
+"performance. Because rewards are proportional to the stake, it is expected "
+"that this competitive mechanism will provide a powerful impetus for staking "
+"as many tokens as possible."
+msgstr ""
+"Açık arttırma, protokolün her dönemi (era) için doğrulayıcı kümesinin "
+"bileşimini belirler. Güvenlik ile performansı dengelemek için sabit sayıda "
+"noktanın seçildiği (kazanan tekliflerin hisse haline geldiği) bir \"ilk "
+"fiyat\" açık arttırmasıdır. Ödüller hisse ile orantılı olduğundan, bu "
+"rekabetçi mekanizmanın mümkün olduğunca çok sayıda token stake etmek için "
+"güçlü bir itici güç sağlaması beklenir."
+
+#: ../../glossary/A.rst:17
+msgid "Auction contract"
+msgstr "Açık arttırma kontratı"
+
+#: ../../glossary/A.rst:18
+msgid ""
+"The auction contract acts as a front-end user interface to the `auction "
+"<auction>`_ by directly accepting bids from validators and delegators. It "
+"also contains the logic necessary for carrying out the auction."
+msgstr ""
+"Açık arttırma kontratı, doğrulayıcılardan ve yetki verenlerden gelen "
+"teklifleri doğrudan kabul ederek `açık arttırma <auction>`_ için bir ön uç "
+"kullanıcı arabirimi görevi görür. Ayrıca açık arttırmayı gerçekleştirmek "
+"için gerekli mantığı da içerir."
+
+#: ../../glossary/A.rst:21
+msgid "Auction delay"
+msgstr "Açık arttırma gecikmesi"
+
+#: ../../glossary/A.rst:22
+msgid ""
+"The number of full eras that pass between the `booking block <B.html"
+"#booking-block>`_ and the era whose validator set it defines. The auction "
+"delay is configurable and can be several eras long."
+msgstr ""
+"`Rezervasyon bloğu <B.html#booking-block>`_ ile doğrulayıcı kümesinin "
+"tanımladığı dönem arasında geçen tam dönemlerin sayısı. Açık arttırma "
+"gecikmesi yapılandırılabilir ve birkaç dönem uzunluğunda olabilir."

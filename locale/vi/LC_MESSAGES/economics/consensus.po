@@ -1,0 +1,428 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../economics/consensus.rst:2
+msgid "Consensus Economics"
+msgstr "Tính kinh tế của Đồng thuận"
+
+#: ../../economics/consensus.rst:4
+msgid ""
+"Highway consensus is a continuous, trust-less process where a fixed set of "
+"validators engage in scheduled communication to advance the linear chain of "
+"finalized blocks, representing the history of changes to the global state of"
+" the blockchain. The fixed set of validators may change at each era "
+"boundary. The economics of this layer revolve around validator selection and"
+" incentivization of participation according to the schedule."
+msgstr ""
+"Giao thức Đồng thuận Highway của Casper là một quá trình liên tục, không cần"
+" ủy quyền, trong đó một tập hợp các nhà xác thực nhất định tham gia vào giao"
+" tiếp theo lịch trình để thúc đẩy chuỗi tuyến tính của các khối đã hoàn "
+"thành, thể hiện lịch sử của những thay đổi trong trạng thái toàn cục của "
+"chuỗi khối. Tính kinh tế của Đồng thuận Highway có được là từ việc lựa chọn "
+"nhà xác thực và khuyến khích sự tham gia theo lịch trình."
+
+#: ../../economics/consensus.rst:7
+msgid "Entry"
+msgstr "Điểm vào"
+
+#: ../../economics/consensus.rst:8
+msgid ""
+"After genesis, the system selects a set of validators using a stake auction "
+"process. The auction takes place in the last block of an era, also called a "
+"switch block. An auction contract governs the validator selection process, "
+"and a *chainspec* configuration file specifies a few key parameters:"
+msgstr ""
+"Sau khi khởi tạo, hệ thống chọn một tập hợp những nhà xác thực bằng cách sử "
+"dụng quá trình đấu giá cổ phần. Cuộc đấu giá diễn ra trong khối cuối cùng "
+"tại kỷ nguyên đó (era), hay còn được gọi là khối chuyển đổi. Hợp đồng đấu "
+"giá điều chỉnh quá trình lựa chọn nhà xác thực và tệp cấu hình *chainspec* "
+"sẽ chỉ định một số thông số chính, bao gồm:"
+
+#: ../../economics/consensus.rst:10
+msgid ""
+"The ``auction_delay`` specifies the amount of time that needs to pass before"
+" the system enables a new set of validators. For example, the "
+"`auction_delay` is 1 for Mainnet. Therefore, after a delay of 1 era, the "
+"winning validators become the validating set for the new era."
+msgstr ""
+"``auction_delay`` chỉ định lượng thời gian phải trôi qua trước khi hệ thống "
+"cho phép một tập hợp những nhà xác thực mới hoạt động. Ví dụ: "
+"`auction_delay` là 1 trên Mainnet. Sau 1 quãng thời gian bị trì hoãn, những "
+"nhà xác thực chiến thắng sẽ trở thành nhà xác thực cho kỷ nguyên (era) mới."
+
+#: ../../economics/consensus.rst:11
+msgid ""
+"The ``validator_slots`` parameter specifies how many validators can win an "
+"auction. The auction selects a fixed number of validators based on their "
+"highest bids."
+msgstr ""
+"``validator_slots`` chỉ số lượng nhà xác thực có thể thắng một cuộc đấu giá."
+" Phiên đấu giá chọn một số lượng nhà xác thực nhất định dựa trên giá thầu "
+"(bid) cao nhất của họ."
+
+#: ../../economics/consensus.rst:15
+msgid "Bids"
+msgstr "Giá thầu"
+
+#: ../../economics/consensus.rst:17
+msgid ""
+"Each bid is a collection of tokens from a prospective or current validator "
+"and its delegators, considered in the auction as a single total. Bids and "
+"delegations can increase freely, but withdrawals are subject to an unbonding"
+" period governed by the ``unbonding_delay`` chainspec parameter. Tokens that"
+" are in the unbonding period are not part of the sum total considered in the"
+" auction. Consequently, the exact amount of the bid, which translates into "
+"protocol weight for winning validators, can vary within an era. The bids are"
+" visible in the switch block that determines the winners."
+msgstr ""
+"Mỗi giá thầu (bid) là một tập hợp các token từ một nhà xác thực tiềm năng "
+"hoặc hiện có và những người ủy quyền, trong cuộc đấu giá thầu được coi là "
+"một số tổng duy nhất. Giá thầu và ủy quyền có thể tăng tự do, nhưng việc rút"
+" ra phải trải qua khoảng thời gian không ràng buộc được điều chỉnh bởi tham "
+"số ``unbonding_delay`` của chainpec. Các token đang trong thời gian không "
+"ràng buộc này không được coi là một phần trong tổng số tiền được xem xét "
+"trong cuộc đấu giá. Do đó, số tiền chính xác của giá thầu (được chuyển thành"
+" trọng số cho những nhà xác thực chiến thắng), có thể thay đổi trong một kỷ "
+"nguyên. Giá thầu sẽ được hiển thị trong khối chuyển đổi để xác định người "
+"chiến thắng."
+
+#: ../../economics/consensus.rst:19
+msgid ""
+"Each bid contains a delegation rate and activity status. The delegation rate"
+" can change at any time. Both of these properties are described further in "
+"this document."
+msgstr ""
+"Mỗi giá thầu bao gồm một tỷ lệ ủy quyền và trạng thái hoạt động. Tỷ lệ ủy "
+"quyền có thể thay đổi bất kỳ lúc nào. Cả hai thuộc tính này đều được mô tả "
+"thêm trong tài liệu này."
+
+#: ../../economics/consensus.rst:22
+msgid "Delegation"
+msgstr "Ủy quyền"
+
+#: ../../economics/consensus.rst:24
+msgid ""
+"Delegation allows third parties to participate in consensus by adding weight"
+" to their preferred validators. Rewards received by validators are "
+"distributed in proportion to tokens bid and delegated. The current or "
+"prospective validator responsible for the bid receives a portion of the "
+"delegator rewards set by the delegation rate."
+msgstr ""
+"Ủy quyền cho phép các bên thứ ba tham gia vào đồng thuận bằng cách thêm "
+"trọng số vào những nhà xác thực ưu tiên của mình. Phần thưởng mà nhà xác "
+"thực nhận được sẽ được phân phối theo tỷ lệ giữa token được bán và token "
+"được ủy quyền. Nhà xác thực hiện tại hoặc tiềm năng chịu trách nhiệm về giá "
+"chào mua (bid) sẽ nhận được một phần thưởng của người ủy quyền theo tỷ lệ ủy"
+" quyền."
+
+#: ../../economics/consensus.rst:26
+msgid ""
+"Currently, delegation is unrestricted. Interested readers should review `CEP"
+" #29 <https://github.com/CasperLabs/ceps/pull/29>`_, which proposes "
+"delegation caps."
+msgstr ""
+"Hiện tại, ủy quyền không bị hạn chế. Độc giả quan tâm vui lòng xem lại `CEP "
+"#29 <https://github.com/CasperLabs/ceps/pull/29>` về giới hạn ủy quyền"
+
+#: ../../economics/consensus.rst:29
+msgid "Incentives"
+msgstr "Khuyến khích"
+
+#: ../../economics/consensus.rst:31
+msgid ""
+"Correct operation of the Highway protocol requires the economics of the "
+"platform to incentivize non-equivocation for safety and participation for "
+"liveness. Participation consists of on-time block proposals and timely "
+"responses to block proposals."
+msgstr ""
+"Việc vận hành chính xác giao thức Highway đòi hỏi tính kinh tế của nền tảng "
+"Mạng Casper, để làm sao vừa chú trọng đến sự an toàn vừa khuyến khích sự "
+"tham gia mạnh mẽ để hệ thống hoạt động. Sự tham gia này bao gồm đề xuất khối"
+" đúng hạn và phản hồi kịp thời cho các đề xuất khối."
+
+#: ../../economics/consensus.rst:33
+msgid ""
+"Safety may be incentivized through slashing for equivocation. This feature "
+"is currently disabled but may be reactivated in the future."
+msgstr ""
+"Mục tiêu an toàn có thể được khuyến khích thông qua slashing – hình phạt trừ"
+" tài sản để ngăn chặn các hành vi bất thường. Tính năng này hiện đã bị vô "
+"hiệu hóa nhưng có thể được kích hoạt lại trong tương lai."
+
+#: ../../economics/consensus.rst:35
+msgid ""
+"The network incentivizes participation by scaling rewards for on-time "
+"proposals and responses, taking into account the speed of finalizing blocks."
+" All rewards are added directly to the corresponding bids and delegations."
+msgstr ""
+"Mạng Casper khuyến khích sự tham gia bằng cách tăng phần thưởng cho các đề "
+"xuất và phản hồi đúng hạn, có tính đến tốc độ hoàn thiện các khối. Tất cả "
+"phần thưởng được thêm trực tiếp vào giá thầu và ủy quyền tương ứng."
+
+#: ../../economics/consensus.rst:38
+msgid "Participation"
+msgstr "Sự tham gia"
+
+#: ../../economics/consensus.rst:40
+msgid ""
+"Issuance of new tokens and their distribution to validators incentivizes "
+"work even under low transaction load."
+msgstr ""
+"Việc phát hành các token mới và phân phối chúng tới những nhà xác thực sẽ "
+"khuyến khích hoạt động ngay cả khi số lượng các giao dịch thấp."
+
+#: ../../economics/consensus.rst:42
+msgid ""
+"CSPR is issued at a fixed rate and distributed to validators (and, "
+"indirectly, delegators) in proportion to their stake. This is analogous to "
+"block rewards in Proof-of-Work blockchains, outlining the following:"
+msgstr ""
+"CSPR được phát hành với tỷ lệ cố định và được phân phối cho nhà xác thực (và"
+" người ủy quyền) theo tỷ lệ cổ phần của họ. Cơ chế này giống với trao phần "
+"thưởng trong cơ chế Proof-of-Work của chuỗi khối ở những điểm sau:"
+
+#: ../../economics/consensus.rst:44
+msgid "The growth of CSPR supply is exponential"
+msgstr "Nguồn cung cấp CSPR tăng trưởng theo cấp số nhân"
+
+#: ../../economics/consensus.rst:45
+msgid "Issuance takes into account slashed CSPR"
+msgstr "Việc phát hành có tính đến các CSPR bị slashing (bị phạt trừ)"
+
+#: ../../economics/consensus.rst:47
+msgid ""
+"With slashing disabled, we can compute block rewards starting with the "
+"formula below, where we have these parameters:"
+msgstr ""
+"Khi tắt tính năng slashing, chúng ta có thể tính toán phần thưởng khối bằng "
+"công thức bên dưới, trong đó:"
+
+#: ../../economics/consensus.rst:49
+msgid "``i`` - the era's index as a positive integer [0, 1, 2, ..., n]"
+msgstr ""
+"``i`` -  chỉ số của kỷ nguyên dưới dạng số nguyên dương [0, 1, 2,…, n]"
+
+#: ../../economics/consensus.rst:50
+msgid "``initial_supply`` - the number of CSPR at genesis"
+msgstr "``initial_supply`` -  số lượng CSPR tại thời điểm ban đầu"
+
+#: ../../economics/consensus.rst:51
+msgid ""
+"``issuance_rate`` - the annual rate at which new CSPR tokens are minted"
+msgstr "``issuance_rate`` -  tỷ lệ hàng năm để mint các token CSPR mới"
+
+#: ../../economics/consensus.rst:52
+msgid ""
+"``ticks_per_year`` - a number equal to 31,536,000,000 calculated as "
+"365*24*60*60*1000 = 31,536,000,000"
+msgstr ""
+"``ticks_per_year`` - số 31,536,000,000 được tính như sau: 365*24*60*60*1000 "
+"= 31,536,000,000"
+
+#: ../../economics/consensus.rst:58
+msgid ""
+"We introduce the *round issuance rate* (corresponding to the chainspec "
+"parameter ``round_seigniorage_rate``) with this formula:"
+msgstr ""
+"Chúng tôi giới thiệu *tỷ lệ của vòng phát hành* (tương ứng với tham số "
+"chainpec ``round_seigniorage_rate``) với công thức sau:"
+
+#: ../../economics/consensus.rst:64
+msgid ""
+"The *round issuance rate* is the annual issuance rate adjusted to a single "
+"round of length determined by the chainspec parameter "
+"``minimum_round_exponent``. For illustration, an exponent of 14 corresponds "
+"to a round length of roughly 16 seconds."
+msgstr ""
+"*Tỷ lệ của vòng phát hành* là tỷ lệ phát hành hàng năm được điều chỉnh theo "
+"một vòng có độ dài được xác định bởi tham số chainpec "
+"``minimum_round_exponent``. Ví dụ, số mũ 14 tương ứng với độ dài vòng khoảng"
+" 16 giây."
+
+#: ../../economics/consensus.rst:66
+msgid "Finally, the base round reward is computed as:"
+msgstr "Cuối cùng, phần thưởng của vòng cơ sở được tính như sau:"
+
+#: ../../economics/consensus.rst:72
+msgid ""
+"This value gives us the maximum amount of CSPR that the validators can "
+"collectively receive from a proposed block."
+msgstr ""
+"Giá trị này cung cấp cho chúng ta số lượng CSPR tối đa mà nhà xác thực có "
+"thể nhận được từ một khối được đề xuất."
+
+#: ../../economics/consensus.rst:75
+msgid "Distribution"
+msgstr "Phân phối"
+
+#: ../../economics/consensus.rst:77
+msgid ""
+"Validators receive tokens for proposing and finalizing blocks according to "
+"their performance. The concept of weight is crucial for understanding this "
+"distribution scheme:"
+msgstr ""
+"Nhà xác thực nhận được token nếu đề xuất và hoàn thiện các khối, tùy theo "
+"hiệu suất của mình. Cần hiểu khái niệm trọng số trong sơ đồ phân phối này:"
+
+#: ../../economics/consensus.rst:79
+msgid "**Weight:** A validator's bonded stake, used in consensus"
+msgstr ""
+"**Trọng số:** Cổ phần được đảm bảo của người xác thực, được sử dụng trong "
+"đồng thuận"
+
+#: ../../economics/consensus.rst:80
+msgid ""
+"**Assigned weight of a block/round:** The total stake of validators "
+"scheduled to participate in a block"
+msgstr ""
+"**Trọng số được chỉ định của một khối/một vòng:** Tổng số cổ phần của những "
+"nhà xác thực được lên lịch tham gia vào một khối"
+
+#: ../../economics/consensus.rst:81
+msgid ""
+"**Participated weight of a block/round:** The total stake of validators that"
+" end up participating or sending messages to finalize a block before the end"
+" of their respective round"
+msgstr ""
+"**Trọng số đã tham gia của một khối/một vòng:** Tổng số cổ phần của những "
+"nhà xác thực đã ngừng tham gia hoặc gửi tin nhắn hoàn thành một khối trước "
+"khi kết thúc vòng tương ứng của mình"
+
+#: ../../economics/consensus.rst:83
+msgid ""
+"To determine eligibility, we look at **on-time finalization (OTF)**. "
+"Validators should finalize blocks on time by sending required messages "
+"before the end of their respective round."
+msgstr ""
+"Để xác định tính hợp lệ, chúng tôi xem xét việc **hoàn thành đúng hạn "
+"(OTF)**. Nhà xác thực cần hoàn thành các khối đúng hạn bằng cách gửi các tin"
+" nhắn được yêu cầu trước khi kết thúc vòng tương ứng."
+
+#: ../../economics/consensus.rst:85
+msgid ""
+"Switch blocks are not visible to the issuance calculation (as this "
+"calculation is performed in the switch block itself for each era), and, "
+"consequently, no tokens are issued for switch blocks."
+msgstr ""
+"Các khối chuyển đổi không được thể hiện thông qua các phép tính phát hành "
+"(vì phép tính này được thực hiện trong chính khối chuyển đổi trong mỗi kỷ "
+"nguyên) và do đó, không có token nào được phát hành cho các khối chuyển đổi."
+
+#: ../../economics/consensus.rst:88
+msgid "Participation schedule"
+msgstr "Lịch trình tham gia"
+
+#: ../../economics/consensus.rst:90
+msgid ""
+"The participation schedule is segmented into rounds, which are allocated "
+"dynamically according to the validators' exponents and a deterministic "
+"(randomized at era start) assignment of validators to milliseconds of an "
+"era. Thus, a validator with the round exponent ``n`` must participate in "
+"rounds that repeat every ``2^n`` ticks."
+msgstr ""
+"Lịch trình tham gia được phân đoạn thành các vòng, các vòng được phân bổ "
+"theo số mũ của nhà xác thực và sự phân công (ngẫu nhiên khi bắt đầu một kỷ "
+"nguyên) của nhà xác thực tính theo mili giây của một kỷ nguyên. Do đó, một "
+"người xác thực với số mũ vòng ``n`` phải tham gia vào các vòng lặp lại sau "
+"mỗi ``2^n`` tích tắc."
+
+#: ../../economics/consensus.rst:92
+msgid ""
+"Each validator is assessed according to its round exponent. All assigned "
+"validators become eligible to receive tokens as long as the block gets "
+"finalized with messages sent within each validator's round."
+msgstr ""
+"Mỗi nhà xác thực được đánh giá theo số mũ vòng của họ. Tất cả những nhà xác "
+"thực được chỉ định đều đủ điều kiện để nhận token miễn là khối được hoàn "
+"thiện với các tin nhắn được gửi đi trong mỗi vòng của nhà xác thực."
+
+#: ../../economics/consensus.rst:95
+msgid "Eligibility"
+msgstr "Tính hợp lệ"
+
+#: ../../economics/consensus.rst:97
+msgid ""
+"Once a block has been proposed and enough time has passed, the history of "
+"protocol messages can be examined to detect whether the block was finalized "
+"on time, according to the conditions given above. If the block was *not* "
+"finalized on time, validators receive a fraction of the expected tokens, "
+"governed by the ``reduced_reward_multiplier`` chainspec parameter. If the "
+"block was finalized on time, assigned validators share the reward "
+"proportionally to their stake, regardless of whether they have sent messages"
+" or not."
+msgstr ""
+"Khi một khối được đề xuất và đã đủ thời gian trôi qua, lịch sử của các thông"
+" điệp giao thức có thể được kiểm tra để phát hiện xem khối đã được hoàn "
+"thành đúng thời hạn hay chưa, theo các điều kiện đưa ra ở trên. Nếu khối "
+"*không* được hoàn thành đúng thời hạn, nhà xác thực sẽ chỉ nhận được một "
+"phần nhỏ trong số các token dự kiến, được điều chỉnh bởi tham số chainpec "
+"``reduced_reward_multiplier``. Nếu khối được hoàn thành đúng thời hạn, những"
+" nhà xác thực được chỉ định chia sẻ phần thưởng tương ứng với số cổ phần của"
+" họ, bất kể họ có gửi tin nhắn hay không."
+
+#: ../../economics/consensus.rst:101
+msgid "Inactivity"
+msgstr "Không hiện hoạt"
+
+#: ../../economics/consensus.rst:103
+msgid ""
+"Validators who send no messages during an entire era are marked as inactive "
+"and cease participating in the auction until they send a special deploy that"
+" reactivates their bid."
+msgstr ""
+"Những nhà xác thực không gửi tin nhắn nào trong suốt quãng thời gian được "
+"đánh dấu là không hiện hoạt và ngừng tham gia đấu giá cho đến khi họ gửi một"
+" triển khai đặc biệt để kích hoạt lại giá thầu của mình."
+
+#: ../../economics/consensus.rst:106
+msgid "Slashing"
+msgstr "Slashing – Phạt trừ"
+
+#: ../../economics/consensus.rst:108
+msgid ""
+"Please review our `Equivocator Policy "
+"<https://github.com/CasperLabs/ceps/blob/master/text/0038-equivocator-"
+"policy.md>`_. We are currently conducting research into the utility of "
+"slashing as an incentive mechanism."
+msgstr ""
+"Vui lòng xem lại `Chính sách ngăn chặn hành vi bất thường "
+"<https://github.com/CasperLabs/ceps/blob/master/text/0038-equivocator-"
+"policy.md>`. Chúng tôi hiện đang tiến hành nghiên cứu về các tiện ích của "
+"slashing để xây dựng một cơ chế khuyến khích."
+
+#: ../../economics/consensus.rst:111
+msgid "Founding validators"
+msgstr "Nhà xác thực sáng lập"
+
+#: ../../economics/consensus.rst:113
+msgid ""
+"Founding validators are subject to token lock-up, which prevents them from "
+"withdrawing any tokens from their bids for 90 days, then releases their "
+"genesis bid tokens in weekly steps, linearly, over an additional 90 days."
+msgstr ""
+"Nhà xác thực sáng lập buộc phải khóa token, để ngăn cản họ rút bất kỳ token "
+"nào khỏi giá thầu của mình trong vòng 90 ngày, sau đó phát hành token giá "
+"thầu ban đầu của họ theo các đợt hàng tuần, cứ như vậy trong vòng 90 ngày "
+"tiếp theo"

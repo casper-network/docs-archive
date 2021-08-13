@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Guybrush, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:45+0000\n"
+"Last-Translator: Guybrush, 2021\n"
+"Language-Team: German (https://www.transifex.com/caspernetwork/teams/122124/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../changelog.rst:2
+msgid "Changelog"
+msgstr "Changelog"
+
+#: ../../changelog.rst:4
+msgid ""
+"This page is a reference library for all the past technical releases and "
+"changelogs for the Casper Network. Click on the links below to see details "
+"about the released versions such as release dates, key changes and "
+"milestones completed, known issues, and calls to action for validators, dApp"
+" developers, contract authors, and exchanges."
+msgstr ""
+"Diese Seite ist eine Referenzbibliothek für alle früheren technischen "
+"Versionen und Changelogs für das Casper Netzwerk. Klicken Sie auf die unten "
+"stehenden Links, um Details zu den veröffentlichten Versionen zu sehen, wie "
+"z. B. das Veröffentlichungsdatum, wichtige Änderungen und abgeschlossene "
+"Meilensteine, bekannte Probleme und Handlungsaufforderungen für Validierer, "
+"dApp Entwickler, Smart Contract Entwickler und Marktplätze."
+
+#: ../../changelog.rst:6
+msgid ""
+"Visit the `technical roadmap <https://github.com/casper-"
+"network/roadmap/projects/2>`_ and the `engineering status "
+"<https://github.com/casper-network/roadmap/wiki/Current-Status>`_ pages to "
+"review the work currently in progress."
+msgstr ""
+"Besuchen Sie die Seiten `Technische Roadmap <https://github.com/casper-"
+"network/roadmap/projects/2>`_ und `Engineering Status <https://github.com"
+"/casper-network/roadmap/wiki/Current-Status>`_, um die laufenden Arbeiten zu"
+" überprüfen."
+
+#: ../../changelog.rst:9
+msgid "Casper Network Release Notes"
+msgstr "Casper Network Release Notes"
+
+#: ../../changelog.rst:12
+msgid ""
+"`Version 1.2.0 <https://medium.com/casper-association/technical-release-"
+"notes-and-changelog-for-1-2-0-26bbe921ab51>`_"
+msgstr ""
+"`Version 1.2.0 <https://medium.com/casper-association/technical-release-"
+"notes-and-changelog-for-1-2-0-26bbe921ab51>`_"

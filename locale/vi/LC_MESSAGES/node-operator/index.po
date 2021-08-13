@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../node-operator/index.rst:12
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../node-operator/index.rst:2
+msgid "Operators"
+msgstr "Các nhà điều hành nút"
+
+#: ../../node-operator/index.rst:4
+msgid ""
+"Operators that wish to run node infrastructure on the Casper network, either"
+" as a standalone private network, or as part of the public network should "
+"explore this guide."
+msgstr ""
+"Các nhà vận hành muốn chạy cơ sở hạ tầng nút trên mạng Casper, dưới dạng "
+"mạng riêng độc lập hoặc là một phần của mạng công cộng nên khám phá hướng "
+"dẫn này."
+
+#: ../../node-operator/index.rst:6
+msgid ""
+"It is recommended that you have prior knowledge of Unix-based operating "
+"systems and proficiency with systemd and bash scripting.  If you are "
+"unfamiliar with systemd, the `Arch Linux page on systemd "
+"<https://wiki.archlinux.org/index.php/systemd>`_ is a good intro to using "
+"it."
+msgstr ""
+"Bạn nên có kiến thức trước về các hệ điều hành dựa trên Unix và thành thạo "
+"về script systemd và bash. Nếu bạn chưa quen với systemd, thì trang `Arch "
+"Linux page on systemd <https://wiki.archlinux.org/index.php/systemd>`_ là "
+"một phần giới thiệu tốt để sử dụng."

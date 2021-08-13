@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:2
+msgid "Concepts"
+msgstr "Các khái niệm"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:4
+msgid ""
+"The Casper implementation of multiple signatures is unique and allows you to"
+" set up and customize access to your account and deployments."
+msgstr ""
+"Việc Casper triển khai nhiều chữ ký là duy nhất và cho phép bạn thiết lập, "
+"tùy chỉnh quyền truy cập vào tài khoản và triển khai của mình."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:6
+msgid ""
+"Many companies handle large transactions and use smart contracts to manage "
+"tokens. However, these contracts need to be audited and secure and require a"
+" significant investment in setup and maintenance."
+msgstr ""
+"Nhiều công ty xử lý các giao dịch lớn và sử dụng hợp đồng thông minh để quản"
+" lý token. Tuy nhiên, các hợp đồng này cần phải được kiểm toán và bảo mật,  "
+"yêu cầu đầu tư đáng kể vào việc thiết lập và bảo trì."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:8
+msgid ""
+"Casper enables you to sign anything with its multi-signature (multi-sig) "
+"implementation. For example, you do not need a multi-sig wallet to call a "
+"feature from a smart contract. Instead, you can use the multi-sig feature at"
+" the account level and sign your account with multiple keys."
+msgstr ""
+"Casper cho phép bạn ký bất cứ thứ gì bằng cách triển khai đa chữ ký (multi-"
+"sig). Ví dụ: bạn không cần ví multi-sig để gọi một tính năng từ hợp đồng "
+"thông minh. Thay vào đó, bạn có thể sử dụng tính năng multi-sig ở cấp tài "
+"khoản và ký tài khoản của mình bằng nhiều khóa."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:10
+msgid ""
+"Your `Account "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ is a "
+"cryptographically secured gateway into the CasperLabs system, and you can "
+"set it up using `the Casper Permissions Model "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html"
+"#permissions-model>`_."
+msgstr ""
+"`Tài khoản "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ của "
+"bạn là một cổng được bảo mật bằng mật mã vào hệ thống CasperLabs và bạn có "
+"thể thiết lập nó bằng cách sử dụng `Mô hình Phân quyền của Casper "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html"
+"#permissions-model>`_."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:12
+msgid "The account contains associated keys and action thresholds:"
+msgstr "Tài khoản chứa các khóa được liên kết và các ngưỡng hành động:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:14
+msgid ""
+"The **associated keys** of an account are the set of public keys allowed to "
+"provide signatures on account actions."
+msgstr ""
+"**Các khóa được liên kết** của tài khoản là tập hợp các khóa công khai được "
+"phép cung cấp chữ ký cho các hành động của tài khoản."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:15
+msgid ""
+"An account can perform two types of actions: **deployment** and **key "
+"management**."
+msgstr ""
+"Một tài khoản có thể thực hiện hai loại hành động: **triển khai** và **quản "
+"lý khóa**."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:16
+msgid ""
+"The **action thresholds** in the account data structure set a **weight**, "
+"which you must meet to perform an action."
+msgstr ""
+"**Ngưỡng hành động** trong cấu trúc dữ liệu tài khoản đặt **trọng số** mà "
+"bạn cần đáp ứng để thực hiện một hành động."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:18
+msgid ""
+"For more information, please review the `Blockchain Design "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_."
+msgstr ""
+"Để biết thêm thông tin, vui lòng xem lại `` Thiết kế chuỗi khối "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_."

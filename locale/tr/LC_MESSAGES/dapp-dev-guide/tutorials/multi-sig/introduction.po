@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# ilker <bilkerarslan40@gmail.com>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:2
+msgid "Concepts"
+msgstr "Kavramlar"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:4
+msgid ""
+"The Casper implementation of multiple signatures is unique and allows you to"
+" set up and customize access to your account and deployments."
+msgstr ""
+"Casper'ın çoklu imzalar uygulaması kendine özgüdür ve hesabınıza ve "
+"dağıtımlarınıza erişimi ayarlamanıza ve özelleştirmenize olanak tanır."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:6
+msgid ""
+"Many companies handle large transactions and use smart contracts to manage "
+"tokens. However, these contracts need to be audited and secure and require a"
+" significant investment in setup and maintenance."
+msgstr ""
+"Birçok şirket, tokenleri yönetmek için büyük işlemler yapar ve akıllı "
+"kontratlar kullanır. Bununla birlikte, bu kontratların denetlenmesi ve "
+"güvenliğinin sağlanması gerekir ve kurulum ve bakım için ciddi miktarda "
+"yatırıma ihtiyaç duyulur."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:8
+msgid ""
+"Casper enables you to sign anything with its multi-signature (multi-sig) "
+"implementation. For example, you do not need a multi-sig wallet to call a "
+"feature from a smart contract. Instead, you can use the multi-sig feature at"
+" the account level and sign your account with multiple keys."
+msgstr ""
+"Casper, çoklu imza (multi-sig) uygulaması ile her şeyi imzalayabilmenize "
+"imkan tanır. Örneğin, bir akıllı kontrattaki özelliği çağırmak için multi-"
+"sig bir cüzdana ihtiyacınız yoktur. Bunun yerine, multi-sig özelliğini hesap"
+" düzeyinde kullanabilir ve hesabınızı birden çok anahtarla "
+"imzalayabilirsiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:10
+msgid ""
+"Your `Account "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ is a "
+"cryptographically secured gateway into the CasperLabs system, and you can "
+"set it up using `the Casper Permissions Model "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html"
+"#permissions-model>`_."
+msgstr ""
+"`Hesabınız "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_, "
+"CasperLabs sistemine açılan, kriptografik olarak güvenliği sağlanmış bir "
+"kapıdır ve bunu `Casper İzin Modelini "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html"
+"#permissions-model>`_ kullanarak ayarlayabilirsiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:12
+msgid "The account contains associated keys and action thresholds:"
+msgstr "Hesap, ilişkili anahtarları ve eylem eşiklerini içerir:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:14
+msgid ""
+"The **associated keys** of an account are the set of public keys allowed to "
+"provide signatures on account actions."
+msgstr ""
+"Bir hesabın **ilişkili anahtarları**, hesap eylemleri üzerinde imzalama izni"
+" olan genel anahtarların kümesidir."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:15
+msgid ""
+"An account can perform two types of actions: **deployment** and **key "
+"management**."
+msgstr ""
+"Bir hesap, iki tür eylem gerçekleştirebilir: **dağıtım** ve **anahtar "
+"yönetimi**."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:16
+msgid ""
+"The **action thresholds** in the account data structure set a **weight**, "
+"which you must meet to perform an action."
+msgstr ""
+"Hesap veri yapısı içindeki **eylem eşikleri**, bir eylemi gerçekleştirmek "
+"için karşılanması gereken **ağırlığı** belirler."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:18
+msgid ""
+"For more information, please review the `Blockchain Design "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_."
+msgstr ""
+"Daha fazla bilgi için, lütfen `Blokzincir Tasarımı "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_'nı "
+"inceleyiniz."

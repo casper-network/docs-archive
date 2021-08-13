@@ -1,0 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../implementation/uref.rst:4
+msgid "Unforgeable Reference (URef)"
+msgstr "Tham chiếu không thể giả mạo (URef)"
+
+#: ../../implementation/uref.rst:6
+msgid ""
+"This key type is used for storing any type of value except ``Account``. "
+"Additionally, ``URef``\\ s used in contracts carry permission information to"
+" prevent unauthorized usage of the value stored under the key. This "
+"permission information is tracked by the runtime, meaning that if a "
+"malicious contract attempts to produce a ``URef`` with permissions that the "
+"contract does not have, we say the contract has attempted to “forge” the "
+"unforgeable reference, and the runtime will raise a forged ``URef`` error. "
+"Permissions for a ``URef`` can be given across contract calls, allowing data"
+" stored under a ``URef`` to be shared in a controlled way. The 32-byte "
+"identifier representing the key is generated randomly by the runtime (see "
+":ref:`Execution Semantics <execution-semantics-urefs>` for more "
+"information). The serialization for ``Access Rights`` that define the "
+"permissions for ``URefs`` is detailed in the :ref:`CLValues<serialization-"
+"standard-values>` section."
+msgstr ""
+"Loại khóa này được sử dụng để lưu trữ bất kỳ loại giá trị nào ngoại trừ "
+"``Account``. Ngoài ra, ``URef`` được sử dụng trong hợp đồng mang thông tin "
+"về quyền để ngăn chặn việc sử dụng trái phép giá trị được lưu trữ trong "
+"khóa. Thông tin quyền này được theo dõi bởi thời gian chạy, có nghĩa là nếu "
+"một hợp đồng độc hại cố gắng tạo ra một ``URef`` với các quyền mà hợp đồng "
+"không có, chúng tôi cho rằng hợp đồng đã cố gắng “giả mạo” tham chiếu không "
+"thể giả mạo và thời gian chạy sẽ phát hiện lỗi ``URef`` giả mạo. Quyền đối "
+"với một ``URef`` có thể được cấp cho các lệnh gọi hợp đồng, cho phép dữ liệu"
+" được lưu trữ trong ``URef`` được chia sẻ một cách có kiểm soát. Định danh "
+"32 byte đại diện cho khóa được tạo ngẫu nhiên bởi thời gian chạy (xem "
+":ref:`Ý nghĩa thực thi <execution-semantics-urefs>` để biết thêm chi tiết). "
+"Trình tự để ``Access Rights`` xác định quyền cho ``URefs`` được nêu chi tiết"
+" trong phần :ref:`CLValues<serialization-standard-values>`."
+
+#: ../../implementation/uref.rst:20
+msgid "Permissions for ``URef``\\ s"
+msgstr "Quyền cho ``URef``\\"
+
+#: ../../implementation/uref.rst:22
+msgid ""
+"In the runtime, a ``URef`` carries its permissions called ``AccessRights``. "
+"Additionally, the runtime tracks what ``AccessRights`` would be valid for "
+"each ``URef`` to have in each context. As mentioned above, if a malicious "
+"contract attempts to use a ``URef`` with ``AccessRights`` that are not valid"
+" in its context, then the runtime will raise an error; this is what enforces"
+" the security properties of all URefs used as a key. By default, in all "
+"contexts, all ``URef``\\ s are assumed invalid regardless of declared "
+"AccessRights and are checked against the executing context for validity upon"
+" each attempted usage in session or smart contract logic. A ``URef`` can "
+"only be added to a context by the host logic, in the following ways:"
+msgstr ""
+"Trong thời điểm chạy, một ``URef`` mang các quyền của nó được gọi là "
+"``AccessRights`` Ngoài ra, thời điểm chạy theo dõi những gì ``AccessRights``"
+" sẽ xác nhận cho mỗi ``URef`` có trong mỗi ngữ cảnh. Như đã đề cập ở trên, "
+"nếu một hợp đồng độc hại cố gắng sử dụng ``URef``  với ``URef`` không hợp lệ"
+" trong ngữ cảnh của nó, thì thời điểm chạy sẽ phát hiện lỗi; đây là thực thi"
+" các thuộc tính bảo mật của tất cả các URef được sử dụng làm khóa. Theo mặc "
+"định, trong tất cả các ngữ cảnh, tất cả các ``URef`` đều được giả định là "
+"không hợp lệ bất kể AccessRights được khai báo và được kiểm tra dựa trên ngữ"
+" cảnh thực thi để xem có hiệu lực hay không sau mỗi lần cố gắng sử dụng "
+"trong logic phiên hoặc hợp đồng thông minh. Logic máy chủ chỉ có thể thêm "
+"``URef`` vào ngữ cảnh, theo những cách sau:"
+
+#: ../../implementation/uref.rst:31
+msgid "it can exist in a set of “known” ``URef``\\ s"
+msgstr "nó có thể tồn tại trong một tập hợp các ``URef`` “đã biết”"
+
+#: ../../implementation/uref.rst:32
+msgid "it can be freshly created by the runtime via the ``new_uref`` function"
+msgstr "nó có thể được tạo mới bằng thời điểm chạy thông qua hàm ``new_uref``"
+
+#: ../../implementation/uref.rst:33
+msgid ""
+"for called contracts, it can be passed in by the caller via the arguments to"
+" ``call_contract``"
+msgstr ""
+"đối với các hợp đồng được gọi, nó có thể được người gọi chuyển vào thông qua"
+" các đối số cho ``call_contract``"
+
+#: ../../implementation/uref.rst:35
+msgid ""
+"it can be returned to the caller from ``call_contract`` via the ``ret`` "
+"function"
+msgstr ""
+"nó có thể được trả lại cho người gọi từ ``call_contract`` thông qua hàm "
+"``ret``"
+
+#: ../../implementation/uref.rst:38
+msgid ""
+"Note: that only valid ``URef``\\ s may be added to the known ``URef``\\ s or"
+" cross call boundaries; this means the system cannot be tricked into "
+"accepting a forged ``URef`` by getting it through a contract or stashing it "
+"in the known ``URef``\\ s."
+msgstr ""
+"Lưu ý: chỉ những ``URef`` hợp lệ mới có thể được thêm vào ``URef`` đã biết "
+"hoặc qua lệnh gọi; điều này có nghĩa là hệ thống không thể bị lừa để chấp "
+"nhận một ``URef`` giả mạo bằng cách lấy nó thông qua một hợp đồng hoặc lưu "
+"trữ nó trong các ``URef`` đã biết."
+
+#: ../../implementation/uref.rst:42
+msgid ""
+"The ability to pass ``URef``\\ s between contexts via ``call_contract`` / "
+"``ret``, allows them to be used to share state among a fixed number of "
+"parties while keeping it private from all others."
+msgstr ""
+"Khả năng truyền ``URef` giữa các ngữ cảnh thông qua ``call_contract`` / "
+"``ret``, cho phép chúng được sử dụng để chia sẻ trạng thái giữa các bên xác "
+"định từ trước, trong khi vẫn giữ nó ở chế độ riêng tư với tất cả những người"
+" khác."

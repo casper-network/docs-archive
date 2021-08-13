@@ -1,0 +1,188 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:45+0000\n"
+"Last-Translator: Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:2
+msgid "Calling Contracts"
+msgstr "Kontratları Çağırmak"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:4
+msgid ""
+"The most efficient way to use blockchain is to store (install) your contract"
+" on the system and then call it. This section outlines the steps to do this."
+msgstr ""
+"Blokzinciri kullanmanın en verimli yolu, kontratınızı sistemde depolamak "
+"(kurmak) ve ardından onu çağırmaktır. Bu bölüm, bunu yapmak için gereken "
+"adımları özetlemektedir."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:7
+msgid "Installing a Smart Contract"
+msgstr "Bir Akıllı Kontrat Yükleme"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:9
+msgid ""
+"First, set up the contract name so you can call it using the name in "
+"subsequent deploys. The following code sample uses ``sample_contract`` as "
+"the contract name."
+msgstr ""
+"Öncelikle, sonraki dağıtımlarda adı kullanarak arayabilmeniz için kontrat "
+"adını ayarlayın. Aşağıdaki kod örneği, kontrat adı olarak "
+"``sample_contract`` kullanır."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:25
+msgid ""
+"Next, deploy the smart contract using the ``put-deploy`` command and send in"
+" the compiled wasm as ``--session code``."
+msgstr ""
+"Sonra, ``put-deploy`` komutunu kullanarak akıllı kontratı dağıtın ve "
+"derlenmiş wasm'ı ``--session code`` olarak gönderin."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:29
+msgid "Querying Global State for the Address of a Contract"
+msgstr "Bir Kontratın Adresi için Küresel Durumu Sorgulama"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:31
+msgid ""
+"The ``query-state`` command is a generic query against `global state "
+"<https://docs.casperlabs.io/en/latest/glossary/G.html#global-state>`_. "
+"Earlier, we queried global state for the account's main purse. Here, we "
+"query the state of a contract. We can do so by including the contract "
+"address rather than the account public key in the ``query-state`` command."
+msgstr ""
+"``query-state`` komutu, ``küresel durum "
+"<https://docs.casperlabs.io/en/latest/glossary/G.html#global-state>\"a karşı"
+" genel bir sorgudur. Daha önce, hesabın ana cüzdanı için küresel durumu "
+"sorguladık. Burada bir kontratın durumunu sorgularız. Bunu, ``query-state`` "
+"komutuna hesap genel anahtarı yerine kontrat adresini ekleyerek yapabiliriz."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:33
+msgid ""
+"Here we query to get the address of an ERC20 contract from Global State."
+msgstr ""
+"Burada Küresel Durum'dan bir ERC20 kontratının adresini almak için "
+"sorguluyoruz."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:36
+msgid "Step 1: Get the Latest Global State Hash"
+msgstr "Adım 1: En Son Küresel Durum Özetini (hash) Alın"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:38
+msgid ""
+"We need to obtain the global state hash after our contract has been deployed"
+" to the network."
+msgstr ""
+"Kontratımız ağa dağıtıldıktan sonra küresel durum özetini (hash) almamız "
+"gerekiyor."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:45
+msgid "Step 2: Query State"
+msgstr "2. Adım: Sorgu Durumu"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:47
+msgid ""
+"Take the global state hash from Step 1 and include it here, along with the "
+"account public key that created the contract."
+msgstr ""
+"Adım 1'deki genel durum özetini (hash) alın ve kontratı oluşturan hesap "
+"ortak anahtarıyla birlikte buraya ekleyin."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:54
+msgid "Example Result"
+msgstr "Örnek Sonuç"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:56
+msgid ""
+"If there is a contract stored in an account, it will appear under ``named-"
+"keys``."
+msgstr ""
+"Bir hesapta kayıtlı bir kontrat varsa, `named-keys`` altında görünecektir."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:87
+msgid "Step 3: Query the contract State"
+msgstr "3. Adım: Sözleşme Durumunu Sorgulayın"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:89
+msgid ""
+"Now that we have the hash of the contract, we can query the contract's "
+"internal state. To do this, we pass in the contract's hash and the global "
+"state hash.  If we look at the ERC20 contract, we see a token name specified"
+" as ``_name``.  We can query for the value stored here."
+msgstr ""
+"Artık kontratın özetine (hash) sahip olduğumuza göre, kontratın iç durumunu "
+"sorgulayabiliriz. Bunu yapmak için, kontratın özetini (hash) ve küresel "
+"durum özetini  (hash) geçiyoruz. ERC20 kontratına bakarsak ``_name`` olarak "
+"belirtilmiş bir token ismi görürüz. Burada saklanan değeri sorgulayabiliriz."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:95
+msgid "And we should see something like this:"
+msgstr "Ve şöyle bir şey görmeliyiz:"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:109
+msgid ""
+"**Note**: This result is returned as bytes. These bytes need to be "
+"deserialized into the correct CLType in a smart contract or a dApp. Refer to"
+" `casper-types <https://docs.rs/casperlabs-"
+"types/latest/casperlabs_types/bytesrepr/index.html>`_ to find the latest "
+"APIs for deserialization."
+msgstr ""
+"**Not**: Bu sonuç bayt olarak döndürülür. Bu baytların bir akıllı kontratta "
+"veya bir dApp'de doğru CLType'a seri hale getirilmesi gerekir. Seri durumdan"
+" çıkarma amacıyla en son API'leri bulmak için `casper-types <https://docs.rs"
+"/casperlabs-types/latest/casperlabs_types/bytesrepr/index.html>`_ bölümüne "
+"bakın."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:113
+msgid "Calling a Contract by Name & Entry Point"
+msgstr "Adına ve Giriş Noktasına Göre Bir Kontratın Çağrılması"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:115
+msgid ""
+"To call a contract by its name, run the ``put-deploy`` command using the "
+"``session-name`` option:"
+msgstr ""
+"Bir kontratı adıyla çağırmak için, ``session-name`` seçeneğini kullanarak "
+"``put-deploy`` komutunu çalıştırın:"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:121
+msgid ""
+"It is possible to create entry points in the contract, which you can invoke "
+"while the contract lives on the blockchain. The following code shows you an "
+"example entry point:"
+msgstr ""
+"Kontrat blokzincirde yaşarken çağırabileceğiniz kontratta giriş noktaları "
+"oluşturmak mümkündür. Aşağıdaki kod size örnek bir giriş noktası gösterir:"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:138
+msgid "Calling a Contract by Hash and Entry Point"
+msgstr "Özet (hash) ve Giriş Noktası ile Sözleşme Çağırma"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:140
+msgid ""
+"After deploying a contract and querying the global state, you can use a "
+"contract's hash to call it in a new deploy. An entry point is required when "
+"calling a contract by its hash."
+msgstr ""
+"Bir kontratı dağıttıktan ve genel durumu sorguladıktan sonra, yeni bir "
+"dağıtımda çağırmak için bir kontratın özetini (hash) kullanabilirsiniz. Bir "
+"kontratı özetine (hash) göre çağırırken bir giriş noktası gereklidir."

@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:2
+msgid "ERC-20 Tutorial"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:4
+msgid "This tutorial reviews an implementation of the ERC-20 standard for Casper."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:6
+msgid ""
+"Most smart-contract developers are familiar with ERC-20 standard, which "
+"comes from the Ethereum ecosystem. This standard is well established for "
+"building new tokens based on smart contracts. In this tutorial, we will "
+"implement the ERC-20 standard for the Casper blockchain."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:8
+msgid ""
+"The code for this tutorial is available in `GitHub <https://github.com"
+"/casper-ecosystem/erc20>`_. If you haven't read `Writing Rust Contracts "
+"on Casper <https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-"
+"contracts/writing-rust-contracts.html>`_ , we recommend you start there."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:10
+msgid "**Tutorial Content**"
+msgstr ""
+

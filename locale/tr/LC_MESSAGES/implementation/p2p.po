@@ -1,0 +1,309 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../implementation/p2p.rst:4
+msgid "Network Communication"
+msgstr "Ağ İletişimi"
+
+#: ../../implementation/p2p.rst:8
+msgid ""
+"Nodes form a peer-to-peer network are continually communicating with each "
+"other to reach *consensus* about the blockchain state. A node is not "
+"necessarily a single physical machine. Still, it appears as a single logical"
+" entity to the rest of its peers by having a unique ID and address where it "
+"responds to incoming network traffic."
+msgstr ""
+"Eşler arası bir ağ oluşturan düğümler, blokzincir durumu hakkında "
+"*mutabakat*a ulaşmak için sürekli olarak birbirleriyle iletişim kurar. Bir "
+"düğüm mutlaka tek bir fiziksel makine değildir. Yine de, gelen ağ trafiğine "
+"yanıt verdiği benzersiz bir kimliğe ve adrese sahip olarak, diğer eşlerine "
+"tek bir mantıksal varlık olarak görünür."
+
+#: ../../implementation/p2p.rst:11
+msgid "Identity"
+msgstr "Kimlik"
+
+#: ../../implementation/p2p.rst:13
+msgid ""
+"Each node has an identity on the network (which is not the same as its "
+"identity in the consensus process). The network identity (ID) is based on "
+"the fingerprint of the public key of a self-signed TLS certificate. A node "
+"generates a new private key each time it starts, ensuring a unique ID."
+msgstr ""
+"Her düğümün ağ üzerinde bir kimliği vardır (mutabakat sürecindeki kimliğiyle"
+" aynı değildir). Ağ kimliği (ID), kendinden imzalı bir TLS sertifikasının "
+"ortak anahtarının parmak izini temel alır. Bir düğüm, her başladığında "
+"benzersiz bir kimlik sağlayarak yeni bir özel anahtar oluşturur."
+
+#: ../../implementation/p2p.rst:15
+msgid ""
+"Each identity is linked with an address, which is an IP and port pair where "
+"the node is reachable. This address is also called an endpoint."
+msgstr ""
+"Her kimlik, düğümün erişilebilir olduğu bir IP ve bağlantı noktası çifti "
+"olan bir adresle bağlantılıdır. Bu adrese uç nokta da denir."
+
+#: ../../implementation/p2p.rst:18
+msgid "Inter-node connections"
+msgstr "Düğümler arası bağlantılar"
+
+#: ../../implementation/p2p.rst:20
+msgid ""
+"Should a node want to connect to another node with a known endpoint, it "
+"opens a TLS connection to the endpoint's address. In the context of common "
+"TLS terminology, this makes the connecting node the *client* and the remote "
+"node the *server* for this connection."
+msgstr ""
+"Bir düğüm, bilinen bir uç noktaya sahip başka bir düğüme bağlanmak isterse, "
+"uç noktanın adresine bir TLS bağlantısı açar. Ortak TLS terminolojisi "
+"bağlamında, bu bağlantı için, bağlantı düğümünü *istemci* ve uzak düğümü "
+"*sunucu* yapar."
+
+#: ../../implementation/p2p.rst:22
+msgid ""
+"During connection setup, the client checks the server's certificate, "
+"matching the endpoint's expected public identity to ensure we have connected"
+" to the right node. Additionally, the TLS parameters of the connection and "
+"certificate are required to contain the same ciphers, digests, etc., to "
+"protect against downgrade attacks."
+msgstr ""
+"Bağlantı kurulumu sırasında istemci, sunucunun sertifikasını kontrol eder ve"
+" doğru düğüme bağlandığımızdan emin olmak için uç noktanın beklenen genel "
+"kimliğiyle eşleşir. Ayrıca, sürüm düşürme saldırılarına karşı koruma "
+"sağlamak için bağlantının ve sertifikanın TLS parametrelerinin aynı "
+"şifreleri, özetleri vb. içermesi gerekir."
+
+#: ../../implementation/p2p.rst:24
+msgid ""
+"Simultaneously, the connecting node sends its certificate as the client "
+"certificate, allowing the server to perform the same check-in reverse and "
+"establish the client's ID. At the end of the process, both nodes can be sure"
+" to which peer they are connected."
+msgstr ""
+"Eşzamanlı olarak, bağlantı düğümü sertifikasını istemci sertifikası olarak "
+"göndererek sunucunun aynı denetleme işlemini tersine gerçekleştirmesine ve "
+"istemcinin kimliğini oluşturmasına izin verir. İşlemin sonunda her iki düğüm"
+" de hangi eşe bağlı olduklarından emin olabilir."
+
+#: ../../implementation/p2p.rst:26
+msgid ""
+"Once a connection is established, the server will immediately seek to "
+"connect back to a node based on its endpoint (see `Node Discovery`_ on how "
+"the server finds endpoints) if it is a one-way connection. If a "
+"bidirectional connection setup cannot be established within a certain amount"
+" of time, all peer ID connections are dropped."
+msgstr ""
+"Bir bağlantı kurulduktan sonra, sunucu, tek yönlü bir bağlantıysa, uç "
+"noktasına bağlı olarak (sunucunun uç noktaları nasıl bulduğuna ilişkin "
+"`Düğüm Keşfi`_ bölümüne bakın) derhal bir düğüme yeniden bağlanmaya "
+"çalışacaktır. Belirli bir süre içinde çift yönlü bağlantı kurulumu "
+"yapılamazsa, tüm eş kimliği bağlantıları kesilir."
+
+#: ../../implementation/p2p.rst:28
+msgid ""
+"Connections are used for sending messages one-way only; only the node "
+"initiating a connection will send messages on it."
+msgstr ""
+"Bağlantılar yalnızca tek yönlü mesaj göndermek için kullanılır; sadece bir "
+"bağlantı başlatan düğüm ona mesaj gönderir."
+
+#: ../../implementation/p2p.rst:31
+msgid "Network"
+msgstr "Ağ"
+
+#: ../../implementation/p2p.rst:33
+msgid ""
+"As soon as a node has connected to one node in the network, it partakes in "
+"`Node Discovery`_. In general, any node will attempt to connect to any other"
+" node on the network it finds as described above, leading to a fully "
+"connected network."
+msgstr ""
+"Bir düğüm ağdaki bir düğüme bağlanır bağlanmaz `Düğüm Keşfi`_ne katılır. "
+"Genel olarak, herhangi bir düğüm, ağ üzerinde bulduğu diğer herhangi bir "
+"düğüme yukarıda açıklandığı gibi bağlanmaya çalışacak ve bu da tamamen bağlı"
+" bir ağa yol açacaktır."
+
+#: ../../implementation/p2p.rst:35
+msgid ""
+"Two classes of data transfers happen in the network; broadcasts and "
+"gossiping. A broadcast message is sent once, without guarantees, to all the "
+"nodes connected to it. The process of gossiping is described further below."
+msgstr ""
+"Ağda iki sınıf veri aktarımı gerçekleşir; yayın ve dedikodu. Bir yayın "
+"mesajı, kendisine bağlı tüm düğümlere garantisiz olarak bir kez gönderilir. "
+"Dedikodu süreci aşağıda daha ayrıntılı olarak açıklanmaktadır."
+
+#: ../../implementation/p2p.rst:37
+msgid ""
+"In general, only consensus messages, which are only sent by active "
+"validators, are broadcast. Everything else is gossipped."
+msgstr ""
+"Genel olarak, yalnızca etkin doğrulayıcılar tarafından gönderilen mutabakat "
+"mesajları yayınlanır. Diğer her şey dedikodudur."
+
+#: ../../implementation/p2p.rst:42
+msgid "Gossiping"
+msgstr "Dedikodu"
+
+#: ../../implementation/p2p.rst:44
+msgid ""
+"Multiple types of objects are gossipped, the most prominent ones being "
+"blocks, deploys, and endpoints (see `Identity`_). Each of these objects is "
+"immutable and can be identified by a unique hash."
+msgstr ""
+"En belirginleri bloklar, dağıtımlar ve uç noktalar olmak üzere birden çok "
+"nesne türü dedikodu edilir (bkz. 'Kimlik'_). Bu nesnelerin her biri "
+"değişmezdir ve benzersiz bir özet (hash) ile tanımlanabilir."
+
+#: ../../implementation/p2p.rst:46
+msgid ""
+"Gossiping is a process of distributing a value across the entire network "
+"without directly sending it to each node. This process allows only a subset "
+"of nodes to be connected to the original sender and spreading the bandwidth "
+"and processing requirements across the network at the cost of latency and "
+"overall bandwidth consumed."
+msgstr ""
+"Dedikodu, bir değeri doğrudan her bir düğüme göndermeden tüm ağ boyunca "
+"dağıtma işlemidir. Bu süreç, orijinal göndericiye yalnızca bir düğüm alt "
+"kümesinin bağlanmasına ve bant genişliği ve işleme gereksinimlerinin ağ "
+"genelinde gecikme süresi ve tüketilen toplam bant genişliği pahasına "
+"yayılmasına izin verir."
+
+#: ../../implementation/p2p.rst:48
+msgid "The process can be summarized as follows:"
+msgstr "Süreç şu şekilde özetlenebilir:"
+
+#: ../../implementation/p2p.rst:50
+msgid ""
+"Given a message `M` to gossip, the desired saturation `S`, and an infection "
+"limit `L`:"
+msgstr ""
+"Dedikodu için bir `M` mesajı, istenen `S` doygunluğu ve bir bulaşma sınırı "
+"`L` verildiğinde:"
+
+#: ../../implementation/p2p.rst:52
+msgid "Pick a subset `T` of `k` nodes from all currently connected nodes."
+msgstr ""
+"Şu anda bağlı olan tüm düğümlerden `k` düğümlerinin bir `T` alt kümesini "
+"seçin."
+
+#: ../../implementation/p2p.rst:53
+msgid ""
+"Send `M` to each node in `T`, noting which nodes were already infected (a "
+"node is considered infected if it already had received or known `M`)."
+msgstr ""
+"Hangi düğümlerin zaten enfekte olduğunu not ederek `T`deki her bir düğüme "
+"`M` gönderin (bir düğüm zaten `M` almışsa veya biliniyorsa virüslü olarak "
+"kabul edilir)."
+
+#: ../../implementation/p2p.rst:54
+msgid ""
+"For every node shown as already infected, add another random node outside to"
+" `T` and send it `M`, again noting the response."
+msgstr ""
+"Halihazırda bulaşmış olarak gösterilen her düğüm için, `T` dışında başka bir"
+" rastgele düğüm ekleyin ve yanıtı tekrar not ederek `M`yi gönderin."
+
+#: ../../implementation/p2p.rst:55
+msgid ""
+"End when we confirm infection of `L` new nodes or encountered `S` already "
+"infected nodes."
+msgstr ""
+"`L` yeni düğümlerin bulaştığını doğruladığımızda ya da zaten virüslü `S` "
+"düğümlerle karşılaştığımızda sona erdirin."
+
+#: ../../implementation/p2p.rst:57
+msgid ""
+"Through this process, a message will spread to almost all nodes over time."
+msgstr ""
+"Bu süreç boyunca, bir mesaj zaman içinde neredeyse tüm düğümlere "
+"yayılacaktır."
+
+#: ../../implementation/p2p.rst:60
+msgid "Requesting missing data"
+msgstr "Eksik veri talep etme"
+
+#: ../../implementation/p2p.rst:62
+msgid ""
+"While gossiping and broadcasting are sufficient to distribute data across "
+"the network in most cases, nodes can also request missing data from peers "
+"should they require it. A common example is a missing deploy from a block."
+msgstr ""
+"Dedikodu ve yayın, çoğu durumda ağ genelinde veri dağıtmak için yeterli olsa"
+" da, düğümler ihtiyaç duymaları halinde eşlerden eksik verileri de talep "
+"edebilir. Yaygın bir örnek, bir bloktan eksik bir dağıtımdır."
+
+#: ../../implementation/p2p.rst:65
+msgid "Validation"
+msgstr "Doğrulama"
+
+#: ../../implementation/p2p.rst:67
+msgid ""
+"Objects have a concept of dependencies. For example, a block depends on all "
+"the deploys whose hashes are listed inside it. A node considers any object "
+"valid if all of its dependencies are available on the local node."
+msgstr ""
+"Nesnelerin bir bağımlılık kavramı vardır. Örneğin, bir blok, özet (hash) "
+"değerleri içinde listelenen tüm dağıtımlara bağlıdır. Bir düğüm, tüm "
+"bağımlılıkları yerel düğümde mevcutsa, herhangi bir nesneyi geçerli kabul "
+"eder."
+
+#: ../../implementation/p2p.rst:69
+msgid ""
+"Should a node receive an object from a peer that is not valid yet, it will "
+"attempt to complete its validation before processing it further. In the case"
+" of gossiping, this means pausing the gossiping of the object until all its "
+"dependencies can be retrieved."
+msgstr ""
+"Bir düğüm, bir eşten henüz geçerli olmayan bir nesne alırsa, daha fazla "
+"işlemeden önce doğrulamasını tamamlamaya çalışır. Dedikodu durumunda, bu, "
+"tüm bağımlılıkları alınana kadar nesnenin dedikodusunu duraklatmak anlamına "
+"gelir."
+
+#: ../../implementation/p2p.rst:71
+msgid ""
+"Any node is responsible for only propagating valid objects. Should a node "
+"not retrieve all missing dependencies of an object from the peer that sent "
+"it, it may punish the peer for doing so."
+msgstr ""
+"Herhangi bir düğüm yalnızca geçerli nesneleri yaymaktan sorumludur. Bir "
+"düğüm, bir nesnenin tüm eksik bağımlılıklarını onu gönderen eşten alamazsa, "
+"bunu yaptığı için eşi cezalandırabilir."
+
+#: ../../implementation/p2p.rst:74
+msgid "Node Discovery"
+msgstr "Düğüm Keşfi"
+
+#: ../../implementation/p2p.rst:76
+msgid ""
+"Node discovery happens by each node periodically gossiping its public "
+"address. Upon receiving an address via gossip, each node immediately tries "
+"to establish a connection to it and notes the resulting endpoint, if "
+"successful."
+msgstr ""
+"Düğüm keşfi, her düğümün periyodik olarak genel adresini dedikodu yapmasıyla"
+" gerçekleşir. Dedikodu yoluyla bir adres aldığında, her düğüm hemen onunla "
+"bir bağlantı kurmaya çalışır ve başarılı olursa sonuçta ortaya çıkan uç "
+"noktayı not eder."

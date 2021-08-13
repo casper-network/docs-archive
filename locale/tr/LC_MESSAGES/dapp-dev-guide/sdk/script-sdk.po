@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Furkan Ahmet KARA <furkanahmetkara.fk@gmail.com>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:2
+msgid "TypeScript/JavaScript SDK"
+msgstr "TypeScript/JavaScript SDK"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:4
+msgid ""
+"The `TypeScript/JavaScript SDK <https://casper-ecosystem.github.io/casper-"
+"js-sdk/>`_ allows developers to interact with the Casper Network using "
+"TypeScript or JavaScript. This page covers different examples of using the "
+"SDK."
+msgstr ""
+"`TypeScript/JavaScript SDK <https://casper-ecosystem.github.io/casper-js-"
+"sdk/>`_ geliştiricilerin TypeScript veya JavaScript kullanarak Casper "
+"Network ile etkileşime girmesine olanak tanır. Bu sayfa, SDK kullanımına "
+"ilişkin farklı örnekleri kapsar."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:7
+msgid "Installation"
+msgstr "Kurulum"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:8
+msgid "To install this library using Node.js, run the following command:"
+msgstr ""
+"Bu kitaplığı Node.js kullanarak kurmak için aşağıdaki komutu çalıştırın:"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:15
+msgid "Tests"
+msgstr "Testler"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:16
+msgid ""
+"You can find basic examples for how to use this library in the ``test`` "
+"directory. To run the tests, use this command:"
+msgstr ""
+"Bu kütüphanenin nasıl kullanılacağına dair temel örnekleri ``test`` "
+"dizininde bulabilirsiniz. Testleri çalıştırmak için şu komutu kullanın:"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:23
+msgid "Usage Examples"
+msgstr "Kullanım Örnekleri"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:24
+msgid ""
+"In this section, we outline a couple of essential tasks you can accomplish "
+"with the JavaScript SDK:"
+msgstr ""
+"Bu bölümde, JavaScript SDK ile gerçekleştirebileceğiniz birkaç temel görevi "
+"özetliyoruz:"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:26
+msgid "Generating account keys"
+msgstr "Hesap anahtarları oluşturmak"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:27
+msgid "Sending a transfer"
+msgstr "Bir aktarım göndermek"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:29
+msgid ""
+"For a complete implementation example, read the `Multi-Signature Tutorial "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-"
+"sig/index.html>`_, which uses the JavaScript SDK."
+msgstr ""
+"Eksiksiz bir uygulama örneği için, JavaScript SDK'sını kullanan `Çoklu İmza "
+"Eğitimini <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials"
+"/multi-sig/index.html>`_  okuyun."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:32
+msgid "Generating Account Keys"
+msgstr "Hesap Anahtarları Oluşturmak"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:34
+msgid ""
+"This example shows you how to use the SDK to generate account keys to sign "
+"your deploy."
+msgstr ""
+"Bu örnek, dağıtımınızı imzalamak üzere hesap anahtarları oluşturmak için "
+"SDK'yı nasıl kullanacağınızı gösterir."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:72
+msgid ""
+"After generating the keys with this code, you can add them to the "
+"`CasperLabs Signer Chrome extension "
+"<https://chrome.google.com/webstore/detail/casperlabs-"
+"signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en-US>`_ and use them to sign "
+"your transactions."
+msgstr ""
+"Anahtarları bu kod ile oluşturduktan sonra `CasperLabs Signer Chrome "
+"uzantısına <https://chrome.google.com/webstore/detail/casperlabs-"
+"signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en-US>`_ ekleyebilir ve "
+"işlemlerinizi imzalamak için kullanabilirsiniz."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:76
+msgid "Sending a Transfer"
+msgstr "Bir Aktarım Gönderme "
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:78
+msgid ""
+"This code block shows you how to define and send a transfer on the Casper "
+"Network. Replace the ``account-address`` in the code below with the sender's"
+" account address."
+msgstr ""
+"Bu kod bloğu, Casper Network'te bir aktarımı nasıl tanımlayacağınızı ve "
+"göndereceğinizi gösterir. Aşağıdaki koddaki ``account-address`` kısmını "
+"gönderenin hesap adresiyle değiştirin."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:80
+msgid ""
+"The ``sendTransfer`` function below will return a ``transfer-hash`` which "
+"you can check on https://testnet.cspr.live/."
+msgstr ""
+"Aşağıdaki ``sendTransfer`` işlevi, https://testnet.cspr.live/ adresinde "
+"kontrol edebileceğiniz bir ```transfer-hash`` döndürür."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:164
+msgid ""
+"**Note**: At any moment, you can serialize the deploy from this example to "
+"JSON to accomplish whatever you want (store it, send it, etc.)."
+msgstr ""
+"**Not**: Her an, istediğinizi (depolayın, gönderin, vb.) gerçekleştirmek "
+"için dağıtımı bu örnekten JSON'a serileştirebilirsiniz."
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:166
+msgid "Here is the code you can use to serialize the deploy:"
+msgstr "Dağıtımı serileştirmek için kullanabileceğiniz kod:"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:173
+msgid "Then, you can reconstruct the deploy object using this function:"
+msgstr ""
+"Ardından, bu işlevi kullanarak dağıtım nesnesini yeniden oluşturabilirsiniz:"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:180
+msgid "Additional Resources"
+msgstr "Ek Kaynaklar"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:181
+msgid ""
+"If you are looking for additional examples, another great resource is the "
+"`BitGo JS implementation "
+"<https://github.com/BitGo/BitGoJS/tree/master/modules/account-"
+"lib/src/coin/cspr>`_."
+msgstr ""
+"Ek örnekler arıyorsanız, bir başka harika kaynak da `BitGo JS uygulamasıdır "
+"<https://github.com/BitGo/BitGoJS/tree/master/modules/account-"
+"lib/src/coin/cspr>`_."

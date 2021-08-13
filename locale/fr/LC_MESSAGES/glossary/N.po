@@ -1,0 +1,182 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../glossary/N.rst:2
+msgid "N"
+msgstr "N"
+
+#: ../../glossary/N.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/N.rst:9
+msgid "Node"
+msgstr "Nœud"
+
+#: ../../glossary/N.rst:11
+msgid ""
+"A Casper node is a physical or virtual device that is participating in the "
+"Casper network. They store, validate, and preserve the blockchain data."
+msgstr ""
+"Un nœud Casper est un server physique ou virtuel qui participe au réseau "
+"Casper. Il stocke, valide et préserve les données de la blockchain."
+
+#: ../../glossary/N.rst:13
+msgid "You will encounter different types of nodes on the network:"
+msgstr "Vous rencontrerez différents types de nœuds sur le réseau :"
+
+#: ../../glossary/N.rst:15
+msgid ""
+"**Bonded node**: a node that has tokens staked as bond and is part of the "
+"validator set participating in consensus in that particular era."
+msgstr ""
+"**Nœud engagé** (bonded) : un nœud qui a des jetons mis en gage comme "
+"caution et qui fait partie de l'ensemble des validateurs participant au "
+"consensus dans cette ère particulière."
+
+#: ../../glossary/N.rst:16
+msgid ""
+"**Unbonded node**: a type of node on the network that receives and processes"
+" blocks but does not create blocks and is not a validator. It is otherwise a"
+" fully functioning node, following the consensus protocol to know the "
+"current status of the blockchain (and therefore also the VM state). Such "
+"nodes are useful for querying the status of the blockchain (e.g., to learn "
+"information about transaction finalization)."
+msgstr ""
+"**Nœud non engagé** (Unbonded) : un type de nœud sur le réseau qui reçoit et"
+" traite les blocs mais ne crée pas de blocs et n'est pas un validateur. Il "
+"s'agit d'un nœud pleinement fonctionnel, qui suit le protocole de consensus "
+"pour connaître l'état actuel de la blockchain (et donc aussi l'état de la "
+"VM). Ces nœuds sont utiles pour interroger l'état de la blockchain (par "
+"exemple, pour obtenir des informations sur la finalisation des "
+"transactions)."
+
+#: ../../glossary/N.rst:19
+msgid "Node operator"
+msgstr "Node operator : Opérateur de nœud"
+
+#: ../../glossary/N.rst:20
+msgid "See `operator <O.html#operator>`_."
+msgstr "Voir `opérateur <O. html#opérateur>`_."

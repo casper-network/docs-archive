@@ -1,0 +1,308 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../implementation/p2p.rst:4
+msgid "Network Communication"
+msgstr "Giao tiếp mạng"
+
+#: ../../implementation/p2p.rst:8
+msgid ""
+"Nodes form a peer-to-peer network are continually communicating with each "
+"other to reach *consensus* about the blockchain state. A node is not "
+"necessarily a single physical machine. Still, it appears as a single logical"
+" entity to the rest of its peers by having a unique ID and address where it "
+"responds to incoming network traffic."
+msgstr ""
+"Các nút tạo thành một mạng ngang hàng giao tiếp với nhau để đạt được *đồng "
+"thuận* về trạng thái chuỗi khối. Một nút không nhất thiết là máy tính vật "
+"lý. Tuy nhiên, nó xuất hiện như một thực thể logic duy nhất đối với phần còn"
+" lại bằng cách có một ID và địa chỉ duy nhất, và nó phản hồi cho dữ liệu "
+"mạng gửi tới."
+
+#: ../../implementation/p2p.rst:11
+msgid "Identity"
+msgstr "Định danh"
+
+#: ../../implementation/p2p.rst:13
+msgid ""
+"Each node has an identity on the network (which is not the same as its "
+"identity in the consensus process). The network identity (ID) is based on "
+"the fingerprint of the public key of a self-signed TLS certificate. A node "
+"generates a new private key each time it starts, ensuring a unique ID."
+msgstr ""
+"Mỗi nút có một định danh trên mạng (không giống với định danh của nó trong "
+"quá trình đồng thuận). Định danh mạng (ID) dựa trên dấu vân tay của khóa "
+"công khai của chứng chỉ TLS tự ký. Một nút tạo ra một khóa riêng mới mỗi khi"
+" nó khởi động, đảm bảo một ID duy nhất."
+
+#: ../../implementation/p2p.rst:15
+msgid ""
+"Each identity is linked with an address, which is an IP and port pair where "
+"the node is reachable. This address is also called an endpoint."
+msgstr ""
+"Mỗi danh tính được liên kết với một địa chỉ, là một cặp IP và cổng nơi nút "
+"có thể truy cập được. Địa chỉ này còn được gọi là điểm cuối."
+
+#: ../../implementation/p2p.rst:18
+msgid "Inter-node connections"
+msgstr "Kết nối giữa các nút"
+
+#: ../../implementation/p2p.rst:20
+msgid ""
+"Should a node want to connect to another node with a known endpoint, it "
+"opens a TLS connection to the endpoint's address. In the context of common "
+"TLS terminology, this makes the connecting node the *client* and the remote "
+"node the *server* for this connection."
+msgstr ""
+"Nếu một nút muốn kết nối với một nút khác có điểm cuối đã biết, nó sẽ mở một"
+" kết nối TLS đến địa chỉ của điểm cuối. Trong ngữ cảnh của thuật ngữ TLS phổ"
+" biến, điều này làm cho nút kết nối trở thành *máy khách* và nút ở xa trở "
+"thành *máy chủ* cho kết nối này."
+
+#: ../../implementation/p2p.rst:22
+msgid ""
+"During connection setup, the client checks the server's certificate, "
+"matching the endpoint's expected public identity to ensure we have connected"
+" to the right node. Additionally, the TLS parameters of the connection and "
+"certificate are required to contain the same ciphers, digests, etc., to "
+"protect against downgrade attacks."
+msgstr ""
+"Trong quá trình thiết lập kết nối, máy khách kiểm tra chứng chỉ của máy chủ,"
+" khớp với danh tính công khai dự kiến của điểm cuối để đảm bảo chúng ta đã "
+"kết nối với đúng nút. Ngoài ra, các tham số TLS của kết nối và chứng chỉ "
+"được yêu cầu phải chứa cùng một mật mã, thông báo, v.v., để bảo vệ khỏi các "
+"cuộc tấn công hạ cấp (downgrade)."
+
+#: ../../implementation/p2p.rst:24
+msgid ""
+"Simultaneously, the connecting node sends its certificate as the client "
+"certificate, allowing the server to perform the same check-in reverse and "
+"establish the client's ID. At the end of the process, both nodes can be sure"
+" to which peer they are connected."
+msgstr ""
+"Đồng thời, nút kết nối sẽ gửi chứng chỉ của nó dưới dạng chứng chỉ máy "
+"khách, cho phép máy chủ thực hiện ngược lại quá trình đăng ký tương tự và "
+"thiết lập ID của máy khách. Vào cuối quá trình, cả hai nút có thể chắc chắn "
+"rằng chúng được kết nối với nút ngang hàng nào."
+
+#: ../../implementation/p2p.rst:26
+msgid ""
+"Once a connection is established, the server will immediately seek to "
+"connect back to a node based on its endpoint (see `Node Discovery`_ on how "
+"the server finds endpoints) if it is a one-way connection. If a "
+"bidirectional connection setup cannot be established within a certain amount"
+" of time, all peer ID connections are dropped."
+msgstr ""
+"Sau khi kết nối được thiết lập, máy chủ sẽ ngay lập tức tìm cách kết nối trở"
+" lại với một nút dựa trên điểm cuối của nó (xem phần `` Khám phá nút'_ về "
+"cách máy chủ tìm điểm cuối) nếu đó là kết nối một chiều. Nếu không thể thiết"
+" lập thiết lập kết nối hai chiều trong một khoảng thời gian nhất định, tất "
+"cả các kết nối ID ngang hàng sẽ bị loại bỏ."
+
+#: ../../implementation/p2p.rst:28
+msgid ""
+"Connections are used for sending messages one-way only; only the node "
+"initiating a connection will send messages on it."
+msgstr ""
+"Kết nối chỉ được sử dụng để gửi tin nhắn một chiều; chỉ có nút khởi tạo kết "
+"nối mới gửi tin nhắn trên đó."
+
+#: ../../implementation/p2p.rst:31
+msgid "Network"
+msgstr "Mạng"
+
+#: ../../implementation/p2p.rst:33
+msgid ""
+"As soon as a node has connected to one node in the network, it partakes in "
+"`Node Discovery`_. In general, any node will attempt to connect to any other"
+" node on the network it finds as described above, leading to a fully "
+"connected network."
+msgstr ""
+"Ngay sau khi một nút đã kết nối với một nút trong mạng, nó sẽ tham gia vào "
+"`Khám phá nút`_. Nói chung, bất kỳ nút nào sẽ cố gắng kết nối với bất kỳ nút"
+" nào khác trên mạng mà nó tìm thấy như được mô tả ở trên, dẫn đến một mạng "
+"được kết nối đầy đủ."
+
+#: ../../implementation/p2p.rst:35
+msgid ""
+"Two classes of data transfers happen in the network; broadcasts and "
+"gossiping. A broadcast message is sent once, without guarantees, to all the "
+"nodes connected to it. The process of gossiping is described further below."
+msgstr ""
+"Hai lớp truyền dữ liệu xảy ra trong mạng; chương trình phát và gossiping. "
+"Một tin nhắn được gửi một lần sẽ không có bảo đảm là tới tất cả các nút được"
+" kết nối với nó. Quá trình gossiping được mô tả thêm bên dưới."
+
+#: ../../implementation/p2p.rst:37
+msgid ""
+"In general, only consensus messages, which are only sent by active "
+"validators, are broadcast. Everything else is gossipped."
+msgstr ""
+"Nói chung, chỉ những thông báo đồng thuận mà được gửi bởi những người xác "
+"thực đang hoạt động, mới được phát đi. Mọi thứ khác đều là gossip."
+
+#: ../../implementation/p2p.rst:42
+msgid "Gossiping"
+msgstr "Gossiping"
+
+#: ../../implementation/p2p.rst:44
+msgid ""
+"Multiple types of objects are gossipped, the most prominent ones being "
+"blocks, deploys, and endpoints (see `Identity`_). Each of these objects is "
+"immutable and can be identified by a unique hash."
+msgstr ""
+"Nhiều loại đối tượng được gossipped, những đối tượng nổi bật nhất là khối, "
+"triển khai và điểm cuối (xem `Identity`_). Mỗi đối tượng này là bất biến và "
+"có thể được xác định bằng một hàm băm duy nhất."
+
+#: ../../implementation/p2p.rst:46
+msgid ""
+"Gossiping is a process of distributing a value across the entire network "
+"without directly sending it to each node. This process allows only a subset "
+"of nodes to be connected to the original sender and spreading the bandwidth "
+"and processing requirements across the network at the cost of latency and "
+"overall bandwidth consumed."
+msgstr ""
+"Gossiping là một quá trình phân phối một giá trị trên toàn bộ mạng mà không "
+"cần gửi trực tiếp đến từng nút. Quá trình này chỉ cho phép một tập hợp con "
+"của các nút được kết nối với người gửi ban đầu và trải rộng băng thông,  yêu"
+" cầu xử lý trên toàn mạng do đó đổi lại là độ trễ và chiếm băng thông tổng "
+"thể."
+
+#: ../../implementation/p2p.rst:48
+msgid "The process can be summarized as follows:"
+msgstr "Quá trình này có thể được tóm tắt như sau:"
+
+#: ../../implementation/p2p.rst:50
+msgid ""
+"Given a message `M` to gossip, the desired saturation `S`, and an infection "
+"limit `L`:"
+msgstr ""
+"Đưa ra một thông báo `M` để thực hiện gossip, độ bão hòa mong muốn `S`, và "
+"giới hạn trao đổi `L`:"
+
+#: ../../implementation/p2p.rst:52
+msgid "Pick a subset `T` of `k` nodes from all currently connected nodes."
+msgstr ""
+"Chọn một tập hợp con `T` trong số  `k` nút từ tất cả các nút hiện đang được "
+"kết nối."
+
+#: ../../implementation/p2p.rst:53
+msgid ""
+"Send `M` to each node in `T`, noting which nodes were already infected (a "
+"node is considered infected if it already had received or known `M`)."
+msgstr ""
+"Gửi `M` đến từng nút trong` T`, lưu ý những nút nào đã bị trao đổi (một nút "
+"được coi là bị trao đổi nếu nó đã nhận hoặc đã biết `M`)."
+
+#: ../../implementation/p2p.rst:54
+msgid ""
+"For every node shown as already infected, add another random node outside to"
+" `T` and send it `M`, again noting the response."
+msgstr ""
+"Đối với mỗi nút được hiển thị là đã bị trao đổi, hãy thêm một nút ngẫu nhiên"
+" khác bên ngoài vào `T` và gửi` M`, một lần nữa ghi nhận phản hồi."
+
+#: ../../implementation/p2p.rst:55
+msgid ""
+"End when we confirm infection of `L` new nodes or encountered `S` already "
+"infected nodes."
+msgstr ""
+"Kết thúc khi chúng tôi xác nhận trao đổi của `L`  nút mới hoặc gặp các nút "
+"`S` đã bị trao đổi."
+
+#: ../../implementation/p2p.rst:57
+msgid ""
+"Through this process, a message will spread to almost all nodes over time."
+msgstr ""
+"Thông qua quá trình này, một thông báo sẽ lan truyền đến hầu hết tất cả các "
+"nút theo thời gian."
+
+#: ../../implementation/p2p.rst:60
+msgid "Requesting missing data"
+msgstr "Yêu cầu dữ liệu bị thiếu"
+
+#: ../../implementation/p2p.rst:62
+msgid ""
+"While gossiping and broadcasting are sufficient to distribute data across "
+"the network in most cases, nodes can also request missing data from peers "
+"should they require it. A common example is a missing deploy from a block."
+msgstr ""
+"Trong khi gossiping và phát sóng là đủ để phân phối dữ liệu trên toàn mạng "
+"trong hầu hết các trường hợp, các nút cũng có thể yêu cầu dữ liệu bị thiếu "
+"từ các nút ngang hàng nếu họ yêu cầu. Một ví dụ phổ biến là triển khai bị "
+"thiếu từ một khối."
+
+#: ../../implementation/p2p.rst:65
+msgid "Validation"
+msgstr "Xác thực"
+
+#: ../../implementation/p2p.rst:67
+msgid ""
+"Objects have a concept of dependencies. For example, a block depends on all "
+"the deploys whose hashes are listed inside it. A node considers any object "
+"valid if all of its dependencies are available on the local node."
+msgstr ""
+"Các đối tượng có một khái niệm về sự phụ thuộc. Ví dụ, một khối phụ thuộc "
+"vào tất cả các lần triển khai có hàm băm được liệt kê bên trong nó. Một nút "
+"coi bất kỳ đối tượng nào là hợp lệ nếu tất cả các phụ thuộc của nó đều có "
+"sẵn trên nút cục bộ."
+
+#: ../../implementation/p2p.rst:69
+msgid ""
+"Should a node receive an object from a peer that is not valid yet, it will "
+"attempt to complete its validation before processing it further. In the case"
+" of gossiping, this means pausing the gossiping of the object until all its "
+"dependencies can be retrieved."
+msgstr ""
+"Nếu một nút nhận được một đối tượng từ một nút ngang hàng chưa hợp lệ, nó sẽ"
+" cố gắng hoàn thành việc xác thực trước khi xử lý thêm. Trong trường hợp "
+"gossiping, điều này có nghĩa là tạm dừng gossiping của đối tượng cho đến khi"
+" tất cả các phụ thuộc của nó có thể được truy xuất."
+
+#: ../../implementation/p2p.rst:71
+msgid ""
+"Any node is responsible for only propagating valid objects. Should a node "
+"not retrieve all missing dependencies of an object from the peer that sent "
+"it, it may punish the peer for doing so."
+msgstr ""
+"Bất kỳ nút nào có trách nhiệm chỉ truyền các đối tượng hợp lệ. Nếu một nút "
+"không truy xuất được tất cả các phụ thuộc còn thiếu của một đối tượng từ nút"
+" ngang hàng đã gửi, nó có thể phạt nút ngang hàng vì làm như vậy."
+
+#: ../../implementation/p2p.rst:74
+msgid "Node Discovery"
+msgstr "Khám phá nút"
+
+#: ../../implementation/p2p.rst:76
+msgid ""
+"Node discovery happens by each node periodically gossiping its public "
+"address. Upon receiving an address via gossip, each node immediately tries "
+"to establish a connection to it and notes the resulting endpoint, if "
+"successful."
+msgstr ""
+"Việc khám phá nút được thực hiện bởi mỗi nút định kỳ gossiping địa chỉ công "
+"khai của nó. Khi nhận được một địa chỉ qua gossip, mỗi nút ngay lập tức cố "
+"gắng thiết lập kết nối với nó và ghi chú điểm cuối kết quả, nếu thành công."

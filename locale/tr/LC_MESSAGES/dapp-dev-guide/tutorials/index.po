@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:2
+msgid "Tutorials"
+msgstr "Dersler"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:4
+msgid "The following tutorials present several Casper features in depth:"
+msgstr "Aşağıdaki dersler, birçok Casper özelliğini derinlemesine sunar:"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:16
+msgid "Title"
+msgstr "Başlık"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:16
+msgid "Description"
+msgstr "Açıklama"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:18
+msgid "`ERC-20 implementation <erc20/index.html>`_"
+msgstr "`ERC-20 uygulaması <erc20/index.html>`_"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:18
+msgid "Implement the ERC-20 standard for Casper"
+msgstr "ERC-20 standardını Casper için uygulayın"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:19
+msgid "`Key-value storage with Casper DSL <kv-storage-tutorial.html>`_"
+msgstr "`Casper DSL ile anahtar-değer depolama <kv-storage-tutorial.html>`_"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:19
+msgid "Design a simple contract to store a value and use the Casper DSL"
+msgstr "Değer saklayan ve Casper DSL'i kullanan basit bir kontrat tasarlayın"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:20
+msgid "`Multi-signatures and key recovery <multi-sig/index.html>`_"
+msgstr "`Çoklu-imzalar ve anahtar kurtarma <multi-sig/index.html>`_"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:20
+msgid "Learn to sign transactions with multiple keys"
+msgstr "Birden çok anahtar ile işlemleri imzalamayı öğrenin"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:21
+msgid "`Smart contract upgrades <upgrade-tutorial.html>`_"
+msgstr "`Akıllı kontrat yükseltmeleri <upgrade-tutorial.html>`_"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:21
+msgid "Learn how to upgrade smart contracts"
+msgstr "Akıllı kontratların nasıl yükseltileceğini öğrenin"

@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:45+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:2
+msgid "Calling Contracts"
+msgstr "Gọi Hợp đồng"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:4
+msgid ""
+"The most efficient way to use blockchain is to store (install) your contract"
+" on the system and then call it. This section outlines the steps to do this."
+msgstr ""
+"Cách hiệu quả nhất để sử dụng blockchain là lưu trữ (cài đặt) hợp đồng của "
+"bạn trên hệ thống và sau đó gọi nó. Phần này phác thảo các bước để thực hiện"
+" việc này."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:7
+msgid "Installing a Smart Contract"
+msgstr "Cài đặt Hợp đồng thông minh"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:9
+msgid ""
+"First, set up the contract name so you can call it using the name in "
+"subsequent deploys. The following code sample uses ``sample_contract`` as "
+"the contract name."
+msgstr ""
+"Đầu tiên, hãy thiết lập tên hợp đồng để bạn có thể gọi nó bằng tên này trong"
+" các lần triển khai tiếp theo. Mẫu mã sau sử dụng ``sample_contract`` làm "
+"tên hợp đồng."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:25
+msgid ""
+"Next, deploy the smart contract using the ``put-deploy`` command and send in"
+" the compiled wasm as ``--session code``."
+msgstr ""
+"Tiếp theo, triển khai hợp đồng thông minh bằng lệnh `put-deploy`` và gửi "
+"wasm đã biên dịch dưới dạng ``--session code``."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:29
+msgid "Querying Global State for the Address of a Contract"
+msgstr "Truy vấn trạng thái toàn cục để biết địa chỉ của hợp đồng"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:31
+msgid ""
+"The ``query-state`` command is a generic query against `global state "
+"<https://docs.casperlabs.io/en/latest/glossary/G.html#global-state>`_. "
+"Earlier, we queried global state for the account's main purse. Here, we "
+"query the state of a contract. We can do so by including the contract "
+"address rather than the account public key in the ``query-state`` command."
+msgstr ""
+"Lệnh ``query-state`` là một truy vấn chung đối với `global state "
+"<https://docs.casperlabs.io/en/latest/glossary/G.html#global-state>`_. Trước"
+" đó, chúng tôi đã truy vấn trạng thái toàn cục cho ví chính của tài khoản. Ở"
+" đây, chúng tôi truy vấn trạng thái của một hợp đồng. Chúng tôi có thể làm "
+"như vậy bằng cách đưa vào địa chỉ hợp đồng thay vì khóa công khai của tài "
+"khoản trong lệnh ``query-state``."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:33
+msgid ""
+"Here we query to get the address of an ERC20 contract from Global State."
+msgstr ""
+"Ở đây, chúng tôi truy vấn để lấy địa chỉ của hợp đồng ERC20 từ Global State."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:36
+msgid "Step 1: Get the Latest Global State Hash"
+msgstr ""
+"Bước 1: Nhận băm (Hash) mới nhất của Trạng thái toàn cục (Global State)"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:38
+msgid ""
+"We need to obtain the global state hash after our contract has been deployed"
+" to the network."
+msgstr ""
+"Chúng ta cần lấy hash trạng thái toàn cục sau khi hợp đồng của chúng ta đã "
+"được triển khai vào mạng."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:45
+msgid "Step 2: Query State"
+msgstr "Bước 2: Truy vấn trạng thái"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:47
+msgid ""
+"Take the global state hash from Step 1 and include it here, along with the "
+"account public key that created the contract."
+msgstr ""
+"Lấy băm của trạng thái toàn cục từ Bước 1 và đưa nó vào đây, cùng với khóa "
+"công khai của tài khoản đã tạo hợp đồng."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:54
+msgid "Example Result"
+msgstr "Kết quả của ví dụ"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:56
+msgid ""
+"If there is a contract stored in an account, it will appear under ``named-"
+"keys``."
+msgstr ""
+"Nếu có một hợp đồng được lưu trữ trong một tài khoản, nó sẽ xuất hiện trong "
+"phần ``named-keys``."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:87
+msgid "Step 3: Query the contract State"
+msgstr "Bước 3: Truy vấn trạng thái hợp đồng"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:89
+msgid ""
+"Now that we have the hash of the contract, we can query the contract's "
+"internal state. To do this, we pass in the contract's hash and the global "
+"state hash.  If we look at the ERC20 contract, we see a token name specified"
+" as ``_name``.  We can query for the value stored here."
+msgstr ""
+"Bây giờ chúng ta đã có băm của hợp đồng, chúng ta có thể truy vấn trạng thái"
+" bên trong của hợp đồng. Để làm điều này, chúng ta chuyển hàm băm của hợp "
+"đồng và hàm băm trạng thái toàn cầu. Nếu chúng ta nhìn vào hợp đồng ERC20, "
+"chúng ta thấy tên mã thông báo được chỉ định là  ``_name``. Chúng ta có thể "
+"truy vấn giá trị được lưu trữ ở đây."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:95
+msgid "And we should see something like this:"
+msgstr "Và chúng ta sẽ thấy một cái gì đó như thế này:"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:109
+msgid ""
+"**Note**: This result is returned as bytes. These bytes need to be "
+"deserialized into the correct CLType in a smart contract or a dApp. Refer to"
+" `casper-types <https://docs.rs/casperlabs-"
+"types/latest/casperlabs_types/bytesrepr/index.html>`_ to find the latest "
+"APIs for deserialization."
+msgstr ""
+"**Lưu ý**: Kết quả này được trả về dưới dạng byte. Các byte này cần được "
+"giải mã hóa thành chính xác CLType trong hợp đồng thông minh hoặc dApp. Tham"
+" khảo `casper-types <https://docs.rs/casperlabs-"
+"types/latest/casperlabs_types/bytesrepr/index.html>`_ để tìm các API mới "
+"nhất cho quá trình giải mã."
+
+#: ../../dapp-dev-guide/calling-contracts.rst:113
+msgid "Calling a Contract by Name & Entry Point"
+msgstr "Gọi một hợp đồng theo Tên gọi và Điểm vào"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:115
+msgid ""
+"To call a contract by its name, run the ``put-deploy`` command using the "
+"``session-name`` option:"
+msgstr ""
+"Để gọi một hợp đồng bằng tên của nó, hãy chạy lệnh ``put-deploy``  bằng cách"
+" sử dụng tùy chọn ``session-name``:"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:121
+msgid ""
+"It is possible to create entry points in the contract, which you can invoke "
+"while the contract lives on the blockchain. The following code shows you an "
+"example entry point:"
+msgstr ""
+"Có thể tạo các điểm vào trong hợp đồng, mà bạn có thể gọi trong khi hợp đồng"
+" tồn tại trên blockchain. Đoạn mã sau hiển thị cho bạn một điểm vào mẫu:"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:138
+msgid "Calling a Contract by Hash and Entry Point"
+msgstr "Gọi một hợp đồng theo Băm và Điểm vào"
+
+#: ../../dapp-dev-guide/calling-contracts.rst:140
+msgid ""
+"After deploying a contract and querying the global state, you can use a "
+"contract's hash to call it in a new deploy. An entry point is required when "
+"calling a contract by its hash."
+msgstr ""
+"Sau khi triển khai hợp đồng và truy vấn trạng thái toàn cục, bạn có thể sử "
+"dụng hàm băm của hợp đồng để gọi nó trong những lần sau. Một điểm nhập là "
+"bắt buộc khi gọi một hợp đồng bằng hàm băm của nó."

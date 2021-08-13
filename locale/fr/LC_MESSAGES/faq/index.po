@@ -1,0 +1,340 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../faq/index.rst:5
+msgid "FAQ"
+msgstr "FAQ"
+
+#: ../../faq/index.rst:6
+msgid ""
+"FAQs regarding the Casper network, CasperLabs, and the CSPR token sale."
+msgstr ""
+"FAQ relatives au réseau Casper, à CasperLabs et à la vente de jetons CSPR."
+
+#: ../../faq/index.rst:9
+msgid "Casper Network"
+msgstr "Réseau Casper"
+
+#: ../../faq/index.rst:12
+msgid "What is Casper?"
+msgstr "C'est quoi Casper ?"
+
+#: ../../faq/index.rst:13
+msgid ""
+"Casper is an open-source Proof-of-Stake blockchain network built off the CBC"
+" (`Correct-by-Construction <https://github.com/cbc-casper/cbc-casper-"
+"paper>`_) Casper specification originally established by early Ethereum "
+"developers. The Casper network is optimized for enterprise and developer "
+"adoption by focusing on unique features like upgradeable contracts, "
+"predictable network fees, privacy flexibility, on-chain governance, and "
+"developer-friendly languages. Casper solves the scalability trilemma by "
+"allowing development teams to build with confidence that the network will "
+"optimize for security, decentralization, and high throughput."
+msgstr ""
+"Casper est un réseau blockchain open-source Proof-of-Stake construit à "
+"partir de la spécification CBC (`Correct-by-Construction <https://github.com"
+"/cbc-casper/cbc-casper-paper>`_) Casper établie à l'origine par les premiers"
+" développeurs d'Ethereum. Le réseau Casper offres des caractéristiques "
+"uniques comme les contrats évolutifs, les frais de réseau prévisibles, la "
+"flexibilité en terme de confidentialité, la gouvernance sur la chaîne (on-"
+"chain governance) et les langages conviviaux pour les développeurs. Il est "
+"donc optimisé et conçu pour l'adoption par les entreprises et les "
+"développeurs. Casper résout le trilemme de l'évolutivité en permettant aux "
+"équipes de développement de concevoir en ayant la certitude que le réseau "
+"offrira une sécurité optimale, une décentralisation et un débit élevé."
+
+#: ../../faq/index.rst:16
+msgid "When is Casper’s mainnet launch?"
+msgstr "Quand le réseau principal Mainnet de Casper sera-t-il lancé ?"
+
+#: ../../faq/index.rst:17
+msgid "Casper’s mainnet launch will occur in Q1 2021."
+msgstr ""
+"Le lancement du réseau principal de Casper aura lieu au premier trimestre "
+"2021."
+
+#: ../../faq/index.rst:20
+msgid ""
+"How does Casper solve the trilemma of security, decentralization, and "
+"scalability?"
+msgstr ""
+"Comment Casper résout-il le trilemme de la sécurité, de la décentralisation "
+"et de l'évolutivité ?"
+
+#: ../../faq/index.rst:21
+msgid ""
+"As a Proof-of-Stake (PoS) network, Casper relies on a set of validators to "
+"uphold the network. PoS validators do not require the same hardware setup as"
+" Proof-of-Work networks, allowing validators to be more geographically "
+"decentralized and eliminating the centralizing pressures of economies of "
+"scale. PoS also enables scalability mechanisms like sharding, a forthcoming "
+"feature to allow the network to process multiple transactions "
+"simultaneously, improving overall throughput."
+msgstr ""
+"En tant que réseau Proof-Of-Stake (PoS), Casper s'appuie sur un ensemble de "
+"validateurs pour maintenir le réseau. Les validateurs PoS ne nécessitent pas"
+" la même configuration matérielle que les réseaux Proof-of-Work, ce qui "
+"permet aux validateurs d'être plus décentralisés géographiquement et "
+"d'éliminer les pressions centralisatrices des économies d'échelle. Le PoS "
+"permet également des mécanismes d'évolutivité tels que le sharding, une "
+"fonctionnalité à venir qui permettra au réseau de traiter plusieurs "
+"transactions simultanément, améliorant ainsi le débit global."
+
+#: ../../faq/index.rst:24
+msgid "What is unique about Casper’s blockchain architecture?"
+msgstr "En quoi l'architecture blockchain de Casper est-elle unique ?"
+
+#: ../../faq/index.rst:25
+msgid ""
+"The Highway Protocol is the specific implementation of PoS that supports the"
+" Casper network. Highway has two primary benefits over classic Byzantine "
+"Fault Tolerant consensus mechanisms. First, Highway enables the network to "
+"reach higher thresholds of finality. Second, it achieves flexibility in a "
+"way not possible in typical BFT models. `Learn more about Highway "
+"<https://blog.casperlabs.io/the-casper-network-highway-consensus-"
+"protocol/>`_."
+msgstr ""
+"Le protocole Highway est l'implémentation spécifique de PoS qui supporte le "
+"réseau Casper. Highway présente deux avantages principaux par rapport aux "
+"mécanismes de consensus classiques 'Byzantine Fault Tolerant (BFT)' "
+"classiques. Premièrement, Highway permet au réseau d'atteindre des seuils de"
+" finalité plus élevés. Ensuite, il offre une flexibilité que les modèles BFT"
+" ne permettent pas. `En savoir plus sur Highway <https://blog.casperlabs.io"
+"/the-casper-network-highway-consensus-protocol/>`_."
+
+#: ../../faq/index.rst:28
+msgid "Why is Casper a good fit for enterprises and developers?"
+msgstr ""
+"Pourquoi Casper est-il un bon choix pour les entreprises et les développeurs"
+" ?"
+
+#: ../../faq/index.rst:29
+msgid ""
+"Casper is optimized for enterprise and developers through three main "
+"features: upgradeable contracts, developer-friendly languages, and "
+"forthcoming predictable network fees."
+msgstr ""
+"Casper est optimisé pour les entreprises et les développeurs grâce à trois "
+"caractéristiques principales : des contrats évolutifs, des langages "
+"conviviaux pour les développeurs et des frais de réseau prévisibles."
+
+#: ../../faq/index.rst:31
+msgid ""
+"**Upgradeable Contracts**. Casper enables on-chain smart contracts to be "
+"directly upgraded, removing the need for complex and migration processes and"
+" making it easier to patch smart contract vulnerabilities."
+msgstr ""
+"**Contrats évolutifs**. Casper permet de mettre à niveau directement les "
+"contrats intelligents sur la chaîne, ce qui élimine la nécessité de passer "
+"par des processus de migration complexes et facilite la correction des "
+"vulnérabilités des contrats intelligents."
+
+#: ../../faq/index.rst:33
+msgid ""
+"**Developer-Friendly Languages**. Casper supports developers building with "
+"WebAssembly. The network’s development ecosystem is designed to be familiar "
+"to existing Web2 developers instead of being written in a proprietary "
+"language like Solidity. This provides an easier path for developers and "
+"businesses to start building with Casper immediately."
+msgstr ""
+"**Langages adaptés aux développeurs**. Casper supporte les développements "
+"avec WebAssembly. L'écosystème de développement du réseau Casper est conçu "
+"pour être familier aux développeurs Web2 au lieu d'être écrit dans un "
+"langage propriétaire comme Solidity. Les développeurs et les entreprises "
+"peuvent ainsi commencer à développer immédiatement avec Casper."
+
+#: ../../faq/index.rst:35
+msgid ""
+"**Predictable Network Fees (In Development)**. Casper intends to incentivize"
+" active and diverse network behavior by establishing consistent, "
+"predictable, and transparent gas costs - eliminating volatility and "
+"improving both developer and user experience."
+msgstr ""
+"**Frais de réseau prévisibles (en cours de développement)**. Casper entend "
+"encourager un comportement actif et diversifié du réseau en établissant des "
+"frais de gaz cohérents, prévisibles et transparents - éliminant ainsi la "
+"volatilité et améliorant l'expérience des développeurs et des utilisateurs."
+
+#: ../../faq/index.rst:38
+msgid "What’s an example of the Casper network in use?"
+msgstr "Existe-t-il un exemple d'utilisation du réseau Casper ?"
+
+#: ../../faq/index.rst:39
+msgid ""
+"IPwe is a global patent registry currently building on the Casper network. "
+"CasperLabs and IPwe have partnered to build a chain of custody (CoC) "
+"solution for public patent records. The “CoC Solution” will use the Casper "
+"public blockchain to store, secure, and trace patent data. `Learn more "
+"<https://blog.casperlabs.io/intellectual-property-and-patent-assets-on-"
+"casper/>`_."
+msgstr ""
+"IPwe est un registre mondial des brevets qui s'appuie actuellement sur le "
+"réseau Casper. CasperLabs et IPwe se sont associés pour construire une "
+"solution de chaîne de possession (CoC) pour les registres publics de "
+"brevets. La \"CoC solution\" utilisera la blockchain publique Casper pour "
+"stocker, sécuriser et tracer les données des brevets. `En savoir plus "
+"<https://blog.casperlabs.io/intellectual-property-and-patent-assets-on-"
+"casper/>`_."
+
+#: ../../faq/index.rst:42
+msgid "How can I learn more about the Casper network?"
+msgstr "Comment puis-je en savoir plus sur le réseau Casper ?"
+
+#: ../../faq/index.rst:43
+msgid ""
+"Visit the `CasperLabs website <https://casperlabs.io/>`_, `read the blog "
+"<https://blog.casperlabs.io/>`_, and `join our community "
+"<https://casperlabs.io/community/>`_."
+msgstr ""
+"Visitez le site web de `CasperLabs <https://casperlabs.io/>`_, `lisez le "
+"blog <https://blog.casperlabs.io/>`_, et `rejoignez notre communauté "
+"<https://casperlabs.io/community/>`_."
+
+#: ../../faq/index.rst:46
+msgid "CasperLabs"
+msgstr "CasperLabs"
+
+#: ../../faq/index.rst:49
+msgid "What’s the difference between CasperLabs and Casper?"
+msgstr "Quelle est la différence entre CasperLabs et Casper ?"
+
+#: ../../faq/index.rst:50
+msgid ""
+"CasperLabs is the development team that is currently building the Casper "
+"network. CasperLabs has been developing Casper during its testnet phase and "
+"is currently planning for mainnet launch in Q1 2021. As a public, open-"
+"source network, Casper can be developed on and by anyone in addition to the "
+"CasperLabs team."
+msgstr ""
+"CasperLabs est l'équipe de développement qui construit actuellement le "
+"réseau Casper. CasperLabs a développé Casper pendant sa phase de testnet et "
+"prévoit actuellement le lancement du mainnet au premier trimestre 2021. En "
+"tant que réseau public et open-source, Casper peut être développé sur et par"
+" n'importe qui en plus de l'équipe CasperLabs."
+
+#: ../../faq/index.rst:53
+msgid "What’s the CasperLabs team’s background?"
+msgstr "Quel est le background de l'équipe CasperLabs ?"
+
+#: ../../faq/index.rst:54
+msgid ""
+"The engineering, executive, business, and marketing teams of CasperLabs are "
+"diverse groups of thinkers and builders with decades of experience in "
+"internet-scale computing systems across academia, business, and engineering."
+" `Meet the CasperLabs team <https://casperlabs.io/company/meet-our-team/>`_."
+msgstr ""
+"Les équipes d'ingénierie, de direction, d'affaires et de marketing de "
+"CasperLabs se composent de groupes diversifiés de théoriciens et de "
+"concepteurs ayant des décennies d'expérience dans les systèmes informatiques"
+" à l'échelle de l'Internet dans le milieu universitaire, les affaires et "
+"l'ingénierie. `Meet the CasperLabs team <https://casperlabs.io/company/meet-"
+"our-team/>`_."
+
+#: ../../faq/index.rst:57
+msgid "What is CasperLabs’ fundraising history?"
+msgstr "Quel est l'historique des collectes de fonds de CasperLabs ?"
+
+#: ../../faq/index.rst:58
+msgid ""
+"In September 2019, CasperLabs raised a $14.5 million Series A round led by "
+"Terren Piezer with participation from Consensus Capital, Axiom Holdings "
+"Group, and Digital Strategies, MW Partners, and more."
+msgstr ""
+"En septembre 2019, CasperLabs a levé 14,5 millions de dollars fonds (Serie A"
+" round) . Cette levée de fond a été dirigée par Terren Piezer avec la "
+"participation de Consensus Capital, Axiom Holdings Group et Digital "
+"Strategies, MW Partners, et plus encore."
+
+#: ../../faq/index.rst:61
+msgid "Who has partnered with CasperLabs to build on the Casper network?"
+msgstr "Qui s'est associé à CasperLabs pour développer le réseau Casper ?"
+
+#: ../../faq/index.rst:62
+msgid ""
+"CasperLabs has established a diverse ecosystem of participants who will be "
+"building, staking, and validating on Casper from day one, spanning "
+"blockchain, enterprise technology, and financial services. Among others, "
+"CasperLabs has established relationships with BitGo, Huobi, Ledger Leap, "
+"Chainlink, Metis, and Cardinal Cryptography. Companies including IPwe and "
+"Broadleaf are already using the Casper Network to unlock new value by "
+"tokenizing existing assets."
+msgstr ""
+"CasperLabs a établi un écosystème diversifié de participants qui "
+"construiront, 'stakeront' et valideront sur le réseau Casper dès le premier "
+"jour. Ces participants couvrent les domaines de la blockchain, de la "
+"technologie d'entreprise et des services financiers. Entre autres, "
+"CasperLabs a établi des relations avec BitGo, Huobi, Ledger Leap, Chainlink,"
+" Metis et Cardinal Cryptography. Des entreprises comme IPwe et Broadleaf "
+"utilisent déjà le réseau Casper pour créer de la valeur par la tokenisation "
+"des actifs existants."
+
+#: ../../faq/index.rst:64
+msgid ""
+"To learn more about how to work within the Casper ecosystem, contact "
+"neil@casperlabs.io."
+msgstr ""
+"Pour en savoir plus sur la manière de travailler au sein de l'écosystème "
+"Casper, contactez neil@casperlabs.io."
+
+#: ../../faq/index.rst:67
+msgid "CSPR Token"
+msgstr "Jeton CSPR"
+
+#: ../../faq/index.rst:70
+msgid "What is CSPR, and its role in the Casper network?"
+msgstr "Qu'est-ce CSPR, et son rôle dans le réseau Casper ?"
+
+#: ../../faq/index.rst:71
+msgid ""
+"CSPR is the native token to the Casper network. As a Proof-of-Stake "
+"blockchain, Casper relies on CSPR to reward the validators that participate "
+"in the PoS consensus mechanism to secure and uphold the network. Casper "
+"users also rely on CSPR to pay network fees for on-chain actions. For "
+"example, each token transfer costs 0.0001 CSPR (10000 motes) and the amount "
+"transferred needs to be 2.5 CSPR or more."
+msgstr ""
+"CSPR est le jeton natif du réseau Casper. En tant que blockchain Proof-of-"
+"Stake, Casper s'appuie sur CSPR pour récompenser les validateurs qui "
+"participent au mécanisme de consensus PoS pour sécuriser et maintenir le "
+"réseau. Les utilisateurs de Casper s'appuient également sur CSPR pour payer "
+"les frais de réseau pour les actions sur la chaîne. Par exemple, chaque "
+"transfert de jeton coûte 0,0001 CSPR (10000 motes) et le montant transféré "
+"doit être de 2,5 CSPR ou plus."
+
+#: ../../faq/index.rst:74
+msgid ""
+"Where can I find information about CSPR, the supply, the allocation, and the"
+" sale?"
+msgstr ""
+"Où puis-je trouver des informations CSPR, l'offre, la répartition et la "
+"vente ?"
+
+#: ../../faq/index.rst:75
+msgid ""
+"The Casper Association has launched its CSPR token sale. Head to "
+"`casper.network <https://casper.network/>`_ to learn more."
+msgstr ""
+"L'association Casper a lancé sa vente de jetons CSPR. Rendez-vous sur "
+"`casper.network <https://casper.network/>`_ pour en savoir plus."

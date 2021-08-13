@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:45+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:3
+msgid "Advanced Options"
+msgstr "Options avancées"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:5
+msgid ""
+"Once the base logic of the smart contract is in place, it's desirable to "
+"optimize the contract for the blockchain.  This will require digging into "
+"the actual code that the DSL generates.  This section will describe the "
+"steps to do this.  Once the code has been expanded and then changed, make "
+"sure to remove the macros from the project configuration before saving the "
+"changes."
+msgstr ""
+"Une fois que la logique de base du contrat intelligent est en place, il est "
+"souhaitable d'optimiser le contrat pour la blockchain. Cela nécessitera de "
+"se plonger dans le code réel que le DSL (Domain Specific Language) génère. "
+"Cette section décrit les étapes à suivre pour y parvenir. Une fois le code "
+"développé puis modifié, s'assurer de retirer les macros de la configuration "
+"du projet avant de sauvegarder les modifications."
+
+#: ../../archived/contract-dsl-archived/advanced.rst:12
+msgid "Debugging Contracts"
+msgstr "Débogage des contrats"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:14
+msgid ""
+"It is possible to debug Rust contracts inside any IDE that supports "
+"breakpoints and watches. Make sure that the IDE supports Rust development "
+"and tools."
+msgstr ""
+"Il est possible de déboguer des contrats Rust dans n'importe quel IDE "
+"(Integrated Development Environment) qui supporte les points d'arrêt et les "
+"surveillances (watches). Assurez-vous que l'IDE supporte le développement et"
+" les outils Rust."
+
+#: ../../archived/contract-dsl-archived/advanced.rst:18
+msgid "Expanding the Code"
+msgstr "Extension du code"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:20
+msgid ""
+"When the rust compiler encounters each of the macros, it 'expands' the code "
+"and adds additional lines of code for each of the macros. The resultant "
+"expanded code is then compiled to the wasm which can then be deployed to the"
+" blockchain."
+msgstr ""
+"Lorsque le compilateur rust rencontre chacune des macros, il \"étend\" le "
+"code et ajoute des lignes de code supplémentaires pour chacune des macros. "
+"Le code étendu qui en résulte est ensuite compilé dans le wasm qui peut "
+"ensuite être déployé sur la blockchain."
+
+#: ../../archived/contract-dsl-archived/advanced.rst:23
+msgid ""
+"The ``cargo expand`` tool will run the macros and append the boilerplate "
+"code to the contract without compiling the code."
+msgstr ""
+"L'outil ``cargo expand`` exécutera les macros et ajoutera le code 'passe-"
+"partout' au contrat sans compiler le code."
+
+#: ../../archived/contract-dsl-archived/advanced.rst:25
+msgid "Install the tooling with the following command:"
+msgstr "Installez l'outil avec la commande suivante :"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:31
+msgid "Run this command in the folder containing the smart contract code:"
+msgstr ""
+"Exécutez cette commande dans le dossier contenant le code du contrat "
+"intelligent :"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:38
+msgid "Example Simple Counter Contract"
+msgstr "Exemple Simple Counter Contract"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:40
+msgid ""
+"Running ``cargo-expand`` on the simple counter contract yeilds this output:"
+msgstr ""
+"En exécutant ``cargo-expand`` sur le contrat 'Simple Counter Contract', on "
+"obtient ce résultat :"

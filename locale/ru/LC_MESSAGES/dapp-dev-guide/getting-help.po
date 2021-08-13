@@ -1,0 +1,280 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/getting-help.rst:3
+msgid "Getting Help"
+msgstr "Получение помощи"
+
+#: ../../dapp-dev-guide/getting-help.rst:6
+msgid "Frequently Asked Questions"
+msgstr "Часто задаваемые вопросы"
+
+#: ../../dapp-dev-guide/getting-help.rst:7
+msgid ""
+"This section covers frequently asked questions and our recommendations."
+msgstr ""
+"В этом разделе освещены часто задаваемые вопросы и наши рекомендации. "
+
+#: ../../dapp-dev-guide/getting-help.rst:10
+msgid "Deploy Processing"
+msgstr "Процессинг развертывания"
+
+#: ../../dapp-dev-guide/getting-help.rst:11
+msgid "**Question**: How do I know that a deploy was finalized?"
+msgstr "**Вопрос**: как я могу понять, что развертывание финализировано?"
+
+#: ../../dapp-dev-guide/getting-help.rst:13
+msgid ""
+"**Answer**: If a deploy was executed, then it has been finalized. If the "
+"deploy status comes back as null, that means the deploy has not been "
+"executed yet. Once the deploy executes, it is finalized, and no other "
+"confirmation is needed. Exchanges that are not running a read-only node must"
+" also keep track of `finality signatures <#finality-signatures>`_ to prevent"
+" any attacks from high-risk nodes."
+msgstr ""
+"**Ответ**: развертывание считается финализированным тогда, когда оно "
+"исполнено. Если статус развертывания отображается как null - развертывание "
+"еще не исполнено. Как только развертывание исполнено, оно сразу "
+"финализируется и не требует дальнейшего подтверждения. Обмены, которые не "
+"управляются нодой read-only должны также отслеживать `finality signatures "
+"<#finality-signatures>`_ в целях предотвращения любых атак от "
+"высокорискованных нод. "
+
+#: ../../dapp-dev-guide/getting-help.rst:16
+msgid "Finality Signatures"
+msgstr "Итоговые подписи"
+
+#: ../../dapp-dev-guide/getting-help.rst:17
+msgid "**Question**: When are finality signatures needed?"
+msgstr "**Вопрос**: В каких случаях требуются итоговые подписи?"
+
+#: ../../dapp-dev-guide/getting-help.rst:19
+msgid ""
+"**Answer**: Finality signatures are confirmations from validators that they "
+"have executed the transaction. Exchanges should be asserting finality by "
+"collecting the weight of two-thirds of transaction signatures. If an "
+"exchange runs a read-only node, it can collect these finality signatures "
+"from its node. Otherwise, the exchange must assert finality by collecting "
+"finality signatures and have proper monitoring infrastructure to prevent a "
+"Byzantine attack."
+msgstr ""
+"**Ответ**: Итоговые подписи являются подтверждением от валидаторов, что они "
+"исполнили транзакцию. Обмены должны подтверждать итоговые подписи путем "
+"сбора веса двух третей от подписей к транзакции. Если обмен запущен в режиме"
+" read-only, он может собирать итоговые подписи из своей ноды. В других "
+"случаях обмен должен подтверждаться собранными итоговыми подписями и иметь "
+"подобающую структуру мониторинга для предотвращения Византийского разлома."
+
+#: ../../dapp-dev-guide/getting-help.rst:21
+msgid ""
+"Suppose an exchange connects to someone else's node RPC to send transactions"
+" to the network. In this case, the node is considered high risk, and the "
+"exchange must assert finality by checking to see how many validators have "
+"run the transactions in the network."
+msgstr ""
+"Предположим обмен связывается со сторонним RPC сервером ноды, чтобы "
+"отправить транзакции в сеть. В таком случае нода считается высокорискованной"
+" и обмен должен утвердить финализацию с помощью проверки количества "
+"валидаторов, совершивших транзакции в сети. "
+
+#: ../../dapp-dev-guide/getting-help.rst:24
+msgid "deploy_hash vs. transfer_hash"
+msgstr "Разница между deploy_hash и transfer_hash"
+
+#: ../../dapp-dev-guide/getting-help.rst:25
+msgid "**Question**: How is a deploy_hash different than a transfer_hash?"
+msgstr "**Вопрос**: В чем разница между deploy_hash  и transfer_hash?"
+
+#: ../../dapp-dev-guide/getting-help.rst:27
+msgid ""
+"**Answer**: Essentially, there is no difference between a `deploy_hash` and "
+"a `transfer_hash` since they are both deploy transactions. However, the "
+"platform is labeling the subset of deploys which are transfers, to filter "
+"transfers from other types of deploys. In other words, a `transfer_hash` is "
+"a native transfer, while a `deploy_hash` is another kind of deploy."
+msgstr ""
+"**Ответ**: В целом существенной разницы между `deploy_hash` и "
+"`transfer_hash` нет, так как обе операции являются транзакциями "
+"развертывания. Но платформа специфицирует подкатегории развертываний, "
+"которые являются переводами, чтобы отличать их от других типов "
+"развертываний. Другими словами `transfer_hash`  это нативный перевод, а "
+"`deploy_hash` - это другой вид развертывания. "
+
+#: ../../dapp-dev-guide/getting-help.rst:30
+msgid "account-hex vs. account-hash"
+msgstr "Разница между account-hex и account-hash"
+
+#: ../../dapp-dev-guide/getting-help.rst:31
+msgid ""
+"**Question**: Should a customer see the account-hex or the account-hash?"
+msgstr "**Вопрос**: должен ли покупатель видеть account-hex или account-hash?"
+
+#: ../../dapp-dev-guide/getting-help.rst:33
+msgid ""
+"**Answer**: Exchange customers or end-users only need to see the `account-"
+"hex`. They do not need to know the `account_hash`. The `account_hash` is "
+"needed in the backend to verify transactions. Store the `account-hash` to "
+"query and monitor the account. Customers do not need to know this value, so "
+"to simplify their experience, we recommend storing both values and "
+"displaying only the `account-hex`."
+msgstr ""
+"**Ответ**: Пользователи обменников и конечные потребители должна видеть "
+"только `account-hex`. Им не требуется знать `account_hash`. Хеш "
+"`account_hash` требуется бэкенд разработчикам для верификации транзакций. "
+"Поместите `account-hash` в запрос для мониторинга счета. А покупатели не "
+"должны знать эти значения, так что для облегчения их операций мы рекомендуем"
+" хранить оба значения, но отображать только `account-hex`."
+
+#: ../../dapp-dev-guide/getting-help.rst:36
+msgid "Example Deploy"
+msgstr "Пример развертывания"
+
+#: ../../dapp-dev-guide/getting-help.rst:37
+msgid "**Question**: Can you provide an example of a deploy?"
+msgstr "**Вопрос**: можно ли посмотреть пример развертывания?"
+
+#: ../../dapp-dev-guide/getting-help.rst:39
+msgid ""
+"**Answer**: You can find a *testDeploy* reference in `GitHub "
+"<https://github.com/casper-ecosystem/casper-js-"
+"sdk/blob/next/test/lib/DeployUtil.test.ts#L5>`_."
+msgstr ""
+"**Ответ**: Вы можете найти пример развертывания *testDeploy*  в `GitHub "
+"<https://github.com/casper-ecosystem/casper-js-"
+"sdk/blob/next/test/lib/DeployUtil.test.ts#L5>`_."
+
+#: ../../dapp-dev-guide/getting-help.rst:42
+msgid "Operating with Keys"
+msgstr "Работа с ключами"
+
+#: ../../dapp-dev-guide/getting-help.rst:43
+msgid "**Question**: How should we work with the PEM keys?"
+msgstr "**Вопрос**: как работать с ключами формата PEM?"
+
+#: ../../dapp-dev-guide/getting-help.rst:45
+msgid ""
+"**Answer**: The `Keys API <https://casper-ecosystem.github.io/casper-js-"
+"sdk/next/modules/_lib_keys_.html>`_ provides methods for `Ed25519` and "
+"`Secp256K1` keys. Also, review the tests in `GitHub <https://github.com"
+"/casper-ecosystem/casper-js-sdk/blob/next/test/lib/Keys.test.ts#L39>`_ and "
+"the `Working with Keys <https://docs.casperlabs.io/en/latest/dapp-dev-"
+"guide/keys.html>`_ documentation."
+msgstr ""
+"**Ответ**: Ресурс `Keys API <https://casper-ecosystem.github.io/casper-js-"
+"sdk/next/modules/_lib_keys_.html>`_ предоставляет методы для ключей "
+"`Ed25519` и `Secp256K1` . Также смотрите тесты в `GitHub <https://github.com"
+"/casper-ecosystem/casper-js-sdk/blob/next/test/lib/Keys.test.ts#L39>`_ и "
+"документацию о работе с ключами `Working with Keys "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/keys.html>`_ ."
+
+#: ../../dapp-dev-guide/getting-help.rst:49
+msgid "Useful Resources"
+msgstr "Полезные ресурсы"
+
+#: ../../dapp-dev-guide/getting-help.rst:50
+msgid ""
+"CasperLabs makes available the following resources for you to connect and "
+"get support:"
+msgstr ""
+"Вам будут доступны полезные ресурсы CasperLabs, где вы можете получить "
+"обратную связь и поддержку:"
+
+#: ../../dapp-dev-guide/getting-help.rst:53
+msgid ""
+"On our `Discord Channel <https://discordapp.com/invite/mpZ9AYD>`_, connect "
+"live with members of our Engineering Team available to support you with the "
+"progress of your projects"
+msgstr ""
+"На нашем канале `Discord Channel <https://discordapp.com/invite/mpZ9AYD>`_ "
+"можно вживую пообщаться с сотрудниками из инженерной команды, которые готовы"
+" поддержать вас в работе над проектами"
+
+#: ../../dapp-dev-guide/getting-help.rst:54
+msgid ""
+"Join the `CasperLabs Community Forum <https://forums.casperlabs.io/>`_ that "
+"includes technical discussions on using Casper features, obtain support, and"
+" pose questions to the CasperLabs Core Engineering Team"
+msgstr ""
+"Присоединитесь к форуму `CasperLabs Community Forum "
+"<https://forums.casperlabs.io/>`_  , где есть технические дискуссии об "
+"использовании возможностей Casper, получение поддержки и возможность "
+"разместить вопросы к основной инженерной команде CasperLabs."
+
+#: ../../dapp-dev-guide/getting-help.rst:55
+msgid ""
+"Subscribe to the `CasperLabs Official Telegram Channel "
+"<https://t.me/CasperLabs>`_ for general information and updates about our "
+"platform"
+msgstr ""
+"Подпишитесь на официальный телеграм-канал `CasperLabs Official Telegram "
+"Channel <https://t.me/CasperLabs>`_ для получения основной информации и "
+"уведомлений об обновлениях на платформе"
+
+#: ../../dapp-dev-guide/getting-help.rst:57
+msgid ""
+"If you find issues related to the smart contracts maintained by CasperLabs, "
+"file an issue in the `Casper Ecosystem repository <https://github.com"
+"/casper-ecosystem/>`_."
+msgstr ""
+"Если возникнут вопросы по смарт-контрактам, обслуживаемым CasperLabs, "
+"направьте файл с вашим случаем в репозиторий `Casper Ecosystem repository "
+"<https://github.com/casper-ecosystem/>`_."
+
+#: ../../dapp-dev-guide/getting-help.rst:59
+msgid ""
+"For other issues, search the main `CasperLabs repository "
+"<https://github.com/CasperLabs>`_ and file the issue in the related project."
+msgstr ""
+"Для других случаев воспользуйтесь поиском по основному репозиторию "
+"`CasperLabs repository <https://github.com/CasperLabs>`_ и поместите ваш "
+"файл в соответствующий раздел. "
+
+#: ../../dapp-dev-guide/getting-help.rst:61
+msgid ""
+"Otherwise, use our `Jira Service Desk "
+"<https://casperlabs.atlassian.net/servicedesk>`_ for situations such as:"
+msgstr ""
+"Также вы можете использовать нашу сервисную панель `Jira Service Desk "
+"<https://casperlabs.atlassian.net/servicedesk>`_  в следующих ситуациях:"
+
+#: ../../dapp-dev-guide/getting-help.rst:63
+msgid "questions that are not issues"
+msgstr "вопросы, не входящие в темы"
+
+#: ../../dapp-dev-guide/getting-help.rst:64
+msgid "needing technical support"
+msgstr "необходимость технической поддержки"
+
+#: ../../dapp-dev-guide/getting-help.rst:65
+msgid "wanting to give feedback"
+msgstr "запрос на получение обратной связи"
+
+#: ../../dapp-dev-guide/getting-help.rst:66
+msgid "suggesting improvements"
+msgstr "предложения по усовершенствованию"
+
+#: ../../dapp-dev-guide/getting-help.rst:67
+msgid "participating in a bounty"
+msgstr "участие в баунти"

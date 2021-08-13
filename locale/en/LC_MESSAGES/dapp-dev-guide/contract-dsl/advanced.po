@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:2
+msgid "Advanced Optimization"
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:4
+msgid ""
+"During advanced development, you may wish to optimize the output of the "
+"DSL for the blockchain once the base logic of your smart contract is in "
+"place. This requires digging into the actual code that the DSL generates,"
+" and here is where the `cargo expand <https://github.com/dtolnay/cargo-"
+"expand>`_ command becomes a useful tool."
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:7
+msgid "Expanding the Macros"
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:8
+msgid ""
+"To see the code that the DSL generates, you can use the ``cargo expand`` "
+"command. To install it, you can simply type the following in your "
+"terminal:"
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:14
+msgid "Once installed, you can go into your contract folder and type:"
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:20
+msgid "To pipe it into a file for viewing, you can use this command:"
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:26
+msgid ""
+"Once you view the output, you should see that the expanded file is much "
+"larger and more complex than the contract we viewed a moment ago. The DSL"
+" does a fantastic job of abstracting all this boilerplate code away from "
+"the development process."
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:28
+msgid ""
+"You usually do not need to generate the expanded code. When the Rust "
+"compiler encounters each of the macros, it expands the code in place. The"
+" resultant expanded code is then compiled to a WASM binary, which can "
+"then be deployed to the blockchain."
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:30
+msgid ""
+"Also, keep in mind that once you have expanded and changed the generated "
+"code, you should remove the macros from the project configuration before "
+"saving the changes and building it."
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:33
+msgid "Building and Testing the Hello World Contract"
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:34
+msgid ""
+"By building and testing the `Hello World <https://github.com/casper-"
+"ecosystem/hello-world>`_ contract, you can see how the DSL expands the "
+"macros."
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:36
+msgid ""
+"The build process is identical to the one used in the `Getting Started "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-"
+"contract-sdk.html>`_ section, but here we do not have the *build.rs* "
+"script that was used before. The following steps will help you manually "
+"build the contract."
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:38
+msgid "First, we need to add the WASM target:"
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:44
+msgid "Next, build the contract into a WASM binary:"
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:50
+msgid ""
+"Then we can copy the WASM file into the ``tests`` folder and run the "
+"tests:"
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:57
+msgid ""
+"If you successfully ran the two tests (``should_run`` and "
+"``should_update``), the DSL properly expanded your macros, built the "
+"binary, executed the contract, and called the update function. You should"
+" see an output similar to this if it worked correctly:"
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:71
+msgid "Using the Makefile"
+msgstr ""
+
+#: ../../dapp-dev-guide/contract-dsl/advanced.rst:72
+msgid ""
+"If you examine the repository contents, you’ll see that there is a "
+"Makefile. This is an alternative to using a build script, as we did in "
+"the `Getting Started guide <https://docs.casperlabs.io/en/latest/dapp-"
+"dev-guide/setup-of-rust-contract-sdk.html>`_. To duplicate the steps we "
+"took above, you would simply run the following two commands in your "
+"terminal:"
+msgstr ""
+

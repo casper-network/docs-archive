@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../workflow/index.rst:2
+msgid "How To's"
+msgstr "Nasıl Yapılır"
+
+#: ../../workflow/index.rst:4
+msgid ""
+"This section contains guides that highlight key features and capabilities of"
+" the Casper system."
+msgstr ""
+"Bu bölüm, Casper sisteminin anahtar özelliklerini ve yeteneklerini öne "
+"çıkaran rehberler içerir."
+
+#: ../../workflow/index.rst:7
+msgid "Title"
+msgstr "Başlık"
+
+#: ../../workflow/index.rst:7
+msgid "Description"
+msgstr "Açıklama"
+
+#: ../../workflow/index.rst:9
+msgid "`Prerequisites <setup.html>`_"
+msgstr "`Önkoşullar <setup.html>`_"
+
+#: ../../workflow/index.rst:9
+msgid "A guide to fulfilling prerequisites needed for various workflows"
+msgstr "Çeşitli iş akışları için gereken önkoşulları sağlama rehberi"
+
+#: ../../workflow/index.rst:10
+msgid "`Querying the Casper Network <querying.html>`_"
+msgstr "`Casper Network'ü Sorgulamak <querying.html>`_"
+
+#: ../../workflow/index.rst:10
+msgid "A guide to querying for information on a Casper blockchain"
+msgstr "Bir Casper blokzinciri üzerindeki bilgileri sorgulama rehberi"
+
+#: ../../workflow/index.rst:11
+msgid "`Direct Native Token Transfer <transfer-workflow.html>`_"
+msgstr "`Doğrudan Yerel Token Aktarımı <transfer-workflow.html>`_"
+
+#: ../../workflow/index.rst:11
+msgid ""
+"A guide to performing a direct transfer of CSPR tokens from one account to "
+"another"
+msgstr ""
+"Bir hesaptan diğerine doğrudan CSPR token transferi gerçekleştirme rehberi"
+
+#: ../../workflow/index.rst:12
+msgid ""
+"`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_"
+msgstr "`Dağıtım için İki-Taraflı Çoklu-İmzalar <two-party-multi-sig.html>`_"
+
+#: ../../workflow/index.rst:12
+msgid "A guide to setting up an account for two-party signature deploys"
+msgstr "İki-taraflı imza dağıtımları için hesap ayarlama rehberi"
+
+#: ../../workflow/index.rst:13
+msgid "`Delegating Tokens <delegate.html>`_"
+msgstr "`Token Delegasyonu <delegate.html>`_"
+
+#: ../../workflow/index.rst:13
+msgid "A guide to delegating tokens to a Validator on a Casper Network"
+msgstr "Casper Network üzerindeki bir Doğrulayıcıya token delegasyonu rehberi"
+
+#: ../../workflow/index.rst:14
+msgid "`Un-delegating Tokens <undelegate.html>`_"
+msgstr "`Token Delegasyonu İptali <undelegate.html>`_"
+
+#: ../../workflow/index.rst:14
+msgid "A guide to un-delegating tokens from a Validator on a Casper Network"
+msgstr ""
+"Casper Network üzerindeki bir Doğrulayıcıdaki token delegasyonu iptali "
+"rehberi"
+
+#: ../../workflow/index.rst:17
+msgid "**Table of Contents**"
+msgstr "**İçindekiler Tablosu**"

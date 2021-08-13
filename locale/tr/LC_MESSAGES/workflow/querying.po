@@ -1,0 +1,275 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../workflow/querying.rst:3
+msgid "Querying the Network"
+msgstr "Ağı Sorgulamak"
+
+#: ../../workflow/querying.rst:5
+msgid ""
+"The Casper node supports queries for users and developers to obtain "
+"information stored on the blockchain."
+msgstr ""
+"Casper düğümü, kullanıcıların ve geliştiricilerin blokzincirde depolanan "
+"bilgileri elde etmeleri için sorguları destekler."
+
+#: ../../workflow/querying.rst:7
+msgid "This document assumes:"
+msgstr "Bu belge şunları varsaymaktadır:"
+
+#: ../../workflow/querying.rst:9
+msgid "You have met the `prerequisites <setup.html>`_"
+msgstr "`Önkoşulları <setup.html>`_ karşıladınız"
+
+#: ../../workflow/querying.rst:10
+msgid ""
+"You are familiar with the structure of the `Global State and the Blockchain "
+"Design <https://docs.casperlabs.io/en/latest/implementation/index.html>`_ to"
+" query data from the network"
+msgstr ""
+"Ağdan veri sorgulamak için `Küresel Durum ve Blokzincir Tasarımının "
+"<https://docs.casperlabs.io/en/latest/implementation/index.html>`_ yapısına "
+"aşinasınız."
+
+#: ../../workflow/querying.rst:12
+msgid ""
+"When sending a query, it is important to note that the request will be "
+"routed to a single node in the network. You can request several types of "
+"data from a node:"
+msgstr ""
+"Bir sorgu gönderirken, isteğin ağdaki tek bir düğüme yönlendirileceğini "
+"unutmamak önemlidir. Bir düğümden birkaç tür veri talep edebilirsiniz:"
+
+#: ../../workflow/querying.rst:14
+msgid "Account details"
+msgstr "Hesap detayları"
+
+#: ../../workflow/querying.rst:15
+msgid "Block information"
+msgstr "Blok bilgileri"
+
+#: ../../workflow/querying.rst:16
+msgid "Deploy information"
+msgstr "Dağıtım bilgileri"
+
+#: ../../workflow/querying.rst:19
+msgid "Obtaining the Global State Root Hash"
+msgstr "Küresel Durum Kök Özetini (Hash) Elde Etmek"
+
+#: ../../workflow/querying.rst:20
+msgid ""
+"Since the system state changes with each block created, obtaining the latest"
+" global state hash is essential before querying information from a node."
+msgstr ""
+"Oluşturulan her blok ile sistem durumu değiştiği için, bir düğümden bilgi "
+"sorgulamadan önce en son global durum özetini (hash) elde etmek önemlidir."
+
+#: ../../workflow/querying.rst:22
+msgid ""
+"All queries made to global state require the ``state-root-hash``,  which you"
+" can obtain with this command:"
+msgstr ""
+"Küresel duruma yapılan tüm sorgular, bu komutla elde edebileceğiniz ``state-"
+"root-hash`` gerektirir:"
+
+#: ../../workflow/querying.rst:30 ../../workflow/querying.rst:88
+#: ../../workflow/querying.rst:167 ../../workflow/querying.rst:226
+#: ../../workflow/querying.rst:330
+msgid "**Request fields:**"
+msgstr "**Talep alanları:**"
+
+#: ../../workflow/querying.rst:32 ../../workflow/querying.rst:90
+#: ../../workflow/querying.rst:169 ../../workflow/querying.rst:228
+msgid ""
+"``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the "
+"request and returned in the response. If not provided, a random integer will"
+" be assigned"
+msgstr ""
+"``id`` - <STRING OR INTEGER> İsteğe uygulanan ve yanıtta döndürülen isteğe "
+"bağlı JSON-RPC tanımlayıcısı. Sağlanmazsa, rastgele bir tam sayı atanır"
+
+#: ../../workflow/querying.rst:33 ../../workflow/querying.rst:91
+#: ../../workflow/querying.rst:170
+msgid ""
+"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP"
+" service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT> Ana makine adı veya IP ve HTTP hizmetinin "
+"çalıştığı düğümün bağlantı noktası [varsayılan:http://localhost:7777]"
+
+#: ../../workflow/querying.rst:41 ../../workflow/querying.rst:105
+#: ../../workflow/querying.rst:180 ../../workflow/querying.rst:242
+msgid "**JSON-RPC Request**:"
+msgstr "**JSON-RPC İsteği**:"
+
+#: ../../workflow/querying.rst:54 ../../workflow/querying.rst:120
+#: ../../workflow/querying.rst:194 ../../workflow/querying.rst:258
+msgid "**JSON-RPC Response**:"
+msgstr "**JSON-RPC Cevabı**:"
+
+#: ../../workflow/querying.rst:75
+msgid "Querying an Account"
+msgstr "Hesap Sorgulamak"
+
+#: ../../workflow/querying.rst:77
+msgid ""
+"`Accounts "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ are "
+"stored in the global state and can be queried using the ``query-state`` "
+"command:"
+msgstr ""
+"`Hesaplar "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ "
+"küresel durumda saklanır ve ``query-state`` komutu kullanılarak "
+"sorgulanabilir:"
+
+#: ../../workflow/querying.rst:92 ../../workflow/querying.rst:171
+msgid "``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root"
+msgstr ""
+"``state-root-hash`` - <HEX STRING> Durum kökünün hex kodlu özeti (hash)"
+
+#: ../../workflow/querying.rst:93
+msgid ""
+"``key`` - <FORMATTED STRING or PATH> The base key for the query. This must "
+"be a properly formatted public key, account hash, contract address hash, "
+"URef, transfer hash or deploy-info hash."
+msgstr ""
+"``key`` - <FORMATTED STRING or PATH> Sorgu için temel anahtar. Bu, uygun "
+"şekilde biçimlendirilmiş bir genel anahtar, hesap özeti (hash), kontrat "
+"adresi özeti (hash), URef, aktarım özeti (hash) veya dağıtım bilgisi özeti "
+"(hash) olmalıdır."
+
+#: ../../workflow/querying.rst:96 ../../workflow/querying.rst:233
+msgid "**Important response fields:**"
+msgstr "**Önemli yanıt alanları:**"
+
+#: ../../workflow/querying.rst:98
+msgid ""
+"``\"result\".\"stored_value\".\"Account\".\"main_purse\"`` - the address of "
+"the main purse containing the sender’s tokens. This purse is the source of "
+"the tokens transferred in this example"
+msgstr ""
+"``\"result\".\"stored_value\".\"Account\".\"main_purse\"`` - gönderenin "
+"tokenlerini içeren ana cüzdanın adresi. Bu cüzdan, bu örnekte aktarılan "
+"tokenlerin kaynağıdır."
+
+#: ../../workflow/querying.rst:156
+msgid ""
+"You can use the URef of the ``main_purse`` to query the account balance. The"
+" balance returned is in motes (the unit that makes up the Casper token)."
+msgstr ""
+"Hesap bakiyesini sorgulamak için ``main_purse`` URef'ini kullanabilirsiniz. "
+"Döndürülen bakiye, mote cinsindendir (Casper tokenini oluşturan birim)."
+
+#: ../../workflow/querying.rst:172
+msgid ""
+"``purse-uref`` - <FORMATTED STRING> The URef under which the purse is "
+"stored. This must be a properly formatted URef \"uref-<HEX STRING>-<THREE "
+"DIGIT INTEGER>\""
+msgstr ""
+"``purse-uref`` - <FORMATTED STRING> Cüzdanın altında saklandığı URef. Bu, "
+"düzgün biçimlendirilmiş bir URef \"uref-<HEX STRING>-<THREE DIGIT INTEGER>\""
+" olmalıdır"
+
+#: ../../workflow/querying.rst:214
+msgid "Querying Blocks"
+msgstr "Blokları Sorgulamak"
+
+#: ../../workflow/querying.rst:216
+msgid ""
+"It is possible to obtain detailed block information from the system.  To do "
+"this, obtain the hash of the block of interest and send this query to a node"
+" in the network. Here is an example:"
+msgstr ""
+"Sistemden detaylı blok bilgisi almak mümkündür. Bunu yapmak için, "
+"ilgilenilen blokun özetini (hash) alın ve bu sorguyu ağdaki bir düğüme "
+"gönderin. İşte bir örnek:"
+
+#: ../../workflow/querying.rst:229
+msgid ""
+"``node-address`` <HOST:PORT> Hostname or IP and port of node on which HTTP "
+"service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` <HOST:PORT> Ana makine adı veya IP ve HTTP hizmetinin "
+"çalıştığı düğümün bağlantı noktası [varsayılan:http://localhost:7777]"
+
+#: ../../workflow/querying.rst:230
+msgid ""
+"``block-identifier`` - <HEX STRING OR INTEGER> Hex-encoded block hash or "
+"height of the block. If not given, the last block added to the chain as "
+"known at the given node will be used"
+msgstr ""
+"``block-identifier`` - <HEX STRING OR INTEGER> Hex kodlu blok özeti (hash) "
+"veya bloğun yüksekliği. Verilmezse, verilen düğümde bilinen zincire eklenen "
+"son blok kullanılacaktır."
+
+#: ../../workflow/querying.rst:235
+msgid ""
+"``\"result\".\"block\".\"header\".\"state_root_hash\"`` - contains the "
+"``state-root-hash`` for this block"
+msgstr ""
+"``\"result\".\"block\".\"header\".\"state_root_hash\"`` - bu blok için "
+"``state-root-hash``ı içerir"
+
+#: ../../workflow/querying.rst:319
+msgid "Querying Deploys"
+msgstr "Dağıtımları Sorgulamak"
+
+#: ../../workflow/querying.rst:321
+msgid ""
+"Once you submit a deploy to the network, you can check its execution status "
+"using ``get-deploy``. If the ``execution_results`` in the output are null, "
+"the transaction has not run yet. Note that transactions are finalized upon "
+"execution."
+msgstr ""
+"Ağa bir dağıtım gönderdikten sonra, ``get-deploy`` kullanarak yürütme "
+"durumunu kontrol edebilirsiniz. Çıktıdaki ``execution_results`` boşsa, işlem"
+" henüz çalışmamıştır. İşlemlerin yürütüldükten sonra sonlandırıldığını "
+"unutmayın."
+
+#: ../../workflow/querying.rst:332
+msgid ""
+"``id`` - <STRING OR INTEGER> JSON-RPC identifier, applied to the request and"
+" returned in the response. If not provided, a random integer will be "
+"assigned"
+msgstr ""
+"``id`` - <STRING OR INTEGER> İsteğe uygulanan ve yanıtta döndürülen JSON-RPC"
+" tanımlayıcısı. Sağlanmazsa, rastgele bir tam sayı atanır"
+
+#: ../../workflow/querying.rst:333
+msgid ""
+"``node-address`` - <HOST:PORT>Hostname or IP and port of node on which HTTP "
+"service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT> Ana makine adı veya IP ve HTTP hizmetinin "
+"çalıştığı düğümün bağlantı noktası [varsayılan:http://localhost:7777]"
+
+#: ../../workflow/querying.rst:334
+msgid ""
+"``deploy-hash`` - <HEX STRING OR INTEGER> Hex-encoded hash of the deploy"
+msgstr ""
+"``deploy-hash`` - <HEX STRING OR INTEGER> Dağıtımın onaltılı kodlu özet "
+"(hash) değeri"

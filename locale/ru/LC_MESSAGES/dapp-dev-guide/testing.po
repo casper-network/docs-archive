@@ -1,0 +1,174 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/testing.rst:6
+msgid "Testing Contracts"
+msgstr "Тестирование контрактов"
+
+#: ../../dapp-dev-guide/testing.rst:8
+msgid ""
+"As part of the Casper local Rust contract development environment we provide"
+" an in-memory virtual machine you can run your contract against. A full node"
+" is not required for testing.  The testing framework is designed to be used "
+"in the following way:"
+msgstr ""
+"В рамках локальной среды разработки контрактов на Rust Casper мы "
+"предоставляем виртуальную машину в памяти, с которой вы можете выполнять "
+"свой контракт. Для тестирования полная нода не требуется. Среда тестирования"
+" предназначена для использования следующим образом:"
+
+#: ../../dapp-dev-guide/testing.rst:11
+msgid "Initialize the system (context)."
+msgstr "Инициализировать систему (контекст)."
+
+#: ../../dapp-dev-guide/testing.rst:12
+msgid "Deploy or call the smart contract."
+msgstr "Развернуть смарт-контракт."
+
+#: ../../dapp-dev-guide/testing.rst:13
+msgid ""
+"Query the context for changes and assert the result data matches expected "
+"values."
+msgstr ""
+"Запросите контекст на предмет изменений и подтвердите, что данные результата"
+" соответствуют ожидаемым значениям."
+
+#: ../../dapp-dev-guide/testing.rst:15
+msgid ""
+"It is also possible to create build scripts with this environment and set up"
+" continuous integration for contract code.\\ :raw-html-m2r:`<br>` This "
+"environment enables the testing of blockchain enabled systems from end to "
+"end."
+msgstr ""
+"Также можно создавать сценарии сборки с этой средой и настраивать "
+"непрерывную интеграцию для кода контракта. \\ :raw-html-m2r:`1` Эта среда "
+"позволяет тестировать системы с поддержкой блокчейн от начала до конца."
+
+#: ../../dapp-dev-guide/testing.rst:19
+msgid "The TestContext for Rust Contracts"
+msgstr "TestContext for Rust контрактов"
+
+#: ../../dapp-dev-guide/testing.rst:21
+msgid ""
+"A  `TestContext <https://docs.rs/casper-engine-test-"
+"support/latest/casper_engine_test_support/struct.TestContext.html>`_ "
+"provides a virtual machine instance. It should be a mutable object as its "
+"internal data will change with each deploy. It's also important to set an "
+"initial balance for the account to use for deploys, as the system requires a"
+" balance in order to create an account."
+msgstr ""
+" `TestContext <https://docs.rs/casper-engine-test-"
+"support/latest/casper_engine_test_support/struct.TestContext.html>`_  "
+"предоставляет экземпляр виртуальной машины. Это должен быть мутабельный "
+"объект, поскольку его внутренние данные будут изменяться при каждом "
+"развертывании. Также важно установить начальный баланс для учетной записи, "
+"которая будет использоваться для развертывания, поскольку системе требуется "
+"баланс для создания учетной записи."
+
+#: ../../dapp-dev-guide/testing.rst:31
+msgid "Account is type of ``[u8; 32]``. Balance is type of ``U512``."
+msgstr "Тип акаунта - ``[u8; 32]``.  Тип баланса -  ``U512``."
+
+#: ../../dapp-dev-guide/testing.rst:34
+msgid "Running the Rust Smart Contract"
+msgstr "Выполнение Rust смарт контракта"
+
+#: ../../dapp-dev-guide/testing.rst:36
+msgid ""
+"Before the contract can be deployed to the context, the request has to be "
+"prepared. A request is referred to as a `Session <https://docs.rs/casper-"
+"engine-test-"
+"support/latest/casper_engine_test_support/struct.Session.html>`_. Each "
+"session call has 4 elements:"
+msgstr ""
+"Прежде чем контракт можно будет развернуть в контексте, необходимо "
+"подготовить запрос. Запрос обозначается как   `Session <https://docs.rs"
+"/casper-engine-test-"
+"support/latest/casper_engine_test_support/struct.Session.html>`_.  Каждая "
+"сессия должна содержать 4 элемента:"
+
+#: ../../dapp-dev-guide/testing.rst:39
+msgid "A Wasm file path."
+msgstr "Путь к  Wasm файлу."
+
+#: ../../dapp-dev-guide/testing.rst:40
+msgid "A list of arguments."
+msgstr "Список агрументов."
+
+#: ../../dapp-dev-guide/testing.rst:41
+msgid "The account context for execution."
+msgstr "Контекст акаунта для выполнения."
+
+#: ../../dapp-dev-guide/testing.rst:42
+msgid "The list of keys that authorize the call."
+msgstr "Список ключей авторизации запроса."
+
+#: ../../dapp-dev-guide/testing.rst:44
+msgid "Here is an example of a prepared request:"
+msgstr "Пример подготовленного запроса:"
+
+#: ../../dapp-dev-guide/testing.rst:59
+msgid "Executing ``run`` will panic if the code execution fails."
+msgstr ""
+"Выполнение ```run``  выведет сообщения об ошибке, если выполнение кода не "
+"удастся."
+
+#: ../../dapp-dev-guide/testing.rst:62
+msgid "Query and Assert"
+msgstr "Запрос и подтверждение"
+
+#: ../../dapp-dev-guide/testing.rst:64
+msgid ""
+"The smart contract creates a new value ``\"hello world\"`` under the key "
+"``\"special_value\"``. Using the ``query`` function it's possible to extract"
+" this value from the global state of the blockchain."
+msgstr ""
+"Смарт-контракт создает новое значение``\"hello world\"`` с "
+"ключом``\"special_value\"`` Используя функцию ``query`` , можно извлечь это "
+"значение из глобального состояния блокчейн."
+
+#: ../../dapp-dev-guide/testing.rst:74
+msgid ""
+"Note that the ``expected_value`` is a ``String`` type lifted to the "
+"``Value`` type. It was also possible to map ``returned_value`` to the "
+"``String`` type."
+msgstr ""
+"Обратите внимание, что ``expected_value``  - это тип ``String``, "
+"преобразованный в тип ``Value`` . Также было возможно сопоставить  "
+"``returned_value`` с типом ``String``."
+
+#: ../../dapp-dev-guide/testing.rst:77
+msgid "Final Test"
+msgstr "Финальный  тест"
+
+#: ../../dapp-dev-guide/testing.rst:79
+msgid ""
+"The code below is the simple test generated by `cargo-casper "
+"<https://crates.io/crates/cargo-casper>`_ (found in "
+"``tests/src/integration_tests.rs`` of a project created by the tool)."
+msgstr ""
+"Приведенный ниже код представляет собой простой тест, сгенерированный "
+"`cargo-casper <https://crates.io/crates/cargo-casper>`_ (находится в "
+"``tests/src/integration_tests.rs`` сгенерированного проекта)"

@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/index.rst:27
+msgid "Introduction"
+msgstr "Introduction"
+
+#: ../../dapp-dev-guide/index.rst:2
+msgid "Developers"
+msgstr "Développeurs"
+
+#: ../../dapp-dev-guide/index.rst:4
+msgid ""
+"This guide is designed to support developers getting started with the "
+"development of smart contracts on the Casper blockchain in AssemblyScript or"
+" Rust. For Rust, there is a contract development kit that includes a runtime"
+" environment, reference documentation, and test framework. You can install "
+"our environment locally, create and test Smart Contracts with our Smart "
+"Contracts and Test Libraries, and use these libraries to build your own "
+"applications."
+msgstr ""
+"Ce guide est conçu pour aider les développeurs à concevoir des contrats "
+"intelligents sur la blockchain Casper en AssemblyScript ou Rust. Pour Rust, "
+"il existe un kit de développement de contrats qui comprend un environnement "
+"d'exécution (Runtime), une documentation de référence et un environnement de"
+" test. Vous pouvez installer notre environnement localement, créer et tester"
+" des contrats intelligents avec nos bibliothèques de test et de contrats "
+"intelligents, et utiliser ces bibliothèques pour créer vos propres "
+"applications."
+
+#: ../../dapp-dev-guide/index.rst:6
+msgid ""
+"It is recommended you have prior knowledge about Unix-based operating "
+"systems, like GNU/Linux or macOS, and programming knowledge with:"
+msgstr ""
+"Il est recommandé d'avoir des connaissances préalables sur les systèmes "
+"d'exploitation de type Unix, comme GNU/Linux ou macOS, et des connaissances "
+"en programmation avec :"
+
+#: ../../dapp-dev-guide/index.rst:8
+msgid "Rust"
+msgstr "Rust"
+
+#: ../../dapp-dev-guide/index.rst:9
+msgid "AssemblyScript"
+msgstr "AssemblyScript"
+
+#: ../../dapp-dev-guide/index.rst:10
+msgid "JavaScript (optional)"
+msgstr "JavaScript (facultatif)"
+
+#: ../../dapp-dev-guide/index.rst:11
+msgid "Python (optional)"
+msgstr "Python (facultatif)"
+
+#: ../../dapp-dev-guide/index.rst:13
+msgid ""
+"The topics on the index include present and future documentation initiatives"
+" in our roadmap and are organized so that you will be able to:"
+msgstr ""
+"Les sujets de l'index comprennent les initiatives de documentation actuelles"
+" et futures de notre feuille de route et sont organisés de manière à ce que "
+"vous puissiez les consulter :"
+
+#: ../../dapp-dev-guide/index.rst:15
+msgid "Understand what CasperLabs is building."
+msgstr "Comprendre ce que CasperLabs veut construire."
+
+#: ../../dapp-dev-guide/index.rst:16
+msgid "Learn how to build and operate applications on the platform."
+msgstr "Apprenez à créer et à exploiter des applications sur la plate-forme."
+
+#: ../../dapp-dev-guide/index.rst:17
+msgid "Learn how to set up the CasperLabs environment locally."
+msgstr "Mettre en place l'environnement CasperLabs en local."
+
+#: ../../dapp-dev-guide/index.rst:18
+msgid "Work with our Contracts API to access our Rust resources."
+msgstr ""
+"Travailler avec notre API de contrats pour accéder à nos ressources Rust."
+
+#: ../../dapp-dev-guide/index.rst:19
+msgid "Learn how to create and test Smart Contracts with our libraries."
+msgstr "Créer et tester des contrats intelligents avec nos librairies (API)."
+
+#: ../../dapp-dev-guide/index.rst:20
+msgid "Work with the multi-signature capability to sign transactions."
+msgstr ""
+"Utiliser la fonction de signature multiple pour signer les transactions."
+
+#: ../../dapp-dev-guide/index.rst:22
+msgid ""
+"The motivation for our roadmap is inspired by feedback we are receiving from"
+" your recommendations. We hope you continue to provide your feedback as you "
+"embark on this journey with us -- we look forward to building a "
+"decentralized future together."
+msgstr ""
+"La motivation pour notre feuille de route est inspirée par le retour que "
+"nous recevons de vos recommandations. Nous espérons que vous continuerez à "
+"nous faire part de vos commentaires tout au long de ce projet - nous sommes "
+"impatients de construire ensemble un avenir décentralisé."
+
+#: ../../dapp-dev-guide/index.rst:24
+msgid ""
+"`Coding Standards and Review "
+"<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
+"cover best practices and recommendations following our coding standards, "
+"code reviews and publishing your code to our GitHub."
+msgstr ""
+"`Normes de codage et révision "
+"<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
+"couvrent les meilleures pratiques et recommandations inspirées de nos normes"
+" de codage, des révisions de code et la publication de votre code sur notre "
+"GitHub."

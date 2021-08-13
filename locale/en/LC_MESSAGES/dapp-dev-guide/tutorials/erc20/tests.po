@@ -1,0 +1,203 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:3
+msgid "Testing the Contract"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:5
+msgid ""
+"The testing framework in this tutorial uses the `Casper engine test "
+"support <https://crates.io/crates/casper-engine-test-support>`_ crate for"
+" testing the contract implementation against the Casper execution "
+"environment."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:7
+msgid ""
+"We will review the following three `GitHub <https://github.com/casper-"
+"ecosystem/erc20/tree/master/tests/src>`_ files, which create the testing "
+"framework:"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:9
+msgid ""
+"``tests/src/erc20.rs`` - sets up the testing context and creates helper "
+"functions used by unit tests"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:10
+msgid "``tests/src/tests.rs`` - contains the unit tests"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:11
+msgid ""
+"``tests/src/lib.rs`` - links the above files together and is required by "
+"the Rust toolchain"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:13
+msgid "The following is an example of a complete test:.:"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:26
+msgid ""
+"The `tests crate <https://github.com/casper-"
+"ecosystem/erc20/tree/master/tests>`_ has a ``build.rs`` file, which is "
+"effectively a custom build script executed every time before running the "
+"tests. The ``build.rs`` file compiles the `contract crate "
+"<https://github.com/casper-ecosystem/erc20/tree/master/contract>`_ in "
+"*release* mode and copies the ``contract.wasm`` file to the "
+"``tests/wasm`` directory. In practice, that means you only need to run a "
+"single command during development, which is **make test**."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:30
+msgid "Configuring the Test Package"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:32
+msgid "First, we define a ``tests`` package in the ``tests/Cargo.toml`` file."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:51
+msgid "Describing the Logic for Testing"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:53
+msgid ""
+"To test the smart contract, we need to specify the starting state of the "
+"blockchain, deploy the compiled contract to this starting state, and "
+"create additional deploys for each of the methods in the contract."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:55
+msgid ""
+"The ``tests/src/erc20.rs`` file contains methods that can simulate a "
+"real-world deployment (storing the contract in the blockchain) and "
+"transactions to invoke the methods in the contract."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:58
+msgid "Setting up the testing context"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:60
+msgid ""
+"Let's start by defining the required constants (i.e., method names, key "
+"names, and account addresses). The following code initializes the `global"
+" state <https://docs.casperlabs.io/en/latest/glossary/G.html#global-"
+"state>`_ with all the data and methods that a smart contract needs to run"
+" correctly."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:87
+msgid "Deploying the contract"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:89
+msgid ""
+"The next step is to define the ``ERC20Contract`` struct that has its own "
+"VM instance and implements the ERC-20 methods. This struct holds a "
+"``TestContext`` of its own. The *contract_hash* and the *session_code* "
+"won’t change after the contract is deployed, so it is good to keep them "
+"handy."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:91
+msgid ""
+"This code snippet builds the context and includes the compiled "
+"``contract.wasm`` binary being tested. This function creates a new "
+"instance of the ``ERC20Contract`` with the accounts ``ali``\\ , ``bob`` "
+"and ``joe`` having a positive initial balance. The contract is deployed "
+"using the ``ali`` account."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:144
+msgid "Querying the network"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:146
+msgid ""
+"The previous step has simulated a real deploy on the network. The next "
+"code snippet describes how to query the network to find the *contract "
+"hash*."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:148
+msgid ""
+"Contracts are deployed under the context of an account. Since we created "
+"the deploy under the context of ``self.ali``\\ , this is what we will "
+"query here. The ``query_contract`` function uses ``query`` to lookup "
+"named keys. It will be used to implement the ``balance_of``\\ , "
+"``total_supply`` and ``allowance`` checks."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:194
+msgid "Invoking contract methods"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:196
+msgid ""
+"The following code snippet describes a generic way to call a specific "
+"entry point in the contract."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:210
+msgid "**Invoking the contract methods**"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:212
+msgid "Here is how to invoke each of the methods in the contract:"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:267
+msgid "Creating Unit Tests"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:269
+msgid ""
+"Now that we have a testing context, we can use it to create unit tests in"
+" the file called ``tests/src/tests.rs``. The unit tests verify the "
+"contract code by invoking the functions defined in "
+"``tests/src/erc20.rs``."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:342
+msgid "Running the Tests"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:344
+msgid ""
+"Next, we configure the ``lib.rs`` file to run everything via the *make "
+"test* command. Within the ``tests/src/lib.rs`` file, we added the "
+"following lines:"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:354
+msgid "Next, let's run the tests:"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:361
+msgid ""
+"This example uses ``bash``.  If you are using a Rust IDE, you need to "
+"configure it to run the tests."
+msgstr ""
+

@@ -1,0 +1,270 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:2
+msgid "The DSL Macros"
+msgstr "DSL Macros"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:4
+msgid ""
+"In this guide, we describe how to configure Rust smart contracts to use the "
+"Casper DSL, making it easier for developers to start writing their smart "
+"contracts."
+msgstr ""
+"Trong hướng dẫn này, chúng tôi mô tả cách định cấu hình hợp đồng thông minh "
+"Rust để sử dụng Casper DSL, giúp các nhà phát triển bắt đầu viết hợp đồng "
+"thông minh của họ dễ dàng hơn."
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:6
+msgid ""
+"The DSL consists of three macro directives dividing the boilerplate code "
+"between *headers*, *constructor*, and *method blocks*. The smart contract is"
+" being treated much like a class in OOP terms."
+msgstr ""
+"DSL bao gồm ba chỉ mục macro phân chia mã soạn sẵn thành các khối * "
+"headers*, *constructor*, và *method blocks*. Hợp đồng thông minh đang được "
+"đối xử giống như một lớp trong OOP."
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:8
+msgid ""
+"Here is a brief description of the three macros before we take a look at a "
+"sample contract utilizing them:"
+msgstr ""
+"Dưới đây là mô tả ngắn gọn về ba macro trước khi chúng ta xem xét một hợp "
+"đồng mẫu sử dụng chúng:"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:11
+msgid "Macro"
+msgstr "Macro"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:11
+msgid "Instruction"
+msgstr "Hướng dẫn"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:11
+msgid "Description"
+msgstr "Mô tả"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:13
+msgid "Contract"
+msgstr "Hợp đồng"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:13
+msgid "``casperlabs_contract``"
+msgstr "``casperlabs_contract``"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:13
+msgid ""
+"This macro generates the code for the headers for each of the entry points "
+"that use it. It sits at the very top of the contract module and includes the"
+" necessary code for contract execution."
+msgstr ""
+"Macro này tạo mã cho các tiêu đề cho mỗi điểm nhập sử dụng nó. Nó nằm ở đầu "
+"mô-đun hợp đồng và bao gồm mã cần thiết để thực hiện hợp đồng."
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:14
+msgid "Constructor"
+msgstr "Bộ dựng"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:14
+msgid "``casperlabs_constructor``"
+msgstr "``casperlabs_constructor``"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:14
+msgid ""
+"This macro creates the code that sets up the contract in the runtime and "
+"locates it when execution begins. Underneath the hood, this is the deploy "
+"function that creates the contract entry point and stores the deploy hash "
+"under a function name in the Casper runtime. You can think of the function "
+"decorated by the constructor macro as the main function of the contract."
+msgstr ""
+"Macro này tạo mã thiết lập hợp đồng trong thời gian chạy và định vị nó khi "
+"bắt đầu thực thi. Bên dưới đó, đây là hàm triển khai tạo điểm nhập hợp đồng "
+"và lưu trữ hàm băm triển khai dưới dạng tên hàm trong thời gian chạy Casper."
+" Bạn có thể coi hàm được tạo ra bởi bộ dựng macro là hàm chính của hợp đồng."
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:15
+msgid "Method"
+msgstr "Phương thức"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:15
+msgid "``casperlabs_method``"
+msgstr "``casperlabs_method``"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:15
+msgid ""
+"This macro creates an entry point for any function in your contract that you"
+" wish to expose in the smart contract. Functions that are only used "
+"internally should not be decorated with this macro. Continuing the OOP "
+"metaphor, this directive would essentially be declaring a smart contract "
+"function as being public."
+msgstr ""
+"Macro này tạo một điểm vào cho bất kỳ hàm nào trong hợp đồng của bạn mà bạn "
+"muốn hiển thị trong hợp đồng thông minh. Các chức năng chỉ được sử dụng "
+"trong nội bộ không nên được tạo ra bằng macro này. Tiếp tục tương tự OOP, "
+"chỉ mục này về cơ bản sẽ là khai báo một hàm của hợp đồng thông minh là công"
+" khai."
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:19
+msgid "Prerequisites"
+msgstr "Điều kiện tiên quyết"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:20
+msgid ""
+"The DSL relies upon working in a Rust contract, which means you need to have"
+" your development environment up and running. In the `Getting Started "
+"section <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-"
+"contract-sdk.html>`_, we compiled and tested a sample contract to verify our"
+" setup was functional. If you have not completed that section, please "
+"complete it before continuing with this guide."
+msgstr ""
+"DSL phụ thuộc vào việc làm việc trong một hợp đồng Rust, có nghĩa là bạn cần"
+" thiết lập và vận hành môi trường phát triển của mình. Trong phần `Bắt đầu "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_, chúng tôi đã biên soạn và thử nghiệm một hợp đồng mẫu để xác "
+"minh thiết lập của chúng tôi đã hoạt động. Nếu bạn chưa hoàn thành phần đó, "
+"vui lòng hoàn thành phần đó trước khi tiếp tục với hướng dẫn này."
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:23
+msgid "[Recommended] Getting the Macros"
+msgstr "[Được khuyến nghị] Lấy ra Macros"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:24
+msgid ""
+"If you are new to Casper development, we recommend following this guide "
+"using the sample `Hello World <https://github.com/casper-ecosystem/hello-"
+"world>`_ contract. This smart contract Rust file has all the macros in "
+"place, and the configuration is already set up to import the macros for you."
+msgstr ""
+"Nếu bạn chưa quen với việc phát triển Casper, chúng tôi khuyên bạn nên làm "
+"theo hướng dẫn này bằng cách sử dụng hợp đồng mẫu `Hello World "
+"<https://github.com/casper-ecosystem/hello-world>`_ . Tệp Rust của hợp đồng "
+"thông minh này có tất cả các macro và cấu hình đã được thiết lập để kết nhập"
+" macro cho bạn."
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:27
+msgid "[Advanced] Getting the Macros"
+msgstr "[Nâng cao] Lấy ra Macros"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:28
+msgid ""
+"If you already have been working with Casper contracts and you wish to "
+"simply add the macros to your existing smart contract, then you can retrieve"
+" the macros from `GitHub "
+"<https://github.com/CasperLabs/casperlabs_contract_macro>`_."
+msgstr ""
+"Nếu bạn đã làm việc với hợp đồng Casper và bạn chỉ muốn thêm macro vào hợp "
+"đồng thông minh hiện có của mình, thì bạn có thể truy xuất macro từ `GitHub "
+"<https://github.com/CasperLabs/casperlabs_contract_macro>`_."
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:31
+msgid "Importing the Macros"
+msgstr "Kết nhập Macros"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:32
+msgid ""
+"The sample contract already has this done for you, but you should know how "
+"to do it for future contracts. To import the macros, just include a line in "
+"the ``Cargo.toml`` file in the *contract* folder of your smart contract. The"
+" entry needs to appear in the *[dependencies]* section of the file. Then "
+"``cargo`` will import the macros into your project when you build it."
+msgstr ""
+"Hợp đồng mẫu đã có điều này thực hiện cho bạn, nhưng bạn nên biết cách thực "
+"hiện nó cho các hợp đồng sau này. Để nhập macro, chỉ cần bao gồm một dòng "
+"trong tệp ``Cargo.toml`` trong thư mục *contract* hợp đồng thông minh của "
+"bạn. Mục nhập cần xuất hiện trong phần *[dependencies]*  của tệp. Sau đó, "
+"``cargo`` sẽ nhập các macro vào dự án của bạn khi bạn xây dựng nó."
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:34
+msgid ""
+"For example, if you placed the macros inside your project in a folder named "
+"*contract_macro* next to the *contract* folder, you would add this line to "
+"the dependencies section of the ``Cargo.toml`` file:"
+msgstr ""
+"Ví dụ: nếu bạn đặt macro bên trong dự án của mình trong một thư mục có tên "
+"**contract_macro* bên cạnh thư mục *contract*, bạn sẽ thêm dòng này vào phần"
+" phụ thuộc của tệp ``Cargo.toml``: "
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:41
+msgid ""
+"Alternatively, you can get the macros directly from Github without "
+"downloading them:"
+msgstr ""
+"Ngoài ra, bạn có thể lấy các macro trực tiếp từ Github mà không cần tải "
+"chúng xuống:"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:47
+msgid ""
+"This second approach is what the `Hello World <https://github.com/casper-"
+"ecosystem/hello-world>`_ smart contract is utilizing, so if you are starting"
+" there, it has already been done for you."
+msgstr ""
+"Cách tiếp cận thứ hai này là những gì hợp đồng thông minh `Hello World "
+"<https://github.com/casper-ecosystem/hello-world>`_ đang sử dụng, vì vậy nếu"
+" bạn đang bắt đầu ở đó, nó đã được thực hiện cho bạn."
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:50
+msgid "Using the DSL"
+msgstr "Sử dụng DSL"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:51
+msgid ""
+"To use the DSL, simply add the following line to the *use section* of the "
+"contract (usually found at the top of the file in *main.rs*):"
+msgstr ""
+"Để sử dụng DSL, chỉ cần thêm dòng sau vào *use section* của hợp đồng (thường"
+" được tìm thấy ở đầu tệp trong *main.rs*):"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:58
+msgid "Examining the Hello World Example"
+msgstr "Kiểm tra ví dụ Hello World"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:59
+msgid ""
+"Clone the `Hello World <https://github.com/casper-ecosystem/hello-world>`_ "
+"example contract and open the ``main.rs`` file. Examine the following "
+"section:"
+msgstr ""
+"Sao chép hợp đồng ví dụ `Hello World <https://github.com/casper-ecosystem"
+"/hello-world>`_ và mở tệp ``main.rs``. Kiểm tra phần sau:"
+
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:92
+msgid ""
+"Notice that all three macros are being utilized and that the file is "
+"relatively compact. This is a very simple contract that initializes a key "
+"named *special_value* with the value *hello world* once the contract is "
+"compiled and executed thanks to the constructor macro. The function *update*"
+" is decorated with the ``casperlabs_method`` macro and will thus be "
+"accessible for updating the value. However, notice that *set_key* is not "
+"prefaced with the macro. Since this function is used internally, it does not"
+" need to have an entry point in the Casper runtime."
+msgstr ""
+"Lưu ý rằng tất cả ba macro đang được sử dụng và tệp tương đối nhỏ gọn. Đây "
+"là một hợp đồng rất đơn giản, khởi tạo một khóa có tên là *special_value* "
+"với giá trị *hello world* sau khi hợp đồng được biên dịch và thực thi nhờ bộ"
+" dựng macro. Hàm *update* được tạo bằng macro with the ``casperlabs_method``"
+" và do đó sẽ có thể truy cập được để cập nhật giá trị. Tuy nhiên, lưu ý rằng"
+" *set_key* không được mở đầu bằng macro. Vì chức năng này được sử dụng nội "
+"bộ nên nó không cần phải có điểm vào trong thời gian chạy Casper."

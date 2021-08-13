@@ -1,0 +1,206 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../economics/runtime.rst:2
+msgid "Runtime Economics"
+msgstr "Tính kinh tế của thời điểm chạy"
+
+#: ../../economics/runtime.rst:4
+msgid ""
+"The economics of the runtime layer should incentivize efficient allocation "
+"of computational resources, primarily CPU time, to users. Pending state "
+"pruning implementation, disk space use is treated as CPU time usage and "
+"charged, irreversibly, per byte written. Currently, gas is allocated "
+"according to a first-in, first-out model for deploys, with a fixed price of "
+"1 mote (1/10^9 part of a CSPR token) per 1 unit of gas."
+msgstr ""
+"Tính kinh tế của lớp thời điểm chạy sẽ khuyến khích việc phân bổ hiệu quả "
+"các tài nguyên tính toán, chủ yếu là thời gian CPU, cho người dùng. Trạng "
+"thái chờ trong khi cắt giảm triển khai, sử dụng không gian đĩa được coi là "
+"sử dụng thời gian CPU và được tính phí trên mỗi byte được ghi. Hiện tại, gas"
+" được phân bổ theo mô hình first-in, first-out cho các đợt triển khai, với "
+"giá cố định là 1 mote (1/10^9 phần của token CSPR) trên 1 đơn vị gas."
+
+#: ../../economics/runtime.rst:7
+msgid "Gas allocation"
+msgstr "Phân bổ Gas"
+
+#: ../../economics/runtime.rst:9
+msgid ""
+"Any finite resource on a publicly accessible computer network must be rate-"
+"limited, as, otherwise, overuse of this resource is an attack vector -- a "
+"minimal requirement for platform security. However, rate-limiting, "
+"implemented on our platform as a simple block gas limit with several lanes, "
+"leaves the platform with the problem of fairly and efficiently allocating "
+"the gas. We are researching the optimal structure for spot and futures gas "
+"markets, and interested readers should consult the relevant `CEPs "
+"<https://github.com/CasperLabs/ceps>`_. In the meantime, this section "
+"outlines some basic features of the platform that would underpin any "
+"allocation scheme."
+msgstr ""
+"Bất kỳ tài nguyên hữu hạn nào trên mạng máy tính có thể truy cập công khai "
+"đều phải được giới hạn tốc độ, vì nếu không, việc sử dụng quá mức tài nguyên"
+" này sẽ trở thành lỗ hổng dễ bị tấn công -- đây là yêu cầu tối thiểu đối với"
+" tính bảo mật của nền tảng. Tuy nhiên, việc giới hạn tốc độ (được thực hiện "
+"trên nền tảng của chúng tôi thông qua việc giới hạn gas cho một số luồng) có"
+" thể khiến nền tảng gặp vấn đề trong việc phân bổ gas một cách công bằng và "
+"hiệu quả. Chúng tôi đang nghiên cứu cấu trúc tối ưu cho thị trường gas giao "
+"ngay và tương lai, độc giả quan tâm tham khảo thêm `CEPs "
+"<https://github.com/CasperLabs/ceps>`_. Phần này phác thảo một số tính năng "
+"cơ bản của nền tảng, làm cơ sở cho các kế hoạch phân bổ."
+
+#: ../../economics/runtime.rst:12
+msgid "Consensus before execution & basics of payment"
+msgstr "Đồng thuận trước thực thi và những điều cơ bản về thanh toán"
+
+#: ../../economics/runtime.rst:14
+msgid ""
+"The Highway protocol in its Mainnet implementation reaches consensus on a "
+"block *before* the block is executed, introducing a subtle difference from "
+"platforms like Ethereum. In addition, deploys sent to the Casper network can"
+" only be selected based on claimed, rather than used, gas. Consequently, to "
+"incentivize user-side optimization and prevent block space exhaustion by "
+"poorly optimized deploys, the platform provides no refunds for unused gas."
+msgstr ""
+"Giao thức Highway trong việc triển khai Mainnet đạt được sự đồng thuận trên "
+"một khối *trước khi* khối được thực thi, tạo ra sự khác biệt so với các nền "
+"tảng như Ethereum. Ngoài ra, các triển khai được gửi tới mạng Casper chỉ có "
+"thể được chọn dựa trên gas đã được xác nhận chứ không phải gas đã sử dụng. "
+"Do đó, để khuyến khích tối ưu hóa phía người dùng và ngăn chặn việc cạn kiệt"
+" không gian khối do các triển khai không được tối ưu hóa, nền tảng không "
+"hoàn lại tiền cho gas chưa sử dụng."
+
+#: ../../economics/runtime.rst:16
+msgid ""
+"Additionally, a minimal amount of CSPR must be present in the user account "
+"to ensure that the payment computation is covered. The community may "
+"introduce additional balance checks in the future."
+msgstr ""
+"Ngoài ra, phải có một lượng CSPR tối thiểu trong tài khoản người dùng để có "
+"thể thực hiện việc tính toán các thanh toán. Trong tương lai, cộng đồng "
+"người dùng còn có thể kiểm tra số dư bổ sung."
+
+#: ../../economics/runtime.rst:19
+msgid "Costs and limits"
+msgstr "Chi phí và hạn chế"
+
+#: ../../economics/runtime.rst:21
+msgid ""
+"Gas cost is a measure of relative time used by different primitive "
+"operations of the execution engine, which is also assumed to be additive. By"
+" additivity, we mean that the time to execute a program is approximately "
+"proportional to the sum of gas expended by the opcodes and functions called "
+"within the program. Casper assigns gas costs to primitive execution engine "
+"opcodes and specific more complex *host-side* functions that are callable "
+"from within the execution engine context. Gas costs for opcodes and host-"
+"side functions are specified in the chainspec and may vary according to "
+"arguments."
+msgstr ""
+"Chi phí gas là thước đo thời gian tương đối được sử dụng bởi các hoạt động "
+"ban đầu của cơ chế thực thi, cũng được giả định là phần cộng thêm. Có nghĩa "
+"là thời gian để thực thi một chương trình tỷ lệ thuận với tổng lượng gas "
+"được sử dụng bởi các mã hoạt động opcodes và các hàm được gọi trong chương "
+"trình. Casper chỉ định chi phí gas cho các mã hoạt động của cơ chế thực thi "
+"ban đầu và các chức năng phía *host-side* phức tạp hơn có thể gọi trong cơ "
+"chế thực thi. Chi phí gas cho opcodes và các chức năng phía máy chủ được chỉ"
+" định trong chainpec và có thể thay đổi tùy theo các đối số."
+
+#: ../../economics/runtime.rst:23
+msgid ""
+"We expect to refine the current gas cost table to reflect time use more "
+"closely, with updates introduced in future upgrades. We also anticipate "
+"that, with the introduction of state pruning, storage costs will be "
+"calculated separately from computing time."
+msgstr ""
+"Chúng tôi hy vọng sẽ bảng chi phí gas được tinh chỉnh hiện tại có thể phản "
+"ánh lượng thời gian được sử dụng chặt chẽ hơn, các bản cập nhật cũng sẽ được"
+" giới thiệu trong các bản nâng cấp trong tương lai. Chúng tôi cũng kỳ vọng "
+"rằng, với việc áp dụng cắt giảm trạng thái triển khai, chi phí lưu trữ sẽ "
+"được tính riêng và tách bạch với thời gian tính toán."
+
+#: ../../economics/runtime.rst:26
+msgid "Lanes"
+msgstr "Luồng"
+
+#: ../../economics/runtime.rst:28
+msgid ""
+"The block gas limit is split into two lanes, one for native transfers and "
+"one for general deploys. The number of transfers, which cost a fixed amount "
+"of gas, is governed directly by the ``block_max_transfer_count`` chainspec "
+"parameter, set to 2500 when Mainnet launched."
+msgstr ""
+"Giới hạn gas của khối được chia thành hai luồng, một luồng dành cho các "
+"chuyển khoản và một luồng dành cho các triển khai chung. Số lần chuyển, tốn "
+"một lượng gas cố định, được điều chỉnh trực tiếp bởi tham số "
+"``block_max_transfer_count``, được thiết lập là 2500 khi Mainnet khởi chạy."
+
+#: ../../economics/runtime.rst:31
+msgid "Gas fees"
+msgstr "Phí Gas"
+
+#: ../../economics/runtime.rst:33
+msgid "Currently, the price of gas is fixed at 1 mote per 1 unit of gas."
+msgstr "Hiện tại, giá gas cố định ở mức 1 mote trên 1 đơn vị gas."
+
+#: ../../economics/runtime.rst:36
+msgid "Fee allocation"
+msgstr "Phí phân bổ"
+
+#: ../../economics/runtime.rst:38
+msgid ""
+"All fees from a particular block accrue to its proposer, incentivizing non-"
+"empty block production and allowing major dApps to execute deploys for free,"
+" provided they operate a validator node and are comfortable with the latency"
+" introduced by validator scheduling."
+msgstr ""
+"Tất cả các khoản phí từ một khối cụ thể được tích lũy cho người đề xuất của "
+"khối đó, điều này khuyến khích sản xuất khối và cho phép các dApp quan trọng"
+" thực thi các triển khai miễn phí, miễn là các dApp đó có thể vận hành một "
+"nút nhà xác thực và thoải mái với độ trễ do lịch trình của nhà xác thực gây "
+"ra."
+
+#: ../../economics/runtime.rst:41
+msgid "Spot pricing"
+msgstr "Giá giao ngay (Spot)"
+
+#: ../../economics/runtime.rst:43
+msgid ""
+"Please see `CEP #22 <https://github.com/CasperLabs/ceps/pull/22>`_ for one "
+"potential design of a gas spot market."
+msgstr ""
+"Tham khảo `CEP #22 <https://github.com/CasperLabs/ceps/pull/22>`_ để hiểu "
+"thêm về thiết kế dự kiến cho thị trường gas giao ngay."
+
+#: ../../economics/runtime.rst:46
+msgid "Futures pricing"
+msgstr "Giá tương lai (Futures)"
+
+#: ../../economics/runtime.rst:48
+msgid ""
+"Please see `CEP #17 <https://github.com/CasperLabs/ceps/pull/17>`_ for our "
+"draft proposal of a gas futures market."
+msgstr ""
+"Tham khảo `CEP #17 <https://github.com/CasperLabs/ceps/pull/17>` để tìm hiểu"
+" thêm về đề bản thảo đề xuất cho thị trường gas tương lai."

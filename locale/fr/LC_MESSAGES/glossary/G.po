@@ -1,0 +1,202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../glossary/G.rst:2
+msgid "G"
+msgstr "G"
+
+#: ../../glossary/G.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/G.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/G.rst:9
+msgid "Gas"
+msgstr "Gaz"
+
+#: ../../glossary/G.rst:10
+msgid ""
+"Gas is the virtual currency for calculating the cost of transaction "
+"execution. The transaction cost is expressed as a given amount of gas "
+"consumed and can be seen intuitively as some cycles of the virtual processor"
+" that has to be used to run the computation defined as the transaction's "
+"code."
+msgstr ""
+"Le Gaz est la monnaie virtuelle permettant de calculer le coût d'exécution "
+"d'une transaction. Le coût de la transaction est exprimée en tant que "
+"quantité donnée de gaz consommé et peut être considéré intuitivement comme "
+"la mesure des cycles du processeur virtuel utilisés pour exécuter le calcul "
+"défini comme le code de la transaction."
+
+#: ../../glossary/G.rst:13
+msgid "Genesis"
+msgstr "Genèse"
+
+#: ../../glossary/G.rst:14
+msgid "The state of the virtual machine at the beginning of the blockchain."
+msgstr "L'état de la machine virtuelle au début de la blockchain."
+
+#: ../../glossary/G.rst:17
+msgid "Global state"
+msgstr "Global state : État global"
+
+#: ../../glossary/G.rst:18
+msgid ""
+"When thinking of a `blockchain <B.html#blockchain>`_ as a decentralized "
+"computer, the global state is its memory state."
+msgstr ""
+"Quand on pense à une `blockchain <B.html#blockchain>`_ comme à un ordinateur"
+" décentralisé, l'état global est son état de mémoire."
+
+#: ../../glossary/G.rst:20
+msgid ""
+"When thinking of a `blockchain <B.html#blockchain>`_ as a shared database, "
+"the global state is the snapshot of the database's data."
+msgstr ""
+"En pensant à une `blockchain <B.html#blockchain>`_ comme une base de données"
+" partagée, l'état global est le snapshot des données de la base."
+
+#: ../../glossary/G.rst:22
+msgid ""
+"Technically, a `global state <G.html#global-state>`_ is a (possibly "
+"extensive) collection of key-value pairs, where the keys are references "
+"(Refs), and the values are large binary objects (BLOBs)."
+msgstr ""
+"Techniquement, un `état global <G.html#global-state>`_ est une collection "
+"(éventuellement étendue) de paires clé-valeur, où les clés sont des "
+"références (Refs), et les valeurs des grands objets binaires (BLOBs)."
+
+#: ../../glossary/G.rst:24
+msgid ""
+"For every `block <B.html#block>`_ B in the `blockchain "
+"<B.html#blockchain>`_, one can compute the `global state <G.html#global-"
+"state>`_ achieved by executing all `transactions <T.html#transaction>`_ in "
+"this block and its ancestors. The `root hash <R.html#root-hash>`_ "
+"identifying this state is stored in every executed block."
+msgstr ""
+"Pour chaque `bloc <B.html#bloc>`_ B dans la `blockchain "
+"<B.html#blockchain>`_, on peut calculer l'`état global <G.html#global-"
+"state>`_ obtenu en exécutant toutes les `transactions <T.html#transaction>`_"
+" dans ce bloc et ses ancêtres. Le `root hash <R.html#root-hash>`_ "
+"identifiant cet état est stocké dans chaque bloc exécuté."

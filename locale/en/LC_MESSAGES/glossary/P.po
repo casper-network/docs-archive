@@ -1,0 +1,233 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../glossary/P.rst:2
+msgid "P"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`A <A.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`B <B.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`C <C.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`D <D.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`E <E.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`F <F.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`G <G.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`H <H.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`I <I.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`J <J.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`K <K.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`L <L.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`M <M.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`N <N.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`O <O.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`P <P.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`Q <Q.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`R <R.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`S <S.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`T <T.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`U <U.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`V <V.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`W <W.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`X <X.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`Y <Y.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:5
+msgid "`Z <Z.html>`_"
+msgstr ""
+
+#: ../../glossary/P.rst:9
+msgid "Participate in consensus"
+msgstr ""
+
+#: ../../glossary/P.rst:10
+msgid ""
+"The process of following the `consensus <C.html#consensus>`_ algorithm. "
+"The primary participants are `validators <V.html#validator>`_, bonded "
+"with their stake and part of the validator set for that particular era. "
+"`Delegators <D.html#delegator>`_ participate indirectly by delegating "
+"their tokens to one or more of these validators and contributing by "
+"increasing the total stake that ensures the security of the network."
+msgstr ""
+
+#: ../../glossary/P.rst:13
+msgid "Payment code"
+msgstr ""
+
+#: ../../glossary/P.rst:14
+msgid ""
+"The *payment code* is the `WASM <W.html#webassembly>`_ program that pays "
+"the transaction execution fee."
+msgstr ""
+
+#: ../../glossary/P.rst:17
+msgid "Peer node"
+msgstr ""
+
+#: ../../glossary/P.rst:18
+msgid "A node on a peer-to-peer (P2P) network."
+msgstr ""
+
+#: ../../glossary/P.rst:21
+msgid "Primary token"
+msgstr ""
+
+#: ../../glossary/P.rst:22
+msgid "See `CSPR <C.html#cspr>`_."
+msgstr ""
+
+#: ../../glossary/P.rst:25
+msgid "Private key"
+msgstr ""
+
+#: ../../glossary/P.rst:26
+msgid "See `secret key <S.html#secret-key>`_."
+msgstr ""
+
+#: ../../glossary/P.rst:29
+msgid "Proof-of-Stake"
+msgstr ""
+
+#: ../../glossary/P.rst:30
+msgid ""
+"Proof-of-Stake (PoS) is a mechanism by which a cryptocurrency blockchain "
+"network achieves permissionless-ness. The voting power in consensus is "
+"proportional to the number of staked tokens (digital currency specific to"
+" this system). The validator vouches with their tokens for the correct "
+"operation of their node. A popular choice in such systems is to "
+"periodically (once per era, in our case) delegate a fixed size committee "
+"of participants, which then is responsible for running the consensus on "
+"which blocks to add to the blockchain."
+msgstr ""
+
+#: ../../glossary/P.rst:33
+msgid "Proof-of-Work"
+msgstr ""
+
+#: ../../glossary/P.rst:34
+msgid ""
+"A mechanism used in Bitcoin and Etherium for incentivizing participation "
+"and securing the system. In these protocols, a participant's voting power"
+" is proportional to the amount of computational power possessed."
+msgstr ""
+
+#: ../../glossary/P.rst:37
+msgid "Proof-of-Stake contract"
+msgstr ""
+
+#: ../../glossary/P.rst:38
+msgid ""
+"The Proof-of-Stake (PoS) contract holds on to transaction fees for the "
+"time while the state transition is happening (contracts are being "
+"executed). The PoS contract remits the transaction fees to the block "
+"proposer."
+msgstr ""
+
+#: ../../glossary/P.rst:41
+msgid "Proto block"
+msgstr ""
+
+#: ../../glossary/P.rst:42
+msgid ""
+"The block proposed by the leader, which the consensus processes (in "
+"`highway <H.html#highway>`_). Only after consensus is complete, the proto"
+" block is executed, and the global state is updated."
+msgstr ""
+
+#: ../../glossary/P.rst:44
+msgid ""
+"A leader is selected from the validator set of that era for each round. "
+"The chance of getting selected as a leader is in proportion to the stake "
+"one has in that era."
+msgstr ""
+
