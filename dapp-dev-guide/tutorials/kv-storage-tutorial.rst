@@ -244,14 +244,15 @@ Deploy the Contract
 ^^^^^^^^^^^^^^^^^^^
 
 After compiling the contract, you need to deploy the compiled WASM to the network. This action installs the contract in the blockchain.
-Once the contract is deployed, you can use the Casper client to retrieve the contract session hash and the block hash where the contract is deployed.
+
+The following example shows you how to use the Casper client to retrieve the contract session hash and the block hash where the contract is deployed. The paths for the *secret-key* and *session-path* are relative to your system. You need to specify the paths on your machine to run the command.
 
 .. code-block:: bash
 
     casper-client put-deploy 
         --chain-name <CHAIN-NAME>
         --node-address http://<HOST>:<PORT> 
-        --secret-key /home/keys/secretkey.pem 
+        --secret-key <PATH>/secretkey.pem 
         --session-path  $HOME/kv-storage-contract/target/wasm32-unknown-unknown/release/contract.wasm  
         --payment-amount 1000000000000
 
@@ -261,7 +262,9 @@ The internal state of the blockchain is updated via a series of steps (blocks). 
 
 **Invoke an Entry Point & Set a value**
 
-Once the contract is deployed, we can create another deploy, which calls one of the entry points within the contract. To call an entry point, you must first know the entry point's name or the session hash, which we retrieved from the previous step. The kv-client has four distinct commands to set key-values for u64, String, U512, and AccountHash.
+Once the contract is deployed, you can create another deploy, which calls one of the entry points within the contract. You must know the entry point's name or the session hash retrieved in the previous step to call an entry point. The command below shows you how to do this. The *session-path* is relative to your system. Specify the path on your machine and then run the command.
+
+The kv-client has four distinct commands to set key-values for u64, String, U512, and AccountHash. In this example, we will use a String.
 
 .. code-block:: bash
 
@@ -272,7 +275,7 @@ Once the contract is deployed, we can create another deploy, which calls one of 
         --payment-amount 100000000000 
         --chain-name <CHAIN-NAME> 
         --node-address http://<HOST>:<PORT> 
-        --secret-key /home/keys/secretkey.pem
+        --secret-key <PATH>/secretkey.pem
 
 If the deploy works, a you will see a similar response:
 
