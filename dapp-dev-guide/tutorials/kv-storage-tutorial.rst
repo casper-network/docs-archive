@@ -2,10 +2,10 @@
    :format: html
 
 
-Key Value Storage Tutorial
+Key-Value Storage Tutorial
 ==========================
 
-This tutorial covers a simple contract, which creates a key that stores a ``CLType`` value. This example will show you how to store a *u64*, *string*, *account hash*, or *U512* value.
+This tutorial covers a simple contract, which creates a key that stores a ``CLType`` value. This example will show you how to store a *U64*, *string*, *account hash*, or *U512* value.
 
 The code is available in the `Casper Ecosystem GitHub <https://github.com/casper-ecosystem/kv-storage-contract>`_. Or, you can get started in `GitPod <https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-contract>`_.
 
@@ -137,11 +137,9 @@ The contract package will be stored under this name on the blockchain. Since the
 Testing the Contract
 --------------------
 
-The CasperLabs Contracts SDK supports local testing of smart contracts. This tutorial will cover how to test the u64 key-value function. 
-This can be easily adapted it for other types also.
+The Casper Contracts SDK supports local testing of smart contracts. This tutorial will cover how to test the U64 key-value function, which you can adapt for other types.
 
-In order to test the contract, the value must be stored, and the contract has to be deployed.
-Here is some sample code for these steps:
+To test the contract, you need to deploy the contract and store the value on chain. Here is some sample code to accomplish these steps:
 
 .. code-block:: rust
 
@@ -245,28 +243,41 @@ When working with the testnet, create an account on `Testnet CSPR Live <https://
 Deploy the Contract
 ^^^^^^^^^^^^^^^^^^^
 
-After the contract has been compiled, it's time to deploy the compiled wasm to the network. This action installs the contract in the blockchain.
-Once the contract is deployed, the client can retrieve the contract session hash as well as the blockhash where the contract is deployed.
+After compiling the contract, you need to deploy the compiled WASM to the network. This action installs the contract in the blockchain.
 
-```casper-client put-deploy --chain-name :raw-html-m2r:`<CHAIN-NAME>` --node-address http://\ :raw-html-m2r:`<HOST>`\ :\ :raw-html-m2r:`<PORT>` --secret-key /home/keys/secretkey.pem --session-path  $HOME/kv-storage-contract/target/wasm32-unknown-unknown/release/contract.wasm  --payment-amount 1000000000000
+The following example shows you how to use the Casper client to retrieve the contract session hash and the block hash where the contract is deployed. The paths for the *secret-key* and *session-path* are relative to your system. You need to specify the paths on your machine to run the command.
 
-.. code-block::
+.. code-block:: bash
 
+    casper-client put-deploy 
+        --chain-name <CHAIN-NAME>
+        --node-address http://<HOST>:<PORT> 
+        --secret-key <PATH>/secretkey.pem 
+        --session-path  $HOME/kv-storage-contract/target/wasm32-unknown-unknown/release/contract.wasm  
+        --payment-amount 1000000000000
 
-   ### Query the Account & Get the Contract Hash
-   The internal state of the blockchain is updated via a series of steps (blocks). All queries of a blockchain must include a `global state hash` which corresponds to the block hash / height of the blockchain.  Visit [Querying the State for the Address of a Contract](https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html).
+**Query the Account & Get the Contract Hash**
 
+The internal state of the blockchain is updated via a series of steps (blocks). All blockchain queries must include a `global state hash` which corresponds to the block hash or height of the blockchain.  Visit `Querying the address of a contract <https://docs.casperlabs.io/en/latest/dapp-dev-guide/calling-contracts.html#querying-global-state-for-the-address-of-a-contract>`_.
 
-   ### Invoke an Entry Point & Set a value
+**Invoke an Entry Point & Set a value**
 
-   Once the contract is deployed, we can create another deploy, which calls one of the entry points within the contract. 
-   To call an entry point, you must first know the name of the entry point or  the session hash, which we retrieved from the previous step. 
-   The kv-client, has four distinct commands to set key-values for u64, String, U512 and AccountHash.
+Once the contract is deployed, you can create another deploy, which calls one of the entry points within the contract. You must know the entry point's name or the session hash retrieved in the previous step to call an entry point. The command below shows you how to do this. The *session-path* is relative to your system. Specify the path on your machine and then run the command.
 
-   ```bash
-   casper-client put-deploy --session-name kvstorage_contract --session-entry-point store-string --session-arg=name:"string=`test`" --payment-amount 100000000000 --chain-name <CHAIN-NAME> --node-address http://<HOST>:<PORT> --secret-key /home/keys/secretkey.pem
+The kv-client has four distinct commands to set key-values for U64, string, U512, and account hash. In this example, we will use a String.
 
-If the deploy works, a response similar this will be returned:
+.. code-block:: bash
+
+    casper-client put-deploy 
+        --session-name kvstorage_contract 
+        --session-entry-point store-string 
+        --session-arg=name:"string=`test`" 
+        --payment-amount 100000000000 
+        --chain-name <CHAIN-NAME> 
+        --node-address http://<HOST>:<PORT> 
+        --secret-key <PATH>/secretkey.pem
+
+If the deploy works, a you will see a similar response:
 
 .. code-block:: bash
 
@@ -276,19 +287,17 @@ Query the Contract On Chain
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Contracts can be executed under different contexts. In this example, 
-when the contract is deployed, it runs in the context of a ``Contract`` and not a ``Session``. 
-This means that all stored keys are not stored under the account hash, but within the context of the contract. 
-Therefore when we query to retrieve the value under a key, we are actually querying 
+when the contract is deployed, it runs in the context of a ``Contract`` and not a ``Session``. This means that all stored keys are not stored under the account hash, but within the context of the contract. Therefore, when we query to retrieve the value under a key, we are querying 
 ``AccountHash/kvstorage_contract/<key-name>`` and not just ``AccountHash/<key-name>``. 
 
-You must first find the block hash for the block that contains your deploy.
-Once you have the requisite block hash, then you can use ``casper-client`` to retrieve the session hash
+It would be best if you first found the block hash for the block that contains your deploy. Once you have the requisite block hash, you can use the Casper client to retrieve the session hash.
 
-Reading a value is simple enough, we obtain the block hash under which the value, is stored, and then\ :raw-html-m2r:`<br>`
-using that block hash, and the ``query-state`` command you can easily retrieve and value that was stored under a named key.
-Please reference the `Querying Section <https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html>`_ for details.
+Reading a value is simple; we obtain the block hash under which the value is stored, and then using that block hash, we use the ``query-state`` command to retrieve the value stored under a named key.
+
 An example global state query looks like this:
 
 .. code-block:: bash
 
    casper-client query-state --node-address http://<HOST>:<PORT> -k <PUBLIC_KEY_AS_HEX> -g GLOBAL_STATE_HASH | jq -r
+
+Please reference the `Querying Section <https://docs.casperlabs.io/en/latest/dapp-dev-guide/calling-contracts.html#querying-global-state-for-the-address-of-a-contract>`_ for more details.
