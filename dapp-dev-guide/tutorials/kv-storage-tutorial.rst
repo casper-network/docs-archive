@@ -249,8 +249,8 @@ Once the contract is deployed, you can use the Casper client to retrieve the con
 .. code-block:: bash
 
     casper-client put-deploy 
-        --chain-name :raw-html-m2r:`<CHAIN-NAME>` 
-        --node-address http://\ :raw-html-m2r:`<HOST>`\ :\ :raw-html-m2r:`<PORT>` 
+        --chain-name <CHAIN-NAME>
+        --node-address http://<HOST>:<PORT> 
         --secret-key /home/keys/secretkey.pem 
         --session-path  $HOME/kv-storage-contract/target/wasm32-unknown-unknown/release/contract.wasm  
         --payment-amount 1000000000000
