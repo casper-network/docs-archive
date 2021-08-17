@@ -207,4 +207,13 @@ locale_dirs = ['locale/']
 gettext_compact = False
 
 
+# -- Options for linkcheck output -------------------------------------------------
+
+linkcheck_ignore = [r'.*validator_id.*', r'^https://gitpod.io.*']
+linkcheck_request_headers = {
+    "https://crates.io/": {
+        "Accept": "text/html"
+    }
+}
+
 # -- Extension configuration -------------------------------------------------
