@@ -17,20 +17,20 @@ name: docs
 
 steps:
 - name: html
-    image: "ddidier/sphinx-doc:3.5.4-1"
-    environment:
-      USER_ID: $UID
-    commands:
+  image: "ddidier/sphinx-doc:3.5.4-1"
+  environment:
+    USER_ID: $UID
+  commands:
     - "pip install pydata-sphinx-theme"
     - "make html"
     - "make linkcheck"
-    depends_on: [ clone ]
+  depends_on: [ clone ]
 
 - name: markdown-link-check
-    image: casperlabs/node-build-u1804
-    commands:
-      - "./ci/markdown_link_check.sh"
-    depends_on: [ clone ]
+  image: casperlabs/node-build-u1804
+  commands:
+    - "./ci/markdown_link_check.sh"
+  depends_on: [ clone ]
 
 trigger:
   branch:
