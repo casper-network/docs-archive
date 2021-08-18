@@ -55,10 +55,12 @@ The Casper Association makes available the following resources for you to connec
 
 If you find issues, search the main `Casper Network repository <https://github.com/casper-network>`_ and file the issue in the related project.
 
-Otherwise, use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk>`_ for situations such as:
+.. Comment this out until we have a new Help Desk.
 
-* questions that are not issues
-* needing technical support
-* wanting to give feedback
-* suggesting improvements
-* participating in a bounty
+    Otherwise, use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk>`_ for situations such as:
+
+    * questions that are not issues
+    * needing technical support
+    * wanting to give feedback
+    * suggesting improvements
+    * participating in a bounty
