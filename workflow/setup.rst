@@ -19,7 +19,7 @@ Run the commands below to install the Casper client on most flavors of Linux and
 .. code-block:: bash
 
   rustup toolchain install nightly
-  cargo +nightly install casper-client
+  cargo +nightly-2021-06-17 install casper-client
 
 The Casper client can print out `help` information, which provides an up-to-date list of supported commands.
 

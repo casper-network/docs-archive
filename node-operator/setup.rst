@@ -136,8 +136,26 @@ This will remove the arcive files and run ``/etc/casper/config_from_example.sh 1
 Client Installation
 ^^^^^^^^^^^^^^^^^^^
 
-The ``casper-client`` can be installed from https://bintray.com/casperlabs/debian/casper-client.  Download and install
-the correct version using ``sudo apt install``.
+The ``casper-client`` can be installed from https://crates.io/crates/casper-client.
+
+Run the commands below to install the Casper client on most flavors of Linux and macOS. You will need the nightly version of the compiler.
+
+.. code-block:: bash
+
+  rustup toolchain install nightly
+  cargo +nightly-2021-06-17 install casper-client
+
+The Casper client can print out `help` information, which provides an up-to-date list of supported commands.
+
+.. code-block:: bash
+
+    casper-client --help
+
+For each command, you can use `help` to get the up-to-date arguments and descriptions:
+
+.. code-block:: bash
+
+    casper-client <command> --help
 
 Create Keys
 ^^^^^^^^^^^
