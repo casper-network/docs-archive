@@ -1,6 +1,6 @@
 Local Network Testing
 =====================
-NCTL stands for network/node control. `NCTL <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ is a CLI application you can use to set up and control multiple local Casper networks during development. Many developers wish to spin up relatively small test networks to localize their testing before deploying to the blockchain. Adopting a standardized approach in the community is also helpful for troubleshooting and reporting issues.
+NCTL stands for network/node control. `NCTL <https://github.com/casper-network/casper-node/tree/master/utils/nctl>`_ is a CLI application you can use to set up and control multiple local Casper networks during development. Many developers wish to spin up relatively small test networks to localize their testing before deploying to the blockchain. Adopting a standardized approach in the community is also helpful for troubleshooting and reporting issues.
 
 Prerequisites 
 ^^^^^^^^^^^^^
@@ -139,7 +139,7 @@ Instructions for MacOS and Linux:
 .. code-block:: bash
 
    (env) $ cd <WORKING_DIRECTORY>
-   (env) $ git clone https://github.com/CasperLabs/casper-node-launcher
+   (env) $ git clone https://github.com/casper-network/casper-node-launcher
  
 **Step 11.** Next, clone the *casper-node* software, also in your working directory.
 
@@ -147,7 +147,7 @@ Instructions for MacOS and Linux:
 
 .. code-block:: bash
 
-   (env) $ git clone https://github.com/CasperLabs/casper-node
+   (env) $ git clone https://github.com/casper-network/casper-node
  
 **Step 12.** Activate the NCTL environment with the following command.
 
@@ -205,6 +205,6 @@ Instructions for MacOS and Linux:
  
 Next Steps
 ^^^^^^^^^^
-#. Explore the `various NCTL commands <https://github.com/CasperLabs/casper-node/blob/master/utils/nctl/docs/commands.md>`_.
-#. Explore the `NCTL usage guide <https://github.com/CasperLabs/casper-node/blob/master/utils/nctl/docs/usage.md>`_.
+#. Explore the `various NCTL commands <https://github.com/casper-network/casper-node/blob/master/utils/nctl/docs/commands.md>`_.
+#. Explore the `NCTL usage guide <https://github.com/casper-network/casper-node/blob/master/utils/nctl/docs/usage.md>`_.
 

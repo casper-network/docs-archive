@@ -8,7 +8,7 @@ Execution Semantics
 Introduction
 ------------
 
-The CasperLabs system is a decentralized computation platform. In this chapter we describe aspects of the computational model we use.
+The Casper Network is a decentralized computation platform. In this chapter we describe aspects of the computational model we use.
 
 
 .. _execution-semantics-gas:
@@ -18,8 +18,8 @@ Measuring computational work
 
 Computation is all done in a `WebAssembly (wasm) <https://webassembly.org/>`__
 interpreter, allowing any programming language which compiles to wasm to become
-a smart contract language for the CasperLabs blockchain. Similar to Ethereum, we use ``Gas`` to measure computational work in a way which is consistent from node to node in the CasperLabs network. Each wasm instruction is
-`assigned <https://github.com/CasperLabs/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/shared/wasm_config.rs#L15>`_
+a smart contract language for the Casper blockchain. Similar to Ethereum, we use ``Gas`` to measure computational work in a way which is consistent from node to node in the Casper Network. Each wasm instruction is
+`assigned <https://github.com/casper-network/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/shared/wasm_config.rs#L15>`_
 a ``Gas`` value, and the amount of gas spent is tracked by the runtime with each instruction executed by the interpreter. All executions are finite because each has a finite *gas limit* that specifies the maximum amount of gas that can be spent before
 the computation is terminated by the runtime. How this limit is determined is discussed in more detail below.
 
@@ -83,7 +83,7 @@ to execute deploys.
 
 Payment code ultimately provides its payment by performing a
 :ref:`token transfer <tokens-mint-interface>` into the
-`Handle Payment contract’s payment purse <https://github.com/CasperLabs/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/types/src/system/handle_payment/mod.rs#L65>`__. If payment is not given or not enough is transferred, then payment execution is not considered successful. In this case the effects of the payment code on the
+`Handle Payment contract’s payment purse <https://github.com/casper-network/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/types/src/system/handle_payment/mod.rs#L65>`__. If payment is not given or not enough is transferred, then payment execution is not considered successful. In this case the effects of the payment code on the
 global state are reverted and the cost of the computation is covered by motes
 taken from the offending account’s main purse.
 
@@ -135,17 +135,17 @@ described in :ref:`Appendix C <appendix-c>`.
 
 .. _execution-semantics-runtime:
 
-The CasperLabs runtime
-----------------------
+The Casper Network runtime
+--------------------------
 
 A wasm module is not natively able to create any effects outside of reading /
 writing from its own linear memory. To enable other effects (e.g. reading /
-writing to the CasperLabs global state), wasm modules must import functions from
+writing to the Casper global state), wasm modules must import functions from
 the host environment they are running in. In the case of contracts on the
-CasperLabs blockchain, this host is the CasperLabs Runtime. Here, we briefly
-describe the functionalities provided by imported function. All these features
-are conveniently accessible via functions in the `CasperLabs rust library <https://crates.io/crates/casperlabs-contract-ffi>`__. For a more detailed
-description of the functions available for contracts to import, see :ref:`Appendix A <appendix-a>`.
+Casper blockchain, this host is the Casper runtime. 
+
+Here, we briefly describe the functionalities provided by imported functions. All these features
+are conveniently accessible via functions in the `Casper Rust library <https://crates.io/crates/casper-contract>`_. For a more detailed description of the functions available for contracts to import, see :ref:`Appendix A <appendix-a>`.
 
 -  Reading / writing from global state
 

@@ -26,8 +26,8 @@ A Rust reference implementation for those implementing this specification in ano
 -  `uint.rs <https://docs.rs/casper-types/latest/src/casper_types/uint.rs.html>`_
 
 Additionally, examples of all data types and their serializations are found in
-the `GitHub code base <https://github.com/CasperLabs/casper-node/blob/553b9f11eb3b1e8043acfe3fa04005d951047c4a/types/src/bytesrepr.rs#L26>`_. These
-examples include a set of useful `serialization tests <https://github.com/CasperLabs/casper-node/blob/553b9f11eb3b1e8043acfe3fa04005d951047c4a/types/src/bytesrepr.rs#L1189>`_.
+the `GitHub code base <https://github.com/casper-network/casper-node/blob/553b9f11eb3b1e8043acfe3fa04005d951047c4a/types/src/bytesrepr.rs#L26>`_. These
+examples include a set of useful `serialization tests <https://github.com/casper-network/casper-node/blob/553b9f11eb3b1e8043acfe3fa04005d951047c4a/types/src/bytesrepr.rs#L1189>`_.
 
 .. _appendix-c:
 
@@ -95,10 +95,10 @@ global state. Thus we can execute multiple deploys in parallel and later combine
 their outputs (more on this later).
 
 .. |TrackingCopy| replace:: ``TrackingCopy``
-.. _TrackingCopy: https://github.com/CasperLabs/casper-node/blob/master/execution_engine/src/core/tracking_copy/mod.rs
+.. _TrackingCopy: https://github.com/casper-network/casper-node/blob/master/execution_engine/src/core/tracking_copy/mod.rs
 
 .. |Transforms| replace:: ``Transform``\ s
-.. _Transforms: https://github.com/CasperLabs/casper-node/blob/553b9f11eb3b1e8043acfe3fa04005d951047c4a/execution_engine/src/shared/transform.rs#L63
+.. _Transforms: https://github.com/casper-network/casper-node/blob/553b9f11eb3b1e8043acfe3fa04005d951047c4a/execution_engine/src/shared/transform.rs#L63
 
 The way this is modeled in the Casper execution engine
 is via the |TrackingCopy|_. Executing deploys (and the contracts they
@@ -166,7 +166,7 @@ case where the initial value was ``7``.
     details). Replacing a ``Write`` with a ``Read`` still has great
     benefits for parallel exectuion because reads do commute with one
     another, while writes do not. This optimization in the reduced
-    traces is `applied in our reference implementation <https://github.com/CasperLabs/casper-node/blob/master/execution_engine/src/core/engine_state/execution_result.rs#L439>`__.
+    traces is `applied in our reference implementation <https://github.com/casper-network/casper-node/blob/master/execution_engine/src/core/engine_state/execution_result.rs#L439>`__.
 
 Constructing the post-state from parallel execution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -2,12 +2,12 @@ Client Example
 ==============
 This section covers an example client that invokes a smart contract for key management. In addition to the main account, the client code will add two additional accounts to perform deployments. The two deployment accounts will perform deployments but will not be able to add another account.
 
-You will test your client using `nctl <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_, and you will interact with your local blockchain.
+You will test your client using `nctl <https://github.com/casper-network/casper-node/tree/master/utils/nctl>`_, and you will interact with your local blockchain.
 
 Prerequisites
 ^^^^^^^^^^^^^
 * You have compiled the `example contract <https://github.com/casper-ecosystem/keys-manager>`_ for key management
-* You have set up the `NCTL <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ tool according to the `NCTL guide <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_
+* You have set up the `NCTL <https://github.com/casper-network/casper-node/tree/master/utils/nctl>`_ tool according to the `NCTL guide <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_
 
 Setting up a local Casper Network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

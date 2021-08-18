@@ -47,21 +47,20 @@ Operating with Keys
 
 Useful Resources
 ^^^^^^^^^^^^^^^^
-CasperLabs makes available the following resources for you to connect and get support:
-
+The Casper Association makes available the following resources for you to connect and get support:
 
 * On our `Discord Channel <https://discordapp.com/invite/mpZ9AYD>`_, connect live with members of our Engineering Team available to support you with the progress of your projects
-* Join the `CasperLabs Community Forum <https://forums.casperlabs.io/>`_ that includes technical discussions on using Casper features, obtain support, and pose questions to the CasperLabs Core Engineering Team
-* Subscribe to the `CasperLabs Official Telegram Channel <https://t.me/CasperLabs>`_ for general information and updates about our platform
+* Join the `Community Forum <https://forums.casperlabs.io/>`_ that includes technical discussions on using Casper features, obtain support, and pose questions
+* Subscribe to the `Casper Network Official Telegram Channel <https://t.me/casperblockchain>`_ for general information and updates about the platform
 
-If you find issues related to the smart contracts maintained by CasperLabs, file an issue in the `Casper Ecosystem repository <https://github.com/casper-ecosystem/>`_. 
+If you find issues, search the main `Casper Network repository <https://github.com/casper-network>`_ and file the issue in the related project.
 
-For other issues, search the main `CasperLabs repository <https://github.com/CasperLabs>`_ and file the issue in the related project.
+.. Comment this out until we have a new Help Desk.
 
-Otherwise, use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk>`_ for situations such as:
+    Otherwise, use our `Jira Service Desk <https://casperlabs.atlassian.net/servicedesk>`_ for situations such as:
 
-* questions that are not issues
-* needing technical support
-* wanting to give feedback
-* suggesting improvements
-* participating in a bounty
+    * questions that are not issues
+    * needing technical support
+    * wanting to give feedback
+    * suggesting improvements
+    * participating in a bounty

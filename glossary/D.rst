@@ -21,4 +21,4 @@ Deploy
 ^^^^^^
 All deploys can be broadly categorized as some unit of work that, when executed and committed, affects change to the `global state <G.html#global-state>`_. Deploys include specializations such as native transfers, which only transfer tokens between accounts.
 
-Review the `deploy data structure <https://docs.casperlabs.io/en/latest/implementation/serialization-standard.html?highlight=deploy#deploy>`_ and the `deploy implementation <https://github.com/CasperLabs/casper-node/blob/master/node/src/types/deploy.rs#L475>`_ for more details.
+Review the `deploy data structure <https://docs.casperlabs.io/en/latest/implementation/serialization-standard.html?highlight=deploy#deploy>`_ and the `deploy implementation <https://github.com/casper-network/casper-node/blob/master/node/src/types/deploy.rs#L475>`_ for more details.

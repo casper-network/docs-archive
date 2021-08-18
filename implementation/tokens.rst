@@ -8,7 +8,7 @@ Tokens
 Introduction
 ------------
 
-The Casper Network is a decentralized blockchain platform based on a Proof-of-Stake consensus algorithm called `Highway <https://github.com/CasperLabs/highway>`_. Having a unit of value is required to make this system work because users must pay for computation, and validators must have `stake <https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In the blockchain space, this unit of value is a *token*.
+The Casper Network is a decentralized blockchain platform based on a Proof-of-Stake consensus algorithm called `Highway <https://github.com/casper-network/highway>`_. Having a unit of value is required to make this system work because users must pay for computation, and validators must have `stake <https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In the blockchain space, this unit of value is a *token*.
 
 This chapter describes how we define tokens and how one can use them on the Casper platform.
 

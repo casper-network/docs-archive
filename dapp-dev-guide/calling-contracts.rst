@@ -106,7 +106,7 @@ And we should see something like this:
      }
    }
 
-**Note**: This result is returned as bytes. These bytes need to be deserialized into the correct CLType in a smart contract or a dApp. Refer to `casper-types <https://docs.rs/casperlabs-types/latest/casperlabs_types/bytesrepr/index.html>`_ to find the latest APIs for deserialization.
+**Note**: This result is returned as bytes. These bytes need to be deserialized into the correct CLType in a smart contract or a dApp. Refer to `casper-types <https://docs.rs/casper-types/latest/casper_types/bytesrepr/index.html>`_ to find the latest APIs for deserialization.
 
 
 Calling a Contract by Name & Entry Point

@@ -12,17 +12,14 @@ It is recommended you have prior knowledge about Unix-based operating systems, l
 
 The topics on the index include present and future documentation initiatives in our roadmap and are organized so that you will be able to:
 
-- Understand what CasperLabs is building.
-- Learn how to build and operate applications on the platform.
-- Learn how to set up the CasperLabs environment locally.
-- Work with our Contracts API to access our Rust resources.
-- Learn how to create and test Smart Contracts with our libraries.
-- Work with the multi-signature capability to sign transactions.
+- Understand more about the Casper Network
+- Learn how to build and operate applications on the platform
+- Learn how to set up a Casper Network locally
+- Work with the contracts API to access the network\'s Rust resources
+- Learn how to create and test smart contracts using available libraries
+- Work with the multi-signature capability to sign transactions
 
 The motivation for our roadmap is inspired by feedback we are receiving from your recommendations. We hope you continue to provide your feedback as you embark on this journey with us -- we look forward to building a decentralized future together.
-
-`Coding Standards and Review <https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ cover best practices and recommendations following our coding standards, code reviews and publishing your code to our GitHub.
-
 
 .. toctree::
    :maxdepth: 2

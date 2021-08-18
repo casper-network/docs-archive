@@ -23,10 +23,6 @@ The DSL relies upon working in a Rust contract, which means you need to have you
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If you are new to Casper development, we recommend following this guide using the sample `Hello World <https://github.com/casper-ecosystem/hello-world>`_ contract. This smart contract Rust file has all the macros in place, and the configuration is already set up to import the macros for you.
 
-[Advanced] Getting the Macros
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-If you already have been working with Casper contracts and you wish to simply add the macros to your existing smart contract, then you can retrieve the macros from `GitHub <https://github.com/CasperLabs/casperlabs_contract_macro>`_.
-
 Importing the Macros
 ^^^^^^^^^^^^^^^^^^^^
 The sample contract already has this done for you, but you should know how to do it for future contracts. To import the macros, just include a line in the ``Cargo.toml`` file in the *contract* folder of your smart contract. The entry needs to appear in the *[dependencies]* section of the file. Then ``cargo`` will import the macros into your project when you build it.
@@ -36,15 +32,6 @@ For example, if you placed the macros inside your project in a folder named *con
 .. code-block:: bash
 
     casperlabs-contract-macro = { path = "../contract_macro" }
-
-
-Alternatively, you can get the macros directly from Github without downloading them:
-
-.. code-block:: bash
-
-    casperlabs_contract_macro = { git="https://github.com/CasperLabs/casperlabs_contract_macro", branch="dev", package="casperlabs-contract-macro" }
-
-This second approach is what the `Hello World <https://github.com/casper-ecosystem/hello-world>`_ smart contract is utilizing, so if you are starting there, it has already been done for you.
 
 Using the DSL
 ^^^^^^^^^^^^^

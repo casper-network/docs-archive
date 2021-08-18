@@ -16,7 +16,7 @@ This workflow assumes:
 Building The Undelegation WASM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Obtain the ``undelegate.wasm`` by cloning the `casper-node <https://github.com/CasperLabs/casper-node>`_ repository and building the contracts.
+Obtain the ``undelegate.wasm`` by cloning the `casper-node <https://github.com/casper-network/casper-node>`_ repository and building the contracts.
 
 To build contracts, set up Rust, and install all dependencies. Visit `Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ in the Developer Guide for step-by-step instructions.
 

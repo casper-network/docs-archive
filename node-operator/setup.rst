@@ -5,12 +5,18 @@ Basic Node Setup
 Casper Node Launcher
 --------------------
 
-The node software is run from the ``casper-node-launcher`` package. This can be installed with a Debian package which also
-creates the Casper user, creates directory structures and sets up a *systemd* unit and *logrotate*.
+The node software is run from the ``casper-node-launcher`` package. This can be installed with a Debian package which also creates the Casper user, creates directory structures and sets up a *systemd* unit and *logrotate*.
 
-The casper-node-launcher Debian package can be obtained from https://bintray.com/casperlabs/debian/casper-node-launcher.
+The casper-node-launcher Debian package can be obtained from https://repo.casperlabs.io/. You only need to run these steps once. 
 
-You can also build from source: https://github.com/CasperLabs/casper-node-launcher. However, all of the setup and pull of casper-node releases will be manual.
+Then, proceed to install the casper-node-launcher by running these commands:
+
+.. code-block:: bash
+
+    sudo apt update
+    sudo apt install casper-node-launcher
+
+You can also build from source: https://github.com/casper-network/casper-node-launcher. However, all of the setup and pull of casper-node releases will be manual.
 
 File Locations
 ^^^^^^^^^^^^^^
@@ -136,8 +142,26 @@ This will remove the arcive files and run ``/etc/casper/config_from_example.sh 1
 Client Installation
 ^^^^^^^^^^^^^^^^^^^
 
-The ``casper-client`` can be installed from https://bintray.com/casperlabs/debian/casper-client.  Download and install
-the correct version using ``sudo apt install``.
+The ``casper-client`` can be installed from https://crates.io/crates/casper-client.
+
+Run the commands below to install the Casper client on most flavors of Linux and macOS. You will need the nightly version of the compiler.
+
+.. code-block:: bash
+
+  rustup toolchain install nightly
+  cargo +nightly-2021-06-17 install casper-client
+
+The Casper client can print out `help` information, which provides an up-to-date list of supported commands.
+
+.. code-block:: bash
+
+    casper-client --help
+
+For each command, you can use `help` to get the up-to-date arguments and descriptions:
+
+.. code-block:: bash
+
+    casper-client <command> --help
 
 Create Keys
 ^^^^^^^^^^^

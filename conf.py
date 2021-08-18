@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'CasperLabs Tech Spec'
-copyright = '2020, CasperLabs LLC'
+copyright = '2021, CasperLabs LLC'
 author = 'CasperLabs Development Team'
 
 # The short X.Y version
@@ -97,8 +97,8 @@ html_logo = "assets/CasperLabs_Logo_redblack.png"
 #
 html_theme_options = {
     "external_links": [],
-    "github_url": "https://github.com/CasperLabs/casperlabs",
-    "twitter_url": "https://twitter.com/meetCasperLabs",
+    "github_url": "https://github.com/casper-network/casper-node/",
+    "twitter_url": "https://twitter.com/Casper_Network",
 
 }
 
@@ -206,5 +206,14 @@ epub_exclude_files = ['search.html']
 locale_dirs = ['locale/']
 gettext_compact = False
 
+
+# -- Options for linkcheck output -------------------------------------------------
+
+linkcheck_ignore = [r'.*validator_id.*', r'^https://gitpod.io.*', r'^((?!http).)*$']
+linkcheck_request_headers = {
+    "https://crates.io/": {
+        "Accept": "text/html"
+    }
+}
 
 # -- Extension configuration -------------------------------------------------

@@ -7,4 +7,4 @@ H
 
 Highway
 ^^^^^^^
-A consensus protocol that allows clients to use different confidence thresholds to convince themselves that a given block is *finalized*. The full paper is found in GitHub: https://github.com/CasperLabs/highway.
+A consensus protocol that allows clients to use different confidence thresholds to convince themselves that a given block is *finalized*. The full paper is found in GitHub: https://github.com/casper-network/highway.

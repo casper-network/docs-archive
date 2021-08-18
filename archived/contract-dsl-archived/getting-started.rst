@@ -24,7 +24,6 @@ Please use the Rust SDK to `create your smart contract project <https://docs.cas
 Getting the Macros
 ^^^^^^^^^^^^^^^^^^
 
-The source code for the macros is located at `GitHub <https://github.com/CasperLabs/casperlabs_contract_macro>`_.
 To import the macros, include a line in the ``Cargo.toml`` file in the ``/contract`` folder for your smart contract. 
 The entry needs to appear in the\ ``[dependencies]`` section.  This entry will import the macros into your project. 
 There are a few sources for the macros.
@@ -38,15 +37,6 @@ following entry in the ``Cargo.toml`` file for the smart contract.
 .. code-block::
 
    contract_macro = { package = "casperlabs_contract_macro", version = "0.1.0" }
-
-From Github
-"""""""""""
-
-To obtain the macros from Github, include this entry in ``Cargo.toml``\ :
-
-.. code-block::
-
-   contract_macro = { git = "https://github.com/CasperLabs/casperlabs_contract_macro", branch = "in_progress", package = "contract_macro"}
 
 Local package
 """""""""""""
