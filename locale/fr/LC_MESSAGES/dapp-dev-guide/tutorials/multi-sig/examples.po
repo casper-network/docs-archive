@@ -1,0 +1,189 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:2
+msgid "Additional Scenarios"
+msgstr "Scénarios supplémentaires"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:4
+msgid ""
+"This section walks you through additional scenarios where accounts have "
+"multiple associated keys for signing transactions at various thresholds."
+msgstr ""
+"Cette section vous guide à travers des scénarios supplémentaires où les "
+"comptes ont plusieurs clés associées pour signer des transactions à "
+"différents seuils."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:7
+msgid "Scenario 1: signing transactions with a single key"
+msgstr "Scénario 1 : signature des transactions avec une seule clé"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:9
+msgid ""
+"In this example, only one key can sign transactions in the name of this "
+"account. The key is \"account-hash-a1…\" under the `associated_keys`. If you"
+" sign the transaction using \"account-hash-a1…\", the signed transaction "
+"will have a `weight` equal to 1. For deployments or key management, the "
+"weight required is also 1. Therefore, the associated key meets the "
+"deployment and key management thresholds and can perform both actions."
+msgstr ""
+"Dans cet exemple, une seule clé peut signer les transactions au nom de ce "
+"compte. La clé est \"account-hash-a1...\" sous  `associated_keys`. Si vous "
+"signez la transaction en utilisant \"account-hash-a1...\", la transaction "
+"signée aura un `poids` égal à 1. Pour les déploiements ou la gestion des "
+"clés, le poids requis est également de 1. Par conséquent, la clé associée "
+"répond aux seuils de déploiement et de gestion des clés et peut effectuer "
+"les deux actions."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:11
+msgid "**Faucet account in scenario 1:**"
+msgstr "**Compte 'Faucet' dans le scénario 1:**"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:39
+msgid "Scenario 2: deploying with special keys"
+msgstr "Scénario 2 : déploiement avec des clés spéciales"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:41
+msgid ""
+"In this example, you have two keys. One key can only perform deployments, "
+"while the second key can perform key management and deployments. The key "
+"with account address *a1* can deploy and make account changes, but the "
+"second key with account address *b2* can only deploy."
+msgstr ""
+"Dans cet exemple, vous avez deux clés. Une clé ne peut effectuer que des "
+"déploiements, tandis que la seconde clé peut effectuer la gestion des clés "
+"et des déploiements. La clé avec l'adresse de compte *a1* peut effectuer des"
+" déploiements et des modifications de compte, mais la seconde clé avec "
+"l'adresse de compte *b2* peut uniquement effectuer des déploiements."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:43
+msgid "**Faucet account in scenario 2:**"
+msgstr "**Compte 'Faucet' dans le scénario 2:**"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:77
+msgid "Scenario 3: signing transactions with multiple keys"
+msgstr "Scénario 3 : signature de transactions avec des clés multiples"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:79
+msgid ""
+"Sometimes you will require multiple associated keys to execute a "
+"transaction. In this example, we have two associated keys with a weight "
+"equal to 1. To make changes to the account, you need to use both keys to "
+"sign the transaction. However, for deployment, each key can sign separately "
+"and perform deployments independently."
+msgstr ""
+"Parfois, vous aurez besoin de plusieurs clés associées pour exécuter une "
+"transaction. Dans cet exemple, nous avons deux clés associées avec un poids "
+"égal à 1. Pour apporter des modifications au compte, vous devez utiliser les"
+" deux clés pour signer la transaction. Cependant, pour le déploiement, "
+"chaque clé peut signer séparément et effectuer les déploiements "
+"indépendamment."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:81
+msgid "**Faucet account in scenario 3:**"
+msgstr "**Compte 'Faucet' dans le scénario 3:**"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:112
+msgid "Scenario 4: managing lost or stolen keys"
+msgstr "Scénario 4 : gestion des clés perdues ou volées"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:114
+msgid ""
+"In this example, you need two out of three associated keys to sign a "
+"transaction. Consider a transaction where you have one key in your browser, "
+"one key on your mobile phone, and one key in your safe. To do a transaction,"
+" first, you sign it with your browser extension (for example, Metamask). "
+"Afterward, a notification appears on your mobile phone requesting you to "
+"approve the transaction. With these two keys, you can complete the "
+"transaction. However, what if you lose the two keys on your browser and "
+"phone? Or, what if someone steals your browser and phone? In this case, you "
+"can use the safe key to remove the lost or stolen keys from the account. "
+"Notice that the safe key's weight is 3, which gives you the option to manage"
+" your account and add or remove keys. Also, the stolen or lost keys can only"
+" enable deployments, and in this case, no one can use them to change your "
+"account."
+msgstr ""
+"Dans cet exemple, vous avez besoin de deux des trois clés associées pour "
+"signer une transaction. Envisagez une transaction pour laquelle vous "
+"disposez d'une clé dans votre navigateur, d'une clé sur votre téléphone "
+"portable et d'une clé dans votre coffre-fort. Pour effectuer une "
+"transaction, vous la signez d'abord avec l'extension de votre navigateur "
+"(par exemple, Metamask). Ensuite, une notification apparaît sur votre "
+"téléphone mobile vous demandant d'approuver la transaction. Avec ces deux "
+"clés, vous pouvez effectuer la transaction. Cependant, que se passe-t-il si "
+"vous perdez les deux clés sur votre navigateur et votre téléphone ? Ou si "
+"quelqu'un vous vole votre navigateur et votre téléphone ? Dans ce cas, vous "
+"pouvez utiliser la clé de sécurité pour supprimer les clés perdues ou volées"
+" du compte. Notez que le poids de la clé de sécurité est de 3, ce qui vous "
+"donne la possibilité de gérer votre compte et d'ajouter ou de supprimer des "
+"clés. De plus, les clés perdues ou volées ne peuvent qu'activer les "
+"déploiements, et dans ce cas, personne ne peut les utiliser pour modifier "
+"votre compte."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:120
+msgid "**Faucet account in scenario 4:**"
+msgstr "**Compte 'Faucet' dans le scénario 4:**"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:155
+msgid "Scenario 5: managing accounts with multiple keys"
+msgstr "Scénario 5 : gérer des comptes avec des clés multiples"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:157
+msgid ""
+"This example builds upon the previous example, where you can set up multiple"
+" safe keys for account management. In this scenario, the safe keys have the "
+"weight required to manage your keys and account."
+msgstr ""
+"Cet exemple s'appuie sur l'exemple précédent, dans lequel vous pouvez "
+"configurer plusieurs clés de sécurité pour la gestion du compte. Dans ce "
+"scénario, les clés de sécurité ont le poids nécessaire pour gérer vos clés "
+"et votre compte."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:159
+msgid "**Faucet account in scenario 5:**"
+msgstr "**Compte 'Faucet' dans le scénario 5:**"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:202
+msgid "Scenario 6: losing your primary account key"
+msgstr "Scénario 6 : perte de la clé de compte primaire"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:204
+msgid ""
+"Suppose you lose your account key; in this case, \"account-hash-00…\", you "
+"can set up other keys to execute transactions. Although not recommended, you"
+" can throw away the private key of your account or set its weight to zero, "
+"and you would still be able to execute transactions if your faucet account "
+"has backup keys that can perform key management."
+msgstr ""
+"Supposons que vous perdiez la clé de votre compte ; dans ce cas, \"account-"
+"hash-00...\", vous pouvez configurer d'autres clés pour exécuter des "
+"transactions. Bien que cela ne soit pas recommandé, vous pouvez jeter la clé"
+" privée de votre compte ou mettre son poids à zéro, et vous seriez toujours "
+"en mesure d'exécuter des transactions si votre compte robinet dispose de "
+"clés de secours qui peuvent effectuer la gestion des clés."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/examples.rst:206
+msgid "**Faucet account in scenario 6:**"
+msgstr "**Compte 'Faucet' dans le scénario 6:**"

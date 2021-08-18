@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:45+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../changelog.rst:2
+msgid "Changelog"
+msgstr "Nhật ký thay đổi"
+
+#: ../../changelog.rst:4
+msgid ""
+"This page is a reference library for all the past technical releases and "
+"changelogs for the Casper Network. Click on the links below to see details "
+"about the released versions such as release dates, key changes and "
+"milestones completed, known issues, and calls to action for validators, dApp"
+" developers, contract authors, and exchanges."
+msgstr ""
+"Trang này là thư viện tham khảo cho tất cả các bản phát hành kỹ thuật trước "
+"đây và ghi nhận thay đổi cho Mạng Casper. Nhấp vào các liên kết bên dưới để "
+"xem chi tiết về các phiên bản đã phát hành, chẳng hạn như ngày phát hành, "
+"các thay đổi quan trọng và các mốc đã hoàn thành, các sự cố đã biết và lời "
+"kêu gọi hành động cho người xác thực, nhà phát triển dApp, tác giả hợp đồng "
+"và sàn giao dịch."
+
+#: ../../changelog.rst:6
+msgid ""
+"Visit the `technical roadmap <https://github.com/casper-"
+"network/roadmap/projects/2>`_ and the `engineering status "
+"<https://github.com/casper-network/roadmap/wiki/Current-Status>`_ pages to "
+"review the work currently in progress."
+msgstr ""
+"Truy cập vào ``lộ trình công nghệ <https://github.com/casper-"
+"network/roadmap/projects/2>`_ và `trạng thái công việc <https://github.com"
+"/casper-network/roadmap/wiki/Current-Status>`_ để xem công việc đang được "
+"thực hiện."
+
+#: ../../changelog.rst:9
+msgid "Casper Network Release Notes"
+msgstr "Ghi chú các bản phát hành của mạng Casper"
+
+#: ../../changelog.rst:12
+msgid ""
+"`Version 1.2.0 <https://medium.com/casper-association/technical-release-"
+"notes-and-changelog-for-1-2-0-26bbe921ab51>`_"
+msgstr ""
+"`Phiên bản 1.2.0 <https://medium.com/casper-association/technical-release-"
+"notes-and-changelog-for-1-2-0-26bbe921ab51>`_"

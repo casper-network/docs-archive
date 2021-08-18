@@ -1,0 +1,150 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../staking/index.rst:6
+msgid "Staking"
+msgstr ""
+
+#: ../../staking/index.rst:8
+msgid ""
+"A feature of Proof-of-Stake protocols is that token holders can actively "
+"participate in the protocol through a mechanism known as **staking**."
+msgstr ""
+
+#: ../../staking/index.rst:11
+msgid ""
+"Persons that hold their private keys can choose to stake their tokens "
+"with any validator in the Casper network. Alternatively, it is possible "
+"to stake tokens via an exchange or custody provider as well."
+msgstr ""
+
+#: ../../staking/index.rst:14
+msgid ""
+"This guide will outline the steps required to stake the CSPR token on the"
+" Casper network."
+msgstr ""
+
+#: ../../staking/index.rst:18
+msgid "What you need to know before staking"
+msgstr ""
+
+#: ../../staking/index.rst:20
+msgid ""
+"Please read the following sections carefully before staking tokens on the"
+" Casper network."
+msgstr ""
+
+#: ../../staking/index.rst:23
+msgid "Slashing"
+msgstr ""
+
+#: ../../staking/index.rst:25
+msgid ""
+"Presently Casper does not slash for equivocations.  If a node "
+"equivocates, its' messages are ignored by the rest of the validators for "
+"the balance of the era and made inactive. A node running the software "
+"provided by the Casper Association will terminate once it detects that it"
+" has equivocated. Future work includes locking an equivocating "
+"validator's stake for an extended duration of time, effectively "
+"penalizing the validator."
+msgstr ""
+
+#: ../../staking/index.rst:27
+msgid ""
+"Casper does not treat validator stake differently than delegator stake "
+"for security reasons."
+msgstr ""
+
+#: ../../staking/index.rst:31
+msgid "Delegation Rate"
+msgstr ""
+
+#: ../../staking/index.rst:33
+msgid ""
+"Node operators (Validators) define a commission that they take in "
+"exchange for providing staking services.  This commission is represented "
+"as a percentage of the rewards that the node operator retains for their "
+"services."
+msgstr ""
+
+#: ../../staking/index.rst:36
+msgid "Rewards"
+msgstr ""
+
+#: ../../staking/index.rst:38
+msgid ""
+"Validators receive rewards for participating in consensus by voting on "
+"blocks sending finality signatures (finalizing blocks). There is no "
+"precise *per-block* reward. Rewards are split proportionally among stakes"
+" within an era. If a validator is offline or cannot vote on many blocks, "
+"the rewards earned are also reduced. Delegators can only receive a "
+"proportional amount of the validator's rewards minus the validator’s "
+"commission (Delegation Rate)."
+msgstr ""
+
+#: ../../staking/index.rst:40
+msgid "Rewards are distributed at the end of each era."
+msgstr ""
+
+#: ../../staking/index.rst:43
+msgid "Selecting a node for Staking"
+msgstr ""
+
+#: ../../staking/index.rst:45
+msgid ""
+"As a prospective delegator, it is important to select a validating node "
+"that you can trust.  Please do your due diligence before you stake your "
+"tokens with a validator."
+msgstr ""
+
+#: ../../staking/index.rst:49
+msgid "Check in on your Stake"
+msgstr ""
+
+#: ../../staking/index.rst:51
+msgid ""
+"It’s recommended that you check in on how your stake is performing from "
+"time to time.  If the validator you staked with decides to unbond, your "
+"stake will also be unbonded. Make sure that the validator you have "
+"selected is performing as per your expectations."
+msgstr ""
+
+#: ../../staking/index.rst:53
+msgid ""
+"Validators have to win a staking auction by competing with prospective "
+"and current validators for a  slot.  This process is permissionless, "
+"meaning validators can join and leave the auction without restrictions, "
+"except the unbonding wait period."
+msgstr ""
+
+#: ../../staking/index.rst:57
+msgid "Unbonding Period"
+msgstr ""
+
+#: ../../staking/index.rst:59
+msgid ""
+"For security purposes, whenever a token is un-staked or un-delegated, the"
+" protocol will continue to keep the token locked for 14 hours."
+msgstr ""
+
+#: ../../staking/index.rst:63
+msgid "Next Steps"
+msgstr ""
+

@@ -1,0 +1,460 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../workflow/delegate.rst:2
+msgid "Delegating Tokens"
+msgstr "Tokenlerin Delegasyonu"
+
+#: ../../workflow/delegate.rst:4
+msgid ""
+"This document details a workflow where an account holder on the Casper "
+"Network can delegate their tokens to a validator on a Casper Network."
+msgstr ""
+"Bu belge, Casper Network'teki bir hesap sahibinin tokenlerinin oylama "
+"yetkisini Casper Network'teki bir doğrulayıcıya devredebileceği bir iş "
+"akışını detaylandırır."
+
+#: ../../workflow/delegate.rst:6
+msgid "This workflow assumes:"
+msgstr "Bu iş akışı şunları varsayar:"
+
+#: ../../workflow/delegate.rst:8
+msgid "You meet the `prerequisites <setup.html>`_"
+msgstr "`Önkoşulları <setup.html>`_ karşılıyorsunuz"
+
+#: ../../workflow/delegate.rst:9
+msgid "You are using the Casper command-line client"
+msgstr "Casper komut satırı istemcisini kullanıyorsunuz"
+
+#: ../../workflow/delegate.rst:10
+msgid "You have the public key of a validator on a Casper Network"
+msgstr "Casper Network'te bir doğrulayıcının açık anahtarına sahipsiniz"
+
+#: ../../workflow/delegate.rst:11
+msgid "You have the delegation contract or WASM to execute on the network"
+msgstr "Ağ üzerinde yürütmek için delegasyon kontratı veya WASM'ınız var"
+
+#: ../../workflow/delegate.rst:12
+msgid "You have a valid ``node-address``"
+msgstr "Elinizde geçeli bir ``node-address`` (düğüm adresi) var"
+
+#: ../../workflow/delegate.rst:13
+msgid ""
+"You have previously `deployed a smart contract "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ to a Casper Network"
+msgstr ""
+"Daha önce bir Casper Network'e `akıllı kontrat dağıttınız "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_"
+
+#: ../../workflow/delegate.rst:17
+msgid "Building The Delegation WASM"
+msgstr "Delegasyon WASM'ını Derlemek"
+
+#: ../../workflow/delegate.rst:19
+msgid ""
+"Obtain the ``delegate.wasm`` by cloning the `casper-node "
+"<https://github.com/CasperLabs/casper-node>`_ repository and building the "
+"contracts."
+msgstr ""
+"`casper-node <https://github.com/CasperLabs/casper-node>`_ kod deposunu "
+"klonlayarak ve kontratları derleyerek ``delegate.wasm`` edinin."
+
+#: ../../workflow/delegate.rst:21
+msgid ""
+"To build contracts, set up Rust, and install all dependencies. Visit "
+"`Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-"
+"of-rust-contract-sdk.html>`_ in the Developer Guide for step-by-step "
+"instructions."
+msgstr ""
+"Kontratlar oluşturmak için Rust'ı ve tüm bağımlılıkları kurun. Adım adım "
+"talimatlar için Geliştirici Kılavuzunda `Rust Kurulumu "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_ sayfasını ziyaret edin."
+
+#: ../../workflow/delegate.rst:23
+msgid ""
+"Once you build the contracts, you can use the ``delegate.wasm`` to create a "
+"deploy that will initiate the delegation process. The WASM can be found in:"
+msgstr ""
+"Kontratları oluşturduktan sonra, delegasyon sürecini başlatacak bir dağıtım "
+"oluşturmak için ``delegate.wasm``'ı kullanabilirsiniz. WASM şurada "
+"bulunabilir:"
+
+#: ../../workflow/delegate.rst:31
+msgid "Acquiring a Validator's Public Key"
+msgstr "Bir Doğrulayıcının Genel Anahtarını Edinme"
+
+#: ../../workflow/delegate.rst:33
+msgid ""
+"The official Testnet and Mainnet provide a browser-based block explorer to "
+"look up the list of validators within their respective networks:"
+msgstr ""
+"Resmi Testnet ve Mainnet, kendi ağlarındaki doğrulayıcıların listesinde "
+"arama yapabilmek için tarayıcı tabanlı bir blok gezgini sağlar:"
+
+#: ../../workflow/delegate.rst:35
+msgid "`Validators on Mainnet <https://cspr.live/validators>`_"
+msgstr "`Mainnetteki Doğrulayıcılar <https://cspr.live/validators>`_"
+
+#: ../../workflow/delegate.rst:36
+msgid "`Validators on Testnet <https://testnet.cspr.live/validators>`_"
+msgstr "`Testnetteki Doğrulayıcılar <https://testnet.cspr.live/validators>`_"
+
+#: ../../workflow/delegate.rst:39
+msgid ""
+"You will see a list of validators present on the network and their total "
+"stake (including tokens from other delegators)."
+msgstr ""
+"Ağda bulunan doğrulayıcıların bir listesini ve bunların toplam payını (diğer"
+" temsilcilerden oy yetkisi alınan tokenler dahil) göreceksiniz."
+
+#: ../../workflow/delegate.rst:41
+msgid ""
+"You can click on any validator listed to see more information about the "
+"validator, including the validator's personal stake."
+msgstr ""
+"Doğrulayıcının kişisel payı da dahil olmak üzere doğrulayıcı hakkında daha "
+"fazla bilgi görmek için listelenen herhangi bir doğrulayıcıya "
+"tıklayabilirsiniz."
+
+#: ../../workflow/delegate.rst:43
+#, python-format
+msgid ""
+"Each validator will show the delegation rate (commission); this represents "
+"the percentage of **your** reward share that the validator will retain. "
+"Thus, a 10% rate implies that the validator will retain 10% of your reward "
+"share. As a prospective delegator, selecting a validating node that you can "
+"trust and offers a favorable delegation rate is essential. Please do your "
+"due diligence before you stake your tokens with a validator."
+msgstr ""
+"Her doğrulayıcı, delegasyon oranını (komisyon) gösterecektir; bu, "
+"doğrulayıcının elinde tutacağı **sizin** ödül payınızın yüzdesini temsil "
+"eder. Bu nedenle %10'luk bir oran, doğrulayıcının ödül payınızın %10'unu "
+"elinde tutacağı anlamına gelir. Potansiyel bir temsilci olarak, "
+"güvenebileceğiniz ve uygun bir delegasyon oranı sunan bir doğrulama düğümü "
+"seçmek çok önemlidir. Tokenlerinizi bir doğrulayıcıya yatırmadan önce lütfen"
+" gerekli özeni gösterin."
+
+#: ../../workflow/delegate.rst:46
+msgid ""
+"Note the ``PublicKey`` of the validator you have selected to delegate your "
+"tokens."
+msgstr ""
+"Tokenlerinizi devretmek için seçtiğiniz doğrulayıcının ``PublicKey``ini not "
+"edin."
+
+#: ../../workflow/delegate.rst:48
+msgid ""
+"If you observe your delegation request in the bid structure but do not see "
+"the associated validator key in the ``era_validators`` structure, the "
+"validator you selected is not part of the current validator set. In this "
+"event, your tokens will not be earning rewards unless you un-delegate, wait "
+"through the unbonding period, and re-delegate to another validator."
+msgstr ""
+"Teklif yapısında yetkilendirme isteğinizi gözlemler ancak ``era_validators``"
+" yapısında ilişkili doğrulayıcı anahtarını görmezseniz, seçtiğiniz "
+"doğrulayıcı geçerli doğrulayıcı kümesinin parçası değildir. Bu durumda, "
+"yetki vermediğiniz, bağın kaldırılması süresini beklemediğiniz ve başka bir "
+"doğrulayıcıya yeniden yetki vermediğiniz sürece tokenleriniz ödül "
+"kazanmayacaktır."
+
+#: ../../workflow/delegate.rst:50
+msgid ""
+"Additionally, any rewards earned are re-delegated by default to the "
+"validator from the initial delegation request. Therefore at the time of un-"
+"delegation, you may want to un-delegate the initial amount plus any "
+"additional rewards earned through the delegation process."
+msgstr ""
+"Ek olarak, kazanılan tüm ödüller varsayılan olarak ilk yetkilendirme "
+"isteğinden doğrulayıcıya yeniden devredilir. Bu nedenle, delegasyonun iptali"
+" sırasında, ilk miktarın yanı sıra delegasyon sürecinde kazanılan ek "
+"ödüllerin delegasyonunu iptal etmek isteyebilirsiniz."
+
+#: ../../workflow/delegate.rst:53
+msgid ""
+"The active validator set is constantly rotating; therefore, when delegating "
+"to a validator, remember that the validator you selected may have been "
+"rotated out of the set."
+msgstr ""
+"Etkin doğrulayıcı kümesi sürekli değişir; bu nedenle, bir doğrulayıcıya "
+"yetki verirken, seçtiğiniz doğrulayıcının kümeden çıkarılmış olabileceğini "
+"unutmayın."
+
+#: ../../workflow/delegate.rst:57
+msgid "Executing the Delegation Request"
+msgstr "Yetkilendirme İsteğinin Yürütülmesi"
+
+#: ../../workflow/delegate.rst:59
+msgid ""
+"We recommend first testing the following steps on our official Testnet "
+"before performing these steps in a live environment like the Casper Mainnet."
+msgstr ""
+"Bu adımları Casper Mainnet gibi canlı bir ortamda gerçekleştirmeden önce "
+"resmi Testnet'imizde aşağıdaki adımları test etmenizi öneririz."
+
+#: ../../workflow/delegate.rst:62
+msgid "Sending the Delegation Deploy"
+msgstr "Delegasyon Dağıtımını Göndermek"
+
+#: ../../workflow/delegate.rst:64
+msgid ""
+"Send a deploy containing the ``delegate.wasm`` to the network to initiate "
+"the delegation process. Here is an example deployment of the delegation "
+"request:"
+msgstr ""
+"Delegasyon sürecini başlatmak için ağa ``delegate.wasm`` içeren bir dağıtım "
+"gönderin. Delegasyon isteğinin örnek bir dağıtımı aşağıdadır:"
+
+#: ../../workflow/delegate.rst:78
+msgid ""
+"**Note** The delegator's public key and the secret key that signs the deploy"
+" must be part of the same key pair."
+msgstr ""
+"**Not** Yetki verenin genel anahtarı ve dağıtımı imzalayan gizli anahtar, "
+"aynı anahtar çiftinin parçası olmalıdır."
+
+#: ../../workflow/delegate.rst:80
+msgid "**Request fields:**"
+msgstr "**Talep alanları:**"
+
+#: ../../workflow/delegate.rst:82 ../../workflow/delegate.rst:122
+#: ../../workflow/delegate.rst:174
+msgid ""
+"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP"
+" service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT> Ana bilgisayar adı veya IP ve HTTP hizmetinin"
+" çalıştığı düğümün bağlantı noktası [varsayılan:http://localhost:7777]"
+
+#: ../../workflow/delegate.rst:83
+msgid "``secret-key`` - Path to secret key file"
+msgstr "``secret-key`` - Gizli anahtar dosyasının yolu"
+
+#: ../../workflow/delegate.rst:84
+msgid ""
+"``chain-name`` - Name of the chain, to avoid the deploy from being "
+"accidentally or maliciously included in a different chain"
+msgstr ""
+"``chain-name`` - Dağıtımın yanlışlıkla veya kötü niyetli olarak farklı bir "
+"zincire dahil edilmesini önlemek için zincirin adı"
+
+#: ../../workflow/delegate.rst:86
+msgid "The *chain-name* for testnet is **casper-test**"
+msgstr "Testnet için *chain-name* değeri **casper-test**'tir"
+
+#: ../../workflow/delegate.rst:87
+msgid "The *chain-name* for mainnet is **casper**"
+msgstr "Mainnet için *chain-name* değeri **casper**dır"
+
+#: ../../workflow/delegate.rst:89
+msgid "``session-path`` - The path to where the ``delegate.wasm`` is located"
+msgstr "``session-path`` - ``delegate.wasm`` dosyasının bulunduğu yol"
+
+#: ../../workflow/delegate.rst:90
+msgid "``session-arg`` - The arguments to the ``delegate`` execution"
+msgstr "``session-arg`` - ``delegate`` yürütmesi argümanları"
+
+#: ../../workflow/delegate.rst:92
+msgid ""
+"The argument ``validator`` is the public key of the validator to whom the "
+"tokens will be delegated"
+msgstr ""
+"``validator`` argümanı, tokenlerin oylama yetkisinin devredileceği "
+"doğrulayıcının genel anahtarıdır"
+
+#: ../../workflow/delegate.rst:93
+msgid "The argument ``amount`` is the number of tokens to be delegated"
+msgstr "``amount`` argümanı, yetkisi devredilecek tokenlerin sayısıdır"
+
+#: ../../workflow/delegate.rst:94
+msgid ""
+"The argument ``delegator`` is the public key of the account delegating "
+"tokens to a validator"
+msgstr ""
+"``delegator`` argümanı, bir doğrulayıcıya tokenlerin oylama yetkisi devrini "
+"gerçekleştiren hesabın genel anahtarıdır"
+
+#: ../../workflow/delegate.rst:97
+msgid "**Important response fields:**"
+msgstr "**Önemli yanıt alanları:**"
+
+#: ../../workflow/delegate.rst:99
+msgid ""
+"``\"result\".\"deploy_hash\"`` - the address of the executed delegation "
+"request."
+msgstr "``\"result\".\"deploy_hash\"`` - yürütülen delegasyon isteğinin adresi."
+
+#: ../../workflow/delegate.rst:101
+msgid ""
+"Save the returned `deploy_hash` from the output to query information about "
+"the delegation deploy later."
+msgstr ""
+"Daha sonra delegasyon dağıtımıyla ilgili bilgileri sorgulamak için "
+"döndürülen `deploy_hash` değerini çıktıdan kaydedin."
+
+#: ../../workflow/delegate.rst:103
+msgid ""
+"Refer to the `Deploy Status <querying.html#deploy-status>`_ section to learn"
+" how to confirm that your deploy was executed successfully."
+msgstr ""
+"Dağıtımınızın başarıyla yürütüldüğünü nasıl onaylayacağınızı öğrenmek için "
+"`Dağıtım Durumu <querying.html#deploy-status>`_ bölümüne bakın."
+
+#: ../../workflow/delegate.rst:106
+msgid "Confirming the Delegation"
+msgstr "Delegasyonu Onaylanmak"
+
+#: ../../workflow/delegate.rst:108
+msgid ""
+"A Casper Network maintains an `auction` where validators `bid` on slots to "
+"become part of the active validator set. Delegation rewards are only earned "
+"for a validator who has won the auction and is part of the active set. Thus "
+"to ensure the delegated tokens can earn rewards, we must first check that:"
+msgstr ""
+"Bir Casper Ağı, doğrulayıcıların etkin doğrulayıcı kümesinin bir parçası "
+"olmak amacıyla yuvalara `teklif verdiği` bir `açık arttırma` düzenler. "
+"Delegasyon ödülleri, yalnızca açık arttırmayı kazanan ve etkin kümenin bir "
+"parçası olan bir doğrulayıcı için kazanılır. Bu nedenle, devredilen "
+"tokenlerin ödül kazanabilmesini sağlamak için önce şunları kontrol "
+"etmeliyiz:"
+
+#: ../../workflow/delegate.rst:110
+msgid "Our delegation is part of the `bid` to the `auction`"
+msgstr "Bizim delegasyonumuz `açık arttırma` için `teklif`in bir parçasıdır"
+
+#: ../../workflow/delegate.rst:111
+msgid "The validator is part of the `active` validator set"
+msgstr "Doğrulayıcı `aktif` doğrulayıcı kümesinin bir parçasıdır"
+
+#: ../../workflow/delegate.rst:113
+msgid ""
+"Once the deploy has been executed, we can query the auction for information "
+"to confirm our delegation. We can use the Casper command-line client to "
+"create an RPC request with the following query:"
+msgstr ""
+"Dağıtım yürütüldükten sonra, delegasyonumuzu onaylamak için açık arttırmayı "
+"sorgulayabiliriz. Aşağıdaki sorguyla bir RPC isteği oluşturmak için Casper "
+"komut satırı istemcisini kullanabiliriz:"
+
+#: ../../workflow/delegate.rst:120 ../../workflow/delegate.rst:172
+msgid "**Request fields**:"
+msgstr "**Talep alanları**:"
+
+#: ../../workflow/delegate.rst:125
+msgid ""
+"The ``get-auction-info`` call will return all the bids currently in the "
+"auction contract and the list of active validators for ``4`` future eras "
+"from the present era."
+msgstr ""
+"``get-auction-info`` çağrısı, açık arttırma kontratında mevcut tüm "
+"teklifleri ve mevcut dönemden ``4`` gelecek dönem için aktif "
+"doğrulayıcıların listesini döndürür."
+
+#: ../../workflow/delegate.rst:127
+msgid "Below is a sample output:"
+msgstr "Aşağıda örnek bir çıktı verilmiştir:"
+
+#: ../../workflow/delegate.rst:157
+msgid ""
+"If your public key and associated amount appear in the ``bid`` data "
+"structure, this means that the delegation request has been processed "
+"successfully. However, this does not mean the associated validator is part "
+"of the validator set, so you need to check the validator status."
+msgstr ""
+"Açık anahtarınız ve ilgili miktar ``bid`` veri yapısında görünüyorsa, bu, "
+"delegasyon talebinin başarıyla işlendiği anlamına gelir. Ancak bu, ilgili "
+"doğrulayıcının doğrulayıcı kümesinin bir parçası olduğu anlamına gelmez, bu "
+"nedenle doğrulayıcı durumunu kontrol etmeniz gerekir."
+
+#: ../../workflow/delegate.rst:161
+msgid "Checking Validator Status"
+msgstr "Doğrulayıcı Durumunu Kontrol Etmek"
+
+#: ../../workflow/delegate.rst:163
+msgid ""
+"The auction maintains a field called ``era_validators``, which contains the "
+"validator information for 4 future eras from the current era. An entry for a"
+" specific era lists the ``PublicKeys`` of the active validators for that era"
+" along with their stake in the network."
+msgstr ""
+"Açık arttırma, mevcut dönemden 4 gelecek dönem için doğrulayıcı bilgilerini "
+"içeren ``era_validators`` adlı bir alanı korur. Belirli bir döneme ilişkin "
+"bir girdi, o dönem için etkin doğrulayıcıların ağdaki paylarıyla birlikte "
+"``PublicKeys``i listeler."
+
+#: ../../workflow/delegate.rst:165
+msgid ""
+"If a validator is part of the set, its public key will be present in the "
+"``era_validators`` field as part of the ``Auction`` data structure. We can "
+"use the Casper command-line client to create an RPC request to obtain "
+"auction information and assert that the selected validator is part of the "
+"active validator set."
+msgstr ""
+"Doğrulayıcı, kümenin parçasıysa, açık anahtarı, ``Auction`` veri yapısının "
+"bir parçası olarak ``era_validators`` alanında bulunacaktır. Açık arttırma "
+"bilgilerini almak ve seçilen doğrulayıcının etkin doğrulayıcı kümesinin bir "
+"parçası olduğunu iddia etmek için bir RPC isteği oluşturmak için Casper "
+"komut satırı istemcisini kullanabiliriz."
+
+#: ../../workflow/delegate.rst:176
+msgid "**Important Response fields**:"
+msgstr "**Önemli Yanıt alanları**:"
+
+#: ../../workflow/delegate.rst:178
+msgid ""
+"In the response, check the ``\"auction_state\".\"era_validators\"`` "
+"structure, which should contain the public key of the selected validator for"
+" the era in which the validator will be active."
+msgstr ""
+"Yanıtta, doğrulayıcının etkin olacağı dönem için seçilen doğrulayıcının açık"
+" anahtarını içermesi gereken ``\"auction_state\".\"era_validators\"`` "
+"yapısını kontrol edin."
+
+#: ../../workflow/delegate.rst:180
+msgid "Below is an example of the ``era_validators`` structure:"
+msgstr "Aşağıda ``era_validators`` yapısının bir örneği verilmiştir:"
+
+#: ../../workflow/delegate.rst:213
+msgid ""
+"In the above example, we see the public keys of the active validators in Era"
+" ``9``."
+msgstr ""
+"Yukarıdaki örnekte, Dönem ``9`daki aktif doğrulayıcıların açık anahtarlarını"
+" görüyoruz."
+
+#: ../../workflow/delegate.rst:215
+msgid ""
+"**Note**: Validators earn delegation rewards only when they are part of the "
+"active set. This information is time-sensitive; therefore, a validator "
+"selected today may not be part of the set tomorrow. Keep this in mind when "
+"creating a delegation request."
+msgstr ""
+"**Not**: Doğrulayıcılar, yalnızca etkin kümenin parçası olduklarında "
+"delegasyon ödülleri kazanırlar. Bu bilgiler zamana duyarlıdır; bu nedenle, "
+"bugün seçilen bir doğrulayıcı yarın kümenin parçası olmayabilir. Bir "
+"delegasyon isteği oluştururken bunu aklınızda bulundurun."

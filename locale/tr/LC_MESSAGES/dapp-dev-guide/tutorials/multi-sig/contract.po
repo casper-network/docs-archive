@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Furkan Ahmet KARA <furkanahmetkara.fk@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Furkan Ahmet KARA <furkanahmetkara.fk@gmail.com>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:2
+msgid "Contract Example"
+msgstr "Kontrat Örneği"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:4
+msgid "This section covers an example smart contract used for key management."
+msgstr "Bu bölüm anahtar yönetimi için kullanılan bir akıllı kontratı kapsar."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:7
+msgid "Implementing the Smart Contract"
+msgstr "Akıllı Kontrat Uygulama"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:9
+msgid ""
+"First, download `the example contract and client <https://github.com/casper-"
+"ecosystem/keys-manager>`_ for key management."
+msgstr ""
+"İlk olarak, anahtar yönetimi için `örnek kontrat ve istemciyi "
+"<https://github.com/casper-ecosystem/keys-manager>`_ indirin."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:15
+msgid ""
+"The smart contract above can help you manage your account. You can add keys "
+"and remove keys from your account, define weights for each key, and set "
+"thresholds for key management and network deployments."
+msgstr ""
+"Yukarıdaki akıllı kontrat, hesabınızı yönetmenize yardımcı olabilir. "
+"Hesabınıza anahtarlar ekleyebilir ve anahtarları kaldırabilir, her anahtar "
+"için ağırlık tanımlayabilir ve anahtar yönetimi ve ağ dağıtımları için "
+"eşikler belirleyebilirsiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:17
+msgid ""
+"You could also refer to this smart contract as the `account code`. Note that"
+" once you deploy this smart contract, you cannot change it. As a result, you"
+" can rely on its behavior and state as if it were a binding agreement."
+msgstr ""
+"Bu akıllı kontratı `account code` olarakta adlandırabilirsiniz. Bu akıllı "
+"kontratı dağıttıktan sonra değiştiremeyeceğinizi unutmayın. Sonuç olarak, "
+"davranışına güvenebilir ve bağlayıcı bir anlaşmaymış gibi belirtebilirsiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:19
+msgid ""
+"The account code execution starts in ``main.rs``, where the ``call`` "
+"function calls the ``execute`` function.  This code is similar to a script "
+"that executes and implements your account behavior. Remember that when you "
+"send a contract (WASM file) to the network, the contract execution engine "
+"will invoke the ``call`` function. You will find the details of the "
+"``execute`` function in ``lib.rs``, which defines the smart contract "
+"behavior and its functions."
+msgstr ""
+"Hesap kodu yürütmesi, ``call`` işlevinin ``execute``  işlevini çağırdığı "
+"``main.rs``de başlar. Bu kod, hesap davranışınızı yürüten ve uygulayan bir "
+"betiğe benzerdir. Ağa bir kontrat (WASM dosyası) gönderdiğinizde, kontrat "
+"yürütme motorunun ``call`` işlevini çağıracağını unutmayın. ``execute``  "
+"işlevinin ayrıntılarını, akıllı kontrat davranışını ve işlevlerini "
+"tanımlayan ``lib.rs`` içinde bulacaksınız."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:23
+msgid "Function"
+msgstr "İşlev"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:23
+msgid "Description"
+msgstr "Tanım"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:25
+msgid "execute"
+msgstr "yürütmek"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:25
+msgid "Read arguments and set key weights and action thresholds."
+msgstr ""
+"Argümanları okuyun ve anahtar ağırlıkları ve eylem eşiklerini ayarlayın."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:26
+msgid "set_key_weight"
+msgstr "set_key_weight"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:26
+msgid "Set a weight for a specific key."
+msgstr "Bir belirli  anahtar için bir ağırlık ayarlayın."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:27
+msgid "add_or_update_key"
+msgstr "add_or_update_key"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:27
+msgid "Add or update a key, given the key and the weight."
+msgstr "Bir anahtar ekleyin ya da anahtar ve ağırlık verilerek güncelleyin."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:28
+msgid "add_key"
+msgstr "add_key"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:28
+msgid "Add a specific key."
+msgstr "Bir belirli anahtar ekleyin."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:29
+msgid "remove_key_if_exists"
+msgstr "remove_key_if_exists"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:29
+msgid "Remove a key if it exists."
+msgstr "Varsa bir anahtarı kaldırın."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:30
+msgid "set_threshold"
+msgstr "set_threshold"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:30
+msgid ""
+"Set the threshold for key management and deployments, given the permission "
+"level and associated weight."
+msgstr ""
+"Anahtar yönetimi ve izin düzeyi ile ilgili ağırlık verilerek dağıtımlar için"
+" eşiği ayarlayın."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:33
+msgid ""
+"You will find a construct to handle the contract arguments in ``api.rs``. "
+"Also, possible errors can arise and are defined in ``errors.rs``. You will "
+"see that ``lib.rs`` uses both of these libraries:"
+msgstr ""
+"```api.rs`` içinde kontrat argümanlarını ele alabilmek için bir yapı "
+"bulacaksınız. Ayrıca olası hatalar ortaya çıkabilir ve  ``errors.rs`` içinde"
+" tanımlanır. ``lib.rs`` dosyasının bu kütüphanelerin her ikisini de "
+"kullandığını göreceksiniz:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:41
+msgid ""
+"In the next section, you will build and prepare the smart contract for "
+"deployment."
+msgstr ""
+"Bir sonraki bölümde, dağıtım için akıllı kontrat derleyecek ve "
+"hazırlayacaksınız."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:44
+msgid "Building the Smart Contract"
+msgstr "Akıllı Kontrat Derleme"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:46
+msgid ""
+"Before building the smart contract for this tutorial, you need to install "
+"the `Rust Contract SDK <https://docs.casperlabs.io/en/latest/dapp-dev-guide"
+"/setup-of-rust-contract-sdk.html>`_. Make sure you have the `development "
+"environment set up <https://docs.casperlabs.io/en/latest/dapp-dev-guide"
+"/setup-of-rust-contract-sdk.html#development-environment-setup>`_ before "
+"proceeding."
+msgstr ""
+"Bu eğitim için akıllı kontrat oluşturmadan önce, `Rust Kontrat SDKsını "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_ yüklemeniz gerekir. Devam etmeden önce, `geliştirme ortam "
+"kurulumuna <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-"
+"rust-contract-sdk.html#development-environment-setup>`_ sahip olduğunuzdan "
+"emin olun."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:48
+msgid ""
+"Navigate to the ``keys-manager`` folder and set up the WASM compilation Rust"
+" toolchain, which will give you access to all the tools needed for "
+"developing smart contracts."
+msgstr ""
+"``keys-manager`` klasörüne gidin ve akıllı kontratlar geliştirmek için "
+"gereken tüm araçlara erişmenizi sağlayacak WASM derlemesi Rust araç "
+"zincirini kurun."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:56
+msgid ""
+"Next, open the ``contract`` folder and notice that it contains a "
+"``Cargo.toml`` file, which defines a smart contract called ``keys-manager``."
+" The ``cargo build`` command will invoke this file to generate the "
+"corresponding WASM file."
+msgstr ""
+"Ardından, ``contract`` klasörünü açın ve ``keys-manager`` adlı bir akıllı "
+"kontrat tanımlayan bir ``Cargo.toml`` dosyası içerdiğine dikkat edin. "
+"``cargo build`` komutu, ilgili WASM dosyasını oluşturmak için bu dosyayı "
+"çağıracaktır."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:58
+msgid ""
+"Compile the smart contract and create the WASM file using these commands:"
+msgstr ""
+"Akıllı kontratı derleyin ve şu komutları kullanarak WASM dosyasını "
+"oluşturun:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:65
+msgid ""
+"If the command were successful, you would find a ``keys-manager.wasm`` file "
+"in the following directory structure:"
+msgstr ""
+"Eğer komut başarılıysa, aşağıdaki dizin yapısında bir `keys-manager.wasm`` "
+"dosyası bulabilirsiniz:"
+
+msgid "The contract directory structure contains a keys-manager-wasm file."
+msgstr "Kontrat dizin yapısı keys-manager-wasm dosyasını içerir."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/contract.rst:73
+msgid ""
+"Next, we will review the sample client that invokes this contract to setup "
+"the account and perform key management."
+msgstr ""
+"Ardından, hesabı kurmak ve anahtar yönetimini gerçekleştirmek için bu "
+"kontratı talep eden örnek istemciyi inceleyeceğiz."

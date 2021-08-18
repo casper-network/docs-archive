@@ -1,0 +1,424 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# ilker <bilkerarslan40@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: ilker <bilkerarslan40@gmail.com>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../economics/consensus.rst:2
+msgid "Consensus Economics"
+msgstr "Mutabakat Ekonomisi"
+
+#: ../../economics/consensus.rst:4
+msgid ""
+"Highway consensus is a continuous, trust-less process where a fixed set of "
+"validators engage in scheduled communication to advance the linear chain of "
+"finalized blocks, representing the history of changes to the global state of"
+" the blockchain. The fixed set of validators may change at each era "
+"boundary. The economics of this layer revolve around validator selection and"
+" incentivization of participation according to the schedule."
+msgstr ""
+"Highway mutabakatı, blokzincirin küresel durumundaki değişikliklerin "
+"geçmişini temsil eden, kesinleşmiş blokların doğrusal zincirini ilerletmek "
+"için sabit bir doğrulayıcı grubunun planlı iletişimde bulunduğu sürekli, "
+"güvene dayalı olmayan bir süreçtir. Sabit doğrulayıcı seti, her dönem "
+"sınırında değişebilir. Bu katmanın ekonomisi, doğrulayıcı seçimi ve programa"
+" göre katılımın teşvik edilmesi etrafında döner."
+
+#: ../../economics/consensus.rst:7
+msgid "Entry"
+msgstr "Girdi"
+
+#: ../../economics/consensus.rst:8
+msgid ""
+"After genesis, the system selects a set of validators using a stake auction "
+"process. The auction takes place in the last block of an era, also called a "
+"switch block. An auction contract governs the validator selection process, "
+"and a *chainspec* configuration file specifies a few key parameters:"
+msgstr ""
+"Doğuş (genesis) sonrası sistem, bir açık arttırma süreci kullanarak bir dizi"
+" doğrulayıcı seçer. Açık arttırma, geçiş bloğu olarak da adlandırılan bir "
+"dönemin son bloğunda gerçekleşir. Doğrulayıcı, seçim sürecini bir açık "
+"artırma kontratı yönetir ve bir *chainspec* yapılandırma dosyası birkaç "
+"temel parametreyi belirtir:"
+
+#: ../../economics/consensus.rst:10
+msgid ""
+"The ``auction_delay`` specifies the amount of time that needs to pass before"
+" the system enables a new set of validators. For example, the "
+"`auction_delay` is 1 for Mainnet. Therefore, after a delay of 1 era, the "
+"winning validators become the validating set for the new era."
+msgstr ""
+"``auction_delay``, sistemin yeni bir doğrulayıcı kümesini etkinleştirmesi "
+"için geçmesi gereken süreyi belirtir. Örneğin, `auction_delay`, Mainnet için"
+" 1'dir. Bu nedenle, 1 dönem gecikmesinden sonra, kazanan doğrulayıcılar yeni"
+" dönem için doğrulama seti olur."
+
+#: ../../economics/consensus.rst:11
+msgid ""
+"The ``validator_slots`` parameter specifies how many validators can win an "
+"auction. The auction selects a fixed number of validators based on their "
+"highest bids."
+msgstr ""
+"``validator_slots`` parametresi, bir açık arttırmayı kaç doğrulayıcının "
+"kazanabileceğini belirtir. Açık arttırma, en yüksek tekliflerine göre sabit "
+"sayıda doğrulayıcı seçer."
+
+#: ../../economics/consensus.rst:15
+msgid "Bids"
+msgstr "Teklifler"
+
+#: ../../economics/consensus.rst:17
+msgid ""
+"Each bid is a collection of tokens from a prospective or current validator "
+"and its delegators, considered in the auction as a single total. Bids and "
+"delegations can increase freely, but withdrawals are subject to an unbonding"
+" period governed by the ``unbonding_delay`` chainspec parameter. Tokens that"
+" are in the unbonding period are not part of the sum total considered in the"
+" auction. Consequently, the exact amount of the bid, which translates into "
+"protocol weight for winning validators, can vary within an era. The bids are"
+" visible in the switch block that determines the winners."
+msgstr ""
+"Her bir teklif, müstakbel veya mevcut bir doğrulayıcıdan ve açık arttırmada "
+"tek bir toplam olarak kabul edilen temsilcilerden oluşan bir token "
+"koleksiyonudur. Teklifler ve yetkilendirmeler serbestçe artabilir, ancak "
+"geri çekme işlemleri, ``unbonding_delay`` zincir belirtimi parametresi "
+"tarafından yönetilen bir çözülme süresine tabidir. Çözülme döneminde olan "
+"jetonlar, açık arttırmada dikkate alınan toplamın bir parçası değildir. "
+"Sonuç olarak, kazanan doğrulayıcılar için protokol ağırlığına dönüşen "
+"teklifin kesin miktarı bir dönem içinde değişebilir. Teklifler, kazananları "
+"belirleyen geçiş bloğunda görünür."
+
+#: ../../economics/consensus.rst:19
+msgid ""
+"Each bid contains a delegation rate and activity status. The delegation rate"
+" can change at any time. Both of these properties are described further in "
+"this document."
+msgstr ""
+"Her teklif, bir yetkilendirme oranı ve etkinlik durumu içerir. Yetkilendirme"
+" oranı herhangi bir zamanda değişebilir. Bu özelliklerin her ikisi de bu "
+"belgede daha ayrıntılı olarak açıklanmaktadır."
+
+#: ../../economics/consensus.rst:22
+msgid "Delegation"
+msgstr "Yetkilendirme (Delegasyon)"
+
+#: ../../economics/consensus.rst:24
+msgid ""
+"Delegation allows third parties to participate in consensus by adding weight"
+" to their preferred validators. Rewards received by validators are "
+"distributed in proportion to tokens bid and delegated. The current or "
+"prospective validator responsible for the bid receives a portion of the "
+"delegator rewards set by the delegation rate."
+msgstr ""
+"Yetkilendirme, üçüncü tarafların tercih ettikleri doğrulayıcılara ağırlık "
+"ekleyerek mutabakata izin verir. Doğrulayıcılar tarafından alınan ödüller, "
+"teklif edilen ve devredilen tokenlerle orantılı olarak dağıtılır. Tekliften "
+"sorumlu mevcut veya olası doğrulayıcı, yetkilendirme oranı tarafından "
+"belirlenen yetki veren ödüllerinin bir kısmını alır."
+
+#: ../../economics/consensus.rst:26
+msgid ""
+"Currently, delegation is unrestricted. Interested readers should review `CEP"
+" #29 <https://github.com/CasperLabs/ceps/pull/29>`_, which proposes "
+"delegation caps."
+msgstr ""
+"Şu anda, yetkilendirme sınırsızdır. İlgilenen okuyucular, yetki sınırları "
+"öneren `CEP #29 <https://github.com/CasperLabs/ceps/pull/29>`_  kısmını "
+"incelemelidir."
+
+#: ../../economics/consensus.rst:29
+msgid "Incentives"
+msgstr "Teşvikler"
+
+#: ../../economics/consensus.rst:31
+msgid ""
+"Correct operation of the Highway protocol requires the economics of the "
+"platform to incentivize non-equivocation for safety and participation for "
+"liveness. Participation consists of on-time block proposals and timely "
+"responses to block proposals."
+msgstr ""
+"Highway protokolünün doğru çalışması, platformun ekonomisinin güvenlik için "
+"belirsizlikten kaçınmayı ve canlılık için katılımı teşvik etmesini "
+"gerektirir. Katılım, zamanında yapılan blok tekliflerden ve blok tekliflere "
+"zamanında verilen yanıtlardan oluşur."
+
+#: ../../economics/consensus.rst:33
+msgid ""
+"Safety may be incentivized through slashing for equivocation. This feature "
+"is currently disabled but may be reactivated in the future."
+msgstr ""
+"Güvenlik, çelişkili davranış için kesme yoluyla teşvik edilebilir. Bu "
+"özellik şu anda devre dışıdır ancak gelecekte yeniden etkinleştirilebilir."
+
+#: ../../economics/consensus.rst:35
+msgid ""
+"The network incentivizes participation by scaling rewards for on-time "
+"proposals and responses, taking into account the speed of finalizing blocks."
+" All rewards are added directly to the corresponding bids and delegations."
+msgstr ""
+"Ağ, blokları kesinleştirme hızını hesaba katarak, zamanında teklifler ve "
+"yanıtlar için ödülleri ölçeklendirerek katılımı teşvik eder. Tüm ödüller, "
+"doğrudan ilgili tekliflere ve yetkilendirmelere eklenir."
+
+#: ../../economics/consensus.rst:38
+msgid "Participation"
+msgstr "Katılım"
+
+#: ../../economics/consensus.rst:40
+msgid ""
+"Issuance of new tokens and their distribution to validators incentivizes "
+"work even under low transaction load."
+msgstr ""
+"Yeni tokenlerin verilmesi ve doğrulayıcılara dağıtılması, düşük işlem yükü "
+"altında bile çalışmayı teşvik eder."
+
+#: ../../economics/consensus.rst:42
+msgid ""
+"CSPR is issued at a fixed rate and distributed to validators (and, "
+"indirectly, delegators) in proportion to their stake. This is analogous to "
+"block rewards in Proof-of-Work blockchains, outlining the following:"
+msgstr ""
+"CSPR sabit bir oranda verilir ve doğrulayıcılara (ve dolaylı olarak yetki "
+"verenlere) paylarıyla orantılı olarak dağıtılır. Bu, Proof-of-Work "
+"blokzincirlerindeki ödüllere benzer ve aşağıdakileri özetler:"
+
+#: ../../economics/consensus.rst:44
+msgid "The growth of CSPR supply is exponential"
+msgstr "CSPR arzının büyümesi üsteldir"
+
+#: ../../economics/consensus.rst:45
+msgid "Issuance takes into account slashed CSPR"
+msgstr "Emisyon, kesilmiş (slashed) CSPR'yi dikkate alır"
+
+#: ../../economics/consensus.rst:47
+msgid ""
+"With slashing disabled, we can compute block rewards starting with the "
+"formula below, where we have these parameters:"
+msgstr ""
+"Kesme devre dışı iken, aşağıdaki formülden başlayarak blok ödüllerini "
+"hesaplayabiliriz, ki burada şu parametrelere sahibiz:"
+
+#: ../../economics/consensus.rst:49
+msgid "``i`` - the era's index as a positive integer [0, 1, 2, ..., n]"
+msgstr "``i`` - pozitif bir tamsayı olarak dönemin indeksi [0, 1, 2, ..., n]"
+
+#: ../../economics/consensus.rst:50
+msgid "``initial_supply`` - the number of CSPR at genesis"
+msgstr "``initial_supply`` - genesisteki CSPR sayısı"
+
+#: ../../economics/consensus.rst:51
+msgid ""
+"``issuance_rate`` - the annual rate at which new CSPR tokens are minted"
+msgstr "``issuance_rate``  - yeni CSPR tokenlerinin basıldığı yıllık oran"
+
+#: ../../economics/consensus.rst:52
+msgid ""
+"``ticks_per_year`` - a number equal to 31,536,000,000 calculated as "
+"365*24*60*60*1000 = 31,536,000,000"
+msgstr ""
+"``ticks_per_year`` - 365*24*60*60*1000 = 31.536.000.000 olarak hesaplanan "
+"31.536.000.000'a eşit bir sayı"
+
+#: ../../economics/consensus.rst:58
+msgid ""
+"We introduce the *round issuance rate* (corresponding to the chainspec "
+"parameter ``round_seigniorage_rate``) with this formula:"
+msgstr ""
+"Bu formülle *tur emisyon oranını* (zincir belirtimi parametresi "
+"``round_seigniorage_rate``e karşılık gelir) sunuyoruz:"
+
+#: ../../economics/consensus.rst:64
+msgid ""
+"The *round issuance rate* is the annual issuance rate adjusted to a single "
+"round of length determined by the chainspec parameter "
+"``minimum_round_exponent``. For illustration, an exponent of 14 corresponds "
+"to a round length of roughly 16 seconds."
+msgstr ""
+"*turemisyon oranı*, zincir belirtimi parametresi ``minimum_round_exponent`` "
+"tarafından belirlenen tek bir uzunluğa ayarlanan yıllık emisyon oranıdır. "
+"Örnek olarak, 14'ün üssü, kabaca 16 saniyelik bir tur uzunluğuna karşılık "
+"gelir."
+
+#: ../../economics/consensus.rst:66
+msgid "Finally, the base round reward is computed as:"
+msgstr "Son olarak, temel tur ödülü şu şekilde hesaplanır:"
+
+#: ../../economics/consensus.rst:72
+msgid ""
+"This value gives us the maximum amount of CSPR that the validators can "
+"collectively receive from a proposed block."
+msgstr ""
+"Bu değer bize doğrulayıcıların önerilen bir bloktan toplu olarak alabileceği"
+" maksimum CSPR miktarını verir."
+
+#: ../../economics/consensus.rst:75
+msgid "Distribution"
+msgstr "Dağıtım"
+
+#: ../../economics/consensus.rst:77
+msgid ""
+"Validators receive tokens for proposing and finalizing blocks according to "
+"their performance. The concept of weight is crucial for understanding this "
+"distribution scheme:"
+msgstr ""
+"Doğrulayıcılar, performanslarına göre blok önermek ve sonuçlandırmak için "
+"tokenler alır. Ağırlık kavramı, bu dağıtım şemasını anlamak için çok "
+"önemlidir:"
+
+#: ../../economics/consensus.rst:79
+msgid "**Weight:** A validator's bonded stake, used in consensus"
+msgstr "**Ağırlık:** Bir onaylayıcının, mutabakatta kullanılan bağlı hissesi"
+
+#: ../../economics/consensus.rst:80
+msgid ""
+"**Assigned weight of a block/round:** The total stake of validators "
+"scheduled to participate in a block"
+msgstr ""
+"**Bir blok/turun atanan ağırlığı:** Bir bloğa katılması planlanan "
+"doğrulayıcıların toplam hissesi"
+
+#: ../../economics/consensus.rst:81
+msgid ""
+"**Participated weight of a block/round:** The total stake of validators that"
+" end up participating or sending messages to finalize a block before the end"
+" of their respective round"
+msgstr ""
+"**Bir bloğun/turun katılım ağırlığı:** İlgili turun bitiminden önce bir "
+"bloğu kesinleştirmek için katılan veya mesaj gönderen onaylayıcıların toplam"
+" hissesi"
+
+#: ../../economics/consensus.rst:83
+msgid ""
+"To determine eligibility, we look at **on-time finalization (OTF)**. "
+"Validators should finalize blocks on time by sending required messages "
+"before the end of their respective round."
+msgstr ""
+"Uygunluğu belirlemek için **zamanında sonuçlandırmaya (OTF)** bakarız. "
+"Doğrulayıcılar, ilgili turların bitiminden önce gerekli mesajları göndererek"
+" blokları zamanında kesinleştirmelidir."
+
+#: ../../economics/consensus.rst:85
+msgid ""
+"Switch blocks are not visible to the issuance calculation (as this "
+"calculation is performed in the switch block itself for each era), and, "
+"consequently, no tokens are issued for switch blocks."
+msgstr ""
+"Geçiş blokları, emisyon hesaplaması tarafından görülmez (bu hesaplama her "
+"dönem için geçiş bloğunun kendisinde yapıldığından) ve sonuç olarak, geçiş "
+"blokları için token verilmez."
+
+#: ../../economics/consensus.rst:88
+msgid "Participation schedule"
+msgstr "Katılım takvimi"
+
+#: ../../economics/consensus.rst:90
+msgid ""
+"The participation schedule is segmented into rounds, which are allocated "
+"dynamically according to the validators' exponents and a deterministic "
+"(randomized at era start) assignment of validators to milliseconds of an "
+"era. Thus, a validator with the round exponent ``n`` must participate in "
+"rounds that repeat every ``2^n`` ticks."
+msgstr ""
+"Katılım takvimi, doğrulayıcıların üslerine ve doğrulayıcıların bir dönemin "
+"milisaniyelerine deterministik (dönem başlangıcında rastgele) atanmasına "
+"göre dinamik olarak tahsis edilen turlara bölünmüştür. Bu nedenle, ``n`` tur"
+" üslü bir doğrulayıcı, her ``2^n`` sürelerini tekrarlayan turlara "
+"katılmalıdır."
+
+#: ../../economics/consensus.rst:92
+msgid ""
+"Each validator is assessed according to its round exponent. All assigned "
+"validators become eligible to receive tokens as long as the block gets "
+"finalized with messages sent within each validator's round."
+msgstr ""
+"Her doğrulayıcı, tur üssüne göre değerlendirilir. Atanan tüm doğrulayıcılar,"
+" blok, her bir doğrulayıcının turunda gönderilen mesajlarla "
+"kesinleştirildiği sürece tokenleri almaya hak kazanır."
+
+#: ../../economics/consensus.rst:95
+msgid "Eligibility"
+msgstr "Uygunluk"
+
+#: ../../economics/consensus.rst:97
+msgid ""
+"Once a block has been proposed and enough time has passed, the history of "
+"protocol messages can be examined to detect whether the block was finalized "
+"on time, according to the conditions given above. If the block was *not* "
+"finalized on time, validators receive a fraction of the expected tokens, "
+"governed by the ``reduced_reward_multiplier`` chainspec parameter. If the "
+"block was finalized on time, assigned validators share the reward "
+"proportionally to their stake, regardless of whether they have sent messages"
+" or not."
+msgstr ""
+"Bir blok önerildiğinde ve yeterli zaman geçtikten sonra, yukarıda verilen "
+"koşullara göre bloğun zamanında kesinleşip kesinleşmediğini tespit etmek "
+"için protokol mesajlarının geçmişi incelenebilir. Blok zamanında "
+"*kesinleştirilmemişse*, doğrulayıcılar, ``reduced_reward_multiplier`` "
+"chainspec parametresi tarafından yönetilen, beklenen tokenlerin bir kısmını "
+"alır. Blok zamanında sonuçlandırıldıysa, atanan doğrulayıcılar, mesaj "
+"gönderip göndermediklerine bakılmaksızın ödülü paylarıyla orantılı olarak "
+"paylaşır."
+
+#: ../../economics/consensus.rst:101
+msgid "Inactivity"
+msgstr "Durgunluk"
+
+#: ../../economics/consensus.rst:103
+msgid ""
+"Validators who send no messages during an entire era are marked as inactive "
+"and cease participating in the auction until they send a special deploy that"
+" reactivates their bid."
+msgstr ""
+"Tüm bir dönem boyunca mesaj göndermeyen doğrulayıcılar, durgun olarak "
+"işaretlenir ve tekliflerini yeniden etkinleştiren özel bir konuşlandırma "
+"gönderene kadar açık arttırmaya katılmayı bırakır."
+
+#: ../../economics/consensus.rst:106
+msgid "Slashing"
+msgstr "Kesme (slashing)"
+
+#: ../../economics/consensus.rst:108
+msgid ""
+"Please review our `Equivocator Policy "
+"<https://github.com/CasperLabs/ceps/blob/master/text/0038-equivocator-"
+"policy.md>`_. We are currently conducting research into the utility of "
+"slashing as an incentive mechanism."
+msgstr ""
+"Lütfen `Equivocator Policy "
+"<https://github.com/CasperLabs/ceps/blob/master/text/0038-equivocator-"
+"policy.md>`_ inceleyin. Şu anda bir teşvik mekanizması olarak kesmenin "
+"faydasına dair araştırmalar yürütüyoruz."
+
+#: ../../economics/consensus.rst:111
+msgid "Founding validators"
+msgstr "Kurucu doğrulayıcılar"
+
+#: ../../economics/consensus.rst:113
+msgid ""
+"Founding validators are subject to token lock-up, which prevents them from "
+"withdrawing any tokens from their bids for 90 days, then releases their "
+"genesis bid tokens in weekly steps, linearly, over an additional 90 days."
+msgstr ""
+"Kurucu doğrulayıcılar, 90 gün boyunca tekliflerinden herhangi bir token "
+"çekmelerini engelleyen token kilitlenmesine tabidir, ardından genesis teklif"
+" tokenlerini ek bir 90 gün boyunca doğrusal olarak haftalık adımlarla "
+"serbest bırakırlar."

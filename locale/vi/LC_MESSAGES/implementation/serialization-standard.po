@@ -1,0 +1,1907 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../implementation/serialization-standard.rst:4
+msgid "Serialization Standard"
+msgstr "Tiêu chuẩn trình tự"
+
+#: ../../implementation/serialization-standard.rst:5
+msgid ""
+"We provide a custom implementation to serialize data structures used by the "
+"Casper node to their byte representation. This document details how this "
+"custom serialization is implemented, allowing developers to build a library "
+"that implements the custom serialization."
+msgstr ""
+"Chúng tôi cung cấp một triển khai tùy chỉnh để trình tự hóa các cấu trúc dữ "
+"liệu được sử dụng bởi nút Casper thành biểu diễn byte của chúng. Tài liệu "
+"này trình bày chi tiết cách thực hiện trình tự hóa tùy chỉnh này, cho phép "
+"các nhà phát triển xây dựng một thư viện triển khai trình tự hóa tùy chỉnh."
+
+#: ../../implementation/serialization-standard.rst:11
+msgid "Block"
+msgstr "Chuỗi khối"
+
+#: ../../implementation/serialization-standard.rst:12
+msgid ""
+"A block is the core component of the Casper linear blockchain, used in two "
+"contexts:"
+msgstr ""
+"Một khối là thành phần cốt lõi của chuỗi khối tuyến tính Casper, được sử "
+"dụng trong hai ngữ cảnh:"
+
+#: ../../implementation/serialization-standard.rst:14
+msgid ""
+"A data structure containing a collection of transactions. Blocks form the "
+"primary structure of the blockchain."
+msgstr ""
+"Một cấu trúc dữ liệu chứa một tập hợp các giao dịch. Các khối tạo thành cấu "
+"trúc chính của chuỗi khối."
+
+#: ../../implementation/serialization-standard.rst:15
+msgid ""
+"A message that is exchanged between nodes containing the data structure as "
+"explained in (1)."
+msgstr ""
+"Một thông báo được trao đổi giữa các nút chứa cấu trúc dữ liệu như được giải"
+" thích trong (1)."
+
+#: ../../implementation/serialization-standard.rst:17
+msgid ""
+"Each block has a globally unique ID, achieved by hashing the contents of the"
+" block."
+msgstr ""
+"Mỗi khối có một ID duy nhất trên toàn cầu, có được bằng cách băm nội dung "
+"của khối."
+
+#: ../../implementation/serialization-standard.rst:19
+msgid ""
+"Each block points to its parent. An exception is the first block, which has "
+"no parent."
+msgstr ""
+"Mỗi khối trỏ đến lớp trên của nó. Một ngoại lệ là khối đầu tiên, không có "
+"lớp trên."
+
+#: ../../implementation/serialization-standard.rst:21
+msgid "A block is structurally defined as follows:"
+msgstr "Một khối được định nghĩa về cấu trúc như sau:"
+
+#: ../../implementation/serialization-standard.rst:23
+msgid "``hash``: A hash over the header of the block."
+msgstr "``hash``: Hàm băm trên tiêu đề của khối."
+
+#: ../../implementation/serialization-standard.rst:24
+msgid ""
+"``header``: The header of the block that contains information about the "
+"contents of the block with additional metadata."
+msgstr ""
+"``header``: Tiêu đề của khối chứa thông tin về nội dung của khối với siêu dữ"
+" liệu bổ sung."
+
+#: ../../implementation/serialization-standard.rst:25
+msgid ""
+"``body``: The block's body contains the proposer of the block and hashes of "
+"deploys and transfers contained within it."
+msgstr ""
+"``body``: Phần thân của khối chứa người đề xuất khối và các hàm băm triển "
+"khai và chuyển giao bên trong nó."
+
+#: ../../implementation/serialization-standard.rst:28
+msgid "Block hash"
+msgstr "Băm của khối"
+
+#: ../../implementation/serialization-standard.rst:29
+msgid ""
+"The block hash is a ``Digest`` over the contents of the block Header. The "
+"``BlockHash`` serializes as the byte representation of the hash itself."
+msgstr ""
+"Băm khối là một ``Digest`` trên nội dung của Tiêu đề khối. ``BlockHash`` "
+"tuần tự hóa như đại diện byte của chính hàm băm."
+
+#: ../../implementation/serialization-standard.rst:32
+msgid "Block header"
+msgstr "Phần đầu của khối"
+
+#: ../../implementation/serialization-standard.rst:33
+msgid "The header portion of a block, structurally, is defined as follows:"
+msgstr "Phần đầu của một khối, về mặt cấu trúc, được định nghĩa như sau:"
+
+#: ../../implementation/serialization-standard.rst:35
+msgid ""
+"``parent_hash``: is the hash of the parent block. It serializes to the byte "
+"representation of the parent hash. The serialized buffer of the "
+"``parent_hash`` is 32 bytes long."
+msgstr ""
+"``parent_has``: là băm của khối lớp trên. Nó trình tự hóa thành đại diện "
+"byte của băm lớp trên. Bộ đệm được trình tự hóa của ``parent_hash`` dài 32 "
+"byte."
+
+#: ../../implementation/serialization-standard.rst:36
+msgid ""
+"``state_root_hash``: is the global state root hash produced by executing "
+"this block's body. It serializes to the byte representation of the ``state "
+"root hash``. The serialized buffer of the ``state_root_hash`` is 32 bytes "
+"long."
+msgstr ""
+"``state_root_hash``: là băm gốc trạng thái toàn cục được tạo ra bằng cách "
+"thực thi phần thân của khối này. Nó trình tự hóa thành đại diện byte của "
+"``state root hash``. Bộ đệm được trình tự hóa của ``state_root_hash`` dài 32"
+" byte."
+
+#: ../../implementation/serialization-standard.rst:37
+msgid ""
+"``body_hash``: the hash of the block body. It serializes to the byte "
+"representation of the body hash. The serialized buffer of the ``body_hash`` "
+"is 32 bytes long."
+msgstr ""
+"``body_hash``: băm phần thân của khối. Nó trình tự hóa thành đại diện byte "
+"của băm phần thân. Bộ đệm tuần tự của ``body_hash`` dài 32 byte."
+
+#: ../../implementation/serialization-standard.rst:38
+msgid ""
+"``random_bit``: is a boolean needed for initializing a future era. It is "
+"serialized as a single byte; true maps to 1, while false maps to 0."
+msgstr ""
+"``random_bit``: là một boolean cần thiết để khởi tạo một kỷ nguyên trong "
+"tương lai. Nó được trình tự hóa thành một byte duy nhất; true ánh xạ với 1, "
+"nếu false thì ánh xạ với 0."
+
+#: ../../implementation/serialization-standard.rst:39
+msgid ""
+"``accumulated_seed``: A seed needed for initializing a future era. It "
+"serializes to the byte representation of the parent Hash. The serialized "
+"buffer of the ``accumulated_hash`` is 32 bytes long."
+msgstr ""
+"``accumulated_seed``: Một từ khoá hạt giống cần thiết để khởi tạo một kỷ "
+"nguyên trong tương lai. Nó trình tự hóa thành biểu diễn byte của Hash lớp "
+"trên. Bộ đệm được trình tự hóa của ``accumulated_hash`` dài 32 byte."
+
+#: ../../implementation/serialization-standard.rst:40
+msgid ""
+"``era_end``: contains equivocation and reward information to be included in "
+"the terminal finalized block. It is an optional field. Thus if the field is "
+"set as ``None``, it serializes to `0`. The serialization of the other case "
+"is described in the :ref:`EraEnd<serialization-standard-era-end>` ."
+msgstr ""
+"``era_end``: chứa thông tin không rõ ràng và thông tin phần thưởng trong "
+"khối cuối cùng được hoàn thành. Nó là một trường tùy chọn. Do đó, nếu trường"
+" được đặt là ``None``, nó sẽ trình tự thành `0`. Sự trình tự của trường hợp "
+"khác được mô tả trong :ref:`EraEnd<serialization-standard-era-end>` ."
+
+#: ../../implementation/serialization-standard.rst:41
+msgid ""
+"``timestamp``: The timestamp from when the block was proposed. It serializes"
+" as a single ``u64`` value. The serialization of a ``u64`` value is "
+"described in in the :ref:`CLValues<serialization-standard-values>` section."
+msgstr ""
+"``timestamp``: Dấu thời gian từ khi khối được đề xuất. Nó trình tự hóa thành"
+" một giá trị ``u64`` duy nhất. Việc trình tự hóa giá trị ``u64`` được mô tả "
+"trong phần :ref:`CLValues<serialization-standard-values>`."
+
+#: ../../implementation/serialization-standard.rst:42
+msgid ""
+"``era_id``: Era ID in which this block was created. It serializes as a "
+"single ``u64`` value."
+msgstr ""
+"``era_id``: ID kỷ nguyên mà khối này được tạo. Nó trình tự hóa thành một giá"
+" trị ``u64`` duy nhất."
+
+#: ../../implementation/serialization-standard.rst:43
+msgid ""
+"``height``: The height of this block, i.e., the number of ancestors. It "
+"serializes as a single ``u64`` value."
+msgstr ""
+"``height``: Chiều cao của khối này, tức là số tổ gốc. Nó trình tự hóa thành "
+"một giá trị ``u64`` duy nhất."
+
+#: ../../implementation/serialization-standard.rst:44
+msgid ""
+"``protocol_version``: The version of the Casper network when this block was "
+"proposed. It is 3-element tuple containing ``u32`` values. It serializes as "
+"a buffer containing the three ``u32`` serialized values. Refer to the "
+":ref:`CLValues<serialization-standard-values>` section on how ``u32`` values"
+" are serialized."
+msgstr ""
+"``protocol_version``: Phiên bản của mạng Casper khi khối này được đề xuất. "
+"Nó là bộ 3 phần tử chứa các giá trị ``u32``. Nó trình tự hóa như một bộ đệm "
+"chứa ba giá trị được trình tự hóa ``u32``. Tham khảo đến phần :ref:`CLValues"
+"<serialization-standard-values>` và cách trình tự hoá giá trị ``u32``."
+
+#: ../../implementation/serialization-standard.rst:50
+msgid "EraEnd"
+msgstr "EraEnd"
+
+#: ../../implementation/serialization-standard.rst:51
+msgid ""
+"``EraEnd`` as represented within the block header, is a struct containing "
+"two fields."
+msgstr ""
+"``EraEnd`` được biểu diễn trong tiêu đề khối, là một cấu trúc chứa hai "
+"trường."
+
+#: ../../implementation/serialization-standard.rst:53
+msgid ""
+"``era_report``: The first field is termed as ``EraReport`` and contains "
+"information about equivocators and rewards for an era."
+msgstr ""
+"``era_report``: Trường đầu tiên được gọi là `EraReport`` và chứa thông tin "
+"tương đương và phần thưởng cho một thời đại."
+
+#: ../../implementation/serialization-standard.rst:54
+msgid ""
+"``next_era_validator_weights``: The second field is map for the validators "
+"and their weights for the era to follow."
+msgstr ""
+"``next_era_validator_weights``: Trường thứ hai là ánh xạ cho người xác thực "
+"và trọng số của họ cho thời đại tiếp theo."
+
+#: ../../implementation/serialization-standard.rst:56
+msgid "``EraReport`` itself contains two fields:"
+msgstr "``EraReport`` bản thân nó chứa hai trường:"
+
+#: ../../implementation/serialization-standard.rst:58
+msgid "``equivocators``: A vector of ``PublicKey``."
+msgstr "``equivocators``: Vector của ``PublicKey``."
+
+#: ../../implementation/serialization-standard.rst:59
+msgid "``rewards``: A Binary Tree Map of ``PublicKey`` and ``u64``."
+msgstr "``rewards``: Bản đồ cây nhị phân của ``PublicKey`` và ``u64``."
+
+#: ../../implementation/serialization-standard.rst:61
+msgid ""
+"When serializing an EraReport, the buffer is first filled with the "
+"individual serialization of the PublicKey contained within the vector."
+msgstr ""
+"Khi tuần tự hóa một EraReport, bộ đệm đầu tiên sẽ được lấp đầy bằng cách "
+"trình tự hóa riêng lẻ PublicKey có trong vectơ."
+
+#: ../../implementation/serialization-standard.rst:63
+msgid ""
+"If the ``PublicKey`` is an ``Ed25519`` key, the first byte within the buffer"
+" is a ``1`` followed by the individual bytes of the serialized key."
+msgstr ""
+"Nếu ``PublicKey`` là khoá ``Ed25519``, byte đầu tiên trong bộ đệm là ``1`` "
+"theo sau là các byte riêng lẻ của khóa được trình tự hóa."
+
+#: ../../implementation/serialization-standard.rst:64
+msgid ""
+"If the ``PublicKey`` is an ``Secp256k1`` key, the first byte within the "
+"buffer is a ``2`` followed by the individual bytes of the serialized key."
+msgstr ""
+"Nếu ``PublicKey`` là khoá ``Secp256k1``, byte đầu tiên của bộ đệm là ``2`` "
+"theo sau là các byte riêng lẻ của khóa được trình tự hóa."
+
+#: ../../implementation/serialization-standard.rst:66
+msgid ""
+"When serializing the overarching struct of ``EraEnd``, we first allocate a "
+"buffer, which contains the serialized representation of the ``EraReport`` as"
+" described above, followed by the serialized BTreeMap."
+msgstr ""
+"Khi trình tự hóa cấu trúc bao trùm của ``EraEnd``, trước tiên chúng tôi cấp "
+"phát một bộ đệm, chứa phần biểu diễn được trình tự hóa của ``EraReport`` như"
+" được mô tả ở trên, tiếp theo là Bản đồ BTreeMap được trình tự hóa."
+
+#: ../../implementation/serialization-standard.rst:68
+msgid ""
+"Note that ``EraEnd`` is an optional field. Thus the above scheme only "
+"applies if there is an ``EraEnd``; if there is no era end, the field simply "
+"serializes to `0`."
+msgstr ""
+"Lưu ý rằng ``EraEnd`` là một trường tùy chọn. Do đó, lược đồ trên chỉ áp "
+"dụng nếu có ``EraEnd``; Nếu không có kỷ nguyên kết thúc, trường chỉ cần "
+"trình tự hóa thành `0`."
+
+#: ../../implementation/serialization-standard.rst:72
+msgid "Body"
+msgstr "Phần thân"
+
+#: ../../implementation/serialization-standard.rst:73
+msgid "The body portion of the block is structurally defined as:"
+msgstr "Phần thân của khối được định nghĩa cấu trúc là:"
+
+#: ../../implementation/serialization-standard.rst:76
+msgid "``proposer``: The PublicKey which proposed this block."
+msgstr "``proposer``: PublicKey đã đề xuất khối này."
+
+#: ../../implementation/serialization-standard.rst:77
+msgid ""
+"``deploy_hashes``: Is a vector of hex-encoded hashes identifying Deploys "
+"included in this block."
+msgstr ""
+"``deploy_hashes``: Là một vectơ gồm các hàm băm được mã hóa hex và xác định "
+"các Triển khai (Deploys) được đưa vào trong khối này."
+
+#: ../../implementation/serialization-standard.rst:78
+msgid ""
+"``transfer_hashes``: Is a vector of hex-encoded hashes identifying Transfers"
+" included in this block."
+msgstr ""
+"``transfer_hashes``: Là một vectơ gồm các hàm băm được mã hóa hex và xác "
+"định các Chuyển giao (Transfers) được bao gồm trong khối này."
+
+#: ../../implementation/serialization-standard.rst:80
+msgid ""
+"When we serialize the ``BlockBody``, we create a buffer that contains the "
+"serialized representations of the individual fields present within the "
+"block."
+msgstr ""
+"Khi chúng tôi trình tự hóa ``BlockBody`` chúng tôi tạo một bộ đệm chứa các "
+"đại diện được trình tự hóa của các trường riêng lẻ có trong khối."
+
+#: ../../implementation/serialization-standard.rst:82
+msgid ""
+"``proposer``: serializes to the byte representation of the ``PublicKey``. If"
+" the ``PublicKey`` is an ``Ed25519`` key, then the first byte within the "
+"serialized buffer is 1 followed by the bytes of the key itself; else, in the"
+" case of ``Secp256k1``, the first byte is 2."
+msgstr ""
+"``proposer``: trình tự hóa thành biểu diễn byte của ``PublicKey``. Nếu "
+"``PublicKey`` là khóa ``Ed25519``, thì byte đầu tiên trong bộ đệm `trình tự "
+"hóa là 1, tiếp theo là các byte của chính khóa đó; ngoài ra, trong trường "
+"hợp của ``Secp256k1``, byte đầu tiên là 2."
+
+#: ../../implementation/serialization-standard.rst:83
+msgid ""
+"``deploy_hashes``: serializes to the byte representation of all the "
+"deploy_hashes within the block header. Its length is ``32 * n``, where n "
+"denotes the number of deploy hashes present within the body."
+msgstr ""
+"``deploy_hashes``: trình tự hóa thành biểu diễn byte của tất cả các "
+"deploy_hashes trong tiêu đề khối. Độ dài của nó là  ``32 * n``, trong đó n "
+"biểu thị số lượng băm triển khai có trong phần thân."
+
+#: ../../implementation/serialization-standard.rst:84
+msgid ""
+"``transfer_hashes``: serializes to the byte representation of all the "
+"deploy_hashes within the block header. Its length is ``32 * n``, where n "
+"denotes the number of transfers present within the body."
+msgstr ""
+"``transfer_hashes``: trình tự hóa thành biểu diễn byte của tất cả các "
+"deploy_hashes trong tiêu đề khối. Chiều dài của nó là ``32 * n``, trong đó n"
+" biểu thị số lần chuyển có trong phần thân."
+
+#: ../../implementation/serialization-standard.rst:90
+#: ../../implementation/serialization-standard.rst:675
+msgid "Deploy"
+msgstr "Triển khai"
+
+#: ../../implementation/serialization-standard.rst:91
+msgid ""
+"A deploy is a data structure containing a smart contract and the requester's"
+" signature(s). Additionally, the deploy header contains additional metadata "
+"about the deploy itself. A deploy is structurally defined as follows:"
+msgstr ""
+"Triển khai là một cấu trúc dữ liệu chứa hợp đồng thông minh và (các) chữ ký "
+"của người yêu cầu. Ngoài ra, tiêu đề triển khai chứa siêu dữ liệu bổ sung về"
+" chính quá trình triển khai. Triển khai được định nghĩa theo cấu trúc như "
+"sau:"
+
+#: ../../implementation/serialization-standard.rst:95
+msgid "``hash``: The hash of the deploy header."
+msgstr "``hash``: Hàm băm của tiêu đề triển khai."
+
+#: ../../implementation/serialization-standard.rst:96
+msgid ""
+"``header``: Contains metadata about the deploy. The structure of the header "
+"is detailed further in this document."
+msgstr ""
+"``header``: Chứa siêu dữ liệu về việc triển khai. Cấu trúc của tiêu đề được "
+"trình bày chi tiết trong tài liệu này."
+
+#: ../../implementation/serialization-standard.rst:97
+msgid "``payment``: The payment code for contained smart contract."
+msgstr "``payment``: Mã thanh toán cho hợp đồng thông minh có sẵn."
+
+#: ../../implementation/serialization-standard.rst:98
+msgid "``session``: The stored contract itself."
+msgstr "``session``: Hợp đồng lưu trữ chính nó."
+
+#: ../../implementation/serialization-standard.rst:99
+msgid "``approvals``: A list of signatures:"
+msgstr "``approvals``: Danh sách các chữ ký:"
+
+#: ../../implementation/serialization-standard.rst:102
+msgid "Deploy-Hash"
+msgstr "Deploy-Hash"
+
+#: ../../implementation/serialization-standard.rst:103
+msgid ""
+"The deploy hash is a digest over the contents of the deploy header. The "
+"deploy hash serializes as the byte representation of the hash itself."
+msgstr ""
+"Băm triển khai là một bản tóm tắt nội dung của tiêu đề triển khai. Băm triển"
+" khai trình tự hóa dưới dạng biểu diễn byte của chính hàm băm."
+
+#: ../../implementation/serialization-standard.rst:106
+msgid "Deploy-Header"
+msgstr "Deploy-Header"
+
+#: ../../implementation/serialization-standard.rst:108
+msgid ""
+"``account``: A supported public key variant (currently either ``Ed25519`` or"
+" ``Secp256k1``). An ``Ed25519`` key is serialized as a buffer of bytes, with"
+" the leading byte being ``1`` for ``Ed25519``, with remainder of the buffer "
+"containing the byte representation of the signature. Correspondingly, a "
+"``Secp256k1`` key is serialized as a buffer of bytes, with the leading byte "
+"being ``2``."
+msgstr ""
+"``account``: Một biến thể khóa công khai được hỗ trợ (hiện tại là "
+"``Ed25519`` hoặc ``Secp256k1``). Khóa ``Ed25519`` được trình tự hóa như một "
+"bộ đệm byte, với byte đầu là ``1`` cho ``Ed25519``, với phần còn lại của bộ "
+"đệm chứa biểu diễn byte của chữ ký. Tương ứng, khóa ``Secp256k1`` được trình"
+" tự hóa dưới dạng bộ đệm các byte, với byte đầu là ``2``."
+
+#: ../../implementation/serialization-standard.rst:109
+msgid ""
+"``timestamp``: A timestamp is a struct that is a unary tuple containing a "
+"``u64`` value. This value is a count of the milliseconds since the UNIX "
+"epoch. Thus the value ``1603994401469`` serializes as ``0xbd3a847575010000``"
+msgstr ""
+"``timestamp``: Dấu thời gian là một cấu trúc có một bộ giá trị một ngôi chứa"
+" giá trị ``u64`` . Giá trị này là số phần nghìn giây kể từ kỷ nguyên UNIX. "
+"Do đó, giá trị ``1603994401469`` sắp xếp thành ``0xbd3a847575010000``"
+
+#: ../../implementation/serialization-standard.rst:110
+msgid ""
+"``ttl``: The **Time to live** is defined as the amount of time for which "
+"deploy is considered valid. The ``ttl`` serializes in the same manner as the"
+" timestamp."
+msgstr ""
+"``ttl``: **Thời gian tồn tại** được định nghĩa là khoảng thời gian mà việc "
+"triển khai được coi là hợp lệ. ``Ttl`` `trình tự hóa theo cách tương tự như "
+"dấu thời gian."
+
+#: ../../implementation/serialization-standard.rst:111
+msgid ""
+"``gas_price``: The gas is ``u64`` value which is serialized as ``u64`` "
+"CLValue discussed below."
+msgstr ""
+"``gas_price``: Gas có giá trị ``u64`` được trình tự dạng CLValue ``u64`` "
+"được thảo luận bên dưới."
+
+#: ../../implementation/serialization-standard.rst:112
+msgid ""
+"``body_hash``: Body hash is a hash over the contents of the deploy body, "
+"which includes the payment, session, and approval fields. Its serialization "
+"is the byte representation of the hash itself."
+msgstr ""
+"``body_hash``: Băm nội dung là một hàm băm đối với nội dung của phần thân "
+"triển khai, bao gồm các trường thanh toán, phiên và phê duyệt. Trình tự hóa "
+"của nó là biểu diễn byte của chính hàm băm."
+
+#: ../../implementation/serialization-standard.rst:113
+msgid ""
+"``dependencies``: Dependencies is a vector of deploy hashes referencing "
+"deploys that must execute before the current deploy can be executed. It "
+"serializes as a buffer containing the individual serialization of each "
+"DeployHash within the Vector."
+msgstr ""
+"``dependencies``: Sự phụ thuộc là một vectơ của các băm triển khai tham "
+"chiếu đến các triển khai phải thực thi trước khi triển khai hiện tại có thể "
+"được thực thi. Nó trình tự hóa như một bộ đệm chứa trình tự hóa riêng lẻ của"
+" từng DeployHash trong Vector."
+
+#: ../../implementation/serialization-standard.rst:114
+msgid ""
+"``chain_name``: Chain name is a human-readable string describing the name of"
+" the chain as detailed in the chainspec. It is serialized as a String "
+"CLValue described below."
+msgstr ""
+"``chain_name``: Tên chuỗi là một chuỗi mà con người có thể đọc được, mô tả "
+"tên của chuỗi được nêu chi tiết trong chainpec. Nó được trình tự hóa dưới "
+"dạng String CLValue và mô tả bên dưới."
+
+#: ../../implementation/serialization-standard.rst:117
+msgid "Payment & Session"
+msgstr "Thanh toán &amp; Phiên"
+
+#: ../../implementation/serialization-standard.rst:119
+msgid ""
+"Payment and Session are both defined as ``ExecutableDeployItems``. "
+"``ExecutableDeployItems`` is an enum described as follows:"
+msgstr ""
+"Thanh toán và Phiên đều được định nghĩa là ``ExecutableDeployItems``. "
+"``ExecutableDeployItems`` là một enum được mô tả như sau:"
+
+#: ../../implementation/serialization-standard.rst:166
+msgid ""
+"Module Bytes are serialized such that the first byte within the serialized "
+"buffer is ``0`` with the rest of the buffer containing the bytes present."
+msgstr ""
+"Các byte mô-đun được trình tự hóa sao cho byte đầu tiên trong bộ đệm được "
+"tuần tự hóa là ``0`` với phần còn lại của bộ đệm chứa các byte hiện tại."
+
+#: ../../implementation/serialization-standard.rst:168
+msgid ""
+"``ModuleBytes { module_bytes: \"[72 bytes]\", args: "
+"434705a38470ec2b008bb693426f47f330802f3bd63588ee275e943407649d3bab1898897ab0400d7fa09fe02ab7b7e8ea443d28069ca557e206916515a7e21d15e5be5eb46235f5"
+" }`` will serialize to"
+msgstr ""
+"``ModuleBytes { module_bytes: \"[72 bytes]\", args: "
+"434705a38470ec2b008bb693426f47f330802f3bd63588ee275e943407649d3bab1898897ab0400d7fa09fe02ab7b7e8ea443d28069ca557e206916515a7e21d15e5be5eb46235f5"
+" }`` sẽ trình tự hoá thành"
+
+#: ../../implementation/serialization-standard.rst:169
+msgid ""
+"``0x0048000000420481b0d5a665c8a7678398103d4333c684461a71e9ee2a13f6e859fb6cd419ed5f8876fc6c3e12dce4385acc777edf42dcf8d8d844bf6a704e5b2446750559911a4a328d649ddd48000000434705a38470ec2b008bb693426f47f330802f3bd63588ee275e943407649d3bab1898897ab0400d7fa09fe02ab7b7e8ea443d28069ca557e206916515a7e21d15e5be5eb46235f5``"
+msgstr ""
+"``0x0048000000420481b0d5a665c8a7678398103d4333c684461a71e9ee2a13f6e859fb6cd419ed5f8876fc6c3e12dce4385acc777edf42dcf8d8d844bf6a704e5b2446750559911a4a328d649ddd48000000434705a38470ec2b008bb693426f47f330802f3bd63588ee275e943407649d3bab1898897ab0400d7fa09fe02ab7b7e8ea443d28069ca557e206916515a7e21d15e5be5eb46235f5``"
+
+#: ../../implementation/serialization-standard.rst:171
+msgid ""
+"StoredContractByHash serializes such that the first byte within the "
+"serialized buffer is 1u8. This is followed by the byte representation of the"
+" remaining fields."
+msgstr ""
+"StoredContractByHash trình tự hóa sao cho byte đầu tiên trong bộ đệm được "
+"trình tự hóa là 1u8. Tiếp theo là biểu diễn byte của các trường còn lại."
+
+#: ../../implementation/serialization-standard.rst:173
+msgid ""
+"``StoredContractByHash { hash: "
+"c4c411864f7b717c27839e56f6f1ebe5da3f35ec0043f437324325d65a22afa4, "
+"entry_point: \"pclphXwfYmCmdITj8hnh\", args: "
+"d8b59728274edd2334ea328b3292ed15eaf9134f9a00dce31a87d9050570fb0267a4002c85f3a8384d2502733b2e46f44981df85fed5e4854200bbca313e3bca8d888a84a76a1c5b1b3d236a12401a2999d3cad003c9b9d98c92ab1850"
+" }``"
+msgstr ""
+"``StoredContractByHash { hash: "
+"c4c411864f7b717c27839e56f6f1ebe5da3f35ec0043f437324325d65a22afa4, "
+"entry_point: \"pclphXwfYmCmdITj8hnh\", args: "
+"d8b59728274edd2334ea328b3292ed15eaf9134f9a00dce31a87d9050570fb0267a4002c85f3a8384d2502733b2e46f44981df85fed5e4854200bbca313e3bca8d888a84a76a1c5b1b3d236a12401a2999d3cad003c9b9d98c92ab1850"
+" }``"
+
+#: ../../implementation/serialization-standard.rst:174
+msgid ""
+"``0x01c4c411864f7b717c27839e56f6f1ebe5da3f35ec0043f437324325d65a22afa41400000070636c7068587766596d436d6449546a38686e685d000000d8b59728274edd2334ea328b3292ed15eaf9134f9a00dce31a87d9050570fb0267a4002c85f3a8384d2502733b2e46f44981df85fed5e4854200bbca313e3bca8d888a84a76a1c5b1b3d236a12401a2999d3cad003c9b9d98c92ab1850``"
+msgstr ""
+"``0x01c4c411864f7b717c27839e56f6f1ebe5da3f35ec0043f437324325d65a22afa41400000070636c7068587766596d436d6449546a38686e685d000000d8b59728274edd2334ea328b3292ed15eaf9134f9a00dce31a87d9050570fb0267a4002c85f3a8384d2502733b2e46f44981df85fed5e4854200bbca313e3bca8d888a84a76a1c5b1b3d236a12401a2999d3cad003c9b9d98c92ab1850``"
+
+#: ../../implementation/serialization-standard.rst:176
+msgid ""
+"StoredContractByName serializes such that the first byte within the "
+"serialized buffer is 2u8. This is followed by the individual byte "
+"representation of the remaining fields."
+msgstr ""
+"StoredContractByName trình tự hóa sao cho byte đầu tiên trong bộ đệm được "
+"tuần tự hóa là 2u8. Tiếp theo là biểu diễn byte riêng lẻ của các trường còn "
+"lại."
+
+#: ../../implementation/serialization-standard.rst:178
+msgid ""
+"``StoredContractByName { name: \"U5A74bSZH8abT8HqVaK9\", entry_point: "
+"\"gIetSxltnRDvMhWdxTqQ\", args: 07beadc3da884faa17454a }``"
+msgstr ""
+"``StoredContractByName { name: \"U5A74bSZH8abT8HqVaK9\", entry_point: "
+"\"gIetSxltnRDvMhWdxTqQ\", args: 07beadc3da884faa17454a }``"
+
+#: ../../implementation/serialization-standard.rst:179
+msgid ""
+"``0x0214000000553541373462535a483861625438487156614b39140000006749657453786c746e5244764d685764785471510b00000007beadc3da884faa17454a``"
+msgstr ""
+"``0x0214000000553541373462535a483861625438487156614b39140000006749657453786c746e5244764d685764785471510b00000007beadc3da884faa17454a``"
+
+#: ../../implementation/serialization-standard.rst:181
+msgid ""
+"StoredVersionedContractByHash serializes such that the first byte within the"
+" serialized buffer is 3u8. However, the field version within the enum "
+"serializes as an Option CLValue, i.e., if the value is None as shown in the "
+"example, it serializes to 0, else it serializes the inner u32 value, which "
+"is described below."
+msgstr ""
+"StoredVersionedContractByHash trình tự hóa sao cho byte đầu tiên trong bộ "
+"đệm được trình tự hóa là 3u8. Tuy nhiên, phiên bản trường trong enum trình "
+"tự hóa dưới dạng Option CLValue, tức là, nếu giá trị là None được như hiển "
+"thị trong ví dụ, nó sẽ tuần tự hóa thành 0, nếu không nó sẽ trình tự hóa giá"
+" trị u32 bên trong, được mô tả bên dưới."
+
+#: ../../implementation/serialization-standard.rst:183
+msgid ""
+"``StoredVersionedContractByHash { hash: "
+"b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423, version: "
+"None, entry_point: \"PsLz5c7JsqT8BK8ll0kF\", args: "
+"3d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8"
+" }``"
+msgstr ""
+"``StoredVersionedContractByHash { hash: "
+"b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423, version: "
+"None, entry_point: \"PsLz5c7JsqT8BK8ll0kF\", args: "
+"3d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8"
+" }``"
+
+#: ../../implementation/serialization-standard.rst:184
+msgid ""
+"``0x03b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423001400000050734c7a3563374a73715438424b386c6c306b463b0000003d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8``"
+msgstr ""
+"``0x03b348fdd0d0b3f66468687df93141b5924f6bb957d5893c08b60d5a78d0b9a423001400000050734c7a3563374a73715438424b386c6c306b463b0000003d0d7f193f70740386cb78b383e2e30c4f976cf3fa834bafbda4ed9dbfeb52ce1777817e8ed8868cfac6462b7cd31028aa5a7a60066db35371a2f8``"
+
+#: ../../implementation/serialization-standard.rst:186
+msgid ""
+"StoredVersionedContractByName serializes such that the first byte within the"
+" serialized buffer is 4u8. The name and entry_point are serialized as a "
+"String CLValue, with the Option version field serializing to 0 if the value "
+"is None; else, it serializes the inner u32 value as described below."
+msgstr ""
+"StoredVersionedContractByName trình tự hóa sao cho byte đầu tiên trong bộ "
+"đệm được trình tự hóa là 4u8. Tên và entry_point được tuần tự hóa dưới dạng "
+"Chuỗi CLValue, với trường Phiên bản tùy chọn được trình tự hóa thành 0 nếu "
+"giá trị là None; nếu không, nó trình tự hóa giá trị u32 bên trong như mô tả "
+"bên dưới."
+
+#: ../../implementation/serialization-standard.rst:188
+msgid ""
+"``StoredVersionedContractByName { name: \"lWJWKdZUEudSakJzw1tn\", version: "
+"Some(1632552656), entry_point: \"S1cXRT3E1jyFlWBAIVQ8\", args: "
+"9975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8"
+" }``"
+msgstr ""
+"``StoredVersionedContractByName { name: \"lWJWKdZUEudSakJzw1tn\", version: "
+"Some(1632552656), entry_point: \"S1cXRT3E1jyFlWBAIVQ8\", args: "
+"9975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8"
+" }``"
+
+#: ../../implementation/serialization-standard.rst:189
+msgid ""
+"``0x04140000006c574a574b645a5545756453616b4a7a7731746e01d0c64e61140000005331635852543345316a79466c57424149565138270000009975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8``"
+msgstr ""
+"``0x04140000006c574a574b645a5545756453616b4a7a7731746e01d0c64e61140000005331635852543345316a79466c57424149565138270000009975e6957ea6b07176c7d8471478fb28df9f02a61689ef58234b1a3cffaebf9f303e3ef60ae0d8``"
+
+#: ../../implementation/serialization-standard.rst:191
+msgid ""
+"Transfer serializes such that the first byte within the serialized buffer "
+"contains is 5u8, with the remaining bytes of the buffer containing the bytes"
+" contained within the args field of Transfer."
+msgstr ""
+"Chuyển (Transfer) trình tự hóa sao cho byte đầu tiên trong bộ đệm được trình"
+" tự hóa là 5u8, với các byte còn lại của bộ đệm, chứa các byte trong trường "
+"args của Transfer."
+
+#: ../../implementation/serialization-standard.rst:194
+msgid "Approval"
+msgstr "Phê duyệt"
+
+#: ../../implementation/serialization-standard.rst:196
+msgid "Approval contains two fields:"
+msgstr "Phê duyệt bao gồm hai trường:"
+
+#: ../../implementation/serialization-standard.rst:198
+msgid ""
+"``signer``: The public key of the approvals signer. It serializes to the "
+"byte representation of the ``PublicKey``. If the ``PublicKey`` is an "
+"``Ed25519`` key, then the first byte within the serialized buffer is 1 "
+"followed by the bytes of the key itself; else, in the case of ``Secp256k1``,"
+" the first byte is 2."
+msgstr ""
+"``signer``: Khóa công khai của người ký phê duyệt. Nó trình tự hóa thành "
+"biểu diễn byte của ``PublicKey``. Nếu ``PublicKey`` là khóa ``Ed25519``, thì"
+" byte đầu tiên trong bộ đệm trình tự hóa là 1, tiếp theo là các byte của "
+"chính khóa đó; khác, trong trường hợp của ``Secp256k1``, byte đầu tiên là 2."
+
+#: ../../implementation/serialization-standard.rst:199
+msgid ""
+"``signature``: The approval signature, which serializes as the byte "
+"representation of the ``Signature``. The fist byte within the signature is 1"
+" in the case of an ``Ed25519`` signature or 2 in the case of ``Secp256k1``."
+msgstr ""
+"``signature``: Chữ ký phê duyệt, được trình tự hóa dưới dạng biểu diễn byte "
+"của ``Signature``. Byte có chữ ký là 1 trong trường hợp chữ ký ``Ed25519`` "
+"hoặc 2 trong trường hợp ``Secp256k1``."
+
+#: ../../implementation/serialization-standard.rst:203
+msgid "Deploy Serialization at High Level"
+msgstr "Triển khai trình tự hóa ở mức cao"
+
+#: ../../implementation/serialization-standard.rst:205
+msgid "Consider the following deploy:"
+msgstr "Hãy xem xét triển khai sau:"
+
+#: ../../implementation/serialization-standard.rst:260
+msgid "The above deploy will serialize to:"
+msgstr "Triển khai ở trên sẽ trình tự thành:"
+
+#: ../../implementation/serialization-standard.rst:262
+msgid ""
+"``01d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900ca856a4d37501000080ee36000000000001000000000000004811966d37fe5674a8af4001884ea0d9042d1c06668da0c963769c3a01ebd08f0100000001010101010101010101010101010101010101010101010101010101010101010e0000006361737065722d6578616d706c6501da3c604f71e0e7df83ff1ab4ef15bb04de64ca02e3d2b78de6950e8b5ee187020e0000006361737065722d6578616d706c65130000006578616d706c652d656e7472792d706f696e7401000000080000007175616e7469747904000000e803000001050100000006000000616d6f756e7404000000e8030000010100000001d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900c012dbf03817a51794a8e19e0724884075e6d1fbec326b766ecfa6658b41f81290da85e23b24e88b1c8d9761185c961daee1adab0649912a6477bcd2e69bd91bd08``"
+msgstr ""
+"``01d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900ca856a4d37501000080ee36000000000001000000000000004811966d37fe5674a8af4001884ea0d9042d1c06668da0c963769c3a01ebd08f0100000001010101010101010101010101010101010101010101010101010101010101010e0000006361737065722d6578616d706c6501da3c604f71e0e7df83ff1ab4ef15bb04de64ca02e3d2b78de6950e8b5ee187020e0000006361737065722d6578616d706c65130000006578616d706c652d656e7472792d706f696e7401000000080000007175616e7469747904000000e803000001050100000006000000616d6f756e7404000000e8030000010100000001d9bf2148748a85c89da5aad8ee0b0fc2d105fd39d41a4c796536354f0ae2900c012dbf03817a51794a8e19e0724884075e6d1fbec326b766ecfa6658b41f81290da85e23b24e88b1c8d9761185c961daee1adab0649912a6477bcd2e69bd91bd08``"
+
+#: ../../implementation/serialization-standard.rst:268
+msgid "Values"
+msgstr "Giá trị"
+
+#: ../../implementation/serialization-standard.rst:270
+msgid ""
+"A value stored in the global state is a ``StoredValue``. A ``StoredValue`` "
+"is one of three possible variants:"
+msgstr ""
+"Giá trị được lưu trữ ở trạng thái toàn cục là ``StoredValue``. "
+"``StoredValue`` có thể là một trong ba kiểu:"
+
+#: ../../implementation/serialization-standard.rst:272
+msgid "A ``CLValue``"
+msgstr "``CLValue``"
+
+#: ../../implementation/serialization-standard.rst:273
+msgid "A contract"
+msgstr "Hợp đồng (contract)"
+
+#: ../../implementation/serialization-standard.rst:274
+msgid "An account"
+msgstr "Tài khoản (account)"
+
+#: ../../implementation/serialization-standard.rst:276
+msgid ""
+"We discuss ``CLValue`` and contract in more detail below. Details about "
+"accounts can be found in :ref:`accounts-head`."
+msgstr ""
+"We discuss ``CLValue`` and contract in more detail below. Details about "
+"accounts can be found in :ref:`accounts-head`."
+
+#: ../../implementation/serialization-standard.rst:279
+msgid ""
+"Each ``StoredValue`` is serialized when written to the global state. The "
+"serialization format consists of a single byte tag, indicating which variant"
+" of ``StoredValue`` it is, followed by the serialization of that variant.  "
+"The tag for each variant is as follows:"
+msgstr ""
+"Mỗi ``StoredValue`` được `trình tự hóa khi được ghi vào trạng thái toàn cục."
+" Định dạng trình tự hóa bao gồm một byte tag đơn, cho biết đó là biến thể "
+"nào của ``StoredValue``, tiếp theo là trình tự hóa biến thể đó. Tag cho mỗi "
+"biến thể như sau:"
+
+#: ../../implementation/serialization-standard.rst:284
+msgid "``CLValue`` is ``0``"
+msgstr "``CLValue`` là ``0``"
+
+#: ../../implementation/serialization-standard.rst:285
+msgid "``Account`` is ``1``"
+msgstr "``Account`` là ``1``"
+
+#: ../../implementation/serialization-standard.rst:286
+msgid "``Contract`` is ``2``"
+msgstr "``Contract`` là ``2``"
+
+#: ../../implementation/serialization-standard.rst:288
+msgid ""
+"The details of ``CLType`` serialization are in the following section. Using "
+"the serialization format for ``CLValue`` as a basis, we can succinctly write"
+" the serialization rules for contracts and accounts:"
+msgstr ""
+"Chi tiết về tuần tự hóa ``CLType`` có trong phần sau. Sử dụng định dạng "
+"trình tự hóa cho ``CLValue`` làm cơ sở, chúng tôi có thể viết ngắn gọn các "
+"quy tắc trình tự hóa cho các hợp đồng và tài khoản:"
+
+#: ../../implementation/serialization-standard.rst:290
+msgid ""
+"contracts serialize in the same way as data with ``CLType`` equal to "
+"``Tuple3(List(U8), Map(String, Key), Tuple3(U32, U32, U32))``;"
+msgstr ""
+"hợp đồng trình tự hóa theo cách tương tự như dữ liệu với ``CLType`` bằng "
+"``Tuple3(List(U8), Map(String, Key), Tuple3(U32, U32, U32))``;"
+
+#: ../../implementation/serialization-standard.rst:293
+msgid ""
+"accounts serialize in the same way as data with ``CLType`` equal to "
+"``Tuple5(FixedList(U8, 32), Map(String, Key), URef, Map(FixedList(U8, 32), "
+"U8), Tuple2(U8, U8))``."
+msgstr ""
+"tài khoản trình tự hóa theo cách tương tự như dữ liệu với ``CLType`` bằng "
+"``Tuple5(FixedList(U8, 32), Map(String, Key), URef, Map(FixedList(U8, 32), "
+"U8), Tuple2(U8, U8))``."
+
+#: ../../implementation/serialization-standard.rst:296
+msgid ""
+"Note: ``Tuple5`` is not a presently supported ``CLType``. However, it is "
+"clear how to generalize the rules for ``Tuple1``, ``Tuple2``, ``Tuple3`` to "
+"any size tuple."
+msgstr ""
+"Lưu ý: ``Tuple5`` hiện không được hỗ trợ ``CLType``. Tuy nhiên, có cách rõ "
+"ràng để tổng quát hóa các quy tắc cho ``Tuple1``, ``Tuple2``, ``Tuple3`` "
+"thành bộ bộ dữ liệu với bất kỳ kích thước nào."
+
+#: ../../implementation/serialization-standard.rst:298
+msgid ""
+"Note: links to further serialization examples and a reference implementation"
+" are found in :ref:`Appendix B <appendix-b>`."
+msgstr ""
+"Lưu ý: có thể xem liên kết đến các ví dụ về trình tự hóa khác và cách triển "
+"khai trong: ref: `Phụ lục B <appendix-b>`."
+
+#: ../../implementation/serialization-standard.rst:301
+msgid "``CLValue``"
+msgstr "``CLValue``"
+
+#: ../../implementation/serialization-standard.rst:303
+msgid ""
+"``CLValue`` is used to describe data that is used by smart contracts. This "
+"could be as a local state variable, input argument, or return value. A "
+"``CLValue`` consists of two parts: a ``CLType`` describing the type of the "
+"value and an array of bytes representing the data in our serialization "
+"format."
+msgstr ""
+"``CLValue`` được sử dụng để mô tả dữ liệu được sử dụng bởi các hợp đồng "
+"thông minh. Đây có thể là một biến trạng thái cục bộ, đối số đầu vào hoặc "
+"giá trị trả về. Một ``CLValue`` bao gồm hai phần: một ``CLValue`` mô tả loại"
+" giá trị và một mảng byte đại diện cho dữ liệu ở định dạng trình tự hóa."
+
+#: ../../implementation/serialization-standard.rst:305
+msgid "``CLType`` is described by the following recursive data type:"
+msgstr "``CLType`` được mô tả bởi kiểu dữ liệu đệ quy sau:"
+
+#: ../../implementation/serialization-standard.rst:337
+msgid ""
+"All data which can be assigned a (non-``Any``) ``CLType`` can be serialized "
+"according to the following rules (this defines the Casper serialization "
+"format):"
+msgstr ""
+"Tất cả dữ liệu có thể được gán cho ``CLType`` (không phải là ``Bất kỳ``) có "
+"thể được trình tự hóa theo các quy tắc sau (điều này xác định định dạng "
+"trình tự hóa Casper):"
+
+#: ../../implementation/serialization-standard.rst:340
+msgid ""
+"Boolean values serialize as a single byte; ``true`` maps to ``1``, while "
+"``false`` maps to ``0``."
+msgstr ""
+"Các giá trị Boolean trình tự hóa thành một byte duy nhất; ``true`` ánh xạ "
+"tới ``1``, trong khi ``false`` ánh xạ tới ``0``."
+
+#: ../../implementation/serialization-standard.rst:342
+msgid ""
+"Numeric values consisting of 64 bits or less serialize in the two's "
+"complement representation with little-endian byte order, and the appropriate"
+" number of bytes for the bit-width."
+msgstr ""
+"Các giá trị số có 64 bit hoặc ít hơn được trình tự hóa trong biểu diễn "
+"little-endian với thứ tự byte và số byte thích hợp cho bit-width."
+
+#: ../../implementation/serialization-standard.rst:346
+msgid "E.g. ``7u8`` serializes as ``0x07``"
+msgstr "Ví dụ ``7u8`` trình tự hoá thành ``0x07``"
+
+#: ../../implementation/serialization-standard.rst:347
+msgid "E.g. ``7u32`` serializes as ``0x07000000``"
+msgstr "Ví dụ ``7u32`` trình tự hoá thành ``0x07000000``"
+
+#: ../../implementation/serialization-standard.rst:348
+msgid "E.g. ``1024u32`` serializes as ``0x00040000``"
+msgstr "Ví dụ ``1024u32`` trình tự hoá thành ``0x00040000``"
+
+#: ../../implementation/serialization-standard.rst:350
+msgid ""
+"Wider numeric values (i.e. ``U128``, ``U256``, ``U512``) serialize as one "
+"byte given the length of the next number (in bytes), followed by the two's "
+"complement representation with little-endian byte order. The number of bytes"
+" should be chosen as small as possible to represent the given number. This "
+"is done to reduce the serialization size when small numbers are represented "
+"within a wide data type."
+msgstr ""
+"Các giá trị số rộng hơn (ví dụ: ``U128``, ``U256``, ``U512``) trình tự hóa "
+"thành một byte cho độ dài của số tiếp theo (tính bằng byte), theo sau là "
+"biểu diễn phần bù của cả hai với thứ tự byte little-endian. Số lượng byte "
+"nên được chọn càng nhỏ càng tốt để đại diện cho số lượng đã cho. Điều này "
+"được thực hiện để giảm kích thước trình tự hóa khi các số nhỏ được biểu diễn"
+" trong một kiểu dữ liệu rộng."
+
+#: ../../implementation/serialization-standard.rst:352
+msgid "E.g. ``U512::from(7)`` serializes as ``0x0107``"
+msgstr "Ví dụ ``U512::from(7)`` trình tự hoá thành ``0x0107``"
+
+#: ../../implementation/serialization-standard.rst:353
+msgid "E.g. ``U512::from(1024)`` serializes as ``0x020004``"
+msgstr "Ví dụ ``U512::from(1024)`` trình tự hoá thành ``0x020004``"
+
+#: ../../implementation/serialization-standard.rst:354
+msgid ""
+"E.g. ``U512::from(\"123456789101112131415\")`` serializes as "
+"``0x0957ff1ada959f4eb106``"
+msgstr ""
+"Ví dụ ``U512::from(\"123456789101112131415\")`` trình tự hoá thành "
+"``0x0957ff1ada959f4eb106``"
+
+#: ../../implementation/serialization-standard.rst:356
+msgid "Unit serializes to an empty byte array."
+msgstr "Đơn vị trình tự hóa thành một mảng byte trống."
+
+#: ../../implementation/serialization-standard.rst:358
+msgid ""
+"Strings serialize as a 32-bit integer representing the length in bytes "
+"(note: this might be different than the number of characters since special "
+"characters, such as emojis, take more than one byte), followed by the UTF-8 "
+"encoding of the characters in the string."
+msgstr ""
+"Chuỗi trình tự hóa dưới dạng số nguyên 32 bit thể hiện độ dài tính bằng byte"
+" (lưu ý: số này có thể khác với số ký tự vì các ký tự đặc biệt, chẳng hạn "
+"như biểu tượng cảm xúc, chiếm nhiều hơn một byte), theo sau là mã hóa UTF-8 "
+"của các ký tự trong chuỗi."
+
+#: ../../implementation/serialization-standard.rst:360
+msgid ""
+"E.g. ``\"Hello, World!\"`` serializes as "
+"``0x0d00000048656c6c6f2c20576f726c6421``"
+msgstr ""
+"Ví dụ ``\"Hello, World!\"`` trình tự hoá thành "
+"``0x0d00000048656c6c6f2c20576f726c6421``"
+
+#: ../../implementation/serialization-standard.rst:362
+msgid ""
+"Optional values serialize with a single byte tag, followed by the "
+"serialization of the value itself. The tag is equal to ``0`` if the value is"
+" missing, and ``1`` if it is present."
+msgstr ""
+"Các giá trị tùy chọn trình tự hóa bằng một byte tag đơn, sau đó là trình tự "
+"hóa chính giá trị đó. Thẻ bằng ``0`` nếu thiếu giá trị và ``1`` nếu nó có "
+"giá trị."
+
+#: ../../implementation/serialization-standard.rst:365
+msgid "E.g. ``None`` serializes as ``0x00``"
+msgstr "Ví dụ ``None`` trình tự hoá thành ``0x00``"
+
+#: ../../implementation/serialization-standard.rst:366
+msgid "E.g. ``Some(10u32)`` serializes as ``0x010a000000``"
+msgstr "Ví dụ ``Some(10u32)`` trình tự hoá thành ``0x010a000000``"
+
+#: ../../implementation/serialization-standard.rst:368
+msgid ""
+"A list of values serializes as a 32-bit integer representing the number of "
+"elements in the list (note this differs from strings where it gives the "
+"number of *bytes*), followed by the concatenation of each serialized "
+"element."
+msgstr ""
+"Danh sách các giá trị được trình tự hóa dưới dạng số nguyên 32 bit đại diện "
+"cho số phần tử trong danh sách (lưu ý rằng điều này khác với các chuỗi mà nó"
+" cung cấp số *byte*), tiếp theo là sự nối tiếp của mỗi phần tử được tuần tự "
+"hóa."
+
+#: ../../implementation/serialization-standard.rst:372
+msgid "E.g. ``List()`` serializes as ``0x00000000``"
+msgstr "Ví dụ ``List()`` trình tự hoá thành ``0x00000000``"
+
+#: ../../implementation/serialization-standard.rst:373
+msgid ""
+"E.g. ``List(1u32, 2u32, 3u32)`` serializes as "
+"``0x03000000010000000200000003000000``"
+msgstr ""
+"Ví dụ ``List(1u32, 2u32, 3u32)`` trình tự hoá thành "
+"``0x03000000010000000200000003000000``"
+
+#: ../../implementation/serialization-standard.rst:375
+msgid ""
+"A fixed-length list of values serializes as the concatenation of the "
+"serialized elements. Unlike a variable-length list, the length is not "
+"included in the serialization because it is statically known by the type of "
+"the value."
+msgstr ""
+"Một danh sách các giá trị có độ dài cố định sắp xếp theo thứ tự là sự ghép "
+"nối của các phần tử được trình tự hóa. Không giống như danh sách có độ dài "
+"thay đổi, độ dài không được bao gồm trong trình tự hóa vì nó cố định bởi "
+"kiểu giá trị."
+
+#: ../../implementation/serialization-standard.rst:377
+msgid ""
+"E.g. ``[1u32, 2u32, 3u32]`` serializes as ``0x010000000200000003000000``"
+msgstr ""
+"Ví dụ ``[1u32, 2u32, 3u32]`` trình tự hoá thành "
+"``0x010000000200000003000000``"
+
+#: ../../implementation/serialization-standard.rst:379
+msgid ""
+"A ``Result`` serializes as a single byte tag followed by the serialization "
+"of the contained value. The tag is equal to ``1`` for the success variant "
+"and ``0`` for the error variant."
+msgstr ""
+"Một ``Result`` trình tự hóa dưới dạng một byte tag đơn, tiếp theo là trình "
+"tự hóa giá trị được chứa. Thẻ bằng ``1`` đối với biến thể thành công và "
+"``0`` đối với biến thể lỗi."
+
+#: ../../implementation/serialization-standard.rst:381
+msgid "E.g. ``Ok(314u64)`` serializes as ``0x013a01000000000000``"
+msgstr "Ví dụ ``Ok(314u64)`` trình tự hoá thành ``0x013a01000000000000``"
+
+#: ../../implementation/serialization-standard.rst:382
+msgid "E.g. ``Err(\"Uh oh\")`` serializes as ``0x00050000005568206f68``"
+msgstr "Ví dụ ``Err(\"Uh oh\")`` trình tự hoá thành ``0x00050000005568206f68``"
+
+#: ../../implementation/serialization-standard.rst:384
+msgid ""
+"Tuples serialize as the concatenation of their serialized elements. Similar "
+"to ``FixedList`` the number of elements is not included in the serialization"
+" because it is statically known in the type."
+msgstr ""
+"Tuples trình tự hóa như là sự nối tiếp các phần tử được trình tự hóa của "
+"chúng. Tương tự như ``FixedList``, số lượng phần tử không được bao gồm trong"
+" trình tự hóa vì nó cố trình trong kiểu giá trị."
+
+#: ../../implementation/serialization-standard.rst:388
+msgid ""
+"E.g. ``(1u32, \"Hello, World!\", true)`` serializes as "
+"``0x010000000d00000048656c6c6f2c20576f726c642101``"
+msgstr ""
+"Ví dụ ``(1u32, \"Hello, World!\", true)`` trình tự hoá thành "
+"``0x010000000d00000048656c6c6f2c20576f726c642101``"
+
+#: ../../implementation/serialization-standard.rst:391
+msgid ""
+"A ``Map`` serializes as a list of key-value tuples. There must be a well-"
+"defined ordering on the keys, and in the serialization, the pairs are listed"
+" in ascending order. This is done to ensure determinism in the "
+"serialization, as ``Map`` data structures can be unordered."
+msgstr ""
+"Một ``Map`` trình tự hóa dưới dạng danh sách các bộ giá trị khóa. Phải có "
+"một thứ tự được xác định rõ ràng trên các khóa và trong trình tự hóa, các "
+"cặp được liệt kê theo thứ tự tăng dần. Điều này được thực hiện để đảm bảo "
+"tính xác định trong trình tự hóa, vì cấu trúc dữ liệu ``Map`` có thể không "
+"có thứ tự."
+
+#: ../../implementation/serialization-standard.rst:395
+msgid ""
+"``URef`` values serialize as the concatenation of its address (which is a "
+"fixed-length list of ``u8``) and a single byte tag representing the access "
+"rights. Access rights are converted as follows:"
+msgstr ""
+"Các giá trị ``URef`` được trình tự hóa dưới dạng nối địa chỉ của nó (là danh"
+" sách có độ dài cố định của ``u8``) và một byte tag đơn đại diện cho các "
+"quyền truy cập. Quyền truy cập được chuyển đổi như sau:"
+
+#: ../../implementation/serialization-standard.rst:398
+msgid "Access Rights"
+msgstr "Quyền truy cập"
+
+#: ../../implementation/serialization-standard.rst:398
+msgid "Serialization"
+msgstr "Trình tự hoá"
+
+#: ../../implementation/serialization-standard.rst:400
+msgid "``NONE``"
+msgstr "``NONE``"
+
+#: ../../implementation/serialization-standard.rst:400
+#: ../../implementation/serialization-standard.rst:433
+#: ../../implementation/serialization-standard.rst:623
+msgid "0"
+msgstr "0"
+
+#: ../../implementation/serialization-standard.rst:402
+msgid "``READ``"
+msgstr "``READ``"
+
+#: ../../implementation/serialization-standard.rst:402
+#: ../../implementation/serialization-standard.rst:435
+#: ../../implementation/serialization-standard.rst:625
+msgid "1"
+msgstr "1"
+
+#: ../../implementation/serialization-standard.rst:404
+msgid "``WRITE``"
+msgstr "``WRITE``"
+
+#: ../../implementation/serialization-standard.rst:404
+#: ../../implementation/serialization-standard.rst:437
+#: ../../implementation/serialization-standard.rst:627
+msgid "2"
+msgstr "2"
+
+#: ../../implementation/serialization-standard.rst:406
+msgid "``READ_WRITE``"
+msgstr "``READ_WRITE``"
+
+#: ../../implementation/serialization-standard.rst:406
+#: ../../implementation/serialization-standard.rst:439
+#: ../../implementation/serialization-standard.rst:629
+msgid "3"
+msgstr "3"
+
+#: ../../implementation/serialization-standard.rst:408
+msgid "``ADD``"
+msgstr "``ADD``"
+
+#: ../../implementation/serialization-standard.rst:408
+#: ../../implementation/serialization-standard.rst:441
+#: ../../implementation/serialization-standard.rst:631
+msgid "4"
+msgstr "4"
+
+#: ../../implementation/serialization-standard.rst:410
+msgid "``READ_ADD``"
+msgstr "``READ_ADD``"
+
+#: ../../implementation/serialization-standard.rst:410
+#: ../../implementation/serialization-standard.rst:443
+#: ../../implementation/serialization-standard.rst:633
+msgid "5"
+msgstr "5"
+
+#: ../../implementation/serialization-standard.rst:412
+msgid "``ADD_WRITE``"
+msgstr "``ADD_WRITE``"
+
+#: ../../implementation/serialization-standard.rst:412
+#: ../../implementation/serialization-standard.rst:445
+#: ../../implementation/serialization-standard.rst:635
+msgid "6"
+msgstr "6"
+
+#: ../../implementation/serialization-standard.rst:414
+msgid "``READ_ADD_WRITE``"
+msgstr "``READ_ADD_WRITE``"
+
+#: ../../implementation/serialization-standard.rst:414
+#: ../../implementation/serialization-standard.rst:447
+#: ../../implementation/serialization-standard.rst:637
+msgid "7"
+msgstr "7"
+
+#: ../../implementation/serialization-standard.rst:417
+msgid ""
+"``PublicKey`` serializes as a single byte tag representing the algorithm "
+"followed by 32 bytes of the ``PublicKey`` itself:"
+msgstr ""
+"``PublicKey`` trình tự hóa dưới dạng một byte tag đơn và đại diện cho thuật "
+"toán tiếp theo là 32 byte của chính ``PublicKey``:"
+
+#: ../../implementation/serialization-standard.rst:419
+msgid ""
+"If the ``PublicKey`` is an ``Ed25519`` key, the single tag byte is ``1`` "
+"followed by the individual bytes of the serialized key."
+msgstr ""
+"Nếu ``PublicKey`` là khóa ``Ed25519``, thì byte tag đơn là ``1`` tiếp theo "
+"là các byte riêng lẻ của khóa được trình tự hóa."
+
+#: ../../implementation/serialization-standard.rst:420
+msgid ""
+"If the ``PublicKey`` is a ``Secp256k1`` key, the single tag byte is a ``2`` "
+"followed by the individual bytes of the serialized key."
+msgstr ""
+"Nếu ``PublicKey`` là khóa ``Secp256k1``, thì byte tag đơn là ``2`` tiếp theo"
+" là các byte riêng lẻ của khóa được trình tự hóa."
+
+#: ../../implementation/serialization-standard.rst:423
+msgid ""
+"``Key`` values serialize as a single byte tag representing the variant, "
+"followed by the serialization of the data that variant contains. For most "
+"variants, this is simply a fixed-length 32-byte array. The exception is "
+"``Key::URef``, which contains a ``URef``; so its data serializes per the "
+"description above. The tags are as follows: ``Key::Account`` serializes as "
+"``0``, ``Key::Hash`` as ``1``, ``Key::URef`` as ``2``."
+msgstr ""
+"Các giá trị ``Key`` trình tự hóa dưới dạng một byte tag đơn, đại diện cho "
+"biến thể, theo sau là trình tự hóa dữ liệu mà biến thể đó chứa. Đối với hầu "
+"hết các biến thể, đây chỉ đơn giản là một mảng 32 byte có độ dài cố định. "
+"Ngoại lệ là ``Key::URef``, chứa một `URef``; vì vậy dữ liệu của nó trình tự "
+"theo mô tả ở trên. Các thẻ như sau: ``Key::Account`` trình tự hóa thành "
+"``0``, ``Key::Hash`` thành ``1``, ``Key::URef`` thành ``2``."
+
+#: ../../implementation/serialization-standard.rst:428
+msgid ""
+"``CLType`` itself also has rules for serialization. A ``CLType`` serializes "
+"as a single-byte tag, followed by the concatenation of serialized inner "
+"types, if any (e.g., lists and tuples have inner types). ``FixedList`` is a "
+"minor exception because it also includes the length in the type. However, "
+"the length is included in the serialization (as a 32-bit integer, per the "
+"serialization rules above), following the serialization of the inner type. "
+"The tags are as follows:"
+msgstr ""
+"Bản thân ``CLType`` cũng có các quy tắc để trình tự hóa. Một ``CLType`` "
+"trình tự hóa dưới dạng byte tag đơn, theo sau là nối các kiểu bên trong được"
+" trình tự hóa, nếu có (ví dụ: danh sách và bộ dữ liệu có các kiểu bên "
+"trong). ``FixedList`` là một ngoại lệ nhỏ vì nó cũng bao gồm độ dài trong "
+"kiểu. Tuy nhiên, độ dài được bao gồm trong trình tự hóa (dưới dạng số nguyên"
+" 32 bit, theo các quy tắc trình tự hóa ở trên), tiếp theo là trình tự hóa "
+"kiểu bên trong. Các tag như sau:"
+
+#: ../../implementation/serialization-standard.rst:431
+msgid "``CLType``"
+msgstr "``CLType``"
+
+#: ../../implementation/serialization-standard.rst:431
+#: ../../implementation/serialization-standard.rst:621
+msgid "Serialization Tag"
+msgstr "Thẻ trình tự hóa"
+
+#: ../../implementation/serialization-standard.rst:433
+msgid "``Bool``"
+msgstr "``Bool``"
+
+#: ../../implementation/serialization-standard.rst:435
+msgid "``I32``"
+msgstr "``I32``"
+
+#: ../../implementation/serialization-standard.rst:437
+msgid "``I64``"
+msgstr "``I64``"
+
+#: ../../implementation/serialization-standard.rst:439
+msgid "``U8``"
+msgstr "``U8``"
+
+#: ../../implementation/serialization-standard.rst:441
+msgid "``U32``"
+msgstr "``U32``"
+
+#: ../../implementation/serialization-standard.rst:443
+msgid "``U64``"
+msgstr "``U64``"
+
+#: ../../implementation/serialization-standard.rst:445
+msgid "``U128``"
+msgstr "``U128``"
+
+#: ../../implementation/serialization-standard.rst:447
+msgid "``U256``"
+msgstr "``U256``"
+
+#: ../../implementation/serialization-standard.rst:449
+msgid "``U512``"
+msgstr "``U512``"
+
+#: ../../implementation/serialization-standard.rst:449
+#: ../../implementation/serialization-standard.rst:639
+msgid "8"
+msgstr "8"
+
+#: ../../implementation/serialization-standard.rst:451
+msgid "``Unit``"
+msgstr "``Unit``"
+
+#: ../../implementation/serialization-standard.rst:451
+msgid "9"
+msgstr "9"
+
+#: ../../implementation/serialization-standard.rst:453
+msgid "``String``"
+msgstr "``String``"
+
+#: ../../implementation/serialization-standard.rst:453
+msgid "10"
+msgstr "10"
+
+#: ../../implementation/serialization-standard.rst:455
+#: ../../implementation/serialization-standard.rst:627
+msgid "``URef``"
+msgstr "``URef``"
+
+#: ../../implementation/serialization-standard.rst:455
+msgid "11"
+msgstr "11"
+
+#: ../../implementation/serialization-standard.rst:457
+#: ../../implementation/serialization-standard.rst:621
+msgid "``Key``"
+msgstr "``Key``"
+
+#: ../../implementation/serialization-standard.rst:457
+msgid "12"
+msgstr "12"
+
+#: ../../implementation/serialization-standard.rst:459
+msgid "``Option``"
+msgstr "``Option``"
+
+#: ../../implementation/serialization-standard.rst:459
+msgid "13"
+msgstr "13"
+
+#: ../../implementation/serialization-standard.rst:461
+msgid "``List``"
+msgstr "``List``"
+
+#: ../../implementation/serialization-standard.rst:461
+msgid "14"
+msgstr "14"
+
+#: ../../implementation/serialization-standard.rst:463
+msgid "``FixedList``"
+msgstr "``FixedList``"
+
+#: ../../implementation/serialization-standard.rst:463
+msgid "15"
+msgstr "15"
+
+#: ../../implementation/serialization-standard.rst:465
+msgid "``Result``"
+msgstr "``Result``"
+
+#: ../../implementation/serialization-standard.rst:465
+msgid "16"
+msgstr "16"
+
+#: ../../implementation/serialization-standard.rst:467
+msgid "``Map``"
+msgstr "``Map``"
+
+#: ../../implementation/serialization-standard.rst:467
+msgid "17"
+msgstr "17"
+
+#: ../../implementation/serialization-standard.rst:469
+msgid "``Tuple1``"
+msgstr "``Tuple1``"
+
+#: ../../implementation/serialization-standard.rst:469
+msgid "18"
+msgstr "18"
+
+#: ../../implementation/serialization-standard.rst:471
+msgid "``Tuple2``"
+msgstr "``Tuple2``"
+
+#: ../../implementation/serialization-standard.rst:471
+msgid "19"
+msgstr "19"
+
+#: ../../implementation/serialization-standard.rst:473
+msgid "``Tuple3``"
+msgstr "``Tuple3``"
+
+#: ../../implementation/serialization-standard.rst:473
+msgid "20"
+msgstr "20"
+
+#: ../../implementation/serialization-standard.rst:475
+msgid "``Any``"
+msgstr "``Any``"
+
+#: ../../implementation/serialization-standard.rst:475
+msgid "21"
+msgstr "21"
+
+#: ../../implementation/serialization-standard.rst:478
+msgid ""
+"A complete ``CLValue``, including both the data and the type, can also be "
+"serialized (to store it in the global state). This is done by concatenating:"
+" the serialization of the length (as a 32-bit integer) of the serialized "
+"data (in bytes), the serialized data itself, and the serialization of the "
+"type."
+msgstr ""
+"Một  ``CLValue`` hoàn chỉnh, bao gồm cả dữ liệu và kiểu, cũng có thể được "
+"trình tự hóa (để lưu trữ nó ở trạng thái toàn cục). Điều này được thực hiện "
+"bằng cách nối: trình tự hóa độ dài (dưới dạng số nguyên 32 bit) của dữ liệu "
+"được trình tự hóa (tính bằng byte), bản thân dữ liệu được trình tự hóa và "
+"kiểu được trình tự hóa."
+
+#: ../../implementation/serialization-standard.rst:484
+msgid "Contracts"
+msgstr "Hợp đồng"
+
+#: ../../implementation/serialization-standard.rst:486
+msgid ""
+"Contracts are a special value type because they contain the on-chain logic "
+"of the applications running on the Casper network. A *contract* contains the"
+" following data:"
+msgstr ""
+"Hợp đồng là một loại giá trị đặc biệt vì chúng chứa logic trên chuỗi của các"
+" ứng dụng chạy trên mạng Casper. *Hợp đồng* chứa dữ liệu sau:"
+
+#: ../../implementation/serialization-standard.rst:488
+msgid "a `wasm module <https://webassembly.org/docs/modules/>`__"
+msgstr "`wasm mô-đun <https://webassembly.org/docs/modules/>`__"
+
+#: ../../implementation/serialization-standard.rst:489
+msgid "a collection of named keys"
+msgstr "một tập hợp các khóa được đặt tên"
+
+#: ../../implementation/serialization-standard.rst:490
+msgid "a protocol version"
+msgstr "một phiên bản giao thức"
+
+#: ../../implementation/serialization-standard.rst:492
+msgid ""
+"The wasm module must contain a function named ``call``, which takes no "
+"arguments and returns no values. This is the main entry point into the "
+"contract. Moreover, the module may import any of the functions supported by "
+"the Casper runtime; a list of all supported functions can be found in "
+":ref:`Appendix A <appendix-a>`."
+msgstr ""
+"Mô-đun wasm phải chứa một hàm có tên là ``call``, hàm này không nhận đối số "
+"và không trả về giá trị nào. Đây là điểm vào chính trong hợp đồng. Hơn nữa, "
+"mô-đun có thể nhập bất kỳ hàm nào được hỗ trợ bởi thời điểm chạy Casper; "
+"danh sách tất cả các hàm được hỗ trợ có thể được tìm thấy trong :ref: `Phụ "
+"lục A <appendix-a>`."
+
+#: ../../implementation/serialization-standard.rst:494
+msgid ""
+"Note: though the ``call`` function signature has no arguments and no return "
+"value, within the ``call`` function body, the ``get_named_arg`` runtime "
+"function can be used to accept arguments (by ordinal), and the ``ret`` "
+"runtime function can be used to return a single ``CLValue`` to the caller."
+msgstr ""
+"Lưu ý: mặc dù chữ ký hàm ``call`` không có đối số và không có giá trị trả "
+"về, trong thân hàm ``call``, hàm thời điểm chạy ``get_named_arg`` có thể "
+"được sử dụng để chấp nhận các đối số (theo thứ tự) và hàm điểm gian chạy "
+"``ret`` có thể được sử dụng để trả về một ``CLValue`` duy nhất cho người "
+"gọi."
+
+#: ../../implementation/serialization-standard.rst:496
+msgid ""
+"The named keys are used to give human-readable names to keys in the global "
+"state, which are essential to the contract. For example, the hash key of "
+"another contract it frequently calls may be stored under a meaningful name. "
+"It is also used to store the ``URef``\\ s, which are known to the contract "
+"(see the section on Permissions for details)."
+msgstr ""
+"Các khóa được đặt tên được sử dụng để đặt tên mà con người có thể đọc được "
+"cho các khóa ở trạng thái toàn cục, điều này rất cần thiết cho hợp đồng. Ví "
+"dụ, khóa băm của một hợp đồng khác mà nó thường gọi có thể được lưu trữ dưới"
+" một tên có nghĩa. Nó cũng được sử dụng để lưu trữ các ``URef``, được biết "
+"đến trong các hợp đồng (xem phần Quyền để biết chi tiết)."
+
+#: ../../implementation/serialization-standard.rst:498
+msgid ""
+"Each contract specifies the Casper protocol version that was active when the"
+" contract was written to the global state."
+msgstr ""
+"Mỗi hợp đồng chỉ định phiên bản giao thức Casper đã hoạt động khi hợp đồng "
+"được ghi ở trạng thái toàn cục."
+
+#: ../../implementation/serialization-standard.rst:503
+msgid "Keys"
+msgstr "Khoá"
+
+#: ../../implementation/serialization-standard.rst:505
+msgid ""
+"In this chapter, we describe what constitutes a “key”, the permissions model"
+" for the keys, and how they are serialized."
+msgstr ""
+"Trong chương này, chúng tôi mô tả những gì cấu thành một “key”, mô hình "
+"quyền cho các khóa và cách chúng được trình tự hóa."
+
+#: ../../implementation/serialization-standard.rst:507
+msgid ""
+"A *key* in the :ref:`Global State<global-state-intro>` is one of the "
+"following data types:"
+msgstr ""
+"*Key* trong :ref:`Trạng thái toàn cục<global-state-intro>` là một trong các "
+"kiểu dữ liệu sau:"
+
+#: ../../implementation/serialization-standard.rst:509
+msgid "32-byte account identifier (called an “account identity key”)"
+msgstr ""
+"Mã định danh tài khoản 32 byte (được gọi là “khóa định dạng tài khoản”)"
+
+#: ../../implementation/serialization-standard.rst:510
+msgid "32-byte immutable contract identifier (called a “hash key”)"
+msgstr "Mã định danh hợp đồng bất biến 32 byte (được gọi là “khóa băm”)"
+
+#: ../../implementation/serialization-standard.rst:511
+msgid "32-byte reference identifier (called an “unforgeable reference”)"
+msgstr ""
+"Mã định danh tham chiếu 32 byte (được gọi là “tham chiếu không thể giả mạo”)"
+
+#: ../../implementation/serialization-standard.rst:512
+msgid "32-byte transfer identifier"
+msgstr "Mã định danh chuyển 32 byte"
+
+#: ../../implementation/serialization-standard.rst:513
+msgid "32-byte deploy information identifier"
+msgstr "Mã định danh thông tin triển khai 32 byte"
+
+#: ../../implementation/serialization-standard.rst:514
+msgid "32-byte purse balance identifier"
+msgstr "Mã định danh số dư ví 32 byte"
+
+#: ../../implementation/serialization-standard.rst:515
+msgid "32-byte Auction bid identifier"
+msgstr "Mã định danh giá thầu của Phiên đấu giá 32 byte"
+
+#: ../../implementation/serialization-standard.rst:516
+msgid "32-byte Auction withdrawal identifier"
+msgstr "Mã định danh rút tiền trong Phiên đấu giá 32 byte"
+
+#: ../../implementation/serialization-standard.rst:518
+msgid ""
+"The one exception to note here is the identifier for ``EraInfo``, which "
+"actually serializes as a ``u64`` value with an additional byte for the tag."
+msgstr ""
+"Một ngoại lệ cần lưu ý ở đây là định danh cho ``EraInfo``, thực sự trình tự "
+"hóa dưới dạng giá trị ``u64`` với một byte bổ sung cho tag."
+
+#: ../../implementation/serialization-standard.rst:524
+msgid "Account identity key"
+msgstr "Khóa định danh tài khoản"
+
+#: ../../implementation/serialization-standard.rst:526
+msgid ""
+"This key type is used specifically for accounts in the global state. All "
+"accounts in the system must be stored under an account identity key, and no "
+"other types. The 32-byte identifier which represents this key is derived "
+"from the ``blake2b256`` hash of the public key used to create the associated"
+" account (see :ref:`Accounts <accounts-associated-keys-weights>` for more "
+"information)."
+msgstr ""
+"Loại khóa này được sử dụng đặc biệt cho các tài khoản ở trạng thái toàn cục."
+" Tất cả các tài khoản trong hệ thống phải được lưu trữ dưới một khóa nhận "
+"dạng tài khoản và không có các loại khác. Mã định danh 32 byte đại diện cho "
+"khóa này được lấy từ băm ``blake2b256`` của khóa công khai được sử dụng để "
+"tạo tài khoản được liên kết (xem :ref:`Tài khoản <accounts-associated-keys-"
+"weights>` để biết thêm chi tiết)."
+
+#: ../../implementation/serialization-standard.rst:535
+msgid "Hash key"
+msgstr "Khoá băm"
+
+#: ../../implementation/serialization-standard.rst:537
+msgid ""
+"This key type is used for storing contracts immutably. Once a contract is "
+"written under a hash key, that contract can never change. The 32-byte "
+"identifier representing this key is derived from the ``blake2b256`` hash of "
+"the deploy hash (see :ref:`block-structure-head` for more information) "
+"concatenated with a 4-byte sequential ID. The ID begins at zero for each "
+"deploy and increments by one each time a contract is stored. The purpose of "
+"this ID is to allow each contract stored in the same deploy to have a unique"
+" key."
+msgstr ""
+"Loại khóa này được sử dụng để lưu trữ các hợp đồng bất biến. Một khi hợp "
+"đồng được viết dưới khóa băm, hợp đồng đó không bao giờ có thể thay đổi. Mã "
+"định danh 32 byte đại diện cho khóa này được lấy từ băm ``blake2b256`` của "
+"băm triển khai (xem :ref: `block-structure-head` để biết thêm thông tin) "
+"được nối với ID tuần tự 4 byte. ID bắt đầu bằng 0 cho mỗi lần triển khai và "
+"tăng dần mỗi lần một hợp đồng được lưu trữ. Mục đích của ID này là cho phép "
+"mỗi hợp đồng được lưu trữ trong cùng một triển khai có một khóa duy nhất."
+
+#: ../../implementation/serialization-standard.rst:548
+msgid "Unforgeable Reference (``URef``)"
+msgstr "Tham chiếu không thể giả mạo (``URef``)"
+
+#: ../../implementation/serialization-standard.rst:550
+msgid ""
+"``URef`` broadly speaking can be used to store values and manage permissions"
+" to interact with the value stored under the ``URef``. ``URef`` is a tuple "
+"which contains the address under which the values are stored and the Access "
+"rights to the ``URef``. Refer to the :ref:`Unforgeable Reference<uref-head>`"
+" section for details on how ``URefs`` are managed."
+msgstr ""
+"Nói rộng ra, ``URef`` có thể được sử dụng để lưu trữ các giá trị và quản lý "
+"quyền tương tác với giá trị được lưu trữ trong ``URef``. ``URef`` là một bộ "
+"chứa địa chỉ mà các giá trị được lưu trữ và các quyền Truy cập đối với "
+"``URef``. Tham khảo phần :ref: `Tham chiếu không thể giả mạo<uref-head>` để "
+"biết cách quản lý ``URef``."
+
+#: ../../implementation/serialization-standard.rst:557
+msgid "Transfer Key"
+msgstr "Khóa chuyển khoản"
+
+#: ../../implementation/serialization-standard.rst:559
+msgid ""
+"This key type is used specifically for transfers in the global state. All "
+"transfers in the system must be stored under a transfer key and no other "
+"type. The 32-byte identifier which represents this key is derived from the "
+"``blake2b256`` hash of the transfer address associated with the given "
+"transfer"
+msgstr ""
+"Loại khóa này được sử dụng đặc biệt để chuyển tiền trong trạng thái toàn "
+"cục. Tất cả các chuyển khoản trong hệ thống phải được lưu trữ dưới một khóa "
+"chuyển và không có loại nào khác. Định danh 32 byte đại diện cho khóa này "
+"được lấy từ băm ``blake2b256`` của địa chỉ chuyển khoản được liên kết với "
+"địa chỉ chuyển khoản đã cho"
+
+#: ../../implementation/serialization-standard.rst:567
+msgid "DeployInfo Key"
+msgstr "Khóa DeployInfo"
+
+#: ../../implementation/serialization-standard.rst:569
+msgid ""
+"This key type is used specifically for storing information related to "
+"deploys in the global state. Information for a given deploy is stored under "
+"this key only. The 32-byte identifier which represents this key is derived "
+"from the ``blake2b256`` hash of the deploy itself."
+msgstr ""
+"Loại khóa này được sử dụng đặc biệt để lưu trữ thông tin liên quan đến triển"
+" khai ở trạng thái toàn cục. Thông tin cho một triển khai nhất định chỉ được"
+" lưu trữ trong khóa này. Mã định danh 32 byte đại diện cho khóa này được lấy"
+" từ băm ``blake2b256`` của chính quá trình triển khai."
+
+#: ../../implementation/serialization-standard.rst:577
+msgid "EraInfo Key"
+msgstr "Khoá EraInfo"
+
+#: ../../implementation/serialization-standard.rst:578
+msgid ""
+"This key type is used specifically for storing information related to the "
+"``Auction`` metadata for a particular era. The underlying data type stored "
+"under this is a vector of the allocation of seigniorage for that given era. "
+"The identifier for this key is a new type that wraps around the primitive "
+"``u64`` data type and co-relates to the era number when the auction "
+"information was stored."
+msgstr ""
+"Loại khóa này được sử dụng đặc biệt để lưu trữ thông tin liên quan đến siêu "
+"dữ liệu ``Auction`` cho một kỷ nguyên cụ thể. Kiểu dữ liệu cơ bản được lưu "
+"trữ dưới đây là một vectơ phân bổ lưu trữ seigniorage cho kỷ nguyên nhất "
+"định đó. Định danh cho khóa này là một kiểu mới bao trùm kiểu dữ liệu "
+"``u64`` nguyên thủy và đồng liên quan đến số kỷ nguyên khi thông tin đấu giá"
+" được lưu trữ."
+
+#: ../../implementation/serialization-standard.rst:586
+msgid "Balance Key"
+msgstr "Khóa số dư"
+
+#: ../../implementation/serialization-standard.rst:587
+msgid ""
+"This key type is used to store information related to the balance of a given"
+" purse. All purse balances are stored using this key. The 32-byte identifier"
+" which represents this key is derived from the Address of the URef, which "
+"relates to the purse."
+msgstr ""
+"Loại khóa này được sử dụng để lưu trữ thông tin liên quan đến số dư của một "
+"ví nhất định. Tất cả số dư trong ví được lưu trữ bằng cách sử dụng khóa này."
+" Định danh 32 byte đại diện cho khóa này được lấy từ Địa chỉ của URef, liên "
+"quan đến ví."
+
+#: ../../implementation/serialization-standard.rst:593
+msgid "Bid Key"
+msgstr "Khóa giá thầu"
+
+#: ../../implementation/serialization-standard.rst:595
+msgid ""
+"This key type is used specifically for storing information related to "
+"auction bids in the global state. Information for the bids is stored under "
+"this key only. The 32-byte identifier which represents this key is derived "
+"from the ``blake2b256`` hash of the public key used to create the associated"
+" account (see :ref:`Accounts <accounts-associated-keys-weights>` for more "
+"information)."
+msgstr ""
+"Loại khóa này được sử dụng đặc biệt để lưu trữ thông tin liên quan đến giá "
+"thầu đấu giá ở trạng thái toàn cục. Thông tin cho các giá thầu chỉ được lưu "
+"trữ trong khóa này. Mã định danh 32 byte đại diện cho khóa này được lấy từ "
+"băm ``blake2b256`` của khóa công khai được sử dụng để tạo tài khoản được "
+"liên kết (xem: ref: `Tài khoản <accounts-associated-keys-weights>` để biết "
+"thêm)."
+
+#: ../../implementation/serialization-standard.rst:603
+msgid "Withdraw Key"
+msgstr "Khoá rút tiền"
+
+#: ../../implementation/serialization-standard.rst:605
+msgid ""
+"This key type is used specifically for storing information related to "
+"auction withdraws in the global state. Information for the withdrawals is "
+"stored under this key only. The 32-byte identifier which represents this key"
+" is derived from the ``blake2b256`` hash of the public key used to create "
+"the associated account (see :ref:`Accounts <accounts-associated-keys-"
+"weights>` for more information)."
+msgstr ""
+"Loại khóa này được sử dụng đặc biệt để lưu trữ thông tin liên quan đến việc "
+"rút tiền đấu giá trong trạng thái toàn cục. Thông tin về việc rút tiền chỉ "
+"được lưu trữ trong khóa này. Mã định danh 32 byte đại diện cho khóa này được"
+" lấy từ băm ``blake2b256`` của khóa công khai được sử dụng để tạo tài khoản "
+"được liên kết (xem: ref: `Tài khoản <accounts-associated-keys-weights>` để "
+"biết thêm)."
+
+#: ../../implementation/serialization-standard.rst:614
+msgid "Serialization for ``Key``"
+msgstr "Trình tự hoá cho ``Key``"
+
+#: ../../implementation/serialization-standard.rst:616
+msgid ""
+"Given the different variants for the over-arching ``Key`` data-type, each of"
+" the different variants is serialized differently. This section of this "
+"chapter details how the individual variants are serialized. The leading byte"
+" of the serialized buffer acts as a tag indicating the serialized variant."
+msgstr ""
+"Với các biến thể khác nhau cho kiểu dữ liệu ``Key``, mỗi biến thể khác nhau "
+"được trình tự hóa khác nhau. Phần này của chương này trình bày chi tiết cách"
+" các biến thể riêng lẻ được trình tự hoá. Byte đầu của bộ đệm được trình tự "
+"hóa hoạt động như một tag chỉ ra biến thể được trình tự hóa."
+
+#: ../../implementation/serialization-standard.rst:623
+msgid "``Account``"
+msgstr "``Account``"
+
+#: ../../implementation/serialization-standard.rst:625
+msgid "``Hash``"
+msgstr "``Hash``"
+
+#: ../../implementation/serialization-standard.rst:629
+msgid "``Transfer``"
+msgstr "``Transfer``"
+
+#: ../../implementation/serialization-standard.rst:631
+msgid "``DeployInfo``"
+msgstr "``DeployInfo``"
+
+#: ../../implementation/serialization-standard.rst:633
+msgid "``EraInfo``"
+msgstr "``EraInfo``"
+
+#: ../../implementation/serialization-standard.rst:635
+msgid "``Balance``"
+msgstr "``Balance``"
+
+#: ../../implementation/serialization-standard.rst:637
+msgid "``Bid``"
+msgstr "``Bid``"
+
+#: ../../implementation/serialization-standard.rst:639
+msgid "``Withdraw``"
+msgstr "``Withdraw``"
+
+#: ../../implementation/serialization-standard.rst:643
+msgid ""
+"``Account`` serializes as a 32 byte long buffer containing the byte "
+"representation of the underlying ``AccountHash``"
+msgstr ""
+"``Account`` tuần tự hóa dưới dạng một bộ đệm dài 32 byte chứa biểu diễn byte"
+" của phần cơ bản ``AccountHash``"
+
+#: ../../implementation/serialization-standard.rst:644
+msgid ""
+"``Hash`` serializes as a 32 byte long buffer containing the byte "
+"representation of the underlying ``Hash`` itself."
+msgstr ""
+"``Hash`` tuần tự hóa dưới dạng một bộ đệm dài 32 byte chứa biểu diễn byte "
+"của phần cơ bản ``Hash``."
+
+#: ../../implementation/serialization-standard.rst:645
+msgid ""
+"``URef`` is a tuple that contains the address of the URef and the access "
+"rights to that ``URef``. The serialized representation of the ``URef`` is 33"
+" bytes long. The first 32 bytes are the byte representation of the ``URef`` "
+"address, and the last byte contains the bits corresponding to the access "
+"rights of the ``URef``. Refer to the :ref:`CLValue<serialization-standard-"
+"values>` section of this chapter for details on how ``AccessRights`` are "
+"serialized."
+msgstr ""
+"``URef`` là một bộ chứa địa chỉ của URef và các quyền truy cập vào ``URef`` "
+"đó. Biểu diễn trình tự của ``URef`` dài 33 byte. 32 byte đầu tiên là biểu "
+"diễn byte của địa chỉ ``URef`` và byte cuối cùng chứa các bit tương ứng với "
+"quyền truy cập của ``URef``. Tham khảo phần :ref: `CLValue<serialization-"
+"standard-values>` của chương này để biết chi tiết về cách ``AccessRights`` "
+"được trình tự hoá."
+
+#: ../../implementation/serialization-standard.rst:646
+msgid ""
+"``Transfer`` serializes as a 32 byte long buffer containing the byte "
+"representation of the hash of the transfer."
+msgstr ""
+"``Transfer`` trình tự hóa như một bộ đệm dài 32 byte chứa biểu diễn byte của"
+" băm của quá trình chuyển khoản."
+
+#: ../../implementation/serialization-standard.rst:647
+msgid ""
+"``DeployInfo`` serializes as 32 byte long buffer containing the byte "
+"representation of the Deploy hash. See the Deploy section above for how "
+"Deploy hashes are serialized."
+msgstr ""
+"``DeployInfo`` trình tự hóa dưới dạng bộ đệm dài 32 byte chứa biểu diễn byte"
+" của băm Triển khai. Xem phần Triển khai ở trên để biết cách trình tự hoá "
+"chuỗi băm Triển khai."
+
+#: ../../implementation/serialization-standard.rst:648
+msgid ""
+"``EraInfo`` serializes a ``u64`` primitive type containing the little-endian"
+" byte representation of ``u64``."
+msgstr ""
+"``EraInfo`` trình tự hóa một kiểu sơ khai ``u64`` chứa biểu diễn byte "
+"little-endian của ``u64``."
+
+#: ../../implementation/serialization-standard.rst:649
+msgid ""
+"``Balance`` serializes as 32 byte long buffer containing the byte "
+"representation of the URef address."
+msgstr ""
+"``Balance`` trình tự hóa dưới dạng bộ đệm dài 32 byte chứa biểu diễn byte "
+"của địa chỉ URef."
+
+#: ../../implementation/serialization-standard.rst:650
+msgid ""
+"``Bid`` and ``Withdraw`` both contain the ``AccountHash`` as their "
+"identifier; therefore, they serialize in the same manner as the ``Account`` "
+"variant."
+msgstr ""
+"Cả ```Bid`` và ``Withdraw`` đều chứa ``AccountHash`` làm định danh của "
+"chúng; do đó, chúng trình tự hóa theo cách tương tự như ``Account``."
+
+#: ../../implementation/serialization-standard.rst:656
+msgid "Permissions"
+msgstr "Phân quyền"
+
+#: ../../implementation/serialization-standard.rst:658
+msgid ""
+"There are three types of actions that can be done on a value: read, write, "
+"add. The reason for *add* to be called out separately from *write* is to "
+"allow for commutativity checking. The available actions depend on the key "
+"type and the context. Some key types only allow controlled access by smart "
+"contracts via the contract API, and other key types refer to values produced"
+" and used by the system itself and are not accessible to smart contracts at "
+"all but can be read via off-chain queries. This is summarized in the table "
+"below:"
+msgstr ""
+"Có ba loại hành động có thể được thực hiện trên một giá trị: đọc, ghi, thêm."
+" Lý do *add* được gọi riêng với *write* là để cho phép kiểm tra tính giao "
+"hoán. Các hành động khả dụng phụ thuộc vào loại khóa và ngữ cảnh. Một số "
+"loại khóa chỉ cho phép truy cập được kiểm soát bởi các hợp đồng thông minh "
+"thông qua API hợp đồng và các loại khóa khác tham chiếu đến các giá trị do "
+"chính hệ thống sinh ra,  sử dụng và hoàn toàn không thể truy cập vào các hợp"
+" đồng thông minh nhưng có thể được đọc qua các truy vấn ngoài chuỗi. Điều "
+"này được tóm tắt trong bảng dưới đây:"
+
+#: ../../implementation/serialization-standard.rst:665
+msgid "Key Type"
+msgstr "Kiểu khoá"
+
+#: ../../implementation/serialization-standard.rst:665
+msgid "Available Actions"
+msgstr "Hoạt động có thể thực hiện"
+
+#: ../../implementation/serialization-standard.rst:667
+msgid "Account"
+msgstr "Account"
+
+#: ../../implementation/serialization-standard.rst:667
+msgid "Read + Add (via API)"
+msgstr "Read + Add (qua API)"
+
+#: ../../implementation/serialization-standard.rst:669
+msgid "Hash"
+msgstr "Hash"
+
+#: ../../implementation/serialization-standard.rst:669
+msgid "Read"
+msgstr "Read"
+
+#: ../../implementation/serialization-standard.rst:671
+msgid "URef"
+msgstr "URef"
+
+#: ../../implementation/serialization-standard.rst:671
+msgid "Read + Write and/or Add"
+msgstr "Read + Write and/or Add"
+
+#: ../../implementation/serialization-standard.rst:673
+msgid "Transfer"
+msgstr "Transfer"
+
+#: ../../implementation/serialization-standard.rst:673
+#: ../../implementation/serialization-standard.rst:675
+#: ../../implementation/serialization-standard.rst:677
+#: ../../implementation/serialization-standard.rst:681
+#: ../../implementation/serialization-standard.rst:683
+msgid "System"
+msgstr "System"
+
+#: ../../implementation/serialization-standard.rst:677
+msgid "EraInfo"
+msgstr "EraInfo"
+
+#: ../../implementation/serialization-standard.rst:679
+msgid "Balance"
+msgstr "Balance"
+
+#: ../../implementation/serialization-standard.rst:679
+msgid "Read (via API)"
+msgstr "Read (qua API)"
+
+#: ../../implementation/serialization-standard.rst:681
+msgid "Bid"
+msgstr "Bid"
+
+#: ../../implementation/serialization-standard.rst:683
+msgid "Withdraw"
+msgstr "Withdraw"
+
+#: ../../implementation/serialization-standard.rst:687
+msgid ""
+"Refer to :ref:`URef permissions<uref-permissions>` on how permissions are "
+"handled in the case of ``URef``\\ s."
+msgstr ""
+"Tham khảo :ref:`Quyền URef<uref-permissions>` về cách xử lý quyền trong "
+"trường hợp ``URef``."

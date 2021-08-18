@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../node-operator/unbonding.rst:3
+msgid "Unbonding"
+msgstr "Rút cổ phần"
+
+#: ../../node-operator/unbonding.rst:5
+msgid ""
+"Once a bid is placed, it will remain in the state of the auction contract. "
+"Even if the bid does not win a slot right away. The reason for this is that "
+"new slots may become available if bonded validators leave the network, or "
+"reduce their bond amounts. Therefore, a bid must be explicitly withdrawn in "
+"order to remove the bid from the auction. Bonded validators also have a bid "
+"in the auction, to unbond stake, this bid must be reduced. Since tokens will"
+" be transferred out of the bid purse, it's important to compile the contract"
+" to withdraw the bid yourself, so there is confidence in the correctness of "
+"the contract.  The process is essentially the same as bonding, but uses a "
+"different contract, ``withdraw_bid.wasm``."
+msgstr ""
+"Sau khi đặt giá, nó sẽ vẫn ở trạng thái của hợp đồng đấu giá. Ngay cả khi "
+"giá thầu không giành được một vị trí ngay lập tức. Lý do cho điều này là các"
+" vị trí mới có thể khả dụng nếu người xác thực đã góp cổ phần nhưng rời khỏi"
+" mạng hoặc giảm số lượng cổ phần của họ. Do đó, một giá thầu phải được rút "
+"lại một cách rõ ràng để loại bỏ giá thầu đó khỏi cuộc đấu giá. Người xác "
+"thực góp cổ phần cũng có một giá thầu trong cuộc đấu giá, để hủy bỏ cổ phần,"
+" giá thầu này phải được giảm xuống. Vì token sẽ được chuyển ra khỏi ví đấu "
+"thầu, điều quan trọng là bạn phải tự soạn hợp đồng để rút giá thầu, vì vậy "
+"hãy tin tưởng vào tính đúng đắn của hợp đồng. Quá trình này về cơ bản giống "
+"như góp cổ phần, nhưng sử dụng một hợp đồng khác là ``withdraw_bid.wasm``."
+
+#: ../../node-operator/unbonding.rst:8
+msgid "Withdrawal Request"
+msgstr "Rút yêu cầu"
+
+#: ../../node-operator/unbonding.rst:10
+msgid ""
+"Note the path to files and keys. Note: the session arguments need to be "
+"encased in double quotes, with the parameter values in single quotes. Note "
+"the required payment amount. It must contain at least 12 zeros. Payment "
+"amount is specified in motes."
+msgstr ""
+"Lưu ý đường dẫn đến tệp và khóa. Lưu ý: các đối số phiên cần được đặt trong "
+"dấu ngoặc kép, với các giá trị tham số trong dấu nháy đơn. Lưu ý số tiền "
+"thanh toán bắt buộc. Nó phải chứa ít nhất 12 số không. Số tiền thanh toán "
+"được xác định bằng motes."
+
+#: ../../node-operator/unbonding.rst:12
+msgid "To withdraw a bid, compile the contract & submit a deploy:"
+msgstr "Để rút lại giá thầu, hãy soạn hợp đồng và gửi bản triển khai:"
+
+#: ../../node-operator/unbonding.rst:19
+msgid "Contract Arguments"
+msgstr "Đối số của hợp đồng"
+
+#: ../../node-operator/unbonding.rst:21
+msgid "The withdraw_bid contract accepts 3 arguments:"
+msgstr "Hợp đồng withdraw_bid chấp nhận 3 đối số:"
+
+#: ../../node-operator/unbonding.rst:24
+msgid ""
+"public key: The public key in hex of the account to withhdraw. Note: This "
+"has to be the matching key to the validator secret key that signs the "
+"deploy, and has to match the public key of a bid in the auction contract."
+msgstr ""
+"public key: Khóa công khai trong hex của tài khoản để rút tiền. Lưu ý: Đây "
+"phải là khóa khớp với khóa bí mật của nhà xác thực ký triển khai và phải "
+"khớp với khóa công khai của một giá thầu trong hợp đồng đấu giá."
+
+#: ../../node-operator/unbonding.rst:25
+msgid "amount: This is the amount that is being withdrawn."
+msgstr "amount: Đây là số tiền đang được rút."
+
+#: ../../node-operator/unbonding.rst:26
+msgid ""
+"unbond_purse (optional): The purse to which the withdrawal will be remitted."
+" Defaults to the main purse for the account if not provided."
+msgstr ""
+"unbond_purse (tuỳ chọn): Ví mà tiền rút sẽ được chuyển đến. Mặc định là ví "
+"chính của tài khoản, nếu để trống thông tin."
+
+#: ../../node-operator/unbonding.rst:28
+msgid ""
+"Similar to bonding (bidding) - check the auction contract for updates to the"
+" bid amounts."
+msgstr ""
+"Tương tự như việc cổ phần (đấu thầu) - cần kiểm tra hợp đồng đấu giá để cập "
+"nhật về số tiền đấu thầu."
+
+#: ../../node-operator/unbonding.rst:31
+msgid "Unbonding Wait Period"
+msgstr "Khoảng thời gian chờ rút cổ phần"
+
+#: ../../node-operator/unbonding.rst:33
+msgid ""
+"In order to prevent 'long range attacks', requests to unbond must go through"
+" a mandatory wait period. This wait period is presently set to 15 eras."
+msgstr ""
+"Để ngăn chặn 'các cuộc tấn công tầm xa', các yêu cầu rút cổ phần phải trải "
+"qua một khoảng thời gian chờ bắt buộc. Khoảng thời gian chờ này hiện được "
+"đặt là 15 kỷ nguyên."

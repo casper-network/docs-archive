@@ -1,0 +1,240 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../economics/archived/issuance.rst:2
+msgid "Issuance"
+msgstr "Emisyon"
+
+#: ../../economics/archived/issuance.rst:4
+msgid ""
+"Issuance provides a base level of payments for validators, so that they are "
+"compensated for their work even if there is not a lot of demand for using "
+"the network. By issuing new CSPR for validators, we ensure that the network "
+"is secured by sufficient stake, even without the transaction fees."
+msgstr ""
+"İhraç, doğrulayıcılar için bir temel ödeme düzeyi sağlar, böylece ağı "
+"kullanmak için çok fazla talep olmasa bile çalışmalarının karşılığını "
+"alırlar. Doğrulayıcılar için yeni CSPR yayınlayarak, ağın işlem ücretleri "
+"olmadan bile yeterli payla güvence altına alınmasını sağlıyoruz."
+
+#: ../../economics/archived/issuance.rst:6
+msgid ""
+"CSPR is issued at a fixed rate and distributed to validators in proportion "
+"to their stake. This is analogous to block rewards in Proof of Work "
+"blockchains, except for a couple of differences:"
+msgstr ""
+"CSPR sabit bir oranda verilir ve doğrulayıcılara paylarıyla orantılı olarak "
+"dağıtılır. Bu, birkaç farklılık dışında İş Kanıtı blokzincirlerdeki ödülleri"
+" engellemeye benzer:"
+
+#: ../../economics/archived/issuance.rst:8
+msgid "The growth of CSPR supply is exponential instead of linear."
+msgstr "CSPR arzının büyümesi doğrusal yerine üsteldir."
+
+#: ../../economics/archived/issuance.rst:9
+msgid "Issuance takes into account slashed CSPR."
+msgstr "Emisyon, kesik CSPR'yi dikkate alır."
+
+#: ../../economics/archived/issuance.rst:11
+msgid ""
+"If there were no slashing, we would have computed block rewards according to"
+" the following formula"
+msgstr ""
+"Kesme (slashing) olmasaydı, blok ödüllerini aşağıdaki formüle göre "
+"hesaplardık"
+
+#: ../../economics/archived/issuance.rst:17
+msgid ""
+"where :code:`i = 1, 2, ...` and so on is the era's index, "
+":code:`initial_supply` is the number of CSPR at the Mainnet launch, "
+":code:`issuance_rate` is the annual rate at which new CSPR is minted, and "
+":code:`ticks_per_year = 365*24*60*60*1000 = 31_536_000_000`."
+msgstr ""
+":code:`i = 1, 2, ...` vb. dönemin indeksi olduğunda, "
+"i:code:`initial_supply`, Mainnet başlangıcındaki CSPR sayısıdır, "
+":code:`issuance_rate`, yeni CSPR'nin basıldığı yıllık orandır ve "
+":code:`ticks_per_year = 365*24*60* 60*1000 = 31_536_000_000."
+
+#: ../../economics/archived/issuance.rst:19
+msgid ""
+"However, we have to factor in slashed tokens too when we issue new CSPR. To "
+"this end, we keep track of minted and slashed CSPR at the end of each era:"
+msgstr ""
+"Ancak, yeni CSPR yayınladığımızda kesik tokenleri de hesaba katmalıyız. Bu "
+"amaçla, her dönemin sonunda basılmış ve bölünmüş CSPR'yi takip ediyoruz:"
+
+#: ../../economics/archived/issuance.rst:26
+msgid ""
+"where :code:`rewards(i)` is the total CSPR minted per issuance during era "
+":code:`i`, and :code:`slashings(i)` is the total CSPR slashed during era "
+":code:`i`. All of these quantities can be derived objectively from the "
+"history of the global state."
+msgstr ""
+"burada :code:`rewards(i)`, dönem :code:`i` sırasında emisyon başına basılan "
+"toplam CSPR'dir ve :code:`slashings(i)`, dönem code:`i` sırasında kesilen "
+"toplam CSPR'dir. Bu niceliklerin tümü, küresel durumun tarihinden nesnel "
+"olarak türetilebilir."
+
+#: ../../economics/archived/issuance.rst:28
+msgid "We introduce *round issuance rate*"
+msgstr "*Tur emisyon oranı*nı tanıtıyoruz"
+
+#: ../../economics/archived/issuance.rst:34
+msgid ""
+"which is the yearly issuance rate adjusted to a single round, whose length "
+"is defined by the protocol parameter :code:`minimum_round_exponent = 14`. "
+"This gives us a round length of roughly 16 seconds."
+msgstr ""
+"bu, uzunluğu code:`minimum_round_exponent = 14` protokol parametresi ile "
+"tanımlanan tek bir tura ayarlanan yıllık düzenleme oranıdır. Bu bize "
+"yaklaşık 16 saniyelik bir tur uzunluğu verir."
+
+#: ../../economics/archived/issuance.rst:36
+msgid "Finally, the base round reward is computed as"
+msgstr "Son olarak, temel tur ödülü şu şekilde hesaplanır:"
+
+#: ../../economics/archived/issuance.rst:42
+msgid ""
+"This value gives us the maximum amount of CSPR that the validators can "
+"receive from a proposed block."
+msgstr ""
+"Bu değer bize doğrulayıcıların önerilen bir bloktan alabileceği maksimum "
+"CSPR miktarını verir."
+
+#: ../../economics/archived/issuance.rst:45
+msgid "Reward Distribution"
+msgstr "Ödül Dağıtımı"
+
+#: ../../economics/archived/issuance.rst:47
+msgid ""
+"Validators are rewarded for proposing and finalizing blocks, according to "
+"their performance. The concept of weight is crucial for understanding reward"
+" distribution:"
+msgstr ""
+"Doğrulayıcılar, performanslarına göre blok önermek ve sonuçlandırmak için "
+"ödüllendirilir. Ağırlık kavramı, ödül dağılımını anlamak için çok önemlidir:"
+
+#: ../../economics/archived/issuance.rst:49
+msgid "**Weight:** A validator's bonded stake, used in consensus."
+msgstr "**Ağırlık:** Mutabakatta kullanılan bir doğrulayıcının bağlı hissesi."
+
+#: ../../economics/archived/issuance.rst:50
+msgid ""
+"**Assigned weight of a block/round:** The total stake of validators that are"
+" scheduled to participate on a block."
+msgstr ""
+"**Bir blok/turun atanan ağırlığı:** Bir bloğa katılması planlanan "
+"doğrulayıcıların toplam hissesi."
+
+#: ../../economics/archived/issuance.rst:51
+msgid ""
+"**Participated weight of a block/round:** The total stake of validators that"
+" actually end up participating. Here, *participating* means sending messages"
+" to finalize a block before their respective rounds end."
+msgstr ""
+"**Bir blok/turun katılan ağırlığı:** Gerçekte katılan doğrulayıcıların "
+"toplam hissesi. Burada *katılmak*, ilgili turlar bitmeden bir bloğu "
+"kesinleştirmek için mesajlar göndermek anlamına gelir."
+
+#: ../../economics/archived/issuance.rst:53
+msgid ""
+"To determine the validators' eligibility to receive rewards from a proposed "
+"block, we look at **on-time finalization (OTF)**. Validators should finalize"
+" blocks on time, by sending required messages before their respective rounds"
+" end."
+msgstr ""
+"Doğrulayıcıların önerilen bir bloktan ödül almaya uygun olup olmadığını "
+"belirlemek için **zamanında kesinleştirmeye (OTF)** bakarız. Doğrulayıcılar,"
+" ilgili turları bitmeden gerekli mesajları göndererek blokları zamanında "
+"kesinleştirmelidir."
+
+#: ../../economics/archived/issuance.rst:57
+msgid "Participation Schedule"
+msgstr "Katılım Takvimi"
+
+#: ../../economics/archived/issuance.rst:59
+msgid ""
+"The schedule with which validators send messages are determined by the "
+"validators' rounds, which are in turn determined by their round exponents. A"
+" validator with the round exponent :code:`n` has to participate in rounds "
+"that repeat every :code:`2^n` ticks."
+msgstr ""
+"Doğrulayıcıların mesaj gönderdiği program, doğrulayıcıların turları "
+"tarafından belirlenir ve bunlar da tur üsleri tarafından belirlenir. "
+":code:`n` tur üssüne sahip bir doğrulayıcı, her :code:`2^n` işaretini "
+"tekrarlayan turlara katılmak zorundadır."
+
+#: ../../economics/archived/issuance.rst:61
+msgid ""
+"Each validator is assessed according to their own round exponent. All "
+"assigned validators become eligible to receive rewards as long as the block "
+"gets finalized with messages that were sent within each validator's own "
+"round."
+msgstr ""
+"Her doğrulayıcı kendi tur üssüne göre değerlendirilir. Blok, her bir "
+"doğrulayıcının kendi turunda gönderilen mesajlarla kesinleştirildiği sürece,"
+" atanan tüm doğrulayıcılar ödül almaya hak kazanır."
+
+#: ../../economics/archived/issuance.rst:63
+msgid ""
+"We dictate a minimum assigned weight for all rounds. Rounds that meet the "
+"requirement are said to be *feasible*, and the ones that do not are said to "
+"be *infeasible*. Blocks proposed in infeasible rounds do not receive any "
+"rewards."
+msgstr ""
+"Tüm turlar için minimum atanmış ağırlık dikte ediyoruz. Gereksinimi "
+"karşılayan turların *uygulanabilir* olduğu, karşılamayanların ise *uygunsuz*"
+" olduğu söylenir. Uygun olmayan turlarda önerilen bloklar herhangi bir ödül "
+"almaz."
+
+#: ../../economics/archived/issuance.rst:66
+msgid "Reward Eligibility"
+msgstr "Ödül Uygunluğu"
+
+#: ../../economics/archived/issuance.rst:68
+msgid ""
+"Once a block has been proposed and enough time has passed, the history of "
+"messages can be examined to detect whether the block was indeed finalized on"
+" time, according to the conditions given above."
+msgstr ""
+"Bir blok önerildiğinde ve yeterli zaman geçtikten sonra, yukarıda verilen "
+"koşullara göre bloğun gerçekten zamanında tamamlanıp tamamlanmadığını tespit"
+" etmek için mesajların geçmişi incelenebilir."
+
+#: ../../economics/archived/issuance.rst:70
+msgid ""
+"If the block is *not* finalized on time, validators do not receive any "
+"rewards. The tokens allocated for the block are simply burned."
+msgstr ""
+"Blok zamanında *kesinleştirilmezse*, doğrulayıcılar herhangi bir ödül "
+"almazlar. Blok için tahsis edilen tokenler basitçe yakılır."
+
+#: ../../economics/archived/issuance.rst:71
+msgid ""
+"If the block is finalized on time, assigned validators share the reward pro "
+"rata, regardless of whether they have sent messages or not."
+msgstr ""
+"Blok zamanında kesinleştirilirse, atanan doğrulayıcılar mesaj gönderip "
+"göndermediklerine bakılmaksızın ödülü orantısal olarak paylaşır."

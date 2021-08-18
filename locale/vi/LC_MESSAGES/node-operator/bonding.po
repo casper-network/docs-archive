@@ -1,0 +1,260 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../node-operator/bonding.rst:6
+msgid "Bonding"
+msgstr "Cổ phần"
+
+#: ../../node-operator/bonding.rst:8
+msgid ""
+"It is recommended that a bonding request be sent once the node has completed"
+" the synchronization process. Bonding in Casper takes place through the "
+"auction contract via the ``add_bid.wasm`` contract. The auction runs for a "
+"future era, every era. The Chainspec specifies the number of slots "
+"available, and the auction will take the top N slots and create the "
+"validator set for the future era. In the testnet, era durations are approx. "
+"30 minutes. The entire process takes approximately 3 eras. Therefore, the "
+"time for bid submission to inclusion in the validator set is a minimum of 90"
+" minutes.\\ :raw-html-m2r:`<br>` Bonding requests (bids) are transactions "
+"like any other. Because they are generic transactions, they are more "
+"resistant to censorship."
+msgstr ""
+"Chúng tôi khuyến nghị rằng một yêu cầu cổ phần được gửi sau khi nút đã hoàn "
+"thành quá trình đồng bộ hóa. Cổ phần trong Casper diễn ra thông qua hợp đồng"
+" đấu giá ``add_bid.wasm``. Cuộc đấu giá diễn ra cho mọi kỷ nguyên tương lai."
+" Chainspec chỉ định số lượng vị trí có sẵn và cuộc đấu giá sẽ lấy N vị trí "
+"hàng đầu và tạo nhóm người xác thực cho kỷ nguyên tương lai. Trong testnet, "
+"khoảng thời gian của thời đại là khoảng. 30 phút. Toàn bộ quá trình mất "
+"khoảng 3 kỷ nguyên. Do đó, thời gian gửi hồ sơ dự thầu để đưa vào nhóm nhà\\"
+" xác thực tối thiểu là 90 phút.\\ :raw-html-m2r:`<br>` Yêu cầu cổ phần (giá "
+"thầu) là các giao dịch giống như bất kỳ giao dịch nào khác. Bởi vì chúng là "
+"các giao dịch chung, chúng có khả năng chống lại sự kiểm duyệt cao hơn."
+
+#: ../../node-operator/bonding.rst:15
+msgid "Security and Bonding"
+msgstr "Bảo mật và cổ phần"
+
+#: ../../node-operator/bonding.rst:17
+msgid ""
+"The most secure way to send a bonding transaction is to compile the contract"
+" and send the request to the network. Because the transaction authorizes the"
+" token to be locked into the auction contract, it's really important to "
+"compile the contract yourself. Here are the steps to do this:"
+msgstr ""
+"Cách an toàn nhất để gửi giao dịch cổ phầnlà soạn hợp đồng và gửi yêu cầu "
+"tới mạng. Vì giao dịch cho phép mã thông báo bị khóa trong hợp đồng đấu giá "
+"nên việc tự biên dịch hợp đồng thực sự quan trọng. Dưới đây là các bước để "
+"thực hiện việc này:"
+
+#: ../../node-operator/bonding.rst:22
+msgid ""
+"Visit `Github <https://github.com/CasperLabs/casper-node>`_ and fork and "
+"clone the repository."
+msgstr ""
+"Xem `Github <https://github.com/CasperLabs/casper-node>`_ để phân nhánh và "
+"sao chép kho chứa."
+
+#: ../../node-operator/bonding.rst:23
+msgid "Make sure that all dependencies are installed  (documented on GitHub)."
+msgstr ""
+"Đảm bảo rằng tất cả các phần phụ thuộc đã được cài đặt (tài liệu trên "
+"GitHub)."
+
+#: ../../node-operator/bonding.rst:24
+msgid "Follow the instructions to build the contracts."
+msgstr "Thực hiện theo các hướng dẫn để xây dựng các hợp đồng."
+
+#: ../../node-operator/bonding.rst:25
+msgid ""
+"Ensure that the keys you will use for bonding are available & have been "
+"funded."
+msgstr ""
+"Đảm bảo rằng có thể cổ phần các khóa mà bạn sử dụng và đã được nạp tiền."
+
+#: ../../node-operator/bonding.rst:26
+msgid "Create the bonding transaction & deploy it."
+msgstr "Tạo giao dịch cổ phần và triển khai nó."
+
+#: ../../node-operator/bonding.rst:27
+msgid "Query the system to verify that your bid was accepted."
+msgstr ""
+"Truy vấn hệ thống để xác minh rằng giá thầu của bạn đã được chấp nhận."
+
+#: ../../node-operator/bonding.rst:28
+msgid "Check the status of the auction to see if you have won a slot."
+msgstr ""
+"Kiểm tra trạng thái của cuộc đấu giá để xem liệu bạn có giành được vị trí "
+"hay không."
+
+#: ../../node-operator/bonding.rst:31
+msgid "Build Add_Bid Contract"
+msgstr "Dựng hợp đồng Add_Bid"
+
+#: ../../node-operator/bonding.rst:33
+msgid ""
+"Because bonding transactions are generic transactions, it's necessary to "
+"build the contract that submits a bid. Clone the casper-node repository and "
+"build the contracts. To build contracts, set up Rust & install all "
+"dependencies. Visit 'Setting up Rust' in the Developer Guide."
+msgstr ""
+"Vì các giao dịch cổ phần là các giao dịch chung, nên cần phải xây dựng hợp "
+"đồng gửi giá thầu. Sao chép kho lưu trữ nút casper và xây dựng các hợp đồng."
+" Để xây dựng hợp đồng, hãy thiết lập Rust và cài đặt tất cả các phần phụ "
+"thuộc. Xem 'Thiết lập Rust' trong Hướng dẫn dành cho nhà phát triển."
+
+#: ../../node-operator/bonding.rst:37
+msgid "Build the contracts in release mode."
+msgstr "Dựng hợp đồng ở chế độ phát hành."
+
+#: ../../node-operator/bonding.rst:45
+msgid "Example Bonding Transaction"
+msgstr "Ví dụ về Giao dịch Cổ phần"
+
+#: ../../node-operator/bonding.rst:47
+msgid ""
+"Note the path to files and keys. Note: the session arguments need to be "
+"encased in double-quotes, with the parameter values in single quotes. Note "
+"the required payment amount.  It must contain at least 10 zeros.  The "
+"payment amount is specified in motes."
+msgstr ""
+"Lưu ý đường dẫn đến tệp và khóa. Lưu ý: các đối số phiên cần được đặt trong "
+"dấu ngoặc kép, với các giá trị tham số trong dấu ngoặc đơn. Lưu ý số tiền "
+"thanh toán cần thiết. Nó phải chứa ít nhất 10 số không. Số tiền thanh toán "
+"được xác định bằng mote."
+
+#: ../../node-operator/bonding.rst:55
+msgid "Contract Arguments"
+msgstr "Đối số của hợp đồng"
+
+#: ../../node-operator/bonding.rst:57
+msgid "The add_bid contract accepts 3 arguments:"
+msgstr "Hợp đồng add_bid chấp nhận 3 đối số:"
+
+#: ../../node-operator/bonding.rst:60
+msgid ""
+"public key: The public key in hex of the account to bond.  Note: This has to"
+" be the matching key to the validator's secret key that signs the "
+"deployment."
+msgstr ""
+"public key: Khóa công khai trong hex của tài khoản cổ phần. Lưu ý: Đây phải "
+"là khóa phù hợp với khóa bí mật của nhà xác thực đã ký vào triển khai."
+
+#: ../../node-operator/bonding.rst:61
+msgid ""
+"amount: This is the amount that is being bid. If the bid wins, this will be "
+"the validator's initial bond amount."
+msgstr ""
+"amount: Đây là số tiền đang được đặt giá thầu. Nếu giá thầu thắng, đây sẽ là"
+" số tiền cổ phần ban đầu của người xác thực."
+
+#: ../../node-operator/bonding.rst:62
+msgid ""
+"delegation_rate: The percentage of rewards that the validator retains from "
+"delegators that delegate their tokens to the node."
+msgstr ""
+"delegation_rate: Phần trăm phần thưởng mà người xác thực giữ lại từ những "
+"người ủy quyền ủy quyền token của họ cho nút."
+
+#: ../../node-operator/bonding.rst:65
+msgid "Check the Status of the Transaction"
+msgstr "Kiểm tra Trạng thái của Giao dịch"
+
+#: ../../node-operator/bonding.rst:67
+msgid ""
+"Since this is a deployment like any other, it's possible to perform ``get-"
+"deploy`` using the client, which will return the execution status."
+msgstr ""
+"Vì đây là một triển khai giống như bất kỳ triển khai nào khác, nên có thể "
+"thực hiện ``get-deploy`` bằng cách sử dụng máy client, thao tác này sẽ trả "
+"về trạng thái thực thi."
+
+#: ../../node-operator/bonding.rst:74
+msgid "Check the Status of the bid in the Auction"
+msgstr "Kiểm tra Trạng thái của giá thầu trong Phiên đấu giá"
+
+#: ../../node-operator/bonding.rst:76
+msgid ""
+"If the bid wins the auction, the public key and associated bond amount "
+"(formerly bid amount) will appear in the auction contract as part of the "
+"validator set for a future era. To determine if the bid was accepted, query "
+"the auction contract via the rust ``casper-client``"
+msgstr ""
+"Nếu giá thầu thắng cuộc đấu giá, khóa công khai và số cổ phần được liên kết "
+"(trước đây là số tiền đặt giá thầu) sẽ xuất hiện trong hợp đồng đấu giá như "
+"một phần của nhà xác thực được đặt cho một kỷ nguyên trong tương lai. Để xác"
+" định xem giá thầu có được chấp nhận hay không, hãy truy vấn hợp đồng đấu "
+"giá qua rust ``casper-client``"
+
+#: ../../node-operator/bonding.rst:82
+msgid "The request returns a response that looks like this:"
+msgstr "Yêu cầu trả về một phản hồi trông giống như sau:"
+
+#: ../../node-operator/bonding.rst:254
+msgid ""
+"Note the ``era_id`` and the ``validator_weights`` sections of the response. "
+"For a given ``era_id`` a set of validators is defined.  To determine the "
+"current era, ping the ``/status`` endpoint of a validating node in the "
+"network.  This will return the current ``era_id``.  The current ``era_id`` "
+"will be listed in the auction info response. If the public key associated "
+"with a bid appears in the ``validator_weights`` structure for an era, then "
+"the account is bonded in that era."
+msgstr ""
+"Lưu ý phần ``era_id`` và ``validator_weights`` của phần trả về. Đối với một "
+"``era_id`` nhất định, một nhóm người xác thực sẽ được xác định. Để xác định "
+"thời gian hiện tại, hãy ping điểm cuối ``/status`` của một nút xác thực "
+"trong mạng. Thao tác này sẽ trả về ``era_id`` hiện tại. ``era_id`` hiện tại "
+"sẽ được liệt kê trong phần trả về của thông tin đấu giá. Nếu khóa công khai "
+"được liên kết với giá thầu xuất hiện trong cấu trúc ``validator_weights`` "
+"cho một kỷ nguyên, thì tài khoản được cổ phần trong kỷ nguyên đó."
+
+#: ../../node-operator/bonding.rst:259
+msgid "If the Bid doesn't win"
+msgstr "Nếu không thắng Giá thầu"
+
+#: ../../node-operator/bonding.rst:261
+msgid ""
+"If your bid doesn't win a slot in the auction, it is because your bid is too"
+" low.  The resolution for this problem is to increase your bid amount. It is"
+" possible to submit additional bids, to increase the odds of winning a slot."
+" It is also possible to encourage token holders to delegate stake to you for"
+" bonding."
+msgstr ""
+"Nếu giá thầu của bạn không giành được vị trí trong phiên đấu giá, thì đó là "
+"do giá thầu của bạn quá thấp. Giải pháp cho vấn đề này là tăng số tiền giá "
+"thầu của bạn. Có thể gửi thêm giá thầu để tăng tỷ lệ thắng một vị trí. Cũng "
+"có thể khuyến khích chủ sở hữu token ủy thác đặt cọc cho bạn cổ phần."
+
+#: ../../node-operator/bonding.rst:266
+msgid "Withdrawing a Bid"
+msgstr "Rút Giá thầu"
+
+#: ../../node-operator/bonding.rst:268
+msgid ""
+"Follow the steps in `Unbonding <https://docs.casperlabs.io/en/latest/node-"
+"operator/unbonding.html>`_ to withdraw a bid."
+msgstr ""
+"Làm theo các bước trong phần `Unbonding "
+"<https://docs.casperlabs.io/en/latest/node-operator/unbonding.html>`_ để rút"
+" giá thầu."

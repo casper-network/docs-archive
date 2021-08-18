@@ -1,0 +1,336 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:3
+msgid "Rust"
+msgstr "Rust"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:5
+msgid ""
+"This section explains step by step how to write a new smart contract on "
+"Casper.  Start with ``main.rs`` from the previous section."
+msgstr ""
+"Bu bölüm adım adım Casper'da yeni bir akıllı kontratın nasıl yazılacağını "
+"açıklar. Önceki bölümden ``main.rs`` ile başlayın."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:8
+msgid "A Basic Smart Contract in Rust"
+msgstr "Rust'ta Temel Bir Akıllı Kontrat"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:10
+msgid ""
+"The Casper VM executes a smart contract by calling the ``call`` function "
+"specified in the contract. If the function is missing, the smart contract is"
+" not valid. The simplest possible example is an empty ``call`` function."
+msgstr ""
+"Casper VM, kontratta belirtilen ``call`` işlevini çağırarak bir akıllı "
+"kontrat yürütür. İşlev eksikse akıllı kontrat geçerli değildir. Mümkün olan "
+"en basit örnek, boş bir ``call`` işlevidir."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:17
+msgid ""
+"The ``#[no_mangle]`` attribute prevents the compiler from changing "
+"(mangling) the function name when converting to the binary format of Wasm. "
+"Without it, the VM exits with the error message: ``Module doesn't have "
+"export call``."
+msgstr ""
+"``#[no_mangle]`` özelliği, derleyicinin Wasm ikili biçimine dönüştürürken "
+"işlev adını değiştirmesini (mangling) engeller. Onsuz, VM şu hata mesajını "
+"verir: ``Modül dışa aktarma çağrısına sahip değil``."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:20
+msgid "Arguments"
+msgstr "Argümanlar"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:22
+msgid ""
+"It's possible to pass arguments to smart contracts. To leverage this "
+"feature, use `runtime::get_named_arg <https://docs.rs/casper-"
+"contract/latest/casper_contract/contract_api/runtime/fn.get_named_arg.html>`_."
+msgstr ""
+"Akıllı kontratlara argümanlar iletmek mümkündür. Bu özellikten yararlanmak "
+"için `runtime::get_named_arg <https://docs.rs/casper-"
+"contract/latest/casper_contract/contract_api/runtime/fn.get_named_arg.html>`_"
+" kullanın."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:35
+msgid "Storage"
+msgstr "Depolama"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:37
+msgid ""
+"Saving and reading values to and from the blockchain is a manual process in "
+"Casper. It requires more code to be written, but also provides a lot of "
+"flexibility. The storage system works similarly to a file system in an "
+"operating system.  Let's say we have a string ``\"Hello Casper!\"`` that "
+"needs to be saved. To do this, use the text editor, create a new file, paste"
+" the string in and save it under a name in some directory. The pattern is "
+"similar on the Casper blockchain. First you have to save your value to the "
+"memory using `storage::new_uref <https://docs.rs/casper-"
+"contract/latest/casper_contract/contract_api/storage/fn.new_uref.html>`_. "
+"This returns a reference to the memory object that holds the ``\"Hello "
+"Casper!\"`` value. You could use this reference to update the value to "
+"something else. It's like a file. Secondly you have to save the reference "
+"under a human-readable string using `runtime::put_key <https://docs.rs"
+"/casper-"
+"contract/latest/casper_contract/contract_api/runtime/fn.put_key.html>`_. "
+"It's like giving a name to the file. The following function implements this "
+"scenario:"
+msgstr ""
+"Blokzincire ve blokzincirden değerleri kaydetmek ve okumak Casper'da manuel "
+"bir işlemdir. Yazılması için daha fazla kod gerektirir, ancak aynı zamanda "
+"çok fazla esneklik sağlar. Depolama sistemi, bir işletim sistemindeki dosya "
+"sistemine benzer şekilde çalışır. Diyelim ki kaydetmemiz gereken bir "
+"``\"Merhaba Casper!\"`` dizgemiz var. Bunu yapmak için metin düzenleyiciyi "
+"kullanın, yeni bir dosya oluşturun, dizeyi yapıştırın ve bir dizinde bir ad "
+"altında kaydedin. Model, Casper blokzincirindekine benzer. Öncelikle "
+"`storage::new_uref <https://docs.rs/casper-"
+"contract/latest/casper_contract/contract_api/storage/fn.new_uref.html>`_ "
+"kullanarak değerinizi belleğe kaydetmelisiniz. Bu, ``\"Merhaba Casper!\"`` "
+"değerini tutan bellek nesnesine bir başvuru döndürür. Değeri başka bir şeye "
+"güncellemek için bu referansı kullanabilirsiniz. Bir dosya gibi. İkinci "
+"olarak, `runtime::put_key <https://docs.rs/casper-"
+"contract/latest/casper_contract/contract_api/runtime/fn.put_key.html>`_ "
+"kullanarak referansı insan tarafından okunabilir bir dize altına kaydetmeniz"
+" gerekir. Dosyaya bir isim vermek gibi. Aşağıdaki işlev bu senaryoyu "
+"uygular:"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:54
+msgid ""
+"After this function is executed, the context (Account or Smart Contract) "
+"will have the content of the ``value`` stored under ``KEY`` in its named "
+"keys space. The named keys space is a key-value storage that every context "
+"has. It's like a home directory."
+msgstr ""
+"Bu işlev yürütüldükten sonra, bağlam (Hesap veya Akıllı Kontrat), "
+"adlandırılmış anahtar alanında ``KEY`` altında depolanan ``value``nun "
+"içeriğine sahip olacaktır. Adlandırılmış anahtarlar alanı, her bağlamın "
+"sahip olduğu bir anahtar-değer deposudur. Ev dizini gibi."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:57
+msgid "Final Smart Contract"
+msgstr "Nihai Akıllı Kontrat"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:59
+msgid ""
+"The code below is the simple contract generated by `cargo-casper "
+"<https://crates.io/crates/cargo-casper>`_  (found in "
+"``contract/src/main.rs`` of a project created by the tool). It reads an "
+"argument and stores it in the memory under a key named "
+"``\"special_value\"``."
+msgstr ""
+"Aşağıdaki kod, `cargo-casper <https://crates.io/crates/cargo-casper>`_ "
+"(oluşturulan projenin ``contract/src/main.rs`` dizininde bulunur) tarafından"
+" oluşturulan basit kontrattır. Bir argümanı okur ve bunu hafızada "
+"``\"special_value\"``. adlı bir anahtar altında saklar."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:97
+msgid "Using Error Codes"
+msgstr "Hata Kodlarını Kullanmak"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:99
+msgid ""
+"The Casper VM supports error codes in smart contracts. A contract can stop "
+"execution and exit with a given error via the `runtime::revert "
+"<https://docs.rs/casper-contract>`_ function:"
+msgstr ""
+"Casper VM, akıllı kontratlardaki hata kodlarını destekler. Bir kontrat "
+"yürütmeyi durdurabilir ve `runtime::revert <https://docs.rs/casper-"
+"contract>`_ işlevi aracılığıyla verilen bir hatayla çıkabilir:"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:111
+msgid ""
+"Casper has `several built-in error variants <https://crates.io/crates"
+"/casper-types/latest/casper_types/>`_ , but it's possible to create a custom"
+" set of error codes for your smart contract. These can be passed to "
+"`runtime::revert <https://docs.rs/casper-"
+"contract/latest/casper_contract/contract_api/runtime/fn.revert.html>`_ via  "
+"`ApiError::User(<your error code>) <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#variant.User>`_."
+msgstr ""
+"Casper'ın birkaç `yerleşik hata çeşidi <https://crates.io/crates/casper-"
+"types/latest/casper_types/>`_  vardır, ancak akıllı kontratınız için özel "
+"bir dizi hata kodu oluşturmak mümkündür. Bunlar, `ApiError::User(<your error"
+" code>) <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#variant.User>`_ aracılığıyla "
+"`runtime::revert <https://docs.rs/casper-"
+"contract/latest/casper_contract/contract_api/runtime/fn.revert.html>`_ e "
+"iletilibilirler."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:113
+msgid ""
+"When a contract exits with an error code, the exit code is visible in the "
+"Block Explorer."
+msgstr ""
+"Bir kontrat bir hata koduyla çıktığında, çıkış kodu Blok Tarayıcısı'nda "
+"görünür."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:116
+msgid "Tests"
+msgstr "Testler"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:118
+msgid ""
+"As part of the Casper local environment we provide the in-memory virtual "
+"machine you can run your contract against. The testing framework is designed"
+" to be used in the following way:"
+msgstr ""
+"Casper yerel ortamının bir parçası olarak, kontratınızı çalıştırabileceğiniz"
+" bellek içi sanal makineyi sağlıyoruz. Test çerçevesi aşağıdaki şekilde "
+"kullanılmak üzere tasarlanmıştır:"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:121
+msgid "Initialize the context."
+msgstr "Bağlamı başlatın"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:122
+msgid "Deploy or call the smart contract."
+msgstr "Akıllı kontratı dağıtın veya çağırın."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:123
+msgid ""
+"Query the context for changes and assert the result data matches expected "
+"values."
+msgstr ""
+"Değişiklikler için bağlamı sorgulayın ve sonuç verilerinin beklenen "
+"değerlerle eşleştiğini teyit edin."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:126
+msgid "TestContext"
+msgstr "TestContext"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:128
+msgid ""
+"A  `TestContext <https://docs.rs/casper-engine-test-"
+"support/latest/casper_engine_test_support/struct.TestContext.html>`_ "
+"provides a virtual machine instance. It should be a mutable object as we "
+"will change its internal data while making deploys. It's also important to "
+"set an initial balance for the account to use for deploys."
+msgstr ""
+"`TestContext <https://docs.rs/casper-engine-test-"
+"support/latest/casper_engine_test_support/struct.TestContext.html>`_, bir "
+"sanal makine örneği sağlar. Dağıtım yaparken dahili verilerini "
+"değiştireceğimiz için değiştirilebilir bir nesne olmalıdır. Hesabın "
+"dağıtımlar için kullanması maksadıyla bir başlangıç bakiyesi ayarlamak da "
+"önemlidir."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:138
+msgid "Account is type of ``[u8; 32]``. Balance is type of ``U512``."
+msgstr "Hesap ``[u8; 32]`` türündedir. Bakiye ``U512`` türündedir."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:141
+msgid "Run Smart Contract"
+msgstr "Akıllı Kontratı Çalıştır"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:143
+msgid ""
+"Before we can deploy the contract to the context, we need to prepare the "
+"request. We call the request a `Session <https://docs.rs/casper-engine-test-"
+"support/latest/casper_engine_test_support/struct.Session.html>`_. Each "
+"session call should have 4 elements:"
+msgstr ""
+"Kontratı bağlama yerleştirmeden önce talebi hazırlamamız gerekir. Talebi bir"
+" `Oturum <https://docs.rs/casper-engine-test-"
+"support/latest/casper_engine_test_support/struct.Session.html>`_ olarak "
+"adlandırıyoruz. Her oturum çağrısının 4 unsuru olmalıdır:"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:146
+msgid "Wasm file path."
+msgstr "Wasm dosya yolu."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:147
+msgid "List of arguments."
+msgstr "Argümanlar listesi."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:148
+msgid "Account context of execution."
+msgstr "Yürütmenin hesap bağlamı."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:149
+msgid ""
+"List of keys that authorize the call. See: TODO insert keys management link."
+msgstr ""
+"Aramayı yetkilendiren anahtarların listesi. Bakınız: YAPILACAKLAR anahtar "
+"yönetimi bağlantısı ekleyin."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:163
+msgid "Executing ``run`` will panic if the code execution fails."
+msgstr "Kod yürütme başarısız olursa ``run`` yürütmek panik yapacaktır."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:166
+msgid "Query and Assert"
+msgstr "Sorgula ve Teyit Et"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:168
+msgid ""
+"The smart contract we deployed creates a new value ``\"hello world\"`` under"
+" the key ``\"special_value\"``. Using the ``query`` function it's possible "
+"to extract this value from the blockchain."
+msgstr ""
+"Dağıttığımız akıllı kontrat, ``\"special_value\"`` anahtarının altında yeni "
+"bir``\"hello world\"`` değeri oluşturur. Sorgu işlevini kullanarak bu değeri"
+" blokzincirden çıkarmak mümkündür."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:178
+msgid ""
+"Note that the ``expected_value`` is a ``String`` type lifted to the "
+"``Value`` type. It was also possible to map ``returned_value`` to the "
+"``String`` type."
+msgstr ""
+"``expected_value`` değerin, ``Value`` türüne yükseltilmiş bir ``String`` "
+"türü olduğuna dikkat edin. ``returned_value`` değerini ``String`` türüne "
+"eşlemek de mümkündü."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:181
+msgid "Final Test"
+msgstr "Son Test"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:183
+msgid ""
+"The code below is the simple test generated by `cargo-casper "
+"<https://crates.io/crates/cargo-casper>`_ (found in "
+"``tests/src/integration_tests.rs`` of a project created by the tool)."
+msgstr ""
+"Aşağıdaki kod, `cargo-casper <https://crates.io/crates/cargo-casper>`_ "
+"tarafından oluşturulan basit testtir (oluşturulan bir projenin "
+"``tests/src/integration_tests.rs`` dosyasında bulunur)."
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:229
+msgid "WASM File Size"
+msgstr "WASM Dosya Boyutu"
+
+#: ../../dapp-dev-guide/writing-contracts/writing-rust-contracts.rst:231
+msgid ""
+"We encourage shrinking the WASM file size as much as possible. Smaller "
+"deploys cost less and save the network bandwidth. We recommend reading "
+"`Shrinking .wasm Code Size <https://rustwasm.github.io/docs/book/reference"
+"/code-size.html>`_ chapter of `The Rust Wasm Book "
+"<https://rustwasm.github.io/docs/book/>`_."
+msgstr ""
+"WASM dosya boyutunu mümkün olduğunca küçültmenizi öneririz. Daha küçük "
+"dağıtımlar daha az maliyetlidir ve ağ bant genişliğinden tasarruf sağlar. "
+"`The Rust Wasm Book <https://rustwasm.github.io/docs/book/>`_ un `Shrinking "
+".wasm Code Size <https://rustwasm.github.io/docs/book/reference/code-"
+"size.html>`_ bölümünü okumanızı öneririz."

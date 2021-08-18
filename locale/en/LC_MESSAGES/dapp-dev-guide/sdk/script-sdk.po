@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:2
+msgid "TypeScript/JavaScript SDK"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:4
+msgid ""
+"The `TypeScript/JavaScript SDK <https://casper-ecosystem.github.io"
+"/casper-js-sdk/>`_ allows developers to interact with the Casper Network "
+"using TypeScript or JavaScript. This page covers different examples of "
+"using the SDK."
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:7
+msgid "Installation"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:8
+msgid "To install this library using Node.js, run the following command:"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:15
+msgid "Tests"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:16
+msgid ""
+"You can find basic examples for how to use this library in the ``test`` "
+"directory. To run the tests, use this command:"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:23
+msgid "Usage Examples"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:24
+msgid ""
+"In this section, we outline a couple of essential tasks you can "
+"accomplish with the JavaScript SDK:"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:26
+msgid "Generating account keys"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:27
+msgid "Sending a transfer"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:29
+msgid ""
+"For a complete implementation example, read the `Multi-Signature Tutorial"
+" <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/multi-"
+"sig/index.html>`_, which uses the JavaScript SDK."
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:32
+msgid "Generating Account Keys"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:34
+msgid ""
+"This example shows you how to use the SDK to generate account keys to "
+"sign your deploy."
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:72
+msgid ""
+"After generating the keys with this code, you can add them to the "
+"`CasperLabs Signer Chrome extension "
+"<https://chrome.google.com/webstore/detail/casperlabs-"
+"signer/djhndpllfiibmcdbnmaaahkhchcoijce?hl=en-US>`_ and use them to sign "
+"your transactions."
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:76
+msgid "Sending a Transfer"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:78
+msgid ""
+"This code block shows you how to define and send a transfer on the Casper"
+" Network. Replace the ``account-address`` in the code below with the "
+"sender's account address."
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:80
+msgid ""
+"The ``sendTransfer`` function below will return a ``transfer-hash`` which"
+" you can check on https://testnet.cspr.live/."
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:164
+msgid ""
+"**Note**: At any moment, you can serialize the deploy from this example "
+"to JSON to accomplish whatever you want (store it, send it, etc.)."
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:166
+msgid "Here is the code you can use to serialize the deploy:"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:173
+msgid "Then, you can reconstruct the deploy object using this function:"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:180
+msgid "Additional Resources"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/script-sdk.rst:181
+msgid ""
+"If you are looking for additional examples, another great resource is the"
+" `BitGo JS implementation "
+"<https://github.com/BitGo/BitGoJS/tree/master/modules/account-"
+"lib/src/coin/cspr>`_."
+msgstr ""
+

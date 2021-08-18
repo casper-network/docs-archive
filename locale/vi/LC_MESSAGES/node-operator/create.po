@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../node-operator/create.rst:3
+msgid "Setting up a Network"
+msgstr "Thiết lập mạng"
+
+#: ../../node-operator/create.rst:5
+msgid ""
+"It's possible to create a new network or join an existing network.  This "
+"page will outline the basics for creating a new network."
+msgstr ""
+"Có thể tạo một mạng mới hoặc tham gia một mạng hiện có. Trang này sẽ phác "
+"thảo những điều cơ bản để tạo một mạng mới."
+
+#: ../../node-operator/create.rst:8
+msgid "The Chain Specification"
+msgstr "Đặc điểm kỹ thuật chuỗi"
+
+#: ../../node-operator/create.rst:10
+msgid ""
+"The Casper node software creates a genesis block from the following inputs:"
+msgstr "Phần mềm nút Casper tạo một khối gốc từ các đầu vào sau:"
+
+#: ../../node-operator/create.rst:13
+msgid "chainspec.toml"
+msgstr "chainspec.toml"
+
+#: ../../node-operator/create.rst:14
+msgid "accounts.toml"
+msgstr "accounts.toml"
+
+#: ../../node-operator/create.rst:17
+msgid "Chainspec.toml"
+msgstr "Chainspec.toml"
+
+#: ../../node-operator/create.rst:19
+msgid ""
+"A version of the chainspec is downloaded by the "
+"``pull_casper_node_version.sh`` script installed with the casper-node-"
+"launcher debian package. This pulls the chainspec.toml file from the "
+"appropriate path at http://genesis.casperlabs.io/."
+msgstr ""
+"Một phiên bản của chainpec được tải xuống bằng script "
+"``pull_casper_node_version.sh`` được cài đặt với gói debian casper-node-"
+"launcher. Thao tác này kéo tệp chainpec.toml từ đường dẫn thích hợp tại "
+"http://genesis.casperlabs.io/."
+
+#: ../../node-operator/create.rst:22
+msgid ""
+"The production version of the file from which this is based on can be found "
+"at ``casper-node/resources/production/chainspec.toml`` in the code base.  To"
+" create a custom network, this file can be updated as desired. Any changes "
+"to this file will result in a different genesis hash. Refer to the file "
+"itself for detailed documentation on each of the variables in the file."
+msgstr ""
+"Bạn có thể tìm thấy phiên bản chính thức của tệp tại ``casper-"
+"node/resources/production/chainspec.toml`` trong cơ sở mã. Để tạo một mạng "
+"tùy chỉnh, tệp này có thể được cập nhật theo ý muốn. Bất kỳ thay đổi nào đối"
+" với tệp này sẽ dẫn đến một hàm băm gốc khác nhau. Tham khảo chính tệp để có"
+" tài liệu chi tiết về từng biến trong tệp."
+
+#: ../../node-operator/create.rst:27
+msgid "Accounts.toml"
+msgstr "Accounts.toml"
+
+#: ../../node-operator/create.rst:29
+msgid ""
+"This file contains the genesis validator set information, starting accounts "
+"and associated balances and bond amounts."
+msgstr ""
+"Tệp này chứa thông tin nhóm nhà xác thực ban đầu, tài khoản bắt đầ, số dư "
+"liên quan và số tiền cổ phần."
+
+#: ../../node-operator/create.rst:31
+msgid ""
+"If an account is not bonded at genesis, specify a ``0`` for the bond amount."
+msgstr ""
+"Nếu một tài khoản không được cổ phần lúc ban đầu, hãy chỉ định ``0`` cho số "
+"tiền cổ phần."
+
+#: ../../node-operator/create.rst:33
+msgid ""
+"Similar to the chainspec.toml, this is pulled from the appropriate path at  "
+"http://genesis.casperlabs.io/."
+msgstr ""
+"Tương tự như chainpec.toml, tệp này được lấy từ đường dẫn thích hợp tại "
+"http://genesis.casperlabs.io/."

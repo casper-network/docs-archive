@@ -1,0 +1,553 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# ilker <bilkerarslan40@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: ilker <bilkerarslan40@gmail.com>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../implementation/execution-semantics.rst:4
+msgid "Execution Semantics"
+msgstr "Yürütme Semantiği"
+
+#: ../../implementation/execution-semantics.rst:9
+msgid "Introduction"
+msgstr "Giriş"
+
+#: ../../implementation/execution-semantics.rst:11
+msgid ""
+"The CasperLabs system is a decentralized computation platform. In this "
+"chapter we describe aspects of the computational model we use."
+msgstr ""
+"CasperLabs sistemi, merkezi olmayan bir hesaplama platformudur. Bu bölümde, "
+"kullandığımız hesaplama modelinin özelliklerini açıklıyoruz."
+
+#: ../../implementation/execution-semantics.rst:17
+msgid "Measuring computational work"
+msgstr "Hesaplama çalışmasının ölçülmesi"
+
+#: ../../implementation/execution-semantics.rst:19
+msgid ""
+"Computation is all done in a `WebAssembly (wasm) "
+"<https://webassembly.org/>`__ interpreter, allowing any programming language"
+" which compiles to wasm to become a smart contract language for the "
+"CasperLabs blockchain. Similar to Ethereum, we use ``Gas`` to measure "
+"computational work in a way which is consistent from node to node in the "
+"CasperLabs network. Each wasm instruction is `assigned "
+"<https://github.com/CasperLabs/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/shared/wasm_config.rs#L15>`_"
+" a ``Gas`` value, and the amount of gas spent is tracked by the runtime with"
+" each instruction executed by the interpreter. All executions are finite "
+"because each has a finite *gas limit* that specifies the maximum amount of "
+"gas that can be spent before the computation is terminated by the runtime. "
+"How this limit is determined is discussed in more detail below."
+msgstr ""
+"Hesaplamanın tamamı bir `WebAssembly (wasm) <https://webassembly.org/>`__ "
+"yorumlayıcısında yapılır ve wasm'yi derleyen herhangi bir programlama "
+"dilinin CasperLabs blokzincir için akıllı bir kontrat dili haline gelmesine "
+"izin verir. Ethereum'a benzer şekilde, CasperLabs ağındaki düğümden düğüme "
+"tutarlı bir şekilde hesaplamalı çalışmayı ölçmek için ``Gas`` kullanıyoruz. "
+"Her wasm talimatına bir `<https://github.com/CasperLabs/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/shared/wasm_config.rs#L15>`"
+"  ``Gas`` değeri atanır ve harcanan gazın miktarı, yorumlayıcı tarafından "
+"yürütülen her talimatla çalışma zamanı tarafından izlenir. Tüm yürütmeler "
+"sınırlıdır, çünkü her birinin, hesaplama çalışma zamanı tarafından "
+"sonlandırılmadan önce harcanabilecek maksimum gaz miktarını belirten sonlu "
+"bir *gaz sınırı* vardır. Bu sınırın nasıl belirlendiği aşağıda daha "
+"ayrıntılı olarak tartışılmaktadır."
+
+#: ../../implementation/execution-semantics.rst:26
+msgid ""
+"Although computation is measured in ``Gas``, we still take payment for "
+"computation in :ref:`motes <tokens-divisibility>`. Therefore, there is a "
+"conversion rate between ``Gas`` and motes. How this conversion rate is "
+"determined is discussed elsewhere."
+msgstr ""
+"Hesaplama ``Gas`` ile ölçülse de, yine de :ref:`motes <tokens-divisibility>`"
+" daki hesaplama için ödemeyi alıyoruz. Bu nedenle, ``Gas`` ve mote arasında "
+"bir dönüşüm oranı vardır. Bu dönüşüm oranının nasıl belirlendiği başka bir "
+"yerde tartışılmaktadır."
+
+#: ../../implementation/execution-semantics.rst:31
+msgid "Deploys"
+msgstr "Dağıtımlar"
+
+#: ../../implementation/execution-semantics.rst:33
+msgid ""
+"A *deploy* represents a request from a user to perform computation on our "
+"platform. It has the following information:"
+msgstr ""
+"*Dağıtım*, bir kullanıcıdan platformumuzda hesaplama yapma isteğini temsil "
+"eder. Aşağıdaki bilgilere sahiptir:"
+
+#: ../../implementation/execution-semantics.rst:35
+msgid ""
+"Body: containing payment code and session code (more details on these below)"
+msgstr ""
+"Gövde: ödeme kodunu ve oturum kodunu içerir (bunlarla ilgili daha fazla "
+"ayrıntı aşağıdadır)"
+
+#: ../../implementation/execution-semantics.rst:36
+msgid "Header: containing"
+msgstr "Başlık: şunları içerir;"
+
+#: ../../implementation/execution-semantics.rst:38
+msgid ""
+"the :ref:`identity key <global-state-account-key>` of the account the deploy"
+" will run in"
+msgstr ""
+"dağıtımın çalıştırılacağı hesabın :ref:`identity key <global-state-account-"
+"key>`"
+
+#: ../../implementation/execution-semantics.rst:39
+msgid "the timestamp when the deploy was created"
+msgstr "dağıtımın oluşturulduğu zaman damgası"
+
+#: ../../implementation/execution-semantics.rst:40
+msgid ""
+"a time to live, after which the deploy is expired and cannot be included in "
+"a block"
+msgstr ""
+"yaşam süresi, ki bu süre sonunda dağıtımın ömrü sona erer ve bir blok "
+"içerisinde dahil edilemez"
+
+#: ../../implementation/execution-semantics.rst:42
+msgid "the ``blake2b256`` hash of the body"
+msgstr "gövdenin ``blake2b256`` özet (hash) değeri"
+
+#: ../../implementation/execution-semantics.rst:44
+msgid "Deploy hash: the ``blake2b256`` hash of the Header"
+msgstr "Dağıtım özeti: Başlığın ``blake2b256`` özet (hash) değeri"
+
+#: ../../implementation/execution-semantics.rst:45
+msgid ""
+"Approvals: the set of signatures which have signed the deploy hash, these "
+"are used in the :ref:`account permissions model <accounts-associated-keys-"
+"weights>`"
+msgstr ""
+"Onaylar: dağıtım özetini imzalayan imzalar kümesi, bunlar :ref:`account "
+"permissions model <accounts-associated-keys-weights>` de kullanılır."
+
+#: ../../implementation/execution-semantics.rst:47
+msgid ""
+"Each deploy is an atomic piece of computation in the sense that, whatever "
+"effects a deploy would have on the global state must be entirely included in"
+" a block or the entire deploy must not be included in a block."
+msgstr ""
+"Her dağıtım, bir dağıtımın küresel durum üzerindeki etkileri ne olursa "
+"olsun, tamamen bir bloğa dahil edilmesi veya tüm dağıtımın bir bloğa dahil "
+"edilmemesi gerektiği anlamında atomik bir hesaplama parçasıdır."
+
+#: ../../implementation/execution-semantics.rst:52
+msgid "Phases of deploy execution"
+msgstr "Dağıtım yürütme aşamaları"
+
+#: ../../implementation/execution-semantics.rst:54
+msgid ""
+"A deploy is executed in distinct *phases* in order to accommodate paying for"
+" computation in a flexible way. The phases of a deploy are payment, session,"
+" and finalization. During the payment phase, the payment code is executed. "
+"If it is successful, then the sessions code is executed during the session "
+"phase. And, finally (independent of whether session code was executed), the "
+"finalization phase is executed, which does some bookkeeping around payment."
+msgstr ""
+"Hesaplama için ödemeyi esnek bir şekilde sağlamak için bir dağıtım, farklı "
+"*aşamalarda* yürütülür. Dağıtımın aşamaları ödeme, oturum ve "
+"sonuçlandırmadır. Ödeme aşamasında ödeme kodu çalıştırılır. Başarılı olursa,"
+" oturum kodu oturum aşamasında yürütülür. Ve son olarak (oturum kodunun "
+"yürütülüp yürütülmediğinden bağımsız olarak), ödeme ile ilgili bir miktar "
+"defter tutma işlemi yapılan sonuçlandırma aşaması yürütülür."
+
+#: ../../implementation/execution-semantics.rst:56
+msgid ""
+"In particular, the finalization phase refunds the user any unspent ``Gas`` "
+"originally purchased (after converting back to motes), and moves the "
+"remaining payment into the rewards pool for the validators. The finalization"
+" phase does not include any user-defined logic, it is merely upkeep for the "
+"system."
+msgstr ""
+"Özellikle, sonlandırma aşaması, kullanıcıya orijinal olarak satın alınan "
+"(motelere geri dönüştürmeden sonra) harcanmamış herhangi bir ``Gas`` ı iade "
+"eder ve kalan ödemeyi doğrulayıcılar için ödül havuzuna taşır. Sonlandırma "
+"aşaması, kullanıcı tanımlı herhangi bir mantık içermez, sadece sistem için "
+"bakımdır."
+
+#: ../../implementation/execution-semantics.rst:61
+msgid "Payment code"
+msgstr "Ödeme kodu"
+
+#: ../../implementation/execution-semantics.rst:63
+msgid ""
+"*Payment code* provides the logic used to pay for the computation the deploy"
+" will do. Payment code is allowed to include arbitrary logic, providing "
+"maximal flexibility in how a deploy can be paid for (e.g., the simplest "
+"payment code could use the account’s :ref:`main purse <tokens-purses-and-"
+"accounts>`, while an enterprise application may require deploys to pay via a"
+" multi-sig application accessing a corporate purse). We restrict the gas "
+"limit of the payment code execution, based on the current conversion rate "
+"between gas and motes, such that no more than ``MAX_PAYMENT_COST`` motes (a "
+"constant of the system) are spent. To ensure payment code will pay for its "
+"own computation, we only allow accounts with a balance in their main purse "
+"greater than or equal to ``MAX_PAYMENT_COST``, to execute deploys."
+msgstr ""
+"*Ödeme kodu*, dağıtımın yapacağı hesaplama için ödeme yapmak için kullanılan"
+" mantığı sağlar. Ödeme kodunun, bir dağıtımın nasıl ödenebileceği konusunda "
+"maksimum esneklik sağlayan rastgele mantık içermesine izin verilir (örneğin,"
+" en basit ödeme kodu hesabın :ref:`main purse <tokens-purses-and-accounts>` "
+"ini kullanabilirken, bir kurumsal uygulama, dağıtımların şirket cüzdanına "
+"erişen çoklu imza uygulaması yoluyla ödeme yapmasını gerektirebilir). Ödeme "
+"kodu yürütmesinin gaz sınırını, gaz ve motlar arasındaki mevcut dönüştürme "
+"oranına bağlı olarak, ``MAX_PAYMENT_COST`` 'dan (sistemin bir sabiti) fazla "
+"harcanmayacak şekilde kısıtlarız. Ödeme kodunun kendi hesaplaması için ödeme"
+" yapmasını sağlamak için, yalnızca ana cüzdanlarında ``MAX_PAYMENT_COST`` a "
+"eşit veya daha fazla bakiyesi olan hesapların dağıtımları yürütmesine izin "
+"veriyoruz."
+
+#: ../../implementation/execution-semantics.rst:75
+msgid ""
+"Payment code ultimately provides its payment by performing a :ref:`token "
+"transfer <tokens-mint-interface>` into the `Handle Payment contract’s "
+"payment purse <https://github.com/CasperLabs/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/types/src/system/handle_payment/mod.rs#L65>`__."
+" If payment is not given or not enough is transferred, then payment "
+"execution is not considered successful. In this case the effects of the "
+"payment code on the global state are reverted and the cost of the "
+"computation is covered by motes taken from the offending account’s main "
+"purse."
+msgstr ""
+"Ödeme kodu nihayetinde ödemesini `Ödeme kontratının  ödeme cüzdanına "
+"<https://github.com/CasperLabs/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/types/src/system/handle_payment/mod.rs#L65>`"
+" bir :ref:`token transfer <tokens-mint-interface>` gerçekleştirerek sağlar. "
+"Ödemenin yapılmaması veya yeterince havale edilmemesi durumunda ödemenin "
+"gerçekleştirilmesi başarılı sayılmaz. Bu durumda, ödeme kodunun küresel "
+"durum üzerindeki etkileri geri alınır ve hesaplamanın maliyeti, kusurlu "
+"hesabın ana cüzdanından alınan motlarla karşılanır."
+
+#: ../../implementation/execution-semantics.rst:84
+msgid "Session code"
+msgstr "Oturum kodu"
+
+#: ../../implementation/execution-semantics.rst:86
+msgid ""
+"*Session code* provides the main logic for the deploy. It is only executed "
+"if the payment code is successful. The gas limit for this computation is "
+"determined based on the amount of payment given (after subtracting the cost "
+"of the payment code itself)."
+msgstr ""
+"*Oturum kodu*, dağıtım için ana mantığı sağlar. Yalnızca ödeme kodu başarılı"
+" olduğunda yürütülür. Bu hesaplama için gaz limiti, verilen ödeme miktarına "
+"göre belirlenir (ödeme kodunun kendisinin maliyeti çıkarıldıktan sonra)."
+
+#: ../../implementation/execution-semantics.rst:94
+msgid "Specifying payment code and session code"
+msgstr "Ödeme kodu ve oturum kodunun belirtilmesi"
+
+#: ../../implementation/execution-semantics.rst:96
+msgid ""
+"The user-defined logic of a deploy can be specified in a number of ways:"
+msgstr "Bir dağıtımın kullanıcı tanımlı mantığı birkaç yolla belirtilebilir:"
+
+#: ../../implementation/execution-semantics.rst:98
+msgid ""
+"a wasm module in binary format representing a valid :ref:`contract <global-"
+"state-contracts>` (Note: the named keys do not need to be specified because "
+"they come from the account the deploy is running in)"
+msgstr ""
+"geçerli bir :ref:`contract <global-state-contracts>` ı temsil eden ikili kod"
+" biçiminde bir wasm modülü (Not: dağıtımın çalıştığı hesaptan geldikleri "
+"için adlandırılmış anahtarların belirtilmesi gerekmez)"
+
+#: ../../implementation/execution-semantics.rst:101
+msgid ""
+"a 32-byte identifier representing the :ref:`hash <global-state-hash-key>` or"
+" :ref:`URef <global-state-uref>` where a contract is already stored in the "
+"global state"
+msgstr ""
+":ref:`hash <global-state-hash-key>` veya :ref:`URef <global-state-uref>`i "
+"temsil eden 32 baytlık bir tanımlayıcı, ki burada kontrat zaten küresel "
+"durumda depolanır"
+
+#: ../../implementation/execution-semantics.rst:103
+msgid ""
+"a name corresponding to a named key in the account, where a contract is "
+"stored under the key"
+msgstr ""
+"anahtar altında bir kontratın saklandığı hesaptaki adlandırılmış bir "
+"anahtara karşılık gelen bir ad"
+
+#: ../../implementation/execution-semantics.rst:106
+msgid ""
+"Each of payment and session code are independently specified, so different "
+"methods of specifying them may be used (e.g. payment could be specified by a"
+" hash key, while session is explicitly provided as a wasm module)."
+msgstr ""
+"Ödeme ve oturum kodunun her biri bağımsız olarak belirtilir, bu nedenle "
+"bunları belirtmek için farklı yöntemler kullanılabilir (örneğin, ödeme bir "
+"özet anahtarı ile belirtilebilirken, oturum açıkça bir wasm modülü olarak "
+"sağlanır)."
+
+#: ../../implementation/execution-semantics.rst:113
+msgid "Deploys as functions on the global state"
+msgstr "Küresel durumda dağıtımların fonksiyonları"
+
+#: ../../implementation/execution-semantics.rst:115
+msgid ""
+"To enable concurrent modification of :ref:`global state <global-state-head>`"
+" (either by parallel deploys in the same block or parallel blocks on "
+"different forks of the chain), we view each deploy as a function taking our "
+"global state as input and producing a new global state as output. It is safe"
+" to execute two such functions concurrently if they do not interfere with "
+"each other, which formally can be defined to mean the functions *commute* "
+"(i.e., if they were executed sequentially, it does not matter in what order "
+"they are executed, the final result is the same for a given input). Whether "
+"two deploys commute is determined based on the effects they have on the "
+"global state, i.e. which operation (read, write, add) it does on each key in"
+" the key-value store. How this is done is described in :ref:`Appendix C "
+"<appendix-c>`."
+msgstr ""
+":ref:`global state <global-state-head>`in (aynı blokta paralel "
+"konuşlandırmalar veya zincirin farklı çatallarındaki paralel bloklar "
+"tarafından) eşzamanlı olarak değiştirilmesini sağlamak için, her dağıtımı "
+"küresel durumumuzu girdi olarak alan ve yeni bir küresel durum üreten bir "
+"fonksiyon olarak görüyoruz. Birbirleriyle etkileşime girmiyorlarsa, bu tür "
+"iki fonksiyonu aynı anda yürütmek güvenlidir; bu, biçimsel olarak *takas* "
+"fonksiyonları olarak tanımlanabilir (yani, sırayla yürütülürlerse, hangi "
+"sırayla yürütüldükleri önemli değildir, nihai sonuç, belirli bir girdi için "
+"aynıdır). İki dağıtımın takas edip etmediği, küresel durum üzerindeki "
+"etkilerine, yani anahtar/değer deposundaki her bir anahtar üzerinde hangi "
+"işlemi (okuma, yazma, ekleme) yaptığına göre belirlenir. Bunun nasıl "
+"yapıldığı :ref:`Appendix C <appendix-c>` de açıklanmıştır."
+
+#: ../../implementation/execution-semantics.rst:130
+msgid "The CasperLabs runtime"
+msgstr "CasperLabs çalışma zamanı"
+
+#: ../../implementation/execution-semantics.rst:132
+msgid ""
+"A wasm module is not natively able to create any effects outside of reading "
+"/ writing from its own linear memory. To enable other effects (e.g. reading "
+"/ writing to the CasperLabs global state), wasm modules must import "
+"functions from the host environment they are running in. In the case of "
+"contracts on the CasperLabs blockchain, this host is the CasperLabs Runtime."
+" Here, we briefly describe the functionalities provided by imported "
+"function. All these features are conveniently accessible via functions in "
+"the `CasperLabs rust library <https://crates.io/crates/casperlabs-contract-"
+"ffi>`__. For a more detailed description of the functions available for "
+"contracts to import, see :ref:`Appendix A <appendix-a>`."
+msgstr ""
+"Bir wasm modülü doğal olarak kendi doğrusal belleğinden okuma/yazma dışında "
+"herhangi bir efekt oluşturamaz. Diğer efektleri etkinleştirmek için (örn. "
+"CasperLabs küresel durumuna okuma/yazma), wasm modüllerinin çalıştıkları ana"
+" bilgisayar ortamından işlevleri içe aktarması gerekir. CasperLabs "
+"blokzincirdeki kontratlar için, bu ana bilgisayar, CasperLabs Runtime'dır. "
+"Burada, içe aktarılan fonksiyonun sağladığı işlevleri kısaca açıklıyoruz. "
+"Tüm bu özelliklere, `CasperLabs rust library <https://crates.io/crates"
+"/casperlabs-contract-ffi>`__ içindeki işlevler aracılığıyla kolayca "
+"erişilebilir. Kontratların içe aktarılaabileceği işlevlerin daha ayrıntılı "
+"açıklaması için bkz. :ref:`Appendix A <appendix-a>`."
+
+#: ../../implementation/execution-semantics.rst:141
+msgid "Reading / writing from global state"
+msgstr "Küresel durumdan okuma / yazma"
+
+#: ../../implementation/execution-semantics.rst:143
+msgid ""
+"``read``, ``write``, ``add`` functions allow working with exiting "
+":ref:`URefs <uref-head>`"
+msgstr ""
+"``read``, ``write``, ``add`` fonksiyonları mevcut :ref:`URefs <uref-head>` "
+"ile çalışmaya izin verir."
+
+#: ../../implementation/execution-semantics.rst:145
+msgid ""
+"``new_uref`` allows creating a new ``URef`` initialized with a given value "
+"(see section below about how ``URef``\\ s are generated)"
+msgstr ""
+"``new_uref``, belirli bir değerle başlatılan yeni bir ``URef`` oluşturmaya "
+"izin verir (``URef``\\ lerin nasıl oluşturulduğuyla ilgili aşağıdaki bölüme "
+"bakın)"
+
+#: ../../implementation/execution-semantics.rst:147
+msgid ""
+"``store_function`` allows writing a contract under a :ref:`hash key <global-"
+"state-hash-key>`"
+msgstr ""
+"``store_function``, bir :ref:`hash key <global-state-hash-key>` altında bir "
+"kontrat yazmaya izin verir."
+
+#: ../../implementation/execution-semantics.rst:148
+msgid ""
+"``get_uref``, ``list_known_urefs``, ``add_uref``, ``remove_uref`` allow "
+"working with the :ref:`named keys <global-state-contracts>` of the current "
+"context (account or contract)"
+msgstr ""
+"``get_uref``, ``list_known_urefs``, ``add_uref``, ``remove_uref`` geçerli "
+"bağlamın (hesap veya kontrat)  :ref:`named keys <global-state-contracts>` i "
+"ile çalışmaya izin verir"
+
+#: ../../implementation/execution-semantics.rst:152
+msgid "Account functionality"
+msgstr "Hesap işlevi"
+
+#: ../../implementation/execution-semantics.rst:154
+msgid ""
+"``add_associated_key``, ``remove_associated_key``, "
+"``update_associated_key``, ``set_action_threshold`` support the various "
+":ref:`key management actions <accounts-key-management>`"
+msgstr ""
+"``add_associated_key``, ``remove_associated_key``, "
+"``update_associated_key``, ``set_action_threshold`` çeşitli :ref:`key "
+"management actions <accounts-key-management>` yönetim eylemlerini destekler."
+
+#: ../../implementation/execution-semantics.rst:157
+msgid ""
+"``main_purse`` returns the :ref:`main purse <tokens-purses-and-accounts>` of"
+" the account"
+msgstr ""
+"``main_purse`` hesabın :ref:`main purse <tokens-purses-and-accounts>`  "
+"döndürür"
+
+#: ../../implementation/execution-semantics.rst:160
+msgid "Runtime flow and properties"
+msgstr "Çalışma zamanı akışı ve özellikleri"
+
+#: ../../implementation/execution-semantics.rst:162
+msgid ""
+"``call_contract`` allows executing a contract stored under a key (hash or "
+"``URef``), including passing arguments and getting a return value"
+msgstr ""
+"``call_contract``, bir anahtar (özet veya ```URef``) altında saklanan bir "
+"kontratın yürütülmesine izin verir, ki burada argümanları iletmek ve bir "
+"dönüş değeri almak dahildir"
+
+#: ../../implementation/execution-semantics.rst:164
+msgid ""
+"``ret`` is used by contracts to return a value to their caller (i.e. enables"
+" return values from ``call_contract``)"
+msgstr ""
+"``ret``, kontratlar tarafından çağırana bir değer döndürmek için kullanılır "
+"(yani ``call_contract`` ögesinden dönüş değerlerini etkinleştirir)"
+
+#: ../../implementation/execution-semantics.rst:166
+msgid ""
+"``get_named_arg`` allows getting arguments passed to the contract (either to"
+" session code as part of the deploy, or arguments to ``call_contract``)"
+msgstr ""
+"``get_named_arg`` kontrata geçirilen argümanların alınmasına izin verir "
+"(dağıtımın bir parçası olarak oturum koduna veya ``call_contract`` "
+"argümanlarına)"
+
+#: ../../implementation/execution-semantics.rst:168
+msgid ""
+"``revert`` exits the entire executing deploy, reverting any effects it "
+"caused, and returns a status code that is captured in the block"
+msgstr ""
+"``revert`` tüm yürütme dağıtımından çıkar, neden olduğu etkileri geri alır "
+"ve blokta yakalanan bir durum kodu döndürür"
+
+#: ../../implementation/execution-semantics.rst:170
+msgid ""
+"``get_caller`` returns the public key of the account for the current deploy "
+"(can be used for control flow based on specific users of the blockchain)"
+msgstr ""
+"``get_caller`` geçerli dağıtım için hesabın genel anahtarını döndürür "
+"(blokzincirin belirli kullanıcılarına dayalı kontrol akışı için "
+"kullanılabilir)"
+
+#: ../../implementation/execution-semantics.rst:172
+msgid ""
+"``get_phase`` returns the current :ref:`phase <execution-semantics-phases>` "
+"of the deploy execution"
+msgstr ""
+"``get_phase``, konuşlandırma yürütmesinin geçerli :ref:`phase <execution-"
+"semantics-phases>` değerini döndürür"
+
+#: ../../implementation/execution-semantics.rst:175
+msgid ""
+"``get_blocktime`` gets the timestamp of the block this deploy will be "
+"included in"
+msgstr ""
+"``get_blocktime``, bu dağıtımın dahil edileceği bloğun zaman damgasını alır"
+
+#: ../../implementation/execution-semantics.rst:178
+msgid ":ref:`Mint <tokens-mints-and-purses>` functionality"
+msgstr ":ref:`Mint <tokens-mints-and-purses>` işlevi"
+
+#: ../../implementation/execution-semantics.rst:180
+msgid ""
+"``create_purse`` creates a new empty purse, returning the ``URef`` to the "
+"purse"
+msgstr ""
+"``create_purse`` yeni bir boş cüzdan oluşturur ve ``URef``i cüzdana döndürür"
+
+#: ../../implementation/execution-semantics.rst:181
+msgid "``get_balance`` reads the balance of a purse"
+msgstr "``get_balance`` bir çantanın bakiyesini okur"
+
+#: ../../implementation/execution-semantics.rst:182
+msgid ""
+"``transfer_to_account`` transfers from the present account’s main purse to "
+"the main purse of a specified account (creating the account if it does not "
+"exist)"
+msgstr ""
+"``transfer_to_account``, mevcut hesabın ana cüzdanından belirli bir hesabın "
+"ana cüzdanına transferi sağlar (hesap yoksa hesabın oluşturulmasını sağlar)"
+
+#: ../../implementation/execution-semantics.rst:185
+msgid ""
+"``transfer_from_purse_to_account`` transfer from a specified purse to the "
+"main purse of a specified account (creating the account if it does not "
+"exist)"
+msgstr ""
+"``transfer_from_purse_to_account`` belirtilen bir cüzdandan belirtilen bir "
+"hesabın ana cüzdanına transferi sağlar (eğer yoksa hesabın oluşturulmasını "
+"sağlar)"
+
+#: ../../implementation/execution-semantics.rst:187
+msgid ""
+"``transfer_from_purse_to_purse`` alias for the :ref:`mint’s transfer "
+"function <tokens-mint-interface>`"
+msgstr ""
+"``transfer_from_purse_to_purse``, diğer bir deyişle, :ref:`mint’s transfer "
+"function <tokens-mint-interface>`"
+
+#: ../../implementation/execution-semantics.rst:193
+msgid "Generating ``URef``\\ s"
+msgstr "``URef``\\ lerin oluşturulması"
+
+#: ../../implementation/execution-semantics.rst:195
+msgid ""
+"``URef``\\ s are generated using a `cryptographically secure random number "
+"generator <https://rust-"
+"random.github.io/rand/rand_chacha/struct.ChaCha20Rng.html>`__ using the "
+"`ChaCha algorithm <https://cr.yp.to/chacha.html>`__. The random number "
+"generator is seeded by taking the ``blake2b256`` hash of the deploy hash "
+"concatenated with an index representing the current phase of execution (to "
+"prevent collisions between ``URef``\\ s generated in different phases of the"
+" same deploy)."
+msgstr ""
+"\"URef\"\\'ler, `cryptographically secure random number generator <https"
+"://rust-random.github.io/rand/rand_chacha/struct.ChaCha20Rng.html>`__ , "
+"`ChaCha algorithm <https://cr.yp.to/chacha.html>`__ kullanılarak "
+"oluşturulur. Rastgele sayı üreteci, (aynı dağıtımın farklı aşamalarında "
+"oluşturulan ``Uref``\\ lerin çakışmalarını önlemek için) yürütmenin şu anki "
+"aşamasını gösteren indeks ile birleştirilmiş dağıtım özetinin ``blake2b256``"
+" özeti alınarak seed edilir."

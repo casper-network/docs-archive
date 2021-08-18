@@ -1,0 +1,383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../workflow/setup.rst:2
+msgid "Prerequisites"
+msgstr "Điều kiện cần"
+
+#: ../../workflow/setup.rst:4
+msgid ""
+"This section explains how to fulfill the prerequisites needed to interact "
+"with a Casper Network."
+msgstr ""
+"Phần này giải thích cách đáp ứng các điều kiện cần thiết để tương tác với "
+"Mạng Casper."
+
+#: ../../workflow/setup.rst:6
+msgid "This section covers:"
+msgstr "Phần này bao gồm:"
+
+#: ../../workflow/setup.rst:8
+msgid "Installing the official Casper command-line client"
+msgstr "Cài đặt chính thức dòng lệnh Casper client"
+
+#: ../../workflow/setup.rst:9
+msgid "Setting up an account on a Casper Network"
+msgstr "Thiết lập tài khoản trên Mạng Casper"
+
+#: ../../workflow/setup.rst:10
+msgid "Acquiring the IP address of a peer on the official Testnet or Mainnet"
+msgstr ""
+"Nhận địa chỉ IP của một máy ngang hàng trên Testnet hoặc Mainnet chính thức"
+
+#: ../../workflow/setup.rst:13
+msgid "The Casper command-line client"
+msgstr "Dòng lệnh của Casper client"
+
+#: ../../workflow/setup.rst:15
+msgid ""
+"You can find the client on `crates.io <https://crates.io/crates/casper-"
+"client>`_."
+msgstr ""
+"Bạn có thể tìm thấy client trên `crates.io <https://crates.io/crates/casper-"
+"client>`_."
+
+#: ../../workflow/setup.rst:17
+msgid ""
+"Run the commands below to install the Casper client on most flavors of Linux"
+" and macOS. You will need the nightly version of the compiler."
+msgstr ""
+"Chạy các lệnh bên dưới để cài đặt Casper client trên hầu hết các phiên bản "
+"Linux và macOS. Bạn sẽ cần phiên bản nightly của trình biên dịch."
+
+#: ../../workflow/setup.rst:24
+msgid ""
+"The Casper client can print out `help` information, which provides an up-to-"
+"date list of supported commands."
+msgstr ""
+"Casper client có thể in ra `help`, cung cấp danh sách cập nhật các lệnh được"
+" hỗ trợ."
+
+#: ../../workflow/setup.rst:30
+msgid ""
+"**Important**: For each command, you can use `help` to get the up-to-date "
+"arguments and descriptions:"
+msgstr ""
+"**Quan trọng**: Đối với mỗi lệnh, bạn có thể sử dụng `help` để nhận các đối "
+"số và mô tả cập nhật:"
+
+#: ../../workflow/setup.rst:37
+msgid "Setting up an Account"
+msgstr "Thiết lập Tài khoản"
+
+#: ../../workflow/setup.rst:39
+msgid ""
+"The process of creating an `Account "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ can be"
+" divided into two steps:"
+msgstr ""
+"Quá trình tạo `Tài khoản "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ có thể"
+" được chia thành hai bước:"
+
+#: ../../workflow/setup.rst:41
+msgid "Cryptographic key generation for the account"
+msgstr "Tạo khóa mật mã cho tài khoản"
+
+#: ../../workflow/setup.rst:42
+msgid "Funding the account"
+msgstr "Nạp tiền vào tài khoản"
+
+#: ../../workflow/setup.rst:44
+msgid ""
+"The Casper blockchain uses an on-chain account-based model, uniquely "
+"identified by an ``AccountHash`` derived from a specific ``PublicKey``."
+msgstr ""
+"Chuỗi khối Casper sử dụng mô hình dựa trên tài khoản trên chuỗi, được xác "
+"định duy nhất bởi một ``AccountHash`` bắt nguồn từ một ``PublicKey`` cụ thể."
+
+#: ../../workflow/setup.rst:46
+msgid ""
+"By default, a transactional interaction with the blockchain takes the form "
+"of a ``Deploy`` cryptographically signed by the key-pair corresponding to "
+"the ``PublicKey`` used to create the account."
+msgstr ""
+"Theo mặc định, một tương tác giao dịch với chuỗi khối có dạng ``Deploy`` "
+"được ký mã bằng cặp khóa tương ứng với ``PublicKey``, sẽ được sử dụng để tạo"
+" tài khoản."
+
+#: ../../workflow/setup.rst:48
+msgid ""
+"Accounts can be created using the Casper command-line client. Alternatively,"
+" some Casper networks such as the official Testnet and Mainnet provide a "
+"browser-based block explorer that allows account creation."
+msgstr ""
+"Có thể tạo tài khoản bằng dòng lệnh trên Casper client. Ngoài ra, một số "
+"mạng Casper như Testnet chính thức và Mainnet cung cấp trình khám phá khối "
+"dựa trên trình duyệt cho phép tạo tài khoản."
+
+#: ../../workflow/setup.rst:50
+msgid ""
+"A cryptographic key-pair will be created when using either the Casper "
+"command-line client or a block explorer to create an account on the "
+"blockchain. This process generates three files for each account:"
+msgstr ""
+"Một cặp khóa mật mã sẽ được tạo khi sử dụng dòng lệnh trên Casper client "
+"hoặc trình khám phá khối để tạo tài khoản trên chuỗi khối. Quá trình này tạo"
+" ba tệp cho mỗi tài khoản:"
+
+#: ../../workflow/setup.rst:52
+msgid "A PEM encoded secret key"
+msgstr "Khóa bí mật được mã hóa PEM"
+
+#: ../../workflow/setup.rst:53
+msgid "A PEM encoded public key"
+msgstr "Khóa công khai được mã hóa PEM"
+
+#: ../../workflow/setup.rst:54
+msgid "A hexadecimal-encoded string representation of the public key"
+msgstr "Biểu diễn chuỗi được mã hóa hexadecimal của khóa công khai"
+
+#: ../../workflow/setup.rst:56
+msgid "We recommend saving these files securely."
+msgstr "Chúng tôi khuyên bạn nên lưu các tệp này một cách an toàn."
+
+#: ../../workflow/setup.rst:58
+msgid ""
+"The command-line client provides a command that will give you the account "
+"hash for a given public key."
+msgstr ""
+"Dòng lệnh trên client cung cấp một lệnh sẽ cho bạn hàm băm tài khoản của một"
+" khóa công khai nhất định."
+
+#: ../../workflow/setup.rst:65
+msgid "Option 1: Key generation using the Casper client"
+msgstr "Tùy chọn 1: Tạo khóa bằng Casper client"
+
+#: ../../workflow/setup.rst:67
+msgid ""
+"This option describes how you can use the Casper command-line client to set "
+"up your accounts."
+msgstr ""
+"Tùy chọn này mô tả cách bạn có thể sử dòng lệnh trên Casper client để thiết "
+"lập tài khoản của mình."
+
+#: ../../workflow/setup.rst:69
+msgid "Execute the following command to generate your keys:"
+msgstr "Thực thi lệnh sau để tạo khóa của bạn:"
+
+#: ../../workflow/setup.rst:75
+msgid ""
+"The above command will create three files in the current working directory:"
+msgstr "Lệnh trên sẽ tạo ba tệp trong thư mục làm việc hiện tại:"
+
+#: ../../workflow/setup.rst:77
+msgid "``secret_key.pem`` - PEM encoded secret key"
+msgstr "``secret_key.pem`` - Khóa bí mật được mã hóa PEM"
+
+#: ../../workflow/setup.rst:78
+msgid "``public_key.pem`` - PEM encoded public key"
+msgstr "``public_key.pem`` - Khóa công khai được mã hóa PEM"
+
+#: ../../workflow/setup.rst:79
+msgid "``public_key_hex`` - Hexadecimal-encoded string of the public key"
+msgstr "``public_key_hex`` - Chuỗi mã hóa Hexadecimal của khóa công khai"
+
+#: ../../workflow/setup.rst:81
+msgid "**Note**: SAVE your keys to a safe place, preferably offline."
+msgstr ""
+"**Lưu ý**: LƯU chìa khóa của bạn vào một nơi an toàn, tốt nhất là ngoại "
+"tuyến."
+
+#: ../../workflow/setup.rst:83
+msgid ""
+"Once the keys for the account have been generated, the accounts can be "
+"funded to finish the process of creating an account."
+msgstr ""
+"Khi các khóa cho tài khoản đã được tạo ra, các tài khoản có thể được nạp "
+"tiền để kết thúc quá trình tạo tài khoản."
+
+#: ../../workflow/setup.rst:85
+msgid ""
+"**Note**: Responses from the node contain ``AccountHashes`` instead of the "
+"direct hexadecimal-encoded public key. For traceability, it is important to "
+"generate the account hash and store this value locally. The account hash is "
+"a ``Blake2B`` hash of the public hexadecimal-encoded string."
+msgstr ""
+"**Lưu ý**: Các phản hồi từ nút chứa ``AccountHashes``  thay vì khóa công "
+"khai được mã hóa hệ hexadecimal trực tiếp. Để truy xuất nguồn gốc, điều quan"
+" trọng là phải tạo băm tài khoản và lưu trữ giá trị này tại nơi cục bộ. Băm "
+"tài khoản là hàm băm ``Blake2B`` của chuỗi được mã hóa hệ hexadecimal công "
+"khai."
+
+#: ../../workflow/setup.rst:88
+msgid "Option 2: Key generation using a Block Explorer"
+msgstr "Tùy chọn 2: Tạo khóa bằng Block Explorer"
+
+#: ../../workflow/setup.rst:90
+msgid "This option is also available on networks that have a block explorer."
+msgstr "Tùy chọn này cũng có sẵn trên các mạng có trình khám phá khối."
+
+#: ../../workflow/setup.rst:92
+msgid ""
+"For instance, on the official Testnet network the `CSPR.live "
+"<https://testnet.cspr.live/>`_ block explorer is available, and the "
+"following instructions assume you are using it."
+msgstr ""
+"Ví dụ: trên mạng Testnet chính thức có sẵn trình khám phá khối `CSPR.live "
+"<https://testnet.cspr.live/>`_ và các hướng dẫn sau giả sử bạn đang sử dụng "
+"nó."
+
+#: ../../workflow/setup.rst:94
+msgid ""
+"Start by creating an account using the `Create Account <https://clarity-"
+"testnet-old.make.services/#/accounts>`_ link. You will be asked to provide a"
+" unique name for your account; this is for your convenience and is not "
+"stored on chain."
+msgstr ""
+"Bắt đầu bằng cách tạo tài khoản theo đường dẫn `Tạo tài khoản <https"
+"://clarity-testnet-old.make.services/#/accounts>`_. Bạn sẽ được yêu cầu cung"
+" cấp một tên duy nhất cho tài khoản của mình; điều này là để thuận tiện cho "
+"bạn tuy nhiên tên sẽ không được lưu trữ trên chuỗi."
+
+#: ../../workflow/setup.rst:96
+msgid ""
+"You will be prompted to save three files for your new account; carefully "
+"choose where you store them. We recommend storing your keys in a secure "
+"manner."
+msgstr ""
+"Bạn sẽ được nhắc lưu ba tệp cho tài khoản mới của mình; cẩn thận chọn nơi "
+"bạn lưu trữ chúng. Chúng tôi khuyên bạn nên lưu trữ các khóa của mình một "
+"cách an toàn."
+
+#: ../../workflow/setup.rst:98
+msgid "``<Account-Name>_secret_key.pem`` - PEM encoded secret key"
+msgstr "``<Account-Name>_secret_key.pem`` - Khóa bí mật được mã hóa PEM"
+
+#: ../../workflow/setup.rst:99
+msgid "``<Account-Name>_public_key.pem`` - PEM encoded public key"
+msgstr "``<Account-Name>_public_key.pem`` - Khóa công khai được mã hóa PEM"
+
+#: ../../workflow/setup.rst:100
+msgid ""
+"``<Account-Name>_public_key_hex`` - Hexadecimal-encoded string of the public"
+" key"
+msgstr ""
+"``<Account-Name>_public_key_hex`` - Chuỗi mã hóa Hexadecimal của khóa công "
+"khai"
+
+#: ../../workflow/setup.rst:104
+msgid "Fund your Account"
+msgstr "Nạp tiền vào tài khoản của bạn"
+
+#: ../../workflow/setup.rst:106
+msgid ""
+"Once the cryptographic key-pair for the account has been generated, the "
+"account must be funded so it can be created on chain."
+msgstr ""
+"Khi cặp khóa mật mã cho tài khoản đã được tạo, tài khoản phải được nạp tiền "
+"để có thể tạo trên chuỗi."
+
+#: ../../workflow/setup.rst:108
+msgid ""
+"In Testnet, you can fund the account by using the *Request tokens* button on"
+" the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to "
+"receive tokens."
+msgstr ""
+"Trong Testnet, bạn có thể nạp tiền vào tài khoản bằng cách sử dụng nút "
+"*Request tokens* trên `Faucet Page <https://clarity-testnet-"
+"old.make.services/#/faucet>`_ để nhận mã thông báo."
+
+#: ../../workflow/setup.rst:110
+msgid ""
+"In Mainnet, a pre-existing account will have to transfer CSPR tokens to "
+"finalize the process of setting up an account. The *Source* account needs to"
+" transfer CSPR tokens to the hexadecimal-encoded public key of the *Target* "
+"account. This transfer will automatically create the *Target* account if it "
+"does not exist. Currently, this is the only way an account can be created on"
+" Mainnet."
+msgstr ""
+"Trong Mainnet, một tài khoản tồn tại từ trước sẽ phải chuyển token CSPR để "
+"hoàn tất quá trình thiết lập tài khoản. Tài khoản *Nguồn* cần chuyển token "
+"CSPR sang khóa công khai được mã hóa hexadecimal của tài khoản *Đích*. Việc "
+"chuyển khoản này sẽ tự động tạo tài khoản *Đích* nếu nó không tồn tại. Hiện "
+"tại, đây là cách duy nhất có thể tạo tài khoản trên Mainnet."
+
+#: ../../workflow/setup.rst:113
+msgid "Acquire Node Address from network peers"
+msgstr "Nhận địa chỉ nút từ mạng ngang hàng"
+
+#: ../../workflow/setup.rst:115
+msgid ""
+"Clients can interact with a node on the blockchain via requests sent to that"
+" node's JSON-RPC endpoint, ``http://<node-ip-address>:7777`` by default."
+msgstr ""
+"Khách hàng có thể tương tác với một nút trên chuỗi khối thông qua các yêu "
+"cầu được gửi đến điểm cuối JSON-RPC của nút đó, theo mặc định là ``http"
+"://<node-ip-address>:7777``."
+
+#: ../../workflow/setup.rst:117
+msgid "The node address is the IP of a peer node."
+msgstr "Địa chỉ nút là IP của một nút ngang hàng."
+
+#: ../../workflow/setup.rst:119
+msgid ""
+"Both the official testnet and Mainnet provide block explorers that provide a"
+" list of IP addresses of nodes on their respective networks."
+msgstr ""
+"Cả testnet chính thức và Mainnet đều cung cấp trình khám phá khối cung cấp "
+"danh sách địa chỉ IP của các nút trên mạng tương ứng của chúng."
+
+#: ../../workflow/setup.rst:121
+msgid ""
+"You can get the ``node-ip-address`` of a node on the network by visiting the"
+" following block explorers:"
+msgstr ""
+"Bạn có thể lấy ``node-ip-address`` của một nút trên mạng bằng cách truy cập "
+"các trình khám phá khối sau:"
+
+#: ../../workflow/setup.rst:123
+msgid "`Peers <https://testnet.cspr.live/tools/peers>`_ on Testnet"
+msgstr "`Peers <https://testnet.cspr.live/tools/peers>`_ trên Testnet"
+
+#: ../../workflow/setup.rst:124
+msgid "`Peers <https://cspr.live/tools/peers>`_ on Mainnet"
+msgstr "`Peers <https://cspr.live/tools/peers>`_ trên Mainnet"
+
+#: ../../workflow/setup.rst:126
+msgid ""
+"You will see a list of peers, and you can select the IP of any peer on the "
+"list."
+msgstr ""
+"Bạn sẽ thấy một danh sách các ứng ngang hàng và bạn có thể chọn IP của bất "
+"kỳ ứng dụng ngang hàng nào trong danh sách."
+
+#: ../../workflow/setup.rst:128
+msgid ""
+"**Note**: If the selected peer is unresponsive, pick a different peer and "
+"try again."
+msgstr ""
+"**Lưu ý**: Nếu ứng dụng ngang hàng đã chọn không phản hồi, hãy chọn một ứng "
+"dụng ngang hàng khác và thử lại."

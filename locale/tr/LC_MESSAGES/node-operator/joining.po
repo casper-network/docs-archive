@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../node-operator/joining.rst:3
+msgid "Joining a Running Network"
+msgstr "Bir Ağa Katılmak"
+
+#: ../../node-operator/joining.rst:5
+msgid ""
+"The Casper network is permissionless, enabling new validators to join the "
+"network and provide additional security to the system. This page will "
+"outline the sequence of recommended steps to spin up a validating node and "
+"successfully join an existing network."
+msgstr ""
+"Casper, izne tabi olmayan bir ağdır, bu da yeni doğrulayıcıların ağa "
+"katılarak sisteme ek güvenlik sağlamasına olanak tanır. Bu sayfa, "
+"doğrulayıcı bir düğüm kurmak ve var olan bir ağa başarıyla katılmak için "
+"önerilen adımlar dizisini ortaya koyar."
+
+#: ../../node-operator/joining.rst:9
+msgid "Step 1: Provision Hardware"
+msgstr "Adım 1: Donanım Tedarik Edin"
+
+#: ../../node-operator/joining.rst:11
+msgid "Visit the Hardware section and provision your node hardware."
+msgstr "Donanım bölümünü ziyaret edin ve düğümünüz için donanım tedarik edin."
+
+#: ../../node-operator/joining.rst:14
+msgid "Step 2: Build Contracts & Set Up the Node"
+msgstr "Adım 2: Kontratları Derleyin ve Düğümü Kurun"
+
+#: ../../node-operator/joining.rst:16
+msgid ""
+"Visit the Setup section in this guide and configure the software on your "
+"node.  Build all necessary contracts for bonding, retrieving rewards and "
+"unbonding."
+msgstr ""
+"Bu kılavuzdaki Kurulum bölümünü ziyaret edin ve düğümünüz üzerindeki "
+"yazılımları yapılandırın. ağa bağlanma, ödülleri alma ve çözülme için "
+"gereken tüm kontratları derleyin."
+
+#: ../../node-operator/joining.rst:19
+msgid "Step 3: Create & Fund your Keys for Bonding"
+msgstr "Adım 3: Bağlanma için Anahtarlarınızı Oluşturun ve Token Alın"
+
+#: ../../node-operator/joining.rst:21
+msgid ""
+"Obtain token to bond your node on to the network & to pay for the bonding "
+"transaction."
+msgstr ""
+"Düğümünüzü ağa bağlamak ve bağlanma işleminin masrafını karşılamak için "
+"token edinin."
+
+#: ../../node-operator/joining.rst:24
+msgid "Step 4: Update the Trusted Hash"
+msgstr "Adım 4: Güvenilen Özet Değerini (Trusted Hash) Güncelleyin"
+
+#: ../../node-operator/joining.rst:26
+msgid ""
+"The node's ``config.toml`` needs to be updated with a recent trusted hash. "
+"Visit a ``/status`` endpoint of a validating node to obtain a fresh trusted "
+"block hash."
+msgstr ""
+"Düğümün ``config.toml`` dosyasının, yakın tarihli bir güvenilir özet ile "
+"güncellenmesi gerekir. Taze bir güvenilir özet almak için, doğrulayıcı bir "
+"düğümün ``/status`` bağlantı noktasını ziyaret edin."
+
+#: ../../node-operator/joining.rst:32
+msgid ""
+"Default port is usually ``8888``  Retrieve the ``last_added_block_info:`` "
+"hash."
+msgstr ""
+"Öntanımlı bağlantı noktası (port) genellikle ``8888``dir. "
+"``last_added_block_info:`` bilgisindeki özeti alın."
+
+#: ../../node-operator/joining.rst:34
+msgid ""
+"A good IP to use above are those listed in your ``config.toml`` as "
+"``known_addresses``."
+msgstr ""
+"Yukarıdaki işlem için kullanabileceğiniz iyi bir IP adresini ``config.toml``"
+" dosyanızdaki ``known_addresses`` listesinden alabilirsiniz."
+
+#: ../../node-operator/joining.rst:37
+msgid "Step 5: Start the Node"
+msgstr "Adım 5: Düğümü Başlatın"
+
+#: ../../node-operator/joining.rst:39
+msgid ""
+"Once the node has been added to the list of validators for an upcoming era, "
+"it's time to start the node.  The deb package installs a casper-node service"
+" for systemd. Start the node with:"
+msgstr ""
+"Düğümünüz gelecek bir dönem (era) için doğrulayıcılar listesine eklendikten "
+"sonra, düğümünüzü başlatma zamanı gelmiş demektir. DEB paketi, systemd için "
+"bir casper-node hizmeti kurar. Düğümü şu komutla başlatın:"
+
+#: ../../node-operator/joining.rst:46
+msgid ""
+"For more information visit `Github <https://github.com/CasperLabs/casper-"
+"node/tree/master/resources/production>`_"
+msgstr ""
+"Daha fazla bilgi için `Github <https://github.com/CasperLabs/casper-"
+"node/tree/master/resources/production>`_ adresimizi ziyaret edebilirsiniz."
+
+#: ../../node-operator/joining.rst:49
+msgid "Step 6: Confirm the Node is Syncronized"
+msgstr "Adım 6: Düğümün Ağ ile Eşlendiğinden Emin Olun"
+
+#: ../../node-operator/joining.rst:51
+msgid ""
+"While the node is synchronizing, the ``/status`` endpoint is available. You "
+"will be able to compare this to other node's status endpoint ``era_id`` and "
+"``height`` to determine if you are caught up. You will not be able to "
+"perform any ``casper-client`` calls to your ``7777`` RPC port until your "
+"node is fully caught up."
+msgstr ""
+"Düğümün ağ ile eşlenmesi sırasında ``/status`` uç noktası kullanılabilir "
+"durumdadır. Düğümünüzün ağı yakalayıp yakalamadığını belirlemek için, "
+"buradaki değerleri diğer düğümlerin durum uç noktasındaki ``era_id`` ve "
+"``height`` değerleri ile karşılaştırabilirsiniz. ``7777`` RPC portunuza "
+"herhangi bir ``casper-client`` çağrısı yapabilmek için, öncelikle "
+"düğümünüzün ağı tamamen yakalamasını beklemelisiniz."
+
+#: ../../node-operator/joining.rst:57
+msgid "Step 7: Send the Bonding Request"
+msgstr "Adım 7: Bağlanma Talebi Gönderin"
+
+#: ../../node-operator/joining.rst:59
+msgid ""
+"To avoid being ejected for liveness failures, it is critical that the "
+"bonding request be sent to the local node only after it has synchronized the"
+" protocol state and linear blockchain."
+msgstr ""
+"Canlılıkta başarısızlık nedeniyle ağdan atılmaktan kaçınmak için, bağlanma "
+"talebini yalnızca yerel düğüm protokol durumu ve doğrusal blokzincir ile "
+"eşlendikten sonra göndermek çok önemlidir."
+
+#: ../../node-operator/joining.rst:61
+msgid ""
+"For this reason it is recommended that you use ``casper-client`` with the "
+"default ``--node-address`` which will talk to localhost."
+msgstr ""
+"Bu nedenle, ``casper-client`` komutunu varsayılan ``--node-address`` ile "
+"kullanmanız önerilir. Bu, yerel makine (localhost) ile iletişim kuracaktır."
+
+#: ../../node-operator/joining.rst:63
+msgid ""
+"Please see the bonding page to submit a bonding request to change from a "
+"synchronized node to a validating node."
+msgstr ""
+"Sadece ağ ile eşlenen bir düğümden, doğrulayıcı bir düğüme geçiş yapmak "
+"üzere bir bağlanma talebi göndermek için lütfen bağlanma sayfasına bakınız."

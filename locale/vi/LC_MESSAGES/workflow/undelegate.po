@@ -1,0 +1,264 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:49+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../workflow/undelegate.rst:2
+msgid "Undelegating Tokens"
+msgstr "Huỷ uỷ quyền Token"
+
+#: ../../workflow/undelegate.rst:4
+msgid ""
+"This document details a workflow where tokens delegated to a validator on a "
+"Casper network can be undelegated."
+msgstr ""
+"Tài liệu này nêu chi tiết quy trình làm việc trong đó các mã thông báo được "
+"ủy quyền cho nhà xác thực trên mạng Casper có thể được huỷ uỷ quyền."
+
+#: ../../workflow/undelegate.rst:6
+msgid "This workflow assumes:"
+msgstr "Luồng công việc giả định:"
+
+#: ../../workflow/undelegate.rst:8
+msgid "You meet the `prerequisites <setup.html>`_"
+msgstr "Bạn đáp ứng các `điều kiện cần <setup.html>`_"
+
+#: ../../workflow/undelegate.rst:9
+msgid "You are using the Casper command-line client"
+msgstr "Bạn đang sử dụng dòng lệnh trên Casper client"
+
+#: ../../workflow/undelegate.rst:10
+msgid "You have an undelegation contract or WASM to execute on the network"
+msgstr "Bạn có hợp đồng huỷ uỷ quyền hoặc WASM để thực thi trên mạng"
+
+#: ../../workflow/undelegate.rst:11
+msgid "You have a valid ``node-address``"
+msgstr "Bạn có một ``node-address`` hợp lệ"
+
+#: ../../workflow/undelegate.rst:12
+msgid ""
+"You have previously `deployed a smart contract "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ to a Casper Network"
+msgstr ""
+"Trước đây bạn đã `triển khai hợp đồng thông minh "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ cho Mạng Casper"
+
+#: ../../workflow/undelegate.rst:13
+msgid "You have delegated tokens to a validator"
+msgstr "Bạn đã ủy quyền token cho nhà xác thực"
+
+#: ../../workflow/undelegate.rst:17
+msgid "Building The Undelegation WASM"
+msgstr "Xây dựng Huỷ uỷ quyền WASM"
+
+#: ../../workflow/undelegate.rst:19
+msgid ""
+"Obtain the ``undelegate.wasm`` by cloning the `casper-node "
+"<https://github.com/CasperLabs/casper-node>`_ repository and building the "
+"contracts."
+msgstr ""
+"Có ``undelegate.wasm`` bằng cách sao chép kho chứa `casper-node "
+"<https://github.com/CasperLabs/casper-node>`_  và xây dựng các hợp đồng."
+
+#: ../../workflow/undelegate.rst:21
+msgid ""
+"To build contracts, set up Rust, and install all dependencies. Visit "
+"`Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-"
+"of-rust-contract-sdk.html>`_ in the Developer Guide for step-by-step "
+"instructions."
+msgstr ""
+"Để xây dựng hợp đồng, hãy thiết lập Rust và cài đặt tất cả các phần phụ "
+"thuộc. Truy cập vào `Cài đặt Rust <https://docs.casperlabs.io/en/latest"
+"/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ trong Hướng dẫn dành cho "
+"nhà phát triển để biết từng bước hướng dẫn."
+
+#: ../../workflow/undelegate.rst:23
+msgid ""
+"Once you build the contracts, you can use the ``undelegate.wasm`` to create "
+"a deploy that will initiate the undelegation process. The WASM can be found "
+"in:"
+msgstr ""
+"Khi bạn xây dựng các hợp đồng, bạn có thể sử dụng ``undelegate.wasm``để tạo "
+"một triển khai bắt đầu quá trình huỷ uỷ quyền. Có thể thấy WASM trong:"
+
+#: ../../workflow/undelegate.rst:31
+msgid "Sending the Undelegation Deploy"
+msgstr "Gửi triển khai Huỷ uỷ quyền"
+
+#: ../../workflow/undelegate.rst:33
+msgid ""
+"Send a deploy containing the ``undelegate.wasm`` to the network to initiate "
+"the undelegation process."
+msgstr ""
+"Gửi một triển khai có chứa ``undelegate.wasm`` đến mạng để bắt đầu quá trình"
+" huỷ uỷ quyền."
+
+#: ../../workflow/undelegate.rst:35
+msgid ""
+"Below is an example of an undelegation request using the Casper command-line"
+" client:"
+msgstr ""
+"Dưới đây là ví dụ về yêu cầu huỷ uỷ quyền bằng dòng lệnh trên Casper client:"
+
+#: ../../workflow/undelegate.rst:49
+msgid ""
+"**Note** The delegator's public key and the secret key that signs the deploy"
+" must be part of the same key pair."
+msgstr ""
+"**Lưu ý** Khóa công khai của người ủy quyền và khóa bí mật ký tên vào triển "
+"khai phải là một phần của cùng một cặp khóa."
+
+#: ../../workflow/undelegate.rst:51
+msgid "**Request fields:**"
+msgstr "**Các trường yêu cầu:**"
+
+#: ../../workflow/undelegate.rst:53
+msgid ""
+"``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the "
+"request and returned in the response. If not provided, a random integer will"
+" be assigned"
+msgstr ""
+"``id`` - <STRING OR INTEGER> định danh tuỳ chọn JSON-RPC được áp dụng cho "
+"yêu cầu và được trả lại trong phản hồi. Nếu không được cung cấp, một số "
+"nguyên ngẫu nhiên sẽ được chỉ định"
+
+#: ../../workflow/undelegate.rst:54 ../../workflow/undelegate.rst:83
+msgid ""
+"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP"
+" service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT> Tên máy chủ hoặc IP và cổng của nút mà dịch "
+"vụ HTTP đang chạy [default:http://localhost:7777]"
+
+#: ../../workflow/undelegate.rst:55
+msgid "``secret-key`` - Path to secret key file"
+msgstr "``secret-key`` - Đường dẫn đến tệp khóa bí mật"
+
+#: ../../workflow/undelegate.rst:56
+msgid ""
+"``chain-name`` - Name of the chain, to avoid the deploy from being "
+"accidentally or maliciously included in a different chain"
+msgstr ""
+"``chain-name`` - Tên của chuỗi, để tránh việc triển khai bị đưa vào một "
+"chuỗi khác một cách vô tình hoặc có hại"
+
+#: ../../workflow/undelegate.rst:58
+msgid "The *chain-name* for testnet is **casper-test**"
+msgstr "*chain-name* cho mạng thử nghiệm là **casper-test**"
+
+#: ../../workflow/undelegate.rst:59
+msgid "The *chain-name* for mainnet is **casper**"
+msgstr "*chain-name* cho mạng chính là **casper**"
+
+#: ../../workflow/undelegate.rst:61
+msgid "``session-path`` - The path to where the ``delegate.wasm`` is located"
+msgstr "``session-path`` - Đường dẫn tới vị trí ``delegate.wasm``"
+
+#: ../../workflow/undelegate.rst:62
+msgid "``session-arg`` - The arguments to the ``delegate`` execution"
+msgstr "``session-arg`` - Các đối số để thực thi ``delegate``"
+
+#: ../../workflow/undelegate.rst:64
+msgid ""
+"The argument ``validator`` is the public key of the validator from whom the "
+"tokens will be undelegated"
+msgstr ""
+"Đối số ``validator` là khóa công khai của nhà xác thực mà từ đó các mã thông"
+" báo sẽ huỷ uỷ quyền"
+
+#: ../../workflow/undelegate.rst:65
+msgid "The argument ``amount`` is the number of tokens to be undelegated"
+msgstr "Đối số ```amount`` là số lượng token sẽ được huỷ uỷ quyền"
+
+#: ../../workflow/undelegate.rst:66
+msgid ""
+"The argument ``delegator`` is the public key of the account undelegating "
+"tokens from a validator"
+msgstr ""
+"Đối số ``delegator`` là khóa công khai của tài khoản huỷ uỷ quyền token từ "
+"nhà xác thực"
+
+#: ../../workflow/undelegate.rst:70
+msgid "Asserting the Undelegation"
+msgstr "Xác nhận Huỷ uỷ quyền"
+
+#: ../../workflow/undelegate.rst:72
+msgid ""
+"You can use the Casper command-line client to generate an RPC request to "
+"query the auction state. The subsequent RPC response will confirm that the "
+"undelegation request was successfully executed."
+msgstr ""
+"Bạn có thể sử dụng dòng lệnh trên Casper client để tạo một yêu cầu RPC để "
+"truy vấn trạng thái đấu giá. Phản hồi RPC tiếp theo sẽ xác nhận rằng yêu cầu"
+" huỷ uỷ quyền đã được thực hiện thành công."
+
+#: ../../workflow/undelegate.rst:74
+msgid ""
+"Here is how you can check the status of the auction to confirm that your bid"
+" was withdrawn:"
+msgstr ""
+"Đây là cách bạn có thể kiểm tra trạng thái của phiên đấu giá để xác nhận "
+"rằng giá thầu của bạn đã được rút lại:"
+
+#: ../../workflow/undelegate.rst:81
+msgid "**Request fields**:"
+msgstr "**Các trường yêu cầu**:"
+
+#: ../../workflow/undelegate.rst:85
+msgid ""
+"If the public key and the amount are absent from the ``bids`` structure, we "
+"can safely assert that we have indeed undelegated from the validator."
+msgstr ""
+"Nếu khóa công khai và tổng số không có trong cấu trúc ``bids``, chúng ta có "
+"thể khẳng định một cách an toàn rằng chúng ta thực sự đã không bị nhà xác "
+"thực huỷ uỷ quyền."
+
+#: ../../workflow/undelegate.rst:87
+msgid ""
+"If your account is on the official Testnet or Mainnet, you can use the block"
+" explorer to look up your account balance and see that the tokens have been "
+"added to your balance:"
+msgstr ""
+"Nếu tài khoản của bạn nằm trên Testnet hoặc Mainnet chính thức, bạn có thể "
+"sử dụng trình khám phá khối để tra cứu số dư tài khoản của mình và xem các "
+"token đã được thêm vào tài khoản của bạn:"
+
+#: ../../workflow/undelegate.rst:89
+msgid "`Testnet explorer <https://testnet.cspr.live/>`_"
+msgstr "`Testnet explorer <https://testnet.cspr.live/>`_"
+
+#: ../../workflow/undelegate.rst:90
+msgid "`Mainnet explorer <https://cspr.live/>`_"
+msgstr "`Mainnet explorer <https://cspr.live/>`_"
+
+#: ../../workflow/undelegate.rst:92
+msgid ""
+"**Important Note**: After undelegating tokens from a validator, you must "
+"wait for the unbonding period to lapse before re-delegating tokens to either"
+" the same validator or a different validator."
+msgstr ""
+"**Lưu ý quan trọng**: Sau khi huỷ uỷ quyền token từ nhà xác thực, bạn phải "
+"đợi khoảng thời gian hủy kết thúc, trước khi ủy quyền lại mã thông báo cho "
+"cùng một nhà xác thực hoặc một nhà xác thực khác."

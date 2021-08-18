@@ -1,0 +1,228 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../implementation/p2p.rst:4
+msgid "Network Communication"
+msgstr ""
+
+#: ../../implementation/p2p.rst:8
+msgid ""
+"Nodes form a peer-to-peer network are continually communicating with each"
+" other to reach *consensus* about the blockchain state. A node is not "
+"necessarily a single physical machine. Still, it appears as a single "
+"logical entity to the rest of its peers by having a unique ID and address"
+" where it responds to incoming network traffic."
+msgstr ""
+
+#: ../../implementation/p2p.rst:11
+msgid "Identity"
+msgstr ""
+
+#: ../../implementation/p2p.rst:13
+msgid ""
+"Each node has an identity on the network (which is not the same as its "
+"identity in the consensus process). The network identity (ID) is based on"
+" the fingerprint of the public key of a self-signed TLS certificate. A "
+"node generates a new private key each time it starts, ensuring a unique "
+"ID."
+msgstr ""
+
+#: ../../implementation/p2p.rst:15
+msgid ""
+"Each identity is linked with an address, which is an IP and port pair "
+"where the node is reachable. This address is also called an endpoint."
+msgstr ""
+
+#: ../../implementation/p2p.rst:18
+msgid "Inter-node connections"
+msgstr ""
+
+#: ../../implementation/p2p.rst:20
+msgid ""
+"Should a node want to connect to another node with a known endpoint, it "
+"opens a TLS connection to the endpoint's address. In the context of "
+"common TLS terminology, this makes the connecting node the *client* and "
+"the remote node the *server* for this connection."
+msgstr ""
+
+#: ../../implementation/p2p.rst:22
+msgid ""
+"During connection setup, the client checks the server's certificate, "
+"matching the endpoint's expected public identity to ensure we have "
+"connected to the right node. Additionally, the TLS parameters of the "
+"connection and certificate are required to contain the same ciphers, "
+"digests, etc., to protect against downgrade attacks."
+msgstr ""
+
+#: ../../implementation/p2p.rst:24
+msgid ""
+"Simultaneously, the connecting node sends its certificate as the client "
+"certificate, allowing the server to perform the same check-in reverse and"
+" establish the client's ID. At the end of the process, both nodes can be "
+"sure to which peer they are connected."
+msgstr ""
+
+#: ../../implementation/p2p.rst:26
+msgid ""
+"Once a connection is established, the server will immediately seek to "
+"connect back to a node based on its endpoint (see `Node Discovery`_ on "
+"how the server finds endpoints) if it is a one-way connection. If a "
+"bidirectional connection setup cannot be established within a certain "
+"amount of time, all peer ID connections are dropped."
+msgstr ""
+
+#: ../../implementation/p2p.rst:28
+msgid ""
+"Connections are used for sending messages one-way only; only the node "
+"initiating a connection will send messages on it."
+msgstr ""
+
+#: ../../implementation/p2p.rst:31
+msgid "Network"
+msgstr ""
+
+#: ../../implementation/p2p.rst:33
+msgid ""
+"As soon as a node has connected to one node in the network, it partakes "
+"in `Node Discovery`_. In general, any node will attempt to connect to any"
+" other node on the network it finds as described above, leading to a "
+"fully connected network."
+msgstr ""
+
+#: ../../implementation/p2p.rst:35
+msgid ""
+"Two classes of data transfers happen in the network; broadcasts and "
+"gossiping. A broadcast message is sent once, without guarantees, to all "
+"the nodes connected to it. The process of gossiping is described further "
+"below."
+msgstr ""
+
+#: ../../implementation/p2p.rst:37
+msgid ""
+"In general, only consensus messages, which are only sent by active "
+"validators, are broadcast. Everything else is gossipped."
+msgstr ""
+
+#: ../../implementation/p2p.rst:42
+msgid "Gossiping"
+msgstr ""
+
+#: ../../implementation/p2p.rst:44
+msgid ""
+"Multiple types of objects are gossipped, the most prominent ones being "
+"blocks, deploys, and endpoints (see `Identity`_). Each of these objects "
+"is immutable and can be identified by a unique hash."
+msgstr ""
+
+#: ../../implementation/p2p.rst:46
+msgid ""
+"Gossiping is a process of distributing a value across the entire network "
+"without directly sending it to each node. This process allows only a "
+"subset of nodes to be connected to the original sender and spreading the "
+"bandwidth and processing requirements across the network at the cost of "
+"latency and overall bandwidth consumed."
+msgstr ""
+
+#: ../../implementation/p2p.rst:48
+msgid "The process can be summarized as follows:"
+msgstr ""
+
+#: ../../implementation/p2p.rst:50
+msgid ""
+"Given a message `M` to gossip, the desired saturation `S`, and an "
+"infection limit `L`:"
+msgstr ""
+
+#: ../../implementation/p2p.rst:52
+msgid "Pick a subset `T` of `k` nodes from all currently connected nodes."
+msgstr ""
+
+#: ../../implementation/p2p.rst:53
+msgid ""
+"Send `M` to each node in `T`, noting which nodes were already infected (a"
+" node is considered infected if it already had received or known `M`)."
+msgstr ""
+
+#: ../../implementation/p2p.rst:54
+msgid ""
+"For every node shown as already infected, add another random node outside"
+" to `T` and send it `M`, again noting the response."
+msgstr ""
+
+#: ../../implementation/p2p.rst:55
+msgid ""
+"End when we confirm infection of `L` new nodes or encountered `S` already"
+" infected nodes."
+msgstr ""
+
+#: ../../implementation/p2p.rst:57
+msgid "Through this process, a message will spread to almost all nodes over time."
+msgstr ""
+
+#: ../../implementation/p2p.rst:60
+msgid "Requesting missing data"
+msgstr ""
+
+#: ../../implementation/p2p.rst:62
+msgid ""
+"While gossiping and broadcasting are sufficient to distribute data across"
+" the network in most cases, nodes can also request missing data from "
+"peers should they require it. A common example is a missing deploy from a"
+" block."
+msgstr ""
+
+#: ../../implementation/p2p.rst:65
+msgid "Validation"
+msgstr ""
+
+#: ../../implementation/p2p.rst:67
+msgid ""
+"Objects have a concept of dependencies. For example, a block depends on "
+"all the deploys whose hashes are listed inside it. A node considers any "
+"object valid if all of its dependencies are available on the local node."
+msgstr ""
+
+#: ../../implementation/p2p.rst:69
+msgid ""
+"Should a node receive an object from a peer that is not valid yet, it "
+"will attempt to complete its validation before processing it further. In "
+"the case of gossiping, this means pausing the gossiping of the object "
+"until all its dependencies can be retrieved."
+msgstr ""
+
+#: ../../implementation/p2p.rst:71
+msgid ""
+"Any node is responsible for only propagating valid objects. Should a node"
+" not retrieve all missing dependencies of an object from the peer that "
+"sent it, it may punish the peer for doing so."
+msgstr ""
+
+#: ../../implementation/p2p.rst:74
+msgid "Node Discovery"
+msgstr ""
+
+#: ../../implementation/p2p.rst:76
+msgid ""
+"Node discovery happens by each node periodically gossiping its public "
+"address. Upon receiving an address via gossip, each node immediately "
+"tries to establish a connection to it and notes the resulting endpoint, "
+"if successful."
+msgstr ""
+

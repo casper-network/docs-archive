@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../economics/concepts.rst:2
+msgid "Staking Concepts"
+msgstr "Concepts de Staking"
+
+#: ../../economics/concepts.rst:4
+msgid ""
+"The Casper network is a Proof-of-Stake blockchain that allows validators to "
+"stake the Casper native token CSPR on the network. Validators receive CSPR "
+"as an incentive for continuing to maintain and secure the network. CSPR "
+"rewards are distributed as blocks are validated into existence and organized"
+" into eras."
+msgstr ""
+"Le réseau Casper est une blockchain de type Proof-of-Stake (POS) qui permet "
+"aux validateurs de mettre en jeu les jetons natifs Casper CSPR sur le "
+"réseau. Les validateurs reçoivent des CSPR pour les inciter à continuer à "
+"entretenir et à sécuriser le réseau. Les récompenses CSPR sont distribuées "
+"au fur et à mesure que les blocs sont validés et organisés en ères (eras)."
+
+#: ../../economics/concepts.rst:6
+msgid ""
+"**Consensus mechanism:** Casper operates using a Proof-of-Stake consensus "
+"mechanism per the `Highway Protocol "
+"<https://github.com/CasperLabs/highway>`_, a specification of Correct-by-"
+"Construction Casper (CBC Casper)."
+msgstr ""
+"**Mécanisme de consensus:** Casper fonctionne à l'aide d'un mécanisme de "
+"consensus de type Proof-of-Stake selon le `Highway Protocol "
+"<https://github.com/CasperLabs/highway>`_, une spécification de Correct-by-"
+"Construction Casper (CBC Casper)."
+
+#: ../../economics/concepts.rst:8
+msgid ""
+"**Number of validators:** The Casper network supports up to 100 validators "
+"on the network. This number is chosen to strike a balance between "
+"performance and decentralization. This platform parameter can be increased "
+"through upgrades as development continues and performance improves. In "
+"addition, validators can stake on the Casper network through a process of "
+"permission-less bonding by participating in an auction for the validator "
+"slot."
+msgstr ""
+"**Nombre de valideurs:** Le réseau Casper prend en charge jusqu'à 100 "
+"valideurs sur le réseau. Ce nombre est choisi pour trouver un équilibre "
+"entre les performances et la décentralisation. Ce paramètre de la plate-"
+"forme peut être augmenté par des mises à jour, à mesure que le développement"
+" se poursuit et que les performances s'améliorent. En outre, les validateurs"
+" peuvent miser sur le réseau Casper par le biais d'un processus de liaison "
+"sans permission en participant à une enchère pour ganger une place de "
+"validateur."
+
+#: ../../economics/concepts.rst:10
+msgid ""
+"**Permission-less bonding:** For validators to begin staking and earning "
+"rewards, they must win a staking auction by competing with current and "
+"prospective validators to supply one of the forthcoming top stakes for a "
+"given era. This process is permission-less, meaning validators can join and "
+"leave the auction without restrictions, except for a waiting period to "
+"unlock staked tokens."
+msgstr ""
+"**Permission-less bonding:** Pour que les validateurs puissent commencer à "
+"staker et à gagner des récompenses, ils doivent remporter une enchère de "
+"staking en concourant avec les validateurs actuels et potentiels pour "
+"fournir l'un des meilleurs stake à venir pour une ère (era) donnée. Ce "
+"processus est sans permission, ce qui signifie que les validateurs peuvent "
+"rejoindre et quitter l'enchère sans restriction, à l'exception d'une période"
+" d'attente pour débloquer les jetons stakés."
+
+#: ../../economics/concepts.rst:12
+msgid ""
+"**Unbonding:** To detach from the Casper network, it takes seven eras for "
+"both validators and delegators. Neither validators nor delegators receive "
+"rewards during the seven eras required for unbonding, as they are not "
+"actively contributing to the network's security during that time."
+msgstr ""
+"**Détachement:** Pour se détacher du réseau Casper, il faut sept ères (eras)"
+" aux validateurs et aux délégués. Ni les validateurs ni les délégués ne "
+"reçoivent de récompenses pendant ces sept ères nécessaires au détachement, "
+"car ils ne contribuent pas activement à la sécurité du réseau pendant cette "
+"période."
+
+#: ../../economics/concepts.rst:14
+msgid ""
+"**Eras and block times:** An era on Casper is roughly 2 hours long. Casper's"
+" Highway protocol allows validators to propose blocks as quickly as network "
+"conditions allow, subject to a platform-wide limit that may be adjusted with"
+" upgrades. We anticipate block times to last between thirty seconds and "
+"eight minutes."
+msgstr ""
+"**Eres et durées des blocs:** Une ère sur Casper dure environ 2 heures. Le "
+"protocole Highway de Casper permet aux validateurs de proposer des blocs "
+"aussi rapidement que les conditions du réseau le permettent, sous réserve "
+"d'une limite à l'échelle de la plate-forme qui peut être ajustée avec les "
+"mises à jour. Nous prévoyons que les blocs durent entre trente secondes et "
+"huit minutes."
+
+#: ../../economics/concepts.rst:16
+msgid ""
+"**Block rewards:** Block time is orthogonal to rewards, so there is no "
+"precise reward per block. Instead, the number of rewards is split "
+"proportionally among stakes and reduced for failure to participate in the "
+"protocol promptly."
+msgstr ""
+"**Récompenses des blocs:** Les récompenses (rewards) ne dépendent pas de la "
+"durée des blocs , il n'y a donc pas de récompense précise par bloc. Au lieu "
+"de cela, le nombre de récompenses est réparti proportionnellement entre les "
+"enjeux et réduit en cas de non participation rapide au protocole."
+
+#: ../../economics/concepts.rst:18
+msgid ""
+"**Reward cycle:** Rewards are distributed to validators and delegators once "
+"per era."
+msgstr ""
+"**Cycle des récompenses:** Les récompenses sont distribuées aux validateurs "
+"et aux délégataires une fois par ère."
+
+#: ../../economics/concepts.rst:20
+msgid ""
+"**Token supply and inflation:** Mainnet launched with ten billion CSPR at "
+"the time of genesis. The target annual supply growth rate is 8%."
+msgstr ""
+"**Approvisionnement en jetons et inflation:** Le Mainnet a été lancé avec "
+"dix milliards de CSPR au moment de la genèse (Genesis). Le taux de "
+"croissance annuel cible de l'offre est de 8%."
+
+#: ../../economics/concepts.rst:22
+#, python-format
+msgid ""
+"**Annual reward percentage:** Validators on the Casper network earn between "
+"10% and 20% of their staked CSPR in the first year of the Mainnet operation,"
+" with regular participation under expected network conditions. The growth of"
+" individual stakes is dependent on total active stake, as only a fixed "
+"number of tokens is created per era."
+msgstr ""
+"**Pourcentage de récompense annuel: ARP** Les validateurs du réseau Casper "
+"gagnent entre 10 et 20 % de leurs CSPR misés au cours de la première année "
+"d'exploitation du Mainnet, avec une participation régulière dans les "
+"conditions prévues du réseau. La croissance des mises individuelles dépend "
+"de la mise active totale, car seul un nombre fixe de jetons est créé par "
+"ère."
+
+#: ../../economics/concepts.rst:24
+msgid ""
+"Please visit the `Staking Guide "
+"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ for further "
+"details on the staking mechanism."
+msgstr ""
+"Consulter le `Guide du staking "
+"<https://docs.casperlabs.io/fr/latest/staking/index.html>`_ pour plus de "
+"détails sur le mécanisme de staking."

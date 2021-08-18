@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../workflow/index.rst:2
+msgid "How To's"
+msgstr ""
+
+#: ../../workflow/index.rst:4
+msgid ""
+"This section contains guides that highlight key features and capabilities"
+" of the Casper system."
+msgstr ""
+
+#: ../../workflow/index.rst:7
+msgid "Title"
+msgstr ""
+
+#: ../../workflow/index.rst:7
+msgid "Description"
+msgstr ""
+
+#: ../../workflow/index.rst:9
+msgid "`Prerequisites <setup.html>`_"
+msgstr ""
+
+#: ../../workflow/index.rst:9
+msgid "A guide to fulfilling prerequisites needed for various workflows"
+msgstr ""
+
+#: ../../workflow/index.rst:10
+msgid "`Querying the Casper Network <querying.html>`_"
+msgstr ""
+
+#: ../../workflow/index.rst:10
+msgid "A guide to querying for information on a Casper blockchain"
+msgstr ""
+
+#: ../../workflow/index.rst:11
+msgid "`Direct Native Token Transfer <transfer-workflow.html>`_"
+msgstr ""
+
+#: ../../workflow/index.rst:11
+msgid ""
+"A guide to performing a direct transfer of CSPR tokens from one account "
+"to another"
+msgstr ""
+
+#: ../../workflow/index.rst:12
+msgid "`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_"
+msgstr ""
+
+#: ../../workflow/index.rst:12
+msgid "A guide to setting up an account for two-party signature deploys"
+msgstr ""
+
+#: ../../workflow/index.rst:13
+msgid "`Delegating Tokens <delegate.html>`_"
+msgstr ""
+
+#: ../../workflow/index.rst:13
+msgid "A guide to delegating tokens to a Validator on a Casper Network"
+msgstr ""
+
+#: ../../workflow/index.rst:14
+msgid "`Un-delegating Tokens <undelegate.html>`_"
+msgstr ""
+
+#: ../../workflow/index.rst:14
+msgid "A guide to un-delegating tokens from a Validator on a Casper Network"
+msgstr ""
+
+#: ../../workflow/index.rst:17
+msgid "**Table of Contents**"
+msgstr ""
+

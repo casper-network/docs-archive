@@ -1,0 +1,281 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../workflow/querying.rst:3
+msgid "Querying the Network"
+msgstr "Interrogation du réseau"
+
+#: ../../workflow/querying.rst:5
+msgid ""
+"The Casper node supports queries for users and developers to obtain "
+"information stored on the blockchain."
+msgstr ""
+"Le nœud Casper prend en charge les requêtes des utilisateurs et des "
+"développeurs pour obtenir des informations stockées sur la blockchain."
+
+#: ../../workflow/querying.rst:7
+msgid "This document assumes:"
+msgstr "Ce document suppose :"
+
+#: ../../workflow/querying.rst:9
+msgid "You have met the `prerequisites <setup.html>`_"
+msgstr "Vous remplissez les `pré-requis <setup.html>`_"
+
+#: ../../workflow/querying.rst:10
+msgid ""
+"You are familiar with the structure of the `Global State and the Blockchain "
+"Design <https://docs.casperlabs.io/en/latest/implementation/index.html>`_ to"
+" query data from the network"
+msgstr ""
+"Vous connaissez la structure de `l'Etat Global et la Conception de la "
+"Blockchain "
+"<https://docs.casperlabs.io/fr/latest/implementation/index.html>`_ pour "
+"interroger les données du réseau."
+
+#: ../../workflow/querying.rst:12
+msgid ""
+"When sending a query, it is important to note that the request will be "
+"routed to a single node in the network. You can request several types of "
+"data from a node:"
+msgstr ""
+"Lorsque vous envoyez une requête, il est important de noter que celle-ci "
+"sera acheminée vers un seul nœud du réseau. Vous pouvez demander plusieurs "
+"types de données à un nœud :"
+
+#: ../../workflow/querying.rst:14
+msgid "Account details"
+msgstr "Détails du compte"
+
+#: ../../workflow/querying.rst:15
+msgid "Block information"
+msgstr "Informations sur les blocs"
+
+#: ../../workflow/querying.rst:16
+msgid "Deploy information"
+msgstr "Informations sur les déploiements"
+
+#: ../../workflow/querying.rst:19
+msgid "Obtaining the Global State Root Hash"
+msgstr "Obtention du 'Global State Root Hash'"
+
+#: ../../workflow/querying.rst:20
+msgid ""
+"Since the system state changes with each block created, obtaining the latest"
+" global state hash is essential before querying information from a node."
+msgstr ""
+"Comme l'état du système change avec chaque bloc créé, il est essentiel "
+"d'obtenir le dernier hash de l'état global (Global State Root Hash) avant de"
+" demander des informations à un nœud."
+
+#: ../../workflow/querying.rst:22
+msgid ""
+"All queries made to global state require the ``state-root-hash``,  which you"
+" can obtain with this command:"
+msgstr ""
+"Toutes les requêtes faites sur l'état global (global state) nécessitent le "
+"``state-root-hash``, que vous pouvez obtenir avec cette commande :"
+
+#: ../../workflow/querying.rst:30 ../../workflow/querying.rst:88
+#: ../../workflow/querying.rst:167 ../../workflow/querying.rst:226
+#: ../../workflow/querying.rst:330
+msgid "**Request fields:**"
+msgstr "**Paramètres de la requête:**"
+
+#: ../../workflow/querying.rst:32 ../../workflow/querying.rst:90
+#: ../../workflow/querying.rst:169 ../../workflow/querying.rst:228
+msgid ""
+"``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the "
+"request and returned in the response. If not provided, a random integer will"
+" be assigned"
+msgstr ""
+"``id`` - <STRING OR INTEGER>  Identifiant JSON-RPC facultatif appliqué à la "
+"requête et renvoyé dans la réponse. S'il n'est pas fourni, un nombre entier "
+"aléatoire sera attribué."
+
+#: ../../workflow/querying.rst:33 ../../workflow/querying.rst:91
+#: ../../workflow/querying.rst:170
+msgid ""
+"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP"
+" service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT> Hostname ou IP et port du nœud sur lequel le "
+"service HTTP tourne [default:http://localhost:7777]"
+
+#: ../../workflow/querying.rst:41 ../../workflow/querying.rst:105
+#: ../../workflow/querying.rst:180 ../../workflow/querying.rst:242
+msgid "**JSON-RPC Request**:"
+msgstr "**JSON-RPC Request**:"
+
+#: ../../workflow/querying.rst:54 ../../workflow/querying.rst:120
+#: ../../workflow/querying.rst:194 ../../workflow/querying.rst:258
+msgid "**JSON-RPC Response**:"
+msgstr "**JSON-RPC Response**:"
+
+#: ../../workflow/querying.rst:75
+msgid "Querying an Account"
+msgstr "Interroger un Compte"
+
+#: ../../workflow/querying.rst:77
+msgid ""
+"`Accounts "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ are "
+"stored in the global state and can be queried using the ``query-state`` "
+"command:"
+msgstr ""
+"`Les comptes "
+"<https://docs.casperlabs.io/fr/latest/implementation/accounts.html>`_ sont "
+"stockés dans l'état global et peuvent être interrogés à l'aide de la "
+"commande ``query-state`` :"
+
+#: ../../workflow/querying.rst:92 ../../workflow/querying.rst:171
+msgid "``state-root-hash`` - <HEX STRING> Hex-encoded hash of the state root"
+msgstr ""
+"``state-root-hash`` - <HEX STRING> Hash codé en hexadécimal de la racine de "
+"l'état."
+
+#: ../../workflow/querying.rst:93
+msgid ""
+"``key`` - <FORMATTED STRING or PATH> The base key for the query. This must "
+"be a properly formatted public key, account hash, contract address hash, "
+"URef, transfer hash or deploy-info hash."
+msgstr ""
+"``key`` - <FORMATTED STRING or PATH> La clé de base pour la requête. Il doit"
+" s'agir d'une clé publique correctement formatée, d'un hash de compte, d'un "
+"hash d'adresse de contrat, d'un URef, d'un hash de transfert ou d'un hash de"
+" deploy-info."
+
+#: ../../workflow/querying.rst:96 ../../workflow/querying.rst:233
+msgid "**Important response fields:**"
+msgstr "**Paramètres importants de la réponse:**"
+
+#: ../../workflow/querying.rst:98
+msgid ""
+"``\"result\".\"stored_value\".\"Account\".\"main_purse\"`` - the address of "
+"the main purse containing the sender’s tokens. This purse is the source of "
+"the tokens transferred in this example"
+msgstr ""
+"``\"result\".\"stored_value\".\"Account\".\"main_purse\"`` - l'adresse du "
+"porte-monnaie principal contenant les jetons de l'expéditeur. Ce porte-"
+"monnaie est la source des jetons transférés dans cet exemple."
+
+#: ../../workflow/querying.rst:156
+msgid ""
+"You can use the URef of the ``main_purse`` to query the account balance. The"
+" balance returned is in motes (the unit that makes up the Casper token)."
+msgstr ""
+"Vous pouvez utiliser l'URef du ``main_purse`` (porte-monnaie principal) pour"
+" demander le solde du compte. Le solde retourné est en motes. "
+
+#: ../../workflow/querying.rst:172
+msgid ""
+"``purse-uref`` - <FORMATTED STRING> The URef under which the purse is "
+"stored. This must be a properly formatted URef \"uref-<HEX STRING>-<THREE "
+"DIGIT INTEGER>\""
+msgstr ""
+"``purse-uref`` - <FORMATTED STRING> L'URef sous lequel le porte-monnaie est "
+"stocké. Il doit s'agir d'un URef correctement formaté \"uref-<HEX "
+"STRING>-<THREE DIGIT INTEGER>\""
+
+#: ../../workflow/querying.rst:214
+msgid "Querying Blocks"
+msgstr "Interrogation des blocs"
+
+#: ../../workflow/querying.rst:216
+msgid ""
+"It is possible to obtain detailed block information from the system.  To do "
+"this, obtain the hash of the block of interest and send this query to a node"
+" in the network. Here is an example:"
+msgstr ""
+"Il est possible d'obtenir du système des informations détaillées sur les "
+"blocs. Pour ce faire, il faut obtenir le hash du bloc qui nous intéresse et "
+"envoyer cette requête à un nœud du réseau. Voici un exemple :"
+
+#: ../../workflow/querying.rst:229
+msgid ""
+"``node-address`` <HOST:PORT> Hostname or IP and port of node on which HTTP "
+"service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT> Hostname ou IP et port du nœud sur lequel le "
+"service HTTP tourne [default:http://localhost:7777]"
+
+#: ../../workflow/querying.rst:230
+msgid ""
+"``block-identifier`` - <HEX STRING OR INTEGER> Hex-encoded block hash or "
+"height of the block. If not given, the last block added to the chain as "
+"known at the given node will be used"
+msgstr ""
+"``block-identifier`` - <HEX STRING OR INTEGER> Hash de bloc codé en "
+"hexadécimal ou hauteur du bloc. S'il n'est pas donné, le dernier bloc ajouté"
+" à la chaîne tel que connu au nœud donné sera utilisé."
+
+#: ../../workflow/querying.rst:235
+msgid ""
+"``\"result\".\"block\".\"header\".\"state_root_hash\"`` - contains the "
+"``state-root-hash`` for this block"
+msgstr ""
+"``\"result\".\"block\".\"header\".\"state_root_hash\"`` - contient le "
+"``state-root-hash`` pour ce bloc"
+
+#: ../../workflow/querying.rst:319
+msgid "Querying Deploys"
+msgstr "Interrogation des déploiements"
+
+#: ../../workflow/querying.rst:321
+msgid ""
+"Once you submit a deploy to the network, you can check its execution status "
+"using ``get-deploy``. If the ``execution_results`` in the output are null, "
+"the transaction has not run yet. Note that transactions are finalized upon "
+"execution."
+msgstr ""
+"Une fois que vous avez soumis un déploiement au réseau, vous pouvez vérifier"
+" son état d'exécution en utilisant ``get-deploy``. Si les "
+"``execution_results`` dans la sortie sont 'null', la transaction n'a pas "
+"encore été exécutée. Notez que les transactions sont finalisées lors de leur"
+" exécution."
+
+#: ../../workflow/querying.rst:332
+msgid ""
+"``id`` - <STRING OR INTEGER> JSON-RPC identifier, applied to the request and"
+" returned in the response. If not provided, a random integer will be "
+"assigned"
+msgstr ""
+"``id`` - <STRING OR INTEGER>  Identifiant JSON-RPC facultatif appliqué à la "
+"requête et renvoyé dans la réponse. S'il n'est pas fourni, un nombre entier "
+"aléatoire sera attribué."
+
+#: ../../workflow/querying.rst:333
+msgid ""
+"``node-address`` - <HOST:PORT>Hostname or IP and port of node on which HTTP "
+"service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT> Hostname ou IP et port du nœud sur lequel le "
+"service HTTP tourne [default:http://localhost:7777]"
+
+#: ../../workflow/querying.rst:334
+msgid ""
+"``deploy-hash`` - <HEX STRING OR INTEGER> Hex-encoded hash of the deploy"
+msgstr ""
+"``deploy-hash`` - <HEX STRING OR INTEGER> Hash codé en hexadécimal du "
+"déploiement"

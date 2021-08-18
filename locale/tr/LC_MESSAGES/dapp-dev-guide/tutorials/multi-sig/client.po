@@ -1,0 +1,372 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:2
+msgid "Client Example"
+msgstr "İstemci Örneği"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:3
+msgid ""
+"This section covers an example client that invokes a smart contract for key "
+"management. In addition to the main account, the client code will add two "
+"additional accounts to perform deployments. The two deployment accounts will"
+" perform deployments but will not be able to add another account."
+msgstr ""
+"Bu bölüm, anahtar yönetimi için akıllı bir kontrat başlatan örnek bir "
+"istemciyi kapsar. Ana hesaba ek olarak, istemci kodu, dağıtımları "
+"gerçekleştirmek için iki ek hesap ekleyecektir. İki dağıtım hesabı, "
+"dağıtımları gerçekleştirir ancak başka bir hesap ekleyemez."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:5
+msgid ""
+"You will test your client using `nctl <https://github.com/CasperLabs/casper-"
+"node/tree/master/utils/nctl>`_, and you will interact with your local "
+"blockchain."
+msgstr ""
+"İstemcinizi `nctl <https://github.com/CasperLabs/casper-"
+"node/tree/master/utils/nctl>`_, kullanarak test edeceksiniz ve yerel "
+"blokzincirinizle etkileşime geçeceksiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:8
+msgid "Prerequisites"
+msgstr "Önkoşullar"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:9
+msgid ""
+"You have compiled the `example contract <https://github.com/casper-ecosystem"
+"/keys-manager>`_ for key management"
+msgstr ""
+"Anahtar yönetimi için `örnek kontratı <https://github.com/casper-ecosystem"
+"/keys-manager>`_ derlediniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:10
+msgid ""
+"You have set up the `NCTL <https://github.com/CasperLabs/casper-"
+"node/tree/master/utils/nctl>`_ tool according to the `NCTL guide "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_"
+msgstr ""
+"`NCTL <https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ "
+"aracını `NCTL kılavuzu <https://docs.casperlabs.io/en/latest/dapp-dev-guide"
+"/setup-nctl.html>`_na göre ayarladınız"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:13
+msgid "Setting up a local Casper Network"
+msgstr "Yerel bir Casper Network oluşturmak"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:14
+msgid ""
+"Navigate to your ``casper-node`` folder and run the following NCTL commands."
+msgstr ""
+"``casper-node`` klasörünüze gidin ve aşağıdaki NCTL komutlarını çalıştırın."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:22
+msgid ""
+"The network you created with the NCTL tool has a special account called a "
+"faucet account, which holds your tokens. You will need these tokens to "
+"interact with the network. If the network is up and running, you can see "
+"your faucet account details with the command below."
+msgstr ""
+"NCTL aracıyla oluşturduğunuz ağ, tokenlerinizi tutan, musluk hesabı adı "
+"verilen özel bir hesaba sahiptir. Ağ ile etkileşim kurmak için bu tokenlere "
+"ihtiyacınız olacak. Ağ açık ve çalışıyorsa, aşağıdaki komutla musluk hesap "
+"detaylarınızı görebilirsiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:29
+msgid "Setting up the Client"
+msgstr "Bir İstemci Oluşturmak"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:30
+msgid ""
+"Navigate to your ``keys-manager/client/`` folder and create the ``.env`` "
+"file to specify the configuration needed for your client to communicate with"
+" the network."
+msgstr ""
+"``keys-manager/client/`` klasörünüze gidin ve istemcinizin ağ ile iletişim "
+"kurması için gereken yapılandırmayı belirtmek için ``.env`` dosyasını "
+"oluşturun."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:38
+msgid ""
+"This client code, by default, expects a compiled WASM file in the "
+"``contract`` folder and a local network called ``casper-net-1``. In this "
+"tutorial, you only need to configure the ``BASE_KEY_PATH``, the absolute "
+"path to your faucet account. So, your ``.env`` file will contain only one "
+"entry for the ``BASE_KEY_PATH`` and would look like this (replacing "
+"<ENTER_YOUR_PATH> with your path):"
+msgstr ""
+"Bu istemci kodu, varsayılan olarak, ``contract`` klasöründe derlenmiş bir "
+"WASM dosyası ve ``casper-net-1`` adlı yerel bir ağ bekler. Bu rebherde, "
+"yalnızca musluk hesabınızın mutlak yolu olan ``BASE_KEY_PATH`` "
+"yapılandırmanız gerekir. Böylece, ``.env`` dosyanız ``BASE_KEY_PATH`` için "
+"yalnızca bir giriş içerecek ve şöyle görünecektir "
+"(<ENTER_YOUR_PATH>yolunuzla değiştirilerek):"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:44
+msgid "You can set other environment variables described in the table below."
+msgstr ""
+"Aşağıdaki tabloda açıklanan diğer ortam değişkenlerini ayarlayabilirsiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:47
+msgid "Variable"
+msgstr "Değişken"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:47
+msgid "Description"
+msgstr "Tanım"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:47
+msgid "Default value"
+msgstr "Varsayılan değer"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
+msgid "NODE_URL"
+msgstr "NODE_URL"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
+msgid "The URL of the first node in your local network."
+msgstr "Yerel ağınızdaki ilk düğümün URL adresi."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
+msgid "``http://localhost:40101/rpc``"
+msgstr "``http://localhost:40101/rpc``"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
+msgid "WASM_PATH"
+msgstr "WASM_PATH"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
+msgid "The path of the compiled WASM contract."
+msgstr "Derlenmiş WASM kontratının yolu."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
+msgid ""
+"``../contract/target/wasm32-unknown-unknown/release/keys-manager.wasm``"
+msgstr ""
+"``../contract/target/wasm32-unknown-unknown/release/keys-manager.wasm``"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
+msgid "NETWORK_NAME"
+msgstr "NETWORK_NAME"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
+msgid "The name of your local network set up by NCTL."
+msgstr "NCTL tarafından kurulan yerel ağınızın adı."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
+msgid "``casper-net-1``"
+msgstr "``casper-net-1``"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
+msgid "FUND_AMOUNT"
+msgstr "FUND_AMOUNT"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
+msgid "Number of motes that accounts will be funded."
+msgstr "Hesapların finanse edileceği mote sayısı."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
+msgid "``10000000000000``"
+msgstr "``10000000000000``"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
+msgid "PAYMENT_AMOUNT"
+msgstr "PAYMENT_AMOUNT"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
+msgid "Number of motes that will be used as payment for deploys."
+msgstr "Dağıtımlar için ödeme olarak kullanılacak mote sayısı."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
+msgid "``100000000000``"
+msgstr "``100000000000``"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:54
+msgid "TRANSFER_AMOUNT"
+msgstr "TRANSFER_AMOUNT"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:54
+msgid "Number of motes that will be used for native test transfers."
+msgstr "Yerel test transferleri için kullanılacak mote sayısı."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:54
+msgid "``2500000000``"
+msgstr "``2500000000``"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:57
+msgid ""
+"Next, close the ``.env`` file and install the JavaScript packages in the "
+"``keys-manager/client`` folder with the following command."
+msgstr ""
+"Sonra, ``.env`` dosyasını kapatın ve aşağıdaki komutla ``keys-"
+"manager/client`` klasöründeki JavaScript paketlerini kurun."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:65
+msgid "Testing the Client"
+msgstr "İstemciyi Test Etmek"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:67
+msgid ""
+"Navigate to your ``/keys-manager/client`` folder and run the ``keys-"
+"manager`` using ``npm``. Your WASM file's path is relative to the ``client``"
+" folder, so you need to run the file from here."
+msgstr ""
+"``/keys-manager/client`` klasörünüze gidin ve ``npm``yi kullanarak ``keys-"
+"manager``ı çalıştırın. WASM dosyanızın yolu ``client`` klasörüne göredir, bu"
+" yüzden dosyayı buradan çalıştırmanız gerekir."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:73
+msgid "If the code works, the beginning of the output will look like this:"
+msgstr "Kod çalışıyorsa, çıktının başlangıcı şöyle görünecektir:"
+
+msgid "An image of the beginning of the keys-manager output."
+msgstr "Anahtar yöneticisi çıktısının başlangıcının bir görüntüsü."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:78
+msgid "You can match the output against the expected output described below."
+msgstr "Çıktıyı aşağıda açıklanan beklenen çıktıyla eşleştirebilirsiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:82
+msgid "Exploring the Client Code"
+msgstr "İstemci Kodunu Keşfetmek"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:84
+msgid ""
+"If you would like to explore the client output and how the client code "
+"implements key management, open the client output and the ``keys-"
+"manager.js`` file side by side."
+msgstr ""
+"İstemci çıktısını ve istemci kodunun anahtar yönetimini nasıl uyguladığını "
+"keşfetmek istiyorsanız, istemci çıktısını ve ``keys-manager.js`` dosyasını "
+"yan yana açın."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:86
+msgid "In the code, we set the weight for the primary account to 3."
+msgstr "Kodda, birincil hesabın ağırlığını 3 olarak belirledik."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:92
+msgid ""
+"At this point, we expect an account structure similar to the following, with"
+" real account addresses replacing the sample addresses:"
+msgstr ""
+"Bu noktada örnek adreslerin yerine gerçek hesap adresleri ile aşağıdakine "
+"benzer bir hesap yapısı bekliyoruz:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:113
+msgid ""
+"Next, we set the key management threshold for the main account to 3. With "
+"this threshold, you can manage other keys and have control over the entire "
+"account."
+msgstr ""
+"Sonra ana hesap için anahtar yönetimi eşiğini 3 olarak belirledik. Bu eşik "
+"ile diğer anahtarları yönetebilir ve tüm hesap üzerinde kontrol sahibi "
+"olabilirsiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:119
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:145
+msgid "We expect an account structure similar to this:"
+msgstr "Şuna benzer bir hesap yapısı bekliyoruz:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:139
+msgid ""
+"Next, the client code sets the deployment threshold to 2 for this account."
+msgstr "Sonra, istemci kodu bu hesap için dağıtım eşiğini 2 olarak ayarlar."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:165
+msgid ""
+"The next step is to add a new key with weight 1. You cannot do anything with"
+" this key alone since all the action thresholds are higher than 1."
+msgstr ""
+"Bir sonraki adım ağırlık 1 olan yeni bir anahtar eklemektir. Tüm işlem "
+"eşikleri 1'den büyük olduğu için bu anahtarla tek başına hiçbir şey "
+"yapamazsınız."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:171
+msgid ""
+"We expect this account structure, with a new associated key and account "
+"address:"
+msgstr ""
+"Yeni bir ilişkili anahtar ve hesap adresiyle bu hesap yapısını bekliyoruz:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:195
+msgid ""
+"We will add another key with weight 1. If you use this key with the second "
+"key, you can deploy, since the weights add up to 2."
+msgstr ""
+"Ağırlıkları 1 olan başka bir anahtar ekleyeceğiz. Bu anahtarı ikinci "
+"anahtarla kullanırsanız, ağırlıklar 2'ye kadar eklendiğinden "
+"dağıtabilirsiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:201
+msgid "We expect an account structure similar to the following:"
+msgstr "Aşağıdakine benzer bir hesap yapısı bekliyoruz:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:229
+msgid ""
+"Next, we will transfer tokens from the main account and perform a "
+"deployment. When the deployment accounts sign the transaction, they can "
+"transfer funds from the faucet account since their combined weight is 2, "
+"which meets the deployment threshold."
+msgstr ""
+"Sonra, ana hesaptan tokenleri aktaracağız ve bir dağıtım gerçekleştireceğiz."
+" Dağıtım hesapları işlemi imzaladığında, toplam ağırlıkları dağıtım eşiğini "
+"karşılayan 2 olduğundan, musluk hesabından fon aktarabilirler."
+
+msgid "Image showing the output of the funds transfer."
+msgstr "Para transferinin çıktısını gösteren resim."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:241
+msgid ""
+"If you dive into the `transferDeploy` function, you will see the transfer of"
+" funds."
+msgstr "`transferDeploy` işlevine girerseniz, para transferini göreceksiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:258
+msgid ""
+"After the above transfer of funds, the client code removes both deployment "
+"accounts."
+msgstr ""
+"Yukarıdaki para transferinden sonra, istemci kodu her iki dağıtım hesabını "
+"da kaldırır."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:268
+msgid "At this point, we expect the following account structure:"
+msgstr "Bu noktada aşağıdaki hesap yapısını bekliyoruz:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:288
+msgid "Congratulations! You have completed the tutorial."
+msgstr "Tebrikler! Eğitimi tamamladınız."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:290
+msgid ""
+"You can now employ a similar strategy to set up your account using multiple "
+"keys."
+msgstr ""
+"Artık hesabınızı birden çok anahtar kullanarak kurmak için benzer bir "
+"strateji uygulayabilirsiniz."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:292
+msgid ""
+"We offer some additional examples of account management in the next section."
+msgstr "Bir sonraki bölümde bazı ek hesap yönetimi örnekleri sunuyoruz."

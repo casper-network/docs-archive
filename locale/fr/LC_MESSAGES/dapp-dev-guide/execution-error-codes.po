@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/execution-error-codes.rst:3
+msgid "Execution Error Codes"
+msgstr "Codes d'erreur d'exécution"
+
+#: ../../dapp-dev-guide/execution-error-codes.rst:5
+msgid "This section covers smart contract execution error codes."
+msgstr ""
+"Cette section est consacrée aux codes d'erreur d'exécution des contrats "
+"intelligents."
+
+#: ../../dapp-dev-guide/execution-error-codes.rst:7
+msgid ""
+"As mentioned in `Writing Rust Contracts <writing-rust-contracts.html#using-"
+"error-codes>`_\\ , smart contracts can exit with an error code defined by an"
+" `ApiError <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html>`_.  Descriptions of each "
+"variant are found `here <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#variants>`_ and include the "
+"following sub-types:"
+msgstr ""
+"Comme mentionné dans `Writing Rust Contracts <writing-rust-contracts.html"
+"#using-error-codes>`_\\, les contrats intelligents peuvent renvoyer un code "
+"d'erreur défini par un `ApiError <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html>`_. Les descriptions de tous "
+"les codes d'erreur se trouvent `ici <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#variants>`_ et incluent les "
+"sous-types suivants :"
+
+#: ../../dapp-dev-guide/execution-error-codes.rst:9
+msgid ""
+"`payment errors <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#variant.HandlePayment>`_"
+msgstr ""
+"`erreurs de paiment <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#variant.HandlePayment>`_"
+
+#: ../../dapp-dev-guide/execution-error-codes.rst:10
+msgid ""
+"`mint errors <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#variant.Mint>`_"
+msgstr ""
+"`erreurs de minage (mint) <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#variant.Mint>`_"
+
+#: ../../dapp-dev-guide/execution-error-codes.rst:11
+msgid ""
+"`custom user errors <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#variant.User>`_"
+msgstr ""
+"`erreurs utilisateur <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#variant.User>`_."
+
+#: ../../dapp-dev-guide/execution-error-codes.rst:13
+msgid ""
+"An ``ApiError`` of one of these sub-types maps to an exit code with an "
+"offset defined by the sub-type.  For example, an ``ApiError::User(2)`` maps "
+"to an exit code of ``65538`` (i.e. ``65536 + 2``\\ ).  You can find a "
+"mapping from contract exit codes to ``ApiError`` variants `here "
+"<https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#mappings>`_."
+msgstr ""
+"Un \"ApiError\" de l'un de ces sous-types correspond à un code de retour "
+"avec un décalage défini par le sous-type. Par exemple, une "
+"``ApiError::User(2)`` correspond à un code de retour (exit) de ``65538`` "
+"(i.e. ``65536 + 2``\\ ). Vous pouvez trouver une correspondance entre les "
+"codes de retour de contrat et les différentes variantes de ``ApiError``  "
+"`ici <https://docs.rs/casper-"
+"types/latest/casper_types/enum.ApiError.html#mappings>`_."

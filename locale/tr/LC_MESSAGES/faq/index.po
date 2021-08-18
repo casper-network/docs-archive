@@ -1,0 +1,332 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../faq/index.rst:5
+msgid "FAQ"
+msgstr "SSS"
+
+#: ../../faq/index.rst:6
+msgid ""
+"FAQs regarding the Casper network, CasperLabs, and the CSPR token sale."
+msgstr ""
+"Casper Network, CasperLabs ve CSPR token satışı ile ilgili sıkça sorulan "
+"sorular."
+
+#: ../../faq/index.rst:9
+msgid "Casper Network"
+msgstr "Casper Network"
+
+#: ../../faq/index.rst:12
+msgid "What is Casper?"
+msgstr "Casper Nedir?"
+
+#: ../../faq/index.rst:13
+msgid ""
+"Casper is an open-source Proof-of-Stake blockchain network built off the CBC"
+" (`Correct-by-Construction <https://github.com/cbc-casper/cbc-casper-"
+"paper>`_) Casper specification originally established by early Ethereum "
+"developers. The Casper network is optimized for enterprise and developer "
+"adoption by focusing on unique features like upgradeable contracts, "
+"predictable network fees, privacy flexibility, on-chain governance, and "
+"developer-friendly languages. Casper solves the scalability trilemma by "
+"allowing development teams to build with confidence that the network will "
+"optimize for security, decentralization, and high throughput."
+msgstr ""
+"Casper, aslen erken dönem Ethereum geliştiricileri tarafından oluşturulmuş "
+"olan is CBC (`Correct-by-Construction <https://github.com/cbc-casper/cbc-"
+"casper-paper>`_) Casper belirtimi üzerine inşa edilmiş, açık kaynak bir Pay-"
+"Kanıtı (Proof-of-Stake) blokzincir ağıdır. Casper ağı, güncellenebilir "
+"kontratlar, öngörülebilir ağ ücretleri, mahremiyet esnekliği, doğrudan "
+"zincir üzerinde yönetişim ve geliştirici dostu diller gibi özgün özelliklere"
+" odaklanarak, kurumsal ve geliştirici düzeyinde benimsenmek üzere en iyi "
+"hale getirilmiştir. Casper; geliştirici ekiplerinin, ağın güvenlik, "
+"merkeziyetsizlik ve yüksek çıktı hızı için en uygun şekilde davranacağına "
+"güvenerek projeler inşa etmelerine olanak tanıyarak, ölçeklenebilirlik "
+"sorununu çözer."
+
+#: ../../faq/index.rst:16
+msgid "When is Casper’s mainnet launch?"
+msgstr "Casper’ın ana ağı (mainnet) ne zaman faaliyete geçiyor?"
+
+#: ../../faq/index.rst:17
+msgid "Casper’s mainnet launch will occur in Q1 2021."
+msgstr "Casper'ın ana ağ lansmanı 2021 yılının ilk çeyreğinde gerçekleşecek."
+
+#: ../../faq/index.rst:20
+msgid ""
+"How does Casper solve the trilemma of security, decentralization, and "
+"scalability?"
+msgstr ""
+"Casper güvenlik, ademi merkeziyetçilik ve ölçeklenebilirlik üçlemesini nasıl"
+" çözüyor?"
+
+#: ../../faq/index.rst:21
+msgid ""
+"As a Proof-of-Stake (PoS) network, Casper relies on a set of validators to "
+"uphold the network. PoS validators do not require the same hardware setup as"
+" Proof-of-Work networks, allowing validators to be more geographically "
+"decentralized and eliminating the centralizing pressures of economies of "
+"scale. PoS also enables scalability mechanisms like sharding, a forthcoming "
+"feature to allow the network to process multiple transactions "
+"simultaneously, improving overall throughput."
+msgstr ""
+"Bir Hisse Kanıtı (PoS) ağı olarak Casper, ağı korumak için bir dizi "
+"doğrulayıcıya güvenir. PoS doğrulayıcıları, İş Kanıtı ağlarıyla aynı donanım"
+" kurulumunu gerektirmez, bu da doğrulayıcıların coğrafi olarak daha "
+"merkeziyetsiz olmamasına ve ölçek ekonomilerinin merkezileştirme baskılarını"
+" ortadan kaldırmasına olanak tanır. PoS ayrıca, ağın aynı anda birden fazla "
+"işlemi işlemesine izin veren ve genel verimi iyileştiren gelecek bir özellik"
+" olan bölümlendirme (sharding) gibi ölçeklenebilirlik mekanizmalarını da "
+"sağlar."
+
+#: ../../faq/index.rst:24
+msgid "What is unique about Casper’s blockchain architecture?"
+msgstr "Casper'ın blokzincir mimarisinde benzersiz olan nedir?"
+
+#: ../../faq/index.rst:25
+msgid ""
+"The Highway Protocol is the specific implementation of PoS that supports the"
+" Casper network. Highway has two primary benefits over classic Byzantine "
+"Fault Tolerant consensus mechanisms. First, Highway enables the network to "
+"reach higher thresholds of finality. Second, it achieves flexibility in a "
+"way not possible in typical BFT models. `Learn more about Highway "
+"<https://blog.casperlabs.io/the-casper-network-highway-consensus-"
+"protocol/>`_."
+msgstr ""
+"Highway Protokolü, Casper ağını destekleyen özel PoS uygulamasıdır. "
+"Highway'in klasik Byzantine Hata Toleranslı mutabakat mekanizmalarına göre "
+"iki temel avantajı vardır. İlk olarak, Highway, ağın daha yüksek kesinlik "
+"eşiklerine ulaşmasını sağlar. İkincisi, tipik BFT modellerinde mümkün "
+"olmayan bir şekilde esneklik sağlar. `Highway hakkında daha fazla bilgi "
+"edinin <https://blog.casperlabs.io/the-casper-network-highway-consensus-"
+"protocol/>`_."
+
+#: ../../faq/index.rst:28
+msgid "Why is Casper a good fit for enterprises and developers?"
+msgstr "Casper neden işletmeler ve geliştiriciler için uygundur?"
+
+#: ../../faq/index.rst:29
+msgid ""
+"Casper is optimized for enterprise and developers through three main "
+"features: upgradeable contracts, developer-friendly languages, and "
+"forthcoming predictable network fees."
+msgstr ""
+"Casper, işletmeler ve geliştiriciler için üç ana özellik aracılığıyla "
+"optimize edilmiştir: yükseltilebilir kontratlar, geliştirici dostu diller ve"
+" yaklaşan öngörülebilir ağ ücretleri."
+
+#: ../../faq/index.rst:31
+msgid ""
+"**Upgradeable Contracts**. Casper enables on-chain smart contracts to be "
+"directly upgraded, removing the need for complex and migration processes and"
+" making it easier to patch smart contract vulnerabilities."
+msgstr ""
+"**Yükseltilebilir Kontratlar**. Casper, zincir üzerindeki akıllı "
+"kontratların doğrudan yükseltilmesini sağlayarak karmaşık geçiş süreçlerine "
+"olan ihtiyacı ortadan kaldırır ve akıllı kontrat güvenlik açıklarını "
+"düzeltmeyi kolaylaştırır."
+
+#: ../../faq/index.rst:33
+msgid ""
+"**Developer-Friendly Languages**. Casper supports developers building with "
+"WebAssembly. The network’s development ecosystem is designed to be familiar "
+"to existing Web2 developers instead of being written in a proprietary "
+"language like Solidity. This provides an easier path for developers and "
+"businesses to start building with Casper immediately."
+msgstr ""
+"**Geliştirici Dostu Diller**. Casper, geliştiricilerin WebAssembly ile "
+"birşeyler inşa etmesini destekler. Ağın geliştirme ekosistemi, Solidity gibi"
+" özel bir dilde yazılmak yerine mevcut Web2 geliştiricilerine aşina olacak "
+"şekilde tasarlanmıştır. Bu, geliştiricilerin ve işletmelerin Casper ile "
+"hemen birşeyler inşa etmeye başlaması için daha kolay bir yol sağlar."
+
+#: ../../faq/index.rst:35
+msgid ""
+"**Predictable Network Fees (In Development)**. Casper intends to incentivize"
+" active and diverse network behavior by establishing consistent, "
+"predictable, and transparent gas costs - eliminating volatility and "
+"improving both developer and user experience."
+msgstr ""
+"**Öngörülebilir Ağ Ücretleri (Geliştirme Aşamasında)**. Casper, değişkenliği"
+" ortadan kaldırarak ve hem geliştirici hem de kullanıcı deneyimini "
+"geliştirerek tutarlı, öngörülebilir ve şeffaf gaz maliyetleri oluşturarak "
+"aktif ve çeşitli ağ davranışını teşvik etmeyi amaçlamaktadır."
+
+#: ../../faq/index.rst:38
+msgid "What’s an example of the Casper network in use?"
+msgstr "Casper ağının kullanımına bir örnek verebilir misiniz?"
+
+#: ../../faq/index.rst:39
+msgid ""
+"IPwe is a global patent registry currently building on the Casper network. "
+"CasperLabs and IPwe have partnered to build a chain of custody (CoC) "
+"solution for public patent records. The “CoC Solution” will use the Casper "
+"public blockchain to store, secure, and trace patent data. `Learn more "
+"<https://blog.casperlabs.io/intellectual-property-and-patent-assets-on-"
+"casper/>`_."
+msgstr ""
+"IPwe, şu anda Casper ağı üzerinde oluşturulan küresel bir patent kaydıdır. "
+"CasperLabs ve IPwe, halka açık patent kayıtları için bir gözetim zinciri "
+"(CoC) çözümü oluşturmak üzere ortaklık kurdu. “CoC Çözümü”, patent "
+"verilerini depolamak, güvence altına almak ve izlemek için Casper genel "
+"blokzincirini kullanacak. `Daha fazla bilgi edinin "
+"<https://blog.casperlabs.io/intellectual-property-and-patent-assets-on-"
+"casper/>`_."
+
+#: ../../faq/index.rst:42
+msgid "How can I learn more about the Casper network?"
+msgstr "Casper ağı hakkında nasıl daha fazla bilgi edinebilirim?"
+
+#: ../../faq/index.rst:43
+msgid ""
+"Visit the `CasperLabs website <https://casperlabs.io/>`_, `read the blog "
+"<https://blog.casperlabs.io/>`_, and `join our community "
+"<https://casperlabs.io/community/>`_."
+msgstr ""
+"`CasperLabs web sayfası <https://casperlabs.io/>`_nı ziyaret edin, `blog "
+"<https://blog.casperlabs.io/>`_u okuyun ve ` topluluğa katılın "
+"<https://casperlabs.io/community/>`_."
+
+#: ../../faq/index.rst:46
+msgid "CasperLabs"
+msgstr "CasperLabs"
+
+#: ../../faq/index.rst:49
+msgid "What’s the difference between CasperLabs and Casper?"
+msgstr "CasperLabs ve Casper arasındaki fark nedir?"
+
+#: ../../faq/index.rst:50
+msgid ""
+"CasperLabs is the development team that is currently building the Casper "
+"network. CasperLabs has been developing Casper during its testnet phase and "
+"is currently planning for mainnet launch in Q1 2021. As a public, open-"
+"source network, Casper can be developed on and by anyone in addition to the "
+"CasperLabs team."
+msgstr ""
+"CasperLabs, şu anda Casper ağını oluşturan geliştirme ekibidir. CasperLabs, "
+"Casper'ı test ağı aşamasında geliştiriyor ve şu anda ana ağın 2021'in ilk "
+"çeyreğinde lansmanını planlıyor. Herkese açık, açık kaynaklı bir ağ olarak "
+"Casper, CasperLabs ekibine ilave olarak herkes tarafından geliştirilebilir."
+
+#: ../../faq/index.rst:53
+msgid "What’s the CasperLabs team’s background?"
+msgstr "CasperLabs ekibinin geçmişi nedir?"
+
+#: ../../faq/index.rst:54
+msgid ""
+"The engineering, executive, business, and marketing teams of CasperLabs are "
+"diverse groups of thinkers and builders with decades of experience in "
+"internet-scale computing systems across academia, business, and engineering."
+" `Meet the CasperLabs team <https://casperlabs.io/company/meet-our-team/>`_."
+msgstr ""
+"CasperLabs'ın mühendislik, yönetici, işletme ve pazarlama ekipleri, akademi,"
+" işletme ve mühendislik genelinde internet ölçeğinde bilgi işlem "
+"sistemlerinde onlarca yıllık deneyime sahip çeşitli düşünce ve üretim "
+"gruplarıdır. `CasperLabs ekibiyle tanışın <https://casperlabs.io/company"
+"/meet-our-team/>`_."
+
+#: ../../faq/index.rst:57
+msgid "What is CasperLabs’ fundraising history?"
+msgstr "CasperLabs'ın bağış toplama geçmişi nedir?"
+
+#: ../../faq/index.rst:58
+msgid ""
+"In September 2019, CasperLabs raised a $14.5 million Series A round led by "
+"Terren Piezer with participation from Consensus Capital, Axiom Holdings "
+"Group, and Digital Strategies, MW Partners, and more."
+msgstr ""
+"Eylül 2019'da CasperLabs, Consensus Capital, Axiom Holdings Group ve Digital"
+" Strategies, MW Partners ve daha fazlasının katılımıyla Terren Piezer "
+"liderliğindeki A Serisi 14.5 milyon dolarlık bir yatırım topladı."
+
+#: ../../faq/index.rst:61
+msgid "Who has partnered with CasperLabs to build on the Casper network?"
+msgstr "Casper ağını geliştirmek için CasperLabs ile kim ortaklık kurdu?"
+
+#: ../../faq/index.rst:62
+msgid ""
+"CasperLabs has established a diverse ecosystem of participants who will be "
+"building, staking, and validating on Casper from day one, spanning "
+"blockchain, enterprise technology, and financial services. Among others, "
+"CasperLabs has established relationships with BitGo, Huobi, Ledger Leap, "
+"Chainlink, Metis, and Cardinal Cryptography. Companies including IPwe and "
+"Broadleaf are already using the Casper Network to unlock new value by "
+"tokenizing existing assets."
+msgstr ""
+"CasperLabs; blokzincir, kurumsal teknoloji ve finansal hizmetleri kapsayan, "
+"ilk günden itibaren Casper'ı inşa edecek, değerlendirecek ve onaylayacak çok"
+" çeşitli bir katılımcı ekosistemi kurdu. CasperLabs, diğerleri arasında "
+"BitGo, Huobi, Ledger Leap, Chainlink, Metis ve Cardinal Cryptography ile "
+"ilişkiler kurmuştur. IPwe ve Broadleaf dahil şirketler, mevcut varlıkları "
+"tokenize ederek yeni değerlerin kilidini açmak için halihazırda Casper "
+"Network'ü kullanıyor."
+
+#: ../../faq/index.rst:64
+msgid ""
+"To learn more about how to work within the Casper ecosystem, contact "
+"neil@casperlabs.io."
+msgstr ""
+"Casper ekosisteminde nasıl çalışılacağı hakkında daha fazla bilgi edinmek "
+"için neil@casperlabs.io ile iletişime geçin."
+
+#: ../../faq/index.rst:67
+msgid "CSPR Token"
+msgstr "CSPR Tokeni"
+
+#: ../../faq/index.rst:70
+msgid "What is CSPR, and its role in the Casper network?"
+msgstr "CSPR nedir ve Casper ağındaki rolü nedir?"
+
+#: ../../faq/index.rst:71
+msgid ""
+"CSPR is the native token to the Casper network. As a Proof-of-Stake "
+"blockchain, Casper relies on CSPR to reward the validators that participate "
+"in the PoS consensus mechanism to secure and uphold the network. Casper "
+"users also rely on CSPR to pay network fees for on-chain actions. For "
+"example, each token transfer costs 0.0001 CSPR (10000 motes) and the amount "
+"transferred needs to be 2.5 CSPR or more."
+msgstr ""
+"CSPR, Casper ağının yerel tokenidir. Bir Hisse Kanıtı blokzinciri olarak "
+"Casper, ağı güvence altına almak ve sürdürmek için PoS mutabakat "
+"mekanizmasına katılan doğrulayıcıları ödüllendirmek için CSPR'ye "
+"güvenmektedir. Casper kullanıcıları ayrıca zincir üstü işlemlerin ağ "
+"ücretlerini ödemek için CSPR'ye güvenirler. Örneğin, her token transferinin "
+"maliyeti 0.0001 CSPR (10000 motes) ve transfer edilen miktarın 2.5 CSPR veya"
+" daha fazla olması gerekir."
+
+#: ../../faq/index.rst:74
+msgid ""
+"Where can I find information about CSPR, the supply, the allocation, and the"
+" sale?"
+msgstr "CSPR, tedarik, tahsis ve satış hakkında nereden bilgi bulabilirim?"
+
+#: ../../faq/index.rst:75
+msgid ""
+"The Casper Association has launched its CSPR token sale. Head to "
+"`casper.network <https://casper.network/>`_ to learn more."
+msgstr ""
+"Casper Association, CSPR token satışını başlattı. Daha fazla bilgi edinmek "
+"için `casper.network <https://casper.network/>`_ adresini ziyaret edin."

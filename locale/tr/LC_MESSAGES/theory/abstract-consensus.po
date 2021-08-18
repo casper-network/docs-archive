@@ -1,0 +1,1737 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# ilker <bilkerarslan40@gmail.com>, 2021
+# Dr. Ayhan YALÇINSOY <ayhanyalcinsoy@pisilinux.org>, 2021
+# Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.kara@metu.edu.tr>, 2021\n"
+"Language-Team: Turkish (https://www.transifex.com/caspernetwork/teams/122124/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../theory/abstract-consensus.rst:2
+msgid "Abstract Casper Consensus"
+msgstr "Soyut Casper Mutabakatı"
+
+#: ../../theory/abstract-consensus.rst:5
+msgid "Stating the problem"
+msgstr "Sorunun ortaya konması"
+
+#: ../../theory/abstract-consensus.rst:7
+msgid ""
+"We are considering a collection of processes - **validators** - "
+"communicating over a message-passing network. Every validator has a "
+"**weight** -- a non-zero integer value representing the \"voting power\"."
+msgstr ""
+"Mesaj ileten bir ağ üzerinden iletişim kuran bir dizi süreç - "
+"**doğrulayıcılar** - düşünüyoruz. Her doğrulayıcının \"oylama gücünü\" "
+"temsil eden sıfır olmayan bir tam sayı değeri, bir **ağırlığı** vardır."
+
+#: ../../theory/abstract-consensus.rst:10
+msgid ""
+"The goal validators collectively pursue is to pick a single value from a "
+"finite set :math:`Con` we call the set of **consensus values**. Once the "
+"agreement is achieved, the problem is considered solved (i.e. validators "
+"terminate their operation). We require that :math:`Con` is totally ordered."
+msgstr ""
+"Doğrulayıcıların toplu olarak takip ettiği hedef, sonlu bir kümeden tek bir "
+"değer seçmektir :math:`Con`, biz buna **mutabakat değerleri** kümesi "
+"diyoruz. Anlaşma sağlandıktan sonra sorun çözülmüş olarak kabul edilir (yani"
+" doğrulayıcılar işlemlerini sonlandırırlar). :math:`Con` değerinin tamamen "
+"sıralı olmasını istiyoruz."
+
+#: ../../theory/abstract-consensus.rst:14
+msgid ""
+"The resulting solution of this problem is not a blockchain yet. It is "
+"however a core building block of our blockchain design. The way abstract "
+"consensus is used for building a blockchain is explained in subsequent "
+"chapters."
+msgstr ""
+"Bu sorunun ortaya çıkan çözümü henüz bir blokzincir değil. Bununla birlikte,"
+" blokzincir tasarımımızın temel yapı taşıdır. Bir blokzincir oluşturmak için"
+" soyut mutabakatın nasıl kullanıldığı sonraki bölümlerde açıklanmaktadır."
+
+#: ../../theory/abstract-consensus.rst:17
+msgid ""
+"Caution: we use **ACC** as the shortcut for **Abstract Casper Consensus**."
+msgstr ""
+"Dikkat: **Soyut Casper Mutabakatı** için kısayol olarak **ACC** "
+"kullanıyoruz."
+
+#: ../../theory/abstract-consensus.rst:20
+msgid "Network model"
+msgstr "Ağ modeli"
+
+#: ../../theory/abstract-consensus.rst:22
+msgid ""
+"We assume a fully asynchronous network model with delivery guarantee and a "
+"single primitive: `broadcast(m)`. Precisely speaking:"
+msgstr ""
+"Teslimat garantisi ve tek bir temel değer ile tamamen asenkron bir ağ modeli"
+" varsayıyoruz: \"yayın(m)\". Kesin konuşmak gerekirse:"
+
+#: ../../theory/abstract-consensus.rst:25
+msgid ""
+"Communication between validators is based on the “broadcast” primitive: at "
+"any time, a validator can broadcast a message :math:`m`."
+msgstr ""
+"Doğrulayıcılar arasındaki iletişim \"yayın\" ilkesine dayanır: herhangi bir "
+"zamanda bir doğrulayıcı bir :math:`m` mesajı yayınlayabilir."
+
+#: ../../theory/abstract-consensus.rst:27
+msgid ""
+"Once broadcast, the message :math:`m` will be eventually delivered to every "
+"other validator in the network. The delivery will happen exactly once but "
+"with arbitrary delay."
+msgstr ""
+"Yayınlandıktan sonra, :math:`m` mesajı nihayetinde ağdaki diğer tüm "
+"doğrulayıcılara iletilecektir. Teslimat tam olarak bir kez, ancak keyfi bir "
+"gecikmeyle gerçekleşecektir."
+
+#: ../../theory/abstract-consensus.rst:30
+msgid ""
+"Given the assumptions above, it follows that the order of delivery generally"
+" is not going to be preserved. In other words when a validator :math:`A` "
+"broadcast sequence of messages :math:`(m_1, m_2, ... m_k)` then another "
+"validator :math:`B` will receive all the messages in the sequence, but with "
+"delivery chronology following arbitrary permutation :math:`p:(1,..,k) "
+"\\rightarrow (1,..,k)`, i.e. :math:`(m_{p(1)}, m_{p(2)}, ... m_{p(k)})`."
+msgstr ""
+"Yukarıdaki varsayımlar göz önüne alındığında, teslimat sırasının genel "
+"olarak muhafaza edilmeyeceğini takip eder. Başka bir deyişle, bir "
+"doğrulayıcı :math:`A` mesaj dizisi yayınladığında :math:`(m_1, m_2, ... "
+"m_k)` daha sonra başka bir doğrulayıcı :math:`B` sırayla tüm mesajları "
+"alacaktır, ancak :math:`p:(1,..,k) \\rightarrow (1,..,k)` rastgele "
+"permütasyonunu takip eden kronoloji ile, yani :math:`(m_{p(1)}, m_{p(2)}, "
+"... m_{p(k)})` ile teslim alacaktır."
+
+#: ../../theory/abstract-consensus.rst:36
+#: ../../theory/abstract-consensus.rst:747
+msgid "Messages"
+msgstr "Mesajlar"
+
+#: ../../theory/abstract-consensus.rst:38
+msgid ""
+"All the messages broadcast by validators have the same structure. Every "
+"message :math:`m`:"
+msgstr ""
+"Doğrulayıcılar tarafından yayınlanan tüm mesajlar aynı yapıya sahiptir. Her "
+"mesaj :math:`m`:"
+
+#: ../../theory/abstract-consensus.rst:40
+msgid "has unique identifier - :math:`m.id`"
+msgstr "benzersiz tanımlayıcıya sahip - :math:`m.id`"
+
+#: ../../theory/abstract-consensus.rst:41
+msgid "includes the identifier of the validator who created :math:`m.creator`"
+msgstr ":math:`m.creator` oluşturan doğrulayıcının tanımlayıcısını içerir"
+
+#: ../../theory/abstract-consensus.rst:42
+msgid ""
+"references messages the creator confirms as seen at the moment of creating "
+":math:`m` - we call this list \"justifications\" - :math:`m.justifications`"
+msgstr ""
+":math:`m` mesajının oluşturulduğu anda görüldüğü gibi oluşturanın onayladığı"
+" mesajlara başvurur  - bu listeye \"gerekçeler\" diyoruz - "
+":math:`m.justifications`"
+
+#: ../../theory/abstract-consensus.rst:44
+msgid "has a vote:"
+msgstr "oy hakkı var:"
+
+#: ../../theory/abstract-consensus.rst:46
+msgid "this means pointing to a some consensus value, or"
+msgstr "bu, bir mutabakat değerine işaret etmek anlamına gelir veya"
+
+#: ../../theory/abstract-consensus.rst:47
+msgid "picking no consensus value (i.e. this is \"empty vote\")"
+msgstr "bir mutabakat değeri seçmemek (yani \"boş oy\")"
+
+#: ../../theory/abstract-consensus.rst:49
+msgid "is cryptographically signed by the creator"
+msgstr "oluşturan tarafından kriptografik olarak imzalanmıştır"
+
+#: ../../theory/abstract-consensus.rst:51
+msgid ""
+"The consensus value included in the message is however optional - it is OK "
+"to broadcast an \"empty vote\" message. The semantics of such empty vote is "
+"\"I support my previous vote, unchanged\". If the previous vote is empty, it"
+" counts as \"vote for nothing\"."
+msgstr ""
+"Bununla birlikte, mesaja dahil edilen mutabakat değeri isteğe bağlıdır - bir"
+" \"boş oy\" mesajı yayınlamak sorun değildir. Böyle bir boş oylamanın "
+"anlamı, \"Önceki oyumu değişmeden destekliyorum\". Bir önceki oy boşsa, "
+"\"boş oy\" olarak sayılır."
+
+#: ../../theory/abstract-consensus.rst:55
+msgid ""
+"This is the pseudo-code definition of a message structure (taken from the "
+"reference implementation, which is presented in detail later in this "
+"chapter):"
+msgstr ""
+"Bu, bir mesaj yapısının sözde kod tanımıdır (bu bölümün ilerleyen "
+"kısımlarında ayrıntılı olarak sunulan referans uygulamasından alınmıştır):"
+
+#: ../../theory/abstract-consensus.rst:71
+msgid "J-dag"
+msgstr "J-dag"
+
+#: ../../theory/abstract-consensus.rst:73
+msgid ""
+"We use the term **snapshot** for a set of messages :math:`M`  that is closed"
+" under taking justifications, i.e. such that:"
+msgstr ""
+"**Anlık görüntü** terimini, gerekçeler alınarak kapatılan bir dizi mesaj "
+":math:`M` için kullanıyoruz, yani:"
+
+#: ../../theory/abstract-consensus.rst:75
+msgid "\\forall{m \\in M}, m.justifications \\subset M"
+msgstr "\\forall{m \\in M}, m.justifications \\subset M"
+
+#: ../../theory/abstract-consensus.rst:79
+msgid ""
+"Let us consider arbitrary snapshot :math:`M`. We will define the following "
+"acyclic directed graph :math:`jDag(M)`:"
+msgstr ""
+"Rastgele :math:`M` anlık görüntüsünü ele alalım. Aşağıdaki çevrimsiz "
+"yönlendirilmiş :math:`jDag(M)` grafiğini tanımlayacağız:"
+
+#: ../../theory/abstract-consensus.rst:81
+msgid "vertices = all elements of :math:`M`;"
+msgstr "köşeler = :math:`M` öğesinin tüm elemanları;"
+
+#: ../../theory/abstract-consensus.rst:82
+msgid ""
+"edges = all pairs :math:`m_1 \\rightarrow m_2` such that :math:`m_2 \\in "
+"m_1.justifications`."
+msgstr ""
+"kenarlar = tüm çiftler :math:`m_1 \\rightarrow m_2` öyle ki :math:`m_2 \\in "
+"m_1.justifications`."
+
+#: ../../theory/abstract-consensus.rst:84
+msgid ""
+"Why we claim this graph is acyclic ? Well, because a cycle in this graph "
+"would mean that either time-traveling is possible or a validator managed to "
+"guess an id of some message before that message was actually created. Time-"
+"traveling we preclude on the basis of physics, while guessing of future "
+"message id must be made close-to-impossible via smart implementation of "
+"message identifiers (using message hash should be good enough)."
+msgstr ""
+"Neden bu grafiğin çevrimsiz olduğunu iddia ediyoruz? Eh, çünkü bu grafikteki"
+" bir döngü, ya zaman yolculuğunun mümkün olduğu ya da bir doğrulayıcının, o "
+"mesaj gerçekten oluşturulmadan önce bir mesajın kimliğini tahmin etmeyi "
+"başardığı anlamına gelir. Fizik bazında önlediğimiz zaman yolculuğunu, "
+"gelecekteki mesaj kimliğinin tahmin edilmesi, mesaj tanımlayıcılarının "
+"akıllıca uygulanması yoluyla imkansıza yakın hale getirilmelidir (mesaj "
+"özetini (hash) kullanmak yeterince iyi olmalıdır)."
+
+#: ../../theory/abstract-consensus.rst:89
+msgid ""
+"We require that every validator maintains a representation of "
+":math:`jDag(M)` reflecting the most up to date knowledge on the ongoing "
+"consensus establishing process. Observe that :math:`jDag(M)` may be "
+"equivalently seen as a POSET because of the well-known equivalence between "
+"transitively closed DAGs and POSETs. In the remainder of this chapter we "
+"blur the difference between :math:`jDag(M)` seen as a DAG and its transitive"
+" closure seen as a POSET. We will use the relation symbols :math:`<` and "
+":math:`\\leqslant` for the implied partial order of :math:`jDag(M)`, where "
+"for two messages :math:`a` and :math:`b` a justification :math:`a \\to b` "
+"implies :math:`b < a`."
+msgstr ""
+"Her doğrulayıcının, devam eden mutabakat oluşturma süreciyle ilgili en "
+"güncel bilgileri yansıtan bir :math:`jDag(M)` temsilini tutmasını şart "
+"koşuyoruz. Geçişli olarak kapalı DAG'ler ve POSET'ler arasındaki iyi bilinen"
+" eşdeğerlik nedeniyle :math:`jDag(M)` öğesinin bir POSET olarak eşit bir "
+"şekilde görülebileceğini gözlemleyin. Bu bölümün geri kalanında, DAG olarak "
+"görülen :math:`jDag(M)` ile POSET olarak görülen geçişli kapanması "
+"arasındaki farkı bulanıklaştırıyoruz. :math:`jDag(M)` ögesinin ima edilen "
+"kısmi sırası için :math:`<` ve :math:`\\leqslant` ilişki sembollerini "
+"kullanacağız, burada :math:`a` ve :math: \"b\" iki mesaj için gerekçe "
+":math:`a \\to b` :math:`b < a` anlamına gelmektedir."
+
+#: ../../theory/abstract-consensus.rst:96
+msgid "When :math:`m \\in M`, we define:"
+msgstr ":math:`m \\in M` olduğunda, şunları tanımlarız:"
+
+#: ../../theory/abstract-consensus.rst:98
+msgid ":math:`jPast(m)` as :math:`\\{x \\in M: x < m \\}`."
+msgstr ":math:`\\{x \\in M: x < m \\}` olarak :math:`jPast(m)`."
+
+#: ../../theory/abstract-consensus.rst:99
+msgid ":math:`jPastCone(m)` as :math:`\\{x \\in M: x \\leqslant m \\}`."
+msgstr ":math:`\\{x \\in M: x \\leqslant m \\}` olarak :math:`jPastCone(m)`."
+
+#: ../../theory/abstract-consensus.rst:101
+msgid ""
+"Of course both :math:`jPast(m)` and :math:`jPastCone(m)` are snapshots."
+msgstr ""
+"Elbette hem :math:`jPast(m)` hem de :math:`jPastCone(m)` anlık "
+"görüntülerdir."
+
+#: ../../theory/abstract-consensus.rst:103
+msgid ""
+"In the context of any snapshot :math:`M` we introduce the following "
+"concepts:"
+msgstr ""
+":math:`M` ögesinin herhangi bir anlık görüntü bağlamında aşağıdaki "
+"kavramları tanıtıyoruz:"
+
+#: ../../theory/abstract-consensus.rst:106
+msgid "**transitive justification of message m**"
+msgstr "**m mesajının geçişli gerekçesi**"
+
+#: ../../theory/abstract-consensus.rst:106
+msgid ""
+"is any message :math:`x` such that :math:`x < m`; we also say that "
+"\":math:`m` has seen :math:`x`\""
+msgstr ""
+":math:`x` mesajı öyleki :math:`x < m` mesajıdır; ayrıca \":math:`m` "
+":math:`x` mesajını gördü\" deriz."
+
+#: ../../theory/abstract-consensus.rst:110
+msgid "**swimlane of validator v**"
+msgstr "**v doğrulayıcının kulvarı**"
+
+#: ../../theory/abstract-consensus.rst:109
+msgid ""
+"or just :math:`swimlane(v,M)` is :math:`\\{m \\in M: m.creator = v\\}`; a "
+"swimlane usually is not a snapshot, nevertheless it inherits the ordering "
+"from  :math:`jDag(M)`, so it can be seen as a DAG and a POSET"
+msgstr ""
+"veya sadece :math:`swimlane(v,M)` :math:`\\{m \\in M: m.creator = v\\}` "
+"olur; bir kulvar genellikle bir anlık görüntü değildir, yine de sıralamayı "
+":math:`jDag(M)` ögesinde devralır, bu yüzden bir DAG ve bir POSET olarak "
+"görülebilir."
+
+#: ../../theory/abstract-consensus.rst:113
+msgid "**tip**"
+msgstr "**ipucu**"
+
+#: ../../theory/abstract-consensus.rst:113
+msgid ""
+"is a maximal element in :math:`jDag(M)`; of course :math:`jDag(M)` can "
+"contain more than one maximal element"
+msgstr ""
+":math:`jDag(M)` içindeki bir en büyük elemandır; tabii ki :math:`jDag(M)` "
+"birden fazla en büyük eleman içerebilir"
+
+#: ../../theory/abstract-consensus.rst:117
+msgid "**validator v is honest in M**"
+msgstr "**doğrulayıcı v M ögesinde dürüsttür**"
+
+#: ../../theory/abstract-consensus.rst:116
+msgid ""
+"means :math:`swimlane(v,M)` is empty or it is a nonempty chain; in POSET "
+"language in translates to :math:`swimlane(v,M)` being a (possibly empty) "
+"linear order"
+msgstr ""
+":math:`swimlane(v,M)` boş veya boş olmayan bir zincir anlamına gelir; POSET "
+"dilinde :math:`swimlane(v,M)` (muhtemelen boş) doğrusal bir düzen olarak "
+"çevrilir"
+
+#: ../../theory/abstract-consensus.rst:120
+msgid "**validator v is an equivocator in M**"
+msgstr "**doğrulayıcı v M ögesinde çelişkilidir**"
+
+#: ../../theory/abstract-consensus.rst:120
+msgid "if :math:`v` is not honest in :math:`M`"
+msgstr ":math:`v` mesajı :math:`M` ögesinde doğru değilse"
+
+#: ../../theory/abstract-consensus.rst:124
+msgid "**equivocation by v**"
+msgstr "**v tarafından çelişkili davranış**"
+
+#: ../../theory/abstract-consensus.rst:123
+msgid ""
+"is a proof that a validator :math:`v` is not honest; in other words it is a "
+"pair of messages :math:`a,b \\in M`, both created by :math:`v`, such that "
+":math:`\\neg (a < b)` and :math:`\\neg (b < a)`"
+msgstr ""
+"bir :math:`v` doğrulayıcısının dürüst olmadığının bir kanıtıdır; başka bir "
+"deyişle, her ikisi de :math:`v` tarafından oluşturulan :math:`a,b \\in M` "
+"bir çift mesajdır, öyle ki :math:`\\neg (a < b)` ve :math:` \\neg (b < a)`"
+
+#: ../../theory/abstract-consensus.rst:128
+msgid "**latest message of a validator v in M**"
+msgstr "**doğrulayıcı v'nin M ögesindeki son mesajı**"
+
+#: ../../theory/abstract-consensus.rst:127
+msgid ""
+"is any tip in :math:`swimlane(v,M)`; if :math:`v` is honest in :math:`M` "
+"then it has at most one latest message in :math:`M`"
+msgstr ""
+":math:`swimlane(v,M)` kulvarındaki herhangi bir mesajdır; eğer :math:`v`, "
+":math:`M` içinde dürüstse, o zaman :math:`M` içinde en son bir mesajı vardır"
+
+#: ../../theory/abstract-consensus.rst:131
+msgid "**honest validators in M**"
+msgstr "**M ögesindeki dürüst doğrulayıcılar**"
+
+#: ../../theory/abstract-consensus.rst:131
+msgid ":math:`\\{v \\in \\textit{Validators}: \\textit{v is honest in M}\\}`"
+msgstr ":math:`\\{v \\in \\textit{Validators}: \\textit{v M içinde dürüsttür}\\}`"
+
+#: ../../theory/abstract-consensus.rst:135
+msgid "**panorama of M**"
+msgstr "**M ögesinin panoraması**"
+
+#: ../../theory/abstract-consensus.rst:134
+msgid ""
+"is a partial function :math:`\\textit{panorama(M)}: \\textit{Validators} "
+"\\rightarrow M`, defined for every validator which is honest in M and "
+"swimlane(v,M) is nonempty, :math:`panorama(M)(v) = \\textit{tip of the "
+"swimlane of v}`"
+msgstr ""
+":math:`\\textit{panorama(M)}: \\textit{Validators} \\rightarrow M` kısmi bir"
+" işlevdir, M'de dürüst olan her doğrulayıcı için tanımlanır ve swimlane(v,M)"
+" boş değildir, :math:`panorama(M)(v) = \\textit{v kulvarının ucu}`"
+
+#: ../../theory/abstract-consensus.rst:137
+msgid ""
+"These concepts are illustrated below. Messages are represented with circles."
+" Justifications are represented with arrows. Colors inside a circle "
+"represents consensus values."
+msgstr ""
+"Bu kavramlar aşağıda gösterilmiştir. Mesajlar dairelerle temsil edilir. "
+"Gerekçeler oklarla gösterilir. Bir daire içindeki renkler, mutabakat "
+"değerlerini temsil eder."
+
+#: ../../theory/abstract-consensus.rst:149
+#: ../../theory/abstract-consensus.rst:1182
+msgid "Estimator"
+msgstr "Tahminci"
+
+#: ../../theory/abstract-consensus.rst:151
+msgid ""
+"Upon creation of a new message :math:`m`, a validator must decide which "
+"consensus value :math:`m` will vote for. We limit the freedom here by "
+"enforcing that the selected consensus value is constrained by the function "
+"called **estimator**:"
+msgstr ""
+"Yeni bir :math:`m` mesajı oluşturulduktan sonra, bir doğrulayıcı hangi "
+":math:`m` mutabakat değerine oy vereceğine karar vermelidir. Buradaki "
+"özgürlüğü, seçilen mutabakat değerinin **tahminci** adlı işlev tarafından "
+"sınırlandırılmasını zorunlu kılarak sınırlandırıyoruz:"
+
+#: ../../theory/abstract-consensus.rst:155
+msgid "\\textit{estimator}: Snapshots \\to Con \\cup \\{ None \\}"
+msgstr "\\textit{estimator}: Snapshots \\to Con \\cup \\{ None \\}"
+
+#: ../../theory/abstract-consensus.rst:159
+msgid ""
+"For any message :math:`m` we say **estimated vote for m** for "
+":math:`\\textit{estimator}(jPast(m))`."
+msgstr ""
+"Herhangi bir :math:`m` mesajı için :math:`\\textit{tahminatör}(jPast(m))` "
+"için **m için tahmini oy** deriz."
+
+#: ../../theory/abstract-consensus.rst:161
+msgid "We enforce the votes by the following rule:"
+msgstr "Oyları aşağıdaki kurala göre uygularız:"
+
+#: ../../theory/abstract-consensus.rst:163
+msgid ""
+"if estimated vote for :math:`m` is not None then must vote for the estimated"
+" vote"
+msgstr ""
+"Eğer :math:`m` için tahmini oy None değilse, o zaman tahmini oy için oy "
+"kullanmalıdır"
+
+#: ../../theory/abstract-consensus.rst:164
+msgid "otherwise, :math:`m` is allowed to vote for any value in :math:`Con`"
+msgstr ""
+"aksi halde, :math:`m`, :math:`Con` içindeki herhangi bir değer için oy "
+"kullanabilir"
+
+#: ../../theory/abstract-consensus.rst:166
+msgid ""
+"Let us consider any snapshot :math:`M`. The way :math:`estimator(M)` is "
+"calculated goes as follows:"
+msgstr ""
+"Herhangi bir :math:`M` anlık görüntüsünü ele alalım. :math:`estimator(M)` şu"
+" şekilde hesaplanır:"
+
+#: ../../theory/abstract-consensus.rst:168
+msgid "Take the collection :math:`H` of all honest validators in :math:`M`."
+msgstr ""
+":math:`M` ögesindeki tüm dürüst doğrulayıcıların :math:`H` koleksiyonunu al."
+
+#: ../../theory/abstract-consensus.rst:169
+msgid ""
+"Restrict :math:`H` to collection of validators that created at least one "
+"message with non-empty vote - :math:`H'`"
+msgstr ""
+":math:`H` öğesini, boş oyu olmayan en az bir mesaj oluşturan doğrulayıcılar "
+"koleksiyonuyla sınırlayın - :math:`H'`"
+
+#: ../../theory/abstract-consensus.rst:170
+msgid ""
+"If :math:`H'` is empty - return :math:`None`, otherwise - continue "
+"calculation."
+msgstr ""
+"Eğer :math:`H'` boş ise - :math:`None` döndürür, aksi halde - hesaplama "
+"devam eder."
+
+#: ../../theory/abstract-consensus.rst:171
+msgid ""
+"For every validator in :math:`H'` - find its latest message with non-empty "
+"vote."
+msgstr ""
+":math:`H'` içindeki her doğrulayıcı için - boş olmayan oya sahip en son "
+"mesajını bulun."
+
+#: ../../theory/abstract-consensus.rst:172
+msgid ""
+"Sum latest messages by weight; this will end up with a mapping "
+":math:`\\textit{totalVotes}: Con \\to Int`, for every consensus value "
+":math:`c` it returns the sum of weights of validators voting for :math:`c`."
+msgstr ""
+"En son mesajları ağırlığa göre toplayın; bu, bir "
+":math:`\\textit{totalVotes}: Con \\to Int` eşleme ile sonuçlanacaktır, her "
+"mutabakat değeri :math:`c` için, :math:`c` için oy veren doğrulayıcıların "
+"ağırlıklarının toplamını döndürür."
+
+#: ../../theory/abstract-consensus.rst:174
+msgid ""
+"Find all points :math:`c \\in Con` such that :math:`\\textit{totalVotes}` "
+"has maximum value at :math:`c`."
+msgstr ""
+":math:`\\textit{totalVotes}` :math:`c` değerinde en yüksek değere sahip "
+"olacak şekilde tüm :math:`c \\in Con` noktalarını bulun."
+
+#: ../../theory/abstract-consensus.rst:175
+msgid ""
+"From elements found in the previous step pick maximum element :math:`cmax "
+"\\in Con`. This is where we use the fact that :math:`Con` is finite and "
+"totally ordered."
+msgstr ""
+"Önceki adımda bulunan elemanlardan maksimum :math:`cmax \\in Con` elemanını "
+"seçin. Burada :math:`Con` değerinin sonlu ve tamamen düzenli olduğu "
+"gerçeğini kullanıyoruz."
+
+#: ../../theory/abstract-consensus.rst:177
+msgid "The result of the estimator is :math:`cmax`."
+msgstr "Tahmincinin sonucu :math:`cmax`."
+
+#: ../../theory/abstract-consensus.rst:180
+msgid "Validity conditions"
+msgstr "Geçerlilik koşulları"
+
+#: ../../theory/abstract-consensus.rst:182
+msgid ""
+"On reception of a message, every validator must check certain conditions. "
+"Messages not compliant with these conditions are considered invalid and "
+"hence ignored."
+msgstr ""
+"Bir mesaj alındığında, her doğrulayıcı belirli koşulları kontrol etmelidir. "
+"Bu koşullara uymayan mesajlar geçersiz kabul edilir ve bu nedenle yok "
+"sayılır."
+
+#: ../../theory/abstract-consensus.rst:185
+msgid "Formal validation is:"
+msgstr "Resmi doğrulama:"
+
+#: ../../theory/abstract-consensus.rst:187
+msgid ""
+"message must be correctly structured, following the transport (= binary) "
+"representation"
+msgstr ""
+"mesaj, aktarım (= binary) gösterimini takip ederek doğru şekilde "
+"yapılandırılmalıdır."
+
+#: ../../theory/abstract-consensus.rst:188
+msgid "checking of the cryptographic signature of message creator"
+msgstr "mesaj oluşturucunun kriptografik imzasının kontrolü"
+
+#: ../../theory/abstract-consensus.rst:190
+msgid "Semantic validation is:"
+msgstr "Semantik doğrulama:"
+
+#: ../../theory/abstract-consensus.rst:192
+msgid ""
+"consensus value :math:`m.vote` must be compliant with applying the estimator"
+" to :math:`jPast(m)`"
+msgstr ""
+"mutabakat değeri :math:`m.vote` tahmincinin :math:`jPast(m)` ögesine "
+"uygulanması ile uyumlu olmalıdır"
+
+#: ../../theory/abstract-consensus.rst:193
+msgid ""
+"justifications :math:`m.justifications` must reference messages belonging to"
+" distinct swimlanes, i.e. if :math:`j_1`, :math:`j_2` are two justifications"
+" in :math:`m`, then :math:`creator(j_1) \\ne creator(j_2)`"
+msgstr ""
+"gerekçeler :math:`m.justifications` farklı kulvarlara ait mesajlara atıfta "
+"bulunmalıdır, yani :math:`j_1`, :math:`j_2`, :math:`m` içinde iki gerekçe "
+"ise, :math:`creator(j_1) \\ne creator(j_2)`"
+
+#: ../../theory/abstract-consensus.rst:196
+msgid "We explain the concept of \"estimator\" later in this chapter."
+msgstr "\"Tahminci\" kavramını bu bölümün ilerleyen kısımlarında açıklayacağız."
+
+#: ../../theory/abstract-consensus.rst:199
+msgid "Operation of a validator"
+msgstr "Bir doğrulayıcının çalışması"
+
+#: ../../theory/abstract-consensus.rst:201
+msgid "A validator continuously runs two activities:"
+msgstr "Bir doğrulayıcı sürekli olarak iki etkinlik yürütür:"
+
+#: ../../theory/abstract-consensus.rst:203
+msgid "**listening loop** - handling messages arriving from the network"
+msgstr "**dinleme döngüsü** - ağdan gelen mesajları işleme"
+
+#: ../../theory/abstract-consensus.rst:204
+msgid "**publishing loop** - creating and broadcasting new messages"
+msgstr "**yayınlama döngüsü** - yeni mesajlar oluşturma ve yayınlama"
+
+#: ../../theory/abstract-consensus.rst:206
+msgid "**Listening loop**"
+msgstr "**Dinleme döngüsü**"
+
+#: ../../theory/abstract-consensus.rst:208
+msgid "When a message :math:`m` arrived:"
+msgstr "Bir mesaj :math:`m` ulaştığında:"
+
+#: ../../theory/abstract-consensus.rst:210
+msgid "Formal validation of :math:`m` is performed."
+msgstr ":math:`m` mesajının resmi doğrulaması gerçekleştirilir."
+
+#: ../../theory/abstract-consensus.rst:211
+msgid ""
+"If :math:`textit{m.justifications}` are already present in the local "
+"representation of j-dag then:"
+msgstr ""
+"j-dag'ın yerel temsilinde :math:`textit{m.justifications}` zaten varsa:"
+
+#: ../../theory/abstract-consensus.rst:213
+msgid "semantic validation of :math:`m` is performed"
+msgstr ":math:`m` mesajının semantik doğrulaması gerçekleştirilir"
+
+#: ../../theory/abstract-consensus.rst:214
+msgid ":math:`m` is added to the j-dag"
+msgstr ":math:`m` mesajı j-dag'a eklenir"
+
+#: ../../theory/abstract-consensus.rst:216
+msgid "otherwise:"
+msgstr "aksi halde:"
+
+#: ../../theory/abstract-consensus.rst:218
+msgid ""
+":math:`m` is added to the messages buffer, where it waits until all "
+"justifications it references are present in the j-dag"
+msgstr ""
+":math:`m` mesaj arabelleğine eklenir, burada atıfta bulunduğu tüm gerekçeler"
+" j-dag'da bulunana kadar bekler"
+
+#: ../../theory/abstract-consensus.rst:221
+msgid "On every message added to the local j-dag:"
+msgstr "Yerel j-dag'a eklenen her mesajda:"
+
+#: ../../theory/abstract-consensus.rst:223
+msgid ""
+"Messages buffer is checked for messages that have now all justifications "
+"present in the j-dag and so can be removed from the buffer."
+msgstr ""
+"Mesaj arabelleği, artık tüm gerekçeleri j-dag'da bulunan ve bu nedenle "
+"arabellekten kaldırılabilen mesajlar için kontrol edilir."
+
+#: ../../theory/abstract-consensus.rst:225
+msgid ""
+"Finality detector analyzes local j-dag to check if the consensus has already"
+" been reached."
+msgstr ""
+"Kesinlik algılayıcı, mutabakat sağlanıp sağlanmadığını kontrol etmek için "
+"yerel j-dag'ı analiz eder."
+
+#: ../../theory/abstract-consensus.rst:227
+msgid "**Publishing loop**"
+msgstr "**Yayınlama döngüsü**"
+
+#: ../../theory/abstract-consensus.rst:229
+msgid ""
+"We do not determine when exactly a validator decides to create and broadcast"
+" a new message. This is pluggable part of ACC. As soon as a validator, "
+"following its publishing strategy, decides to publish a message, it builds a"
+" new message with:"
+msgstr ""
+"Doğrulayıcının yeni bir mesaj oluşturmaya ve yayınlamaya tam olarak ne zaman"
+" karar vereceğini belirlemeyiz. Bu, ACC'nin takılabilir parçasıdır. "
+"Doğrulayıcı, yayınlama stratejisini izleyerek bir mesaj yayınlamaya karar "
+"verir vermez, aşağıdakilerle yeni bir mesaj oluşturur:"
+
+#: ../../theory/abstract-consensus.rst:233
+msgid ""
+"justifications set to tips of all swimlanes, according to local j-dag; in "
+"case of equivocators, i.e. when the corresponding swimlane has more than one"
+" tip - validator picks just one tip (any)"
+msgstr ""
+"yerel j-dag'a göre tüm kulvarların uçlarına ayarlanmış gerekçeler; şüpheli "
+"durumda, yani ilgili kulvarda birden fazla ipucu olduğunda - doğrulayıcı "
+"sadece bir ipucu (herhangi birini) seçer"
+
+#: ../../theory/abstract-consensus.rst:235
+msgid ""
+"consensus value determined by estimator, as applied to the justifications"
+msgstr ""
+"gerekçelere uygulandığı şekliyle, tahminci tarafından belirlenen mutabakat "
+"değeri"
+
+#: ../../theory/abstract-consensus.rst:238
+msgid "The concept of finality"
+msgstr "Kesinlik kavramı"
+
+#: ../../theory/abstract-consensus.rst:241
+msgid "When the consensus is reached"
+msgstr "Mutabakata varıldığında"
+
+#: ../../theory/abstract-consensus.rst:243
+msgid ""
+"A validator :math:`v` constantly analyzes its local j-dag to observe a value"
+" :math:`c \\in Con` becoming \"locked\" in the following sense:"
+msgstr ""
+"Bir doğrulayıcı :math:`v`, aşağıdaki anlamda \"kilitli\" hale gelen bir "
+":math:`c \\in Con` değerini gözlemlemek için yerel j-dag'ını sürekli olarak "
+"analiz eder:"
+
+#: ../../theory/abstract-consensus.rst:246
+msgid ""
+"from now on, the estimator applied to local j-dag tips will always return "
+":math:`c`"
+msgstr ""
+"bundan sonra, yerel j-dag ipuçlarına uygulanan tahminci her zaman :math:`c` "
+"değerini döndürecektir."
+
+#: ../../theory/abstract-consensus.rst:247
+msgid ""
+"the same phenomenon is guaranteed to happen also for other validators "
+"(eventually)"
+msgstr ""
+"aynı olgunun diğer doğrulayıcılar için de gerçekleşmesi garanti edilir "
+"(neticede)"
+
+#: ../../theory/abstract-consensus.rst:249
+msgid ""
+"If such locking happens, we say that **consensus value c is now finalized**,"
+" i.e. the consensus was reached with value :math:`c \\in Con` being the "
+"winner."
+msgstr ""
+"Böyle bir kilitleme gerçekleşirse, **mutabakat değeri c'nin artık "
+"kesinleştiğini**, yani :math:`c \\in Con' değerinin kazanan olduğu konusunda"
+" mutabakata varıldığını söyleriz."
+
+#: ../../theory/abstract-consensus.rst:253
+msgid "Malicious validators"
+msgstr "Kötü amaçlı doğrulayıcılar"
+
+#: ../../theory/abstract-consensus.rst:255
+msgid ""
+"In general - malicious validators can stop consensus from happening. We need"
+" to adjust the concept of finalization so to account for this problem."
+msgstr ""
+"Genel olarak - kötü niyetli doğrulayıcılar mutabakatın gerçekleşmesini "
+"engelleyebilir. Bu sorunu hesaba katmak için kesinleştirme kavramını "
+"ayarlamamız gerekiyor."
+
+#: ../../theory/abstract-consensus.rst:258
+msgid "There are 4 ways a validator can expose malicious behaviour:"
+msgstr ""
+"Bir doğrulayıcının kötü niyetli davranışı ortaya çıkarabilmesinin 4 yolu "
+"vardır:"
+
+#: ../../theory/abstract-consensus.rst:260
+msgid "Be silent (= stop producing messages)"
+msgstr "Sessiz olmak (= mesaj üretmeyi bırakır)"
+
+#: ../../theory/abstract-consensus.rst:261
+msgid "Produce malformed messages."
+msgstr "Hatalı biçimlendirilmiş mesajlar üretir."
+
+#: ../../theory/abstract-consensus.rst:262
+msgid ""
+"Violate the condition that a message must vote on a value derived from "
+"justifications via the estimator."
+msgstr ""
+"Bir mesajın, tahminci aracılığıyla gerekçelerden türetilen bir değere oy "
+"vermesi koşulunu ihlal eder."
+
+#: ../../theory/abstract-consensus.rst:263
+msgid "Equivocate."
+msgstr "Çelişkili davranır."
+
+#: ../../theory/abstract-consensus.rst:265
+msgid ""
+"Case (3) can really be considered a sub-case of (2), and (2) can be evaded "
+"by assuming that validators reject malformed messages on reception. So, the "
+"only real problems come from (1) and (4):"
+msgstr ""
+"Durum (3) gerçekten (2)'nin bir alt durumu olarak kabul edilebilir ve "
+"(2)'den, doğrulayıcıların alım sırasında hatalı biçimlendirilmiş mesajları "
+"reddettiği varsayılarak kaçınılabilir. Yani, tek gerçek problem (1) ve "
+"(4)'ten gelir:"
+
+#: ../../theory/abstract-consensus.rst:268
+msgid "Problem (1) is something we are not addressing within ACC."
+msgstr "Problem (1), ACC içinde ele almadığımız bir şeydir."
+
+#: ../../theory/abstract-consensus.rst:269
+msgid ""
+"Problem (4) is something we control explicitly in the finality calculation."
+msgstr ""
+"Problem (4), kesinlik hesaplamasında açıkça kontrol ettiğimiz bir şeydir."
+
+#: ../../theory/abstract-consensus.rst:272
+msgid "Closer look at equivocations"
+msgstr "Çelişkili davranışlara daha yakından bakın"
+
+#: ../../theory/abstract-consensus.rst:274
+msgid ""
+"Equivocations do break consensus. Intuition for this is clear - if everybody"
+" cheats by concurrently voting for different values, validators will never "
+"come up with a decision the value is finally agreed upon."
+msgstr ""
+"Çelişkili davranışlar mutabakatı bozar. Bu açıkça sezilebilir - herkes aynı "
+"anda farklı değerler için oy vererek hile yaparsa, doğrulayıcılar asla değer"
+" üzerinde nihai olarak üzerinde anlaşmaya varılan bir karara varamazlar."
+
+#: ../../theory/abstract-consensus.rst:277
+msgid ""
+"It may be not immediately obvious how equivocations are possible in the "
+"context of the rule that the estimator function determines the consensus "
+"value to vote for. It is worth noticing that:"
+msgstr ""
+"Tahmin işlevinin oy verilecek mutabakat değerini belirlediği kural "
+"bağlamında çelişkili davranışların nasıl mümkün olduğu hemen "
+"anlaşılmayabilir. Şuna dikkat etmekte fayda var:"
+
+#: ../../theory/abstract-consensus.rst:280
+msgid ""
+"The essence of an equivocation is not about voting for different consensus "
+"values; it is about behaving in a “schizophrenic” way by pretending that “I "
+"have not seen my previous message”."
+msgstr ""
+"Bir çelişkili davranışın özü, farklı mutabakat değerlerine oy vermekle "
+"ilgili değil; “Önceki mesajımı görmemişim” gibi yaparak “şizofrenik” "
+"davranmakla ilgilidir."
+
+#: ../../theory/abstract-consensus.rst:282
+msgid ""
+"A Validator does not have to reveal all messages actually received. "
+"“Revealing” happens at the creation of a new message - by listing "
+"justifications of this message. The protocol does not prevent a validator "
+"from hiding knowledge, i.e. listing as justifications \"old\" messages."
+msgstr ""
+"Bir doğrulayıcı, alınan tüm mesajları göstermek zorunda değildir. "
+"“Açıklama”, yeni bir mesajın oluşturulmasında - bu mesajın gerekçelerini "
+"listeleyerek gerçekleşir. Protokol, bir doğrulayıcının bilgiyi gizlemesini, "
+"yani \"eski\" mesajların gerekçeleri olarak listelemesini engellemez."
+
+#: ../../theory/abstract-consensus.rst:285
+msgid ""
+"Technically, to create an equivocation is very easy - all one have to do is "
+"to create a branch own the swimlane. Such a branch is created every time "
+"when for a message :math:`m` its transitive justifications "
+":math:`jPastCone(m)` do not include previous message by :math:`m.creator`."
+msgstr ""
+"Teknik olarak, bir çelişkili davranış oluşturmak çok kolaydır - tek yapmanız"
+" gereken kulvara ait bir dal oluşturmaktır. Böyle bir dal her zaman bir "
+"mesaj :math:`m` için geçişli gerekçeleri :math:`jPastCone(m)` "
+":math:`m.creator` tarafından önceki mesajı içermediğinde oluşturulur."
+
+#: ../../theory/abstract-consensus.rst:290
+msgid "Finality criteria"
+msgstr "Kesinlik kriterleri"
+
+#: ../../theory/abstract-consensus.rst:292
+msgid ""
+"Let :math:`\\mathcal{M}` be the set of all possible formally correct "
+"messages. Let :math:`\\textit{Snapshots}(\\mathcal{M})` be the set of all "
+"justifications-closed subsets of :math:`\\mathcal{M}`."
+msgstr ""
+":math:`\\mathcal{M}` olası tüm biçimsel olarak doğru mesajların kümesi "
+"olsun. :math:`\\textit{Snapshots}(\\mathcal{M})` tüm gerekçelerin kümesi "
+"olsun - :math:`\\mathcal{M}` kümesinin kapalı alt kümeleri."
+
+#: ../../theory/abstract-consensus.rst:295
+msgid ""
+"Because of equivocations, finality really means “consensus value :math:`c` "
+"being locked as long as the fraction of honest nodes is sufficiently high”. "
+"We express the “sufficiently high” part by introducing the concept of "
+"**faults tolerance threshold**, or **FTT** in short. This leads us to the "
+"improved definition of finality:"
+msgstr ""
+"Çelişkili davranışlar nedeniyle, kesinlik gerçekten “dürüst düğümlerin oranı"
+" yeterince yüksek olduğu sürece, mutabakat değeri :math:`c` kilitlenmesi” "
+"anlamına gelir. “Yeterince yüksek” kısmı, **hata tolerans eşiği** veya "
+"kısaca **FTT** kavramını tanıtarak ifade ediyoruz. Bu bizi kesinliğin "
+"geliştirilmiş tanımına götürür:"
+
+#: ../../theory/abstract-consensus.rst:299
+msgid ""
+"A value :math:`c \\in Con` is finalized in a snapshot :math:`S \\in "
+"\\textit{Snapshots}(\\mathcal{M})` with fault tolerance :math:`t` if:"
+msgstr ""
+"Bir :math:`c \\in Con` değeri, aşağıdaki durumlarda hata toleransı :math:`t`"
+" ile bir anlık görüntü :math:`S \\in \\textit{Snapshots}(\\mathcal{M})` "
+"içinde sonlandırılır:"
+
+#: ../../theory/abstract-consensus.rst:303
+msgid ":math:`\\textit{Estimator}(S) = c`"
+msgstr ":math:`\\textit{Estimator}(S) = c`"
+
+#: ../../theory/abstract-consensus.rst:304
+msgid ""
+"For every snapshot :math:`S \\in \\mathit{Snapshots}(\\mathcal{M})` such "
+"that :math:`S \\subset R` one of the following is true:"
+msgstr ""
+":math:`S \\subset R` aşağıdakilerden biri doğru olacak şekilde her bir "
+":math:`S \\in \\mathit{Snapshots}(\\mathcal{M})` anlık görüntüsü için:"
+
+#: ../../theory/abstract-consensus.rst:307
+msgid ":math:`Estimator(R) = c`"
+msgstr ":math:`Estimator(R) = c`"
+
+#: ../../theory/abstract-consensus.rst:308
+msgid ""
+"total weights of equivocators visible in :math:`R` is bigger than :math:`t`"
+msgstr ""
+":math:`R` içinde görünen çelişkili davranışların toplam ağırlıkları "
+":math:`t` değerinden büyük"
+
+#: ../../theory/abstract-consensus.rst:310
+msgid ""
+"**Finality criterion** is any function :math:`fc: "
+"\\mathit{Snapshots}(\\mathcal{M}) \\times Int \\to C \\cup {EMPTY}` such "
+"that if :math:`fc(S,t) = c` then :math:`c` is finalized in :math:`S` with "
+"fault tolerance :math:`t`."
+msgstr ""
+"**Kesinlik kriteri**, herhangi bir :math:`fc: "
+"\\mathit{Snapshots}(\\mathcal{M}) \\times Int \\to C \\cup {EMPTY}` "
+"fonksiyonudur, öyle ki :math:`fc(S,t) = c` ise, o zaman :math:`c`, hata "
+"toleransı :math:`t` ile :math:`S` ögesinde kesinleştirilir."
+
+#: ../../theory/abstract-consensus.rst:313
+msgid ""
+"Intuitively, finality is something that is easy to define mathematically but"
+" potentially hard to discover by an efficient calculation. Therefore in "
+"general we discuss various finality criteria, which are approximations of "
+"finality. Finality criteria may differ by sensitivity (= how they are not "
+"overlooking existing finality) and computational efficacy."
+msgstr ""
+"Kesinlik, sezgisel bir biçimde matematiksel olarak tanımlanması kolay ancak "
+"verimli bir hesaplama ile keşfedilmesi potansiyel olarak zor olan bir "
+"şeydir. Bu nedenle, genel olarak, kesinliğin yaklaşımları olan çeşitli "
+"kesinlik kriterlerini tartışıyoruz. Kesinlik kriterleri, hassasiyete (= "
+"mevcut kesinliği nasıl gözden kaçırmadıklarına) ve hesaplama etkinliğine "
+"göre farklılık gösterebilir."
+
+#: ../../theory/abstract-consensus.rst:319
+msgid "Calculating finality"
+msgstr "Kesinlik hesaplama"
+
+#: ../../theory/abstract-consensus.rst:322
+msgid "Introduction"
+msgstr "Giriş"
+
+#: ../../theory/abstract-consensus.rst:324
+msgid ""
+"We describe here the criterion of finality codenamed “Summit theory ver 2”. "
+"This criterion has two parameters:"
+msgstr ""
+"Burada “Zirve teorisi sürüm 2” kod adlı kesinlik kriterini tanımlıyoruz. Bu "
+"kriterin iki parametresi vardır:"
+
+#: ../../theory/abstract-consensus.rst:326
+msgid ""
+"**ftt: Int** - “absolute” fault tolerance threshold (expressed as total "
+"weight)"
+msgstr ""
+"**ftt: Int** - \"mutlak\" hata tolerans eşiği (toplam ağırlık olarak ifade "
+"edilir)"
+
+#: ../../theory/abstract-consensus.rst:327
+msgid ""
+"**ack_level: Int** - acknowledgement level; an integer value bigger than "
+"zero"
+msgstr ""
+"**ack_level: Int** - onay seviyesi; sıfırdan büyük bir tam sayı değeri"
+
+#: ../../theory/abstract-consensus.rst:329
+msgid ""
+"The criterion is centered about the concept of \"summit\". Summits are "
+"subgraphs of j-dag fulfilling certain properties. We will use the term "
+"**k-summit** for a summit formed with acknowledgement level k."
+msgstr ""
+"Kriter, “zirve” kavramı etrafında toplanmıştır. Zirveler, belirli "
+"özellikleri yerine getiren j-dag'ın alt grafikleridir. k onay seviyesi ile "
+"oluşturulmuş bir zirve için **k-summit** terimini kullanacağız."
+
+#: ../../theory/abstract-consensus.rst:332
+msgid "Once a k-level summit is found, the consensus is achieved."
+msgstr "Bir k-level zirvesi bulunduğunda, mutabakat sağlanır."
+
+#: ../../theory/abstract-consensus.rst:335
+msgid "Visual notation"
+msgstr "Görsel gösterim"
+
+#: ../../theory/abstract-consensus.rst:337
+msgid ""
+"To investigate the summit theory we developed a simulator and a visual "
+"notation. Pictures in this chapter are produced with this simulator."
+msgstr ""
+"Zirve teorisini incelemek için bir simülatör ve görsel bir gösterim "
+"geliştirdik. Bu bölümdeki resimler bu simülatör ile üretilmiştir."
+
+#: ../../theory/abstract-consensus.rst:340
+msgid "This is an example of 1-summit:"
+msgstr "Bu bir 1-summit örneğidir:"
+
+#: ../../theory/abstract-consensus.rst:346
+msgid ""
+"The graph corresponds to local j-dag of validator 0 and is visually aligned "
+"by daglevel (so time goes from left to right)."
+msgstr ""
+"Grafik, doğrulayıcı 0'ın yerel j-dag'ına karşılık gelir ve görsel olarak "
+"daglevel ile hizalanır (böylece zaman soldan sağa doğru gider)."
+
+#: ../../theory/abstract-consensus.rst:349
+msgid ""
+"Rectangles on the left represent validators. Swimlane of a validator is "
+"aligned horizontally, so for example swimlane of validator 3 contains "
+"messages 4, 14, 20 and 24. Message 28 is marked with a dashed border - this "
+"means this message was created somewhere in the network but at the moment of"
+" taking the snapshot of local state of validator 0 was not yet delivered to "
+"validator 0."
+msgstr ""
+"Soldaki dikdörtgenler doğrulayıcıları temsil eder. Bir doğrulayıcının "
+"kulvarı yatay olarak hizalanır, bu nedenle örneğin doğrulayıcı 3'ün kulvarı "
+"4, 14, 20 ve 24 mesajlarını içerir. Mesaj 28 kesikli bir kenarlıkla "
+"işaretlenmiştir - bu, bu mesajın ağda bir yerde oluşturulduğu, ancak "
+"doğrulayıcı 0'ın yerel durumunun anlık görüntüsünün alma anında henüz "
+"doğrulayıcı 0'a teslim edilmediği anlamına gelir."
+
+#: ../../theory/abstract-consensus.rst:354
+msgid "Validator colors are also meaningful:"
+msgstr "Doğrulayıcı renkleri de anlamlıdır:"
+
+#: ../../theory/abstract-consensus.rst:356
+msgid "white - this validator is not part of the summit"
+msgstr "beyaz - bu doğrulayıcı zirvenin bir parçası değil"
+
+#: ../../theory/abstract-consensus.rst:357
+msgid "green - this validator is part of the summit"
+msgstr "yeşil - bu doğrulayıcı zirvenin bir parçası"
+
+#: ../../theory/abstract-consensus.rst:358
+msgid "red - this is an equivocator"
+msgstr "kırmızı - bu doğrulayıcı çelişkili davranmaktadır"
+
+#: ../../theory/abstract-consensus.rst:360
+msgid ""
+"The color inside of each message represents the consensus value this message"
+" is voting for."
+msgstr ""
+"Her mesajın içindeki renk, bu mesajın oy verdiği mutabakat değerini temsil "
+"eder."
+
+#: ../../theory/abstract-consensus.rst:362
+msgid ""
+"The color outside represents the information related to summit structure "
+"(explained later in this chapter)."
+msgstr ""
+"Dıştaki renk, zirve yapısıyla ilgili bilgileri temsil eder (bu bölümün "
+"ilerleyen kısımlarında açıklanacaktır)."
+
+#: ../../theory/abstract-consensus.rst:365
+msgid "Step 1: Calculate quorum size"
+msgstr "Adım 1: Çekirdek boyutunu hesaplayın"
+
+#: ../../theory/abstract-consensus.rst:367
+msgid "Quorum size is an integer value calculated as:"
+msgstr "Çekirdek boyutu şu şekilde hesaplanan bir tamsayı değeridir:"
+
+#: ../../theory/abstract-consensus.rst:369
+msgid ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{1}{2}\\left(\\frac{ftt}{1-2^{-k}}+w\\right)\\right)"
+msgstr ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{1}{2}\\left(\\frac{ftt}{1-2^{-k}}+w\\right)\\right)"
+
+#: ../../theory/abstract-consensus.rst:373
+#: ../../theory/abstract-consensus.rst:386
+msgid "… where:"
+msgstr "... burada:"
+
+#: ../../theory/abstract-consensus.rst:375
+msgid ":math:`ftt` - absolute fault tolerance threshold"
+msgstr ":math:`ftt` - mutlak hata tolerans eşiği"
+
+#: ../../theory/abstract-consensus.rst:376
+msgid ":math:`w` - sum of weights of validators"
+msgstr ":math:`w` - doğrulayıcıların ağırlıklarının toplamı"
+
+#: ../../theory/abstract-consensus.rst:377
+msgid ""
+":math:`k` - desired acknowledgement level of a summit we are trying to find"
+msgstr ":math:`k` - bulmaya çalıştığımız bir zirvenin istenen onay seviyesi"
+
+#: ../../theory/abstract-consensus.rst:378
+msgid ":math:`ceiling` - rounding towards positive infinity"
+msgstr ":math:`ceiling` - pozitif sonsuza yuvarlama"
+
+#: ../../theory/abstract-consensus.rst:380
+msgid ""
+"The formula can be rephrased to use relative ftt instead of absolute ftt:"
+msgstr ""
+"Formül, mutlak ftt yerine göreli ftt kullanacak şekilde yeniden ifade "
+"edilebilir:"
+
+#: ../../theory/abstract-consensus.rst:382
+msgid ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{w}{2}\\left(\\frac{rftt}{1-2^{-k}}+1\\right)\\right)"
+msgstr ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{w}{2}\\left(\\frac{rftt}{1-2^{-k}}+1\\right)\\right)"
+
+#: ../../theory/abstract-consensus.rst:388
+msgid ""
+":math:`rftt` - relative fault tolerance threshold (fractional value between "
+"0 and 1); represents the maximal accepted total weight of malicious "
+"validators - as fraction of :math:`w`"
+msgstr ""
+":math:`rftt` - bağıl hata tolerans eşiği (0 ile 1 arasında kesirli değer); "
+"kötü niyetli doğrulayıcıların maksimum kabul edilen toplam ağırlığını temsil"
+" eder - :math:`w` kesri olarak"
+
+#: ../../theory/abstract-consensus.rst:393
+msgid "Step 2: Find consensus candidate value"
+msgstr "2. Adım: Mutabakat adayı değerini bulun"
+
+#: ../../theory/abstract-consensus.rst:395
+msgid ""
+"The first step in finding a summit is to apply the estimator to the whole "
+"j-dag. This way the consensus value that gets most votes (by weight) is "
+"found, where the total ordering on :math:`Con` is used as a tie-breaker."
+msgstr ""
+"Bir zirve bulmanın ilk adımı, tahminciyi tüm j-dag'a uygulamaktır. Bu "
+"şekilde, en çok oyu alan (ağırlıkça) mutabakat değeri bulunur, burada "
+":math:`Con` 'daki toplam sipariş, bir beraberlik kırıcı olarak kullanılır."
+
+#: ../../theory/abstract-consensus.rst:398
+msgid ""
+"Say the value returned by the estimator is :math:`c`. When the total weight "
+"of votes for :math:`c` is less than quorum size, we do not have a summit "
+"yet, so this terminates the summit search ."
+msgstr ""
+"Tahminci tarafından döndürülen değerin :math:`c` olduğunu söyleyin. "
+":math:`c` için toplam oy ağırlığı yeter sayının altında olduğunda, henüz bir"
+" zirvemiz yoktur, bu da zirve aramasını sonlandırır."
+
+#: ../../theory/abstract-consensus.rst:403
+msgid "Step 3: Find 0-level messages"
+msgstr "3. Adım: 0 seviyeli mesajları bulun"
+
+#: ../../theory/abstract-consensus.rst:405
+msgid ""
+"**0-level messages for an honest validator v** is a subset of "
+":math:`swimlane(v)` formed by taking all messages voting for :math:`c` which"
+" have no later message by :math:`v` voting for consensus value other than "
+":math:`c`. Please notice that empty votes are considered a continuation of "
+"last non-empty vote."
+msgstr ""
+"**Dürüst bir doğrulayıcı v için 0-seviyeli mesajlar**, c'ye oy veren ve "
+":math:`c` 'den başka mutabakat oylama yapan :math:`v` tarafından daha sonra "
+"herhangi bir mesajı olmayan :math:`c` için oy kullanan tüm mesajların "
+"alınmasıyla oluşturulan :math:`swimlane(v)` kulvarının bir alt kümesidir. "
+"Lütfen boş oyların, boş olmayan son oyların devamı olarak kabul edildiğini "
+"unutmayın."
+
+#: ../../theory/abstract-consensus.rst:409
+msgid ""
+"**0-level messages** is a sum of zero level messages for all hones "
+"validators."
+msgstr ""
+"**0-seviyeli mesajlar**, tüm dürüst doğrulayıcılar için sıfır seviyeli "
+"mesajların toplamıdır."
+
+#: ../../theory/abstract-consensus.rst:411
+msgid "Let us look again at the example summit:"
+msgstr "Örnek zirveye tekrar bakalım:"
+
+#: ../../theory/abstract-consensus.rst:417
+msgid ""
+"All latest messages vote for consensus value \"white\", so it is clear that "
+"white is the value picked by the estimator."
+msgstr ""
+"En son mesajların tümü \"beyaz\" mutabakat değeri için oy kullanır, bu "
+"nedenle beyazın tahminci tarafından seçilen değer olduğu açıktır."
+
+#: ../../theory/abstract-consensus.rst:419
+msgid ""
+"In the swimlane of validator 2, messages 3 and 9 vote for white, but are not"
+" 0-level, because 2 changed mind later. Also messages 11 and 15 are not "
+"0-level, because they vote for orange. Only messages 19 and 26 are 0-level."
+msgstr ""
+"Doğrulayıcı 2'nin kulvarında, mesaj 3 ve 9 beyaz için oy kullanır, ancak 2 "
+"daha sonra fikir değiştirdiği için 0 düzeyinde değildir. Ayrıca 11 ve 15 "
+"numaralı mesajlar 0 düzeyinde değildir, çünkü turuncuya oy verirler. "
+"Yalnızca 19 ve 26 mesajlar 0 düzeyindedir."
+
+#: ../../theory/abstract-consensus.rst:422
+msgid ""
+"In the swimlane of validator 1, all messages are 0-level: 2, 13, 22, 23."
+msgstr ""
+"Doğrulayıcı 1'in kulvarında, tüm mesajlar 0 düzeyindedir: 2, 13, 22, 23."
+
+#: ../../theory/abstract-consensus.rst:424
+msgid ""
+"In the swimlane of validator 0 no message is 0-level, because validator 0 is"
+" an equivocator. This becomes clear when we highlight the j-past-cone of "
+"message 25:"
+msgstr ""
+"Doğrulayıcı 0'ın kulvarında hiçbir mesaj 0 düzeyinde değildir, çünkü "
+"doğrulayıcı 0 bir şüphelidir. Mesaj 25'in j-geçmiş-konisini vurguladığımızda"
+" bu durum netleşir:"
+
+#: ../../theory/abstract-consensus.rst:431
+msgid ""
+"Message 18 is not included in j-past-cone of message 25. Hence - messages 18"
+" and 25 form an equivocation."
+msgstr ""
+"Mesaj 18, mesaj 25'in j-geçmiş-konisine dahil değildir. Dolayısıyla - mesaj "
+"18 ve 25 bir çelişkili davranış oluşturur."
+
+#: ../../theory/abstract-consensus.rst:435
+msgid "J-dag trimmer"
+msgstr "J-dag düzeltici"
+
+#: ../../theory/abstract-consensus.rst:437
+msgid ""
+"We will be working in the context of local j-dag of a fixed validator "
+":math:`v_0 \\in V`. Let :math:`M` be the set of all messages in the local "
+"j-dag of :math:`v_0`."
+msgstr ""
+"Sabit bir doğrulayıcı :math:`v_0 \\in V` 'nin yerel j-dag bağlamında "
+"çalışacağız. :math:`M`, :math:`v_0` 'ın yerel j-dag'ındaki tüm mesajların "
+"kümesi olsun."
+
+#: ../../theory/abstract-consensus.rst:440
+msgid ""
+"Definition: Let :math:`S \\subset V` be some subset of the validators set. "
+"By **j-dag trimmer** we mean any function :math:`p:S \\to M` such that "
+":math:`\\forall{v \\in S}, p(v).\\textit{creator} = v`"
+msgstr ""
+"Tanım: :math:`S \\subset V`, doğrulayıcılar kümesinin bir alt kümesi olsun. "
+"**j-dag düzeltici** ile :math:`\\forall{v \\in S}, p(v).\\textit{creator} = "
+"v` olacak şekilde herhangi bir :math:`p:S \\to M` fonksiyonunu kastediyoruz."
+
+#: ../../theory/abstract-consensus.rst:444
+msgid ""
+"If you think of swimlanes as being \"fibers\" or \"hair\" then having a "
+"trimmer means:"
+msgstr ""
+"Yüzme kulvarlarını “iplik” veya “kıl” olarak düşünüyorsanız, o zaman bir "
+"düzelticiye sahip olmak şu anlama gelir:"
+
+#: ../../theory/abstract-consensus.rst:446
+msgid "selecting a subset of swimlanes"
+msgstr "kulvarların bir alt kümesini seçme"
+
+#: ../../theory/abstract-consensus.rst:447
+msgid "picking a \"cutting point\" for every selected swimlane"
+msgstr "seçilen her kulvar için bir \"kesme noktası\" seçmek"
+
+#: ../../theory/abstract-consensus.rst:449
+msgid ""
+"When having a trimmer, we will be interested in the all the messages \"cut\""
+" by the trimmer:"
+msgstr ""
+"Bir düzelticiye sahipken, düzeltici tarafından \"kesilen\" tüm mesajlarla "
+"ilgileneceğiz:"
+
+#: ../../theory/abstract-consensus.rst:451
+msgid ""
+"Definition: For a j-dag trimmer :math:`p` we introduce the set of messages "
+"**p-messages**:"
+msgstr ""
+"Tanım: Bir j-dag düzeltici :math:`p` için, **p-mesajları** dizisini "
+"tanıtıyoruz:"
+
+#: ../../theory/abstract-consensus.rst:453
+msgid "\\{m \\in M: m.creator \\in dom(p) \\land p(m.creator) \\leqslant m\\}"
+msgstr "\\{m \\in M: m.creator \\in dom(p) \\land p(m.creator) \\leqslant m\\}"
+
+#: ../../theory/abstract-consensus.rst:457
+msgid ""
+"Observe that a function assigning to any honest validator its oldest 0-level"
+" message is a jdag trimmer. We will call it **the base trimmer** or just "
+"**base**."
+msgstr ""
+"Herhangi bir dürüst doğrulayıcıya en eski 0-seviye mesajını atayan bir "
+"işlevin bir jdag düzeltici olduğunu gözlemleyin. Biz ona **baz düzeltici** "
+"veya sadece **baz** diyeceğiz."
+
+#: ../../theory/abstract-consensus.rst:465
+msgid "Committee"
+msgstr "Kurul"
+
+#: ../../theory/abstract-consensus.rst:467
+msgid "Definition: Let :math:`p` be some j-dag trimmer."
+msgstr "Tanım: :math:`p` bir j-dag düzeltici olsun."
+
+#: ../../theory/abstract-consensus.rst:469
+msgid ""
+"By :math:`weight(S)` we mean the sum of weights of validators in :math:`S`."
+msgstr ""
+":math:`weight(S)` ile, :math:`S` kümesindeki doğrulayıcıların ağırlıklarının"
+" toplamını kastediyoruz."
+
+#: ../../theory/abstract-consensus.rst:470
+msgid ""
+"**Support of message m in context p** is a subset :math:`R \\subset S` "
+"obtained by taking all validators :math:`v \\in S` such that "
+":math:`\\textit{panorama}_m(v) \\in \\textit{p-messages}`."
+msgstr ""
+"**m mesajının p bağlamında desteklenmesi**, tüm doğrulayıcılar :math:`v \\in"
+" S` alınarak elde edilen bir :math:`R \\subset S` alt kümesidir öyle ki "
+":math:`\\textit{panorama}_m(v) \\in \\textit{p-messages}`."
+
+#: ../../theory/abstract-consensus.rst:472
+msgid ""
+"**1-level message in context p** is a p-message :math:`m` such that the "
+"weight of support of :math:`m` in context :math:`p` is at least "
+":math:`\\textit{quorum}`."
+msgstr ""
+"**p bağlamındaki 1-seviyeli mesaj** bir p-mesaj :math:`m` 'dir, öyle ki "
+":math:`p` bağlamında :math:`m` desteğinin ağırlığı en az "
+":math:`\\textit{quorum}`."
+
+#: ../../theory/abstract-consensus.rst:475
+msgid ""
+"Definition: **Committee in context p** is a j-dag trimmer :math:`comm:S \\to"
+" M` such that:"
+msgstr ""
+"Tanım: **p bağlamında komite** bir j-dag düzelticidir :math:`comm:S \\to M` "
+"öyle ki:"
+
+#: ../../theory/abstract-consensus.rst:477
+msgid ":math:`S \\subset dom(p)`"
+msgstr ":math:`S \\subset dom(p)`"
+
+#: ../../theory/abstract-consensus.rst:478
+msgid ""
+"every value :math:`comm(v)` is a 1-level message in context :math:`p|_S` "
+"(i.e. we restrict here :math:`p` to subdomain :math:`S`"
+msgstr ""
+"her değer :math:`comm(v)`, :math:`p|_S` bağlamında 1 seviyeli bir mesajdır "
+"(yani burada :math:`p` 'yi alt etki alanı :math:`S` ile sınırlandırıyoruz"
+
+#: ../../theory/abstract-consensus.rst:480
+msgid ":math:`\\textit{weight}(S) \\geqslant \\textit{quorum}`"
+msgstr ":math:`\\textit{weight}(S) \\geqslant \\textit{quorum}`"
+
+#: ../../theory/abstract-consensus.rst:482
+#: ../../theory/abstract-consensus.rst:505
+msgid "**Example:**"
+msgstr "**Örnek:**"
+
+#: ../../theory/abstract-consensus.rst:484
+msgid ""
+"In the example below, all validators have equal weight 1, and :math:`ftt=1`."
+" We have the following 1-level committee here:"
+msgstr ""
+"Aşağıdaki örnekte, tüm doğrulayıcılar eşit ağırlık 1 ve :math:`ftt=1` "
+"değerine sahiptir. Burada aşağıdaki 1 seviyeli kurulumuz var:"
+
+#: ../../theory/abstract-consensus.rst:487
+msgid "\\{v_1 \\to m_{23}, v_2 \\to m_{19}, v_3 \\to m_{24}, v_4 \\to m_{21} \\}"
+msgstr "\\{v_1 \\to m_{23}, v_2 \\to m_{19}, v_3 \\to m_{24}, v_4 \\to m_{21} \\}"
+
+#: ../../theory/abstract-consensus.rst:496
+msgid "Step 4: Find k-level summit"
+msgstr "Adım 4: k seviyesindeki zirveyi bulun"
+
+#: ../../theory/abstract-consensus.rst:498
+msgid ""
+"Definition: **k-level summit** is a sequence :math:`(\\textit{comm}_1, "
+"\\textit{comm}_2, ..., \\textit{comm}_k)` such that:"
+msgstr ""
+"Tanım: **k seviyesi zirve** bir dizidir math:`(\\textit{comm}_1, "
+"\\textit{comm}_2, ..., \\textit{comm}_k)` öyle ki:"
+
+#: ../../theory/abstract-consensus.rst:500
+msgid ":math:`\\textit{comm}_1` is a committee in context of the base trimmer"
+msgstr ":math:`\\textit{comm}_1`, temel düzeltici bağlamında bir kuruldur"
+
+#: ../../theory/abstract-consensus.rst:501
+msgid ""
+":math:`\\textit{comm}_i` is a committee in context "
+":math:`\\textit{comm}_{i-1}` for :math:`i=2, ..., k`"
+msgstr ""
+":math:`\\textit{comm}_i`, :math:`i=2, ..., k` için "
+":math:`\\textit{comm}_{i-1}` bağlamında bir kuruldur"
+
+#: ../../theory/abstract-consensus.rst:503
+msgid ""
+"In particular - a committee in context of the base trimmer is 1-level "
+"summit."
+msgstr "Özellikle - baz düzeltici bağlamında bir komite 1 seviyeli zirvedir."
+
+#: ../../theory/abstract-consensus.rst:507
+msgid ""
+"Below is an example of 4-level summit for 8 validators (all having equal "
+"weights 1) with :math:`ftt=2`."
+msgstr ""
+"Aşağıda, :math:`ftt=2` ile 8 doğrulayıcı (hepsi eşit ağırlıkta 1) için 4 "
+"seviyeli bir zirve örneği verilmiştir."
+
+#: ../../theory/abstract-consensus.rst:513
+msgid ""
+"Similarly to summits, messages also have \"acknowledgement levels\". We will"
+" say **K-level message** for a message with acknowledgement level K. "
+"Acknowledgement level for a message is optional. We will use the term "
+"**plain-message** to reference messages that do not have acknowledgement "
+"level."
+msgstr ""
+"Zirvelere benzer şekilde mesajların da “onay seviyeleri” vardır. Onay "
+"seviyesi K olan bir mesaj için **K-seviyesi mesaj** diyeceğiz. Bir mesaj "
+"için onay seviyesi isteğe bağlıdır. Onay seviyesi olmayan mesajlara atıfta "
+"bulunmak için **düz mesaj** terimini kullanacağız."
+
+#: ../../theory/abstract-consensus.rst:517
+msgid "The border of a message signals the following information:"
+msgstr "Bir mesajın sınırı aşağıdaki bilgileri gösterir:"
+
+#: ../../theory/abstract-consensus.rst:519
+msgid "black border: plain message"
+msgstr "siyah kenar: düz mesaj"
+
+#: ../../theory/abstract-consensus.rst:520
+msgid "red border: 0-level message"
+msgstr "kırmızı kenar: 0 seviyeli mesaj"
+
+#: ../../theory/abstract-consensus.rst:521
+msgid ""
+"yellow border: :math:`\\textit{comm}_1-\\textit{messages}` that are not "
+":math:`\\textit{comm}_1 \\textit{values}`"
+msgstr ""
+"sarı kenar: :math:`\\textit{comm}_1 \\textit{values}` olmayan "
+":math:`\\textit{comm}_1-\\textit{messages}`"
+
+#: ../../theory/abstract-consensus.rst:522
+msgid ""
+"green border: :math:`\\textit{comm}_2-\\textit{messages}` that are not "
+":math:`\\textit{comm}_2 \\textit{values}`"
+msgstr ""
+"yeşil kenar: :math:`\\textit{comm}_2 \\textit{values}` olmayan "
+":math:`\\textit{comm}_2-\\textit{messages}`"
+
+#: ../../theory/abstract-consensus.rst:523
+msgid ""
+"lime border: :math:`\\textit{comm}_3-\\textit{messages}` that are not "
+":math:`\\textit{comm}_3 \\textit{values}`"
+msgstr ""
+"kireç rengi kenar: :math:`\\textit{comm}_3 \\textit{values}` olmayan "
+":math:`\\textit{comm}_3-\\textit{messages}`"
+
+#: ../../theory/abstract-consensus.rst:524
+msgid ""
+"blue border: :math:`\\textit{comm}_4-\\textit{messages}` that are not "
+":math:`\\textit{comm}_4 \\textit{values}`"
+msgstr ""
+"mavi kenar: :math:`\\textit{comm}_4 \\textit{values}` olmayan "
+":math:`\\textit{comm}_4-\\textit{messages}`"
+
+#: ../../theory/abstract-consensus.rst:525
+msgid ""
+"dashed border: this message has not arrived yet to validator 0; it is not "
+"part of j-dag as seen by validator 0"
+msgstr ""
+"kesikli kenar: bu mesaj henüz doğrulayıcı 0'a ulaşmadı; doğrulayıcı 0 "
+"tarafından görüldüğü gibi j-dag'ın bir parçası değil"
+
+#: ../../theory/abstract-consensus.rst:527
+msgid "Looking at border colors, it is easy to find subsequent committees."
+msgstr "Kenar renklerine bakıldığında, sonraki kurulları bulmak kolaydır."
+
+#: ../../theory/abstract-consensus.rst:529
+msgid ":math:`\\textit{comm}_1` is formed by leftmost yellow messages"
+msgstr ":math:`\\textit{comm}_1` en soldaki sarı mesajlardan oluşur"
+
+#: ../../theory/abstract-consensus.rst:530
+msgid ":math:`\\textit{comm}_2` is formed by leftmost green messages"
+msgstr ":math:`\\textit{comm}_2` en soldaki yeşil mesajlardan oluşur"
+
+#: ../../theory/abstract-consensus.rst:531
+msgid ":math:`\\textit{comm}_3` is formed by leftmost lime messages"
+msgstr ":math:`\\textit{comm}_3` en soldaki kireç rengi mesajlardan oluşur"
+
+#: ../../theory/abstract-consensus.rst:532
+msgid ":math:`\\textit{comm}_4` is formed by leftmost blue messages"
+msgstr ":math:`\\textit{comm}_4` en soldaki mavi mesajlardan oluşur"
+
+#: ../../theory/abstract-consensus.rst:534
+msgid "Leftmost red border messages form the base-trimmer."
+msgstr "En soldaki kırmızı kenar mesajları baz düzelticiyi oluşturur."
+
+#: ../../theory/abstract-consensus.rst:536
+msgid "Caution: search for \"leftmost messages\" separately for every swimlane."
+msgstr "Dikkat: \"en soldaki mesajlar\"ı her kulvar için ayrı ayrı arayın."
+
+#: ../../theory/abstract-consensus.rst:539
+msgid "Reference implementation"
+msgstr "Başvuru uygulaması"
+
+#: ../../theory/abstract-consensus.rst:541
+msgid ""
+"In this section we sketch a \"reference\" implementation of Abstract Casper "
+"Consensus. We use Scala syntax for the code, but we limit ourselves to "
+"elementary language features (so it is readable for any developer familiar "
+"with contemporary programming languages)."
+msgstr ""
+"Bu bölümde, Soyut Casper Mutabakat'ının bir ''başvuru'' uygulamasının "
+"taslağını çiziyoruz. Kod için Scala sözdizimini kullanıyoruz, ancak "
+"kendimizi temel dil özellikleriyle sınırlandırıyoruz (bu nedenle, çağdaş "
+"programlama dillerine aşina olan herhangi bir geliştirici tarafından "
+"okunabilir)."
+
+#: ../../theory/abstract-consensus.rst:545
+msgid "Scala primer for non-scala developers:"
+msgstr "Scala bilmeyen geliştiriciler için Scala şablonu:"
+
+#: ../../theory/abstract-consensus.rst:643
+msgid "Common abstractions"
+msgstr "Genel soyutlama"
+
+#: ../../theory/abstract-consensus.rst:645
+msgid "We use the following type aliases:"
+msgstr "Aşağıdaki tür takma adlarını kullanıyoruz:"
+
+#: ../../theory/abstract-consensus.rst:655
+msgid "We are using the following abstraction of mutable 2-argument relation:"
+msgstr "Değişken 2-argüman ilişkisinin aşağıdaki soyutlamasını kullanıyoruz:"
+
+#: ../../theory/abstract-consensus.rst:677
+msgid "... and directed acyclic graph:"
+msgstr "... yönlendirilmiş çevrimsiz grafiği:"
+
+#: ../../theory/abstract-consensus.rst:738
+msgid ""
+"We say nothing about hashing in use, we just assume that hashes can be seen "
+"as binary arrays:"
+msgstr ""
+"Kullanımda özet alımı (hashing) hakkında hiçbir şey söylemiyoruz, yalnızca "
+"özetlerin ikili kod dizileri olarak görülebileceğini varsayıyoruz:"
+
+#: ../../theory/abstract-consensus.rst:749
+msgid "Message structure:"
+msgstr "Mesaj yapısı:"
+
+#: ../../theory/abstract-consensus.rst:762
+msgid "``id: MessageId`` unique identifier - hash of other fields"
+msgstr ""
+"``id: MessageId`` benzersiz tanımlayıcı - diğer alanların özeti (hash)"
+
+#: ../../theory/abstract-consensus.rst:763
+msgid "``creator: Int`` id of the validator that created this message"
+msgstr "``creator: Int`` bu mesajı oluşturan doğrulayıcının kimliği"
+
+#: ../../theory/abstract-consensus.rst:764
+msgid ""
+"``previous: Option[MessageId]`` distinguished justification that points to "
+"previous message published by creator"
+msgstr ""
+"``previous: Option[MessageId]`` içerik oluşturucu tarafından yayınlanan "
+"önceki mesaja işaret eden seçkin gerekçe"
+
+#: ../../theory/abstract-consensus.rst:765
+msgid ""
+"``justifications: Seq[MessageId]`` collection of messages that the creator "
+"acknowledges as seen at the moment of creation of this message; this "
+"collection may possibly be empty; only message identifiers are kept here"
+msgstr ""
+"``justifications: Seq[MessageId]`` bu mesajın oluşturulduğu anda görüldüğü "
+"gibi oluşturanın onayladığı mesajların koleksiyonu; bu koleksiyon muhtemelen"
+" boş olabilir; sadece mesaj tanımlayıcıları burada tutulur"
+
+#: ../../theory/abstract-consensus.rst:767
+msgid ""
+"``vote: Option[Con]`` consensus value this message is voting for; the value "
+"is optional, because we allow empty votes"
+msgstr ""
+"``vote: Option[Con]`` bu mesajın oy verdiği mutabakat değeri; değer isteğe "
+"bağlıdır, çünkü boş oylara izin veriyoruz"
+
+#: ../../theory/abstract-consensus.rst:769
+msgid "``daglevel: Int`` height of this message in justifications DAG"
+msgstr "``daglevel: Int`` gerekçeler DAG'da bu mesajın yüksekliği"
+
+#: ../../theory/abstract-consensus.rst:771
+msgid "Serialization of messages joins the logical layer and transport layer:"
+msgstr ""
+"Mesajların seri hale getirilmesi, mantıksal ve taşıma katmanını birleştirir:"
+
+#: ../../theory/abstract-consensus.rst:790
+msgid "Network abstraction"
+msgstr "Ağ soyutlama"
+
+#: ../../theory/abstract-consensus.rst:792
+msgid "Broadcasting messages:"
+msgstr "Yayınlanan mesajlar:"
+
+#: ../../theory/abstract-consensus.rst:800
+msgid "Receiving messages:"
+msgstr "Alınan mesajlar:"
+
+#: ../../theory/abstract-consensus.rst:809
+msgid "Panoramas"
+msgstr "Panorama'lar"
+
+#: ../../theory/abstract-consensus.rst:811
+msgid ""
+"We use panoramas to encode the \"perspective on the j-dag as seen from given"
+" message\"."
+msgstr ""
+"\"Verilen mesajdan görüldüğü gibi j-dag perspektifini\" kodlamak için "
+"panoramaları kullanıyoruz."
+
+#: ../../theory/abstract-consensus.rst:837
+msgid "Validator"
+msgstr "Doğrulayıcı"
+
+#: ../../theory/abstract-consensus.rst:839
+msgid "The abstraction of the estimator:"
+msgstr "Tahmincinin soyutlanması:"
+
+#: ../../theory/abstract-consensus.rst:854
+msgid ""
+"... and finality detector (implementing the \"summit theory\" finality "
+"criterion):"
+msgstr ""
+"… ve kesinlik algılayıcı (“zirve teorisi” kesinlik kriterini uygulayarak):"
+
+#: ../../theory/abstract-consensus.rst:862
+msgid ""
+"The implementation of a validator is complex so we split it into sections."
+msgstr ""
+"Bir doğrulayıcının uygulanması karmaşık olduğu için bölümlere ayırdık."
+
+#: ../../theory/abstract-consensus.rst:871
+msgid "**Validator configuration**"
+msgstr "**Doğrulayıcı yapılandırması**"
+
+#: ../../theory/abstract-consensus.rst:883
+msgid "``weightsOfValidators: Map[ValidatorId, Int]`` - weights of validators"
+msgstr ""
+"``weightsOfValidators: Map[ValidatorId, Int]`` - doğrulayıcıların "
+"ağırlıkları"
+
+#: ../../theory/abstract-consensus.rst:884
+msgid "``finalizer: Finalizer`` - finality detector"
+msgstr "``finalizer: Finalizer`` - kesinlik algılayıcı"
+
+#: ../../theory/abstract-consensus.rst:885
+msgid ""
+"``gossipService: GossipService`` - communication layer API used to broadcast"
+" messages"
+msgstr ""
+"``gossipService: GossipService`` - mesajları yayınlamak için kullanılan "
+"iletişim katmanı API'si"
+
+#: ../../theory/abstract-consensus.rst:887
+msgid "**Protocol state**"
+msgstr "**Protokol durumu**"
+
+#: ../../theory/abstract-consensus.rst:907
+msgid ""
+"``messagesBuffer: Relation[Message,MessageId]`` - a buffer of messages "
+"received, but not incorporated into ``jdag`` yet; a pair :math:`(m,j)` in "
+"this relation represents buffered message :math:`m` waiting for not-yet-"
+"received message with id :math:`j`"
+msgstr ""
+"``messagesBuffer: Relation[Message,MessageId]`` - alınan, ancak henüz "
+"\"jdag\" 'a dahil edilmemiş mesajların arabelleği; bu ilişkideki bir "
+":math:`(m,j)` çifti, :math:`j` kimliği ile henüz alınmamış mesajı bekleyen, "
+"arabelleğe alınmış :math:`m` mesajını temsil eder."
+
+#: ../../theory/abstract-consensus.rst:910
+msgid ""
+"``jdagGraph`` - representation of :math:`jDag(M)`, where :math:`M` is the "
+"set of all messages known, such that their dependencies are fulfilled; in "
+"other words, before a message :math:`m` can be added to ``jdag``, all "
+"justifications of :math:`m` must be already present in ``jdag``"
+msgstr ""
+"``jdagGraph`` - :math:`jDag(M)` gösterimi, burada :math:`M` bağımlılıkları "
+"yerine getirilecek şekilde bilinen tüm mesajların kümesidir; başka bir "
+"deyişle, ``jdag`` 'a bir :math:`m` mesajı eklenmeden önce, :math:`m`'nin tüm"
+" gerekçeleri ``jdag`` 'da zaten mevcut olmalıdır."
+
+#: ../../theory/abstract-consensus.rst:913
+msgid ""
+"``jdagIdToMessage: mutable.Map[MessageId, Message]`` - indexing of messages "
+"by id"
+msgstr ""
+"``jdagIdToMessage: mutable.Map[MessageId, Message]`` - id ile mesajların "
+"indekslenmesi"
+
+#: ../../theory/abstract-consensus.rst:915
+msgid "**Handling of incoming messages**"
+msgstr "**Gelen mesajların yönetimi**"
+
+#: ../../theory/abstract-consensus.rst:959
+msgid "**Publishing of new messages**"
+msgstr "**Yeni mesajların yayınlanması**"
+
+#: ../../theory/abstract-consensus.rst:1007
+msgid ""
+"**Abstract methods** - i.e. extension points (things outside of this "
+"protocol spec)"
+msgstr ""
+"**Soyut yöntemler** - yani uzatma noktaları (bu protokol belirtimlerinin "
+"dışındaki şeyler)"
+
+#: ../../theory/abstract-consensus.rst:1026
+msgid "**Validation of incoming messages**"
+msgstr "**Gelen mesajların doğrulanması**"
+
+#: ../../theory/abstract-consensus.rst:1092
+msgid "**Updating of local j-dag**"
+msgstr "**Yerel j-dag'ın güncellenmesi**"
+
+#: ../../theory/abstract-consensus.rst:1107
+msgid "**Calculating panoramas**"
+msgstr "**Panorama hesaplanması**"
+
+#: ../../theory/abstract-consensus.rst:1238
+msgid "Finality detector"
+msgstr "Kesinlik algılayıcı"
+
+#: ../../theory/abstract-consensus.rst:1240
+msgid "Representation of a j-dag trimmer:"
+msgstr "Bir j-dag düzelticinin temsili:"
+
+#: ../../theory/abstract-consensus.rst:1252
+msgid "Representation of a summit:"
+msgstr "Bir zirvenin temsili:"
+
+#: ../../theory/abstract-consensus.rst:1262
+msgid "Implementation of the \"summit theory\" finality criterion:"
+msgstr "\"Zirve teorisi\" kesinlik kriterinin uygulanması:"

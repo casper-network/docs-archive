@@ -1,0 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:6
+msgid "Smart Contract Upgrade Tutorial"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:8
+msgid ""
+"This tutorial shows you how to upgrade smart contracts. Casper contracts "
+"are upgradeable, making it easy for contract authors to add features and "
+"fix bugs in smart contracts."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:10
+msgid ""
+"The process of upgrading a smart contract is simple. All you need is to "
+"deploy a new version of the contract and overwrite the old functions with"
+" new ones."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:12
+msgid "These are the essential steps you need to follow:"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:14
+msgid "Deploy the contract with an *upgrade* function"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:15
+msgid "Add an entry point in the *call* function for the *upgrade* function"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:16
+msgid "Add the new features you desire"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:18
+msgid "Here are specific examples of how to implement the upgrade functionality."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:21
+msgid "Step 1. Deploy the contract with an 'upgrade' function"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:23
+msgid ""
+"When you first deploy the contract, you must include an *upgrade* "
+"function. Since the contract is immutable, you cannot add the *upgrade* "
+"function after deployment. Without the this function, you cannot upgrade "
+"the contract. In other words, you must include the *upgrade* function "
+"when you first deploy the contract."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:25
+msgid ""
+"Start by creating an *upgrade* function in your contract similar to the "
+"following example."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:41
+msgid "Step 2. Add an entry point in the 'call' function"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:43
+msgid ""
+"Next, you need to add an entry point to the *upgrade* function in the "
+"*call* function. This enables the contract execution to invoke the "
+"*upgrade* function in the future."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:73
+msgid "Step 3. Add new features"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:75
+msgid ""
+"Now you are ready to upgrade your contract and add the new features and "
+"functions you desire."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:100
+msgid ""
+"The `add_contract_version <https://docs.rs/casperlabs-"
+"contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_"
+" API will allow you to deploy a new version of your contract."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:102
+msgid ""
+"Remember, it is essential to include the *upgrade* function and safeguard"
+" the access token when you first deploy the contract. You will need the "
+"access token for future upgrades."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:105
+msgid "External links"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:107
+msgid ""
+"`Sample upgrader <https://github.com/CasperLabs/casper-"
+"node/tree/master/smart_contracts/contracts/test/do-nothing-stored-"
+"upgrader>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:108
+msgid ""
+"`API details for add_contract_version <https://docs.rs/casperlabs-"
+"contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/upgrade-tutorial.rst:109
+msgid ""
+"`Other examples of smart contracts <https://github.com/CasperLabs/casper-"
+"node/tree/master/smart_contracts>`_"
+msgstr ""
+

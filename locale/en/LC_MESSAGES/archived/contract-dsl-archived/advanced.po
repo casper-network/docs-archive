@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../archived/contract-dsl-archived/advanced.rst:3
+msgid "Advanced Options"
+msgstr ""
+
+#: ../../archived/contract-dsl-archived/advanced.rst:5
+msgid ""
+"Once the base logic of the smart contract is in place, it's desirable to "
+"optimize the contract for the blockchain.  This will require digging into"
+" the actual code that the DSL generates.  This section will describe the "
+"steps to do this.  Once the code has been expanded and then changed, make"
+" sure to remove the macros from the project configuration before saving "
+"the changes."
+msgstr ""
+
+#: ../../archived/contract-dsl-archived/advanced.rst:12
+msgid "Debugging Contracts"
+msgstr ""
+
+#: ../../archived/contract-dsl-archived/advanced.rst:14
+msgid ""
+"It is possible to debug Rust contracts inside any IDE that supports "
+"breakpoints and watches. Make sure that the IDE supports Rust development"
+" and tools."
+msgstr ""
+
+#: ../../archived/contract-dsl-archived/advanced.rst:18
+msgid "Expanding the Code"
+msgstr ""
+
+#: ../../archived/contract-dsl-archived/advanced.rst:20
+msgid ""
+"When the rust compiler encounters each of the macros, it 'expands' the "
+"code and adds additional lines of code for each of the macros. The "
+"resultant expanded code is then compiled to the wasm which can then be "
+"deployed to the blockchain."
+msgstr ""
+
+#: ../../archived/contract-dsl-archived/advanced.rst:23
+msgid ""
+"The ``cargo expand`` tool will run the macros and append the boilerplate "
+"code to the contract without compiling the code."
+msgstr ""
+
+#: ../../archived/contract-dsl-archived/advanced.rst:25
+msgid "Install the tooling with the following command:"
+msgstr ""
+
+#: ../../archived/contract-dsl-archived/advanced.rst:31
+msgid "Run this command in the folder containing the smart contract code:"
+msgstr ""
+
+#: ../../archived/contract-dsl-archived/advanced.rst:38
+msgid "Example Simple Counter Contract"
+msgstr ""
+
+#: ../../archived/contract-dsl-archived/advanced.rst:40
+msgid ""
+"Running ``cargo-expand`` on the simple counter contract yeilds this "
+"output:"
+msgstr ""
+

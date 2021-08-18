@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../staking/index.rst:6
+msgid "Staking"
+msgstr "Đặt cọc (Staking)"
+
+#: ../../staking/index.rst:8
+msgid ""
+"A feature of Proof-of-Stake protocols is that token holders can actively "
+"participate in the protocol through a mechanism known as **staking**."
+msgstr ""
+"Một tính năng của giao thức Proof-of-Stake là chủ sở hữu token có thể tích "
+"cực tham gia vào giao thức thông qua một cơ chế được gọi là đặt cọc "
+"(**staking**)."
+
+#: ../../staking/index.rst:11
+msgid ""
+"Persons that hold their private keys can choose to stake their tokens with "
+"any validator in the Casper network. Alternatively, it is possible to stake "
+"tokens via an exchange or custody provider as well."
+msgstr ""
+"Những người nắm giữ khóa cá nhân của họ có thể chọn đặt cọc mã thông báo của"
+" họ với bất kỳ nhà xác thực nào trong mạng Casper. Ngoài ra, bạn cũng có thể"
+" đặt cọc token thông qua một sàn giao dịch hoặc nhà cung cấp dịch vụ lưu ký."
+
+#: ../../staking/index.rst:14
+msgid ""
+"This guide will outline the steps required to stake the CSPR token on the "
+"Casper network."
+msgstr ""
+"Hướng dẫn này sẽ phác thảo các bước cần thiết để đặt cọc mã thông báo CSPR "
+"trên mạng Casper."
+
+#: ../../staking/index.rst:18
+msgid "What you need to know before staking"
+msgstr "Những điều bạn cần biết trước khi đặt cọc"
+
+#: ../../staking/index.rst:20
+msgid ""
+"Please read the following sections carefully before staking tokens on the "
+"Casper network."
+msgstr ""
+"Vui lòng đọc kỹ các phần sau trước khi đặt cọc token trên mạng Casper."
+
+#: ../../staking/index.rst:23
+msgid "Slashing"
+msgstr "Cắt hoa hồng (Slashing)"
+
+#: ../../staking/index.rst:25
+msgid ""
+"Presently Casper does not slash for equivocations.  If a node equivocates, "
+"its' messages are ignored by the rest of the validators for the balance of "
+"the era and made inactive. A node running the software provided by the "
+"Casper Association will terminate once it detects that it has equivocated. "
+"Future work includes locking an equivocating validator's stake for an "
+"extended duration of time, effectively penalizing the validator."
+msgstr ""
+"Hiện tại Casper không bị cắt hoa hồng cho sự không minh bạch. Nếu một nút "
+"không minh bạch, các thông báo của nó sẽ bị phần còn lại của người xác thực "
+"bỏ qua cho sự cân bằng của thời đại và làm nó không hiện hoạt. Một nút đang "
+"chạy phần mềm được cung cấp bởi Hiệp hội Casper sẽ bị dừng khi nó phát hiện "
+"ra rằng nó không minh bạch. Công việc tiếp theo bao gồm khóa phần đặt cọc "
+"của nhà xác thực không minh bạch trong một khoảng thời gian, xử phạt hiệu "
+"quả nhà xác thực."
+
+#: ../../staking/index.rst:27
+msgid ""
+"Casper does not treat validator stake differently than delegator stake for "
+"security reasons."
+msgstr ""
+"Casper không xử lý phần đặt cọc của người xác thực khác với phần đặt cọc của"
+" người ủy quyền vì lý do bảo mật."
+
+#: ../../staking/index.rst:31
+msgid "Delegation Rate"
+msgstr "Tỷ lệ uỷ quyền"
+
+#: ../../staking/index.rst:33
+msgid ""
+"Node operators (Validators) define a commission that they take in exchange "
+"for providing staking services.  This commission is represented as a "
+"percentage of the rewards that the node operator retains for their services."
+msgstr ""
+"Các nhà khai thác nút (Nhà xác thực) xác định một khoản hoa hồng mà họ nhận "
+"để đổi lấy việc cung cấp dịch vụ đặt cọc. Hoa hồng này được thể hiện dưới "
+"dạng phần trăm phần thưởng mà nhà điều hành nút giữ lại cho các dịch vụ của "
+"họ."
+
+#: ../../staking/index.rst:36
+msgid "Rewards"
+msgstr "Phần thưởng"
+
+#: ../../staking/index.rst:38
+msgid ""
+"Validators receive rewards for participating in consensus by voting on "
+"blocks sending finality signatures (finalizing blocks). There is no precise "
+"*per-block* reward. Rewards are split proportionally among stakes within an "
+"era. If a validator is offline or cannot vote on many blocks, the rewards "
+"earned are also reduced. Delegators can only receive a proportional amount "
+"of the validator's rewards minus the validator’s commission (Delegation "
+"Rate)."
+msgstr ""
+"Người xác thực nhận được phần thưởng khi tham gia đồng thuận bằng cách bỏ "
+"phiếu trên các khối gửi chữ ký đã hoàn thành (khối hoàn thành). Không chắc "
+"chắn là có phần thưởng *cho mỗi khối*. Phần thưởng được chia theo tỷ lệ giữa"
+" các phần đặt cọc trong một thời đại. Nếu người xác thực ngoại tuyến hoặc "
+"không thể bỏ phiếu cho nhiều khối, phần thưởng kiếm được cũng bị giảm. Người"
+" ủy quyền chỉ có thể nhận được một lượng tương ứng với phần thưởng của người"
+" xác thực sau khi trừ đi hoa hồng của người xác thực (Tỷ lệ ủy quyền)."
+
+#: ../../staking/index.rst:40
+msgid "Rewards are distributed at the end of each era."
+msgstr "Phần thưởng được phân phối vào cuối mỗi kỷ nguyên."
+
+#: ../../staking/index.rst:43
+msgid "Selecting a node for Staking"
+msgstr "Chọn nút để đặt cọc"
+
+#: ../../staking/index.rst:45
+msgid ""
+"As a prospective delegator, it is important to select a validating node that"
+" you can trust.  Please do your due diligence before you stake your tokens "
+"with a validator."
+msgstr ""
+"Là một người ủy quyền tiềm năng, điều quan trọng là phải chọn một nút xác "
+"thực mà bạn có thể tin tưởng. Vui lòng thực hiện thẩm định trước khi bạn đặt"
+" cọc token của mình với nhà xác thực."
+
+#: ../../staking/index.rst:49
+msgid "Check in on your Stake"
+msgstr "Đăng ký phần bạn Đặt cọc"
+
+#: ../../staking/index.rst:51
+msgid ""
+"It’s recommended that you check in on how your stake is performing from time"
+" to time.  If the validator you staked with decides to unbond, your stake "
+"will also be unbonded. Make sure that the validator you have selected is "
+"performing as per your expectations."
+msgstr ""
+"Bạn nên kiểm tra xem phần đặt cọc của mình đang hoạt động như thế nào theo "
+"thời gian. Nếu người xác thực mà bạn đã đặt cọc quyết định rút cổ phần, tiền"
+" đặt cọc của bạn cũng sẽ bị rút. Hãy đảm bảo rằng nhà xác thực bạn đã chọn "
+"đang hoạt động như mong đợi của bạn."
+
+#: ../../staking/index.rst:53
+msgid ""
+"Validators have to win a staking auction by competing with prospective and "
+"current validators for a  slot.  This process is permissionless, meaning "
+"validators can join and leave the auction without restrictions, except the "
+"unbonding wait period."
+msgstr ""
+"Người xác thực phải thắng một cuộc đấu giá đặt cọc bằng cách cạnh tranh với "
+"những người xác thực tiềm năng và hiện tại khác để có một vị trí. Quá trình "
+"này không cần cấp phép, có nghĩa là người xác thực có thể tham gia và rời "
+"khỏi phiên đấu giá mà không bị hạn chế, ngoại trừ khoảng thời gian chờ rút "
+"cổ phần."
+
+#: ../../staking/index.rst:57
+msgid "Unbonding Period"
+msgstr "Thời gian rút cổ phần"
+
+#: ../../staking/index.rst:59
+msgid ""
+"For security purposes, whenever a token is un-staked or un-delegated, the "
+"protocol will continue to keep the token locked for 14 hours."
+msgstr ""
+"Vì mục đích bảo mật, bất cứ khi nào token được bỏ đặt cọc hoặc không được ủy"
+" quyền, giao thức sẽ tiếp tục giữ token bị khóa trong 14 giờ."
+
+#: ../../staking/index.rst:63
+msgid "Next Steps"
+msgstr "Các bước tiếp theo"
