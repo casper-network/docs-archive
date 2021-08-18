@@ -232,7 +232,7 @@ The ``get_key`` and ``set_key`` functions are generic Casper storage write and r
 
 Other Helper Functions
 ----------------------
-The ``balance_key`` and ``allowance_key ``functions format the balances and account information from their internal representation into strings.
+The ``balance_key`` and ``allowance_key`` functions format the balances and account information from their internal representation into strings.
 
 .. code-block:: rust
 
