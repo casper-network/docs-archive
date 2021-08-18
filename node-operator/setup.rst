@@ -5,12 +5,18 @@ Basic Node Setup
 Casper Node Launcher
 --------------------
 
-The node software is run from the ``casper-node-launcher`` package. This can be installed with a Debian package which also
-creates the Casper user, creates directory structures and sets up a *systemd* unit and *logrotate*.
+The node software is run from the ``casper-node-launcher`` package. This can be installed with a Debian package which also creates the Casper user, creates directory structures and sets up a *systemd* unit and *logrotate*.
 
-The casper-node-launcher Debian package can be obtained from https://bintray.com/casperlabs/debian/casper-node-launcher.
+The casper-node-launcher Debian package can be obtained from https://repo.casperlabs.io/. You only need to run these steps once. 
 
-You can also build from source: https://github.com/CasperLabs/casper-node-launcher. However, all of the setup and pull of casper-node releases will be manual.
+Then, proceed to install the casper-node-launcher by running these commands:
+
+.. code-block:: bash
+
+    sudo apt update
+    sudo apt install casper-node-launcher
+
+You can also build from source: https://github.com/casper-network/casper-node-launcher. However, all of the setup and pull of casper-node releases will be manual.
 
 File Locations
 ^^^^^^^^^^^^^^
