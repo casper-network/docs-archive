@@ -19,7 +19,7 @@ Because the transaction authorizes the token to be locked into the auction contr
 to compile the contract yourself. Here are the steps to do this:
 
 
-* Visit `Github <https://github.com/CasperLabs/casper-node>`_ and fork and clone the repository.
+* Visit `Github <https://github.com/casper-network/casper-node>`_ and fork and clone the repository.
 * Make sure that all dependencies are installed  (documented on GitHub).
 * Follow the instructions to build the contracts.
 * Ensure that the keys you will use for bonding are available & have been funded.

@@ -228,8 +228,7 @@ With these functions in place, it's possible to start writing tests for the cont
 Running Locally
 ^^^^^^^^^^^^^^^
 
-It's possible to run the unit tests locally- if you have set up the contract using `cargo-casperlabs <https://crates.io/cargo-casperlabs>`_.
-The steps to set up the SDK are in the guide. 
+You can run unit tests locally if you have set up the contract using `cargo-casper` as shown in the `Getting started <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ guide.
 
 .. code-block:: bash
 

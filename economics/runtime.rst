@@ -6,7 +6,7 @@ The economics of the runtime layer should incentivize efficient allocation of co
 Gas allocation
 --------------
 
-Any finite resource on a publicly accessible computer network must be rate-limited, as, otherwise, overuse of this resource is an attack vector -- a minimal requirement for platform security. However, rate-limiting, implemented on our platform as a simple block gas limit with several lanes, leaves the platform with the problem of fairly and efficiently allocating the gas. We are researching the optimal structure for spot and futures gas markets, and interested readers should consult the relevant `CEPs <https://github.com/CasperLabs/ceps>`_. In the meantime, this section outlines some basic features of the platform that would underpin any allocation scheme.
+Any finite resource on a publicly accessible computer network must be rate-limited, as, otherwise, overuse of this resource is an attack vector -- a minimal requirement for platform security. However, rate-limiting, implemented on our platform as a simple block gas limit with several lanes, leaves the platform with the problem of fairly and efficiently allocating the gas. We are researching the optimal structure for spot and futures gas markets, and interested readers should consult the relevant `CEPs <https://github.com/casper-network/ceps>`_. In the meantime, this section outlines some basic features of the platform that would underpin any allocation scheme.
 
 Consensus before execution & basics of payment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -40,9 +40,9 @@ All fees from a particular block accrue to its proposer, incentivizing non-empty
 Spot pricing
 ^^^^^^^^^^^^
 
-Please see `CEP #22 <https://github.com/CasperLabs/ceps/pull/22>`_ for one potential design of a gas spot market.
+Please see `CEP #22 <https://github.com/casper-network/ceps/pull/22>`_ for one potential design of a gas spot market.
 
 Futures pricing
 ^^^^^^^^^^^^^^^
 
-Please see `CEP #17 <https://github.com/CasperLabs/ceps/pull/17>`_ for our draft proposal of a gas futures market.
+Please see `CEP #17 <https://github.com/casper-network/ceps/pull/17>`_ for our draft proposal of a gas futures market.

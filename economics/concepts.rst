@@ -3,7 +3,7 @@ Staking Concepts
 
 The Casper network is a Proof-of-Stake blockchain that allows validators to stake the Casper native token CSPR on the network. Validators receive CSPR as an incentive for continuing to maintain and secure the network. CSPR rewards are distributed as blocks are validated into existence and organized into eras.
 
-**Consensus mechanism:** Casper operates using a Proof-of-Stake consensus mechanism per the `Highway Protocol <https://github.com/CasperLabs/highway>`_, a specification of Correct-by-Construction Casper (CBC Casper).
+**Consensus mechanism:** Casper operates using a Proof-of-Stake consensus mechanism per the `Highway Protocol <https://github.com/casper-network/highway>`_, a specification of Correct-by-Construction Casper (CBC Casper).
 
 **Number of validators:** The Casper network supports up to 100 validators on the network. This number is chosen to strike a balance between performance and decentralization. This platform parameter can be increased through upgrades as development continues and performance improves. In addition, validators can stake on the Casper network through a process of permission-less bonding by participating in an auction for the validator slot.
            

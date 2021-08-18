@@ -43,7 +43,7 @@ systemd. Start the node with:
 
    sudo systemctl start casper-node-launcher
 
-For more information visit `Github <https://github.com/CasperLabs/casper-node/tree/master/resources/production>`_
+For more information visit `Github <https://github.com/casper-network/casper-node/tree/master/resources/production>`_
 
 Step 6: Confirm the Node is Syncronized
 ---------------------------------------

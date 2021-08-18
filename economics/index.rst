@@ -15,7 +15,7 @@ This section of our online documentation is intended only to familiarize the use
 Consensus
 ---------
 
-The consensus layer of our platform runs on the Highway flavor of CBC-Casper. The distinguishing characteristics of this protocol are its safety and liveness guarantees. Specifically, under the assumptions made in the `Highway protocol paper <https://github.com/CasperLabs/highway>`_, blocks in the canonical history cannot be reverted, and new blocks continue to be added to this history indefinitely. The assumptions, however, require that a large portion of validators remain online and honest; this assumed behavior must be incentivized for the platform to remain secure and live.
+The consensus layer of our platform runs on the Highway flavor of CBC-Casper. The distinguishing characteristics of this protocol are its safety and liveness guarantees. Specifically, under the assumptions made in the `Highway protocol paper <https://github.com/casper-network/highway>`_, blocks in the canonical history cannot be reverted, and new blocks continue to be added to this history indefinitely. The assumptions, however, require that a large portion of validators remain online and honest; this assumed behavior must be incentivized for the platform to remain secure and live.
 
 When discussing consensus, we default to considering it "one era at a time," unless expressly stated otherwise, in keeping with the Highway paper. Recall that each era is, effectively, a separate instance of the protocol.
 
@@ -38,9 +38,9 @@ The *auction* determines the composition of the validator set for each era of th
 Runtime
 ---------
 
-The runtime layer encompasses the deployment and execution of smart contracts, session code, and other activity that performs computation on the global state. This suggests potential markets for finite platform resources, such as markets for computing time and storage. Such markets could ensure that resources are allocated to their highest-value uses. Currently, however, we limit ourselves to `metering computing time <https://docs.casperlabs.io/en/latest/implementation/execution-semantics.html#measuring-computational-work>`_, measured as gas. Gas can be conceptualized as relative time use of different WASM operations and host-side functions. Use of storage is also presently assigned a gas cost. We do not currently have a pricing mechanism for metered gas, although an outstanding Casper Enhancement Proposal (`CEP #22 <https://github.com/CasperLabs/ceps/pull/22>`_) suggests the implementation of a first-price gas auction similar to Ethereum's. The initial Mainnet deploy selection mechanism is based on FIFO.
+The runtime layer encompasses the deployment and execution of smart contracts, session code, and other activity that performs computation on the global state. This suggests potential markets for finite platform resources, such as markets for computing time and storage. Such markets could ensure that resources are allocated to their highest-value uses. Currently, however, we limit ourselves to `metering computing time <https://docs.casperlabs.io/en/latest/implementation/execution-semantics.html#measuring-computational-work>`_, measured as gas. Gas can be conceptualized as relative time use of different WASM operations and host-side functions. Use of storage is also presently assigned a gas cost. We do not currently have a pricing mechanism for metered gas, although an outstanding Casper Enhancement Proposal (`CEP #22 <https://github.com/casper-network/ceps/pull/22>`_) suggests the implementation of a first-price gas auction similar to Ethereum's. The initial Mainnet deploy selection mechanism is based on FIFO.
 
-We expect to continue work on runtime resource markets, particularly gas futures (`CEP #17 <https://github.com/CasperLabs/ceps/pull/17>`_).
+We expect to continue work on runtime resource markets, particularly gas futures (`CEP #17 <https://github.com/casper-network/ceps/pull/17>`_).
 
 Agents (consensus layer)
 ^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -23,7 +23,7 @@ Delegation
 
 Delegation allows third parties to participate in consensus by adding weight to their preferred validators. Rewards received by validators are distributed in proportion to tokens bid and delegated. The current or prospective validator responsible for the bid receives a portion of the delegator rewards set by the delegation rate.
 
-Currently, delegation is unrestricted. Interested readers should review `CEP #29 <https://github.com/CasperLabs/ceps/pull/29>`_, which proposes delegation caps.
+Currently, delegation is unrestricted. Interested readers should review `CEP #29 <https://github.com/casper-network/ceps/pull/29>`_, which proposes delegation caps.
 
 Incentives
 ----------
@@ -105,7 +105,7 @@ Validators who send no messages during an entire era are marked as inactive and 
 Slashing
 ^^^^^^^^
 
-Please review our `Equivocator Policy <https://github.com/CasperLabs/ceps/blob/master/text/0038-equivocator-policy.md>`_. We are currently conducting research into the utility of slashing as an incentive mechanism.
+Please review our `Equivocator Policy <https://github.com/casper-network/ceps/blob/master/text/0038-equivocator-policy.md>`_. We are currently conducting research into the utility of slashing as an incentive mechanism.
 
 Founding validators
 -------------------

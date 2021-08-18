@@ -13,37 +13,36 @@ There are a few pre-requisites to doing this:
 * The private key for the account that pays for the deployment
 * Token to pay for the deployment on the network in the account associated with the private key. Each token transfer costs exactly 0.0001 CSPR (10000 motes). Also, the amount transferred needs to be a minimum of 2.5 CSPR.
 
-This section will help you get set up with each pre-requisite.
+This section will help you get set up with each prerequisite.
 
-Client
-------
+The Casper Client
+-----------------
 
-The client software communicates with the network to transmit your deployments to the network. Clients can be created for any application platform, such as JavaScript or Python. The official client for Casper is a Rust client.
+You can find the default Casper client on `crates.io <https://crates.io/crates/casper-client>`_. This client communicates with the network to transmit your deployments.
 
-**Ensure that your client matches the version of the network you intend to deploy to.**
-
-Using Binaries
-^^^^^^^^^^^^^^
-
-
-* **Rust**\ : `casperlabs-client <https://crates.io/crates/casper-client>`_
+Run the commands below to install the client on most flavors of Linux and macOS. You will need the nightly version of the compiler.
 
 .. code-block:: bash
 
-   $ wget --content-disposition https://bintray.com/casperlabs/debian/download_file?file_path=casper-client_1.6.0-2465_amd64.deb
-   $ sudo apt install ./casper-client_1.6.0-2465_amd64.deb
+  rustup toolchain install nightly
+  cargo +nightly-2021-06-17 install casper-client
 
-**Ensure that your client matches the version of the network you intend to deploy to.**
+The Casper client can print out `help` information, which provides an up-to-date list of supported commands.
 
-Building from Source
-^^^^^^^^^^^^^^^^^^^^
+.. code-block:: bash
 
-`Instructions <https://github.com/CasperLabs/casper-node/tree/master/client>`_
+    casper-client --help
+
+
+Building the Client from Source
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`Instructions <https://github.com/casper-network/casper-node/tree/master/client>`_
 
 Check the Client Version
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-There is an official Rust client, that works with the Delta Testnet.
+There is an official Rust client, that works with the Casper `Testnet <https://testnet.cspr.live/>`_ and `Mainnet <https://cspr.live/>`_.
 
 To check the client version run:
 
@@ -83,18 +82,16 @@ This process will create 3 files:
 When passing in the public key as hex, it's recommended to  ``$(cat public_key_hex)`` in the transaction, or extract the contents of the file.\ :raw-html-m2r:`<br>`
 Use the secret-key.pem file to sign transaction.
 
-Sending a Deployment to the Delta Testnet
------------------------------------------
+Sending a Deployment to the Testnet
+-----------------------------------
 
-The easiest way to deploy a contract is to use an existing public network.  CasperLabs provides a Testnet for this.
-The Testnet is operated by external validators that can accept transactions.
+The easiest way to deploy a contract is to use an existing public network. The Testnet is operated by external validators that can accept transactions.
 
 Obtain Token
 ^^^^^^^^^^^^
 
 To send a deploy to the network, create keys and obtain token.
-Token can be obtained via a faucet or by a participant that has token.  Connect to our `Discord <https://discordapp.com/invite/Q38s3Vh>`_ to get token via
-an existing participant.
+Token can be obtained via a faucet or by a participant that has token.  Connect to our `Discord <https://discordapp.com/invite/Q38s3Vh>`_ to get token via an existing participant.
 
 A Basic Deployment using the Command Line (Rust Client)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -227,7 +224,7 @@ From this data structure we can observe some properties about the deploy (some o
 * There were no dependencies for this deploy
 * The Time to Live was 1 hour
 
-It is also possible to check the contract's state by performing a ``query-state`` command using the client.
+It is also possible to check the contract\'s state by performing a ``query-state`` command using the client.
 
 A Note about Gas Prices
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -240,7 +237,7 @@ If you notice in the put-deploy command above, we supplied a payment amount argu
 
 But the actual execution cost was only ``164645`` when it was run on the chain!
 
-A common question that frequently arises is: "How do I know what the payment amount (gas cost) should be?" The honest answer is that we are hard at work to create tools to help you estimate your costs. Currently, we recommend using the `NCTL <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_ tool on your local machine or the testnet to deploy your contracts in a test environment. As you just saw, you can check a deploy status and roughly see how much it would actually cost when deployed.
+A common question that frequently arises is: \"How do I know what the payment amount (gas cost) should be?\" The honest answer is that we are hard at work to create tools to help you estimate your costs. Currently, we recommend using the `NCTL <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_ tool on your local machine or the testnet to deploy your contracts in a test environment. As you just saw, you can check a deploy status and roughly see how much it would actually cost when deployed.
 
 You can estimate the costs in this way, and then add a small buffer in case the network state has changed. So in this example above, you might have chosen to set the payment to 175000 or 200000, rather than the 10000000 that was used.
 
@@ -250,7 +247,7 @@ Refer to the `runtime economics <https://docs.casperlabs.io/en/latest/economics/
 Advanced Deployments
 ^^^^^^^^^^^^^^^^^^^^
 
-CasperLabs supports complex deployments.
+The Casper Network supports complex deployments.
 
 Using Arguments with Deployments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -267,12 +264,12 @@ Creating, signing, and deploying contracts with multiple signatures
 
 The ``deploy`` command on its own provides multiple actions strung together optimizing for the common case, with the capability to separate concerns between your key management and deploy creation. See details about generating account key pairs in the Developer Guide.
 
-Every account can associate multiple keys with it and give each a weight. Collective weight of signing keys decides whether an action of certain type can be made. To learn more about how weights and threshholds work, please review the `Blockchain Design <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_. In order to collect weight of different associated keys, a deploy has to be signed by corresponding private keys. The ``put-deploy`` command creates a deploy, signs it and deploys to the node but doesn't allow for signing with multiple keys. Therefore, we split ``deploy`` into separate commands:
+Every account can associate multiple keys with it and give each a weight. Collective weight of signing keys decides whether an action of certain type can be made. To learn more about how weights and threshholds work, please review the `Blockchain Design <https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_. In order to collect weight of different associated keys, a deploy has to be signed by corresponding private keys. The ``put-deploy`` command creates a deploy, signs it and deploys to the node but doesn\'t allow for signing with multiple keys. Therefore, we split ``deploy`` into separate commands:
 
 
 * ``make-deploy``  - creates a deploy from input parameters
 * ``sign-deploy``  - signs a deploy with given private key
-* ``send-deploy``  - sends a deploy to CasperLabs node
+* ``send-deploy``  - sends a deploy to a Casper node
 
 To make a deploy signed with multiple keys: first create the deploy with ``make-deploy``. This generates a deploy file that can be sent to the other signers, who
 then sign it with their keys by calling ``sign-deploy`` for each key. Signatures need to be gathered on the deploy one after another, untill all requisite parties have signed the deploy.  Finally the signed deploy is sent to the node with ``send-deploy`` for processing by the network.

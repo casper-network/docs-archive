@@ -97,18 +97,14 @@ Now you are ready to upgrade your contract and add the new features and function
 	    // Deploy the new version of the contract and replace the old functions with new one.   
 	    let (_, _) = storage::add_contract_version(contract_package.into(), entry_points, Default::deault());   
 
-The `add_contract_version <https://docs.rs/casperlabs-contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_ API will allow you to deploy a new version of your contract.
+The `add_contract_version <https://docs.rs/casper-contract/latest/casper_contract/contract_api/storage/fn.add_contract_version.html>`_ API will allow you to deploy a new version of your contract.
 
 Remember, it is essential to include the *upgrade* function and safeguard the access token when you first deploy the contract. You will need the access token for future upgrades.
 
 External links
 --------------
 
-* `Sample upgrader <https://github.com/CasperLabs/casper-node/tree/master/smart_contracts/contracts/test/do-nothing-stored-upgrader>`_
-* `API details for add_contract_version <https://docs.rs/casperlabs-contract/0.6.1/casperlabs_contract/contract_api/storage/fn.add_contract_version.html>`_
-* `Other examples of smart contracts <https://github.com/CasperLabs/casper-node/tree/master/smart_contracts>`_
+* For more sample code, check out this `contract upgrade example <https://github.com/casper-ecosystem/contract-upgrade-example>`_
+* The API details for adding a version are in `add_contract_version <https://docs.rs/casper-contract/latest/casper_contract/contract_api/storage/fn.add_contract_version.html>`_
+* Other examples of smart contracts can be found `here <https://github.com/casper-network/casper-node/tree/master/smart_contracts>`_
 
-..
- Commented out until I can find the link that works:
- For more documented sample code, Check out the contract-upgrade-example repository here:
- https://github.com/casper-ecosystem/contract-upgrade-example

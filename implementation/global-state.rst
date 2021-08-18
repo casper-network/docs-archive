@@ -45,9 +45,9 @@ branch node.
 
 The rust implementation of our trie can be found on GitHub:
 
--  `definition of the trie data structure <https://github.com/CasperLabs/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie/mod.rs#L320>`_
--  `reading from the trie <https://github.com/CasperLabs/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L37>`_
--  `writing to the trie <https://github.com/CasperLabs/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L638>`_
+-  `definition of the trie data structure <https://github.com/casper-network/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie/mod.rs#L320>`_
+-  `reading from the trie <https://github.com/casper-network/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L37>`_
+-  `writing to the trie <https://github.com/casper-network/casper-node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L638>`_
 
 Note: Conceptually, each block has its trie because the state changes
 based on the deploys it contains. For this reason, our implementation has a

@@ -18,7 +18,7 @@ To build a proof-of-stake blockchain, one must follow this general recipe:
   5. Plug-in the suitable computing model (i.e. smart contracts virtual machine).
 
 The "Theory" chapter explains how we approached steps (1) ... (4) in the abstract way, while implementation-level
-details are specified in "CasperLabs Blockchain Design" chapter. The outline of material presented is:
+details are specified in "Casper Blockchain Design" chapter. The outline of material presented is:
 
 - **Abstract Casper Consensus** - presents the core consensus protocol we use; concepts such as estimator, finality and
   fault-tolerance threshold and summits are explained
@@ -32,7 +32,7 @@ details are specified in "CasperLabs Blockchain Design" chapter. The outline of 
 Research trace
 --------------
 
-The consensus solution used in CasperLabs blockchain is a latest achievement of a research path that can be traced back
+The consensus solution used in Casper blockchain is a latest achievement of a research path that can be traced back
 to the 1980’s. Important milestones on this path are:
 
 -  1980: The problem of byzantine consensus defined (Lamport, Shostak)
