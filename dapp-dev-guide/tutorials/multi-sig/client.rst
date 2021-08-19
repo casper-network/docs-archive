@@ -63,13 +63,13 @@ Next, close the ``.env`` file and install the JavaScript packages in the ``keys-
 Testing the Client
 ^^^^^^^^^^^^^^^^^^
 
-Navigate to your ``/keys-manager/client`` folder and run the ``keys-manager`` using ``npm``. Your WASM file's path is relative to the ``client`` folder, so you need to run the file from here.
+Navigate to your ``/keys-manager/client`` folder and run the `keys-manager` using `npm`. Your WASM file's path is relative to the ``client`` folder, so you need to run the file from here.
 
 .. code-block:: bash
 
    npm run start:atomic
 
-**Important**: The client takes some time to run, so please wait until you see a *Deploy result*.
+**Note**: The client takes some time to run, so please wait until you see a *Deploy result*.
 
 If the code works, the beginning of the output will look like this: 
 
@@ -77,7 +77,7 @@ If the code works, the beginning of the output will look like this:
   :alt: An image of the beginning of the keys-manager output.
 |
 
-You can match the rest of the output against the expected output described while exploring the client code in the next section.
+You can match the rest of the output against the expected output described in the next section while exploring the client code.
 
 Exploring the Client Code
 ~~~~~~~~~~~~~~~~~~~~~~~~~
