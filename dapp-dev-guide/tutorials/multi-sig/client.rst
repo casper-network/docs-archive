@@ -69,12 +69,15 @@ Navigate to your ``/keys-manager/client`` folder and run the ``keys-manager`` us
 
    npm run start:atomic
 
+**Important**: The client takes some time to run, so please wait until you see a *Deploy result*.
+
 If the code works, the beginning of the output will look like this: 
 
 .. image:: ../../../assets/tutorials/multisig/output_begin.png
   :alt: An image of the beginning of the keys-manager output.
+|
 
-The client takes some time to run, so please wait until you see a *Deploy result*. You can match the rest of the output against the expected output described in the next section.
+You can match the rest of the output against the expected output described while exploring the client code in the next section.
 
 Exploring the Client Code
 ~~~~~~~~~~~~~~~~~~~~~~~~~
