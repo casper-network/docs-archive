@@ -69,7 +69,7 @@ Navigate to your ``/keys-manager/client`` folder and run the `keys-manager` usin
 
    npm run start:atomic
 
-**Note**: The client takes some time to run, so please wait until you see a *Deploy result*.
+**Note**: You may have to wait some time after entering the above command until you see a result.
 
 If the code works, the beginning of the output will look like this: 
 
