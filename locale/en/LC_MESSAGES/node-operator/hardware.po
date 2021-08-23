@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,13 +39,26 @@ msgid "32 GB Ram"
 msgstr ""
 
 #: ../../node-operator/hardware.rst:12
-msgid "1 TB disk"
+msgid ""
+"1 TB disk (Both SSDs and HDDs work, but SSDs perform initial sync much "
+"faster.)"
 msgstr ""
 
 #: ../../node-operator/hardware.rst:14
 msgid ""
 "Linux machine running Ubuntu 18.04 or 20.04 with a Rust build "
-"environment. Reference `https://github.com/Casperlabs/casper-node "
-"<https://github.com/Casperlabs/casper-node>`_ for details."
+"environment. Reference https://github.com/casper-network/casper-node for "
+"details."
 msgstr ""
+
+#~ msgid "1 TB disk"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Linux machine running Ubuntu 18.04 or"
+#~ " 20.04 with a Rust build environment."
+#~ " Reference `https://github.com/Casperlabs/casper-node"
+#~ " <https://github.com/Casperlabs/casper-node>`_ for "
+#~ "details."
+#~ msgstr ""
 
