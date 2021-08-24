@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
@@ -199,15 +199,15 @@ msgstr ""
 "La commande ci-dessus va créer trois fichiers dans le répertoire de travail "
 "actuel :"
 
-#: ../../workflow/setup.rst:77
+#: ../../workflow/setup.rst:77 ../../workflow/setup.rst:98
 msgid "``secret_key.pem`` - PEM encoded secret key"
 msgstr "``secret_key.pem`` - Clé secrète encodée au format PEM"
 
-#: ../../workflow/setup.rst:78
+#: ../../workflow/setup.rst:78 ../../workflow/setup.rst:99
 msgid "``public_key.pem`` - PEM encoded public key"
 msgstr "``public_key.pem`` - Clé publique encodée au format PEM"
 
-#: ../../workflow/setup.rst:79
+#: ../../workflow/setup.rst:79 ../../workflow/setup.rst:100
 msgid "``public_key_hex`` - Hexadecimal-encoded string of the public key"
 msgstr "``public_key_hex`` - Chaîne codée en hexadécimal de la clé publique"
 
@@ -260,42 +260,24 @@ msgstr ""
 
 #: ../../workflow/setup.rst:94
 msgid ""
-"Start by creating an account using the `Create Account <https://clarity-"
-"testnet-old.make.services/#/accounts>`_ link. You will be asked to provide a"
-" unique name for your account; this is for your convenience and is not "
-"stored on chain."
+"Start by creating an account using the `Create Account "
+"<https://testnet.cspr.live/create-account>`_ link. You will need to download"
+" the keys of your new account by clicking on the ``Download Keys`` button. "
+"Note that the account is not stored on chain."
 msgstr ""
-"Commencez par créer un compte en utilisant le lien `Create Account <https"
-"://clarity-testnet-old.make.services/#/accounts>`_. Il vous sera demandé de "
-"fournir un nom unique pour votre compte ; ceci est pour votre commodité et "
-"n'est pas stocké sur la chaîne."
+"Commencer par créer un compte en utilisant le lien `Créer un compte "
+"<https://testnet.cspr.live/create-account>`_. Vous devrez télécharger les "
+"clés de votre nouveau compte en cliquant sur le bouton ``Télécharger les "
+"clés``. Notez que le compte n'est pas stocké sur la chaîne."
 
 #: ../../workflow/setup.rst:96
 msgid ""
-"You will be prompted to save three files for your new account; carefully "
-"choose where you store them. We recommend storing your keys in a secure "
-"manner."
+"You will be prompted to save the following three files for your new account."
+" These are your keys, so we recommend securely storing them:"
 msgstr ""
-"Vous serez invité à enregistrer trois fichiers pour votre nouveau compte ; "
-"choisissez soigneusement l'endroit où vous les stockez. Nous vous "
-"recommandons de les stocker de manière sécurisée."
-
-#: ../../workflow/setup.rst:98
-msgid "``<Account-Name>_secret_key.pem`` - PEM encoded secret key"
-msgstr "``<Account-Name>_secret_key.pem`` - Clé secrète encodée au format PEM"
-
-#: ../../workflow/setup.rst:99
-msgid "``<Account-Name>_public_key.pem`` - PEM encoded public key"
-msgstr ""
-"``<Account-Name>_public_key.pem`` - Clé publique encodée au format PEM"
-
-#: ../../workflow/setup.rst:100
-msgid ""
-"``<Account-Name>_public_key_hex`` - Hexadecimal-encoded string of the public"
-" key"
-msgstr ""
-"``<Account-Name>_public_key_hex`` - Chaîne codée en hexadécimal de la clé "
-"publique"
+"Il vous sera demandé d'enregistrer les trois fichiers suivants pour votre "
+"nouveau compte. Il s'agit de vos clés, nous vous recommandons donc de les "
+"stocker en lieu sûr et de ne partager votre clé secrète avec personne :"
 
 #: ../../workflow/setup.rst:104
 msgid "Fund your Account"
@@ -312,8 +294,8 @@ msgstr ""
 #: ../../workflow/setup.rst:108
 msgid ""
 "In Testnet, you can fund the account by using the *Request tokens* button on"
-" the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to "
-"receive tokens."
+" the `Faucet Page <https://testnet.cspr.live/tools/faucet>`_ to receive "
+"tokens."
 msgstr ""
 "Dans Testnet, vous pouvez approvisionner le compte en utilisant le bouton "
 "*Demander des jetons* sur la `Page Faucet "
@@ -391,3 +373,46 @@ msgid ""
 msgstr ""
 "**Note** : Si le pair sélectionné ne répond pas, choisissez en un et "
 "réessayez."
+
+#~ msgid ""
+#~ "Start by creating an account using the `Create Account <https://clarity-"
+#~ "testnet-old.make.services/#/accounts>`_ link. You will be asked to provide a"
+#~ " unique name for your account; this is for your convenience and is not "
+#~ "stored on chain."
+#~ msgstr ""
+#~ "Commencez par créer un compte en utilisant le lien `Create Account <https"
+#~ "://clarity-testnet-old.make.services/#/accounts>`_. Il vous sera demandé de "
+#~ "fournir un nom unique pour votre compte ; ceci est pour votre commodité et "
+#~ "n'est pas stocké sur la chaîne."
+
+#~ msgid ""
+#~ "You will be prompted to save three files for your new account; carefully "
+#~ "choose where you store them. We recommend storing your keys in a secure "
+#~ "manner."
+#~ msgstr ""
+#~ "Vous serez invité à enregistrer trois fichiers pour votre nouveau compte ; "
+#~ "choisissez soigneusement l'endroit où vous les stockez. Nous vous "
+#~ "recommandons de les stocker de manière sécurisée."
+
+#~ msgid "``<Account-Name>_secret_key.pem`` - PEM encoded secret key"
+#~ msgstr "``<Account-Name>_secret_key.pem`` - Clé secrète encodée au format PEM"
+
+#~ msgid "``<Account-Name>_public_key.pem`` - PEM encoded public key"
+#~ msgstr ""
+#~ "``<Account-Name>_public_key.pem`` - Clé publique encodée au format PEM"
+
+#~ msgid ""
+#~ "``<Account-Name>_public_key_hex`` - Hexadecimal-encoded string of the public"
+#~ " key"
+#~ msgstr ""
+#~ "``<Account-Name>_public_key_hex`` - Chaîne codée en hexadécimal de la clé "
+#~ "publique"
+
+#~ msgid ""
+#~ "In Testnet, you can fund the account by using the *Request tokens* button on"
+#~ " the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to "
+#~ "receive tokens."
+#~ msgstr ""
+#~ "Dans Testnet, vous pouvez approvisionner le compte en utilisant le bouton "
+#~ "*Demander des jetons* sur la `Page Faucet "
+#~ "<https://testnet.cspr.live/tools/faucet>`_ pour recevoir des jetons."
