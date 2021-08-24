@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
@@ -42,29 +42,37 @@ msgstr ""
 "également l'utilisateur Casper, crée les structures de répertoire et met en "
 "place une unité de service *systemd* et un *logrotate*."
 
-#: ../../node-operator/setup.rst:11
+#: ../../node-operator/setup.rst:10
 msgid ""
 "The casper-node-launcher Debian package can be obtained from "
-"https://bintray.com/casperlabs/debian/casper-node-launcher."
+"https://repo.casperlabs.io/. You only need to run these steps once."
 msgstr ""
-"Le package Debian casper-node-launcher peut être obtenu à l'adresse: "
-"https://bintray.com/casperlabs/debian/casper-node-launcher."
+"Le paquet Debian casper-node-launcher peut être obtenu à partir de "
+"https://repo.casperlabs.io/. Vous n'avez besoin d'exécuter ces étapes qu'une"
+" seule fois."
 
-#: ../../node-operator/setup.rst:13
+#: ../../node-operator/setup.rst:12
 msgid ""
-"You can also build from source: https://github.com/CasperLabs/casper-node-"
-"launcher. However, all of the setup and pull of casper-node releases will be"
-" manual."
+"Then, proceed to install the casper-node-launcher by running these commands:"
 msgstr ""
-"Vous pouvez également construire à partir des sources : "
-"https://github.com/CasperLabs/casper-node-launcher. Cependant, toute la "
-"configuration et le pull des versions de casper-node seront manuels."
+"Ensuite, procédez à l'installation de casper-node-launcher en exécutant ces "
+"commandes :"
 
-#: ../../node-operator/setup.rst:16
+#: ../../node-operator/setup.rst:19
+msgid ""
+"You can also build from source: https://github.com/casper-network/casper-"
+"node-launcher. However, all of the setup and pull of casper-node releases "
+"will be manual."
+msgstr ""
+"Vous pouvez également construire à partir des sources : https://github.com"
+"/casper-network/casper-node-launcher. Cependant, toute la configuration et "
+"le tirage des versions de casper-node seront manuels."
+
+#: ../../node-operator/setup.rst:22
 msgid "File Locations"
 msgstr "Emplacement des fichiers"
 
-#: ../../node-operator/setup.rst:18
+#: ../../node-operator/setup.rst:24
 msgid ""
 "This section describes the directories and files the ``casper-node-"
 "launcher`` Debian install creates, needed for running ``casper-node`` "
@@ -74,7 +82,7 @@ msgstr ""
 "l'installation Debian de ``casper-node-launcher`` , nécessaires pour "
 "exécuter les versions de ``casper-node``  et effectuer les mises à jour."
 
-#: ../../node-operator/setup.rst:20
+#: ../../node-operator/setup.rst:26
 msgid ""
 "A *casper* user and *casper* group is created during install and used to run"
 " the software."
@@ -82,7 +90,7 @@ msgstr ""
 "Un utilisateur *casper* et un groupe *casper* sont créés lors de "
 "l'installation et utilisés pour exécuter le logiciel."
 
-#: ../../node-operator/setup.rst:22
+#: ../../node-operator/setup.rst:28
 msgid ""
 "Each version of the ``casper-node`` install is located based on the semantic"
 " version with underscores. For example, version *1.0.3* would be represented"
@@ -98,7 +106,7 @@ msgstr ""
 "``[m_n_p]`` ci-dessous, représentant le major, minor, et patch d'une version"
 " sémantique."
 
-#: ../../node-operator/setup.rst:24
+#: ../../node-operator/setup.rst:30
 msgid ""
 "**Note**: multiple versioned folders will exist on a system when upgrades "
 "are setup."
@@ -106,7 +114,7 @@ msgstr ""
 "**Note** : plusieurs dossiers versionnés existeront sur un système lorsque "
 "les mises à jour seront configurées."
 
-#: ../../node-operator/setup.rst:26
+#: ../../node-operator/setup.rst:32
 msgid ""
 "The installation of ``casper-node-launcher``, ``casper-node``, and ``casper-"
 "client`` software is relatively simple, but the process accomplishes many "
@@ -118,7 +126,7 @@ msgstr ""
 "beaucoup de choses en arrière plan. Cette section décrit le processus "
 "d'installation et l'endroit où les fichiers sont stockés."
 
-#: ../../node-operator/setup.rst:28
+#: ../../node-operator/setup.rst:34
 msgid ""
 "Two main folders are relevant for our software: ``/etc/casper`` and "
 "``/var/lib/casper``."
@@ -126,7 +134,7 @@ msgstr ""
 "Deux dossiers principaux sont pertinents pour notre logiciel : "
 "``/etc/casper`` et ``/var/lib/casper``."
 
-#: ../../node-operator/setup.rst:30
+#: ../../node-operator/setup.rst:36
 msgid ""
 "The following is the state of the filesystem after installing the ``casper-"
 "client`` and ``casper-node-launcher`` Debian packages, and also after "
@@ -136,11 +144,11 @@ msgstr ""
 " ``casper-client`` et ``casper-node-launcher``, et aussi après l'exécution "
 "du script */etc/casper/pull_casper_node_version.sh*."
 
-#: ../../node-operator/setup.rst:33
+#: ../../node-operator/setup.rst:39
 msgid "``/usr/bin``"
 msgstr "``/usr/bin``"
 
-#: ../../node-operator/setup.rst:34
+#: ../../node-operator/setup.rst:40
 msgid ""
 "The default location for executables from the Debian package install is "
 "``/usr/bin``."
@@ -148,11 +156,11 @@ msgstr ""
 "L'emplacement par défaut des exécutables de l'installation du package Debian"
 " est ``/usr/bin``."
 
-#: ../../node-operator/setup.rst:36
+#: ../../node-operator/setup.rst:42
 msgid "``casper-client`` - A client for interacting with the Casper network"
 msgstr "``casper-client`` - Un client pour interagir avec le réseau Casper"
 
-#: ../../node-operator/setup.rst:37
+#: ../../node-operator/setup.rst:43
 msgid ""
 "``casper-node-launcher`` - The launcher application which starts the "
 "``casper-node`` as a child process"
@@ -160,11 +168,11 @@ msgstr ""
 "``casper-node-launcher`` - L'application de lancement qui démarre le "
 "``casper-node`` en tant que processus."
 
-#: ../../node-operator/setup.rst:40
+#: ../../node-operator/setup.rst:46
 msgid "``/etc/casper``"
 msgstr "``/etc/casper``"
 
-#: ../../node-operator/setup.rst:41
+#: ../../node-operator/setup.rst:47
 msgid ""
 "This is the default location for configuration files. It can be overwritten "
 "with the ``CASPER_CONFIG_DIR`` environment variable. The paths in this "
@@ -177,7 +185,7 @@ msgstr ""
 " de configuration est ``/etc/casper``. Les données sont organisées comme "
 "suit :"
 
-#: ../../node-operator/setup.rst:43
+#: ../../node-operator/setup.rst:49
 msgid ""
 "**delete_local_db.sh** - Removes `*.lmdb*` from ``/var/lib/casper/casper-"
 "node``"
@@ -185,7 +193,7 @@ msgstr ""
 "**delete_local_db.sh** - Supprime `*.lmdb*` de ``/var/lib/casper/casper-"
 "node``"
 
-#: ../../node-operator/setup.rst:45
+#: ../../node-operator/setup.rst:51
 msgid ""
 "**pull_casper_node_version.sh** <protocol_version> <network_name> - Pulls "
 "``bin.tar.gz`` and ``config.tar.gz`` from `genesis.casperlabs.io "
@@ -199,7 +207,7 @@ msgstr ""
 "décompresse dans ``/var/lib/bin/<protocol_version>`` et "
 "``/etc/casper/<protocol_version>``, et supprime les fichiers *\\*.tar.gz* "
 
-#: ../../node-operator/setup.rst:47
+#: ../../node-operator/setup.rst:53
 msgid ""
 "**config_from_example.sh** <protocol_version> - Gets external an IP to "
 "replace and create the *config.toml* from *config-example.toml*"
@@ -207,7 +215,7 @@ msgstr ""
 "**config_from_example.sh** <protocol_version> - Obtient une IP externe pour "
 "remplacer et crée le *config.toml* de *config-example.toml*."
 
-#: ../../node-operator/setup.rst:49
+#: ../../node-operator/setup.rst:55
 msgid ""
 "**casper-node-launcher-state.toml** - This is the local state for the "
 "``casper-node-launcher`` and it is created during the first run"
@@ -215,11 +223,11 @@ msgstr ""
 "**casper-node-launcher-state.toml** - C'est l'état local du \"casper-node-"
 "launcher\" et il est créé lors de la première exécution."
 
-#: ../../node-operator/setup.rst:51
+#: ../../node-operator/setup.rst:57
 msgid "``validator_keys`` - The default location for node keys."
 msgstr "``validator_keys`` - L'emplacement par défaut des clés de nœuds."
 
-#: ../../node-operator/setup.rst:53
+#: ../../node-operator/setup.rst:59
 msgid ""
 "**README.md** - Instructions on how to create validator keys using the "
 "``casper-client``"
@@ -227,7 +235,7 @@ msgstr ""
 "**README.md** - Instructions pour créer des clés de validation en utilisant "
 "le ``casper-client``"
 
-#: ../../node-operator/setup.rst:54
+#: ../../node-operator/setup.rst:60
 msgid ""
 "**secret_key.pem** - ``casper-client keygen`` creates this file or it is "
 "manually copied here"
@@ -235,7 +243,7 @@ msgstr ""
 "**secret_key.pem** - ``casper-client keygen`` crée ce fichier ou bien il est"
 " copié manuellement ici"
 
-#: ../../node-operator/setup.rst:55
+#: ../../node-operator/setup.rst:61
 msgid ""
 "**public_key.pem** - ``casper-client keygen`` creates this file or it is "
 "manually copied here"
@@ -243,7 +251,7 @@ msgstr ""
 "**public_key.pem** - ``casper-client keygen`` crée ce fichier ou bien il est"
 " copié manuellement ici"
 
-#: ../../node-operator/setup.rst:56
+#: ../../node-operator/setup.rst:62
 msgid ""
 "**public_key_hex** - ``casper-client keygen`` creates this file or it is "
 "manually copied here"
@@ -251,7 +259,7 @@ msgstr ""
 "**public_key_hex** - ``casper-client keygen`` crée ce fichier ou bien il est"
 " copié manuellement ici"
 
-#: ../../node-operator/setup.rst:58
+#: ../../node-operator/setup.rst:64
 msgid ""
 "``1_0_0`` - created with *pull_casper_node_version.sh 1_0_0 <network_name>* "
 "for genesis files"
@@ -259,11 +267,11 @@ msgstr ""
 "``1_0_0`` - créé avec *pull_casper_node_version.sh 1_0_0 <network_name>* "
 "pour les fichiers genesis"
 
-#: ../../node-operator/setup.rst:60
+#: ../../node-operator/setup.rst:66
 msgid "**accounts.toml** - Contains the genesis validators and delegators"
 msgstr "**accounts.toml** - Contient les validateurs et délégués de genesis"
 
-#: ../../node-operator/setup.rst:61
+#: ../../node-operator/setup.rst:67
 msgid ""
 "**chainspec.toml** - Contains the genesis state with the *activation_point* "
 "as a timestamp"
@@ -271,12 +279,12 @@ msgstr ""
 "**chainspec.toml** - Contient l'état de genesis avec le *activation_point* "
 "en tant que timestamp"
 
-#: ../../node-operator/setup.rst:62 ../../node-operator/setup.rst:68
+#: ../../node-operator/setup.rst:68 ../../node-operator/setup.rst:74
 msgid "**config-example.toml** - Example for creating a *config.toml* file"
 msgstr ""
 "**config-example.toml** -  Exemple de création d'un fichier *config.toml*."
 
-#: ../../node-operator/setup.rst:63
+#: ../../node-operator/setup.rst:69
 msgid ""
 "**config.toml** - Created by a node operator manually or by running "
 "*config_from_example.sh 1_0_0*"
@@ -284,16 +292,16 @@ msgstr ""
 "**config.toml** -  Créé par un opérateur de nœud manuellement ou en "
 "exécutant *config_from_example.sh 1_0_0*."
 
-#: ../../node-operator/setup.rst:65
+#: ../../node-operator/setup.rst:71
 msgid "``m_n_p`` - *0* to *N* upgrade packages"
 msgstr "``m_n_p`` - *0* à *N* packages de mise à niveau"
 
-#: ../../node-operator/setup.rst:67
+#: ../../node-operator/setup.rst:73
 msgid "**chainspec.toml** - Contains the *activation_point* as the Era ID int"
 msgstr ""
 "**chainspec.toml** -  Contient l' *activation_point* comme l'Era ID int"
 
-#: ../../node-operator/setup.rst:69
+#: ../../node-operator/setup.rst:75
 msgid ""
 "**config.toml** - Created by a node operator manually or by running "
 "*config_from_example.sh <protocol_version>*"
@@ -301,11 +309,11 @@ msgstr ""
 "**config.toml** - Créé par un opérateur de nœud manuellement ou en exécutant"
 " *config_from_example.sh <protocol_version>*"
 
-#: ../../node-operator/setup.rst:72
+#: ../../node-operator/setup.rst:78
 msgid "``/var/lib/casper``"
 msgstr "``/var/lib/casper``"
 
-#: ../../node-operator/setup.rst:73
+#: ../../node-operator/setup.rst:79
 msgid ""
 "This is the location for larger and variable data for the ``casper-node``, "
 "organized in the following directories and files:"
@@ -314,7 +322,7 @@ msgstr ""
 "variables de ``casper-node``, organisées dans les répertoires et fichiers "
 "suivants :"
 
-#: ../../node-operator/setup.rst:75
+#: ../../node-operator/setup.rst:81
 msgid ""
 "``bin`` - The location for storing the versions of ``casper-node`` "
 "executables. This location can be overwritten with the ``CASPER_BIN_DIR`` "
@@ -326,7 +334,7 @@ msgstr ""
 "d'environnement ``CASPER_BIN_DIR``. Les chemins dans ce document supposent "
 "la valeur par défaut de ``/var/lib/casper/bin``."
 
-#: ../../node-operator/setup.rst:77
+#: ../../node-operator/setup.rst:83
 msgid ""
 "``1_0_0`` - Created with *pull_casper_node_version.sh 1_0_0 <network_name>* "
 "for binaries"
@@ -334,13 +342,13 @@ msgstr ""
 "``1_0_0`` - Créé avec *pull_casper_node_version.sh 1_0_0 <network_name>* "
 "pour les binaires"
 
-#: ../../node-operator/setup.rst:79
+#: ../../node-operator/setup.rst:85
 msgid "``casper-node`` - Defaults to the Ubuntu 18.04 compatible binary"
 msgstr ""
 "``casper-node`` - Par défaut, il s'agit du binaire compatible avec Ubuntu "
 "18.04."
 
-#: ../../node-operator/setup.rst:80
+#: ../../node-operator/setup.rst:86
 msgid ""
 "**README.md** - Information about the repository location and the Git hash "
 "used for compilation to allow a rebuild on other platforms"
@@ -349,7 +357,7 @@ msgstr ""
 "utilisé pour la compilation afin de permettre une reconstruction sur "
 "d'autres plateformes."
 
-#: ../../node-operator/setup.rst:82
+#: ../../node-operator/setup.rst:88
 msgid ""
 "``m_n_p`` - *0* to *N* upgrade packages for binaries using "
 "*pull_casper_node_version.sh 1_0_0 <network_name>*"
@@ -357,7 +365,7 @@ msgstr ""
 "``m_n_p`` - *0* à *N* packages de mise à jour pour les binaires utilisant "
 "*pull_casper_node_version.sh 1_0_0 <network_name>*"
 
-#: ../../node-operator/setup.rst:84
+#: ../../node-operator/setup.rst:90
 msgid ""
 "``casper-node`` -  This is where the given version of the ``casper-node`` "
 "executable lives and is run from the ``casper-node-launcher``."
@@ -365,41 +373,41 @@ msgstr ""
 "``casper-node`` -  C'est l'endroit où la version donnée de l'exécutable "
 "``casper-node`` vit et est lancée depuis le ``casper-node-launcher``."
 
-#: ../../node-operator/setup.rst:85
+#: ../../node-operator/setup.rst:91
 msgid "**README.md**"
 msgstr "**README.md**"
 
-#: ../../node-operator/setup.rst:87
+#: ../../node-operator/setup.rst:93
 msgid "``casper-node`` - Local data store and the largest user of disc space"
 msgstr ""
 "``casper-node`` - Le store de données local et le plus grand utilisateur "
 "d'espace disque"
 
-#: ../../node-operator/setup.rst:89
+#: ../../node-operator/setup.rst:95
 msgid "**data.lmdb** - Global state of the chain"
 msgstr "**data.lmdb** - Etat global de la chaîne"
 
-#: ../../node-operator/setup.rst:90
+#: ../../node-operator/setup.rst:96
 msgid "**data.lmbd-lock**"
 msgstr "**data.lmbd-lock**"
 
-#: ../../node-operator/setup.rst:91
+#: ../../node-operator/setup.rst:97
 msgid "**storage.lmdb** - Blocks, deploys, and everything else"
 msgstr "**storage.lmdb** - Blocs, déploiements, et tout le reste"
 
-#: ../../node-operator/setup.rst:92
+#: ../../node-operator/setup.rst:98
 msgid "**storage.lmdb-lock**"
 msgstr "**storage.lmdb-lock**"
 
-#: ../../node-operator/setup.rst:93
+#: ../../node-operator/setup.rst:99
 msgid "**unit_\\*** - The node creates one of these files per era"
 msgstr "**unit_\\*** - Le nœud crée un de ces fichiers par ère"
 
-#: ../../node-operator/setup.rst:97
+#: ../../node-operator/setup.rst:103
 msgid "Upgrade Operation"
 msgstr "Opération de mise à jour"
 
-#: ../../node-operator/setup.rst:99
+#: ../../node-operator/setup.rst:105
 msgid ""
 "The ``chainspec.toml`` contains a section to indicate what era the given "
 "``casper-node`` version should start running."
@@ -407,7 +415,7 @@ msgstr ""
 "Le fichier ``chainspec.toml`` contient une section pour indiquer à quelle "
 "ère la version donnée de ``casper-node`` doit commencer à fonctionner."
 
-#: ../../node-operator/setup.rst:107
+#: ../../node-operator/setup.rst:113
 msgid ""
 "At every block finalization, the ``casper-node`` looks for newly configured "
 "versions.  When a new version is configured, the running node will look at "
@@ -420,7 +428,7 @@ msgstr ""
 "``chainspec.toml``. Ce sera l'ère avant laquelle le casper-node actuel "
 "s'arrêtera proprement."
 
-#: ../../node-operator/setup.rst:111
+#: ../../node-operator/setup.rst:117
 msgid ""
 "The ``casper-node-launcher`` will detect a clean exit 0 condition and start "
 "the next version ``casper-node``."
@@ -428,7 +436,7 @@ msgstr ""
 "Le ``casper-node-launcher`` détectera une condition de sortie propre 0 et "
 "démarrera la prochaine version ``casper-node``."
 
-#: ../../node-operator/setup.rst:113
+#: ../../node-operator/setup.rst:119
 msgid ""
 "You can choose to build from source. If you opt to do this, please ensure "
 "that the correct software version (tag) is used."
@@ -437,11 +445,11 @@ msgstr ""
 "cette solution, veuillez vous assurer que la version correcte du logiciel "
 "(tag) est utilisée."
 
-#: ../../node-operator/setup.rst:116
+#: ../../node-operator/setup.rst:122
 msgid "Node Version Installation"
 msgstr "Installation de la version du nœud"
 
-#: ../../node-operator/setup.rst:118
+#: ../../node-operator/setup.rst:124
 msgid ""
 "Included with ``casper-node-launcher`` debian package are two scripts to "
 "help with installing ``casper-node`` versions."
@@ -449,7 +457,7 @@ msgstr ""
 "Le package debian ``casper-node-launcher`` contient deux scripts pour aider "
 "à l'installation des versions ``casper-node``."
 
-#: ../../node-operator/setup.rst:120
+#: ../../node-operator/setup.rst:126
 msgid ""
 "``/etc/casper/pull_casper_node_version.sh`` will pull ``bin.tar.gz`` and "
 "``config.tar.gz`` from genesis.casperlabs.io."
@@ -457,13 +465,13 @@ msgstr ""
 "``/etc/casper/pull_casper_node_version.sh`` va extraire ``bin.tar.gz`` et "
 "``config.tar.gz`` de genesis.casperlabs.io."
 
-#: ../../node-operator/setup.rst:122
+#: ../../node-operator/setup.rst:128
 msgid "This is invoked with the release version in underscore format such as:"
 msgstr ""
 "Cette fonction est invoquée avec la version de la release au format "
 "underscore, comme par exemple :"
 
-#: ../../node-operator/setup.rst:128
+#: ../../node-operator/setup.rst:134
 msgid ""
 "This will create ``/var/lib/casper/bin/1_0_2/`` and expand the "
 "``bin.tar.gz`` containing at a minimun ``casper-node``."
@@ -471,7 +479,7 @@ msgstr ""
 "Cela va créer ``/var/lib/casper/bin/1_0_2/`` et étendre le fichier "
 "``bin.tar.gz`` contenant au minimum ``casper-node``."
 
-#: ../../node-operator/setup.rst:130
+#: ../../node-operator/setup.rst:136
 msgid ""
 "This will create ``/etc/casper/1_0_2/`` and expand the ``config.tar.gz`` "
 "containing ``chainspec.toml``, ``config-example.toml``, and possibly "
@@ -481,7 +489,7 @@ msgstr ""
 "``config.tar.gz`` contenant ``chainspec.toml``, ``config-example.toml``, et "
 "éventuellement ``accounts.csv`` et d'autres fichiers."
 
-#: ../../node-operator/setup.rst:133
+#: ../../node-operator/setup.rst:139
 msgid ""
 "This will remove the arcive files and run "
 "``/etc/casper/config_from_example.sh 1_0_2`` to create a ``config.toml`` "
@@ -491,25 +499,48 @@ msgstr ""
 "``/etc/casper/config_from_example.sh 1_0_2`` pour créer un ``config.toml`` à"
 " partir du ``config-example.toml``."
 
-#: ../../node-operator/setup.rst:137
+#: ../../node-operator/setup.rst:143
 msgid "Client Installation"
 msgstr "Installation du Client"
 
-#: ../../node-operator/setup.rst:139
+#: ../../node-operator/setup.rst:145
 msgid ""
-"The ``casper-client`` can be installed from "
-"https://bintray.com/casperlabs/debian/casper-client.  Download and install "
-"the correct version using ``sudo apt install``."
+"The ``casper-client`` can be installed from https://crates.io/crates/casper-"
+"client."
 msgstr ""
-"Le ``casper-client`` peut être installé à partir de "
-"https://bintray.com/casperlabs/debian/casper-client. Téléchargez et "
-"installez la bonne version en utilisant ``sudo apt install``."
+"Le ``casper-client`` peut être installé depuis https://crates.io/crates"
+"/casper-client."
 
-#: ../../node-operator/setup.rst:143
+#: ../../node-operator/setup.rst:147
+msgid ""
+"Run the commands below to install the Casper client on most flavors of Linux"
+" and macOS. You will need the nightly version of the compiler."
+msgstr ""
+"Exécutez les commandes ci-dessous pour installer le client Casper sur la "
+"plupart des versions de Linux et macOS. Vous aurez besoin de la version "
+"nocturne (nightly) du compilateur."
+
+#: ../../node-operator/setup.rst:154
+msgid ""
+"The Casper client can print out `help` information, which provides an up-to-"
+"date list of supported commands."
+msgstr ""
+"Le client Casper propose une commande  `help`, qui fournit une liste à jour "
+"des commandes supportées."
+
+#: ../../node-operator/setup.rst:160
+msgid ""
+"For each command, you can use `help` to get the up-to-date arguments and "
+"descriptions:"
+msgstr ""
+"Pour chaque commande, vous pouvez utiliser `help` pour obtenir les arguments"
+" et les descriptions à jour :"
+
+#: ../../node-operator/setup.rst:167
 msgid "Create Keys"
 msgstr "Création des clés"
 
-#: ../../node-operator/setup.rst:145
+#: ../../node-operator/setup.rst:169
 msgid ""
 "The Rust client generates keys via the ``keygen`` command.  The process "
 "generates 2 *pem* files and 1 *text* file. To learn about options for "
@@ -520,7 +551,7 @@ msgstr ""
 "options de génération de clés, incluez ``--help`` lorsque vous exécutez la "
 "commande ``keygen``."
 
-#: ../../node-operator/setup.rst:152
+#: ../../node-operator/setup.rst:176
 msgid ""
 "More about keys and key generation can be found in "
 "``/etc/casper/validator_keys/README.md`` if ``casper-node-lancher`` was "
@@ -530,11 +561,11 @@ msgstr ""
 "trouvées dans ``/etc/casper/validator_keys/README.md`` si ``casper-node-"
 "lancher`` a été installé à partir du package Debian."
 
-#: ../../node-operator/setup.rst:156
+#: ../../node-operator/setup.rst:180
 msgid "Config File"
 msgstr "Fichier Config"
 
-#: ../../node-operator/setup.rst:158
+#: ../../node-operator/setup.rst:182
 msgid ""
 "One ``config.toml`` file will need to exist for each ``casper-node`` version"
 " installed.  It should be located in the ``/etc/casper/[m_n_p]/`` directory "
@@ -549,7 +580,7 @@ msgstr ""
 "``/etc/casper/config_from_example.sh [m_n_p]`` où ``[m_n_p]`` est la version"
 " courante remplacée par des underscores."
 
-#: ../../node-operator/setup.rst:162
+#: ../../node-operator/setup.rst:186
 msgid ""
 "Below are some fields you may find in the ``config.toml`` that you may want "
 "or need to adjust."
@@ -557,12 +588,12 @@ msgstr ""
 "Voici quelques champs que vous pouvez trouver dans le fichier "
 "``config.toml`` et que vous pouvez vouloir ou devoir ajuster."
 
-#: ../../node-operator/setup.rst:165
+#: ../../node-operator/setup.rst:189
 msgid "Trusted Hash for Synchronizing"
 msgstr ""
 "Hash de confiance pour la synchronisation (Trusted Hash for Synchronizing)"
 
-#: ../../node-operator/setup.rst:167
+#: ../../node-operator/setup.rst:191
 msgid ""
 "The Casper network is a permissionless, proof of stake network - which "
 "implies that validators can come and go from the network.  The implication "
@@ -583,11 +614,11 @@ msgstr ""
 "obtenir les déploiements et les blocs finalisés à partir du store de blocs "
 "linéaire. Voici le processus pour obtenir le hash de confiance :"
 
-#: ../../node-operator/setup.rst:169
+#: ../../node-operator/setup.rst:193
 msgid "Find a list of trusted validators."
 msgstr "Trouvez une liste de validateurs de confiance."
 
-#: ../../node-operator/setup.rst:170
+#: ../../node-operator/setup.rst:194
 msgid ""
 "Query the status endpoint of a trusted validator ( "
 "http://[validator_id]:8888/status )"
@@ -595,11 +626,11 @@ msgstr ""
 "Interroger le point la fonction statut d'un validateur de confiance ( "
 "http://[validator_id]:8888/status )"
 
-#: ../../node-operator/setup.rst:171
+#: ../../node-operator/setup.rst:195
 msgid "Obtain the hash of a block from the status endpoint."
 msgstr "Obtenir le hash d'un bloc à partir de l'endpoint status."
 
-#: ../../node-operator/setup.rst:172
+#: ../../node-operator/setup.rst:196
 msgid ""
 "Update the ``config.toml`` for the node to include the trusted hash. There "
 "is a field dedicated to this near the top of the file."
@@ -607,11 +638,11 @@ msgstr ""
 "Mettez à jour le fichier ``config.toml`` du nœud pour inclure le hash de "
 "confiance. Il y a un champ dédié à cela près du haut du fichier."
 
-#: ../../node-operator/setup.rst:175
+#: ../../node-operator/setup.rst:199
 msgid "Secret Keys"
 msgstr "Clés secrètes"
 
-#: ../../node-operator/setup.rst:177
+#: ../../node-operator/setup.rst:201
 msgid ""
 "Provide the path to the secret keys for the node.  This is set to "
 "``etc/casper/validator_keys/`` by default."
@@ -619,11 +650,11 @@ msgstr ""
 "Indiquez le chemin d'accès aux clés secrètes pour le nœud. Par défaut, il "
 "s'agit de ``etc/casper/validator_keys/``."
 
-#: ../../node-operator/setup.rst:180
+#: ../../node-operator/setup.rst:204
 msgid "Networking & Gossiping"
 msgstr "Réseautage et Gossiping (Networking & Gossiping)"
 
-#: ../../node-operator/setup.rst:182
+#: ../../node-operator/setup.rst:206
 msgid ""
 "The node requires a publicly accessible IP address.  We do not recommend NAT"
 " at this time. Specify the public IP address of the node. If you use the "
@@ -636,24 +667,49 @@ msgstr ""
 "``config_from_example.sh`` les services externes sont appelés pour trouver "
 "votre IP et celle-ci est insérée dans le fichier ``config.toml`` créé."
 
-#: ../../node-operator/setup.rst:185
+#: ../../node-operator/setup.rst:209
 msgid "Default values are specified in the file if you want to change them:"
 msgstr ""
 "Les valeurs par défaut sont spécifiées dans le fichier si vous souhaitez les"
 " modifier :"
 
-#: ../../node-operator/setup.rst:187
+#: ../../node-operator/setup.rst:211
 msgid "Specify the port that will be used for status  & deploys"
 msgstr ""
 "Spécifiez le port qui sera utilisé pour les statuts et les déploiements."
 
-#: ../../node-operator/setup.rst:188
+#: ../../node-operator/setup.rst:212
 msgid "Specify the port used for networking"
 msgstr "Indiquez le port utilisé pour le réseautage"
 
-#: ../../node-operator/setup.rst:189
+#: ../../node-operator/setup.rst:213
 msgid ""
 "Known_addresses - these are the bootstrap nodes. No need to change these."
 msgstr ""
 "Known_addresses - ce sont les noeuds bootstrap. Il n'est pas nécessaire de "
 "les modifier."
+
+#~ msgid ""
+#~ "The casper-node-launcher Debian package can be obtained from "
+#~ "https://bintray.com/casperlabs/debian/casper-node-launcher."
+#~ msgstr ""
+#~ "Le package Debian casper-node-launcher peut être obtenu à l'adresse: "
+#~ "https://bintray.com/casperlabs/debian/casper-node-launcher."
+
+#~ msgid ""
+#~ "You can also build from source: https://github.com/CasperLabs/casper-node-"
+#~ "launcher. However, all of the setup and pull of casper-node releases will be"
+#~ " manual."
+#~ msgstr ""
+#~ "Vous pouvez également construire à partir des sources : "
+#~ "https://github.com/CasperLabs/casper-node-launcher. Cependant, toute la "
+#~ "configuration et le pull des versions de casper-node seront manuels."
+
+#~ msgid ""
+#~ "The ``casper-client`` can be installed from "
+#~ "https://bintray.com/casperlabs/debian/casper-client.  Download and install "
+#~ "the correct version using ``sudo apt install``."
+#~ msgstr ""
+#~ "Le ``casper-client`` peut être installé à partir de "
+#~ "https://bintray.com/casperlabs/debian/casper-client. Téléchargez et "
+#~ "installez la bonne version en utilisant ``sudo apt install``."
