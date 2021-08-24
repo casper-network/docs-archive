@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:46+0000\n"
 "Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
@@ -58,71 +58,70 @@ msgstr ""
 "2,5 CSPR."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:16
-msgid "This section will help you get set up with each pre-requisite."
+msgid "This section will help you get set up with each prerequisite."
 msgstr "Cette section vous aidera à mettre en place chaque prérequis."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:19
-msgid "Client"
-msgstr "Client"
+msgid "The Casper Client"
+msgstr "Le Client Casper"
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:21
 msgid ""
-"The client software communicates with the network to transmit your "
-"deployments to the network. Clients can be created for any application "
-"platform, such as JavaScript or Python. The official client for Casper is a "
-"Rust client."
+"You can find the default Casper client on `crates.io "
+"<https://crates.io/crates/casper-client>`_. This client communicates with "
+"the network to transmit your deployments."
 msgstr ""
-"Le logiciel Client communique avec le réseau pour transmettre vos "
-"déploiements au réseau. Des clients peuvent être créés avec n'importe quelle"
-" langage de programmation, tels que JavaScript ou Python. Le client officiel"
-" de Casper est un client Rust."
+"Vous pouvez trouver le client Casper standard sur `crates.io "
+"<https://crates.io/crates/casper-client>`_. Ce client communique avec le "
+"réseau pour transmettre vos déploiements."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:23
-#: ../../dapp-dev-guide/deploying-contracts.rst:36
 msgid ""
-"**Ensure that your client matches the version of the network you intend to "
-"deploy to.**"
+"Run the commands below to install the client on most flavors of Linux and "
+"macOS. You will need the nightly version of the compiler."
 msgstr ""
-"**Vérifiez que votre client correspond à la version du réseau sur lequel "
-"vous comptez déployer.**"
+"Exécutez les commandes ci-dessous pour installer le client Casper sur la "
+"plupart des versions de Linux et macOS. Vous aurez besoin de la version "
+"'nightly' (nocturne) du compilateur"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:26
-msgid "Using Binaries"
-msgstr "Utilisation des binaires"
-
-#: ../../dapp-dev-guide/deploying-contracts.rst:29
+#: ../../dapp-dev-guide/deploying-contracts.rst:30
 msgid ""
-"**Rust**\\ : `casperlabs-client <https://crates.io/crates/casper-client>`_"
+"The Casper client can print out `help` information, which provides an up-to-"
+"date list of supported commands."
 msgstr ""
-"**Rust**\\ : `casperlabs-client <https://crates.io/crates/casper-client>`_"
+"Le client Casper peut fournir des informations d'aide (`help`), qui "
+"fournissent une liste à jour des commandes prises en charge."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:39
-msgid "Building from Source"
-msgstr "Construire à partir des sources (code source)"
+#: ../../dapp-dev-guide/deploying-contracts.rst:38
+msgid "Building the Client from Source"
+msgstr "Construire le Client à partir des Sources"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:41
+#: ../../dapp-dev-guide/deploying-contracts.rst:40
 msgid ""
-"`Instructions <https://github.com/CasperLabs/casper-"
+"`Instructions <https://github.com/casper-network/casper-"
 "node/tree/master/client>`_"
 msgstr ""
 "`Instructions <https://github.com/CasperLabs/casper-"
 "node/tree/master/client>`_"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:44
+#: ../../dapp-dev-guide/deploying-contracts.rst:43
 msgid "Check the Client Version"
 msgstr "Vérifier la Version du Client"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:46
-msgid "There is an official Rust client, that works with the Delta Testnet."
+#: ../../dapp-dev-guide/deploying-contracts.rst:45
+msgid ""
+"There is an official Rust client, that works with the Casper `Testnet "
+"<https://testnet.cspr.live/>`_ and `Mainnet <https://cspr.live/>`_."
 msgstr ""
-"Il existe un client Rust officiel, qui fonctionne avec le réseau Delta "
-"Testnet."
+"Il existe un client Rust officiel, qui fonctionne avec le `Testnet "
+"<https://testnet.cspr.live/>`_ et le `Mainnet <https://cspr.live/>`_ de "
+"Casper."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:48
+#: ../../dapp-dev-guide/deploying-contracts.rst:47
 msgid "To check the client version run:"
 msgstr "Pour vérifier la version du client, exécuter :"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:54
+#: ../../dapp-dev-guide/deploying-contracts.rst:53
 msgid ""
 "If you want to send your deployments to an external network, use the latest "
 "released version of the client.  If you are building the client locally, "
@@ -132,11 +131,11 @@ msgstr ""
 "la dernière version du client. Si vous construisez le client localement, "
 "vérifiez le gitHash et assurez-vous qu'il correspond au gitHash du réseau."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:57
+#: ../../dapp-dev-guide/deploying-contracts.rst:56
 msgid "Token to Pay for Deployments"
 msgstr "Jetons pour payer les Déploiements"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:59
+#: ../../dapp-dev-guide/deploying-contracts.rst:58
 msgid ""
 "Blockchains are supported by infrastructure providers called \"Validators\"."
 " To use the Validator infrastructure, it's necessary to acquire token to pay"
@@ -154,11 +153,11 @@ msgstr ""
 "Dans un système de production, les jeton doivent être acquis sur les marchés"
 " d'échange (Exchange)."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:62
+#: ../../dapp-dev-guide/deploying-contracts.rst:61
 msgid "Target Network"
 msgstr "Réseau cible"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:64
+#: ../../dapp-dev-guide/deploying-contracts.rst:63
 msgid ""
 "When sending a deploy, the client needs to know which host will receive the "
 "deployment.  The ``node-address`` and ``chain-name`` parameters provide this"
@@ -168,11 +167,11 @@ msgstr ""
 "déploiement. Les paramètres ``node-address`` et ``chain-name`` fournissent "
 "cette information."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:67
+#: ../../dapp-dev-guide/deploying-contracts.rst:66
 msgid "Creating Keys"
 msgstr "Création des clés"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:69
+#: ../../dapp-dev-guide/deploying-contracts.rst:68
 msgid ""
 "Blockchains use asymmetric key encryption to secure transactions. The secret"
 " key used to sign the deployment will be the secret key of the account that "
@@ -188,23 +187,23 @@ msgstr ""
 "délégation de clés et le paramètre ``from`` ne soient utilisés. Pour créer "
 "des clés à l'aide du client rust, exécuter la commande suivante :"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:76
+#: ../../dapp-dev-guide/deploying-contracts.rst:75
 msgid "This process will create 3 files:"
 msgstr "Ce processus va créer 3 fichiers :"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:79
+#: ../../dapp-dev-guide/deploying-contracts.rst:78
 msgid "secret-key.pem"
 msgstr "secret-key.pem"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:80
+#: ../../dapp-dev-guide/deploying-contracts.rst:79
 msgid "public-key.pem"
 msgstr "public-key.pem"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:81
+#: ../../dapp-dev-guide/deploying-contracts.rst:80
 msgid "public_key_hex"
 msgstr "public_key_hex"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:83
+#: ../../dapp-dev-guide/deploying-contracts.rst:82
 msgid ""
 "When passing in the public key as hex, it's recommended to  ``$(cat "
 "public_key_hex)`` in the transaction, or extract the contents of the file.\\"
@@ -215,26 +214,24 @@ msgstr ""
 "extraire le contenu du fichier.\\ :raw-html-m2r:`<br>` Utilisez le fichier "
 "secret-key.pem pour signer la transaction."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:87
-msgid "Sending a Deployment to the Delta Testnet"
-msgstr "Envoi d'un déploiement au réseau Delta Testnet"
+#: ../../dapp-dev-guide/deploying-contracts.rst:86
+msgid "Sending a Deployment to the Testnet"
+msgstr "Envoi d'un déploiement au réseau Testnet"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:89
+#: ../../dapp-dev-guide/deploying-contracts.rst:88
 msgid ""
-"The easiest way to deploy a contract is to use an existing public network.  "
-"CasperLabs provides a Testnet for this. The Testnet is operated by external "
-"validators that can accept transactions."
+"The easiest way to deploy a contract is to use an existing public network. "
+"The Testnet is operated by external validators that can accept transactions."
 msgstr ""
 "La façon la plus simple de déployer un contrat est d'utiliser un réseau "
-"public existant. CasperLabs fournit un réseau Testnet à cet effet. Ce réseau"
-" est géré par des validateurs externes qui peuvent accepter des "
-"transactions."
+"public existant. Ce réseau est géré par des validateurs externes qui peuvent"
+" accepter des transactions."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:93
+#: ../../dapp-dev-guide/deploying-contracts.rst:91
 msgid "Obtain Token"
 msgstr "Obtenir un jeton"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:95
+#: ../../dapp-dev-guide/deploying-contracts.rst:93
 msgid ""
 "To send a deploy to the network, create keys and obtain token. Token can be "
 "obtained via a faucet or by a participant that has token.  Connect to our "
@@ -247,11 +244,11 @@ msgstr ""
 "<https://discordapp.com/invite/Q38s3Vh>`_ pour réclamer des jetons à un un "
 "participant existant."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:100
+#: ../../dapp-dev-guide/deploying-contracts.rst:97
 msgid "A Basic Deployment using the Command Line (Rust Client)"
 msgstr "Déploiement de base en utilisant la ligne de commande (Client Rust)"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:102
+#: ../../dapp-dev-guide/deploying-contracts.rst:99
 msgid ""
 "As described above, a basic deployment must provide some essential "
 "information. Here is an example deployment using the Rust client that will "
@@ -264,7 +261,7 @@ msgstr ""
 "l'aide de `Contracts SDK for Rust <writing-rust-contracts>`_. Le port par "
 "défaut est 7777:"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:108
+#: ../../dapp-dev-guide/deploying-contracts.rst:105
 msgid ""
 "If your deployment command is correct, expect to see a success message that "
 "looks like this:"
@@ -272,7 +269,7 @@ msgstr ""
 "Si votre commande de déploiement est correcte, attendez-vous à voir un "
 "message de succès qui ressemble à ceci :"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:114
+#: ../../dapp-dev-guide/deploying-contracts.rst:111
 msgid ""
 "Note: Each deploy gets a unique hash.  This is part of the cryptographic "
 "security of blockchain technology.  No two deploys will ever return the same"
@@ -282,11 +279,11 @@ msgstr ""
 "sécurité cryptographique de la technologie blockchain. Deux déploiements ne "
 "renverront jamais le même hash."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:117
+#: ../../dapp-dev-guide/deploying-contracts.rst:114
 msgid "Check Deploy Status"
 msgstr "Vérifier l'état du déploiement"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:119
+#: ../../dapp-dev-guide/deploying-contracts.rst:116
 msgid ""
 "Once the network has received the deployment, it will queue up in the system"
 " before being listed in a block for execution.  Sending a transaction "
@@ -300,11 +297,11 @@ msgstr ""
 "transaction a été traitée avec succès. Il est donc important de vérifier que"
 " le contrat s'est exécuté correctement et que le bloc a été finalisé."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:125
+#: ../../dapp-dev-guide/deploying-contracts.rst:122
 msgid "Which will return a data structure like this:"
 msgstr "Ce qui renverra une structure de données comme celle-ci :"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:222
+#: ../../dapp-dev-guide/deploying-contracts.rst:219
 msgid ""
 "From this data structure we can observe some properties about the deploy "
 "(some of which can be set by the user):"
@@ -313,35 +310,35 @@ msgstr ""
 "propriétés du déploiement (dont certaines peuvent être définies par "
 "l'utilisateur) :"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:225
+#: ../../dapp-dev-guide/deploying-contracts.rst:222
 msgid "Execution cost 164645 gas"
 msgstr "Coût de l'exécution 164645 gaz"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:226
+#: ../../dapp-dev-guide/deploying-contracts.rst:223
 msgid "No errors were returned by the contract"
 msgstr "Aucune erreur n'a été renvoyée par le contrat"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:227
+#: ../../dapp-dev-guide/deploying-contracts.rst:224
 msgid "There were no dependencies for this deploy"
 msgstr "Il n'y avait pas de dépendances pour ce déploiement"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:228
+#: ../../dapp-dev-guide/deploying-contracts.rst:225
 msgid "The Time to Live was 1 hour"
 msgstr "La durée de vie (TTL=Time to Live) était de 1 heure"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:230
+#: ../../dapp-dev-guide/deploying-contracts.rst:227
 msgid ""
-"It is also possible to check the contract's state by performing a ``query-"
+"It is also possible to check the contract\\'s state by performing a ``query-"
 "state`` command using the client."
 msgstr ""
 "Il est également possible de vérifier l'état du contrat en exécutant la "
 "commande ``query-state`` à l'aide du client."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:233
+#: ../../dapp-dev-guide/deploying-contracts.rst:230
 msgid "A Note about Gas Prices"
 msgstr "Une note sur les prix du Gas"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:235
+#: ../../dapp-dev-guide/deploying-contracts.rst:232
 msgid ""
 "If you notice in the put-deploy command above, we supplied a payment amount "
 "argument:"
@@ -349,7 +346,7 @@ msgstr ""
 "Vous remarquez que dans la commande put-deploy ci-dessus, nous avons fourni "
 "un argument pour le montant du paiement :"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:241
+#: ../../dapp-dev-guide/deploying-contracts.rst:238
 msgid ""
 "But the actual execution cost was only ``164645`` when it was run on the "
 "chain!"
@@ -357,11 +354,11 @@ msgstr ""
 "Mais le coût d'exécution réel n'était que de ``164645`` lorsqu'il était "
 "exécuté sur la chaîne !"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:243
+#: ../../dapp-dev-guide/deploying-contracts.rst:240
 msgid ""
-"A common question that frequently arises is: \"How do I know what the "
-"payment amount (gas cost) should be?\" The honest answer is that we are hard"
-" at work to create tools to help you estimate your costs. Currently, we "
+"A common question that frequently arises is: \\\"How do I know what the "
+"payment amount (gas cost) should be?\\\" The honest answer is that we are "
+"hard at work to create tools to help you estimate your costs. Currently, we "
 "recommend using the `NCTL <https://docs.casperlabs.io/en/latest/dapp-dev-"
 "guide/setup-nctl.html>`_ tool on your local machine or the testnet to deploy"
 " your contracts in a test environment. As you just saw, you can check a "
@@ -377,7 +374,7 @@ msgstr ""
 "l'état d'un déploiement et voir approximativement combien il coûterait "
 "réellement une fois déployé."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:245
+#: ../../dapp-dev-guide/deploying-contracts.rst:242
 msgid ""
 "You can estimate the costs in this way, and then add a small buffer in case "
 "the network state has changed. So in this example above, you might have "
@@ -389,19 +386,31 @@ msgstr ""
 "ci-dessus, vous auriez pu choisir de fixer le paiement à 175000 ou 200000, "
 "plutôt que les 10000000 utilisés."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:249
+#: ../../dapp-dev-guide/deploying-contracts.rst:244
+msgid ""
+"Refer to the `runtime economics "
+"<https://docs.casperlabs.io/en/latest/economics/runtime.html?highlight"
+"=consensus-before-execution%20model#gas-allocation>`_ section for more "
+"details about gas usage, fees, and refunding mechanisms."
+msgstr ""
+"Reportez-vous à la section `Economie du runtime "
+"<https://docs.casperlabs.io/fr/latest/economics/runtime.html?highlight"
+"=consensus-before-execution%20model#gas-allocation>`_ pour plus de détails "
+"sur l'utilisation du gaz, les frais et les mécanismes de remboursement."
+
+#: ../../dapp-dev-guide/deploying-contracts.rst:248
 msgid "Advanced Deployments"
 msgstr "Déploiements avancés"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:251
-msgid "CasperLabs supports complex deployments."
-msgstr "CasperLabs prend en charge les déploiements complexes."
+#: ../../dapp-dev-guide/deploying-contracts.rst:250
+msgid "The Casper Network supports complex deployments."
+msgstr "Le réseau Casper prend en charge les déploiements complexes."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:254
+#: ../../dapp-dev-guide/deploying-contracts.rst:253
 msgid "Using Arguments with Deployments"
 msgstr "Utilisation d'arguments avec les déploiements"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:256
+#: ../../dapp-dev-guide/deploying-contracts.rst:255
 msgid ""
 "Casper contracts support arguments for deployments, which enables powerful "
 "capabilities for smart contract development.  The casper client provides "
@@ -412,11 +421,11 @@ msgstr ""
 "intelligents. Le client Casper fournit quelques exemples sur la manière de "
 "procéder :"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:264
+#: ../../dapp-dev-guide/deploying-contracts.rst:263
 msgid "Creating, signing, and deploying contracts with multiple signatures"
 msgstr "Créer, signer et déployer des contrats à signatures multiples"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:266
+#: ../../dapp-dev-guide/deploying-contracts.rst:265
 msgid ""
 "The ``deploy`` command on its own provides multiple actions strung together "
 "optimizing for the common case, with the capability to separate concerns "
@@ -429,7 +438,7 @@ msgstr ""
 "détails sur la génération de paires de clés de compte dans le Guide du "
 "développeur."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:268
+#: ../../dapp-dev-guide/deploying-contracts.rst:267
 msgid ""
 "Every account can associate multiple keys with it and give each a weight. "
 "Collective weight of signing keys decides whether an action of certain type "
@@ -438,8 +447,8 @@ msgid ""
 "<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_. In "
 "order to collect weight of different associated keys, a deploy has to be "
 "signed by corresponding private keys. The ``put-deploy`` command creates a "
-"deploy, signs it and deploys to the node but doesn't allow for signing with "
-"multiple keys. Therefore, we split ``deploy`` into separate commands:"
+"deploy, signs it and deploys to the node but doesn\\'t allow for signing "
+"with multiple keys. Therefore, we split ``deploy`` into separate commands:"
 msgstr ""
 "Chaque compte peut être associé à plusieurs clés et donner à chacune un "
 "poids. Le poids collectif des clés de signature décide si une action d'un "
@@ -452,21 +461,21 @@ msgstr ""
 "avec plusieurs clés. Par conséquent, ``deploy`` a été divisée en commandes "
 "séparées :"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:271
+#: ../../dapp-dev-guide/deploying-contracts.rst:270
 msgid "``make-deploy``  - creates a deploy from input parameters"
 msgstr "``make-deploy`` - crée un déploiement à partir de paramètres d'entrée"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:272
+#: ../../dapp-dev-guide/deploying-contracts.rst:271
 msgid "``sign-deploy``  - signs a deploy with given private key"
 msgstr ""
 "``sign-deploy`` - signe un déploiement avec la clé privée passé en "
 "paramètre."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:273
-msgid "``send-deploy``  - sends a deploy to CasperLabs node"
-msgstr "``send-deploy`` - envoie un déploiement vers le nœud CasperLabs"
+#: ../../dapp-dev-guide/deploying-contracts.rst:272
+msgid "``send-deploy``  - sends a deploy to a Casper node"
+msgstr "``send-deploy`` - envoie un déploiement  à un noeud Casper"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:275
+#: ../../dapp-dev-guide/deploying-contracts.rst:274
 msgid ""
 "To make a deploy signed with multiple keys: first create the deploy with "
 "``make-deploy``. This generates a deploy file that can be sent to the other "
@@ -484,3 +493,117 @@ msgstr ""
 "toutes les parties requises aient signé le déploiement. Enfin, le "
 "déploiement signé est envoyé au noeud avec ``send-deploy`` pour être traité "
 "par le réseau."
+
+#~ msgid "This section will help you get set up with each pre-requisite."
+#~ msgstr "Cette section vous aidera à mettre en place chaque prérequis."
+
+#~ msgid "Client"
+#~ msgstr "Client"
+
+#~ msgid ""
+#~ "The client software communicates with the network to transmit your "
+#~ "deployments to the network. Clients can be created for any application "
+#~ "platform, such as JavaScript or Python. The official client for Casper is a "
+#~ "Rust client."
+#~ msgstr ""
+#~ "Le logiciel Client communique avec le réseau pour transmettre vos "
+#~ "déploiements au réseau. Des clients peuvent être créés avec n'importe quelle"
+#~ " langage de programmation, tels que JavaScript ou Python. Le client officiel"
+#~ " de Casper est un client Rust."
+
+#~ msgid ""
+#~ "**Ensure that your client matches the version of the network you intend to "
+#~ "deploy to.**"
+#~ msgstr ""
+#~ "**Vérifiez que votre client correspond à la version du réseau sur lequel "
+#~ "vous comptez déployer.**"
+
+#~ msgid "Using Binaries"
+#~ msgstr "Utilisation des binaires"
+
+#~ msgid ""
+#~ "**Rust**\\ : `casperlabs-client <https://crates.io/crates/casper-client>`_"
+#~ msgstr ""
+#~ "**Rust**\\ : `casperlabs-client <https://crates.io/crates/casper-client>`_"
+
+#~ msgid "Building from Source"
+#~ msgstr "Construire à partir des sources (code source)"
+
+#~ msgid ""
+#~ "`Instructions <https://github.com/CasperLabs/casper-"
+#~ "node/tree/master/client>`_"
+#~ msgstr ""
+#~ "`Instructions <https://github.com/CasperLabs/casper-"
+#~ "node/tree/master/client>`_"
+
+#~ msgid "There is an official Rust client, that works with the Delta Testnet."
+#~ msgstr ""
+#~ "Il existe un client Rust officiel, qui fonctionne avec le réseau Delta "
+#~ "Testnet."
+
+#~ msgid "Sending a Deployment to the Delta Testnet"
+#~ msgstr "Envoi d'un déploiement au réseau Delta Testnet"
+
+#~ msgid ""
+#~ "The easiest way to deploy a contract is to use an existing public network.  "
+#~ "CasperLabs provides a Testnet for this. The Testnet is operated by external "
+#~ "validators that can accept transactions."
+#~ msgstr ""
+#~ "La façon la plus simple de déployer un contrat est d'utiliser un réseau "
+#~ "public existant. CasperLabs fournit un réseau Testnet à cet effet. Ce réseau"
+#~ " est géré par des validateurs externes qui peuvent accepter des "
+#~ "transactions."
+
+#~ msgid ""
+#~ "It is also possible to check the contract's state by performing a ``query-"
+#~ "state`` command using the client."
+#~ msgstr ""
+#~ "Il est également possible de vérifier l'état du contrat en exécutant la "
+#~ "commande ``query-state`` à l'aide du client."
+
+#~ msgid ""
+#~ "A common question that frequently arises is: \"How do I know what the "
+#~ "payment amount (gas cost) should be?\" The honest answer is that we are hard"
+#~ " at work to create tools to help you estimate your costs. Currently, we "
+#~ "recommend using the `NCTL <https://docs.casperlabs.io/en/latest/dapp-dev-"
+#~ "guide/setup-nctl.html>`_ tool on your local machine or the testnet to deploy"
+#~ " your contracts in a test environment. As you just saw, you can check a "
+#~ "deploy status and roughly see how much it would actually cost when deployed."
+#~ msgstr ""
+#~ "Une question qui revient souvent est : \"Comment puis-je savoir quel doit "
+#~ "être le montant du paiement (coût du gas) ?\". La réponse honnête est que "
+#~ "nous travaillons dur pour créer des outils qui vous aideront à estimer vos "
+#~ "coûts. Actuellement, nous recommandons d'utiliser l'outil `NCTL "
+#~ "<https://docs.casperlabs.io/fr/latest/dapp-dev-guide/setup-nctl.html>`_ sur "
+#~ "votre machine locale ou le réseau testnet pour déployer vos contrats dans un"
+#~ " environnement de test. Comme vous venez de le voir, vous pouvez vérifier "
+#~ "l'état d'un déploiement et voir approximativement combien il coûterait "
+#~ "réellement une fois déployé."
+
+#~ msgid "CasperLabs supports complex deployments."
+#~ msgstr "CasperLabs prend en charge les déploiements complexes."
+
+#~ msgid ""
+#~ "Every account can associate multiple keys with it and give each a weight. "
+#~ "Collective weight of signing keys decides whether an action of certain type "
+#~ "can be made. To learn more about how weights and threshholds work, please "
+#~ "review the `Blockchain Design "
+#~ "<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_. In "
+#~ "order to collect weight of different associated keys, a deploy has to be "
+#~ "signed by corresponding private keys. The ``put-deploy`` command creates a "
+#~ "deploy, signs it and deploys to the node but doesn't allow for signing with "
+#~ "multiple keys. Therefore, we split ``deploy`` into separate commands:"
+#~ msgstr ""
+#~ "Chaque compte peut être associé à plusieurs clés et donner à chacune un "
+#~ "poids. Le poids collectif des clés de signature décide si une action d'un "
+#~ "certain type peut être effectuée. Pour en savoir plus sur le fonctionnement "
+#~ "des poids et des seuils, veuillez consulter la `Conception Blockchain "
+#~ "<https://docs.casperlabs.io/fr/latest/implementation/accounts.html>`_. Afin "
+#~ "de collecter le poids des différentes clés associées, un deploy doit être "
+#~ "signé par les clés privées correspondantes. La commande ``put-deploy`` crée "
+#~ "un deploy, le signe et le déploie sur le nœud mais ne permet pas de signer "
+#~ "avec plusieurs clés. Par conséquent, ``deploy`` a été divisée en commandes "
+#~ "séparées :"
+
+#~ msgid "``send-deploy``  - sends a deploy to CasperLabs node"
+#~ msgstr "``send-deploy`` - envoie un déploiement vers le nœud CasperLabs"
