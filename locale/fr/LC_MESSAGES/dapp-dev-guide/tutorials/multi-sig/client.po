@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:46+0000\n"
 "Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
@@ -42,13 +42,13 @@ msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:5
 msgid ""
-"You will test your client using `nctl <https://github.com/CasperLabs/casper-"
-"node/tree/master/utils/nctl>`_, and you will interact with your local "
-"blockchain."
+"You will test your client using `nctl <https://github.com/casper-network"
+"/casper-node/tree/master/utils/nctl>`_, and you will interact with your "
+"local blockchain."
 msgstr ""
-"Vous testerez votre client en utilisant `nctl <https://github.com/CasperLabs"
-"/casper-node/tree/master/utils/nctl>`_, et vous interagirez avec votre "
-"blockchain locale."
+"Vous testerez votre client en utilisant `nctl <https://github.com/casper-"
+"network/casper-node/tree/master/utils/nctl>`_, et vous interagirez avec "
+"votre blockchain locale."
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:8
 msgid "Prerequisites"
@@ -64,11 +64,11 @@ msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:10
 msgid ""
-"You have set up the `NCTL <https://github.com/CasperLabs/casper-"
+"You have set up the `NCTL <https://github.com/casper-network/casper-"
 "node/tree/master/utils/nctl>`_ tool according to the `NCTL guide "
 "<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_"
 msgstr ""
-"Vous avez configuré l'outil `NCTL <https://github.com/CasperLabs/casper-"
+"Vous avez configuré l'outil `NCTL <https://github.com/casper-network/casper-"
 "node/tree/master/utils/nctl>`_ selon le guide `NCTL "
 "<https://docs.casperlabs.io/fr/latest/dapp-dev-guide/setup-nctl.html>`_"
 
@@ -83,7 +83,7 @@ msgstr ""
 "Naviguez dans votre dossier ``casper-node`` et exécutez les commandes NCTL "
 "suivantes."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:22
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:21
 msgid ""
 "The network you created with the NCTL tool has a special account called a "
 "faucet account, which holds your tokens. You will need these tokens to "
@@ -96,11 +96,11 @@ msgstr ""
 "vous pouvez voir les détails de votre compte faucet avec la commande ci-"
 "dessous."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:29
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:28
 msgid "Setting up the Client"
 msgstr "Configuration du Client"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:30
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:29
 msgid ""
 "Navigate to your ``keys-manager/client/`` folder and create the ``.env`` "
 "file to specify the configuration needed for your client to communicate with"
@@ -110,7 +110,7 @@ msgstr ""
 "``.env`` pour spécifier la configuration nécessaire à votre client pour "
 "communiquer avec le réseau."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:38
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:37
 msgid ""
 "This client code, by default, expects a compiled WASM file in the "
 "``contract`` folder and a local network called ``casper-net-1``. In this "
@@ -126,101 +126,101 @@ msgstr ""
 " qu'une seule entrée pour le ``BASE_KEY_PATH`` et ressemblera à ceci (en "
 "remplaçant <ENTER_YOUR_PATH> avec votre chemin):"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:44
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:43
 msgid "You can set other environment variables described in the table below."
 msgstr ""
 "Vous pouvez définir d'autres variables d'environnement décrites dans le "
 "tableau ci-dessous."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:47
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:46
 msgid "Variable"
 msgstr "Variable"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:47
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:46
 msgid "Description"
 msgstr "Description"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:47
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:46
 msgid "Default value"
 msgstr "Default value"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:48
 msgid "NODE_URL"
 msgstr "NODE_URL"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:48
 msgid "The URL of the first node in your local network."
 msgstr "L'URL du premier nœud de votre réseau local."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:48
 msgid "``http://localhost:40101/rpc``"
 msgstr "``http://localhost:40101/rpc``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
 msgid "WASM_PATH"
 msgstr "WASM_PATH"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
 msgid "The path of the compiled WASM contract."
 msgstr "Le chemin du contrat WASM compilé."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
 msgid ""
 "``../contract/target/wasm32-unknown-unknown/release/keys-manager.wasm``"
 msgstr ""
 "``../contract/target/wasm32-unknown-unknown/release/keys-manager.wasm``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
 msgid "NETWORK_NAME"
 msgstr "NETWORK_NAME"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
 msgid "The name of your local network set up by NCTL."
 msgstr "Le nom de votre réseau local mis en place par NCTL."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
 msgid "``casper-net-1``"
 msgstr "``casper-net-1``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
 msgid "FUND_AMOUNT"
 msgstr "FUND_AMOUNT"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
 msgid "Number of motes that accounts will be funded."
 msgstr "Nombre de motes avec lesquels les comptes seront approvisionnés."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
 msgid "``10000000000000``"
 msgstr "``10000000000000``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
 msgid "PAYMENT_AMOUNT"
 msgstr "PAYMENT_AMOUNT"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
 msgid "Number of motes that will be used as payment for deploys."
 msgstr ""
 "Nombre de motes qui seront utilisés comme paiement pour les déploiements."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
 msgid "``100000000000``"
 msgstr "``100000000000``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:54
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
 msgid "TRANSFER_AMOUNT"
 msgstr "TRANSFER_AMOUNT"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:54
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
 msgid "Number of motes that will be used for native test transfers."
 msgstr ""
 "Nombre de motes qui seront utilisés pour les transferts de test natifs."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:54
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
 msgid "``2500000000``"
 msgstr "``2500000000``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:57
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:56
 msgid ""
 "Next, close the ``.env`` file and install the JavaScript packages in the "
 "``keys-manager/client`` folder with the following command."
@@ -228,38 +228,48 @@ msgstr ""
 "Ensuite, fermez le fichier ``.env`` et installez les packages JavaScript "
 "dans le dossier ``keys-manager/client`` avec la commande suivante."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:65
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:64
 msgid "Testing the Client"
 msgstr "Test du Client"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:67
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:66
 msgid ""
-"Navigate to your ``/keys-manager/client`` folder and run the ``keys-"
-"manager`` using ``npm``. Your WASM file's path is relative to the ``client``"
-" folder, so you need to run the file from here."
+"Navigate to your ``/keys-manager/client`` folder and run the `keys-manager` "
+"using `npm`. Your WASM file's path is relative to the ``client`` folder, so "
+"you need to run the file from here."
 msgstr ""
-"Naviguez vers votre dossier ``/keys-manager/client`` et exécutez le ``keys-"
+"Naviguez vers votre dossier ``/keys-manager/client`` et exécutez ``keys-"
 "manager`` en utilisant ``npm``. Le chemin de votre fichier WASM est relatif "
 "au dossier ``client``, donc vous devez exécuter le fichier à partir d'ici."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:73
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:72
+msgid ""
+"**Note**: You may have to wait some time after entering the above command "
+"until you see a result."
+msgstr ""
+"**Note** : Il se peut que vous deviez attendre un certain temps après avoir "
+"entré la commande ci-dessus avant de voir un résultat."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:74
 msgid "If the code works, the beginning of the output will look like this:"
 msgstr "Si le code fonctionne, le début de la sortie ressemblera à ceci :"
 
 msgid "An image of the beginning of the keys-manager output."
 msgstr "Une image du début de la sortie du keys-manager."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:78
-msgid "You can match the output against the expected output described below."
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:80
+msgid ""
+"You can match the rest of the output against the expected output described "
+"in the next section while exploring the client code."
 msgstr ""
-"Vous pouvez comparer votre sortie avec le sortie attendue décrite ci-"
-"dessous."
+"Vous pouvez comparer le reste de la sortie avec la sortie attendue décrite "
+"dans la section suivante tout en explorant le code client."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:82
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:83
 msgid "Exploring the Client Code"
 msgstr "Exploration du code client"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:84
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:85
 msgid ""
 "If you would like to explore the client output and how the client code "
 "implements key management, open the client output and the ``keys-"
@@ -269,11 +279,11 @@ msgstr ""
 "client implémente la gestion des clés, ouvrez la sortie du client et le "
 "fichier ``keys-manager.js`` côte à côte."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:86
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:87
 msgid "In the code, we set the weight for the primary account to 3."
 msgstr "Dans le code, nous avons fixé le poids du compte primaire à 3."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:92
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:93
 msgid ""
 "At this point, we expect an account structure similar to the following, with"
 " real account addresses replacing the sample addresses:"
@@ -281,7 +291,7 @@ msgstr ""
 "À ce stade, nous prévoyons une structure de compte similaire à la suivante, "
 "avec des adresses de compte réelles remplaçant les adresses types :"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:113
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:114
 msgid ""
 "Next, we set the key management threshold for the main account to 3. With "
 "this threshold, you can manage other keys and have control over the entire "
@@ -291,18 +301,18 @@ msgstr ""
 "principal à 3. Avec ce seuil, vous pouvez gérer d'autres clés et avoir le "
 "contrôle sur l'ensemble du compte."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:119
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:145
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:120
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:146
 msgid "We expect an account structure similar to this:"
 msgstr "Nous nous attendons à une structure de compte similaire à celle-ci :"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:139
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:140
 msgid ""
 "Next, the client code sets the deployment threshold to 2 for this account."
 msgstr ""
 "Ensuite, le code client fixe le seuil de déploiement à 2 pour ce compte."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:165
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:166
 msgid ""
 "The next step is to add a new key with weight 1. You cannot do anything with"
 " this key alone since all the action thresholds are higher than 1."
@@ -311,7 +321,7 @@ msgstr ""
 "Vous ne pouvez rien faire avec cette seule clé puisque tous les seuils "
 "d'action sont supérieurs à 1."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:171
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:172
 msgid ""
 "We expect this account structure, with a new associated key and account "
 "address:"
@@ -319,7 +329,7 @@ msgstr ""
 "Nous nous attendons à cette structure de compte, avec une nouvelle clé "
 "associée et une adresse de compte :"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:195
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:196
 msgid ""
 "We will add another key with weight 1. If you use this key with the second "
 "key, you can deploy, since the weights add up to 2."
@@ -328,11 +338,11 @@ msgstr ""
 " clé avec la deuxième clé, vous pouvez déployer, puisque les poids "
 "s'additionnent pour atteindre 2."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:201
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:202
 msgid "We expect an account structure similar to the following:"
 msgstr "Nous nous attendons à une structure de compte similaire à celle-ci :"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:229
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:230
 msgid ""
 "Next, we will transfer tokens from the main account and perform a "
 "deployment. When the deployment accounts sign the transaction, they can "
@@ -348,7 +358,7 @@ msgstr ""
 msgid "Image showing the output of the funds transfer."
 msgstr "Image montrant la sortie du transfert de fonds."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:241
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:242
 msgid ""
 "If you dive into the `transferDeploy` function, you will see the transfer of"
 " funds."
@@ -356,7 +366,7 @@ msgstr ""
 "Si vous parcourez en détail la fonction `transferDeploy`, vous verrez le "
 "transfert de fonds."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:258
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:259
 msgid ""
 "After the above transfer of funds, the client code removes both deployment "
 "accounts."
@@ -364,17 +374,17 @@ msgstr ""
 "Après le transfert de fonds ci-dessus, le code client supprime les deux "
 "comptes de déploiement."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:268
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:269
 msgid "At this point, we expect the following account structure:"
 msgstr ""
 "Après le transfert de fonds ci-dessus, le code client supprime les deux "
 "comptes de déploiement."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:288
-msgid "Congratulations! You have completed the tutorial."
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:289
+msgid "Congratulations! You have completed this tutorial."
 msgstr "Félicitations ! Vous avez terminé le tutoriel."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:290
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:291
 msgid ""
 "You can now employ a similar strategy to set up your account using multiple "
 "keys."
@@ -382,9 +392,44 @@ msgstr ""
 "Vous pouvez maintenant employer une stratégie similaire pour configurer "
 "votre compte en utilisant plusieurs clés."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:292
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:293
 msgid ""
 "We offer some additional examples of account management in the next section."
 msgstr ""
 "Nous proposons quelques exemples supplémentaires de gestion de compte dans "
 "la section suivante."
+
+#~ msgid ""
+#~ "You will test your client using `nctl <https://github.com/CasperLabs/casper-"
+#~ "node/tree/master/utils/nctl>`_, and you will interact with your local "
+#~ "blockchain."
+#~ msgstr ""
+#~ "Vous testerez votre client en utilisant `nctl <https://github.com/CasperLabs"
+#~ "/casper-node/tree/master/utils/nctl>`_, et vous interagirez avec votre "
+#~ "blockchain locale."
+
+#~ msgid ""
+#~ "You have set up the `NCTL <https://github.com/CasperLabs/casper-"
+#~ "node/tree/master/utils/nctl>`_ tool according to the `NCTL guide "
+#~ "<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_"
+#~ msgstr ""
+#~ "Vous avez configuré l'outil `NCTL <https://github.com/CasperLabs/casper-"
+#~ "node/tree/master/utils/nctl>`_ selon le guide `NCTL "
+#~ "<https://docs.casperlabs.io/fr/latest/dapp-dev-guide/setup-nctl.html>`_"
+
+#~ msgid ""
+#~ "Navigate to your ``/keys-manager/client`` folder and run the ``keys-"
+#~ "manager`` using ``npm``. Your WASM file's path is relative to the ``client``"
+#~ " folder, so you need to run the file from here."
+#~ msgstr ""
+#~ "Naviguez vers votre dossier ``/keys-manager/client`` et exécutez le ``keys-"
+#~ "manager`` en utilisant ``npm``. Le chemin de votre fichier WASM est relatif "
+#~ "au dossier ``client``, donc vous devez exécuter le fichier à partir d'ici."
+
+#~ msgid "You can match the output against the expected output described below."
+#~ msgstr ""
+#~ "Vous pouvez comparer votre sortie avec le sortie attendue décrite ci-"
+#~ "dessous."
+
+#~ msgid "Congratulations! You have completed the tutorial."
+#~ msgstr "Félicitations ! Vous avez terminé le tutoriel."
