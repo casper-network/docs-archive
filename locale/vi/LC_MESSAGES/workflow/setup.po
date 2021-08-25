@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -193,15 +193,15 @@ msgid ""
 "The above command will create three files in the current working directory:"
 msgstr "Lệnh trên sẽ tạo ba tệp trong thư mục làm việc hiện tại:"
 
-#: ../../workflow/setup.rst:77
+#: ../../workflow/setup.rst:77 ../../workflow/setup.rst:98
 msgid "``secret_key.pem`` - PEM encoded secret key"
 msgstr "``secret_key.pem`` - Khóa bí mật được mã hóa PEM"
 
-#: ../../workflow/setup.rst:78
+#: ../../workflow/setup.rst:78 ../../workflow/setup.rst:99
 msgid "``public_key.pem`` - PEM encoded public key"
 msgstr "``public_key.pem`` - Khóa công khai được mã hóa PEM"
 
-#: ../../workflow/setup.rst:79
+#: ../../workflow/setup.rst:79 ../../workflow/setup.rst:100
 msgid "``public_key_hex`` - Hexadecimal-encoded string of the public key"
 msgstr "``public_key_hex`` - Chuỗi mã hóa Hexadecimal của khóa công khai"
 
@@ -252,41 +252,23 @@ msgstr ""
 
 #: ../../workflow/setup.rst:94
 msgid ""
-"Start by creating an account using the `Create Account <https://clarity-"
-"testnet-old.make.services/#/accounts>`_ link. You will be asked to provide a"
-" unique name for your account; this is for your convenience and is not "
-"stored on chain."
+"Start by creating an account using the `Create Account "
+"<https://testnet.cspr.live/create-account>`_ link. You will need to download"
+" the keys of your new account by clicking on the ``Download Keys`` button. "
+"Note that the account is not stored on chain."
 msgstr ""
-"Bắt đầu bằng cách tạo tài khoản theo đường dẫn `Tạo tài khoản <https"
-"://clarity-testnet-old.make.services/#/accounts>`_. Bạn sẽ được yêu cầu cung"
-" cấp một tên duy nhất cho tài khoản của mình; điều này là để thuận tiện cho "
-"bạn tuy nhiên tên sẽ không được lưu trữ trên chuỗi."
+"Bắt đầu bằng cách tạo tài khoản bằng liên kết `Tạo tài khoản "
+"<https://testnet.cspr.live/create-account>`_. Bạn sẽ cần tải xuống các khóa "
+"của tài khoản mới của mình bằng cách nhấp vào nút ``Tải xuống khóa``. Lưu ý "
+"rằng tài khoản không được lưu trữ trên chuỗi."
 
 #: ../../workflow/setup.rst:96
 msgid ""
-"You will be prompted to save three files for your new account; carefully "
-"choose where you store them. We recommend storing your keys in a secure "
-"manner."
+"You will be prompted to save the following three files for your new account."
+" These are your keys, so we recommend securely storing them:"
 msgstr ""
-"Bạn sẽ được nhắc lưu ba tệp cho tài khoản mới của mình; cẩn thận chọn nơi "
-"bạn lưu trữ chúng. Chúng tôi khuyên bạn nên lưu trữ các khóa của mình một "
-"cách an toàn."
-
-#: ../../workflow/setup.rst:98
-msgid "``<Account-Name>_secret_key.pem`` - PEM encoded secret key"
-msgstr "``<Account-Name>_secret_key.pem`` - Khóa bí mật được mã hóa PEM"
-
-#: ../../workflow/setup.rst:99
-msgid "``<Account-Name>_public_key.pem`` - PEM encoded public key"
-msgstr "``<Account-Name>_public_key.pem`` - Khóa công khai được mã hóa PEM"
-
-#: ../../workflow/setup.rst:100
-msgid ""
-"``<Account-Name>_public_key_hex`` - Hexadecimal-encoded string of the public"
-" key"
-msgstr ""
-"``<Account-Name>_public_key_hex`` - Chuỗi mã hóa Hexadecimal của khóa công "
-"khai"
+"Bạn sẽ được nhắc lưu ba tệp sau cho tài khoản mới của mình. Đây là các khóa "
+"của bạn, vì vậy chúng tôi khuyên bạn nên lưu trữ chúng một cách an toàn:"
 
 #: ../../workflow/setup.rst:104
 msgid "Fund your Account"
@@ -303,12 +285,12 @@ msgstr ""
 #: ../../workflow/setup.rst:108
 msgid ""
 "In Testnet, you can fund the account by using the *Request tokens* button on"
-" the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to "
-"receive tokens."
+" the `Faucet Page <https://testnet.cspr.live/tools/faucet>`_ to receive "
+"tokens."
 msgstr ""
-"Trong Testnet, bạn có thể nạp tiền vào tài khoản bằng cách sử dụng nút "
-"*Request tokens* trên `Faucet Page <https://clarity-testnet-"
-"old.make.services/#/faucet>`_ để nhận mã thông báo."
+"Trong Testnet, bạn có thể nạp tiền vào tài khoản bằng cách sử dụng nút *Yêu "
+"cầu mã thông báo* trên `Faucet Page "
+"<https://testnet.cspr.live/tools/faucet>`_ để nhận token."
 
 #: ../../workflow/setup.rst:110
 msgid ""
@@ -381,3 +363,45 @@ msgid ""
 msgstr ""
 "**Lưu ý**: Nếu ứng dụng ngang hàng đã chọn không phản hồi, hãy chọn một ứng "
 "dụng ngang hàng khác và thử lại."
+
+#~ msgid ""
+#~ "Start by creating an account using the `Create Account <https://clarity-"
+#~ "testnet-old.make.services/#/accounts>`_ link. You will be asked to provide a"
+#~ " unique name for your account; this is for your convenience and is not "
+#~ "stored on chain."
+#~ msgstr ""
+#~ "Bắt đầu bằng cách tạo tài khoản theo đường dẫn `Tạo tài khoản <https"
+#~ "://clarity-testnet-old.make.services/#/accounts>`_. Bạn sẽ được yêu cầu cung"
+#~ " cấp một tên duy nhất cho tài khoản của mình; điều này là để thuận tiện cho "
+#~ "bạn tuy nhiên tên sẽ không được lưu trữ trên chuỗi."
+
+#~ msgid ""
+#~ "You will be prompted to save three files for your new account; carefully "
+#~ "choose where you store them. We recommend storing your keys in a secure "
+#~ "manner."
+#~ msgstr ""
+#~ "Bạn sẽ được nhắc lưu ba tệp cho tài khoản mới của mình; cẩn thận chọn nơi "
+#~ "bạn lưu trữ chúng. Chúng tôi khuyên bạn nên lưu trữ các khóa của mình một "
+#~ "cách an toàn."
+
+#~ msgid "``<Account-Name>_secret_key.pem`` - PEM encoded secret key"
+#~ msgstr "``<Account-Name>_secret_key.pem`` - Khóa bí mật được mã hóa PEM"
+
+#~ msgid "``<Account-Name>_public_key.pem`` - PEM encoded public key"
+#~ msgstr "``<Account-Name>_public_key.pem`` - Khóa công khai được mã hóa PEM"
+
+#~ msgid ""
+#~ "``<Account-Name>_public_key_hex`` - Hexadecimal-encoded string of the public"
+#~ " key"
+#~ msgstr ""
+#~ "``<Account-Name>_public_key_hex`` - Chuỗi mã hóa Hexadecimal của khóa công "
+#~ "khai"
+
+#~ msgid ""
+#~ "In Testnet, you can fund the account by using the *Request tokens* button on"
+#~ " the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to "
+#~ "receive tokens."
+#~ msgstr ""
+#~ "Trong Testnet, bạn có thể nạp tiền vào tài khoản bằng cách sử dụng nút "
+#~ "*Request tokens* trên `Faucet Page <https://clarity-testnet-"
+#~ "old.make.services/#/faucet>`_ để nhận mã thông báo."
