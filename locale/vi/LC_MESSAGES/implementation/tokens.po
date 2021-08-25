@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -34,20 +34,18 @@ msgstr "Giới thiệu"
 #: ../../implementation/tokens.rst:11
 msgid ""
 "The Casper Network is a decentralized blockchain platform based on a Proof-"
-"of-Stake consensus algorithm called `Highway "
-"<https://github.com/CasperLabs/highway>`_. Having a unit of value is "
-"required to make this system work because users must pay for computation, "
-"and validators must have `stake "
-"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In the "
-"blockchain space, this unit of value is a *token*."
+"of-Stake consensus algorithm called `Highway <https://github.com/casper-"
+"network/highway>`_. Having a unit of value is required to make this system "
+"work because users must pay for computation, and validators must have `stake"
+" <https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In the"
+" blockchain space, this unit of value is a *token*."
 msgstr ""
-"Mạng Casper là một nền tảng chuỗi khối phi tập trung dựa trên thuật toán "
-"đồng thuận Proof-of-Stake có tên là `Highway "
-"<https://github.com/CasperLabs/highway>`_. Cần có một đơn vị giá trị để làm "
-"cho hệ thống này hoạt động vì người dùng phải trả cho việc tính toán và "
-"trình xác thực phải có `đặt cọc "
-"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ để liên kết . "
-"Trong không gian chuỗi khối, đơn vị giá trị này là *token*."
+"Mạng Casper là một nền tảng blockchain phi tập trung dựa trên thuật toán "
+"đồng thuận Proof-of-Stake được gọi là `Highway <https://github.com/casper-"
+"network/highway>`_. Cần có một đơn vị giá trị để làm cho hệ thống này hoạt "
+"động vì người dùng phải trả tiền cho việc tính toán và trình xác thực phải "
+"có `tiền đặt cọc <https://docs.casperlabs.io/en/latest/staking/index.html>`_"
+" để cổ phần . Trong không gian chuỗi khối, đơn vị giá trị này là *token*."
 
 #: ../../implementation/tokens.rst:13
 msgid ""
@@ -62,39 +60,34 @@ msgid "Token Generation and Distribution"
 msgstr "Tạo và phân phối token"
 
 #: ../../implementation/tokens.rst:18
-#, python-format
 msgid ""
 "A blockchain system generally needs to have a supply of tokens available to "
 "pay for computation and reward validators for processing transactions on the"
-" network. A great deal of effort has been taken to ensure that no single "
-"individual or entity acquires more than 1% of the tokens from the onset."
-msgstr ""
-"Một hệ thống chuỗi khối thường cần phải có nguồn cung cấp token có sẵn để "
-"thanh toán cho các nhà xác thực tính toán và thưởng để xử lý các giao dịch "
-"trên mạng. Rất nhiều nỗ lực đã được thực hiện để đảm bảo rằng không có cá "
-"nhân hoặc tổ chức nào có được hơn 1% số mã thông báo từ khi bắt đầu."
-
-#: ../../implementation/tokens.rst:20
-msgid ""
-"In addition to the initial supply, the system will have a low rate of "
+" network. The initial supply at the launch of Mainnet was 10 billion CSPR. "
+"The current supply is available `here <https://api.cspr.live/supply>`_. In "
+"addition to the initial supply, the system will have a low rate of "
 "inflation, the results of which will be paid out to validators in the form "
 "of seigniorage."
 msgstr ""
-"Ngoài nguồn cung cấp ban đầu, hệ thống sẽ có tỷ lệ lạm phát thấp, kết quả là"
-" sẽ được trả cho người xác thực dưới dạng seigniorage."
+"Một hệ thống chuỗi khối thường cần phải có sẵn nguồn cung token để thanh "
+"toán cho các trình xác thực tính toán và thưởng để xử lý các giao dịch trên "
+"mạng. Nguồn cung ban đầu khi ra mắt Mainnet là 10 tỷ CSPR. Nguồn cung cấp "
+"hiện tại có sẵn `tại đây <https://api.cspr.live/supply>`_. Ngoài nguồn cung "
+"cấp ban đầu, hệ thống sẽ có tỷ lệ lạm phát thấp, kết quả sẽ được trả cho "
+"trình xác thực dưới dạng thu nhập từ việc phát hành."
 
-#: ../../implementation/tokens.rst:22
+#: ../../implementation/tokens.rst:20
 msgid ""
 "The number of tokens used as a basis for calculating seigniorage is 10 "
 "billion."
 msgstr ""
 "Số lượng token được sử dụng làm cơ sở để tính toán seigniorage là 10 tỷ."
 
-#: ../../implementation/tokens.rst:27
+#: ../../implementation/tokens.rst:25
 msgid "Divisibility of Tokens"
 msgstr "Sự phân chia của token"
 
-#: ../../implementation/tokens.rst:29
+#: ../../implementation/tokens.rst:27
 msgid ""
 "Typically, a *token* is divisible into some number of parts. We call the "
 "indivisible units which make up the CSPR token *motes*. Each CSPR is "
@@ -108,11 +101,11 @@ msgstr ""
 " luôn biểu thị số dư mã thông báo bằng mote. Để so sánh, Ether có thể chia "
 "thành :math:`10^{18}` phần được gọi là Wei."
 
-#: ../../implementation/tokens.rst:34
+#: ../../implementation/tokens.rst:32
 msgid "Mints and Purses"
 msgstr "Mint và ví"
 
-#: ../../implementation/tokens.rst:36
+#: ../../implementation/tokens.rst:34
 msgid ""
 "A *mint* is a contract that can produce new motes of a particular type. We "
 "allow for multiple mote types (each of which would have its mint contract) "
@@ -139,7 +132,7 @@ msgstr ""
 "những số dư này là *ví* và đại diện về mặt khái niệm một khối chứa mote. "
 "``URef`` là cách một chiếc ví được tham chiếu ra bên ngoài, ngoài việc mint."
 
-#: ../../implementation/tokens.rst:38
+#: ../../implementation/tokens.rst:36
 msgid ""
 "The ``AccessRights`` of the :ref:`URefs <global-state-urefs-permissions>` "
 "permissions model determine what actions are allowed to be performed when "
@@ -149,7 +142,7 @@ msgstr ""
 "phân quyền xác định những hành động nào được phép thực hiện khi sử dụng "
 "``URef`` được liên kết với một ví."
 
-#: ../../implementation/tokens.rst:40
+#: ../../implementation/tokens.rst:38
 msgid ""
 "As all ``URef``\\ s are unforgeable, so the only way to interact with a "
 "purse is for a ``URef`` with appropriate ``AccessRights`` to be given to the"
@@ -161,7 +154,7 @@ msgstr ""
 "cảnh hiện tại một cách hợp lệ (xem :ref:`URefs <global-state-urefs-"
 "permissions>` quyền để biết thêm chi tiết)."
 
-#: ../../implementation/tokens.rst:42
+#: ../../implementation/tokens.rst:40
 msgid ""
 "The basic global state options map onto more standard monetary operations "
 "according to the table below:"
@@ -169,39 +162,39 @@ msgstr ""
 "Các tùy chọn trạng thái toàn cục cơ bản sẽ ánh xạ với các hoạt động tài "
 "khoản theo bảng dưới đây:"
 
-#: ../../implementation/tokens.rst:45
+#: ../../implementation/tokens.rst:43
 msgid "Global State Action"
 msgstr "Hành động của trạng thái toàn cục"
 
-#: ../../implementation/tokens.rst:45
+#: ../../implementation/tokens.rst:43
 msgid "Monetary Action"
 msgstr "Hành động với tài khoản"
 
-#: ../../implementation/tokens.rst:47
+#: ../../implementation/tokens.rst:45
 msgid "Add"
 msgstr "Add"
 
-#: ../../implementation/tokens.rst:47
+#: ../../implementation/tokens.rst:45
 msgid "Deposit (i.e. transfer to)"
 msgstr "Nạp vào (tức là chuyển tới)"
 
-#: ../../implementation/tokens.rst:48
+#: ../../implementation/tokens.rst:46
 msgid "Write"
 msgstr "Write"
 
-#: ../../implementation/tokens.rst:48
+#: ../../implementation/tokens.rst:46
 msgid "Withdraw (i.e. transfer from)"
 msgstr "Rút ra (tức là chuyển đi)"
 
-#: ../../implementation/tokens.rst:49
+#: ../../implementation/tokens.rst:47
 msgid "Read"
 msgstr "Read"
 
-#: ../../implementation/tokens.rst:49
+#: ../../implementation/tokens.rst:47
 msgid "Balance check"
 msgstr "Kiểm tra tài khoản"
 
-#: ../../implementation/tokens.rst:52
+#: ../../implementation/tokens.rst:50
 msgid ""
 "We will use these definitions throughout this chapter to describe the "
 "implementation and usage of tokens on the Casper system."
@@ -209,11 +202,11 @@ msgstr ""
 "Chúng tôi sẽ sử dụng các định nghĩa này trong suốt chương này để mô tả việc "
 "triển khai và sử dụng token trên hệ thống Casper."
 
-#: ../../implementation/tokens.rst:57
+#: ../../implementation/tokens.rst:55
 msgid "The mint Contract Interface"
 msgstr "Giao diện Hợp đồng mint"
 
-#: ../../implementation/tokens.rst:59
+#: ../../implementation/tokens.rst:57
 msgid ""
 "A valid mint contract exposes the following methods (recall that many mint "
 "implementations may exist, each corresponding to a different currency):"
@@ -222,13 +215,13 @@ msgstr ""
 "có nhiều phương pháp triển khai mint, mỗi phương pháp tương ứng với một loại"
 " tiền tệ khác nhau):"
 
-#: ../../implementation/tokens.rst:61
+#: ../../implementation/tokens.rst:59
 msgid ""
 "``transfer(source: URef, target: URef, amount: Motes) -> TransferResult``"
 msgstr ""
 "``transfer(source: URef, target: URef, amount: Motes) -> TransferResult``"
 
-#: ../../implementation/tokens.rst:63
+#: ../../implementation/tokens.rst:61
 msgid ""
 "``source`` must have at least ``Write`` access rights, ``target`` must have "
 "at least ``Add`` access rights"
@@ -236,7 +229,7 @@ msgstr ""
 "``source`` phải có ít nhất quyền ``Write``, ``đích`` phải có ít nhất quyền "
 "``Add``"
 
-#: ../../implementation/tokens.rst:65
+#: ../../implementation/tokens.rst:63
 msgid ""
 "``TransferResult`` may be a success acknowledgment or an error in the case "
 "of invalid ``source`` or ``target`` or insufficient balance in the "
@@ -246,11 +239,11 @@ msgstr ""
 "trường hợp ``nguồn`` hoặc ``đích`` không hợp lệ hoặc không đủ số dư trong ví"
 " ``nguồn``"
 
-#: ../../implementation/tokens.rst:68
+#: ../../implementation/tokens.rst:66
 msgid "``mint(amount: Motes) -> MintResult``"
 msgstr "``mint(amount: Motes) -> MintResult``"
 
-#: ../../implementation/tokens.rst:70
+#: ../../implementation/tokens.rst:68
 msgid ""
 "``MintResult`` either gives the created ``URef`` (with full access rights), "
 "which now has a balance equal to the given ``amount``; or an error due to "
@@ -260,7 +253,7 @@ msgstr ""
 " hiện có số dư bằng với ``amount`` đã cho; hoặc lỗi do không được phép mint "
 "các mote mới"
 
-#: ../../implementation/tokens.rst:73
+#: ../../implementation/tokens.rst:71
 msgid ""
 "In the Casper mint, only the system account can call ``mint``, and it has no"
 " private key to produce valid cryptographic signatures, which means only the"
@@ -271,11 +264,11 @@ msgstr ""
 " chỉ bản thân phần mềm mới có thể thực hiện các hợp đồng trong ngữ cảnh tài "
 "khoản hệ thống"
 
-#: ../../implementation/tokens.rst:78
+#: ../../implementation/tokens.rst:76
 msgid "``create() -> URef``"
 msgstr "``create() -> URef``"
 
-#: ../../implementation/tokens.rst:80
+#: ../../implementation/tokens.rst:78
 msgid ""
 "a convenience function for ``mint(0)`` which cannot fail because it is "
 "always allowed to create an empty purse"
@@ -283,15 +276,15 @@ msgstr ""
 "một chức năng tiện lợi cho ``mint(0)`` không thể bị lỗi vì nó luôn được phép"
 " tạo một ví trống"
 
-#: ../../implementation/tokens.rst:83
+#: ../../implementation/tokens.rst:81
 msgid "``balance(purse: URef) -> Option<Motes>``"
 msgstr "``balance(purse: URef) -> Option<Motes>``"
 
-#: ../../implementation/tokens.rst:85
+#: ../../implementation/tokens.rst:83
 msgid "``purse`` must have at least ``Read`` access rights"
 msgstr "``Ví`` phải có ít nhất quyền ``Read``"
 
-#: ../../implementation/tokens.rst:86
+#: ../../implementation/tokens.rst:84
 msgid ""
 "``BalanceResult`` either returns the number of motes held by the ``purse``, "
 "or nothing if the ``URef`` is not valid"
@@ -299,11 +292,11 @@ msgstr ""
 "``BalanceResult`` trả về số lượng mote được giữ bởi ``ví`` hoặc không có gì "
 "nếu ``URef``  không hợp lệ"
 
-#: ../../implementation/tokens.rst:92
+#: ../../implementation/tokens.rst:90
 msgid "Using purse ``URef``\\ s"
 msgstr "Sử dụng ví ``URef``"
 
-#: ../../implementation/tokens.rst:94
+#: ../../implementation/tokens.rst:92
 msgid ""
 "It is dangerous to pass a purse's ``URef`` with ``Write`` permissions to a "
 "contract. A malicious contract may use that access to take more tokens than "
@@ -323,25 +316,25 @@ msgstr ""
 "phạm, nó không chứa bất kỳ khoản tiền nào nhiều hơn số tiền mà người dùng dự"
 " định chuyển."
 
-#: ../../implementation/tokens.rst:106
+#: ../../implementation/tokens.rst:104
 msgid ""
 "To avoid this inconvenience, it is a better practice for application "
 "developers intending to accept payment on-chain to make a version of their "
-"own purse ``URef`` with ``Read`` access rights publicly available. This "
-"allows clients to pay via a transfer using their purse, without either party"
-" exposing ``Write`` access to any purse."
+"own purse ``URef`` with ``Read`` and ``Add``  access rights publicly "
+"available. This allows clients to pay via a transfer using their purse, "
+"without either party exposing ``Write`` access to any purse."
 msgstr ""
 "Để tránh sự bất tiện này, cách tốt hơn là các nhà phát triển ứng dụng có ý "
-"định chấp nhận thanh toán trên chuỗi là tạo một phiên bản ví của riêng họ "
-"``URef`` với quyền truy cập ``Read`` được công bố công khai. Điều này cho "
-"phép khách hàng thanh toán qua chuyển khoản bằng ví của họ mà không bên nào "
-"để lộ quyền truy cập ``Write`` vào bất kỳ ví nào."
+"định chấp nhận thanh toán trên chuỗi là tạo phiên bản ví riêng của họ "
+"``URef`` với các quyền truy cập ``Read`` và ``Add`` được công bố công khai. "
+"Điều này cho phép khách hàng thanh toán qua chuyển khoản bằng ví của họ mà "
+"không bên nào để lộ quyền truy cập ``Write`` vào bất kỳ ví nào."
 
-#: ../../implementation/tokens.rst:112
+#: ../../implementation/tokens.rst:110
 msgid "Purses and Accounts"
 msgstr "Ví và tài khoản"
 
-#: ../../implementation/tokens.rst:114
+#: ../../implementation/tokens.rst:112
 msgid ""
 "All :ref:`accounts-head` on the Casper system have a purse associated with "
 "the Casper system mint, which we call the *main purse*. However, for "
@@ -369,3 +362,52 @@ msgstr ""
 "account-key>` của tài khoản. Hàm này sử dụng chức năng chuyển giao mint với "
 "ví chính của tài khoản hiện tại là ``nguồn`` và ví chính của tài khoản tại "
 "khóa đã cung cấp làm ``đích``."
+
+#~ msgid ""
+#~ "The Casper Network is a decentralized blockchain platform based on a Proof-"
+#~ "of-Stake consensus algorithm called `Highway "
+#~ "<https://github.com/CasperLabs/highway>`_. Having a unit of value is "
+#~ "required to make this system work because users must pay for computation, "
+#~ "and validators must have `stake "
+#~ "<https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In the "
+#~ "blockchain space, this unit of value is a *token*."
+#~ msgstr ""
+#~ "Mạng Casper là một nền tảng chuỗi khối phi tập trung dựa trên thuật toán "
+#~ "đồng thuận Proof-of-Stake có tên là `Highway "
+#~ "<https://github.com/CasperLabs/highway>`_. Cần có một đơn vị giá trị để làm "
+#~ "cho hệ thống này hoạt động vì người dùng phải trả cho việc tính toán và "
+#~ "trình xác thực phải có `đặt cọc "
+#~ "<https://docs.casperlabs.io/en/latest/staking/index.html>`_ để liên kết . "
+#~ "Trong không gian chuỗi khối, đơn vị giá trị này là *token*."
+
+#~ msgid ""
+#~ "A blockchain system generally needs to have a supply of tokens available to "
+#~ "pay for computation and reward validators for processing transactions on the"
+#~ " network. A great deal of effort has been taken to ensure that no single "
+#~ "individual or entity acquires more than 1% of the tokens from the onset."
+#~ msgstr ""
+#~ "Một hệ thống chuỗi khối thường cần phải có nguồn cung cấp token có sẵn để "
+#~ "thanh toán cho các nhà xác thực tính toán và thưởng để xử lý các giao dịch "
+#~ "trên mạng. Rất nhiều nỗ lực đã được thực hiện để đảm bảo rằng không có cá "
+#~ "nhân hoặc tổ chức nào có được hơn 1% số mã thông báo từ khi bắt đầu."
+
+#~ msgid ""
+#~ "In addition to the initial supply, the system will have a low rate of "
+#~ "inflation, the results of which will be paid out to validators in the form "
+#~ "of seigniorage."
+#~ msgstr ""
+#~ "Ngoài nguồn cung cấp ban đầu, hệ thống sẽ có tỷ lệ lạm phát thấp, kết quả là"
+#~ " sẽ được trả cho người xác thực dưới dạng seigniorage."
+
+#~ msgid ""
+#~ "To avoid this inconvenience, it is a better practice for application "
+#~ "developers intending to accept payment on-chain to make a version of their "
+#~ "own purse ``URef`` with ``Read`` access rights publicly available. This "
+#~ "allows clients to pay via a transfer using their purse, without either party"
+#~ " exposing ``Write`` access to any purse."
+#~ msgstr ""
+#~ "Để tránh sự bất tiện này, cách tốt hơn là các nhà phát triển ứng dụng có ý "
+#~ "định chấp nhận thanh toán trên chuỗi là tạo một phiên bản ví của riêng họ "
+#~ "``URef`` với quyền truy cập ``Read`` được công bố công khai. Điều này cho "
+#~ "phép khách hàng thanh toán qua chuyển khoản bằng ví của họ mà không bên nào "
+#~ "để lộ quyền truy cập ``Write`` vào bất kỳ ví nào."
