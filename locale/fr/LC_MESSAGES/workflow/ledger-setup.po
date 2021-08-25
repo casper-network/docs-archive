@@ -1,0 +1,404 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-08-23 20:09+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../workflow/ledger-setup.rst:2
+msgid "Ledger Setup"
+msgstr "Configuration Ledger"
+
+#: ../../workflow/ledger-setup.rst:4
+msgid ""
+"A Ledger Device is a hardware wallet that is considered one of the most "
+"secure ways to store your digital assets. Ledger uses an offline, or cold "
+"storage, method of generating private keys, making it a preferred method for"
+" many crypto users. This guide will help you to connect your Ledger device "
+"to the Casper Web wallet (https://cspr.live). The Casper Web wallet enables "
+"you to send and receive CSPR tokens."
+msgstr ""
+"Un appareil Ledger est un portefeuille matériel qui est considéré comme l'un"
+" des moyens les plus sûrs de stocker vos actifs numériques. Ledger utilise "
+"une méthode hors ligne, ou stockage à froid, pour générer des clés privées, "
+"ce qui en fait la méthode préférée de nombreux utilisateurs de crypto-"
+"monnaies. Ce guide vous aidera à connecter votre appareil Ledger au porte-"
+"monnaie Web Casper (https://cspr.live). Le porte-monnaie Web Casper vous "
+"permet d'envoyer et de recevoir des jetons CSPR."
+
+#: ../../workflow/ledger-setup.rst:6
+msgid "If you need help, contact us on the following services:"
+msgstr "Si vous avez besoin d'aide, contactez-nous sur les liens suivants :"
+
+#: ../../workflow/ledger-setup.rst:8
+msgid "Twitter: https://twitter.com/Casper_Network"
+msgstr "Twitter: https://twitter.com/Casper_Network"
+
+#: ../../workflow/ledger-setup.rst:9
+msgid "Discord: https://discord.com/invite/Q38s3Vh"
+msgstr "Discord: https://discord.com/invite/Q38s3Vh"
+
+#: ../../workflow/ledger-setup.rst:10
+msgid "Telegram: https://t.me/casperblockchain"
+msgstr "Telegram: https://t.me/casperblockchain"
+
+#: ../../workflow/ledger-setup.rst:14
+msgid "Requirements"
+msgstr "Exigences"
+
+#: ../../workflow/ledger-setup.rst:17
+msgid "Before you begin"
+msgstr "Avant de commencer"
+
+#: ../../workflow/ledger-setup.rst:18
+msgid "You have initialized your Ledger Nano S/X."
+msgstr "Vous avez initialisé votre Ledger Nano S/X."
+
+#: ../../workflow/ledger-setup.rst:19
+msgid "You have installed the latest firmware on your Ledger Nano S/X."
+msgstr "Vous avez installé le dernier firmware sur votre Ledger Nano S/X."
+
+#: ../../workflow/ledger-setup.rst:20
+msgid "Ledger Live is ready to use."
+msgstr "Ledger Live est prêt à être utilisé."
+
+#: ../../workflow/ledger-setup.rst:21
+msgid "You have installed a Chromium-based browser such as Chrome or Brave."
+msgstr ""
+"Vous avez installé un navigateur basé sur Chromium, tel que Chrome ou Brave."
+
+#: ../../workflow/ledger-setup.rst:24
+msgid "Install the Casper app on the Ledger device"
+msgstr "Installez l'application Casper sur l'appareil Ledger."
+
+#: ../../workflow/ledger-setup.rst:25
+msgid "Open the Manager in Ledger Live."
+msgstr "Ouvrez le gestionnaire (Manager) dans Ledger Live."
+
+#: ../../workflow/ledger-setup.rst:26 ../../workflow/ledger-setup.rst:41
+msgid "Connect and unlock your Ledger device."
+msgstr "Connectez et déverrouillez votre appareil Ledger."
+
+#: ../../workflow/ledger-setup.rst:27
+msgid ""
+"If asked, allow the manager on your device by pressing the right button."
+msgstr ""
+"Si on vous le demande, autorisez le gestionnaire sur votre appareil en "
+"appuyant sur le bouton droit."
+
+#: ../../workflow/ledger-setup.rst:28
+msgid "Find Casper in the app catalog."
+msgstr "Trouvez Casper dans le catalogue d'applications."
+
+#: ../../workflow/ledger-setup.rst:29
+msgid "Click the Install button of the app."
+msgstr "Cliquez sur le bouton Installer de l'application."
+
+#: ../../workflow/ledger-setup.rst:30
+msgid "An installation window appears."
+msgstr "Une fenêtre d'installation apparaît."
+
+#: ../../workflow/ledger-setup.rst:31
+msgid "Your device will display **\"Processing…\"**"
+msgstr "Votre appareil affichera **\"Processing... \"**."
+
+#: ../../workflow/ledger-setup.rst:32
+msgid "The app installation is confirmed."
+msgstr "L'installation de l'application est confirmée."
+
+#: ../../workflow/ledger-setup.rst:35
+msgid "Use Ledger device with your Web wallet"
+msgstr "Utilisez le dispositif Ledger avec votre portefeuille Web"
+
+#: ../../workflow/ledger-setup.rst:38
+msgid "Sign in"
+msgstr "Connectez-vous"
+
+#: ../../workflow/ledger-setup.rst:39
+msgid "You can now use the Ledger device with Web wallet. Follow these steps:"
+msgstr ""
+"Vous pouvez maintenant utiliser le l'appareil Ledger avec Web wallet. Suivez"
+" ces étapes :"
+
+#: ../../workflow/ledger-setup.rst:42
+msgid "Open the Casper app on your Ledger device."
+msgstr "Ouvrez l'application Casper sur votre appareil Ledger."
+
+#: ../../workflow/ledger-setup.rst:43
+msgid "Go to `cspr.live/sign-in <https://cspr.live/sign-in>`_."
+msgstr "Allez sur `cspr.live/sign-in <https://cspr.live/sign-in>`_."
+
+#: ../../workflow/ledger-setup.rst:44
+msgid "Click on the **Connect** button in the Ledger section."
+msgstr "Cliquez sur le bouton **Connect** dans la section Ledger."
+
+#: ../../workflow/ledger-setup.rst:45
+msgid "Click on the **Connect to Ledger wallet** button."
+msgstr "Cliquez sur le bouton **Connexion au portefeuille Ledger**."
+
+#: ../../workflow/ledger-setup.rst:46
+msgid "Select an account you want to use."
+msgstr "Sélectionnez un compte que vous voulez utiliser."
+
+#: ../../workflow/ledger-setup.rst:47
+msgid "Now, your Ledger device is connected to the Web wallet."
+msgstr "Maintenant, votre appareil Ledger est connecté au portefeuille Web."
+
+#: ../../workflow/ledger-setup.rst:50
+msgid "View account details"
+msgstr "Afficher les détails du compte"
+
+#: ../../workflow/ledger-setup.rst:51 ../../workflow/ledger-setup.rst:94
+msgid "Go to `cspr.live <https://cspr.live>`_."
+msgstr "Allez sur `cspr.live <https://cspr.live>`_."
+
+#: ../../workflow/ledger-setup.rst:52
+msgid "Click on the account address in the upper-right corner of the page."
+msgstr ""
+"Cliquez sur l'adresse du compte dans le coin supérieur droit de la page."
+
+#: ../../workflow/ledger-setup.rst:57
+msgid "Click on the **View account** button."
+msgstr "Cliquez sur le bouton **Voir le compte**."
+
+msgid "Image showing the account details."
+msgstr "Image montrant les détails du compte."
+
+#: ../../workflow/ledger-setup.rst:64
+msgid "You are presented with a page displaying details about your account."
+msgstr "Une page affichant les détails de votre compte s'ouvre."
+
+#: ../../workflow/ledger-setup.rst:71
+msgid "View account balance"
+msgstr "Afficher le solde du compte"
+
+#: ../../workflow/ledger-setup.rst:72
+msgid "You can check your account balance from the Web wallet:"
+msgstr ""
+"Vous pouvez vérifier le solde de votre compte à partir du portefeuille Web :"
+
+#: ../../workflow/ledger-setup.rst:74
+msgid "Follow the steps described in the \"View account details\" section above."
+msgstr ""
+"Suivez les étapes décrites dans la section \"Afficher les détails du "
+"compte\" ci-dessus."
+
+#: ../../workflow/ledger-setup.rst:75
+msgid ""
+"On the **Liquid Account Balance** row, you will see your latest known "
+"account balance."
+msgstr ""
+"Sur la ligne **Solde du compte liquide**, vous verrez le dernier solde connu"
+" de votre compte."
+
+#: ../../workflow/ledger-setup.rst:79
+msgid "Receive tokens"
+msgstr "Recevoir des jetons"
+
+#: ../../workflow/ledger-setup.rst:80
+msgid ""
+"To receive tokens, you need to provide the sender with the public key of "
+"your account. To find it:"
+msgstr ""
+"Pour recevoir des jetons, vous devez fournir à l'expéditeur la clé publique "
+"de votre compte. Pour la trouver :"
+
+#: ../../workflow/ledger-setup.rst:82
+msgid "Open the account details page (see the \"View account details\" section)."
+msgstr ""
+"Ouvrez la page des détails du compte (voir la section \"Afficher les détails"
+" du compte\")."
+
+#: ../../workflow/ledger-setup.rst:83
+msgid "Copy the public key found on the **Public Key** row."
+msgstr "Copiez la clé publique qui se trouve sur la ligne **Clé publique**."
+
+#: ../../workflow/ledger-setup.rst:84
+msgid "Alternatively, click on the drop-down menu on your account address."
+msgstr ""
+"Vous pouvez également cliquer sur le menu déroulant de l'adresse de votre "
+"compte."
+
+#: ../../workflow/ledger-setup.rst:89
+msgid "Click on the **Copy public key** button."
+msgstr "Cliquez sur le bouton **Copier la clé publique**."
+
+#: ../../workflow/ledger-setup.rst:90
+msgid "Share the public key with the sender."
+msgstr "Partagez la clé publique avec l'expéditeur."
+
+#: ../../workflow/ledger-setup.rst:93
+msgid "Send tokens"
+msgstr "Envoyer les jetons"
+
+#: ../../workflow/ledger-setup.rst:95
+msgid "Sign in with your Ledger device."
+msgstr "Connectez-vous avec votre appareil Ledger."
+
+#: ../../workflow/ledger-setup.rst:96
+msgid "Click on **Wallet** and then **Transfer CSPR**."
+msgstr "Cliquez sur **Portefeuille** et ensuite sur **Transfert CSPR**."
+
+#: ../../workflow/ledger-setup.rst:101
+msgid "Fill in the details for the transfer."
+msgstr "Remplissez les détails du transfert."
+
+msgid "Image showing the transfer details."
+msgstr "Image montrant les détails du transfert."
+
+#: ../../workflow/ledger-setup.rst:108
+msgid "Click on the **Next** button."
+msgstr "Cliquez sur le bouton **Suivant**."
+
+#: ../../workflow/ledger-setup.rst:109
+msgid "On the next page, click **Confirm and transfer**."
+msgstr "Sur la page suivante, cliquez sur **Confirmer et transférer**."
+
+msgid "Image showing the confirmation page."
+msgstr "Image montrant la page de confirmation."
+
+#: ../../workflow/ledger-setup.rst:116
+msgid ""
+"On the **Sign transaction** page, click on the **Sign with Ledger** button."
+msgstr ""
+"Sur la page **Signer la transaction**, cliquez sur le bouton **Signer avec "
+"Ledger**."
+
+msgid "Image showing the transfer signing page."
+msgstr "Image montrant la page de signature du transfert."
+
+#: ../../workflow/ledger-setup.rst:123
+msgid ""
+"Your Ledger hardware wallet will present you with transfer details. Verify "
+"the transfer details (txn hash, chain ID, source **account**, fee, target, "
+"and amount)."
+msgstr ""
+"Votre porte-monnaie matériel Ledger vous présentera les détails du "
+"transfert. Vérifiez les détails du transfert (hash txn, ID de la chaîne, "
+"**compte** source, frais, cible et montant)."
+
+#: ../../workflow/ledger-setup.rst:125
+msgid "**Verify the transaction on your Ledger device**"
+msgstr "**Vérifiez la transaction sur votre appareil Ledger**."
+
+#: ../../workflow/ledger-setup.rst:127
+msgid ""
+"Press the right button on your Ledger Device to review the transaction "
+"details (Amount and Address) until you see **“Approve”**."
+msgstr ""
+"Appuyez sur le bouton de droite de votre appareil Ledger pour vérifier les "
+"détails de la transaction (montant et adresse) jusqu'à ce que vous voyiez "
+"**\"Approuver \"**."
+
+#: ../../workflow/ledger-setup.rst:129
+msgid ""
+"Verify the **txn hash** - make sure it matches the value displayed in the "
+"Web wallet on `cspr.live <https://cspr.live>`_."
+msgstr ""
+"Vérifiez le **txn hash** - assurez-vous qu'il correspond à la valeur "
+"affichée dans le portefeuille Web sur `cspr.live <https://cspr.live>`_."
+
+#: ../../workflow/ledger-setup.rst:135
+msgid "The *txn hash* value continues on a second screen."
+msgstr "La valeur du *txn hash* se poursuit sur un deuxième écran."
+
+#: ../../workflow/ledger-setup.rst:141
+msgid ""
+"The next page displays transaction **type** - for CSPR transfers, that will "
+"be **Token transfer**."
+msgstr ""
+"La page suivante affiche le **type de transaction** - pour les transferts "
+"CSPR, ce sera **Token transfer**."
+
+#: ../../workflow/ledger-setup.rst:147
+msgid ""
+"Verify the **chain ID**, which identifies the network on which you want to "
+"send the transaction."
+msgstr ""
+"Vérifiez le **chain ID**, qui identifie le réseau sur lequel vous voulez "
+"envoyer la transaction."
+
+#: ../../workflow/ledger-setup.rst:153
+msgid ""
+"Verify the **account**, which is the public key of the account that "
+"initiated the transaction."
+msgstr ""
+"Vérifiez le **compte**, qui est la clé publique du compte qui a initié la "
+"transaction."
+
+#: ../../workflow/ledger-setup.rst:159
+msgid "The *account* value continues on a second screen."
+msgstr "La valeur du **compte** se poursuit sur un deuxième écran."
+
+#: ../../workflow/ledger-setup.rst:165
+msgid ""
+"Verify the **fee**. For CSPR token transfers, that value should be constant "
+"and equal to 10 000 motes = 0.00001 CSPR."
+msgstr ""
+"Vérifiez le **frais**. Pour les transferts de jetons CSPR, cette valeur doit"
+" être constante et égale à 10 000 motes = 0,00001 CSPR."
+
+#: ../../workflow/ledger-setup.rst:171
+msgid ""
+"Verify **target** - **NOTE** this **IS NOT** a public key of the recipient "
+"but the hash of that key. Compare the public key with the value in the Web "
+"wallet which shows you two fields for the recipient public key and "
+"target.\"."
+msgstr ""
+"Vérifiez la **cible** - **NOTE** ce n'est **PAS** une clé publique du "
+"destinataire mais le hash de cette clé. Comparez la clé publique avec la "
+"valeur dans le portefeuille Web qui vous montre deux champs pour la clé "
+"publique du destinataire et la cible.\"."
+
+#: ../../workflow/ledger-setup.rst:177
+msgid "The *target* value continues on a second screen."
+msgstr "La valeur *cible* continue sur un deuxième écran."
+
+#: ../../workflow/ledger-setup.rst:183
+msgid "Verify the **amount** you want to transfer."
+msgstr "Vérifiez le **montant** que vous voulez transférer."
+
+#: ../../workflow/ledger-setup.rst:189
+msgid ""
+"If you approve the transaction, click both buttons on the Ledger device."
+msgstr ""
+"Si vous approuvez la transaction, cliquez sur les deux boutons de l'appareil"
+" Ledger."
+
+#: ../../workflow/ledger-setup.rst:195
+msgid ""
+"After approving the transaction with your Ledger hardware wallet, the "
+"`cspr.live <https://cspr.live>`_ Web wallet will display a \"Transfer "
+"completed\" page."
+msgstr ""
+"Après avoir approuvé la transaction avec votre porte-monnaie matériel "
+"Ledger, le porte-monnaie Web `cspr.live <https://cspr.live>`_ affichera une "
+"page \"Transfert terminé\"."
+
+msgid "Image showing the transfer completed."
+msgstr "Image montrant le transfert terminé."
+
+#: ../../workflow/ledger-setup.rst:202
+msgid ""
+"You can now check your account to see a list of all the completed transfers."
+msgstr ""
+"Vous pouvez maintenant consulter votre compte pour voir la liste de tous les"
+" transferts terminés."
