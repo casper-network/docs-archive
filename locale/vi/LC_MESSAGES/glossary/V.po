@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:47+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -156,19 +156,18 @@ msgstr "Trách nhiệm của người xác thực bao gồm:"
 
 #: ../../glossary/V.rst:14
 msgid ""
-"`block creation <B.html#block-creation>`_ and `block proposal <B.html#block-"
-"proposal>`_"
+"`block creation <B.html#block-creation>`_ and `block proposal <B.html#id6>`_"
 msgstr ""
-"`block creation <B.html#block-creation>`_ and `block proposal <B.html#block-"
-"proposal>`_"
+"`Tạo khối (block creation) <B.html#block-creation>` _ và `khối đề xuất "
+"(block proposal) <B.html#id6>`_"
 
 #: ../../glossary/V.rst:15
 msgid "`block validation <B.html#block-validation>`_"
-msgstr "`block validation <B.html#block-validation>`_"
+msgstr "`xác thực khối (block validation) <B.html#block-validation>`_"
 
 #: ../../glossary/V.rst:16
 msgid "`block gossiping <B.html#block-gossiping>`_"
-msgstr "`block gossiping <B.html#block-gossiping>`_"
+msgstr "`khối gossiping (block gossiping) <B.html#block-gossiping>`_"
 
 #: ../../glossary/V.rst:18
 msgid ""
@@ -188,3 +187,10 @@ msgstr ""
 "tiếp; không thể trả tiền cho người xác thực nếu họ không xác thực theo như "
 "thiết kế), mang lại cho họ nhiều động lực hơn để hỗ trợ mạng một cách chính "
 "xác."
+
+#~ msgid ""
+#~ "`block creation <B.html#block-creation>`_ and `block proposal <B.html#block-"
+#~ "proposal>`_"
+#~ msgstr ""
+#~ "`block creation <B.html#block-creation>`_ and `block proposal <B.html#block-"
+#~ "proposal>`_"
