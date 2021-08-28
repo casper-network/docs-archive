@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:46+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -41,13 +41,13 @@ msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:5
 msgid ""
-"You will test your client using `nctl <https://github.com/CasperLabs/casper-"
-"node/tree/master/utils/nctl>`_, and you will interact with your local "
-"blockchain."
+"You will test your client using `nctl <https://github.com/casper-network"
+"/casper-node/tree/master/utils/nctl>`_, and you will interact with your "
+"local blockchain."
 msgstr ""
-"Bạn sẽ kiểm tra client của mình bằng cách sử dụng `nctl "
-"<https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ và bạn "
-"sẽ tương tác với chuỗi khối cục bộ của mình."
+"Bạn sẽ kiểm thử client của mình bằng cách sử dụng `nctl <https://github.com"
+"/casper-network/casper-node/tree/master/utils/nctl>`_ và bạn sẽ tương tác "
+"với chuỗi khối cục bộ của mình."
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:8
 msgid "Prerequisites"
@@ -63,12 +63,12 @@ msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:10
 msgid ""
-"You have set up the `NCTL <https://github.com/CasperLabs/casper-"
+"You have set up the `NCTL <https://github.com/casper-network/casper-"
 "node/tree/master/utils/nctl>`_ tool according to the `NCTL guide "
 "<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_"
 msgstr ""
-"Bạn đã thiết lập công cụ <https://github.com/CasperLabs/casper-"
-"node/tree/master/utils/nctl>`_ theo `Hướng dẫn NCTL "
+"Bạn đã thiết lập công cụ `NCTL <https://github.com/casper-network/casper-"
+"node/tree/master/utils/nctl>`_ theo `hướng dẫn NCTL "
 "<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_"
 
 #: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:13
@@ -80,7 +80,7 @@ msgid ""
 "Navigate to your ``casper-node`` folder and run the following NCTL commands."
 msgstr "Chuyển đến thư mục ``casper-node`` của bạn và chạy các lệnh NCTL sau."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:22
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:21
 msgid ""
 "The network you created with the NCTL tool has a special account called a "
 "faucet account, which holds your tokens. You will need these tokens to "
@@ -92,11 +92,11 @@ msgstr ""
 " để tương tác với mạng. Nếu mạng đang hoạt động, bạn có thể xem chi tiết tài"
 " khoản vòi của mình bằng lệnh bên dưới."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:29
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:28
 msgid "Setting up the Client"
 msgstr "Thiết lập Client"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:30
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:29
 msgid ""
 "Navigate to your ``keys-manager/client/`` folder and create the ``.env`` "
 "file to specify the configuration needed for your client to communicate with"
@@ -105,7 +105,7 @@ msgstr ""
 "Chuyển đến thư mục ``keys-manager/client/`` của bạn và tạo tệp ``.env`` để "
 "chỉ định cấu hình cần thiết cho client của bạn khi giao tiếp với mạng."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:38
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:37
 msgid ""
 "This client code, by default, expects a compiled WASM file in the "
 "``contract`` folder and a local network called ``casper-net-1``. In this "
@@ -121,97 +121,97 @@ msgstr ""
 " nhập dữ liệu ``BASE_KEY_PATH`` và sẽ giống như thế này (thay thế "
 "<ENTER_YOUR_PATH> bằng đường dẫn của bạn):"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:44
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:43
 msgid "You can set other environment variables described in the table below."
 msgstr "Bạn có thể đặt các biến khác được mô tả trong bảng bên dưới."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:47
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:46
 msgid "Variable"
 msgstr "Biến"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:47
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:46
 msgid "Description"
 msgstr "Mô tả"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:47
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:46
 msgid "Default value"
 msgstr "Giá trị mặc định"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:48
 msgid "NODE_URL"
 msgstr "NODE_URL"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:48
 msgid "The URL of the first node in your local network."
 msgstr "URL của nút đầu tiên trong mạng cục bộ của bạn."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:48
 msgid "``http://localhost:40101/rpc``"
 msgstr "``http://localhost:40101/rpc``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
 msgid "WASM_PATH"
 msgstr "WASM_PATH"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
 msgid "The path of the compiled WASM contract."
 msgstr "Đường dẫn của hợp đồng WASM đã biên dịch."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:49
 msgid ""
 "``../contract/target/wasm32-unknown-unknown/release/keys-manager.wasm``"
 msgstr ""
 "``../contract/target/wasm32-unknown-unknown/release/keys-manager.wasm``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
 msgid "NETWORK_NAME"
 msgstr "NETWORK_NAME"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
 msgid "The name of your local network set up by NCTL."
 msgstr "Tên mạng cục bộ của bạn do NCTL thiết lập."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:50
 msgid "``casper-net-1``"
 msgstr "``casper-net-1``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
 msgid "FUND_AMOUNT"
 msgstr "FUND_AMOUNT"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
 msgid "Number of motes that accounts will be funded."
 msgstr "Số lượng mote sẽ nạp vào các tài khoản."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:51
 msgid "``10000000000000``"
 msgstr "``10000000000000``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
 msgid "PAYMENT_AMOUNT"
 msgstr "PAYMENT_AMOUNT"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
 msgid "Number of motes that will be used as payment for deploys."
 msgstr "Số lượng mote mà sẽ sử dụng để trả cho việc triển khai"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:52
 msgid "``100000000000``"
 msgstr "``100000000000``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:54
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
 msgid "TRANSFER_AMOUNT"
 msgstr "TRANSFER_AMOUNT"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:54
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
 msgid "Number of motes that will be used for native test transfers."
 msgstr "Số lượng motes sẽ được sử dụng để chuyển thử nghiệm gốc."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:54
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:53
 msgid "``2500000000``"
 msgstr "``2500000000``"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:57
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:56
 msgid ""
 "Next, close the ``.env`` file and install the JavaScript packages in the "
 "``keys-manager/client`` folder with the following command."
@@ -219,36 +219,48 @@ msgstr ""
 "Tiếp theo, đóng tệp ``.env`` và cài đặt các gói JavaScript trong thư mục "
 "``keys-manager/client`` bằng lệnh sau."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:65
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:64
 msgid "Testing the Client"
 msgstr "Kiểm thử Client"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:67
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:66
 msgid ""
-"Navigate to your ``/keys-manager/client`` folder and run the ``keys-"
-"manager`` using ``npm``. Your WASM file's path is relative to the ``client``"
-" folder, so you need to run the file from here."
+"Navigate to your ``/keys-manager/client`` folder and run the `keys-manager` "
+"using `npm`. Your WASM file's path is relative to the ``client`` folder, so "
+"you need to run the file from here."
 msgstr ""
-"Chuyển đến thư mục ``/keys-manager/client``của bạn và chạy ``keys-manager`` "
-"bằng cách sử dụng ``npm``. Đường dẫn tệp WASM của bạn có liên quan đến thư "
-"mục ``client``, vì vậy bạn cần chạy tệp từ đây."
+"Chuyển đến thư mục ``/keys-manager/client`` của bạn và chạy `key-manager` "
+"bằng cách sử dụng `npm`. Đường dẫn tệp WASM của bạn có liên quan đến thư mục"
+" ``client``, vì vậy bạn cần chạy tệp từ đây."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:73
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:72
+msgid ""
+"**Note**: You may have to wait some time after entering the above command "
+"until you see a result."
+msgstr ""
+"**Lưu ý**: Bạn có thể phải đợi một thời gian sau khi nhập lệnh trên cho đến "
+"khi bạn thấy kết quả."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:74
 msgid "If the code works, the beginning of the output will look like this:"
 msgstr "Nếu mã hoạt động, phần đầu của đầu ra sẽ giống như sau:"
 
 msgid "An image of the beginning of the keys-manager output."
 msgstr "Hình ảnh về phần đầu của đầu ra trình quản lý khóa."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:78
-msgid "You can match the output against the expected output described below."
-msgstr "Bạn có thể so khớp đầu ra với đầu ra mong đợi được mô tả bên dưới."
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:80
+msgid ""
+"You can match the rest of the output against the expected output described "
+"in the next section while exploring the client code."
+msgstr ""
+"Bạn có thể đối sánh phần còn lại của đầu ra với đầu ra dự kiến được mô tả "
+"trong phần tiếp theo trong khi khám phá mã client."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:82
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:83
 msgid "Exploring the Client Code"
 msgstr "Khám phá Client Code"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:84
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:85
 msgid ""
 "If you would like to explore the client output and how the client code "
 "implements key management, open the client output and the ``keys-"
@@ -257,11 +269,11 @@ msgstr ""
 "Nếu bạn muốn khám phá đầu ra của client và cách mã client triển khai quản lý"
 " khóa, hãy mở đầu ra của client và tệp ``keys-manager.js`` cạnh nhau."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:86
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:87
 msgid "In the code, we set the weight for the primary account to 3."
 msgstr "Trong mã này, chúng ta đặt trọng số cho tài khoản chính là 3."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:92
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:93
 msgid ""
 "At this point, we expect an account structure similar to the following, with"
 " real account addresses replacing the sample addresses:"
@@ -269,7 +281,7 @@ msgstr ""
 "Tại thời điểm này, chúng ta mong đợi cấu trúc tài khoản giống như sau, với "
 "địa chỉ tài khoản thực thay thế địa chỉ mẫu:"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:113
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:114
 msgid ""
 "Next, we set the key management threshold for the main account to 3. With "
 "this threshold, you can manage other keys and have control over the entire "
@@ -279,17 +291,17 @@ msgstr ""
 "ngưỡng này, bạn có thể quản lý các khóa khác và có quyền kiểm soát toàn bộ "
 "tài khoản."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:119
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:145
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:120
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:146
 msgid "We expect an account structure similar to this:"
 msgstr "Chúng ta mong đợi một cấu trúc tài khoản tương tự như sau:"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:139
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:140
 msgid ""
 "Next, the client code sets the deployment threshold to 2 for this account."
 msgstr "Tiếp theo, mã client đặt ngưỡng triển khai là 2 cho tài khoản này."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:165
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:166
 msgid ""
 "The next step is to add a new key with weight 1. You cannot do anything with"
 " this key alone since all the action thresholds are higher than 1."
@@ -297,7 +309,7 @@ msgstr ""
 "Bước tiếp theo là thêm khóa mới có trọng số 1. Bạn không thể làm bất cứ điều"
 " gì với khóa này một mình vì tất cả các ngưỡng tác vụ đều cao hơn 1."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:171
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:172
 msgid ""
 "We expect this account structure, with a new associated key and account "
 "address:"
@@ -305,7 +317,7 @@ msgstr ""
 "Chúng ta mong đợi cấu trúc tài khoản như thế này, với một địa chỉ tài khoản "
 "và khóa được liên kết mới:"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:195
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:196
 msgid ""
 "We will add another key with weight 1. If you use this key with the second "
 "key, you can deploy, since the weights add up to 2."
@@ -313,11 +325,11 @@ msgstr ""
 "Chúng ta sẽ thêm một khóa khác có trọng số 1. Nếu bạn sử dụng khóa này với "
 "khóa thứ hai, bạn có thể triển khai, vì trọng số cộng lại là 2."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:201
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:202
 msgid "We expect an account structure similar to the following:"
 msgstr "Chúng ta mong đợi một cấu trúc tài khoản tương tự như sau:"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:229
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:230
 msgid ""
 "Next, we will transfer tokens from the main account and perform a "
 "deployment. When the deployment accounts sign the transaction, they can "
@@ -331,29 +343,29 @@ msgstr ""
 msgid "Image showing the output of the funds transfer."
 msgstr "Hình ảnh hiển thị đầu ra của việc chuyển tiền."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:241
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:242
 msgid ""
 "If you dive into the `transferDeploy` function, you will see the transfer of"
 " funds."
 msgstr ""
 "Nếu bạn đi sâu vào hàm `transferDeploy`, bạn sẽ thấy việc chuyển tiền."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:258
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:259
 msgid ""
 "After the above transfer of funds, the client code removes both deployment "
 "accounts."
 msgstr ""
 "Sau khi chuyển tiền ở trên, mã client sẽ xóa cả hai tài khoản triển khai."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:268
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:269
 msgid "At this point, we expect the following account structure:"
 msgstr "Tại thời điểm này, chúng tôi mong đợi cấu trúc tài khoản sau:"
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:288
-msgid "Congratulations! You have completed the tutorial."
-msgstr "Xin chúc mừng! Bạn đã hoàn thành phần hướng dẫn."
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:289
+msgid "Congratulations! You have completed this tutorial."
+msgstr "Xin chúc mừng! Bạn đã hoàn thành hướng dẫn này."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:290
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:291
 msgid ""
 "You can now employ a similar strategy to set up your account using multiple "
 "keys."
@@ -361,9 +373,42 @@ msgstr ""
 "Giờ đây, bạn có thể sử dụng một cách tương tự để thiết lập tài khoản của "
 "mình bằng nhiều khóa."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:292
+#: ../../dapp-dev-guide/tutorials/multi-sig/client.rst:293
 msgid ""
 "We offer some additional examples of account management in the next section."
 msgstr ""
 "Chúng tôi cung cấp một số ví dụ bổ sung về quản lý tài khoản trong phần tiếp"
 " theo."
+
+#~ msgid ""
+#~ "You will test your client using `nctl <https://github.com/CasperLabs/casper-"
+#~ "node/tree/master/utils/nctl>`_, and you will interact with your local "
+#~ "blockchain."
+#~ msgstr ""
+#~ "Bạn sẽ kiểm tra client của mình bằng cách sử dụng `nctl "
+#~ "<https://github.com/CasperLabs/casper-node/tree/master/utils/nctl>`_ và bạn "
+#~ "sẽ tương tác với chuỗi khối cục bộ của mình."
+
+#~ msgid ""
+#~ "You have set up the `NCTL <https://github.com/CasperLabs/casper-"
+#~ "node/tree/master/utils/nctl>`_ tool according to the `NCTL guide "
+#~ "<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_"
+#~ msgstr ""
+#~ "Bạn đã thiết lập công cụ <https://github.com/CasperLabs/casper-"
+#~ "node/tree/master/utils/nctl>`_ theo `Hướng dẫn NCTL "
+#~ "<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_"
+
+#~ msgid ""
+#~ "Navigate to your ``/keys-manager/client`` folder and run the ``keys-"
+#~ "manager`` using ``npm``. Your WASM file's path is relative to the ``client``"
+#~ " folder, so you need to run the file from here."
+#~ msgstr ""
+#~ "Chuyển đến thư mục ``/keys-manager/client``của bạn và chạy ``keys-manager`` "
+#~ "bằng cách sử dụng ``npm``. Đường dẫn tệp WASM của bạn có liên quan đến thư "
+#~ "mục ``client``, vì vậy bạn cần chạy tệp từ đây."
+
+#~ msgid "You can match the output against the expected output described below."
+#~ msgstr "Bạn có thể so khớp đầu ra với đầu ra mong đợi được mô tả bên dưới."
+
+#~ msgid "Congratulations! You have completed the tutorial."
+#~ msgstr "Xin chúc mừng! Bạn đã hoàn thành phần hướng dẫn."
