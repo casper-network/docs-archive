@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -24,67 +24,208 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../../index.rst:8
-msgid "Casper Documentation"
-msgstr "Tài liệu Casper"
+msgid "Welcome to the Casper Network"
+msgstr "Chào mừng đến với Mạng Casper"
 
 #: ../../index.rst:10
-msgid ""
-"We present the Casper Network, a new Turing-complete smart-contract "
-"platform, backed by a Proof-of-Stake (PoS) consensus algorithm and "
-"WebAssembly (wasm). The network is a permissionless, decentralized, public "
-"blockchain. The consensus protocol is called Highway, and the complete paper"
-" is found in GitHub: https://github.com/CasperLabs/highway. The consensus "
-"protocol allows clients to use different confidence thresholds to convince "
-"themselves that a given block is *finalized*. This protocol is built on Vlad"
-" Zamfir's `correct-by-construction (CBC) Casper <https://github.com/cbc-"
-"casper/cbc-casper-paper>`_ research."
-msgstr ""
-"Chúng tôi giới thiệu Mạng Casper, một nền tảng hợp đồng thông minh hoàn "
-"chỉnh mới theo quy tắc Turing-complete, được hỗ trợ bởi thuật toán đồng "
-"thuận Proof-of-Stake (PoS) và WebAssembly (wasm). Mạng là một blockchain "
-"công khai, phi tập trung, không cần cấp phép. Giao thức đồng thuận được gọi "
-"là Highway và có thể xem bài báo đầy đủ trong GitHub: "
-"https://github.com/CasperLabs/highway. Giao thức đồng thuận cho phép khách "
-"hàng sử dụng các ngưỡng tin cậy khác nhau để tự thuyết phục rằng một khối "
-"nhất định đã được *hoàn thành*. Giao thức này được xây dựng dựa trên nghiên "
-"cứu `correct-by-construction (CBC) Casper <https://github.com/cbc-casper"
-"/cbc-casper-paper>`_ của Vlad Zamfir."
+msgid "This article provides an overview of the Casper project."
+msgstr "Bài viết này cung cấp một cái nhìn tổng quan về dự án Casper."
 
-#: ../../index.rst:12
+#: ../../index.rst:13
+msgid "What is Casper?"
+msgstr "Casper là gì?"
+
+#: ../../index.rst:15
+msgid ""
+"Casper is a new Turing-complete smart-contracting platform, backed by a "
+"Proof-of-Stake (PoS) consensus algorithm and WebAssembly (WASM). The network"
+" is a permissionless, decentralized, public blockchain."
+msgstr ""
+"Casper là một nền tảng hợp đồng thông minh mới, theo quy tắc Turing-"
+"complete, được hỗ trợ bởi thuật toán đồng thuận Proof-of-Stake (PoS) và "
+"WebAssembly (WASM). Mạng Casper (Casper Network) là một chuỗi khối "
+"blockchain công khai, phi tập trung và không cần cấp phép."
+
+#: ../../index.rst:17
+msgid ""
+"The network's consensus protocol is called `Highway "
+"<https://arxiv.org/pdf/2101.02159.pdf>`_, and it has several benefits over "
+"classic Byzantine Fault Tolerant (BFT) consensus protocols. First, Highway "
+"allows networks to reach higher thresholds of *finality*, meaning that more "
+"blocks are finalized, and validators agree to add them to the blockchain. "
+"Second, the protocol achieves flexibility by expressing block finality in "
+"ways not possible in BFT models. This protocol is built on Vlad Zamfir's "
+"`correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-"
+"casper-paper>`_ research."
+msgstr ""
+"Giao thức đồng thuận của mạng Casper có tên là `Highway "
+"<https://arxiv.org/pdf/2101.02159.pdf>`_, đem lại một số lợi ích vượt trội "
+"so với giao thức đồng thuận cổ điển Byzantine Fault Tolerant (BFT). Thứ "
+"nhất, Highway cho phép các mạng đạt đến ngưỡng cuối cùng (*finality*) cao "
+"hơn, có nghĩa là giúp nhiều khối được hoàn thiện hơn và người xác thực đồng "
+"ý thêm các khối này vào chuỗi khối blockchain. Thứ hai, giao thức này rất "
+"linh hoạt nhờ việc giúp đạt được tính cuối cùng của khối mà các mô hình BFT "
+"không thể làm được. Giao thức này được xây dựng dựa trên nghiên cứu "
+"`correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-"
+"casper-paper>` của Vlad Zamfir."
+
+#: ../../index.rst:19
+msgid ""
+"Additionally, the Casper Network is optimized for enterprise and developer "
+"adoption. While leveraging blockchain technology, the network seeks to "
+"accelerate business operations via unique features like predictable network "
+"fees, upgradeable contracts, on-chain governance, privacy flexibility, and "
+"developer-friendly languages."
+msgstr ""
+"Ngoài ra, Mạng Casper còn tối ưu hóa các tính năng cho các doanh nghiệp và "
+"nhà phát triển. Vừa tận dụng công nghệ blockchain, mạng Casper vừa tìm cách "
+"tăng tốc hoạt động kinh doanh thông qua các tính năng độc đáo như phí mạng "
+"có thể dự đoán được, hợp đồng có thể nâng cấp, quản trị trên chuỗi, quyền "
+"riêng tư linh hoạt và ngôn ngữ thân thiện với nhà phát triển."
+
+#: ../../index.rst:21
+msgid ""
+"Casper also solves the scalability trilemma. Notably, the network is "
+"optimized for security, decentralization, and high throughput. All this is "
+"achieved while evolving to provide leading solutions for open-source "
+"projects and enterprises."
+msgstr ""
+"Casper cũng giải quyết một trong bộ ba bất khả thi là khả năng mở rộng. Đáng"
+" chú ý, mạng được tối ưu hóa để bảo mật, phân quyền và thông lượng cao. Tất "
+"cả các tiện ích này đều là mục tiêu của Casper, nhằm cung cấp các giải pháp "
+"hàng đầu cho các dự án và doanh nghiệp nguồn mở."
+
+#: ../../index.rst:24
+msgid "Why choose Casper?"
+msgstr "Vì sao nên chọn Casper?"
+
+#: ../../index.rst:26
+msgid ""
+"Casper has core features and strengths that enable developers and "
+"enterprises to reap the benefits of blockchain technology."
+msgstr ""
+"Casper có các tính năng và điểm mạnh cốt lõi cho phép các nhà phát triển và "
+"doanh nghiệp tận dụng tối đa những lợi ích của công nghệ chuỗi khối."
+
+#: ../../index.rst:29
+msgid "Upgradeable Contracts"
+msgstr "Hợp đồng có thể nâng cấp"
+
+#: ../../index.rst:31
+msgid ""
+"Casper allows the direct upgrading of on-chain smart contracts, eliminating "
+"the need for complex migration processes and making it easy for developers "
+"to correct smart contract vulnerabilities."
+msgstr ""
+"Casper cho phép nâng cấp các hợp đồng thông minh trực tiếp trên chuỗi, không"
+" cần đến các quy trình di chuyển dữ liệu phức tạp và giúp các nhà phát triển"
+" dễ dàng sửa chữa các lỗ hổng của hợp đồng thông minh."
+
+#: ../../index.rst:34
+msgid "Developer-Friendly Language"
+msgstr "Ngôn ngữ thân thiện với nhà phát triển"
+
+#: ../../index.rst:36
+msgid ""
+"Casper Network’s development ecosystem is designed to support WebAssembly, "
+"rather than being written in proprietary languages like Solidity. This "
+"feature simplifies the development path for enterprises and development "
+"teams that want to build on the Casper Network."
+msgstr ""
+"Hệ sinh thái của Mạng Casper được thiết kế để hỗ trợ WebAssembly, thay vì sử"
+" dụng các ngôn ngữ độc quyền như Solidity. Tính năng này đơn giản hóa lộ "
+"trình phát triển của các doanh nghiệp và nhóm phát triển muốn mở rộng kinh "
+"doanh trên Mạng Casper."
+
+#: ../../index.rst:38
+msgid "Note"
+msgstr "Lưu ý"
+
+#: ../../index.rst:40
 msgid ""
 "Rust is the primary programming language for smart contracts on the Casper "
 "blockchain because of its good support for compilation to wasm. However, the"
 " platform does not make assumptions about the source language and supports "
 "libraries facilitating contract development in other programming languages "
-"having wasm as a compile target. Other essential features include an account"
-" permissions model that allows the recovery of lost keys and a permissions "
-"model to securely share state between accounts and contracts (without "
-"expensive cryptographic checks). We also provide discussions of the "
-"economics of our proof-of-stake implementation and our token policies."
+"having wasm as a compile target."
 msgstr ""
 "Rust là ngôn ngữ lập trình chính cho các hợp đồng thông minh trên chuỗi khối"
-" Casper vì nó hỗ trợ tốt cho việc biên dịch sang wasm. Tuy nhiên, nền tảng "
-"không đưa ra giả định về ngôn ngữ nguồn và chỉ hỗ trợ các thư viện để phát "
-"triển hợp đồng bằng các ngôn ngữ lập trình khác có wasm là trình biên dịch "
-"mục tiêu. Các tính năng quan trọng khác bao gồm mô hình quyền tài khoản cho "
-"phép khôi phục các khóa bị mất và mô hình quyền để chia sẻ trạng thái an "
-"toàn giữa các tài khoản và hợp đồng (mà không cần các kiểm tra mật mã tốn "
-"kém). Chúng tôi cũng cung cấp các cuộc thảo luận về tính kinh tế của việc "
-"triển khai bằng chứng cổ phần và các chính sách token của chúng tôi."
+" Casper vì Rust hỗ trợ tốt cho việc biên dịch sang wasm. Tuy nhiên, nền tảng"
+" này không đưa ra giả định về ngôn ngữ nguồn, chỉ hỗ trợ các thư viện được "
+"dùng để phát triển hợp đồng bằng các ngôn ngữ lập trình khác có wasm là "
+"trình biên dịch đích."
 
-#: ../../index.rst:15
+#: ../../index.rst:43
+msgid "Account Management"
+msgstr "Quản lý tài khoản"
+
+#: ../../index.rst:45
+msgid ""
+"Other essential features include an account permissions model that allows "
+"the recovery of lost keys and a permissions model to securely share state "
+"between accounts and contracts (without expensive cryptographic checks)."
+msgstr ""
+"Các tính năng quan trọng khác bao gồm mô hình cấp phép tài khoản, cho phép "
+"khôi phục các khóa bị mất và một mô hình cấp phép để chia sẻ trạng thái giữa"
+" các tài khoản và hợp đồng một cách an toàn (mà không cần đến các kiểm tra "
+"mật mã tốn kém)."
+
+#: ../../index.rst:48
+msgid "Predictable Network Fees"
+msgstr "Dự đoán phí mạng"
+
+#: ../../index.rst:50
+msgid ""
+"Casper seeks to eliminate volatility and improve developer and enterprise "
+"experiences by establishing transparent, consistent, and predictable gas "
+"prices. This feature seeks to promote active and diverse network behaviour."
+msgstr ""
+"Casper loại bỏ tính dễ biến động, cải thiện trải nghiệm của các nhà phát "
+"triển và doanh nghiệp thông qua cơ chế dự đoán chi phí minh bạch, nhất quán."
+" Tính năng này giúp thúc đẩy các hành vi mạng đa dạng và tích cực hơn."
+
+#: ../../index.rst:53
+msgid "How does Casper work?"
+msgstr "Casper hoạt động như thế nào?"
+
+#: ../../index.rst:55
+msgid ""
+"Casper relies on a group of validators to verify transactions and uphold the"
+" network. Unlike Proof-of-Work networks, which need to centralize validators"
+" for economies of scale, Casper allows for the geographical decentralization"
+" of validators. Casper validators verify transactions based on staked tokens"
+" and receive CSPR rewards for participating in the PoS consensus mechanism. "
+"CSPR is the native token on the Casper Network."
+msgstr ""
+"Casper dựa vào một nhóm những trình xác thực (validator) để xác minh các "
+"giao dịch và duy trì mạng. Không giống như các mạng Proof-of-Work tập trung "
+"vào những trình xác thực theo quy mô kinh tế, Casper cho phép những trình "
+"xác thực phân cấp theo địa lý. Các trình xác thực của Casper xác minh các "
+"giao dịch dựa trên các token được đặt cọc và sẽ nhận phần thưởng CSPR khi "
+"tham gia vào cơ chế đồng thuận PoS. CSPR là đơn vị tiền tệ gốc (token) đại "
+"diện cho Mạng Casper."
+
+#: ../../index.rst:58
+msgid "Where can I learn more?"
+msgstr "Tôi có thể tìm thêm thông in ở đâu?"
+
+#: ../../index.rst:60
+msgid "Follow the links below to learn more about the Casper Network."
+msgstr "Xem các đường dẫn sau để hiểu thêm về Mạng Casper."
+
+#: ../../index.rst:63
 msgid "`How To's <workflow/index.html>`_"
 msgstr "`Hướng dẫn sử dụng <workflow/index.html>`_"
 
-#: ../../index.rst:15
+#: ../../index.rst:63
 msgid "Guides for interacting with the Casper Network"
 msgstr "Hướng dẫn tương tác với Mạng Casper"
 
-#: ../../index.rst:16
+#: ../../index.rst:64
 msgid "`Developers <dapp-dev-guide/index.html>`_"
 msgstr "`Dành cho nhà phát triển <dapp-dev-guide/index.html>`_"
 
-#: ../../index.rst:16
+#: ../../index.rst:64
 msgid ""
 "Get started with smart contract development on the Casper blockchain in "
 "AssemblyScript or Rust"
@@ -92,19 +233,19 @@ msgstr ""
 "Bắt đầu phát triển hợp đồng thông minh trên chuỗi khối Casper với "
 "AssemblyScript hoặc Rust"
 
-#: ../../index.rst:17
+#: ../../index.rst:65
 msgid "`Node Operators <node-operator/index.html>`_"
 msgstr "`Các nhà điều hành nút <node-operator/index.html>`_"
 
-#: ../../index.rst:17
+#: ../../index.rst:65
 msgid "Run node infrastructure on the Casper Network"
 msgstr "Chạy cơ sở hạ tầng nút trên Mạng Casper"
 
-#: ../../index.rst:18
+#: ../../index.rst:66
 msgid "`Design <implementation/index.html>`_"
 msgstr "`Thiết kế <implementation/index.html>`_"
 
-#: ../../index.rst:18
+#: ../../index.rst:66
 msgid ""
 "Understand the architecture of the Casper Network, including network "
 "communication, execution semantics, account management, block structure, "
@@ -114,11 +255,11 @@ msgstr ""
 "quản lý tài khoản, cấu trúc khối, trạng thái toàn cục, tuần tự hóa, tham "
 "chiếu không thể giả mạo được và token"
 
-#: ../../index.rst:19
+#: ../../index.rst:67
 msgid "`Economics <economics/index.html>`_"
 msgstr "`Về mặt kinh tế <economics/index.html>`_"
 
-#: ../../index.rst:19
+#: ../../index.rst:67
 msgid ""
 "Conceptualize Casper's economic activity by understanding consensus, "
 "runtime, ecosystem, and the macroeconomy"
@@ -126,11 +267,11 @@ msgstr ""
 "Khái niệm hóa hoạt động kinh tế của Casper bằng cách hiểu sự đồng thuận, "
 "thời điểm chạy, hệ sinh thái và kinh tế vĩ mô của Casper"
 
-#: ../../index.rst:20
+#: ../../index.rst:68
 msgid "`Staking Guide <staking/index.html>`_"
 msgstr "`Hướng dẫn đặt cọc (staking) <staking/index.html>`_"
 
-#: ../../index.rst:20
+#: ../../index.rst:68
 msgid ""
 "Participate in the protocol by staking CSPR tokens with a validator in the "
 "Casper Network"
@@ -138,30 +279,30 @@ msgstr ""
 "Tham gia vào giao thức bằng cách đặt cọc token CSPR với nhà xác thực trong "
 "Mạng Casper"
 
-#: ../../index.rst:21
+#: ../../index.rst:69
 msgid "`Glossary <glossary/index.html>`_"
 msgstr "`Thuật ngữ <glossary/index.html>`_"
 
-#: ../../index.rst:21
+#: ../../index.rst:69
 msgid "Explore key definitions in the context of the Casper Network"
 msgstr "Khám phá các định nghĩa quan trọng trong ngữ cảnh của Mạng Casper"
 
-#: ../../index.rst:22
+#: ../../index.rst:70
 msgid "`FAQ <faq/index.html>`_"
 msgstr "`Câu hỏi thường gặp <faq/index.html>`_"
 
-#: ../../index.rst:22
+#: ../../index.rst:70
 msgid ""
 "Find answers regarding the Casper Network, CasperLabs, and the CSPR token "
 "sale"
 msgstr ""
 "Tìm câu trả lời liên quan đến Mạng Casper, CasperLabs và việc bán token CSPR"
 
-#: ../../index.rst:23
+#: ../../index.rst:71
 msgid "`Changelog <changelog.html>`_"
 msgstr "`Nhật ký thay đổi <changelog.html>`_"
 
-#: ../../index.rst:23
+#: ../../index.rst:71
 msgid "Review past technical releases and changelogs for the Casper Network"
 msgstr ""
 "Xem lại các bản phát hành tài liệu kỹ thuật và nhật ký thay đổi trước đây "
@@ -706,3 +847,49 @@ msgstr ""
 " khả năng chuyển đổi hoặc khả năng chuyển nhượng hoặc dẫn đến mất toàn bộ "
 "hoặc một phần hoặc giảm (kể cả giảm xuống 0) giá trị CSPR của Người nhận "
 "(nếu và khi CSPR được tạo ra và/hoặc phát hành)."
+
+#~ msgid "Casper Documentation"
+#~ msgstr "Tài liệu Casper"
+
+#~ msgid ""
+#~ "We present the Casper Network, a new Turing-complete smart-contract "
+#~ "platform, backed by a Proof-of-Stake (PoS) consensus algorithm and "
+#~ "WebAssembly (wasm). The network is a permissionless, decentralized, public "
+#~ "blockchain. The consensus protocol is called Highway, and the complete paper"
+#~ " is found in GitHub: https://github.com/CasperLabs/highway. The consensus "
+#~ "protocol allows clients to use different confidence thresholds to convince "
+#~ "themselves that a given block is *finalized*. This protocol is built on Vlad"
+#~ " Zamfir's `correct-by-construction (CBC) Casper <https://github.com/cbc-"
+#~ "casper/cbc-casper-paper>`_ research."
+#~ msgstr ""
+#~ "Chúng tôi giới thiệu Mạng Casper, một nền tảng hợp đồng thông minh hoàn "
+#~ "chỉnh mới theo quy tắc Turing-complete, được hỗ trợ bởi thuật toán đồng "
+#~ "thuận Proof-of-Stake (PoS) và WebAssembly (wasm). Mạng là một blockchain "
+#~ "công khai, phi tập trung, không cần cấp phép. Giao thức đồng thuận được gọi "
+#~ "là Highway và có thể xem bài báo đầy đủ trong GitHub: "
+#~ "https://github.com/CasperLabs/highway. Giao thức đồng thuận cho phép khách "
+#~ "hàng sử dụng các ngưỡng tin cậy khác nhau để tự thuyết phục rằng một khối "
+#~ "nhất định đã được *hoàn thành*. Giao thức này được xây dựng dựa trên nghiên "
+#~ "cứu `correct-by-construction (CBC) Casper <https://github.com/cbc-casper"
+#~ "/cbc-casper-paper>`_ của Vlad Zamfir."
+
+#~ msgid ""
+#~ "Rust is the primary programming language for smart contracts on the Casper "
+#~ "blockchain because of its good support for compilation to wasm. However, the"
+#~ " platform does not make assumptions about the source language and supports "
+#~ "libraries facilitating contract development in other programming languages "
+#~ "having wasm as a compile target. Other essential features include an account"
+#~ " permissions model that allows the recovery of lost keys and a permissions "
+#~ "model to securely share state between accounts and contracts (without "
+#~ "expensive cryptographic checks). We also provide discussions of the "
+#~ "economics of our proof-of-stake implementation and our token policies."
+#~ msgstr ""
+#~ "Rust là ngôn ngữ lập trình chính cho các hợp đồng thông minh trên chuỗi khối"
+#~ " Casper vì nó hỗ trợ tốt cho việc biên dịch sang wasm. Tuy nhiên, nền tảng "
+#~ "không đưa ra giả định về ngôn ngữ nguồn và chỉ hỗ trợ các thư viện để phát "
+#~ "triển hợp đồng bằng các ngôn ngữ lập trình khác có wasm là trình biên dịch "
+#~ "mục tiêu. Các tính năng quan trọng khác bao gồm mô hình quyền tài khoản cho "
+#~ "phép khôi phục các khóa bị mất và mô hình quyền để chia sẻ trạng thái an "
+#~ "toàn giữa các tài khoản và hợp đồng (mà không cần các kiểm tra mật mã tốn "
+#~ "kém). Chúng tôi cũng cung cấp các cuộc thảo luận về tính kinh tế của việc "
+#~ "triển khai bằng chứng cổ phần và các chính sách token của chúng tôi."
