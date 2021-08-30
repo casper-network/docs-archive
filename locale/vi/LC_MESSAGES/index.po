@@ -67,7 +67,7 @@ msgstr ""
 "linh hoạt nhờ việc giúp đạt được tính cuối cùng của khối mà các mô hình BFT "
 "không thể làm được. Giao thức này được xây dựng dựa trên nghiên cứu "
 "`correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-"
-"casper-paper>` của Vlad Zamfir."
+"casper-paper>`_ của Vlad Zamfir."
 
 #: ../../index.rst:19
 msgid ""
@@ -235,7 +235,7 @@ msgstr ""
 
 #: ../../index.rst:65
 msgid "`Node Operators <node-operator/index.html>`_"
-msgstr "`Các nhà điều hành nút <node-operator/index.html>`_"
+msgstr "`Nhà điều hành nút <node-operator/index.html>`_"
 
 #: ../../index.rst:65
 msgid "Run node infrastructure on the Casper Network"
@@ -257,7 +257,7 @@ msgstr ""
 
 #: ../../index.rst:67
 msgid "`Economics <economics/index.html>`_"
-msgstr "`Về mặt kinh tế <economics/index.html>`_"
+msgstr "`Tính kinh tế <economics/index.html>`_"
 
 #: ../../index.rst:67
 msgid ""
@@ -276,8 +276,8 @@ msgid ""
 "Participate in the protocol by staking CSPR tokens with a validator in the "
 "Casper Network"
 msgstr ""
-"Tham gia vào giao thức bằng cách đặt cọc token CSPR với nhà xác thực trong "
-"Mạng Casper"
+"Tham gia vào giao thức bằng cách đặt cọc token CSPR với trình xác thực trong"
+" Mạng Casper"
 
 #: ../../index.rst:69
 msgid "`Glossary <glossary/index.html>`_"
@@ -746,7 +746,7 @@ msgid ""
 "service provider, including any termination of the service by the wallet "
 "provider and/or bankruptcy of the wallet provider."
 msgstr ""
-"** Rủi ro liên quan đến ví**: Người nhận hiểu và chấp nhận rằng CasperLabs "
+"**Rủi ro liên quan đến ví**: Người nhận hiểu và chấp nhận rằng CasperLabs "
 "Networks AG hoặc bất kỳ chi nhánh, nhân viên, đối tác hoặc cố vấn nào của "
 "CasperLabs Networks AG không chịu trách nhiệm về ví mà bất kỳ CSPR nào được "
 "chuyển đến. Người nhận hiểu và đồng ý rằng người nhận hoàn toàn chịu trách "
