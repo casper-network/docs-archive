@@ -8,7 +8,7 @@ Important Commands Explained
 
     $ nctl-view-faucet-account
 
-The faucet is the default account created on the network. This command is part of NCTL, providing a view into the faucet account’s details. Normally on the mainnet, you will have your own account used to fund transactions, but for the sake of this tutorial, we do not need accounts and will just use the faucet to execute deploys. This command will supply us with two key pieces of information: 1) the account’s **secret key** location and 2) the **account-hash**, which are used to sign deploys and query the network state, respectively.
+The faucet is the default account created on the network. This command is part of NCTL, providing a view into the faucet account’s details. Generally on the Mainnet, you will have your own account used to fund transactions, but for the sake of this tutorial, we do not need accounts and will use the faucet to execute deploys. This command will supply us with two key pieces of information: 1) the account’s **secret key** location and 2) the **account-hash**, which are used to sign deploys and query the network state, respectively.
 
 2. State Root Hash
 -------------------
@@ -34,7 +34,7 @@ The first command that we will cover as part of the ``casper-client`` tool is th
         --key [ACCOUNT_HASH] \ 
         -q "[SESSION_NAME]/[SESSION_NAMED_KEY]" (OPTIONAL)
 
-This command’s name is self explanatory. It allows you to query the state of a Casper network at a given moment in time, specified by the state root hash described above. The ``node-address`` is the server (localhost when running on a local NCTL network). The ``key`` is the identifier for the query. It must be either the account public key, account hash, contract address hash, transfer hash, or deploy hash. We will demonstrate two of these key types in this tutorial. The optional query path argument (``q``) allows you to drill into the specifics of a query with respect to the key. We will also look at an example of this usage.
+This command’s name is self-explanatory. It allows you to query the state of a Casper network at a given moment in time, specified by the state root hash described above. The ``node-address`` is the server (localhost when running on a local NCTL network). The ``key`` is the identifier for the query. It must be either the account public key, account hash, contract address hash, transfer hash, or deploy hash. We will demonstrate two of these key types in this tutorial. The optional query path argument (``q``) allows you to drill into the specifics of a query concerning the key. We will also look at an example of this usage.
 
 4. Put Deploys (onto the Chain)
 -------------------------------
@@ -69,9 +69,9 @@ In this first usage of the command, we specify the ``session-path`` to point to 
         --session-entry-point "counter_inc"
 
 
-This second usage of ``put-deploy`` does not place a new contract on the chain, but it allows you to call entry-points (functions) defined in smart contracts.
+This second usage of ``put-deploy`` does not place a new contract on the chain, but it allows you to call entry points (functions) defined in smart contracts.
 
-Here we show the example using “counter” and “counter_inc” because, as you will see shortly, in the Counter tutorial, we have defined a smart contract by the name of “counter” and there is an entry-point named “counter_inc” defined within it. However, these are obviously going to be different when you write your own contracts.
+Here we show the example using “counter” and “counter_inc” because, as you will see shortly, in the Counter tutorial, we have defined a smart contract by the name of “counter”, and there is an entry-point named “counter_inc” defined within it. However, these are obviously going to be different when you write your contracts.
 
 
 5. Get Deploys (from the Chain)
