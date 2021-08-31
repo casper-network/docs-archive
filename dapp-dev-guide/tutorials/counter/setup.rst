@@ -4,7 +4,7 @@ Setting up the Casper Client
 Prerequisites
 -------------
 1. You have completed the `Getting Started tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-sdk.html>`_ to set up your development environment, including tools like `cmake` (version 3.1.4+), `cargo`, and `Rust`.
-2. You have completed the `NCTL** tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_, which introduces you to the CLI tool to set up and control local Casper networks for development.
+2. You have completed the `NCTL tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_, which introduces you to the CLI tool to set up and control local Casper networks for development.
 
 
 Installing the Casper Client
