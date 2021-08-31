@@ -93,7 +93,7 @@ With the compiled contract, we can call the `casper-client put-deploy` command t
         --payment-amount 5000000000000 \
         --session-path ./counter/target/wasm32-unknown-unknown/release/counter-define.wasm
 
-You will need to replace the ``[PATH_TO_YOUR_KEY]`` field with the actual path of where your secret key is stored. If you forgot to make note of it, it is one of the fields that gets returned when you call ``nctl-view-faucet-account``. The ``session-path`` argument should point to wherever you compiled counter-define.wasm on your computer. In the code snippet, I am showing you the default path if the counter folder is in the same directory.
+You will need to replace the ``[PATH_TO_YOUR_KEY]`` field with the actual path of where your secret key is stored. If you forgot to make note of it, it is one of the fields that gets returned when you call `nctl-view-faucet-account`. The `session-path` argument should point to wherever you compiled counter-define.wasm on your computer. In the code snippet, I am showing you the default path if the counter folder is in the same directory.
 
 Once you call this command, it will return a deploy hash to you. You can use this hash to verify that the deploy successfully took place:
 
