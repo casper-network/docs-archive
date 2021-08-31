@@ -1,8 +1,8 @@
 Important Commands Explained
 ============================
 
-1. Faucet Account Information
-------------------------------
+Faucet Account Information
+--------------------------
 
 .. code-block:: rust
 
@@ -10,12 +10,12 @@ Important Commands Explained
 
 The faucet is the default account created on the network. This command is part of NCTL, providing a view into the faucet account’s details. Generally on the Mainnet, you will have your own account used to fund transactions, but for the sake of this tutorial, we do not need accounts and will use the faucet to execute deploys. This command will supply us with two key pieces of information: the account’s `secret key` location and the `account hash`, which are used to sign deploys and query the network state, respectively.
 
-1. State Root Hash
--------------------
+State Root Hash
+---------------
 
 .. code-block:: rust
 
-    $ casper-client get-state-root-hash --node-address [NODE_SERVER_ADDRESS]
+    casper-client get-state-root-hash --node-address [NODE_SERVER_ADDRESS]
 
 The first command that we will cover as part of the `casper-client` tool is the `get-state-root-hash` command. The state root hash is an identifier of the current network state. It is much like a Git commit ID for commit history. It gives a snapshot of the blockchain state at a moment in time. For this tutorial, it will be used to query the network state after we take actions with deployments.
 
@@ -23,12 +23,12 @@ The first command that we will cover as part of the `casper-client` tool is the 
 
     After any deploys to the network, you must get the new state root hash to see the new changes reflected. Otherwise, you will be looking at events in the past.
 
-3. Querying Network State
--------------------------
+Querying Network State
+----------------------
 
 .. code-block:: rust
 
-    $ casper-client query-state \
+    casper-client query-state \
         --node-address [NODE_SERVER_ADDRESS] \
         --state-root-hash [STATE_ROOT_HASH] \
         --key [ACCOUNT_HASH] \ 
@@ -36,15 +36,15 @@ The first command that we will cover as part of the `casper-client` tool is the 
 
 This command’s name is self-explanatory. It allows you to query the state of a Casper network at a given moment in time, specified by the state root hash described above. The `node-address` is the server (localhost when running on a local NCTL network). The `key` is the identifier for the query. It must be either the account public key, account hash, contract address hash, transfer hash, or deploy hash. We will demonstrate two of these key types in this tutorial. The optional query path argument (`q`) allows you to drill into the specifics of a query concerning the key. We will also look at an example of this usage.
 
-4. Put Deploys (onto the Chain)
--------------------------------
+Put Deploys (onto the Chain)
+----------------------------
 
 Deploy via a compiled WASM binary
 #################################
 
 .. code-block:: rust
 
-    $ casper-client put-deploy \
+    casper-client put-deploy \
         --node-address [NODE_SERVER_ADDRESS] \
         --chain-name casper-net-1 \
         --secret-key [KEY_PATH]/secret_key.pem \
@@ -60,7 +60,7 @@ Deploy via a named key already on the blockchain
 
 .. code:: rust
 
-    $ casper-client put-deploy \
+    casper-client put-deploy \
         --node-address [NODE_SERVER_ADDRESS] \
         --chain-name casper-net-1 \
         --secret-key [KEY_PATH]/secret_key.pem \
@@ -74,12 +74,12 @@ This second usage of `put-deploy` does not place a new contract on the chain, bu
 Here we show the example using “counter” and “counter_inc” because, as you will see shortly, in the Counter tutorial, we have defined a smart contract by the name of “counter”, and there is an entry-point named “counter_inc” defined within it. However, these are obviously going to be different when you write your contracts.
 
 
-5. Get Deploys (from the Chain)
----------------------------------
+Get Deploys (from the Chain)
+----------------------------
 
 .. code-block:: rust
 
-    $ casper-client get-deploy \
+    casper-client get-deploy \
         --node-address [NODE_SERVER_ADDRESS] \
         [DEPLOY_HASH]
 
