@@ -105,8 +105,7 @@ Once you call this command, it will return a deploy hash to you. You can use thi
 View the Updated Network State
 -----------------------------------
 
-Hopefully, the deploy was successful, but is the named key visible on the chain now? We can call ``casper-client query-state`` to check it out!
-**REMEMBER**, we must get the new state root hash since we just wrote a deploy to the chain! If you run these two commands, you should see that now there is a new counter named key on the chain!
+Hopefully, the deploy was successful, but is the named key visible on the chain now? Call ``casper-client query-state`` to check it out. **REMEMBER**, we must get the new state root hash since we just wrote a deploy to the chain! If you run these two commands, you should see that now there is a new counter named key on the chain!
 
 Get the NEW state-root-hash:
 
