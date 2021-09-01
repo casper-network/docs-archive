@@ -1,7 +1,7 @@
 Tutorial Walkthrough
 ======================
 
-Now that we have the basic commands squared away, we can begin the tutorial to deploy a contract application and use it on the network.
+Now that we are familiar with the basic commands, we can begin the tutorial to deploy a contract application and use it on the network.
 
 Clone the Contracts
 ---------------------
@@ -14,30 +14,33 @@ First, we will need to clone `the counter contract repository <https://github.co
 
 If you explore the source code, you will see that there are two smart contracts:
 
-   - ``counter-define``
-       - Defines two named keys: “counter” to reference the contract and an associated variable “count”
-       - Provides a function to get the current count (`counter_get`)
-       - Provides a function to increment the current count (`counter_inc`)
-   - ``counter-call``
-       - Retrieves the counter-define contract, gets the current count value, increments it, and makes sure count was incremented by 1
+- ``counter-define``
+    - Defines two named keys: “counter” to reference the contract and an associated variable “count”
+    - Provides a function to get the current count (`counter_get`)
+    - Provides a function to increment the current count (`counter_inc`)
+- ``counter-call``
+    - Retrieves the counter-define contract, gets the current count value, increments it, and makes sure count was incremented by 1
 
 
 Create a Local Network
 ---------------------------
 
-After you have gotten familiar with the counter source code, we need to create a local blockchain network to deploy the contract. If you completed the NCTL guide, all you need to do is allocate the network assets and then start the network.
+After you have gotten familiar with the counter source code, we need to create a local blockchain network to deploy the contract. If you completed the NCTL tutorial, all you need to do is allocate the network assets and then start the network.
 
-If you run the following line in your terminal, you should be able to spin up a network effortlessly (Note: If it fails for any reason, please refer back to the NCTL guide and make sure that all your packages are up to date):
+If you run the following line in your terminal, you should be able to spin up a network effortlessly.
 
 .. code-block:: bash
     
     nctl-assets-setup && nctl-start
 
+.. Note::
+    
+     If it fails for any reason, please refer the `NCTL tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_ and make sure that all your packages are up to date).
 
 View the Network State
 ---------------------------
 
-With a network up and running, you can use the casper-client query-state command to check the status of the network, but remember that we first need an account hash and the state-root-hash so that we can get the current “snapshot” moment. Once we have that information, we can check how the network looks.
+With a network up and running, you can use the casper-client query-state command to check the status of the network. However, we first need an `account hash` and the `state-root-hash` so that we can get the current “snapshot” moment. Once we have that information, we can check how the network looks.
 
 As a summary, we need to use the following three commands:
 
@@ -51,7 +54,7 @@ Let’s execute the commands in order. First, we need the faucet information:
 
     nctl-view-faucet-account
 
-If NCTL is correctly up and running, this command should return quite a bit of information about the faucet account. Feel free to look through the records, but note of the “account-hash” field and the “secret_key.pem” path because we will often use both.
+If NCTL is correctly up and running, this command should return quite a bit of information about the faucet account. Feel free to look through the records and make a note of the 'account-hash' field and the 'secret_key.pem' path because we will often use both.
 
 Next, get the state root hash:
 
@@ -59,7 +62,7 @@ Next, get the state root hash:
 
     casper-client get-state-root-hash --node-address http://localhost:40101
 
-We are using localhost as the node server since the network is running on our local machine. Please write down the state root hash that is returned, but keep in mind that this hash value will need to be updated every time we modify the network state. Finally, query the actual state:
+We are using localhost as the node server since the network is running on our local machine. Make a note of the 'state-root-hash' that is returned, but keep in mind that this hash value will need to be updated every time we modify the network state. Finally, query the actual state:
 
 .. code-block:: bash
 
@@ -68,12 +71,12 @@ We are using localhost as the node server since the network is running on our lo
         --state-root-hash [STATE_ROOT_HASH] \
         --key [ACCOUNT_HASH]
 
-Substitute the state root hash and account hash values you just retrieved into this command and execute it. Do not be surprised if you are a little underwhelmed when you see nothing really on the network. That is because we have not deployed anything to the network yet!
+Substitute the state root hash and account hash values you just retrieved into this command and execute it. Do not be surprised if you see nothing on the network. That is because we have not deployed anything to the network yet!
 
 Deploy the Counter
 -----------------------
 
-The network ought to have nothing on it, as would be expected. Let us try deploying the counter-define contract to the chain. First, though, we need to compile it.
+Let us try deploying the counter-define contract to the chain. First, we need to compile it.
 
 The makefile included in the repository makes compilation trivial. With these two commands, we can build (in release mode) and test the contract before deploying it. `make prepare` sets the WASM target and `make test` builds the contracts and verifies them.
 
@@ -93,9 +96,10 @@ With the compiled contract, we can call the `casper-client put-deploy` command t
         --payment-amount 5000000000000 \
         --session-path ./counter/target/wasm32-unknown-unknown/release/counter-define.wasm
 
-You will need to replace the ``[PATH_TO_YOUR_KEY]`` field with the actual path of where your secret key is stored. If you forgot to make note of it, it is one of the fields that gets returned when you call `nctl-view-faucet-account`. The `session-path` argument should point to wherever you compiled counter-define.wasm on your computer. In the code snippet, I am showing you the default path if the counter folder is in the same directory.
+- Replace the ``[PATH_TO_YOUR_KEY]`` field with the actual path of where your secret key is stored. It is one of the fields that gets returned when you call `nctl-view-faucet-account`. 
+- The `session-path` argument should point to wherever you compiled counter-define.wasm on your computer. The code snippet shows you the default path if the counter folder is in the same directory.
 
-Once you call this command, it will return a deploy hash to you. You can use this hash to verify that the deploy successfully took place:
+Once you call this command, it will return a deploy hash. You can use this hash to verify that the deploy successfully took place.
 
 .. code-block:: rust
 
@@ -105,7 +109,13 @@ Once you call this command, it will return a deploy hash to you. You can use thi
 View the Updated Network State
 -----------------------------------
 
-Hopefully, the deploy was successful, but is the named key visible on the chain now? Call ``casper-client query-state`` to check it out. **REMEMBER**, we must get the new state root hash since we just wrote a deploy to the chain! If you run these two commands, you should see that now there is a new counter named key on the chain!
+Hopefully, the deployment was successful, but is the named key visible on the chain now? Call ``casper-client query-state`` to check it out. 
+
+.. Note::
+
+    We must get the new state root hash since we just wrote a deploy to the chain. 
+
+If you run these two commands, there will be a new counter named key on the chain.
 
 Get the NEW state-root-hash:
 
@@ -122,7 +132,7 @@ Get the network state:
         --state-root-hash [STATE_ROOT_HASH] \
         --key [ACCOUNT_HASH]
 
-We can actually dive further into the data stored on the chain using the query path argument or directly querying the deploy hash. Try these three following commands and notice that each one gives you a different level of detail.
+We can actually dive further into the data stored on the chain using the query path argument or directly querying the deploy hash. Try the following commands and notice that each one gives you a different level of detail.
 
 Retrieve the specific counter contract details:
 
