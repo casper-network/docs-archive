@@ -1,5 +1,5 @@
-Setting up the Casper Client
-============================
+The Casper Client
+=================
 
 Prerequisites
 -------------

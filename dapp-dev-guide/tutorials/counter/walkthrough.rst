@@ -1,5 +1,5 @@
-Tutorial Walkthrough
-======================
+Counter Walkthrough
+===================
 
 Now that we are familiar with the basic commands, we can begin the tutorial to deploy a contract application and use it on the network.
 

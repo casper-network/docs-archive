@@ -1,5 +1,5 @@
-Important Commands Explained
-============================
+Important Commands
+==================
 
 Faucet Account Information
 --------------------------
