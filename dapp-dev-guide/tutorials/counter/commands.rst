@@ -6,7 +6,7 @@ Faucet Account Information
 
 .. code-block:: rust
 
-    $ nctl-view-faucet-account
+    nctl-view-faucet-account
 
 This command is part of NCTL and provides a view into the faucet account details. The faucet is the default account created on the network. Generally on the Mainnet, your own account is used to fund transactions. However, for the sake of this tutorial, we do not need accounts and will use the faucet to execute deploys. This command supplies two key pieces of information: the account’s `secret key` location and the `account hash`, which are used to sign deploys and query the network state, respectively.
 

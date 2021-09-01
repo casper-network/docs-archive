@@ -1,5 +1,5 @@
-Counter Walkthrough
-===================
+Tutorial Walkthrough
+====================
 
 Now that we are familiar with the basic commands, we can begin the tutorial to deploy a contract application and use it on the network.
 
@@ -15,11 +15,11 @@ First, we will need to clone `the counter contract repository <https://github.co
 If you explore the source code, you will see that there are two smart contracts:
 
 - ``counter-define``
-    - Defines two named keys: “counter” to reference the contract and an associated variable “count”
+    - Defines two named keys: `counter` to reference the contract and an associated variable `count` to store the number of times we increment the counter
     - Provides a function to get the current count (`counter_get`)
     - Provides a function to increment the current count (`counter_inc`)
 - ``counter-call``
-    - Retrieves the counter-define contract, gets the current count value, increments it, and makes sure count was incremented by 1
+    - Retrieves the `counter-define` contract, gets the current count value, increments it, and makes sure count was incremented by 1
 
 
 Create a Local Network
@@ -40,7 +40,7 @@ If you run the following line in your terminal, you should be able to spin up a 
 View the Network State
 ---------------------------
 
-With a network up and running, you can use the casper-client query-state command to check the status of the network. However, we first need an `account hash` and the `state-root-hash` so that we can get the current “snapshot” moment. Once we have that information, we can check how the network looks.
+With a network up and running, you can use the casper-client query-state command to check the status of the network. However, we first need an `account hash` and the `state-root-hash` so that we can get the current snapshot. Once we have that information, we can check how the network looks.
 
 As a summary, we need to use the following three commands:
 
@@ -54,7 +54,7 @@ Let’s execute the commands in order. First, we need the faucet information:
 
     nctl-view-faucet-account
 
-If NCTL is correctly up and running, this command should return quite a bit of information about the faucet account. Feel free to look through the records and make a note of the 'account-hash' field and the 'secret_key.pem' path because we will often use both.
+If NCTL is correctly up and running, this command should return quite a bit of information about the faucet account. Feel free to look through the records and make a note of the `account-hash` field and the `secret_key.pem` path because we will often use both.
 
 Next, get the state root hash:
 
@@ -62,7 +62,7 @@ Next, get the state root hash:
 
     casper-client get-state-root-hash --node-address http://localhost:40101
 
-We are using localhost as the node server since the network is running on our local machine. Make a note of the 'state-root-hash' that is returned, but keep in mind that this hash value will need to be updated every time we modify the network state. Finally, query the actual state:
+We are using localhost as the node server since the network is running on our local machine. Make a note of the `state-root-hash` that is returned, but keep in mind that this hash value will need to be updated every time we modify the network state. Finally, query the actual state:
 
 .. code-block:: bash
 
@@ -76,7 +76,7 @@ Substitute the state root hash and account hash values you just retrieved into t
 Deploy the Counter
 -----------------------
 
-Let us try deploying the counter-define contract to the chain. First, we need to compile it.
+Let us try deploying the `counter-define` contract to the chain. First, we need to compile it.
 
 The makefile included in the repository makes compilation trivial. With these two commands, we can build (in release mode) and test the contract before deploying it. `make prepare` sets the WASM target and `make test` builds the contracts and verifies them.
 
@@ -161,7 +161,7 @@ The first two commands access the counter and count named keys, respectively, us
 
 Increment the Counter
 ---------------------
-We now have a counter on the chain, and we verified everything is good. Now we want to increment it. We can do that by calling the entry-point `counter_inc`, the function we defined in the counter-define contract. You can call an entry-point in a deployed contract by using the `put-deploy` command as illustrated here:
+We now have a counter on the chain, and we verified everything is good. Now we want to increment it. We can do that by calling the entry-point `counter_inc`, the function we defined in the `counter-define` contract. You can call an entry-point in a deployed contract by using the `put-deploy` command as illustrated here:
 
 .. code-block:: bash
     
