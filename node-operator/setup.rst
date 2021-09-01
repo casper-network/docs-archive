@@ -149,7 +149,13 @@ Run the commands below to install the Casper client on most flavors of Linux and
 .. code-block:: bash
 
   rustup toolchain install nightly
-  cargo +nightly-2021-06-17 install casper-client
+  cargo +nightly-2021-06-17 install casper-client --locked
+
+Doing this, you'll see a warning, which you can ignore for now.
+
+.. code-block:: bash
+
+    warning: package `aes-soft v0.5.0` in Cargo.lock is yanked in registry `crates.io`, consider running without --locked
 
 The Casper client can print out `help` information, which provides an up-to-date list of supported commands.
 
