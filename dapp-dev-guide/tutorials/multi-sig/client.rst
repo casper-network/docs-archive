@@ -45,7 +45,7 @@ You can set other environment variables described in the table below.
 ========================  ============================================================  =============
 Variable                  Description                                                   Default value
 ========================  ============================================================  =============
-NODE_URL                  The URL of the first node in your local network.              ``http://localhost:40101/rpc``
+NODE_URL                  The URL of the first node in your local network.              ``http://localhost:11101/rpc``
 WASM_PATH                 The path of the compiled WASM contract.                       ``../contract/target/wasm32-unknown-unknown/release/keys-manager.wasm``
 NETWORK_NAME              The name of your local network set up by NCTL.                ``casper-net-1``
 FUND_AMOUNT               Number of motes that accounts will be funded.                 ``10000000000000``
