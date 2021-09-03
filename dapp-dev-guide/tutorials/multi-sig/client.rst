@@ -26,7 +26,14 @@ The network you created with the NCTL tool has a special account called a faucet
 
 Setting up the Client
 ^^^^^^^^^^^^^^^^^^^^^^^
-Navigate to your ``keys-manager/client/`` folder and create the ``.env`` file to specify the configuration needed for your client to communicate with the network.
+This client code expects a compiled WASM file in the ``contract`` folder and a local network called ``casper-net-1``. 
+
+Now you need to specify the configuration needed for your client to communicate with the network:
+
+- The ``BASE_KEY_PATH`` for the absolute path to your faucet account
+- The ``NODE_URL`` for the first node in your local network 
+
+Navigate to your ``keys-manager/client/`` folder and create an ``.env`` file to specify the required configurations.
 
 .. code-block:: bash
 
@@ -34,18 +41,18 @@ Navigate to your ``keys-manager/client/`` folder and create the ``.env`` file to
    touch .env
    open -e .env
 
-This client code, by default, expects a compiled WASM file in the ``contract`` folder and a local network called ``casper-net-1``. In this tutorial, you only need to configure the ``BASE_KEY_PATH``, the absolute path to your faucet account. So, your ``.env`` file will contain only one entry for the ``BASE_KEY_PATH`` and would look like this (replacing <ENTER_YOUR_PATH> with your path):
+Your ``.env`` file will look like this (<ENTER_YOUR_PATH> stores your local path):
 
-::
+   ::
 
-   BASE_KEY_PATH=<ENTER_YOUR_PATH>/casper-node/utils/nctl/assets/net-1/faucet/
+      BASE_KEY_PATH=<ENTER_YOUR_PATH>/casper-node/utils/nctl/assets/net-1/faucet/
+      NODE_URL=http://localhost:11101/rpc
 
-You can set other environment variables described in the table below.
+If you would like to customize your setup further, you can set other optional environment variables described in the table below.
 
 ========================  ============================================================  =============
 Variable                  Description                                                   Default value
 ========================  ============================================================  =============
-NODE_URL                  The URL of the first node in your local network.              ``http://localhost:40101/rpc``
 WASM_PATH                 The path of the compiled WASM contract.                       ``../contract/target/wasm32-unknown-unknown/release/keys-manager.wasm``
 NETWORK_NAME              The name of your local network set up by NCTL.                ``casper-net-1``
 FUND_AMOUNT               Number of motes that accounts will be funded.                 ``10000000000000``
