@@ -34,18 +34,22 @@ Navigate to your ``keys-manager/client/`` folder and create the ``.env`` file to
    touch .env
    open -e .env
 
-This client code, by default, expects a compiled WASM file in the ``contract`` folder and a local network called ``casper-net-1``. In this tutorial, you only need to configure the ``BASE_KEY_PATH``, the absolute path to your faucet account. So, your ``.env`` file will contain only one entry for the ``BASE_KEY_PATH`` and would look like this (replacing <ENTER_YOUR_PATH> with your path):
+This client code, by default, expects a compiled WASM file in the ``contract`` folder and a local network called ``casper-net-1``. 
 
-::
+In this tutorial, you need to configure the ``BASE_KEY_PATH``, which is the absolute path to your faucet account and the ``NODE_URL``, which is the URL of the first node in your local network.
 
-   BASE_KEY_PATH=<ENTER_YOUR_PATH>/casper-node/utils/nctl/assets/net-1/faucet/
+Contents of ``.env`` file (replace <ENTER_YOUR_PATH> with your local path):
+
+   ::
+
+      BASE_KEY_PATH=<ENTER_YOUR_PATH>/casper-node/utils/nctl/assets/net-1/faucet/
+      NODE_URL=http://localhost:11101/rpc
 
 You can set other environment variables described in the table below.
 
 ========================  ============================================================  =============
 Variable                  Description                                                   Default value
 ========================  ============================================================  =============
-NODE_URL                  The URL of the first node in your local network.              ``http://localhost:11101/rpc``
 WASM_PATH                 The path of the compiled WASM contract.                       ``../contract/target/wasm32-unknown-unknown/release/keys-manager.wasm``
 NETWORK_NAME              The name of your local network set up by NCTL.                ``casper-net-1``
 FUND_AMOUNT               Number of motes that accounts will be funded.                 ``10000000000000``
