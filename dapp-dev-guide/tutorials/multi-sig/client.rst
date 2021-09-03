@@ -58,6 +58,7 @@ Next, close the ``.env`` file and install the JavaScript packages in the ``keys-
 .. code-block:: bash
 
    npm install
+   TEST
 
 
 Testing the Client
