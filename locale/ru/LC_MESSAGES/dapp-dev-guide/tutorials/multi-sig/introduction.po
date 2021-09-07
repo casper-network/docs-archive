@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:2
+msgid "Concepts"
+msgstr "Концепции"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:4
+msgid ""
+"The Casper implementation of multiple signatures is unique and allows you to"
+" set up and customize access to your account and deployments."
+msgstr ""
+"В Casper реализация мультиподписей уникальна и позволяет настроить и "
+"кастомизировать доступ к вашим аккаунтам и развертываниям."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:6
+msgid ""
+"Many companies handle large transactions and use smart contracts to manage "
+"tokens. However, these contracts need to be audited and secure and require a"
+" significant investment in setup and maintenance."
+msgstr ""
+"Многие компании обрабатывают крупные транзакции и используют смарт-контракты"
+" для управления токенами. Однако эти контракты должны быть проверены и "
+"защищены, а также требуют значительных инвестиций в настройку и техническое "
+"обслуживание."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:8
+msgid ""
+"Casper enables you to sign anything with its multi-signature (multi-sig) "
+"implementation. For example, you do not need a multi-sig wallet to call a "
+"feature from a smart contract. Instead, you can use the multi-sig feature at"
+" the account level and sign your account with multiple keys."
+msgstr ""
+"Casper позволяет подписывать что угодно с помощью реализации с несколькими "
+"подписями (multi-sig). Например, вам не нужен многозначный кошелек для "
+"вызова функции из смарт-контракта. Вместо этого вы можете использовать "
+"функцию multi-sig на уровне учетной записи и подписать свою учетную запись "
+"несколькими ключами."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:10
+msgid ""
+"Your `Account "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ is a "
+"cryptographically secured gateway into the Casper Network, and you can set "
+"it up using `the Casper Permissions Model "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html"
+"#permissions-model>`_."
+msgstr ""
+"Ваш аккаунт `Account "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ "
+"является криптографически защищенным входом в сеть Casper, и вы можете "
+"настроить его с помощью модели разрешений `the Casper Permissions Model "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html"
+"#permissions-model>`_."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:12
+msgid "The account contains associated keys and action thresholds:"
+msgstr "Аккаунт содержит связанные ключи и пороговые значения действий:"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:14
+msgid ""
+"The **associated keys** of an account are the set of public keys allowed to "
+"provide signatures on account actions."
+msgstr ""
+"**Связанные ключи** аккаунта - это набор публичных ключей, которые имеют "
+"право предоставлять подписи для действий в аккаунте. "
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:15
+msgid ""
+"An account can perform two types of actions: **deployment** and **key "
+"management**."
+msgstr ""
+"Аккаунт может осуществлять два типа действий: **развертывание** и "
+"**управление ключами**."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:16
+msgid ""
+"The **action thresholds** in the account data structure set a **weight**, "
+"which you must meet to perform an action."
+msgstr ""
+"**Пороговые значения действий** в информационной структуре аккаунта "
+"настраивают **вес**, который мы должны задать для осуществлений действий."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/introduction.rst:18
+msgid ""
+"For more information, please review the `Blockchain Design "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_."
+msgstr ""
+"Для долее подробной информации зайдите в раздел `Blockchain Design "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_."
+
+#~ msgid ""
+#~ "Your `Account "
+#~ "<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ is a "
+#~ "cryptographically secured gateway into the CasperLabs system, and you can "
+#~ "set it up using `the Casper Permissions Model "
+#~ "<https://docs.casperlabs.io/en/latest/implementation/accounts.html"
+#~ "#permissions-model>`_."
+#~ msgstr ""
+#~ "Ваш аккаунт `Account "
+#~ "<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ "
+#~ "является криптографически защищенным входом в сеть Casper, и вы можете "
+#~ "настроить его с помощью модели разрешений `the Casper Permissions Model "
+#~ "<https://docs.casperlabs.io/en/latest/implementation/accounts.html"
+#~ "#permissions-model>`_."
