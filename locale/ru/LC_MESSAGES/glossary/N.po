@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../glossary/N.rst:2
+msgid "N"
+msgstr "N"
+
+#: ../../glossary/N.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`P <P.html>`_"
+msgstr "P <P.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`T <T.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/N.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/N.rst:9
+msgid "Node"
+msgstr "Нода"
+
+#: ../../glossary/N.rst:11
+msgid ""
+"A Casper node is a physical or virtual device that is participating in the "
+"Casper network. They store, validate, and preserve the blockchain data."
+msgstr ""
+"Нода Casper - это физическое или виртуальное устройство в сети Casper. На "
+"нем хранится, валидируется и сберегается информация блокчейн. "
+
+#: ../../glossary/N.rst:13
+msgid "You will encounter different types of nodes on the network:"
+msgstr "В сети можно встретить несколько типов нод:"
+
+#: ../../glossary/N.rst:15
+msgid ""
+"**Bonded node**: a node that has tokens staked as bond and is part of the "
+"validator set participating in consensus in that particular era."
+msgstr ""
+"**Бондовая нода**: нода, на которой происходит стейкинг токенов-облигаций, "
+"также является частью портфеля валидатора, участвующего в консенсусе в "
+"данной конкретной эре. "
+
+#: ../../glossary/N.rst:16
+msgid ""
+"**Unbonded node**: a type of node on the network that receives and processes"
+" blocks but does not create blocks and is not a validator. It is otherwise a"
+" fully functioning node, following the consensus protocol to know the "
+"current status of the blockchain (and therefore also the VM state). Such "
+"nodes are useful for querying the status of the blockchain (e.g., to learn "
+"information about transaction finalization)."
+msgstr ""
+"**Небондовая нода**: тип ноды в сети, которая получает и обрабатывает блоки,"
+" но не создает блоки и не является валидатором. Тем не менее это полностью "
+"функциональная нода, следующая протоколу консенсуса и отражающая текущий "
+"статус блокчейна (и также статус виртуальной машины). Такие ноды полезны для"
+" запроса статуса блокчейна (например узнать информацию о завершении "
+"транзакции). "
+
+#: ../../glossary/N.rst:19
+msgid "Node operator"
+msgstr "Оператор ноды"
+
+#: ../../glossary/N.rst:20
+msgid "See `operator <O.html#operator>`_."
+msgstr "Смотрите `operator <O.html#operator>`_."
