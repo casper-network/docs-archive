@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:2
+msgid "Tutorials"
+msgstr "Туториалы"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:4
+msgid "The following tutorials present several Casper features in depth:"
+msgstr ""
+"В следующих учебных пособиях подробно представлены несколько функций Casper:"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:16
+msgid "Title"
+msgstr "Название"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:16
+msgid "Description"
+msgstr "Описание"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:18
+msgid "`ERC-20 implementation <erc20/index.html>`_"
+msgstr "`Реализация ERC-20 <erc20/index.html>`_"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:18
+msgid "Implement the ERC-20 standard for Casper"
+msgstr "Внедрить стандарт ERC-20 для Casper"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:19
+msgid "`Key-value storage with Casper DSL <kv-storage-tutorial.html>`_"
+msgstr ""
+"`Хранилище ключей-значений с помощью Casper DSL <kv-storage-tutorial.html>`_"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:19
+msgid "Design a simple contract to store a value and use the Casper DSL"
+msgstr ""
+"Разработка простого контракта для хранения стоимости и использования DSL "
+"Casper"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:20
+msgid "`Multi-signatures and key recovery <multi-sig/index.html>`_"
+msgstr "`Мультиподписи и восстановление ключей <multi-sig/index.html>`_"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:20
+msgid "Learn to sign transactions with multiple keys"
+msgstr "Научитесь подписывать транзакции несколькими ключами"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:21
+msgid "`Smart contract upgrades <upgrade-tutorial.html>`_"
+msgstr "'Обновление смарт-контрактов <upgrade-tutorial.html>`_"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:21
+msgid "Learn how to upgrade smart contracts"
+msgstr "Узнайте, как обновить смарт-контракты"
