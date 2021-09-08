@@ -1,6 +1,8 @@
-# CasperLabs TechSpec
+<img width="1202" alt="casper-association-logo" src="https://user-images.githubusercontent.com/4185994/132580386-ce90df2f-34a7-4141-9bb4-435eb319f918.png">
 
-## tl;dr on how to work and contribute
+# Casper Network Technical Documentation
+
+## How to contribute
 
 - The whole document is written in a plaintext format called reStructuredText,
   and compiled into HTML and PDF by a documentation generator called
