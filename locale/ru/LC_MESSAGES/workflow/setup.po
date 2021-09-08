@@ -1,0 +1,413 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../workflow/setup.rst:2
+msgid "Prerequisites"
+msgstr "Пререквизиты"
+
+#: ../../workflow/setup.rst:4
+msgid ""
+"This section explains how to fulfill the prerequisites needed to interact "
+"with a Casper Network."
+msgstr ""
+"Этот раздел объясняет, как заполнить все пререквизиты, необходимые для "
+"взаимодействия в сетью Casper."
+
+#: ../../workflow/setup.rst:6
+msgid "This section covers:"
+msgstr "Раздел описывает:"
+
+#: ../../workflow/setup.rst:8
+msgid "Installing the official Casper command-line client"
+msgstr "Установку официального клиента командной строки Casper"
+
+#: ../../workflow/setup.rst:9
+msgid "Setting up an account on a Casper Network"
+msgstr "Настройка аккаунта в сети Casper"
+
+#: ../../workflow/setup.rst:10
+msgid "Acquiring the IP address of a peer on the official Testnet or Mainnet"
+msgstr "Получение IP-адреса в пире официальной тестовой сети или майннет"
+
+#: ../../workflow/setup.rst:13
+msgid "The Casper command-line client"
+msgstr "Клиент командной строки Casper"
+
+#: ../../workflow/setup.rst:15
+msgid ""
+"You can find the client on `crates.io <https://crates.io/crates/casper-"
+"client>`_."
+msgstr ""
+"Вы можете найти клиент тут `crates.io <https://crates.io/crates/casper-"
+"client>`_."
+
+#: ../../workflow/setup.rst:17
+msgid ""
+"Run the commands below to install the Casper client on most flavors of Linux"
+" and macOS. You will need the nightly version of the compiler."
+msgstr ""
+"Запустите команды ниже для установки клиента на большинстве Linux и macOS. "
+"Вам потребуется ночная версия компилятора. "
+
+#: ../../workflow/setup.rst:24
+msgid ""
+"The Casper client can print out `help` information, which provides an up-to-"
+"date list of supported commands."
+msgstr ""
+"Клиент  Casper может распечатать вспомогательную информацию `help`, которая "
+"дает список самых последних поддерживаемых команд. "
+
+#: ../../workflow/setup.rst:30
+msgid ""
+"**Important**: For each command, you can use `help` to get the up-to-date "
+"arguments and descriptions:"
+msgstr ""
+"Для каждой команды вы можете использовать  `help`  для получения свежих "
+"параметров и описаний:"
+
+#: ../../workflow/setup.rst:37
+msgid "Setting up an Account"
+msgstr "Настройка аккаунта"
+
+#: ../../workflow/setup.rst:39
+msgid ""
+"The process of creating an `Account "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ can be"
+" divided into two steps:"
+msgstr ""
+"Процесс создания аккаунта Account "
+"<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ может "
+"быть разделен на два шага:"
+
+#: ../../workflow/setup.rst:41
+msgid "Cryptographic key generation for the account"
+msgstr "Генерация криптографического ключа для учетной записи"
+
+#: ../../workflow/setup.rst:42
+msgid "Funding the account"
+msgstr "Пополнение счета"
+
+#: ../../workflow/setup.rst:44
+msgid ""
+"The Casper blockchain uses an on-chain account-based model, uniquely "
+"identified by an ``AccountHash`` derived from a specific ``PublicKey``."
+msgstr ""
+"Блокчейн Casper использует модель на основе учетной записи в цепочке, "
+"однозначно идентифицируемую хешем аккаунта  ``AccountHash``, полученным из "
+"определенного \"публичного ключа\"."
+
+#: ../../workflow/setup.rst:46
+msgid ""
+"By default, a transactional interaction with the blockchain takes the form "
+"of a ``Deploy`` cryptographically signed by the key-pair corresponding to "
+"the ``PublicKey`` used to create the account."
+msgstr ""
+"По умолчанию транзакционное взаимодействие с блокчейном принимает форму "
+"\"Развертывания\", криптографически подписанного парой ключей, "
+"соответствующей \"публичному ключу\", используемому для создания учетной "
+"записи."
+
+#: ../../workflow/setup.rst:48
+msgid ""
+"Accounts can be created using the Casper command-line client. Alternatively,"
+" some Casper networks such as the official Testnet and Mainnet provide a "
+"browser-based block explorer that allows account creation."
+msgstr ""
+"Учетные записи могут быть созданы с помощью клиента командной строки Casper."
+" В качестве альтернативы, некоторые сети Casper, такие как официальная "
+"тестовая сеть и Mainnet, предоставляют обозреватель блоков на основе "
+"браузера, который позволяет создавать учетные записи."
+
+#: ../../workflow/setup.rst:50
+msgid ""
+"A cryptographic key-pair will be created when using either the Casper "
+"command-line client or a block explorer to create an account on the "
+"blockchain. This process generates three files for each account:"
+msgstr ""
+"Пара криптографических ключей будет создана при использовании клиента "
+"командной строки Casper или проводника блоков для создания учетной записи в "
+"блокчейне. Этот процесс создает три файла для каждой учетной записи:"
+
+#: ../../workflow/setup.rst:52
+msgid "A PEM encoded secret key"
+msgstr "Секретный ключ в кодировке PEM"
+
+#: ../../workflow/setup.rst:53
+msgid "A PEM encoded public key"
+msgstr "Открытый ключ в кодировке PEM"
+
+#: ../../workflow/setup.rst:54
+msgid "A hexadecimal-encoded string representation of the public key"
+msgstr "Шестнадцатеричное строковое представление открытого ключа в кодировке"
+
+#: ../../workflow/setup.rst:56
+msgid "We recommend saving these files securely."
+msgstr "Мы рекомендуем надежно сохранить эти файлы."
+
+#: ../../workflow/setup.rst:58
+msgid ""
+"The command-line client provides a command that will give you the account "
+"hash for a given public key."
+msgstr ""
+"Клиент командной строки предоставляет команду, которая предоставит вам хэш "
+"учетной записи для данного открытого ключа."
+
+#: ../../workflow/setup.rst:65
+msgid "Option 1: Key generation using the Casper client"
+msgstr "Вариант 1: Генерация ключей с помощью клиента Casper"
+
+#: ../../workflow/setup.rst:67
+msgid ""
+"This option describes how you can use the Casper command-line client to set "
+"up your accounts."
+msgstr ""
+"Этот параметр описывает, как вы можете использовать клиент командной строки "
+"Casper для настройки своих учетных записей."
+
+#: ../../workflow/setup.rst:69
+msgid "Execute the following command to generate your keys:"
+msgstr "Выполните следующую команду, чтобы сгенерировать ваши ключи:"
+
+#: ../../workflow/setup.rst:75
+msgid ""
+"The above command will create three files in the current working directory:"
+msgstr ""
+"Приведенная выше команда создаст три файла в текущем рабочем каталоге:"
+
+#: ../../workflow/setup.rst:77 ../../workflow/setup.rst:98
+msgid "``secret_key.pem`` - PEM encoded secret key"
+msgstr "\"secret_key.pem\" - секретный ключ в кодировке PEM"
+
+#: ../../workflow/setup.rst:78 ../../workflow/setup.rst:99
+msgid "``public_key.pem`` - PEM encoded public key"
+msgstr "\"public_key.pem\" - открытый ключ в кодировке PEM"
+
+#: ../../workflow/setup.rst:79 ../../workflow/setup.rst:100
+msgid "``public_key_hex`` - Hexadecimal-encoded string of the public key"
+msgstr "\"public_key_hex\" - строка открытого ключа в шестнадцатеричной кодировке"
+
+#: ../../workflow/setup.rst:81
+msgid "**Note**: SAVE your keys to a safe place, preferably offline."
+msgstr ""
+"**Примечание**: СОХРАНИТЕ ключи в безопасном месте, желательно в автономном "
+"режиме."
+
+#: ../../workflow/setup.rst:83
+msgid ""
+"Once the keys for the account have been generated, the accounts can be "
+"funded to finish the process of creating an account."
+msgstr ""
+"Как только ключи для учетной записи будут сгенерированы, счета можно будет "
+"пополнить, чтобы завершить процесс создания аккаунта."
+
+#: ../../workflow/setup.rst:85
+msgid ""
+"**Note**: Responses from the node contain ``AccountHashes`` instead of the "
+"direct hexadecimal-encoded public key. For traceability, it is important to "
+"generate the account hash and store this value locally. The account hash is "
+"a ``Blake2B`` hash of the public hexadecimal-encoded string."
+msgstr ""
+"**Примечание**: Ответы от узла содержат хеши аккаунтов  ``AccountHashes``  "
+"вместо прямого открытого ключа в шестнадцатеричной кодировке. Для "
+"отслеживания важно сгенерировать хеш учетной записи и сохранить это значение"
+" локально. Хеш учетной записи представляет собой хеш \" Blake2B\" "
+"общедоступной строки в шестнадцатеричной кодировке."
+
+#: ../../workflow/setup.rst:88
+msgid "Option 2: Key generation using a Block Explorer"
+msgstr "Вариант 2: Генерация ключей с помощью проводника блоков"
+
+#: ../../workflow/setup.rst:90
+msgid "This option is also available on networks that have a block explorer."
+msgstr "Эта опция также доступна в сетях, в которых есть обозреватель блоков."
+
+#: ../../workflow/setup.rst:92
+msgid ""
+"For instance, on the official Testnet network the `CSPR.live "
+"<https://testnet.cspr.live/>`_ block explorer is available, and the "
+"following instructions assume you are using it."
+msgstr ""
+"Например, в официальной сети Testnet  'CSPR.live "
+"<https://testnet.cspr.live/>`_ доступен обозреватель блоков, и в следующих "
+"инструкциях предполагается, что вы его используете."
+
+#: ../../workflow/setup.rst:94
+msgid ""
+"Start by creating an account using the `Create Account "
+"<https://testnet.cspr.live/create-account>`_ link. You will need to download"
+" the keys of your new account by clicking on the ``Download Keys`` button. "
+"Note that the account is not stored on chain."
+msgstr ""
+"Начните с создания учетной записи с помощью ссылки 'Создать учетную запись "
+"<https://testnet.cspr.live/create-account>`_ . Вам нужно будет загрузить "
+"ключи от вашей новой учетной записи, нажав на кнопку \"Загрузить ключи\". "
+"Обратите внимание, что аккаунт не хранится в цепочке."
+
+#: ../../workflow/setup.rst:96
+msgid ""
+"You will be prompted to save the following three files for your new account."
+" These are your keys, so we recommend securely storing them:"
+msgstr ""
+"Вам будет предложено сохранить следующие три файла для вашей новой учетной "
+"записи. Это ваши ключи, поэтому мы рекомендуем надежно хранить их:"
+
+#: ../../workflow/setup.rst:104
+msgid "Fund your Account"
+msgstr "Пополнение аккаунта"
+
+#: ../../workflow/setup.rst:106
+msgid ""
+"Once the cryptographic key-pair for the account has been generated, the "
+"account must be funded so it can be created on chain."
+msgstr ""
+"Как только пара криптографических ключей для учетной записи будет "
+"сгенерирована, учетная запись должна быть пополнена, чтобы ее можно было "
+"создать в цепочке."
+
+#: ../../workflow/setup.rst:108
+msgid ""
+"In Testnet, you can fund the account by using the *Request tokens* button on"
+" the `Faucet Page <https://testnet.cspr.live/tools/faucet>`_ to receive "
+"tokens."
+msgstr ""
+"В Testnet вы можете пополнить счет с помощью кнопки *Запросить токены* на "
+"странице 'Кран <https://testnet.cspr.live/tools/faucet>`_ для получения "
+"токенов."
+
+#: ../../workflow/setup.rst:110
+msgid ""
+"In Mainnet, a pre-existing account will have to transfer CSPR tokens to "
+"finalize the process of setting up an account. The *Source* account needs to"
+" transfer CSPR tokens to the hexadecimal-encoded public key of the *Target* "
+"account. This transfer will automatically create the *Target* account if it "
+"does not exist. Currently, this is the only way an account can be created on"
+" Mainnet."
+msgstr ""
+"В Mainnet уже существующая учетная запись должна будет передать токены CSPR,"
+" чтобы завершить процесс создания учетной записи. Аккаунту *Source* "
+"необходимо перенести токены CSPR в открытый ключ с шестнадцатеричной "
+"кодировкой аккаунта *Target*. Этот перевод автоматически создаст учетную "
+"запись *Target*, если она не существует. В настоящее время это единственный "
+"способ создать учетную запись в Mainnet."
+
+#: ../../workflow/setup.rst:113
+msgid "Acquire Node Address from network peers"
+msgstr "Запрос адреса ноды из пиров сети"
+
+#: ../../workflow/setup.rst:115
+msgid ""
+"Clients can interact with a node on the blockchain via requests sent to that"
+" node's JSON-RPC endpoint, ``http://<node-ip-address>:7777`` by default."
+msgstr ""
+"Клиенты могут взаимодействовать с нодой в блокчейне посредством запросов, "
+"отправляемых на конечную точку JSON-RPC этой ноды  \"http://<node-ip-"
+"address>:7777\" по умолчанию."
+
+#: ../../workflow/setup.rst:117
+msgid "The node address is the IP of a peer node."
+msgstr "Адрес ноды - это IP-адрес одноранговой ноды."
+
+#: ../../workflow/setup.rst:119
+msgid ""
+"Both the official testnet and Mainnet provide block explorers that provide a"
+" list of IP addresses of nodes on their respective networks."
+msgstr ""
+"Как официальная тестовая сеть, так и Mainnet предоставляют блочные "
+"обозреватели, которые предоставляют список IP-адресов нод в своих "
+"соответствующих сетях."
+
+#: ../../workflow/setup.rst:121
+msgid ""
+"You can get the ``node-ip-address`` of a node on the network by visiting the"
+" following block explorers:"
+msgstr ""
+"Вы можете получить \"ip-адрес узла\" ноды в сети, посетив следующие блочные "
+"обозреватели:"
+
+#: ../../workflow/setup.rst:123
+msgid "`Peers <https://testnet.cspr.live/tools/peers>`_ on Testnet"
+msgstr "`Peers <https://testnet.cspr.live/tools/peers>`_ на Testnet"
+
+#: ../../workflow/setup.rst:124
+msgid "`Peers <https://cspr.live/tools/peers>`_ on Mainnet"
+msgstr "`Peers <https://cspr.live/tools/peers>`_ на Mainnet"
+
+#: ../../workflow/setup.rst:126
+msgid ""
+"You will see a list of peers, and you can select the IP of any peer on the "
+"list."
+msgstr ""
+"Вы увидите список одноранговых узлов, и вы можете выбрать IP-адрес любого "
+"однорангового узла в списке."
+
+#: ../../workflow/setup.rst:128
+msgid ""
+"**Note**: If the selected peer is unresponsive, pick a different peer and "
+"try again."
+msgstr ""
+"**Примечание**: Если выбранный одноранговый узел не отвечает, выберите "
+"другой одноранговый узел и повторите попытку."
+
+#~ msgid ""
+#~ "Start by creating an account using the `Create Account <https://clarity-"
+#~ "testnet-old.make.services/#/accounts>`_ link. You will be asked to provide a"
+#~ " unique name for your account; this is for your convenience and is not "
+#~ "stored on chain."
+#~ msgstr ""
+#~ "Начните с создания учетной записи с помощью ссылки 'Create account <https"
+#~ "://clarity-testnet-old.make.services/#/accounts>`_ . Вам будет предложено "
+#~ "указать уникальное имя для вашей учетной записи; это сделано для вашего "
+#~ "удобства и не хранится в цепочке."
+
+#~ msgid ""
+#~ "You will be prompted to save three files for your new account; carefully "
+#~ "choose where you store them. We recommend storing your keys in a secure "
+#~ "manner."
+#~ msgstr ""
+#~ "Вам будет предложено сохранить три файла для вашей новой учетной записи; "
+#~ "тщательно выбирайте, где вы их храните. Мы рекомендуем хранить ваши ключи в "
+#~ "безопасном месте."
+
+#~ msgid "``<Account-Name>_secret_key.pem`` - PEM encoded secret key"
+#~ msgstr "``<Account-Name>_secret_key.pem`` - секретный ключ в кодировке PEM"
+
+#~ msgid "``<Account-Name>_public_key.pem`` - PEM encoded public key"
+#~ msgstr "``<Account-Name>_public_key.pem`` - открытый ключ в кодировке PEM"
+
+#~ msgid ""
+#~ "``<Account-Name>_public_key_hex`` - Hexadecimal-encoded string of the public"
+#~ " key"
+#~ msgstr ""
+#~ "``<Account-Name>_public_key_hex`` - строка открытого ключа в "
+#~ "шестнадцатеричной кодировке"
+
+#~ msgid ""
+#~ "In Testnet, you can fund the account by using the *Request tokens* button on"
+#~ " the `Faucet Page <https://clarity-testnet-old.make.services/#/faucet>`_ to "
+#~ "receive tokens."
+#~ msgstr ""
+#~ "В Testnet вы можете пополнить счет с помощью кнопки *Запросить токены* на "
+#~ "странице 'Кран <https://clarity-testnet-old.make.services/#/faucet>`_  для "
+#~ "получения токенов."
