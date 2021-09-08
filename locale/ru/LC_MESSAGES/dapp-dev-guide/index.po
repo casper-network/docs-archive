@@ -1,0 +1,148 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/index.rst:24
+msgid "Introduction"
+msgstr "Вступление"
+
+#: ../../dapp-dev-guide/index.rst:2
+msgid "Developers"
+msgstr "Разработчики"
+
+#: ../../dapp-dev-guide/index.rst:4
+msgid ""
+"This guide is designed to support developers getting started with the "
+"development of smart contracts on the Casper blockchain in AssemblyScript or"
+" Rust. For Rust, there is a contract development kit that includes a runtime"
+" environment, reference documentation, and test framework. You can install "
+"our environment locally, create and test Smart Contracts with our Smart "
+"Contracts and Test Libraries, and use these libraries to build your own "
+"applications."
+msgstr ""
+"Это руководство предназначено для разработчиков, начинающих разработку "
+"смарт-контрактов на блокчейне Casper с использованием AssemblyScript или "
+"Rust."
+
+#: ../../dapp-dev-guide/index.rst:6
+msgid ""
+"It is recommended you have prior knowledge about Unix-based operating "
+"systems, like GNU/Linux or macOS, and programming knowledge with:"
+msgstr ""
+"Рекомендуется иметь предварительные знания об Unix подобных операционных "
+"системах, таких как GNU / Linux или macOS, а также знания программирования, "
+"а именно:"
+
+#: ../../dapp-dev-guide/index.rst:8
+msgid "Rust"
+msgstr "Rust"
+
+#: ../../dapp-dev-guide/index.rst:9
+msgid "AssemblyScript"
+msgstr "AssemblyScript"
+
+#: ../../dapp-dev-guide/index.rst:10
+msgid "JavaScript (optional)"
+msgstr "JavaScript (опционально)"
+
+#: ../../dapp-dev-guide/index.rst:11
+msgid "Python (optional)"
+msgstr "Python (опционально)"
+
+#: ../../dapp-dev-guide/index.rst:13
+msgid ""
+"The topics on the index include present and future documentation initiatives"
+" in our roadmap and are organized so that you will be able to:"
+msgstr ""
+"Темы в указателе включают текущие и будущие инициативы по документации в "
+"нашей дорожной карте и организованы таким образом, чтобы вы могли:"
+
+#: ../../dapp-dev-guide/index.rst:15
+msgid "Understand more about the Casper Network"
+msgstr "Понять больше о сети Casper Network"
+
+#: ../../dapp-dev-guide/index.rst:16
+msgid "Learn how to build and operate applications on the platform"
+msgstr "Узнать, как собирать и управлять приложениями на платформе"
+
+#: ../../dapp-dev-guide/index.rst:17
+msgid "Learn how to set up a Casper Network locally"
+msgstr "Научиться настраивать локальную сеть Casper Network "
+
+#: ../../dapp-dev-guide/index.rst:18
+msgid "Work with the contracts API to access the network\\'s Rust resources"
+msgstr "Работать с API контрактов для доступа к сетевым ресурсам Rust"
+
+#: ../../dapp-dev-guide/index.rst:19
+msgid "Learn how to create and test smart contracts using available libraries"
+msgstr ""
+"Научиться, как создавать и тестировать смарт-контракты, используя доступные "
+"библиотеки"
+
+#: ../../dapp-dev-guide/index.rst:20
+msgid "Work with the multi-signature capability to sign transactions"
+msgstr "Работа с возможностями мультиподписей для подписания транзакций"
+
+#: ../../dapp-dev-guide/index.rst:22
+msgid ""
+"The motivation for our roadmap is inspired by feedback we are receiving from"
+" your recommendations. We hope you continue to provide your feedback as you "
+"embark on this journey with us -- we look forward to building a "
+"decentralized future together."
+msgstr ""
+"Мы черпаем идеи для создания дорожной карты продукта из обратной связи, "
+"которую получаем из ваших рекомендаций. Мы надеемся, что вы и дальше будете "
+"давать обратную связь, пока мы вместе - и мы хотим создавать это будущее "
+"децентрализованных систем вместе с вами. "
+
+#~ msgid "Understand what CasperLabs is building."
+#~ msgstr "Понимать что CasperLabs разрабатывает."
+
+#~ msgid "Learn how to build and operate applications on the platform."
+#~ msgstr "Изучать, как разрабатывать и работать с приложения на платформе."
+
+#~ msgid "Learn how to set up the CasperLabs environment locally."
+#~ msgstr "Узнать, как настроить среду CasperLabs локально."
+
+#~ msgid "Work with our Contracts API to access our Rust resources."
+#~ msgstr "Работать с нашим API контрактов для доступа к нашим ресурсам Rust."
+
+#~ msgid "Learn how to create and test Smart Contracts with our libraries."
+#~ msgstr ""
+#~ "Изучить, как создать и протестировать смарт-контракт с использованием наших "
+#~ "библиотек."
+
+#~ msgid "Work with the multi-signature capability to sign transactions."
+#~ msgstr "Работать с возможностью мультиподписи для подписания транзакций."
+
+#~ msgid ""
+#~ "`Coding Standards and Review "
+#~ "<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
+#~ "cover best practices and recommendations following our coding standards, "
+#~ "code reviews and publishing your code to our GitHub."
+#~ msgstr ""
+#~ "Лучшие советы и рекомендации по нашим стандартам кодирования, ревью на коды "
+#~ "и способы публикации вашего кода на GitHub смотрите здесь: `Coding Standards"
+#~ " and Review "
+#~ "<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ ."
