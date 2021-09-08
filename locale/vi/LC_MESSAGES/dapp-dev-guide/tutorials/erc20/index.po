@@ -60,7 +60,7 @@ msgstr ""
 "Tiêu chuẩn ERC-20 xác định một tập hợp các quy tắc chỉ định tổng nguồn cung "
 "cấp token, cách token được chuyển, cách giao dịch được chấp thuận và cách "
 "truy cập dữ liệu token. Các quy tắc này được thực hiện bằng cách sử dụng các"
-" chức năng sau được định nghĩa bởi ERC-20, `totalSupply``, ``transfer``, "
+" chức năng sau được định nghĩa bởi ERC-20, ``totalSupply``, ``transfer``, "
 "``transferFrom``, ``approve``, ``balanceOf``, và ``allowance`` , được mô tả "
 "chi tiết trong hướng dẫn này."
 
