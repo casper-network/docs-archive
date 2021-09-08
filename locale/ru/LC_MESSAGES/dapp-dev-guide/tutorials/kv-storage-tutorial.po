@@ -1,0 +1,380 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:6
+msgid "Key-Value Storage Tutorial"
+msgstr "Туториал по хранилищу ключей-значений"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:8
+msgid ""
+"This tutorial covers a simple contract, which creates a key that stores a "
+"``CLType`` value. This example will show you how to store a *U64*, *string*,"
+" *account hash*, or *U512* value."
+msgstr ""
+"В этом руководстве рассматривается простой контракт, который создает ключ, в"
+" котором хранится значение \"CLType\". В этом примере показано, как "
+"сохранить значение *U64*, *строка*, *хэш аккаунта* или *U512*."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:10
+msgid ""
+"The code is available in the `Casper Ecosystem GitHub <https://github.com"
+"/casper-ecosystem/kv-storage-contract>`_. Or, you can get started in `GitPod"
+" <https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-"
+"contract>`_."
+msgstr ""
+"Код доступен в `Casper Ecosystem GitHub <https://github.com/casper-ecosystem"
+"/kv-storage-contract>`_.  Или вы можете начать с `GitPod "
+"<https://gitpod.io/#https://github.com/casper-ecosystem/kv-storage-"
+"contract>`_."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:14
+msgid "The Contract"
+msgstr "Контракт"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:16
+msgid ""
+"Let's start by understanding the structure of the contract itself. Here we "
+"create a contract and name it ``kvstorage_contract``. The contract package "
+"will be stored under this name on the blockchain. Since the key-value "
+"contract is slightly stateless, initialization is not required."
+msgstr ""
+"Давайте начнем с понимания структуры самого контракта. Здесь мы создаем "
+"контракт и называем его \"kvstorage_contract\". Пакет контракта будет "
+"храниться под этим именем в блокчейне. Поскольку контракт ключа-значения "
+"немного не имеет состояния, инициализация не требуется."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:138
+msgid "Testing the Contract"
+msgstr "Тестирование контракта"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:140
+msgid ""
+"The Casper Contracts SDK supports local testing of smart contracts. This "
+"tutorial will cover how to test the U64 key-value function, which you can "
+"adapt for other types."
+msgstr ""
+"Пакет SDK Casper Contracts поддерживает локальное тестирование смарт-"
+"контрактов. В этом руководстве будет рассказано, как протестировать функцию "
+"ключа-значения U64, которую вы можете адаптировать для других типов."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:142
+msgid ""
+"To test the contract, you need to deploy the contract and store the value on"
+" chain. Here is some sample code to accomplish these steps:"
+msgstr ""
+"Чтобы протестировать контракт, вам необходимо развернуть контракт и "
+"сохранить значение в цепочке. Вот пример кода для выполнения этих шагов:"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:196
+msgid "Write Unit Tests"
+msgstr "Написание Модульных Тестов"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:198
+msgid ""
+"With these functions in place, it's possible to start writing tests for the "
+"contract."
+msgstr ""
+"С помощью этих функций можно приступить к написанию тестов для контракта."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:229
+msgid "Running Locally"
+msgstr "Запуск локально"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:231
+msgid ""
+"You can run unit tests locally if you have set up the contract using `cargo-"
+"casper` as shown in the `Getting started "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_ guide."
+msgstr ""
+"Вы можете запускать модульные тесты локально, если вы настроили контракт с "
+"помощью `cargo-casper`, как показано в гайде `Getting started "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_ ."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:238
+msgid "Deploying to the Testnet and Interacting with the Contract"
+msgstr "Развертывание в Тестовой сети и взаимодействие с Контрактом"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:240
+msgid ""
+"When working with the testnet, create an account on `Testnet CSPR Live "
+"<https://testnet.cspr.live>`_ and fund it using the faucet. Download the "
+"private key and use the key to sign the deployment. It's possible to create "
+"keys using the rust client as well."
+msgstr ""
+"При работе с тестовой сетью создайте аккаунт в 'Testnet CSPR Live "
+"<https://testnet.cspr.live>`_ и финансируйте его с помощью крана. Загрузите "
+"закрытый ключ и используйте его для подписи развертывания. Также можно "
+"создавать ключи с помощью клиента rust."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:243
+msgid "Deploy the Contract"
+msgstr "Развертывание контракта"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:245
+msgid ""
+"After compiling the contract, you need to deploy the compiled WASM to the "
+"network. This action installs the contract in the blockchain."
+msgstr ""
+"После компиляции контракта вам необходимо развернуть скомпилированный WASM в"
+" сети. Это действие устанавливает контракт в блокчейн."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:247
+msgid ""
+"The following example shows you how to use the Casper client to retrieve the"
+" contract session hash and the block hash where the contract is deployed. "
+"The paths for the *secret-key* and *session-path* are relative to your "
+"system. You need to specify the paths on your machine to run the command."
+msgstr ""
+"В следующем примере показано, как использовать клиент Casper для получения "
+"хеша сеанса контракта и хеша блока, в котором развернут контракт. Пути для "
+"*секретного ключа* и *пути сеанса* относятся к вашей системе. Вам необходимо"
+" указать пути на вашем компьютере для выполнения команды."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:258
+msgid "**Query the Account & Get the Contract Hash**"
+msgstr "**Запрос аккаунта и получение хеша контракта**"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:260
+msgid ""
+"The internal state of the blockchain is updated via a series of steps "
+"(blocks). All blockchain queries must include a `global state hash` which "
+"corresponds to the block hash or height of the blockchain.  Visit `Querying "
+"the address of a contract <https://docs.casperlabs.io/en/latest/dapp-dev-"
+"guide/calling-contracts.html#querying-global-state-for-the-address-"
+"of-a-contract>`_."
+msgstr ""
+"Внутреннее состояние блокчейна обновляется с помощью серии шагов (блоков). "
+"Все запросы блокчейна должны включать \"хэш глобального состояния\", который"
+" соответствует хэшу блока или высоте блокчейна. Посетите `Запрос адреса "
+"контракта <https://docs.casperlabs.io/en/latest/dapp-dev-guide/calling-"
+"contracts.html#querying-global-state-for-the-address-of-a-contract>`_."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:262
+msgid "**Invoke an Entry Point & Set a value**"
+msgstr "**Вызов точки входа и установка значения**"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:264
+msgid ""
+"Once the contract is deployed, you can create another deploy, which calls "
+"one of the entry points within the contract. You must know the entry point's"
+" name or the session hash retrieved in the previous step to call an entry "
+"point. The command below shows you how to do this. The *session-path* is "
+"relative to your system. Specify the path on your machine and then run the "
+"command."
+msgstr ""
+"После развертывания контракта вы можете создать другое развертывание, "
+"которое вызывает одну из точек входа в рамках контракта. Для вызова точки "
+"входа необходимо знать имя точки входа или хеш сеанса, полученный на "
+"предыдущем шаге. Команда ниже показывает, как это сделать. *Путь к сеансу* "
+"относится к вашей системе. Укажите путь на своем компьютере, а затем "
+"выполните команду."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:266
+msgid ""
+"The kv-client has four distinct commands to set key-values for U64, string, "
+"U512, and account hash. In this example, we will use a String."
+msgstr ""
+"У kv-клиента есть четыре отдельные команды для установки значений ключей для"
+" U64, строки, U512 и хеша аккаунта. В этом примере мы будем использовать "
+"строку."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:279
+msgid "If the deploy works, a you will see a similar response:"
+msgstr "Если развертывание сработает, вы увидите аналогичный ответ:"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:286
+msgid "Query the Contract On Chain"
+msgstr "Запрос контракта в цепочке"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:288
+msgid ""
+"Contracts can be executed under different contexts. In this example, when "
+"the contract is deployed, it runs in the context of a ``Contract`` and not a"
+" ``Session``. This means that all stored keys are not stored under the "
+"account hash, but within the context of the contract. Therefore, when we "
+"query to retrieve the value under a key, we are querying "
+"``AccountHash/kvstorage_contract/<key-name>`` and not just ``AccountHash"
+"/<key-name>``."
+msgstr ""
+"Контракты могут быть исполнены в разных контекстах. В этом примере, когда "
+"контракт разворачивается, он запускает контекст \"Контракта\", а не "
+"\"Сеанса\". Это означает, что все хранимые ключи хранятся не в хеше "
+"аккаунта, а внутри контекста контракта. И когда мы запрашиваем получение "
+"значения под ключом, мы запрашиваем ``AccountHash/kvstorage_contract/<key-"
+"name>``, а не просто ``AccountHash/<key-name>``."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:292
+msgid ""
+"It would be best if you first found the block hash for the block that "
+"contains your deploy. Once you have the requisite block hash, you can use "
+"the Casper client to retrieve the session hash."
+msgstr ""
+"Было бы лучше, если бы вы сначала нашли хеш блока для блока, содержащего "
+"ваше развертывание. Как только у вас будет необходимый хеш блока, вы можете "
+"использовать клиент Casper для получения хеша сеанса."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:294
+msgid ""
+"Reading a value is simple; we obtain the block hash under which the value is"
+" stored, and then using that block hash, we use the ``query-state`` command "
+"to retrieve the value stored under a named key."
+msgstr ""
+"Считывание значения просто; мы получаем хеш блока, в котором хранится "
+"значение, а затем, используя этот хеш блока, мы используем команду состояния"
+" запроса ``query-state`` для извлечения значения, хранящегося под "
+"именованным ключом."
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:296
+msgid "An example global state query looks like this:"
+msgstr "Пример запроса глобального состояния выглядит следующим образом:"
+
+#: ../../dapp-dev-guide/tutorials/kv-storage-tutorial.rst:302
+msgid ""
+"Please reference the `Querying Section <https://docs.casperlabs.io/en/latest"
+"/dapp-dev-guide/calling-contracts.html#querying-global-state-for-the-"
+"address-of-a-contract>`_ for more details."
+msgstr ""
+"Пожалуйста обратитесь к разделу о запросах `Querying Section "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/calling-contracts.html"
+"#querying-global-state-for-the-address-of-a-contract>`_  за подробностями."
+
+#~ msgid "Key Value Storage Tutorial"
+#~ msgstr "Туториал по хранилищу ключей-значений"
+
+#~ msgid ""
+#~ "This tutorial covers a simple contract, which creates a key that stores a "
+#~ "``CLType`` value. This example will show you how to store a *u64*, *string*,"
+#~ " *account hash*, or *U512* value."
+#~ msgstr ""
+#~ "В этом руководстве рассматривается простой контракт, который создает ключ, в"
+#~ " котором хранится значение \"CLType\". В этом примере показано, как "
+#~ "сохранить значение *U64*, *строка*, *хэш аккаунта* или *U512*."
+
+#~ msgid ""
+#~ "The CasperLabs Contracts SDK supports local testing of smart contracts. This"
+#~ " tutorial will cover how to test the u64 key-value function. This can be "
+#~ "easily adapted it for other types also."
+#~ msgstr ""
+#~ "Пакет SDK Casper Contracts поддерживает локальное тестирование смарт-"
+#~ "контрактов. В этом руководстве будет рассказано, как протестировать функцию "
+#~ "ключа-значения U64, которую вы можете адаптировать для других типов."
+
+#~ msgid ""
+#~ "In order to test the contract, the value must be stored, and the contract "
+#~ "has to be deployed. Here is some sample code for these steps:"
+#~ msgstr ""
+#~ "Чтобы протестировать контракт, значение должно быть сохранено, и контракт "
+#~ "должен быть развернут. Вот несколько примеров кода для этих шагов:"
+
+#~ msgid ""
+#~ "It's possible to run the unit tests locally- if you have set up the contract"
+#~ " using `cargo-casperlabs <https://crates.io/cargo-casperlabs>`_. The steps "
+#~ "to set up the SDK are in the guide."
+#~ msgstr ""
+#~ "Можно запускать модульные тесты локально, если вы настроили контракт с "
+#~ "помощью `cargo-casperlabs <https://crates.io/cargo-casperlabs>`_. Шаги по "
+#~ "настройке пакета инструментов SDK указаны в гайде."
+
+#~ msgid ""
+#~ "When working with the testnet, create an account in `CLarity "
+#~ "<https://clarity.casperlabs.io>`_ and fund it using the faucet. Download the"
+#~ " private key and use the key to sign the deployment. It's possible to create"
+#~ " keys using the rust client as well."
+#~ msgstr ""
+#~ "При работе с тестовой сетью создайте аккаунт в `CLarity "
+#~ "<https://clarity.casperlabs.io>`_  и финансируйте его с помощью крана. "
+#~ "Загрузите закрытый ключ и используйте его для подписи развертывания. Также "
+#~ "можно создавать ключи с помощью клиента rust."
+
+#~ msgid ""
+#~ "After the contract has been compiled, it's time to deploy the compiled wasm "
+#~ "to the network. This action installs the contract in the blockchain. Once "
+#~ "the contract is deployed, the client can retrieve the contract session hash "
+#~ "as well as the blockhash where the contract is deployed."
+#~ msgstr ""
+#~ "После компиляции контракта пришло время развернуть скомпилированный wasm в "
+#~ "сети. Это действие устанавливает контракт в блокчейн. После развертывания "
+#~ "контракта клиент может получить хеш сеанса контракта, а также блок-хэш, в "
+#~ "котором развернут контракт."
+
+#~ msgid ""
+#~ "```casper-client put-deploy --chain-name :raw-html-m2r:`<CHAIN-NAME>` "
+#~ "--node-address http://\\ :raw-html-m2r:`<HOST>`\\ :\\ :raw-html-m2r:`<PORT>`"
+#~ " --secret-key /home/keys/secretkey.pem --session-path  $HOME/kv-storage-"
+#~ "contract/target/wasm32-unknown-unknown/release/contract.wasm  --payment-"
+#~ "amount 1000000000000"
+#~ msgstr ""
+#~ "```casper-client put-deploy --chain-name :raw-html-m2r:`<CHAIN-NAME>` "
+#~ "--node-address http://\\ :raw-html-m2r:`<HOST>`\\ :\\ :raw-html-m2r:`<PORT>`"
+#~ " --secret-key /home/keys/secretkey.pem --session-path $HOME/kv-storage-"
+#~ "contract/target/wasm32-unknown-unknown/release/contract.wasm --payment-"
+#~ "amount 1000000000000"
+
+#~ msgid "If the deploy works, a response similar this will be returned:"
+#~ msgstr ""
+#~ "Если развертывание сработает, будет возвращен ответ, аналогичный этому:"
+
+#~ msgid ""
+#~ "Contracts can be executed under different contexts. In this example, when "
+#~ "the contract is deployed, it runs in the context of a ``Contract`` and not a"
+#~ " ``Session``. This means that all stored keys are not stored under the "
+#~ "account hash, but within the context of the contract. Therefore when we "
+#~ "query to retrieve the value under a key, we are actually querying "
+#~ "``AccountHash/kvstorage_contract/<key-name>`` and not just ``AccountHash"
+#~ "/<key-name>``."
+#~ msgstr ""
+#~ "Контракты могут быть исполнены в разных контекстах. В этом примере, когда "
+#~ "контракт разворачивается, он запускает контекст \"Контракта\", а не "
+#~ "\"Сеанса\". Это означает, что все хранимые ключи хранятся не в хеше "
+#~ "аккаунта, а внутри контекста контракта. И когда мы запрашиваем получение "
+#~ "значения под ключом, мы запрашиваем ``AccountHash/kvstorage_contract/<key-"
+#~ "name>``, а не просто ``AccountHash/<key-name>``."
+
+#~ msgid ""
+#~ "You must first find the block hash for the block that contains your deploy. "
+#~ "Once you have the requisite block hash, then you can use ``casper-client`` "
+#~ "to retrieve the session hash"
+#~ msgstr ""
+#~ "Сначала вы должны найти хеш блока для блока, содержащего ваше развертывание."
+#~ " Как только у вас будет необходимый хеш блока, вы можете использовать клиент"
+#~ " Casper ``casper-client`` для получения хеша сеанса."
+
+#~ msgid ""
+#~ "Reading a value is simple enough, we obtain the block hash under which the "
+#~ "value, is stored, and then\\ :raw-html-m2r:`<br>` using that block hash, and"
+#~ " the ``query-state`` command you can easily retrieve and value that was "
+#~ "stored under a named key. Please reference the `Querying Section "
+#~ "<https://docs.casperlabs.io/en/latest/dapp-dev-guide/querying.html>`_ for "
+#~ "details. An example global state query looks like this:"
+#~ msgstr ""
+#~ "Считывание значения достаточно просто, мы получаем хеш блока, под которым "
+#~ "хранится значение, а затем \\ :raw-html-m2r:`<br>` используя этот хеш блока,"
+#~ " и команду  запроса ``query-state`` , мы легко получаем это значение, "
+#~ "которое хранилось под именованным ключом. Пожалуйста обратитесь к разделу о "
+#~ "запросах за деталями `Querying Section <https://docs.casperlabs.io/en/latest"
+#~ "/dapp-dev-guide/querying.html>`_ . Пример запроса глобального состояния "
+#~ "выглядит следующим образом:"
