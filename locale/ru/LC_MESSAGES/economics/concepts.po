@@ -1,0 +1,177 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../economics/concepts.rst:2
+msgid "Staking Concepts"
+msgstr "Концепция стейкинга"
+
+#: ../../economics/concepts.rst:4
+msgid ""
+"The Casper network is a Proof-of-Stake blockchain that allows validators to "
+"stake the Casper native token CSPR on the network. Validators receive CSPR "
+"as an incentive for continuing to maintain and secure the network. CSPR "
+"rewards are distributed as blocks are validated into existence and organized"
+" into eras."
+msgstr ""
+"Сеть Casper - это блокчейн Proof-of-Stake, который позволяет валидаторам "
+"размещать в сети собственный токен Casper CSPR. Валидаторы получают CSPR как"
+" стимул для продолжения обслуживания и защиты сети. Вознаграждения CSPR "
+"распределяются по мере того, как блоки подтверждаются и объединяются в "
+"эпохи."
+
+#: ../../economics/concepts.rst:6
+msgid ""
+"**Consensus mechanism:** Casper operates using a Proof-of-Stake consensus "
+"mechanism per the `Highway Protocol <https://github.com/casper-"
+"network/highway>`_, a specification of Correct-by-Construction Casper (CBC "
+"Casper)."
+msgstr ""
+"**Механизм консенсуса:** Casper использует механизм консенсуса Proof-of-"
+"Stake в соответствии с `Highway Protocol <https://github.com/casper-"
+"network/highway>`_, спецификацией Correct-by-Construction Casper (CBC "
+"Casper)."
+
+#: ../../economics/concepts.rst:8
+msgid ""
+"**Number of validators:** The Casper network supports up to 100 validators "
+"on the network. This number is chosen to strike a balance between "
+"performance and decentralization. This platform parameter can be increased "
+"through upgrades as development continues and performance improves. In "
+"addition, validators can stake on the Casper network through a process of "
+"permission-less bonding by participating in an auction for the validator "
+"slot."
+msgstr ""
+"**Количество валидаторов:**  Сеть Casper поддерживает до 100 валидаторов в "
+"сети. Это число выбрано для достижения баланса между производительностью и "
+"децентрализацией. Этот параметр платформы может быть увеличен за счет "
+"обновлений по мере продолжения разработки и повышения производительности. "
+"Кроме того, валидаторы могут делать ставки в сети Casper через процесс "
+"связывания без разрешения, участвуя в аукционе за слот валидатора."
+
+#: ../../economics/concepts.rst:10
+msgid ""
+"**Permission-less bonding:** For validators to begin staking and earning "
+"rewards, they must win a staking auction by competing with current and "
+"prospective validators to supply one of the forthcoming top stakes for a "
+"given era. This process is permission-less, meaning validators can join and "
+"leave the auction without restrictions, except for a waiting period to "
+"unlock staked tokens."
+msgstr ""
+"**Инклюзивный бондинг:** Чтобы валидаторы могли начать стейкинг и "
+"зарабатывать вознаграждения, они должны выиграть стейкинговый аукцион, "
+"который проходит в формате соревнования с текущими и будущими валидаторами, "
+"теми, кто обеспечит один из топовых стейков в текущей эре. Этот процесс "
+"инклюзивен, что значит валидаторы могут присоединяться к аукциону или "
+"покидать его без ограничений, за исключением периода ожидания для "
+"разлокировки стейкинговых токенов. "
+
+#: ../../economics/concepts.rst:12
+msgid ""
+"**Unbonding:** To detach from the Casper network, it takes seven eras for "
+"both validators and delegators. Neither validators nor delegators receive "
+"rewards during the seven eras required for unbonding, as they are not "
+"actively contributing to the network's security during that time."
+msgstr ""
+"**Анбондинг:** Чтобы выйти из сети Casper, валидаторам и делегаторам "
+"требуется семь эр. Ни валидаторы, ни делегаторы не получают вознаграждений в"
+" течение этих семи эр анбондинга, так как они не являются в этот период "
+"вкладом в безопасность сети. "
+
+#: ../../economics/concepts.rst:14
+msgid ""
+"**Eras and block times:** An era on Casper is roughly 2 hours long. Casper's"
+" Highway protocol allows validators to propose blocks as quickly as network "
+"conditions allow, subject to a platform-wide limit that may be adjusted with"
+" upgrades. We anticipate block times to last between thirty seconds and "
+"eight minutes."
+msgstr ""
+"**Эры и тайминг блоков:** Эра в Casper длится грубо говоря 2 часа. Протокол "
+"Casper Highway разрешает валидаторам продвигать блоки, пока условия системы "
+"это позволяют,  в зависимости от того как лимит ширины платформы изменяется "
+"с каждым апгрейдом. Мы предполагаем, что тайминг блока длится от тридцати "
+"секунд до восьми минут. "
+
+#: ../../economics/concepts.rst:16
+msgid ""
+"**Block rewards:** Block time is orthogonal to rewards, so there is no "
+"precise reward per block. Instead, the number of rewards is split "
+"proportionally among stakes and reduced for failure to participate in the "
+"protocol promptly."
+msgstr ""
+"**Вознаграждения за блоки:** Время блока перпендикулярно вознаграждениям, "
+"так что нет четко установленного вознаграждения за блок. Вместо этого "
+"количество вознаграждений распределяется пропорционально между стейками с "
+"учетом неисправностей, возможных из-за некорректного участия в протоколе."
+
+#: ../../economics/concepts.rst:18
+msgid ""
+"**Reward cycle:** Rewards are distributed to validators and delegators once "
+"per era."
+msgstr ""
+"**Цикл вознаграждения:** Вознаграждения распределяются между валидаторами и "
+"делегаторами один раз за эру. "
+
+#: ../../economics/concepts.rst:20
+msgid ""
+"**Token supply and inflation:** Mainnet launched with ten billion CSPR at "
+"the time of genesis. The target annual supply growth rate is 8%."
+msgstr ""
+"**Предложение токенов и инфляция:** Майннет запущен с десятью млрд CSPR на "
+"время генезиса. Целевой ежегодный индекс роста составляет 8%."
+
+#: ../../economics/concepts.rst:22
+#, python-format
+msgid ""
+"**Annual reward percentage:** Validators on the Casper network earn between "
+"10% and 20% of their staked CSPR in the first year of the Mainnet operation,"
+" with regular participation under expected network conditions. The growth of"
+" individual stakes is dependent on total active stake, as only a fixed "
+"number of tokens is created per era."
+msgstr ""
+"**Ежегодный процент вознаграждений:** Валидаторы сети Casper зарабатывают от"
+" 10% до 20% от тех CSPR, которые они настейкали в первый год работы Майннета"
+" с регулярным участием и при ожидаемых условиях работы сети. Рост "
+"индивидуальных стейков зависит от общей суммы активных стейков, как только "
+"фиксированное количество токенов создано за эру. "
+
+#: ../../economics/concepts.rst:24
+msgid ""
+"Please visit the `Staking Guide "
+"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ for further "
+"details on the staking mechanism."
+msgstr ""
+"Для углубления в детали механизма стейкинга посетите гайд `Staking Guide "
+"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ ."
+
+#~ msgid ""
+#~ "**Consensus mechanism:** Casper operates using a Proof-of-Stake consensus "
+#~ "mechanism per the `Highway Protocol "
+#~ "<https://github.com/CasperLabs/highway>`_, a specification of Correct-by-"
+#~ "Construction Casper (CBC Casper)."
+#~ msgstr ""
+#~ "**Механизм консенсуса:** Casper использует механизм консенсуса Proof-of-"
+#~ "Stake в соответствии с `Highway Protocol "
+#~ "<https://github.com/CasperLabs/highway>`_, спецификацией  Correct-by-"
+#~ "Construction Casper (CBC Casper)."
