@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:2
+msgid "Important Commands"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:5
+msgid "Faucet Account Information"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:11
+msgid ""
+"This command is part of NCTL and provides a view into the faucet account "
+"details. The faucet is the default account created on the network. "
+"Generally on the Mainnet, your own account is used to fund transactions. "
+"However, for the sake of this tutorial, we do not need accounts and will "
+"use the faucet to execute deploys. This command supplies two key pieces "
+"of information: the account’s `secret key` location and the `account "
+"hash`, which are used to sign deploys and query the network state, "
+"respectively."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:14
+msgid "State Root Hash"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:20
+msgid ""
+"The first command that we will cover as part of the `casper-client` tool "
+"is the `get-state-root-hash` command. The state root hash is an "
+"identifier of the current network state. It is similar to a Git commit ID"
+" for commit history. It gives a snapshot of the blockchain state at a "
+"moment in time. For this tutorial, it will be used to query the network "
+"state after we take actions with deployments."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:24
+msgid ""
+"After any deploys to the network, you must get the new state root hash to"
+" see the new changes reflected. Otherwise, you will be looking at events "
+"in the past."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:27
+msgid "Querying Network State"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:37
+msgid ""
+"This command allows you to query the state of a Casper network at a given"
+" moment in time, which is specified by the `state-root-hash` described "
+"above."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:39
+msgid ""
+"The `node-address` is the server (localhost when running on a local NCTL "
+"network)."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:40
+msgid ""
+"The `key` is the identifier for the query. It must be either the account "
+"public key, account hash, contract address hash, transfer hash, or deploy"
+" hash. We will demonstrate two of these key types in this tutorial."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:41
+msgid ""
+"The optional query path argument (`q`) allows you to drill into the "
+"specifics of a query concerning the key."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:44
+msgid "Put Deploys (onto the Chain)"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:47
+msgid "Deploy via a compiled WASM binary"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:58
+msgid ""
+"This command creates a deploy and sends it to the network for execution. "
+"In this first usage of the command,"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:60
+msgid "The `session-path` points to a compiled WASM contract."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:61
+msgid ""
+"This contract is then deployed to the network specified by `node-address`"
+" and `chain-name`. By default, NCTL names the chain “casper-net-1” but "
+"this is configurable."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:62
+msgid ""
+"The `payment-amount` is in units of motes (1 nano-CSPR) and is required "
+"to pay the transaction fee for the deployment. If it is too small, the "
+"transaction will get denied due to insufficient funds."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:66
+msgid "Deploy via a named key already on the blockchain"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:79
+msgid ""
+"This second usage of `put-deploy` does not place a new contract on the "
+"chain, but it allows you to call entry points (functions) defined in "
+"smart contracts."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:81
+msgid ""
+"Here we show the example using “counter” and “counter_inc” because, in "
+"the `Counter tutorial <walkthrough.html>`_, we have defined a smart "
+"contract by the name of “counter”, and there is an entry-point named "
+"“counter_inc” defined within it. However, these will be different when "
+"you write your contracts."
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:85
+msgid "Get Deploys (from the Chain)"
+msgstr ""
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:93
+msgid ""
+"The `get-deploy` command is complementary to the `put-deploy` command. It"
+" retrieves a deploy from the network and allows you to check the status "
+"of the deploy. The `DEPLOY_HASH` is the identifier to a specific deploy "
+"and is returned by the `put-deploy` command."
+msgstr ""
+

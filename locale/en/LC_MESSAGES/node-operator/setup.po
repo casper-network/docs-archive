@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -395,40 +395,44 @@ msgid ""
 msgstr ""
 
 #: ../../node-operator/setup.rst:154
+msgid "Doing this, you'll see a warning, which you can ignore for now."
+msgstr ""
+
+#: ../../node-operator/setup.rst:160
 msgid ""
 "The Casper client can print out `help` information, which provides an up-"
 "to-date list of supported commands."
 msgstr ""
 
-#: ../../node-operator/setup.rst:160
+#: ../../node-operator/setup.rst:166
 msgid ""
 "For each command, you can use `help` to get the up-to-date arguments and "
 "descriptions:"
 msgstr ""
 
-#: ../../node-operator/setup.rst:167
+#: ../../node-operator/setup.rst:173
 msgid "Create Keys"
 msgstr ""
 
-#: ../../node-operator/setup.rst:169
+#: ../../node-operator/setup.rst:175
 msgid ""
 "The Rust client generates keys via the ``keygen`` command.  The process "
 "generates 2 *pem* files and 1 *text* file. To learn about options for "
 "generating keys, include ``--help`` when running the ``keygen`` command."
 msgstr ""
 
-#: ../../node-operator/setup.rst:176
+#: ../../node-operator/setup.rst:182
 msgid ""
 "More about keys and key generation can be found in "
 "``/etc/casper/validator_keys/README.md`` if ``casper-node-lancher`` was "
 "installed from the Debian package."
 msgstr ""
 
-#: ../../node-operator/setup.rst:180
+#: ../../node-operator/setup.rst:186
 msgid "Config File"
 msgstr ""
 
-#: ../../node-operator/setup.rst:182
+#: ../../node-operator/setup.rst:188
 msgid ""
 "One ``config.toml`` file will need to exist for each ``casper-node`` "
 "version installed.  It should be located in the ``/etc/casper/[m_n_p]/`` "
@@ -438,17 +442,17 @@ msgid ""
 "replaced current version with underscores."
 msgstr ""
 
-#: ../../node-operator/setup.rst:186
+#: ../../node-operator/setup.rst:192
 msgid ""
 "Below are some fields you may find in the ``config.toml`` that you may "
 "want or need to adjust."
 msgstr ""
 
-#: ../../node-operator/setup.rst:189
+#: ../../node-operator/setup.rst:195
 msgid "Trusted Hash for Synchronizing"
 msgstr ""
 
-#: ../../node-operator/setup.rst:191
+#: ../../node-operator/setup.rst:197
 msgid ""
 "The Casper network is a permissionless, proof of stake network - which "
 "implies that validators can come and go from the network.  The "
@@ -461,41 +465,41 @@ msgid ""
 "trusted hash:"
 msgstr ""
 
-#: ../../node-operator/setup.rst:193
+#: ../../node-operator/setup.rst:199
 msgid "Find a list of trusted validators."
 msgstr ""
 
-#: ../../node-operator/setup.rst:194
+#: ../../node-operator/setup.rst:200
 msgid ""
 "Query the status endpoint of a trusted validator ( "
 "http://[validator_id]:8888/status )"
 msgstr ""
 
-#: ../../node-operator/setup.rst:195
+#: ../../node-operator/setup.rst:201
 msgid "Obtain the hash of a block from the status endpoint."
 msgstr ""
 
-#: ../../node-operator/setup.rst:196
+#: ../../node-operator/setup.rst:202
 msgid ""
 "Update the ``config.toml`` for the node to include the trusted hash. "
 "There is a field dedicated to this near the top of the file."
 msgstr ""
 
-#: ../../node-operator/setup.rst:199
+#: ../../node-operator/setup.rst:205
 msgid "Secret Keys"
 msgstr ""
 
-#: ../../node-operator/setup.rst:201
+#: ../../node-operator/setup.rst:207
 msgid ""
 "Provide the path to the secret keys for the node.  This is set to "
 "``etc/casper/validator_keys/`` by default."
 msgstr ""
 
-#: ../../node-operator/setup.rst:204
+#: ../../node-operator/setup.rst:210
 msgid "Networking & Gossiping"
 msgstr ""
 
-#: ../../node-operator/setup.rst:206
+#: ../../node-operator/setup.rst:212
 msgid ""
 "The node requires a publicly accessible IP address.  We do not recommend "
 "NAT at this time. Specify the public IP address of the node. If you use "
@@ -503,19 +507,19 @@ msgid ""
 "IP and this is inserted into the created ``config.toml``."
 msgstr ""
 
-#: ../../node-operator/setup.rst:209
+#: ../../node-operator/setup.rst:215
 msgid "Default values are specified in the file if you want to change them:"
 msgstr ""
 
-#: ../../node-operator/setup.rst:211
+#: ../../node-operator/setup.rst:217
 msgid "Specify the port that will be used for status  & deploys"
 msgstr ""
 
-#: ../../node-operator/setup.rst:212
+#: ../../node-operator/setup.rst:218
 msgid "Specify the port used for networking"
 msgstr ""
 
-#: ../../node-operator/setup.rst:213
+#: ../../node-operator/setup.rst:219
 msgid "Known_addresses - these are the bootstrap nodes. No need to change these."
 msgstr ""
 
