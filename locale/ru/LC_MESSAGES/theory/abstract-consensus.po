@@ -1,0 +1,1746 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../theory/abstract-consensus.rst:2
+msgid "Abstract Casper Consensus"
+msgstr "Абстрактный консенсус Casper"
+
+#: ../../theory/abstract-consensus.rst:5
+msgid "Stating the problem"
+msgstr "Постановка проблемы"
+
+#: ../../theory/abstract-consensus.rst:7
+msgid ""
+"We are considering a collection of processes - **validators** - "
+"communicating over a message-passing network. Every validator has a "
+"**weight** -- a non-zero integer value representing the \"voting power\"."
+msgstr ""
+"Мы рассматриваем набор процессов - **валидаторов** - взаимодействующих по "
+"сети передачи сообщений. Каждый валидатор имеет **вес** - ненулевое целое "
+"значение, представляющее \"право голоса\"."
+
+#: ../../theory/abstract-consensus.rst:10
+msgid ""
+"The goal validators collectively pursue is to pick a single value from a "
+"finite set :math:`Con` we call the set of **consensus values**. Once the "
+"agreement is achieved, the problem is considered solved (i.e. validators "
+"terminate their operation). We require that :math:`Con` is totally ordered."
+msgstr ""
+"Цель, которую коллективно преследуют валидаторы, состоит в том, чтобы "
+"выбрать одно значение из конечного набора :math:`Con` , которое мы называем "
+"набором **значений консенсуса**. Как только соглашение достигнуто, проблема "
+"считается решенной (т. е. валидаторы прекращают свою работу). Мы требуем, "
+"чтобы :math:`Con` были полностью упорядочены."
+
+#: ../../theory/abstract-consensus.rst:14
+msgid ""
+"The resulting solution of this problem is not a blockchain yet. It is "
+"however a core building block of our blockchain design. The way abstract "
+"consensus is used for building a blockchain is explained in subsequent "
+"chapters."
+msgstr ""
+"Результирующее решение этой проблемы еще не является блокчейном. Однако это "
+"основной строительный блок нашего блокчейн-дизайна. Способ использования "
+"абстрактного консенсуса для построения блокчейна объясняется в последующих "
+"главах."
+
+#: ../../theory/abstract-consensus.rst:17
+msgid ""
+"Caution: we use **ACC** as the shortcut for **Abstract Casper Consensus**."
+msgstr ""
+"Внимание: мы используем **ACC** в качестве ярлыка для **Абстрактного "
+"консенсуса Casper**."
+
+#: ../../theory/abstract-consensus.rst:20
+msgid "Network model"
+msgstr "Модель сети"
+
+#: ../../theory/abstract-consensus.rst:22
+msgid ""
+"We assume a fully asynchronous network model with delivery guarantee and a "
+"single primitive: `broadcast(m)`. Precisely speaking:"
+msgstr ""
+"Мы предполагаем полностью асинхронную сетевую модель с гарантией доставки и "
+"одним примитивом: `broadcast(m)`.  Точнее говоря:"
+
+#: ../../theory/abstract-consensus.rst:25
+msgid ""
+"Communication between validators is based on the “broadcast” primitive: at "
+"any time, a validator can broadcast a message :math:`m`."
+msgstr ""
+"Связь между валидаторами основана на примитиве “широковещания”: в любое "
+"время валидатор может передать сообщение :math:`m`."
+
+#: ../../theory/abstract-consensus.rst:27
+msgid ""
+"Once broadcast, the message :math:`m` will be eventually delivered to every "
+"other validator in the network. The delivery will happen exactly once but "
+"with arbitrary delay."
+msgstr ""
+"После трансляции сообщение :math:`m`  в конечном итоге будет доставлено "
+"каждому другому валидатору в сети. Доставка произойдет ровно один раз, но с "
+"произвольной задержкой."
+
+#: ../../theory/abstract-consensus.rst:30
+msgid ""
+"Given the assumptions above, it follows that the order of delivery generally"
+" is not going to be preserved. In other words when a validator :math:`A` "
+"broadcast sequence of messages :math:`(m_1, m_2, ... m_k)` then another "
+"validator :math:`B` will receive all the messages in the sequence, but with "
+"delivery chronology following arbitrary permutation :math:`p:(1,..,k) "
+"\\rightarrow (1,..,k)`, i.e. :math:`(m_{p(1)}, m_{p(2)}, ... m_{p(k)})`."
+msgstr ""
+"Учитывая вышеприведенные предположения, из этого следует, что порядок "
+"доставки, как правило, не будет сохранен. Другими словами, когда валидатор  "
+":math:`A` транслирует последовательность сообщений :math:`(m_1, m_2, ... "
+"m_k)`, то другой валидатор :math:`B` получит все сообщения в "
+"последовательности,но с хронологией доставки после произвольной перестановки"
+" :math:`p:(1,..,k) \\rightarrow (1,..,k)`, i.e. :math:`(m_{p(1)}, m_{p(2)}, "
+"... m_{p(k)})`."
+
+#: ../../theory/abstract-consensus.rst:36
+#: ../../theory/abstract-consensus.rst:747
+msgid "Messages"
+msgstr "Сообщения"
+
+#: ../../theory/abstract-consensus.rst:38
+msgid ""
+"All the messages broadcast by validators have the same structure. Every "
+"message :math:`m`:"
+msgstr ""
+"Все сообщения, транслируемые валидаторами, имеют одинаковую структуру. "
+"Каждое сообщение :math:`m`:"
+
+#: ../../theory/abstract-consensus.rst:40
+msgid "has unique identifier - :math:`m.id`"
+msgstr "имеет уникальный идентификатор - :math:`m.id`"
+
+#: ../../theory/abstract-consensus.rst:41
+msgid "includes the identifier of the validator who created :math:`m.creator`"
+msgstr ""
+"включающий идентификатор валидатора, который его создал :math:`m.creator`"
+
+#: ../../theory/abstract-consensus.rst:42
+msgid ""
+"references messages the creator confirms as seen at the moment of creating "
+":math:`m` - we call this list \"justifications\" - :math:`m.justifications`"
+msgstr ""
+"ссылки-сообщения, которые создатель подтверждает, как видно на момент "
+"создания:math:`m` - мы называем этот список \"обоснованиями\" - "
+":math:`m.justifications`"
+
+#: ../../theory/abstract-consensus.rst:44
+msgid "has a vote:"
+msgstr "имеет право голоса:"
+
+#: ../../theory/abstract-consensus.rst:46
+msgid "this means pointing to a some consensus value, or"
+msgstr "это означает, что оно указывает на некоторое значение консенсуса, или"
+
+#: ../../theory/abstract-consensus.rst:47
+msgid "picking no consensus value (i.e. this is \"empty vote\")"
+msgstr "не выбирает значение консенсуса (т.е. это \"пустой голос\")"
+
+#: ../../theory/abstract-consensus.rst:49
+msgid "is cryptographically signed by the creator"
+msgstr "и криптографически подписано создателем"
+
+#: ../../theory/abstract-consensus.rst:51
+msgid ""
+"The consensus value included in the message is however optional - it is OK "
+"to broadcast an \"empty vote\" message. The semantics of such empty vote is "
+"\"I support my previous vote, unchanged\". If the previous vote is empty, it"
+" counts as \"vote for nothing\"."
+msgstr ""
+"Однако значение консенсуса, включенное в сообщение, является необязательным "
+"- можно транслировать сообщение \"пустой голос\". Семантика такого пустого "
+"голоса такова: \"Я поддерживаю свой предыдущий голос без изменений\". Если "
+"предыдущий голос пустой, он засчитывается как \"голос ни за что\"."
+
+#: ../../theory/abstract-consensus.rst:55
+msgid ""
+"This is the pseudo-code definition of a message structure (taken from the "
+"reference implementation, which is presented in detail later in this "
+"chapter):"
+msgstr ""
+"Это определение псевдокода структуры сообщения (взято из эталонной "
+"реализации, которая подробно представлена далее в этой главе):"
+
+#: ../../theory/abstract-consensus.rst:71
+msgid "J-dag"
+msgstr "J-dag"
+
+#: ../../theory/abstract-consensus.rst:73
+msgid ""
+"We use the term **snapshot** for a set of messages :math:`M`  that is closed"
+" under taking justifications, i.e. such that:"
+msgstr ""
+"Мы используем термин **снимок** для набора сообщений :math:`M` , который "
+"закрыт при принятии обоснований, т.е. такой, что:"
+
+#: ../../theory/abstract-consensus.rst:75
+msgid "\\forall{m \\in M}, m.justifications \\subset M"
+msgstr "\\forall{m \\in M}, m.justifications \\subset M"
+
+#: ../../theory/abstract-consensus.rst:79
+msgid ""
+"Let us consider arbitrary snapshot :math:`M`. We will define the following "
+"acyclic directed graph :math:`jDag(M)`:"
+msgstr ""
+"Давайте рассмотрим произвольный снимок :math:`M`. Мы определим следующий "
+"ациклически ориентированный граф :math:`jDag(M)`:"
+
+#: ../../theory/abstract-consensus.rst:81
+msgid "vertices = all elements of :math:`M`;"
+msgstr "вершины = все элементы :math:`M`;"
+
+#: ../../theory/abstract-consensus.rst:82
+msgid ""
+"edges = all pairs :math:`m_1 \\rightarrow m_2` such that :math:`m_2 \\in "
+"m_1.justifications`."
+msgstr ""
+"ребра = все пары :math:`m_1 \\rightarrow m_2`  такие, что :math:`m_2 \\in "
+"m_1.justifications`."
+
+#: ../../theory/abstract-consensus.rst:84
+msgid ""
+"Why we claim this graph is acyclic ? Well, because a cycle in this graph "
+"would mean that either time-traveling is possible or a validator managed to "
+"guess an id of some message before that message was actually created. Time-"
+"traveling we preclude on the basis of physics, while guessing of future "
+"message id must be made close-to-impossible via smart implementation of "
+"message identifiers (using message hash should be good enough)."
+msgstr ""
+"Почему мы утверждаем, что этот график ациклический ? Ну, потому что цикл на "
+"этом графике означал бы, что либо возможно перемещение во времени, либо "
+"валидатору удалось угадать идентификатор какого-либо сообщения до того, как "
+"это сообщение было фактически создано. Путешествия во времени мы исключаем "
+"на основе физики, в то время как угадывание будущего идентификатора "
+"сообщения должно быть практически невозможно с помощью интеллектуальной "
+"реализации идентификаторов сообщений (использование хеша сообщения должно "
+"быть достаточно хорошим)."
+
+#: ../../theory/abstract-consensus.rst:89
+msgid ""
+"We require that every validator maintains a representation of "
+":math:`jDag(M)` reflecting the most up to date knowledge on the ongoing "
+"consensus establishing process. Observe that :math:`jDag(M)` may be "
+"equivalently seen as a POSET because of the well-known equivalence between "
+"transitively closed DAGs and POSETs. In the remainder of this chapter we "
+"blur the difference between :math:`jDag(M)` seen as a DAG and its transitive"
+" closure seen as a POSET. We will use the relation symbols :math:`<` and "
+":math:`\\leqslant` for the implied partial order of :math:`jDag(M)`, where "
+"for two messages :math:`a` and :math:`b` a justification :math:`a \\to b` "
+"implies :math:`b < a`."
+msgstr ""
+"Мы требуем, чтобы каждый валидатор поддерживал представление "
+":math:`jDag(M)`, отражающее самые последние знания о текущем процессе "
+"достижения консенсуса. Обратите внимание, что :math:`jDag(M)`  может быть "
+"эквивалентно рассмотрена как частично упорядоченное множество из-за хорошо "
+"известной эквивалентности между транзитивно замкнутыми группами доступности "
+"баз данных и последовательностями. В оставшейся части этой главы мы "
+"размываем разницу между :math:`jDag(M)`, рассматриваемой как DAG, и ее "
+"транзитивным замыканием, рассматриваемым как частично упорядоченное "
+"множество. Мы будем использовать символы отношения:math:`<` и "
+":math:`\\leqslant` для подразумеваемого частичного порядка :math:`jDag(M)`, "
+"где для двух сообщений :math:`a` и :math:`b`обоснование :math:`a \\to b` "
+"подразумевает :math:`b < a`."
+
+#: ../../theory/abstract-consensus.rst:96
+msgid "When :math:`m \\in M`, we define:"
+msgstr "Когда  :math:`m \\in M`, мы определяем:"
+
+#: ../../theory/abstract-consensus.rst:98
+msgid ":math:`jPast(m)` as :math:`\\{x \\in M: x < m \\}`."
+msgstr ":math:`jPast(m)` как :math:`\\{x \\in M: x < m \\}`."
+
+#: ../../theory/abstract-consensus.rst:99
+msgid ":math:`jPastCone(m)` as :math:`\\{x \\in M: x \\leqslant m \\}`."
+msgstr ":math:`jPastCone(m)` как :math:`\\{x \\in M: x \\leqslant m \\}`."
+
+#: ../../theory/abstract-consensus.rst:101
+msgid ""
+"Of course both :math:`jPast(m)` and :math:`jPastCone(m)` are snapshots."
+msgstr ""
+"Конечно оба :math:`jPast(m)` и :math:`jPastCone(m)` являются снимками."
+
+#: ../../theory/abstract-consensus.rst:103
+msgid ""
+"In the context of any snapshot :math:`M` we introduce the following "
+"concepts:"
+msgstr ""
+"В контексте любого снимка  :math:`M` мы представляем следующие концепции:"
+
+#: ../../theory/abstract-consensus.rst:106
+msgid "**transitive justification of message m**"
+msgstr "**транзитивное обоснование сообщения m**"
+
+#: ../../theory/abstract-consensus.rst:106
+msgid ""
+"is any message :math:`x` such that :math:`x < m`; we also say that "
+"\":math:`m` has seen :math:`x`\""
+msgstr ""
+"это любое сообщение  :math:`x` при котором :math:`x < m`; мы также говорим, "
+"что \":math:`m` увидело :math:`x`\""
+
+#: ../../theory/abstract-consensus.rst:110
+msgid "**swimlane of validator v**"
+msgstr "**плавательная дорожка валидатора v**"
+
+#: ../../theory/abstract-consensus.rst:109
+msgid ""
+"or just :math:`swimlane(v,M)` is :math:`\\{m \\in M: m.creator = v\\}`; a "
+"swimlane usually is not a snapshot, nevertheless it inherits the ordering "
+"from  :math:`jDag(M)`, so it can be seen as a DAG and a POSET"
+msgstr ""
+"или просто :math:`swimlane(v,M)` является :math:`\\{m \\in M: m.creator = "
+"v\\}`; плавательная дорожка обычно н является снимком, также она не "
+"наследует порядок из :math:`jDag(M)`, так что она может быть видима и как "
+"направленный ациклический граф DAG, и как частично упорядоченный набор POSET"
+" "
+
+#: ../../theory/abstract-consensus.rst:113
+msgid "**tip**"
+msgstr "**совет**"
+
+#: ../../theory/abstract-consensus.rst:113
+msgid ""
+"is a maximal element in :math:`jDag(M)`; of course :math:`jDag(M)` can "
+"contain more than one maximal element"
+msgstr ""
+"это максимальный элемент в :math:`jDag(M)`; конечно :math:`jDag(M)` может "
+"содержать более одного максимального элемента"
+
+#: ../../theory/abstract-consensus.rst:117
+msgid "**validator v is honest in M**"
+msgstr "**валидатор v честен в M**"
+
+#: ../../theory/abstract-consensus.rst:116
+msgid ""
+"means :math:`swimlane(v,M)` is empty or it is a nonempty chain; in POSET "
+"language in translates to :math:`swimlane(v,M)` being a (possibly empty) "
+"linear order"
+msgstr ""
+"означает :math:`swimlane(v,M)` пустая или не пустая цепочка; в языке "
+"частично упорядоченного набора POSET это переводится в :math:`swimlane(v,M)`"
+"  которая (возможно пустая) является линейным порядком"
+
+#: ../../theory/abstract-consensus.rst:120
+msgid "**validator v is an equivocator in M**"
+msgstr "**валидатор v двусмысленен в M**"
+
+#: ../../theory/abstract-consensus.rst:120
+msgid "if :math:`v` is not honest in :math:`M`"
+msgstr "если :math:`v`не правдиво в :math:`M`"
+
+#: ../../theory/abstract-consensus.rst:124
+msgid "**equivocation by v**"
+msgstr "**двусмысленность v**"
+
+#: ../../theory/abstract-consensus.rst:123
+msgid ""
+"is a proof that a validator :math:`v` is not honest; in other words it is a "
+"pair of messages :math:`a,b \\in M`, both created by :math:`v`, such that "
+":math:`\\neg (a < b)` and :math:`\\neg (b < a)`"
+msgstr ""
+"доказывает, что валидатор  :math:`v` не честен; другими словами это пара "
+"сообщений  :math:`a,b \\in M`, и оба созданы :math:`v`, так что :math:`\\neg"
+" (a < b)` и :math:`\\neg (b < a)`"
+
+#: ../../theory/abstract-consensus.rst:128
+msgid "**latest message of a validator v in M**"
+msgstr "**последнее сообщение валидатора v в M**"
+
+#: ../../theory/abstract-consensus.rst:127
+msgid ""
+"is any tip in :math:`swimlane(v,M)`; if :math:`v` is honest in :math:`M` "
+"then it has at most one latest message in :math:`M`"
+msgstr ""
+"это любая заметка в :math:`swimlane(v,M)`; если :math:`v` правдиво в "
+":math:`M`, тогда оно содержит самое большое последнее сообщение в :math:`M`"
+
+#: ../../theory/abstract-consensus.rst:131
+msgid "**honest validators in M**"
+msgstr "**честные валидаторы в M**"
+
+#: ../../theory/abstract-consensus.rst:131
+msgid ":math:`\\{v \\in \\textit{Validators}: \\textit{v is honest in M}\\}`"
+msgstr ":math:`\\{v \\in \\textit{Validators}: \\textit{v правдиво в M}\\}`"
+
+#: ../../theory/abstract-consensus.rst:135
+msgid "**panorama of M**"
+msgstr "**панорама M**"
+
+#: ../../theory/abstract-consensus.rst:134
+msgid ""
+"is a partial function :math:`\\textit{panorama(M)}: \\textit{Validators} "
+"\\rightarrow M`, defined for every validator which is honest in M and "
+"swimlane(v,M) is nonempty, :math:`panorama(M)(v) = \\textit{tip of the "
+"swimlane of v}`"
+msgstr ""
+"это частичная функция  :math:`\\textit{panorama(M)}: \\textit{Validators} "
+"\\rightarrow M`, определенная для каждого валидатора, который честен в M и "
+"плавательная дорожка (v,M) не пустая, :math:`panorama(M)(v) = \\textit{совет"
+" плавательной дорожки v}`"
+
+#: ../../theory/abstract-consensus.rst:137
+msgid ""
+"These concepts are illustrated below. Messages are represented with circles."
+" Justifications are represented with arrows. Colors inside a circle "
+"represents consensus values."
+msgstr ""
+"Эти концепции проиллюстрированы ниже. Сообщения представлены кругами. "
+"Обоснования представлены стрелками. Цвета внутри круга представляют "
+"согласованные значения."
+
+#: ../../theory/abstract-consensus.rst:149
+#: ../../theory/abstract-consensus.rst:1182
+msgid "Estimator"
+msgstr "Оценщик"
+
+#: ../../theory/abstract-consensus.rst:151
+msgid ""
+"Upon creation of a new message :math:`m`, a validator must decide which "
+"consensus value :math:`m` will vote for. We limit the freedom here by "
+"enforcing that the selected consensus value is constrained by the function "
+"called **estimator**:"
+msgstr ""
+"После создания нового сообщения :math:`m`, валидатор должен решить, за какое"
+" значение консенсуса :math:`m`  будет голосовать. Мы ограничиваем свободу "
+"здесь, обеспечивая, чтобы выбранное консенсусное значение ограничивалось "
+"функцией, называемой estimator **оценщик**:"
+
+#: ../../theory/abstract-consensus.rst:155
+msgid "\\textit{estimator}: Snapshots \\to Con \\cup \\{ None \\}"
+msgstr "\\textit{estimator}: Snapshots \\to Con \\cup \\{ None \\}"
+
+#: ../../theory/abstract-consensus.rst:159
+msgid ""
+"For any message :math:`m` we say **estimated vote for m** for "
+":math:`\\textit{estimator}(jPast(m))`."
+msgstr ""
+"Для любого сообщения :math:`m` мы говорим **оценочный голос за m** для "
+":math:`\\textit{estimator}(jPast(m))`."
+
+#: ../../theory/abstract-consensus.rst:161
+msgid "We enforce the votes by the following rule:"
+msgstr "Мы проводим голосование в соответствии со следующим правилом:"
+
+#: ../../theory/abstract-consensus.rst:163
+msgid ""
+"if estimated vote for :math:`m` is not None then must vote for the estimated"
+" vote"
+msgstr ""
+"если предполагаемое голосование за :math:`m`  не равно Нет - None, то "
+"необходимо проголосовать за предполагаемое голосование"
+
+#: ../../theory/abstract-consensus.rst:164
+msgid "otherwise, :math:`m` is allowed to vote for any value in :math:`Con`"
+msgstr "иначе :math:`m` разрешено голосовать за любое значение в :math:`Con`"
+
+#: ../../theory/abstract-consensus.rst:166
+msgid ""
+"Let us consider any snapshot :math:`M`. The way :math:`estimator(M)` is "
+"calculated goes as follows:"
+msgstr ""
+"Будем считать, что любой снимок :math:`M`. Способ, которым рассчитывается "
+":math:`estimator(M)` следующий:"
+
+#: ../../theory/abstract-consensus.rst:168
+msgid "Take the collection :math:`H` of all honest validators in :math:`M`."
+msgstr "Возьмите список  :math:`H`  всех честных валидаторов в :math:`M`."
+
+#: ../../theory/abstract-consensus.rst:169
+msgid ""
+"Restrict :math:`H` to collection of validators that created at least one "
+"message with non-empty vote - :math:`H'`"
+msgstr ""
+"Сделайте более строгий отбор :math:`H`  до списка валидаторов, которые "
+"создали хотя бы одно сообщение с не пустым голосом - :math:`H'`"
+
+#: ../../theory/abstract-consensus.rst:170
+msgid ""
+"If :math:`H'` is empty - return :math:`None`, otherwise - continue "
+"calculation."
+msgstr ""
+"Если :math:`H'` пустое - верните :math:`None`, или же продолжите вычисления."
+
+#: ../../theory/abstract-consensus.rst:171
+msgid ""
+"For every validator in :math:`H'` - find its latest message with non-empty "
+"vote."
+msgstr ""
+"Для каждого валидатора в :math:`H'` - найдите его последнее сообщение с не "
+"пустым голосом. "
+
+#: ../../theory/abstract-consensus.rst:172
+msgid ""
+"Sum latest messages by weight; this will end up with a mapping "
+":math:`\\textit{totalVotes}: Con \\to Int`, for every consensus value "
+":math:`c` it returns the sum of weights of validators voting for :math:`c`."
+msgstr ""
+"Суммируйте последние сообщения по весу; в итоге получится картирование "
+":math:`\\textit{totalVotes}: Con \\to Int`, для каждого значения консенсуса "
+":math:`c` оно возвратит сумму весов валидаторов, голосовавших за :math:`c`."
+
+#: ../../theory/abstract-consensus.rst:174
+msgid ""
+"Find all points :math:`c \\in Con` such that :math:`\\textit{totalVotes}` "
+"has maximum value at :math:`c`."
+msgstr ""
+"Найдите все точки :math:`c \\in Con` где :math:`\\textit{totalVotes}` имеет "
+"максимальное значение в :math:`c`."
+
+#: ../../theory/abstract-consensus.rst:175
+msgid ""
+"From elements found in the previous step pick maximum element :math:`cmax "
+"\\in Con`. This is where we use the fact that :math:`Con` is finite and "
+"totally ordered."
+msgstr ""
+"Из элементов, найденных в предыдущем шаге, выберите максимальный элемент "
+":math:`cmax \\in Con`. Это то, где мы используем факт, что  :math:`Con` "
+"завершено и абсолютно упорядочено. "
+
+#: ../../theory/abstract-consensus.rst:177
+msgid "The result of the estimator is :math:`cmax`."
+msgstr "Результат оценщика - :math:`cmax`."
+
+#: ../../theory/abstract-consensus.rst:180
+msgid "Validity conditions"
+msgstr "Условия валидности"
+
+#: ../../theory/abstract-consensus.rst:182
+msgid ""
+"On reception of a message, every validator must check certain conditions. "
+"Messages not compliant with these conditions are considered invalid and "
+"hence ignored."
+msgstr ""
+"При получении сообщения каждый валидатор должен проверить определенные "
+"условия. Сообщения, не соответствующие этим условиям, считаются "
+"недействительными и, следовательно, игнорируются."
+
+#: ../../theory/abstract-consensus.rst:185
+msgid "Formal validation is:"
+msgstr "Формальная валидация это:"
+
+#: ../../theory/abstract-consensus.rst:187
+msgid ""
+"message must be correctly structured, following the transport (= binary) "
+"representation"
+msgstr ""
+"сообщение должно быть правильно структурировано в соответствии с "
+"транспортным (= двоичным) представлением"
+
+#: ../../theory/abstract-consensus.rst:188
+msgid "checking of the cryptographic signature of message creator"
+msgstr "проверка криптографической подписи создателя сообщения"
+
+#: ../../theory/abstract-consensus.rst:190
+msgid "Semantic validation is:"
+msgstr "Семантическая валидация это:"
+
+#: ../../theory/abstract-consensus.rst:192
+msgid ""
+"consensus value :math:`m.vote` must be compliant with applying the estimator"
+" to :math:`jPast(m)`"
+msgstr ""
+"значение консенсуса  :math:`m.vote` должно быть соответствующим для "
+"применения оценщика в :math:`jPast(m)`"
+
+#: ../../theory/abstract-consensus.rst:193
+msgid ""
+"justifications :math:`m.justifications` must reference messages belonging to"
+" distinct swimlanes, i.e. if :math:`j_1`, :math:`j_2` are two justifications"
+" in :math:`m`, then :math:`creator(j_1) \\ne creator(j_2)`"
+msgstr ""
+"обоснования :math:`m.justifications` должны ссылаться на сообщения, "
+"принадлежащие к определенным плавательным дорожкам, т.е. если :math:`j_1`, "
+":math:`j_2` являются двумя обоснованиями в  :math:`m`, тогда "
+":math:`creator(j_1) \\ne creator(j_2)`"
+
+#: ../../theory/abstract-consensus.rst:196
+msgid "We explain the concept of \"estimator\" later in this chapter."
+msgstr "Мы объясняем концепцию *оценщика* позже в этой главе."
+
+#: ../../theory/abstract-consensus.rst:199
+msgid "Operation of a validator"
+msgstr "Работа валидатора"
+
+#: ../../theory/abstract-consensus.rst:201
+msgid "A validator continuously runs two activities:"
+msgstr "Валидатор постоянно выполняет два действия:"
+
+#: ../../theory/abstract-consensus.rst:203
+msgid "**listening loop** - handling messages arriving from the network"
+msgstr ""
+"**прослушивание по кругу** - управление сообщениями, прибывающими из сети"
+
+#: ../../theory/abstract-consensus.rst:204
+msgid "**publishing loop** - creating and broadcasting new messages"
+msgstr "**публикация по кругу** - создание и трансляция новых сообщений"
+
+#: ../../theory/abstract-consensus.rst:206
+msgid "**Listening loop**"
+msgstr "**Прослушивание по кругу**"
+
+#: ../../theory/abstract-consensus.rst:208
+msgid "When a message :math:`m` arrived:"
+msgstr "Когда сообщение :math:`m` прибыло:"
+
+#: ../../theory/abstract-consensus.rst:210
+msgid "Formal validation of :math:`m` is performed."
+msgstr "Осуществляется формальная валидация :math:`m`  ."
+
+#: ../../theory/abstract-consensus.rst:211
+msgid ""
+"If :math:`textit{m.justifications}` are already present in the local "
+"representation of j-dag then:"
+msgstr ""
+"Если обоснования :math:`textit{m.justifications}`  уже присутствуют в "
+"локальной репрезентации j-dag, тогда:"
+
+#: ../../theory/abstract-consensus.rst:213
+msgid "semantic validation of :math:`m` is performed"
+msgstr "осуществляется семантическая валидация :math:`m`"
+
+#: ../../theory/abstract-consensus.rst:214
+msgid ":math:`m` is added to the j-dag"
+msgstr ":math:`m` добавляется в j-dag"
+
+#: ../../theory/abstract-consensus.rst:216
+msgid "otherwise:"
+msgstr "иначе:"
+
+#: ../../theory/abstract-consensus.rst:218
+msgid ""
+":math:`m` is added to the messages buffer, where it waits until all "
+"justifications it references are present in the j-dag"
+msgstr ""
+":math:`m` добавляется в буфер сообщений, где оно ожидает до тех пор, пока "
+"все обоснования, на которые оно ссылается, будут присутствовать в j-dag"
+
+#: ../../theory/abstract-consensus.rst:221
+msgid "On every message added to the local j-dag:"
+msgstr "На каждом сообщении, добавленном в локальный j-dag:"
+
+#: ../../theory/abstract-consensus.rst:223
+msgid ""
+"Messages buffer is checked for messages that have now all justifications "
+"present in the j-dag and so can be removed from the buffer."
+msgstr ""
+"Буфер сообщений проверяется на наличие сообщений, которые теперь имеют все "
+"обоснования, присутствующие в j-dag, и поэтому могут быть удалены из буфера."
+
+#: ../../theory/abstract-consensus.rst:225
+msgid ""
+"Finality detector analyzes local j-dag to check if the consensus has already"
+" been reached."
+msgstr ""
+"Детектор завершенности анализирует локальную j-dag, чтобы проверить, "
+"достигнут ли уже консенсус."
+
+#: ../../theory/abstract-consensus.rst:227
+msgid "**Publishing loop**"
+msgstr "**Публикация по кругу**"
+
+#: ../../theory/abstract-consensus.rst:229
+msgid ""
+"We do not determine when exactly a validator decides to create and broadcast"
+" a new message. This is pluggable part of ACC. As soon as a validator, "
+"following its publishing strategy, decides to publish a message, it builds a"
+" new message with:"
+msgstr ""
+"Мы не определяем, когда именно валидатор решает создать и передать новое "
+"сообщение. Это подключаемая часть ACC. Как только валидатор, следуя своей "
+"стратегии публикации, решает опубликовать сообщение, он создает новое "
+"сообщение с:"
+
+#: ../../theory/abstract-consensus.rst:233
+msgid ""
+"justifications set to tips of all swimlanes, according to local j-dag; in "
+"case of equivocators, i.e. when the corresponding swimlane has more than one"
+" tip - validator picks just one tip (any)"
+msgstr ""
+"обоснования устанавливаются для заметок всех плавательных дорожек в "
+"соответствии с местным j-dag; в случае двусмысленностей, т. е. когда "
+"соответствующая плавательная дорожка имеет более одной заметки - валидатор "
+"выбирает только одну заметку (любую)"
+
+#: ../../theory/abstract-consensus.rst:235
+msgid ""
+"consensus value determined by estimator, as applied to the justifications"
+msgstr ""
+"значение консенсуса, определенное оценщиком, как примененное к обоснованиям"
+
+#: ../../theory/abstract-consensus.rst:238
+msgid "The concept of finality"
+msgstr "Концепция завершенности"
+
+#: ../../theory/abstract-consensus.rst:241
+msgid "When the consensus is reached"
+msgstr "Когда достигнут консенсус"
+
+#: ../../theory/abstract-consensus.rst:243
+msgid ""
+"A validator :math:`v` constantly analyzes its local j-dag to observe a value"
+" :math:`c \\in Con` becoming \"locked\" in the following sense:"
+msgstr ""
+"Валидатор  :math:`v`  постоянно анализирует свою местную j-dag, чтобы "
+"оценить как значение  :math:`c \\in Con` становится \"закрытым\" в следующем"
+" смысле:"
+
+#: ../../theory/abstract-consensus.rst:246
+msgid ""
+"from now on, the estimator applied to local j-dag tips will always return "
+":math:`c`"
+msgstr ""
+"с этого момента оценщик, примененный к локальным заметкам j-dag, всегда "
+"будет возвращать :math:`c`"
+
+#: ../../theory/abstract-consensus.rst:247
+msgid ""
+"the same phenomenon is guaranteed to happen also for other validators "
+"(eventually)"
+msgstr ""
+"тот же феномен гарантированно произойдет также для других валидаторов (в "
+"конце концов)"
+
+#: ../../theory/abstract-consensus.rst:249
+msgid ""
+"If such locking happens, we say that **consensus value c is now finalized**,"
+" i.e. the consensus was reached with value :math:`c \\in Con` being the "
+"winner."
+msgstr ""
+"Если такое закрытие происходит, мы говорим, что **значение консенсуса c "
+"теперь финализировано**, т.е. консенсус достигнут со значением :math:`c \\in"
+" Con` , которое победило."
+
+#: ../../theory/abstract-consensus.rst:253
+msgid "Malicious validators"
+msgstr "Опасные валидаторы"
+
+#: ../../theory/abstract-consensus.rst:255
+msgid ""
+"In general - malicious validators can stop consensus from happening. We need"
+" to adjust the concept of finalization so to account for this problem."
+msgstr ""
+"В целом - вредоносные валидаторы могут помешать достижению консенсуса. Нам "
+"нужно скорректировать концепцию завершения, чтобы учесть эту проблему."
+
+#: ../../theory/abstract-consensus.rst:258
+msgid "There are 4 ways a validator can expose malicious behaviour:"
+msgstr ""
+"Есть 4 способа, в которых выражается вредоносное поведение валидатора:"
+
+#: ../../theory/abstract-consensus.rst:260
+msgid "Be silent (= stop producing messages)"
+msgstr "Быть тихим (= перестать производить сообщения)"
+
+#: ../../theory/abstract-consensus.rst:261
+msgid "Produce malformed messages."
+msgstr "Производить некорректные сообщения."
+
+#: ../../theory/abstract-consensus.rst:262
+msgid ""
+"Violate the condition that a message must vote on a value derived from "
+"justifications via the estimator."
+msgstr ""
+"Нарушать условие, согласно которому сообщение должно голосовать за значение,"
+" полученное из обоснований с помощью оценщика."
+
+#: ../../theory/abstract-consensus.rst:263
+msgid "Equivocate."
+msgstr "Создавать двусмысленности."
+
+#: ../../theory/abstract-consensus.rst:265
+msgid ""
+"Case (3) can really be considered a sub-case of (2), and (2) can be evaded "
+"by assuming that validators reject malformed messages on reception. So, the "
+"only real problems come from (1) and (4):"
+msgstr ""
+"Случай (3) может быть на самом деле подслучаем (2), а (2) можно обойти, "
+"предположив, что валидаторы отклоняют искаженные сообщения при приеме. Итак,"
+" единственные реальные проблемы возникают из (1) и (4):"
+
+#: ../../theory/abstract-consensus.rst:268
+msgid "Problem (1) is something we are not addressing within ACC."
+msgstr "Проблема (1) это то, к чему мы не адресуемся внутри ACC."
+
+#: ../../theory/abstract-consensus.rst:269
+msgid ""
+"Problem (4) is something we control explicitly in the finality calculation."
+msgstr ""
+"Проблема (4) это нечто, что мы детально контролируем в расчетах финализации."
+
+#: ../../theory/abstract-consensus.rst:272
+msgid "Closer look at equivocations"
+msgstr "Более детальный взгляд на двусмысленности"
+
+#: ../../theory/abstract-consensus.rst:274
+msgid ""
+"Equivocations do break consensus. Intuition for this is clear - if everybody"
+" cheats by concurrently voting for different values, validators will never "
+"come up with a decision the value is finally agreed upon."
+msgstr ""
+"Двусмысленности действительно нарушают консенсус. Интуиция для этого ясна - "
+"если все обманывают, одновременно голосуя за разные значения, валидаторы "
+"никогда не придут к решению, что значение окончательно согласовано."
+
+#: ../../theory/abstract-consensus.rst:277
+msgid ""
+"It may be not immediately obvious how equivocations are possible in the "
+"context of the rule that the estimator function determines the consensus "
+"value to vote for. It is worth noticing that:"
+msgstr ""
+"Может быть не сразу очевидно, насколько возможны двусмысленности в контексте"
+" правила, согласно которому функция оценки определяет значение консенсуса "
+"для голосования. Стоит отметить, что:"
+
+#: ../../theory/abstract-consensus.rst:280
+msgid ""
+"The essence of an equivocation is not about voting for different consensus "
+"values; it is about behaving in a “schizophrenic” way by pretending that “I "
+"have not seen my previous message”."
+msgstr ""
+"Суть двусмысленности заключается не в голосовании за различные консенсусные "
+"значения, а в том, чтобы вести себя “шизофренически”, притворяясь, что “я не"
+" видел своего предыдущего сообщения”."
+
+#: ../../theory/abstract-consensus.rst:282
+msgid ""
+"A Validator does not have to reveal all messages actually received. "
+"“Revealing” happens at the creation of a new message - by listing "
+"justifications of this message. The protocol does not prevent a validator "
+"from hiding knowledge, i.e. listing as justifications \"old\" messages."
+msgstr ""
+"Валидатор не обязан раскрывать все фактически полученные сообщения. "
+"“Раскрытие” происходит при создании нового сообщения - путем перечисления "
+"обоснований этого сообщения. Протокол не запрещает валидатору скрывать "
+"знания, т. е. перечислять в качестве обоснований \"старые\" сообщения."
+
+#: ../../theory/abstract-consensus.rst:285
+msgid ""
+"Technically, to create an equivocation is very easy - all one have to do is "
+"to create a branch own the swimlane. Such a branch is created every time "
+"when for a message :math:`m` its transitive justifications "
+":math:`jPastCone(m)` do not include previous message by :math:`m.creator`."
+msgstr ""
+"Технически создать двусмысленность очень просто - все, что нужно сделать, "
+"это создать собственную ветку на плавательной дорожке. Такая ветвь создается"
+" каждый раз, когда для сообщения  :math:`m` его транзитивные обоснования "
+":math:`jPastCone(m)` не включают предыдущее сообщение :math:`m.creator`."
+
+#: ../../theory/abstract-consensus.rst:290
+msgid "Finality criteria"
+msgstr "Критерии завершенности"
+
+#: ../../theory/abstract-consensus.rst:292
+msgid ""
+"Let :math:`\\mathcal{M}` be the set of all possible formally correct "
+"messages. Let :math:`\\textit{Snapshots}(\\mathcal{M})` be the set of all "
+"justifications-closed subsets of :math:`\\mathcal{M}`."
+msgstr ""
+"Пусть :math:`\\mathcal{M}`  будет набором всех возможных формально "
+"правильных сообщений. Пусть :math:`\\textit{Snapshots}(\\mathcal{M})`  будет"
+" набором всех обосновательно-закрытых подмножеств :math:`\\mathcal{M}`."
+
+#: ../../theory/abstract-consensus.rst:295
+msgid ""
+"Because of equivocations, finality really means “consensus value :math:`c` "
+"being locked as long as the fraction of honest nodes is sufficiently high”. "
+"We express the “sufficiently high” part by introducing the concept of "
+"**faults tolerance threshold**, or **FTT** in short. This leads us to the "
+"improved definition of finality:"
+msgstr ""
+"Из-за двусмысленностей завершенность на самом деле означает, что “значение "
+"консенсуса :math:`c`заблокировано до тех пор, пока доля честных нод "
+"достаточно высока\". Мы выражаем “достаточно высокую” часть, вводя понятие "
+"**порога отказоустойчивости**, или **FTT** вкратце. Это приводит нас к "
+"улучшенному определению завершенности:"
+
+#: ../../theory/abstract-consensus.rst:299
+msgid ""
+"A value :math:`c \\in Con` is finalized in a snapshot :math:`S \\in "
+"\\textit{Snapshots}(\\mathcal{M})` with fault tolerance :math:`t` if:"
+msgstr ""
+"Значение :math:`c \\in Con` завершено в снимке :math:`S \\in "
+"\\textit{Snapshots}(\\mathcal{M})` с отказоустойчивостью :math:`t` если:"
+
+#: ../../theory/abstract-consensus.rst:303
+msgid ":math:`\\textit{Estimator}(S) = c`"
+msgstr ":math:`\\textit{Estimator}(S) = c`"
+
+#: ../../theory/abstract-consensus.rst:304
+msgid ""
+"For every snapshot :math:`S \\in \\mathit{Snapshots}(\\mathcal{M})` such "
+"that :math:`S \\subset R` one of the following is true:"
+msgstr ""
+"Для каждого снимка  :math:`S \\in \\mathit{Snapshots}(\\mathcal{M})` при "
+"том, что :math:`S \\subset R` одно из следующих является правдивым:"
+
+#: ../../theory/abstract-consensus.rst:307
+msgid ":math:`Estimator(R) = c`"
+msgstr ":math:`Estimator(R) = c`"
+
+#: ../../theory/abstract-consensus.rst:308
+msgid ""
+"total weights of equivocators visible in :math:`R` is bigger than :math:`t`"
+msgstr "общий вес двусмысленностей видимый в :math:`R`  больше, чем :math:`t`"
+
+#: ../../theory/abstract-consensus.rst:310
+msgid ""
+"**Finality criterion** is any function :math:`fc: "
+"\\mathit{Snapshots}(\\mathcal{M}) \\times Int \\to C \\cup {EMPTY}` such "
+"that if :math:`fc(S,t) = c` then :math:`c` is finalized in :math:`S` with "
+"fault tolerance :math:`t`."
+msgstr ""
+"**Критерии завершенности** это любая функция  :math:`fc: "
+"\\mathit{Snapshots}(\\mathcal{M}) \\times Int \\to C \\cup {EMPTY}` при том,"
+" что если :math:`fc(S,t) = c` тогда :math:`c` завершается в :math:`S` с "
+"отказоустойчивостью :math:`t`."
+
+#: ../../theory/abstract-consensus.rst:313
+msgid ""
+"Intuitively, finality is something that is easy to define mathematically but"
+" potentially hard to discover by an efficient calculation. Therefore in "
+"general we discuss various finality criteria, which are approximations of "
+"finality. Finality criteria may differ by sensitivity (= how they are not "
+"overlooking existing finality) and computational efficacy."
+msgstr ""
+"Интуитивно, завершенность - это то, что легко определить математически, но "
+"потенциально трудно обнаружить с помощью эффективного расчета. Поэтому в "
+"целом мы обсуждаем различные критерии завершенности, которые являются "
+"приближениями к завершенности. Критерии завершенности могут отличаться "
+"чувствительностью (= тем, насколько они не упускают из виду существующую "
+"завершенность) и вычислительной эффективностью."
+
+#: ../../theory/abstract-consensus.rst:319
+msgid "Calculating finality"
+msgstr "Вычисление завершенности"
+
+#: ../../theory/abstract-consensus.rst:322
+msgid "Introduction"
+msgstr "Введение"
+
+#: ../../theory/abstract-consensus.rst:324
+msgid ""
+"We describe here the criterion of finality codenamed “Summit theory ver 2”. "
+"This criterion has two parameters:"
+msgstr ""
+"Здесь мы описываем критерий завершенности под кодовым названием “Теория "
+"саммита версии 2”. Этот критерий имеет два параметра:"
+
+#: ../../theory/abstract-consensus.rst:326
+msgid ""
+"**ftt: Int** - “absolute” fault tolerance threshold (expressed as total "
+"weight)"
+msgstr ""
+"**ftt: Int** - “абсолютный\" порог отказоустойчивости (выраженный как общий "
+"вес)"
+
+#: ../../theory/abstract-consensus.rst:327
+msgid ""
+"**ack_level: Int** - acknowledgement level; an integer value bigger than "
+"zero"
+msgstr ""
+"**ack_level: Int** - уровень подтверждения; целое значение больше нуля"
+
+#: ../../theory/abstract-consensus.rst:329
+msgid ""
+"The criterion is centered about the concept of \"summit\". Summits are "
+"subgraphs of j-dag fulfilling certain properties. We will use the term "
+"**k-summit** for a summit formed with acknowledgement level k."
+msgstr ""
+"Критерий сосредоточен на понятии \"саммит\". Саммиты являются подграфами "
+"j-dag, выполняющими определенные свойства. Мы будем использовать термин "
+"**k-саммит** для саммита, сформированного с уровнем подтверждения k."
+
+#: ../../theory/abstract-consensus.rst:332
+msgid "Once a k-level summit is found, the consensus is achieved."
+msgstr "Как только k-уровень найден, консенсус достигнут."
+
+#: ../../theory/abstract-consensus.rst:335
+msgid "Visual notation"
+msgstr "Визуальное обозначение"
+
+#: ../../theory/abstract-consensus.rst:337
+msgid ""
+"To investigate the summit theory we developed a simulator and a visual "
+"notation. Pictures in this chapter are produced with this simulator."
+msgstr ""
+"Для изучения теории саммита мы разработали симулятор и визуальную "
+"репрезентацию. Изображения в этой главе созданы с помощью этого симулятора."
+
+#: ../../theory/abstract-consensus.rst:340
+msgid "This is an example of 1-summit:"
+msgstr "Вот пример 1-саммита:"
+
+#: ../../theory/abstract-consensus.rst:346
+msgid ""
+"The graph corresponds to local j-dag of validator 0 and is visually aligned "
+"by daglevel (so time goes from left to right)."
+msgstr ""
+"График соответствует локальному j-dag валидатора 0 и визуально выровнен по "
+"уровню dag (поэтому время идет слева направо)."
+
+#: ../../theory/abstract-consensus.rst:349
+msgid ""
+"Rectangles on the left represent validators. Swimlane of a validator is "
+"aligned horizontally, so for example swimlane of validator 3 contains "
+"messages 4, 14, 20 and 24. Message 28 is marked with a dashed border - this "
+"means this message was created somewhere in the network but at the moment of"
+" taking the snapshot of local state of validator 0 was not yet delivered to "
+"validator 0."
+msgstr ""
+"Прямоугольники слева представляют валидаторов. Плавательная дорожка "
+"валидатора выровнена по горизонтали, поэтому, например, дорожка валидатора 3"
+" содержит сообщения 4, 14, 20 и 24. Сообщение 28 помечено пунктирной "
+"границей - это означает, что это сообщение было создано где-то в сети, но в "
+"момент создания снимка локального состояния валидатора 0 еще не было "
+"доставлено валидатору 0."
+
+#: ../../theory/abstract-consensus.rst:354
+msgid "Validator colors are also meaningful:"
+msgstr "Цвета, которыми обозначены валидаторы, тоже имеют значение:"
+
+#: ../../theory/abstract-consensus.rst:356
+msgid "white - this validator is not part of the summit"
+msgstr "белый- этот валидатор не является частью саммита"
+
+#: ../../theory/abstract-consensus.rst:357
+msgid "green - this validator is part of the summit"
+msgstr "зеленый  этот валидатор является частью саммита"
+
+#: ../../theory/abstract-consensus.rst:358
+msgid "red - this is an equivocator"
+msgstr "красный - этот валидатор создает двусмысленности"
+
+#: ../../theory/abstract-consensus.rst:360
+msgid ""
+"The color inside of each message represents the consensus value this message"
+" is voting for."
+msgstr ""
+"Цвет внутри каждого сообщения представляет значение консенсуса, за которое "
+"голосует это сообщение."
+
+#: ../../theory/abstract-consensus.rst:362
+msgid ""
+"The color outside represents the information related to summit structure "
+"(explained later in this chapter)."
+msgstr ""
+"Цвет снаружи представляет информацию, относящуюся к структуре саммита "
+"(объясняется далее в этой главе)."
+
+#: ../../theory/abstract-consensus.rst:365
+msgid "Step 1: Calculate quorum size"
+msgstr "Шаг 1: Вычисление размера кворума"
+
+#: ../../theory/abstract-consensus.rst:367
+msgid "Quorum size is an integer value calculated as:"
+msgstr "Размер кворума - это целое число, рассчитанное как:"
+
+#: ../../theory/abstract-consensus.rst:369
+msgid ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{1}{2}\\left(\\frac{ftt}{1-2^{-k}}+w\\right)\\right)"
+msgstr ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{1}{2}\\left(\\frac{ftt}{1-2^{-k}}+w\\right)\\right)"
+
+#: ../../theory/abstract-consensus.rst:373
+#: ../../theory/abstract-consensus.rst:386
+msgid "… where:"
+msgstr "...где:"
+
+#: ../../theory/abstract-consensus.rst:375
+msgid ":math:`ftt` - absolute fault tolerance threshold"
+msgstr ":math:`ftt` - абсолютный порог отказоустойчивости"
+
+#: ../../theory/abstract-consensus.rst:376
+msgid ":math:`w` - sum of weights of validators"
+msgstr ":math:`w` - сумма весов валидаторов"
+
+#: ../../theory/abstract-consensus.rst:377
+msgid ""
+":math:`k` - desired acknowledgement level of a summit we are trying to find"
+msgstr ""
+":math:`k` - желаемый уровень признания саммита, который мы пытаемся найти"
+
+#: ../../theory/abstract-consensus.rst:378
+msgid ":math:`ceiling` - rounding towards positive infinity"
+msgstr ":math:`ceiling` - округление в сторону положительной бесконечности"
+
+#: ../../theory/abstract-consensus.rst:380
+msgid ""
+"The formula can be rephrased to use relative ftt instead of absolute ftt:"
+msgstr ""
+"Формула может быть перефразирована для использования переменной ftt вместо "
+"абсолютной ftt:"
+
+#: ../../theory/abstract-consensus.rst:382
+msgid ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{w}{2}\\left(\\frac{rftt}{1-2^{-k}}+1\\right)\\right)"
+msgstr ""
+"\\textit{quorum} = "
+"ceiling\\left(\\frac{w}{2}\\left(\\frac{rftt}{1-2^{-k}}+1\\right)\\right)"
+
+#: ../../theory/abstract-consensus.rst:388
+msgid ""
+":math:`rftt` - relative fault tolerance threshold (fractional value between "
+"0 and 1); represents the maximal accepted total weight of malicious "
+"validators - as fraction of :math:`w`"
+msgstr ""
+":math:`rftt` - относительный порог отказоустойчивости (фракционное значение "
+"между 0 и 1); представляет максимально допустимый общий вес вредоносных "
+"валидаторов - как фракция из :math:`w`"
+
+#: ../../theory/abstract-consensus.rst:393
+msgid "Step 2: Find consensus candidate value"
+msgstr "Шаг 2: Найдите значение кандидата консенсуса"
+
+#: ../../theory/abstract-consensus.rst:395
+msgid ""
+"The first step in finding a summit is to apply the estimator to the whole "
+"j-dag. This way the consensus value that gets most votes (by weight) is "
+"found, where the total ordering on :math:`Con` is used as a tie-breaker."
+msgstr ""
+"Первым шагом в поиске вершины является применение оценки ко всей j-dag. "
+"Таким образом, будет найдено значение консенсуса, которое наберет наибольшее"
+" количество голосов (по весу), где общее упорядочение по:math:`Con` "
+"используется в качестве связующего звена."
+
+#: ../../theory/abstract-consensus.rst:398
+msgid ""
+"Say the value returned by the estimator is :math:`c`. When the total weight "
+"of votes for :math:`c` is less than quorum size, we do not have a summit "
+"yet, so this terminates the summit search ."
+msgstr ""
+"Допустим, значение, возвращаемое оценщиком, равно :math:`c`. Когда общий вес"
+" голосов за :math:`c` меньше, чем размер кворума, у нас еще нет саммита, "
+"поэтому это завершает поиск саммита ."
+
+#: ../../theory/abstract-consensus.rst:403
+msgid "Step 3: Find 0-level messages"
+msgstr "Шаг 3: Найдите сообщения 0-уровня"
+
+#: ../../theory/abstract-consensus.rst:405
+msgid ""
+"**0-level messages for an honest validator v** is a subset of "
+":math:`swimlane(v)` formed by taking all messages voting for :math:`c` which"
+" have no later message by :math:`v` voting for consensus value other than "
+":math:`c`. Please notice that empty votes are considered a continuation of "
+"last non-empty vote."
+msgstr ""
+"**сообщения 0-го уровня для честного валидатора v** - это подмножество "
+":math:`swimlane(v)` , сформированное путем принятия всех сообщений, "
+"голосующих за :math:`c`, у которых нет более позднего сообщения :math:`v`, "
+"голосующего за значение консенсуса, отличное от :math:`c`.  Пожалуйста, "
+"обратите внимание, что пустые голоса считаются продолжением последнего "
+"непустого голосования."
+
+#: ../../theory/abstract-consensus.rst:409
+msgid ""
+"**0-level messages** is a sum of zero level messages for all hones "
+"validators."
+msgstr ""
+"**сообщения 0-го уровня** - это сумма сообщений нулевого уровня для всех "
+"честных валидаторов."
+
+#: ../../theory/abstract-consensus.rst:411
+msgid "Let us look again at the example summit:"
+msgstr "Давайте снова посмотрим на пример саммита:"
+
+#: ../../theory/abstract-consensus.rst:417
+msgid ""
+"All latest messages vote for consensus value \"white\", so it is clear that "
+"white is the value picked by the estimator."
+msgstr ""
+"Все последние сообщения голосуют за согласованное значение \"белый\", "
+"поэтому ясно, что белый - это значение, выбранное оценщиком."
+
+#: ../../theory/abstract-consensus.rst:419
+msgid ""
+"In the swimlane of validator 2, messages 3 and 9 vote for white, but are not"
+" 0-level, because 2 changed mind later. Also messages 11 and 15 are not "
+"0-level, because they vote for orange. Only messages 19 and 26 are 0-level."
+msgstr ""
+"В плавательной дорожке валидатора 2 сообщения 3 и 9 голосуют за белых, но не"
+" являются 0-уровневыми, потому что 2 позже передумали. Также сообщения 11 и "
+"15 не являются 0-уровневыми, потому что они голосуют за оранжевый. Только "
+"сообщения 19 и 26 являются 0-уровневыми."
+
+#: ../../theory/abstract-consensus.rst:422
+msgid ""
+"In the swimlane of validator 1, all messages are 0-level: 2, 13, 22, 23."
+msgstr ""
+"В плавательной дорожке валидатора 1 все сообщения 0-уровневые: 2, 13, 22, "
+"23."
+
+#: ../../theory/abstract-consensus.rst:424
+msgid ""
+"In the swimlane of validator 0 no message is 0-level, because validator 0 is"
+" an equivocator. This becomes clear when we highlight the j-past-cone of "
+"message 25:"
+msgstr ""
+"В плавательной полосе валидатора 0 ни одно сообщение не является "
+"0-уровневым, потому что валидатор 0 является двусмысленным. Это становится "
+"ясно, когда мы выделяем j-прошлый конус сообщения 25:"
+
+#: ../../theory/abstract-consensus.rst:431
+msgid ""
+"Message 18 is not included in j-past-cone of message 25. Hence - messages 18"
+" and 25 form an equivocation."
+msgstr ""
+"Сообщение 18 не включено в j-прошлый-конус сообщения 25. Следовательно - "
+"сообщения 18 и 25 образуют двусмысленность."
+
+#: ../../theory/abstract-consensus.rst:435
+msgid "J-dag trimmer"
+msgstr "J-dag триммер"
+
+#: ../../theory/abstract-consensus.rst:437
+msgid ""
+"We will be working in the context of local j-dag of a fixed validator "
+":math:`v_0 \\in V`. Let :math:`M` be the set of all messages in the local "
+"j-dag of :math:`v_0`."
+msgstr ""
+"Мы будем работать в контексте локальной j-dag фиксированного валидатора "
+":math:`v_0 \\in V`. Пусть :math:`M` будет набором всех сообщений в локальной"
+" j-dag :math:`v_0`."
+
+#: ../../theory/abstract-consensus.rst:440
+msgid ""
+"Definition: Let :math:`S \\subset V` be some subset of the validators set. "
+"By **j-dag trimmer** we mean any function :math:`p:S \\to M` such that "
+":math:`\\forall{v \\in S}, p(v).\\textit{creator} = v`"
+msgstr ""
+"Определение: пусть :math:`S \\subset V` будет неким подмножеством набора "
+"валидаторов. Под **j-dag триммером** мы подразумеваем любую функцию "
+":math:`p:S \\to M` так, что  :math:`\\forall{v \\in S}, "
+"p(v).\\textit{creator} = v`"
+
+#: ../../theory/abstract-consensus.rst:444
+msgid ""
+"If you think of swimlanes as being \"fibers\" or \"hair\" then having a "
+"trimmer means:"
+msgstr ""
+"Если мы условно назовем плавательные дорожки \"пухом\" или \"волосками\", то"
+" триммер означает:"
+
+#: ../../theory/abstract-consensus.rst:446
+msgid "selecting a subset of swimlanes"
+msgstr "избрание набора плавательных дорожек"
+
+#: ../../theory/abstract-consensus.rst:447
+msgid "picking a \"cutting point\" for every selected swimlane"
+msgstr "выбор \"точки стрижки\" для каждой выбранной плавательной дорожки"
+
+#: ../../theory/abstract-consensus.rst:449
+msgid ""
+"When having a trimmer, we will be interested in the all the messages \"cut\""
+" by the trimmer:"
+msgstr ""
+"После процедуры триммера, мы будем заинтересованы во всех сообщениях "
+"\"постриженных\" триммером:"
+
+#: ../../theory/abstract-consensus.rst:451
+msgid ""
+"Definition: For a j-dag trimmer :math:`p` we introduce the set of messages "
+"**p-messages**:"
+msgstr ""
+"Определение: для триммере j-dag :math:`p` мы представляем набор сообщений "
+"**p-сообщения**:"
+
+#: ../../theory/abstract-consensus.rst:453
+msgid "\\{m \\in M: m.creator \\in dom(p) \\land p(m.creator) \\leqslant m\\}"
+msgstr "\\{m \\in M: m.creator \\in dom(p) \\land p(m.creator) \\leqslant m\\}"
+
+#: ../../theory/abstract-consensus.rst:457
+msgid ""
+"Observe that a function assigning to any honest validator its oldest 0-level"
+" message is a jdag trimmer. We will call it **the base trimmer** or just "
+"**base**."
+msgstr ""
+"Обратите внимание, что функция, назначающая любому честному валидатору его "
+"самое старое сообщение 0-го уровня, является триммером j-dag. Мы будем "
+"называть это **базовым триммером** или просто **базой**."
+
+#: ../../theory/abstract-consensus.rst:465
+msgid "Committee"
+msgstr "Комитет"
+
+#: ../../theory/abstract-consensus.rst:467
+msgid "Definition: Let :math:`p` be some j-dag trimmer."
+msgstr "Определение: пусть :math:`p` будет неким j-dag триммером."
+
+#: ../../theory/abstract-consensus.rst:469
+msgid ""
+"By :math:`weight(S)` we mean the sum of weights of validators in :math:`S`."
+msgstr ""
+"Под весом :math:`weight(S)`  мы подразумеваем сумму весов валидаторов в "
+":math:`S`."
+
+#: ../../theory/abstract-consensus.rst:470
+msgid ""
+"**Support of message m in context p** is a subset :math:`R \\subset S` "
+"obtained by taking all validators :math:`v \\in S` such that "
+":math:`\\textit{panorama}_m(v) \\in \\textit{p-messages}`."
+msgstr ""
+"**Поддержка сообщения m в контексте p** представляет собой подмножество "
+":math:`R \\subset S` , полученное путем взятия всех валидаторов :math:`v "
+"\\in S`, таких что :math:`\\textit{panorama}_m(v) \\in "
+"\\textit{p-сообщения}`."
+
+#: ../../theory/abstract-consensus.rst:472
+msgid ""
+"**1-level message in context p** is a p-message :math:`m` such that the "
+"weight of support of :math:`m` in context :math:`p` is at least "
+":math:`\\textit{quorum}`."
+msgstr ""
+"**сообщение 1-го уровня в контексте p**-это p-сообщение :math:`m` , такое, "
+"что вес поддержки :math:`m`  в контексте :math:`p` составляет не менее "
+":math:`\\textit{кворум}`."
+
+#: ../../theory/abstract-consensus.rst:475
+msgid ""
+"Definition: **Committee in context p** is a j-dag trimmer :math:`comm:S \\to"
+" M` such that:"
+msgstr ""
+"Определение: **Комитет в контексте p** это j-dag триммер :math:`comm:S \\to "
+"M` так, что:"
+
+#: ../../theory/abstract-consensus.rst:477
+msgid ":math:`S \\subset dom(p)`"
+msgstr ":math:`S \\subset dom(p)`"
+
+#: ../../theory/abstract-consensus.rst:478
+msgid ""
+"every value :math:`comm(v)` is a 1-level message in context :math:`p|_S` "
+"(i.e. we restrict here :math:`p` to subdomain :math:`S`"
+msgstr ""
+"Каждое значение :math:`comm(v)` это 1-уровневое сообщение в контексте "
+":math:`p|_S` (т.е. му ужесточаем здесь :math:`p` до поддомена :math:`S`"
+
+#: ../../theory/abstract-consensus.rst:480
+msgid ":math:`\\textit{weight}(S) \\geqslant \\textit{quorum}`"
+msgstr ":math:`\\textit{weight}(S) \\geqslant \\textit{quorum}`"
+
+#: ../../theory/abstract-consensus.rst:482
+#: ../../theory/abstract-consensus.rst:505
+msgid "**Example:**"
+msgstr "**Пример:**"
+
+#: ../../theory/abstract-consensus.rst:484
+msgid ""
+"In the example below, all validators have equal weight 1, and :math:`ftt=1`."
+" We have the following 1-level committee here:"
+msgstr ""
+"В примере ниже все валидаторы имеют равный вес 1, и :math:`ftt=1`. Мы имеем "
+"следующий 1-уровненвый комитет:"
+
+#: ../../theory/abstract-consensus.rst:487
+msgid "\\{v_1 \\to m_{23}, v_2 \\to m_{19}, v_3 \\to m_{24}, v_4 \\to m_{21} \\}"
+msgstr "\\{v_1 \\to m_{23}, v_2 \\to m_{19}, v_3 \\to m_{24}, v_4 \\to m_{21} \\}"
+
+#: ../../theory/abstract-consensus.rst:496
+msgid "Step 4: Find k-level summit"
+msgstr "Шаг 4: Найти саммит k-уровня"
+
+#: ../../theory/abstract-consensus.rst:498
+msgid ""
+"Definition: **k-level summit** is a sequence :math:`(\\textit{comm}_1, "
+"\\textit{comm}_2, ..., \\textit{comm}_k)` such that:"
+msgstr ""
+"Определение: *саммит k-уровня** это последовательность "
+":math:`(\\textit{comm}_1, \\textit{comm}_2, ..., \\textit{comm}_k)` так, "
+"что:"
+
+#: ../../theory/abstract-consensus.rst:500
+msgid ":math:`\\textit{comm}_1` is a committee in context of the base trimmer"
+msgstr ":math:`\\textit{comm}_1` - это комитет в контексте базового триммера"
+
+#: ../../theory/abstract-consensus.rst:501
+msgid ""
+":math:`\\textit{comm}_i` is a committee in context "
+":math:`\\textit{comm}_{i-1}` for :math:`i=2, ..., k`"
+msgstr ""
+":math:`\\textit{comm}_i` - это комитет в контексте "
+":math:`\\textit{comm}_{i-1}` для :math:`i=2, ..., k`"
+
+#: ../../theory/abstract-consensus.rst:503
+msgid ""
+"In particular - a committee in context of the base trimmer is 1-level "
+"summit."
+msgstr ""
+"В частности - комитет в контексте базового триммера - это 1-уровневый саммит"
+
+#: ../../theory/abstract-consensus.rst:507
+msgid ""
+"Below is an example of 4-level summit for 8 validators (all having equal "
+"weights 1) with :math:`ftt=2`."
+msgstr ""
+"Ниже приведен пример 4-уровневого саммита для 8 валидаторов (все имеют "
+"равный вес 1) с :math:`ftt=2`."
+
+#: ../../theory/abstract-consensus.rst:513
+msgid ""
+"Similarly to summits, messages also have \"acknowledgement levels\". We will"
+" say **K-level message** for a message with acknowledgement level K. "
+"Acknowledgement level for a message is optional. We will use the term "
+"**plain-message** to reference messages that do not have acknowledgement "
+"level."
+msgstr ""
+"Как и на саммитах, сообщения также имеют \"уровни подтверждения\". Мы скажем"
+" **сообщение k-уровня** для сообщения с уровнем подтверждения K. Уровень "
+"подтверждения для сообщения является необязательным. Мы будем использовать "
+"термин **простое сообщение** для обозначения сообщений, которые не имеют "
+"уровня подтверждения."
+
+#: ../../theory/abstract-consensus.rst:517
+msgid "The border of a message signals the following information:"
+msgstr "Граница сообщения сигнализирует о следующей информации:"
+
+#: ../../theory/abstract-consensus.rst:519
+msgid "black border: plain message"
+msgstr "граница блока: простое сообщение "
+
+#: ../../theory/abstract-consensus.rst:520
+msgid "red border: 0-level message"
+msgstr "красная граница: 0-уровневое сообщение"
+
+#: ../../theory/abstract-consensus.rst:521
+msgid ""
+"yellow border: :math:`\\textit{comm}_1-\\textit{messages}` that are not "
+":math:`\\textit{comm}_1 \\textit{values}`"
+msgstr ""
+"желтая граница: :math:`\\textit{comm}_1-\\textit{messages}` которые не "
+"являются значениями :math:`\\textit{comm}_1 \\textit{values}`"
+
+#: ../../theory/abstract-consensus.rst:522
+msgid ""
+"green border: :math:`\\textit{comm}_2-\\textit{messages}` that are not "
+":math:`\\textit{comm}_2 \\textit{values}`"
+msgstr ""
+"зеленая граница: :math:`\\textit{comm}_2-\\textit{messages}` которые не "
+"являются значениями :math:`\\textit{comm}_2 \\textit{values}`"
+
+#: ../../theory/abstract-consensus.rst:523
+msgid ""
+"lime border: :math:`\\textit{comm}_3-\\textit{messages}` that are not "
+":math:`\\textit{comm}_3 \\textit{values}`"
+msgstr ""
+"лаймовая граница: :math:`\\textit{comm}_3-\\textit{messages}` которые не "
+"являются значениями :math:`\\textit{comm}_3 \\textit{values}`"
+
+#: ../../theory/abstract-consensus.rst:524
+msgid ""
+"blue border: :math:`\\textit{comm}_4-\\textit{messages}` that are not "
+":math:`\\textit{comm}_4 \\textit{values}`"
+msgstr ""
+"голубая граница: :math:`\\textit{comm}_4-\\textit{messages}` которые не "
+"являются значениями :math:`\\textit{comm}_4 \\textit{values}`"
+
+#: ../../theory/abstract-consensus.rst:525
+msgid ""
+"dashed border: this message has not arrived yet to validator 0; it is not "
+"part of j-dag as seen by validator 0"
+msgstr ""
+"пунктирная граница: это сообщение еще не доставлено валидатору 0; оно не "
+"является частью j-dag с точки зрения валидатора 0"
+
+#: ../../theory/abstract-consensus.rst:527
+msgid "Looking at border colors, it is easy to find subsequent committees."
+msgstr "Смотря на цвета границ, легко найти подмножества комитетов."
+
+#: ../../theory/abstract-consensus.rst:529
+msgid ":math:`\\textit{comm}_1` is formed by leftmost yellow messages"
+msgstr ""
+":math:`\\textit{comm}_1` формируется крайними левыми желтыми сообщениями"
+
+#: ../../theory/abstract-consensus.rst:530
+msgid ":math:`\\textit{comm}_2` is formed by leftmost green messages"
+msgstr ""
+":math:`\\textit{comm}_2` формируется крайними левыми зелеными сообщениями"
+
+#: ../../theory/abstract-consensus.rst:531
+msgid ":math:`\\textit{comm}_3` is formed by leftmost lime messages"
+msgstr ""
+":math:`\\textit{comm}_3` формируется крайними левыми лаймовыми сообщениями"
+
+#: ../../theory/abstract-consensus.rst:532
+msgid ":math:`\\textit{comm}_4` is formed by leftmost blue messages"
+msgstr ""
+":math:`\\textit{comm}_4` формируется крайними левыми голубыми сообщениями"
+
+#: ../../theory/abstract-consensus.rst:534
+msgid "Leftmost red border messages form the base-trimmer."
+msgstr ""
+"Крайние левые сообщения с красными границами формируют базовый триммер."
+
+#: ../../theory/abstract-consensus.rst:536
+msgid "Caution: search for \"leftmost messages\" separately for every swimlane."
+msgstr ""
+"Внимание: ищите \"крайние левые сообщения\" отдельно для каждой плавательной"
+" дорожки."
+
+#: ../../theory/abstract-consensus.rst:539
+msgid "Reference implementation"
+msgstr "Эталонная реализация"
+
+#: ../../theory/abstract-consensus.rst:541
+msgid ""
+"In this section we sketch a \"reference\" implementation of Abstract Casper "
+"Consensus. We use Scala syntax for the code, but we limit ourselves to "
+"elementary language features (so it is readable for any developer familiar "
+"with contemporary programming languages)."
+msgstr ""
+"В этом разделе мы кратко обрисуем \"эталонную\" реализацию Абстрактного "
+"консенсуса Casper. Мы используем синтаксис Scala для кода, но ограничиваемся"
+" элементарными функциями языка (поэтому он удобочитаем для любого "
+"разработчика, знакомого с современными языками программирования)."
+
+#: ../../theory/abstract-consensus.rst:545
+msgid "Scala primer for non-scala developers:"
+msgstr ""
+"Учебник по Scala для разработчиков, не являющихся разработчиками scala:"
+
+#: ../../theory/abstract-consensus.rst:643
+msgid "Common abstractions"
+msgstr "Общие абстракции"
+
+#: ../../theory/abstract-consensus.rst:645
+msgid "We use the following type aliases:"
+msgstr "Мы используем следующие псевдонимы типов:"
+
+#: ../../theory/abstract-consensus.rst:655
+msgid "We are using the following abstraction of mutable 2-argument relation:"
+msgstr ""
+"Мы используем следующую абстракцию изменяемого отношения с 2 аргументами:"
+
+#: ../../theory/abstract-consensus.rst:677
+msgid "... and directed acyclic graph:"
+msgstr "... и направленный ациклический граф:"
+
+#: ../../theory/abstract-consensus.rst:738
+msgid ""
+"We say nothing about hashing in use, we just assume that hashes can be seen "
+"as binary arrays:"
+msgstr ""
+"Мы ничего не говорим об использовании хэширования, мы просто предполагаем, "
+"что хеши можно рассматривать как двоичные массивы:"
+
+#: ../../theory/abstract-consensus.rst:749
+msgid "Message structure:"
+msgstr "Структура сообщения:"
+
+#: ../../theory/abstract-consensus.rst:762
+msgid "``id: MessageId`` unique identifier - hash of other fields"
+msgstr ""
+"``id: MessageId`` уникальный идентификатор сообщения - хеш других полей"
+
+#: ../../theory/abstract-consensus.rst:763
+msgid "``creator: Int`` id of the validator that created this message"
+msgstr "``creator: Int`` id валидатора, который создал это сообщение"
+
+#: ../../theory/abstract-consensus.rst:764
+msgid ""
+"``previous: Option[MessageId]`` distinguished justification that points to "
+"previous message published by creator"
+msgstr ""
+"``previous: Option[MessageId]`` отличительное обоснование, указывающее на "
+"предыдущее сообщение, опубликованное создателем"
+
+#: ../../theory/abstract-consensus.rst:765
+msgid ""
+"``justifications: Seq[MessageId]`` collection of messages that the creator "
+"acknowledges as seen at the moment of creation of this message; this "
+"collection may possibly be empty; only message identifiers are kept here"
+msgstr ""
+"``justifications: Seq[MessageId]`` коллекция сообщений, которые создатель "
+"признает видимыми в момент создания этого сообщения; эта коллекция может "
+"быть пустой; здесь хранятся только идентификаторы сообщений"
+
+#: ../../theory/abstract-consensus.rst:767
+msgid ""
+"``vote: Option[Con]`` consensus value this message is voting for; the value "
+"is optional, because we allow empty votes"
+msgstr ""
+"``vote: Option[Con]`` значение консенсуса за которое это сообщение голосует;"
+" значение необязательно, потому что мы разрешаем пустые голоса"
+
+#: ../../theory/abstract-consensus.rst:769
+msgid "``daglevel: Int`` height of this message in justifications DAG"
+msgstr "``daglevel: Int`` высота этого сообщения в обоснованиях DAG"
+
+#: ../../theory/abstract-consensus.rst:771
+msgid "Serialization of messages joins the logical layer and transport layer:"
+msgstr ""
+"Сериализация сообщений объединяет логический уровень и транспортный уровень:"
+
+#: ../../theory/abstract-consensus.rst:790
+msgid "Network abstraction"
+msgstr "Абстракция сети"
+
+#: ../../theory/abstract-consensus.rst:792
+msgid "Broadcasting messages:"
+msgstr "Вещание сообщений:"
+
+#: ../../theory/abstract-consensus.rst:800
+msgid "Receiving messages:"
+msgstr "Получение сообщений:"
+
+#: ../../theory/abstract-consensus.rst:809
+msgid "Panoramas"
+msgstr "Панорамы"
+
+#: ../../theory/abstract-consensus.rst:811
+msgid ""
+"We use panoramas to encode the \"perspective on the j-dag as seen from given"
+" message\"."
+msgstr ""
+"Мы используем панорамы для кодирования \"перспективы j-dag с точки зрения "
+"данного сообщения\"."
+
+#: ../../theory/abstract-consensus.rst:837
+msgid "Validator"
+msgstr "Валидатор"
+
+#: ../../theory/abstract-consensus.rst:839
+msgid "The abstraction of the estimator:"
+msgstr "Абстракция оценщика:"
+
+#: ../../theory/abstract-consensus.rst:854
+msgid ""
+"... and finality detector (implementing the \"summit theory\" finality "
+"criterion):"
+msgstr ""
+"... и определитель завершенности (реализующий \"теорию саммита\" как "
+"критерий завершенности):"
+
+#: ../../theory/abstract-consensus.rst:862
+msgid ""
+"The implementation of a validator is complex so we split it into sections."
+msgstr "Реализация валидатора комплексная, так что мы разделяем ее на секции."
+
+#: ../../theory/abstract-consensus.rst:871
+msgid "**Validator configuration**"
+msgstr "**Конфигурация валидатора**"
+
+#: ../../theory/abstract-consensus.rst:883
+msgid "``weightsOfValidators: Map[ValidatorId, Int]`` - weights of validators"
+msgstr "``weightsOfValidators: Map[ValidatorId, Int]`` - вес валидаторов"
+
+#: ../../theory/abstract-consensus.rst:884
+msgid "``finalizer: Finalizer`` - finality detector"
+msgstr "``finalizer: Finalizer`` - определитель завершенности"
+
+#: ../../theory/abstract-consensus.rst:885
+msgid ""
+"``gossipService: GossipService`` - communication layer API used to broadcast"
+" messages"
+msgstr ""
+"``gossipService: GossipService`` - коммуникационный уровень API для вещания "
+"сообщений"
+
+#: ../../theory/abstract-consensus.rst:887
+msgid "**Protocol state**"
+msgstr "**Состояние протокола**"
+
+#: ../../theory/abstract-consensus.rst:907
+msgid ""
+"``messagesBuffer: Relation[Message,MessageId]`` - a buffer of messages "
+"received, but not incorporated into ``jdag`` yet; a pair :math:`(m,j)` in "
+"this relation represents buffered message :math:`m` waiting for not-yet-"
+"received message with id :math:`j`"
+msgstr ""
+"``messagesBuffer: Relation[Message,MessageId]`` - буфер полученных, но еще "
+"не включенных в \"j-dag\" сообщений; пара :math:`(m,j)` в этом отношении "
+"представляет буферизованное сообщение :math:`m`, ожидающее еще не полученное"
+" сообщение с id :math:`j`"
+
+#: ../../theory/abstract-consensus.rst:910
+msgid ""
+"``jdagGraph`` - representation of :math:`jDag(M)`, where :math:`M` is the "
+"set of all messages known, such that their dependencies are fulfilled; in "
+"other words, before a message :math:`m` can be added to ``jdag``, all "
+"justifications of :math:`m` must be already present in ``jdag``"
+msgstr ""
+"``jdagGraph`` - репрезентация :math:`jDag(M)`, где :math:`M` - это набор "
+"всех известных сообщений, при том что их зависимости заполнены; другими "
+"словами, перед тем как сообщение :math:`m` может быть добавлено в ``jdag``, "
+"все обоснования :math:`m` должны уже присутствовать в \"jdag\""
+
+#: ../../theory/abstract-consensus.rst:913
+msgid ""
+"``jdagIdToMessage: mutable.Map[MessageId, Message]`` - indexing of messages "
+"by id"
+msgstr ""
+"``jdagIdToMessage: mutable.Map[MessageId, Message]`` - индексация сообщений "
+"по id"
+
+#: ../../theory/abstract-consensus.rst:915
+msgid "**Handling of incoming messages**"
+msgstr "**Работа с входящими сообщениями**"
+
+#: ../../theory/abstract-consensus.rst:959
+msgid "**Publishing of new messages**"
+msgstr "**Публикация новых сообщений**"
+
+#: ../../theory/abstract-consensus.rst:1007
+msgid ""
+"**Abstract methods** - i.e. extension points (things outside of this "
+"protocol spec)"
+msgstr ""
+"**Методы абстрагирования**  т.е. точки расширения (вещи за пределами "
+"спецификации этого протокола)"
+
+#: ../../theory/abstract-consensus.rst:1026
+msgid "**Validation of incoming messages**"
+msgstr "**Валидация входящих сообщений**"
+
+#: ../../theory/abstract-consensus.rst:1092
+msgid "**Updating of local j-dag**"
+msgstr "**Обновление локальной j-dag**"
+
+#: ../../theory/abstract-consensus.rst:1107
+msgid "**Calculating panoramas**"
+msgstr "**Вычисление панорам**"
+
+#: ../../theory/abstract-consensus.rst:1238
+msgid "Finality detector"
+msgstr "Определитель завершенности"
+
+#: ../../theory/abstract-consensus.rst:1240
+msgid "Representation of a j-dag trimmer:"
+msgstr "Репрезентация триммера j-dag:"
+
+#: ../../theory/abstract-consensus.rst:1252
+msgid "Representation of a summit:"
+msgstr "Репрезентация саммита:"
+
+#: ../../theory/abstract-consensus.rst:1262
+msgid "Implementation of the \"summit theory\" finality criterion:"
+msgstr "Реализация \"теории саммита\" как критерия завершенности:"
