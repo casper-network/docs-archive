@@ -1,0 +1,430 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../implementation/tokens.rst:4
+msgid "Tokens"
+msgstr "Токены"
+
+#: ../../implementation/tokens.rst:9
+msgid "Introduction"
+msgstr "Введение"
+
+#: ../../implementation/tokens.rst:11
+msgid ""
+"The Casper Network is a decentralized blockchain platform based on a Proof-"
+"of-Stake consensus algorithm called `Highway <https://github.com/casper-"
+"network/highway>`_. Having a unit of value is required to make this system "
+"work because users must pay for computation, and validators must have `stake"
+" <https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In the"
+" blockchain space, this unit of value is a *token*."
+msgstr ""
+"Сеть Casper - это децентрализованная блокчейн-платформа, основанная на "
+"алгоритме консенсуса с подтверждением ставки Proof-of-Stake, называемом "
+"`Highway <https://github.com/casper-network/highway>`_. Наличие единицы "
+"стоимости необходимо для того, чтобы эта система работала, потому что "
+"пользователи должны платить за вычисления, а валидаторы должны иметь долю - "
+"стейк   `stake <https://docs.casperlabs.io/en/latest/staking/index.html>`_ "
+"для бондинга к сети. В пространстве блокчейна этой единицей стоимости "
+"является *токен*."
+
+#: ../../implementation/tokens.rst:13
+msgid ""
+"This chapter describes how we define tokens and how one can use them on the "
+"Casper platform."
+msgstr ""
+"Эта глава описывает, как мы определяем токены и как их можно использовать на"
+" платформе Casper."
+
+#: ../../implementation/tokens.rst:16
+msgid "Token Generation and Distribution"
+msgstr "Генерирование и дистрибуция токенов"
+
+#: ../../implementation/tokens.rst:18
+msgid ""
+"A blockchain system generally needs to have a supply of tokens available to "
+"pay for computation and reward validators for processing transactions on the"
+" network. The initial supply at the launch of Mainnet was 10 billion CSPR. "
+"The current supply is available `here <https://api.cspr.live/supply>`_. In "
+"addition to the initial supply, the system will have a low rate of "
+"inflation, the results of which will be paid out to validators in the form "
+"of seigniorage."
+msgstr ""
+"Блокчейн-система, как правило, должна иметь запас токенов, доступных для "
+"оплаты вычислений и вознаграждений валидаторам за обработку транзакций в "
+"сети. Первоначальная поставка при запуске Mainnet составляла 10 миллиардов "
+"CSPR. Нынешнее предложение доступно  'здесь "
+"<https://api.cspr.live/supply>`_. В дополнение к первоначальному "
+"предложению, система будет иметь низкий уровень инфляции, результаты которой"
+" будут выплачиваться валидаторам в виде сеньоража."
+
+#: ../../implementation/tokens.rst:20
+msgid ""
+"The number of tokens used as a basis for calculating seigniorage is 10 "
+"billion."
+msgstr ""
+"Количество токенов, используемых как база для вычисления сеньоража - 10 "
+"млрд."
+
+#: ../../implementation/tokens.rst:25
+msgid "Divisibility of Tokens"
+msgstr "Делимость токенов"
+
+#: ../../implementation/tokens.rst:27
+msgid ""
+"Typically, a *token* is divisible into some number of parts. We call the "
+"indivisible units which make up the CSPR token *motes*. Each CSPR is "
+"divisible into :math:`10^{9}` motes. To avoid rounding errors, it is "
+"essential to always represent token balances in motes.  In comparison, Ether"
+" is divisible into :math:`10^{18}` parts called Wei."
+msgstr ""
+"Как правило, *токен* делится на некоторое количество частей. Мы называем "
+"неделимые единицы, из которых состоит токен CSPR, пылинками *motes*. Каждый "
+"CSPR делится на :math:`10^{9}` motes. Чтобы избежать ошибок округления, "
+"важно всегда представлять балансы токенов в единицах. Для сравнения, любой "
+"из них делится на  :math:`10^{18}` частей, называемых Вэй - Wei."
+
+#: ../../implementation/tokens.rst:32
+msgid "Mints and Purses"
+msgstr "Выпуск и кошельки"
+
+#: ../../implementation/tokens.rst:34
+msgid ""
+"A *mint* is a contract that can produce new motes of a particular type. We "
+"allow for multiple mote types (each of which would have its mint contract) "
+"because we anticipate the existence of a large ecosystem of different "
+"tokens, similar to the way Etherum works with ERC20 tokens. Casper will "
+"deploy a specific mint contract, and it will manage the CSPR utility token "
+"(used for paying for computation and bonding onto the network). The mint "
+"also maintains all the balances for its type of mote. Each balance is "
+"associated with a ``URef``, which acts as a key to instruct the mint to "
+"perform actions on that balance (e.g., transfer motes). Informally, we will "
+"refer to these balances as *purses* and conceptually represent a container "
+"for motes. The ``URef`` is how a purse is referenced externally, outside the"
+" mint."
+msgstr ""
+"*Выпуск монет* - mint - это контракт, который может создавать новые motes "
+"определенного типа. Мы допускаем несколько типов монет motes (у каждой из "
+"которых будет свой контракт выпуска), потому что мы ожидаем существования "
+"большой экосистемы различных токенов, аналогичной тому, как Ethereum "
+"работает с токенами ERC20. Casper развертывает конкретный контракт выпуска "
+"mint, и он будет управлять служебным токеном CSPR (используется для оплаты "
+"вычислений и подключения к сети). Mint также поддерживает все балансы для "
+"своего типа монетки mote. Каждый баланс связан с \"URef\", которая действует"
+" как ключ для указания контракту выпуска выполнять действия с этим балансом "
+"(например, переводить motes). Неофициально мы будем называть эти балансы "
+"*кошельками* и концептуально они будут представлять собой контейнер для "
+"монеток. \"URef\" - это то, как на кошелек ссылаются извне, за пределами "
+"контракта выпуска."
+
+#: ../../implementation/tokens.rst:36
+msgid ""
+"The ``AccessRights`` of the :ref:`URefs <global-state-urefs-permissions>` "
+"permissions model determine what actions are allowed to be performed when "
+"using a ``URef`` associated with a purse."
+msgstr ""
+"\"Права доступа\" к модели разрешений :ref:`URefs <global-state-urefs-"
+"permissions>` определяют, какие действия разрешены с применением \"URef\" к "
+"кошельку."
+
+#: ../../implementation/tokens.rst:38
+msgid ""
+"As all ``URef``\\ s are unforgeable, so the only way to interact with a "
+"purse is for a ``URef`` with appropriate ``AccessRights`` to be given to the"
+" current context in a valid way (see :ref:`URefs <global-state-urefs-"
+"permissions>` permissions for details)."
+msgstr ""
+"Все ссылки \"URef\" являются криптографически стойкими, так что единственный"
+" способ взаимодействия с кошельком через \"URef\" - с правильными правами "
+"доступа \"AccessRights\", чтобы увидеть текущий контекст должным образом "
+"(смотрите разрешения :ref:`URefs <global-state-urefs-permissions> 1` для "
+"уточнения деталей)."
+
+#: ../../implementation/tokens.rst:40
+msgid ""
+"The basic global state options map onto more standard monetary operations "
+"according to the table below:"
+msgstr ""
+"Основные параметры глобального состояния сопоставляются с более стандартными"
+" денежными операциями в соответствии с приведенной ниже таблицей:"
+
+#: ../../implementation/tokens.rst:43
+msgid "Global State Action"
+msgstr "Действия в глобальном состоянии"
+
+#: ../../implementation/tokens.rst:43
+msgid "Monetary Action"
+msgstr "Денежные действия"
+
+#: ../../implementation/tokens.rst:45
+msgid "Add"
+msgstr "Добавление"
+
+#: ../../implementation/tokens.rst:45
+msgid "Deposit (i.e. transfer to)"
+msgstr "Депозит (т.е. трансфер в)"
+
+#: ../../implementation/tokens.rst:46
+msgid "Write"
+msgstr "Запись"
+
+#: ../../implementation/tokens.rst:46
+msgid "Withdraw (i.e. transfer from)"
+msgstr "Вывод (т.е. трансфер из)"
+
+#: ../../implementation/tokens.rst:47
+msgid "Read"
+msgstr "Чтение"
+
+#: ../../implementation/tokens.rst:47
+msgid "Balance check"
+msgstr "Проверка баланса"
+
+#: ../../implementation/tokens.rst:50
+msgid ""
+"We will use these definitions throughout this chapter to describe the "
+"implementation and usage of tokens on the Casper system."
+msgstr ""
+"Мы будем использовать эти определения в этой главе для описания реализации и"
+" использования токенов в системе Casper."
+
+#: ../../implementation/tokens.rst:55
+msgid "The mint Contract Interface"
+msgstr "Интерфейс контракта выпуска монет"
+
+#: ../../implementation/tokens.rst:57
+msgid ""
+"A valid mint contract exposes the following methods (recall that many mint "
+"implementations may exist, each corresponding to a different currency):"
+msgstr ""
+"Действующий контракт выпуска предоставляет следующие методы (напомним, что "
+"может существовать множество реализаций выпуска, каждая из которых "
+"соответствует разному виду валюты):"
+
+#: ../../implementation/tokens.rst:59
+msgid ""
+"``transfer(source: URef, target: URef, amount: Motes) -> TransferResult``"
+msgstr ""
+"``transfer(source: URef, target: URef, amount: Motes) -> TransferResult``"
+
+#: ../../implementation/tokens.rst:61
+msgid ""
+"``source`` must have at least ``Write`` access rights, ``target`` must have "
+"at least ``Add`` access rights"
+msgstr ""
+"источник ``source`` должен иметь как минимум права на запись ``Write``, цель"
+" \"target\" должна иметь как минимум права на добавление \"Add\""
+
+#: ../../implementation/tokens.rst:63
+msgid ""
+"``TransferResult`` may be a success acknowledgment or an error in the case "
+"of invalid ``source`` or ``target`` or insufficient balance in the "
+"``source`` purse"
+msgstr ""
+"Результат трансфера ``TransferResult`` может быть успешно подтвержден или же"
+" показать ошибку в случае невалидного источника  ``source`` или цели "
+"``target`` или несоответствующего баланса в кошельке источника ``source`` "
+
+#: ../../implementation/tokens.rst:66
+msgid "``mint(amount: Motes) -> MintResult``"
+msgstr "``mint(amount: Motes) -> MintResult``"
+
+#: ../../implementation/tokens.rst:68
+msgid ""
+"``MintResult`` either gives the created ``URef`` (with full access rights), "
+"which now has a balance equal to the given ``amount``; or an error due to "
+"the minting of new motes not being allowed"
+msgstr ""
+"Результат выпуска ``MintResult`` дает либо созданную ``URef`` (с полными "
+"правами доступа), на которой баланс соответствует заданному количеству "
+"\"amount\"; или в случае запрета на выпуск новых монеток motes происходит "
+"ошибка"
+
+#: ../../implementation/tokens.rst:71
+msgid ""
+"In the Casper mint, only the system account can call ``mint``, and it has no"
+" private key to produce valid cryptographic signatures, which means only the"
+" software itself can execute contracts in the context of the system account"
+msgstr ""
+"В выпуске монет Casper только системная учетная запись может вызывать выпуск"
+" \"mint\", и у нее нет приватного ключа для создания действительных "
+"криптографических подписей, что означает, что только само программное "
+"обеспечение может выполнять контракты в контексте системной учетной записи"
+
+#: ../../implementation/tokens.rst:76
+msgid "``create() -> URef``"
+msgstr "``create() -> URef``"
+
+#: ../../implementation/tokens.rst:78
+msgid ""
+"a convenience function for ``mint(0)`` which cannot fail because it is "
+"always allowed to create an empty purse"
+msgstr ""
+"удобная функция для ``mint(0)`` , которая не может давать ошибку, потому что"
+" всегда имеет право создать пустой кошелек"
+
+#: ../../implementation/tokens.rst:81
+msgid "``balance(purse: URef) -> Option<Motes>``"
+msgstr "``balance(purse: URef) -> Option<Motes>``"
+
+#: ../../implementation/tokens.rst:83
+msgid "``purse`` must have at least ``Read`` access rights"
+msgstr "Кошелек ``purse`` должен как минимум иметь право на чтение ``Read``"
+
+#: ../../implementation/tokens.rst:84
+msgid ""
+"``BalanceResult`` either returns the number of motes held by the ``purse``, "
+"or nothing if the ``URef`` is not valid"
+msgstr ""
+"Результат баланса либо возвращает некоторое количество монеток из кошелька "
+"\"purse\", либо ничего, если ссылка ``URef`` недействительна"
+
+#: ../../implementation/tokens.rst:90
+msgid "Using purse ``URef``\\ s"
+msgstr "Использование ссылок ``URef`` кошелька"
+
+#: ../../implementation/tokens.rst:92
+msgid ""
+"It is dangerous to pass a purse's ``URef`` with ``Write`` permissions to a "
+"contract. A malicious contract may use that access to take more tokens than "
+"were intended or share that ``URef`` with another contract that was not "
+"meant to have that access. Therefore, if a contract requires a purse with "
+"``Write`` permissions, it is always recommended to use a “payment purse” -- "
+"a purse used for that single transaction and nothing else. This ensures that"
+" even if the ``URef`` becomes compromised, it does not contain any more "
+"funds than the user intended on giving."
+msgstr ""
+"Опасно передавать \"URef\" кошелька с разрешениями на \"Запись\" в контракт."
+" Вредоносный контракт может использовать этот доступ, чтобы получить больше "
+"токенов, чем предполагалось, или поделиться этой \"URef\" с другим "
+"контрактом, который не должен был иметь такой доступ. Поэтому, если для "
+"контракта требуется кошелек с разрешениями на \"Запись\", всегда "
+"рекомендуется использовать “платежный кошелек” - payment purse - "
+"используемый для этой единственной транзакции и ничего больше. Это "
+"гарантирует, что даже если cсылка ``URef`` будет скомпрометирована, она не "
+"будет содержать больше средств, чем пользователь намеревался предоставить."
+
+#: ../../implementation/tokens.rst:104
+msgid ""
+"To avoid this inconvenience, it is a better practice for application "
+"developers intending to accept payment on-chain to make a version of their "
+"own purse ``URef`` with ``Read`` and ``Add``  access rights publicly "
+"available. This allows clients to pay via a transfer using their purse, "
+"without either party exposing ``Write`` access to any purse."
+msgstr ""
+"Чтобы избежать этого неудобства, разработчикам приложений, намеревающимся "
+"принимать платежи по цепочке, рекомендуется сделать общедоступную версию "
+"ссылки \"URef\" своего собственного кошелька `с правами доступа \"Чтение\" и"
+" \"Добавление\". Это позволяет клиентам осуществлять оплату посредством "
+"перевода, используя свой кошелек, без предоставления какой-либо из сторон "
+"доступа на \"запись\"  к любому кошельку."
+
+#: ../../implementation/tokens.rst:110
+msgid "Purses and Accounts"
+msgstr "Кошельки и аккаунты"
+
+#: ../../implementation/tokens.rst:112
+msgid ""
+"All :ref:`accounts-head` on the Casper system have a purse associated with "
+"the Casper system mint, which we call the *main purse*. However, for "
+"security reasons, the ``URef`` of the main purse is only available to code "
+"running in the context of that account (i.e. only in payment or session "
+"code). Therefore, the mint’s ``transfer`` method which accepts ``URef``\\ s "
+"is not the most convenient to use when transferring between account main "
+"purses. For this reason, Casper supplies a `transfer_to_account "
+"<https://docs.rs/casper-"
+"contract/latest/casper_contract/contract_api/system/fn.transfer_to_account.html>`_"
+" function which takes the public key used to derive the :ref:`identity key "
+"<global-state-account-key>` of the account. This function uses the mint "
+"transfer function with the current account’s main purse as the ``source`` "
+"and the main purse of the account at the provided key as the ``target``."
+msgstr ""
+"Все заголовки аккаунтов :ref:`accounts-head`  в системе Casper имеют "
+"кошелек, связанный с выпуском монеток системой Casper, и это мы называем "
+"*главный кошелек*. Однако по соображениям безопасности \"URef\" основного "
+"кошелька доступна только для кода, выполняемого в контексте этой учетной "
+"записи (т. е. только в коде платежа или сеанса). Поэтому метод \"перевода\" "
+"контракта выпуска, который принимает \"URef\", не самый удобный для "
+"использования при переводе между основными кошельками аккаунта. По этой "
+"причине Casper предоставляет функцию для перевода в аккаунт "
+"'transfer_to_account <https://docs.rs/casper-"
+"contract/latest/casper_contract/contract_api/system/fn.transfer_to_account.html>`_"
+" функция, которая принимает открытый ключ, используемый для получения "
+"идентификационного ключа  :ref:`identity key <global-state-account-key>` "
+"аккаунта. Эта функция использует функцию перевода mint с основным кошельком "
+"текущего аккаунта в качестве \"источника\" и основным кошельком аккаунта по "
+"предоставленному ключу в качестве \"цели\". "
+
+#~ msgid ""
+#~ "The Casper Network is a decentralized blockchain platform based on a Proof-"
+#~ "of-Stake consensus algorithm called `Highway "
+#~ "<https://github.com/CasperLabs/highway>`_. Having a unit of value is "
+#~ "required to make this system work because users must pay for computation, "
+#~ "and validators must have `stake "
+#~ "<https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In the "
+#~ "blockchain space, this unit of value is a *token*."
+#~ msgstr ""
+#~ "Сеть Casper - это децентрализованная блокчейн-платформа, основанная на "
+#~ "алгоритме консенсуса с подтверждением ставки Proof-of-Stake, называемом "
+#~ "`Highway<https://github.com/CasperLabs/highway>`_. Наличие единицы стоимости"
+#~ " необходимо для того, чтобы эта система работала, потому что пользователи "
+#~ "должны платить за вычисления, а валидаторы должны иметь долю - стейк   "
+#~ "`stake <https://docs.casperlabs.io/en/latest/staking/index.html>`_ для "
+#~ "бондинга к сети. В пространстве блокчейна этой единицей стоимости является "
+#~ "*токен*."
+
+#~ msgid ""
+#~ "A blockchain system generally needs to have a supply of tokens available to "
+#~ "pay for computation and reward validators for processing transactions on the"
+#~ " network. A great deal of effort has been taken to ensure that no single "
+#~ "individual or entity acquires more than 1% of the tokens from the onset."
+#~ msgstr ""
+#~ "Блокчейн-система, как правило, должна иметь запас токенов, доступных для "
+#~ "оплаты вычислений и вознаграждений валидаторам за обработку транзакций в "
+#~ "сети. Было приложено много усилий для обеспечения того, чтобы ни одно "
+#~ "физическое или юридическое лицо не приобрело более 1% токенов с самого "
+#~ "начала."
+
+#~ msgid ""
+#~ "In addition to the initial supply, the system will have a low rate of "
+#~ "inflation, the results of which will be paid out to validators in the form "
+#~ "of seigniorage."
+#~ msgstr ""
+#~ "В дополнение к первоначальному предложению, система будет иметь низкий "
+#~ "уровень инфляции, результаты которой будут выплачиваться валидаторам в виде "
+#~ "сеньоража."
+
+#~ msgid ""
+#~ "To avoid this inconvenience, it is a better practice for application "
+#~ "developers intending to accept payment on-chain to make a version of their "
+#~ "own purse ``URef`` with ``Read`` access rights publicly available. This "
+#~ "allows clients to pay via a transfer using their purse, without either party"
+#~ " exposing ``Write`` access to any purse."
+#~ msgstr ""
+#~ "Чтобы избежать этого неудобства, разработчикам приложений, намеревающимся "
+#~ "принимать платежи по цепочке, рекомендуется сделать общедоступную версию "
+#~ "ссылки \"URef\" своего собственного кошелька `с правами доступа \"Чтение\" и"
+#~ " \"Добавление\". Это позволяет клиентам осуществлять оплату посредством "
+#~ "перевода, используя свой кошелек, без предоставления какой-либо из сторон "
+#~ "доступа на \"запись\"  к любому кошельку."
