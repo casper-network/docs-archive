@@ -25,7 +25,7 @@ msgstr ""
 
 #: ../../glossary/index.rst:4
 msgid "Glossary"
-msgstr "Bảng thuật ngữ"
+msgstr "Thuật ngữ"
 
 #: ../../glossary/index.rst:6
 msgid ""
