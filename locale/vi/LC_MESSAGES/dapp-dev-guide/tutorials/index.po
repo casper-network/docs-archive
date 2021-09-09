@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
 "PO-Revision-Date: 2021-06-26 21:46+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -32,43 +32,58 @@ msgid "The following tutorials present several Casper features in depth:"
 msgstr ""
 "Các hướng dẫn sau đây trình bày chuyên sâu một số tính năng của Casper:"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:16
+#: ../../dapp-dev-guide/tutorials/index.rst:17
 msgid "Title"
 msgstr "Tiêu đề"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:16
+#: ../../dapp-dev-guide/tutorials/index.rst:17
 msgid "Description"
 msgstr "Mô tả"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:18
+#: ../../dapp-dev-guide/tutorials/index.rst:19
+msgid "`A counter on the Casper chain <counter/index.html>`_"
+msgstr "`Một bộ đếm trên chuỗi Casper <counter/index.html>`_"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:19
+msgid "Deploy a counter contract and call its entry points to increment it"
+msgstr ""
+"Triển khai một hợp đồng bộ đếm và gọi các điểm vào của nó để tăng dần nó"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:20
 msgid "`ERC-20 implementation <erc20/index.html>`_"
 msgstr "`Triển khai ERC-20 <erc20/index.html>`_"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:18
+#: ../../dapp-dev-guide/tutorials/index.rst:20
 msgid "Implement the ERC-20 standard for Casper"
 msgstr "Triển khai chuẩn ERC-20 cho Casper"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:19
-msgid "`Key-value storage with Casper DSL <kv-storage-tutorial.html>`_"
-msgstr "`Lưu trữ khoá-giá trị với Casper DSL <kv-storage-tutorial.html>`_"
+#: ../../dapp-dev-guide/tutorials/index.rst:21
+msgid "`Key-value storage on Casper <kv-storage-tutorial.html>`_"
+msgstr "`Kho lưu trữ Khoá-giá trị trên Casper <kv-storage-tutorial.html>`_"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:19
-msgid "Design a simple contract to store a value and use the Casper DSL"
-msgstr ""
-"Thiết kế một hợp đồng đơn giản để lưu trữ giá trị và sử dụng Casper DSL"
+#: ../../dapp-dev-guide/tutorials/index.rst:21
+msgid "Design a simple contract to store a value"
+msgstr "Thiết kế một hợp đồng đơn giản để lưu trữ một giá trị"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:20
+#: ../../dapp-dev-guide/tutorials/index.rst:22
 msgid "`Multi-signatures and key recovery <multi-sig/index.html>`_"
 msgstr "`Khôi phục đa chữ ký và khoá <multi-sig/index.html>`_"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:20
+#: ../../dapp-dev-guide/tutorials/index.rst:22
 msgid "Learn to sign transactions with multiple keys"
 msgstr "Học cách ký giao dịch bằng nhiều khóa"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:21
+#: ../../dapp-dev-guide/tutorials/index.rst:23
 msgid "`Smart contract upgrades <upgrade-tutorial.html>`_"
 msgstr "`Cập nhật hợp đồng thông minh <upgrade-tutorial.html>`_"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:21
+#: ../../dapp-dev-guide/tutorials/index.rst:23
 msgid "Learn how to upgrade smart contracts"
 msgstr "Tìm hiểu cách nâng cấp hợp đồng thông minh"
+
+#~ msgid "`Key-value storage with Casper DSL <kv-storage-tutorial.html>`_"
+#~ msgstr "`Lưu trữ khoá-giá trị với Casper DSL <kv-storage-tutorial.html>`_"
+
+#~ msgid "Design a simple contract to store a value and use the Casper DSL"
+#~ msgstr ""
+#~ "Thiết kế một hợp đồng đơn giản để lưu trữ giá trị và sử dụng Casper DSL"
