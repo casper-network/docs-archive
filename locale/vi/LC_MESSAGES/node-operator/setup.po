@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -116,9 +116,9 @@ msgid ""
 "things behind the scenes. This section describes the installation process "
 "and where the files are stored."
 msgstr ""
-"Việc cài đặt phần mềm``casper-node-launcher``, ``casper-node``, và ``casper-"
-"client`` tương đối đơn giản, nhưng quá trình này hoàn thành nhiều thứ phía "
-"sau. Phần này mô tả quá trình cài đặt và nơi các tệp được lưu trữ."
+"Việc cài đặt phần mềm ``casper-node-launcher``, ``casper-node``, và "
+"``casper-client`` tương đối đơn giản, nhưng quá trình này hoàn thành nhiều "
+"thứ phía sau. Phần này mô tả quá trình cài đặt và nơi các tệp được lưu trữ."
 
 #: ../../node-operator/setup.rst:34
 msgid ""
@@ -223,7 +223,7 @@ msgid ""
 "**README.md** - Instructions on how to create validator keys using the "
 "``casper-client``"
 msgstr ""
-"**README.md** - Hướng dẫn về cách tạo khóa của nhà xác thực bằng cách sử "
+"**README.md** - Hướng dẫn về cách tạo khóa của trình xác thực bằng cách sử "
 "dụng ``casper-client``"
 
 #: ../../node-operator/setup.rst:60
@@ -260,7 +260,7 @@ msgstr ""
 
 #: ../../node-operator/setup.rst:66
 msgid "**accounts.toml** - Contains the genesis validators and delegators"
-msgstr "**accounts.toml** - Chứa các nhà xác thực  và ủy quyền gốc"
+msgstr "**accounts.toml** - Chứa các trình xác thực  và ủy quyền gốc"
 
 #: ../../node-operator/setup.rst:67
 msgid ""
@@ -307,7 +307,7 @@ msgid ""
 "This is the location for larger and variable data for the ``casper-node``, "
 "organized in the following directories and files:"
 msgstr ""
-"Đây là vị trí cho dữ liệu lớn hơn và biến số cho ```casper-node``, được tổ "
+"Đây là vị trí cho dữ liệu lớn hơn và biến số cho ``casper-node``, được tổ "
 "chức trong các thư mục và tệp sau:"
 
 #: ../../node-operator/setup.rst:81
@@ -408,7 +408,7 @@ msgid ""
 msgstr ""
 "Tại mỗi lần hoàn thành khối, ``casper-node`` sẽ tìm kiếm các phiên bản mới "
 "được cấu hình. Khi một phiên bản mới được cấu hình, nút đang chạy sẽ nhìn "
-"vào era_id sắp tới trong tệp ``chainpec.toml```.  Đây sẽ là kỷ nguyên trước "
+"vào era_id sắp tới trong tệp ``chainpec.toml``.  Đây sẽ là kỷ nguyên trước "
 "khi nút casper hiện tại sẽ tắt hoàn toàn."
 
 #: ../../node-operator/setup.rst:117
@@ -457,8 +457,8 @@ msgid ""
 "This will create ``/var/lib/casper/bin/1_0_2/`` and expand the "
 "``bin.tar.gz`` containing at a minimun ``casper-node``."
 msgstr ""
-"Thao tác sẽ tạo ra ``/var/lib/casper/bin/1_0_2/`` và giải nén ``bin.tar.gz "
-"'' tại ``casper-node``."
+"Thao tác sẽ tạo ra ``/var/lib/casper/bin/1_0_2/`` và giải nén ``bin.tar.gz``"
+" tại ``casper-node``."
 
 #: ../../node-operator/setup.rst:136
 msgid ""
@@ -499,6 +499,12 @@ msgstr ""
 "phiên bản Linux và macOS. Bạn sẽ cần phiên bản nightly của trình biên dịch."
 
 #: ../../node-operator/setup.rst:154
+msgid "Doing this, you'll see a warning, which you can ignore for now."
+msgstr ""
+"Thực hiện điều này, bạn sẽ thấy một cảnh báo mà bạn có thể bỏ qua ngay bây "
+"giờ."
+
+#: ../../node-operator/setup.rst:160
 msgid ""
 "The Casper client can print out `help` information, which provides an up-to-"
 "date list of supported commands."
@@ -506,7 +512,7 @@ msgstr ""
 "Ứng dụng client Casper có thể đưa ra thông tin `help`, cung cấp danh sách "
 "cập nhật các lệnh được hỗ trợ."
 
-#: ../../node-operator/setup.rst:160
+#: ../../node-operator/setup.rst:166
 msgid ""
 "For each command, you can use `help` to get the up-to-date arguments and "
 "descriptions:"
@@ -514,21 +520,21 @@ msgstr ""
 "Đối với mỗi lệnh, bạn có thể sử dụng `help` để nhận các đối số và mô tả cập "
 "nhật:"
 
-#: ../../node-operator/setup.rst:167
+#: ../../node-operator/setup.rst:173
 msgid "Create Keys"
 msgstr "Tạo mới Khoá"
 
-#: ../../node-operator/setup.rst:169
+#: ../../node-operator/setup.rst:175
 msgid ""
 "The Rust client generates keys via the ``keygen`` command.  The process "
 "generates 2 *pem* files and 1 *text* file. To learn about options for "
 "generating keys, include ``--help`` when running the ``keygen`` command."
 msgstr ""
-"Clietn Rust tạo khóa thông qua lệnh ``keygen``. Quá trình này tạo ra 2 tệp *"
-" pem* và 1 tệp *text*. Để tìm hiểu về các tùy chọn tạo khóa, hãy thêm vào "
-"``--help```khi chạy lệnh ``keygen``."
+"Client Rust tạo khóa thông qua lệnh ``keygen``. Quá trình này tạo ra 2 tệp "
+"*pem* và 1 tệp *text*. Để tìm hiểu về các tùy chọn tạo khóa, hãy thêm vào "
+"``--help`` khi chạy lệnh ``keygen``."
 
-#: ../../node-operator/setup.rst:176
+#: ../../node-operator/setup.rst:182
 msgid ""
 "More about keys and key generation can be found in "
 "``/etc/casper/validator_keys/README.md`` if ``casper-node-lancher`` was "
@@ -538,11 +544,11 @@ msgstr ""
 "``/etc/casper/validator_keys/README.md`` nếu ``casper-node-lancher`` được "
 "cài đặt từ gói Debian."
 
-#: ../../node-operator/setup.rst:180
+#: ../../node-operator/setup.rst:186
 msgid "Config File"
 msgstr "Tệp cấu hình"
 
-#: ../../node-operator/setup.rst:182
+#: ../../node-operator/setup.rst:188
 msgid ""
 "One ``config.toml`` file will need to exist for each ``casper-node`` version"
 " installed.  It should be located in the ``/etc/casper/[m_n_p]/`` directory "
@@ -554,10 +560,10 @@ msgstr ""
 "được cài đặt. Nó phải được đặt trong thư mục ``/etc/casper/[m_n_p]/`` trong "
 "đó ``m_n_p`` là phiên bản hiện tại. Điều này có thể được tạo từ ``config-"
 "example.toml`` bằng cách sử dụng ``/etc/casper/config_from_example.sh "
-"[m_n_p]`` trong đó `` [m_n_p]`` thay thế phiên bản hiện tại bằng dấu gạch "
+"[m_n_p]`` trong đó ``[m_n_p]`` thay thế phiên bản hiện tại bằng dấu gạch "
 "dưới."
 
-#: ../../node-operator/setup.rst:186
+#: ../../node-operator/setup.rst:192
 msgid ""
 "Below are some fields you may find in the ``config.toml`` that you may want "
 "or need to adjust."
@@ -565,11 +571,11 @@ msgstr ""
 "Dưới đây là một số trường bạn có thể tìm thấy trong ``config.toml`` mà bạn "
 "có thể muốn hoặc cần điều chỉnh."
 
-#: ../../node-operator/setup.rst:189
+#: ../../node-operator/setup.rst:195
 msgid "Trusted Hash for Synchronizing"
 msgstr "Hàm băm tin cậy để đồng bộ hoá"
 
-#: ../../node-operator/setup.rst:191
+#: ../../node-operator/setup.rst:197
 msgid ""
 "The Casper network is a permissionless, proof of stake network - which "
 "implies that validators can come and go from the network.  The implication "
@@ -581,30 +587,31 @@ msgid ""
 "store.  Here is the process to get the trusted hash:"
 msgstr ""
 "Mạng Casper là một mạng bằng chứng cổ phần, không cần cấp phép - có nghĩa là"
-" nhà xác thực có thể đến và đi từ mạng. Ngụ ý là, sau một thời gian, dữ liệu"
-" lịch sử có thể kém bảo mật hơn nếu nó được truy xuất từ 'bất kỳ nút nào' "
-"trên mạng. Do đó, việc tham gia mạng phải từ một nguồn đáng tin cậy, một nhà"
-" xác thực đã cổ phần. Hệ thống sẽ bắt đầu từ băm từ một khối gần đây và sau "
-"đó làm việc ngược lại từ khối đó để lấy các khối triển khai và hoàn thành từ"
-" kho lưu trữ khối tuyến tính. Đây là quy trình để lấy băm đáng tin cậy:"
+" trình xác thực có thể đến và đi từ mạng. Ngụ ý là, sau một thời gian, dữ "
+"liệu lịch sử có thể kém bảo mật hơn nếu nó được truy xuất từ 'bất kỳ nút "
+"nào' trên mạng. Do đó, việc tham gia mạng phải từ một nguồn đáng tin cậy, "
+"một trình xác thực đã cổ phần. Hệ thống sẽ bắt đầu từ băm từ một khối gần "
+"đây và sau đó làm việc ngược lại từ khối đó để lấy các khối triển khai và "
+"hoàn thành từ kho lưu trữ khối tuyến tính. Đây là quy trình để lấy băm đáng "
+"tin cậy:"
 
-#: ../../node-operator/setup.rst:193
+#: ../../node-operator/setup.rst:199
 msgid "Find a list of trusted validators."
-msgstr "Tìm danh sách các nhà xác thực đáng tin cậy."
+msgstr "Tìm danh sách các trình xác thực đáng tin cậy."
 
-#: ../../node-operator/setup.rst:194
+#: ../../node-operator/setup.rst:200
 msgid ""
 "Query the status endpoint of a trusted validator ( "
 "http://[validator_id]:8888/status )"
 msgstr ""
-"Truy vấn trạng thái cuối của nhà xác thực đáng tin cậy ( "
+"Truy vấn trạng thái cuối của trình xác thực đáng tin cậy ( "
 "http://[validator_id]:8888/status )"
 
-#: ../../node-operator/setup.rst:195
+#: ../../node-operator/setup.rst:201
 msgid "Obtain the hash of a block from the status endpoint."
 msgstr "Lấy băm của một khối từ trạng thái cuối."
 
-#: ../../node-operator/setup.rst:196
+#: ../../node-operator/setup.rst:202
 msgid ""
 "Update the ``config.toml`` for the node to include the trusted hash. There "
 "is a field dedicated to this near the top of the file."
@@ -612,11 +619,11 @@ msgstr ""
 "Cập nhật ``config.toml`` cho nút để đưa vào hàm băm đáng tin cậy. Có một "
 "trường dành riêng để đưa vào gần đầu tệp."
 
-#: ../../node-operator/setup.rst:199
+#: ../../node-operator/setup.rst:205
 msgid "Secret Keys"
 msgstr "Khoá bí mật"
 
-#: ../../node-operator/setup.rst:201
+#: ../../node-operator/setup.rst:207
 msgid ""
 "Provide the path to the secret keys for the node.  This is set to "
 "``etc/casper/validator_keys/`` by default."
@@ -624,11 +631,11 @@ msgstr ""
 "Cung cấp đường dẫn đến các khóa bí mật cho nút. Mặc định là "
 "``etc/casper/validator_keys/``."
 
-#: ../../node-operator/setup.rst:204
+#: ../../node-operator/setup.rst:210
 msgid "Networking & Gossiping"
 msgstr "Mạng & Gossiping"
 
-#: ../../node-operator/setup.rst:206
+#: ../../node-operator/setup.rst:212
 msgid ""
 "The node requires a publicly accessible IP address.  We do not recommend NAT"
 " at this time. Specify the public IP address of the node. If you use the "
@@ -640,20 +647,20 @@ msgstr ""
 "dụng các dịch vụ bên ngoài, ``config_from_example.sh`` sẽ được gọi để tìm IP"
 " của bạn và việc này được chèn vào ``config.toml`` đã tạo."
 
-#: ../../node-operator/setup.rst:209
+#: ../../node-operator/setup.rst:215
 msgid "Default values are specified in the file if you want to change them:"
 msgstr ""
 "Các giá trị mặc định được chỉ định trong tệp nếu bạn muốn thay đổi chúng:"
 
-#: ../../node-operator/setup.rst:211
+#: ../../node-operator/setup.rst:217
 msgid "Specify the port that will be used for status  & deploys"
 msgstr "Chỉ định cổng sẽ được sử dụng cho trạng thái và triển khai"
 
-#: ../../node-operator/setup.rst:212
+#: ../../node-operator/setup.rst:218
 msgid "Specify the port used for networking"
 msgstr "Chỉ định cổng được sử dụng để kết nối mạng"
 
-#: ../../node-operator/setup.rst:213
+#: ../../node-operator/setup.rst:219
 msgid ""
 "Known_addresses - these are the bootstrap nodes. No need to change these."
 msgstr ""
