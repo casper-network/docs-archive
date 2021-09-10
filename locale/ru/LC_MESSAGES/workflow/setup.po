@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
@@ -72,6 +72,10 @@ msgstr ""
 "Вам потребуется ночная версия компилятора. "
 
 #: ../../workflow/setup.rst:24
+msgid "Doing this, you'll see a warning, which you can ignore for now."
+msgstr "Вы увидите предупреждение которое вы можете сейчас проигнорировать."
+
+#: ../../workflow/setup.rst:30
 msgid ""
 "The Casper client can print out `help` information, which provides an up-to-"
 "date list of supported commands."
@@ -79,7 +83,7 @@ msgstr ""
 "Клиент  Casper может распечатать вспомогательную информацию `help`, которая "
 "дает список самых последних поддерживаемых команд. "
 
-#: ../../workflow/setup.rst:30
+#: ../../workflow/setup.rst:36
 msgid ""
 "**Important**: For each command, you can use `help` to get the up-to-date "
 "arguments and descriptions:"
@@ -87,11 +91,11 @@ msgstr ""
 "Для каждой команды вы можете использовать  `help`  для получения свежих "
 "параметров и описаний:"
 
-#: ../../workflow/setup.rst:37
+#: ../../workflow/setup.rst:43
 msgid "Setting up an Account"
 msgstr "Настройка аккаунта"
 
-#: ../../workflow/setup.rst:39
+#: ../../workflow/setup.rst:45
 msgid ""
 "The process of creating an `Account "
 "<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ can be"
@@ -101,15 +105,15 @@ msgstr ""
 "<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ может "
 "быть разделен на два шага:"
 
-#: ../../workflow/setup.rst:41
+#: ../../workflow/setup.rst:47
 msgid "Cryptographic key generation for the account"
 msgstr "Генерация криптографического ключа для учетной записи"
 
-#: ../../workflow/setup.rst:42
+#: ../../workflow/setup.rst:48
 msgid "Funding the account"
 msgstr "Пополнение счета"
 
-#: ../../workflow/setup.rst:44
+#: ../../workflow/setup.rst:50
 msgid ""
 "The Casper blockchain uses an on-chain account-based model, uniquely "
 "identified by an ``AccountHash`` derived from a specific ``PublicKey``."
@@ -118,7 +122,7 @@ msgstr ""
 "однозначно идентифицируемую хешем аккаунта  ``AccountHash``, полученным из "
 "определенного \"публичного ключа\"."
 
-#: ../../workflow/setup.rst:46
+#: ../../workflow/setup.rst:52
 msgid ""
 "By default, a transactional interaction with the blockchain takes the form "
 "of a ``Deploy`` cryptographically signed by the key-pair corresponding to "
@@ -129,7 +133,7 @@ msgstr ""
 "соответствующей \"публичному ключу\", используемому для создания учетной "
 "записи."
 
-#: ../../workflow/setup.rst:48
+#: ../../workflow/setup.rst:54
 msgid ""
 "Accounts can be created using the Casper command-line client. Alternatively,"
 " some Casper networks such as the official Testnet and Mainnet provide a "
@@ -140,7 +144,7 @@ msgstr ""
 "тестовая сеть и Mainnet, предоставляют обозреватель блоков на основе "
 "браузера, который позволяет создавать учетные записи."
 
-#: ../../workflow/setup.rst:50
+#: ../../workflow/setup.rst:56
 msgid ""
 "A cryptographic key-pair will be created when using either the Casper "
 "command-line client or a block explorer to create an account on the "
@@ -150,23 +154,23 @@ msgstr ""
 "командной строки Casper или проводника блоков для создания учетной записи в "
 "блокчейне. Этот процесс создает три файла для каждой учетной записи:"
 
-#: ../../workflow/setup.rst:52
+#: ../../workflow/setup.rst:58
 msgid "A PEM encoded secret key"
 msgstr "Секретный ключ в кодировке PEM"
 
-#: ../../workflow/setup.rst:53
+#: ../../workflow/setup.rst:59
 msgid "A PEM encoded public key"
 msgstr "Открытый ключ в кодировке PEM"
 
-#: ../../workflow/setup.rst:54
+#: ../../workflow/setup.rst:60
 msgid "A hexadecimal-encoded string representation of the public key"
 msgstr "Шестнадцатеричное строковое представление открытого ключа в кодировке"
 
-#: ../../workflow/setup.rst:56
+#: ../../workflow/setup.rst:62
 msgid "We recommend saving these files securely."
 msgstr "Мы рекомендуем надежно сохранить эти файлы."
 
-#: ../../workflow/setup.rst:58
+#: ../../workflow/setup.rst:64
 msgid ""
 "The command-line client provides a command that will give you the account "
 "hash for a given public key."
@@ -174,11 +178,11 @@ msgstr ""
 "Клиент командной строки предоставляет команду, которая предоставит вам хэш "
 "учетной записи для данного открытого ключа."
 
-#: ../../workflow/setup.rst:65
+#: ../../workflow/setup.rst:71
 msgid "Option 1: Key generation using the Casper client"
 msgstr "Вариант 1: Генерация ключей с помощью клиента Casper"
 
-#: ../../workflow/setup.rst:67
+#: ../../workflow/setup.rst:73
 msgid ""
 "This option describes how you can use the Casper command-line client to set "
 "up your accounts."
@@ -186,35 +190,35 @@ msgstr ""
 "Этот параметр описывает, как вы можете использовать клиент командной строки "
 "Casper для настройки своих учетных записей."
 
-#: ../../workflow/setup.rst:69
+#: ../../workflow/setup.rst:75
 msgid "Execute the following command to generate your keys:"
 msgstr "Выполните следующую команду, чтобы сгенерировать ваши ключи:"
 
-#: ../../workflow/setup.rst:75
+#: ../../workflow/setup.rst:81
 msgid ""
 "The above command will create three files in the current working directory:"
 msgstr ""
 "Приведенная выше команда создаст три файла в текущем рабочем каталоге:"
 
-#: ../../workflow/setup.rst:77 ../../workflow/setup.rst:98
+#: ../../workflow/setup.rst:83 ../../workflow/setup.rst:104
 msgid "``secret_key.pem`` - PEM encoded secret key"
 msgstr "\"secret_key.pem\" - секретный ключ в кодировке PEM"
 
-#: ../../workflow/setup.rst:78 ../../workflow/setup.rst:99
+#: ../../workflow/setup.rst:84 ../../workflow/setup.rst:105
 msgid "``public_key.pem`` - PEM encoded public key"
 msgstr "\"public_key.pem\" - открытый ключ в кодировке PEM"
 
-#: ../../workflow/setup.rst:79 ../../workflow/setup.rst:100
+#: ../../workflow/setup.rst:85 ../../workflow/setup.rst:106
 msgid "``public_key_hex`` - Hexadecimal-encoded string of the public key"
 msgstr "\"public_key_hex\" - строка открытого ключа в шестнадцатеричной кодировке"
 
-#: ../../workflow/setup.rst:81
+#: ../../workflow/setup.rst:87
 msgid "**Note**: SAVE your keys to a safe place, preferably offline."
 msgstr ""
 "**Примечание**: СОХРАНИТЕ ключи в безопасном месте, желательно в автономном "
 "режиме."
 
-#: ../../workflow/setup.rst:83
+#: ../../workflow/setup.rst:89
 msgid ""
 "Once the keys for the account have been generated, the accounts can be "
 "funded to finish the process of creating an account."
@@ -222,7 +226,7 @@ msgstr ""
 "Как только ключи для учетной записи будут сгенерированы, счета можно будет "
 "пополнить, чтобы завершить процесс создания аккаунта."
 
-#: ../../workflow/setup.rst:85
+#: ../../workflow/setup.rst:91
 msgid ""
 "**Note**: Responses from the node contain ``AccountHashes`` instead of the "
 "direct hexadecimal-encoded public key. For traceability, it is important to "
@@ -235,15 +239,15 @@ msgstr ""
 " локально. Хеш учетной записи представляет собой хеш \" Blake2B\" "
 "общедоступной строки в шестнадцатеричной кодировке."
 
-#: ../../workflow/setup.rst:88
+#: ../../workflow/setup.rst:94
 msgid "Option 2: Key generation using a Block Explorer"
 msgstr "Вариант 2: Генерация ключей с помощью проводника блоков"
 
-#: ../../workflow/setup.rst:90
+#: ../../workflow/setup.rst:96
 msgid "This option is also available on networks that have a block explorer."
 msgstr "Эта опция также доступна в сетях, в которых есть обозреватель блоков."
 
-#: ../../workflow/setup.rst:92
+#: ../../workflow/setup.rst:98
 msgid ""
 "For instance, on the official Testnet network the `CSPR.live "
 "<https://testnet.cspr.live/>`_ block explorer is available, and the "
@@ -253,7 +257,7 @@ msgstr ""
 "<https://testnet.cspr.live/>`_ доступен обозреватель блоков, и в следующих "
 "инструкциях предполагается, что вы его используете."
 
-#: ../../workflow/setup.rst:94
+#: ../../workflow/setup.rst:100
 msgid ""
 "Start by creating an account using the `Create Account "
 "<https://testnet.cspr.live/create-account>`_ link. You will need to download"
@@ -265,7 +269,7 @@ msgstr ""
 "ключи от вашей новой учетной записи, нажав на кнопку \"Загрузить ключи\". "
 "Обратите внимание, что аккаунт не хранится в цепочке."
 
-#: ../../workflow/setup.rst:96
+#: ../../workflow/setup.rst:102
 msgid ""
 "You will be prompted to save the following three files for your new account."
 " These are your keys, so we recommend securely storing them:"
@@ -273,11 +277,11 @@ msgstr ""
 "Вам будет предложено сохранить следующие три файла для вашей новой учетной "
 "записи. Это ваши ключи, поэтому мы рекомендуем надежно хранить их:"
 
-#: ../../workflow/setup.rst:104
+#: ../../workflow/setup.rst:110
 msgid "Fund your Account"
 msgstr "Пополнение аккаунта"
 
-#: ../../workflow/setup.rst:106
+#: ../../workflow/setup.rst:112
 msgid ""
 "Once the cryptographic key-pair for the account has been generated, the "
 "account must be funded so it can be created on chain."
@@ -286,7 +290,7 @@ msgstr ""
 "сгенерирована, учетная запись должна быть пополнена, чтобы ее можно было "
 "создать в цепочке."
 
-#: ../../workflow/setup.rst:108
+#: ../../workflow/setup.rst:114
 msgid ""
 "In Testnet, you can fund the account by using the *Request tokens* button on"
 " the `Faucet Page <https://testnet.cspr.live/tools/faucet>`_ to receive "
@@ -296,7 +300,7 @@ msgstr ""
 "странице 'Кран <https://testnet.cspr.live/tools/faucet>`_ для получения "
 "токенов."
 
-#: ../../workflow/setup.rst:110
+#: ../../workflow/setup.rst:116
 msgid ""
 "In Mainnet, a pre-existing account will have to transfer CSPR tokens to "
 "finalize the process of setting up an account. The *Source* account needs to"
@@ -312,11 +316,11 @@ msgstr ""
 "запись *Target*, если она не существует. В настоящее время это единственный "
 "способ создать учетную запись в Mainnet."
 
-#: ../../workflow/setup.rst:113
+#: ../../workflow/setup.rst:119
 msgid "Acquire Node Address from network peers"
 msgstr "Запрос адреса ноды из пиров сети"
 
-#: ../../workflow/setup.rst:115
+#: ../../workflow/setup.rst:121
 msgid ""
 "Clients can interact with a node on the blockchain via requests sent to that"
 " node's JSON-RPC endpoint, ``http://<node-ip-address>:7777`` by default."
@@ -325,11 +329,11 @@ msgstr ""
 "отправляемых на конечную точку JSON-RPC этой ноды  \"http://<node-ip-"
 "address>:7777\" по умолчанию."
 
-#: ../../workflow/setup.rst:117
+#: ../../workflow/setup.rst:123
 msgid "The node address is the IP of a peer node."
 msgstr "Адрес ноды - это IP-адрес одноранговой ноды."
 
-#: ../../workflow/setup.rst:119
+#: ../../workflow/setup.rst:125
 msgid ""
 "Both the official testnet and Mainnet provide block explorers that provide a"
 " list of IP addresses of nodes on their respective networks."
@@ -338,7 +342,7 @@ msgstr ""
 "обозреватели, которые предоставляют список IP-адресов нод в своих "
 "соответствующих сетях."
 
-#: ../../workflow/setup.rst:121
+#: ../../workflow/setup.rst:127
 msgid ""
 "You can get the ``node-ip-address`` of a node on the network by visiting the"
 " following block explorers:"
@@ -346,15 +350,15 @@ msgstr ""
 "Вы можете получить \"ip-адрес узла\" ноды в сети, посетив следующие блочные "
 "обозреватели:"
 
-#: ../../workflow/setup.rst:123
+#: ../../workflow/setup.rst:129
 msgid "`Peers <https://testnet.cspr.live/tools/peers>`_ on Testnet"
 msgstr "`Peers <https://testnet.cspr.live/tools/peers>`_ на Testnet"
 
-#: ../../workflow/setup.rst:124
+#: ../../workflow/setup.rst:130
 msgid "`Peers <https://cspr.live/tools/peers>`_ on Mainnet"
 msgstr "`Peers <https://cspr.live/tools/peers>`_ на Mainnet"
 
-#: ../../workflow/setup.rst:126
+#: ../../workflow/setup.rst:132
 msgid ""
 "You will see a list of peers, and you can select the IP of any peer on the "
 "list."
@@ -362,7 +366,7 @@ msgstr ""
 "Вы увидите список одноранговых узлов, и вы можете выбрать IP-адрес любого "
 "однорангового узла в списке."
 
-#: ../../workflow/setup.rst:128
+#: ../../workflow/setup.rst:134
 msgid ""
 "**Note**: If the selected peer is unresponsive, pick a different peer and "
 "try again."
