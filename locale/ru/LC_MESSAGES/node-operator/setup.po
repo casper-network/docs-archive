@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
@@ -508,6 +508,10 @@ msgstr ""
 " и macOS. Вам потребуется ночная версия компилятора. "
 
 #: ../../node-operator/setup.rst:154
+msgid "Doing this, you'll see a warning, which you can ignore for now."
+msgstr "Вы увидите предупреждение которое вы можете сейчас проигнорировать."
+
+#: ../../node-operator/setup.rst:160
 msgid ""
 "The Casper client can print out `help` information, which provides an up-to-"
 "date list of supported commands."
@@ -515,7 +519,7 @@ msgstr ""
 "Клиент  Casper может распечатать вспомогательную информацию `help`, которая "
 "дает список самых последних поддерживаемых команд. "
 
-#: ../../node-operator/setup.rst:160
+#: ../../node-operator/setup.rst:166
 msgid ""
 "For each command, you can use `help` to get the up-to-date arguments and "
 "descriptions:"
@@ -523,11 +527,11 @@ msgstr ""
 "Для каждой команды вы можете использовать  `help`  для получения свежих "
 "параметров и описаний:"
 
-#: ../../node-operator/setup.rst:167
+#: ../../node-operator/setup.rst:173
 msgid "Create Keys"
 msgstr "Создание ключей"
 
-#: ../../node-operator/setup.rst:169
+#: ../../node-operator/setup.rst:175
 msgid ""
 "The Rust client generates keys via the ``keygen`` command.  The process "
 "generates 2 *pem* files and 1 *text* file. To learn about options for "
@@ -537,7 +541,7 @@ msgstr ""
 "генерирует 2 *pem* файла и 1 *текстовый* файл. Чтобы узнать о параметрах "
 "генерации ключей, включите \"--help\" при выполнении команды \"keygen\"."
 
-#: ../../node-operator/setup.rst:176
+#: ../../node-operator/setup.rst:182
 msgid ""
 "More about keys and key generation can be found in "
 "``/etc/casper/validator_keys/README.md`` if ``casper-node-lancher`` was "
@@ -547,11 +551,11 @@ msgstr ""
 "``/etc/casper/validator_keys/README.md`` если лаунчер ``casper-node-"
 "lancher`` был установлен из пакета Debian."
 
-#: ../../node-operator/setup.rst:180
+#: ../../node-operator/setup.rst:186
 msgid "Config File"
 msgstr "Файл Config"
 
-#: ../../node-operator/setup.rst:182
+#: ../../node-operator/setup.rst:188
 msgid ""
 "One ``config.toml`` file will need to exist for each ``casper-node`` version"
 " installed.  It should be located in the ``/etc/casper/[m_n_p]/`` directory "
@@ -566,7 +570,7 @@ msgstr ""
 "``/etc/casper/config_from_example.sh [m_n_p]`` где ``[m_n_p]`` заменено "
 "текущей версией с нижним подчеркиваниями. "
 
-#: ../../node-operator/setup.rst:186
+#: ../../node-operator/setup.rst:192
 msgid ""
 "Below are some fields you may find in the ``config.toml`` that you may want "
 "or need to adjust."
@@ -575,11 +579,11 @@ msgstr ""
 "``config.toml``, который вам возможно захочется или понадобится "
 "отрегулировать."
 
-#: ../../node-operator/setup.rst:189
+#: ../../node-operator/setup.rst:195
 msgid "Trusted Hash for Synchronizing"
 msgstr "Доверенный хеш для синхронизации"
 
-#: ../../node-operator/setup.rst:191
+#: ../../node-operator/setup.rst:197
 msgid ""
 "The Casper network is a permissionless, proof of stake network - which "
 "implies that validators can come and go from the network.  The implication "
@@ -600,11 +604,11 @@ msgstr ""
 "завершенные блоки из хранилища линейных блоков. Вот процесс получения "
 "надежного хеша:"
 
-#: ../../node-operator/setup.rst:193
+#: ../../node-operator/setup.rst:199
 msgid "Find a list of trusted validators."
 msgstr "Найти список надежных валидаторов."
 
-#: ../../node-operator/setup.rst:194
+#: ../../node-operator/setup.rst:200
 msgid ""
 "Query the status endpoint of a trusted validator ( "
 "http://[validator_id]:8888/status )"
@@ -612,11 +616,11 @@ msgstr ""
 "Запросите статус конечной точки надежного валидатора ( "
 "http://[validator_id]:8888/status )"
 
-#: ../../node-operator/setup.rst:195
+#: ../../node-operator/setup.rst:201
 msgid "Obtain the hash of a block from the status endpoint."
 msgstr "Получите хеш блока из конечной точки статуса. "
 
-#: ../../node-operator/setup.rst:196
+#: ../../node-operator/setup.rst:202
 msgid ""
 "Update the ``config.toml`` for the node to include the trusted hash. There "
 "is a field dedicated to this near the top of the file."
@@ -624,11 +628,11 @@ msgstr ""
 "Обновите файл  ``config.toml``, чтобы включить надежный хеш в ноду. Имеется "
 "поле, посвященное этому, рядом с верхушкой файла."
 
-#: ../../node-operator/setup.rst:199
+#: ../../node-operator/setup.rst:205
 msgid "Secret Keys"
 msgstr "Секретные ключи"
 
-#: ../../node-operator/setup.rst:201
+#: ../../node-operator/setup.rst:207
 msgid ""
 "Provide the path to the secret keys for the node.  This is set to "
 "``etc/casper/validator_keys/`` by default."
@@ -636,11 +640,11 @@ msgstr ""
 "Обеспечьте секретным ключам путь к ноде. Это настроено в  "
 "``etc/casper/validator_keys/`` по умолчанию."
 
-#: ../../node-operator/setup.rst:204
+#: ../../node-operator/setup.rst:210
 msgid "Networking & Gossiping"
 msgstr "Нетворкинг & Госсипинг"
 
-#: ../../node-operator/setup.rst:206
+#: ../../node-operator/setup.rst:212
 msgid ""
 "The node requires a publicly accessible IP address.  We do not recommend NAT"
 " at this time. Specify the public IP address of the node. If you use the "
@@ -652,21 +656,21 @@ msgstr ""
 "используете \"config_from_example.sh\" внешние службы вызываются для поиска "
 "вашего IP-адреса, и он вставляется в созданный \"config.toml\"."
 
-#: ../../node-operator/setup.rst:209
+#: ../../node-operator/setup.rst:215
 msgid "Default values are specified in the file if you want to change them:"
 msgstr ""
 "Значения по умолчанию определяются в файле, если вы хотите их изменить:"
 
-#: ../../node-operator/setup.rst:211
+#: ../../node-operator/setup.rst:217
 msgid "Specify the port that will be used for status  & deploys"
 msgstr ""
 "Определите порт, который будут использоваться для статуса и развертываний"
 
-#: ../../node-operator/setup.rst:212
+#: ../../node-operator/setup.rst:218
 msgid "Specify the port used for networking"
 msgstr "Определите порт для нетворкинга"
 
-#: ../../node-operator/setup.rst:213
+#: ../../node-operator/setup.rst:219
 msgid ""
 "Known_addresses - these are the bootstrap nodes. No need to change these."
 msgstr ""
