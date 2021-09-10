@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
+"PO-Revision-Date: 2021-09-08 20:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/tutorials/counter/overview.rst:2
+msgid "Introduction"
+msgstr "Введение"
+
+#: ../../dapp-dev-guide/tutorials/counter/overview.rst:4
+msgid ""
+"This flowchart outlines the process we will go through in this tutorial. "
+"Since there are quite a few things taking place, you must keep in mind the "
+"overall flow as you proceed through the tutorial on your own."
+msgstr ""
+"Эта блок-схема описывает процесс, который мы рассмотрим в этом уроке. "
+"Поскольку происходит довольно много событий, вы должны иметь в виду общий "
+"ход, когда будете проходить учебник самостоятельно."
+
+#: ../../dapp-dev-guide/tutorials/counter/overview.rst:6
+msgid ""
+"To summarize the flowchart, this tutorial will walk you through deploying a "
+"contract on the blockchain and then calling two separate contract entry "
+"points to increment a counter variable. Along the way, you will learn how to"
+" query the network state to see when the network has successfully "
+"incremented the counter."
+msgstr ""
+"Чтобы обобщить блок-схему, в этом руководстве вы пройдете через "
+"развертывание контракта в блокчейне, а затем вызовете две отдельные точки "
+"входа в контракт для увеличения переменной счетчика. Попутно вы узнаете, как"
+" запрашивать состояние сети, чтобы узнать, когда сеть успешно увеличила "
+"счетчик."
