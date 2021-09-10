@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
 "PO-Revision-Date: 2021-06-26 21:46+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -83,6 +83,12 @@ msgstr ""
 "Linux và macOS. Bạn sẽ cần phiên bản nightly của trình biên dịch."
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:30
+msgid "Doing this, you'll see a warning, which you can ignore for now."
+msgstr ""
+"Thực hiện điều này, bạn sẽ thấy một cảnh báo mà bạn có thể bỏ qua ngay bây "
+"giờ."
+
+#: ../../dapp-dev-guide/deploying-contracts.rst:36
 msgid ""
 "The Casper client can print out `help` information, which provides an up-to-"
 "date list of supported commands."
@@ -90,11 +96,11 @@ msgstr ""
 "Ứng dụng khách Casper có thể đưa ra thông tin `help`, cung cấp danh sách cập"
 " nhật các lệnh được hỗ trợ."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:38
+#: ../../dapp-dev-guide/deploying-contracts.rst:44
 msgid "Building the Client from Source"
 msgstr "Xây dựng ứng dụng Client từ Nguồn"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:40
+#: ../../dapp-dev-guide/deploying-contracts.rst:46
 msgid ""
 "`Instructions <https://github.com/casper-network/casper-"
 "node/tree/master/client>`_"
@@ -102,11 +108,11 @@ msgstr ""
 "`Hướng dẫn <https://github.com/casper-network/casper-"
 "node/tree/master/client>`_"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:43
+#: ../../dapp-dev-guide/deploying-contracts.rst:49
 msgid "Check the Client Version"
 msgstr "Kiểm tra phiên bản Client"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:45
+#: ../../dapp-dev-guide/deploying-contracts.rst:51
 msgid ""
 "There is an official Rust client, that works with the Casper `Testnet "
 "<https://testnet.cspr.live/>`_ and `Mainnet <https://cspr.live/>`_."
@@ -115,11 +121,11 @@ msgstr ""
 "nghiệm <https://testnet.cspr.live/>`_ và `Mạng chính thức "
 "<https://cspr.live/>`_."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:47
+#: ../../dapp-dev-guide/deploying-contracts.rst:53
 msgid "To check the client version run:"
 msgstr "Để kiểm tra phiên bản máy khách chạy:"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:53
+#: ../../dapp-dev-guide/deploying-contracts.rst:59
 msgid ""
 "If you want to send your deployments to an external network, use the latest "
 "released version of the client.  If you are building the client locally, "
@@ -129,11 +135,11 @@ msgstr ""
 " phiên bản ứng dụng khách được phát hành mới nhất. Nếu bạn đang xây dựng máy"
 " khách cục bộ, hãy kiểm tra gitHash và đảm bảo nó khớp với githash của mạng."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:56
+#: ../../dapp-dev-guide/deploying-contracts.rst:62
 msgid "Token to Pay for Deployments"
 msgstr "Token để trả cho việc triển khai"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:58
+#: ../../dapp-dev-guide/deploying-contracts.rst:64
 msgid ""
 "Blockchains are supported by infrastructure providers called \"Validators\"."
 " To use the Validator infrastructure, it's necessary to acquire token to pay"
@@ -150,11 +156,11 @@ msgstr ""
 "thông báo từ tài khoản Genesis sang tài khoản mới. Trong một hệ thống thực, "
 "mã thông báo thường được mua bằng cách truy cập vào một sàn giao dịch."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:61
+#: ../../dapp-dev-guide/deploying-contracts.rst:67
 msgid "Target Network"
 msgstr "Mạng mục tiêu"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:63
+#: ../../dapp-dev-guide/deploying-contracts.rst:69
 msgid ""
 "When sending a deploy, the client needs to know which host will receive the "
 "deployment.  The ``node-address`` and ``chain-name`` parameters provide this"
@@ -163,11 +169,11 @@ msgstr ""
 "Khi gửi đi triển khai, máy khách cần biết máy chủ nào sẽ nhận triển khai. "
 "Các tham số ``node-address`` và ``chain-name`` cung cấp thông tin này."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:66
+#: ../../dapp-dev-guide/deploying-contracts.rst:72
 msgid "Creating Keys"
 msgstr "Tạo mới khoá"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:68
+#: ../../dapp-dev-guide/deploying-contracts.rst:74
 msgid ""
 "Blockchains use asymmetric key encryption to secure transactions. The secret"
 " key used to sign the deployment will be the secret key of the account that "
@@ -182,23 +188,23 @@ msgstr ""
 "cảnh của tài khoản này trừ khi ủy quyền khóa và tham số ``from`` đang được "
 "sử dụng. Để tạo khóa bằng ứng dụng rust, hãy thực hiện lệnh sau:"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:75
+#: ../../dapp-dev-guide/deploying-contracts.rst:81
 msgid "This process will create 3 files:"
 msgstr "Quá trình này sẽ tạo ra 3 tệp:"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:78
+#: ../../dapp-dev-guide/deploying-contracts.rst:84
 msgid "secret-key.pem"
 msgstr "secret-key.pem"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:79
+#: ../../dapp-dev-guide/deploying-contracts.rst:85
 msgid "public-key.pem"
 msgstr "public-key.pem"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:80
+#: ../../dapp-dev-guide/deploying-contracts.rst:86
 msgid "public_key_hex"
 msgstr "public_key_hex"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:82
+#: ../../dapp-dev-guide/deploying-contracts.rst:88
 msgid ""
 "When passing in the public key as hex, it's recommended to  ``$(cat "
 "public_key_hex)`` in the transaction, or extract the contents of the file.\\"
@@ -208,11 +214,11 @@ msgstr ""
 "public_key_hex)`` trong giao dịch hoặc trích xuất nội dung của tệp.\\ :raw-"
 "html-m2r:`<br>` Sử dụng tệp secret-key.pem để ký giao dịch."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:86
+#: ../../dapp-dev-guide/deploying-contracts.rst:92
 msgid "Sending a Deployment to the Testnet"
 msgstr "Gửi triển khai tới Mạng thử nghiệm"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:88
+#: ../../dapp-dev-guide/deploying-contracts.rst:94
 msgid ""
 "The easiest way to deploy a contract is to use an existing public network. "
 "The Testnet is operated by external validators that can accept transactions."
@@ -221,11 +227,11 @@ msgstr ""
 "Mạng thử nghiệm được vận hành bởi các trình xác thực bên ngoài có thể chấp "
 "nhận các giao dịch."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:91
+#: ../../dapp-dev-guide/deploying-contracts.rst:97
 msgid "Obtain Token"
 msgstr "Nhận token"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:93
+#: ../../dapp-dev-guide/deploying-contracts.rst:99
 msgid ""
 "To send a deploy to the network, create keys and obtain token. Token can be "
 "obtained via a faucet or by a participant that has token.  Connect to our "
@@ -237,11 +243,11 @@ msgstr ""
 "`Discord <https://discordapp.com/invite/Q38s3Vh>`_ của chúng tôi để nhận "
 "token thông qua người tham gia hiện có."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:97
+#: ../../dapp-dev-guide/deploying-contracts.rst:103
 msgid "A Basic Deployment using the Command Line (Rust Client)"
 msgstr "Triển khai cơ bản bằng Dòng lệnh (Máy khách Rust)"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:99
+#: ../../dapp-dev-guide/deploying-contracts.rst:105
 msgid ""
 "As described above, a basic deployment must provide some essential "
 "information. Here is an example deployment using the Rust client that will "
@@ -250,17 +256,17 @@ msgid ""
 msgstr ""
 "Như đã mô tả ở trên, một triển khai cơ bản phải cung cấp một số thông tin "
 "cần thiết. Đây là một ví dụ triển khai sử dụng ứng dụng khách Rust sẽ hoạt "
-"động với hợp đồng cơ bản mà chúng tôi đã tạo bằng cách sử dụng `Contracts "
-"SDK for Rust <writing-rust-contracts>`_. Cổng mặc định là 7777:"
+"động với hợp đồng cơ bản mà chúng tôi đã tạo bằng cách sử dụng `Hợp đồng SDK"
+" cho Rust <writing-rust-contracts>`_. Cổng mặc định là 7777:"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:105
+#: ../../dapp-dev-guide/deploying-contracts.rst:111
 msgid ""
 "If your deployment command is correct, expect to see a success message that "
 "looks like this:"
 msgstr ""
 "Nếu lệnh triển khai của bạn đúng, bạn sẽ thấy thông báo thành công như sau:"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:111
+#: ../../dapp-dev-guide/deploying-contracts.rst:117
 msgid ""
 "Note: Each deploy gets a unique hash.  This is part of the cryptographic "
 "security of blockchain technology.  No two deploys will ever return the same"
@@ -270,11 +276,11 @@ msgstr ""
 "bảo mật mật mã của công nghệ blockchain. Không có hai lần triển khai nào sẽ "
 "trả về cùng một hàm băm."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:114
+#: ../../dapp-dev-guide/deploying-contracts.rst:120
 msgid "Check Deploy Status"
 msgstr "Kiểm tra trạng thái triển khai"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:116
+#: ../../dapp-dev-guide/deploying-contracts.rst:122
 msgid ""
 "Once the network has received the deployment, it will queue up in the system"
 " before being listed in a block for execution.  Sending a transaction "
@@ -288,11 +294,11 @@ msgstr ""
 "quan trọng là phải kiểm tra xem hợp đồng có được thực thi đúng cách và khối "
 "đã được hoàn tất hay không."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:122
+#: ../../dapp-dev-guide/deploying-contracts.rst:128
 msgid "Which will return a data structure like this:"
 msgstr "Điều này sẽ trả về một cấu trúc dữ liệu như thế này:"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:219
+#: ../../dapp-dev-guide/deploying-contracts.rst:225
 msgid ""
 "From this data structure we can observe some properties about the deploy "
 "(some of which can be set by the user):"
@@ -300,23 +306,23 @@ msgstr ""
 "Từ cấu trúc dữ liệu này, chúng ta có thể quan sát một số thuộc tính về triển"
 " khai (một số trong số đó có thể được thiết lập bởi người dùng):"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:222
+#: ../../dapp-dev-guide/deploying-contracts.rst:228
 msgid "Execution cost 164645 gas"
 msgstr "Chi phí thực thi 164645 gas"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:223
+#: ../../dapp-dev-guide/deploying-contracts.rst:229
 msgid "No errors were returned by the contract"
 msgstr "Không có lỗi được trả lại theo hợp đồng"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:224
+#: ../../dapp-dev-guide/deploying-contracts.rst:230
 msgid "There were no dependencies for this deploy"
 msgstr "Không có yếu tố phụ thuộc nào cho việc triển khai này"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:225
+#: ../../dapp-dev-guide/deploying-contracts.rst:231
 msgid "The Time to Live was 1 hour"
 msgstr "Tổng thời gian chạy là 1 giờ"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:227
+#: ../../dapp-dev-guide/deploying-contracts.rst:233
 msgid ""
 "It is also possible to check the contract\\'s state by performing a ``query-"
 "state`` command using the client."
@@ -324,11 +330,11 @@ msgstr ""
 "Cũng có thể kiểm tra trạng thái của hợp đồng bằng cách thực hiện lệnh "
 "``query-state`` bằng ứng dụng client."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:230
+#: ../../dapp-dev-guide/deploying-contracts.rst:236
 msgid "A Note about Gas Prices"
 msgstr "Lưu ý về giá Gas"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:232
+#: ../../dapp-dev-guide/deploying-contracts.rst:238
 msgid ""
 "If you notice in the put-deploy command above, we supplied a payment amount "
 "argument:"
@@ -336,7 +342,7 @@ msgstr ""
 "Nếu bạn nhận thấy trong lệnh put-deploy ở trên, chúng tôi đã cung cấp đối số"
 " số tiền thanh toán:"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:238
+#: ../../dapp-dev-guide/deploying-contracts.rst:244
 msgid ""
 "But the actual execution cost was only ``164645`` when it was run on the "
 "chain!"
@@ -344,7 +350,7 @@ msgstr ""
 "Nhưng chi phí thực thi thực tế chỉ là ``164645`` khi nó được chạy trên "
 "chuỗi!"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:240
+#: ../../dapp-dev-guide/deploying-contracts.rst:246
 msgid ""
 "A common question that frequently arises is: \\\"How do I know what the "
 "payment amount (gas cost) should be?\\\" The honest answer is that we are "
@@ -364,7 +370,7 @@ msgstr ""
 "trạng thái triển khai và gần như xem chi phí thực sự của nó khi triển khai "
 "là bao nhiêu."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:242
+#: ../../dapp-dev-guide/deploying-contracts.rst:248
 msgid ""
 "You can estimate the costs in this way, and then add a small buffer in case "
 "the network state has changed. So in this example above, you might have "
@@ -376,7 +382,7 @@ msgstr ""
 "có thể đã chọn đặt khoản thanh toán thành 175000 hoặc 200000, thay vì "
 "10000000 đã được sử dụng."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:244
+#: ../../dapp-dev-guide/deploying-contracts.rst:250
 msgid ""
 "Refer to the `runtime economics "
 "<https://docs.casperlabs.io/en/latest/economics/runtime.html?highlight"
@@ -388,19 +394,19 @@ msgstr ""
 "=consensus-before-execution%20model#gas-allocation>`_ để biết thêm chi tiết "
 "về việc sử dụng gas, phí và cơ chế hoàn trả."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:248
+#: ../../dapp-dev-guide/deploying-contracts.rst:254
 msgid "Advanced Deployments"
 msgstr "Triển khai nâng cao"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:250
+#: ../../dapp-dev-guide/deploying-contracts.rst:256
 msgid "The Casper Network supports complex deployments."
 msgstr "Mạng Casper hỗ trợ các triển khai phức tạp."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:253
+#: ../../dapp-dev-guide/deploying-contracts.rst:259
 msgid "Using Arguments with Deployments"
 msgstr "Sử dụng đối số với việc triển khai"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:255
+#: ../../dapp-dev-guide/deploying-contracts.rst:261
 msgid ""
 "Casper contracts support arguments for deployments, which enables powerful "
 "capabilities for smart contract development.  The casper client provides "
@@ -410,11 +416,11 @@ msgstr ""
 "năng mạnh mẽ để phát triển hợp đồng thông minh. Ứng dụng khách casper cung "
 "cấp một số ví dụ về cách thực hiện việc này:"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:263
+#: ../../dapp-dev-guide/deploying-contracts.rst:269
 msgid "Creating, signing, and deploying contracts with multiple signatures"
 msgstr "Tạo mới, ký và triển khai hợp đồng có nhiều chữ ký"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:265
+#: ../../dapp-dev-guide/deploying-contracts.rst:271
 msgid ""
 "The ``deploy`` command on its own provides multiple actions strung together "
 "optimizing for the common case, with the capability to separate concerns "
@@ -426,7 +432,7 @@ msgstr ""
 "giữa quản lý khóa của bạn và tạo triển khai. Xem chi tiết về cách tạo cặp "
 "khóa tài khoản trong Hướng dẫn dành cho nhà phát triển."
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:267
+#: ../../dapp-dev-guide/deploying-contracts.rst:273
 msgid ""
 "Every account can associate multiple keys with it and give each a weight. "
 "Collective weight of signing keys decides whether an action of certain type "
@@ -448,19 +454,19 @@ msgstr ""
 " nó và triển khai tới nút nhưng không cho phép ký bằng nhiều khóa. Do đó, "
 "chúng tôi chia ``triển khai`` thành các lệnh riêng biệt:"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:270
+#: ../../dapp-dev-guide/deploying-contracts.rst:276
 msgid "``make-deploy``  - creates a deploy from input parameters"
 msgstr "``make-deploy``  - tạo một triển khai từ các tham số đầu vào"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:271
+#: ../../dapp-dev-guide/deploying-contracts.rst:277
 msgid "``sign-deploy``  - signs a deploy with given private key"
 msgstr "``sign-deploy``  - ký một triển khai bằng khóa riêng đã cho"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:272
+#: ../../dapp-dev-guide/deploying-contracts.rst:278
 msgid "``send-deploy``  - sends a deploy to a Casper node"
 msgstr "``send-deploy``  - gửi một triển khai đến một nút Casper"
 
-#: ../../dapp-dev-guide/deploying-contracts.rst:274
+#: ../../dapp-dev-guide/deploying-contracts.rst:280
 msgid ""
 "To make a deploy signed with multiple keys: first create the deploy with "
 "``make-deploy``. This generates a deploy file that can be sent to the other "
@@ -532,7 +538,7 @@ msgstr ""
 #~ msgstr ""
 #~ "Cách dễ nhất để triển khai hợp đồng là sử dụng một mạng công cộng hiện có. "
 #~ "CasperLabs cung cấp một Testnet cho việc này. Testnet được vận hành bởi các "
-#~ "người xác thực bên ngoài có thể chấp nhận các giao dịch."
+#~ "trình xác thực bên ngoài có thể chấp nhận các giao dịch."
 
 #~ msgid ""
 #~ "It is also possible to check the contract's state by performing a ``query-"
