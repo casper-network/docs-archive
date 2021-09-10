@@ -30,6 +30,7 @@ The motivation for our roadmap is inspired by feedback we are receiving from you
    writing-contracts/index
    testing
    setup-nctl
+   upgrading-contracts
    deploying-contracts
    calling-contracts
    execution-error-codes
