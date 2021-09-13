@@ -76,7 +76,7 @@ msgstr "Научитесь подписывать транзакции неск�
 
 #: ../../dapp-dev-guide/tutorials/index.rst:23
 msgid "`Smart contract upgrades <upgrade-tutorial.html>`_"
-msgstr "'Обновление смарт-контрактов <upgrade-tutorial.html>`_"
+msgstr "`Обновление смарт-контрактов <upgrade-tutorial.html>`_"
 
 #: ../../dapp-dev-guide/tutorials/index.rst:23
 msgid "Learn how to upgrade smart contracts"
