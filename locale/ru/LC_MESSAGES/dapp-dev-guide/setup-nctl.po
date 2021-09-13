@@ -76,7 +76,7 @@ msgid ""
 "To run NCTL, you will also need `the bash shell "
 "<https://www.gnu.org/software/bash/>`_."
 msgstr ""
-"Чтобы запустить NCTL, вам также потребуется командная оболочка Bash "
+"Чтобы запустить NCTL, вам также потребуется  `bash shell "
 "<https://www.gnu.org/software/bash/>`_."
 
 #: ../../dapp-dev-guide/setup-nctl.rst:13
