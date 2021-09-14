@@ -82,6 +82,7 @@ The makefile included in the repository makes compilation trivial. With these tw
 
 .. code-block:: bash
 
+    cd counter
     make prepare 
     make test    
 
