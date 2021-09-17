@@ -113,7 +113,6 @@ To build the project, go into the ``contract`` folder, install the Rust toolchai
 
 .. code::
 
-   cd contract
    rustup install $(cat rust-toolchain)
    rustup target add --toolchain $(cat rust-toolchain) wasm32-unknown-unknown
 
@@ -125,6 +124,7 @@ The next step is to compile the smart contract into WASM. Inside the contract fo
 
 .. code::
 
+   cd contract
    cargo build --release
 
 **NOTE: It's important to build the contract using ``--release`` as a debug build will produce a contract which is much larger and more expensive to execute.**
@@ -145,8 +145,8 @@ A successful test run indicates that your smart contract environment is set up c
 
 .. code::
 
-   cd ../tests
-   cargo test
+   make test
+
 
 After the compilation finishes, the test should run and you should see output similar to this message in your terminal:
 
