@@ -109,7 +109,7 @@ The project requires a specific nightly version of Rust and requires a WASM targ
 
    cargo casper --help
 
-To build the project, go into the ``contract`` folder, install the Rust toolchain and specify the target build as WebAssembly (wasm32):
+To build the project, install the Rust toolchain and specify the target build as WebAssembly (wasm32):
 
 .. code::
 
@@ -139,7 +139,7 @@ In addition to creating the contract, the Casper crate also automatically create
 
 The Casper local environment provides an in-memory virtual machine against which you can run your contract for testing. When you run the test crate, it will automatically build the smart contract in release mode and then run a series of tests against it in the Casper runtime environment. The custom build script is named ``build.rs`` if you are interested in looking more into it.
 
-**Note**: Since the test script automatically builds the contract, during development you only need to run the command ``cargo test`` without the need for ``cargo build``.
+**Note**: Since the test script automatically builds the contract, during development you only need to run the command ``make test`` without the need for ``cargo build``.
 
 A successful test run indicates that your smart contract environment is set up correctly.
 
@@ -157,7 +157,7 @@ After the compilation finishes, the test should run and you should see output si
 
    test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.30s
 
-As a brief example, open up *my-project/contract/src/main.rs* in your editor, modify the *KEY* value in the contract, and then rerun the ``cargo test`` command. You should observe that the smart contract recompiles and the test fails now.
+As a brief example, open up *my-project/contract/src/main.rs* in your editor, modify the *KEY* value in the contract, and then rerun the ``make test`` command. You should observe that the smart contract recompiles and the test fails now.
 
 Rust Resources
 ^^^^^^^^^^^^^^
