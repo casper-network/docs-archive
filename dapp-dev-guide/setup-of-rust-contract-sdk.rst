@@ -64,14 +64,11 @@ Installing Dependencies
 
 **1. CMake**
 
-CMake is a popular build tool that we will utilize, and you may very well have it already installed. If you do, make sure that you have the latest version (currently 3.19.4). If you need to install or upgrade it, follow the steps located here: https://cmake.org/install/. Once installed, check your version as shown below. It should resemble this output:
+CMake is a popular build tool that we will utilize, and you may very well have it already installed. If you do, make sure that you have the latest version (currently 3.19.4). If you need to install or upgrade it, follow the steps located here: https://cmake.org/install/. Once installed, check your version as shown below.
 
 .. code::
 
-   $ cmake --version
-   cmake version 3.19.4
-
-   CMake suite maintained and supported by Kitware (kitware.com/cmake).
+   cmake --version
 
 
 Development Environment Setup
@@ -84,6 +81,12 @@ The best and fastest way to set up a Casper Rust Smart Contract project is to us
 .. code::
 
    cargo install cargo-casper
+
+If you run into any issues with this command and you have not recently installed Rust from scratch, please make sure to update your Rust version with this command:
+
+.. code::
+
+   rustup update
 
 
 Creating a Project
@@ -109,11 +112,11 @@ The project requires a specific nightly version of Rust and requires a WASM targ
 
    cargo casper --help
 
-To build the project, go into the ``contract`` folder, install the Rust toolchain and specify the target build as WebAssembly (wasm32):
+To build the project, go into the ``my-project`` folder, install the Rust toolchain and specify the target build as WebAssembly (wasm32):
 
 .. code::
 
-   cd contract
+   cd my-project
    rustup install $(cat rust-toolchain)
    rustup target add --toolchain $(cat rust-toolchain) wasm32-unknown-unknown
 
@@ -125,6 +128,7 @@ The next step is to compile the smart contract into WASM. Inside the contract fo
 
 .. code::
 
+   cd contract
    cargo build --release
 
 **NOTE: It's important to build the contract using ``--release`` as a debug build will produce a contract which is much larger and more expensive to execute.**
@@ -137,27 +141,39 @@ Test the Contract
 
 In addition to creating the contract, the Casper crate also automatically created sample tests in the *my-project/tests* folder.
 
-The Casper local environment provides an in-memory virtual machine against which you can run your contract for testing. When you run the test crate, it will automatically build the smart contract in release mode and then run a series of tests against it in the Casper runtime environment. The custom build script is named ``build.rs`` if you are interested in looking more into it.
-
-**Note**: Since the test script automatically builds the contract, during development you only need to run the command ``cargo test`` without the need for ``cargo build``.
-
-A successful test run indicates that your smart contract environment is set up correctly.
+Run the tests from the project folder, not from the *tests* folder. In this case, you need to navigate from the *contract* folder into *my-project* and run ``make test``.
 
 .. code::
 
-   cd ../tests
-   cargo test
+   cd ..
+   make test
 
 After the compilation finishes, the test should run and you should see output similar to this message in your terminal:
 
 .. code::
 
-   running 1 test
+   cd contract && cargo build --release --target wasm32-unknown-unknown
+      Finished release [optimized] target(s) in 0.04s
+   wasm-strip contract/target/wasm32-unknown-unknown/release/contract.wasm 2>/dev/null | true
+   mkdir -p tests/wasm
+   cp contract/target/wasm32-unknown-unknown/release/contract.wasm tests/wasm
+   cd tests && cargo test
+      Finished test [unoptimized + debuginfo] target(s) in 0.08s
+      Running unittests (target/debug/deps/integration_tests-f54c86e3719442e8)
+
+   running 2 tests
+   test tests::should_error_on_missing_runtime_arg - should panic ... ok
    test tests::should_store_hello_world ... ok
 
-   test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.30s
+   test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
 
-As a brief example, open up *my-project/contract/src/main.rs* in your editor, modify the *KEY* value in the contract, and then rerun the ``cargo test`` command. You should observe that the smart contract recompiles and the test fails now.
+The Casper local environment provides an in-memory virtual machine against which you can run your contract for testing. When you run the test crate, it will automatically build the smart contract in release mode and then run a series of tests against it in the Casper runtime environment. The custom build script is named ``build.rs`` if you are interested in looking more into it.
+
+**Note**: Since the test script automatically builds the contract, during development you only need to run the command ``make test`` without the need for ``cargo build``.
+
+A successful test run indicates that your smart contract environment is set up correctly.
+
+As a brief example, open up *my-project/contract/src/main.rs* in your editor, modify the *KEY* value in the contract, and then rerun the ``make test`` command. You should observe that the smart contract recompiles and the test fails now.
 
 Rust Resources
 ^^^^^^^^^^^^^^
