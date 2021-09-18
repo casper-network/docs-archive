@@ -173,7 +173,7 @@ The Casper local environment provides an in-memory virtual machine against which
 
 A successful test run indicates that your smart contract environment is set up correctly.
 
-As a brief example, open up *my-project/contract/src/main.rs* in your editor, modify the *KEY* value in the contract, and then rerun the ``make test`` command. You should observe that the smart contract recompiles and the test fails now.
+As a brief example, open up *my-project/contract/src/main.rs* in your editor, modify the *KEY_NAME* value in the contract, and then rerun the ``make test`` command. You should observe that the smart contract recompiles and the test fails now.
 
 Rust Resources
 ^^^^^^^^^^^^^^
