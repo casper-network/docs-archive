@@ -21,7 +21,9 @@ Installing Rust
 ###############
 Install the `Rust programming language <https://www.rust-lang.org>`_ if you don’t already have it on your computer. 
 
-The `official Rust guide <https://www.rust-lang.org/tools/install>`_ recommends installing Rust by using ``curl``:
+**Note**: You must customize the build to install the *nightly build* as your default toolchain.
+
+The `official Rust guide <https://www.rust-lang.org/tools/install>`_ recommends installing Rust by using ``curl``. 
 
 .. code::
 
@@ -29,7 +31,7 @@ The `official Rust guide <https://www.rust-lang.org/tools/install>`_ recommends 
 
 You can also use ``brew`` on MacOS or ``apt`` on Linux to install Rust.
 
-You will need to customize the build so that you are installing the nightly build as your default toolchain. Once you finish installing Rust, check your version:
+Once you finish installing Rust, check your version:
 
 .. code::
 
