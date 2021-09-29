@@ -12,3 +12,11 @@ A type of cryptocurrency that represents an asset. See `CSPR <C.html#cspr>`_.
 Transaction
 ^^^^^^^^^^^
 See `deploy <D.html#deploy>`_.
+
+Turing-complete blockchain
+^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+Turing completeness refers to the ability of a machine to execute computational problems on its own by deciding or recognizing data manipulation rule sets.
+
+For a blockchain to be Turing-complete, it means that it can understand and execute any smart contract given enough resources such as a robust code-base (necessary instructions), time, processing power, memory, etc. without human interaction or interference.
+
+

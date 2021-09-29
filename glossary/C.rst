@@ -31,6 +31,13 @@ Contract runtime
 ^^^^^^^^^^^^^^^^
 Enables developers to use a seamless workflow for authoring and testing their `smart contracts <S.html#smart-contract>`_. This environment can also be used for continuous integration, enabling Rust smart contracts to be managed using development best practices.
 
+Correct by construction
+^^^^^^^^^^^^^^^^^^^^^^^
+Correct-by-construction (CBC) protocols are consensus protocols meeting the following properties:
+
+-   All the nodes share the same proof of asynchronous liveness, which means that the protocol will continue to produce blocks at some interval.
+-   The consensus has mathematically provable safety, which means that once a block is committed, it cannot be reverted.
+
 Crate
 ^^^^^
 A compilation unit in Rust. A crate can be compiled into a binary or into a library. By default, *rustc*, the compiler for the Rust programming language, will produce a binary from a crate.

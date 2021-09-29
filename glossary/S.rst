@@ -5,6 +5,10 @@ S
 `A <A.html>`_  `B <B.html>`_  `C <C.html>`_  `D <D.html>`_  `E <E.html>`_  `F <F.html>`_  `G <G.html>`_  `H <H.html>`_  `I <I.html>`_  `J <J.html>`_  `K <K.html>`_  `L <L.html>`_  `M <M.html>`_  `N <N.html>`_  `O <O.html>`_  `P <P.html>`_  `Q <Q.html>`_  `R <R.html>`_  `S <S.html>`_  `T <T.html>`_  `U <U.html>`_  `V <V.html>`_  `W <W.html>`_  `X <X.html>`_  `Y <Y.html>`_  `Z <Z.html>`_  
 ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== 
 
+Safe
+^^^^
+When a protocol is provably safe, it means that all the participating nodes will make the same decision and continue to produce blocks at some interval. Also, see `Correct-by-construction <C.html#correct-by-construction>`_.
+
 Secret key
 ^^^^^^^^^^
 A cryptographic and confidential key that signs transactions to ensure their correct execution (carrying out only the user's intended operations).
@@ -23,7 +27,15 @@ In Proof-of-Stake, the deposit acts as collateral. The validator guarantees that
 
 Smart contract
 ^^^^^^^^^^^^^^
-A WebAssembly (WASM) program that the network stores as a value in the global state. The execution of a smart contract causes changes to the global state. A smart contract can be invoked by a transaction or by another smart contract. Smart contracts can declare input data as the arguments of a function. When invoking a smart contract, one must provide the input values. 
+Smart contracts are self-executing computer programs that perform specific actions based on pre-programmed terms stored on the blockchain. Once the pre-programmed terms are met, the smart contract executes the action and eliminates the need for a centralized third party.
+
+On the Casper Network, a smart contract is a WebAssembly (WASM) program that the network stores as a value in the `global state <G.html#global-state>`_. The execution of a smart contract causes changes to the global state.
+
+A smart contract can be invoked by a transaction or by another smart contract. Smart contracts can declare input data as the arguments of a function. When invoking a smart contract, one must provide the input values.
+
+Smart-contract platform
+^^^^^^^^^^^^^^^^^^^^^^^
+A smart contract platform provides the required blockchain environment for the creation, deployment, and execution of smart contracts.
 
 Staker
 ^^^^^^
