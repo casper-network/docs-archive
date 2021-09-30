@@ -12,7 +12,7 @@ This article provides an overview of the Casper project.
 What is Casper?
 ***************
 
-Casper is a new Turing-complete smart-contracting platform, backed by a Proof-of-Stake (PoS) consensus algorithm and WebAssembly (WASM). The network is a permissionless, decentralized, public blockchain.
+Casper is a new `Turing-complete <glossary/T.html#turing-complete-blockchain>`_ smart-contracting platform, backed by a Proof-of-Stake (PoS) consensus algorithm and WebAssembly (WASM). The network is a `permissionless <glossary/P.html#permissionless>`_, decentralized, public blockchain.
 
 The network's consensus protocol is called `Highway <https://arxiv.org/pdf/2101.02159.pdf>`_, and it has several benefits over classic Byzantine Fault Tolerant (BFT) consensus protocols. First, Highway allows networks to reach higher thresholds of *finality*, meaning that more blocks are finalized, and validators agree to add them to the blockchain. Second, the protocol achieves flexibility by expressing block finality in ways not possible in BFT models. This protocol is built on Vlad Zamfir's `correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-casper-paper>`_ research.
 

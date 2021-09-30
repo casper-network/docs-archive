@@ -5,6 +5,11 @@ P
 `A <A.html>`_  `B <B.html>`_  `C <C.html>`_  `D <D.html>`_  `E <E.html>`_  `F <F.html>`_  `G <G.html>`_  `H <H.html>`_  `I <I.html>`_  `J <J.html>`_  `K <K.html>`_  `L <L.html>`_  `M <M.html>`_  `N <N.html>`_  `O <O.html>`_  `P <P.html>`_  `Q <Q.html>`_  `R <R.html>`_  `S <S.html>`_  `T <T.html>`_  `U <U.html>`_  `V <V.html>`_  `W <W.html>`_  `X <X.html>`_  `Y <Y.html>`_  `Z <Z.html>`_  
 ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== ============== 
 
+Partial synchrony
+^^^^^^^^^^^^^^^^^
+Partial synchrony is used to define the fault tolerance of a consensus protocol, which is a time-bound mechanism to note suspicions or problems (failure, crashes, etc.).
+When a protocol is provably live under partial synchrony, it means that the nodes will make a decision within a fixed time period. Once the decision is made and a block is committed, it cannot be reverted. Also see `CBC <C.html#cbc>`_.
+
 Participate in consensus
 ^^^^^^^^^^^^^^^^^^^^^^^^
 The process of following the `consensus <C.html#consensus>`_ algorithm. The primary participants are `validators <V.html#validator>`_, bonded with their stake and part of the validator set for that particular era. `Delegators <D.html#delegator>`_ participate indirectly by delegating their tokens to one or more of these validators and contributing by increasing the total stake that ensures the security of the network.
@@ -16,6 +21,10 @@ The *payment code* is the `WASM <W.html#webassembly>`_ program that pays the tra
 Peer node
 ^^^^^^^^^
 A node on a peer-to-peer (P2P) network.
+
+Permissionless
+^^^^^^^^^^^^^^
+A permissionless blockchain network has its consensus and transaction validation process open and available for anyone to participate. Being permissionless is an essential characteristic of most public blockchains, enabling decentralization, transparency, and value exchange between participants. 
 
 Primary token
 ^^^^^^^^^^^^^
