@@ -7,7 +7,7 @@ S
 
 Safe
 ^^^^
-When a protocol is provably safe, it means that all the participating nodes will make the same decision and continue to produce blocks at some interval. Also, see `Correct-by-construction <C.html#correct-by-construction>`_.
+When a protocol is provably safe, it means that all the participating nodes will make the same decision and continue to produce blocks at some interval. Also, see `CBC <C.html#cbc>`_.
 
 Secret key
 ^^^^^^^^^^
