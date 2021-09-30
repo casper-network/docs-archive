@@ -8,7 +8,7 @@ P
 Partial synchrony
 ^^^^^^^^^^^^^^^^^
 Partial synchrony is used to define the fault tolerance of a consensus protocol, which is a time-bound mechanism to note suspicions or problems (failure, crashes, etc.).
-When a protocol is provably live under partial synchrony, it means that the nodes will make a decision within a fixed time period. Once the decision is made and a block is committed, it cannot be reverted. Also see `Correct-by-construction <C.html#correct-by-construction>`_.
+When a protocol is provably live under partial synchrony, it means that the nodes will make a decision within a fixed time period. Once the decision is made and a block is committed, it cannot be reverted. Also see `CBC <C.html#cbc>`_.
 
 Participate in consensus
 ^^^^^^^^^^^^^^^^^^^^^^^^
