@@ -127,11 +127,17 @@ You can use the Casper Signer to connect to various websites and dApps.
 
 To connect to a website or dApp, do the following:
 
-    1.	Navigate to the website or dApp that is integrated with the Signer.
-    2.	Log in to your Signer, for more details see `Logging in to the Casper Signer <signer-guide.html#logging-in-to-the-casper-signer>`_.
-    3.	On the Signer home, the top bar displays DISCONNECTED. Click this bar to connect to the website. When the website is connected to the Casper Signer, the top bar displays CONNECTED.
+    1.  Navigate to the website or dApp that is integrated with the Signer. 
+    2.  Log in to your Signer, for more details see `Logging in to the Casper Signer <signer-guide.html#logging-in-to-the-casper-signer>`_. 
+    3.  Click the main menu icon |main-icon| to open the main menu and select **Connected Sites**. The current website is displayed in the list of connected sites. 
+    4.  To connect to a site, click the connect icon next to the name of the website.
 
-    *Note*: If the website is not integrated with Casper Signer, the roll-over text displays the message ‘This site is not integrated with the Signer’.
+        Figure 4: Connected Sites
+            .. figure:: ../assets/tutorials/signer/connect-site.png
+                :width: 200
+                :class: float-left
+
+**Note**: If the website is not integrated with the Casper Signer, the roll-over text displays the message ‘This site is not integrated with the Signer’.
 
 4.4 Download Active Keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~
