@@ -80,6 +80,7 @@ To import an account, do the following:
     1.	On the Casper Signer home (as shown in *Figure 1*), click **IMPORT ACCOUNT**. The Import from Secret Key File option is displayed.
     2.  Click **UPLOAD**, browse and select the secret key you wish to add to your wallet.
     3.	Enter a name for the imported account and click **IMPORT**. Your secret key is now imported into the Casper Signer.
+    
         a.	To return to the Casper Signer home, click the home icon |home| on the top-left corner of the pop-up window. Here, you can see the number of accounts in your wallet and the name of the account that is currently active.
 
 4.	Managing an Account
