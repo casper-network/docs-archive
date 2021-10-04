@@ -39,8 +39,7 @@ To log in to the Casper Signer, you must create a vault and import or create acc
 3. You can now import an account or create a new one.
 
     a. If you don’t have any existing cryptographic keys, you must create a new account. For more information on creating a new account, see `Creating an Account <signer-guide.html#id1>`_.
-    b. If you have a set of keys for your account, you can just import the secret key in the Casper Signer. For more information on importing an existing account, see `Importing an Account <signer-guide.html#importing-an-account>`_.
-
+    b. If you have a set of keys for your account, you can just import the secret key in the Casper Signer. For more information on importing an existing account, see `Importing an Account <signer-guide.html#id2>`_.
 
     Figure 1: Casper Signer Home (when you have no existing accounts)
         .. figure:: ../assets/tutorials/signer/first-home.png
@@ -63,11 +62,14 @@ To create an account, do the following:
     2.	Enter a name for the account and select the algorithm to generate the keys. The Public Key field is auto-populated.
     3.  Click **CREATE** to create your account. 
 
-        a.	To return to the Casper Signer home, click the home icon on the top-left corner of the pop-up window. Here, you can see the number of accounts in your wallet and the name of the account that is currently active.
+        a.	To return to the Casper Signer home, click the home icon |home| on the top-left corner of the pop-up window. Here, you can see the number of accounts in your wallet and the name of the account that is currently active.
+
+        .. |home| image:: ../assets/tutorials/signer/home-icon.png
+            :width: 25
 
     .. note::
 
-        It is highly recommended that you download and save your account keys in a safe location (preferably offline). This will allow you to recover your account in case you lose access to your vault. For more information on how to download your cryptographic keys, see `Download Active Keys <>`_.
+        It is highly recommended that you download and save your account keys in a safe location (preferably offline). This will allow you to recover your account in case you lose access to your vault. For more information on how to download your cryptographic keys, see `Download Active Keys <signer-guide.html#id3>`_.
 
 3.	Importing an Account
 -------------------------
@@ -78,12 +80,12 @@ To import an account, do the following:
     1.	On the Casper Signer home (as shown in *Figure 1*), click **IMPORT ACCOUNT**. The Import from Secret Key File option is displayed.
     2.  Click **UPLOAD**, browse and select the secret key you wish to add to your wallet.
     3.	Enter a name for the imported account and click **IMPORT**. Your secret key is now imported into the Casper Signer.
-        a.	To return to the Casper Signer home, click the home icon on the top-left corner of the pop-up window. Here, you can see the number of accounts in your wallet and the name of the account that is currently active.
+        a.	To return to the Casper Signer home, click the home icon |home| on the top-left corner of the pop-up window. Here, you can see the number of accounts in your wallet and the name of the account that is currently active.
 
 4.	Managing an Account
 ------------------------
 
-The main menu of the Casper Signer allows you to perform various functions, such as switching between accounts, managing keys, viewing connected sites, downloading active keys, setting the timeout for your Signer session, and locking your vault. The main menu icon is located at the top-right corner of the Casper Signer window. 
+The main menu of the Casper Signer allows you to perform various functions, such as switching between accounts, managing keys, viewing connected sites, downloading active keys, setting the timeout for your Signer session, and locking your vault. The main menu icon |main-icon| is located at the top-right corner of the Casper Signer window. 
 
     Figure 2: Casper Signer Main Menu
         .. figure:: ../assets/tutorials/signer/main-menu.png
@@ -94,7 +96,7 @@ The main menu of the Casper Signer allows you to perform various functions, such
 4.1 Switching Active Accounts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The main menu displays the names of all the accounts registered with the Casper Signer wallet. To select an account as the current active account, click the account name. A check-mark appears in front of the account name. This indicates that the account is active. As an example, in Figure 2, account GSTest12345 is the active account.
+The main menu displays the names of all the accounts registered with the Casper Signer wallet. To select an account as the current active account, click the account name. A check-mark appears in front of the account name. This indicates that the account is active. As an example, in *Figure 2*, account *GSTest12345* is the active account.
 
 4.2	Key Management
 ~~~~~~~~~~~~~~~~~~~
@@ -126,7 +128,7 @@ You can use the Casper Signer to connect to various websites and dApps.
 To connect to a website or dApp, do the following:
 
     1.	Navigate to the website or dApp that is integrated with the Signer.
-    2.	Log in to your Signer.
+    2.	Log in to your Signer, for more details see `Logging in to the Casper Signer <signer-guide.html#logging-in-to-the-casper-signer>`_.
     3.	On the Signer home, the top bar displays DISCONNECTED. Click this bar to connect to the website. When the website is connected to the Casper Signer, the top bar displays CONNECTED.
 
     *Note*: If the website is not integrated with Casper Signer, the roll-over text displays the message ‘This site is not integrated with the Signer’.
@@ -135,8 +137,10 @@ To connect to a website or dApp, do the following:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature allows you to download the set of cryptographic keys from your active account. 
-To download the set of keys for the selected active account, click the main menu icon and select **Download Active Keys**.
+To download the set of keys for the selected active account, click the main menu icon |main-icon| and select **Download Active Keys**.
 
+.. |main-icon| image:: ../assets/tutorials/signer/main-icon.png
+    :width: 25
 
 4.5	Timeout
 ~~~~~~~~~~~~
