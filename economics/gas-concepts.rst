@@ -32,19 +32,19 @@ Why do I see an ‘Out of Gas’ error?
 You might encounter an ‘Out of Gas’ error when the `gas <gas-concepts.html#what-is-gas>`_ allotted for the transaction was insufficient to cover the cost of computation for the transaction. The amount of gas required for a transaction is determined by how much code is executed on the blockchain and also the storage utilized. 
 Here is an `example <https://cspr.live/deploy/afeb43036c41e667af8bc34782c48a66cf4da3818defe9f761291fa515cc38b9>`_ of a transaction resulting in an out of gas error on Mainnet.
 
-**Figure 1**: In the “Deploys” tab of an account, a red exclamation mark is shown. By moving the cursor over it, the tooltip displays “Out of gas error”.
+**Figure 1**: In the Deploys tab of an account on `cspr.live <https://cspr.live/>`_, a red exclamation mark is shown. By moving the cursor over it, the tooltip displays 'Out of gas error'.
 
 .. image:: ../assets/gas-concepts/error-deploys.png
     :width: 550
     :alt: Out of gas error
 
-**Figure 2**: Clicking on the specific deploy, we see more details about the deploy such as the “Deploy Hash”, “Cost”, and the “Status” as an “Out of gas error”.
+**Figure 2**: Click the specific deploy to see more details such as the Deploy Hash, Cost, and the Status as an 'Out of gas error'.
 
 .. image:: ../assets/gas-concepts/error-account.png
     :width: 550
     :alt: Gas error in account
 
-**Figure 3**: Clicking on the “Show raw data” button, you can see more details about the deploy.
+**Figure 3**: Click the **Show raw data** button, to see more details about the deploy.
 
 .. image:: ../assets/gas-concepts/error-raw.png
     :width: 550
