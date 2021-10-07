@@ -4,60 +4,78 @@ Testing the Contract
 
 The testing framework in this tutorial uses the `Casper engine test support <https://crates.io/crates/casper-engine-test-support>`_ crate for testing the contract implementation against the Casper execution environment. 
 
-We will review the following three `GitHub <https://github.com/casper-ecosystem/erc20>`_ files, which create the testing framework:
+We will review the following three `GitHub testing folders <https://github.com/casper-ecosystem/erc20/tree/master/testing>`_, which create the testing framework for the ERC20 Casper contract:
 
-* ``tests/src/erc20.rs`` - sets up the testing context and creates helper functions used by unit tests 
-* ``tests/src/tests.rs`` - contains the unit tests
-* ``tests/src/lib.rs`` - links the above files together and is required by the Rust toolchain
-
+* ``erc20-test-call`` -  links the test framework together and is required by the Rust toolchain
+* ``erc20-test`` - sets up the testing context and creates helper functions used by unit tests
+* ``tests`` - contains the unit tests
+ 
 The following is an example of a complete test:
 
 .. code-block:: rust
 
     #[test]
-    fn test_erc20_transfer() {
-        let amount = 10.into();
-        let mut t = Token::deployed();
-        t.transfer(t.bob, amount, Sender(t.ali));
-        assert_eq!(t.balance_of(t.ali), token_cfg::total_supply() - amount);
-        assert_eq!(t.balance_of(t.bob), amount);
+    fn should_transfer_account_to_account() {
+        let (mut builder, test_context) = setup();
+        let sender1 = Key::Account(*DEFAULT_ACCOUNT_ADDR);
+        let recipient1 = Key::Account(*ACCOUNT_1_ADDR);
+        let sender2 = Key::Account(*ACCOUNT_1_ADDR);
+        let recipient2 = Key::Account(*ACCOUNT_2_ADDR);
+
+        test_erc20_transfer(
+            &mut builder,
+            &test_context,
+            sender1,
+            recipient1,
+            sender2,
+            recipient2,
+        );
     }
 
-..
-    Removed links for `tests crate <https://github.com/casper-ecosystem/erc20/tree/master/tests>` and `contract crate <https://github.com/casper-ecosystem/erc20/tree/master/contract>` as the links are broken.
+To run the tests, issue the following command in the `erc20 project folder <https://github.com/casper-ecosystem/erc20>`_:
 
-The tests crate has a ``build.rs`` file, which is effectively a custom build script executed every time before running the tests. The ``build.rs`` file compiles the contract crate in *release* mode and copies the ``contract.wasm`` file to the ``tests/wasm`` directory. In practice, that means you only need to run a single command during development, which is **make test**.
+.. code-block:: bash
+
+    make test
+
+The project contains a `Makefile <https://github.com/casper-ecosystem/erc20/blob/master/Makefile>`_, a custom build script that compiles the contract before running tests.
+The Makefile compiles the contract crate in *release* mode and copies the ``contract.wasm`` file to the `tests/wasm <https://github.com/casper-ecosystem/erc20/tree/master/testing/tests/wasm>`_ directory. In practice, that means you only need to run a single command during development, which is *make test*.
 
 
 Configuring the Test Package
 ------------------------------
 
-First, we define a ``tests`` package in the ``tests/Cargo.toml`` file.
+First, we define a ``tests`` package in the `tests/Cargo.toml <https://github.com/casper-ecosystem/erc20/blob/master/testing/tests/Cargo.toml>`_ file.
 
 .. code-block:: toml
 
     [package]
     name = "tests"
-    version = "0.2.0"
-    authors = ["Your Name here <your email here>"]
-    edition = "2018"
+    version = "0.1.0"
+    ...
 
     [dependencies]
-    casper-contract = "1.1.1"
-    casper-types = "1.1.1"
-    casper-engine-test-support = "1.1.1"
+    casper-types = "1.3.2"
+    casper-engine-test-support = "1.3.2"
+    casper-execution-engine = "1.3.2"
+    once_cell = "1.8.0"
 
-    [features]
-    default = ["casper-contract/std", "casper-types/std", "casper-contract/test-support"]
+    [lib]
+    name = "tests"
+    ...
 
-Describing the Logic for Testing
---------------------------------
+Testing Logic
+-------------
 
-To test the smart contract, we need to specify the starting state of the blockchain, deploy the compiled contract to this starting state, and create additional deploys for each of the methods in the contract. 
+To test the smart contract, we need to follow these steps:
 
-The ``tests/src/erc20.rs`` file contains methods that can simulate a real-world deployment (storing the contract in the blockchain) and transactions to invoke the methods in the contract.
+* Specify the starting state of the blockchain.
+* Deploy the compiled contract to the blockchain given the starting state.
+* Then, create additional deploys for each of the methods in the contract. 
 
-Setting up the testing context
+The `erc20-test/src/main.rs <https://github.com/casper-ecosystem/erc20/blob/master/testing/erc20-test/src/main.rs>`_ file accomplishes this steps. It contains methods that can simulate a real-world deployment (storing the contract in the blockchain) and transactions to invoke the methods in the contract.
+
+Setting up the Testing Context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Let's start by defining the required constants (i.e., method names, key names, and account addresses). 
