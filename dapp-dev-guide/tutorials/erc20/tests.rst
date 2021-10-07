@@ -73,7 +73,7 @@ To test the smart contract, we need to follow these steps:
 * Deploy the compiled contract to the blockchain given the starting state.
 * Then, create additional deploys for each of the methods in the contract. 
 
-The `erc20-test/src/main.rs <https://github.com/casper-ecosystem/erc20/blob/master/testing/erc20-test/src/main.rs>`_ file accomplishes this steps. It contains methods that can simulate a real-world deployment (storing the contract in the blockchain) and transactions to invoke the methods in the contract.
+The `erc20-test/src/main.rs <https://github.com/casper-ecosystem/erc20/blob/master/testing/erc20-test/src/main.rs>`_ file accomplishes these steps. It contains methods that can simulate a real-world deployment (storing the contract in the blockchain) and transactions to invoke the methods in the contract.
 
 Setting up the Testing Context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
