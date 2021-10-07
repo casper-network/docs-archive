@@ -10,7 +10,7 @@ Query the contract package hash which returns the package:
 
 This will return the ``Contract Package`` object:
 
-.. image:: contract-pkg.png
+.. image:: images/contract-pkg.png
 
 .. note:: 
 
@@ -26,7 +26,7 @@ The utility contract invokes the ``balance_of`` and ``allowance`` entry point of
 
     The named keys field, which will contain an entry called `result` with some URef associated with it.
 
-.. image:: uref.png
+.. image:: images/uref.png
 
 We will use this URef value to check the balances and allowances of users within the ERC20 contract.
 

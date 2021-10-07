@@ -24,7 +24,7 @@ The follow up read of the corresponding URef:
 
     casper-client query-state -n http://3.143.158.19:7777 --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 --state-root-hash eec441ad782dcaab1b83708a9456250f97e6725528f9579ca4871a3b9429033f
 
-.. image:: transferUref.png
+.. image:: images/transferUref.png
 
 
 Transfer of 20 ERC-20 Tokens from B to C
@@ -48,7 +48,7 @@ Invoking `balance_of` for user A
 
     casper-client query-state -n http://3.143.158.19:7777 --state-root-hash eec441ad782dcaab1b83708a9456250f97e6725528f9579ca4871a3b9429033f --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
-.. image:: invoke-bal-a.png
+.. image:: images/invoke-bal-a.png
 
 Invoking `balance_of` for user B
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -61,7 +61,7 @@ Invoking `balance_of` for user B
 
     casper-client query-state -n http://3.143.158.19:7777 --state-root-hash 3e77ef8615f372d8d169959c9ebd276693ec98e7d69b62e3872ffe4328e6427c --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
-.. image:: invoke-bal-a.png
+.. image:: images/invoke-bal-a.png
 
 Invoking `balance_of` for user C
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,7 +74,7 @@ Invoking `balance_of` for user C
 
     casper-client query-state -n http://3.143.158.19:7777 --state-root-hash 745aa27b61cf37dd1f3d0f57212874a9430ea4fa597c54d25a02ba5f4665ca37 --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
-.. image:: invoke-bal-c.png
+.. image:: images/invoke-bal-c.png
 
 
 Approve B to Spend 15 Tokens of A
@@ -98,7 +98,7 @@ As we did for `balance_of` to read out the balance values, we must perform a sim
     
     casper-client query-state -n http://3.143.158.19:7777 --state-root-hash a4f11712b6ffe2f87267d2fa08aa04494846d50ed8a3d1717724a1d6facfe2a7 --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
-.. image:: approve-b.png
+.. image:: images/approve-b.png
 
 Transfer 10 ERC-20 Tokens from B’s Allowance to D 
 ---------------------------------------------------
@@ -118,7 +118,7 @@ Invoking `balance_of` for user A
 
     casper-client query-state -n http://3.143.158.19:7777 --state-root-hash 76b1e6844b26d0565461e8d609147ea5c0e0f6f70022d2a9ebfbabce6f5f8407 --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
-.. image:: transfer-b2d.png
+.. image:: images/transfer-b2d.png
 
 Invoking `balance_of` for user B
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -131,7 +131,7 @@ Invoking `balance_of` for user B
 
     casper-client query-state -n http://3.143.158.19:7777 --state-root-hash 08f89451f65d87aac27f482bfb46d6772ee7543c207fd2907a2515549ed01a9a --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
-.. image:: invoke-bal-b2.png
+.. image:: images/invoke-bal-b2.png
 
 Invoking `balance_of` for user C
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -144,7 +144,7 @@ Invoking `balance_of` for user C
 
     casper-client query-state -n http://3.143.158.19:7777 --state-root-hash 717c4b166737cec5a3101ecea2341f96e54dde17309ecfbe80a3df339d8e4bcd --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
-.. image:: invoke-bal-c2.png
+.. image:: images/invoke-bal-c2.png
 
 Invoking `balance_of` for user D
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -153,7 +153,7 @@ Invoking `balance_of` for user D
 
     casper-client put-deploy -n http://3.143.158.19:7777 --secret-key ~/casper/ibm_demo/user_a/secret_key.pem --session-package-name "erc20_test_call" --session-entry-point "check_balance_of" --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "address:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" --chain-name integration-test --payment-amount 1000000000
 
-.. image:: invoke-bal-d.png
+.. image:: images/invoke-bal-d.png
 
 Invoking `allowance` to check that it is 5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -166,6 +166,6 @@ Invoking `allowance` to check that it is 5
 
     casper-client query-state -n http://3.143.158.19:7777 --state-root-hash 90635f6e9c35df061e74903148a1b47b9f32c1feb40abb7a902163a20f4c2025 --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
-.. image:: invoke-allowance.png
+.. image:: images/invoke-allowance.png
 
 
