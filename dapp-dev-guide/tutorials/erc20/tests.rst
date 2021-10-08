@@ -70,7 +70,7 @@ In Github, you will find an `example <https://github.com/casper-ecosystem/erc20/
 * `Step 2 <#deploying-the-contract>`_: Deploy the compiled contract to the blockchain and query it.
 * `Step 3 <#invoking-contract-methods>`_: Create additional deploys for each of the methods in the contract. 
 
-This `example test <https://github.com/casper-ecosystem/erc20/example/erc20-tests/src/test_fixture.rs>`_ file accomplishes these steps. It contains methods that can simulate a real-world deployment (storing the contract in the blockchain) and transactions to invoke the methods in the contract.
+This `example test <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ file accomplishes these steps. It contains methods that can simulate a real-world deployment (storing the contract in the blockchain) and transactions to invoke the methods in the contract.
 
 Setting up the Testing Context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -81,7 +81,7 @@ Below is a subset of the required constants. For the most up-to-date version of 
 
 .. code-block:: rust
 
-    // File https://github.com/casper-ecosystem/erc20/example/erc20-tests/src/test_fixture.rs
+    // File https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs
 
     use casper_erc20::constants as consts;
     ...
@@ -100,11 +100,11 @@ Deploying the contract
 
 The next step is to define a struct that has its own VM instance and implements the ERC-20 methods. This struct holds a `TestContext` of its own. The *contract_hash* and the *session_code* won’t change after the contract is deployed, so it is good to keep them handy. 
 
-This code snippet builds the context and includes the compiled contract *.wasm* binary being tested. This function creates a new instance of the `CONTRACT_ERC20_TOKEN` with the accounts `ali`\ , `bob` and `joe` having a positive initial balance. The contract is deployed using the `ali` account. Please visit `GitHub <https://github.com/casper-ecosystem/erc20/example/erc20-tests/src/test_fixture.rs>`_ for the full details.
+This code snippet builds the context and includes the compiled contract *.wasm* binary being tested. This function creates a new instance of the `CONTRACT_ERC20_TOKEN` with the accounts `ali`\ , `bob` and `joe` having a positive initial balance. The contract is deployed using the `ali` account. Please visit `GitHub <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ for the full details.
 
 .. code-block:: rust
 
-    // File https://github.com/casper-ecosystem/erc20/example/erc20-tests/src/test_fixture.rs
+    // File https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs
 
     pub struct TestFixture {
         context: TestContext,
@@ -240,7 +240,7 @@ The following code snippet describes a generic way to call a specific entry poin
         self.context.run(session);
     }
 
-The next code sample shows you how to invoke one of the methods in the contract. Please visit `GitHub <https://github.com/casper-ecosystem/erc20/example/erc20-tests/src/test_fixture.rs>`_ to find the rest of the methods.
+The next code sample shows you how to invoke one of the methods in the contract. Please visit `GitHub <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ to find the rest of the methods.
 
 .. code-block:: rust
 
