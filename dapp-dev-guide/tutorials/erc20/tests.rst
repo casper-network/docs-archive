@@ -259,13 +259,13 @@ The next code sample shows you how to invoke one of the methods in the contract.
 Creating Unit Tests
 -------------------
 
-Now that we have a testing context, we can use it to create unit tests in a file called `integration_tests.rs <https://github.com/casper-ecosystem/erc20/blob/master/example//erc20-tests/src/integration_tests.rs>`_. The unit tests verify the contract code by invoking the functions defined in the `test_fixture.rs <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ file. 
+Now that we have a testing context, we can use it to create unit tests in a file called `integration_tests.rs <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/integration_tests.rs>`_. The unit tests verify the contract code by invoking the functions defined in the `test_fixture.rs <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ file. 
 
-The example below shows you one of the example tests. Visit `GitHub <https://github.com/casper-ecosystem/erc20/example/erc20-tests/src/integration_tests.rs>`_ to find all the available tests. 
+The example below shows you one of the example tests. Visit `GitHub <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/integration_tests.rs>`_ to find all the available tests. 
 
 .. code-block:: rust
 
-    // File https://github.com/casper-ecosystem/erc20/blob/master/example//erc20-tests/src/integration_tests.rs
+    // File https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/integration_tests.rs
 
     use casper_types::{Key, U256};
 
