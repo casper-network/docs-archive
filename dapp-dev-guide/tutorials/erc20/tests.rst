@@ -1,14 +1,14 @@
 
-Testing the Contract
-====================
+Testing Framework
+=================
 
 The testing framework in this tutorial uses the `Casper engine test support <https://crates.io/crates/casper-engine-test-support>`_ crate for testing the contract implementation against the Casper execution environment. 
 
-We will review the following three `GitHub testing folders <https://github.com/casper-ecosystem/erc20/tree/master/testing>`_, which create the testing framework for the ERC20 Casper contract:
+We will review the following three `GitHub testing folders <https://github.com/casper-ecosystem/erc20/tree/master/testing>`_, which create a testing framework for the Casper `ERC-20 <https://github.com/casper-ecosystem/erc20>`_ project:
 
-* `erc20-test-call` -  links the test framework together and is required by the Rust toolchain
-* `erc20-test` - sets up the testing context and creates helper functions used by unit tests
-* `tests` - contains the unit tests
+* **erc20-test-call** -  Links the test framework together and is required by the Rust toolchain
+* **erc20-test** - Sets up the testing context and creates helper functions used by unit tests
+* **tests** - Contains the unit tests
  
 The following is an example of a complete test:
 
@@ -29,20 +29,19 @@ The following is an example of a complete test:
         );
     }
 
-To run the tests, issue the following command in the `erc20 project folder <https://github.com/casper-ecosystem/erc20>`_:
+To run the tests, issue the following command in the project folder, `erc20 <https://github.com/casper-ecosystem/erc20>`_:
 
 .. code-block:: bash
 
     make test
 
-The project contains a `Makefile <https://github.com/casper-ecosystem/erc20/blob/master/Makefile>`_, a custom build script that compiles the contract before running tests.
-The Makefile compiles the contract crate in *release* mode and copies the `contract.wasm` file to the `tests/wasm <https://github.com/casper-ecosystem/erc20/tree/master/testing/tests/wasm>`_ directory. In practice, that means you only need to run a single command during development, which is *make test*.
+The project contains a `Makefile <https://github.com/casper-ecosystem/erc20/blob/master/Makefile>`_, which is a custom build script that compiles the contract before running tests in *release* mode. Then, the script copies the `contract.wasm` file to the `tests/wasm <https://github.com/casper-ecosystem/erc20/tree/master/testing/tests/wasm>`_ directory. In practice, you only need to run a single command during development, which is *make test*.
 
 
 Configuring the Test Package
 ------------------------------
 
-First, we define a `tests` package in the `tests/Cargo.toml <https://github.com/casper-ecosystem/erc20/blob/master/testing/tests/Cargo.toml>`_ file.
+In this project, we define a `tests` package using the `tests/Cargo.toml <https://github.com/casper-ecosystem/erc20/blob/master/testing/tests/Cargo.toml>`_ file.
 
 .. code-block:: toml
 
@@ -70,25 +69,31 @@ In Github, you will find an `example <https://github.com/casper-ecosystem/erc20/
 * `Step 2 <#deploying-the-contract>`_: Deploy the compiled contract to the blockchain and query it.
 * `Step 3 <#invoking-contract-methods>`_: Create additional deploys for each of the methods in the contract. 
 
-This `example test <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ file accomplishes these steps. It contains methods that can simulate a real-world deployment (storing the contract in the blockchain) and transactions to invoke the methods in the contract.
+The `TestFixture <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ accomplishes these steps by simulating a real-world deployment (storing the contract in the blockchain) and invoking methods in the contract.
 
-Setting up the Testing Context
+Setting up the testing context
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The code in the *erc20-test/src/main.rs* file initializes the `global state <https://docs.casperlabs.io/en/latest/glossary/G.html#global-state>`_ with all the data and methods that a smart contract needs to run correctly.  
+The code in the `TestFixture <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ initializes the blockchain's `global state <https://docs.casperlabs.io/en/latest/glossary/G.html#global-state>`_ with all the data and methods a smart contract needs.  
 
-Below is a subset of the required constants. For the most up-to-date version of the contract, please visit `GitHub <https://github.com/casper-ecosystem/erc20>`_.
+Below is a subset of the required constants for this project. For the most up-to-date version of the code, please visit `GitHub <https://github.com/casper-ecosystem/erc20>`_.
 
 .. code-block:: rust
 
     // File https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs
 
+    use casper_engine_test_support::{Code, SessionBuilder, TestContext, TestContextBuilder};
     use casper_erc20::constants as consts;
-    ...
+    use casper_types::{
+        account::AccountHash,
+        bytesrepr::{FromBytes, ToBytes},
+        runtime_args, AsymmetricType, CLTyped, ContractHash, Key, PublicKey, RuntimeArgs, U256, U512,
+    };
 
     const CONTRACT_ERC20_TOKEN: &str = "erc20_token.wasm";
     const CONTRACT_KEY_NAME: &str = "erc20_token_contract";
-    ...
+
+    fn blake2b256(item_key_string: &[u8]) -> Box<[u8]> {...}
 
     #[derive(Clone, Copy)]
     pub struct Sender(pub AccountHash);
@@ -100,7 +105,7 @@ Deploying the contract
 
 The next step is to define a struct that has its own VM instance and implements the ERC-20 methods. This struct holds a `TestContext` of its own. The *contract_hash* and the *session_code* won’t change after the contract is deployed, so it is good to keep them handy. 
 
-This code snippet builds the context and includes the compiled contract *.wasm* binary being tested. This function creates a new instance of the `CONTRACT_ERC20_TOKEN` with the accounts `ali`\ , `bob` and `joe` having a positive initial balance. The contract is deployed using the `ali` account. Please visit `GitHub <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ for the full details.
+This code snippet builds the context and includes the compiled contract *.wasm* binary being tested. The `TestFixture` creates a new instance of the `CONTRACT_ERC20_TOKEN` with the accounts `ali`, `bob` and `joe` having a positive initial balance. The contract is deployed using the `ali` account. Please visit `GitHub <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ for the full and most recent code implementation.
 
 .. code-block:: rust
 
@@ -159,9 +164,9 @@ This code snippet builds the context and includes the compiled contract *.wasm* 
 Querying the network
 ^^^^^^^^^^^^^^^^^^^^^
 
-The previous step has simulated a real deploy on the network. The next code snippet describes how to query the network to find the *contract hash*. 
+The previous step has simulated a real deploy on the network. The next code snippet describes how to query the network to find the *contract hash*.
 
-Contracts are deployed under the context of an account. Since we created the deploy under the context of `self.ali`, this is what we will query here. The ``query_contract`` function uses ``query`` to lookup named keys. It will be used to implement the ``balance_of``, ``total_supply`` and ``allowance`` checks.
+Contracts are deployed under the context of an account. Since we created the deploy under the context of `self.ali`, this is what we will query next. The ``query_contract`` function uses ``query`` to lookup named keys. It will be used to implement the ``balance_of``, ``total_supply`` and ``allowance`` checks.
 
 .. code-block:: rust
 
@@ -195,9 +200,9 @@ Contracts are deployed under the context of an account. Since we created the dep
 
 **Helper Functions**
 
-We also define helper functions to query the named keys defined in the contract.
+We define some helper functions to query the named keys defined in the contract.
 
-This function returns the name of the token:
+The `token_name` function returns the name of the token:
 
 .. code-block:: rust
 
@@ -205,7 +210,7 @@ This function returns the name of the token:
         self.query_contract(consts::NAME_RUNTIME_ARG_NAME).unwrap()
     }
 
-This function returns the token symbol:
+The `token_symbol` function returns the token symbol:
 
 .. code-block:: rust
 
@@ -214,7 +219,7 @@ This function returns the token symbol:
             .unwrap()
     }
 
-This function returns the number of decimal places for the token:
+The `token_decimals` function returns the number of decimal places for the token:
 
 .. code-block:: rust
 
@@ -240,7 +245,7 @@ The following code snippet describes a generic way to call a specific entry poin
         self.context.run(session);
     }
 
-The next code sample shows you how to invoke one of the methods in the contract. Please visit `GitHub <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ to find the rest of the methods.
+The next code sample shows how to invoke one of the methods in the contract. Please visit `GitHub <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ to find the rest of the methods.
 
 .. code-block:: rust
 
@@ -261,7 +266,7 @@ Creating Unit Tests
 
 Now that we have a testing context, we can use it to create unit tests in a file called `integration_tests.rs <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/integration_tests.rs>`_. The unit tests verify the contract code by invoking the functions defined in the `test_fixture.rs <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/test_fixture.rs>`_ file. 
 
-The example below shows you one of the example tests. Visit `GitHub <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/integration_tests.rs>`_ to find all the available tests. 
+The example below shows one of the example tests. Visit `GitHub <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-tests/src/integration_tests.rs>`_ to find all the available tests. 
 
 .. code-block:: rust
 
