@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# muss abahmane <elmabahma@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
+"PO-Revision-Date: 2021-09-08 20:46+0000\n"
+"Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../dapp-dev-guide/tutorials/counter/index.rst:2
+msgid "A Counter Contract Tutorial"
+msgstr "Un tutoriel 'Counter Contract'"
+
+#: ../../dapp-dev-guide/tutorials/counter/index.rst:3
+msgid ""
+"In this tutorial, we introduce an application on the chain – the counter "
+"contract. This tutorial is a straightforward contract that maintains a "
+"counter variable. The goal is to introduce you to the process of deploying "
+"and using a contract on Testnet, the test network. Once you are familiar "
+"with this process, the next step will be to write your smart contracts."
+msgstr ""
+"Dans ce tutoriel, nous introduisons une application sur la chaîne - le "
+"contrat 'counter contract'. Ce tutoriel est un contrat simple qui maintient "
+"une variable compteur. L'objectif est de vous présenter le processus de "
+"déploiement et d'utilisation d'un contrat sur Testnet, le réseau de test. "
+"Une fois que vous serez familiarisé avec ce processus, l'étape suivante "
+"consistera à écrire vos contrats intelligents."
+
+#: ../../dapp-dev-guide/tutorials/counter/index.rst:6
+msgid "**Table of Contents**"
+msgstr "**Table des matières**"
+
+#: ../../dapp-dev-guide/tutorials/counter/index.rst:17
+msgid "Video Tutorial"
+msgstr "Tutoriel vidéo"
+
+#: ../../dapp-dev-guide/tutorials/counter/index.rst:19
+msgid ""
+"If you prefer a video walkthrough of this guide, you can check out this "
+"video."
+msgstr ""
+"Si on préfère une présentation vidéo de ce guide, on peut consulter cette "
+"vidéo."
