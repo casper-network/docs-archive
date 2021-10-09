@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
 "PO-Revision-Date: 2021-06-26 21:46+0000\n"
 "Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
@@ -33,44 +33,60 @@ msgstr ""
 "Les tutoriels suivants présentent en profondeur plusieurs fonctionnalités de"
 " Casper :"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:16
+#: ../../dapp-dev-guide/tutorials/index.rst:17
 msgid "Title"
 msgstr "Titre"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:16
+#: ../../dapp-dev-guide/tutorials/index.rst:17
 msgid "Description"
 msgstr "Description"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:18
+#: ../../dapp-dev-guide/tutorials/index.rst:19
+msgid "`A counter on the Casper chain <counter/index.html>`_"
+msgstr "`Un compteur sur la chaîne Casper <counter/index.html>`_."
+
+#: ../../dapp-dev-guide/tutorials/index.rst:19
+msgid "Deploy a counter contract and call its entry points to increment it"
+msgstr ""
+"Déployer un contrat 'counter contract' et appeler ses points d'entrée pour "
+"l'incrémenter"
+
+#: ../../dapp-dev-guide/tutorials/index.rst:20
 msgid "`ERC-20 implementation <erc20/index.html>`_"
 msgstr "`Implémentation ERC-20 <erc20/index.html>`_"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:18
+#: ../../dapp-dev-guide/tutorials/index.rst:20
 msgid "Implement the ERC-20 standard for Casper"
 msgstr "Implémente la norme ERC-20 pour Casper"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:19
-msgid "`Key-value storage with Casper DSL <kv-storage-tutorial.html>`_"
-msgstr "`Stockage clé-valeur avec le DSL Casper <kv-storage-tutorial.html>`_"
+#: ../../dapp-dev-guide/tutorials/index.rst:21
+msgid "`Key-value storage on Casper <kv-storage-tutorial.html>`_"
+msgstr "`Stockage clé-valeur sur Casper <kv-storage-tutorial.html>`."
 
-#: ../../dapp-dev-guide/tutorials/index.rst:19
-msgid "Design a simple contract to store a value and use the Casper DSL"
-msgstr ""
-"Concevoir un contrat simple pour stocker une valeur et utiliser le DSL "
-"Casper"
+#: ../../dapp-dev-guide/tutorials/index.rst:21
+msgid "Design a simple contract to store a value"
+msgstr "Concevoir un contrat simple pour stocker une valeur"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:20
+#: ../../dapp-dev-guide/tutorials/index.rst:22
 msgid "`Multi-signatures and key recovery <multi-sig/index.html>`_"
 msgstr "`Multi-signatures et récupération de clés <multi-sig/index.html>`_."
 
-#: ../../dapp-dev-guide/tutorials/index.rst:20
+#: ../../dapp-dev-guide/tutorials/index.rst:22
 msgid "Learn to sign transactions with multiple keys"
 msgstr "Apprenez à signer des transactions avec des clés multiples"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:21
+#: ../../dapp-dev-guide/tutorials/index.rst:23
 msgid "`Smart contract upgrades <upgrade-tutorial.html>`_"
 msgstr "`Mises à jour des contrats intelligents <upgrade-tutorial.html>`_"
 
-#: ../../dapp-dev-guide/tutorials/index.rst:21
+#: ../../dapp-dev-guide/tutorials/index.rst:23
 msgid "Learn how to upgrade smart contracts"
 msgstr "Apprenez à mettre à jour les contrats intelligents"
+
+#~ msgid "`Key-value storage with Casper DSL <kv-storage-tutorial.html>`_"
+#~ msgstr "`Stockage clé-valeur avec le DSL Casper <kv-storage-tutorial.html>`_"
+
+#~ msgid "Design a simple contract to store a value and use the Casper DSL"
+#~ msgstr ""
+#~ "Concevoir un contrat simple pour stocker une valeur et utiliser le DSL "
+#~ "Casper"
