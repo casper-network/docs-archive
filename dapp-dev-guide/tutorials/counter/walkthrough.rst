@@ -81,7 +81,8 @@ Let us try deploying the `counter-define` contract to the chain. First, we need 
 The makefile included in the repository makes compilation trivial. With these two commands, we can build (in release mode) and test the contract before deploying it. `make prepare` sets the WASM target and `make test` builds the contracts and verifies them.
 
 .. code-block:: bash
-
+    
+    cd counter
     make prepare 
     make test    
 

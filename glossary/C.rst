@@ -15,7 +15,10 @@ The Casper network is a Proof-of-Stake blockchain that allows validators to stak
 
 CBC
 ^^^
-Correct by construction. CBC Casper is a family of consensus algorithms developed by Vlad Zamfir.
+Correct-by-construction (CBC) is a family of consensus protocols meeting the following properties:
+
+-   All the nodes share the same proof of asynchronous liveness, which means that the protocol will continue to produce blocks at some interval.
+-   The consensus has mathematically provable safety, which means that once a block is committed, it cannot be reverted.
 
 Chainspec
 ^^^^^^^^^
@@ -30,6 +33,10 @@ Casper uses the `Highway <https://docs.casperlabs.io/en/latest/theory/highway.ht
 Contract runtime
 ^^^^^^^^^^^^^^^^
 Enables developers to use a seamless workflow for authoring and testing their `smart contracts <S.html#smart-contract>`_. This environment can also be used for continuous integration, enabling Rust smart contracts to be managed using development best practices.
+
+Correct by construction
+^^^^^^^^^^^^^^^^^^^^^^^
+see `CBC <C.html#cbc>`_.
 
 Crate
 ^^^^^
