@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-08 20:42+0000\n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,10 +79,10 @@ msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:28
 msgid ""
-"After you have gotten familiar with the counter source code, we need to "
-"create a local blockchain network to deploy the contract. If you "
-"completed the NCTL tutorial, all you need to do is allocate the network "
-"assets and then start the network."
+"After you get familiar with the counter source code, we need to create a "
+"local blockchain network to deploy the contract. If you completed the "
+"NCTL tutorial, all you need to do is allocate the network assets and then"
+" start the network."
 msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:30
@@ -104,11 +104,11 @@ msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:43
 msgid ""
-"With a network up and running, you can use the casper-client query-state "
-"command to check the status of the network. However, we first need an "
-"`account hash` and the `state-root-hash` so that we can get the current "
-"snapshot. Once we have that information, we can check how the network "
-"looks."
+"With a network up and running, you can use the ``casper-client query-"
+"state`` command to check the status of the network. However, we first "
+"need an `account hash` and the `state-root-hash` so that we can get the "
+"current snapshot. Once we have that information, we can check how the "
+"network looks."
 msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:45
@@ -149,8 +149,9 @@ msgstr ""
 msgid ""
 "We are using localhost as the node server since the network is running on"
 " our local machine. Make a note of the `state-root-hash` that is "
-"returned, but keep in mind that this hash value will need to be updated "
-"every time we modify the network state. Finally, query the actual state:"
+"returned, however, keep in mind that this hash value will need to be "
+"updated every time we modify the network state. Finally, query the actual"
+" state:"
 msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:74
@@ -179,65 +180,66 @@ msgid ""
 "builds the contracts and verifies them."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:88
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:89
 msgid ""
-"With the compiled contract, we can call the `casper-client put-deploy` "
+"With the compiled contract, we can call the ``casper-client put-deploy`` "
 "command to put the contract on the chain."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:99
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:100
 msgid ""
 "Replace the ``[PATH_TO_YOUR_KEY]`` field with the actual path of where "
 "your secret key is stored. It is one of the fields that gets returned "
 "when you call `nctl-view-faucet-account`."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:100
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:101
 msgid ""
 "The `session-path` argument should point to wherever you compiled "
 "counter-define.wasm on your computer. The code snippet shows you the "
 "default path if the counter folder is in the same directory."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:102
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:103
 msgid ""
 "Once you call this command, it will return a deploy hash. You can use "
 "this hash to verify that the deploy successfully took place."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:110
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:111
 msgid "View the Updated Network State"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:112
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:113
 msgid ""
-"Hopefully, the deployment was successful, but is the named key visible on"
-" the chain now? Call ``casper-client query-state`` to check it out."
+"Hopefully, the deployment was successful. Let us call the ``casper-client"
+" query-state`` command to check if the named key is visible on the chain "
+"now."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:116
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:117
 msgid ""
 "We must get the new state root hash since we just wrote a deploy to the "
 "chain."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:118
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:119
 msgid ""
 "If you run these two commands, there will be a new counter named key on "
 "the chain."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:120
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:184
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:222
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:121
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:185
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:223
 msgid "Get the NEW state-root-hash:"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:126
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:127
 msgid "Get the network state:"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:135
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:136
 msgid ""
 "We can actually dive further into the data stored on the chain using the "
 "query path argument or directly querying the deploy hash. Try the "
@@ -245,19 +247,19 @@ msgid ""
 "of detail."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:137
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:138
 msgid "Retrieve the specific counter contract details:"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:145
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:146
 msgid "Retrieve the specific counter variable details:"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:153
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:154
 msgid "Retrieve the specific deploy details:"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:160
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:161
 msgid ""
 "The first two commands access the counter and count named keys, "
 "respectively, using the query path argument. The third command uses the "
@@ -265,11 +267,11 @@ msgid ""
 " specific deploy only."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:163
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:164
 msgid "Increment the Counter"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:164
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:165
 msgid ""
 "We now have a counter on the chain, and we verified everything is good. "
 "Now we want to increment it. We can do that by calling the entry-point "
@@ -278,45 +280,44 @@ msgid ""
 "deploy` command as illustrated here:"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:176
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:177
 msgid ""
 "Notice that this command is nearly identical to the command used to "
-"deploy the contract. But, instead of `session-path` pointing to the WASM "
-"binary, we have `session-name` and `session-entry-point` identifying the "
-"on-chain contract and its associated function to execute. There is no "
-"WASM file needed since the contract is already on the blockchain."
+"deploy the contract. However, instead of `session-path` pointing to the "
+"WASM binary, we have `session-name` and `session-entry-point` identifying"
+" the on-chain contract and its associated function to execute. There is "
+"no WASM file needed since the contract is already on the blockchain."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:180
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:181
 msgid "View the Updated Network State Again"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:182
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:183
 msgid ""
-"After calling the entry-point above, theoretically, the counter value "
-"should have been incremented by one, but how can we be sure of that? We "
-"can query the network again, but remember that we have to get a new state"
-" root hash once again. Let us check if the counter was incremented by "
-"just looking at the count with the query argument since we are not "
-"concerned with the rest of the chain right now."
+"After calling the entry-point, theoretically, the counter value should "
+"increment by one, but how can we be sure of that? We can query the "
+"network again, however, remember that we have to get a new state root "
+"hash. Let us check if the counter was incremented by looking at the count"
+" with the query argument."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:190
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:228
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:191
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:229
 msgid "Get the network state, specifically for the count variable this time:"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:198
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:199
 msgid ""
 "You should be able to see the counter variable and observe its value has "
 "increased now."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:201
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:202
 msgid "Increment the Counter Again"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:203
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:204
 msgid ""
 "If you recall, we had a second contract named `counter-call` in the "
 "repository. This time around, we can see if we can increment the count "
@@ -324,7 +325,7 @@ msgid ""
 "above."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:205
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:206
 msgid ""
 "Keep in mind, this is another `put-deploy` call just like when we "
 "deployed the `counter_define` contract to the blockchain. The session-"
@@ -332,24 +333,123 @@ msgid ""
 "compiled the contract."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:218
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:219
 msgid "View the Final Network State"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:220
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:221
 msgid ""
-"Before we wrap up this guide, let’s make sure that the second contract "
-"did in fact, update the counter from the first contract! Just as before, "
-"we need a new state-root-hash, and then we can query the network as we "
-"have grown accustomed to by now."
+"Before we wrap up this guide, let us make sure that the second contract "
+"did update the counter from the first contract. Just as before, we need a"
+" new state-root-hash, and then we can query the network."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:236
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:237
 msgid ""
 "If all went according to plan, your counter should have gone from 0 to 1 "
 "before and now from 1 to 2 as you incremented it throughout this "
 "tutorial. Congratulations on building, deploying, and using a smart "
-"contract on your local test network! Now you are ready to build your own "
+"contract on your local test network. Now you are ready to build your own "
 "dApps and launch them onto the Casper blockchain."
 msgstr ""
+
+#~ msgid ""
+#~ "After you have gotten familiar with "
+#~ "the counter source code, we need "
+#~ "to create a local blockchain network "
+#~ "to deploy the contract. If you "
+#~ "completed the NCTL tutorial, all you "
+#~ "need to do is allocate the network"
+#~ " assets and then start the network."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "With a network up and running, you"
+#~ " can use the casper-client query-"
+#~ "state command to check the status "
+#~ "of the network. However, we first "
+#~ "need an `account hash` and the "
+#~ "`state-root-hash` so that we can "
+#~ "get the current snapshot. Once we "
+#~ "have that information, we can check "
+#~ "how the network looks."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We are using localhost as the node"
+#~ " server since the network is running"
+#~ " on our local machine. Make a "
+#~ "note of the `state-root-hash` that"
+#~ " is returned, but keep in mind "
+#~ "that this hash value will need to"
+#~ " be updated every time we modify "
+#~ "the network state. Finally, query the"
+#~ " actual state:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "With the compiled contract, we can "
+#~ "call the `casper-client put-deploy` "
+#~ "command to put the contract on the"
+#~ " chain."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Hopefully, the deployment was successful, "
+#~ "but is the named key visible on"
+#~ " the chain now? Call ``casper-client"
+#~ " query-state`` to check it out."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Notice that this command is nearly "
+#~ "identical to the command used to "
+#~ "deploy the contract. But, instead of "
+#~ "`session-path` pointing to the WASM "
+#~ "binary, we have `session-name` and "
+#~ "`session-entry-point` identifying the "
+#~ "on-chain contract and its associated "
+#~ "function to execute. There is no "
+#~ "WASM file needed since the contract "
+#~ "is already on the blockchain."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "After calling the entry-point above, "
+#~ "theoretically, the counter value should "
+#~ "have been incremented by one, but "
+#~ "how can we be sure of that? "
+#~ "We can query the network again, "
+#~ "but remember that we have to get"
+#~ " a new state root hash once "
+#~ "again. Let us check if the counter"
+#~ " was incremented by just looking at"
+#~ " the count with the query argument"
+#~ " since we are not concerned with "
+#~ "the rest of the chain right now."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Before we wrap up this guide, "
+#~ "let’s make sure that the second "
+#~ "contract did in fact, update the "
+#~ "counter from the first contract! Just"
+#~ " as before, we need a new "
+#~ "state-root-hash, and then we can "
+#~ "query the network as we have grown"
+#~ " accustomed to by now."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If all went according to plan, "
+#~ "your counter should have gone from "
+#~ "0 to 1 before and now from 1"
+#~ " to 2 as you incremented it "
+#~ "throughout this tutorial. Congratulations on"
+#~ " building, deploying, and using a "
+#~ "smart contract on your local test "
+#~ "network! Now you are ready to "
+#~ "build your own dApps and launch "
+#~ "them onto the Casper blockchain."
+#~ msgstr ""
 

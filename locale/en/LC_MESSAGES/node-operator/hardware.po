@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,16 +39,27 @@ msgid "32 GB Ram"
 msgstr ""
 
 #: ../../node-operator/hardware.rst:12
-msgid ""
-"1 TB disk (Both SSDs and HDDs work, but SSDs perform initial sync much "
-"faster.)"
+msgid "1 TB SSD or network SSD backed disk"
 msgstr ""
 
-#: ../../node-operator/hardware.rst:14
+#: ../../node-operator/hardware.rst:13
 msgid ""
-"Linux machine running Ubuntu 18.04 or 20.04 with a Rust build "
-"environment. Reference https://github.com/casper-network/casper-node for "
-"details."
+"HDD cannot perform random writes at a performance needed keep in sync "
+"with the full speed of the network"
+msgstr ""
+
+#: ../../node-operator/hardware.rst:15
+msgid ""
+"Note: For non-archival nodes, disc usage will drop once data recovery is "
+"implemented. It is safe to slowly increase disc space as needed if "
+"monitored and on a server capable of this."
+msgstr ""
+
+#: ../../node-operator/hardware.rst:17
+msgid ""
+"Linux machine running Ubuntu 18.04 or 20.04 (preferred) with a Rust build"
+" environment. Reference https://github.com/casper-network/casper-node for"
+" details."
 msgstr ""
 
 #~ msgid "1 TB disk"
@@ -60,5 +71,18 @@ msgstr ""
 #~ " Reference `https://github.com/Casperlabs/casper-node"
 #~ " <https://github.com/Casperlabs/casper-node>`_ for "
 #~ "details."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "1 TB disk (Both SSDs and HDDs "
+#~ "work, but SSDs perform initial sync "
+#~ "much faster.)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Linux machine running Ubuntu 18.04 or"
+#~ " 20.04 with a Rust build environment."
+#~ " Reference https://github.com/casper-network/casper-"
+#~ "node for details."
 #~ msgstr ""
 

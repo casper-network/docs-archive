@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-08 20:42+0000\n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,13 @@ msgid ""
 "Ultimately, smart contracts are meant to run on the blockchain.  Once "
 "your smart contract is complete, it's time to deploy the contract to the "
 "blockchain. There are a few pre-requisites to doing this:"
+msgstr ""
+
+#: ../../dapp-dev-guide/deploying-contracts.rst:11
+msgid ""
+"An `upgrade` function to upgrade the smart contract, see `Smart Contract "
+"Upgrade Tutorial <./tutorials/upgrade-tutorial.html>`_ for more "
+"information"
 msgstr ""
 
 #: ../../dapp-dev-guide/deploying-contracts.rst:12

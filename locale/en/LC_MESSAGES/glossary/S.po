@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,42 +127,53 @@ msgid "`Z <Z.html>`_"
 msgstr ""
 
 #: ../../glossary/S.rst:9
-msgid "Secret key"
+msgid "Safe"
 msgstr ""
 
 #: ../../glossary/S.rst:10
+msgid ""
+"When a protocol is provably safe, it means that all the participating "
+"nodes will make the same decision and continue to produce blocks at some "
+"interval. Also, see `CBC <C.html#cbc>`_."
+msgstr ""
+
+#: ../../glossary/S.rst:13
+msgid "Secret key"
+msgstr ""
+
+#: ../../glossary/S.rst:14
 msgid ""
 "A cryptographic and confidential key that signs transactions to ensure "
 "their correct execution (carrying out only the user's intended "
 "operations)."
 msgstr ""
 
-#: ../../glossary/S.rst:13
+#: ../../glossary/S.rst:17
 msgid "Seigniorage"
 msgstr ""
 
-#: ../../glossary/S.rst:14
+#: ../../glossary/S.rst:18
 msgid ""
 "The reward mechanism by which validators are rewarded for participating "
 "in consensus. New tokens are minted and given to validators."
 msgstr ""
 
-#: ../../glossary/S.rst:17
+#: ../../glossary/S.rst:21
 msgid "Session code"
 msgstr ""
 
-#: ../../glossary/S.rst:18
+#: ../../glossary/S.rst:22
 msgid ""
 "The *session code* is a field contained in a deployment directive. The "
 "*session code* contains the code the user wishes to execute against the "
 "blockchain.  When the session code executes, it performs a transaction."
 msgstr ""
 
-#: ../../glossary/S.rst:21
+#: ../../glossary/S.rst:25
 msgid "Slashing"
 msgstr ""
 
-#: ../../glossary/S.rst:22
+#: ../../glossary/S.rst:26
 msgid ""
 "In Proof-of-Stake, the deposit acts as collateral. The validator "
 "guarantees that it correctly follows the protocol. If the validator node "
@@ -170,25 +181,49 @@ msgid ""
 "of it is removed."
 msgstr ""
 
-#: ../../glossary/S.rst:25
+#: ../../glossary/S.rst:29
 msgid "Smart contract"
 msgstr ""
 
-#: ../../glossary/S.rst:26
+#: ../../glossary/S.rst:30
 msgid ""
-"A WebAssembly (WASM) program that the network stores as a value in the "
-"global state. The execution of a smart contract causes changes to the "
-"global state. A smart contract can be invoked by a transaction or by "
-"another smart contract. Smart contracts can declare input data as the "
-"arguments of a function. When invoking a smart contract, one must provide"
-" the input values."
+"Smart contracts are self-executing computer programs that perform "
+"specific actions based on pre-programmed terms stored on the blockchain. "
+"Once the pre-programmed terms are met, the smart contract executes the "
+"action and eliminates the need for a centralized third party."
 msgstr ""
 
-#: ../../glossary/S.rst:29
+#: ../../glossary/S.rst:32
+msgid ""
+"On the Casper Network, a smart contract is a WebAssembly (WASM) program "
+"that the network stores as a value in the `global state <G.html#global-"
+"state>`_. The execution of a smart contract causes changes to the global "
+"state."
+msgstr ""
+
+#: ../../glossary/S.rst:34
+msgid ""
+"A smart contract can be invoked by a transaction or by another smart "
+"contract. Smart contracts can declare input data as the arguments of a "
+"function. When invoking a smart contract, one must provide the input "
+"values."
+msgstr ""
+
+#: ../../glossary/S.rst:37
+msgid "Smart-contract platform"
+msgstr ""
+
+#: ../../glossary/S.rst:38
+msgid ""
+"A smart contract platform provides the required blockchain environment "
+"for the creation, deployment, and execution of smart contracts."
+msgstr ""
+
+#: ../../glossary/S.rst:41
 msgid "Staker"
 msgstr ""
 
-#: ../../glossary/S.rst:30
+#: ../../glossary/S.rst:42
 msgid ""
 "A person that deposits tokens in the `proof-of-stake <P.html#proof-of-"
 "stake>`_ contract. A staker is either a `validator <V.html#validator>`_ "
@@ -199,11 +234,11 @@ msgid ""
 "<#slashing>`_, the staker will lose their tokens."
 msgstr ""
 
-#: ../../glossary/S.rst:33
+#: ../../glossary/S.rst:45
 msgid "Staking"
 msgstr ""
 
-#: ../../glossary/S.rst:34
+#: ../../glossary/S.rst:46
 msgid ""
 "A feature of Proof-of-Stake protocols that allows token holders to "
 "actively participate in the protocol, thus securing the network. The "
@@ -211,4 +246,18 @@ msgid ""
 "<https://docs.casperlabs.io/en/latest/staking/index.html>`_ highlights "
 "the steps required to stake the CSPR token on the Casper network."
 msgstr ""
+
+#~ msgid ""
+#~ "A WebAssembly (WASM) program that the"
+#~ " network stores as a value in "
+#~ "the global state. The execution of "
+#~ "a smart contract causes changes to "
+#~ "the global state. A smart contract "
+#~ "can be invoked by a transaction or"
+#~ " by another smart contract. Smart "
+#~ "contracts can declare input data as "
+#~ "the arguments of a function. When "
+#~ "invoking a smart contract, one must "
+#~ "provide the input values."
+#~ msgstr ""
 
