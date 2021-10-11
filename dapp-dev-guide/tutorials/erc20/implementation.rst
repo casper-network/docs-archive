@@ -27,13 +27,15 @@ Since this is a Rust implementation of the ERC-20 token for Casper, we will go o
         Address, ERC20,
     };
 
-Note that in Rust, the keyword `use` is like an `include` statement in C/C++.
+.. note::
+
+    In Rust, the keyword ``use`` is like an ``include`` statement in C/C++.
 
 
 Initializing the Contract
 -------------------------
 
-When you deploy the `contract <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-token/src/main.rs>`_, you need to initialize it with a `call()` function and define a `name`, `symbol`, `decimals`, and `total_supply`, which is the starting token supply.
+When you deploy the `contract <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-token/src/main.rs>`_, you need to initialize it with a ``call()`` function and define `name`, `symbol`, `decimals`, and `total_supply`, which are the starting token supply.
 
 .. code-block:: rust
 
@@ -53,9 +55,9 @@ Contract Methods
 
 Review the contract in `Github <https://github.com/casper-ecosystem/erc20/blob/master/example/erc20-token/src/main.rs>`_ to see the implementation of the contract methods. If you have any questions, review the `casper_erc20 <https://docs.rs/casper-erc20/latest/casper_erc20/>`_ library and the `EIP-20 <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#>`_ standard.
 
-* **allowance** - Returns the amount of owner’s tokens allowed to be spent by spender
+* **allowance** - Returns the amount of owner’s tokens allowed to be spent by the spender
 * **approve** - Allows a spender to transfer up to an amount of the direct caller’s tokens
-* **balance_of** - Returns the balance of the owner
+* **balance_of** - Returns the token balance of the owner
 * **decimals** - Returns the decimals of the token
 * **name** - Returns the name of the token
 * **symbol** - Returns the symbol of the token
