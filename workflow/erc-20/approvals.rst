@@ -1,18 +1,18 @@
 Approvals
 ==========
 
-Approve B to spend 15 tokens of A.
-
 **Transfer 10 tokens from an allowance of only 5**
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777
-    --chain-name integration-test
-    --secret-key ~/casper/ibm_demo/user_b/secret_key.pem
-    --session-hash hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180
-    --session-entry-point "transfer_from"
-    --session-arg "owner:key='account-hash-303c0f8208220fe9a4de40e1ada1d35fdd6c678877908f01fddb2a56502d67fd'" --session-arg "recipient:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" --session-arg "amount:u256='10'" 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --chain-name integration-test \
+    --secret-key ~/casper/ibm_demo/user_b/secret_key.pem \
+    --session-hash hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180 \
+    --session-entry-point "transfer_from" \
+    --session-arg "owner:key='account-hash-303c0f8208220fe9a4de40e1ada1d35fdd6c678877908f01fddb2a56502d67fd'" \
+    --session-arg "recipient:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" \
+    --session-arg "amount:u256='10'" \
     --payment-amount "10000000000" 
 
 Since we know that the allowance value is less than 10, we expect the deploy to fail.
@@ -24,12 +24,14 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --chain-name integration-test 
-    --secret-key ~/casper/ibm_demo/user_b/secret_key.pem 
-    --session-hash hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180 
-    --session-entry-point "transfer_from" 
-    --session-arg "owner:key='account-hash-303c0f8208220fe9a4de40e1ada1d35fdd6c678877908f01fddb2a56502d67fd'" --session-arg "recipient:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" --session-arg "amount:u256='5'" 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --chain-name integration-test \
+    --secret-key ~/casper/ibm_demo/user_b/secret_key.pem \
+    --session-hash hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180 \
+    --session-entry-point "transfer_from" \
+    --session-arg "owner:key='account-hash-303c0f8208220fe9a4de40e1ada1d35fdd6c678877908f01fddb2a56502d67fd'" \
+    --session-arg "recipient:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" \
+    --session-arg "amount:u256='5'" \
     --payment-amount "10000000000
 
 
@@ -37,53 +39,58 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_balance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "address:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" --chain-name integration-test 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_balance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "address:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" \
+    --chain-name integration-test \
     --payment-amount 1000000000
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash d068439dc1f62e330a15e008e5e926e777fd3599baed4ece508d482c50bd263b
 
 
-.. image:: /assets/tutorials/erc20/invokeBalanceOfuserD.png
+.. image:: images/invokeBalanceOfuserD.png
 
 |
 **Invoking `allowance` for B’s tokens of A**
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem    
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_allowance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "owner:key='account-hash-303c0f8208220fe9a4de40e1ada1d35fdd6c678877908f01fddb2a56502d67fd'" --session-arg "spender:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'"
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_allowance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "owner:key='account-hash-303c0f8208220fe9a4de40e1ada1d35fdd6c678877908f01fddb2a56502d67fd'" \
+    --session-arg "spender:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'"
 
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash e863633b47b0689033744855739009b45a8654dadd4ed723f527fd38157a1d92
 
 
-.. image:: /assets/tutorials/erc20/invokeAllowanceBsTokenforA.png
+.. image:: images/invokeAllowanceBsTokenforA.png
 |
 **Approving C to spend 10 of B’s ERC20 tokens**
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --chain-name integration-test 
-    --secret-key ~/casper/ibm_demo/user_b/secret_key.pem 
-    --session-hash hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180 
-    --session-entry-point "approve" 
-    --session-arg "spender:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" --session-arg "amount:u256='10'" 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --chain-name integration-test \
+    --secret-key ~/casper/ibm_demo/user_b/secret_key.pem \
+    --session-hash hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180 \
+    --session-entry-point "approve" \
+    --session-arg "spender:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" \
+    --session-arg "amount:u256='10'" \
     --payment-amount "10000000000"
 
 
@@ -91,20 +98,23 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_allowance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "owner:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" --session-arg "spender:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" --chain-name integration-test --payment-amount 10000000000
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_allowance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "owner:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" \
+    --session-arg "spender:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" \
+    --chain-name integration-test --payment-amount 10000000000
 
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash e9f069c2c03b18f86c15fec54286ac66ece368ac36d9d28024d0cd6cfc93fcf5
 
-.. image:: /assets/tutorials/erc20/invokingToCheckCsAllowance.png
+.. image:: images/invokingToCheckCsAllowance.png
 
 |
 
@@ -112,12 +122,14 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --chain-name integration-test 
-    --secret-key ~/casper/ibm_demo/user_c/secret_key.pem 
-    --session-hash hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180 
-    --session-entry-point "transfer_from" 
-    --session-arg "owner:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" --session-arg "recipient:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" --session-arg "amount:u256='5'" 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --chain-name integration-test \
+    --secret-key ~/casper/ibm_demo/user_c/secret_key.pem \
+    --session-hash hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180 \
+    --session-entry-point "transfer_from" \
+    --session-arg "owner:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" \
+    --session-arg "recipient:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" \
+    --session-arg "amount:u256='5'" \
     --payment-amount "10000000000"
 
 
@@ -125,20 +137,22 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_balance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "address:key='account-hash-303c0f8208220fe9a4de40e1ada1d35fdd6c678877908f01fddb2a56502d67fd'" --chain-name integration-test 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_balance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "address:key='account-hash-303c0f8208220fe9a4de40e1ada1d35fdd6c678877908f01fddb2a56502d67fd'" \
+    --chain-name integration-test \
     --payment-amount 1000000000
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash eb506808fe0749364163fea646c3f4ef35bb55363ea849da219badcd6ba3ee80
 
-.. image:: /assets/tutorials/erc20/invokingBalanceOfuserA.png
+.. image:: images/invokingBalanceOfuserA.png
 
 |
 
@@ -146,22 +160,23 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_balance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "address:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" 
-    --chain-name integration-test 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_balance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "address:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" \
+    --chain-name integration-test \
     --payment-amount 1000000000
 
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash 0ce2c4991543758337a38d1d8f7fe56a42616b95ec93b17aec35a6f03b5e389c
 
-.. image:: /assets/tutorials/erc20/invokingBalanceOfuserB.png
+.. image:: images/invokingBalanceOfuserB.png
 
 |
 
@@ -169,21 +184,22 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_balance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "address:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" 
-    --chain-name integration-test 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_balance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "address:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" \
+    --chain-name integration-test \
     --payment-amount 1000000000
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash 215c50c0e86950cb91bd8e1045315c1129bbaa02d4e49e00bed60130c4dfa69c
 
-.. image:: /assets/tutorials/erc20/invokingBalanceOfuserC1.png
+.. image:: images/invokingBalanceOfuserC1.png
 
 |
 
@@ -191,22 +207,23 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_balance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "address:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" 
-    --chain-name integration-test 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_balance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "address:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" \
+    --chain-name integration-test \
     --payment-amount 1000000000
 
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash 4e8b0de303f834cb7c61bef148046e3de4446903bd15a395c9c37a6d96efe8c6
 
-.. image:: /assets/tutorials/erc20/invokingBalanceOfuserD.png
+.. image:: images/invokingBalanceOfuserD.png
 
 |
 
@@ -214,20 +231,23 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_allowance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "owner:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" --session-arg "spender:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" --chain-name integration-test 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_allowance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "owner:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" \
+    --session-arg "spender:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" \
+    --chain-name integration-test \
     --payment-amount 10000000000
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash d6d4d3e59017dfc21e2c9a8e235e2a2b3a446284a066a1f1f6704559fbb35a66
 
-.. image:: /assets/tutorials/erc20/invokingAlToCheckCsAllowance.png
+.. image:: images/invokingAlToCheckCsAllowance.png
 
 |
 
@@ -235,11 +255,13 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --chain-name integration-test --secret-key ~/casper/ibm_demo/user_c/secret_key.pem 
-    --session-hash hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180 
-    --session-entry-point "transfer_from" --session-arg "owner:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" 
-    --session-arg "recipient:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" --session-arg "amount:u256='10'" 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --chain-name integration-test --secret-key ~/casper/ibm_demo/user_c/secret_key.pem \
+    --session-hash hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180 \
+    --session-entry-point "transfer_from" \
+    --session-arg "owner:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" \
+    --session-arg "recipient:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" \
+    --session-arg "amount:u256='10'" \
     --payment-amount "10000000000"
 
 .. note::
@@ -252,19 +274,23 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_allowance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "owner:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" --session-arg "spender:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" --chain-name integration-test 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_allowance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "owner:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" \
+    --session-arg "spender:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" \
+    --chain-name integration-test \
     --payment-amount 10000000000
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash be29754920f158f093c1daac780fba37bed06c751f256a43fcdc7b5b2775e487
 
-.. image:: /assets/tutorials/erc20/invokingToCheckCsAllowance3.png
+.. image:: images/invokingToCheckCsAllowance3.png
 
 |
 
@@ -277,20 +303,22 @@ Final check for user a balance.
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_balance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "address:key='account-hash-303c0f8208220fe9a4de40e1ada1d35fdd6c678877908f01fddb2a56502d67fd'" --chain-name integration-test 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_balance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "address:key='account-hash-303c0f8208220fe9a4de40e1ada1d35fdd6c678877908f01fddb2a56502d67fd'" \
+    --chain-name integration-test \
     --payment-amount 1000000000
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash c1fb674c4b912a4562b146c8993576c773204dd5b1c731faf62b26386e34a373
 
-.. image:: /assets/tutorials/erc20/finalBalanceCheckAllUsers.png
+.. image:: images/finalBalanceCheckAllUsers.png
 
 |
 
@@ -298,21 +326,22 @@ Final check for user a balance.
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_balance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "address:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" 
-    --chain-name integration-test 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_balance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "address:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" \
+    --chain-name integration-test \
     --payment-amount 1000000000
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash 14f20fb57b7a600aed100a51a34deb6bfca3df1a03b31986a55d9f704ec48701
 
-.. image:: /assets/tutorials/erc20/finalBalanceCheckuserB.png
+.. image:: images/finalBalanceCheckuserB.png
 
 |
 
@@ -320,23 +349,24 @@ Final check for user a balance.
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_balance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "address:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" 
-    --chain-name integration-test 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_balance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "address:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" \
+    --chain-name integration-test \
     --payment-amount 1000000000
 
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash 72e523529f31ff13ea3a9463821b6981cbaf27c11d4a0f70e9b81127bb12e0c7
 
 
-.. image:: /assets/tutorials/erc20/finalBalanceCheckuserC.png
+.. image:: images/finalBalanceCheckuserC.png
 
 |
 
@@ -344,20 +374,21 @@ Final check for user a balance.
 
 .. code-block::
 
-    casper-client put-deploy -n http://3.143.158.19:7777 
-    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem 
-    --session-package-name "erc20_test_call" 
-    --session-entry-point "check_balance_of" 
-    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" --session-arg "address:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" 
-    --chain-name integration-test 
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+    --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+    --session-package-name "erc20_test_call" \
+    --session-entry-point "check_balance_of" \
+    --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
+    --session-arg "address:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" \
+    --chain-name integration-test \
     --payment-amount 1000000000
 
 .. code-block::
 
-    casper-client query-state -n http://3.143.158.19:7777 
-    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 
+    casper-client query-state -n http://3.143.158.19:7777 \
+    --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
     --state-root-hash 40c87ca9a4a78a37503ec87b5bfd9946267960135b1df0bb114403c18da4057d
 
-.. image:: /assets/tutorials/erc20/finalBalanceCheckuserD.png
+.. image:: images/finalBalanceCheckuserD.png
 
 |
