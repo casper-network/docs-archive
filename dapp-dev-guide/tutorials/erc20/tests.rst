@@ -103,9 +103,9 @@ Below is a subset of the required constants for this project. For the most up-to
 Deploying the contract
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The next step is to define a struct that has its own VM instance and implements the ERC-20 methods. This struct holds a `TestContext` of its own. The *contract_hash* and the *session_code* won’t change after the contract is deployed, so it is good to keep them handy. 
+The next step is to define a struct that has its own virtual machine (VM) instance and implements the ERC-20 methods. This struct holds a `TestContext` of its own. The *contract_hash* and the *session_code* won’t change after the contract is deployed, so it is good to keep them handy. 
 
-This code snippet builds the context and includes the compiled contract *.wasm* binary being tested. The ``TestFixture`` creates a new instance of the ``CONTRACT_ERC20_TOKEN`` with the following accounts: 
+This code snippet builds the context and includes the compiled contract *.wasm* binary being tested. The ``TestFixture`` struct creates a new instance of the ``CONTRACT_ERC20_TOKEN`` with the following accounts: 
 
 * `ali` - account used to deploy the contract
 * `bob` 
