@@ -1,6 +1,6 @@
 
-Getting Help
-------------
+Getting Help - FAQs
+-------------------
 
 Frequently Asked Questions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
