@@ -9,19 +9,31 @@ Install the main ERC-20 contract
 
 .. code-block:: bash
 
-    casper-client put-deploy -n http://3.143.158.19:7777 --chain-name integration-test --secret-key ~/casper/ibm_demo/user_a/secret_key.pem --session-path ~/casper/ibm_demo/erc20_token.wasm --session-arg "name:string='ERC20'" --session-arg "symbol:string='gris'" --session-arg "total_supply:u256='100'" --session-arg "decimals:u8='1'" --payment-amount 90000000000
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+	--chain-name integration-test \
+	--secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+	--session-path ~/casper/ibm_demo/erc20_token.wasm \
+	--session-arg "name:string='ERC20'" \
+	--session-arg "symbol:string='gris'" \
+	--session-arg "total_supply:u256='100'" \
+	--session-arg "decimals:u8='1'" \
+	--payment-amount 90000000000
 
 
 Install the erc20_test_call Contract Package
 ----------------------------------------------
 
-.. code:: bash
+.. code-block:: bash
 
-    casper-client put-deploy -n http://3.143.158.19:7777 --chain-name integration-test --secret-key ~/casper/ibm_demo/user_a/secret_key.pem --session-path ~/casper/ibm_demo/erc20_test_call.wasm --payment-amount 90000000000
+    casper-client put-deploy -n http://3.143.158.19:7777 \
+	--chain-name integration-test \
+	--secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
+	--session-path ~/casper/ibm_demo/erc20_test_call.wasm \
+	--payment-amount 90000000000
 
 At this point, the account that installed both the main contract and the helper contract will look like this.
 
-.. code:: rust
+.. code-block:: rust
 
     {
       "src": {
