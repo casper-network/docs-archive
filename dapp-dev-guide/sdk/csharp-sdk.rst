@@ -31,6 +31,8 @@ Look into the `casper-integrations GitHub repository <https://github.com/davidat
 * Send a transfer
 * Listen to SSE events
 
+For key management instructions with this SDK, check this `document <https://hackmd.io/@K48d9TN9T2q7ERX4H27ysw/HkvV-MMBt>`_.
+
 There are also available C# versions of the following tutorials:
 
 * Counter Tutorial (`CasperLabs docs <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/counter/index.html>`_): C# version `here <https://hackmd.io/@K48d9TN9T2q7ERX4H27ysw/SJBnPCdVt>`_ .
