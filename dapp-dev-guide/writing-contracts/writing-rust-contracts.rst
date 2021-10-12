@@ -146,7 +146,7 @@ Before we can deploy the contract to the context, we need to prepare the request
 * Wasm file path.
 * List of arguments.
 * Account context of execution.
-* List of keys that authorize the call. See: TODO insert keys management link.
+* List of keys that authorize the call. See: `Permissions model <https://docs.casperlabs.io/en/latest/implementation/accounts.html#permissions-model>`_
 .. code-block:: rust
 
     let VALUE: &str = "hello world";
