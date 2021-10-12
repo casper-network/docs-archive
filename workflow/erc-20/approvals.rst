@@ -5,7 +5,7 @@ Approvals
 Transfer 10 tokens from an allowance of only 5
 -----------------------------------------------
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --chain-name integration-test \
@@ -25,7 +25,7 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 Additional transfer_from of the remainder 5 tokens
 ---------------------------------------------------
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --chain-name integration-test \
@@ -40,7 +40,7 @@ Additional transfer_from of the remainder 5 tokens
 |
 **Invoking `balance_of` for user D**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -63,7 +63,7 @@ Additional transfer_from of the remainder 5 tokens
 |
 **Invoking `allowance` for B’s tokens of A**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -74,7 +74,7 @@ Additional transfer_from of the remainder 5 tokens
     --session-arg "spender:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'"
 
 
-.. code-block::
+.. code-block:: bash
 
     casper-client query-state -n http://3.143.158.19:7777 \
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
@@ -86,7 +86,7 @@ Additional transfer_from of the remainder 5 tokens
 Approving C to spend 10 of B’s ERC20 tokens
 --------------------------------------------
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --chain-name integration-test \
@@ -100,7 +100,7 @@ Approving C to spend 10 of B’s ERC20 tokens
 
 **Invoking `allowance` to check C’s allowance**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -113,7 +113,7 @@ Approving C to spend 10 of B’s ERC20 tokens
     --payment-amount 10000000000
 
 
-.. code-block::
+.. code-block:: bash
 
     casper-client query-state -n http://3.143.158.19:7777 \
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
@@ -126,7 +126,7 @@ Approving C to spend 10 of B’s ERC20 tokens
 Transfer_from C’s allowance to D
 ---------------------------------
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --chain-name integration-test \
@@ -141,7 +141,7 @@ Transfer_from C’s allowance to D
 |
 **Invoking `balance_of` for user A**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -152,7 +152,7 @@ Transfer_from C’s allowance to D
     --chain-name integration-test \
     --payment-amount 1000000000
 
-.. code-block::
+.. code-block:: bash
 
     casper-client query-state -n http://3.143.158.19:7777 \
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
@@ -164,7 +164,7 @@ Transfer_from C’s allowance to D
 
 **Invoking `balance_of` for user B**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -176,7 +176,7 @@ Transfer_from C’s allowance to D
     --payment-amount 1000000000
 
 
-.. code-block::
+.. code-block:: bash
 
     casper-client query-state -n http://3.143.158.19:7777 \
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
@@ -188,7 +188,7 @@ Transfer_from C’s allowance to D
 
 **Invoking `balance_of` for user C**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -199,7 +199,7 @@ Transfer_from C’s allowance to D
     --chain-name integration-test \
     --payment-amount 1000000000
 
-.. code-block::
+.. code-block:: bash
 
     casper-client query-state -n http://3.143.158.19:7777 \
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
@@ -211,7 +211,7 @@ Transfer_from C’s allowance to D
 
 **Invoking `balance_of` for user D**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -223,7 +223,7 @@ Transfer_from C’s allowance to D
     --payment-amount 1000000000
 
 
-.. code-block::
+.. code-block:: bash
 
     casper-client query-state -n http://3.143.158.19:7777 \
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
@@ -235,7 +235,7 @@ Transfer_from C’s allowance to D
 
 **Invoking `allowance` to check C’s allowance**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -247,7 +247,7 @@ Transfer_from C’s allowance to D
     --chain-name integration-test \
     --payment-amount 10000000000
 
-.. code-block::
+.. code-block:: bash
 
     casper-client query-state -n http://3.143.158.19:7777 \
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
@@ -259,7 +259,7 @@ Transfer_from C’s allowance to D
 
 **Failure to overspend C's allowance**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --chain-name integration-test --secret-key ~/casper/ibm_demo/user_c/secret_key.pem \
@@ -278,7 +278,7 @@ Transfer_from C’s allowance to D
 
 **Invoking `allowance` to check C’s allowance**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -290,7 +290,7 @@ Transfer_from C’s allowance to D
     --chain-name integration-test \
     --payment-amount 10000000000
 
-.. code-block::
+.. code-block:: bash
 
     casper-client query-state -n http://3.143.158.19:7777 \
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \

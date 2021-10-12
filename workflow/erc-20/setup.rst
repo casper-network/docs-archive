@@ -19,7 +19,7 @@ Install the main ERC-20 contract
 	--session-arg "decimals:u8='1'" \
 	--payment-amount 90000000000
 
-
+|
 Install the erc20_test_call Contract Package
 ----------------------------------------------
 

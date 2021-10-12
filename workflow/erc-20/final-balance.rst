@@ -5,7 +5,7 @@ Final balance read for all users.
 
 **Final check for user A balance**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -16,7 +16,7 @@ Final balance read for all users.
     --chain-name integration-test \
     --payment-amount 1000000000
 
-.. code-block::
+.. code-block:: bash
 
     casper-client query-state -n http://3.143.158.19:7777 \
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
@@ -28,7 +28,7 @@ Final balance read for all users.
 
 **Final check for user B balance**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -39,7 +39,7 @@ Final balance read for all users.
     --chain-name integration-test \
     --payment-amount 1000000000
 
-.. code-block::
+.. code-block:: bash
 
     casper-client query-state -n http://3.143.158.19:7777 \
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
@@ -51,7 +51,7 @@ Final balance read for all users.
 
 **Final check for user C balance**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -76,7 +76,7 @@ Final balance read for all users.
 
 **Final check of user D balance**
 
-.. code-block::
+.. code-block:: bash
 
     casper-client put-deploy -n http://3.143.158.19:7777 \
     --secret-key ~/casper/ibm_demo/user_a/secret_key.pem \
@@ -87,7 +87,7 @@ Final balance read for all users.
     --chain-name integration-test \
     --payment-amount 1000000000
 
-.. code-block::
+.. code-block:: bash
 
     casper-client query-state -n http://3.143.158.19:7777 \
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007 \
