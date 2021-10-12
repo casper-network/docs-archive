@@ -83,7 +83,7 @@ Additional transfer_from of the remainder 5 tokens
 
 .. image:: images/invokeAllowanceBsTokenforA.png
 |
-Approving C to spend 10 of B’s ERC20 tokens
+Approving C to spend 10 of B’s ERC-20 tokens
 --------------------------------------------
 
 .. code-block:: bash
