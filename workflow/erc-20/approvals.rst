@@ -105,7 +105,8 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
     --session-arg "token_contract:account_hash='account-hash-b568f50a64acc8bbe43462ffe243849a88111060b228dacb8f08d42e26985180'" \
     --session-arg "owner:key='account-hash-9f81014b9c7406c531ebf0477132283f4eb59143d7903a2fae54358b26cea44b'" \
     --session-arg "spender:key='account-hash-89422a0f291a83496e644cf02d2e3f9d6cbc5f7c877b6ba9f4ddfab8a84c2670'" \
-    --chain-name integration-test --payment-amount 10000000000
+    --chain-name integration-test \
+    --payment-amount 10000000000
 
 
 .. code-block::
@@ -266,7 +267,7 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. note::
     
-    `Failure to overspend C allowance <https://integration.cspr.live/deploy/db50ac05fe63561669b9d73c28b66fcb5a341048d5d13b1b2759b557396fd5d2>`__
+    `Failure to overspend C's allowance <https://integration.cspr.live/deploy/db50ac05fe63561669b9d73c28b66fcb5a341048d5d13b1b2759b557396fd5d2>`__
 
 |
 
