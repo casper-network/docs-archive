@@ -16,13 +16,18 @@ To execute transactions on the Casper Network (involving ERC-20 tokens), you wil
 
 To understand the implementation of a Casper ERC-20 contract, see the `ERC-20 Tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/erc20/index.html>`_.
 
+
 Prerequisites
 --------------
 
-* You meet the `prerequisites <https://docs.casperlabs.io/en/latest/workflow/setup.html>`_
-* You are using the Casper command-line client
-* You have a valid ``node-address``
-* You have previously deployed a smart contract to a Casper network
+Before you dive into the details of this guide, ensure you meet these requirements:
+
+* Set up your machine as per the `prerequisites <https://docs.casperlabs.io/en/latest/workflow/setup.html>`_
+* Use the Casper command-line client
+* Get a valid ``node-address``
+* Know how to deploy a `smart contract <https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-contracts.html>`_ to a Casper network
+* Get some CSPR tokens to pay for transactions
+
 
 .. toctree::
    :hidden:
