@@ -138,7 +138,7 @@ Approve B to Spend 15 Tokens of A
 
 **Invoking `allowance` entry point to check for the allowance**
 
-As we did for `balance_of` to read out the balance values, we must perform a similar invoking of the `allowance` entry point of the main ERC20 contract.
+As we did for `balance_of` to read out the balance values, we must perform a similar invoking of the `allowance` entry point of the main ERC-20 contract.
 
 .. code-block:: bash
     
