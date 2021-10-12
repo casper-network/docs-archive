@@ -1,7 +1,9 @@
 Approvals
 ==========
 
-**Transfer 10 tokens from an allowance of only 5**
+
+Transfer 10 tokens from an allowance of only 5
+-----------------------------------------------
 
 .. code-block::
 
@@ -20,7 +22,8 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 `Deploy failure to overspend allowance <https://integration.cspr.live/deploy/7a692917b91e1485f500966f3884bb0917006725505fec1ce3aed2a13ec692df>`__
 
 
-**Additional transfer_from of the remainder 5 tokens**
+Additional transfer_from of the remainder 5 tokens
+---------------------------------------------------
 
 .. code-block::
 
@@ -34,7 +37,7 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
     --session-arg "amount:u256='5'" \
     --payment-amount "10000000000"
 
-
+|
 **Invoking `balance_of` for user D**
 
 .. code-block::
@@ -80,7 +83,8 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 .. image:: images/invokeAllowanceBsTokenforA.png
 |
-**Approving C to spend 10 of B’s ERC20 tokens**
+Approving C to spend 10 of B’s ERC20 tokens
+--------------------------------------------
 
 .. code-block::
 
@@ -119,7 +123,8 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 |
 
-**Transfer_from C’s allowance to D**
+Transfer_from C’s allowance to D
+---------------------------------
 
 .. code-block::
 
@@ -133,7 +138,7 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
     --session-arg "amount:u256='5'" \
     --payment-amount "10000000000"
 
-
+|
 **Invoking `balance_of` for user A**
 
 .. code-block::
@@ -252,7 +257,7 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
 
 |
 
-**Failure to overspend C allowance**
+**Failure to overspend C's allowance**
 
 .. code-block::
 
