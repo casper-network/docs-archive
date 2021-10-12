@@ -32,7 +32,7 @@ Since we know that the allowance value is less than 10, we expect the deploy to 
     --session-arg "owner:key='account-hash-303c0f8208220fe9a4de40e1ada1d35fdd6c678877908f01fddb2a56502d67fd'" \
     --session-arg "recipient:key='account-hash-f32a2abc55316dc85a446a1c548674e03757974aaaf86e8b7d29947ae148eeca'" \
     --session-arg "amount:u256='5'" \
-    --payment-amount "10000000000
+    --payment-amount "10000000000"
 
 
 **Invoking `balance_of` for user D**
