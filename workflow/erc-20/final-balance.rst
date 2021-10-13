@@ -1,9 +1,9 @@
 Checking Final Balances
 =========================
 
-Final balance read for all users.
+In this section, we check the final balance for all users.
 
-**Final check for user A balance**
+**Final check for user A's balance**
 
 .. code-block:: bash
 
@@ -26,7 +26,7 @@ Final balance read for all users.
 
 |
 
-**Final check for user B balance**
+**Final check for user B's balance**
 
 .. code-block:: bash
 
@@ -49,7 +49,7 @@ Final balance read for all users.
 
 |
 
-**Final check for user C balance**
+**Final check for user C's balance**
 
 .. code-block:: bash
 
@@ -74,7 +74,7 @@ Final balance read for all users.
 
 |
 
-**Final check of user D balance**
+**Final check of user D's balance**
 
 .. code-block:: bash
 

@@ -19,7 +19,9 @@ Transfer 10 tokens from an allowance of only 5
 
 Since we know that the allowance value is less than 10, we expect the deploy to fail.
 
-`Deploy failure to overspend allowance <https://integration.cspr.live/deploy/7a692917b91e1485f500966f3884bb0917006725505fec1ce3aed2a13ec692df>`__
+.. note::
+    
+    Here is an example of a `deploy failure due to overspending an allowance <https://integration.cspr.live/deploy/7a692917b91e1485f500966f3884bb0917006725505fec1ce3aed2a13ec692df>`__.
 
 
 Additional transfer_from of the remainder 5 tokens
@@ -272,7 +274,7 @@ Transfer_from C’s allowance to D
 
 .. note::
     
-    `Failure to overspend C's allowance <https://integration.cspr.live/deploy/db50ac05fe63561669b9d73c28b66fcb5a341048d5d13b1b2759b557396fd5d2>`__
+    Here is an example of a `failure to overspend C's allowance <https://integration.cspr.live/deploy/db50ac05fe63561669b9d73c28b66fcb5a341048d5d13b1b2759b557396fd5d2>`__.
 
 |
 

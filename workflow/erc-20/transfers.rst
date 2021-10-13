@@ -39,10 +39,10 @@ The follow up read of the corresponding URef:
     --state-root-hash eec441ad782dcaab1b83708a9456250f97e6725528f9579ca4871a3b9429033f
 
 .. image:: images/transferUref.png
-
 |
-Transfer of 20 ERC-20 Tokens from B to C
-------------------------------------------
+
+Transfer 20 ERC-20 Tokens from B to C
+-------------------------------------
 
 .. code-block:: bash
     
@@ -77,6 +77,7 @@ We must then call the utility contract once for every balance we wish to check.
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
 .. image:: images/invoke-bal-a.png
+|
 
 **Invoking `balance_of` for user B**
 
@@ -98,6 +99,7 @@ We must then call the utility contract once for every balance we wish to check.
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
 .. image:: images/invoke-bal-a.png
+|
 
 **Invoking `balance_of` for user C**
 
@@ -121,7 +123,7 @@ We must then call the utility contract once for every balance we wish to check.
 .. image:: images/invoke-bal-c.png
 
 |
-Approve B to Spend 15 Tokens of A
+Approve B to Spend 15 of A's Tokens
 -----------------------------------
 
 .. code-block:: bash
@@ -159,8 +161,8 @@ As we did for `balance_of` to read out the balance values, we must perform a sim
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
 .. image:: images/approve-b.png
-
 |
+
 Transfer 10 ERC-20 Tokens from B’s Allowance to D 
 ---------------------------------------------------
 
@@ -196,6 +198,7 @@ Transfer 10 ERC-20 Tokens from B’s Allowance to D
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
 .. image:: images/transfer-b2d.png
+|
 
 **Invoking `balance_of` for user B**
 
@@ -217,6 +220,7 @@ Transfer 10 ERC-20 Tokens from B’s Allowance to D
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
 .. image:: images/invoke-bal-b2.png
+|
 
 **Invoking `balance_of` for user C**
 
@@ -238,6 +242,7 @@ Transfer 10 ERC-20 Tokens from B’s Allowance to D
     --key uref-56efe683287668bab985d472b877b018ad24a960aafadb48ebc5217737b45c85-007
 
 .. image:: images/invoke-bal-c2.png
+|
 
 **Invoking `balance_of` for user D**
 
@@ -253,6 +258,7 @@ Transfer 10 ERC-20 Tokens from B’s Allowance to D
     --payment-amount 1000000000
 
 .. image:: images/invoke-bal-d.png
+|
 
 **Invoking `allowance` to check that it is 5**
 
