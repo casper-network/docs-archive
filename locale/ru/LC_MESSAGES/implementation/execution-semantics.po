@@ -1,0 +1,698 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../implementation/execution-semantics.rst:4
+msgid "Execution Semantics"
+msgstr "Семантика выполнения"
+
+#: ../../implementation/execution-semantics.rst:9
+msgid "Introduction"
+msgstr "Введение"
+
+#: ../../implementation/execution-semantics.rst:11
+msgid ""
+"The Casper Network is a decentralized computation platform. In this chapter "
+"we describe aspects of the computational model we use."
+msgstr ""
+"Сеть Casper - децентрализованная вычислительная платформа. В этой главе мы "
+"описываем аспекты модели вычислений, которую мы используем. "
+
+#: ../../implementation/execution-semantics.rst:17
+msgid "Measuring computational work"
+msgstr "Измерение вычислительной работы"
+
+#: ../../implementation/execution-semantics.rst:19
+msgid ""
+"Computation is all done in a `WebAssembly (wasm) "
+"<https://webassembly.org/>`__ interpreter, allowing any programming language"
+" which compiles to wasm to become a smart contract language for the Casper "
+"blockchain. Similar to Ethereum, we use ``Gas`` to measure computational "
+"work in a way which is consistent from node to node in the Casper Network. "
+"Each wasm instruction is `assigned <https://github.com/casper-network"
+"/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/shared/wasm_config.rs#L15>`_"
+" a ``Gas`` value, and the amount of gas spent is tracked by the runtime with"
+" each instruction executed by the interpreter. All executions are finite "
+"because each has a finite *gas limit* that specifies the maximum amount of "
+"gas that can be spent before the computation is terminated by the runtime. "
+"How this limit is determined is discussed in more detail below."
+msgstr ""
+"Все вычисления делаются в интерпретаторе `WebAssembly (wasm) "
+"<https://webassembly.org/>`__ , что позволяет любому языку программирования,"
+" компилируемому в wasm, быть языком смарт-контракта в блокчейн Casper. Как и"
+" в Ethereum, мы используем \"газ\" для измерения вычислительной работы таким"
+" образом, чтобы она была согласована от ноды к ноде в сети Casper. Каждая "
+"wasm - инструкция имеет `assigned <https://github.com/casper-network/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/shared/wasm_config.rs#L15>`_"
+" ценность в \"газ\", и количество газа, потраченное за время выполнения, "
+"учитывается каждой инструкцией, выполненной интерпретатором. Все выполненные"
+" операции являются конечными, потому что у каждой есть *лимит газа*, который"
+" определяет максимальное количество газа, которое может быть потрачено до "
+"того, как вычисление прервется рабочей средой. Как определяется этот лимит, "
+"мы обсудим детально ниже. "
+
+#: ../../implementation/execution-semantics.rst:26
+msgid ""
+"Although computation is measured in ``Gas``, we still take payment for "
+"computation in :ref:`motes <tokens-divisibility>`. Therefore, there is a "
+"conversion rate between ``Gas`` and motes. How this conversion rate is "
+"determined is discussed elsewhere."
+msgstr ""
+"Хотя вычисления измеряются в \"газ\", мы все еще принимаем платежи монетами "
+"токена :ref:`motes<tokens-divisibility>`. Таким образом существует курс "
+"конверсии между газом и монетами motes. Как определяется курс, рассказано в "
+"другом разделе. "
+
+#: ../../implementation/execution-semantics.rst:32
+msgid "Please note that Casper will not refund any amount of unused gas."
+msgstr "Обратите внимание, что Casper не возмещает неиспользованный газ. "
+
+#: ../../implementation/execution-semantics.rst:34
+msgid ""
+"This decision is taken to incentivizing the `Casper Runtime Economics "
+"<https://docs.casperlabs.io/en/latest/economics/runtime.html?highlight"
+"=consensus-before-execution%20model#runtime-economics>`_ by efficiently "
+"allocating the computational resources. The `consensus-before-execution "
+"model <https://docs.casperlabs.io/en/latest/economics/runtime.html?highlight"
+"=consensus-before-execution%20model#consensus-before-execution-basics-of-"
+"payment>`_ implements the mechanism to encourage the optimized gas "
+"consumption from the user-side and to prevent the overuse of block space by "
+"poorly handled deploys."
+msgstr ""
+"Это решение принято ради стимуляции экономики рабочей среды `Casper Runtime "
+"Economics "
+"<https://docs.casperlabs.io/en/latest/economics/runtime.html?highlight"
+"=consensus-before-execution%20model#runtime-economics>`_ благодаря "
+"эффективному использованию вычислительных ресурсов. Модель консенсуса перед "
+"исполнением `consensus-before-execution model "
+"<https://docs.casperlabs.io/en/latest/economics/runtime.html?highlight"
+"=consensus-before-execution%20model#consensus-before-execution-basics-of-"
+"payment>`_ вводит механизм побуждения к оптимизации потребления газа со "
+"стороны пользователя, чтоб предотвратить перерасход пространства блока плохо"
+" выполненными развертываниями. "
+
+#: ../../implementation/execution-semantics.rst:40
+msgid "Deploys"
+msgstr "Развертывания"
+
+#: ../../implementation/execution-semantics.rst:42
+msgid ""
+"A *deploy* represents a request from a user to perform computation on our "
+"platform. It has the following information:"
+msgstr ""
+"*Развертывание* представляет собой запрос пользователя на осуществление "
+"вычисления на нашей платформе. В нем есть следующая информация:"
+
+#: ../../implementation/execution-semantics.rst:44
+msgid ""
+"Body: containing payment code and session code (more details on these below)"
+msgstr "Тело: содержит код платежа и код сессии (больше деталей - ниже)"
+
+#: ../../implementation/execution-semantics.rst:45
+msgid "Header: containing"
+msgstr "Заголовок: содержит"
+
+#: ../../implementation/execution-semantics.rst:47
+msgid ""
+"the :ref:`identity key <global-state-account-key>` of the account the deploy"
+" will run in"
+msgstr ""
+"Ключ идентичности  :ref:`identity key <global-state-account-key>` аккаунта, "
+"в котором будет запущено развертывание"
+
+#: ../../implementation/execution-semantics.rst:48
+msgid "the timestamp when the deploy was created"
+msgstr "временной отпечаток, когда было создано развертывание"
+
+#: ../../implementation/execution-semantics.rst:49
+msgid ""
+"a time to live, after which the deploy is expired and cannot be included in "
+"a block"
+msgstr ""
+"время жизни, после которого развертывание истекло и не может быть включено в"
+" блок"
+
+#: ../../implementation/execution-semantics.rst:51
+msgid "the ``blake2b256`` hash of the body"
+msgstr "хеш тела ``blake2b256`` "
+
+#: ../../implementation/execution-semantics.rst:53
+msgid "Deploy hash: the ``blake2b256`` hash of the Header"
+msgstr "Хеш развертывания: хеш заголовка ``blake2b256``"
+
+#: ../../implementation/execution-semantics.rst:54
+msgid ""
+"Approvals: the set of signatures which have signed the deploy hash, these "
+"are used in the :ref:`account permissions model <accounts-associated-keys-"
+"weights>`"
+msgstr ""
+"Подтверждения: набор подписей, которые прдписывали хеш развертывания, они "
+"используются в модели разрешений  :ref:`account permissions model <accounts-"
+"associated-keys-weights>`"
+
+#: ../../implementation/execution-semantics.rst:56
+msgid ""
+"Each deploy is an atomic piece of computation in the sense that, whatever "
+"effects a deploy would have on the global state must be entirely included in"
+" a block or the entire deploy must not be included in a block."
+msgstr ""
+"Каждое развертывание содержит атомную частицу вычисления для того, чтобы "
+"любые эффекты развертывания на глобальное состояние были полностью включены "
+"в блок или целостное развертывание не должно быть включено в блок. "
+
+#: ../../implementation/execution-semantics.rst:61
+msgid "Phases of deploy execution"
+msgstr "Фазы выполнения развертывания"
+
+#: ../../implementation/execution-semantics.rst:63
+msgid ""
+"A deploy is executed in distinct *phases* in order to accommodate paying for"
+" computation in a flexible way. The phases of a deploy are payment, session,"
+" and finalization. During the payment phase, the payment code is executed. "
+"If it is successful, then the sessions code is executed during the session "
+"phase. And, finally (independent of whether session code was executed), the "
+"finalization phase is executed, which does some bookkeeping around payment."
+msgstr ""
+"Развертывание выполняется в отдельные *фазы*, чтобы обеспечить гибкую оплату"
+" вычислений. Этапы развертывания-это оплата, сеанс и завершение. На этапе "
+"оплаты выполняется код платежа. Если это успешно, то код сессии выполняется "
+"во время фазы сессии. И, наконец (независимо от того, был ли выполнен код "
+"сессии), выполняется фаза завершения, которая ведет некоторую бухгалтерию "
+"вокруг платежа."
+
+#: ../../implementation/execution-semantics.rst:65
+msgid ""
+"According to new amendments, the finalization phase does not refund the user"
+" any unspent ``Gas`` originally purchased (after converting back to motes). "
+"Please refer to the :ref:`gas refunding <execution-semantics-gas-refunding>`"
+" section for more details. The finalization phase does not include any user-"
+"defined logic, it is merely upkeep for the system."
+msgstr ""
+"Согласно новым поправкам, на фазе завершения пользователю не возвращается ни"
+" один неизрасходованный \"Газ\", первоначально купленный (после "
+"преобразования обратно в motes). Пожалуйста, обратитесь к разделу :ref:`gas "
+"refunding <execution-semantics-gas-refunding>`  для получения более "
+"подробной информации. Фаза завершения не включает в себя какую-либо "
+"определяемую пользователем логику, это просто техническое обслуживание "
+"системы."
+
+#: ../../implementation/execution-semantics.rst:70
+msgid "Payment code"
+msgstr "Код платежа"
+
+#: ../../implementation/execution-semantics.rst:72
+msgid ""
+"*Payment code* provides the logic used to pay for the computation the deploy"
+" will do. Payment code is allowed to include arbitrary logic, providing "
+"maximal flexibility in how a deploy can be paid for (e.g., the simplest "
+"payment code could use the account’s :ref:`main purse <tokens-purses-and-"
+"accounts>`, while an enterprise application may require deploys to pay via a"
+" multi-sig application accessing a corporate purse). We restrict the gas "
+"limit of the payment code execution, based on the current conversion rate "
+"between gas and motes, such that no more than ``MAX_PAYMENT_COST`` motes (a "
+"constant of the system) are spent. To ensure payment code will pay for its "
+"own computation, we only allow accounts with a balance in their main purse "
+"greater than or equal to ``MAX_PAYMENT_COST``, to execute deploys."
+msgstr ""
+"*Код платежа* предоставляет логику, используемую для оплаты вычислений, "
+"которые будет выполнять развертывание. Платежный код может включать "
+"произвольную логику, обеспечивая максимальную гибкость в способах оплаты "
+"развертывания (например, самый простой платежный код может использовать "
+"основной кошелек аккаунта :ref:`main purse <tokens-purses-and-accounts>`, в "
+"то время как корпоративное приложение может потребовать развертывания для "
+"оплаты через приложение с мультиподписями, получающее доступ к "
+"корпоративному кошельку). Мы ограничиваем лимит газа для выполнения кода "
+"оплаты, основываясь на текущем коэффициенте пересчета между газом и "
+"монетами, таким образом, чтобы расходовалось не более монет, чем "
+"\"MAX_PAYMENT_COST`` (константа системы). Чтобы гарантировать, что платежный"
+" код будет оплачивать свои собственные вычисления, мы разрешаем выполнять "
+"развертывание только аккаунтам с балансом на их основном кошельке, "
+"превышающим или равным \"MAX_PAYMENT_COST\"."
+
+#: ../../implementation/execution-semantics.rst:84
+msgid ""
+"Payment code ultimately provides its payment by performing a :ref:`token "
+"transfer <tokens-mint-interface>` into the `Handle Payment contract’s "
+"payment purse <https://github.com/casper-network/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/types/src/system/handle_payment/mod.rs#L65>`__."
+" If payment is not given or not enough is transferred, then payment "
+"execution is not considered successful. In this case the effects of the "
+"payment code on the global state are reverted and the cost of the "
+"computation is covered by motes taken from the offending account’s main "
+"purse."
+msgstr ""
+"Код платежа наилучшим образом предоставляет свой платеж через трансфер "
+"токенов :ref:`token transfer <tokens-mint-interface>` в кошелек платежей "
+"контрактов `Handle Payment contract’s payment purse <https://github.com"
+"/casper-network/casper-"
+"node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/types/src/system/handle_payment/mod.rs#L65>`__."
+" Если платеж не осуществлен или переведено недостаточно токенов, тогда "
+"выполнение платежа считается неуспешным. В таком случае эффекты кода платежа"
+" на глобальное состояние возвращаются назад, а цена вычисления покрывается "
+"монетами motes из основного кошелька аккаунта, которому не удался платеж. "
+
+#: ../../implementation/execution-semantics.rst:93
+msgid "Session code"
+msgstr "Код сессии"
+
+#: ../../implementation/execution-semantics.rst:95
+msgid ""
+"*Session code* provides the main logic for the deploy. It is only executed "
+"if the payment code is successful. The gas limit for this computation is "
+"determined based on the amount of payment given (after subtracting the cost "
+"of the payment code itself)."
+msgstr ""
+"*Код сессии* обеспечивает основную логику развертывания. Он выполняется "
+"только в том случае, если платежный код выполнен успешно. Лимит газа для "
+"этого расчета определяется на основе указанной суммы платежа (после "
+"вычитания стоимости самого платежного кода)."
+
+#: ../../implementation/execution-semantics.rst:103
+msgid "Specifying payment code and session code"
+msgstr "Спецификация кода платежа и кода сессии"
+
+#: ../../implementation/execution-semantics.rst:105
+msgid ""
+"The user-defined logic of a deploy can be specified in a number of ways:"
+msgstr ""
+"Определяемая пользователем логика развертывания может быть задана "
+"несколькими способами:"
+
+#: ../../implementation/execution-semantics.rst:107
+msgid ""
+"a wasm module in binary format representing a valid :ref:`contract <global-"
+"state-contracts>` (Note: the named keys do not need to be specified because "
+"they come from the account the deploy is running in)"
+msgstr ""
+"модуль wasm в бинарном формате, представляющий валидный контракт "
+":ref:`contract <global-state-contracts>` (Внимание: именованные ключи не "
+"нуждаются в спецификации так как они находятся в аккаунте, в котором "
+"происходит развертывание)"
+
+#: ../../implementation/execution-semantics.rst:110
+msgid ""
+"a 32-byte identifier representing the :ref:`hash <global-state-hash-key>` or"
+" :ref:`URef <global-state-uref>` where a contract is already stored in the "
+"global state"
+msgstr ""
+"32-битный идентификатор представляющий хеш  :ref:`hash <global-state-hash-"
+"key>`  или :ref:`URef  <global-state-uref>:ref:`URef  где контракт уже "
+"хранится в глобальном состоянии"
+
+#: ../../implementation/execution-semantics.rst:112
+msgid ""
+"a name corresponding to a named key in the account, where a contract is "
+"stored under the key"
+msgstr ""
+"название, отвечающее именованному ключу аккаунта, в котором под ключом "
+"хранится контракт"
+
+#: ../../implementation/execution-semantics.rst:115
+msgid ""
+"Each of payment and session code are independently specified, so different "
+"methods of specifying them may be used (e.g. payment could be specified by a"
+" hash key, while session is explicitly provided as a wasm module)."
+msgstr ""
+"Каждый из кодов платежа или кодов сессии независимо специфицирован, так что "
+"разные методы спецификации могут быть применены (например платеж может быть "
+"специфицирован ключом хеша, в то время как сессия полностью представлена "
+"wasm модулем). "
+
+#: ../../implementation/execution-semantics.rst:122
+msgid "Deploys as functions on the global state"
+msgstr "Развертывания как функции глобального состояния"
+
+#: ../../implementation/execution-semantics.rst:124
+msgid ""
+"To enable concurrent modification of :ref:`global state <global-state-head>`"
+" (either by parallel deploys in the same block or parallel blocks on "
+"different forks of the chain), we view each deploy as a function taking our "
+"global state as input and producing a new global state as output. It is safe"
+" to execute two such functions concurrently if they do not interfere with "
+"each other, which formally can be defined to mean the functions *commute* "
+"(i.e., if they were executed sequentially, it does not matter in what order "
+"they are executed, the final result is the same for a given input). Whether "
+"two deploys commute is determined based on the effects they have on the "
+"global state, i.e. which operation (read, write, add) it does on each key in"
+" the key-value store. How this is done is described in :ref:`Appendix C "
+"<appendix-c>`."
+msgstr ""
+"Чтобы включить одновременную модификацию глобального состояния   "
+":ref:`global state <global-state-head>` (либо путем параллельного "
+"развертывания в одном блоке, либо параллельных блоков на разных форках "
+"цепи), мы рассматриваем каждое развертывание как функцию, принимающую наше "
+"глобальное состояние в качестве входных данных и создающую новое глобальное "
+"состояние в качестве выходных. Безопасно выполнять две такие функции "
+"одновременно, если они не мешают друг другу, что формально можно определить "
+"как функции *коммутируют* (т. е., если они выполнялись последовательно, не "
+"имеет значения, в каком порядке они выполняются, конечный результат одинаков"
+" для данного ввода). Будут ли два развертывания коммутироваться, "
+"определяется на основе влияния, которое они оказывают на глобальное "
+"состояние, т. е. какую операцию (чтение, запись, добавление) он выполняет "
+"для каждого ключа в хранилище значений ключей. Как это делается, описано в "
+":ref:`Appendix C <appendix-c>`."
+
+#: ../../implementation/execution-semantics.rst:139
+msgid "The Casper Network runtime"
+msgstr "Рабочая среда сети Casper"
+
+#: ../../implementation/execution-semantics.rst:141
+msgid ""
+"A wasm module is not natively able to create any effects outside of reading "
+"/ writing from its own linear memory. To enable other effects (e.g. reading "
+"/ writing to the Casper global state), wasm modules must import functions "
+"from the host environment they are running in. In the case of contracts on "
+"the Casper blockchain, this host is the Casper runtime."
+msgstr ""
+"Модуль wasm изначально не способен создавать какие-либо эффекты за пределами"
+" чтения / записи из своей собственной линейной памяти. Чтобы включить другие"
+" эффекты (например, чтение / запись в глобальное состояние Casper), модули "
+"wasm должны импортировать функции из среды хоста, в которой они работают. В "
+"случае контрактов на блокчейне Casper этот хост является средой выполнения "
+"Casper."
+
+#: ../../implementation/execution-semantics.rst:147
+msgid ""
+"Here, we briefly describe the functionalities provided by imported "
+"functions. All these features are conveniently accessible via functions in "
+"the `Casper Rust library <https://crates.io/crates/casper-contract>`_. For a"
+" more detailed description of the functions available for contracts to "
+"import, see :ref:`Appendix A <appendix-a>`."
+msgstr ""
+"Здесь мы кратко опишем функциональность, которую дают импортируемые функции."
+" Все эти свойства легко доступны с помощью функций в библиотеке `Casper Rust"
+" library <https://crates.io/crates/casper-contract>`_. Для более детального "
+"описания функций, доступных для импорта в контракты, смотрите :ref:`Appendix"
+" A <appendix-a>`."
+
+#: ../../implementation/execution-semantics.rst:150
+msgid "Reading / writing from global state"
+msgstr "Чтение / запись из глобального состояния"
+
+#: ../../implementation/execution-semantics.rst:152
+msgid ""
+"``read``, ``write``, ``add`` functions allow working with exiting "
+":ref:`URefs <uref-head>`"
+msgstr ""
+"Функции \"чтение\", \"запись\", \"добавление\" позволяют работать с "
+"существующими :ref:`URefs <uref-head>`"
+
+#: ../../implementation/execution-semantics.rst:154
+msgid ""
+"``new_uref`` allows creating a new ``URef`` initialized with a given value "
+"(see section below about how ``URef``\\ s are generated)"
+msgstr ""
+"``new_uref`` позволяет создать новую ``URef`` инициализированную заданным "
+"значением (смотрите раздел ниже о том, как генерируются ``URef``)"
+
+#: ../../implementation/execution-semantics.rst:156
+msgid ""
+"``store_function`` allows writing a contract under a :ref:`hash key <global-"
+"state-hash-key>`"
+msgstr ""
+"``store_function`` позволяет написать контракт с ключом хеша :ref:`hash key "
+"<global-state-hash-key>`"
+
+#: ../../implementation/execution-semantics.rst:157
+msgid ""
+"``get_uref``, ``list_known_urefs``, ``add_uref``, ``remove_uref`` allow "
+"working with the :ref:`named keys <global-state-contracts>` of the current "
+"context (account or contract)"
+msgstr ""
+"``get_uref``, ``list_known_urefs``, ``add_uref``, ``remove_uref`` позволяют "
+"работать с именованными ключами :ref:`named keys <global-state-contracts>` "
+"из текущего контекста (аккаунта или контракта)"
+
+#: ../../implementation/execution-semantics.rst:161
+msgid "Account functionality"
+msgstr "Функциональность аккаунта"
+
+#: ../../implementation/execution-semantics.rst:163
+msgid ""
+"``add_associated_key``, ``remove_associated_key``, "
+"``update_associated_key``, ``set_action_threshold`` support the various "
+":ref:`key management actions <accounts-key-management>`"
+msgstr ""
+"``add_associated_key``, ``remove_associated_key``, "
+"``update_associated_key``, ``set_action_threshold`` поддерживают различные "
+"действия по управлению ключами :ref:`key management actions <accounts-key-"
+"management>`"
+
+#: ../../implementation/execution-semantics.rst:166
+msgid ""
+"``main_purse`` returns the :ref:`main purse <tokens-purses-and-accounts>` of"
+" the account"
+msgstr ""
+"``main_purse`` возвращает основной кошелек  :ref:`main purse <tokens-purses-"
+"and-accounts>` аккаунта"
+
+#: ../../implementation/execution-semantics.rst:169
+msgid "Runtime flow and properties"
+msgstr "Свойства и течение рабочей среды"
+
+#: ../../implementation/execution-semantics.rst:171
+msgid ""
+"``call_contract`` allows executing a contract stored under a key (hash or "
+"``URef``), including passing arguments and getting a return value"
+msgstr ""
+"``call_contract`` позволяет исполнить контракт, хранящийся под ключом (хеш "
+"или ``URef``), включая передачу аргументов и получение возвращенного "
+"значения"
+
+#: ../../implementation/execution-semantics.rst:173
+msgid ""
+"``ret`` is used by contracts to return a value to their caller (i.e. enables"
+" return values from ``call_contract``)"
+msgstr ""
+"``ret``  использьуется контрактами для возвращения значений их вызывыющему "
+"(т.е. активирует возвращенные значения из  ``call_contract``)"
+
+#: ../../implementation/execution-semantics.rst:175
+msgid ""
+"``get_named_arg`` allows getting arguments passed to the contract (either to"
+" session code as part of the deploy, or arguments to ``call_contract``)"
+msgstr ""
+"``get_named_arg`` позволяет получить аргументы переданные в контракт (либо в"
+" коде сессии как часть развертывания, либо аргументы для вызова "
+"``call_contract``)"
+
+#: ../../implementation/execution-semantics.rst:177
+msgid ""
+"``revert`` exits the entire executing deploy, reverting any effects it "
+"caused, and returns a status code that is captured in the block"
+msgstr ""
+"возврат ``revert`` завершает все выполняемое развертывание, отменяет все "
+"вызванные им эффекты и возвращает код состояния, записанный в блоке"
+
+#: ../../implementation/execution-semantics.rst:179
+msgid ""
+"``get_caller`` returns the public key of the account for the current deploy "
+"(can be used for control flow based on specific users of the blockchain)"
+msgstr ""
+"\"get_caller\" возвращает публичный ключ учетной записи для текущего "
+"развертывания (может использоваться для управления потоком на основе "
+"конкретных пользователей блокчейна)"
+
+#: ../../implementation/execution-semantics.rst:181
+msgid ""
+"``get_phase`` returns the current :ref:`phase <execution-semantics-phases>` "
+"of the deploy execution"
+msgstr ""
+"``get_phase`` возвращает текущую фазу :ref:`phase <execution-semantics-"
+"phases>` выполнения развертывания"
+
+#: ../../implementation/execution-semantics.rst:184
+msgid ""
+"``get_blocktime`` gets the timestamp of the block this deploy will be "
+"included in"
+msgstr ""
+"``get_blocktime`` получает временной отпечаток блока, куда будет включено "
+"данное развертывание"
+
+#: ../../implementation/execution-semantics.rst:187
+msgid ":ref:`Mint <tokens-mints-and-purses>` functionality"
+msgstr "функциональность :ref:`Mint <tokens-mints-and-purses>`"
+
+#: ../../implementation/execution-semantics.rst:189
+msgid ""
+"``create_purse`` creates a new empty purse, returning the ``URef`` to the "
+"purse"
+msgstr ""
+"``create_purse`` создает новый пустой кошелек, возвращая ``URef`` в кошелек"
+
+#: ../../implementation/execution-semantics.rst:190
+msgid "``get_balance`` reads the balance of a purse"
+msgstr "``get_balance`` считывает баланс кошелька"
+
+#: ../../implementation/execution-semantics.rst:191
+msgid ""
+"``transfer_to_account`` transfers from the present account’s main purse to "
+"the main purse of a specified account (creating the account if it does not "
+"exist)"
+msgstr ""
+"``transfer_to_account`` переводит из основного кошелька текущего аккаунта в "
+"основной кошелек определенного аккаунта (или создает этот аккаунт, если его "
+"не существует)"
+
+#: ../../implementation/execution-semantics.rst:194
+msgid ""
+"``transfer_from_purse_to_account`` transfer from a specified purse to the "
+"main purse of a specified account (creating the account if it does not "
+"exist)"
+msgstr ""
+"``transfer_from_purse_to_account`` переводит из определенного кошелька в "
+"основной кошелек определенного аккаунта (и создает этот аккаунт, если его не"
+" существует)"
+
+#: ../../implementation/execution-semantics.rst:196
+msgid ""
+"``transfer_from_purse_to_purse`` alias for the :ref:`mint’s transfer "
+"function <tokens-mint-interface>`"
+msgstr ""
+"``transfer_from_purse_to_purse`` это иное имя для функции трансфера  "
+":ref:`mint’s transfer function <tokens-mint-interface>`"
+
+#: ../../implementation/execution-semantics.rst:202
+msgid "Generating ``URef``\\ s"
+msgstr "Генерирование ``URef``"
+
+#: ../../implementation/execution-semantics.rst:204
+msgid ""
+"``URef``\\ s are generated using a `cryptographically secure random number "
+"generator <https://rust-"
+"random.github.io/rand/rand_chacha/struct.ChaCha20Rng.html>`__ using the "
+"`ChaCha algorithm <https://cr.yp.to/chacha.html>`__. The random number "
+"generator is seeded by taking the ``blake2b256`` hash of the deploy hash "
+"concatenated with an index representing the current phase of execution (to "
+"prevent collisions between ``URef``\\ s generated in different phases of the"
+" same deploy)."
+msgstr ""
+"``URef`` генерируются с использованием рандомного криптографически "
+"защищенного генератора чисел `cryptographically secure random number "
+"generator <https://rust-"
+"random.github.io/rand/rand_chacha/struct.ChaCha20Rng.html>`__ using the "
+"`ChaCha algorithm <https://cr.yp.to/chacha.html>`__.  Генератор случайных "
+"чисел заполняется путем получения хэша \"blake2b256\" хэша развертывания, "
+"объединенного с индексом, представляющим текущую фазу выполнения (для "
+"предотвращения конфликтов между \"URef\", созданными на разных этапах одного"
+" и того же развертывания)."
+
+#~ msgid ""
+#~ "The CasperLabs system is a decentralized computation platform. In this "
+#~ "chapter we describe aspects of the computational model we use."
+#~ msgstr ""
+#~ "Система CasperLabs - децентрализованная вычислительная платформа. В этой "
+#~ "главе мы описываем аспекты модели вычислений, которую мы используем. "
+
+#~ msgid ""
+#~ "Computation is all done in a `WebAssembly (wasm) "
+#~ "<https://webassembly.org/>`__ interpreter, allowing any programming language"
+#~ " which compiles to wasm to become a smart contract language for the "
+#~ "CasperLabs blockchain. Similar to Ethereum, we use ``Gas`` to measure "
+#~ "computational work in a way which is consistent from node to node in the "
+#~ "CasperLabs network. Each wasm instruction is `assigned "
+#~ "<https://github.com/CasperLabs/casper-"
+#~ "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/shared/wasm_config.rs#L15>`_"
+#~ " a ``Gas`` value, and the amount of gas spent is tracked by the runtime with"
+#~ " each instruction executed by the interpreter. All executions are finite "
+#~ "because each has a finite *gas limit* that specifies the maximum amount of "
+#~ "gas that can be spent before the computation is terminated by the runtime. "
+#~ "How this limit is determined is discussed in more detail below."
+#~ msgstr ""
+#~ "Все вычисления делаются в интерпретаторе `WebAssembly (wasm) "
+#~ "<https://webassembly.org/>`__  , что позволяет любому языку "
+#~ "программирования, компилируемому в wasm, быть языком смарт-контракта в "
+#~ "блокчейн Casper. Как и в Ethereum, мы используем \"газ\" для измерения "
+#~ "вычислительной работы таким образом, чтобы она была согласована от ноды к "
+#~ "ноде в сети Casper. Каждая wasm - инструкция имеет `assigned "
+#~ "<https://github.com/CasperLabs/casper-"
+#~ "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/shared/wasm_config.rs#L15>`_"
+#~ " ценность в \"газ\", и количество газа, потраченное за время выполнения, "
+#~ "учитывается каждой инструкцией, выполненной интерпретатором. Все выполненные"
+#~ " операции являются конечными, потому что у каждой есть *лимит газа*, который"
+#~ " определяет максимальное количество газа, которое может быть потрачено до "
+#~ "того, как вычисление прервется рабочей средой. Как определяется этот лимит, "
+#~ "мы обсудим детально ниже. "
+
+#~ msgid ""
+#~ "In particular, the finalization phase refunds the user any unspent ``Gas`` "
+#~ "originally purchased (after converting back to motes), and moves the "
+#~ "remaining payment into the rewards pool for the validators. The finalization"
+#~ " phase does not include any user-defined logic, it is merely upkeep for the "
+#~ "system."
+#~ msgstr ""
+#~ "В частности на фазе завершения пользователю возвращается неиспользованный "
+#~ "\"Газ\", изначально купленный (после конвертации обратно в монеты motes), и "
+#~ "перемещается остаток платежа в пул вознаграждений для валидаторов. Фаза "
+#~ "завершения не включает в себя какую-либо определяемую пользователем логику, "
+#~ "это просто техобслуживание системы. "
+
+#~ msgid ""
+#~ "Payment code ultimately provides its payment by performing a :ref:`token "
+#~ "transfer <tokens-mint-interface>` into the `Handle Payment contract’s "
+#~ "payment purse <https://github.com/CasperLabs/casper-"
+#~ "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/types/src/system/handle_payment/mod.rs#L65>`__."
+#~ " If payment is not given or not enough is transferred, then payment "
+#~ "execution is not considered successful. In this case the effects of the "
+#~ "payment code on the global state are reverted and the cost of the "
+#~ "computation is covered by motes taken from the offending account’s main "
+#~ "purse."
+#~ msgstr ""
+#~ "Код платежа наилучшим образом предоставляет свой платеж через трансфер "
+#~ "токенов :ref:`token transfer <tokens-mint-interface>` в кошелек платежей "
+#~ "контрактов `Handle Payment contract’s payment purse "
+#~ "<https://github.com/CasperLabs/casper-"
+#~ "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/types/src/system/handle_payment/mod.rs#L65>`__."
+#~ " Если платеж не осуществлен или переведено недостаточно токенов, тогда "
+#~ "выполнение платежа считается неуспешным. В таком случае эффекты кода платежа"
+#~ " на глобальное состояние возвращаются назад, а цена вычисления покрывается "
+#~ "монетами motes из основного кошелька аккаунта, которому не удался платеж. "
+
+#~ msgid "The CasperLabs runtime"
+#~ msgstr "Рабочая среда CasperLabs"
+
+#~ msgid ""
+#~ "A wasm module is not natively able to create any effects outside of reading "
+#~ "/ writing from its own linear memory. To enable other effects (e.g. reading "
+#~ "/ writing to the CasperLabs global state), wasm modules must import "
+#~ "functions from the host environment they are running in. In the case of "
+#~ "contracts on the CasperLabs blockchain, this host is the CasperLabs Runtime."
+#~ " Here, we briefly describe the functionalities provided by imported "
+#~ "function. All these features are conveniently accessible via functions in "
+#~ "the `CasperLabs rust library <https://crates.io/crates/casperlabs-contract-"
+#~ "ffi>`__. For a more detailed description of the functions available for "
+#~ "contracts to import, see :ref:`Appendix A <appendix-a>`."
+#~ msgstr ""
+#~ "Модуль wasm изначально не способен создавать какие-либо эффекты за пределами"
+#~ " чтения / записи из своей собственной линейной памяти. Чтобы включить другие"
+#~ " эффекты (например, чтение / запись в глобальное состояние Casper Labs), "
+#~ "модули wasm должны импортировать функции из среды хоста, в которой они "
+#~ "выполняются. В случае контрактов на блокчейне Casper Labs этот хост является"
+#~ " средой выполнения Casper Labs. Здесь мы кратко опишем функциональные "
+#~ "возможности, предоставляемые импортированной функцией. Все эти функции "
+#~ "удобно доступны с помощью функций в библиотеке `CasperLabs rust library "
+#~ "<https://crates.io/crates/casperlabs-contract-ffi>`__.  Для более подробного"
+#~ " описания функций, доступных для импорта контрактов, см. :ref:`Appendix A "
+#~ "<appendix-a>`."

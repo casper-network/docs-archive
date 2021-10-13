@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../node-operator/unbonding.rst:3
+msgid "Unbonding"
+msgstr "Анбондинг"
+
+#: ../../node-operator/unbonding.rst:5
+msgid ""
+"Once a bid is placed, it will remain in the state of the auction contract. "
+"Even if the bid does not win a slot right away. The reason for this is that "
+"new slots may become available if bonded validators leave the network, or "
+"reduce their bond amounts. Therefore, a bid must be explicitly withdrawn in "
+"order to remove the bid from the auction. Bonded validators also have a bid "
+"in the auction, to unbond stake, this bid must be reduced. Since tokens will"
+" be transferred out of the bid purse, it's important to compile the contract"
+" to withdraw the bid yourself, so there is confidence in the correctness of "
+"the contract.  The process is essentially the same as bonding, but uses a "
+"different contract, ``withdraw_bid.wasm``."
+msgstr ""
+"Как только бид будет размещен, он останется в состоянии аукционного "
+"контракта. Даже если ставка не выиграет слот сразу. Причина этого "
+"заключается в том, что новые слоты могут стать доступными, если связанные "
+"валидаторы покинут сеть или уменьшат суммы своих бондовых обязательств. "
+"Поэтому заявка на бид должна быть явно отозвана, чтобы удалить бид с "
+"аукциона. У связанных валидаторов также есть биды на аукционе, для того, "
+"чтобы отменить ставку, то есть осуществить анбондинг, эти биды должны быть "
+"уменьшены. Поскольку токены будут переведены из кошелька бид, важно "
+"скомпилировать контракт, чтобы вывести бид самостоятельно, чтобы была "
+"уверенность в правильности контракта. Процесс по сути такой же, как и "
+"бондинг, но использует другой контракт \"withdraw_bid.wasm\"."
+
+#: ../../node-operator/unbonding.rst:8
+msgid "Withdrawal Request"
+msgstr "Запрос на вывод"
+
+#: ../../node-operator/unbonding.rst:10
+msgid ""
+"Note the path to files and keys. Note: the session arguments need to be "
+"encased in double quotes, with the parameter values in single quotes. Note "
+"the required payment amount. It must contain at least 12 zeros. Payment "
+"amount is specified in motes."
+msgstr ""
+"Обратите внимание на путь к файлам и ключам. Примечание: переменные сеанса "
+"должны быть заключены в двойные кавычки, а значения параметров -в одинарные "
+"кавычки. Обратите внимание на требуемую сумму платежа. Он должен содержать "
+"не менее 12 нулей. Сумма платежа указана в единицах motes."
+
+#: ../../node-operator/unbonding.rst:12
+msgid "To withdraw a bid, compile the contract & submit a deploy:"
+msgstr ""
+"Чтобы вывести бид, скомпилируйте контракт и предоставьте развертывание:"
+
+#: ../../node-operator/unbonding.rst:19
+msgid "Contract Arguments"
+msgstr "Параметры контракта"
+
+#: ../../node-operator/unbonding.rst:21
+msgid "The withdraw_bid contract accepts 3 arguments:"
+msgstr "Контракт withdraw_bid принимает 3 переменных:"
+
+#: ../../node-operator/unbonding.rst:24
+msgid ""
+"public key: The public key in hex of the account to withhdraw. Note: This "
+"has to be the matching key to the validator secret key that signs the "
+"deploy, and has to match the public key of a bid in the auction contract."
+msgstr ""
+"публичный ключ: шестнадцатиразрядный публичный ключ аккаунта для вывода. "
+"Примечание: это должен быть подходящий ключ к секретному ключу валидатора, "
+"который подписывает развертывание, и он должен совпадать с публичным ключом "
+"бида в контракте аукциона."
+
+#: ../../node-operator/unbonding.rst:25
+msgid "amount: This is the amount that is being withdrawn."
+msgstr "сумма: сумма, которая выводится."
+
+#: ../../node-operator/unbonding.rst:26
+msgid ""
+"unbond_purse (optional): The purse to which the withdrawal will be remitted."
+" Defaults to the main purse for the account if not provided."
+msgstr ""
+"кошелек анбондинга unbond_purse (опционально): кошелек, на который будут "
+"перечислены выведенные средства. По умолчанию он в основном кошельке "
+"аккаунта, если не предоставлен опционально. "
+
+#: ../../node-operator/unbonding.rst:28
+msgid ""
+"Similar to bonding (bidding) - check the auction contract for updates to the"
+" bid amounts."
+msgstr ""
+"Также, как с бондингом (подачей бида) - проверьте контракт аукциона для "
+"обновления суммы бидов."
+
+#: ../../node-operator/unbonding.rst:31
+msgid "Unbonding Wait Period"
+msgstr "Период ожидания анбондинга"
+
+#: ../../node-operator/unbonding.rst:33
+msgid ""
+"In order to prevent 'long range attacks', requests to unbond must go through"
+" a mandatory wait period. This wait period is presently set to 15 eras."
+msgstr ""
+"Чтобы предотвратить \"атаки на большие расстояния\", запросы на анбондинг "
+"должны проходить обязательный период ожидания. В настоящее время этот период"
+" ожидания составляет 15 эр."

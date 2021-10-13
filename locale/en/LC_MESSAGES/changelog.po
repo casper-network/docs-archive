@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,5 +47,39 @@ msgstr ""
 msgid ""
 "`Version 1.2.0 <https://medium.com/casper-association/technical-release-"
 "notes-and-changelog-for-1-2-0-26bbe921ab51>`_"
+msgstr ""
+
+#: ../../changelog.rst:13
+msgid "Additional Logging"
+msgstr ""
+
+#: ../../changelog.rst:14
+msgid "Block Validator distinguishes Deploys and Transfers"
+msgstr ""
+
+#: ../../changelog.rst:15
+msgid "Quantstamp Audit Remediation"
+msgstr ""
+
+#: ../../changelog.rst:18
+msgid ""
+"`Version 1.3.0 <https://medium.com/casper-association/announcing-"
+"version-1-3-of-casper-node-ff7fa57e6d75>`_"
+msgstr ""
+
+#: ../../changelog.rst:19
+msgid "Node RPC Enhancements"
+msgstr ""
+
+#: ../../changelog.rst:20
+msgid "Smart Contracting and Application Development Updates"
+msgstr ""
+
+#: ../../changelog.rst:21
+msgid "Networking Optimizations"
+msgstr ""
+
+#: ../../changelog.rst:22
+msgid "Transaction (Deploy) Processing Improvements"
 msgstr ""
 

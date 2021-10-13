@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../implementation/uref.rst:4
+msgid "Unforgeable Reference (URef)"
+msgstr "Криптографически стойкая ссылка (URef)"
+
+#: ../../implementation/uref.rst:6
+msgid ""
+"This key type is used for storing any type of value except ``Account``. "
+"Additionally, ``URef``\\ s used in contracts carry permission information to"
+" prevent unauthorized usage of the value stored under the key. This "
+"permission information is tracked by the runtime, meaning that if a "
+"malicious contract attempts to produce a ``URef`` with permissions that the "
+"contract does not have, we say the contract has attempted to “forge” the "
+"unforgeable reference, and the runtime will raise a forged ``URef`` error. "
+"Permissions for a ``URef`` can be given across contract calls, allowing data"
+" stored under a ``URef`` to be shared in a controlled way. The 32-byte "
+"identifier representing the key is generated randomly by the runtime (see "
+":ref:`Execution Semantics <execution-semantics-urefs>` for more "
+"information). The serialization for ``Access Rights`` that define the "
+"permissions for ``URefs`` is detailed in the :ref:`CLValues<serialization-"
+"standard-values>` section."
+msgstr ""
+"Этот тип ключа используется для хранения любого типа значений, кроме "
+"\"Account\". Кроме того, \"URef\", используемые в контрактах, содержат "
+"информацию о разрешениях для предотвращения несанкционированного "
+"использования значения, хранящегося под ключом. Эта информация о разрешениях"
+" отслеживается средой выполнения, что означает, что если вредоносный "
+"контракт попытается создать \"URef\" с разрешениями, которых у контракта "
+"нет, мы говорим, что контракт попытался “подделать” криптографически стойкую"
+" ссылку, и среда выполнения выдаст ошибку подделки \"URef\". Разрешения для "
+"\"URef\" могут предоставляться при вызовах контрактов, позволяя "
+"контролируемым образом обмениваться данными, хранящимися в \"URef\". "
+"32-байтовый идентификатор, представляющий ключ, генерируется случайным "
+"образом во время выполнения (см. о семантике исполнения:ref:`Execution "
+"Semantics <execution-semantics-urefs>`  для получения дополнительной "
+"информации). Сериализация \"Прав доступа\", определяющих разрешения для "
+"\"URef\", подробно описана в разделе :ref:`CLValues<serialization-standard-"
+"values>`"
+
+#: ../../implementation/uref.rst:20
+msgid "Permissions for ``URef``\\ s"
+msgstr "Разрешения для \"URef\""
+
+#: ../../implementation/uref.rst:22
+msgid ""
+"In the runtime, a ``URef`` carries its permissions called ``AccessRights``. "
+"Additionally, the runtime tracks what ``AccessRights`` would be valid for "
+"each ``URef`` to have in each context. As mentioned above, if a malicious "
+"contract attempts to use a ``URef`` with ``AccessRights`` that are not valid"
+" in its context, then the runtime will raise an error; this is what enforces"
+" the security properties of all URefs used as a key. By default, in all "
+"contexts, all ``URef``\\ s are assumed invalid regardless of declared "
+"AccessRights and are checked against the executing context for validity upon"
+" each attempted usage in session or smart contract logic. A ``URef`` can "
+"only be added to a context by the host logic, in the following ways:"
+msgstr ""
+"В среде выполнения \"URef\" имеет свои разрешения, называемые \"Правами "
+"доступа\". Кроме того, среда выполнения отслеживает, какие \"Права доступа\""
+" будут действительны для каждой \"URef\" в каждом контексте. Как упоминалось"
+" выше, если вредоносный контракт попытается использовать \"URef`\" с "
+"\"правами доступа\", которые недопустимы в его контексте, среда выполнения "
+"выдаст ошибку; это то, что обеспечивает свойства безопасности всех URef, "
+"используемых в качестве ключа. По умолчанию во всех контекстах все \"URef\" "
+"считаются недействительными независимо от объявленных прав доступа и "
+"проверяются на соответствие контексту выполнения при каждой попытке "
+"использования в логике сеанса или смарт-контракта. \"URef\" может быть "
+"добавлена в контекст только логикой хоста следующими способами:"
+
+#: ../../implementation/uref.rst:31
+msgid "it can exist in a set of “known” ``URef``\\ s"
+msgstr "она может существовать как набор \"известных\" \"URef\""
+
+#: ../../implementation/uref.rst:32
+msgid "it can be freshly created by the runtime via the ``new_uref`` function"
+msgstr ""
+"или же создана с нуля в рабочей среде через функци создания новой ссылки "
+"``new_uref`` "
+
+#: ../../implementation/uref.rst:33
+msgid ""
+"for called contracts, it can be passed in by the caller via the arguments to"
+" ``call_contract``"
+msgstr ""
+"для вызываемых контрактов, она может быть передана кому-либо вызывающим "
+"через аргументы к вызову контракта ``call_contract``"
+
+#: ../../implementation/uref.rst:35
+msgid ""
+"it can be returned to the caller from ``call_contract`` via the ``ret`` "
+"function"
+msgstr ""
+"и может быть возвращена вызывающему из ``call_contract`` через функцию "
+"``ret`` "
+
+#: ../../implementation/uref.rst:38
+msgid ""
+"Note: that only valid ``URef``\\ s may be added to the known ``URef``\\ s or"
+" cross call boundaries; this means the system cannot be tricked into "
+"accepting a forged ``URef`` by getting it through a contract or stashing it "
+"in the known ``URef``\\ s."
+msgstr ""
+"Примечание: только действительные \"URef\" могут быть добавлены в известные "
+"\"URef\" или границам между вызовами; это означает, что система не может "
+"быть обманута и принять ложную \"URef\" в контракт или добавить к известным "
+"\"URef\"."
+
+#: ../../implementation/uref.rst:42
+msgid ""
+"The ability to pass ``URef``\\ s between contexts via ``call_contract`` / "
+"``ret``, allows them to be used to share state among a fixed number of "
+"parties while keeping it private from all others."
+msgstr ""
+"Возможность передавать \"URef\" между контекстами через ``call_contract`` / "
+"``ret`` позволяет делиться состояниями между фиксированным количеством "
+"участников, при этом сохраняя приватность от остальных."

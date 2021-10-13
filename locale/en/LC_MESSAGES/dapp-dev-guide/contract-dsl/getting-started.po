@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,22 +132,10 @@ msgid ""
 msgstr ""
 
 #: ../../dapp-dev-guide/contract-dsl/getting-started.rst:27
-msgid "[Advanced] Getting the Macros"
-msgstr ""
-
-#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:28
-msgid ""
-"If you already have been working with Casper contracts and you wish to "
-"simply add the macros to your existing smart contract, then you can "
-"retrieve the macros from `GitHub "
-"<https://github.com/CasperLabs/casperlabs_contract_macro>`_."
-msgstr ""
-
-#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:31
 msgid "Importing the Macros"
 msgstr ""
 
-#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:32
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:28
 msgid ""
 "The sample contract already has this done for you, but you should know "
 "how to do it for future contracts. To import the macros, just include a "
@@ -157,48 +145,35 @@ msgid ""
 "you build it."
 msgstr ""
 
-#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:34
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:30
 msgid ""
 "For example, if you placed the macros inside your project in a folder "
 "named *contract_macro* next to the *contract* folder, you would add this "
 "line to the dependencies section of the ``Cargo.toml`` file:"
 msgstr ""
 
-#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:41
-msgid ""
-"Alternatively, you can get the macros directly from Github without "
-"downloading them:"
-msgstr ""
-
-#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:47
-msgid ""
-"This second approach is what the `Hello World <https://github.com/casper-"
-"ecosystem/hello-world>`_ smart contract is utilizing, so if you are "
-"starting there, it has already been done for you."
-msgstr ""
-
-#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:50
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:37
 msgid "Using the DSL"
 msgstr ""
 
-#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:51
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:38
 msgid ""
 "To use the DSL, simply add the following line to the *use section* of the"
 " contract (usually found at the top of the file in *main.rs*):"
 msgstr ""
 
-#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:58
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:45
 msgid "Examining the Hello World Example"
 msgstr ""
 
-#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:59
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:46
 msgid ""
 "Clone the `Hello World <https://github.com/casper-ecosystem/hello-"
 "world>`_ example contract and open the ``main.rs`` file. Examine the "
 "following section:"
 msgstr ""
 
-#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:92
+#: ../../dapp-dev-guide/contract-dsl/getting-started.rst:79
 msgid ""
 "Notice that all three macros are being utilized and that the file is "
 "relatively compact. This is a very simple contract that initializes a key"
@@ -209,4 +184,31 @@ msgid ""
 "not prefaced with the macro. Since this function is used internally, it "
 "does not need to have an entry point in the Casper runtime."
 msgstr ""
+
+#~ msgid "[Advanced] Getting the Macros"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you already have been working "
+#~ "with Casper contracts and you wish "
+#~ "to simply add the macros to your"
+#~ " existing smart contract, then you "
+#~ "can retrieve the macros from `GitHub "
+#~ "<https://github.com/CasperLabs/casperlabs_contract_macro>`_."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Alternatively, you can get the macros"
+#~ " directly from Github without downloading"
+#~ " them:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This second approach is what the "
+#~ "`Hello World <https://github.com/casper-ecosystem"
+#~ "/hello-world>`_ smart contract is "
+#~ "utilizing, so if you are starting "
+#~ "there, it has already been done "
+#~ "for you."
+#~ msgstr ""
 

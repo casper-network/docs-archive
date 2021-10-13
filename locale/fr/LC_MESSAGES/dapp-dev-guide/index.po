@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:46+0000\n"
 "Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../../dapp-dev-guide/index.rst:27
+#: ../../dapp-dev-guide/index.rst:24
 msgid "Introduction"
 msgstr "Introduction"
 
@@ -85,30 +85,34 @@ msgstr ""
 "vous puissiez les consulter :"
 
 #: ../../dapp-dev-guide/index.rst:15
-msgid "Understand what CasperLabs is building."
-msgstr "Comprendre ce que CasperLabs veut construire."
+msgid "Understand more about the Casper Network"
+msgstr "En savoir plus sur le réseau Casper"
 
 #: ../../dapp-dev-guide/index.rst:16
-msgid "Learn how to build and operate applications on the platform."
-msgstr "Apprenez à créer et à exploiter des applications sur la plate-forme."
+msgid "Learn how to build and operate applications on the platform"
+msgstr ""
+"Apprendre à construire et à exploiter des applications sur la plateforme"
 
 #: ../../dapp-dev-guide/index.rst:17
-msgid "Learn how to set up the CasperLabs environment locally."
-msgstr "Mettre en place l'environnement CasperLabs en local."
+msgid "Learn how to set up a Casper Network locally"
+msgstr "Apprendre à configurer un réseau Casper localement."
 
 #: ../../dapp-dev-guide/index.rst:18
-msgid "Work with our Contracts API to access our Rust resources."
+msgid "Work with the contracts API to access the network\\'s Rust resources"
 msgstr ""
-"Travailler avec notre API de contrats pour accéder à nos ressources Rust."
+"Utiliser l'API des contrats pour accéder aux ressources Rust du réseau."
 
 #: ../../dapp-dev-guide/index.rst:19
-msgid "Learn how to create and test Smart Contracts with our libraries."
-msgstr "Créer et tester des contrats intelligents avec nos librairies (API)."
+msgid "Learn how to create and test smart contracts using available libraries"
+msgstr ""
+"Apprendre à créer et à tester des contrats intelligents à l'aide des "
+"librairies disponibles."
 
 #: ../../dapp-dev-guide/index.rst:20
-msgid "Work with the multi-signature capability to sign transactions."
+msgid "Work with the multi-signature capability to sign transactions"
 msgstr ""
-"Utiliser la fonction de signature multiple pour signer les transactions."
+"Travailler avec la fonction de signature multiple pour signer des "
+"transactions"
 
 #: ../../dapp-dev-guide/index.rst:22
 msgid ""
@@ -122,15 +126,34 @@ msgstr ""
 "nous faire part de vos commentaires tout au long de ce projet - nous sommes "
 "impatients de construire ensemble un avenir décentralisé."
 
-#: ../../dapp-dev-guide/index.rst:24
-msgid ""
-"`Coding Standards and Review "
-"<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
-"cover best practices and recommendations following our coding standards, "
-"code reviews and publishing your code to our GitHub."
-msgstr ""
-"`Normes de codage et révision "
-"<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
-"couvrent les meilleures pratiques et recommandations inspirées de nos normes"
-" de codage, des révisions de code et la publication de votre code sur notre "
-"GitHub."
+#~ msgid "Understand what CasperLabs is building."
+#~ msgstr "Comprendre ce que CasperLabs veut construire."
+
+#~ msgid "Learn how to build and operate applications on the platform."
+#~ msgstr "Apprenez à créer et à exploiter des applications sur la plate-forme."
+
+#~ msgid "Learn how to set up the CasperLabs environment locally."
+#~ msgstr "Mettre en place l'environnement CasperLabs en local."
+
+#~ msgid "Work with our Contracts API to access our Rust resources."
+#~ msgstr ""
+#~ "Travailler avec notre API de contrats pour accéder à nos ressources Rust."
+
+#~ msgid "Learn how to create and test Smart Contracts with our libraries."
+#~ msgstr "Créer et tester des contrats intelligents avec nos librairies (API)."
+
+#~ msgid "Work with the multi-signature capability to sign transactions."
+#~ msgstr ""
+#~ "Utiliser la fonction de signature multiple pour signer les transactions."
+
+#~ msgid ""
+#~ "`Coding Standards and Review "
+#~ "<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
+#~ "cover best practices and recommendations following our coding standards, "
+#~ "code reviews and publishing your code to our GitHub."
+#~ msgstr ""
+#~ "`Normes de codage et révision "
+#~ "<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
+#~ "couvrent les meilleures pratiques et recommandations inspirées de nos normes"
+#~ " de codage, des révisions de code et la publication de votre code sur notre "
+#~ "GitHub."

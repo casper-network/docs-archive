@@ -1,0 +1,236 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:2
+msgid "ERC-20 Implementation"
+msgstr "Внедрение ERC-20"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:4
+msgid ""
+"The ERC-20 standard is defined in `an Ethereum Improvement Proposal (EIP) "
+"<https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#>`_. Read it "
+"carefully, as it defines the methods we have implemented:"
+msgstr ""
+"Стандарт ERC-20 определен в Предложении по улучшению Эфириума `an Ethereum "
+"Improvement Proposal (EIP) "
+"<https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#>`_. Прочтите "
+"его внимательно, так как оно описывает методы, которые мы внедрили:"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:6
+msgid "`allowance <#the-total-supply-balance-of-and-allowance-functions>`_"
+msgstr ""
+"надбавка `allowance <#the-total-supply-balance-of-and-allowance-functions>`_"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:7
+msgid "`approve <#the-approve-and-transfer-from-functions>`_"
+msgstr "одобрение `approve <#the-approve-and-transfer-from-functions>`_"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:8
+msgid "`balance_of <#the-total-supply-balance-of-and-allowance-functions>`_"
+msgstr ""
+"баланс `balance_of <#the-total-supply-balance-of-and-allowance-functions>`_"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:9
+msgid "`decimals <#the-name-symbol-and-decimals-functions>`_"
+msgstr "десятичные `decimals <#the-name-symbol-and-decimals-functions>`_"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:10
+msgid "`name <#the-name-symbol-and-decimals-functions>`_"
+msgstr "название `name <#the-name-symbol-and-decimals-functions>`_"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:11
+msgid "`symbol <#the-name-symbol-and-decimals-functions>`_"
+msgstr "символ `symbol <#the-name-symbol-and-decimals-functions>`_"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:12
+msgid "`total_supply <#the-total-supply-balance-of-and-allowance-functions>`_"
+msgstr ""
+"тотал `total_supply <#the-total-supply-balance-of-and-allowance-functions>`_"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:13
+msgid "`transfer <#the-transfer-function>`_"
+msgstr "трансфер `transfer <#the-transfer-function>`_"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:14
+msgid "`transfer_from <#the-approve-and-transfer-from-functions>`_"
+msgstr ""
+"трансфер из `transfer_from <#the-approve-and-transfer-from-functions>`_"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:17
+msgid "Cloning the Example Contract"
+msgstr "Клонирование примерного контракта"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:19
+msgid ""
+"An example ERC-20 for Casper is located in `GitHub <https://github.com"
+"/casper-ecosystem/erc20>`_."
+msgstr ""
+"Пример ERC-20 для Casper расположен в `GitHub <https://github.com/casper-"
+"ecosystem/erc20>`_."
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:23
+msgid "Installing the Required Crates"
+msgstr "Установка требуемых крейтов"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:25
+msgid ""
+"This is a Rust contract. In Rust, the keyword ``use`` is like an ``include``"
+" statement in C/C++. Casper contracts require a few crates to be included. "
+"They are:"
+msgstr ""
+"Это контракт Rust. В Rust ключевое слово ``use`` подобно положению "
+"``include`` в языке C/C++. В контракты Casper должны быть включены несколько"
+" крейтов. А именно:"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:27
+msgid "contract: The Casper contract API for runtime and storage"
+msgstr "contract: API контракта Casper для рабочей среды и хранения"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:28
+msgid "types: The Casper contract type system"
+msgstr "types: типовая система контракта Casper "
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:51
+msgid "Initializing the Contract"
+msgstr "Инициализация контракта"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:53
+msgid ""
+"When the contract is deployed, it must be initialized with some values; this"
+" is done with the help of the ``call()`` function. The contract is "
+"initialized with a name, symbol, decimals, starting balances, and the "
+"starting token supply."
+msgstr ""
+"Когда контракт развернут, он должен быть инициирован с некоторыми "
+"значениями; это делается с помощью функции вызова ``call()``. Контракт "
+"инициируется с названием, символом, десятичными, стартовыми балансами и "
+"стартовым предложением токенов. "
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:85
+msgid "The ``name``, ``symbol``, and ``decimals`` functions"
+msgstr "Функции \"название\". \"символ\" и \"десятичные\""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:87
+msgid ""
+"We then also add a few helper functions to set and retrieve values from the "
+"contract. Notice that these helper functions reference each of the "
+"``set_key`` definitions when the contract is deployed; a generic ``get_key``"
+" function to retrieve values is also used."
+msgstr ""
+"Затем мы также добавляем несколько вспомогательных функций для установки и "
+"извлечения значений из контракта. Обратите внимание, что эти вспомогательные"
+" функции ссылаются на каждое из определений ``set_key`` при развертывании "
+"контракта; также используется общая функция ``get_key``  для извлечения "
+"значений."
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:111
+msgid "The ``total_supply``, ``balance_of``, and ``allowance`` functions"
+msgstr "Функции \"общее предложение\", \"баланс\" и \" допущения\""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:113
+msgid ""
+"Let's explore the implementation of some key ERC-20 methods: ``balance_of``,"
+" ``total_supply``, and ``allowance``."
+msgstr ""
+"Давайте исследуем введение некоторых ключевых методов ERC-20: баланс "
+"\"balance_of\", общее предложение ``total_supply``, и допущения  "
+"``allowance``."
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:115
+msgid ""
+"The ``allowance`` method enables owners to specify an amount that a spender "
+"account can spend."
+msgstr ""
+"Метод допущений позволяет владельцам специфицировать количество, которое "
+"можно тратить с аккаунта трат. "
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:142
+msgid "The ``transfer`` function"
+msgstr "Функция трансфера"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:144
+msgid ""
+"Here is the ``transfer`` method, which makes it possible to transfer tokens "
+"from the ``sender`` address to the ``recipient`` address. If the ``sender`` "
+"address has enough balance, then tokens should be transferred to the "
+"``recipient`` address."
+msgstr ""
+"А вот здесь метод трансфера \"transfer\", который позволяет осуществить "
+"трансфер токенов с адреса отправителя \"spender\" на адрес получателя "
+"\"recipient\". Если на балансе \"отправителя\" достаточно средств, токены "
+"должны быть переведены на адрес \"получателя\". "
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:165
+msgid "The ``approve`` and ``transfer_from`` functions"
+msgstr "Функции \"одобрения\" и \"трансфера от\""
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:166
+msgid ""
+"Here are the functions ``approve`` and ``transfer_from``. ``approve`` is "
+"used to allow another address to spend tokens on one's behalf. This is used "
+"when multiple keys are authorized to perform deployments from an account."
+msgstr ""
+"Здесь представлены функции одобрения ``approve`` и трансфера-от "
+"``transfer_from``. \"Одобрение\" используется, чтобы разрешить трату токенов"
+" с другого адреса от вашего имени. Это применяется. когда авторизованы "
+"несколько ключей, чтобы осуществлять развертывания с аккаунта. "
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:181
+msgid "``transfer_from`` allows spending an approved amount of tokens."
+msgstr ""
+"А \"трансфер от\" позволяет потратить одобренное вами количество токенов. "
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:204
+msgid "The ``get_key`` and ``set_key`` functions"
+msgstr "Функции ключей ``get_key`` и ``set_key``"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:205
+msgid ""
+"The ``get_key`` and ``set_key`` functions are generic Casper storage write "
+"and read methods. Implement these one time for the contract and then call "
+"them as needed."
+msgstr ""
+"Функции получения ключа ``get_key`` и настройки ключа ``set_key`` - это "
+"основные методы записи и чтения в хранилище Casper. Они вводятся один раз за"
+" контракт и могут быть вызваны, когда необходимо. "
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:234
+msgid "Other Helper Functions"
+msgstr "Другие вспомогательные функции"
+
+#: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:235
+msgid ""
+"The ``balance_key`` and ``allowance_key`` functions format the balances and "
+"account information from their internal representation into strings."
+msgstr ""
+"Функции баланса ``balance_key`` и ``allowance_key `` форматируют балансы и "
+"информацию аккаунта из внутренней репрезентации в вид строки. "
+
+#~ msgid ""
+#~ "The ``balance_key`` and ``allowance_key ``functions format the balances and "
+#~ "account information from their internal representation into strings."
+#~ msgstr ""
+#~ "Функции баланса ``balance_key`` и ``allowance_key `` форматируют балансы и "
+#~ "информацию аккаунта из внутренней репрезентации в вид строки. "

@@ -1,0 +1,476 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../workflow/delegate.rst:2
+msgid "Delegating with the Command-line"
+msgstr "Делегирование из командной строки"
+
+#: ../../workflow/delegate.rst:4
+msgid ""
+"This document details a workflow where an account holder on the Casper "
+"Network can delegate their tokens to a validator on a Casper Network."
+msgstr ""
+"В этом документе подробно описывается рабочий процесс, в котором владелец "
+"учетной записи в сети Casper может делегировать свои токены валидатору в "
+"сети Casper."
+
+#: ../../workflow/delegate.rst:6
+msgid "This workflow assumes:"
+msgstr "Этот рабочий процесс предполагает:"
+
+#: ../../workflow/delegate.rst:8
+msgid "You meet the `prerequisites <setup.html>`_"
+msgstr "Вы соответствуете 'предварительным условиям <setup.html>`_"
+
+#: ../../workflow/delegate.rst:9
+msgid "You are using the Casper command-line client"
+msgstr "Вы используете клиент командной строки Casper"
+
+#: ../../workflow/delegate.rst:10
+msgid "You have the public key of a validator on a Casper Network"
+msgstr "У вас есть открытый ключ валидатора в сети Casper"
+
+#: ../../workflow/delegate.rst:11
+msgid "You have the delegation contract or WASM to execute on the network"
+msgstr "У вас есть контракт на делегирование или WASM для выполнения в сети"
+
+#: ../../workflow/delegate.rst:12
+msgid "You have a valid ``node-address``"
+msgstr "У вас есть действительный \"адрес ноды\""
+
+#: ../../workflow/delegate.rst:13
+msgid ""
+"You have previously `deployed a smart contract "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ to a Casper Network"
+msgstr ""
+"Вы уже ранее 'развертывали смарт-контракт "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ в сети Casper."
+
+#: ../../workflow/delegate.rst:17
+msgid "Building The Delegation WASM"
+msgstr "Сборка WASM делегирования"
+
+#: ../../workflow/delegate.rst:19
+msgid ""
+"Obtain the ``delegate.wasm`` by cloning the `casper-node <https://github.com"
+"/casper-network/casper-node>`_ repository and building the contracts."
+msgstr ""
+"Получите ``delegate.wasm`` с помощью клонирования каталога `casper-node "
+"<https://github.com/casper-network/casper-node>`_ и сборки контрактов."
+
+#: ../../workflow/delegate.rst:21
+msgid ""
+"To build contracts, set up Rust, and install all dependencies. Visit "
+"`Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-"
+"of-rust-contract-sdk.html>`_ in the Developer Guide for step-by-step "
+"instructions."
+msgstr ""
+"Для сборки контракта, настройте Rust и установите все зависимости. Посетите "
+"раздел о настройке в гайде разработчика `Setting up Rust "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_ для получения пошаговых инструкций."
+
+#: ../../workflow/delegate.rst:23
+msgid ""
+"Once you build the contracts, you can use the ``delegate.wasm`` to create a "
+"deploy that will initiate the delegation process. The WASM can be found in:"
+msgstr ""
+"После создания контрактов вы можете использовать ``delegate.wasm`` для "
+"создания развертывания, которое инициирует процесс делегирования. WASM можно"
+" найти в:"
+
+#: ../../workflow/delegate.rst:31
+msgid "Acquiring a Validator's Public Key"
+msgstr "Получение открытого ключа Валидатора"
+
+#: ../../workflow/delegate.rst:33
+msgid ""
+"The official Testnet and Mainnet provide a browser-based block explorer to "
+"look up the list of validators within their respective networks:"
+msgstr ""
+"Официальные Testnet и Mainnet предоставляют обозреватель блоков на основе "
+"браузера для просмотра списка валидаторов в своих соответствующих сетях:"
+
+#: ../../workflow/delegate.rst:35
+msgid "`Validators on Mainnet <https://cspr.live/validators>`_"
+msgstr "`Валидаторы в основной сети <https://cspr.live/validators>`_"
+
+#: ../../workflow/delegate.rst:36
+msgid "`Validators on Testnet <https://testnet.cspr.live/validators>`_"
+msgstr "`Валидаторы в тестовой сети <https://testnet.cspr.live/validators>`_"
+
+#: ../../workflow/delegate.rst:39
+msgid ""
+"You will see a list of validators present on the network and their total "
+"stake (including tokens from other delegators)."
+msgstr ""
+"Вы увидите список валидаторов, присутствующих в сети, и их общий стейк "
+"(включая токены от других делегаторов)."
+
+#: ../../workflow/delegate.rst:41
+msgid ""
+"You can click on any validator listed to see more information about the "
+"validator, including the validator's personal stake."
+msgstr ""
+"Вы можете нажать на любой из перечисленных валидаторов, чтобы просмотреть "
+"дополнительную информацию о валидаторе, включая личный стейк валидатора."
+
+#: ../../workflow/delegate.rst:43
+#, python-format
+msgid ""
+"Each validator will show the delegation rate (commission); this represents "
+"the percentage of **your** reward share that the validator will retain. "
+"Thus, a 10% rate implies that the validator will retain 10% of your reward "
+"share. As a prospective delegator, selecting a validating node that you can "
+"trust and offers a favorable delegation rate is essential. Please do your "
+"due diligence before you stake your tokens with a validator."
+msgstr ""
+"Каждый валидатор покажет коэффициент делегирования (комиссию); это "
+"представляет собой процент от **вашей** доли вознаграждения, которую "
+"сохранит валидатор. Таким образом, курс 10% подразумевает, что валидатор "
+"сохранит 10% вашей доли вознаграждения. В качестве потенциального делегатора"
+" важно выбрать проверяющую ноду, которой вы можете доверять и которая "
+"предлагает выгодную скорость делегирования. Пожалуйста, проявите должную "
+"осмотрительность, прежде чем ставить свои токены на карту с помощью "
+"валидатора."
+
+#: ../../workflow/delegate.rst:46
+msgid ""
+"Note the ``PublicKey`` of the validator you have selected to delegate your "
+"tokens."
+msgstr ""
+"Обратите внимание на \"публичный ключ\" валидатора, который вы выбрали для "
+"делегирования своих токенов."
+
+#: ../../workflow/delegate.rst:48
+msgid ""
+"If you observe your delegation request in the bid structure but do not see "
+"the associated validator key in the ``era_validators`` structure, the "
+"validator you selected is not part of the current validator set. In this "
+"event, your tokens will not be earning rewards unless you un-delegate, wait "
+"through the unbonding period, and re-delegate to another validator."
+msgstr ""
+"Если вы видите свой запрос на делегирование в структуре предложения, но не "
+"видите связанного ключа валидатора в структуре \"era_validators\", выбранный"
+" вами валидатор не входит в текущий набор валидаторов. В этом случае ваши "
+"токены не будут получать вознаграждения, если вы не отмените делегирование, "
+"не дождетесь периода отмены привязки - анбондинга - и не передадите их "
+"другому валидатору."
+
+#: ../../workflow/delegate.rst:50
+msgid ""
+"Additionally, any rewards earned are re-delegated by default to the "
+"validator from the initial delegation request. Therefore at the time of un-"
+"delegation, you may want to un-delegate the initial amount plus any "
+"additional rewards earned through the delegation process."
+msgstr ""
+"Кроме того, все полученные вознаграждения по умолчанию повторно делегируются"
+" валидатору из первоначального запроса на делегирование. Поэтому во время "
+"отмены делегирования вы можете отменить делегирование первоначальной суммы "
+"плюс любые дополнительные вознаграждения, полученные в процессе "
+"делегирования"
+
+#: ../../workflow/delegate.rst:53
+msgid ""
+"The active validator set is constantly rotating; therefore, when delegating "
+"to a validator, remember that the validator you selected may have been "
+"rotated out of the set."
+msgstr ""
+"Активный набор валидаторов постоянно меняется; поэтому при делегировании "
+"валидатору помните, что выбранный вами валидатор, возможно, был удален из "
+"набора."
+
+#: ../../workflow/delegate.rst:57
+msgid "Executing the Delegation Request"
+msgstr "Выполнение запроса на делегирование"
+
+#: ../../workflow/delegate.rst:59
+msgid ""
+"We recommend first testing the following steps on our official Testnet "
+"before performing these steps in a live environment like the Casper Mainnet."
+msgstr ""
+"Мы рекомендуем сначала протестировать следующие шаги в нашей официальной "
+"тестовой сети, прежде чем выполнять эти шаги в реальной среде, такой как "
+"сеть Casper Mainnet."
+
+#: ../../workflow/delegate.rst:62
+msgid "Sending the Delegation Deploy"
+msgstr "Отправка развертывания делегирования"
+
+#: ../../workflow/delegate.rst:64
+msgid ""
+"Send a deploy containing the ``delegate.wasm`` to the network to initiate "
+"the delegation process. Here is an example deployment of the delegation "
+"request:"
+msgstr ""
+"Отправьте развертывание, содержащее ``delegate.wasm`` в сеть для инициации "
+"процесса делегирования. Вот пример развертывания запроса на делегирование:"
+
+#: ../../workflow/delegate.rst:78
+msgid ""
+"**Note** The delegator's public key and the secret key that signs the deploy"
+" must be part of the same key pair."
+msgstr ""
+"**Примечание** Открытый ключ делегатора и секретный ключ, подписывающий "
+"развертывание, должны быть частью одной и той же пары ключей."
+
+#: ../../workflow/delegate.rst:80
+msgid "**Request fields:**"
+msgstr "**Поля запросов:**"
+
+#: ../../workflow/delegate.rst:82 ../../workflow/delegate.rst:122
+#: ../../workflow/delegate.rst:174
+msgid ""
+"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP"
+" service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT> Имя хоста или IP-адрес и порт узла, на "
+"котором запущена служба HTTP [по умолчанию:http://localhost:7777]"
+
+#: ../../workflow/delegate.rst:83
+msgid "``secret-key`` - Path to secret key file"
+msgstr "``secret-key`` - путь к файлу с секретным ключом"
+
+#: ../../workflow/delegate.rst:84
+msgid ""
+"``chain-name`` - Name of the chain, to avoid the deploy from being "
+"accidentally or maliciously included in a different chain"
+msgstr ""
+"``chain-name`` - Имя цепочки, чтобы избежать случайного или злонамеренного "
+"включения развертывания в другую цепочку"
+
+#: ../../workflow/delegate.rst:86
+msgid "The *chain-name* for testnet is **casper-test**"
+msgstr "*Имя цепочки* для тестнет - **casper-test**"
+
+#: ../../workflow/delegate.rst:87
+msgid "The *chain-name* for mainnet is **casper**"
+msgstr "*Имя цепочки* для майннет - **casper**"
+
+#: ../../workflow/delegate.rst:89
+msgid "``session-path`` - The path to where the ``delegate.wasm`` is located"
+msgstr "``session-path`` - путь к расположению ``delegate.wasm`` "
+
+#: ../../workflow/delegate.rst:90
+msgid "``session-arg`` - The arguments to the ``delegate`` execution"
+msgstr "``session-arg`` - аргументы для выполнения \"делегирования\" "
+
+#: ../../workflow/delegate.rst:92
+msgid ""
+"The argument ``validator`` is the public key of the validator to whom the "
+"tokens will be delegated"
+msgstr ""
+"Аргумент \"валидатор\" является открытым ключом валидатора, кому будут "
+"делегированы токены"
+
+#: ../../workflow/delegate.rst:93
+msgid "The argument ``amount`` is the number of tokens to be delegated"
+msgstr ""
+"Аргумент \"сумма\" - это количество токенов, которые должны быть "
+"делегированы"
+
+#: ../../workflow/delegate.rst:94
+msgid ""
+"The argument ``delegator`` is the public key of the account delegating "
+"tokens to a validator"
+msgstr ""
+"Аргумент \"делегатор\" - это открытый ключ учетной записи, делегирующий "
+"токены валидатору"
+
+#: ../../workflow/delegate.rst:97
+msgid "**Important response fields:**"
+msgstr "**Важные области реагирования:**"
+
+#: ../../workflow/delegate.rst:99
+msgid ""
+"``\"result\".\"deploy_hash\"`` - the address of the executed delegation "
+"request."
+msgstr "``\"result\".\"deploy_hash\"`` - адрес выполненного запроса на делегирование."
+
+#: ../../workflow/delegate.rst:101
+msgid ""
+"Save the returned `deploy_hash` from the output to query information about "
+"the delegation deploy later."
+msgstr ""
+"Сохраните возвращенный 'deploy_hash' из выходных данных, чтобы позже "
+"запросить информацию о развертывании делегирования."
+
+#: ../../workflow/delegate.rst:103
+msgid ""
+"Refer to the `Deploy Status <querying.html#deploy-status>`_ section to learn"
+" how to confirm that your deploy was executed successfully."
+msgstr ""
+"Обратитесь к разделу 'Статус развертывания <querying.html#deploy-status>`_ ,"
+" чтобы узнать, как подтвердить, что ваше развертывание было выполнено "
+"успешно."
+
+#: ../../workflow/delegate.rst:106
+msgid "Confirming the Delegation"
+msgstr "Подтверждение делегирования"
+
+#: ../../workflow/delegate.rst:108
+msgid ""
+"A Casper Network maintains an `auction` where validators `bid` on slots to "
+"become part of the active validator set. Delegation rewards are only earned "
+"for a validator who has won the auction and is part of the active set. Thus "
+"to ensure the delegated tokens can earn rewards, we must first check that:"
+msgstr ""
+"Сеть Casper поддерживает `аукцион`, на котором валидаторы \"делают ставки\" "
+"- биды на слоты, чтобы стать частью активного набора валидаторов. Награды за"
+" делегирование начисляются только для валидатора, который выиграл аукцион и "
+"является частью активного набора. Таким образом, чтобы гарантировать, что "
+"делегированные токены могут приносить вознаграждение, мы должны сначала "
+"проверить, что:"
+
+#: ../../workflow/delegate.rst:110
+msgid "Our delegation is part of the `bid` to the `auction`"
+msgstr "Наше делегирование является частью \"бида\" \"аукциона\""
+
+#: ../../workflow/delegate.rst:111
+msgid "The validator is part of the `active` validator set"
+msgstr "Валидатор является частью \"активного\" набора валидаторов"
+
+#: ../../workflow/delegate.rst:113
+msgid ""
+"Once the deploy has been executed, we can query the auction for information "
+"to confirm our delegation. We can use the Casper command-line client to "
+"create an RPC request with the following query:"
+msgstr ""
+"Как только развертывание будет выполнено, мы можем запросить у аукциона "
+"информацию для подтверждения нашего делегирования. Мы можем использовать "
+"клиент командной строки Casper для создания запроса RPC со следующим "
+"запросом:"
+
+#: ../../workflow/delegate.rst:120 ../../workflow/delegate.rst:172
+msgid "**Request fields**:"
+msgstr "**Поля запросов:**"
+
+#: ../../workflow/delegate.rst:125
+msgid ""
+"The ``get-auction-info`` call will return all the bids currently in the "
+"auction contract and the list of active validators for ``4`` future eras "
+"from the present era."
+msgstr ""
+"Вызов получения информации об аукционе ``get-auction-info`` вернет все биды,"
+" указанные в настоящее время в аукционном контракте, и список активных "
+"валидаторов для \"4\" будущих эр от нынешней эры."
+
+#: ../../workflow/delegate.rst:127
+msgid "Below is a sample output:"
+msgstr "Ниже приведен пример вывода:"
+
+#: ../../workflow/delegate.rst:157
+msgid ""
+"If your public key and associated amount appear in the ``bid`` data "
+"structure, this means that the delegation request has been processed "
+"successfully. However, this does not mean the associated validator is part "
+"of the validator set, so you need to check the validator status."
+msgstr ""
+"Если ваш открытый ключ и связанная с ним сумма отображаются в структуре "
+"данных \"bid\", это означает, что запрос на делегирование был успешно "
+"обработан. Однако это не означает, что связанный валидатор является частью "
+"набора валидаторов, поэтому вам необходимо проверить статус валидатора."
+
+#: ../../workflow/delegate.rst:161
+msgid "Checking Validator Status"
+msgstr "Проверка статуса валидатора"
+
+#: ../../workflow/delegate.rst:163
+msgid ""
+"The auction maintains a field called ``era_validators``, which contains the "
+"validator information for 4 future eras from the current era. An entry for a"
+" specific era lists the ``PublicKeys`` of the active validators for that era"
+" along with their stake in the network."
+msgstr ""
+"Аукцион поддерживает поле под названием \"era_validators\", которое содержит"
+" информацию о валидаторе для 4 будущих эр от текущей эры. В записи для "
+"определенной эпохи перечислены \"публичные ключи\" активных валидаторов для "
+"этой эры, а также их доля - стейк - в сети."
+
+#: ../../workflow/delegate.rst:165
+msgid ""
+"If a validator is part of the set, its public key will be present in the "
+"``era_validators`` field as part of the ``Auction`` data structure. We can "
+"use the Casper command-line client to create an RPC request to obtain "
+"auction information and assert that the selected validator is part of the "
+"active validator set."
+msgstr ""
+"Если валидатор является частью набора, его открытый ключ будет "
+"присутствовать в поле \"era_validators\" как часть структуры данных "
+"\"Аукцион\". Мы можем использовать клиент командной строки Casper для "
+"создания запроса RPC для получения информации об аукционе и утверждения, что"
+" выбранный валидатор является частью активного набора валидаторов."
+
+#: ../../workflow/delegate.rst:176
+msgid "**Important Response fields**:"
+msgstr "**Важные области реагирования:**"
+
+#: ../../workflow/delegate.rst:178
+msgid ""
+"In the response, check the ``\"auction_state\".\"era_validators\"`` "
+"structure, which should contain the public key of the selected validator for"
+" the era in which the validator will be active."
+msgstr ""
+"В ответе проверьте структуру `\"auction_state\".\"era_validators\"`, которая"
+" должна содержать открытый ключ выбранного валидатора для эры, в которой "
+"валидатор будет активен."
+
+#: ../../workflow/delegate.rst:180
+msgid "Below is an example of the ``era_validators`` structure:"
+msgstr "Ниже приведен пример структуры \"era_validators\" :"
+
+#: ../../workflow/delegate.rst:213
+msgid ""
+"In the above example, we see the public keys of the active validators in Era"
+" ``9``."
+msgstr ""
+"В приведенном выше примере мы видим открытые ключи активных валидаторов в "
+"эре \"9\"."
+
+#: ../../workflow/delegate.rst:215
+msgid ""
+"**Note**: Validators earn delegation rewards only when they are part of the "
+"active set. This information is time-sensitive; therefore, a validator "
+"selected today may not be part of the set tomorrow. Keep this in mind when "
+"creating a delegation request."
+msgstr ""
+"**Примечание**: Валидаторы получают вознаграждение за делегирование только в"
+" том случае, если они являются частью активного набора. Эта информация "
+"зависит от времени; поэтому валидатор, выбранный сегодня, может не быть "
+"частью набора завтра. Имейте это в виду при создании запроса на "
+"делегирование."
+
+#~ msgid "Delegating Tokens"
+#~ msgstr "Делегирование токенов"
+
+#~ msgid ""
+#~ "Obtain the ``delegate.wasm`` by cloning the `casper-node "
+#~ "<https://github.com/CasperLabs/casper-node>`_ repository and building the "
+#~ "contracts."
+#~ msgstr ""
+#~ "Получите ``delegate.wasm`` с помощью клонирования каталога ноды `casper-node"
+#~ " https://github.com/CasperLabs/casper-node>`_ и сборки контрактов."
