@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:3
+msgid "AssemblyScript"
+msgstr "AssemblyScript"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:5
+msgid ""
+"CasperLabs maintains the `casper-contract <https://www.npmjs.com/package"
+"/casper-contract>`_ to allow developers to create smart contracts using "
+"`AssemblyScript <https://www.npmjs.com/package/assemblyscript>`_. The "
+"package source is hosted in the `main Casper Network repository "
+"<https://github.com/casper-network/casper-"
+"node/tree/master/smart_contracts/contract_as/assembly>`_."
+msgstr ""
+"CasperLabs поддерживает `casper-contract <https://www.npmjs.com/package"
+"/casper-contract>`_ , чтобы разработчики могли создавать смарт-контракты с "
+"использованием `AssemblyScript "
+"<https://www.npmjs.com/package/assemblyscript>`_. Источник пакета размещен в"
+" главном каталоге `main Casper Network repository <https://github.com"
+"/casper-network/casper-"
+"node/tree/master/smart_contracts/contract_as/assembly>`_."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:8
+msgid "Installation"
+msgstr "Установка"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:10
+msgid ""
+"For each smart contract, it is necessary to create a project directory and "
+"initialize it."
+msgstr ""
+"Для каждого смарт-контракта необходимо создать каталог проекта и "
+"инициализировать его."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:12
+msgid ""
+"The ``npm init`` process prompts for various details about the project. "
+"Answer as you see fit, but you may safely default everything except "
+"``name``, which needs to be specified. In this guide, we will refer to the "
+"contract name as ``your-contract-name``."
+msgstr ""
+"Процесс инициализация ``npm init`` запрашивает различные сведения о проекте."
+" Отвечайте так, как считаете нужным, но вы можете смело использовать по "
+"умолчанию все, кроме \"имени\", которое необходимо указать. В этом "
+"руководстве мы будем ссылаться на название контракта как на \"ваше-название "
+"контракта\"."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:20
+msgid "Then install AssemblyScript and this package in the project directory."
+msgstr "Затем установите AssemblyScript  и этот пакет в каталог проекта."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:28
+msgid "Contract API Documentation"
+msgstr "Документация API контракта"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:30
+msgid ""
+"The Assemblyscript contract API documentation can be found at "
+"https://www.npmjs.com/package/casper-contract."
+msgstr ""
+"API документация контракта AssemblyScript может быть найдена в "
+"https://www.npmjs.com/package/casper-contract."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:33
+msgid "Usage"
+msgstr "Использование"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:35
+msgid ""
+"Add script entries for AssemblyScript to your project's ``package.json``. "
+"Note that your contract name is used for the name of the WASM file. Replace "
+"*your-contract-name* with the name of your contract."
+msgstr ""
+"Добавьте записи сценария для AssemblyScript в \"package.json\" вашего "
+"проекта. Обратите внимание, что имя вашего контракта используется для имени "
+"файла WASM. Замените *ваше-название-контракта* названием вашего контракта."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:50
+msgid ""
+"In the project root, create an ``index.js`` file with the following "
+"contents. Replace *your-contract-name* with the name of your contract."
+msgstr ""
+"В корневом каталоге проекта создайте \"index.js\" файл со следующим "
+"содержимым. Замените *your-contract-name* названием вашего контракта."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:70
+msgid ""
+"Next, create a directory called ``assembly``, and in that directory, create "
+"a file called  ``tsconfig.json`` in the following way:"
+msgstr ""
+"Затем создайте каталог с именем ``assembly`` и в этом каталоге создайте файл"
+" с именем \"tsconfig.json\" следующим образом:"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:82
+msgid "Sample smart contract"
+msgstr "Простой смарт-контракт"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:84
+msgid ""
+"In the ``assembly`` directory, also create an ``index.ts`` file, where the "
+"code for the contract needs to go."
+msgstr ""
+"В каталоге \"assembly\" также создайте файл ``index.ts``, куда пойдет код "
+"контракта."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:86
+msgid ""
+"You can use the following sample snippet, which demonstrates a simple smart "
+"contract that immediately returns an error and writes a message to a block "
+"when executed on the Casper Network."
+msgstr ""
+"Вы можете использовать следующий пример фрагмента кода, который "
+"демонстрирует простой смарт-контракт, который немедленно возвращает ошибку и"
+" записывает сообщение в блок при выполнении в сети Casper."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:98
+msgid ""
+"If you prefer a more complicated first contract, you can look at example "
+"contracts on the `Casper Ecosystem GitHub <https://github.com/casper-"
+"ecosystem>`_ repository for inspiration."
+msgstr ""
+"Если вы предпочитаете более сложный первый контракт, вы можете посмотреть "
+"примеры контрактов в каталоге для вдохновения `Casper Ecosystem GitHub "
+"<https://github.com/casper-ecosystem>`_ ."
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:101
+msgid "Compile to WASM"
+msgstr "Компиляция в WASM"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:103
+msgid ""
+"To compile the contract to WASM, use *npm* to run the *asbuild* script from "
+"the project root:"
+msgstr ""
+"Чтобы скомпилировать контракт в WASM, используйте *npm* для запуска сценария"
+" *asbuild* из корневого каталога проекта:"
+
+#: ../../dapp-dev-guide/writing-contracts/assemblyscript.rst:109
+msgid ""
+"If the build is successful, there will be a ``dist`` folder in the ``root`` "
+"folder and in it should be ``your-contract-name.wasm``."
+msgstr ""
+"Если сборка пройдет успешно, в папке \"root\" будет папка \"dist\", и в ней "
+"должно быть \"ваше-имя-контракта.wasm\"."

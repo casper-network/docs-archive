@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:45+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -98,25 +98,21 @@ msgstr "Lấy ra Macros"
 
 #: ../../archived/contract-dsl-archived/getting-started.rst:27
 msgid ""
-"The source code for the macros is located at `GitHub "
-"<https://github.com/CasperLabs/casperlabs_contract_macro>`_. To import the "
-"macros, include a line in the ``Cargo.toml`` file in the ``/contract`` "
-"folder for your smart contract. The entry needs to appear in the\\ "
-"``[dependencies]`` section.  This entry will import the macros into your "
-"project. There are a few sources for the macros."
+"To import the macros, include a line in the ``Cargo.toml`` file in the "
+"``/contract`` folder for your smart contract. The entry needs to appear in "
+"the\\ ``[dependencies]`` section.  This entry will import the macros into "
+"your project. There are a few sources for the macros."
 msgstr ""
-"Mã nguồn cho macro được đặt tại ``GitHub "
-"<https://github.com/CasperLabs/casperlabs_contract_macro>`_. Để nhập macro, "
-"hãy đưa một dòng trong tệp ``Cargo.toml``' trong thư mục ``/contract`` cho "
-"hợp đồng thông minh của bạn. Mục nhập cần xuất hiện trong phần\\ "
-"``[dependencies]``. Mục nhập này sẽ nhập macro vào dự án của bạn. Có một vài"
-" nguồn cho macro."
+"Để nhập macro, hãy đưa vào một dòng trong tệp ``Cargo.toml`` trong thư mục "
+"``/contract`` cho hợp đồng thông minh của bạn. Mục nhập cần xuất hiện trong "
+"phần\\ ``[dependencies]``. Mục nhập này sẽ kết nhập macro vào dự án của bạn."
+" Có một vài nguồn cho macro."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:33
+#: ../../archived/contract-dsl-archived/getting-started.rst:32
 msgid "From Crates.io"
 msgstr "Từ Crates.io"
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:35
+#: ../../archived/contract-dsl-archived/getting-started.rst:34
 msgid ""
 "To use the crate available on `crates.io "
 "<https://crates.io/crates/casperlabs_contract_macro>`_ include the following"
@@ -126,36 +122,27 @@ msgstr ""
 "<https://crates.io/crates/casperlabs_contract_macro>`_, hãy đưa vào mục nhập"
 " sau trong tệp ``Cargo.toml`` cho hợp đồng thông minh."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:43
-msgid "From Github"
-msgstr "Từ Github"
-
-#: ../../archived/contract-dsl-archived/getting-started.rst:45
-msgid ""
-"To obtain the macros from Github, include this entry in ``Cargo.toml``\\ :"
-msgstr "Để lấy macro từ Github, hãy đưa mục này vào ``Cargo.toml``\\ :"
-
-#: ../../archived/contract-dsl-archived/getting-started.rst:52
+#: ../../archived/contract-dsl-archived/getting-started.rst:42
 msgid "Local package"
 msgstr "Gói cục bộ"
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:54
+#: ../../archived/contract-dsl-archived/getting-started.rst:44
 msgid "This example ``Cargo.toml`` entry uses a local path for the macros:"
 msgstr ""
 "Mục nhập ``Cargo.toml`` trong ví dụ này sử dụng một đường dẫn cục bộ cho các"
 " macro:"
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:61
+#: ../../archived/contract-dsl-archived/getting-started.rst:51
 msgid "Using the DSL"
 msgstr "Sử dụng DSL"
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:63
+#: ../../archived/contract-dsl-archived/getting-started.rst:53
 msgid ""
 "To use the DSL, simply add the following line to the ``use`` section of the "
 "contract."
 msgstr "Để sử dụng DSL, chỉ cần thêm dòng sau vào phần ``use`` của hợp đồng."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:69
+#: ../../archived/contract-dsl-archived/getting-started.rst:59
 msgid ""
 "This line can go after the last ``use`` line in the blank contract created "
 "by ``cargo-casperlabs``."
@@ -163,7 +150,7 @@ msgstr ""
 "Dòng này có thể đi sau dòng ``use`` cuối cùng trong hợp đồng trống được tạo "
 "bởi ```cargo-casperlabs``."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:71
+#: ../../archived/contract-dsl-archived/getting-started.rst:61
 msgid ""
 "Remember, if you are using the crates.io package, you may have to use the "
 "package as ``casperlabs_contract_macro``. This depends entirely on how you "
@@ -173,7 +160,7 @@ msgstr ""
 "gói dưới dạng ``casperlabs_contract_macro``. Điều này hoàn toàn phụ thuộc "
 "vào cách bạn kết nhập gói vào tệp ``Cargo.toml`` của mình"
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:76
+#: ../../archived/contract-dsl-archived/getting-started.rst:66
 msgid ""
 "The following contract creates a counter in storage. Each time the contract "
 "is invoked, the counter is incremented by 1."
@@ -181,7 +168,7 @@ msgstr ""
 "Hợp đồng sau đây tạo ra một bộ đếm trong bộ nhớ. Mỗi khi hợp đồng được gọi, "
 "bộ đếm được tăng thêm 1."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:160
+#: ../../archived/contract-dsl-archived/getting-started.rst:150
 msgid ""
 "If you set up your contract using ``cargo-casperlabs`` you can test your "
 "contract using the local runtime."
@@ -190,18 +177,40 @@ msgstr ""
 "bạn có thể kiểm tra hợp đồng của mình bằng cách sử dụng thời gian chạy cục "
 "bộ."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:162
+#: ../../archived/contract-dsl-archived/getting-started.rst:152
 msgid ""
 "Set up the runtime following the steps in the `testing </./dapp-dev-"
 "guide/testing.md>`_ section of this guide to set up the runtime context."
 msgstr ""
-"Thiết lập thời gian chạy theo các bước trong phần `testing </./dapp-dev-"
-"guide/testing.md>`_ của hướng dẫn này để thiết lập ngữ cảnh thời gian chạy."
+"Thiết lập thời điểm chạy theo các bước trong phần `testing </./dapp-dev-"
+"guide/testing.md>`_ của hướng dẫn này để thiết lập ngữ cảnh thời điểm chạy."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:165
+#: ../../archived/contract-dsl-archived/getting-started.rst:155
 msgid ""
 "The following test will check whether or not the tutorial contract is "
 "working properly:"
 msgstr ""
 "Bài kiểm thử sau đây sẽ kiểm tra xem hợp đồng hướng dẫn có hoạt động bình "
 "thường hay không:"
+
+#~ msgid ""
+#~ "The source code for the macros is located at `GitHub "
+#~ "<https://github.com/CasperLabs/casperlabs_contract_macro>`_. To import the "
+#~ "macros, include a line in the ``Cargo.toml`` file in the ``/contract`` "
+#~ "folder for your smart contract. The entry needs to appear in the\\ "
+#~ "``[dependencies]`` section.  This entry will import the macros into your "
+#~ "project. There are a few sources for the macros."
+#~ msgstr ""
+#~ "Mã nguồn cho macro được đặt tại ``GitHub "
+#~ "<https://github.com/CasperLabs/casperlabs_contract_macro>`_. Để nhập macro, "
+#~ "hãy đưa một dòng trong tệp ``Cargo.toml``' trong thư mục ``/contract`` cho "
+#~ "hợp đồng thông minh của bạn. Mục nhập cần xuất hiện trong phần\\ "
+#~ "``[dependencies]``. Mục nhập này sẽ nhập macro vào dự án của bạn. Có một vài"
+#~ " nguồn cho macro."
+
+#~ msgid "From Github"
+#~ msgstr "Từ Github"
+
+#~ msgid ""
+#~ "To obtain the macros from Github, include this entry in ``Cargo.toml``\\ :"
+#~ msgstr "Để lấy macro từ Github, hãy đưa mục này vào ``Cargo.toml``\\ :"

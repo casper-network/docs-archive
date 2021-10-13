@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,8 +33,7 @@ msgstr ""
 #: ../../dapp-dev-guide/tutorials/erc20/tests.rst:7
 msgid ""
 "We will review the following three `GitHub <https://github.com/casper-"
-"ecosystem/erc20/tree/master/tests/src>`_ files, which create the testing "
-"framework:"
+"ecosystem/erc20>`_ files, which create the testing framework:"
 msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/erc20/tests.rst:9
@@ -54,52 +53,50 @@ msgid ""
 msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/erc20/tests.rst:13
-msgid "The following is an example of a complete test:.:"
+msgid "The following is an example of a complete test:"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:26
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:29
 msgid ""
-"The `tests crate <https://github.com/casper-"
-"ecosystem/erc20/tree/master/tests>`_ has a ``build.rs`` file, which is "
-"effectively a custom build script executed every time before running the "
-"tests. The ``build.rs`` file compiles the `contract crate "
-"<https://github.com/casper-ecosystem/erc20/tree/master/contract>`_ in "
-"*release* mode and copies the ``contract.wasm`` file to the "
-"``tests/wasm`` directory. In practice, that means you only need to run a "
-"single command during development, which is **make test**."
+"The tests crate has a ``build.rs`` file, which is effectively a custom "
+"build script executed every time before running the tests. The "
+"``build.rs`` file compiles the contract crate in *release* mode and "
+"copies the ``contract.wasm`` file to the ``tests/wasm`` directory. In "
+"practice, that means you only need to run a single command during "
+"development, which is **make test**."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:30
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:33
 msgid "Configuring the Test Package"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:32
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:35
 msgid "First, we define a ``tests`` package in the ``tests/Cargo.toml`` file."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:51
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:54
 msgid "Describing the Logic for Testing"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:53
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:56
 msgid ""
 "To test the smart contract, we need to specify the starting state of the "
 "blockchain, deploy the compiled contract to this starting state, and "
 "create additional deploys for each of the methods in the contract."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:55
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:58
 msgid ""
 "The ``tests/src/erc20.rs`` file contains methods that can simulate a "
 "real-world deployment (storing the contract in the blockchain) and "
 "transactions to invoke the methods in the contract."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:58
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:61
 msgid "Setting up the testing context"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:60
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:63
 msgid ""
 "Let's start by defining the required constants (i.e., method names, key "
 "names, and account addresses). The following code initializes the `global"
@@ -108,11 +105,11 @@ msgid ""
 " correctly."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:87
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:90
 msgid "Deploying the contract"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:89
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:92
 msgid ""
 "The next step is to define the ``ERC20Contract`` struct that has its own "
 "VM instance and implements the ERC-20 methods. This struct holds a "
@@ -121,7 +118,7 @@ msgid ""
 "handy."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:91
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:94
 msgid ""
 "This code snippet builds the context and includes the compiled "
 "``contract.wasm`` binary being tested. This function creates a new "
@@ -130,18 +127,18 @@ msgid ""
 "using the ``ali`` account."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:144
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:147
 msgid "Querying the network"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:146
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:149
 msgid ""
 "The previous step has simulated a real deploy on the network. The next "
 "code snippet describes how to query the network to find the *contract "
 "hash*."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:148
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:151
 msgid ""
 "Contracts are deployed under the context of an account. Since we created "
 "the deploy under the context of ``self.ali``\\ , this is what we will "
@@ -150,29 +147,29 @@ msgid ""
 "``total_supply`` and ``allowance`` checks."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:194
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:197
 msgid "Invoking contract methods"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:196
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:199
 msgid ""
 "The following code snippet describes a generic way to call a specific "
 "entry point in the contract."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:210
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:213
 msgid "**Invoking the contract methods**"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:212
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:215
 msgid "Here is how to invoke each of the methods in the contract:"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:267
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:270
 msgid "Creating Unit Tests"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:269
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:272
 msgid ""
 "Now that we have a testing context, we can use it to create unit tests in"
 " the file called ``tests/src/tests.rs``. The unit tests verify the "
@@ -180,24 +177,50 @@ msgid ""
 "``tests/src/erc20.rs``."
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:342
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:345
 msgid "Running the Tests"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:344
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:347
 msgid ""
 "Next, we configure the ``lib.rs`` file to run everything via the *make "
 "test* command. Within the ``tests/src/lib.rs`` file, we added the "
 "following lines:"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:354
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:357
 msgid "Next, let's run the tests:"
 msgstr ""
 
-#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:361
+#: ../../dapp-dev-guide/tutorials/erc20/tests.rst:364
 msgid ""
 "This example uses ``bash``.  If you are using a Rust IDE, you need to "
 "configure it to run the tests."
 msgstr ""
+
+#~ msgid ""
+#~ "We will review the following three "
+#~ "`GitHub <https://github.com/casper-"
+#~ "ecosystem/erc20/tree/master/tests/src>`_ files, which "
+#~ "create the testing framework:"
+#~ msgstr ""
+
+#~ msgid "The following is an example of a complete test:.:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The `tests crate <https://github.com/casper-"
+#~ "ecosystem/erc20/tree/master/tests>`_ has a "
+#~ "``build.rs`` file, which is effectively "
+#~ "a custom build script executed every "
+#~ "time before running the tests. The "
+#~ "``build.rs`` file compiles the `contract "
+#~ "crate <https://github.com/casper-"
+#~ "ecosystem/erc20/tree/master/contract>`_ in *release* "
+#~ "mode and copies the ``contract.wasm`` "
+#~ "file to the ``tests/wasm`` directory. In"
+#~ " practice, that means you only need"
+#~ " to run a single command during "
+#~ "development, which is **make test**."
+#~ msgstr ""
 

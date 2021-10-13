@@ -1,0 +1,347 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../workflow/ledger-setup.rst:2
+msgid "Ledger Setup"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:4
+msgid ""
+"A Ledger Device is a hardware wallet that is considered one of the most "
+"secure ways to store your digital assets. Ledger uses an offline, or cold"
+" storage, method of generating private keys, making it a preferred method"
+" for many crypto users. This guide will help you to connect your Ledger "
+"device to the Casper Web wallet (https://cspr.live). The Casper Web "
+"wallet enables you to send and receive CSPR tokens."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:6
+msgid "If you need help, contact us on the following services:"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:8
+msgid "Twitter: https://twitter.com/Casper_Network"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:9
+msgid "Discord: https://discord.com/invite/Q38s3Vh"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:10
+msgid "Telegram: https://t.me/casperblockchain"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:14
+msgid "Requirements"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:17
+msgid "Before you begin"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:18
+msgid "You have initialized your Ledger Nano S/X."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:19
+msgid "You have installed the latest firmware on your Ledger Nano S/X."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:20
+msgid "Ledger Live is ready to use."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:21
+msgid "You have installed a Chromium-based browser such as Chrome or Brave."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:24
+msgid "Install the Casper app on the Ledger device"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:25
+msgid "Open the Manager in Ledger Live."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:26 ../../workflow/ledger-setup.rst:41
+msgid "Connect and unlock your Ledger device."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:27
+msgid "If asked, allow the manager on your device by pressing the right button."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:28
+msgid "Find Casper in the app catalog."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:29
+msgid "Click the Install button of the app."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:30
+msgid "An installation window appears."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:31
+msgid "Your device will display **\"Processing…\"**"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:32
+msgid "The app installation is confirmed."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:35
+msgid "Use Ledger device with your Web wallet"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:38
+msgid "Sign in"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:39
+msgid "You can now use the Ledger device with Web wallet. Follow these steps:"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:42
+msgid "Open the Casper app on your Ledger device."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:43
+msgid "Go to `cspr.live/sign-in <https://cspr.live/sign-in>`_."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:44
+msgid "Click on the **Connect** button in the Ledger section."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:45
+msgid "Click on the **Connect to Ledger wallet** button."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:46
+msgid "Select an account you want to use."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:47
+msgid "Now, your Ledger device is connected to the Web wallet."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:50
+msgid "View account details"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:51 ../../workflow/ledger-setup.rst:94
+msgid "Go to `cspr.live <https://cspr.live>`_."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:52
+msgid "Click on the account address in the upper-right corner of the page."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:57
+msgid "Click on the **View account** button."
+msgstr ""
+
+msgid "Image showing the account details."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:64
+msgid "You are presented with a page displaying details about your account."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:71
+msgid "View account balance"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:72
+msgid "You can check your account balance from the Web wallet:"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:74
+msgid "Follow the steps described in the \"View account details\" section above."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:75
+msgid ""
+"On the **Liquid Account Balance** row, you will see your latest known "
+"account balance."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:79
+msgid "Receive tokens"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:80
+msgid ""
+"To receive tokens, you need to provide the sender with the public key of "
+"your account. To find it:"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:82
+msgid "Open the account details page (see the \"View account details\" section)."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:83
+msgid "Copy the public key found on the **Public Key** row."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:84
+msgid "Alternatively, click on the drop-down menu on your account address."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:89
+msgid "Click on the **Copy public key** button."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:90
+msgid "Share the public key with the sender."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:93
+msgid "Send tokens"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:95
+msgid "Sign in with your Ledger device."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:96
+msgid "Click on **Wallet** and then **Transfer CSPR**."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:101
+msgid "Fill in the details for the transfer."
+msgstr ""
+
+msgid "Image showing the transfer details."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:108
+msgid "Click on the **Next** button."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:109
+msgid "On the next page, click **Confirm and transfer**."
+msgstr ""
+
+msgid "Image showing the confirmation page."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:116
+msgid ""
+"On the **Sign transaction** page, click on the **Sign with Ledger** "
+"button."
+msgstr ""
+
+msgid "Image showing the transfer signing page."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:123
+msgid ""
+"Your Ledger hardware wallet will present you with transfer details. "
+"Verify the transfer details (txn hash, chain ID, source **account**, fee,"
+" target, and amount)."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:125
+msgid "**Verify the transaction on your Ledger device**"
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:127
+msgid ""
+"Press the right button on your Ledger Device to review the transaction "
+"details (Amount and Address) until you see **“Approve”**."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:129
+msgid ""
+"Verify the **txn hash** - make sure it matches the value displayed in the"
+" Web wallet on `cspr.live <https://cspr.live>`_."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:135
+msgid "The *txn hash* value continues on a second screen."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:141
+msgid ""
+"The next page displays transaction **type** - for CSPR transfers, that "
+"will be **Token transfer**."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:147
+msgid ""
+"Verify the **chain ID**, which identifies the network on which you want "
+"to send the transaction."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:153
+msgid ""
+"Verify the **account**, which is the public key of the account that "
+"initiated the transaction."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:159
+msgid "The *account* value continues on a second screen."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:165
+msgid ""
+"Verify the **fee**. For CSPR token transfers, that value should be "
+"constant and equal to 10 000 motes = 0.00001 CSPR."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:171
+msgid ""
+"Verify **target** - **NOTE** this **IS NOT** a public key of the "
+"recipient but the hash of that key. Compare the public key with the value"
+" in the Web wallet which shows you two fields for the recipient public "
+"key and target.\"."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:177
+msgid "The *target* value continues on a second screen."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:183
+msgid "Verify the **amount** you want to transfer."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:189
+msgid "If you approve the transaction, click both buttons on the Ledger device."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:195
+msgid ""
+"After approving the transaction with your Ledger hardware wallet, the "
+"`cspr.live <https://cspr.live>`_ Web wallet will display a \"Transfer "
+"completed\" page."
+msgstr ""
+
+msgid "Image showing the transfer completed."
+msgstr ""
+
+#: ../../workflow/ledger-setup.rst:202
+msgid ""
+"You can now check your account to see a list of all the completed "
+"transfers."
+msgstr ""
+

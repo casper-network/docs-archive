@@ -28,5 +28,5 @@ Next, compile your contract and run the contract unit tests.
 
 .. code-block:: bash
 
-   $ make build-contract
+   $ make build-contracts
    $ make test

@@ -1,0 +1,466 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
+"PO-Revision-Date: 2021-09-08 20:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:2
+msgid "Tutorial Walkthrough"
+msgstr "Пошаговое руководство по учебнику"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:4
+msgid ""
+"Now that we are familiar with the basic commands, we can begin the tutorial "
+"to deploy a contract application and use it on the network."
+msgstr ""
+"Теперь, когда мы знакомы с основными командами, мы можем приступить к "
+"обучению по развертыванию контрактного приложения и использованию его в "
+"сети."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:7
+msgid "Clone the Contracts"
+msgstr "Клонирование контрактов"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:9
+msgid ""
+"First, we will need to clone `the counter contract repository "
+"<https://github.com/casper-ecosystem/counter>`_ to our local machine."
+msgstr ""
+"Сначала нам потребуется клонировать каталог `the counter contract repository"
+" <https://github.com/casper-ecosystem/counter>`_ в нашу локальную машину."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:15
+msgid ""
+"If you explore the source code, you will see that there are two smart "
+"contracts:"
+msgstr ""
+"Если вы изучите исходный код, то увидите, что существует два смарт-"
+"контракта:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:19
+msgid "``counter-define``"
+msgstr "``counter-define``"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:18
+msgid ""
+"Defines two named keys: `counter` to reference the contract and an "
+"associated variable `count` to store the number of times we increment the "
+"counter"
+msgstr ""
+"Определяет два именованных ключа: счетчик  `counter` для ссылки на контракт "
+"и связанную переменную количества `count` для хранения количества раз, когда"
+" мы увеличиваем счетчик"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:19
+msgid "Provides a function to get the current count (`counter_get`)"
+msgstr ""
+"Предоставляет функцию для получения текущего количества (`counter_get`)"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:20
+msgid "Provides a function to increment the current count (`counter_inc`)"
+msgstr ""
+"Предоставляет функцию для увеличения текущего счетчика (`counter_inc`)"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:23
+msgid "``counter-call``"
+msgstr "``counter-call``"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:22
+msgid ""
+"Retrieves the `counter-define` contract, gets the current count value, "
+"increments it, and makes sure count was incremented by 1"
+msgstr ""
+"Извлекает контракт - определение счетчика `counter-define` ,получает текущее"
+" значение счетчика, увеличивает его и проверяет, было ли количество "
+"увеличено на 1"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:26
+msgid "Create a Local Network"
+msgstr "Создание локальной сети"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:28
+msgid ""
+"After you have gotten familiar with the counter source code, we need to "
+"create a local blockchain network to deploy the contract. If you completed "
+"the NCTL tutorial, all you need to do is allocate the network assets and "
+"then start the network."
+msgstr ""
+"После того, как вы ознакомитесь с исходным кодом счетчика, нам необходимо "
+"создать локальную блокчейн-сеть для развертывания контракта. Если вы "
+"завершили учебник по NCTL, все, что вам нужно сделать, это выделить сетевые "
+"ресурсы, а затем запустить сеть."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:30
+msgid ""
+"If you run the following line in your terminal, you should be able to spin "
+"up a network effortlessly."
+msgstr ""
+"Если вы запустите следующую строку в своем терминале, вы сможете без особых "
+"усилий развернуть сеть."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:38
+msgid ""
+"If it fails for any reason, please refer the `NCTL tutorial "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-nctl.html>`_ and "
+"make sure that all your packages are up to date)."
+msgstr ""
+"Если это не удастся по какой-либо причине, пожалуйста, обратитесь к Учебнику"
+" `NCTL tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-"
+"nctl.html>`_  и убедитесь, что все ваши пакеты обновлены)."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:41
+msgid "View the Network State"
+msgstr "Просмотр состояния сети"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:43
+msgid ""
+"With a network up and running, you can use the casper-client query-state "
+"command to check the status of the network. However, we first need an "
+"`account hash` and the `state-root-hash` so that we can get the current "
+"snapshot. Once we have that information, we can check how the network looks."
+msgstr ""
+"Когда сеть запущена и запущена, вы можете использовать команду casper-client"
+" query-state для проверки состояния сети. Однако сначала нам понадобится "
+"\"хеш учетной записи\" и \"корневой хеш состояния\", чтобы мы могли получить"
+" текущий снимок. Как только у нас будет эта информация, мы сможем проверить,"
+" как выглядит сеть."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:45
+msgid "As a summary, we need to use the following three commands:"
+msgstr "В качестве резюме - нам нужно использовать следующие три команды:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:47
+msgid "``nctl-view-faucet-account``: get the account hash"
+msgstr "``nctl-view-faucet-account``: получение хеша аккаунта"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:48
+msgid "``casper-client get-state-root-hash``: get the state root hash"
+msgstr ""
+"``casper-client get-state-root-hash``: получение хеша корневого состояния"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:49
+msgid "``casper-client query-state``: get the network state"
+msgstr "``casper-client query-state``: получение состояния сети"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:51
+msgid ""
+"Let’s execute the commands in order. First, we need the faucet information:"
+msgstr ""
+"Давайте выполним команды по порядку. Во-первых, нам нужна информация о "
+"кране:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:57
+msgid ""
+"If NCTL is correctly up and running, this command should return quite a bit "
+"of information about the faucet account. Feel free to look through the "
+"records and make a note of the `account-hash` field and the `secret_key.pem`"
+" path because we will often use both."
+msgstr ""
+"Если NCTL правильно запущен и работает, эта команда должна возвращать "
+"довольно много информации об учетной записи крана. Не стесняйтесь "
+"просматривать записи и отмечать поле хеша аккаунта `account-hash` и путь "
+"`secret_key.pem` , потому что мы часто будем использовать и то, и другое."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:59
+msgid "Next, get the state root hash:"
+msgstr "Затем получите корневой хэш состояния:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:65
+msgid ""
+"We are using localhost as the node server since the network is running on "
+"our local machine. Make a note of the `state-root-hash` that is returned, "
+"but keep in mind that this hash value will need to be updated every time we "
+"modify the network state. Finally, query the actual state:"
+msgstr ""
+"Мы используем localhost в качестве сервера ноды, так как сеть работает на "
+"нашей локальной машине. Запишите возвращаемый \"корневой хеш состояния\", но"
+" имейте в виду, что это значение хеша необходимо будет обновлять каждый раз,"
+" когда мы изменяем состояние сети. Наконец, запросите фактическое состояние:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:74
+msgid ""
+"Substitute the state root hash and account hash values you just retrieved "
+"into this command and execute it. Do not be surprised if you see nothing on "
+"the network. That is because we have not deployed anything to the network "
+"yet!"
+msgstr ""
+"Замените только что полученные значения корневого хеша состояния и хеша "
+"учетной записи в эту команду и выполните ее. Не удивляйтесь, если вы ничего "
+"не увидите в сети. Это потому, что мы еще ничего не развернули в сети!"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:77
+msgid "Deploy the Counter"
+msgstr "Развертывание счетчика"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:79
+msgid ""
+"Let us try deploying the `counter-define` contract to the chain. First, we "
+"need to compile it."
+msgstr ""
+"Давайте попробуем развернуть в сети контракт  `counter-define`. Сначала "
+"нужно его скомпилировать."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:81
+msgid ""
+"The makefile included in the repository makes compilation trivial. With "
+"these two commands, we can build (in release mode) and test the contract "
+"before deploying it. `make prepare` sets the WASM target and `make test` "
+"builds the contracts and verifies them."
+msgstr ""
+"Файл makefile, включенный в репозиторий, делает компиляцию тривиальной. С "
+"помощью этих двух команд мы можем создать (в режиме выпуска) и "
+"протестировать контракт перед его развертыванием. Сделать подготовку - `make"
+" prepare`  - устанавливает цель WASM, а сделать тест - `make test`  создает "
+"контракты и проверяет их."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:88
+msgid ""
+"With the compiled contract, we can call the `casper-client put-deploy` "
+"command to put the contract on the chain."
+msgstr ""
+"С помощью скомпилированного контракта мы можем вызвать команду 'casper-"
+"client put-deploy', чтобы поместить контракт в цепочку."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:99
+msgid ""
+"Replace the ``[PATH_TO_YOUR_KEY]`` field with the actual path of where your "
+"secret key is stored. It is one of the fields that gets returned when you "
+"call `nctl-view-faucet-account`."
+msgstr ""
+"Замените поле `[PATH_TO_YOUR_KEY]` фактическим путем к месту хранения вашего"
+" секретного ключа. Это одно из полей, которое возвращается при вызове `nctl-"
+"view-faucet-account`."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:100
+msgid ""
+"The `session-path` argument should point to wherever you compiled counter-"
+"define.wasm on your computer. The code snippet shows you the default path if"
+" the counter folder is in the same directory."
+msgstr ""
+"Аргумент пути к сеансу `session-path` должен указывать на то, где вы "
+"скомпилировали определение счетчика counter-define.wasmна вашем компьютере. "
+"Фрагмент кода показывает путь по умолчанию, если папка счетчика находится в "
+"том же каталоге."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:102
+msgid ""
+"Once you call this command, it will return a deploy hash. You can use this "
+"hash to verify that the deploy successfully took place."
+msgstr ""
+"Как только вы вызовете эту команду, она вернет хеш развертывания. Вы можете "
+"использовать этот хеш, чтобы убедиться, что развертывание прошло успешно."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:110
+msgid "View the Updated Network State"
+msgstr "Просмотр обновленного состояния сети"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:112
+msgid ""
+"Hopefully, the deployment was successful, but is the named key visible on "
+"the chain now? Call ``casper-client query-state`` to check it out."
+msgstr ""
+"Надеюсь, развертывание прошло успешно, но виден ли теперь именованный ключ в"
+" цепочке? Вызовите ``casper-client query-state``, чтобы проверить это."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:116
+msgid ""
+"We must get the new state root hash since we just wrote a deploy to the "
+"chain."
+msgstr ""
+"Мы должны получить новый корневой хеш состояния, так как мы только что "
+"написали развертывание в цепочке."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:118
+msgid ""
+"If you run these two commands, there will be a new counter named key on the "
+"chain."
+msgstr ""
+"Если вы выполните эти две команды, в цепочке появится новый именованный ключ"
+" счетчика."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:120
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:184
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:222
+msgid "Get the NEW state-root-hash:"
+msgstr "Получаем НОВЫЙ корневой хеш состояния:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:126
+msgid "Get the network state:"
+msgstr "Получаем состояние сети:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:135
+msgid ""
+"We can actually dive further into the data stored on the chain using the "
+"query path argument or directly querying the deploy hash. Try the following "
+"commands and notice that each one gives you a different level of detail."
+msgstr ""
+"На самом деле мы можем глубже погрузиться в данные, хранящиеся в цепочке, "
+"используя аргумент пути запроса или напрямую запрашивая хеш развертывания. "
+"Попробуйте выполнить следующие команды и обратите внимание, что каждая из "
+"них дает вам разный уровень детализации."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:137
+msgid "Retrieve the specific counter contract details:"
+msgstr "Получение конкретных сведений о контракте счетчика:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:145
+msgid "Retrieve the specific counter variable details:"
+msgstr "Извлеките сведения о конкретной переменной счетчика:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:153
+msgid "Retrieve the specific deploy details:"
+msgstr "Извлеките конкретные сведения о развертывании:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:160
+msgid ""
+"The first two commands access the counter and count named keys, "
+"respectively, using the query path argument. The third command uses the "
+"deploy hash (the return value of `put-deploy`) to query the state of that "
+"specific deploy only."
+msgstr ""
+"Первые две команды обращаются к именованным ключам счетчика и счетчику "
+"соответственно, используя аргумент пути запроса. Третья команда использует "
+"хеш развертывания (возвращаемое значение `put-deploy`) для запроса состояния"
+" только этого конкретного развертывания."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:163
+msgid "Increment the Counter"
+msgstr "Увеличьте счетчик"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:164
+msgid ""
+"We now have a counter on the chain, and we verified everything is good. Now "
+"we want to increment it. We can do that by calling the entry-point "
+"`counter_inc`, the function we defined in the `counter-define` contract. You"
+" can call an entry-point in a deployed contract by using the `put-deploy` "
+"command as illustrated here:"
+msgstr ""
+"Теперь у нас есть счетчик в цепочке, и мы убедились, что все в порядке. "
+"Теперь мы хотим увеличить его. Мы можем сделать это, вызвав точку входа "
+"'counter_inc', функцию, которую мы определили в контракте `counter-define`. "
+"Вы можете вызвать точку входа в развернутом контракте с помощью команды "
+"`put-deploy`, как показано здесь:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:176
+msgid ""
+"Notice that this command is nearly identical to the command used to deploy "
+"the contract. But, instead of `session-path` pointing to the WASM binary, we"
+" have `session-name` and `session-entry-point` identifying the on-chain "
+"contract and its associated function to execute. There is no WASM file "
+"needed since the contract is already on the blockchain."
+msgstr ""
+"Обратите внимание, что эта команда почти идентична команде, используемой для"
+" развертывания контракта. Но вместо пути сеанса `session-path` , "
+"указывающего на двоичный файл WASM, у нас есть имя сеанса `session-name` и "
+"точка входа в сеанс `session-entry-point` , идентифицирующие контракт по "
+"цепочке и связанную с ним функцию для выполнения. Файл WASM не требуется, "
+"так как контракт уже находится в блокчейне."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:180
+msgid "View the Updated Network State Again"
+msgstr "Снова просмотрите Обновленное состояние сети"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:182
+msgid ""
+"After calling the entry-point above, theoretically, the counter value should"
+" have been incremented by one, but how can we be sure of that? We can query "
+"the network again, but remember that we have to get a new state root hash "
+"once again. Let us check if the counter was incremented by just looking at "
+"the count with the query argument since we are not concerned with the rest "
+"of the chain right now."
+msgstr ""
+"После вызова точки входа выше теоретически значение счетчика должно было "
+"увеличиться на единицу, но как мы можем быть в этом уверены? Мы можем снова "
+"запросить сеть, но помните, что нам нужно еще раз получить корневой хtш "
+"нового состояния. Давайте проверим, был ли счетчик увеличен, просто "
+"посмотрев на счетчик с аргументом запроса, так как нас сейчас не интересует "
+"остальная часть цепочки."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:190
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:228
+msgid "Get the network state, specifically for the count variable this time:"
+msgstr ""
+"Получите состояние сети, в частности, для переменной счетчика на этот раз:"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:198
+msgid ""
+"You should be able to see the counter variable and observe its value has "
+"increased now."
+msgstr ""
+"Вы должны быть в состоянии увидеть переменную счетчика и заметить, что ее "
+"значение теперь увеличилось."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:201
+msgid "Increment the Counter Again"
+msgstr "Снова увеличьте счетчик"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:203
+msgid ""
+"If you recall, we had a second contract named `counter-call` in the "
+"repository. This time around, we can see if we can increment the count using"
+" that second contract instead of the session entry-point we used above."
+msgstr ""
+"Если вы помните, у нас был второй контракт под названием `counter-call` в "
+"хранилище. На этот раз мы можем посмотреть, сможем ли мы увеличить "
+"количество, используя этот второй контракт вместо точки входа в сеанс, "
+"которую мы использовали выше."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:205
+msgid ""
+"Keep in mind, this is another `put-deploy` call just like when we deployed "
+"the `counter_define` contract to the blockchain. The session-path is once "
+"again going to be different for you depending on where you compiled the "
+"contract."
+msgstr ""
+"Имейте в виду, что это еще один вызов `put-deploy`, как и при развертывании "
+"контракта 'counter_define' в блокчейне. Путь сеанса снова будет отличаться "
+"для вас в зависимости от того, где вы составили контракт."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:218
+msgid "View the Final Network State"
+msgstr "Посмотрите финальное состояние сети"
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:220
+msgid ""
+"Before we wrap up this guide, let’s make sure that the second contract did "
+"in fact, update the counter from the first contract! Just as before, we need"
+" a new state-root-hash, and then we can query the network as we have grown "
+"accustomed to by now."
+msgstr ""
+"Прежде чем мы завершим это руководство, давайте убедимся, что второй "
+"контракт действительно обновил счетчик по сравнению с первым контрактом! Как"
+" и раньше, нам нужен новый хеш корневого состояния, и тогда мы сможем "
+"запросить сеть, к которой мы уже привыкли."
+
+#: ../../dapp-dev-guide/tutorials/counter/walkthrough.rst:236
+msgid ""
+"If all went according to plan, your counter should have gone from 0 to 1 "
+"before and now from 1 to 2 as you incremented it throughout this tutorial. "
+"Congratulations on building, deploying, and using a smart contract on your "
+"local test network! Now you are ready to build your own dApps and launch "
+"them onto the Casper blockchain."
+msgstr ""
+"Если все шло по плану, ваш счетчик должен был увеличиться с 0 до 1 раньше, а"
+" теперь с 1 до 2, по мере того как вы увеличивали его на протяжении всего "
+"этого урока. Поздравляем вас с созданием, развертыванием и использованием "
+"смарт-контракта в вашей локальной тестовой сети! Теперь вы готовы создавать "
+"свои собственные приложения и запускать их на блокчейне Casper."
