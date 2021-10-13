@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
+"PO-Revision-Date: 2021-09-08 20:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/tutorials/counter/setup.rst:2
+msgid "Casper Client Setup"
+msgstr "Настройка клиента Casper"
+
+#: ../../dapp-dev-guide/tutorials/counter/setup.rst:5
+msgid "Prerequisites"
+msgstr "Пререквизиты"
+
+#: ../../dapp-dev-guide/tutorials/counter/setup.rst:6
+msgid ""
+"You have completed the `Getting Started tutorial "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_ to set up your development environment, including tools like "
+"`cmake` (version 3.1.4+), `cargo`, and `Rust`."
+msgstr ""
+"Вы завершили туториал по началу работы `Getting Started tutorial "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_  для настройки вашей среды разработки, включая такие "
+"инструменты, как  `cmake` (версия 3.1.4+), `cargo`, и `Rust`."
+
+#: ../../dapp-dev-guide/tutorials/counter/setup.rst:7
+msgid ""
+"You have completed the `NCTL tutorial <https://docs.casperlabs.io/en/latest"
+"/dapp-dev-guide/setup-nctl.html>`_, which introduces you to the CLI tool to "
+"set up and control local Casper networks for development."
+msgstr ""
+"Вы завершили `NCTL tutorial <https://docs.casperlabs.io/en/latest/dapp-dev-"
+"guide/setup-nctl.html>`_, который знакомит вас с инструментом  CLI для "
+"настройки и контроля локальных сетей Casper для разработки."
+
+#: ../../dapp-dev-guide/tutorials/counter/setup.rst:11
+msgid "Installing the Casper Client"
+msgstr "Установка клиента Casper"
+
+#: ../../dapp-dev-guide/tutorials/counter/setup.rst:12
+msgid ""
+"Once you have a working Rust development environment and NCTL installed, you"
+" will need to install the `casper-client crate <https://crates.io/crates"
+"/casper-client>`_. This crate is a collection of CLI commands that simplify "
+"issuing instructions to the blockchain and query state information."
+msgstr ""
+"Когда у вас уже есть рабочая среда разработки Rust и установлен NCTL, вам "
+"нужно установить крейт `casper-client crate <https://crates.io/crates"
+"/casper-client>`_. Этот крейт - коллекция команд CLI, которые упрощают "
+"выпуск инструкций в блокчейн и запрос информации о состояниях."
+
+#: ../../dapp-dev-guide/tutorials/counter/setup.rst:14
+msgid "**Installation instructions**"
+msgstr "**Инструкции по установке**"
+
+#: ../../dapp-dev-guide/tutorials/counter/setup.rst:21
+msgid ""
+"Once you have the `casper-client` installed, we can proceed to walk through "
+"setting up NCTL, cloning the contract, and deploying it to the chain."
+msgstr ""
+"Как только вы установили `casper-client` , мы можем перейти к рассмотрению "
+"настроек NCTL, клонированию контракта и развертывания в сеть."
+
+#: ../../dapp-dev-guide/tutorials/counter/setup.rst:23
+msgid ""
+"Before we go through the tutorial, we will give a high-level overview of "
+"this tutorial’s walkthrough and briefly summarize the relevant commands (and"
+" respective arguments)."
+msgstr ""
+"Прежде чем мы перейдем к учебнику, мы дадим общий обзор пошагового "
+"руководства этого туториала и кратко подытожим соответствующие команды (и "
+"соответствующие аргументы)."

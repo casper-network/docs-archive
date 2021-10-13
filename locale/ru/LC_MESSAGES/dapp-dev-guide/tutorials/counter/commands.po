@@ -1,0 +1,206 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
+"PO-Revision-Date: 2021-09-08 20:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:2
+msgid "Important Commands"
+msgstr "Важные команды"
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:5
+msgid "Faucet Account Information"
+msgstr "Информация об аккаунте Крана"
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:11
+msgid ""
+"This command is part of NCTL and provides a view into the faucet account "
+"details. The faucet is the default account created on the network. Generally"
+" on the Mainnet, your own account is used to fund transactions. However, for"
+" the sake of this tutorial, we do not need accounts and will use the faucet "
+"to execute deploys. This command supplies two key pieces of information: the"
+" account’s `secret key` location and the `account hash`, which are used to "
+"sign deploys and query the network state, respectively."
+msgstr ""
+"Эта команда является частью NCTL и предоставляет представление сведений об "
+"учетной записи крана. Кран - это учетная запись по умолчанию, созданная в "
+"сети. Как правило, в Основной сети для финансирования транзакций "
+"используется ваш собственный аккаунт. Однако ради этого урока нам не нужны "
+"учетные записи, и мы будем использовать кран для выполнения развертываний. "
+"Эта команда предоставляет две ключевые части информации: местоположение "
+"\"секретного ключа\" учетной записи и \"хеш учетной записи\", которые "
+"используются для подписи развертываний и запроса состояния сети "
+"соответственно."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:14
+msgid "State Root Hash"
+msgstr "Корневой хеш состояния"
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:20
+msgid ""
+"The first command that we will cover as part of the `casper-client` tool is "
+"the `get-state-root-hash` command. The state root hash is an identifier of "
+"the current network state. It is similar to a Git commit ID for commit "
+"history. It gives a snapshot of the blockchain state at a moment in time. "
+"For this tutorial, it will be used to query the network state after we take "
+"actions with deployments."
+msgstr ""
+"Первая команда, которую мы рассмотрим как часть инструмента`casper-client` -"
+" это команда  `get-state-root-hash`. Корневой хеш состояния - это "
+"идентификатор текущего состояния сети. Это похоже на идентификатор фиксации "
+"Git для истории фиксации. Это дает моментальный снимок состояния блокчейна в"
+" определенный момент времени. В этом руководстве он будет использоваться для"
+" запроса состояния сети после выполнения действий с развертываниями."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:24
+msgid ""
+"After any deploys to the network, you must get the new state root hash to "
+"see the new changes reflected. Otherwise, you will be looking at events in "
+"the past."
+msgstr ""
+"После любого развертывания в сети вы должны получить корневой хеш нового "
+"состояния, чтобы увидеть отражение новых изменений. В противном случае вы "
+"будете смотреть на события в прошлом."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:27
+msgid "Querying Network State"
+msgstr "Запрос состояния сети"
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:37
+msgid ""
+"This command allows you to query the state of a Casper network at a given "
+"moment in time, which is specified by the `state-root-hash` described above."
+msgstr ""
+"Эта команда позволяет вам запрашивать состояние сети Casper в данный момент "
+"времени, которое определяется описанным выше \"корневым хешем состояния\"."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:39
+msgid ""
+"The `node-address` is the server (localhost when running on a local NCTL "
+"network)."
+msgstr ""
+"Адрес ноды `node-address` - это сервер (локальный хост при работе в "
+"локальной сети NCTL)."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:40
+msgid ""
+"The `key` is the identifier for the query. It must be either the account "
+"public key, account hash, contract address hash, transfer hash, or deploy "
+"hash. We will demonstrate two of these key types in this tutorial."
+msgstr ""
+"`Ключ` - это идентификатор запроса. Это должен быть либо открытый ключ "
+"учетной записи, хеш учетной записи, хеш адреса контракта, хеш трансфера или "
+"хеш развертывания. В этом уроке мы продемонстрируем два из этих ключевых "
+"типов."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:41
+msgid ""
+"The optional query path argument (`q`) allows you to drill into the "
+"specifics of a query concerning the key."
+msgstr ""
+"Необязательный аргумент пути запроса (`q`) позволяет детализировать "
+"специфику запроса, касающегося ключа."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:44
+msgid "Put Deploys (onto the Chain)"
+msgstr "Поместите развертывания (в Цепь)"
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:47
+msgid "Deploy via a compiled WASM binary"
+msgstr "Развертывание с помощью скомпилированного двоичного файла WASM"
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:58
+msgid ""
+"This command creates a deploy and sends it to the network for execution. In "
+"this first usage of the command,"
+msgstr ""
+"Эта команда создает развертывание и отправляет его в сеть для выполнения. В "
+"этом первом использовании команды,"
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:60
+msgid "The `session-path` points to a compiled WASM contract."
+msgstr ""
+"Путь сеанса `session-path` указывает на скомпилированный контракт WASM."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:61
+msgid ""
+"This contract is then deployed to the network specified by `node-address` "
+"and `chain-name`. By default, NCTL names the chain “casper-net-1” but this "
+"is configurable."
+msgstr ""
+"Затем этот контракт развертывается в сети, указанной \"адресом ноды\" и "
+"\"именем цепочки\". По умолчанию NCTL называет цепочку “casper-net-1”, но "
+"это настраиваемый параметр."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:62
+msgid ""
+"The `payment-amount` is in units of motes (1 nano-CSPR) and is required to "
+"pay the transaction fee for the deployment. If it is too small, the "
+"transaction will get denied due to insufficient funds."
+msgstr ""
+"Сумма платежа `payment-amount`  указана в единицах измерения motes (1 нано-"
+"CSPR) и требуется для оплаты комиссии за транзакцию за развертывание. Если "
+"их слишком мало, транзакция будет отклонена из-за нехватки средств."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:66
+msgid "Deploy via a named key already on the blockchain"
+msgstr "Развертывание с помощью именованного ключа уже в блокчейне"
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:79
+msgid ""
+"This second usage of `put-deploy` does not place a new contract on the "
+"chain, but it allows you to call entry points (functions) defined in smart "
+"contracts."
+msgstr ""
+"Это второе использование размещения развертывания `put-deploy`  не помещает "
+"новый контракт в цепочку, но позволяет вызывать точки входа (функции), "
+"определенные в смарт-контрактах."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:81
+msgid ""
+"Here we show the example using “counter” and “counter_inc” because, in the "
+"`Counter tutorial <walkthrough.html>`_, we have defined a smart contract by "
+"the name of “counter”, and there is an entry-point named “counter_inc” "
+"defined within it. However, these will be different when you write your "
+"contracts."
+msgstr ""
+"Здесь мы показываем пример с использованием “counter” и “counter_inc”, "
+"потому что в учебнике по счетчику `Counter tutorial <walkthrough.html>`_,  "
+"мы определили смарт-контракт под названием счетчик - “counter” , и в нем "
+"определена точка входа с именем “counter_inc”. Однако они будут отличаться, "
+"когда вы будете писать свои контракты."
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:85
+msgid "Get Deploys (from the Chain)"
+msgstr "Получение развертываний (из Цепочки)"
+
+#: ../../dapp-dev-guide/tutorials/counter/commands.rst:93
+msgid ""
+"The `get-deploy` command is complementary to the `put-deploy` command. It "
+"retrieves a deploy from the network and allows you to check the status of "
+"the deploy. The `DEPLOY_HASH` is the identifier to a specific deploy and is "
+"returned by the `put-deploy` command."
+msgstr ""
+"Команда получения развертывания `get-deploy` дополняет команду размещения "
+"развертывания `put-deploy`. Она извлекает развертывание из сети и позволяет "
+"проверить состояние развертывания. `DEPLOY_HASH` является идентификатором "
+"конкретного развертывания и возвращается командой  `put-deploy`."

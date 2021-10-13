@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,71 +22,127 @@ msgstr ""
 msgid "How To's"
 msgstr ""
 
-#: ../../workflow/index.rst:4
-msgid ""
-"This section contains guides that highlight key features and capabilities"
-" of the Casper system."
+#: ../../workflow/index.rst:5
+msgid "User Guides"
 msgstr ""
 
 #: ../../workflow/index.rst:7
-msgid "Title"
-msgstr ""
-
-#: ../../workflow/index.rst:7
-msgid "Description"
-msgstr ""
-
-#: ../../workflow/index.rst:9
-msgid "`Prerequisites <setup.html>`_"
-msgstr ""
-
-#: ../../workflow/index.rst:9
-msgid "A guide to fulfilling prerequisites needed for various workflows"
-msgstr ""
-
-#: ../../workflow/index.rst:10
-msgid "`Querying the Casper Network <querying.html>`_"
-msgstr ""
-
-#: ../../workflow/index.rst:10
-msgid "A guide to querying for information on a Casper blockchain"
-msgstr ""
-
-#: ../../workflow/index.rst:11
-msgid "`Direct Native Token Transfer <transfer-workflow.html>`_"
-msgstr ""
-
-#: ../../workflow/index.rst:11
 msgid ""
-"A guide to performing a direct transfer of CSPR tokens from one account "
-"to another"
+"These user guides contain step-by-step instructions for interacting with "
+"the Casper blockchain."
 msgstr ""
 
-#: ../../workflow/index.rst:12
-msgid "`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_"
+#: ../../workflow/index.rst:9
+msgid "`Staking guide <staking.html>`_: a guide to staking your Casper tokens"
 msgstr ""
 
-#: ../../workflow/index.rst:12
-msgid "A guide to setting up an account for two-party signature deploys"
+#: ../../workflow/index.rst:10
+msgid ""
+"`Ledger setup <ledger-setup.html>`_: a guide to setting up your Ledger "
+"device"
 msgstr ""
 
 #: ../../workflow/index.rst:13
-msgid "`Delegating Tokens <delegate.html>`_"
+msgid "Developer Guides"
 msgstr ""
 
-#: ../../workflow/index.rst:13
-msgid "A guide to delegating tokens to a Validator on a Casper Network"
-msgstr ""
-
-#: ../../workflow/index.rst:14
-msgid "`Un-delegating Tokens <undelegate.html>`_"
-msgstr ""
-
-#: ../../workflow/index.rst:14
-msgid "A guide to un-delegating tokens from a Validator on a Casper Network"
+#: ../../workflow/index.rst:15
+msgid ""
+"These developer guides highlight key features and capabilities of the "
+"Casper system."
 msgstr ""
 
 #: ../../workflow/index.rst:17
-msgid "**Table of Contents**"
+msgid "`Prerequisites <setup.html>`_: setup needed for various workflows"
 msgstr ""
+
+#: ../../workflow/index.rst:18
+msgid ""
+"`Querying the Casper Network <querying.html>`_: querying information on a"
+" Casper blockchain"
+msgstr ""
+
+#: ../../workflow/index.rst:19
+msgid ""
+"`Direct Native Token Transfer <transfer-workflow.html>`_: performing a "
+"direct transfer of CSPR tokens from one account to another"
+msgstr ""
+
+#: ../../workflow/index.rst:20
+msgid ""
+"`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_: "
+"setting up an account for two-party signature deploys"
+msgstr ""
+
+#: ../../workflow/index.rst:21
+msgid ""
+"`Delegating Tokens <delegate.html>`_: delegating tokens to a Validator on"
+" a Casper Network"
+msgstr ""
+
+#: ../../workflow/index.rst:22
+msgid ""
+"`Un-delegating Tokens <undelegate.html>`_: undelegating tokens from a "
+"validator on a Casper Network"
+msgstr ""
+
+#: ../../workflow/index.rst:23
+msgid ""
+"`Using the ERC-20 Contract <erc-20/introduction.html>`_: using the ERC20 "
+"contract to undertand the ERC20 token transfer workflow"
+msgstr ""
+
+#~ msgid ""
+#~ "This section contains guides that "
+#~ "highlight key features and capabilities "
+#~ "of the Casper system."
+#~ msgstr ""
+
+#~ msgid "Title"
+#~ msgstr ""
+
+#~ msgid "Description"
+#~ msgstr ""
+
+#~ msgid "`Prerequisites <setup.html>`_"
+#~ msgstr ""
+
+#~ msgid "A guide to fulfilling prerequisites needed for various workflows"
+#~ msgstr ""
+
+#~ msgid "`Querying the Casper Network <querying.html>`_"
+#~ msgstr ""
+
+#~ msgid "A guide to querying for information on a Casper blockchain"
+#~ msgstr ""
+
+#~ msgid "`Direct Native Token Transfer <transfer-workflow.html>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A guide to performing a direct "
+#~ "transfer of CSPR tokens from one "
+#~ "account to another"
+#~ msgstr ""
+
+#~ msgid "`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_"
+#~ msgstr ""
+
+#~ msgid "A guide to setting up an account for two-party signature deploys"
+#~ msgstr ""
+
+#~ msgid "`Delegating Tokens <delegate.html>`_"
+#~ msgstr ""
+
+#~ msgid "A guide to delegating tokens to a Validator on a Casper Network"
+#~ msgstr ""
+
+#~ msgid "`Un-delegating Tokens <undelegate.html>`_"
+#~ msgstr ""
+
+#~ msgid "A guide to un-delegating tokens from a Validator on a Casper Network"
+#~ msgstr ""
+
+#~ msgid "**Table of Contents**"
+#~ msgstr ""
 

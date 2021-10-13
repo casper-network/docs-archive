@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:45+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../changelog.rst:2
+msgid "Changelog"
+msgstr "Журнал изменений Changelog"
+
+#: ../../changelog.rst:4
+msgid ""
+"This page is a reference library for all the past technical releases and "
+"changelogs for the Casper Network. Click on the links below to see details "
+"about the released versions such as release dates, key changes and "
+"milestones completed, known issues, and calls to action for validators, dApp"
+" developers, contract authors, and exchanges."
+msgstr ""
+"Эта страница представляет собой справочную библиотеку для всех прошлых "
+"технических выпусков и списков изменений для сети Casper. Перейдите по "
+"ссылкам ниже, чтобы просмотреть подробную информацию о выпущенных версиях, "
+"такую как даты выпуска, ключевые изменения и завершенные этапы, известные "
+"проблемы и призывы к действию для валидаторов, разработчиков dApp, авторов "
+"контрактов и бирж."
+
+#: ../../changelog.rst:6
+msgid ""
+"Visit the `technical roadmap <https://github.com/casper-"
+"network/roadmap/projects/2>`_ and the `engineering status "
+"<https://github.com/casper-network/roadmap/wiki/Current-Status>`_ pages to "
+"review the work currently in progress."
+msgstr ""
+"Посетите техническую карту `technical roadmap <https://github.com/casper-"
+"network/roadmap/projects/2>`_ и инженерный статус  `engineering status "
+"<https://github.com/casper-network/roadmap/wiki/Current-Status>`_ , чтобы "
+"просмотреть текущий прогресс работы. "
+
+#: ../../changelog.rst:9
+msgid "Casper Network Release Notes"
+msgstr "Заметки выпусков сети Casper"
+
+#: ../../changelog.rst:12
+msgid ""
+"`Version 1.2.0 <https://medium.com/casper-association/technical-release-"
+"notes-and-changelog-for-1-2-0-26bbe921ab51>`_"
+msgstr ""
+"`Version 1.2.0 <https://medium.com/casper-association/technical-release-"
+"notes-and-changelog-for-1-2-0-26bbe921ab51>`_"
+
+#: ../../changelog.rst:13
+msgid "Additional Logging"
+msgstr "Дополнительный логгинг"
+
+#: ../../changelog.rst:14
+msgid "Block Validator distinguishes Deploys and Transfers"
+msgstr "Валидатор блока распознает Развертывания и Трансферы"
+
+#: ../../changelog.rst:15
+msgid "Quantstamp Audit Remediation"
+msgstr "Восстановление аудита Quantstamp"
+
+#: ../../changelog.rst:18
+msgid ""
+"`Version 1.3.0 <https://medium.com/casper-association/announcing-version-1-3"
+"-of-casper-node-ff7fa57e6d75>`_"
+msgstr ""
+"`Version 1.3.0 <https://medium.com/casper-association/announcing-version-1-3"
+"-of-casper-node-ff7fa57e6d75>`_"
+
+#: ../../changelog.rst:19
+msgid "Node RPC Enhancements"
+msgstr "Усовершенствования RPC ноды"
+
+#: ../../changelog.rst:20
+msgid "Smart Contracting and Application Development Updates"
+msgstr "Обновления смарт-контрактов и разработки приложений"
+
+#: ../../changelog.rst:21
+msgid "Networking Optimizations"
+msgstr "Оптимизация работы сети"
+
+#: ../../changelog.rst:22
+msgid "Transaction (Deploy) Processing Improvements"
+msgstr "Усовершенствования процессинга трансферов (развертываний)"

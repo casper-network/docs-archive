@@ -1,0 +1,185 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../node-operator/joining.rst:3
+msgid "Joining a Running Network"
+msgstr "Присоединение к работающей сети"
+
+#: ../../node-operator/joining.rst:5
+msgid ""
+"The Casper network is permissionless, enabling new validators to join the "
+"network and provide additional security to the system. This page will "
+"outline the sequence of recommended steps to spin up a validating node and "
+"successfully join an existing network."
+msgstr ""
+"Сеть Casper инклюзивна , что позволяет новым валидаторам подключаться к сети"
+" и обеспечивать дополнительную безопасность системы. На этой странице будет "
+"описана последовательность рекомендуемых шагов для запуска ноды валидатора и"
+" успешного присоединения к существующей сети."
+
+#: ../../node-operator/joining.rst:9
+msgid "Step 1: Provision Hardware"
+msgstr "Шаг 1: обеспечение аппаратным обеспечением"
+
+#: ../../node-operator/joining.rst:11
+msgid "Visit the Hardware section and provision your node hardware."
+msgstr ""
+"Посетите раздел об аппаратном обеспечении Hardware и обеспечьте необходимым "
+"свою ноду."
+
+#: ../../node-operator/joining.rst:14
+msgid "Step 2: Build Contracts & Set Up the Node"
+msgstr "Шаг 2: сборка контрактов и настройка ноды"
+
+#: ../../node-operator/joining.rst:16
+msgid ""
+"Visit the Setup section in this guide and configure the software on your "
+"node.  Build all necessary contracts for bonding, retrieving rewards and "
+"unbonding."
+msgstr ""
+"Посетите раздел гайда о настройке и сконфигурируйте софт на своей ноде. "
+"Соберите все необходимые контракты для бондинга, извлечения вознаграждений и"
+" анбондинга."
+
+#: ../../node-operator/joining.rst:19
+msgid "Step 3: Create & Fund your Keys for Bonding"
+msgstr "Шаг 3: создайте и обеспечьте средствами свои ключи для бондинга"
+
+#: ../../node-operator/joining.rst:21
+msgid ""
+"Obtain token to bond your node on to the network & to pay for the bonding "
+"transaction."
+msgstr ""
+"Получите токены для бондинга своей ноды к сети и для оплаты бондинговой "
+"транзакции."
+
+#: ../../node-operator/joining.rst:24
+msgid "Step 4: Update the Trusted Hash"
+msgstr "Шаг 4: обновление доверенного хеша"
+
+#: ../../node-operator/joining.rst:26
+msgid ""
+"The node's ``config.toml`` needs to be updated with a recent trusted hash. "
+"Visit a ``/status`` endpoint of a validating node to obtain a fresh trusted "
+"block hash."
+msgstr ""
+"Конфигурация ноды ``config.toml`` должна быть обновлена с последним "
+"доверенным хешем. Посетите конечную точку ``/status`` нода валидатора для "
+"получения свежего доверенного хеша блока."
+
+#: ../../node-operator/joining.rst:32
+msgid ""
+"Default port is usually ``8888``  Retrieve the ``last_added_block_info:`` "
+"hash."
+msgstr ""
+"Порт по умолчанию обычно ``8888`` . Извлеките ``last_added_block_info:`` "
+"hash."
+
+#: ../../node-operator/joining.rst:34
+msgid ""
+"A good IP to use above are those listed in your ``config.toml`` as "
+"``known_addresses``."
+msgstr ""
+"Чтобы это применить, используйте хорошие IP из списков ``config.toml``, а "
+"именно ``known_addresses``."
+
+#: ../../node-operator/joining.rst:37
+msgid "Step 5: Start the Node"
+msgstr "Шаг 5: старт ноды"
+
+#: ../../node-operator/joining.rst:39
+msgid ""
+"Once the node has been added to the list of validators for an upcoming era, "
+"it's time to start the node.  The deb package installs a casper-node service"
+" for systemd. Start the node with:"
+msgstr ""
+"Как только нода была добавлена в список валидаторов для грядущей эры, "
+"наступает время для старта ноды. Пакет deb устанавливает сервис ноды casper "
+"для systemd. Начните ноду с:"
+
+#: ../../node-operator/joining.rst:46
+msgid ""
+"For more information visit `Github <https://github.com/casper-network"
+"/casper-node/tree/master/resources/production>`_"
+msgstr ""
+"За подробностями зайдите сюда `Github <https://github.com/casper-network"
+"/casper-node/tree/master/resources/production>`_"
+
+#: ../../node-operator/joining.rst:49
+msgid "Step 6: Confirm the Node is Syncronized"
+msgstr "Шаг 6: подтвердите, что нода синхронизирована"
+
+#: ../../node-operator/joining.rst:51
+msgid ""
+"While the node is synchronizing, the ``/status`` endpoint is available. You "
+"will be able to compare this to other node's status endpoint ``era_id`` and "
+"``height`` to determine if you are caught up. You will not be able to "
+"perform any ``casper-client`` calls to your ``7777`` RPC port until your "
+"node is fully caught up."
+msgstr ""
+"Пока нода синхронизируется, конечная точка ``/status``  доступна. Вы сможете"
+" сравнить ее с конечной точкой другой ноды ``era_id`` и высоты ``height``, "
+"чтобы определить, что вы вовлечены. Вы не сможете осуществить любые вызовы "
+"``casper-client`` вашего ``7777`` RPC порта до тех пор, пока нода не "
+"вовлечена."
+
+#: ../../node-operator/joining.rst:57
+msgid "Step 7: Send the Bonding Request"
+msgstr "Шаг 7: отправка запроса на бондинг"
+
+#: ../../node-operator/joining.rst:59
+msgid ""
+"To avoid being ejected for liveness failures, it is critical that the "
+"bonding request be sent to the local node only after it has synchronized the"
+" protocol state and linear blockchain."
+msgstr ""
+"Чтобы избежать исключения из-за сбоев в работе, крайне важно, чтобы запрос "
+"на соединение отправлялся локальной ноде только после того, как он "
+"синхронизирует состояние протокола и линейный блокчейн."
+
+#: ../../node-operator/joining.rst:61
+msgid ""
+"For this reason it is recommended that you use ``casper-client`` with the "
+"default ``--node-address`` which will talk to localhost."
+msgstr ""
+"По этой причине рекомендуется использовать клиент ``casper-client``  с "
+"адресом ноды по умолчанию  ``--node-address``, который свяжется с локальным "
+"хостом."
+
+#: ../../node-operator/joining.rst:63
+msgid ""
+"Please see the bonding page to submit a bonding request to change from a "
+"synchronized node to a validating node."
+msgstr ""
+"Пожалуйста ознакомьтесь со страницей бондинга, чтобы подать запрос бондинга "
+"для изменения статуса с синхронизированной ноды на ноду валидатора."
+
+#~ msgid ""
+#~ "For more information visit `Github <https://github.com/CasperLabs/casper-"
+#~ "node/tree/master/resources/production>`_"
+#~ msgstr ""
+#~ "Для более детальной информации посетите `Github "
+#~ "<https://github.com/CasperLabs/casper-"
+#~ "node/tree/master/resources/production>`_"

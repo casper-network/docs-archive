@@ -1,0 +1,116 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:2
+msgid "ERC-20 Tutorial"
+msgstr "Туториал ERC-20"
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:4
+msgid ""
+"This tutorial introduces you to an implementation of the ERC-20 standard for"
+" the Casper blockchain."
+msgstr ""
+"В туториале рассмотрено введение стандарта ERC-20 для блокчейн Casper. "
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:6
+msgid ""
+"The Ethereum Request for Comment (ERC-20) standard is an integral part of "
+"the Ethereum ecosystem. This standard is well established for building new "
+"tokens based on smart contracts. These ERC-20 tokens are blockchain-based "
+"assets that have value and can be transferred or recorded."
+msgstr ""
+"Стандарт Ethereum Request for Comment (ERC-20)  является интегральной частью"
+" экосистемы Ethereum. Стандарт хорошо разработан для сборки новых токенов на"
+" основе смарт-контрактов. Эти токены ERC-20 являются основанными на блокчейн"
+" активами, у которых есть стоимость и они могут быть переданы или записаны. "
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:9
+msgid ""
+"The ERC-20 standard defines a set of rules that dictate the total supply of "
+"tokens, how the tokens are transferred, how transactions are approved, and "
+"how token data is accessed. These rules are implemented using the following "
+"functions defined by ERC-20, ``totalSupply``, ``transfer``, "
+"``transferFrom``, ``approve``,  ``balanceOf``, and ``allowance``, which are "
+"described in detail within this tutorial."
+msgstr ""
+"Стандарт ERC-20 определяет набор правил, которые определяют тотальное "
+"предложение токенов, как токены передаются, как одобряются транзакции, как "
+"предоставляется доступ к информации о токенах. Эти правила вводятся с "
+"использованием следующих функций, определенных ERC-20: тотальное предложение"
+" ``totalSupply``, трансфер ``transfer``, трансфер от ``transferFrom``, "
+"одобрение ``approve``, баланс ``balanceOf``, и разрешение ``allowance``, и "
+"эти функции описаны детально в данном туториале."
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:11
+msgid ""
+"The code for this tutorial is available in `GitHub <https://github.com"
+"/casper-ecosystem/erc20>`_. If you haven't read `Writing Rust Contracts on "
+"Casper <https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-"
+"contracts/writing-rust-contracts.html>`_, we recommend you start there."
+msgstr ""
+"Код для этого туториала доступен в `GitHub <https://github.com/casper-"
+"ecosystem/erc20>`_. Если вы еще не читали раздел о написании контрактов Rust"
+" на Casper `Writing Rust Contracts on Casper "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-contracts"
+"/writing-rust-contracts.html>`_ , рекомендуем начать с него. "
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:13
+msgid ""
+"You can read more about the original specification in `Ethereum (ERC-20) "
+"<https://eips.ethereum.org/EIPS/eip-20#specification>`_."
+msgstr ""
+"Больше об оригинальной спецификации вы можете почитать тут `Ethereum "
+"(ERC-20) <https://eips.ethereum.org/EIPS/eip-20#specification>`_."
+
+#: ../../dapp-dev-guide/tutorials/erc20/index.rst:15
+msgid "**Tutorial Content**"
+msgstr "**Содержание туториала**"
+
+#~ msgid ""
+#~ "This tutorial reviews an implementation of the ERC-20 standard for Casper."
+#~ msgstr "В туториале рассмотрено введение стандарта ERC-20  для Casper. "
+
+#~ msgid ""
+#~ "Most smart-contract developers are familiar with ERC-20 standard, which "
+#~ "comes from the Ethereum ecosystem. This standard is well established for "
+#~ "building new tokens based on smart contracts. In this tutorial, we will "
+#~ "implement the ERC-20 standard for the Casper blockchain."
+#~ msgstr ""
+#~ "Большинство разработчиков смарт-контрактов знакомы со стандартом ERC-20, "
+#~ "который был введен в экосистеме Ethereum. Этот стандарт хорошо приспособлен "
+#~ "для сборки новых токенов на основе смарт-контрактов. В этом туториале мы "
+#~ "введем стандарт ERC-20 в блокчейн Casper. "
+
+#~ msgid ""
+#~ "The code for this tutorial is available in `GitHub <https://github.com"
+#~ "/casper-ecosystem/erc20>`_. If you haven't read `Writing Rust Contracts on "
+#~ "Casper <https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-"
+#~ "contracts/writing-rust-contracts.html>`_ , we recommend you start there."
+#~ msgstr ""
+#~ "Код для этого туториала доступен в `GitHub <https://github.com/casper-"
+#~ "ecosystem/erc20>`_. Если вы еще не читали раздел о написании контрактов Rust"
+#~ " на Casper `Writing Rust Contracts on Casper "
+#~ "<https://docs.casperlabs.io/en/latest/dapp-dev-guide/writing-contracts"
+#~ "/writing-rust-contracts.html>`_ , рекомендуем начать с него. "
