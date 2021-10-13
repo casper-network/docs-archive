@@ -64,8 +64,8 @@ to missing LaTeX packages.
 sudo apt-get install texlive*
 ```
 
-If you are still running into problems, you may solve them using
-[TeX Live's own distribution](https://www.tug.org/texlive/acquire-netinstall.html)
+If you are still running into problems, you may solve them using the
+[TeX Live distribution](https://www.tug.org/texlive/acquire-netinstall.html)
 instead of the packages from the native package manager.
 
 ## Building
