@@ -1,0 +1,249 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../economics/runtime.rst:2
+msgid "Runtime Economics"
+msgstr "Экономика рабочей среды"
+
+#: ../../economics/runtime.rst:4
+msgid ""
+"The economics of the runtime layer should incentivize efficient allocation "
+"of computational resources, primarily CPU time, to users. Pending state "
+"pruning implementation, disk space use is treated as CPU time usage and "
+"charged, irreversibly, per byte written. Currently, gas is allocated "
+"according to a first-in, first-out model for deploys, with a fixed price of "
+"1 mote (1/10^9 part of a CSPR token) per 1 unit of gas."
+msgstr ""
+"Экономика слоя рабочей среды должна стимулировать эффективное распределение "
+"вычислительных ресурсов между пользователями, в первую очередь процессорного"
+" времени CPU. В ожидании реализации сокращения состояния использование "
+"дискового пространства рассматривается как использование процессорного "
+"времени и необратимо взимается за каждый записанный байт. В настоящее время "
+"газ распределяется в соответствии с моделью FIFO -\"первым пришел- первым "
+"ушел\" -  для развертывания с фиксированной ценой в 1 mote (1/10^9 часть "
+"токена CSPR) за 1 единицу газа."
+
+#: ../../economics/runtime.rst:7
+msgid "Gas allocation"
+msgstr "Распределение газа"
+
+#: ../../economics/runtime.rst:9
+msgid ""
+"Any finite resource on a publicly accessible computer network must be rate-"
+"limited, as, otherwise, overuse of this resource is an attack vector -- a "
+"minimal requirement for platform security. However, rate-limiting, "
+"implemented on our platform as a simple block gas limit with several lanes, "
+"leaves the platform with the problem of fairly and efficiently allocating "
+"the gas. We are researching the optimal structure for spot and futures gas "
+"markets, and interested readers should consult the relevant `CEPs "
+"<https://github.com/casper-network/ceps>`_. In the meantime, this section "
+"outlines some basic features of the platform that would underpin any "
+"allocation scheme."
+msgstr ""
+"Любой конечный ресурс в общедоступной компьютерной сети должен быть "
+"ограничен по скорости, так как в противном случае чрезмерное использование "
+"этого ресурса является вектором атаки - минимальным требованием для "
+"безопасности платформы. Однако ограничение скорости, реализованное на нашей "
+"платформе в виде простого лимита газа по блокам с несколькими путями "
+"движения, ставит платформу перед проблемой справедливого и эффективного "
+"распределения газа. Мы исследуем оптимальную структуру для спотовых и "
+"фьючерсных рынков газа, и заинтересованные читатели могут узнать больше "
+"здесь `CEPs <https://github.com/casper-network/ceps>`_. Пока что в этом "
+"разделе описываются некоторые основные функции платформы, которые будут "
+"лежать в основе любой схемы распределения."
+
+#: ../../economics/runtime.rst:12
+msgid "Consensus before execution & basics of payment"
+msgstr "Консенсус перед исполнением & основы платежей"
+
+#: ../../economics/runtime.rst:14
+msgid ""
+"The Highway protocol in its Mainnet implementation reaches consensus on a "
+"block *before* the block is executed, introducing a subtle difference from "
+"platforms like Ethereum. In addition, deploys sent to the Casper network can"
+" only be selected based on claimed, rather than used, gas. Consequently, to "
+"incentivize user-side optimization and prevent block space exhaustion by "
+"poorly optimized deploys, the platform provides no refunds for unused gas."
+msgstr ""
+"Протокол Highway, реализованный в майннет, достигает консенсуса по блоку "
+"*ДО* того, как блок исполнен, что слегка отличает нас от платформ типа "
+"Ethereum. Кроме того, развертывания, отправленные в сеть Casper, могут быть "
+"отобраны на основе скорее заявленного, чем использованного, газа. "
+"Соответственно, чтобы стимулировать оптимизацию на стороне пользователя и "
+"предотвратить истощение пространства в блоках из-за плохо организованных "
+"развертываний, платформа не предоставляет возврат за неиспользованный газ. "
+
+#: ../../economics/runtime.rst:16
+msgid ""
+"Additionally, a minimal amount of CSPR must be present in the user account "
+"to ensure that the payment computation is covered. The community may "
+"introduce additional balance checks in the future."
+msgstr ""
+"Также, в аккаунте пользователя должно присутствовать минимальное количество "
+"CSPR, чтобы гарантировать покрытие вычисления платежа. В дальнейшем "
+"комьюнити возможно представит дополнительные проверки баланса. "
+
+#: ../../economics/runtime.rst:19
+msgid "Costs and limits"
+msgstr "Цены и ограничения"
+
+#: ../../economics/runtime.rst:21
+msgid ""
+"Gas cost is a measure of relative time used by different primitive "
+"operations of the execution engine, which is also assumed to be additive. By"
+" additivity, we mean that the time to execute a program is approximately "
+"proportional to the sum of gas expended by the opcodes and functions called "
+"within the program. Casper assigns gas costs to primitive execution engine "
+"opcodes and specific more complex *host-side* functions that are callable "
+"from within the execution engine context. Gas costs for opcodes and host-"
+"side functions are specified in the chainspec and may vary according to "
+"arguments."
+msgstr ""
+"Стоимость газа  - это мера относительного времени, используемого различными "
+"примитивными операциями  выполняющего движка, которая также считается "
+"добавочной. Под добавочностью мы подразумеваем, что время выполнения "
+"программы приблизительно пропорционально сумме газа, затраченного кодами "
+"операций и функциями, вызываемыми в программе. Casper назначает стоимость на"
+" газ для примитивных кодов операций выполняющего движка и конкретных более "
+"сложных функций *на стороне хоста*, которые можно вызывать из контекста "
+"выполняющей машины. Затраты на газ для кодов операций и функций на стороне "
+"хоста указаны в спецификации цепочки и могут варьироваться в зависимости от "
+"аргументов."
+
+#: ../../economics/runtime.rst:23
+msgid ""
+"We expect to refine the current gas cost table to reflect time use more "
+"closely, with updates introduced in future upgrades. We also anticipate "
+"that, with the introduction of state pruning, storage costs will be "
+"calculated separately from computing time."
+msgstr ""
+"Мы ожидаем, что текущая таблица затрат на газ будет уточнена, чтобы более "
+"точно отражать использование времени, с улучшениями, внесенными в будущих "
+"обновлениях. Мы также ожидаем, что с введением состояния прунинга, затраты "
+"на хранение будут рассчитываться отдельно от вычислительного времени."
+
+#: ../../economics/runtime.rst:26
+msgid "Lanes"
+msgstr "Пути движения"
+
+#: ../../economics/runtime.rst:28
+msgid ""
+"The block gas limit is split into two lanes, one for native transfers and "
+"one for general deploys. The number of transfers, which cost a fixed amount "
+"of gas, is governed directly by the ``block_max_transfer_count`` chainspec "
+"parameter, set to 2500 when Mainnet launched."
+msgstr ""
+"Ограничение газа по блокам распределено по двум путям движения, один для "
+"нативных трансферов и один для генеральных развертываний. Количество "
+"трансферов, которое стоит определенное количество газа, управляется напрямую"
+" спецпараметром сети ``block_max_transfer_count``, выставленном на 2500 при "
+"запуске майннет. "
+
+#: ../../economics/runtime.rst:31
+msgid "Gas fees"
+msgstr "Взносы за газ"
+
+#: ../../economics/runtime.rst:33
+msgid "Currently, the price of gas is fixed at 1 mote per 1 unit of gas."
+msgstr ""
+"На данный момент цена газа зафиксирована на 1 mote за один юнит газа. "
+
+#: ../../economics/runtime.rst:36
+msgid "Fee allocation"
+msgstr "Распределение взносов"
+
+#: ../../economics/runtime.rst:38
+msgid ""
+"All fees from a particular block accrue to its proposer, incentivizing non-"
+"empty block production and allowing major dApps to execute deploys for free,"
+" provided they operate a validator node and are comfortable with the latency"
+" introduced by validator scheduling."
+msgstr ""
+"Все сборы с конкретного блока начисляются его разработчику, стимулируя "
+"создание не-пустых блоков и позволяя основным приложениям dApps выполнять "
+"развертывание бесплатно, при условии, что они управляют нодой валидатора и "
+"не затруднены временем ожидании при планировании расписания валидатора."
+
+#: ../../economics/runtime.rst:41
+msgid "Spot pricing"
+msgstr "Цена за спот"
+
+#: ../../economics/runtime.rst:43
+msgid ""
+"Please see `CEP #22 <https://github.com/casper-network/ceps/pull/22>`_ for "
+"one potential design of a gas spot market."
+msgstr ""
+"Для изучения потенциального дизайна спотового рынка газа смотрите `CEP #22 "
+"<https://github.com/casper-network/ceps/pull/22>`_ ."
+
+#: ../../economics/runtime.rst:46
+msgid "Futures pricing"
+msgstr "Цена на фьючерсы"
+
+#: ../../economics/runtime.rst:48
+msgid ""
+"Please see `CEP #17 <https://github.com/casper-network/ceps/pull/17>`_ for "
+"our draft proposal of a gas futures market."
+msgstr ""
+"Смотрите наш проект предложения на фьючерсный рынок газа `CEP #17 "
+"<https://github.com/casper-network/ceps/pull/17>`_ ."
+
+#~ msgid ""
+#~ "Any finite resource on a publicly accessible computer network must be rate-"
+#~ "limited, as, otherwise, overuse of this resource is an attack vector -- a "
+#~ "minimal requirement for platform security. However, rate-limiting, "
+#~ "implemented on our platform as a simple block gas limit with several lanes, "
+#~ "leaves the platform with the problem of fairly and efficiently allocating "
+#~ "the gas. We are researching the optimal structure for spot and futures gas "
+#~ "markets, and interested readers should consult the relevant `CEPs "
+#~ "<https://github.com/CasperLabs/ceps>`_. In the meantime, this section "
+#~ "outlines some basic features of the platform that would underpin any "
+#~ "allocation scheme."
+#~ msgstr ""
+#~ "Любой конечный ресурс в общедоступной компьютерной сети должен быть "
+#~ "ограничен по скорости, так как в противном случае чрезмерное использование "
+#~ "этого ресурса является вектором атаки - минимальным требованием для "
+#~ "безопасности платформы. Однако ограничение скорости, реализованное на нашей "
+#~ "платформе в виде простого лимита газа по блокам с несколькими путями "
+#~ "движения, ставит платформу перед проблемой справедливого и эффективного "
+#~ "распределения газа. Мы исследуем оптимальную структуру для спотовых и "
+#~ "фьючерсных рынков газа, и заинтересованные читатели могут узнать больше "
+#~ "здесь `CEPs <https://github.com/CasperLabs/ceps>`_. Пока что в этом разделе "
+#~ "описываются некоторые основные функции платформы, которые будут лежать в "
+#~ "основе любой схемы распределения."
+
+#~ msgid ""
+#~ "Please see `CEP #22 <https://github.com/CasperLabs/ceps/pull/22>`_ for one "
+#~ "potential design of a gas spot market."
+#~ msgstr ""
+#~ "Для изучения потенциального дизайна спотового рынка газа посмотрите `CEP #22"
+#~ " <https://github.com/CasperLabs/ceps/pull/22>`_ ."
+
+#~ msgid ""
+#~ "Please see `CEP #17 <https://github.com/CasperLabs/ceps/pull/17>`_ for our "
+#~ "draft proposal of a gas futures market."
+#~ msgstr ""
+#~ "Смотрите наш проект предложения на фьючерсный рынок газа `CEP #17 "
+#~ "<https://github.com/CasperLabs/ceps/pull/17>`_ . "

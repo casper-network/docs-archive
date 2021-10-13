@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:45+0000\n"
 "Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
@@ -99,25 +99,21 @@ msgstr "Получение макросов"
 
 #: ../../archived/contract-dsl-archived/getting-started.rst:27
 msgid ""
-"The source code for the macros is located at `GitHub "
-"<https://github.com/CasperLabs/casperlabs_contract_macro>`_. To import the "
-"macros, include a line in the ``Cargo.toml`` file in the ``/contract`` "
-"folder for your smart contract. The entry needs to appear in the\\ "
-"``[dependencies]`` section.  This entry will import the macros into your "
-"project. There are a few sources for the macros."
+"To import the macros, include a line in the ``Cargo.toml`` file in the "
+"``/contract`` folder for your smart contract. The entry needs to appear in "
+"the\\ ``[dependencies]`` section.  This entry will import the macros into "
+"your project. There are a few sources for the macros."
 msgstr ""
-"Исходный код для макросов расположен по адресу  `GitHub "
-"<https://github.com/CasperLabs/casperlabs_contract_macro>`_.  Для того чтобы"
-" импортировать макрос, добавьте строку в файл ``Cargo.toml``  в папке "
-"``/contract``  вашего смарт-контракта. Запись должна появиться в разделе  "
-"``[dependencies]`` . Эта запись импортирует макросы в ваш проект. Есть "
+"Для импорта макросов, включите строку в файл  ``Cargo.toml`` в папке  "
+"``/contract`` вашего смарт-контракта. Вход появится в секции зависимостей  "
+"``[dependencies]``. Этот вход импортирует макросы в ваш проект. Есть "
 "несколько источников макросов. "
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:33
+#: ../../archived/contract-dsl-archived/getting-started.rst:32
 msgid "From Crates.io"
 msgstr "Crates.io"
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:35
+#: ../../archived/contract-dsl-archived/getting-started.rst:34
 msgid ""
 "To use the crate available on `crates.io "
 "<https://crates.io/crates/casperlabs_contract_macro>`_ include the following"
@@ -127,31 +123,21 @@ msgstr ""
 "<https://crates.io/crates/casperlabs_contract_macro>`_  добавьте следующую "
 "запись в  файл ``Cargo.toml``  для смарт-контракта."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:43
-msgid "From Github"
-msgstr "Github"
-
-#: ../../archived/contract-dsl-archived/getting-started.rst:45
-msgid ""
-"To obtain the macros from Github, include this entry in ``Cargo.toml``\\ :"
-msgstr ""
-"Чтобы получить макросы с Github, включите эту запись в ``Cargo.toml``\\ :"
-
-#: ../../archived/contract-dsl-archived/getting-started.rst:52
+#: ../../archived/contract-dsl-archived/getting-started.rst:42
 msgid "Local package"
 msgstr "Локальный пакет"
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:54
+#: ../../archived/contract-dsl-archived/getting-started.rst:44
 msgid "This example ``Cargo.toml`` entry uses a local path for the macros:"
 msgstr ""
 "В этом примере ``Cargo.toml``  в записи используется локальный путь для "
 "макроса."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:61
+#: ../../archived/contract-dsl-archived/getting-started.rst:51
 msgid "Using the DSL"
 msgstr "Использование DSL"
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:63
+#: ../../archived/contract-dsl-archived/getting-started.rst:53
 msgid ""
 "To use the DSL, simply add the following line to the ``use`` section of the "
 "contract."
@@ -159,7 +145,7 @@ msgstr ""
 "Для использования DSL, просто добавьте следующую линию в раздел ``use`` "
 "контракта."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:69
+#: ../../archived/contract-dsl-archived/getting-started.rst:59
 msgid ""
 "This line can go after the last ``use`` line in the blank contract created "
 "by ``cargo-casperlabs``."
@@ -167,7 +153,7 @@ msgstr ""
 "Эта линия располагается под последней линией раздела ``use`` в бланке "
 "контракта, созданного с ``cargo-casperlabs``."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:71
+#: ../../archived/contract-dsl-archived/getting-started.rst:61
 msgid ""
 "Remember, if you are using the crates.io package, you may have to use the "
 "package as ``casperlabs_contract_macro``. This depends entirely on how you "
@@ -177,7 +163,7 @@ msgstr ""
 "использовать пакет как ``casperlabs_contract_macro``. Это полностью зависит "
 "от того, как вы импортируете пакет данных в файл ``Cargo.toml`` ."
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:76
+#: ../../archived/contract-dsl-archived/getting-started.rst:66
 msgid ""
 "The following contract creates a counter in storage. Each time the contract "
 "is invoked, the counter is incremented by 1."
@@ -185,7 +171,7 @@ msgstr ""
 "Следующий контракт создает счетчик в хранилище. При каждом обращении к "
 "контракту счетчик инкрементируется на 1. "
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:160
+#: ../../archived/contract-dsl-archived/getting-started.rst:150
 msgid ""
 "If you set up your contract using ``cargo-casperlabs`` you can test your "
 "contract using the local runtime."
@@ -193,7 +179,7 @@ msgstr ""
 "Если вы настроите контракт с использованием ``cargo-casperlabs``, вы сможете"
 " протестировать контракт внутри рабочей среды. "
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:162
+#: ../../archived/contract-dsl-archived/getting-started.rst:152
 msgid ""
 "Set up the runtime following the steps in the `testing </./dapp-dev-"
 "guide/testing.md>`_ section of this guide to set up the runtime context."
@@ -201,8 +187,31 @@ msgstr ""
 "Настройте контекст рабочей среды, следуя шагам в секции `testing </./dapp-"
 "dev-guide/testing.md>`_ этого гайда. "
 
-#: ../../archived/contract-dsl-archived/getting-started.rst:165
+#: ../../archived/contract-dsl-archived/getting-started.rst:155
 msgid ""
 "The following test will check whether or not the tutorial contract is "
 "working properly:"
 msgstr "Следующий тест проверит правильность работы учебного контракта:"
+
+#~ msgid ""
+#~ "The source code for the macros is located at `GitHub "
+#~ "<https://github.com/CasperLabs/casperlabs_contract_macro>`_. To import the "
+#~ "macros, include a line in the ``Cargo.toml`` file in the ``/contract`` "
+#~ "folder for your smart contract. The entry needs to appear in the\\ "
+#~ "``[dependencies]`` section.  This entry will import the macros into your "
+#~ "project. There are a few sources for the macros."
+#~ msgstr ""
+#~ "Исходный код для макросов расположен по адресу  `GitHub "
+#~ "<https://github.com/CasperLabs/casperlabs_contract_macro>`_.  Для того чтобы"
+#~ " импортировать макрос, добавьте строку в файл ``Cargo.toml``  в папке "
+#~ "``/contract``  вашего смарт-контракта. Запись должна появиться в разделе  "
+#~ "``[dependencies]`` . Эта запись импортирует макросы в ваш проект. Есть "
+#~ "несколько источников макросов. "
+
+#~ msgid "From Github"
+#~ msgstr "Github"
+
+#~ msgid ""
+#~ "To obtain the macros from Github, include this entry in ``Cargo.toml``\\ :"
+#~ msgstr ""
+#~ "Чтобы получить макросы с Github, включите эту запись в ``Cargo.toml``\\ :"

@@ -1,0 +1,208 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../implementation/block-structure.rst:4
+msgid "Block Structure"
+msgstr "Структура блока"
+
+#: ../../implementation/block-structure.rst:9
+msgid "Introduction"
+msgstr "Введение"
+
+#: ../../implementation/block-structure.rst:11
+msgid ""
+"A *block* is the primary data structure by which network nodes communicate "
+"information about the state of the Casper Network. We briefly describe here "
+"the format of this data structure."
+msgstr ""
+"*Блок* - это первичная информационная структура, с помощью которой ноды "
+"передают информацию о состоянии сети Casper. Мы кратко опишем здесь формат "
+"информационной структуры. "
+
+#: ../../implementation/block-structure.rst:16
+msgid "Data fields"
+msgstr "Информационные поля"
+
+#: ../../implementation/block-structure.rst:18
+msgid "A block consists of the following:"
+msgstr "Блок состоит из:"
+
+#: ../../implementation/block-structure.rst:20
+msgid "a ``block_hash``"
+msgstr "хеш блока ``block_hash``"
+
+#: ../../implementation/block-structure.rst:21
+msgid "a header"
+msgstr "заголовок"
+
+#: ../../implementation/block-structure.rst:22
+msgid "a body"
+msgstr "тело"
+
+#: ../../implementation/block-structure.rst:24
+msgid "Each of these fields is detailed in the subsequent sections."
+msgstr "Каждое из этих полей описано в последующих разделах."
+
+#: ../../implementation/block-structure.rst:27
+msgid "``block_hash``"
+msgstr "Хеш блока ``block_hash``"
+
+#: ../../implementation/block-structure.rst:29
+msgid "The ``block_hash`` is the ``blake2b256`` hash of the header."
+msgstr "Хеш блока ``block_hash`` является хешем заголовка ``blake2b256``"
+
+#: ../../implementation/block-structure.rst:32
+msgid "Header"
+msgstr "Заголовок"
+
+#: ../../implementation/block-structure.rst:34
+msgid "The block header contains the following fields:"
+msgstr "Заголовок блока содержит следующие поля:"
+
+#: ../../implementation/block-structure.rst:36
+msgid "``parent_hashes``"
+msgstr "Родительский хеш ``parent_hashes``"
+
+#: ../../implementation/block-structure.rst:38
+msgid "a list of ``block_hash``\\ es giving the parents of the block"
+msgstr ""
+"Список хешей блока или блоков ``block_hash`` предоставляющий родителей блока"
+
+#: ../../implementation/block-structure.rst:40
+msgid "justifications"
+msgstr "обоснования"
+
+#: ../../implementation/block-structure.rst:42
+msgid ""
+"a list of ``block_hash``\\ es giving the justifications of the block (see "
+"consensus description in part A for more details)"
+msgstr ""
+"Список хешей блока или блоков ``block_hash`` предоставляющий обоснования "
+"блока (смотрите описание консенсуса в части A для более подробной "
+"информации)"
+
+#: ../../implementation/block-structure.rst:45
+msgid "a summary of the global state, including"
+msgstr "итог глобального состояния, включая"
+
+#: ../../implementation/block-structure.rst:47
+msgid ""
+"the :ref:`root hash of the global state trie <global-state-trie>` before "
+"executing the deploys in this block (``pre_state_hash``)"
+msgstr ""
+"корневой хеш :ref:`root hash структуры глобального состояния <global-state-"
+"trie>` до выполнения развертываний в этом блоке (хеш пред-состояния "
+"``pre_state_hash``)"
+
+#: ../../implementation/block-structure.rst:49
+msgid ""
+"the root hash of the global state trie after executing the deploys in this "
+"block (``post_state_hash``)"
+msgstr ""
+"корневой хеш структуры глобального состояния после исполнения развертываний "
+"в этом блоке (хеш пост-состояния ``post_state_hash``)"
+
+#: ../../implementation/block-structure.rst:51
+msgid "the list of currently bonded validators, and their stakes"
+msgstr "Список текущих связанных валидаторов и их стейки"
+
+#: ../../implementation/block-structure.rst:53
+msgid "the ``blake2b256`` hash of the body of the block"
+msgstr "Хеш тела блока ``blake2b256`` "
+
+#: ../../implementation/block-structure.rst:54
+msgid "the time the block was created"
+msgstr "Время, когда был создан блок"
+
+#: ../../implementation/block-structure.rst:55
+msgid "the protocol version the block was executed with"
+msgstr "Версия протокола, при которой исполнялся блок"
+
+#: ../../implementation/block-structure.rst:56
+msgid "the number of deploys in the block"
+msgstr "Количество развертываний в блоке"
+
+#: ../../implementation/block-structure.rst:57
+msgid ""
+"the human-readable name corresponding to this instance of the Casper Network"
+" (``chain_id``)"
+msgstr ""
+"Человекочитаемое имя в соответствии с этим экземпляром сети Casper  "
+"(``chain_id``)"
+
+#: ../../implementation/block-structure.rst:58
+msgid ""
+"an indicator for whether this message is intended as a valid block or merely"
+" a *ballot* (see consensus description in part A for more details)"
+msgstr ""
+"Индикатор, показывающий является ли сообщение валидным блоком или это "
+"*бюллетень* (см. описание консенсуса в части A)"
+
+#: ../../implementation/block-structure.rst:61
+msgid "Body"
+msgstr "Тело"
+
+#: ../../implementation/block-structure.rst:63
+msgid ""
+"The block body contains an **ordered** list of ``DeployHashes`` which refer "
+"to deploys, and an **ordered** list of ``DeployHashes`` for native transfers"
+" (which are specialized deploys that only transfer token between accounts). "
+"All deploys, including a specialization such as native transfer, can be "
+"broadly categorized as some unit of work that, when executed and committed, "
+"affect change to global state :ref:`Global State<global-state-intro>`. It "
+"should be noted that a valid block may contain no deploys and / or native "
+"transfers."
+msgstr ""
+"Тело блока содержит **нумерованный** список хешей развертываний "
+"``DeployHashes``, которые ссылаются на развертывания и **нумерованный** "
+"список хешей ``DeployHashes`` для нативных трансферов (которые являются "
+"специализированными развертываниями, которые передают токены между "
+"аккаунтами). Все развертывания, включая специальные типа нативных "
+"трансферов, могут быть широко категоризированы как некие юниты работы, "
+"которые - когда исполнены и зафиксированы  - вносят изменения в глобальное "
+"состояние  :ref:`Global State<global-state-intro>`. Нужно отметить, что "
+"валидный блок может не содержать развертываний и/или нативных трансферов. "
+
+#: ../../implementation/block-structure.rst:66
+msgid ""
+"The block body also contains the public key of the validator that proposed "
+"the block."
+msgstr ""
+"Тело блока также содержит публичный ключ валидатора, который выдвинул этот "
+"блок. "
+
+#: ../../implementation/block-structure.rst:68
+msgid ""
+"Refer to the :ref:`Deploy Serialization Standard <serialization-standard-"
+"deploy>` for additional information on deploys and how they are serialized. "
+"Refer to :ref:`Block Serialization Standard <serialization-standard-block>` "
+"for how blocks are serialized."
+msgstr ""
+"Обратитесь к стандартам сериализации развертываний :ref:`Deploy "
+"Serialization Standard <serialization-standard-deploy>`  за дополнительной "
+"информацией о развертываниях и как они сериализуются. Обратитесь к "
+"стандартам сериализации блоков :ref:`Block Serialization Standard "
+"<serialization-standard-block>` за информацией о том, как сериализуются "
+"блоки. "

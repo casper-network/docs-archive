@@ -1,0 +1,2628 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../theory/naive-blockchain.rst:2
+msgid "Naive Casper Blockchain"
+msgstr "Наивный блокчейн Casper NCB"
+
+#: ../../theory/naive-blockchain.rst:5 ../../theory/naive-blockchain.rst:100
+msgid "Introduction"
+msgstr "Введение"
+
+#: ../../theory/naive-blockchain.rst:7
+msgid ""
+"Blockchain is a P2P network where the collection of nodes (**validators**) "
+"concurrently update a decentralized, shared database. They do this by "
+"collectively building an ever-growing chain of **transactions**. For "
+"performance reasons transactions are bundled in **blocks**."
+msgstr ""
+"Блокчейн-это P2P-сеть, в которой совокупность нод (**валидаторов**) "
+"одновременно обновляет децентрализованную общую базу данных. Они делают это,"
+" коллективно выстраивая постоянно растущую цепочку **транзакций**. По "
+"соображениям производительности транзакции объединяются в **блоки**."
+
+#: ../../theory/naive-blockchain.rst:9
+msgid ""
+"For the “outside world”, the blockchain looks like a computer. This "
+"blockchain computer has a memory (= shared database) and can execute "
+"programs (= transactions). Execution of a program changes the state of the "
+"memory. Anybody can send a program to the computer and the computer will do "
+"a best effort attempt to execute this program."
+msgstr ""
+"Для “внешнего мира” блокчейн выглядит как компьютер. Этот блокчейн-компьютер"
+" имеет память (= общую базу данных) и может выполнять программы (= "
+"транзакции). Выполнение программы изменяет состояние памяти. Любой может "
+"отправить программу на компьютер, и компьютер приложит все усилия, чтобы "
+"выполнить эту программу."
+
+#: ../../theory/naive-blockchain.rst:11
+#, python-format
+msgid ""
+"We say that a blockchain computer is **decentralized**, i.e. there is no "
+"single point of failure in the infrastructure. A significant portion of the "
+"network of validators could be suddenly destroyed and nevertheless the "
+"blockchain will continue to work. Also, the system is resistant to malicious"
+" validators (as long as the total weight of malicious validators is below "
+"50% of the total weight of all validators)."
+msgstr ""
+"Мы говорим, что блокчейн-компьютер **децентрализован**, то есть в "
+"инфраструктуре нет единой точки отказа. Значительная часть сети валидаторов "
+"может быть внезапно уничтожена, и тем не менее блокчейн продолжит работать. "
+"Кроме того, система устойчива к вредоносным валидаторам (до тех пор, пока "
+"общий вес вредоносных валидаторов составляет менее 50% от общего веса всех "
+"валидаторов)."
+
+#: ../../theory/naive-blockchain.rst:13
+msgid ""
+"The core of blockchain mechanics is the continuous work of validators "
+"struggling to agree on a consistent history of programs executed on the "
+"blockchain computer. We describe this central idea as “achieving "
+"**consensus** on the chain of blocks”. Because every block contains a chain "
+"of transactions, this “consistent history” results in being a sequence of "
+"transactions."
+msgstr ""
+"Ядром механики блокчейна является непрерывная работа валидаторов, пытающихся"
+" согласовать согласованную историю программ, выполняемых на блокчейн-"
+"компьютере. Мы описываем эту центральную идею как “достижение **консенсуса**"
+" по цепочке блоков”. Поскольку каждый блок содержит цепочку транзакций, эта "
+"“последовательная история” приводит к последовательности транзакций."
+
+#: ../../theory/naive-blockchain.rst:15
+msgid ""
+"Note that in this spec we use the terms **shared database** and **blockchain"
+" computer memory** interchangeably."
+msgstr ""
+"Обратите внимание, что в этой спецификации мы используем термины **общая "
+"база данных** и **блокчейн-память компьютера** взаимозаменяемо."
+
+#: ../../theory/naive-blockchain.rst:18
+msgid "Computing model"
+msgstr "Вычислительная модель"
+
+#: ../../theory/naive-blockchain.rst:21
+msgid "Memory and programs"
+msgstr "Память и программы"
+
+#: ../../theory/naive-blockchain.rst:23
+msgid ""
+"We need to define the “computational semantics” of a blockchain computer; "
+"what programs are and how they execute. However, because the consensus "
+"protocol we introduce is compatible with a wide range of computing models, "
+"it is convenient to approach this abstractly. Therefore, we represent the "
+"“computational semantics” of a blockchain computer as a triple "
+":math:`\\langle GS, Zero, P\\rangle` where:"
+msgstr ""
+"Нам нужно определить “вычислительную семантику” блокчейн-компьютера; что "
+"такое программы и как они выполняются. Однако, поскольку протокол "
+"консенсуса, который мы представляем, совместим с широким спектром "
+"вычислительных моделей, удобно подходить к этому абстрактно. Поэтому мы "
+"представляем “вычислительную семантику” блокчейн-компьютера в виде тройки "
+":math:`\\langle GS, Zero, P\\rangle`, где:"
+
+#: ../../theory/naive-blockchain.rst:29
+msgid ""
+":math:`GS` is a set of states of the shared database (think that each point "
+":math:`gs \\in GS` represents a “snapshot” of the shared database) we call "
+"“global states”"
+msgstr ""
+":math:`GS`  - это набор состояний общей базы данных (подумайте, что каждая "
+"точка :math:`gs \\in GS` представляет собой \"снимок\" общей базы данных), "
+"который мы называем \"глобальными состояниями\"."
+
+#: ../../theory/naive-blockchain.rst:30
+msgid ":math:`Zero \\in GS` is the initial state of the database"
+msgstr ":math:`Zero \\in GS`  это начальное состояние базы данных"
+
+#: ../../theory/naive-blockchain.rst:31
+msgid ""
+":math:`P \\subset Partial(GS \\rightarrow GS)` is a non-empty set of partial"
+" functions from :math:`GS` to :math:`GS`, closed under composition; elements"
+" of :math:`P` we call **transactions** (we think of them as “executable "
+"programs”)"
+msgstr ""
+":math:`P \\subset Partial(GS \\rightarrow GS)` - это непустой набор "
+"частичных функций от :math:`GS` до :math:`GS`, замкнутых по составу; "
+"элементы :math:`P` мы называем **транзакциями** (мы думаем о них как о "
+"“исполняемых программах”)"
+
+#: ../../theory/naive-blockchain.rst:33
+msgid ""
+"Given a state :math:`gs \\in GS` and a transaction :math:`p \\in P`, we can "
+"calculate the value :math:`p(gs)` only in the case when :math:`p` is defined"
+" at :math:`gs`. We refer to this as **the execution of p**."
+msgstr ""
+"Учитывая состояние :math:`gs \\in GS` и транзакцию :math:`p \\in P`, мы "
+"можем вычислить значение  :math:`p(gs)` только в том случае, когда  "
+":math:`p` определяется в :math:`gs`.  Мы называем это **исполнением p**."
+
+#: ../../theory/naive-blockchain.rst:35
+msgid ""
+"When :math:`p` is not defined at point :math:`gs`, we say that **execution "
+"of p on state gs failed**. This is how we represent errors in program "
+"execution."
+msgstr ""
+"Когда :math:`p` не определена в точке :math:`gs`, мы говорим, что "
+"**выполнение p в состоянии gs не удалось**. Именно так мы представляем "
+"ошибки при выполнении программы."
+
+#: ../../theory/naive-blockchain.rst:38
+msgid "Executing sequences of transactions"
+msgstr "Выполнение последовательности транзакций"
+
+#: ../../theory/naive-blockchain.rst:40
+msgid ""
+"We want to generalize this notion to sequences of transactions in such a way"
+" that the information on execution errors is retained."
+msgstr ""
+"Мы хотим обобщить это понятие на последовательности транзакций таким "
+"образом, чтобы информация об ошибках выполнения сохранялась."
+
+#: ../../theory/naive-blockchain.rst:42
+msgid ""
+"Having a sequence of transactions :math:`p_1, p_2, ...., p_n\\in P` we'll "
+"keep the information on execution success/error as a function :math:`status:"
+" [1,2,...,n] \\rightarrow \\{false, true\\}`."
+msgstr ""
+"Имея последовательность транзакций :math:`p_1, p_2, ...., p_n\\in P`  мы "
+"сохраним информацию об успешном выполнении/ошибке в виде функции "
+":math:`status: [1,2,...,n] \\rightarrow \\{false, true\\}`."
+
+#: ../../theory/naive-blockchain.rst:44
+msgid ""
+"For any :math:`p \\in P` let :math:`\\triangle p: GS \\rightarrow GS` be a "
+"total function that extends :math:`p` by applying identity whenever "
+":math:`p` is not defined, hence formally as:"
+msgstr ""
+"Для любой  :math:`p \\in P` пусть :math:`\\triangle p: GS \\rightarrow GS` "
+"будет полной функцией, которая расширяет :math:`p`, применяя идентификатор "
+"всякий раз, когда :math:`p` не определен, следовательно, формально как:"
+
+#: ../../theory/naive-blockchain.rst:46
+msgid ""
+"\\triangle p(x)=\\begin{cases}\n"
+"p(x), & x \\in dom(p)\\\\\n"
+"x, & otherwise\n"
+"\\end{cases}"
+msgstr ""
+"\\triangle p(x)=\\begin{cases}\n"
+"p(x), & x \\in dom(p)\\\\\n"
+"x, & otherwise\n"
+"\\end{cases}"
+
+#: ../../theory/naive-blockchain.rst:54
+msgid ""
+"**Status(i)** represents the overall result (success vs failure) of the "
+"execution of **i-th** transaction in the sequence."
+msgstr ""
+"**Статус(i)** представляет общий результат (успех или неудача) выполнения "
+"**i-й** транзакции в последовательности."
+
+#: ../../theory/naive-blockchain.rst:56
+msgid "Let:"
+msgstr "Пусть:"
+
+#: ../../theory/naive-blockchain.rst:58
+msgid ""
+":math:`TSeq` be the set of finite sequences of transactions: :math:`TSeq = "
+"P^{Int}`"
+msgstr ""
+":math:`TSeq` будет набором законченных последовательностей транзакций: "
+":math:`TSeq = P^{Int}`"
+
+#: ../../theory/naive-blockchain.rst:59
+msgid ":math:`StatusTraces` be the set of finite sequences of Booleans"
+msgstr ""
+":math:`StatusTraces`  будет набором законченных последовательностей "
+"логических значений"
+
+#: ../../theory/naive-blockchain.rst:61
+msgid "We define the execution of a sequence of transactions as:"
+msgstr "Мы определяем выполнение последовательности транзакций как:"
+
+#: ../../theory/naive-blockchain.rst:63
+msgid ""
+"exec: GS \\times TSeq \\rightarrow GS \\times StatusTraces \\\\\n"
+"exec(gs, [p1, p2, ...., pn]) = (resultGS, trace)"
+msgstr ""
+"exec: GS \\times TSeq \\rightarrow GS \\times StatusTraces \\\\\n"
+"exec(gs, [p1, p2, ...., pn]) = (resultGS, trace)"
+
+#: ../../theory/naive-blockchain.rst:69
+msgid "… where:"
+msgstr "... где:"
+
+#: ../../theory/naive-blockchain.rst:71
+msgid ""
+":math:`resultGS = \\Delta pn \\circ \\Delta pn-1 \\circ ... \\circ \\Delta "
+"p1 (gs)`"
+msgstr ""
+":math:`resultGS = \\Delta pn \\circ \\Delta pn-1 \\circ ... \\circ \\Delta "
+"p1 (gs)`"
+
+#: ../../theory/naive-blockchain.rst:72
+msgid ""
+":math:`trace(i) = \\begin{cases} false, & execution \\space of \\space p_i "
+"\\space failed \\\\ true, & otherwise \\end{cases}`"
+msgstr ""
+":math:`trace(i) = \\begin{cases} false, & execution \\space of \\space p_i "
+"\\space failed \\\\ true, & otherwise \\end{cases}`"
+
+#: ../../theory/naive-blockchain.rst:74
+msgid ""
+"Intuitively, **exec** takes a pair - the initial global state and a sequence"
+" of transactions to execute. The result is also a pair - the resulting "
+"global state reached by sequentially applying all transactions and a trace "
+"of this execution saying which transactions failed along the way."
+msgstr ""
+"Интуитивно понятно, что **exec** принимает пару - начальное глобальное "
+"состояние и последовательность транзакций для выполнения. Результатом также "
+"является пара - результирующее глобальное состояние, достигнутое путем "
+"последовательного применения всех транзакций, и след этого выполнения, "
+"указывающий, какие транзакции завершились неудачей на этом пути."
+
+#: ../../theory/naive-blockchain.rst:77
+msgid "Executing sequences of blocks"
+msgstr "Выполнение последовательности блоков"
+
+#: ../../theory/naive-blockchain.rst:79
+msgid ""
+"A block contains sequences of transactions. Given some initial global state "
+":math:`gs \\in GS`, whenever we say “execute a block” we mean executing the "
+"sequence of transactions it contains starting from :math:`gs`. We usually "
+"call :math:`gs` the **pre-state** of the block, and we say **post-state** to"
+" denote the resulting global state returned by :math:`exec(gs, sequence)`."
+msgstr ""
+"Блок содержит последовательности транзакций. Учитывая некоторое начальное "
+"глобальное состояние :math:`gs \\in GS`, всякий раз, когда мы говорим "
+"“выполнить блок”, мы имеем в виду выполнение последовательности транзакций, "
+"которые он содержит, начиная с :math:`gs`. Обычно мы называем :math:`gs` "
+"**предварительным состоянием** блока, и мы говорим **пост-состояние** для "
+"обозначения результирующего глобального состояния, возвращаемого "
+":math:`exec(gs, sequence)`."
+
+#: ../../theory/naive-blockchain.rst:81
+msgid ""
+"Given any sequence of blocks we may also **execute the sequence of blocks** "
+"because it is effectively a sequence of sequences of transactions, so it may"
+" be flattened to a single sequence of transactions."
+msgstr ""
+"Учитывая любую последовательность блоков, мы также можем **выполнить "
+"последовательность блоков**, потому что она фактически представляет собой "
+"последовательность последовательностей транзакций, поэтому ее можно свести к"
+" одной последовательности транзакций."
+
+#: ../../theory/naive-blockchain.rst:83
+msgid ""
+"Given any set of blocks :math:`B`, we sometimes consider different linear "
+"orders of such set. Given a linear order :math:`R` on set :math:`B`, we are "
+"speaking about **executing the set of blocks B along linear order R**, with "
+"the obvious semantics of taking all the blocks, arranging them in a sequence"
+" following the order :math:`R`, and then executing the resulting sequence of"
+" transactions."
+msgstr ""
+"Учитывая любой набор блоков :math:`B`, мы иногда рассматриваем различные "
+"линейные порядки такого набора. Учитывая линейный порядок :math:`R` на "
+"множестве :math:`B`, мы говорим о **выполнении набора блоков B в линейном "
+"порядке R**, с очевидной семантикой взятия всех блоков, упорядочивания их в "
+"последовательности, следующей за порядком :math:`R`, а затем выполнения "
+"результирующей последовательности транзакций."
+
+#: ../../theory/naive-blockchain.rst:86
+msgid "Blockchain participants"
+msgstr "Участники блокчейн"
+
+#: ../../theory/naive-blockchain.rst:88
+msgid ""
+"We envision the infrastructure of blockchain participants as a collection of"
+" actors (processes) communicating over a network, and where each process "
+"plays one of the following roles:"
+msgstr ""
+"Мы представляем инфраструктуру участников блокчейна как совокупность "
+"субъектов (процессов), взаимодействующих по сети, и где каждый процесс "
+"играет одну из следующих ролей:"
+
+#: ../../theory/naive-blockchain.rst:90
+msgid ""
+"**validators (aka “ring 0”)** - form a P2P network that attempts to reach "
+"consensus on the ever-growing history of executed transactions; they do this"
+" by creating and validating blocks"
+msgstr ""
+"**валидаторы (они же “кольцо 0”)** - формируют P2P-сеть, которая пытается "
+"достичь консенсуса по постоянно растущей истории выполненных транзакций; они"
+" делают это путем создания и проверки блоков"
+
+#: ../../theory/naive-blockchain.rst:91
+msgid ""
+"**finalizers (aka “ring 1”)** - they observe validators and try to deduce "
+"the subset of history that is considered as “confirmed” (the “confirmed” "
+"predicate is parameterized so to reflect the expected trust level)"
+msgstr ""
+"**финализаторы (они же “кольцо 1”)** - они наблюдают за валидаторами и "
+"пытаются вывести подмножество истории, которое считается “подтвержденным” "
+"(предикат “подтверждено” параметризован таким образом, чтобы отражать "
+"ожидаемый уровень доверия)"
+
+#: ../../theory/naive-blockchain.rst:92
+msgid ""
+"**clients (aka “ring 2” or “dapps”)** - use the blockchain computer - they "
+"send programs to be executed and react to execution results; a client "
+"connects to a validator (one or many) to send transactions while it also "
+"connects to a finalizer (one or many) to observe execution results"
+msgstr ""
+"**клиенты (они же “кольцо 2” или “dapps”)** - используют блокчейн - "
+"компьютер - они отправляют программы для выполнения и реагируют на "
+"результаты выполнения; клиент подключается к валидатору (одному или "
+"нескольким) для отправки транзакций, в то время как он также подключается к "
+"финализатору (одному или нескольким) для наблюдения за результатами "
+"выполнения"
+
+#: ../../theory/naive-blockchain.rst:95
+msgid "Stake management"
+msgstr "Управление ставками "
+
+#: ../../theory/naive-blockchain.rst:102
+msgid ""
+"In proof-of-stake blockchains, **stake** is a representation of the voting "
+"power a validator has. We leave the question of exact representation of "
+"stakes open. We only summarize here the minimal assumptions we need for the "
+"mechanics of the blockchain to work."
+msgstr ""
+"В цепочках блокчейнов с подтверждением доли участия proof-of-stake, доля "
+"участия  **стейк** - это представление права голоса, которым обладает "
+"валидатор. Мы оставляем открытым вопрос о точном представлении ставок. Здесь"
+" мы лишь резюмируем минимальные допущения, необходимые для работы механики "
+"блокчейна."
+
+#: ../../theory/naive-blockchain.rst:105
+msgid "Encoding of stakes"
+msgstr "Кодирование стейков"
+
+#: ../../theory/naive-blockchain.rst:107
+msgid ""
+"The main assumption is that a global state encodes (among other things) the "
+"“weights map” - a mapping of validators to their voting power. So, "
+"mathematically we expect the existence of a function that assigns to every "
+"global state a function mapping validators to their weights:"
+msgstr ""
+"Основное предположение состоит в том, что глобальное состояние кодирует "
+"(среди прочего) “карту весов” - сопоставление валидаторов с их правом "
+"голоса. Итак, математически мы ожидаем существования функции, которая "
+"присваивает каждому глобальному состоянию функцию, сопоставляющую "
+"валидаторов их весам:"
+
+#: ../../theory/naive-blockchain.rst:109
+msgid ""
+"weights\\_map: GS \\rightarrow Int^{ValidatorId} \\\\\n"
+"weights\\_map(gs): ValidatorId \\rightarrow Int"
+msgstr ""
+"weights\\_map: GS \\rightarrow Int^{ValidatorId} \\\\\n"
+"weights\\_map(gs): ValidatorId \\rightarrow Int"
+
+#: ../../theory/naive-blockchain.rst:115
+msgid ""
+"Intuitively, the stake of a validator will be (usually) defined by the "
+"amount of internal blockchain “money” allocated to the corresponding "
+"account."
+msgstr ""
+"Интуитивно понятно, что доля - стейк - валидатора будет (обычно) "
+"определяться суммой внутренних “денег” блокчейна, выделенных на "
+"соответствующий счет."
+
+#: ../../theory/naive-blockchain.rst:118
+msgid "Bonding and unbonding"
+msgstr "Бондинг и анбондинг"
+
+#: ../../theory/naive-blockchain.rst:120
+msgid ""
+"Blockchain users can increase/decrease the stake of a given validator. This "
+"is to happen via executing (special) transactions."
+msgstr ""
+"Пользователи блокчейна могут увеличивать/уменьшать долю данного валидатора. "
+"Это должно произойти посредством выполнения (специальных) транзакций."
+
+#: ../../theory/naive-blockchain.rst:122
+msgid "Minimal stake **MIN_STAKE** is a parameter of the blockchain."
+msgstr "Минимальный стейк **MIN_STAKE** - это параметр блокчейна"
+
+#: ../../theory/naive-blockchain.rst:125
+msgid "Unbonding stages"
+msgstr "Стадии анбондинга"
+
+#: ../../theory/naive-blockchain.rst:127
+msgid ""
+"Unbonding is always a total unbonding -- a validator transitioning to "
+"stake=0. There is no partial unbonding."
+msgstr ""
+"Анбондинг всегда полный - валидатор переходит к стейку= 0. Нет частичного "
+"анбондинга."
+
+#: ../../theory/naive-blockchain.rst:129
+msgid ""
+"Unbonding must be go in stages, leading to the following states of a "
+"validator:"
+msgstr ""
+"Отсоединение должно проходить поэтапно, приводя к следующим состояниям "
+"валидатора:"
+
+#: ../../theory/naive-blockchain.rst:131
+msgid "STAKED"
+msgstr "STAKED"
+
+#: ../../theory/naive-blockchain.rst:132
+msgid "VOTING_ONLY"
+msgstr "VOTING_ONLY"
+
+#: ../../theory/naive-blockchain.rst:133
+msgid "UNBONDING_ESCROW"
+msgstr "UNBONDING_ESCROW"
+
+#: ../../theory/naive-blockchain.rst:134
+msgid "ZEROED"
+msgstr "ZEROED"
+
+#: ../../theory/naive-blockchain.rst:136
+msgid "While in STAKED, a validator can produce only blocks."
+msgstr "Находясь в STAKED, валидатор может создавать только блоки."
+
+#: ../../theory/naive-blockchain.rst:138
+msgid "While in VOTING_ONLY, a validator can produce only ballots."
+msgstr ""
+"Находясь в VOTING_ONLY,  валидатор может производить только бюллетени. "
+
+#: ../../theory/naive-blockchain.rst:140
+msgid ""
+"While in UNBONDING_ESCROW and ZEROED, a validator is not supposed to produce"
+" messages."
+msgstr ""
+"Находясь в UNBONDING_ESCROW и ZEROED, валидатор не производит сообщений."
+
+#: ../../theory/naive-blockchain.rst:142
+msgid ""
+"The how of transitioning between states is beyond the scope of this "
+"specification (it can be based on wall clock, p-time, j-daglevel, block "
+"generation and other approaches)."
+msgstr ""
+"Способ перехода между состояниями выходит за рамки данной спецификации (он "
+"может быть основан на настенных часах, p-времени, уровне j-dag, генерации "
+"блоков и других подходах)."
+
+#: ../../theory/naive-blockchain.rst:145
+msgid "Slashing"
+msgstr "Слэшинг"
+
+#: ../../theory/naive-blockchain.rst:146
+msgid ""
+"Slashing is forced unbonding where the money used for the stake is burned. "
+"The  intention is to penalizing equivocators."
+msgstr ""
+"Слэшинг - сокращение - это принудительный анбондинг, когда деньги, "
+"использованные для стейка, сгорают. Цель этой меры - наказание за "
+"двусмысленности."
+
+#: ../../theory/naive-blockchain.rst:150
+msgid "Blockdag"
+msgstr "Блокдаг"
+
+#: ../../theory/naive-blockchain.rst:154
+msgid "Visual introduction"
+msgstr "Визуальное введение"
+
+#: ../../theory/naive-blockchain.rst:156
+msgid ""
+"The consensus protocol is based on a data structure we call a **blockdag**, "
+"represented as a graph it looks like the following:"
+msgstr ""
+"Протокол консенсуса основан на структуре данных, которую мы называем "
+"**блокдаг**, представленной в виде графика, который выглядит следующим "
+"образом:"
+
+#: ../../theory/naive-blockchain.rst:162
+msgid "The meaning of symbols:"
+msgstr "Значение символов:"
+
+#: ../../theory/naive-blockchain.rst:168
+msgid "The 3 types of vertices in the graph are as follows:"
+msgstr "3 типа вершин в графике следующие:"
+
+#: ../../theory/naive-blockchain.rst:170
+msgid ""
+"**normal blocks** - contain transactions to be executed against the "
+"blockchain computer"
+msgstr ""
+"**обычные блоки** - содержат транзакции, которые должны быть выполнены на "
+"блокчейн-компьютере"
+
+#: ../../theory/naive-blockchain.rst:171
+msgid ""
+"**ballots** - do not contain transactions, but participate in the consensus"
+msgstr "**бюллетени** - не содержат транзакций, но участвуют в консенсусе"
+
+#: ../../theory/naive-blockchain.rst:172
+msgid ""
+"**genesis** - a special block that stands as a root node of the structure"
+msgstr ""
+"**генезис** - специальный блок, который выступает в качестве корневой ноды "
+"структуры"
+
+#: ../../theory/naive-blockchain.rst:174
+msgid "Additionally we say:"
+msgstr "Дополнительно мы говорим:"
+
+#: ../../theory/naive-blockchain.rst:176
+msgid "**block** - when we mean “normal block or genesis”"
+msgstr "**блок** - когда мы имеем в виду “обычный блок или генезис”"
+
+#: ../../theory/naive-blockchain.rst:177
+msgid "**message** - when we mean “normal block or ballot”"
+msgstr "**сообщение** - когда мы имеем в виду “обычный блок или бюллетень”"
+
+#: ../../theory/naive-blockchain.rst:178
+msgid "**vertex** - when we mean “normal block or ballot or genesis”"
+msgstr ""
+"**вершина** - когда мы имеем в виду “обычный блок, или бюллетень, или "
+"генезис”"
+
+#: ../../theory/naive-blockchain.rst:180
+msgid ""
+"We visually mark the creator of a message by placing it in a relevant "
+"swimlane. Genesis is outside swimlanes because genesis is given at "
+"blockchain initialization (= it does not have a creator)."
+msgstr ""
+"Мы визуально отмечаем создателя сообщения, помещая его в соответствующую "
+"плавательную дорожку. Генезис находится за пределами плавательных линий, "
+"потому что генезис дается при инициализации блокчейна (= у него нет "
+"создателя)."
+
+#: ../../theory/naive-blockchain.rst:182
+msgid ""
+"Every normal block points to its **main parent** block (we visualize this "
+"with red arrows). Hence, blocks form a tree we call the **main tree**."
+msgstr ""
+"Каждый обычный блок указывает на свой **основной родительский** блок (мы "
+"визуализируем это красными стрелками). Следовательно, блоки образуют дерево,"
+" которое мы называем **главным деревом**."
+
+#: ../../theory/naive-blockchain.rst:184
+msgid ""
+"Additionally, any normal block may point to an arbitrary number of blocks as"
+" **secondary parents**. We visualize them with blue arrows. Blocks + red "
+"arrows + blue arrows together form a directed acyclic graph we call **the "
+"p-dag**."
+msgstr ""
+"Кроме того, любой обычный блок может указывать на произвольное количество "
+"блоков в качестве **вторичных родителей**. Мы визуализируем их синими "
+"стрелками. Блоки + красные стрелки + синие стрелки вместе образуют "
+"направленный ациклический граф, который мы называем **p-dag**."
+
+#: ../../theory/naive-blockchain.rst:186
+msgid ""
+"Any ballot points to exactly one block. We call this block “the target block"
+" of a ballot”."
+msgstr ""
+"Любой бюллетень указывает ровно на один блок. Мы называем этот блок “целевым"
+" блоком избирательного бюллетеня”."
+
+#: ../../theory/naive-blockchain.rst:188
+msgid ""
+"Additionally, any message may point to an arbitrary number of vertices as "
+"**additional justifications**. We visualize them with **dashed arrows**."
+msgstr ""
+"Кроме того, любое сообщение может указывать на произвольное количество "
+"вершин в качестве **дополнительных обоснований**. Мы визуализируем их с "
+"помощью **пунктирных стрелок**."
+
+#: ../../theory/naive-blockchain.rst:190
+msgid ""
+"All arrows together with all vertices form a directed acyclic graph we call "
+"the **j-dag**."
+msgstr ""
+"Все стрелки вместе со всеми вершинами образуют направленный ациклический "
+"граф, который мы называем **j-dag**."
+
+#: ../../theory/naive-blockchain.rst:193
+msgid "DAG vs POSET language"
+msgstr "DAG против POSET"
+
+#: ../../theory/naive-blockchain.rst:195
+msgid "DAG is a common abbreviation for “directed acyclic graph”."
+msgstr ""
+"DAG - это распространенная аббревиатура для “направленного ациклического "
+"графа”."
+
+#: ../../theory/naive-blockchain.rst:197
+msgid "POSET is a common abbreviation for “partially ordered set”."
+msgstr ""
+"POSET-это распространенная аббревиатура для “частично упорядоченного "
+"набора”."
+
+#: ../../theory/naive-blockchain.rst:200
+msgid ""
+"When a DAG has at most one edge between any pair of vertices, we say this "
+"DAG is “simple”."
+msgstr ""
+"Когда DAG имеет не более одного ребра между любой парой вершин, мы говорим, "
+"что этот DAG “простой”."
+
+#: ../../theory/naive-blockchain.rst:202
+msgid ""
+"Any POSET can be seen as a simple DAG when you define an edge **a "
+"\\rightarrow b** to be present whenever **a < b**."
+msgstr ""
+"Любой набор POSET можно рассматривать как простой DAG, когда вы определяете "
+"ребро **a \\rightarrow b**, которое будет присутствовать всякий раз, когда "
+"**a < b**."
+
+#: ../../theory/naive-blockchain.rst:204
+msgid ""
+"Any simple DAG leads to a POSET by taking its transitive closure and saying "
+"that **a < b** iff there is an edge **a \\rightarrow b**. By symmetry, "
+"taking **a < b** iff there is an edge **b \\rightarrow a**  is also a POSET "
+"(just based on inverted order). Going in the other direction - from POSET to"
+" a DAG - is analogous."
+msgstr ""
+"Любой простой DAG приводит к множеству POSET, принимая его транзитивное "
+"замыкание и говоря, что **a < b**, если есть ребро **a \\rightarrow b**. По "
+"симметрии, принимая **a < b**, если есть ребро **b \\right, a** также "
+"является частично упорядоченным множеством (только на основе перевернутого "
+"порядка). Движение в другом направлении - от POSET к DAG - аналогично."
+
+#: ../../theory/naive-blockchain.rst:206
+msgid ""
+"In practice, POSET is “like a simple DAG” where we do not distinguish "
+"between DAGs with the same transitive closure. In particular, for "
+"visualization purposes it is convenient to draw a POSET as a transitive "
+"reduction of a corresponding DAG."
+msgstr ""
+"На практике POSET “похож на простой DAG”, где мы не различаем DAG с "
+"одинаковым транзитивным замыканием. В частности, в целях визуализации удобно"
+" нарисовать последовательность как транзитивное сокращение соответствующей "
+"DAG."
+
+#: ../../theory/naive-blockchain.rst:208
+msgid ""
+"When talking about **j-dag** and **p-dag**, we blur the difference between "
+"DAG language and POSET language, because essentially one language is "
+"convertible to another."
+msgstr ""
+"Когда мы говорим о **j-dag** и **p-dag**, мы стираем разницу между языком "
+"DAG и языком POSET, потому что, по сути, один язык преобразуется в другой."
+
+#: ../../theory/naive-blockchain.rst:211
+msgid "Understanding the layers of the blockdag"
+msgstr "Понимание слоев блокдага"
+
+#: ../../theory/naive-blockchain.rst:212
+msgid ""
+"Here we explain only the intuition behind the blockdag. These ideas are "
+"formalized later in this document."
+msgstr ""
+"Здесь мы объясняем только интуицию, лежащую в основе блокдага. Эти идеи "
+"формализованы далее в этом документе."
+
+#: ../../theory/naive-blockchain.rst:214
+msgid ""
+"**J-dag** is all about attesting what I have seen so far. When I am a "
+"validator creating a new message (= block or ballot), I have to attest what "
+"is my current protocol state -- i.e., what my current blockdag looks like. I"
+" do this by including on the justifications list (which is part of the new "
+"message) pointers to all **j-dag** tips present in my blockdag. Please note "
+"that we continue to use the terminology established for j-dag from previous "
+"chapters (*See* the topic on J-dag)."
+msgstr ""
+"**J-dag** - это все для подтверждения того, что я видел до сих пор. Когда я "
+"валидатор, создающий новое сообщение (= блок или бюллетень), я должен "
+"подтвердить, каково мое текущее состояние протокола, т.е. Как выглядит мой "
+"текущий блокдаг. Я делаю это, включив в список обоснований (который является"
+" частью нового сообщения) указатели на все **j-dag** советы, присутствующие "
+"в моем блокдаге. Пожалуйста, обратите внимание, что мы продолжаем "
+"использовать терминологию, установленную для j-dag из предыдущих глав (*См.*"
+" раздел о J-dag)."
+
+#: ../../theory/naive-blockchain.rst:217
+msgid ""
+"**Main-tree** encodes the multi-variant progress of a transaction's history."
+" When a validator creating a block B picks block A as the main parent of B, "
+"it means “I want transactions included in B to extend the history of the "
+"blockchain that ended at block A with all transactions in A already "
+"executed”. This tree is analogous to a similar tree of blocks that forms in "
+"a previous generation of blockchains, like Bitcoin or Ethereum."
+msgstr ""
+"**Главное дерево** кодирует многовариантный ход истории транзакции. Когда "
+"валидатор, создающий блок B, выбирает блок A в качестве основного родителя "
+"B, это означает: “Я хочу, чтобы транзакции, включенные в B, расширяли "
+"историю блокчейна, которая закончилась в блоке A, со всеми транзакциями уже "
+"выполненными в А”. Это дерево аналогично похожему дереву блоков, которое "
+"формируется в блокчейнах предыдущего поколения, таких как Биткоин или "
+"Эфириум."
+
+#: ../../theory/naive-blockchain.rst:219
+msgid ""
+"**P-dag** and the concept of secondary parents, corresponds to “merging of "
+"histories” -- a subtle optimization on the way we process transactions. In "
+"blockchains such as Ethereum, effectively only a single path of the main-"
+"tree ends up as “transactions that have been actually executed” while all "
+"the rest of the main-tree ends up being wasted, or - as we say - “orphaned”."
+" In fact, the amount of wasted work can be reduced by “merging”. While "
+"creating a new block, a validator performs careful analysis of all branches "
+"of the main-tree and attempts to merge as many of them possible without "
+"introducing a concurrency conflict."
+msgstr ""
+"**P-dag** и концепция вторичных родителей соответствует “слиянию историй” - "
+"тонкой оптимизации способа обработки транзакций. В блокчейнах, таких как "
+"Ethereum, фактически только один путь главного дерева заканчивается как "
+"“транзакции, которые были фактически выполнены”, в то время как все "
+"остальное основное дерево оказывается потраченным впустую или, как мы "
+"говорим, “осиротевшим”. На самом деле, количество потраченной впустую работы"
+" может быть уменьшено путем “слияния”. При создании нового блока валидатор "
+"выполняет тщательный анализ всех ветвей главного дерева и пытается "
+"объединить как можно больше из них, не создавая конфликта параллелизма."
+
+#: ../../theory/naive-blockchain.rst:222
+msgid "Core mechanics of the blockchain"
+msgstr "Основная механика блокчейн"
+
+#: ../../theory/naive-blockchain.rst:223
+msgid "The blockdag emerges as a combination of these central ideas:"
+msgstr "Блокдаг возникает как комбинация этих центральных идей:"
+
+#: ../../theory/naive-blockchain.rst:225
+msgid ""
+"Independently proposing updates of the shared database inevitably leads to a"
+" tree of transactions (blocks) because the proposing validator must choose "
+"which version of history it is about to extend. This is how the **main-"
+"tree** pops up."
+msgstr ""
+"Независимое предложение обновлений общей базы данных неизбежно приводит к "
+"дереву транзакций (блоков), поскольку предлагающий валидатор должен выбрать,"
+" какую версию истории он собирается расширить. Вот как появляется **главное "
+"дерево**."
+
+#: ../../theory/naive-blockchain.rst:226
+msgid ""
+"All that remains is to add the mechanics for validators to collectively "
+"agree on which branch of the main-tree is the “official” one."
+msgstr ""
+"Все, что остается, это добавить механику для валидаторов, чтобы коллективно "
+"договориться о том, какая ветвь главного дерева является “официальной\"."
+
+#: ../../theory/naive-blockchain.rst:227
+msgid ""
+"We solve this problem by recursively applying the Abstract Casper Consensus "
+"(a.k.a. ACC)."
+msgstr ""
+"Мы решаем эту проблему путем рекурсивного применения Абстрактного консенсуса"
+" Casper (он же ACC)."
+
+#: ../../theory/naive-blockchain.rst:228
+msgid ""
+"The Secondary parents idea is a further refinement of the solution by "
+"merging as many non-agreed paths of a main-tree as possible without "
+"introducing inconsistencies."
+msgstr ""
+"Идея вторичных родителей заключается в дальнейшем уточнении решения путем "
+"объединения как можно большего числа несогласованных путей главного дерева "
+"без внесения несоответствий."
+
+#: ../../theory/naive-blockchain.rst:230
+msgid ""
+"The single most crucial trick here is the recursive application of the "
+"Abstract Casper Consensus -- to first try to understand this trick before "
+"diving into detailed specs of how validators and finalizers operate."
+msgstr ""
+"Самым важным трюком здесь является рекурсивное применение Абстрактного "
+"консенсуса Casper - сначала попытаться понять этот трюк, прежде чем "
+"углубляться в подробные спецификации того, как работают валидаторы и "
+"финализаторы."
+
+#: ../../theory/naive-blockchain.rst:232
+msgid ""
+"Let **b** be any block. So, **b** is a vertex in the main-tree. We will "
+"consider a projection of validators P2P protocol to a particular Abstract "
+"Casper Consensus model instance we will be calling **b-game**."
+msgstr ""
+"Пусть **b** будет любым блоком. Итак, **b** - это вершина в главном дереве. "
+"Мы рассмотрим проекцию протокола P2P валидаторов на конкретный абстрактный "
+"экземпляр модели консенсуса Casper, который мы будем называть **b-game**."
+
+#: ../../theory/naive-blockchain.rst:235
+msgid "Abstract Casper Consensus concept"
+msgstr "Концепция абстрактного консенсуса Casper"
+
+#: ../../theory/naive-blockchain.rst:235
+msgid "How this concept maps to b-game"
+msgstr "Как эта концепция соотносится с b-игрой"
+
+#: ../../theory/naive-blockchain.rst:238
+msgid "validators"
+msgstr "валидаторы"
+
+#: ../../theory/naive-blockchain.rst:238
+msgid "validators with non-zero weight in post-state of **b**"
+msgstr "валидаторы с ненулевым весом в пост-состоянии **b**"
+
+#: ../../theory/naive-blockchain.rst:241
+msgid "validator weights"
+msgstr "вес валидаторов"
+
+#: ../../theory/naive-blockchain.rst:241
+msgid "**weights-map(globals-states-db(b.po st-state-hash))**"
+msgstr "**карта весов(globals-states-db(b.po st-state-hash))**"
+
+#: ../../theory/naive-blockchain.rst:244
+msgid "message"
+msgstr "сообщение"
+
+#: ../../theory/naive-blockchain.rst:244
+msgid "message (= block or ballot)"
+msgstr "сообщение (= блок или бюллетень)"
+
+#: ../../theory/naive-blockchain.rst:246
+msgid "j-dag"
+msgstr "J-dag"
+
+#: ../../theory/naive-blockchain.rst:248
+msgid "consensus value"
+msgstr "значение консенсуса"
+
+#: ../../theory/naive-blockchain.rst:248
+msgid "direct child of **b** in the **main-tree**"
+msgstr "прямой ребенок **b** в **главном дереве**"
+
+#: ../../theory/naive-blockchain.rst:251
+msgid "message **m** is voting for consensus value **c**"
+msgstr "сообщение **m** голосует за консенсусное значение **c**"
+
+#: ../../theory/naive-blockchain.rst:251
+msgid ""
+"for a block **m**: **m** is a descendant of **c** along the **main-tree**, "
+"for a ballot **m**: **m.target-block** is a descendant of **c** along the "
+"**main-tree** when above conditions are not met, we consider **m** as voting"
+" for nothing (empty vote)"
+msgstr ""
+"для блока **m**: **m** является потомком **c** вдоль **главного дерева**, "
+"для бюллетеня **m**: **m.целевой блок** является потомком **c** вдоль "
+"**главного дерева** когда вышеуказанные условия не выполняются, мы "
+"рассматриваем **m** как голосование ни за что (пустое голосование)"
+
+#: ../../theory/naive-blockchain.rst:261
+msgid "The contents of the table above may be explained as follows:"
+msgstr ""
+"Содержание приведенной выше таблицы может быть объяснено следующим образом:"
+
+#: ../../theory/naive-blockchain.rst:263
+msgid ""
+"Hypothetically assuming that validators already achieved consensus on the "
+"block **b** as being the part of an “official” chain of blocks, they will "
+"have to decide which direct child of **b** (in main-tree) will be the next "
+"“official” chain."
+msgstr ""
+"Гипотетически предполагая, что валидаторы уже достигли консенсуса по блоку "
+"**b** как части “официальной” цепочки блоков, им придется решить, какой "
+"прямой потомок **b** (в главном дереве) будет следующей “официальной” "
+"цепочкой."
+
+#: ../../theory/naive-blockchain.rst:264
+msgid ""
+"So the focus now is on the block **b** and on its direct main-tree children."
+msgstr ""
+"Поэтому сейчас основное внимание уделяется блоку **b** и его прямым дочерним"
+" элементам главного дерева."
+
+#: ../../theory/naive-blockchain.rst:265
+msgid ""
+"We setup the Abstract Casper Consensus instance “relative to block **b**” "
+"where consensus values are direct children of **b**."
+msgstr ""
+"Мы настраиваем абстрактный экземпляр консенсуса Casper “относительно блока "
+"**b**”, где значения консенсуса являются прямыми потомками **b**."
+
+#: ../../theory/naive-blockchain.rst:266
+msgid ""
+"Any block **x** can be seen as a vote for some child of **b** only if **x** "
+"is a descendant of **b** in the main-tree. So if **x** is not a descendant "
+"of **b**, we consider **x** as carrying an empty vote."
+msgstr ""
+"Любой блок **x** можно рассматривать как голосование за какого-либо потомка "
+"**b** только в том случае, если **x** является потомком **b** в главном "
+"дереве. Поэтому, если **x** не является потомком **b**, мы считаем, что "
+"**x** имеет пустой голос."
+
+#: ../../theory/naive-blockchain.rst:268
+msgid ""
+"**Note:** when defining the players of **b-game**, we exclude all "
+"equivocators, as seen in the current protocol state. This means that b-game "
+"is not “absolute”, it is rather depending on the current perspective on the "
+"blockchain that given validator has. Also, the collection of equivocators "
+"grows over time, which means that over time we may need to recalculate "
+"b-game, excluding more validators. This aspect plays a crucial role in how "
+"**finalizers** work - (*see below* the topic **Operation of a finalizer**)."
+msgstr ""
+"**Примечание:** при определении игроков **b-игры** мы исключаем всех "
+"уклоняющихся, как видно из текущего состояния протокола. Это означает, что "
+"b-игра не является “абсолютной”, она скорее зависит от текущей точки зрения "
+"на блокчейн, которую имеет данный валидатор. Кроме того, коллекция "
+"двусмыслителей растет с течением времени, а это означает, что со временем "
+"нам может потребоваться пересчитать b-игру, исключая большее количество "
+"валидаторов. Этот аспект играет решающую роль в том, как работают "
+"**финализаторы** - (*см. Ниже* раздел **Работа финализатора**)."
+
+#: ../../theory/naive-blockchain.rst:270
+msgid ""
+"Not all **b-games** tend to be equally important. What happens is presented "
+"with the following pattern:"
+msgstr ""
+"Не все **b-игры**, как правило, одинаково важны. То, что происходит, "
+"представлено следующей схемой:"
+
+#: ../../theory/naive-blockchain.rst:272
+msgid ""
+"The **Genesis** block is given. So, **Genesis-game** is the first game."
+msgstr "Дан блок **Генезис**. Итак, **Genesis-игра** - это первая игра."
+
+#: ../../theory/naive-blockchain.rst:273
+msgid ""
+"As the blockdag grows, the **Genesis-game** is progressing towards finality."
+msgstr "По мере роста блокдага **Генезис-игра** продвигается к завершению."
+
+#: ../../theory/naive-blockchain.rst:274
+msgid ""
+"Finality of the **Genesis-game** means picking some direct child of "
+"**Genesis**. Let us name this child **LFB1**"
+msgstr ""
+"Завершенность **Genesis-игры** означает выбор какого-либо прямого потомка "
+"**Genesis**. Давайте назовем этого ребенка **LFB1**"
+
+#: ../../theory/naive-blockchain.rst:275
+msgid ""
+"Then, the **LFB1-game** becomes the “important” game that everybody looks "
+"at."
+msgstr ""
+"Затем **LFB1-игра** становится “важной” игрой, на которую все смотрят."
+
+#: ../../theory/naive-blockchain.rst:276
+msgid ""
+"As the blockdag grows, the **LFB1-game** is progressing towards finality."
+msgstr "По мере роста блокдага **LFB1-игра** продвигается к завершению."
+
+#: ../../theory/naive-blockchain.rst:277
+msgid ""
+"Finality of the **LFB1-game** means picking some direct child of **LFB1**. "
+"Let us name this child **LFB2**"
+msgstr ""
+"Завершенность **LFB1-игры** означает выбор какого-либо прямого потомка "
+"**LFB1**. Давайте назовем этого ребенка **LFB2**"
+
+#: ../../theory/naive-blockchain.rst:278
+msgid "This pattern goes on forever."
+msgstr "И такой паттерн продолжается бесконечно."
+
+#: ../../theory/naive-blockchain.rst:280
+msgid ""
+"“LFB” stands for “last finalized block”. For symmetry, we set **LFB0** = "
+"**Genesis**."
+msgstr ""
+"\"LFB” означает “последний завершенный блок”. Для симметрии мы задаем "
+"**LFB0** = **Генезис**."
+
+#: ../../theory/naive-blockchain.rst:283
+msgid "Why do we need ballots ?"
+msgstr "Почему нам нужны бюллетени?"
+
+#: ../../theory/naive-blockchain.rst:285
+msgid ""
+"The security of proof-of-stake blockchain is based on the stake in two ways:"
+msgstr ""
+"Безопасность блокчейна с подтверждением ставки Proof-of-Stake основана на "
+"ставке - stake - двумя способами:"
+
+#: ../../theory/naive-blockchain.rst:287
+msgid ""
+"Large investment (=money) is needed to revert/overtake the history of "
+"transactions using honest means."
+msgstr ""
+"Большие инвестиции (=деньги) необходимы, чтобы вернуть/обогнать историю "
+"транзакций с использованием честных средств."
+
+#: ../../theory/naive-blockchain.rst:288
+msgid ""
+"Malicious behavior (= hacking) implies that the stake will get slashed."
+msgstr ""
+"Вредоносное поведение (= хакинг) подразумевает, что ставка будет снижена."
+
+#: ../../theory/naive-blockchain.rst:290
+msgid ""
+"Therefore, we would like only bonded validators to be able to participate in"
+" blockchain evolution. The problem here is that - when a validator unbonds, "
+"some of the **b-games** he was a player of might not be completed (= "
+"finalized) yet. We would like to allow the validator to still participate in"
+" these games while not allowing him to join new games. This is where ballots"
+" come into play. Ballots make it possible for a validator that is no longer "
+"bonded to continue the consensus game."
+msgstr ""
+"Поэтому мы хотели бы, чтобы только связанные валидаторы могли участвовать в "
+"эволюции блокчейна. Проблема здесь в том, что - когда валидатор отключается,"
+" некоторые из **b-игр**, в которых он был игроком, могут быть еще не "
+"завершены (= финализированы). Мы хотели бы разрешить валидатору по-прежнему "
+"участвовать в этих играх, не позволяя ему присоединяться к новым играм. Вот "
+"тут-то и вступают в игру бюллетени для голосования. Бюллетени позволяют "
+"валидатору, который больше не связан обязательствами, продолжить игру на "
+"основе консенсуса."
+
+#: ../../theory/naive-blockchain.rst:293
+msgid "Merging of histories"
+msgstr "Слияние историй"
+
+#: ../../theory/naive-blockchain.rst:296
+msgid "Topological sortings of p-past-cone"
+msgstr "Топологические сортировки p-past-конуса"
+
+#: ../../theory/naive-blockchain.rst:298
+msgid "This is a previous example of a blockdag, reduced to **p-dag** only:"
+msgstr "Это предыдущий пример блокдага, уменьшенный только до **p-dag** :"
+
+#: ../../theory/naive-blockchain.rst:304
+msgid ""
+"We define **p-past-cone(b)** as the set of all blocks :math:`x` such that "
+":math:`x \\leqslant b` (in the POSET corresponding to p-dag, :math:`x "
+"\\leqslant y \\iff y \\rightarrow x`)."
+msgstr ""
+"Мы определяем **p-past-cone(b)**  как набор всех блоков :math:`x`  такой, "
+"что :math:`x \\leqslant b` (в наборе POSET, соответствующем p-dag,:math:`x "
+"\\leqslant y \\iff y \\rightarrow x`)."
+
+#: ../../theory/naive-blockchain.rst:306
+msgid ""
+"**Example:** Let’s look at the block :math:`3`. Its p-past-cone is "
+":math:`\\{Genesis, 1, 2, 3\\}`. Let’s look at the block :math:`9`. Its p"
+"-past-cone is :math:`\\{Genesis, 1,2,3,4,5,9\\}`."
+msgstr ""
+"**Пример:** Давайте посмотрим на этот блок :math:`3`. Его p-past-cone -  "
+":math:`\\{Genesis, 1, 2, 3\\}`. Давайте посмотрим на блок :math:`9`. Его p"
+"-past-cone -  :math:`\\{Genesis, 1,2,3,4,5,9\\}`."
+
+#: ../../theory/naive-blockchain.rst:308
+msgid ""
+"Of course, any **p-past-cone(b)** inherits the order from the whole "
+"**p-dag**, so it can be seen as a POSET as well."
+msgstr ""
+"Конечно, любой **p-past-конус(b)** наследует порядок от целого **p-dag**, "
+"поэтому его также можно рассматривать как набор POSET."
+
+#: ../../theory/naive-blockchain.rst:310
+msgid ""
+"For :math:`\\langle A,R\\rangle` any POSET, topological sorting of "
+":math:`\\langle A,R\\rangle` is any linear order :math:`\\langle "
+"A,T\\rangle` such that :math:`identity: \\langle A,R\\rangle \\rightarrow "
+"\\langle A,T\\rangle` is monotonic. In other words, topological sorting is "
+"converting a POSET into a total order in a way that preserves the original "
+"order. For a given POSET, this can usually be done in many ways."
+msgstr ""
+"Для :math:`\\langle A,R\\rangle` любое частично упорядоченное множество, "
+"топологически сортирующее :math:`\\langle A,R\\rangle`  это любой линейный "
+"порядок :math:`\\langle A,T\\rangle` такой, что :math:`identity: \\langle "
+"A,R\\rangle \\rightarrow \\langle A,T\\rangle` является монотонной. Другими "
+"словами, топологическая сортировка конвертирует частично упорядоченное "
+"множество POSET в полностью упорядоченное, путем, который сохраняет "
+"изначальный порядок. Для данного частично упорядоченного множества, это "
+"может быть обычно сделано множеством способов."
+
+#: ../../theory/naive-blockchain.rst:314
+msgid ""
+"\\ **Example:**\\  Let’s take the :math:`p\\_past\\_cone(3)` from our "
+"example. As a POSET it looks like this:"
+msgstr ""
+"\\ **Пример:**\\ Возьмем :math:`p\\_past\\_cone(3)` из нашего примера. В "
+"качестве частично упорядоченного множества оно выглядит так:"
+
+#: ../../theory/naive-blockchain.rst:320
+msgid "It can be topo-sorted in two ways only:"
+msgstr "Оно может быть топологически отсортировано только двумя способами:"
+
+#: ../../theory/naive-blockchain.rst:326
+msgid ""
+"Example: Let’s take the p-past-cone(9) from our example. As a POSET it looks"
+" like this:"
+msgstr ""
+"Пример: возьмем p-past-cone(9) из нашего примера. В качестве частично "
+"упорядоченного множества оно выглядит так:"
+
+#: ../../theory/naive-blockchain.rst:332
+msgid "It can be topo-sorted in many ways. One such topo-sort is shown below:"
+msgstr ""
+"Он может быть отсортирован по топологии многими способами. Одна из таких "
+"топографических сортировок показана ниже:"
+
+#: ../../theory/naive-blockchain.rst:339
+msgid "The context of merging problem"
+msgstr "Контекст проблемы слияния"
+
+#: ../../theory/naive-blockchain.rst:341
+msgid ""
+"Let’s assume that current p-dag as seen by a validator **v** looks like "
+"this:"
+msgstr ""
+"Давайте предположим, что текущий p-dag, как его видит валидатор **v**, "
+"выглядит так:"
+
+#: ../../theory/naive-blockchain.rst:347
+msgid ""
+"To add a new block :math:`x`, validator :math:`V` needs to decide which "
+"blocks to take as parents of :math:`x`. In other words, decide which "
+"variants of a transactions history block :math:`x` will continue. Merging is"
+" all about defining what it means that **x** continues more than one version"
+" of the history:"
+msgstr ""
+"Чтобы добавить новый блок :math:`x`, валидатор :math:`V` должен решить, "
+"какие блоки взять в качестве родителей :math:`x`. Другими словами, решить, "
+"какие варианты транзакций исторический блок :math:`x` продолжит. Слияние "
+"здесь говорит об определении, что значит **x** продолжает более одной версий"
+" истории:"
+
+#: ../../theory/naive-blockchain.rst:353
+msgid ""
+"We have blocks 8, 9 and 10 as current tips of p-dag, so they are candidates "
+"for becoming parents of the new block. But usually, we won’t be able to take"
+" all such tips as parents because the versions of the transactions history "
+"they represent are in conflict."
+msgstr ""
+"У нас есть блоки 8, 9 и 10 в качестве текущих советов p-dag, поэтому они "
+"являются кандидатами на то, чтобы стать родителями нового блока. Но обычно "
+"мы, как родители, не сможем воспользоваться всеми такими советами, потому "
+"что версии истории транзакций, которые они представляют, находятся в "
+"конфликте."
+
+#: ../../theory/naive-blockchain.rst:357
+msgid "Formal definition of merging"
+msgstr "Формальное определение слияния"
+
+#: ../../theory/naive-blockchain.rst:359
+msgid ""
+"We say that a set of blocks :math:`B = \\{b_1, b_2, ..., b_n\\}` is "
+"**mergeable** (= **not in conflict**) when the following holds:"
+msgstr ""
+"Мы говорим, что набор блоков  :math:`B = \\{b_1, b_2, ..., b_n\\}`  является"
+" **объединяемым** (= **не конфликтует**), когда выполняется следующее:"
+
+#: ../../theory/naive-blockchain.rst:361
+msgid ""
+"take the sum :math:`S` of :math:`p\\_past\\_cone(b_i)` for :math:`i=1,..., "
+"n` - this is a sub-POSET of p-dag"
+msgstr ""
+"возьмем сумму  :math:`S` от :math:`p\\_past\\_cone(b_i)` для :math:`i=1,...,"
+" n` - это частично упорядоченное подмножество p-dag"
+
+#: ../../theory/naive-blockchain.rst:363
+msgid "given any topo-sort :math:`T` of :math:`S`"
+msgstr "с любой топологической сортировкой: :math:`T` из :math:`S`"
+
+#: ../../theory/naive-blockchain.rst:365
+msgid "the execution of transactions in :math:`B` along :math:`T` give:"
+msgstr "выполнение транзакций в: :math:`B` с :math:`T` дают:"
+
+#: ../../theory/naive-blockchain.rst:367
+msgid "the same final global state (regardless of the selection of **T)**"
+msgstr ""
+"такое же окончательное глобальное состояние (независимо от выборки **Т)**"
+
+#: ../../theory/naive-blockchain.rst:369
+msgid ""
+"the same subset of transactions that failed (regardless of the selection of "
+"**T**)"
+msgstr ""
+"то же подмножество транзакций, которое дало ошибку (независимо от выборки "
+"**Т)**"
+
+#: ../../theory/naive-blockchain.rst:372
+msgid "Operation of a validator"
+msgstr "Работа валидатора"
+
+#: ../../theory/naive-blockchain.rst:374
+msgid ""
+"The spec is written from the perspective of a validator. We say it as "
+"**local validator** in order to reference the validator which is running the"
+" algorithm. Let **vid** be the id of the local validator."
+msgstr ""
+"Эта спецификация написана с точки зрения валидатора. Мы говорим о нем как о "
+"**локальном валидаторе** для того, чтобы обратиться к валидатору, который "
+"запускает алгоритм. Пусть **vid** будет идентификатором локального "
+"валидатора."
+
+#: ../../theory/naive-blockchain.rst:377
+msgid "Validators P2P protocol - messages"
+msgstr "Протокол P2P валидатора - сообщения"
+
+#: ../../theory/naive-blockchain.rst:379
+msgid "Validators exchange messages which can be of 2 types:"
+msgstr "Валидаторы обмениваются сообщениями, которые могут быть 2-х типов:"
+
+#: ../../theory/naive-blockchain.rst:381
+msgid "**blocks**"
+msgstr "**блоки**"
+
+#: ../../theory/naive-blockchain.rst:382
+msgid "**ballots**"
+msgstr "**бюллетени**"
+
+#: ../../theory/naive-blockchain.rst:384
+msgid "A **block** contains the following data:"
+msgstr "**Блок** содержит следующие данные:"
+
+#: ../../theory/naive-blockchain.rst:386 ../../theory/naive-blockchain.rst:399
+msgid "**block id**"
+msgstr "**id блока**"
+
+#: ../../theory/naive-blockchain.rst:387
+msgid "**creator id** (= id of validator that created this block)"
+msgstr "**id создателя** (= id валидатора, создавшего этот блок)"
+
+#: ../../theory/naive-blockchain.rst:388
+msgid "**main parent** (id of another block)"
+msgstr "**главный родитель**  (id другого блока)"
+
+#: ../../theory/naive-blockchain.rst:389
+msgid "**secondary parents** (collection of block ids, may be empty)"
+msgstr "**второстепенные родители** (коллекция id блоков, могут быть пустыми)"
+
+#: ../../theory/naive-blockchain.rst:390
+msgid ""
+"**justifications** (collection of message ids that the creator confirms as "
+"seen at the moment of creation of this block; excluding main parent and "
+"secondary parents; may be empty)"
+msgstr ""
+"**обоснования** (коллекция id сообщений, которые создатель подтверждает, как"
+" он видит на момент создания этого блока; исключая главного родителя и "
+"второстепенных родителей; могут быть пустыми)"
+
+#: ../../theory/naive-blockchain.rst:391
+msgid "**transactions list** (nonempty)"
+msgstr "**список транзакций** (не пустой)"
+
+#: ../../theory/naive-blockchain.rst:392
+msgid ""
+"**pre-state-hash** - hash of global state that represents state after "
+"executing all parents of this block"
+msgstr ""
+"**хеш предсостояния** - хеш глобального состояния, который представляет "
+"состояние после исполнения всех родительских блоков этого блока"
+
+#: ../../theory/naive-blockchain.rst:393
+msgid ""
+"**post-state hash** - hash of global state achieved after executing "
+"transactions in this block (and all previous blocks, as implied by p-dag)"
+msgstr ""
+"**хеш пост-состояния** - хеш глобального состояния, достигнутый после "
+"исполнения транзакций в этом блоке (и всех предыдущих блоках, как "
+"подразумевается в p-dag)"
+
+#: ../../theory/naive-blockchain.rst:395
+msgid ""
+"For a block :math:`b` we define the collection "
+":math:`b.all\\_justifications` as main parent + secondary parents + "
+"justifications. This collection is always non-empty because **main parent** "
+"is a mandatory field."
+msgstr ""
+"Для блока :math:`b` мы определяем коллекцию обоснований "
+":math:`b.all\\_justifications` как главного родителя + второстепенных "
+"родителей + обоснования. Эта коллекция всегда не пустая, потому что "
+"**главный родитель** - обязательное поле."
+
+#: ../../theory/naive-blockchain.rst:397
+msgid "A **ballot** contains the following data:"
+msgstr "**Бюллетень** содержит следующую информацию:"
+
+#: ../../theory/naive-blockchain.rst:400
+msgid "**creator id** (= id of validator that created this ballot)"
+msgstr "**id создателя** (= id валидатора, создавшего этот бюллетень)"
+
+#: ../../theory/naive-blockchain.rst:401
+msgid "**target block** (id of a block)"
+msgstr "**целевой блок** (id блока)"
+
+#: ../../theory/naive-blockchain.rst:402
+msgid ""
+"**justifications** (collection of message ids that the creator confirms as "
+"seen at the moment of creation of this ballot, excluding the target block; "
+"may be empty)"
+msgstr ""
+"**обоснования** (коллекция id сообщений, которые создатель подтверждает, как"
+" он видит на момент создания этого бюллетеня; исключая целевой блок; могут "
+"быть пустыми)"
+
+#: ../../theory/naive-blockchain.rst:404
+msgid ""
+"For a ballot **b** we define the collection :math:`b.all\\_justifications` "
+"as target block + additional justifications. This collection is always non-"
+"empty because target block is a mandatory field."
+msgstr ""
+"Для бюллетеня **b** мы определяем коллекцию обоснований "
+":math:`b.all\\_justifications` как целевой блок + дополнительные "
+"обоснования. Эта коллекция всегда не пустая, так как целевой блок - "
+"обязательное поле. "
+
+#: ../../theory/naive-blockchain.rst:406
+msgid ""
+"From the definitions above it follows that for every message :math:`m` there"
+" is a **j-dag** path from :math:`m` to :math:`Genesis`."
+msgstr ""
+"Из определений данных выше следует, что для каждого сообщения :math:`m` есть"
+" **j-dag** путь из :math:`m` в :math:`Genesis`."
+
+#: ../../theory/naive-blockchain.rst:409
+msgid "Validators P2P protocol - behavior"
+msgstr "P2P протокол валидаторов - поведение"
+
+#: ../../theory/naive-blockchain.rst:411
+msgid ""
+"We use the same assumptions on a message-passing network as were stated in "
+"the Abstract Casper Consensus model. So, validators only exchange "
+"information by broadcasting messages where the broadcasting implementation "
+"provides an exactly-once delivery guarantee, but the delays and shuffling of"
+" messages are arbitrary."
+msgstr ""
+"Мы используем те же предположения в сети передачи сообщений, что и в "
+"Абстрактной модели консенсуса Casper. Таким образом, валидаторы обмениваются"
+" информацией только посредством широковещательных сообщений, когда "
+"реализация широковещания обеспечивает гарантию доставки точно один раз, но "
+"задержки и перетасовка сообщений являются произвольными."
+
+#: ../../theory/naive-blockchain.rst:413
+msgid ""
+"During its lifetime, a validator maintains the following data structures:"
+msgstr ""
+"В течение всего срока работы валидатор поддерживает следующие структуры "
+"данных:"
+
+#: ../../theory/naive-blockchain.rst:415
+msgid ""
+"**deploys-buffer** - a buffer of transactions sent by clients, to be "
+"executed on the blockchain computer"
+msgstr ""
+"**буфер развертываний** - буфер транзакций, отправленных клиентами на "
+"развертывание в блокчейн-компьютер"
+
+#: ../../theory/naive-blockchain.rst:416
+msgid ""
+"**blockdag** - keeping all blocks and ballots either produced by or received"
+" from other validators"
+msgstr ""
+"**блокдаг** - удерживает все блоки и бюллетени произведенные или полученные "
+"валидаторами"
+
+#: ../../theory/naive-blockchain.rst:417
+msgid ""
+"**messages-buffer** - a buffer of messages received, but not yet "
+"incorporated into the **blockdag**"
+msgstr ""
+"**буфер сообщений** - буфе сообщений, полученных, но еще не включенных в "
+"**блокдаг**"
+
+#: ../../theory/naive-blockchain.rst:418
+msgid ""
+"**latest-honest-messages** - a mapping from validator id to message id, "
+"pointing every validator known in the **blockdag**, excluding "
+"**equivocators**, to the corresponding swimlane tip"
+msgstr ""
+"**последние честные сообщения** - картировка из id валидатора до id "
+"сообщений, указывающая всех известных в **блокдаг** валидаторов, исключая "
+"**двусмысленных**, с соответствующей заметкой плавательной дорожки"
+
+#: ../../theory/naive-blockchain.rst:419
+msgid ""
+"**equivocators** - a collection of validators for which current blockdag "
+"contains an equivocation"
+msgstr ""
+"**двусмысленные** - коллекция валидаторов, для которых текущий блокдаг "
+"содержит двусмысленности"
+
+#: ../../theory/naive-blockchain.rst:420
+msgid ""
+"**reference-finalizer** - an instance of finalizer used internally (*see* "
+"**Operation of a finalizer** later in this spec for more information about "
+"what finalizers are)"
+msgstr ""
+"**финализатор ссылок** - экземпляр финализатора, используемый внутренне "
+"(*см. **Работа финализатора** далее в этой спецификации, где более детально "
+"рассказано, что это такое)"
+
+#: ../../theory/naive-blockchain.rst:421
+msgid "**global-states-db** - mapping of global state hash to global state"
+msgstr ""
+"**db глобальных состояний**  картировка хеша глобального состояния к "
+"глобальному состоянию"
+
+#: ../../theory/naive-blockchain.rst:423
+msgid ""
+"A message :math:`m` can be added to the :math:`blockdag` only if all "
+"justifications of :math:`m` are already present in the blockdag. So if a "
+"validator receives a message before receiving some of its justifications, "
+"the received message must wait in the :math:`messages\\_buffer`."
+msgstr ""
+"Сообщение :math:`m`  может быть добавлено в  :math:`blockdag` только если "
+"все обоснования  :math:`m`  уже присутствуют в блокдаг. Так что если "
+"валидатор получает сообщение до получения некоторых его обоснований, "
+"полученное сообщение должно ожидать в буфере  :math:`messages\\_buffer`."
+
+#: ../../theory/naive-blockchain.rst:425
+msgid ""
+"A validator is concurrently executing two infinite loops of processing:"
+msgstr "Валидатор параллельно выполняет два бесконечных процесса по кругу:"
+
+#: ../../theory/naive-blockchain.rst:427
+msgid "**Listening loop:**"
+msgstr "**Прослушивание по кругу:**"
+
+#: ../../theory/naive-blockchain.rst:429
+msgid ""
+"Listen to messages incoming from other validators. Whenever a message "
+":math:`m` (block or ballot) arrives, follow this handling scenario:"
+msgstr ""
+"Прослушивайте сообщения, поступающие от других валидаторов. Всякий раз, "
+"когда приходит сообщение  :math:`m`  (блок или бюллетень), следуйте этому "
+"сценарию обработки:"
+
+#: ../../theory/naive-blockchain.rst:431
+msgid ""
+"Validate the formal structure of :math:`m`. In case of any error - drop "
+":math:`m` (invalid message) and exit."
+msgstr ""
+"Проверьте формальную структуру  :math:`m`. В случае какой-либо ошибки-"
+"отбросьте :math:`m` (неверное сообщение) и выйдите."
+
+#: ../../theory/naive-blockchain.rst:433
+msgid ""
+"Check if all justifications of :math:`m` are already included in "
+":math:`blockdag`."
+msgstr ""
+"Проверьте, что все обоснования :math:`m` уже включены в :math:`blockdag`."
+
+#: ../../theory/naive-blockchain.rst:435
+msgid "if yes: continue"
+msgstr "Если да: продолжаем"
+
+#: ../../theory/naive-blockchain.rst:437
+msgid "otherwise: append :math:`m` to the :math:`messages\\_buffer`, then exit"
+msgstr ""
+"В ином случае: присоедините :math:`m` к буферу :math:`messages\\_buffer`, "
+"затем выйдите"
+
+#: ../../theory/naive-blockchain.rst:439
+msgid ""
+"Perform processing specific to type of :math:`m` (block or ballot) - see "
+"below."
+msgstr ""
+"Осуществите процесс специфичный для типа :math:`m`  (блок или бюллетень) - "
+"см. ниже"
+
+#: ../../theory/naive-blockchain.rst:441
+msgid "If :math:`equivocators` does not contain :math:`m.creator`:"
+msgstr "Если :math:`equivocators`  не содержит :math:`m.creator`:"
+
+#: ../../theory/naive-blockchain.rst:443
+msgid ""
+"Check if :math:`m` introduces new equivocation - this is the case when "
+":math:`latest\\_honest\\_messages(m.creator)` is not member of "
+":math:`j\\_past\\_cone(m)`"
+msgstr ""
+"Проверьте, если :math:`m` представляет новую двусмысленность - это случай, "
+"когда создатель  :math:`latest\\_honest\\_messages(m.creator)` не является "
+"членом  :math:`j\\_past\\_cone(m)`"
+
+#: ../../theory/naive-blockchain.rst:445
+msgid "If yes then add :math:`m.creator` to :math:`equivocators`"
+msgstr ""
+"Если да, то добавьте создателя :math:`m.creator` к двусмысленностям "
+":math:`equivocators`"
+
+#: ../../theory/naive-blockchain.rst:447
+msgid ""
+"If :math:`equivocators` does not contain :math:`m.creator`, update "
+":math:`latest\\_honest\\_messages` map by setting "
+":math:`latest\\_honest\\_messages(m.creator) = m`"
+msgstr ""
+"Если двусмысленности :math:`equivocators` не содержат создателя "
+":math:`m.creator`, обновите карту последних честных сообщений "
+":math:`latest\\_honest\\_messages`  с настройкой "
+":math:`latest\\_honest\\_messages(m.creator) = m`"
+
+#: ../../theory/naive-blockchain.rst:449
+msgid ""
+"Check if there is any message :math:`x` in :math:`messages\\_buffer` that "
+"can now leave the buffer and be included in the :math:`blockdag` because of "
+":math:`x.all\\_justifications` are now present in the :math:`blockdag`. For "
+"first such :math:`x` found, apply steps (3) - (4) - (5) ."
+msgstr ""
+"Проверьте, если любое сообщение  :math:`x` в буфере "
+":math:`messages\\_buffer`, которое может теперь покинуть буфер и быть "
+"включенным в :math:`blockdag` , поскольку обоснования "
+":math:`x.all\\_justifications` теперь присутствуют в блокдаг "
+":math:`blockdag`. Для первого такого найденного :math:`x` примените шаги (3)"
+" - (4) - (5) ."
+
+#: ../../theory/naive-blockchain.rst:451
+msgid ""
+"(“Buffer pruning cascade”) Repeat step (6) as many times as there are blocks"
+" that can be released from the buffer."
+msgstr ""
+"(“Каскад обрезки буфера”) Повторите шаг (6) столько раз, сколько есть "
+"блоков, которые могут быть освобождены из буфера."
+
+#: ../../theory/naive-blockchain.rst:453
+msgid "Processing specific to type of :math:`m` goes as follows:"
+msgstr "Осуществите процесс специфичный для типа :math:`m` :"
+
+#: ../../theory/naive-blockchain.rst:455
+msgid "If :math:`m` is a block:"
+msgstr "Если :math:`m` - это блок:"
+
+#: ../../theory/naive-blockchain.rst:457
+msgid ""
+"Validate whether :math:`m` parents (main parent and secondary parents) were "
+"selected correctly:"
+msgstr ""
+"Подтвердите, что родители  :math:`m` (главный и второстепенные) были избраны"
+" правильно:"
+
+#: ../../theory/naive-blockchain.rst:459 ../../theory/naive-blockchain.rst:478
+msgid ""
+"run the fork-choice for the protocol state derived from justifications of "
+":math:`m`"
+msgstr ""
+"запустите выбор вилки для состояния протокола, полученного из обоснований "
+":math:`m`"
+
+#: ../../theory/naive-blockchain.rst:461
+msgid "compare calculated parents with actual parent of :math:`m`:"
+msgstr "сравните вычисленных родителей с актуальным родителем :math:`m`:"
+
+#: ../../theory/naive-blockchain.rst:463 ../../theory/naive-blockchain.rst:481
+msgid "if they are the same: append :math:`m` to :math:`blockdag`."
+msgstr "Если они совпадают: примените :math:`m` к :math:`blockdag`."
+
+#: ../../theory/naive-blockchain.rst:464 ../../theory/naive-blockchain.rst:482
+msgid "otherwise - drop the block (invalid block) and exit"
+msgstr "в ином случае: отбросьте блок (неверный блок) и выйдите"
+
+#: ../../theory/naive-blockchain.rst:466
+msgid ""
+"Check if parents of :math:`m` are not conflicting. If they are conflicting, "
+"then drop the block (invalid block) and exit."
+msgstr ""
+"Проверьте, что родители :math:`m` не конфликтуют. Если они конфликтуют, "
+"тогда отбросьте блок (неверный блок) и выйдите."
+
+#: ../../theory/naive-blockchain.rst:468
+msgid ""
+"Calculate pre-state for :math:`m` by executing the transactions in the "
+"merged history that is determined by all parents of :math:`m`. Check if "
+"calculated hash of pre-state is equal to pre-state-hash stored in :math:`m`."
+" If not, then drop :math:`m` (invalid block) and exit."
+msgstr ""
+"Вычислите предсостояние для :math:`m` , выполняя транзакции в истории "
+"слияний, которая определяется всеми родителями :math:`m`. Проверьте, что "
+"вычисленный хеш предсостояний тождественен хешу предсостояния, сохраненному "
+"в :math:`m`. Если нет, отбросьте блок (неверный блок) и выйдите."
+
+#: ../../theory/naive-blockchain.rst:470
+msgid ""
+"Calculate post-state for :math:`m` by sequentially applying all transactions"
+" in :math:`m` on top of global state calculated in step (3). Check if "
+"calculated hash of post-state is equal to post-state-hash stored in "
+":math:`m`. If not, then drop :math:`m` (invalid block) and exit."
+msgstr ""
+"Вычислите постсостояние для :math:`m`, последовательно применяя все "
+"транзакции в :math:`m`  сверху глобального состояний, вычисленного в шаге "
+"(3). Проверьте, что вычисленный хеш постсостояния тождественен хешу "
+"постсостояния, сохраненному в :math:`m`. Если нет, отбросьте :math:`m` "
+"(неверный блок) и выйдите."
+
+#: ../../theory/naive-blockchain.rst:472
+msgid "Store post-state calculated in step (4) in :math:`global\\_states\\_db`."
+msgstr ""
+"Сохраните постсостояние, вычисленное в шаге (4) в "
+":math:`global\\_states\\_db`."
+
+#: ../../theory/naive-blockchain.rst:474
+msgid "If :math:`m` is a ballot:"
+msgstr "Если :math:`m` - это бюллетень:"
+
+#: ../../theory/naive-blockchain.rst:476
+msgid "Validate whether :math:`m.target\\_block` was selected correctly:"
+msgstr ""
+"Подтвердите, что целевой блок :math:`m.target\\_block` был избран правильно:"
+
+#: ../../theory/naive-blockchain.rst:479
+msgid ""
+"compare calculated main parent candidate with actual "
+":math:`m.target\\_block`:"
+msgstr ""
+"сравните вычисленного кандидата на главного родителя с актуальным "
+":math:`m.target\\_block`:"
+
+#: ../../theory/naive-blockchain.rst:484
+msgid "**Publishing loop:**"
+msgstr "**Публикация по кругу:**"
+
+#: ../../theory/naive-blockchain.rst:486
+msgid ""
+"Sleep unless the next time for proposing a block arrives (typically this may"
+" be a periodic activity based on wall clock)."
+msgstr ""
+"Спите, пока не наступит следующий момент для предложения блока (обычно это "
+"может быть периодическое действие, основанное на настенных часах)."
+
+#: ../../theory/naive-blockchain.rst:488
+msgid ""
+"Run fork-choice against the current blockdag (see next section). The result "
+"is:"
+msgstr ""
+"Запустите выбор вилки для текущего блокдага (см. Следующий раздел). В "
+"результате получается:"
+
+#: ../../theory/naive-blockchain.rst:490
+msgid "Main parent - :math:`mp`."
+msgstr "Главный родитель - :math:`mp`."
+
+#: ../../theory/naive-blockchain.rst:491
+msgid "Collection of secondary parents - :math:`sp` - sorted by preference."
+msgstr ""
+"Коллекция второстепенных родителей - :math:`sp` - отобранная по "
+"предпочтению."
+
+#: ../../theory/naive-blockchain.rst:493
+msgid ""
+"Pick the maximal non-conflicting subset :math:`mncsp \\subset sp`, "
+"respecting the selection of :math:`mp` and the ordering of :math:`sp`."
+msgstr ""
+"Выберите максимальное неконфликтующее подмножество :math:`mncsp \\subset "
+"sp`, учитывая выборку :math:`mp` и порядок :math:`sp`."
+
+#: ../../theory/naive-blockchain.rst:495
+msgid ""
+"Calculate merged global state :math:`merged\\_gs` derived from "
+":math:`\\{mp\\} \\cup mncsp`."
+msgstr ""
+"Вычислите глобальное состояние слияний :math:`merged\\_gs` полученное из "
+":math:`\\{mp\\} \\cup mncsp`."
+
+#: ../../theory/naive-blockchain.rst:497
+msgid ""
+"Check the weight of local validator in merged global state: "
+":math:`weights\\_map(merged\\_gs)(vid)`"
+msgstr ""
+"Проверьте вес локального валидатора в глобальном состоянии слияний: "
+":math:`weights\\_map(merged\\_gs)(vid)`"
+
+#: ../../theory/naive-blockchain.rst:499
+msgid ""
+"If weight is non-zero and :math:`deploys-buffer` is nonempty, we will be "
+"creating and publishing a new block."
+msgstr ""
+"Если вес ненулевой и буфер развертываний :math:`deploys-buffer` не пустой, "
+"мы будем создавать и публиковать новый блок."
+
+#: ../../theory/naive-blockchain.rst:501
+msgid "otherwise - check the status of local validator:"
+msgstr "в ином случае - проверьте статус локального валидатора:"
+
+#: ../../theory/naive-blockchain.rst:503
+msgid "VOTING_ONLY => create and publish a new ballot"
+msgstr "VOTING_ONLY =>  создать и опубликовать новый бюллетень"
+
+#: ../../theory/naive-blockchain.rst:504
+msgid "otherwise => exit"
+msgstr "в ином случае => выйти"
+
+#: ../../theory/naive-blockchain.rst:506
+msgid "Case 1: new block"
+msgstr "Случай 1: новый блок"
+
+#: ../../theory/naive-blockchain.rst:508
+msgid ""
+"Take desired subset of transactions :math:`trans` from :math:`deploys-"
+"buffer` (this part of behavior is subject to a separate spec; on this level "
+"of abstraction we accept any strategy of picking transactions from the "
+"buffer)."
+msgstr ""
+"Возьмите желаемое подмножество транзакций :math:`trans`  из буфера "
+"развертываний :math:`deploys-buffer` (эта часть поведения является предметом"
+" отдельной спецификации; на этом уровне абстракции мы принимаем любую "
+"стратегию выбора транзакций из буфера)."
+
+#: ../../theory/naive-blockchain.rst:509
+msgid ""
+"Apply :math:`trans` sequentially on top of :math:`merged\\_gs`. Let "
+":math:`post\\_gs` be the resulting global state."
+msgstr ""
+"Примените  :math:`trans` последовательно сверху :math:`merged\\_gs`. Пусть "
+":math:`post\\_gs` будет результирующим глобальным состоянием. "
+
+#: ../../theory/naive-blockchain.rst:510
+msgid "Create new block:"
+msgstr "Создать новый блок:"
+
+#: ../../theory/naive-blockchain.rst:512 ../../theory/naive-blockchain.rst:528
+msgid "block id = hash of the binary representation of this block"
+msgstr "id блока = хеш двоичного представления этого блока"
+
+#: ../../theory/naive-blockchain.rst:513 ../../theory/naive-blockchain.rst:529
+msgid "creator id = :math:`vid`"
+msgstr "id создателя = :math:`vid`"
+
+#: ../../theory/naive-blockchain.rst:514
+msgid "main parent = :math:`mp`"
+msgstr "главный родитель = :math:`mp`"
+
+#: ../../theory/naive-blockchain.rst:515
+msgid "secondary parents = :math:`mncsp`"
+msgstr "второстепенные родители = :math:`mncsp`"
+
+#: ../../theory/naive-blockchain.rst:516
+msgid ""
+"justifications = :math:`latest\\_honest\\_messages` after removing main "
+"parent, secondary parents, and redundant messages (see explanation below)"
+msgstr ""
+"обоснования = :math:`latest\\_honest\\_messages` после удаления главного "
+"родителя, второстепенных родителей и избыточных сообщений (см. объяснение "
+"ниже)"
+
+#: ../../theory/naive-blockchain.rst:517
+msgid "transactions list = :math:`trans`"
+msgstr "список транзакций = :math:`trans`"
+
+#: ../../theory/naive-blockchain.rst:518
+msgid "pre-state-hash = :math:`hash(merged\\_gs)`"
+msgstr "хеш предсостояния = :math:`hash(merged\\_gs)`"
+
+#: ../../theory/naive-blockchain.rst:519
+msgid "post-state hash = :math:`hash(post\\_gs)`"
+msgstr "хеш постсостояния = :math:`hash(post\\_gs)`"
+
+#: ../../theory/naive-blockchain.rst:521
+msgid "Store :math:`post\\_gs` in :math:`global\\_states\\_db`"
+msgstr "Сохраните  :math:`post\\_gs` в :math:`global\\_states\\_db`"
+
+#: ../../theory/naive-blockchain.rst:522
+msgid "Broadcast new block across validators P2P network."
+msgstr "Транслируйте новый блок валидаторам в P2P сети."
+
+#: ../../theory/naive-blockchain.rst:524
+msgid "Case 2: new ballot"
+msgstr "Случай 2: новый бюллетень"
+
+#: ../../theory/naive-blockchain.rst:526
+msgid "Create new ballot:"
+msgstr "Создайте новый бюллетень:"
+
+#: ../../theory/naive-blockchain.rst:530
+msgid "target block = :math:`mp`"
+msgstr "целевой блок = :math:`mp`"
+
+#: ../../theory/naive-blockchain.rst:531
+msgid ""
+"justifications = :math:`latest\\_honest\\_messages` after removing: target "
+"block and redundant messages (see explanation below)"
+msgstr ""
+"обоснования = :math:`latest\\_honest\\_messages` после удаления целевого "
+"блока и избыточных сообщений (см. объяснение ниже)"
+
+#: ../../theory/naive-blockchain.rst:533
+msgid "Broadcast new ballot across validators P2P network."
+msgstr "Транслируйте новый бюллетень валидаторам P2P сети."
+
+#: ../../theory/naive-blockchain.rst:535
+msgid ""
+"Note: we generally want to keep the collection :math:`m.justifications` as "
+"short as possible. For this, we never include there main parent, secondary "
+"parents, and target block. Also, we want the collection of justifications "
+"included in the message to be transitively reduced (= included "
+"justifications form an antichain)."
+msgstr ""
+"Примечание: как правило, мы хотим, чтобы коллекция обоснований "
+":math:`m.justifications` была как можно короче. Для этого мы никогда не "
+"включаем туда основного родителя, вторичных родителей и целевой блок. Кроме "
+"того, мы хотим, чтобы коллекция обоснований, включенных в сообщение, была "
+"транзитивно сокращена (= включенные обоснования образуют антицепь)."
+
+#: ../../theory/naive-blockchain.rst:539
+msgid "Relative votes"
+msgstr "Родственные голоса"
+
+#: ../../theory/naive-blockchain.rst:541
+msgid ""
+"We will need the concept of “last message created by validator **v** that "
+"was a non-empty vote in **b-game**”. Given any block :math:`b` and any "
+"validator :math:`V` let us take look at the swimlane of :math:`V`. If "
+":math:`v` is honest, then this swimlane is a chain. Any message :math:`m` "
+"counts as a non-empty vote in **b-game** only if:"
+msgstr ""
+"Нам понадобится концепция “последнее сообщение, созданное валидатором **v**,"
+" которое было непустым голосованием в **b-игре**”. Учитывая любой блок "
+":math:`b` и любого валидатора :math:`V` , давайте взглянем на плавательную "
+"дорожку :math:`V`. Если :math:`v` честна, то эта плавательная дорожка "
+"представляет собой цепочку. Любое сообщение :math:`m` считается непустым "
+"голосованием в **b-игре** только в том случае, если:"
+
+#: ../../theory/naive-blockchain.rst:543
+msgid ""
+":math:`m` is a block and the ancestor of :math:`m` (in main-tree) is "
+":math:`b`"
+msgstr ""
+":math:`m` это блок и его предок :math:`m` (в главном дереве) :math:`b`"
+
+#: ../../theory/naive-blockchain.rst:544
+msgid ""
+":math:`m` is a ballot and the ancestor of :math:`m.target\\_block` (in main-"
+"tree) is :math:`b`"
+msgstr ""
+":math:`m` это бюллетень и предок :math:`m.target\\_block` (в главном дереве)"
+" - :math:`b`"
+
+#: ../../theory/naive-blockchain.rst:546
+msgid ""
+"We start from the latest (= top-most on the diagram) message in the "
+":math:`swimlane(v)` and we traverse the swimlane down, stopping as soon as "
+"we find a message that counts as a non-empty vote in **b-game**."
+msgstr ""
+"Мы начинаем с последнего (= самого верхнего на диаграмме) сообщения в  "
+":math:`swimlane(v)` и проходим по плавательной дорожке вниз, останавливаясь,"
+" как только находим сообщение, которое считается непустым голосованием в "
+"**b-игре**."
+
+#: ../../theory/naive-blockchain.rst:548
+msgid "\\ **Example:**\\"
+msgstr "\\ **Пример:**\\"
+
+#: ../../theory/naive-blockchain.rst:550
+msgid ""
+"Below is the original example of the blockdag, but with all messages that "
+"are non-empty votes in 3-game highlighted with green:"
+msgstr ""
+"Ниже приведен оригинальный пример блокдага, но со всеми сообщениями, которые"
+" не являются пустыми голосами в 3-игре, выделенными зеленым цветом:"
+
+#: ../../theory/naive-blockchain.rst:556 ../../theory/naive-blockchain.rst:763
+msgid "**Example:**"
+msgstr "**Пример:**"
+
+#: ../../theory/naive-blockchain.rst:558
+msgid "Let us again look at the example of a blockdag:"
+msgstr "Давайте снова посмотрим на пример блокдага:"
+
+#: ../../theory/naive-blockchain.rst:564
+msgid ""
+"Let’s apply this definition using validator 3 as the example and find the "
+"last votes of validator 3 in various games."
+msgstr ""
+"Давайте применим это определение, используя валидатора 3 в качестве примера,"
+" и найдем последние голоса валидатора 3 в различных играх."
+
+#: ../../theory/naive-blockchain.rst:567
+msgid "Block b"
+msgstr "Блок b"
+
+#: ../../theory/naive-blockchain.rst:567
+msgid "Last non-empty vote of validator 3 in b-game"
+msgstr "Последний непустой голос валидатора 3 в игре b"
+
+#: ../../theory/naive-blockchain.rst:569
+msgid "Genesis"
+msgstr "Генезис"
+
+#: ../../theory/naive-blockchain.rst:569 ../../theory/naive-blockchain.rst:571
+#: ../../theory/naive-blockchain.rst:574
+msgid "14"
+msgstr "14"
+
+#: ../../theory/naive-blockchain.rst:570
+msgid "1"
+msgstr "1"
+
+#: ../../theory/naive-blockchain.rst:570 ../../theory/naive-blockchain.rst:572
+msgid "9"
+msgstr "9"
+
+#: ../../theory/naive-blockchain.rst:571
+msgid "2"
+msgstr "2"
+
+#: ../../theory/naive-blockchain.rst:572
+msgid "3"
+msgstr "3"
+
+#: ../../theory/naive-blockchain.rst:573
+msgid "4"
+msgstr "4"
+
+#: ../../theory/naive-blockchain.rst:573 ../../theory/naive-blockchain.rst:575
+msgid "(none)"
+msgstr "(пусто)"
+
+#: ../../theory/naive-blockchain.rst:574
+msgid "5"
+msgstr "5"
+
+#: ../../theory/naive-blockchain.rst:575
+msgid "6"
+msgstr "6"
+
+#: ../../theory/naive-blockchain.rst:579
+msgid "Fork choice"
+msgstr "Выбор вилки "
+
+#: ../../theory/naive-blockchain.rst:581
+msgid ""
+"The goal of fork-choice is to take the decision on top of the version of the"
+" shared database history we want to build in the next step. This decision "
+"can be seen as an iterative application of the reference estimator from the "
+"“Abstract Casper Consensus”. As a result we want to get a list of blocks "
+"(ordered by preference) which will serve as parent candidates for the new "
+"block."
+msgstr ""
+"Цель выбора вилки-принять решение поверх версии истории общей базы данных, "
+"которую мы хотим создать на следующем шаге. Это решение можно рассматривать "
+"как итеративное применение эталонной оценки из “Абстрактного консенсуса "
+"Casper”. В результате мы хотим получить список блоков (упорядоченных по "
+"предпочтениям), которые будут служить родительскими кандидатами для нового "
+"блока."
+
+#: ../../theory/naive-blockchain.rst:583
+msgid "The algorithm goes as follows:"
+msgstr "Алгоритм выглядит следующим образом:"
+
+#: ../../theory/naive-blockchain.rst:585
+msgid ""
+"Decide which protocol state :math:`ps` to use: 1. When using fork choice for"
+" creation of new block this is the point where the validator can decide on "
+"the subset of his local knowledge to reveal to outside world. Ideally, the "
+"validator reveals all local knowledge, so it takes as protocol state the "
+"whole local blockdag."
+msgstr ""
+"Решите, какое состояние протокола :math:`ps` использовать: 1. При "
+"использовании выбора вилки для создания нового блока это точка, в которой "
+"валидатор может выбрать подмножество своих локальных знаний для раскрытия "
+"внешнему миру. В идеале, валидатор раскрывает все локальные знания, поэтому "
+"он принимает в качестве состояния протокола весь локальный блокдаг."
+
+#: ../../theory/naive-blockchain.rst:588
+msgid ""
+"When using fork choice for validation of received message :math:`m`, the "
+"protocol state to take is :math:`j\\_past\\_cone(m)`."
+msgstr ""
+"При использовании выбора вилки для проверки полученного сообщения :math:`m`,"
+" мы берем состояние протокола  :math:`j\\_past\\_cone(m)`."
+
+#: ../../theory/naive-blockchain.rst:590
+msgid ""
+"Take :math:`HV` - all honest validators (all creators of messages in "
+":math:`ps` minus those seen equivocating with messages in :math:`ps`)."
+msgstr ""
+"Берем :math:`HV` - всех честных валидаторов (всех создателей сообщений в "
+":math:`ps` с вычетом тех, кто создавал двусмысленности с сообщениями в "
+":math:`ps`)."
+
+#: ../../theory/naive-blockchain.rst:591
+msgid ""
+"Find latest message :math:`lm(v)` created by each validator :math:`v \\in "
+"HV`, ignoring validators that produced no message."
+msgstr ""
+"Найдите последнее сообщение :math:`lm(v)` , созданное каждым валидатором "
+":math:`v \\in HV`, игнорируя валидаторов, которые не производили сообщений."
+
+#: ../../theory/naive-blockchain.rst:592
+msgid "For all validators that have :math:`lm(v)` defined take:"
+msgstr ""
+"Для всех валидаторов, которые имеют определенный :math:`lm(v)`  берем:"
+
+#: ../../theory/naive-blockchain.rst:594
+msgid ""
+"tipBlock(v)=\\begin{cases} lm(v), & lm(v) \\space is \\space a \\space block"
+" \\\\lm(v).target\\_block, & otherwise \\end{cases}"
+msgstr ""
+"tipBlock(v)=\\begin{cases} lm(v), & lm(v) \\space is \\space a \\space block"
+" \\\\lm(v).target\\_block, & otherwise \\end{cases}"
+
+#: ../../theory/naive-blockchain.rst:599
+msgid ""
+"Take :math:`lca\\_block` = latest common ancestor along main-tree of all "
+":math:`tipBlock(v)`"
+msgstr ""
+"Берем :math:`lca\\_block` = последний общий предок по длине главного дерева "
+"из всех :math:`tipBlock(v)`"
+
+#: ../../theory/naive-blockchain.rst:601
+msgid ""
+"Initialize resulting collection of blocks as one-element list :math:`Result "
+"= [lca\\_block]`"
+msgstr ""
+"Инициализируйте итоговую коллекцию блоков как однокомпонентный список "
+":math:`Result = [lca\\_block]`"
+
+#: ../../theory/naive-blockchain.rst:603
+msgid ""
+"For each block :math:`b` in :math:`Result` replace :math:`b` with its direct"
+" children in main-tree: :math:`c_1, c_2, ..., c_n`, where the list of "
+"children is ordered following this recipe:"
+msgstr ""
+"Для каждого блока :math:`b` в:math:`Result` замените  :math:`b`  его прямым "
+"потомком в главном дереве: :math:`c_1, c_2, ..., c_n`, где список детей "
+"расположен в порядке согласно этому рецепту:"
+
+#: ../../theory/naive-blockchain.rst:605
+msgid ""
+"For each honest validator :math:`v` find :math:`lmb(v)` - the last message "
+"by :math:`v` voting in **b-game.**"
+msgstr ""
+"Для каждого честного валидатора  :math:`v` найдите :math:`lmb(v)` - "
+"последнее сообщение от :math:`v` , голосовавшее в b-игре"
+
+#: ../../theory/naive-blockchain.rst:607
+msgid ""
+"Find a child :math:`c_i` that :math:`lmb(v)` is voting for - by traversing "
+"down the main-tree."
+msgstr ""
+"Найдите потомка :math:`c_i` за которого :math:`lmb(v)` голосовал - пройдя "
+"вниз по главному дереву."
+
+#: ../../theory/naive-blockchain.rst:609
+msgid "Using :math:`validator\\_weights(b)` count the votes."
+msgstr ""
+"Используя вес валидаторов :math:`validator\\_weights(b)` посчитайте голоса."
+
+#: ../../theory/naive-blockchain.rst:611
+msgid ""
+"Order the sequence :math:`c_i` by calculated votes, using :math:`ci.id` (= "
+"block hash) as tie-breaker."
+msgstr ""
+"Упорядочите последовательность :math:`c_i`  с вычисленными голосами, "
+"используя :math:`ci.id`  (= хеш блока) как тай-брейк."
+
+#: ../../theory/naive-blockchain.rst:613
+msgid "Repeat step 7 as long as it is changing **Result**."
+msgstr "Повторяйте шаг 7 до тех пор, пока он изменяет **Результат**."
+
+#: ../../theory/naive-blockchain.rst:615
+msgid ""
+"The **Result** is the list of blocks we want. The first block on the list is"
+" the main parent candidate, remaining blocks are secondary parents "
+"candidates."
+msgstr ""
+"**Результат** - это список блоков, которые мы хотим. Первый блок в списке - "
+"основной кандидат в родители, остальные блоки - кандидаты в второстепенные "
+"родители."
+
+#: ../../theory/naive-blockchain.rst:618
+msgid "Operation of a finalizer"
+msgstr "Работа финализатора"
+
+#: ../../theory/naive-blockchain.rst:621
+msgid "The objective"
+msgstr "Цель"
+
+#: ../../theory/naive-blockchain.rst:623
+msgid ""
+"Finalizer observes the growing blockchain. The objective is to recognize the"
+" subset of transactions history that:"
+msgstr ""
+"Финализатор наблюдает за растущим блокчейном. Цель состоит в том, чтобы "
+"распознать подмножество истории транзакций, которое:"
+
+#: ../../theory/naive-blockchain.rst:625
+msgid "is already agreed (as a result of on-going consensus)"
+msgstr "уже согласовано (в результате продолжающегося консенсуса)"
+
+#: ../../theory/naive-blockchain.rst:626
+msgid ""
+"cannot be reverted (unless the equivocators collection exceeds - by total "
+"weight - predefined threshold)"
+msgstr ""
+"не может быть отменено (если коллекция двусмысленностей не превышает - по "
+"общему весу - заданный порог)"
+
+#: ../../theory/naive-blockchain.rst:629
+msgid "Parameters"
+msgstr "Параметры"
+
+#: ../../theory/naive-blockchain.rst:631
+msgid ""
+"In general - different finalizers will be based on different finality "
+"criteria. For the current design we assume that the criterion described in "
+"the previous chapter is in use."
+msgstr ""
+"В целом - разные финализаторы будут основываться на разных критериях "
+"завершенности. Для текущего проекта мы предполагаем, что используется "
+"критерий, описанный в предыдущей главе."
+
+#: ../../theory/naive-blockchain.rst:633
+msgid "Hence, the finalizer is parameterized by:"
+msgstr "Таким образом, параметры финализатора задаются с:"
+
+#: ../../theory/naive-blockchain.rst:635
+msgid "the type of finality detector to be used"
+msgstr "типом детектора завершенности, который будет использоваться"
+
+#: ../../theory/naive-blockchain.rst:637
+msgid "**K** - acknowledgement level"
+msgstr "**K** - уровень признания"
+
+#: ../../theory/naive-blockchain.rst:639
+msgid "**WP** (weight percentage) - expressed as a number between 0 and 1"
+msgstr "**WP** (процент веса) - выраженный как номер между 0 и 1"
+
+#: ../../theory/naive-blockchain.rst:642
+msgid "State"
+msgstr "Состояние"
+
+#: ../../theory/naive-blockchain.rst:644
+msgid ""
+"The assumption is that a finalizer can traverse the blockdag, reading "
+"contents of blocks. Also, for any block b it should be able to read post-"
+"state of b, and in particular get the weights-map from this post-state."
+msgstr ""
+"Предполагается, что финализатор может проходить через блокдаг, считывая "
+"содержимое блоков. Кроме того, для любого блока b он должен иметь "
+"возможность считывать пост-состояние b и, в частности, получать карту весов "
+"из этого пост-состояния."
+
+#: ../../theory/naive-blockchain.rst:646
+msgid ""
+"The internal state of the “reference” implementation of a finalizer would "
+"be:"
+msgstr ""
+"Внутреннее состояние “эталонной” реализации финализатора будет следующим:"
+
+#: ../../theory/naive-blockchain.rst:648
+msgid "**equivocators: Set[ValidatorId]**"
+msgstr "**equivocators: Set[ValidatorId]**"
+
+#: ../../theory/naive-blockchain.rst:650
+msgid "**current-game-id: Int**"
+msgstr "**current-game-id: Int**"
+
+#: ../../theory/naive-blockchain.rst:652
+msgid ""
+"current finality detector instance - the one observing **LFB(current-game-"
+"id)-game**"
+msgstr ""
+"текущий экземпляр детектора завершенности - тот, который наблюдает **игру "
+"LFB(идентификатор текущей игры)**"
+
+#: ../../theory/naive-blockchain.rst:654
+msgid "**LFB: Seq[Block]** for **i=0 … current-game-id**"
+msgstr "**LFB: Seq[Block]** for **i=0 … id-текущей-игры**"
+
+#: ../../theory/naive-blockchain.rst:656
+msgid "**initial-players: Seq[Set[ValidatorId]]**"
+msgstr "**начальные игроки: Seq[Set[ValidatorId]]**"
+
+#: ../../theory/naive-blockchain.rst:658
+msgid "**excluded-players: Seq[Set[ValidatorId]]**"
+msgstr "**исключенные игроки: Seq[Set[ValidatorId]]**"
+
+#: ../../theory/naive-blockchain.rst:660
+msgid "**FTT: Seq[Int]**"
+msgstr "**FTT: Seq[Int]**"
+
+#: ../../theory/naive-blockchain.rst:662
+msgid ""
+"Initial state (on the beginning of the blockchain, the only block is "
+"Genesis):"
+msgstr ""
+"Начальное состояние (в начале блокчейна единственным блоком является "
+"Genesis):"
+
+#: ../../theory/naive-blockchain.rst:664
+msgid "**equivocators** = empty set"
+msgstr "**двусмысленные** = пустой набор"
+
+#: ../../theory/naive-blockchain.rst:665
+msgid "**current-game-id** = 0"
+msgstr "идентификатор текущей игры **current-game-id** = 0"
+
+#: ../../theory/naive-blockchain.rst:666
+msgid ""
+"current finality detector instance = new instance (according to configured "
+"type of finality detector to be used)"
+msgstr ""
+"текущий экземпляр детектора завершенности = новый экземпляр (в соответствии "
+"с настроенным типом используемого детектора завершенности)"
+
+#: ../../theory/naive-blockchain.rst:667
+msgid "**LFB** = empty sequence"
+msgstr "**LFB** = пустая последовательность"
+
+#: ../../theory/naive-blockchain.rst:668
+msgid ""
+"**initial-players** = one element sequence, with the single element being "
+"the set of ids of validators bonded at Genesis"
+msgstr ""
+"**начальные игроки** = последовательность из одного элемента, причем "
+"единственным элементом является набор идентификаторов валидаторов, связанных"
+" в Genesis"
+
+#: ../../theory/naive-blockchain.rst:670
+msgid ""
+"**excluded-players** = one element sequence, with the single element being "
+"the empty set"
+msgstr ""
+"**исключено-игроки** = последовательность из одного элемента, причем один "
+"элемент является пустым набором"
+
+#: ../../theory/naive-blockchain.rst:672
+msgid "**FTT(0) = ceiling(WP \\* total-weight(post-state of Genesis))**"
+msgstr "**FTT(0) = потолок(WP \\* total-weight(post-state of Genesis))**"
+
+#: ../../theory/naive-blockchain.rst:675
+msgid "Behaviour - the general plan"
+msgstr "Поведение - общий план"
+
+#: ../../theory/naive-blockchain.rst:677
+msgid ""
+"The operation of a finalizer can be decomposed as the following, partially "
+"independent activities:"
+msgstr ""
+"Работу финализатора можно разложить на следующие частично независимые "
+"действия:"
+
+#: ../../theory/naive-blockchain.rst:679
+msgid ""
+"Maintaining equivocators collection corresponding to current protocol state."
+msgstr ""
+"Поддержание коллекции двусмысленностей, соответствующей текущему состоянию "
+"протокола."
+
+#: ../../theory/naive-blockchain.rst:680
+msgid "Building the **LFB** chain"
+msgstr "Построение цепочки **LFB**"
+
+#: ../../theory/naive-blockchain.rst:681
+msgid ""
+"Propagating **LFB** chain finality via secondary parents (indirect "
+"finalization)."
+msgstr ""
+"Распространение **LFB** завершенности цепочки через вторичных родителей "
+"(косвенное завершение)."
+
+#: ../../theory/naive-blockchain.rst:682
+msgid ""
+"Monitoring old games in **LFB** chain for the possibility of equivocation "
+"catastrophe."
+msgstr ""
+"Мониторинг старых игр в цепочке **LFB** на предмет возможности катастрофы с "
+"двусмысленностями."
+
+#: ../../theory/naive-blockchain.rst:683
+msgid ""
+"Reacting to equivocation catastrophe (by recalculating the **LFB** chain)."
+msgstr ""
+"Реагирование на катастрофу двусмысленности (путем пересчета цепочки "
+"**LFB**)."
+
+#: ../../theory/naive-blockchain.rst:684
+msgid ""
+"Publishing the stream of finalized blocks (over some streaming API) - this "
+"includes possibly also maintaining the collection of subscribers."
+msgstr ""
+"Публикация потока завершенных блоков (через некоторый потоковый API) - это, "
+"возможно, также включает в себя ведение коллекции подписчиков."
+
+#: ../../theory/naive-blockchain.rst:687
+msgid "LFB chain"
+msgstr "LFB цепочка"
+
+#: ../../theory/naive-blockchain.rst:689
+msgid ""
+"**LFB(i)** is supposed to be the “i-th last finalized block”. **LFB** chain "
+"is achieved in the following way:"
+msgstr ""
+"**LFB(i)** должен быть “i-последним завершенным блоком”. **Цепочка LFB** "
+"достигается следующим образом:"
+
+#: ../../theory/naive-blockchain.rst:691
+msgid "Take **LFB(0) = Genesis**"
+msgstr "Возьмем **LFB(0) = Genesis**"
+
+#: ../../theory/naive-blockchain.rst:693
+msgid ""
+"Let’s assume that LFB(m) is the last-so-far element of the chain. So in "
+"other words, it is the last finalized block."
+msgstr ""
+"Давайте предположим, что LFB(m) является последним на данный момент "
+"элементом цепочки. Другими словами, это последний завершенный блок."
+
+#: ../../theory/naive-blockchain.rst:695
+msgid ""
+"For deciding which main-tree child of LFB(m) should be taken as LFB(m+1) we "
+"need to start a new empty instance of finality detector."
+msgstr ""
+"Чтобы решить, какой дочерний элемент главного дерева LFB(m) следует считать "
+"LFB(m+1), нам нужно запустить новый пустой экземпляр детектора "
+"завершенности."
+
+#: ../../theory/naive-blockchain.rst:697
+msgid ""
+"**initial-players(m)** = validators staked at post-state of **m**, excluding"
+" current contents of **equivocators**"
+msgstr ""
+"**начальные игроки(m)** = валидаторы, поставленные в состоянии после **m**, "
+"исключая текущее содержимое **двусмысленных игроков**"
+
+#: ../../theory/naive-blockchain.rst:699
+msgid "**excluded-players(m)** = empty set"
+msgstr "**исключено-игроки(m)** = пустой набор"
+
+#: ../../theory/naive-blockchain.rst:701
+msgid "Finality detector observes the LFB(m)-game, with:"
+msgstr "Детектор завершенности наблюдает за игрой LFB(m), с:"
+
+#: ../../theory/naive-blockchain.rst:703
+msgid ""
+"game-level acknowledgement level **K** same as defined by parameters of this"
+" finalizer"
+msgstr ""
+"уровнем подтверждения игрового уровня **K** таким же, как определен "
+"параметрами этого финализатора"
+
+#: ../../theory/naive-blockchain.rst:705
+msgid ""
+"**FTT(m) = ceiling(WP \\* total-weight(post-state of m))**, where "
+"\\**ceiling(_)*\\* is integer rounding towards positive infinity."
+msgstr ""
+"**FTT(m) = потолок(WP \\* общий вес(постсостояние m))**, где "
+"\\**потолок(_)*\\* - целое число, округленное в сторону положительной "
+"бесконечности."
+
+#: ../../theory/naive-blockchain.rst:707
+msgid ""
+"Once **LFB(m)**-game reaches finality, the next element of **LFB** chain is "
+"established."
+msgstr ""
+"Как только **LFB(m)**-игра достигает завершения, устанавливается следующий "
+"элемент цепочки **LFB**."
+
+#: ../../theory/naive-blockchain.rst:710
+msgid "Indirect finalization"
+msgstr "Непрямая финализация"
+
+#: ../../theory/naive-blockchain.rst:712
+msgid ""
+"Once **LFB(m)** is established, we consider the whole **p-past-"
+"cone(LFB(m))** as finalized."
+msgstr ""
+"Как только **LFB(m)** будет установлен, мы рассмотрим весь **p-past-"
+"конус(LFB(m))** как завершенный."
+
+#: ../../theory/naive-blockchain.rst:715
+msgid "Equivocation catastrophe"
+msgstr "Катастрофа двусмысленностей"
+
+#: ../../theory/naive-blockchain.rst:717
+msgid ""
+"For any **LFB(m)**, the **LFB(m)-game** may “crash” by total weight of "
+"equivocators exceeding **FTT(m)**. Such situation we call **the equivocation"
+" catastrophe**."
+msgstr ""
+"Для любого **LFB(m)**, **LFB(m)-игра** может “рухнуть” из-за общего веса "
+"двусмысленностей, превышающих **FTT(m)**. Такую ситуацию мы называем "
+"**катастрофой двусмысленности**."
+
+#: ../../theory/naive-blockchain.rst:719
+msgid ""
+"Discovery of equivocation catastrophe works as follows. -- Whenever a new "
+"message **m** is added to a local blockdag, the following handling is done "
+"by the finalizer:"
+msgstr ""
+"Обнаружение катастрофы двусмысленности работает следующим образом. -- Всякий"
+" раз, когда новое сообщение **m** добавляется в локальный блокдаг, "
+"завершитель выполняет следующую обработку:"
+
+#: ../../theory/naive-blockchain.rst:721
+msgid ""
+"If **m.creator** is already included in **equivocators** collection - do "
+"nothing."
+msgstr ""
+"Если **m.creator** уже включен в коллекцию **двусмыслителей** - ничего не "
+"делайте."
+
+#: ../../theory/naive-blockchain.rst:723
+msgid ""
+"Otherwise - check if m is not introducing a new equivocation. If yes - add "
+"**m.creator** to equivocators and:"
+msgstr ""
+"В противном случае - проверьте, не вводит ли m новую двусмысленность. Если "
+"да - добавьте **m.creator** к двусмысленностям и:"
+
+#: ../../theory/naive-blockchain.rst:725
+msgid "for every i such that m \\in initial-players(i):"
+msgstr "для каждого i такого, что m \\in начальные игроки(i):"
+
+#: ../../theory/naive-blockchain.rst:727
+msgid "add m to **excluded-players(i)**"
+msgstr "добавьте m к **исключенным-игрокам(i)**"
+
+#: ../../theory/naive-blockchain.rst:729
+msgid ""
+"using weights map from **LFB(i)** post-state, check if total weight of "
+"**excluded-players(i)** exceeds **FTT(i)**"
+msgstr ""
+"используя карту весов из **LFB(i)** постсостояния, проверьте, превышает ли "
+"общий вес **исключенных игроков(i)** *FTT(i)**"
+
+#: ../../theory/naive-blockchain.rst:731
+msgid ""
+"if for some **LFB(i)** exceeding **FTT(i)** case happened - take the "
+"smallest such **i** - we will call the block **LFB(i)** **the catastrophic "
+"point**"
+msgstr ""
+"если для какого - то **LFB(i)** превышения **FTT(i)** произошел случай - "
+"возьмем наименьший такой **i** - назовем блок **LFB(i)** **катастрофической "
+"точкой**"
+
+#: ../../theory/naive-blockchain.rst:733
+msgid ""
+"Once an equivocation catastrophe is discovered, the following handling must "
+"be applied:"
+msgstr ""
+"Как только обнаружена катастрофа двусмысленности, необходимо применить "
+"следующую обработку:"
+
+#: ../../theory/naive-blockchain.rst:735
+msgid ""
+"Starting from the catastrophic point, re-calculate the **LFB chain** "
+"(initializing initial players accordingly to current contents of "
+"**equivocators**)."
+msgstr ""
+"Начиная с катастрофической точки, пересчитайте **цепочку LFB** "
+"(инициализируя начальных игроков в соответствии с текущим содержанием "
+"**двусмыслителей**)."
+
+#: ../../theory/naive-blockchain.rst:736
+msgid ""
+"2. Find the first **i** such that the new LFB-chain differs from old LFB "
+"chain at index **i**. Usually such **i** will be bigger than the "
+"catastrophic point. 2. Publish a rollback event at the level of external "
+"API. 4. Publish re-calculated LFB stream, starting from first difference."
+msgstr ""
+"2. Найдите первую **i** такую, чтобы новая цепочка LFB отличалась от старой "
+"цепочки LFB индексом **i**. Обычно такое **i** будет больше, чем "
+"катастрофическая точка. 2. Опубликуйте событие отката на уровне внешнего "
+"API. 4. Опубликуйте пересчитанный поток LFB, начиная с первой разницы."
+
+#: ../../theory/naive-blockchain.rst:741
+msgid "External API of a finalizer"
+msgstr "Внешняя API финализатора"
+
+#: ../../theory/naive-blockchain.rst:743
+msgid ""
+"The API should be stream-based. The decision on the actual streaming "
+"technology to use is beyond the scope of this specification."
+msgstr ""
+"API должен быть потоковым. Решение об использовании фактической потоковой "
+"технологии выходит за рамки данной спецификации."
+
+#: ../../theory/naive-blockchain.rst:745
+msgid "We only assume that:"
+msgstr "Мы только предполагаем, что:"
+
+#: ../../theory/naive-blockchain.rst:747
+msgid "external software components may subscribe to the API (to be notified"
+msgstr ""
+"внешние программные компоненты могут подписаться на API (для уведомления"
+
+#: ../../theory/naive-blockchain.rst:750
+msgid "subscribed observers may unsubscribe"
+msgstr "подписавшиеся наблюдатели могут отказаться от подписки"
+
+#: ../../theory/naive-blockchain.rst:749
+msgid "what a subscribed observer receives is a sequence of events"
+msgstr "подписанный наблюдатель получает последовательность событий"
+
+#: ../../theory/naive-blockchain.rst:752
+msgid "**Events:**"
+msgstr "**События:**"
+
+#: ../../theory/naive-blockchain.rst:755
+msgid "Event type"
+msgstr "Тип события"
+
+#: ../../theory/naive-blockchain.rst:755
+msgid "Contents"
+msgstr "Содержание"
+
+#: ../../theory/naive-blockchain.rst:755
+msgid "Semantics"
+msgstr "Семантика"
+
+#: ../../theory/naive-blockchain.rst:757
+msgid "NEXT_LFB"
+msgstr "NEXT_LFB"
+
+#: ../../theory/naive-blockchain.rst:757
+msgid "event idLFB(i).idisequence of indirectly finalized blocks"
+msgstr "событие idLFB(i).idi последовательность косвенно завершенных блоков"
+
+#: ../../theory/naive-blockchain.rst:757
+msgid "published as soon as **LFB(i)** is finalized"
+msgstr "публикуется, как только **LFB(i)** будет завершено"
+
+#: ../../theory/naive-blockchain.rst:759
+msgid "CATASTROPHY"
+msgstr "КАТАСТРОФА"
+
+#: ../../theory/naive-blockchain.rst:759
+msgid "event idsequence id of catastrophy point"
+msgstr ""
+"идентификатор события идентификатор последовательности точки катастрофы"
+
+#: ../../theory/naive-blockchain.rst:759
+msgid "signal that equivocation catastrophe happened"
+msgstr "сигнал о том, что произошла катастрофа с двусмысленностью"
+
+#: ../../theory/naive-blockchain.rst:766
+msgid "Event"
+msgstr "Событие"
+
+#: ../../theory/naive-blockchain.rst:766
+msgid "Current snapshot of LFB chain"
+msgstr "Текущий снимок цепочки LFB"
+
+#: ../../theory/naive-blockchain.rst:768
+msgid "NEXT_LFB(1, 231, 0, <>)"
+msgstr "NEXT_LFB(1, 231, 0, <>)"
+
+#: ../../theory/naive-blockchain.rst:769
+msgid "NEXT_LFB(2, 420, 1, <>)"
+msgstr "NEXT_LFB(2, 420, 1, <>)"
+
+#: ../../theory/naive-blockchain.rst:769
+msgid "(231, 420)"
+msgstr "(231, 420)"
+
+#: ../../theory/naive-blockchain.rst:770
+msgid "NEXT_LFB(3, 801, 2, <524,525>)"
+msgstr "NEXT_LFB(3, 801, 2, <524,525>)"
+
+#: ../../theory/naive-blockchain.rst:770
+msgid "(231, 420, 801)"
+msgstr "(231, 420, 801)"
+
+#: ../../theory/naive-blockchain.rst:771
+msgid "CATASTROPHY(4, 2)"
+msgstr "КАТАСТРОФА(4, 2)"
+
+#: ../../theory/naive-blockchain.rst:772
+msgid "NEXT_LFB(5, 421, 1, <105, 116, 228>)"
+msgstr "NEXT_LFB(5, 421, 1, <105, 116, 228>)"
+
+#: ../../theory/naive-blockchain.rst:772
+msgid "(231, 421)"
+msgstr "(231, 421)"
+
+#: ../../theory/naive-blockchain.rst:773
+msgid "NEXT_LFB(6, 480, 2, <>)"
+msgstr "NEXT_LFB(6, 480, 2, <>)"
+
+#: ../../theory/naive-blockchain.rst:773
+msgid "(231, 421, 480)"
+msgstr "(231, 421, 480)"

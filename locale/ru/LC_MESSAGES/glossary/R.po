@@ -1,0 +1,207 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../glossary/R.rst:2
+msgid "R"
+msgstr "R"
+
+#: ../../glossary/R.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/R.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/R.rst:9
+msgid "Reward"
+msgstr "Вознаграждения"
+
+#: ../../glossary/R.rst:10
+msgid ""
+"Validators receive rewards for participating in consensus and finalizing "
+"blocks. There is no precise per-block reward. Rewards are split "
+"proportionally among stakes within an era. If a validator is offline or "
+"cannot vote on many blocks, the rewards earned are also reduced. Delegators "
+"can only receive a proportional amount of the validator's rewards minus the "
+"validator’s commission (Delegation Rate). Rewards are distributed at the end"
+" of each era."
+msgstr ""
+"Валидаторы получают вознаграждения за участие в консенсусе и финализации "
+"блоков. Нет определенного вознаграждения за блок. Вознаграждения "
+"распределены пропорционально между стейками внутри эры. Если валидатор в "
+"оффлайн или не может голосовать во многих блоках, заработанные "
+"вознаграждения снимаются. Делегаты могут получить только пропорциональный "
+"объем от вознаграждения валидатора с учетом комиссии валидатора (курс "
+"делегирования). Вознаграждения выдаются в конце каждой эры. "
+
+#: ../../glossary/R.rst:13
+msgid "Root hash"
+msgstr "Корневой хеш"
+
+#: ../../glossary/R.rst:14
+msgid ""
+"The root node of the hash tree (or `Merkle tree <M.html#merkle-tree>`_) of "
+"all the transactions in a block."
+msgstr ""
+"Корневая нода хеш-дерева (дерево Меркла `Merkle tree <M.html#merkle-tree>`_)"
+" всех транзакций в блоке."
+
+#: ../../glossary/R.rst:17
+msgid "Rust"
+msgstr "Rust"
+
+#: ../../glossary/R.rst:18
+msgid ""
+"A programming language similar to C++, designed for performance and safety, "
+"especially safe concurrency."
+msgstr ""
+"Язык программирования, сходный с C++, разработанный для работоспособности и "
+"безопасности, особенно безопасного параллелизма."
+
+#: ../../glossary/R.rst:21
+msgid "Rustdocs"
+msgstr "Rustdocs"
+
+#: ../../glossary/R.rst:22
+msgid ""
+"As part of the Rust development environment, the Rustdocs describe the the "
+"`Casper contracts library <https://docs.rs/casper-contract/>`_, the `Casper "
+"types library <https://docs.rs/casper-types/>`_, and the `Casper test "
+"support library <https://docs.rs/casper-engine-test-support/>`_."
+msgstr ""
+"Rustdocs как часть среды разработки Rust описывают библиотеку контрактов "
+"Casper  `Casper contracts library <https://docs.rs/casper-contract/>`_, "
+"библиотеку типов Casper `Casper types library <https://docs.rs/casper-"
+"types/>`_, и библиотеку поддержки тестов `Casper test support library "
+"<https://docs.rs/casper-engine-test-support/>`_."
+
+#~ msgid ""
+#~ "As part of the Rust development environment, the Rustdocs describe the the "
+#~ "`Casper contracts library <https://docs.rs/casperlabs-contract/>`_, the "
+#~ "`Casper types library <https://docs.rs/casperlabs-types/>`_, and the `Casper"
+#~ " test support library <https://docs.rs/casperlabs-engine-test-support/>`_."
+#~ msgstr ""
+#~ "Rustdocs как часть среды разработки Rust описывают библиотеку контрактов "
+#~ "Casper `Casper contracts library <https://docs.rs/casperlabs-contract/>`_, "
+#~ "библиотеку типов Casper `Casper types library <https://docs.rs/casperlabs-"
+#~ "types/>`_, и библиотеку поддержки тестов `Casper test support library "
+#~ "<https://docs.rs/casperlabs-engine-test-support/>`_."

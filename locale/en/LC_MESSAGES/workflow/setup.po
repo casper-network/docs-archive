@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,50 +61,54 @@ msgid ""
 msgstr ""
 
 #: ../../workflow/setup.rst:24
+msgid "Doing this, you'll see a warning, which you can ignore for now."
+msgstr ""
+
+#: ../../workflow/setup.rst:30
 msgid ""
 "The Casper client can print out `help` information, which provides an up-"
 "to-date list of supported commands."
 msgstr ""
 
-#: ../../workflow/setup.rst:30
+#: ../../workflow/setup.rst:36
 msgid ""
 "**Important**: For each command, you can use `help` to get the up-to-date"
 " arguments and descriptions:"
 msgstr ""
 
-#: ../../workflow/setup.rst:37
+#: ../../workflow/setup.rst:43
 msgid "Setting up an Account"
 msgstr ""
 
-#: ../../workflow/setup.rst:39
+#: ../../workflow/setup.rst:45
 msgid ""
 "The process of creating an `Account "
 "<https://docs.casperlabs.io/en/latest/implementation/accounts.html>`_ can"
 " be divided into two steps:"
 msgstr ""
 
-#: ../../workflow/setup.rst:41
+#: ../../workflow/setup.rst:47
 msgid "Cryptographic key generation for the account"
 msgstr ""
 
-#: ../../workflow/setup.rst:42
+#: ../../workflow/setup.rst:48
 msgid "Funding the account"
 msgstr ""
 
-#: ../../workflow/setup.rst:44
+#: ../../workflow/setup.rst:50
 msgid ""
 "The Casper blockchain uses an on-chain account-based model, uniquely "
 "identified by an ``AccountHash`` derived from a specific ``PublicKey``."
 msgstr ""
 
-#: ../../workflow/setup.rst:46
+#: ../../workflow/setup.rst:52
 msgid ""
 "By default, a transactional interaction with the blockchain takes the "
 "form of a ``Deploy`` cryptographically signed by the key-pair "
 "corresponding to the ``PublicKey`` used to create the account."
 msgstr ""
 
-#: ../../workflow/setup.rst:48
+#: ../../workflow/setup.rst:54
 msgid ""
 "Accounts can be created using the Casper command-line client. "
 "Alternatively, some Casper networks such as the official Testnet and "
@@ -112,78 +116,78 @@ msgid ""
 "creation."
 msgstr ""
 
-#: ../../workflow/setup.rst:50
+#: ../../workflow/setup.rst:56
 msgid ""
 "A cryptographic key-pair will be created when using either the Casper "
 "command-line client or a block explorer to create an account on the "
 "blockchain. This process generates three files for each account:"
 msgstr ""
 
-#: ../../workflow/setup.rst:52
+#: ../../workflow/setup.rst:58
 msgid "A PEM encoded secret key"
 msgstr ""
 
-#: ../../workflow/setup.rst:53
+#: ../../workflow/setup.rst:59
 msgid "A PEM encoded public key"
 msgstr ""
 
-#: ../../workflow/setup.rst:54
+#: ../../workflow/setup.rst:60
 msgid "A hexadecimal-encoded string representation of the public key"
 msgstr ""
 
-#: ../../workflow/setup.rst:56
+#: ../../workflow/setup.rst:62
 msgid "We recommend saving these files securely."
 msgstr ""
 
-#: ../../workflow/setup.rst:58
+#: ../../workflow/setup.rst:64
 msgid ""
 "The command-line client provides a command that will give you the account"
 " hash for a given public key."
 msgstr ""
 
-#: ../../workflow/setup.rst:65
+#: ../../workflow/setup.rst:71
 msgid "Option 1: Key generation using the Casper client"
 msgstr ""
 
-#: ../../workflow/setup.rst:67
+#: ../../workflow/setup.rst:73
 msgid ""
 "This option describes how you can use the Casper command-line client to "
 "set up your accounts."
 msgstr ""
 
-#: ../../workflow/setup.rst:69
+#: ../../workflow/setup.rst:75
 msgid "Execute the following command to generate your keys:"
 msgstr ""
 
-#: ../../workflow/setup.rst:75
+#: ../../workflow/setup.rst:81
 msgid ""
 "The above command will create three files in the current working "
 "directory:"
 msgstr ""
 
-#: ../../workflow/setup.rst:77
+#: ../../workflow/setup.rst:83 ../../workflow/setup.rst:104
 msgid "``secret_key.pem`` - PEM encoded secret key"
 msgstr ""
 
-#: ../../workflow/setup.rst:78
+#: ../../workflow/setup.rst:84 ../../workflow/setup.rst:105
 msgid "``public_key.pem`` - PEM encoded public key"
 msgstr ""
 
-#: ../../workflow/setup.rst:79
+#: ../../workflow/setup.rst:85 ../../workflow/setup.rst:106
 msgid "``public_key_hex`` - Hexadecimal-encoded string of the public key"
 msgstr ""
 
-#: ../../workflow/setup.rst:81
+#: ../../workflow/setup.rst:87
 msgid "**Note**: SAVE your keys to a safe place, preferably offline."
 msgstr ""
 
-#: ../../workflow/setup.rst:83
+#: ../../workflow/setup.rst:89
 msgid ""
 "Once the keys for the account have been generated, the accounts can be "
 "funded to finish the process of creating an account."
 msgstr ""
 
-#: ../../workflow/setup.rst:85
+#: ../../workflow/setup.rst:91
 msgid ""
 "**Note**: Responses from the node contain ``AccountHashes`` instead of "
 "the direct hexadecimal-encoded public key. For traceability, it is "
@@ -192,68 +196,53 @@ msgid ""
 "string."
 msgstr ""
 
-#: ../../workflow/setup.rst:88
+#: ../../workflow/setup.rst:94
 msgid "Option 2: Key generation using a Block Explorer"
 msgstr ""
 
-#: ../../workflow/setup.rst:90
+#: ../../workflow/setup.rst:96
 msgid "This option is also available on networks that have a block explorer."
 msgstr ""
 
-#: ../../workflow/setup.rst:92
+#: ../../workflow/setup.rst:98
 msgid ""
 "For instance, on the official Testnet network the `CSPR.live "
 "<https://testnet.cspr.live/>`_ block explorer is available, and the "
 "following instructions assume you are using it."
 msgstr ""
 
-#: ../../workflow/setup.rst:94
-msgid ""
-"Start by creating an account using the `Create Account <https://clarity-"
-"testnet-old.make.services/#/accounts>`_ link. You will be asked to "
-"provide a unique name for your account; this is for your convenience and "
-"is not stored on chain."
-msgstr ""
-
-#: ../../workflow/setup.rst:96
-msgid ""
-"You will be prompted to save three files for your new account; carefully "
-"choose where you store them. We recommend storing your keys in a secure "
-"manner."
-msgstr ""
-
-#: ../../workflow/setup.rst:98
-msgid "``<Account-Name>_secret_key.pem`` - PEM encoded secret key"
-msgstr ""
-
-#: ../../workflow/setup.rst:99
-msgid "``<Account-Name>_public_key.pem`` - PEM encoded public key"
-msgstr ""
-
 #: ../../workflow/setup.rst:100
 msgid ""
-"``<Account-Name>_public_key_hex`` - Hexadecimal-encoded string of the "
-"public key"
+"Start by creating an account using the `Create Account "
+"<https://testnet.cspr.live/create-account>`_ link. You will need to "
+"download the keys of your new account by clicking on the ``Download "
+"Keys`` button. Note that the account is not stored on chain."
 msgstr ""
 
-#: ../../workflow/setup.rst:104
+#: ../../workflow/setup.rst:102
+msgid ""
+"You will be prompted to save the following three files for your new "
+"account. These are your keys, so we recommend securely storing them:"
+msgstr ""
+
+#: ../../workflow/setup.rst:110
 msgid "Fund your Account"
 msgstr ""
 
-#: ../../workflow/setup.rst:106
+#: ../../workflow/setup.rst:112
 msgid ""
 "Once the cryptographic key-pair for the account has been generated, the "
 "account must be funded so it can be created on chain."
 msgstr ""
 
-#: ../../workflow/setup.rst:108
+#: ../../workflow/setup.rst:114
 msgid ""
 "In Testnet, you can fund the account by using the *Request tokens* button"
-" on the `Faucet Page <https://clarity-testnet-"
-"old.make.services/#/faucet>`_ to receive tokens."
+" on the `Faucet Page <https://testnet.cspr.live/tools/faucet>`_ to "
+"receive tokens."
 msgstr ""
 
-#: ../../workflow/setup.rst:110
+#: ../../workflow/setup.rst:116
 msgid ""
 "In Mainnet, a pre-existing account will have to transfer CSPR tokens to "
 "finalize the process of setting up an account. The *Source* account needs"
@@ -263,50 +252,87 @@ msgid ""
 "can be created on Mainnet."
 msgstr ""
 
-#: ../../workflow/setup.rst:113
+#: ../../workflow/setup.rst:119
 msgid "Acquire Node Address from network peers"
 msgstr ""
 
-#: ../../workflow/setup.rst:115
+#: ../../workflow/setup.rst:121
 msgid ""
 "Clients can interact with a node on the blockchain via requests sent to "
 "that node's JSON-RPC endpoint, ``http://<node-ip-address>:7777`` by "
 "default."
 msgstr ""
 
-#: ../../workflow/setup.rst:117
+#: ../../workflow/setup.rst:123
 msgid "The node address is the IP of a peer node."
 msgstr ""
 
-#: ../../workflow/setup.rst:119
+#: ../../workflow/setup.rst:125
 msgid ""
 "Both the official testnet and Mainnet provide block explorers that "
 "provide a list of IP addresses of nodes on their respective networks."
 msgstr ""
 
-#: ../../workflow/setup.rst:121
+#: ../../workflow/setup.rst:127
 msgid ""
 "You can get the ``node-ip-address`` of a node on the network by visiting "
 "the following block explorers:"
 msgstr ""
 
-#: ../../workflow/setup.rst:123
+#: ../../workflow/setup.rst:129
 msgid "`Peers <https://testnet.cspr.live/tools/peers>`_ on Testnet"
 msgstr ""
 
-#: ../../workflow/setup.rst:124
+#: ../../workflow/setup.rst:130
 msgid "`Peers <https://cspr.live/tools/peers>`_ on Mainnet"
 msgstr ""
 
-#: ../../workflow/setup.rst:126
+#: ../../workflow/setup.rst:132
 msgid ""
 "You will see a list of peers, and you can select the IP of any peer on "
 "the list."
 msgstr ""
 
-#: ../../workflow/setup.rst:128
+#: ../../workflow/setup.rst:134
 msgid ""
 "**Note**: If the selected peer is unresponsive, pick a different peer and"
 " try again."
 msgstr ""
+
+#~ msgid ""
+#~ "Start by creating an account using "
+#~ "the `Create Account <https://clarity-"
+#~ "testnet-old.make.services/#/accounts>`_ link. You "
+#~ "will be asked to provide a unique"
+#~ " name for your account; this is "
+#~ "for your convenience and is not "
+#~ "stored on chain."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You will be prompted to save three"
+#~ " files for your new account; "
+#~ "carefully choose where you store them."
+#~ " We recommend storing your keys in"
+#~ " a secure manner."
+#~ msgstr ""
+
+#~ msgid "``<Account-Name>_secret_key.pem`` - PEM encoded secret key"
+#~ msgstr ""
+
+#~ msgid "``<Account-Name>_public_key.pem`` - PEM encoded public key"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``<Account-Name>_public_key_hex`` - Hexadecimal-"
+#~ "encoded string of the public key"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In Testnet, you can fund the "
+#~ "account by using the *Request tokens*"
+#~ " button on the `Faucet Page <https"
+#~ "://clarity-testnet-old.make.services/#/faucet>`_ to "
+#~ "receive tokens."
+#~ msgstr ""
 

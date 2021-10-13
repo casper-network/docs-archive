@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,10 +127,24 @@ msgid "`Z <Z.html>`_"
 msgstr ""
 
 #: ../../glossary/P.rst:9
-msgid "Participate in consensus"
+msgid "Partial synchrony"
 msgstr ""
 
 #: ../../glossary/P.rst:10
+msgid ""
+"Partial synchrony is used to define the fault tolerance of a consensus "
+"protocol, which is a time-bound mechanism to note suspicions or problems "
+"(failure, crashes, etc.). When a protocol is provably live under partial "
+"synchrony, it means that the nodes will make a decision within a fixed "
+"time period. Once the decision is made and a block is committed, it "
+"cannot be reverted. Also see `CBC <C.html#cbc>`_."
+msgstr ""
+
+#: ../../glossary/P.rst:14
+msgid "Participate in consensus"
+msgstr ""
+
+#: ../../glossary/P.rst:15
 msgid ""
 "The process of following the `consensus <C.html#consensus>`_ algorithm. "
 "The primary participants are `validators <V.html#validator>`_, bonded "
@@ -140,45 +154,58 @@ msgid ""
 "increasing the total stake that ensures the security of the network."
 msgstr ""
 
-#: ../../glossary/P.rst:13
+#: ../../glossary/P.rst:18
 msgid "Payment code"
 msgstr ""
 
-#: ../../glossary/P.rst:14
+#: ../../glossary/P.rst:19
 msgid ""
 "The *payment code* is the `WASM <W.html#webassembly>`_ program that pays "
 "the transaction execution fee."
 msgstr ""
 
-#: ../../glossary/P.rst:17
+#: ../../glossary/P.rst:22
 msgid "Peer node"
 msgstr ""
 
-#: ../../glossary/P.rst:18
+#: ../../glossary/P.rst:23
 msgid "A node on a peer-to-peer (P2P) network."
 msgstr ""
 
-#: ../../glossary/P.rst:21
-msgid "Primary token"
-msgstr ""
-
-#: ../../glossary/P.rst:22
-msgid "See `CSPR <C.html#cspr>`_."
-msgstr ""
-
-#: ../../glossary/P.rst:25
-msgid "Private key"
-msgstr ""
-
 #: ../../glossary/P.rst:26
-msgid "See `secret key <S.html#secret-key>`_."
+msgid "Permissionless"
 msgstr ""
 
-#: ../../glossary/P.rst:29
-msgid "Proof-of-Stake"
+#: ../../glossary/P.rst:27
+msgid ""
+"A permissionless blockchain network has its consensus and transaction "
+"validation process open and available for anyone to participate. Being "
+"permissionless is an essential characteristic of most public blockchains,"
+" enabling decentralization, transparency, and value exchange between "
+"participants."
 msgstr ""
 
 #: ../../glossary/P.rst:30
+msgid "Primary token"
+msgstr ""
+
+#: ../../glossary/P.rst:31
+msgid "See `CSPR <C.html#cspr>`_."
+msgstr ""
+
+#: ../../glossary/P.rst:34
+msgid "Private key"
+msgstr ""
+
+#: ../../glossary/P.rst:35
+msgid "See `secret key <S.html#secret-key>`_."
+msgstr ""
+
+#: ../../glossary/P.rst:38
+msgid "Proof-of-Stake"
+msgstr ""
+
+#: ../../glossary/P.rst:39
 msgid ""
 "Proof-of-Stake (PoS) is a mechanism by which a cryptocurrency blockchain "
 "network achieves permissionless-ness. The voting power in consensus is "
@@ -190,22 +217,22 @@ msgid ""
 "which blocks to add to the blockchain."
 msgstr ""
 
-#: ../../glossary/P.rst:33
+#: ../../glossary/P.rst:42
 msgid "Proof-of-Work"
 msgstr ""
 
-#: ../../glossary/P.rst:34
+#: ../../glossary/P.rst:43
 msgid ""
 "A mechanism used in Bitcoin and Etherium for incentivizing participation "
 "and securing the system. In these protocols, a participant's voting power"
 " is proportional to the amount of computational power possessed."
 msgstr ""
 
-#: ../../glossary/P.rst:37
+#: ../../glossary/P.rst:46
 msgid "Proof-of-Stake contract"
 msgstr ""
 
-#: ../../glossary/P.rst:38
+#: ../../glossary/P.rst:47
 msgid ""
 "The Proof-of-Stake (PoS) contract holds on to transaction fees for the "
 "time while the state transition is happening (contracts are being "
@@ -213,18 +240,18 @@ msgid ""
 "proposer."
 msgstr ""
 
-#: ../../glossary/P.rst:41
+#: ../../glossary/P.rst:50
 msgid "Proto block"
 msgstr ""
 
-#: ../../glossary/P.rst:42
+#: ../../glossary/P.rst:51
 msgid ""
 "The block proposed by the leader, which the consensus processes (in "
 "`highway <H.html#highway>`_). Only after consensus is complete, the proto"
 " block is executed, and the global state is updated."
 msgstr ""
 
-#: ../../glossary/P.rst:44
+#: ../../glossary/P.rst:53
 msgid ""
 "A leader is selected from the validator set of that era for each round. "
 "The chance of getting selected as a leader is in proportion to the stake "

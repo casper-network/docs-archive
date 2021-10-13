@@ -1,0 +1,313 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../implementation/p2p.rst:4
+msgid "Network Communication"
+msgstr "Коммуникация в сети"
+
+#: ../../implementation/p2p.rst:8
+msgid ""
+"Nodes form a peer-to-peer network are continually communicating with each "
+"other to reach *consensus* about the blockchain state. A node is not "
+"necessarily a single physical machine. Still, it appears as a single logical"
+" entity to the rest of its peers by having a unique ID and address where it "
+"responds to incoming network traffic."
+msgstr ""
+"Ноды, образующие одноранговую(peer-to-peer) сеть, постоянно взаимодействуют "
+"друг с другом, чтобы достичь *консенсуса* о состоянии блокчейна. Нода не "
+"обязательно является одной физической машиной. Тем не менее, она выглядит "
+"как единый логический объект для остальных своих одноранговых нод, имея "
+"уникальный идентификатор и адрес, по которому она реагирует на входящий "
+"сетевой трафик."
+
+#: ../../implementation/p2p.rst:11
+msgid "Identity"
+msgstr "Идентичность"
+
+#: ../../implementation/p2p.rst:13
+msgid ""
+"Each node has an identity on the network (which is not the same as its "
+"identity in the consensus process). The network identity (ID) is based on "
+"the fingerprint of the public key of a self-signed TLS certificate. A node "
+"generates a new private key each time it starts, ensuring a unique ID."
+msgstr ""
+"У каждой ноды есть своя идентичность в сети (которая не тождественна "
+"идентичности в процессе консенсуса). Сетевая идентичность (ID) основана на "
+"отпечатке пальца публичного ключа самоподписанного сертификата TLS. Нода "
+"генерирует новый приватный ключ каждый раз при запуске, что гарантирует "
+"уникальность ID."
+
+#: ../../implementation/p2p.rst:15
+msgid ""
+"Each identity is linked with an address, which is an IP and port pair where "
+"the node is reachable. This address is also called an endpoint."
+msgstr ""
+"Каждая идентичность связана с адресом, который является IP и порт-пара, где "
+"нода доступна. Этот адрес также называется конечной точкой. "
+
+#: ../../implementation/p2p.rst:18
+msgid "Inter-node connections"
+msgstr "Связи между нодами"
+
+#: ../../implementation/p2p.rst:20
+msgid ""
+"Should a node want to connect to another node with a known endpoint, it "
+"opens a TLS connection to the endpoint's address. In the context of common "
+"TLS terminology, this makes the connecting node the *client* and the remote "
+"node the *server* for this connection."
+msgstr ""
+"Если нода хочет связаться с другой нодой с известной конечной точкой, она "
+"открывает связь TLS с адресом конечной точки. В контексте известной TLS "
+"терминологии, это делает связывающуюся ноду *клиентом* а удаленную ноду "
+"*сервером* для этой связи. "
+
+#: ../../implementation/p2p.rst:22
+msgid ""
+"During connection setup, the client checks the server's certificate, "
+"matching the endpoint's expected public identity to ensure we have connected"
+" to the right node. Additionally, the TLS parameters of the connection and "
+"certificate are required to contain the same ciphers, digests, etc., to "
+"protect against downgrade attacks."
+msgstr ""
+"Во время настройки подключения клиент проверяет сертификат сервера, "
+"соответствующий ожидаемой общедоступной идентификации конечных точек, чтобы "
+"убедиться, что мы подключились к нужной ноде. Кроме того, параметры TLS "
+"подключения и сертификата должны содержать одинаковые шифры, дайджесты и "
+"т.д. для защиты от атак с понижением уровня."
+
+#: ../../implementation/p2p.rst:24
+msgid ""
+"Simultaneously, the connecting node sends its certificate as the client "
+"certificate, allowing the server to perform the same check-in reverse and "
+"establish the client's ID. At the end of the process, both nodes can be sure"
+" to which peer they are connected."
+msgstr ""
+"Одновременно соединительная нода отправляет свой сертификат в качестве "
+"сертификата клиента, позволяя серверу выполнить ту же обратную проверку и "
+"установить идентификатор - ID - клиента. В конце процесса обе ноды могут "
+"быть уверены, к какому узлу- пиру- они подключены."
+
+#: ../../implementation/p2p.rst:26
+msgid ""
+"Once a connection is established, the server will immediately seek to "
+"connect back to a node based on its endpoint (see `Node Discovery`_ on how "
+"the server finds endpoints) if it is a one-way connection. If a "
+"bidirectional connection setup cannot be established within a certain amount"
+" of time, all peer ID connections are dropped."
+msgstr ""
+"Как только соединение установлено, сервер немедленно попытается подключиться"
+" обратно к ноде на основе ее конечной точки (см. Обнаружение нод  `Node "
+"Discovery`_  о том, как сервер находит конечные точки), если это "
+"одностороннее соединение. Если настройка двунаправленного соединения не "
+"может быть установлена в течение определенного промежутка времени, все "
+"одноранговые соединения с ID удаляются."
+
+#: ../../implementation/p2p.rst:28
+msgid ""
+"Connections are used for sending messages one-way only; only the node "
+"initiating a connection will send messages on it."
+msgstr ""
+"Соединения используются для односторонней отправки сообщений; отправляет их "
+"только нода, инициировавшая соединение. "
+
+#: ../../implementation/p2p.rst:31
+msgid "Network"
+msgstr "Сеть"
+
+#: ../../implementation/p2p.rst:33
+msgid ""
+"As soon as a node has connected to one node in the network, it partakes in "
+"`Node Discovery`_. In general, any node will attempt to connect to any other"
+" node on the network it finds as described above, leading to a fully "
+"connected network."
+msgstr ""
+"Как только нода подключается к одной ноде в сети, она участвует в "
+"Обнаружении узла `Node Discovery`_. В общем случае любая нода, которая "
+"пытается подключиться к любой другой ноде в сети, которую она обнаружит, как"
+" описано выше, приведет к полностью подключенной сети."
+
+#: ../../implementation/p2p.rst:35
+msgid ""
+"Two classes of data transfers happen in the network; broadcasts and "
+"gossiping. A broadcast message is sent once, without guarantees, to all the "
+"nodes connected to it. The process of gossiping is described further below."
+msgstr ""
+"В сети происходят два класса передачи данных: трансляции и госсипинг. "
+"Трансляционное сообщение отправляется один раз, без гарантий, всем нодам, "
+"подключенным к нему. Процесс госсипинга описан далее ниже."
+
+#: ../../implementation/p2p.rst:37
+msgid ""
+"In general, only consensus messages, which are only sent by active "
+"validators, are broadcast. Everything else is gossipped."
+msgstr ""
+"В целом, только сообщения консенсуса, которые посылаются активными "
+"валидаторами, являются трансляционными. Все остальные относятся к "
+"госсипингу. "
+
+#: ../../implementation/p2p.rst:42
+msgid "Gossiping"
+msgstr "Госсипинг"
+
+#: ../../implementation/p2p.rst:44
+msgid ""
+"Multiple types of objects are gossipped, the most prominent ones being "
+"blocks, deploys, and endpoints (see `Identity`_). Each of these objects is "
+"immutable and can be identified by a unique hash."
+msgstr ""
+"Госсипинг охватывает несколько типов объектов, наиболее заметными из которых"
+" являются блоки, развертывания и конечные точки (см. об идентификации "
+"`Identity`_). Каждый из этих объектов является неизменяемым и может быть "
+"идентифицирован с помощью уникального хеша."
+
+#: ../../implementation/p2p.rst:46
+msgid ""
+"Gossiping is a process of distributing a value across the entire network "
+"without directly sending it to each node. This process allows only a subset "
+"of nodes to be connected to the original sender and spreading the bandwidth "
+"and processing requirements across the network at the cost of latency and "
+"overall bandwidth consumed."
+msgstr ""
+"Госсипинг - это процесс распространения значения по всей сети без прямой "
+"отправки его каждой ноде. Этот процесс позволяет подключать только "
+"подмножество нод к исходному отправителю и распределять пропускную "
+"способность и требования к обработке по сети за счет задержки и общей "
+"потребляемой пропускной способности."
+
+#: ../../implementation/p2p.rst:48
+msgid "The process can be summarized as follows:"
+msgstr "Процесс может быть описан следующим образом:"
+
+#: ../../implementation/p2p.rst:50
+msgid ""
+"Given a message `M` to gossip, the desired saturation `S`, and an infection "
+"limit `L`:"
+msgstr ""
+"Допустим мы запускаем сообщение `M`  с желаемым разрешением  `S`, и "
+"инфекционным ограничением `L`:"
+
+#: ../../implementation/p2p.rst:52
+msgid "Pick a subset `T` of `k` nodes from all currently connected nodes."
+msgstr ""
+"Берем подмножество `T` из нод `k` от всех соединенных в данный момент нод ."
+
+#: ../../implementation/p2p.rst:53
+msgid ""
+"Send `M` to each node in `T`, noting which nodes were already infected (a "
+"node is considered infected if it already had received or known `M`)."
+msgstr ""
+"Отправляем `M` каждой ноде в `T`, отмечая какие ноды уже инфицированы (нода "
+"считается инфицированной, если она уже получила или знает о  `M`)."
+
+#: ../../implementation/p2p.rst:54
+msgid ""
+"For every node shown as already infected, add another random node outside to"
+" `T` and send it `M`, again noting the response."
+msgstr ""
+"Для каждой ноды, которая отображается как уже инфицированная, добавляем "
+"другую случайную ноду вне  `T`  и отправляем ей `M`, снова подмечая ответ."
+
+#: ../../implementation/p2p.rst:55
+msgid ""
+"End when we confirm infection of `L` new nodes or encountered `S` already "
+"infected nodes."
+msgstr ""
+"Наконец когда мы подтверждаем инфицирование  `L` новых нод или засчитываем "
+"`S` уже инфицированные ноды. "
+
+#: ../../implementation/p2p.rst:57
+msgid ""
+"Through this process, a message will spread to almost all nodes over time."
+msgstr ""
+"Через этот процесс сообщение распространится почти всем нодам в этом "
+"времени. "
+
+#: ../../implementation/p2p.rst:60
+msgid "Requesting missing data"
+msgstr "Запрос недостающей информации"
+
+#: ../../implementation/p2p.rst:62
+msgid ""
+"While gossiping and broadcasting are sufficient to distribute data across "
+"the network in most cases, nodes can also request missing data from peers "
+"should they require it. A common example is a missing deploy from a block."
+msgstr ""
+"В то время как распространения сообщений - госсипинга и широковещания - "
+"бродкастинга -  в большинстве случаев достаточно для распространения данных "
+"по сети, ноды также могут запрашивать недостающие данные у одноранговых нод,"
+" если им это потребуется. Распространенным примером является отсутствующее "
+"развертывание из блока."
+
+#: ../../implementation/p2p.rst:65
+msgid "Validation"
+msgstr "Валидация"
+
+#: ../../implementation/p2p.rst:67
+msgid ""
+"Objects have a concept of dependencies. For example, a block depends on all "
+"the deploys whose hashes are listed inside it. A node considers any object "
+"valid if all of its dependencies are available on the local node."
+msgstr ""
+"У объектов есть концепция зависимостей. Например блок зависит от всех "
+"развертываний, хеш которых размещен внутри него. Нода считает любой объект "
+"валидным если все его зависимости доступны в локальной ноде. "
+
+#: ../../implementation/p2p.rst:69
+msgid ""
+"Should a node receive an object from a peer that is not valid yet, it will "
+"attempt to complete its validation before processing it further. In the case"
+" of gossiping, this means pausing the gossiping of the object until all its "
+"dependencies can be retrieved."
+msgstr ""
+"Если нода получила объект из пира, который еще не валидный, она будет "
+"пытаться завершить его валидацию перед тем, как передать объект далее. В "
+"случае госсипинга это означает остановку госсипинга этого объекта до тех "
+"пор, пока все его зависимости не будут восстановлены. "
+
+#: ../../implementation/p2p.rst:71
+msgid ""
+"Any node is responsible for only propagating valid objects. Should a node "
+"not retrieve all missing dependencies of an object from the peer that sent "
+"it, it may punish the peer for doing so."
+msgstr ""
+"Любая нода ответственна за продвижение валидных объектов. Если нода не "
+"извлекает все отсутствующие зависимости объекта от отправившего его "
+"однорангового узла, она может наказать одноранговый узел за это."
+
+#: ../../implementation/p2p.rst:74
+msgid "Node Discovery"
+msgstr "Обнаружение нод"
+
+#: ../../implementation/p2p.rst:76
+msgid ""
+"Node discovery happens by each node periodically gossiping its public "
+"address. Upon receiving an address via gossip, each node immediately tries "
+"to establish a connection to it and notes the resulting endpoint, if "
+"successful."
+msgstr ""
+"Обнаружение нод происходит периодически с каждой нодой, которая передает "
+"свой публичный адрес. Получив адрес через госсипинг, каждая нода немедленно "
+"пытается установить с ней соединение и отмечает полученную конечную точку, в"
+" случае успеха."

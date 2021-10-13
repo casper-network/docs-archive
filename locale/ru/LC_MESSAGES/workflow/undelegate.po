@@ -1,0 +1,274 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:49+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../workflow/undelegate.rst:2
+msgid "Undelegating Tokens"
+msgstr "Отзыв делегированных токенов"
+
+#: ../../workflow/undelegate.rst:4
+msgid ""
+"This document details a workflow where tokens delegated to a validator on a "
+"Casper network can be undelegated."
+msgstr ""
+"В этом документе подробно описывается рабочий процесс, в котором токены, "
+"делегированные валидатору в сети Casper, могут быть отменены."
+
+#: ../../workflow/undelegate.rst:6
+msgid "This workflow assumes:"
+msgstr "Этот рабочий процесс предполагает:"
+
+#: ../../workflow/undelegate.rst:8
+msgid "You meet the `prerequisites <setup.html>`_"
+msgstr "Вы берете  `prerequisites <setup.html>`_"
+
+#: ../../workflow/undelegate.rst:9
+msgid "You are using the Casper command-line client"
+msgstr "Вы используете клиент командной строки Casper"
+
+#: ../../workflow/undelegate.rst:10
+msgid "You have an undelegation contract or WASM to execute on the network"
+msgstr "У вас есть контракт на отмену или WASM для выполнения в сети"
+
+#: ../../workflow/undelegate.rst:11
+msgid "You have a valid ``node-address``"
+msgstr "У вас есть действительный \"адрес ноды\""
+
+#: ../../workflow/undelegate.rst:12
+msgid ""
+"You have previously `deployed a smart contract "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ to a Casper Network"
+msgstr ""
+"Вы уже ранее 'развертывали смарт-контракт "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/deploying-"
+"contracts.html>`_ в сети Casper."
+
+#: ../../workflow/undelegate.rst:13
+msgid "You have delegated tokens to a validator"
+msgstr "Вы делегировали токены валидатору"
+
+#: ../../workflow/undelegate.rst:17
+msgid "Building The Undelegation WASM"
+msgstr "Сборка WASM отмены делегирования"
+
+#: ../../workflow/undelegate.rst:19
+msgid ""
+"Obtain the ``undelegate.wasm`` by cloning the `casper-node "
+"<https://github.com/casper-network/casper-node>`_ repository and building "
+"the contracts."
+msgstr ""
+"Получите ``undelegate.wasm`` с помощью клонирования каталога ноды `casper-"
+"node <https://github.com/casper-network/casper-node>`_ и сборки контрактов."
+
+#: ../../workflow/undelegate.rst:21
+msgid ""
+"To build contracts, set up Rust, and install all dependencies. Visit "
+"`Setting up Rust <https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-"
+"of-rust-contract-sdk.html>`_ in the Developer Guide for step-by-step "
+"instructions."
+msgstr ""
+"Для сборки контракта, настройте Rust и установите все зависимости. Посетите "
+"раздел о настройке в гайде разработчика `Setting up Rust "
+"<https://docs.casperlabs.io/en/latest/dapp-dev-guide/setup-of-rust-contract-"
+"sdk.html>`_  для получения пошаговых инструкций."
+
+#: ../../workflow/undelegate.rst:23
+msgid ""
+"Once you build the contracts, you can use the ``undelegate.wasm`` to create "
+"a deploy that will initiate the undelegation process. The WASM can be found "
+"in:"
+msgstr ""
+"После создания контрактов вы можете использовать ``undelegate.wasm`` для "
+"создания развертывания, которое инициирует процесс отмены. WASM можно найти "
+"в:"
+
+#: ../../workflow/undelegate.rst:31
+msgid "Sending the Undelegation Deploy"
+msgstr "Отправка отменяющего делегирование развертывания"
+
+#: ../../workflow/undelegate.rst:33
+msgid ""
+"Send a deploy containing the ``undelegate.wasm`` to the network to initiate "
+"the undelegation process."
+msgstr ""
+"Отправьте развертывание, содержащее ``undelegate.wasm`` в сеть для инициации"
+" процесса отмены делегирования."
+
+#: ../../workflow/undelegate.rst:35
+msgid ""
+"Below is an example of an undelegation request using the Casper command-line"
+" client:"
+msgstr ""
+"Ниже приведен пример запроса на отмену делегирования с помощью клиента "
+"командной строки Casper:"
+
+#: ../../workflow/undelegate.rst:49
+msgid ""
+"**Note** The delegator's public key and the secret key that signs the deploy"
+" must be part of the same key pair."
+msgstr ""
+"**Примечание** Открытый ключ делегата и секретный ключ, подписывающий "
+"развертывание, должны быть частью одной и той же пары ключей."
+
+#: ../../workflow/undelegate.rst:51
+msgid "**Request fields:**"
+msgstr "**Поля запросов:**"
+
+#: ../../workflow/undelegate.rst:53
+msgid ""
+"``id`` - <STRING OR INTEGER> Optional JSON-RPC identifier applied to the "
+"request and returned in the response. If not provided, a random integer will"
+" be assigned"
+msgstr ""
+"``id`` - <STRING OR INTEGER> Необязательный идентификатор JSON-RPC, "
+"применяемый к запросу и возвращаемый в ответе. Если не указано, будет "
+"присвоено случайное целое число"
+
+#: ../../workflow/undelegate.rst:54 ../../workflow/undelegate.rst:83
+msgid ""
+"``node-address`` - <HOST:PORT> Hostname or IP and port of node on which HTTP"
+" service is running [default:http://localhost:7777]"
+msgstr ""
+"``node-address`` - <HOST:PORT> Имя хоста или IP-адрес и порт узла, на "
+"котором запущена служба HTTP [по умолчанию:http://localhost:7777]"
+
+#: ../../workflow/undelegate.rst:55
+msgid "``secret-key`` - Path to secret key file"
+msgstr "``secret-key`` - путь к файлу с секретным ключом"
+
+#: ../../workflow/undelegate.rst:56
+msgid ""
+"``chain-name`` - Name of the chain, to avoid the deploy from being "
+"accidentally or maliciously included in a different chain"
+msgstr ""
+"``chain-name`` - Имя цепочки, чтобы избежать случайного или злонамеренного "
+"включения развертывания в другую цепочку"
+
+#: ../../workflow/undelegate.rst:58
+msgid "The *chain-name* for testnet is **casper-test**"
+msgstr "*Имя цепочки* для тестнет - **casper-test**"
+
+#: ../../workflow/undelegate.rst:59
+msgid "The *chain-name* for mainnet is **casper**"
+msgstr "*Имя цепочки* для майннет - *casper*"
+
+#: ../../workflow/undelegate.rst:61
+msgid "``session-path`` - The path to where the ``delegate.wasm`` is located"
+msgstr "``session-path`` - пут к расположению ``delegate.wasm`` "
+
+#: ../../workflow/undelegate.rst:62
+msgid "``session-arg`` - The arguments to the ``delegate`` execution"
+msgstr "``session-arg`` - аргументы для \"делегирования\" выполнения"
+
+#: ../../workflow/undelegate.rst:64
+msgid ""
+"The argument ``validator`` is the public key of the validator from whom the "
+"tokens will be undelegated"
+msgstr ""
+"Аргумент \"валидатор\" является открытым ключом валидатора, от которого "
+"будут отменены делегированные токены"
+
+#: ../../workflow/undelegate.rst:65
+msgid "The argument ``amount`` is the number of tokens to be undelegated"
+msgstr "Аргумент \"сумма\" - это количество токенов, которые должны быть отменены"
+
+#: ../../workflow/undelegate.rst:66
+msgid ""
+"The argument ``delegator`` is the public key of the account undelegating "
+"tokens from a validator"
+msgstr ""
+"Аргумент \"делегатор\" - это открытый ключ учетной записи, отменяющий токены"
+" от валидатора"
+
+#: ../../workflow/undelegate.rst:70
+msgid "Asserting the Undelegation"
+msgstr "Подтверждение отмены делегирования"
+
+#: ../../workflow/undelegate.rst:72
+msgid ""
+"You can use the Casper command-line client to generate an RPC request to "
+"query the auction state. The subsequent RPC response will confirm that the "
+"undelegation request was successfully executed."
+msgstr ""
+"Вы можете использовать клиент командной строки Casper для создания запроса "
+"RPC для запроса состояния аукциона. Последующий ответ RPC подтвердит, что "
+"запрос на отмену был успешно выполнен."
+
+#: ../../workflow/undelegate.rst:74
+msgid ""
+"Here is how you can check the status of the auction to confirm that your bid"
+" was withdrawn:"
+msgstr ""
+"Вот как вы можете проверить статус аукциона, чтобы подтвердить, что ваш бид "
+"был отозвана:"
+
+#: ../../workflow/undelegate.rst:81
+msgid "**Request fields**:"
+msgstr "**Поля запросов:**"
+
+#: ../../workflow/undelegate.rst:85
+msgid ""
+"If the public key and the amount are absent from the ``bids`` structure, we "
+"can safely assert that we have indeed undelegated from the validator."
+msgstr ""
+"Если открытый ключ и сумма отсутствуют в структуре \"бидов\", мы можем с "
+"уверенностью утверждать, что мы действительно отменили делегирование к "
+"валидатору."
+
+#: ../../workflow/undelegate.rst:87
+msgid ""
+"If your account is on the official Testnet or Mainnet, you can use the block"
+" explorer to look up your account balance and see that the tokens have been "
+"added to your balance:"
+msgstr ""
+"Если ваша учетная запись находится в официальной тестовой или основной сети,"
+" вы можете использовать обозреватель блоков, чтобы просмотреть баланс своего"
+" аккаунта и увидеть, что токены были добавлены на ваш баланс:"
+
+#: ../../workflow/undelegate.rst:89
+msgid "`Testnet explorer <https://testnet.cspr.live/>`_"
+msgstr "`Testnet explorer <https://testnet.cspr.live/>`_"
+
+#: ../../workflow/undelegate.rst:90
+msgid "`Mainnet explorer <https://cspr.live/>`_"
+msgstr "`Mainnet explorer <https://cspr.live/>`_"
+
+#: ../../workflow/undelegate.rst:92
+msgid ""
+"**Important Note**: After undelegating tokens from a validator, you must "
+"wait for the unbonding period to lapse before re-delegating tokens to either"
+" the same validator or a different validator."
+msgstr ""
+"**Важное примечание**: После отмены отказа от токенов у валидатора "
+"необходимо дождаться истечения периода отмены привязки, прежде чем повторно "
+"делегировать токены либо тому же валидатору, либо другому валидатору."
+
+#~ msgid ""
+#~ "Obtain the ``undelegate.wasm`` by cloning the `casper-node "
+#~ "<https://github.com/CasperLabs/casper-node>`_ repository and building the "
+#~ "contracts."
+#~ msgstr ""
+#~ "Получите ``undelegate.wasm`` с помощью клонирования каталога ноды `casper-"
+#~ "node https://github.com/CasperLabs/casper-node>`_ и сборки контрактов."

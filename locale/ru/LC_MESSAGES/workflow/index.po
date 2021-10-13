@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../workflow/index.rst:2
+msgid "How To's"
+msgstr "Советы"
+
+#: ../../workflow/index.rst:5
+msgid "User Guides"
+msgstr "Пользовательские гайды"
+
+#: ../../workflow/index.rst:7
+msgid ""
+"These user guides contain step-by-step instructions for interacting with the"
+" Casper blockchain."
+msgstr ""
+"Эти руководства пользователя содержат пошаговые инструкции по взаимодействию"
+" с блокчейном Casper."
+
+#: ../../workflow/index.rst:9
+msgid "`Staking guide <staking.html>`_: a guide to staking your Casper tokens"
+msgstr ""
+"`Staking guide <staking.html>`_: гайд по стейкингу ваших токенов Casper"
+
+#: ../../workflow/index.rst:10
+msgid ""
+"`Ledger setup <ledger-setup.html>`_: a guide to setting up your Ledger "
+"device"
+msgstr ""
+"`Ledger setup <ledger-setup.html>`_: гайд по настройке ваших устройств "
+"Ledger"
+
+#: ../../workflow/index.rst:13
+msgid "Developer Guides"
+msgstr "Гайды разработчиков"
+
+#: ../../workflow/index.rst:15
+msgid ""
+"These developer guides highlight key features and capabilities of the Casper"
+" system."
+msgstr ""
+"Эти гайды разработчиков освещают основные свойства и возможности системы "
+"Casper"
+
+#: ../../workflow/index.rst:17
+msgid "`Prerequisites <setup.html>`_: setup needed for various workflows"
+msgstr ""
+"`Prerequisites <setup.html>`_: настройки, необходимые для различных рабочих "
+"процессов"
+
+#: ../../workflow/index.rst:18
+msgid ""
+"`Querying the Casper Network <querying.html>`_: querying information on a "
+"Casper blockchain"
+msgstr ""
+"`Querying the Casper Network <querying.html>`_: запрос информации в блокчейн"
+" Casper"
+
+#: ../../workflow/index.rst:19
+msgid ""
+"`Direct Native Token Transfer <transfer-workflow.html>`_: performing a "
+"direct transfer of CSPR tokens from one account to another"
+msgstr ""
+"`Direct Native Token Transfer <transfer-workflow.html>`_: осуществление "
+"прямого трансфера токенов CSPR с одного аккаунта на другой"
+
+#: ../../workflow/index.rst:20
+msgid ""
+"`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_: "
+"setting up an account for two-party signature deploys"
+msgstr ""
+"`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_: "
+"настройка аккаунта для двухфакторных подписей развертываний"
+
+#: ../../workflow/index.rst:21
+msgid ""
+"`Delegating Tokens <delegate.html>`_: delegating tokens to a Validator on a "
+"Casper Network"
+msgstr ""
+"`Delegating Tokens <delegate.html>`_:  делегирование токенов валидатору в "
+"сети Casper"
+
+#: ../../workflow/index.rst:22
+msgid ""
+"`Un-delegating Tokens <undelegate.html>`_: undelegating tokens from a "
+"validator on a Casper Network"
+msgstr ""
+"`Un-delegating Tokens <undelegate.html>`_: отзыв делегированных токенов "
+"валидатору в сети Casper"
+
+#~ msgid ""
+#~ "This section contains guides that highlight key features and capabilities of"
+#~ " the Casper system."
+#~ msgstr ""
+#~ "Этот раздел содержит гайды, которые освещают основные свойства и возможности"
+#~ " системы Casper"
+
+#~ msgid "Title"
+#~ msgstr "Название"
+
+#~ msgid "Description"
+#~ msgstr "Описание"
+
+#~ msgid "`Prerequisites <setup.html>`_"
+#~ msgstr "`Prerequisites <setup.html>`_"
+
+#~ msgid "A guide to fulfilling prerequisites needed for various workflows"
+#~ msgstr "Гайд по выполнению пререквизитов для различных рабочих процессов"
+
+#~ msgid "`Querying the Casper Network <querying.html>`_"
+#~ msgstr "`Querying the Casper Network <querying.html>`_"
+
+#~ msgid "A guide to querying for information on a Casper blockchain"
+#~ msgstr "Гайд по запросу информации в блокчейн Casper"
+
+#~ msgid "`Direct Native Token Transfer <transfer-workflow.html>`_"
+#~ msgstr "`Direct Native Token Transfer <transfer-workflow.html>`_"
+
+#~ msgid ""
+#~ "A guide to performing a direct transfer of CSPR tokens from one account to "
+#~ "another"
+#~ msgstr ""
+#~ "Гайд по осуществлению прямого трансфера токенов CSPR из одного аккаунта в "
+#~ "другой"
+
+#~ msgid ""
+#~ "`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_"
+#~ msgstr ""
+#~ "`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_"
+
+#~ msgid "A guide to setting up an account for two-party signature deploys"
+#~ msgstr "Гайд по настройке аккаунта для двухфакторных подписей развертываний"
+
+#~ msgid "`Delegating Tokens <delegate.html>`_"
+#~ msgstr "`Delegating Tokens <delegate.html>`_"
+
+#~ msgid "A guide to delegating tokens to a Validator on a Casper Network"
+#~ msgstr "Гайд по делегированию токенов валидатору в сети Casper"
+
+#~ msgid "`Un-delegating Tokens <undelegate.html>`_"
+#~ msgstr "`Un-delegating Tokens <undelegate.html>`_"
+
+#~ msgid "A guide to un-delegating tokens from a Validator on a Casper Network"
+#~ msgstr "Гайд по отзыву токенов, делегированных валидатору в сети Casper"
+
+#~ msgid "**Table of Contents**"
+#~ msgstr "**Содержание**"

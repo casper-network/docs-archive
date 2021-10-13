@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:47+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -150,7 +150,7 @@ msgstr ""
 
 #: ../../glossary/A.rst:13
 msgid "Auction"
-msgstr "Đấu giá"
+msgstr "Auction (Đấu giá)"
 
 #: ../../glossary/A.rst:14
 msgid ""
@@ -170,7 +170,7 @@ msgstr ""
 
 #: ../../glossary/A.rst:17
 msgid "Auction contract"
-msgstr "Hợp đồng đấu giá"
+msgstr "Auction contract (Hợp đồng đấu giá)"
 
 #: ../../glossary/A.rst:18
 msgid ""
@@ -184,14 +184,23 @@ msgstr ""
 
 #: ../../glossary/A.rst:21
 msgid "Auction delay"
-msgstr "Trì hoãn đấu giá"
+msgstr "Auction delay (Trì hoãn đấu giá)"
 
 #: ../../glossary/A.rst:22
 msgid ""
-"The number of full eras that pass between the `booking block <B.html"
-"#booking-block>`_ and the era whose validator set it defines. The auction "
-"delay is configurable and can be several eras long."
+"The number of full eras that pass between the `booking block <B.html#id7>`_ "
+"and the era whose validator set it defines. The auction delay is "
+"configurable and can be several eras long."
 msgstr ""
-"Số kỷ nguyên đầy đủ vượt qua giữa `booking block <B.html#booking-block>`_ và"
-" kỷ nguyên mà người xác thực đặt nó xác định. Độ trễ của phiên đấu giá có "
-"thể cấu hình và có thể kéo dài vài khoảng thời gian."
+"Số của toàn bộ kỷ nguyên mà vượt qua giữa `khối đã đặt trước <B.html#id7>`_ "
+"và kỷ nguyên mà trình xác thực đặt nó xác định. Độ trễ của phiên đấu giá có "
+"thể cấu hình và có thể kéo dài vài kỷ nguyên."
+
+#~ msgid ""
+#~ "The number of full eras that pass between the `booking block <B.html"
+#~ "#booking-block>`_ and the era whose validator set it defines. The auction "
+#~ "delay is configurable and can be several eras long."
+#~ msgstr ""
+#~ "Số kỷ nguyên đầy đủ vượt qua `booking block <B.html#booking-block>`_ và kỷ "
+#~ "nguyên mà người xác thực xác định. Độ trễ của phiên đấu giá có thể cấu hình "
+#~ "và có thể kéo dài vài kỷ nguyên."
