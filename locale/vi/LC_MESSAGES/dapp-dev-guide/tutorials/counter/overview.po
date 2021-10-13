@@ -1,0 +1,51 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
+"PO-Revision-Date: 2021-09-08 20:46+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../dapp-dev-guide/tutorials/counter/overview.rst:2
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: ../../dapp-dev-guide/tutorials/counter/overview.rst:4
+msgid ""
+"This flowchart outlines the process we will go through in this tutorial. "
+"Since there are quite a few things taking place, you must keep in mind the "
+"overall flow as you proceed through the tutorial on your own."
+msgstr ""
+"Lưu đồ này phác thảo quy trình mà chúng ta sẽ thực hiện trong hướng dẫn này."
+" Vì có khá nhiều thứ đang diễn ra, bạn cần ghi nhớ quy trình tổng thể khi tự"
+" mình thực hiện theo hướng dẫn."
+
+#: ../../dapp-dev-guide/tutorials/counter/overview.rst:6
+msgid ""
+"To summarize the flowchart, this tutorial will walk you through deploying a "
+"contract on the blockchain and then calling two separate contract entry "
+"points to increment a counter variable. Along the way, you will learn how to"
+" query the network state to see when the network has successfully "
+"incremented the counter."
+msgstr ""
+"Để tóm tắt sơ đồ, hướng dẫn này sẽ hướng dẫn bạn cách triển khai một hợp "
+"đồng trên chuỗi khối và sau đó gọi hai điểm nhập hợp đồng riêng biệt để tăng"
+" một biến bộ đếm. Trong lúc thực hiện, bạn sẽ học cách truy vấn trạng thái "
+"mạng để xem khi nào mạng đã tăng bộ đếm thành công."

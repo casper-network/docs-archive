@@ -1,0 +1,481 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../glossary/B.rst:2
+msgid "B"
+msgstr "B"
+
+#: ../../glossary/B.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/B.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/B.rst:9
+msgid "Block"
+msgstr "Блок"
+
+#: ../../glossary/B.rst:10
+msgid "Used in two contexts:"
+msgstr "Используется в двух контекстах:"
+
+#: ../../glossary/B.rst:12
+msgid ""
+"A data structure containing a collection of transactions. Blocks form the "
+"primary structure of the blockchain."
+msgstr ""
+"Информационная структура, содержащая транзакции. Блоки из первичной "
+"структуры блокчейн. "
+
+#: ../../glossary/B.rst:13
+msgid ""
+"A message that is exchanged between nodes containing the data structure as "
+"explained in (1)."
+msgstr ""
+"Сообщения, которые передаются от ноды к ноде, содержащие в себе "
+"информационную структуру, как описано в (1). "
+
+#: ../../glossary/B.rst:15
+msgid ""
+"Each block has a globally unique ID, achieved by hashing the contents of the"
+" block."
+msgstr ""
+"У каждого блока есть глобальный уникальный ID, который формируется "
+"хешированием содержания блока. "
+
+#: ../../glossary/B.rst:17
+msgid ""
+"Each block points to its parent. An exception is the first block, which has "
+"no parent."
+msgstr ""
+"Каждый блок указывает на своего родителя. Исключение - первый блок, у "
+"которого нет родителя. "
+
+#: ../../glossary/B.rst:20
+msgid "Block creation"
+msgstr "Создание блока"
+
+#: ../../glossary/B.rst:21
+msgid ""
+"Block creation means computing the deployment results and collecting the "
+"results that belong together into a block. We follow a process called "
+"*execution after consensus*."
+msgstr ""
+"Создание блока означает вычисление результатов развертывания и сбор "
+"результатов, которые относятся к этому блоку. Мы следуем процессу, который "
+"называется *исполнение после консенсуса*."
+
+#: ../../glossary/B.rst:23
+msgid ""
+"The `block proposal <#id6>`_ happens first, and the proposed `proto block "
+"<P.html#proto-block>`_ contains a set of deploys that have not been executed"
+" yet."
+msgstr ""
+"Сначала происходит выдвижение блока  `block proposal <#id6>`_ , и "
+"предлагаемый прото блок `proto block <P.html#proto-block>`_ содержит набор "
+"развертываний, которые еще не были исполнены. "
+
+#: ../../glossary/B.rst:25
+msgid ""
+"Only after consensus on a *proto block* has been reached, the deploys are "
+"executed. The resulting new global state `root hash <R.html#root-hash>`_ is "
+"put into an actual block, together with the executed deploys."
+msgstr ""
+"И только когда достигнут консенсус по *прото блоку*, развертывания "
+"исполняются. В результате корневой хеш глобального состояния `root hash "
+"<R.html#root hash>`_ помещается в актуальный блок вместе с исполненными "
+"развертываниями."
+
+#: ../../glossary/B.rst:27
+msgid "Note that only validators can create valid blocks."
+msgstr ""
+"Обратите внимание, что только валидаторы могут создавать валидные блоки. "
+
+#: ../../glossary/B.rst:30
+msgid "Block finality"
+msgstr "Финализация блоков"
+
+#: ../../glossary/B.rst:31
+msgid ""
+"A block is \"finalized\" if the validators agree on adding it to the "
+"blockchain."
+msgstr ""
+"Блок \"финализируется\", когда валидаторы соглашаются по поводу добавления "
+"его в блокчейн. "
+
+#: ../../glossary/B.rst:33
+msgid ""
+"There are different levels of *finality* in the `Highway <H.html#highway>`_ "
+"protocol. A finalized block has a fault-tolerance *F*, expressed as a "
+"fraction of the total stake. For an observer to see a conflicting block as "
+"finalized, several validators whose total stake exceeds *F* would have to "
+"collude and show different information in a way that would ultimately be "
+"detected and punished (see `slashing <S.html#slashing>`_)."
+msgstr ""
+"В протоколе `Highway <H.html#highway>`_  есть три типа *финализации*. У "
+"финализированного блока есть отказоустойчивость *F*, выраженная в виде "
+"фракции от тотального стейка. Чтобы наблюдатель мог увидеть, что конфликтный"
+" блок финализирован, несколько валидаторов, чей тотальный стейк превышает "
+"*F*, должны договориться и показать разную информацию таким образом, чтобы "
+"она была обязательно обнаружена и наказана (смотрите `slashing "
+"<S.html#slashing>`_)."
+
+#: ../../glossary/B.rst:36
+msgid "Block gossiping"
+msgstr "Протоколизация блока"
+
+#: ../../glossary/B.rst:37
+msgid ""
+"Block gossiping occurs when a message containing a block is sent to one or "
+"more nodes on the network. In other words, block gossiping is sending a "
+"block validated by the current node but created by another node. The terms "
+"*block gossiping* and *`block-passing <#block-passing>`_. are "
+"interchangeable."
+msgstr ""
+"Протоколизация блока - gossip - возникает, когда сообщение, содержащее блок,"
+" отправляется на одну или несколько нод сети. Другими словами, "
+"протоколизация блока - это отправка блока, валидированного текущей нодой, но"
+" созданного другой нодой. Термины *протоколизация блока* и передача блоков "
+"<#block-passing> являются взаимозаменяемыми."
+
+#: ../../glossary/B.rst:40
+msgid "Block passing"
+msgstr "Передача блока"
+
+#: ../../glossary/B.rst:41
+msgid "See `block gossiping <#block-gossiping>`_."
+msgstr "Госсипинг блока `block gossiping <#block-gossiping>`_."
+
+#: ../../glossary/B.rst:44
+msgid "Block processing"
+msgstr "Процессинг блока"
+
+#: ../../glossary/B.rst:45
+msgid ""
+"Block processing consists of running the deploys in a block received from "
+"another node to determine updates to the global state. Note that this is an "
+"essential part of `validating blocks <#block-validation>`_."
+msgstr ""
+"Процессинг блока состоит из запуска развертываний в том блоке, который их "
+"получил от другой ноды, и это определяет обновления в глобальном состоянии. "
+"Обратите внимание, что это необходимая часть валидации  `validating blocks "
+"<#block-validation>`_."
+
+#: ../../glossary/B.rst:48
+msgid "Block proposal"
+msgstr "Выдвижение блока"
+
+#: ../../glossary/B.rst:49
+msgid ""
+"Sending a (newly) created block to the other nodes on the network for "
+"potential inclusion in the blockchain. Note that this term applies to NEW "
+"blocks only."
+msgstr ""
+"Отправка (только что) созданного блока в другие ноды сети для потенциального"
+" включения в блокчейн. Обратите внимание, что этот термин применяется только"
+" к НОВЫМ блокам. "
+
+#: ../../glossary/B.rst:52
+msgid "Block validation"
+msgstr "Валидация блока"
+
+#: ../../glossary/B.rst:53
+msgid ""
+"The process of determining the validity of a block obtained from another "
+"node on the network."
+msgstr "Процесс определения валидности блока, добытого другой нодой сети."
+
+#: ../../glossary/B.rst:56
+msgid "Blockchain"
+msgstr "Блокчейн"
+
+#: ../../glossary/B.rst:57
+msgid ""
+"Blockchain is a P2P network where the collection of nodes (`validators "
+"<V.html#validator>`_) concurrently updates a decentralized, shared database."
+" They do this collectively, building an ever-growing chain of `transactions "
+"<T.html#transaction>`_. For performance reasons, transactions are bundled in"
+" `blocks <#block>`_. According to a particular cooperation protocol "
+"(consensus protocol), the collection of `nodes <N.html#node>`_ connected via"
+" a P2P network cooperate to maintain this shared database as a single source"
+" of truth. The database's current state is called the `global state <G.html"
+"#global-state>`_ and has a sizeable map-like collection."
+msgstr ""
+"Блокчейн - это сеть P2P, где состав валидаторов  (`validators "
+"<V.html#validator>`_) одновременно обновляет децентрализованную общую базу "
+"данных. Они делают это коллективно, строят постоянно растущую сеть "
+"транзакций `transactions <T.html#transaction>`_. В целях повышения "
+"работоспособности, транзакции собираются в блоки `blocks <#block>`_. "
+"Согласно определенному протоколу кооперации (протокол консенсуса), состав "
+"нод `nodes <N.html#node>`_ , связанных через сеть P2P, работают совместно "
+"для развития этой общей базы данных, как единого правдивого источника. "
+"Текущее состояние базы данных называется глобальным состоянием `global state"
+" <G.html#global-state>`_ и имеет вид, похожий на обширную подборку-карту. "
+
+#: ../../glossary/B.rst:60
+msgid "Block store"
+msgstr "Хранение блока"
+
+#: ../../glossary/B.rst:61
+msgid ""
+"The layer of the node software responsible for storing blocks. This layer is"
+" persisted and can be used to allow a node to recover its state after a "
+"crash."
+msgstr ""
+"Уровень софта ноды, отвечающий за хранение блоков. Этот слой сохраняется и "
+"может быть использован в дальнейшем для восстановления состояния ноды после "
+"неисправностей. "
+
+#: ../../glossary/B.rst:64
+msgid "Bond"
+msgstr "Бонд"
+
+#: ../../glossary/B.rst:65
+msgid ""
+"The amount of money (in crypto-currency) that is allocated by a node in "
+"order to participate in `consensus <C.html#consensus>`_ (and to be a "
+"`validator <V.html#validator>`_)."
+msgstr ""
+"Количество денег (в криптовалюте), которое расположено в ноде для участия в "
+"консенсусе `consensus <C.html#consensus>`_ (чтобы быть валидатором "
+"`validator <V.html#validator>`_)."
+
+#: ../../glossary/B.rst:68
+msgid "Bonding"
+msgstr "Бондинг"
+
+#: ../../glossary/B.rst:69
+msgid ""
+"Depositing money in the `auction contract <A.html#auction-contract>`_ and "
+"try to become a `staker <S.html#staker>`_. The bonding request is a "
+"transaction that transfers tokens to the auction contract. In the next "
+"`booking block <#id7>`_, a new set of validators is determined, with weights"
+" according to their deposits. This new set becomes active in the era(s) "
+"using that booking block."
+msgstr ""
+"Размещение денег в контракте аукциона `auction contract <A.html#auction-"
+"contract>`_ и попытка стать стейкером `staker <S.html#staker>`_. Запрос на "
+"бондинг - это транзакция, которая переводит токены в контракт аукциона. В "
+"следующем блоке букинга `booking block <#id7>`_ определяется новый набор "
+"валидаторов с весом, соответствующим их депозитам. И этот новый набор "
+"становится активным в эре (эрах), использующей этот блок букинга. "
+
+#: ../../glossary/B.rst:73
+msgid "Booking block"
+msgstr "Блок букинга"
+
+#: ../../glossary/B.rst:74
+msgid ""
+"The booking block for an era is the block that determines the era's "
+"validator set. In it, the `auction contract <A.html#auction-contract>`_ "
+"selects the highest bidders to be the future era's validators. There is a "
+"configurable delay, the *auction_delay*, which is the number of eras between"
+" the booking block and the era to which it applies. The booking block is "
+"always a switch block, so the booking block for era *N + auction_delay + 1* "
+"is the last block of era *N*."
+msgstr ""
+"Блок букинга определенной эры - это блок, который определяет набор "
+"валидаторов этой эры. В нем контракт аукциона  `auction contract<A.html"
+"#auction-contract>`_ выбирает членов с самыми высокими бидами на роль "
+"валидаторов грядущей эры. Там предусмотрена конфигурируемая задержка "
+"аукциона, *auction_delay*, которая представляет собой количество эр между "
+"блоком букинга и той эрой, в которой он применяется. Блок букинга - это "
+"всегда блок переключения, так что блок букинга для эры *N + auction_delay + "
+"1* - это последний блок эры *N*."
+
+#~ msgid ""
+#~ "The `block proposal <B.html#block-proposal>`_ happens first, and the "
+#~ "proposed `proto block <P.html#proto-block>`_ contains a set of deploys that "
+#~ "have not been executed yet."
+#~ msgstr ""
+#~ "Сначала происходит выдвижение блока `block proposal <B.html#block-"
+#~ "proposal>`_ и предлагаемый прото блок `proto block <P.html#proto-block>`_ "
+#~ "содержит набор развертываний, которые еще не были исполнены. "
+
+#~ msgid ""
+#~ "Only after consensus on a *proto block* has been reached, the deploys are "
+#~ "executed. The resulting new global state `root hash <R.html#root hash>`_ is "
+#~ "put into an actual block, together with the executed deploys."
+#~ msgstr ""
+#~ "И только когда достигнут консенсус по *прото блоку*, развертывания "
+#~ "исполняются. В результате корневой хеш глобального состояния `root hash "
+#~ "<R.html#root hash>`_ помещается в актуальный блок вместе с исполненными "
+#~ "развертываниями."
+
+#~ msgid ""
+#~ "Block gossiping occurs when a message containing a block is sent to one or "
+#~ "more nodes on the network. In other words, block gossiping is sending a "
+#~ "block validated by the current node but created by another node. The terms "
+#~ "*block gossiping* and <#block-passing> are interchangeable."
+#~ msgstr ""
+#~ "Протоколизация блока - gossip - возникает, когда сообщение, содержащее блок,"
+#~ " отправляется на одну или несколько нод сети. Другими словами, "
+#~ "протоколизация блока - это отправка блока, валидированного текущей нодой, но"
+#~ " созданного другой нодой. Термины *протоколизация блока* и передача блоков "
+#~ "<#block-passing> являются взаимозаменяемыми."
+
+#~ msgid "See <#block-gossiping>."
+#~ msgstr "Смотрите <#block-gossiping>."
+
+#~ msgid ""
+#~ "Block processing consists of running the deploys in a block received from "
+#~ "another node to determine updates to the global state. Note that this is an "
+#~ "essential part of `block validating <B.html#block-validating>`_."
+#~ msgstr ""
+#~ "Процессинг блока состоит из запуска развертываний в том блоке, который их "
+#~ "получил от другой ноды, и это определяет обновления в глобальном состоянии. "
+#~ "Обратите внимание, что это необходимая часть валидации `block validating "
+#~ "<B.html#block-validating>`_."
+
+#~ msgid ""
+#~ "Depositing money in the `auction contract<A.html#auction-contract>`_ and try"
+#~ " to become a `staker <S.html#staker>`_. The bonding request is a transaction"
+#~ " that transfers tokens to the auction contract. In the next `booking block "
+#~ "<B.html#booking-block>`_, a new set of validators is determined, with "
+#~ "weights according to their deposits. This new set becomes active in the "
+#~ "era(s) using that booking block."
+#~ msgstr ""
+#~ "Размещение денег в контракте аукциона `auction contract<A.html#auction-"
+#~ "contract>`_  и попытка стать стейкером `staker <S.html#staker>`_. Запрос на "
+#~ "бондинг - это транзакция, которая переводит токены в контракт аукциона. В "
+#~ "следующем блоке букинга `booking block <B.html#booking-block>`_ определяется"
+#~ " новый набор валидаторов с весом, соответствующим их депозитам. И этот новый"
+#~ " набор становится активным в эре (эрах), использующей этот блок букинга. "
+
+#~ msgid ""
+#~ "The booking block for an era is the block that determines the era's "
+#~ "validator set. In it, the `auction contract<A.html#auction-contract>`_ "
+#~ "selects the highest bidders to be the future era's validators. There is a "
+#~ "configurable delay, the *auction_delay*, which is the number of eras between"
+#~ " the booking block and the era to which it applies. The booking block is "
+#~ "always a switch block, so the booking block for era *N + auction_delay + 1* "
+#~ "is the last block of era *N*."
+#~ msgstr ""
+#~ "Блок букинга определенной эры - это блок, который определяет набор "
+#~ "валидаторов этой эры. В нем контракт аукциона  `auction contract<A.html"
+#~ "#auction-contract>`_ выбирает членов с самыми высокими бидами на роль "
+#~ "валидаторов грядущей эры. Там предусмотрена конфигурируемая задержка "
+#~ "аукциона, *auction_delay*, которая представляет собой количество эр между "
+#~ "блоком букинга и той эрой, в которой он применяется. Блок букинга - это "
+#~ "всегда блок переключения, так что блок букинга для эры *N + auction_delay + "
+#~ "1* - это последний блок эры *N*."

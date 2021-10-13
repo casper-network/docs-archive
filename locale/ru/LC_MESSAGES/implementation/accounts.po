@@ -1,0 +1,347 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../implementation/accounts.rst:4
+msgid "Accounts"
+msgstr "Аккаунты"
+
+#: ../../implementation/accounts.rst:9
+msgid "Introduction"
+msgstr "Введение"
+
+#: ../../implementation/accounts.rst:11
+msgid ""
+"An *account* is a cryptographically secured gateway into the Casper system "
+"used by entities outside the blockchain (e.g., off-chain components of "
+"blockchain-based applications, individual users). All user activity on the "
+"Casper blockchain (i.e., “deploys”) must originate from an account. Each "
+"account has its own context where it can locally store information (e.g., "
+"references to useful contracts, metrics, aggregated data from other parts of"
+" the blockchain). Each account also has a “main purse” where it can hold "
+"Casper tokens (see :ref:`Tokens <tokens-purses-and-accounts>` for more "
+"information)."
+msgstr ""
+"*Аккаунт* - это криптографически защищенный вход в систему Casper, "
+"используемый сущностями вне блокчейн (например, внесетевые компоненты "
+"основанных на блокчейн приложений, индивидуальные пользователи). Вся "
+"пользовательская активность в блокчейн Casper (т.е. развертывания) должна "
+"исходить из аккаунта. У каждого аккаунта есть свой собственный контекст, где"
+" локально хранится информация (например ссылки на полезные контакты, "
+"метрики, аггрегированная информация из других частей блокчейн). Также у "
+"каждого аккаунта есть свой \"основной кошелек\", где можно хранить токены "
+"Casper (см.  :ref:`Tokens <tokens-purses-and-accounts>` )."
+
+#: ../../implementation/accounts.rst:20
+msgid ""
+"In this chapter we describe the permission model for accounts, their local "
+"storage capabilities, and briefly mention some runtime functions for "
+"interacting with accounts."
+msgstr ""
+"В этой главе мы опишем модель разрешений для аккаунтов, возможности их "
+"локального хранилища и кратко упомянем некоторые функции среды выполнения "
+"для взаимодействия с учетными записями."
+
+#: ../../implementation/accounts.rst:27
+msgid "The ``Account`` data structure"
+msgstr "Информационная структура \"аккаунта\""
+
+#: ../../implementation/accounts.rst:29
+msgid "An ``Account`` contains the following data:"
+msgstr "\"Аккаунт содержит следующую информацию:"
+
+#: ../../implementation/accounts.rst:31
+msgid ""
+"A collection of named keys (this plays the same role as the named keys in a "
+":ref:`stored contract <global-state-contracts>`)"
+msgstr ""
+"Коллекция именованных ключей (играет такую же роль, как именованные ключи в "
+":ref:`stored contract<global-state-contracts>`)"
+
+#: ../../implementation/accounts.rst:33
+msgid "A ``URef`` representing the account’s “main purse”"
+msgstr "``URef`` , представляющий \"главный кошелек\" аккаунта"
+
+#: ../../implementation/accounts.rst:34
+msgid "A collections of “associated keys” (see below for more information)"
+msgstr "Коллекции \"связанных ключей\" (см.ниже)"
+
+#: ../../implementation/accounts.rst:35
+msgid "“Action thresholds” (see below for more information)"
+msgstr "\"Пороги действий\" (больше информации см. ниже)"
+
+#: ../../implementation/accounts.rst:40
+msgid "Permissions model"
+msgstr "Модель разрешений"
+
+#: ../../implementation/accounts.rst:45
+msgid "Actions and thresholds"
+msgstr "Действия и пороги"
+
+#: ../../implementation/accounts.rst:47
+msgid ""
+"There are two types of actions an account can perform: a deployment, and key"
+" management. A deployment is simply executing some code on the blockchain, "
+"while key management involves changing the associated keys (which will be "
+"described in more detail later). Key management cannot be performed "
+"independently, as all effects to the blockchain must come via a deploy; "
+"therefore, a key management action implies that a deployment action is also "
+"taking place. The ``ActionThresholds`` contained in the ``Account`` data "
+"structure set a ``Weight`` which must be met in order to perform that "
+"action. How these weight thresholds can be met is described in the next "
+"section. Since a key management action requires a deploy action, the key "
+"management threshold should always be greater than or equal to the deploy "
+"threshold."
+msgstr ""
+"Аккаунт может выполнять два типа действий: развертывание и управление "
+"ключами. Развертывание - это просто выполнение некоторого кода в блокчейне, "
+"в то время как управление ключами включает изменение связанных ключей "
+"(которые будут описаны более подробно позже). Управление ключами не может "
+"выполняться независимо, так как все эффекты для блокчейна должны происходить"
+" через развертывание; поэтому действие по управлению ключами подразумевает, "
+"что также выполняется действие по развертыванию. Пороговые значения действий"
+" - ``ActionThresholds``, содержащиеся в структуре данных аккаунта -  "
+"``Account``, устанавливают вес - ``Weight`` , который необходимо выполнить "
+"для выполнения этого действия. Как можно достичь этих пороговых значений "
+"веса, описано в следующем разделе. Поскольку действие по управлению ключами "
+"требует действия по развертыванию, пороговое значение управления ключами "
+"всегда должно быть больше или равно пороговому значению развертывания."
+
+#: ../../implementation/accounts.rst:62
+msgid "Associated keys and weights"
+msgstr "Связанные ключи и вес"
+
+#: ../../implementation/accounts.rst:64
+msgid ""
+"As mentioned in the introduction, accounts are secured via cryptography. The"
+" *associated keys* of an account are the set of public keys which are "
+"allowed to provide signatures on deploys for that account. Each associated "
+"key has a weight; these weights are used to meet the action thresholds "
+"provided in the previous section. Each deploy must be signed by one or more "
+"keys associated with the account that deploy is for, and the sum of the "
+"weights of those keys must be greater than or equal to the deployment "
+"threshold weight for that account. We call the keys that have signed a "
+"deploy the “authorizing keys”. Similarly, if that deploy contains any key "
+"management actions (detailed below), then the sum of the weights of the "
+"authorizing keys must be greater than or equal to the key management action "
+"threshold of the account."
+msgstr ""
+"Как упоминалось во введении, учетные записи защищены с помощью криптографии."
+" *Связанные ключи* аккаунта - это набор открытых ключей, которым разрешено "
+"предоставлять подписи при развертывании для этого аккаунта. Каждый связанный"
+" ключ имеет вес; эти веса используются для выполнения пороговых значений "
+"действий, указанных в предыдущем разделе. Каждое развертывание должно быть "
+"подписано одним или несколькими ключами, связанными с аккаунтом, для "
+"которого предназначено развертывание, и сумма весов этих ключей должна быть "
+"больше или равна пороговому весу развертывания для этого аккаунта. Мы "
+"называем ключи, подписавшие развертывание, “ключами авторизации\". "
+"Аналогично, если это развертывание содержит какие-либо действия по "
+"управлению ключами (подробно описано ниже), то сумма весов ключей "
+"авторизации должна быть больше или равна пороговому значению действия по "
+"управлению ключами аккаунта."
+
+#: ../../implementation/accounts.rst:76
+msgid ""
+"Note: that any key may be used to help authorize any action; there are no "
+"“special keys”, all keys contribute their weight in exactly the same way."
+msgstr ""
+"Внимание: любой ключ может быть использован для авторизации любого действия;"
+" нет \"специальных ключей\", все ключи вносят свой вес равноценно. "
+
+#: ../../implementation/accounts.rst:81
+msgid "Key management actions"
+msgstr "Действия по управлению ключами"
+
+#: ../../implementation/accounts.rst:83
+msgid ""
+"A *key management action* is any change to any of the permissions parameters"
+" for the account. This includes the following:"
+msgstr ""
+"*Действие по управлению ключами* - это любое изменение параметров разрешения"
+" для аккаунта. Они включают в себя следующее:"
+
+#: ../../implementation/accounts.rst:86
+msgid "adding or removing an associated key;"
+msgstr "добавление или удаление связанного ключа;"
+
+#: ../../implementation/accounts.rst:87
+msgid "changing the weight of an associated key;"
+msgstr "изменение веса связанного ключа;"
+
+#: ../../implementation/accounts.rst:88
+msgid "changing the threshold of any action."
+msgstr "изменение порогового значения для любого действия. "
+
+#: ../../implementation/accounts.rst:90
+msgid ""
+"Key management actions have validity rules which prevent a user from locking"
+" themselves out of their account. For example, it is not allowed to set a "
+"threshold larger than the sum of the weights of all associated keys."
+msgstr ""
+"Действия по управлению ключами имеют правила валидности, которые не "
+"позволяют пользователю блокировать свою учетную запись. Например, не "
+"разрешается устанавливать пороговое значение, превышающее сумму весов всех "
+"связанных ключей."
+
+#: ../../implementation/accounts.rst:97
+msgid "Account security and recovery using key management"
+msgstr "Безопасность и восстановление аккаунта с помощью управления ключами"
+
+#: ../../implementation/accounts.rst:99
+msgid ""
+"The purpose of this permissions model is to enable keeping accounts safe "
+"from lost or stolen keys, while allowing usage of capabilities of modern "
+"mobile devices. For example, it may be convenient to sign deploys from a "
+"smart phone in day-to-day usage, and this can be done without worrying about"
+" the repercussions of losing the phone. The recommended setup would be to "
+"have a low-weight key on the phone, only just enough for the deploy "
+"threshold, but not enough for key management, then if the phone is lost or "
+"stolen, a key management action using other associated keys from another "
+"device (e.g., a home computer) can be used to remove the lost associated key"
+" and add a key which resides on a replacement phone."
+msgstr ""
+"Цель этой модели разрешений - обеспечить защиту аккаунтов от утери или кражи"
+" ключей, позволяя при этом использовать возможности современных мобильных "
+"устройств. Например, может быть удобно подписывать развертывания со "
+"смартфона при повседневном использовании, и это можно сделать, не беспокоясь"
+" о последствиях потери телефона. Рекомендуемая настройка заключается в том, "
+"чтобы на телефоне был ключ с небольшим весом, которого достаточно только для"
+" порога развертывания, но недостаточно для управления ключами, затем, если "
+"телефон потерян или украден, можно использовать действие управления ключами "
+"с использованием других связанных ключей с другого устройства (например, "
+"домашнего компьютера), чтобы удалить потерянный связанный ключ и добавить "
+"ключ, который находится на сменном телефоне."
+
+#: ../../implementation/accounts.rst:102
+msgid ""
+"Note: that it is extremely important to ensure there will always be access "
+"to a sufficient number of keys to perform the key management action, "
+"otherwise future recovery will be impossible (we currently do not support "
+"“inactive recovery”)."
+msgstr ""
+"Примечание: крайне важно обеспечить, чтобы всегда был доступ к достаточному "
+"количеству ключей для выполнения действия по управлению ключами, в противном"
+" случае восстановление в будущем будет невозможно (в настоящее время мы не "
+"поддерживаем “неактивное восстановление”)."
+
+#: ../../implementation/accounts.rst:110
+msgid "Creating an account"
+msgstr "Создание аккаунта"
+
+#: ../../implementation/accounts.rst:112
+msgid ""
+"Account creation happens automatically when there is a :ref:`token transfer "
+"<tokens-purses-and-accounts>` to a yet unused :ref:`identity key <global-"
+"state-account-key>`. When an account is first created, the balance of its "
+"main purse is equal to the number of tokens transferred, its action "
+"thresholds are equal to 1, and there is one associated key (equal to the "
+"public key used to derive the identity key) with weight 1."
+msgstr ""
+"Создание аккаунта происходит автоматически при трансфере токена :ref:`token "
+"transfer<tokens-purses-and-accounts>` к еще не использованному ключу "
+"идентичности :ref:`identity key <global-state-account-key>`. Когда аккаунт "
+"только создан, баланс его главного кошелька равен количеству трансферных "
+"токенов, пороговые значения действий равны 1, и в нем есть один связанный "
+"ключ (тождественный публичному ключу, использованному для вывода ключа "
+"идентичности) с весом 1. "
+
+#: ../../implementation/accounts.rst:122
+msgid "The account context"
+msgstr "Контекст аккаунта"
+
+#: ../../implementation/accounts.rst:124
+msgid ""
+"A deploy is a user request to perform some execution on the blockchain (see "
+":ref:`Execution Semantics <execution-semantics-deploys>` for more "
+"information). It contains “payment code” and “session code” which are "
+"contracts that contain the logic to be executed. These contracts are "
+"executed in the context of the account of the deploy. This means these "
+"contracts use the named keys of the account and use the account’s local "
+"storage (i.e., the “root” for the :ref:`local keys <global-state-local-key>`"
+" come from the account identity key)."
+msgstr ""
+"Развертывание - это запрос пользователя на выполнение некого действия в "
+"блокчейн (см. семантику выполнения  :ref:`Execution Semantics<execution-"
+"semantics-deploys>` ). Оно включает в себя код платежа “payment code” и код "
+"сессии “session code”, они же являются контрактами, которые содержат в себе "
+"логику для исполнения. Эти контракты выполняются в контексте аккаунта, в "
+"котором идет развертывание. Что означает, что эти контракты используют "
+"именованные ключи аккаунта и локальное хранилище аккаунта (т.е. корень "
+"“root” для локальных ключей :ref:`local keys<global-state-local-key>` "
+"исходит из ключа идентичности аккаунта)."
+
+#: ../../implementation/accounts.rst:132
+msgid ""
+"Note: that other contracts called from the session code by ``call_contract``"
+" are executed in their own context, not the account context. This means, an "
+"account (with logic contained in session code) can be used to locally store "
+"information relevant to the user owning the account."
+msgstr ""
+"Обратите внимание: другие контракты, вызванные кодом сессии командой "
+"``call_contract``, исполняются в своем собственном контексте, а не в "
+"контексте аккаунта. Что означает, что аккаунт (с логикой, содержащейся в "
+"коде сессии) может быть использован для локального хранения информации, "
+"относящейся к пользователю - владельцу аккаунта. "
+
+#: ../../implementation/accounts.rst:139
+msgid "Functions for interacting with an account"
+msgstr "Функции для взаимодействия с аккаунтом"
+
+#: ../../implementation/accounts.rst:141
+msgid ""
+"The `Casper Rust library <https://docs.rs/casper-"
+"contract/1.0.1/casper_contract/ext_ffi/index.html>`__ contains several "
+"functions for working with the various account features:"
+msgstr ""
+"Библиотека `Casper Rust library <https://docs.rs/casper-"
+"contract/1.0.1/casper_contract/ext_ffi/index.html>`__  содержит несколько "
+"функций для работы с разными свойствами аккаунта:"
+
+#: ../../implementation/accounts.rst:143
+msgid "``casper_add_associated_key``"
+msgstr "``casper_add_associated_key`` добавить связанный ключ"
+
+#: ../../implementation/accounts.rst:144
+msgid "``casper_remove_associated_key``"
+msgstr "``casper_remove_associated_key`` удалить связанный ключ"
+
+#: ../../implementation/accounts.rst:145
+msgid "``casper_update_associated_key``"
+msgstr "``casper_update_associated_key`` обновить связанный ключ"
+
+#: ../../implementation/accounts.rst:146
+msgid "``casper_set_action_threshold``"
+msgstr "``casper_set_action_threshold`` настроить пороговое значение действия"
+
+#: ../../implementation/accounts.rst:147
+msgid "``casper_get_balance``"
+msgstr "``casper_get_balance`` получить баланс"
+
+#: ../../implementation/accounts.rst:148
+msgid "``casper_load_named_keys``"
+msgstr "``casper_load_named_keys`` загрузить именованные ключи"
+
+#: ../../implementation/accounts.rst:149
+msgid "``casper_get_named_arg``"
+msgstr "``casper_get_named_arg`` получить именованные параметры"

@@ -8,6 +8,7 @@ These user guides contain step-by-step instructions for interacting with the Cas
 
 * `Staking guide <staking.html>`_: a guide to staking your Casper tokens
 * `Ledger setup <ledger-setup.html>`_: a guide to setting up your Ledger device
+* `Signer guide <signer-guide.html>`_: a guide to help you navigate the Signer app
 
 Developer Guides
 ^^^^^^^^^^^^^^^^
@@ -27,6 +28,7 @@ These developer guides highlight key features and capabilities of the Casper sys
 
    staking
    ledger-setup
+   signer-guide
    setup
    querying
    transfer-workflow

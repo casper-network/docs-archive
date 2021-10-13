@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../staking/index.rst:6
+msgid "Staking"
+msgstr "Стейкинг"
+
+#: ../../staking/index.rst:8
+msgid ""
+"A feature of Proof-of-Stake protocols is that token holders can actively "
+"participate in the protocol through a mechanism known as **staking**."
+msgstr ""
+"Свойство протоколов Proof-of-Stake, заключающееся в том, что держатели "
+"токенов могут активно участвовать в протоколе через механизм, известный как "
+"**стейкинг**."
+
+#: ../../staking/index.rst:11
+msgid ""
+"Persons that hold their private keys can choose to stake their tokens with "
+"any validator in the Casper network. Alternatively, it is possible to stake "
+"tokens via an exchange or custody provider as well."
+msgstr ""
+"Лица, у которых есть свои закрытые ключи, могут поставить свои токены на "
+"стейк с любым валидатором в сети Casper. В качестве альтернативы, можно "
+"также размещать токены через биржу или поставщика услуг хранения."
+
+#: ../../staking/index.rst:14
+msgid ""
+"This guide will outline the steps required to stake the CSPR token on the "
+"Casper network."
+msgstr ""
+"Этот гайд освещает шаги, необходимые для стейкинга токенов CSPR в сети "
+"Casper."
+
+#: ../../staking/index.rst:18
+msgid "What you need to know before staking"
+msgstr "Что нужно знать перед стейкингом"
+
+#: ../../staking/index.rst:20
+msgid ""
+"Please read the following sections carefully before staking tokens on the "
+"Casper network."
+msgstr ""
+"Пожалуйста, внимательно изучите следующие разделы перед стейкингом токенов в"
+" сети Casper."
+
+#: ../../staking/index.rst:23
+msgid "Slashing"
+msgstr "Слэшинг"
+
+#: ../../staking/index.rst:25
+msgid ""
+"Presently Casper does not slash for equivocations.  If a node equivocates, "
+"its' messages are ignored by the rest of the validators for the balance of "
+"the era and made inactive. A node running the software provided by the "
+"Casper Association will terminate once it detects that it has equivocated. "
+"Future work includes locking an equivocating validator's stake for an "
+"extended duration of time, effectively penalizing the validator."
+msgstr ""
+"В настоящее время Casper не сокращает за двусмысленности. Если нода "
+"отклоняется, его сообщения игнорируются остальными валидаторами для баланса "
+"эры и становятся неактивными. Нода, на которой запущено программное "
+"обеспечение, предоставленное Casper Association, завершит работу, как только"
+" обнаружит, что она допустила двусмысленность. Будущая работа включает "
+"блокировку сомнительного стейка валидатора на длительный период времени, "
+"эффективно наказывая валидатора."
+
+#: ../../staking/index.rst:27
+msgid ""
+"Casper does not treat validator stake differently than delegator stake for "
+"security reasons."
+msgstr ""
+"Casper относится к стейкам валидаторов и делегатов одинаково по причинам "
+"безопасности."
+
+#: ../../staking/index.rst:31
+msgid "Delegation Rate"
+msgstr "Курс делегирования"
+
+#: ../../staking/index.rst:33
+msgid ""
+"Node operators (Validators) define a commission that they take in exchange "
+"for providing staking services.  This commission is represented as a "
+"percentage of the rewards that the node operator retains for their services."
+msgstr ""
+"Операторы ноды (валидаторы) определяют комиссию, которую они берут за "
+"обеспечение сервисов стейкинга. Эта комиссия выражена в проценте от "
+"вознаграждений, которые операторы берут за свои сервисы. "
+
+#: ../../staking/index.rst:36
+msgid "Rewards"
+msgstr "Вознаграждения"
+
+#: ../../staking/index.rst:38
+msgid ""
+"Validators receive rewards for participating in consensus by voting on "
+"blocks sending finality signatures (finalizing blocks). There is no precise "
+"*per-block* reward. Rewards are split proportionally among stakes within an "
+"era. If a validator is offline or cannot vote on many blocks, the rewards "
+"earned are also reduced. Delegators can only receive a proportional amount "
+"of the validator's rewards minus the validator’s commission (Delegation "
+"Rate)."
+msgstr ""
+"Валидаторы получают вознаграждения за участие в консенсусе, голосуя за блоки"
+" отправкой завершающих подписей (финализация блоков). Нет определенного "
+"вознаграждения *за блок*. Вознаграждения распределены пропорционально между "
+"стейками внутри эры. Если валидатор в оффлайн или не может голосовать во "
+"многих блоках, заработанные вознаграждения снимаются. Делегаты могут "
+"получить только пропорциональный объем от вознаграждения валидатора с учетом"
+" комиссии валидатора (курс делегирования). "
+
+#: ../../staking/index.rst:40
+msgid "Rewards are distributed at the end of each era."
+msgstr "Вознаграждения выдаются в конце каждой эры"
+
+#: ../../staking/index.rst:43
+msgid "Selecting a node for Staking"
+msgstr "Выбор ноды для стейкинга"
+
+#: ../../staking/index.rst:45
+msgid ""
+"As a prospective delegator, it is important to select a validating node that"
+" you can trust.  Please do your due diligence before you stake your tokens "
+"with a validator."
+msgstr ""
+"В качестве потенциального делегата важно выбрать проверяющую ноду, которой "
+"вы можете доверять. Пожалуйста, проявите должную осмотрительность, прежде "
+"чем ставить свои токены на стейк с помощью валидатора."
+
+#: ../../staking/index.rst:49
+msgid "Check in on your Stake"
+msgstr "Регистрация стейка"
+
+#: ../../staking/index.rst:51
+msgid ""
+"It’s recommended that you check in on how your stake is performing from time"
+" to time.  If the validator you staked with decides to unbond, your stake "
+"will also be unbonded. Make sure that the validator you have selected is "
+"performing as per your expectations."
+msgstr ""
+"Рекомендуется время от времени проверять, как работает ваша ставка. Если "
+"валидатор, с которым вы делали ставки, решит сделать анбондинг, ваша ставка "
+"также будет отменена. Убедитесь, что выбранный вами валидатор работает в "
+"соответствии с вашими ожиданиями."
+
+#: ../../staking/index.rst:53
+msgid ""
+"Validators have to win a staking auction by competing with prospective and "
+"current validators for a  slot.  This process is permissionless, meaning "
+"validators can join and leave the auction without restrictions, except the "
+"unbonding wait period."
+msgstr ""
+"Валидаторы должны выиграть аукцион ставок, соревнуясь с потенциальными и "
+"текущими валидаторами за слот. Этот процесс инклюзивен, что означает, что "
+"валидаторы могут присоединиться к аукциону и покинуть его без ограничений, "
+"за исключением периода анбондингового ожидания без привязки."
+
+#: ../../staking/index.rst:57
+msgid "Unbonding Period"
+msgstr "Период анбондинга"
+
+#: ../../staking/index.rst:59
+msgid ""
+"For security purposes, whenever a token is un-staked or un-delegated, the "
+"protocol will continue to keep the token locked for 14 hours."
+msgstr ""
+"В целях безопасности, когда бы ни был токен поставлен на стейк или "
+"делегирован, протокол будет продолжать удерживать токен в течение 14 часов. "
+
+#: ../../staking/index.rst:63
+msgid "Next Steps"
+msgstr "Дальнейшие шаги"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -27,78 +27,145 @@ msgstr ""
 msgid "How To's"
 msgstr "Hướng dẫn"
 
-#: ../../workflow/index.rst:4
-msgid ""
-"This section contains guides that highlight key features and capabilities of"
-" the Casper system."
-msgstr ""
-"Phần này có các hướng dẫn nêu bật các tính năng và khả năng chính của hệ "
-"thống Casper."
+#: ../../workflow/index.rst:5
+msgid "User Guides"
+msgstr "Hướng dẫn sử dụng"
 
 #: ../../workflow/index.rst:7
-msgid "Title"
-msgstr "Tiêu đề"
-
-#: ../../workflow/index.rst:7
-msgid "Description"
-msgstr "Mô tả"
+msgid ""
+"These user guides contain step-by-step instructions for interacting with the"
+" Casper blockchain."
+msgstr ""
+"Các hướng dẫn sử dụng này chứa các hướng dẫn từng bước để tương tác với "
+"chuỗi khối Casper."
 
 #: ../../workflow/index.rst:9
-msgid "`Prerequisites <setup.html>`_"
-msgstr "`Điều kiện cần <setup.html>`_"
-
-#: ../../workflow/index.rst:9
-msgid "A guide to fulfilling prerequisites needed for various workflows"
+msgid "`Staking guide <staking.html>`_: a guide to staking your Casper tokens"
 msgstr ""
-"Hướng dẫn để hoàn thành các điều kiện cần thiết cho các luồng công việc khác"
-" nhau"
+"`Hướng dẫn đặt cọc <staking.html>`_: hướng dẫn đặt cọc token Casper của bạn"
 
 #: ../../workflow/index.rst:10
-msgid "`Querying the Casper Network <querying.html>`_"
-msgstr "`Truy vấn mạng Casper <querying.html>`_"
-
-#: ../../workflow/index.rst:10
-msgid "A guide to querying for information on a Casper blockchain"
-msgstr "Hướng dẫn truy vấn thông tin trên chuỗi khối Casper"
-
-#: ../../workflow/index.rst:11
-msgid "`Direct Native Token Transfer <transfer-workflow.html>`_"
-msgstr "`Chuyển token gốc trực tiếp <transfer-workflow.html>`_"
-
-#: ../../workflow/index.rst:11
 msgid ""
-"A guide to performing a direct transfer of CSPR tokens from one account to "
-"another"
+"`Ledger setup <ledger-setup.html>`_: a guide to setting up your Ledger "
+"device"
 msgstr ""
-"Hướng dẫn thực hiện chuyển trực tiếp token CSPR từ tài khoản này sang tài "
-"khoản khác"
-
-#: ../../workflow/index.rst:12
-msgid ""
-"`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_"
-msgstr "`Đa chữ ký song phương để Triển khai <two-party-multi-sig.html>`_"
-
-#: ../../workflow/index.rst:12
-msgid "A guide to setting up an account for two-party signature deploys"
-msgstr "Hướng dẫn thiết lập tài khoản triển khai chữ ký song phương"
+"`Cài đặt Ledger <ledger-setup.html>`_: hướng dẫn thiết lập thiết bị Ledger "
+"của bạn"
 
 #: ../../workflow/index.rst:13
-msgid "`Delegating Tokens <delegate.html>`_"
-msgstr "`Uỷ quyền token <delegate.html>`_"
+msgid "Developer Guides"
+msgstr "Hướng dẫn dành cho nhà phát triển"
 
-#: ../../workflow/index.rst:13
-msgid "A guide to delegating tokens to a Validator on a Casper Network"
-msgstr "Hướng dẫn ủy quyền token cho Trình xác thực trên Mạng Casper"
-
-#: ../../workflow/index.rst:14
-msgid "`Un-delegating Tokens <undelegate.html>`_"
-msgstr "`Huỷ uỷ quyền Tokens <undelegate.html>`_"
-
-#: ../../workflow/index.rst:14
-msgid "A guide to un-delegating tokens from a Validator on a Casper Network"
+#: ../../workflow/index.rst:15
+msgid ""
+"These developer guides highlight key features and capabilities of the Casper"
+" system."
 msgstr ""
-"Hướng dẫn hủy ủy quyền mã thông báo từ Trình xác thực trên Mạng Casper"
+"Các hướng dẫn dành cho nhà phát triển này nêu bật các tính năng và khả năng "
+"chính của hệ thống Casper."
 
 #: ../../workflow/index.rst:17
-msgid "**Table of Contents**"
-msgstr "**Mục lục**"
+msgid "`Prerequisites <setup.html>`_: setup needed for various workflows"
+msgstr ""
+"`Điều kiện cần <setup.html>`_: thiết lập cần thiết cho các quy trình công "
+"việc khác nhau"
+
+#: ../../workflow/index.rst:18
+msgid ""
+"`Querying the Casper Network <querying.html>`_: querying information on a "
+"Casper blockchain"
+msgstr ""
+"`Truy vấn Mạng Casper <querying.html>`_: truy vấn thông tin trên chuỗi khối "
+"Casper"
+
+#: ../../workflow/index.rst:19
+msgid ""
+"`Direct Native Token Transfer <transfer-workflow.html>`_: performing a "
+"direct transfer of CSPR tokens from one account to another"
+msgstr ""
+"`Chuyển token gốc trực tiếp <transfer-workflow.html>`_: thực hiện chuyển "
+"trực tiếp token CSPR từ tài khoản này sang tài khoản khác"
+
+#: ../../workflow/index.rst:20
+msgid ""
+"`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_: "
+"setting up an account for two-party signature deploys"
+msgstr ""
+"`Hai bên đa chữ ký để triển khai <two-party-multi-sig.html>`_: thiết lập tài"
+" khoản để triển khai chữ ký hai bên"
+
+#: ../../workflow/index.rst:21
+msgid ""
+"`Delegating Tokens <delegate.html>`_: delegating tokens to a Validator on a "
+"Casper Network"
+msgstr ""
+"`Ủy quyền token <delegate.html>`_: ủy quyền token cho Trình xác thực trên "
+"Mạng Casper"
+
+#: ../../workflow/index.rst:22
+msgid ""
+"`Un-delegating Tokens <undelegate.html>`_: undelegating tokens from a "
+"validator on a Casper Network"
+msgstr ""
+"`Huỷ uỷ quyền Token <undelegate.html>`_: hủy ủy quyền token từ trình xác "
+"thực trên Mạng Casper"
+
+#~ msgid ""
+#~ "This section contains guides that highlight key features and capabilities of"
+#~ " the Casper system."
+#~ msgstr ""
+#~ "Phần này có các hướng dẫn nêu bật các tính năng và khả năng chính của hệ "
+#~ "thống Casper."
+
+#~ msgid "Title"
+#~ msgstr "Tiêu đề"
+
+#~ msgid "Description"
+#~ msgstr "Mô tả"
+
+#~ msgid "`Prerequisites <setup.html>`_"
+#~ msgstr "`Điều kiện cần <setup.html>`_"
+
+#~ msgid "A guide to fulfilling prerequisites needed for various workflows"
+#~ msgstr ""
+#~ "Hướng dẫn để hoàn thành các điều kiện cần thiết cho các luồng công việc khác"
+#~ " nhau"
+
+#~ msgid "`Querying the Casper Network <querying.html>`_"
+#~ msgstr "`Truy vấn mạng Casper <querying.html>`_"
+
+#~ msgid "A guide to querying for information on a Casper blockchain"
+#~ msgstr "Hướng dẫn truy vấn thông tin trên chuỗi khối Casper"
+
+#~ msgid "`Direct Native Token Transfer <transfer-workflow.html>`_"
+#~ msgstr "`Chuyển token gốc trực tiếp <transfer-workflow.html>`_"
+
+#~ msgid ""
+#~ "A guide to performing a direct transfer of CSPR tokens from one account to "
+#~ "another"
+#~ msgstr ""
+#~ "Hướng dẫn thực hiện chuyển trực tiếp token CSPR từ tài khoản này sang tài "
+#~ "khoản khác"
+
+#~ msgid ""
+#~ "`Two-Party Multi-Signatures for Deployment <two-party-multi-sig.html>`_"
+#~ msgstr "`Đa chữ ký song phương để Triển khai <two-party-multi-sig.html>`_"
+
+#~ msgid "A guide to setting up an account for two-party signature deploys"
+#~ msgstr "Hướng dẫn thiết lập tài khoản triển khai chữ ký song phương"
+
+#~ msgid "`Delegating Tokens <delegate.html>`_"
+#~ msgstr "`Uỷ quyền token <delegate.html>`_"
+
+#~ msgid "A guide to delegating tokens to a Validator on a Casper Network"
+#~ msgstr "Hướng dẫn ủy quyền token cho Trình xác thực trên Mạng Casper"
+
+#~ msgid "`Un-delegating Tokens <undelegate.html>`_"
+#~ msgstr "`Huỷ uỷ quyền Tokens <undelegate.html>`_"
+
+#~ msgid "A guide to un-delegating tokens from a Validator on a Casper Network"
+#~ msgstr ""
+#~ "Hướng dẫn hủy ủy quyền mã thông báo từ Trình xác thực trên Mạng Casper"
+
+#~ msgid "**Table of Contents**"
+#~ msgstr "**Mục lục**"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,26 +155,38 @@ msgstr ""
 
 #: ../../glossary/C.rst:18
 msgid ""
-"Correct by construction. CBC Casper is a family of consensus algorithms "
-"developed by Vlad Zamfir."
+"Correct-by-construction (CBC) is a family of consensus protocols meeting "
+"the following properties:"
+msgstr ""
+
+#: ../../glossary/C.rst:20
+msgid ""
+"All the nodes share the same proof of asynchronous liveness, which means "
+"that the protocol will continue to produce blocks at some interval."
 msgstr ""
 
 #: ../../glossary/C.rst:21
+msgid ""
+"The consensus has mathematically provable safety, which means that once a"
+" block is committed, it cannot be reverted."
+msgstr ""
+
+#: ../../glossary/C.rst:24
 msgid "Chainspec"
 msgstr ""
 
-#: ../../glossary/C.rst:22
+#: ../../glossary/C.rst:25
 msgid ""
 "A collection of configuration settings describing the state of the system"
 " at genesis and upgrades to basic system functionality (including system "
 "contracts and gas costs) occurring after `genesis <G.html#genesis>`_."
 msgstr ""
 
-#: ../../glossary/C.rst:25
+#: ../../glossary/C.rst:28
 msgid "Consensus"
 msgstr ""
 
-#: ../../glossary/C.rst:26
+#: ../../glossary/C.rst:29
 msgid ""
 "An algorithm used to mandate agreement on the `blockchain "
 "<B.html#blockchain>`_ between all nodes. The blockchain, although being "
@@ -182,7 +194,7 @@ msgid ""
 "eventually agree on whether a given block is part of the chain or not."
 msgstr ""
 
-#: ../../glossary/C.rst:28
+#: ../../glossary/C.rst:31
 msgid ""
 "Casper uses the `Highway "
 "<https://docs.casperlabs.io/en/latest/theory/highway.html>`_ algorithm in"
@@ -192,37 +204,61 @@ msgid ""
 "with the consensus layer."
 msgstr ""
 
-#: ../../glossary/C.rst:31
+#: ../../glossary/C.rst:34
 msgid "Contract runtime"
 msgstr ""
 
-#: ../../glossary/C.rst:32
+#: ../../glossary/C.rst:35
 msgid ""
 "Enables developers to use a seamless workflow for authoring and testing "
-"their `smart contracts <S.html#smart-contracts>`_. This environment can "
+"their `smart contracts <S.html#smart-contract>`_. This environment can "
 "also be used for continuous integration, enabling Rust smart contracts to"
 " be managed using development best practices."
 msgstr ""
 
-#: ../../glossary/C.rst:35
+#: ../../glossary/C.rst:38
+msgid "Correct by construction"
+msgstr ""
+
+#: ../../glossary/C.rst:39
+msgid "see `CBC <C.html#cbc>`_."
+msgstr ""
+
+#: ../../glossary/C.rst:42
 msgid "Crate"
 msgstr ""
 
-#: ../../glossary/C.rst:36
+#: ../../glossary/C.rst:43
 msgid ""
 "A compilation unit in Rust. A crate can be compiled into a binary or into"
 " a library. By default, *rustc*, the compiler for the Rust programming "
 "language, will produce a binary from a crate."
 msgstr ""
 
-#: ../../glossary/C.rst:39
+#: ../../glossary/C.rst:46
 msgid "CSPR"
 msgstr ""
 
-#: ../../glossary/C.rst:40
+#: ../../glossary/C.rst:47
 msgid ""
 "CSPR is the Casper token pre-defined on the Casper network and used to "
 "pay for transaction execution and for `staking <S.html#staking>`_ "
 "(securing the network). The total number of CSPR tokens is 10 billion."
 msgstr ""
+
+#~ msgid ""
+#~ "Enables developers to use a seamless "
+#~ "workflow for authoring and testing their"
+#~ " `smart contracts <S.html#smart-contracts>`_. "
+#~ "This environment can also be used "
+#~ "for continuous integration, enabling Rust "
+#~ "smart contracts to be managed using "
+#~ "development best practices."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Correct by construction. CBC Casper is"
+#~ " a family of consensus algorithms "
+#~ "developed by Vlad Zamfir."
+#~ msgstr ""
 

@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../workflow/erc-20/transfers.rst:2
+msgid "Transfers"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:5
+msgid "Transfer 50 ERC-20 Tokens from A to B"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:13
+msgid "Invoking `balance_of`"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:15
+msgid ""
+"We then call our utility contract to invoke the `balance_of` entry point "
+"and write the balance of User A to URef we sourced initially."
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:21
+msgid "The follow up read of the corresponding URef:"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:31
+msgid "Transfer of 20 ERC-20 Tokens from B to C"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:38
+msgid ""
+"We must then call the utility contract once for every balance we wish to "
+"check."
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:41
+#: ../../workflow/erc-20/transfers.rst:111
+msgid "Invoking `balance_of` for user A"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:54
+#: ../../workflow/erc-20/transfers.rst:124
+msgid "Invoking `balance_of` for user B"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:67
+#: ../../workflow/erc-20/transfers.rst:137
+msgid "Invoking `balance_of` for user C"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:81
+msgid "Approve B to Spend 15 Tokens of A"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:89
+msgid "Invoking `allowance` entry point to check for the allowance"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:91
+msgid ""
+"As we did for `balance_of` to read out the balance values, we must "
+"perform a similar invoking of the `allowance` entry point of the main "
+"ERC20 contract."
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:104
+msgid "Transfer 10 ERC-20 Tokens from B’s Allowance to D"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:150
+msgid "Invoking `balance_of` for user D"
+msgstr ""
+
+#: ../../workflow/erc-20/transfers.rst:159
+msgid "Invoking `allowance` to check that it is 5"
+msgstr ""
+
