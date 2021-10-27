@@ -9,7 +9,7 @@ Introduction
 ------------
 
 Checksummed hex encoding is a hex encoding format that includes an embedded checksum.
-The checksummed hex encoding spec was defined in **CEP-57** and implemented in **version**.
+The checksummed hex encoding spec was defined in **CEP-57** and implemented in **1.x.x**.
 
 Checksummed hex encoded keys are safer to use than lowercase hex encoded keys because they
 enforce the validity of the key, and they make it easier to ensure that transactions cannot be
@@ -37,8 +37,9 @@ The following :ref:`keys _serialization-standard-serialization-key` are checksum
 Implementation
 --------------
 
-The current implementation follows the steps below. The implementation was
-declared in cep-57 and implemented in **version**.
+At a high level, the current implementation follows the steps below. The implementation was
+declared in :ref:`cep-57 <https://github.com/casper-network/ceps/blob/master/text/0057-checksummed-addresses.md>` and implemented in **version**.
+The actual implementation is hosted on github :ref:`here <https://github.com/casper-network/casper-node/blob/dev/types/src/checksummed_hex.rs>`.
 
 1. Take a blake2b hash of the input bytes.
 2. Convert the hash bytes into a cyclical stream of bits.
@@ -69,5 +70,6 @@ You can find the implementation on github **link**
 Backward Compatibility
 ----------------------
 
-Version **version** is backwards-compatible with lower-hex encoded keys, so if you use a public key that is encoded in lowercase hex,
+.. TODO: Update this with whichever version this ships with.
+Version **1.x.x** is backwards-compatible with lower-hex encoded keys, so if you use a public key that is encoded in lowercase hex,
 the network will still be able to decode the public key and use it in a transaction.
