@@ -5,13 +5,13 @@ The `Python SDK <https://github.com/casper-network/casper-python-sdk/>`_ allows 
 
 Installation
 ^^^^^^^^^^^^
-Before installing the library you need to install dependencies from `requirements.txt <https://github.com/casper-network/casper-python-sdk/blob/main/requirements.txt/>`_, which you can perform by running the following command:
+Before installing the library, you need to install dependencies from `requirements.txt <https://github.com/casper-network/casper-python-sdk/blob/main/requirements.txt/>`_, which you can perform by running the following command:
 
 .. code-block:: bash
 
     pip install -r requirements.txt
 
-Finally, to install the library run:
+Finally, to install the library, run:
 
 .. code-block:: bash
 
@@ -19,7 +19,7 @@ Finally, to install the library run:
 
 Tests
 ^^^^^
-You can find examples for how to test this library with python scripts in the ``test`` directory. To run the tests we recommend pytest library:
+You can find examples of testing this library with python scripts in the ``test`` directory. To run the tests, we recommend the *pytest* library:
 
 .. code-block:: bash
 
@@ -32,12 +32,12 @@ In this section, we outline a couple of essential tasks you can accomplish with 
 * Sending a transfer
 * Staking
 
-For futher examples, take a look at the `How-tos <https://github.com/casper-network/casper-python-sdk/tree/main/how_tos>`_.
+For further examples, take a look at the `How-tos <https://github.com/casper-network/casper-python-sdk/tree/main/how_tos>`_.
 
 Sending a transfer
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This example shows you how to define and transfer funds between accounts on Casper local network. Replace the ``path_to_cp2_account_key`` in the code below with the receiver's account address.
+This example shows you how to define and transfer funds between accounts on a Casper local network. Replace the ``path_to_cp2_account_key`` in the code below with the receiver's account address.
 
 .. code-block:: python
 
