@@ -5,7 +5,7 @@ The `C# SDK <https://github.com/davidatwhiletrue/netcaspersdk>`_ allows develope
 
 Build
 ^^^^^
-To build this library install .NET 5.0 or higher and run
+To build this library, install .NET 5.0 or higher and build:
 
 .. code-block:: bash
 
@@ -19,7 +19,7 @@ To run the tests, use this command:
 
     dotnet test --settings NetCasperTest/test.runsettings
 
-It's usually a good way to understand how a library works by looking at its test. Thus, I encourage you to take a look to the ``NetCasperTest`` directory. 
+It's usually an excellent way to understand how a library works by looking at its test. Thus, I encourage you to take a look at the ``NetCasperTest`` directory. 
 
 Usage Examples
 ^^^^^^^^^^^^^^
@@ -38,5 +38,5 @@ There are also available C# versions of the following tutorials:
 * Counter Tutorial (`CasperLabs docs <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/counter/index.html>`_): C# version `here <https://hackmd.io/@K48d9TN9T2q7ERX4H27ysw/SJBnPCdVt>`_ .
 * Key-value storage Tutorial (`CasperLabs docs <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/kv-storage-tutorial.html>`_): C# version `here <https://hackmd.io/@K48d9TN9T2q7ERX4H27ysw/HyX8i0WBt>`_ .
 
-NOTE: Examples can be added to this site after the hackaton.
+NOTE: Examples can be added to this site after the hackathon.
 
