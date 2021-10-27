@@ -1,0 +1,57 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
+"PO-Revision-Date: 2021-09-08 20:46+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../dapp-dev-guide/tutorials/counter/index.rst:2
+msgid "A Counter Contract Tutorial"
+msgstr "Туториал контракта-счетчика"
+
+#: ../../dapp-dev-guide/tutorials/counter/index.rst:3
+msgid ""
+"In this tutorial, we introduce an application on the chain – the counter "
+"contract. This tutorial is a straightforward contract that maintains a "
+"counter variable. The goal is to introduce you to the process of deploying "
+"and using a contract on Testnet, the test network. Once you are familiar "
+"with this process, the next step will be to write your smart contracts."
+msgstr ""
+"В этом уроке мы представляем приложение в цепочке –  контракт счетчика. Этот"
+" учебник представляет собой простой контракт, который поддерживает "
+"переменную счетчика. Цель состоит в том, чтобы познакомить вас с процессом "
+"развертывания и использования контракта в тестовой сети Testnet. Как только "
+"вы ознакомитесь с этим процессом, следующим шагом будет написание ваших "
+"смарт-контрактов."
+
+#: ../../dapp-dev-guide/tutorials/counter/index.rst:6
+msgid "**Table of Contents**"
+msgstr "**Содержание**"
+
+#: ../../dapp-dev-guide/tutorials/counter/index.rst:17
+msgid "Video Tutorial"
+msgstr "Видео туториал"
+
+#: ../../dapp-dev-guide/tutorials/counter/index.rst:19
+msgid ""
+"If you prefer a video walkthrough of this guide, you can check out this "
+"video."
+msgstr "Если вам удобен формат гайда в видео, смотрите это видео. "

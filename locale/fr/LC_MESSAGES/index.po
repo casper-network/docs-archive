@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
@@ -24,69 +24,215 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../../index.rst:8
-msgid "Casper Documentation"
-msgstr "Documentation Casper "
+msgid "Welcome to the Casper Network"
+msgstr "Bienvenue sur le réseau Casper"
 
 #: ../../index.rst:10
-msgid ""
-"We present the Casper Network, a new Turing-complete smart-contract "
-"platform, backed by a Proof-of-Stake (PoS) consensus algorithm and "
-"WebAssembly (wasm). The network is a permissionless, decentralized, public "
-"blockchain. The consensus protocol is called Highway, and the complete paper"
-" is found in GitHub: https://github.com/CasperLabs/highway. The consensus "
-"protocol allows clients to use different confidence thresholds to convince "
-"themselves that a given block is *finalized*. This protocol is built on Vlad"
-" Zamfir's `correct-by-construction (CBC) Casper <https://github.com/cbc-"
-"casper/cbc-casper-paper>`_ research."
-msgstr ""
-"Nous présentons le réseau Casper, une nouvelle plateforme de contrats "
-"intelligents complète, soutenue par un algorithme de consensus Proof-of-"
-"Stake (PoS) et WebAssembly (wasm). Le réseau est une blockchain publique, "
-"décentralisée et sans permission (permissionless). Le protocole de consensus"
-" s'appelle Highway, et le document complet se trouve sur GitHub : "
-"https://github.com/CasperLabs/highway. Le protocole de consensus permet aux "
-"clients d'utiliser différents seuils de confiance pour se convaincre qu'un "
-"bloc donné est *finalisé*. Ce protocole s'appuie sur les recherches de Vlad "
-"Zamfir sur le système Casper `correct-by-construction (CBC) "
-"<https://github.com/cbc-casper/cbc-casper-paper>`_."
+msgid "This article provides an overview of the Casper project."
+msgstr "Cet article donne un aperçu du projet Casper."
 
-#: ../../index.rst:12
+#: ../../index.rst:13
+msgid "What is Casper?"
+msgstr "C'est quoi Casper ?"
+
+#: ../../index.rst:15
+msgid ""
+"Casper is a new Turing-complete smart-contracting platform, backed by a "
+"Proof-of-Stake (PoS) consensus algorithm and WebAssembly (WASM). The network"
+" is a permissionless, decentralized, public blockchain."
+msgstr ""
+"Casper est une nouvelle plateforme de contrats intelligents complète , "
+"soutenue par un algorithme de consensus Proof-of-Stake (PoS) et WebAssembly "
+"(WASM). Le réseau est une blockchain publique, décentralisée et sans "
+"autorisation (permissionless)."
+
+#: ../../index.rst:17
+msgid ""
+"The network's consensus protocol is called `Highway "
+"<https://arxiv.org/pdf/2101.02159.pdf>`_, and it has several benefits over "
+"classic Byzantine Fault Tolerant (BFT) consensus protocols. First, Highway "
+"allows networks to reach higher thresholds of *finality*, meaning that more "
+"blocks are finalized, and validators agree to add them to the blockchain. "
+"Second, the protocol achieves flexibility by expressing block finality in "
+"ways not possible in BFT models. This protocol is built on Vlad Zamfir's "
+"`correct-by-construction (CBC) Casper <https://github.com/cbc-casper/cbc-"
+"casper-paper>`_ research."
+msgstr ""
+"Le protocole de consensus du réseau est appelé `Highway "
+"<https://arxiv.org/pdf/2101.02159.pdf>`_, et il présente plusieurs avantages"
+" par rapport aux protocoles de consensus classiques de type Byzantine Fault "
+"Tolerant (BFT). Premièrement, Highway permet aux réseaux d'atteindre des "
+"seuils de *finalité* plus élevés, ce qui signifie que davantage de blocs "
+"sont finalisés et que les validateurs acceptent de les ajouter à la "
+"blockchain. Deuxièmement, le protocole atteint la flexibilité en exprimant "
+"la finalité des blocs d'une manière qui n'est pas possible dans les modèles "
+"BFT. Ce protocole s'appuie sur la recherche de Vlad Zamfir autour du CBC  "
+"`correct-by-construction (CBC) <https://github.com/cbc-casper/cbc-casper-"
+"paper>`_."
+
+#: ../../index.rst:19
+msgid ""
+"Additionally, the Casper Network is optimized for enterprise and developer "
+"adoption. While leveraging blockchain technology, the network seeks to "
+"accelerate business operations via unique features like predictable network "
+"fees, upgradeable contracts, on-chain governance, privacy flexibility, and "
+"developer-friendly languages."
+msgstr ""
+"En outre, le réseau Casper est optimisé pour l'adoption par les entreprises "
+"et les développeurs. Tout en s'appuyant sur la technologie blockchain, le "
+"réseau cherche à accélérer les opérations commerciales grâce à des "
+"caractéristiques uniques telles que des frais de réseau prévisibles, des "
+"contrats évolutifs, une gouvernance sur la chaîne, une flexibilité en "
+"matière de confidentialité et des langages conviviaux pour les développeurs."
+
+#: ../../index.rst:21
+msgid ""
+"Casper also solves the scalability trilemma. Notably, the network is "
+"optimized for security, decentralization, and high throughput. All this is "
+"achieved while evolving to provide leading solutions for open-source "
+"projects and enterprises."
+msgstr ""
+"Casper résout également le trilemme de l'évolutivité. En particulier, le "
+"réseau est optimisé pour la sécurité, la décentralisation et un débit élevé."
+" Tout cela est réalisé en évoluant pour fournir des solutions de pointe aux "
+"projets open-source et aux entreprises."
+
+#: ../../index.rst:24
+msgid "Why choose Casper?"
+msgstr "Pourquoi choisir Casper ?"
+
+#: ../../index.rst:26
+msgid ""
+"Casper has core features and strengths that enable developers and "
+"enterprises to reap the benefits of blockchain technology."
+msgstr ""
+"Casper possède des caractéristiques et des atouts fondamentaux qui "
+"permettent aux développeurs et aux entreprises de tirer parti de la "
+"technologie blockchain."
+
+#: ../../index.rst:29
+msgid "Upgradeable Contracts"
+msgstr "Contrats évolutifs"
+
+#: ../../index.rst:31
+msgid ""
+"Casper allows the direct upgrading of on-chain smart contracts, eliminating "
+"the need for complex migration processes and making it easy for developers "
+"to correct smart contract vulnerabilities."
+msgstr ""
+"Casper permet la mise à jour directe des contrats intelligents sur la "
+"chaîne, ce qui élimine le besoin de processus de migration complexes et "
+"permet aux développeurs de corriger facilement les vulnérabilités des "
+"contrats intelligents."
+
+#: ../../index.rst:34
+msgid "Developer-Friendly Language"
+msgstr "Un langage convivial pour les développeurs"
+
+#: ../../index.rst:36
+msgid ""
+"Casper Network’s development ecosystem is designed to support WebAssembly, "
+"rather than being written in proprietary languages like Solidity. This "
+"feature simplifies the development path for enterprises and development "
+"teams that want to build on the Casper Network."
+msgstr ""
+"L'écosystème de développement de Casper Network est conçu pour prendre en "
+"charge WebAssembly, plutôt que d'être écrit dans des langages propriétaires "
+"comme Solidity. Cette caractéristique simplifie le parcours de développement"
+" pour les entreprises et les équipes de développement qui souhaitent "
+"s'appuyer sur Casper Network."
+
+#: ../../index.rst:38
+msgid "Note"
+msgstr "Note"
+
+#: ../../index.rst:40
 msgid ""
 "Rust is the primary programming language for smart contracts on the Casper "
 "blockchain because of its good support for compilation to wasm. However, the"
 " platform does not make assumptions about the source language and supports "
 "libraries facilitating contract development in other programming languages "
-"having wasm as a compile target. Other essential features include an account"
-" permissions model that allows the recovery of lost keys and a permissions "
-"model to securely share state between accounts and contracts (without "
-"expensive cryptographic checks). We also provide discussions of the "
-"economics of our proof-of-stake implementation and our token policies."
+"having wasm as a compile target."
 msgstr ""
 "Rust est le principal langage de programmation des contrats intelligents sur"
 " la blockchain Casper en raison de sa bonne prise en charge de la "
 "compilation vers wasm. Cependant, la plateforme ne fait pas d'hypothèses sur"
-" le langage source et prend en charge des bibliothèques facilitant le "
+" le langage source et prend en charge des librairies facilitant le "
 "développement de contrats dans d'autres langages de programmation ayant wasm"
-" comme cible de compilation. Parmi les autres caractéristiques essentielles,"
-" citons un modèle de permissions pour les comptes qui permet de récupérer "
-"les clés perdues et un modèle de permissions pour partager en toute sécurité"
-" l'état entre les comptes et les contrats (sans contrôles cryptographiques "
-"coûteux). Nous discutons également de l'économie de notre implémentation de "
-"preuve d'enjeu (POS) et de nos politiques de jetons."
+" comme cible de compilation."
 
-#: ../../index.rst:15
+#: ../../index.rst:43
+msgid "Account Management"
+msgstr "Gestion des comptes"
+
+#: ../../index.rst:45
+msgid ""
+"Other essential features include an account permissions model that allows "
+"the recovery of lost keys and a permissions model to securely share state "
+"between accounts and contracts (without expensive cryptographic checks)."
+msgstr ""
+"Parmi les autres caractéristiques essentielles, citons un modèle de "
+"permissions pour les comptes qui permet de récupérer les clés perdues et un "
+"modèle de permissions pour partager en toute sécurité l'état entre les "
+"comptes et les contrats (sans contrôles cryptographiques coûteux)."
+
+#: ../../index.rst:48
+msgid "Predictable Network Fees"
+msgstr "Des frais de réseau prévisibles"
+
+#: ../../index.rst:50
+msgid ""
+"Casper seeks to eliminate volatility and improve developer and enterprise "
+"experiences by establishing transparent, consistent, and predictable gas "
+"prices. This feature seeks to promote active and diverse network behaviour."
+msgstr ""
+"Casper cherche à éliminer la volatilité et à améliorer l'expérience des "
+"développeurs et des entreprises en établissant des prix du gaz transparents,"
+" cohérents et prévisibles. Cette caractéristique vise à promouvoir un "
+"comportement actif et diversifié du réseau."
+
+#: ../../index.rst:53
+msgid "How does Casper work?"
+msgstr "Comment fonctionne Casper ?"
+
+#: ../../index.rst:55
+msgid ""
+"Casper relies on a group of validators to verify transactions and uphold the"
+" network. Unlike Proof-of-Work networks, which need to centralize validators"
+" for economies of scale, Casper allows for the geographical decentralization"
+" of validators. Casper validators verify transactions based on staked tokens"
+" and receive CSPR rewards for participating in the PoS consensus mechanism. "
+"CSPR is the native token on the Casper Network."
+msgstr ""
+"Casper s'appuie sur un groupe de validateurs pour vérifier les transactions "
+"et maintenir le réseau. Contrairement aux réseaux de preuve de travail "
+"(POW), qui doivent centraliser les validateurs pour réaliser des économies "
+"d'échelle, Casper permet la décentralisation géographique des validateurs. "
+"Les validateurs Casper vérifient les transactions sur la base des jetons mis"
+" en jeu et reçoivent des récompenses CSPR pour leur participation au "
+"mécanisme de consensus PoS. CSPR est le jeton natif du réseau Casper."
+
+#: ../../index.rst:58
+msgid "Where can I learn more?"
+msgstr "Pour en savoir plus"
+
+#: ../../index.rst:60
+msgid "Follow the links below to learn more about the Casper Network."
+msgstr "Suivre les liens ci-dessous pour en savoir plus sur le réseau Casper."
+
+#: ../../index.rst:63
 msgid "`How To's <workflow/index.html>`_"
 msgstr "`Guide pratique <workflow/index.html>`_"
 
-#: ../../index.rst:15
+#: ../../index.rst:63
 msgid "Guides for interacting with the Casper Network"
 msgstr "Guides pour interagir avec le réseau Casper"
 
-#: ../../index.rst:16
+#: ../../index.rst:64
 msgid "`Developers <dapp-dev-guide/index.html>`_"
 msgstr "`Développeurs <dapp-dev-guide/index.html>`_"
 
-#: ../../index.rst:16
+#: ../../index.rst:64
 msgid ""
 "Get started with smart contract development on the Casper blockchain in "
 "AssemblyScript or Rust"
@@ -94,19 +240,19 @@ msgstr ""
 "Commencez à développer des contrats intelligents sur la blockchain Casper en"
 " AssemblyScript ou Rust."
 
-#: ../../index.rst:17
+#: ../../index.rst:65
 msgid "`Node Operators <node-operator/index.html>`_"
 msgstr "`Opérateurs de nœuds <node-operator/index.html>`_"
 
-#: ../../index.rst:17
+#: ../../index.rst:65
 msgid "Run node infrastructure on the Casper Network"
 msgstr "Mise en place d'une infrastructure de nœud sur le réseau Casper"
 
-#: ../../index.rst:18
+#: ../../index.rst:66
 msgid "`Design <implementation/index.html>`_"
 msgstr "`Conception <implementation/index.html>`_"
 
-#: ../../index.rst:18
+#: ../../index.rst:66
 msgid ""
 "Understand the architecture of the Casper Network, including network "
 "communication, execution semantics, account management, block structure, "
@@ -117,11 +263,11 @@ msgstr ""
 "blocs, l'état global, la sérialisation, les références infalsifiables et les"
 " jetons."
 
-#: ../../index.rst:19
+#: ../../index.rst:67
 msgid "`Economics <economics/index.html>`_"
 msgstr "`Economie <economics/index.html>`_"
 
-#: ../../index.rst:19
+#: ../../index.rst:67
 msgid ""
 "Conceptualize Casper's economic activity by understanding consensus, "
 "runtime, ecosystem, and the macroeconomy"
@@ -129,11 +275,11 @@ msgstr ""
 "Conceptualiser l'activité économique de Casper en comprenant le consensus, "
 "l'environnement d'exécution (runtime), l'écosystème et la macroéconomie."
 
-#: ../../index.rst:20
+#: ../../index.rst:68
 msgid "`Staking Guide <staking/index.html>`_"
 msgstr "`Guide du Staking  <staking/index.html>`_"
 
-#: ../../index.rst:20
+#: ../../index.rst:68
 msgid ""
 "Participate in the protocol by staking CSPR tokens with a validator in the "
 "Casper Network"
@@ -141,19 +287,19 @@ msgstr ""
 "Participez au protocole en déléguant des jetons CSPR à un validateur du "
 "réseau Casper."
 
-#: ../../index.rst:21
+#: ../../index.rst:69
 msgid "`Glossary <glossary/index.html>`_"
 msgstr "`Glossaire <glossary/index.html>`_"
 
-#: ../../index.rst:21
+#: ../../index.rst:69
 msgid "Explore key definitions in the context of the Casper Network"
 msgstr "Explorer les définitions clés dans le contexte du réseau Casper"
 
-#: ../../index.rst:22
+#: ../../index.rst:70
 msgid "`FAQ <faq/index.html>`_"
 msgstr "`FAQ <faq/index.html>`_"
 
-#: ../../index.rst:22
+#: ../../index.rst:70
 msgid ""
 "Find answers regarding the Casper Network, CasperLabs, and the CSPR token "
 "sale"
@@ -161,11 +307,11 @@ msgstr ""
 "Trouvez des réponses concernant le réseau Casper, CasperLabs et la vente de "
 "jetons CSPR."
 
-#: ../../index.rst:23
+#: ../../index.rst:71
 msgid "`Changelog <changelog.html>`_"
 msgstr "`Historique des modifications   <changelog.html>`_"
 
-#: ../../index.rst:23
+#: ../../index.rst:71
 msgid "Review past technical releases and changelogs for the Casper Network"
 msgstr ""
 "Examiner les versions techniques antérieures et les journaux des "
@@ -743,3 +889,51 @@ msgstr ""
 "la convertibilité ou la transmissibilité ou entraîner une perte totale ou "
 "partielle d'unités ou une réduction (y compris une réduction à zéro) de la "
 "valeur des CSPR du bénéficiaire (si et quand ils sont créés et/ou émis)."
+
+#~ msgid "Casper Documentation"
+#~ msgstr "Documentation Casper "
+
+#~ msgid ""
+#~ "We present the Casper Network, a new Turing-complete smart-contract "
+#~ "platform, backed by a Proof-of-Stake (PoS) consensus algorithm and "
+#~ "WebAssembly (wasm). The network is a permissionless, decentralized, public "
+#~ "blockchain. The consensus protocol is called Highway, and the complete paper"
+#~ " is found in GitHub: https://github.com/CasperLabs/highway. The consensus "
+#~ "protocol allows clients to use different confidence thresholds to convince "
+#~ "themselves that a given block is *finalized*. This protocol is built on Vlad"
+#~ " Zamfir's `correct-by-construction (CBC) Casper <https://github.com/cbc-"
+#~ "casper/cbc-casper-paper>`_ research."
+#~ msgstr ""
+#~ "Nous présentons le réseau Casper, une nouvelle plateforme de contrats "
+#~ "intelligents complète, soutenue par un algorithme de consensus Proof-of-"
+#~ "Stake (PoS) et WebAssembly (wasm). Le réseau est une blockchain publique, "
+#~ "décentralisée et sans permission (permissionless). Le protocole de consensus"
+#~ " s'appelle Highway, et le document complet se trouve sur GitHub : "
+#~ "https://github.com/CasperLabs/highway. Le protocole de consensus permet aux "
+#~ "clients d'utiliser différents seuils de confiance pour se convaincre qu'un "
+#~ "bloc donné est *finalisé*. Ce protocole s'appuie sur les recherches de Vlad "
+#~ "Zamfir sur le système Casper `correct-by-construction (CBC) "
+#~ "<https://github.com/cbc-casper/cbc-casper-paper>`_."
+
+#~ msgid ""
+#~ "Rust is the primary programming language for smart contracts on the Casper "
+#~ "blockchain because of its good support for compilation to wasm. However, the"
+#~ " platform does not make assumptions about the source language and supports "
+#~ "libraries facilitating contract development in other programming languages "
+#~ "having wasm as a compile target. Other essential features include an account"
+#~ " permissions model that allows the recovery of lost keys and a permissions "
+#~ "model to securely share state between accounts and contracts (without "
+#~ "expensive cryptographic checks). We also provide discussions of the "
+#~ "economics of our proof-of-stake implementation and our token policies."
+#~ msgstr ""
+#~ "Rust est le principal langage de programmation des contrats intelligents sur"
+#~ " la blockchain Casper en raison de sa bonne prise en charge de la "
+#~ "compilation vers wasm. Cependant, la plateforme ne fait pas d'hypothèses sur"
+#~ " le langage source et prend en charge des bibliothèques facilitant le "
+#~ "développement de contrats dans d'autres langages de programmation ayant wasm"
+#~ " comme cible de compilation. Parmi les autres caractéristiques essentielles,"
+#~ " citons un modèle de permissions pour les comptes qui permet de récupérer "
+#~ "les clés perdues et un modèle de permissions pour partager en toute sécurité"
+#~ " l'état entre les comptes et les contrats (sans contrôles cryptographiques "
+#~ "coûteux). Nous discutons également de l'économie de notre implémentation de "
+#~ "preuve d'enjeu (POS) et de nos politiques de jetons."

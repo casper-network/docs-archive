@@ -46,3 +46,10 @@ Futures pricing
 ^^^^^^^^^^^^^^^
 
 Please see `CEP #17 <https://github.com/casper-network/ceps/pull/17>`_ for our draft proposal of a gas futures market.
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+  
+    Introduction <self>
+    gas-concepts

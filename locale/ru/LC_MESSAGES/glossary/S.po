@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../glossary/S.rst:2
+msgid "S"
+msgstr "S"
+
+#: ../../glossary/S.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/S.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/S.rst:9
+msgid "Secret key"
+msgstr "Секретный ключ"
+
+#: ../../glossary/S.rst:10
+msgid ""
+"A cryptographic and confidential key that signs transactions to ensure their"
+" correct execution (carrying out only the user's intended operations)."
+msgstr ""
+"Криптографический конфиденциальный ключ, который подписывает транзакции, тем"
+" самым подтверждая их правильное исполнение (все операции, задуманные "
+"пользователем, осуществлены)."
+
+#: ../../glossary/S.rst:13
+msgid "Seigniorage"
+msgstr "Сеньораж"
+
+#: ../../glossary/S.rst:14
+msgid ""
+"The reward mechanism by which validators are rewarded for participating in "
+"consensus. New tokens are minted and given to validators."
+msgstr ""
+"Механизм вознаграждения валидаторов за участие в консенсусе. Новые токены "
+"выпускаются и выдаются валидаторам."
+
+#: ../../glossary/S.rst:17
+msgid "Session code"
+msgstr "Код сессии"
+
+#: ../../glossary/S.rst:18
+msgid ""
+"The *session code* is a field contained in a deployment directive. The "
+"*session code* contains the code the user wishes to execute against the "
+"blockchain.  When the session code executes, it performs a transaction."
+msgstr ""
+"*Код сессии* - это поле, включенное в директиву развертывания. *Код сессии* "
+"содержит код, который пользователь хочет выполнить в блокчейн. Когда код "
+"сессии исполнен, он производит транзакцию."
+
+#: ../../glossary/S.rst:21
+msgid "Slashing"
+msgstr "Слэшинг"
+
+#: ../../glossary/S.rst:22
+msgid ""
+"In Proof-of-Stake, the deposit acts as collateral. The validator guarantees "
+"that it correctly follows the protocol. If the validator node violates the "
+"protocol, the deposited amount gets *slashed*, i.e., a part of it is "
+"removed."
+msgstr ""
+"В Proof-of-Stake депозит выступает в качестве залога. Валидатор гарантирует,"
+" что он правильно следует протоколу. Если нода валидатора нарушает протокол,"
+" внесенная сумма будет *сокращена*, т. е. часть ее будет удалена."
+
+#: ../../glossary/S.rst:25
+msgid "Smart contract"
+msgstr "Смарт-контракт"
+
+#: ../../glossary/S.rst:26
+msgid ""
+"A WebAssembly (WASM) program that the network stores as a value in the "
+"global state. The execution of a smart contract causes changes to the global"
+" state. A smart contract can be invoked by a transaction or by another smart"
+" contract. Smart contracts can declare input data as the arguments of a "
+"function. When invoking a smart contract, one must provide the input values."
+msgstr ""
+"Программа WebAssembly (WASM), которую сеть хранит, как значение в глобальном"
+" состоянии. Выполнение смарт-контракта вызывает изменения в глобальном "
+"состоянии. Смарт-контракт может быть вызван с помощью транзакции или другого"
+" смарт-контракта. Смарт-контракты могут декларировать включенную в них "
+"информацию как аргумент функции. При вызове смарт-контракта необходимо "
+"предоставлять введенные значения."
+
+#: ../../glossary/S.rst:29
+msgid "Staker"
+msgstr "Стейкер"
+
+#: ../../glossary/S.rst:30
+msgid ""
+"A person that deposits tokens in the `proof-of-stake <P.html#proof-of-"
+"stake>`_ contract. A staker is either a `validator <V.html#validator>`_ or a"
+" `delegator <D.html#delegator>`_. Stakers take on the slashing risk in "
+"exchange for rewards. Stakers will deposit their `tokens <T.html#token>`_ by"
+" sending a bonding request in the form of a transaction (deployment) to the "
+"system. If a validator is `slashed <#slashing>`_, the staker will lose their"
+" tokens."
+msgstr ""
+"Тот, кто хранит токены в контракте `proof-of-stake <P.html#proof-of-stake>`_"
+" contract.  Стейкером может быть либо валидатор `validator "
+"<V.html#validator>`_ либо делегат `delegator <D.html#delegator>`_. Стейкеры "
+"берут на себя риск сокращения - слешинга - в обмен на вознаграждения. "
+"Стейкеры размещают депозиты токенов `tokens <T.html#token>`_ , отправляя "
+"бондовый запрос в форме транзакции (развертывания) в системе. Если валидатор"
+" сокращен  `slashed <#slashing>`_, то стейкер теряет свои токены."
+
+#: ../../glossary/S.rst:33
+msgid "Staking"
+msgstr "Стейкинг"
+
+#: ../../glossary/S.rst:34
+msgid ""
+"A feature of Proof-of-Stake protocols that allows token holders to actively "
+"participate in the protocol, thus securing the network. The `Staking Guide "
+"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ highlights the "
+"steps required to stake the CSPR token on the Casper network."
+msgstr ""
+"Свойство протокола Proof-of-Stake, позволяющее держателям токенов активно "
+"участвовать в протоколе, что обеспечивает безопасность сети. Гайд по "
+"стейкингу `Staking Guide "
+"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ освещает шаги, "
+"необходимые для стейкинга токенов CSPR в сети Casper."

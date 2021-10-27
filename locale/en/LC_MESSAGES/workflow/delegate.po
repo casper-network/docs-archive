@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../workflow/delegate.rst:2
-msgid "Delegating Tokens"
+msgid "Delegating with the Command-line"
 msgstr ""
 
 #: ../../workflow/delegate.rst:4
@@ -66,8 +66,8 @@ msgstr ""
 #: ../../workflow/delegate.rst:19
 msgid ""
 "Obtain the ``delegate.wasm`` by cloning the `casper-node "
-"<https://github.com/CasperLabs/casper-node>`_ repository and building the"
-" contracts."
+"<https://github.com/casper-network/casper-node>`_ repository and building"
+" the contracts."
 msgstr ""
 
 #: ../../workflow/delegate.rst:21
@@ -360,4 +360,14 @@ msgid ""
 "validator selected today may not be part of the set tomorrow. Keep this "
 "in mind when creating a delegation request."
 msgstr ""
+
+#~ msgid "Delegating Tokens"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Obtain the ``delegate.wasm`` by cloning "
+#~ "the `casper-node <https://github.com/CasperLabs"
+#~ "/casper-node>`_ repository and building the"
+#~ " contracts."
+#~ msgstr ""
 

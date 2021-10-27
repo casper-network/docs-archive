@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../../workflow/delegate.rst:2
-msgid "Delegating Tokens"
-msgstr "Uỷ quyền Token"
+msgid "Delegating with the Command-line"
+msgstr "Ủy quyền bằng dòng lệnh"
 
 #: ../../workflow/delegate.rst:4
 msgid ""
@@ -76,12 +76,11 @@ msgstr "Xây dựng WASM Ủy quyền"
 
 #: ../../workflow/delegate.rst:19
 msgid ""
-"Obtain the ``delegate.wasm`` by cloning the `casper-node "
-"<https://github.com/CasperLabs/casper-node>`_ repository and building the "
-"contracts."
+"Obtain the ``delegate.wasm`` by cloning the `casper-node <https://github.com"
+"/casper-network/casper-node>`_ repository and building the contracts."
 msgstr ""
-"Có được kho lưu trữ ``delegate.wasm`` bằng cách sao chép `casper-node "
-"<https://github.com/CasperLabs/casper-node>`_ và xây dựng các hợp đồng."
+"Lấy ``Delegate.wasm`` bằng cách sao chép kho chứa `casper-node "
+"<https://github.com/casper-network/casper-node>`_ và xây dựng các hợp đồng."
 
 #: ../../workflow/delegate.rst:21
 msgid ""
@@ -459,3 +458,14 @@ msgstr ""
 "phần của nhóm hoạt động. Thông tin này nhạy cảm về thời gian; do đó, một "
 "trình xác thực được chọn hôm nay có thể không phải là một phần của nhóm vào "
 "ngày mai. Hãy ghi nhớ điều này khi tạo một yêu cầu ủy quyền."
+
+#~ msgid "Delegating Tokens"
+#~ msgstr "Uỷ quyền Token"
+
+#~ msgid ""
+#~ "Obtain the ``delegate.wasm`` by cloning the `casper-node "
+#~ "<https://github.com/CasperLabs/casper-node>`_ repository and building the "
+#~ "contracts."
+#~ msgstr ""
+#~ "Có được kho lưu trữ ``delegate.wasm`` bằng cách sao chép `casper-node "
+#~ "<https://github.com/CasperLabs/casper-node>`_ và xây dựng các hợp đồng."

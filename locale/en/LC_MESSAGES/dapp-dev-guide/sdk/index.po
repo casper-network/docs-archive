@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../dapp-dev-guide/sdk/index.rst:16
+#: ../../dapp-dev-guide/sdk/index.rst:17
 msgid "Introduction"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgid "Java SDK (work in progress)"
 msgstr ""
 
 #: ../../dapp-dev-guide/sdk/index.rst:12
-msgid "https://github.com/cnorburn/casper-java-sdk/"
+msgid "https://github.com/casper-network/casper-java-sdk/"
 msgstr ""
 
 #: ../../dapp-dev-guide/sdk/index.rst:13
@@ -73,4 +73,15 @@ msgstr ""
 #: ../../dapp-dev-guide/sdk/index.rst:13
 msgid "https://github.com/casper-ecosystem/casper-golang-sdk/"
 msgstr ""
+
+#: ../../dapp-dev-guide/sdk/index.rst:14
+msgid "Python SDK (work in progress)"
+msgstr ""
+
+#: ../../dapp-dev-guide/sdk/index.rst:14
+msgid "https://github.com/casper-network/casper-python-sdk/"
+msgstr ""
+
+#~ msgid "https://github.com/cnorburn/casper-java-sdk/"
+#~ msgstr ""
 

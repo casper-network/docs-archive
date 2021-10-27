@@ -1,0 +1,266 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:48+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../node-operator/bonding.rst:6
+msgid "Bonding"
+msgstr "Бондинг"
+
+#: ../../node-operator/bonding.rst:8
+msgid ""
+"It is recommended that a bonding request be sent once the node has completed"
+" the synchronization process. Bonding in Casper takes place through the "
+"auction contract via the ``add_bid.wasm`` contract. The auction runs for a "
+"future era, every era. The Chainspec specifies the number of slots "
+"available, and the auction will take the top N slots and create the "
+"validator set for the future era. In the testnet, era durations are approx. "
+"30 minutes. The entire process takes approximately 3 eras. Therefore, the "
+"time for bid submission to inclusion in the validator set is a minimum of 90"
+" minutes.\\ :raw-html-m2r:`<br>` Bonding requests (bids) are transactions "
+"like any other. Because they are generic transactions, they are more "
+"resistant to censorship."
+msgstr ""
+"Рекомендуется отправить запрос на соединение, как только нода завершит "
+"процесс синхронизации. Бондинг в Casper происходит через аукционный контракт"
+" с помощью контракта ``add_bid.wasm``. Аукцион проводится на будущую эру, "
+"каждую эру. Спецификация цепочки определяет количество доступных слотов, и "
+"аукцион выберет N лучших слотов и создаст набор валидаторов для будущей эры."
+" В тестовой сети продолжительность эры составляет ок. 30 минут. Весь процесс"
+" занимает примерно 3 эры. Таким образом, время подачи заявки для включения в"
+" набор валидаторов составляет не менее 90 минут.\\ :raw-html-m2r:`<br>` "
+"Запросы на бондинг (биды) являются транзакциями, как и любые другие. "
+"Поскольку они являются универсальными транзакциями, они более устойчивы к "
+"цензуре."
+
+#: ../../node-operator/bonding.rst:15
+msgid "Security and Bonding"
+msgstr "Безопасность и бондинг"
+
+#: ../../node-operator/bonding.rst:17
+msgid ""
+"The most secure way to send a bonding transaction is to compile the contract"
+" and send the request to the network. Because the transaction authorizes the"
+" token to be locked into the auction contract, it's really important to "
+"compile the contract yourself. Here are the steps to do this:"
+msgstr ""
+"Самый безопасный способ отправки бондинговой транзакции - это компиляция "
+"контракта и отправка запроса в сеть. Поскольку транзакция авторизует токен, "
+"чтобы он был закрыт в контракте аукциона, очень важно компилировать контракт"
+" самостоятельно. Шаги для выполнения:"
+
+#: ../../node-operator/bonding.rst:22
+msgid ""
+"Visit `Github <https://github.com/casper-network/casper-node>`_ and fork and"
+" clone the repository."
+msgstr ""
+"Зайдите в `Github <https://github.com/casper-network/casper-node>`_ , "
+"сделайте форк и клонируйте репозиторий."
+
+#: ../../node-operator/bonding.rst:23
+msgid "Make sure that all dependencies are installed  (documented on GitHub)."
+msgstr ""
+"Убедитесь, что все зависимости установлены (задокументированы в GitHub)."
+
+#: ../../node-operator/bonding.rst:24
+msgid "Follow the instructions to build the contracts."
+msgstr "Следуйте данным инструкциям для сборки контракта."
+
+#: ../../node-operator/bonding.rst:25
+msgid ""
+"Ensure that the keys you will use for bonding are available & have been "
+"funded."
+msgstr ""
+"Убедитесь, что ключи, которые вы будете использовать для бондинга доступны и"
+" обеспечены средствами."
+
+#: ../../node-operator/bonding.rst:26
+msgid "Create the bonding transaction & deploy it."
+msgstr "Создайте бондинговую транзакцию и разверните ее."
+
+#: ../../node-operator/bonding.rst:27
+msgid "Query the system to verify that your bid was accepted."
+msgstr "Запросите систему верифицировать, что ваш бид принят."
+
+#: ../../node-operator/bonding.rst:28
+msgid "Check the status of the auction to see if you have won a slot."
+msgstr "Проверьте статус аукциона, чтобы убедиться, что вы выиграли слот. "
+
+#: ../../node-operator/bonding.rst:31
+msgid "Build Add_Bid Contract"
+msgstr "Build Add_Bid Contract"
+
+#: ../../node-operator/bonding.rst:33
+msgid ""
+"Because bonding transactions are generic transactions, it's necessary to "
+"build the contract that submits a bid. Clone the casper-node repository and "
+"build the contracts. To build contracts, set up Rust & install all "
+"dependencies. Visit 'Setting up Rust' in the Developer Guide."
+msgstr ""
+"Поскольку бондинговые транзакции являются универсальными транзакциями, "
+"необходимо создать контракт, в котором подается заявка - бид. Клонируйте "
+"репозиторий casper-node и создайте контракты. Чтобы собрать контракты, "
+"настройте Rust и установите все зависимости. Посетите раздел \"Настройка "
+"Rust\" в Руководстве разработчика."
+
+#: ../../node-operator/bonding.rst:37
+msgid "Build the contracts in release mode."
+msgstr "Сборка контрактов в модели выпуска."
+
+#: ../../node-operator/bonding.rst:45
+msgid "Example Bonding Transaction"
+msgstr "Пример бондинговой транзакции"
+
+#: ../../node-operator/bonding.rst:47
+msgid ""
+"Note the path to files and keys. Note: the session arguments need to be "
+"encased in double-quotes, with the parameter values in single quotes. Note "
+"the required payment amount.  It must contain at least 10 zeros.  The "
+"payment amount is specified in motes."
+msgstr ""
+"Обратите внимание на путь к файлам и ключам. Примечание: переменные сеанса "
+"должны быть заключены в двойные кавычки, а значения параметров -в одинарные "
+"кавычки. Обратите внимание на требуемую сумму платежа. Он должен содержать "
+"не менее 10 нулей. Сумма платежа указана в единицах motes."
+
+#: ../../node-operator/bonding.rst:55
+msgid "Contract Arguments"
+msgstr "Переменные контракта"
+
+#: ../../node-operator/bonding.rst:57
+msgid "The add_bid contract accepts 3 arguments:"
+msgstr "Контракт add_bid принимает 3 переменных:"
+
+#: ../../node-operator/bonding.rst:60
+msgid ""
+"public key: The public key in hex of the account to bond.  Note: This has to"
+" be the matching key to the validator's secret key that signs the "
+"deployment."
+msgstr ""
+"публичный ключ: шестнадцатиразрядный публичный ключ аккаунта для бондинга. "
+"Примечание: это должен быть подходящий ключ к секретному ключу валидатора, "
+"который подписывает развертывание."
+
+#: ../../node-operator/bonding.rst:61
+msgid ""
+"amount: This is the amount that is being bid. If the bid wins, this will be "
+"the validator's initial bond amount."
+msgstr ""
+"количество: количество, которое вложено в бид. Если бид побеждает, это будет"
+" начальное количество бонда валидатора."
+
+#: ../../node-operator/bonding.rst:62
+msgid ""
+"delegation_rate: The percentage of rewards that the validator retains from "
+"delegators that delegate their tokens to the node."
+msgstr ""
+"курс делегирования delegation_rate: процент вознаграждений, которые "
+"удерживают валидаторы, которые делегируют свои токены в ноду."
+
+#: ../../node-operator/bonding.rst:65
+msgid "Check the Status of the Transaction"
+msgstr "Проверка статуса транзакции"
+
+#: ../../node-operator/bonding.rst:67
+msgid ""
+"Since this is a deployment like any other, it's possible to perform ``get-"
+"deploy`` using the client, which will return the execution status."
+msgstr ""
+"Так как это развертывание, как и любое другое, то можно осуществить "
+"получение ``get-deploy`` с помощью клиента, который вернет статус "
+"исполнения."
+
+#: ../../node-operator/bonding.rst:74
+msgid "Check the Status of the bid in the Auction"
+msgstr "Проверка статуса бида в аукционе"
+
+#: ../../node-operator/bonding.rst:76
+msgid ""
+"If the bid wins the auction, the public key and associated bond amount "
+"(formerly bid amount) will appear in the auction contract as part of the "
+"validator set for a future era. To determine if the bid was accepted, query "
+"the auction contract via the rust ``casper-client``"
+msgstr ""
+"Если бид выигрывает аукцион, публичный ключ и связанное количество бонда (в "
+"прошлом количество бида) появятся в контракте аукциона как часть набора "
+"валидаторов для будущей эры. Чтобы определить, принят ли бид, запросите "
+"контракт аукциона через клиент rust ``casper-client``"
+
+#: ../../node-operator/bonding.rst:82
+msgid "The request returns a response that looks like this:"
+msgstr "Запрос вернет ответ такого вида:"
+
+#: ../../node-operator/bonding.rst:254
+msgid ""
+"Note the ``era_id`` and the ``validator_weights`` sections of the response. "
+"For a given ``era_id`` a set of validators is defined.  To determine the "
+"current era, ping the ``/status`` endpoint of a validating node in the "
+"network.  This will return the current ``era_id``.  The current ``era_id`` "
+"will be listed in the auction info response. If the public key associated "
+"with a bid appears in the ``validator_weights`` structure for an era, then "
+"the account is bonded in that era."
+msgstr ""
+"Обратите внимание на разделы \"era_id\" и ``validator_weights`` в ответе. "
+"Для данного \"era_id\" определен набор валидаторов. Чтобы определить текущую"
+" эру, пропингуйте конечную точку ``/status`` ноды валидатора в сети. Это "
+"вернет текущий \"era_id\". Текущий \"era_id\" будет указан в ответе - "
+"Информация об аукционе. Если открытый ключ, связанный с предложением, "
+"отображается в структуре \"validator_weights\" для эры, тогда аккаунт "
+"осуществил бондинг к этой эре."
+
+#: ../../node-operator/bonding.rst:259
+msgid "If the Bid doesn't win"
+msgstr "Если бид не выиграл"
+
+#: ../../node-operator/bonding.rst:261
+msgid ""
+"If your bid doesn't win a slot in the auction, it is because your bid is too"
+" low.  The resolution for this problem is to increase your bid amount. It is"
+" possible to submit additional bids, to increase the odds of winning a slot."
+" It is also possible to encourage token holders to delegate stake to you for"
+" bonding."
+msgstr ""
+"Если ваш бид не выиграет ни одного места на аукционе, это потому, что ваша "
+"ставка слишком низкая. Решение этой проблемы заключается в увеличении суммы "
+"вашего бида. Есть возможность подавать дополнительные биды, чтобы увеличить "
+"шансы на выигрыш слота. Также можно поощрять держателей токенов делегировать"
+" вам долю стейка для объединения."
+
+#: ../../node-operator/bonding.rst:266
+msgid "Withdrawing a Bid"
+msgstr "Вывод бида"
+
+#: ../../node-operator/bonding.rst:268
+msgid ""
+"Follow the steps in `Unbonding <https://docs.casperlabs.io/en/latest/node-"
+"operator/unbonding.html>`_ to withdraw a bid."
+msgstr ""
+"Следуйте шагам в `Unbonding <https://docs.casperlabs.io/en/latest/node-"
+"operator/unbonding.html>`_ для вывода бида."
+
+#~ msgid ""
+#~ "Visit `Github <https://github.com/CasperLabs/casper-node>`_ and fork and "
+#~ "clone the repository."
+#~ msgstr ""
+#~ "Зайдите в `Github <https://github.com/CasperLabs/casper-node>`_ и сделайте "
+#~ "форк и клонируйте репозиторий."

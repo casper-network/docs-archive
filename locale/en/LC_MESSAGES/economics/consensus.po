@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,8 +100,8 @@ msgstr ""
 #: ../../economics/consensus.rst:26
 msgid ""
 "Currently, delegation is unrestricted. Interested readers should review "
-"`CEP #29 <https://github.com/CasperLabs/ceps/pull/29>`_, which proposes "
-"delegation caps."
+"`CEP #29 <https://github.com/casper-network/ceps/pull/29>`_, which "
+"proposes delegation caps."
 msgstr ""
 
 #: ../../economics/consensus.rst:29
@@ -111,9 +111,9 @@ msgstr ""
 #: ../../economics/consensus.rst:31
 msgid ""
 "Correct operation of the Highway protocol requires the economics of the "
-"platform to incentivize non-equivocation for safety and participation for"
-" liveness. Participation consists of on-time block proposals and timely "
-"responses to block proposals."
+"platform to discourage equivocation for safety and incentivize "
+"participation for liveness. Participation consists of on-time block "
+"proposals and timely responses to block proposals."
 msgstr ""
 
 #: ../../economics/consensus.rst:33
@@ -175,8 +175,8 @@ msgstr ""
 
 #: ../../economics/consensus.rst:52
 msgid ""
-"``ticks_per_year`` - a number equal to 31,536,000,000 calculated as "
-"365*24*60*60*1000 = 31,536,000,000"
+"``ticks_per_year`` - the number of milliseconds in a year equal to "
+"31,536,000,000"
 msgstr ""
 
 #: ../../economics/consensus.rst:58
@@ -298,10 +298,10 @@ msgstr ""
 
 #: ../../economics/consensus.rst:108
 msgid ""
-"Please review our `Equivocator Policy "
-"<https://github.com/CasperLabs/ceps/blob/master/text/0038-equivocator-"
-"policy.md>`_. We are currently conducting research into the utility of "
-"slashing as an incentive mechanism."
+"Please review our `Equivocator Policy <https://github.com/casper-"
+"network/ceps/blob/master/text/0038-equivocator-policy.md>`_. We are "
+"currently conducting research into the utility of slashing as an "
+"incentive mechanism."
 msgstr ""
 
 #: ../../economics/consensus.rst:111
@@ -315,4 +315,35 @@ msgid ""
 "their genesis bid tokens in weekly steps, linearly, over an additional 90"
 " days."
 msgstr ""
+
+#~ msgid ""
+#~ "Currently, delegation is unrestricted. "
+#~ "Interested readers should review `CEP "
+#~ "#29 <https://github.com/CasperLabs/ceps/pull/29>`_, which"
+#~ " proposes delegation caps."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Correct operation of the Highway "
+#~ "protocol requires the economics of the"
+#~ " platform to incentivize non-equivocation"
+#~ " for safety and participation for "
+#~ "liveness. Participation consists of on-"
+#~ "time block proposals and timely "
+#~ "responses to block proposals."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``ticks_per_year`` - a number equal to"
+#~ " 31,536,000,000 calculated as 365*24*60*60*1000"
+#~ " = 31,536,000,000"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Please review our `Equivocator Policy "
+#~ "<https://github.com/CasperLabs/ceps/blob/master/text/0038"
+#~ "-equivocator-policy.md>`_. We are currently "
+#~ "conducting research into the utility of"
+#~ " slashing as an incentive mechanism."
+#~ msgstr ""
 

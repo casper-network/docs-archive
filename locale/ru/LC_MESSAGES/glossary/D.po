@@ -1,0 +1,226 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../glossary/D.rst:2
+msgid "D"
+msgstr "D"
+
+#: ../../glossary/D.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/D.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/D.rst:9
+msgid "dApp"
+msgstr "dApp"
+
+#: ../../glossary/D.rst:10
+msgid ""
+"A distributed application (dApp) is a set of `smart contracts <S.html#smart-"
+"contract>`_."
+msgstr ""
+"Распределенное приложение  (dApp) - это набор смарт-контрактов `smart "
+"contracts <S.html#smart_contract>`_."
+
+#: ../../glossary/D.rst:13
+msgid "Delegation rate"
+msgstr "Курс делегирования"
+
+#: ../../glossary/D.rst:14
+msgid ""
+"Node operators (`validators <V.html#validator>`_) define a commission that "
+"they take in exchange for providing staking services. This commission is "
+"represented as a percentage of the rewards that the node operator retains "
+"for their services."
+msgstr ""
+"Операторы ноды (`валидаторы <V.html#validator>`_) определяют комиссию, "
+"которую они берут за обеспечение сервисов стейкинга. Эта комиссия выражена в"
+" проценте от вознаграждений, которые операторы берут за свои сервисы. "
+
+#: ../../glossary/D.rst:17
+msgid "Delegator"
+msgstr "Делегат"
+
+#: ../../glossary/D.rst:18
+msgid ""
+"Delegators are users who participate in the platform's security by "
+"delegating their tokens to validators (which adds to their weight) and "
+"collecting a part of the rewards proportional to their delegations, net of a"
+" cut (\"delegation rate\") that is collected by the validator."
+msgstr ""
+"Делегаты - это пользователи, которые участвуют в обеспечении безопасности "
+"платформы с помощью делегирования своих токенов валидаторам (что добавляет "
+"им вес) и собирают часть вознаграждений пропорционально их делегированиям, а"
+" также доля их вознаграждения (\"курс делегирования\") собирается "
+"валидаторами. "
+
+#: ../../glossary/D.rst:21
+msgid "Deploy"
+msgstr "Развертывание"
+
+#: ../../glossary/D.rst:22
+msgid ""
+"All deploys can be broadly categorized as some unit of work that, when "
+"executed and committed, affects change to the `global state <G.html#global-"
+"state>`_. Deploys include specializations such as native transfers, which "
+"only transfer tokens between accounts."
+msgstr ""
+"Все развертывания можно широко категоризировать как некие юниты работы, "
+"которые при исполнении и поручении влияют на глобальное состояние `global "
+"state <G.html#global-state>`_. Развертывания включают специализации, такие "
+"как внутренние трансферы, то есть трансфер токенов только между аккаунтами."
+
+#: ../../glossary/D.rst:24
+msgid ""
+"Review the `deploy data structure "
+"<https://docs.casperlabs.io/en/latest/implementation/serialization-"
+"standard.html?highlight=deploy#deploy>`_ and the `deploy implementation "
+"<https://github.com/casper-network/casper-"
+"node/blob/master/node/src/types/deploy.rs#L475>`_ for more details."
+msgstr ""
+"Изучите информационную структуру развертывания `deploy data structure "
+"<https://docs.casperlabs.io/en/latest/implementation/serialization-"
+"standard.html?highlight=deploy#deploy>`_ и введение развертывания `deploy "
+"implementation <https://github.com/casper-network/casper-"
+"node/blob/master/node/src/types/deploy.rs#L475>`_ ."
+
+#~ msgid ""
+#~ "A distributed application (dApp) is a set of `smart contracts "
+#~ "<S.html#smart_contract>`_."
+#~ msgstr ""
+#~ "Распределенное приложение  (dApp) - это набор смарт-контрактов `smart "
+#~ "contracts <S.html#smart_contract>`_."
+
+#~ msgid ""
+#~ "Review the `deploy data structure "
+#~ "<https://docs.casperlabs.io/en/latest/implementation/serialization-"
+#~ "standard.html?highlight=deploy#deploy>`_ and the `deploy implementation "
+#~ "<https://github.com/CasperLabs/casper-"
+#~ "node/blob/master/node/src/types/deploy.rs#L475>`_ for more details."
+#~ msgstr ""
+#~ "Изучите информационную структуру развертывания `deploy data structure "
+#~ "<https://docs.casperlabs.io/en/latest/implementation/serialization-"
+#~ "standard.html?highlight=deploy#deploy>`_ и введение развертывания `deploy "
+#~ "implementation <https://github.com/CasperLabs/casper-"
+#~ "node/blob/master/node/src/types/deploy.rs#L475>`_ ."

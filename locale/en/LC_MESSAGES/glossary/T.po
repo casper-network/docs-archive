@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -142,5 +142,24 @@ msgstr ""
 
 #: ../../glossary/T.rst:14
 msgid "See `deploy <D.html#deploy>`_."
+msgstr ""
+
+#: ../../glossary/T.rst:17
+msgid "Turing-complete blockchain"
+msgstr ""
+
+#: ../../glossary/T.rst:18
+msgid ""
+"Turing completeness refers to the ability of a machine to execute "
+"computational problems on its own by deciding or recognizing data "
+"manipulation rule sets."
+msgstr ""
+
+#: ../../glossary/T.rst:20
+msgid ""
+"For a blockchain to be Turing-complete, it means that it can understand "
+"and execute any smart contract given enough resources such as a robust "
+"code-base (necessary instructions), time, processing power, memory, etc. "
+"without human interaction or interference."
 msgstr ""
 

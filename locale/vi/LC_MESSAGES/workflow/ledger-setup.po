@@ -1,0 +1,392 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# Quang Huy Tran <tqhuy2018@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-08-23 20:09+0000\n"
+"Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../workflow/ledger-setup.rst:2
+msgid "Ledger Setup"
+msgstr "Cài đặt Ledger"
+
+#: ../../workflow/ledger-setup.rst:4
+msgid ""
+"A Ledger Device is a hardware wallet that is considered one of the most "
+"secure ways to store your digital assets. Ledger uses an offline, or cold "
+"storage, method of generating private keys, making it a preferred method for"
+" many crypto users. This guide will help you to connect your Ledger device "
+"to the Casper Web wallet (https://cspr.live). The Casper Web wallet enables "
+"you to send and receive CSPR tokens."
+msgstr ""
+"Thiết bị Ledger là một ví cứng được coi là một trong những cách an toàn nhất"
+" để lưu trữ tài sản kỹ thuật số của bạn. Ledger sử dụng phương pháp tạo khóa"
+" cá nhân ngoại tuyến hoặc lưu trữ lạnh, khiến nó trở thành phương pháp được "
+"nhiều người dùng tiền điện tử ưa thích. Hướng dẫn này sẽ giúp bạn kết nối "
+"thiết bị Ledger của mình với ví Web Casper (https://cspr.live). Ví Web "
+"Casper cho phép bạn gửi và nhận token CSPR."
+
+#: ../../workflow/ledger-setup.rst:6
+msgid "If you need help, contact us on the following services:"
+msgstr "Nếu bạn cần trợ giúp, hãy liên hệ với chúng tôi theo các kênh sau:"
+
+#: ../../workflow/ledger-setup.rst:8
+msgid "Twitter: https://twitter.com/Casper_Network"
+msgstr "Twitter: https://twitter.com/Casper_Network"
+
+#: ../../workflow/ledger-setup.rst:9
+msgid "Discord: https://discord.com/invite/Q38s3Vh"
+msgstr "Discord: https://discord.com/invite/Q38s3Vh"
+
+#: ../../workflow/ledger-setup.rst:10
+msgid "Telegram: https://t.me/casperblockchain"
+msgstr "Telegram: https://t.me/casperblockchain"
+
+#: ../../workflow/ledger-setup.rst:14
+msgid "Requirements"
+msgstr "Yêu cầu"
+
+#: ../../workflow/ledger-setup.rst:17
+msgid "Before you begin"
+msgstr "Trước khi bắt đầu"
+
+#: ../../workflow/ledger-setup.rst:18
+msgid "You have initialized your Ledger Nano S/X."
+msgstr "Bạn đã khởi tạo Ledger Nano S/X của mình."
+
+#: ../../workflow/ledger-setup.rst:19
+msgid "You have installed the latest firmware on your Ledger Nano S/X."
+msgstr "Bạn đã cài đặt firmware mới nhất trên Ledger Nano S/X của mình."
+
+#: ../../workflow/ledger-setup.rst:20
+msgid "Ledger Live is ready to use."
+msgstr "Ledger Live sẵn sàng để sử dụng."
+
+#: ../../workflow/ledger-setup.rst:21
+msgid "You have installed a Chromium-based browser such as Chrome or Brave."
+msgstr ""
+"Bạn đã cài đặt một trình duyệt dựa trên Chromium, chẳng hạn như Chrome hoặc "
+"Brave."
+
+#: ../../workflow/ledger-setup.rst:24
+msgid "Install the Casper app on the Ledger device"
+msgstr "Cài đặt ứng dụng Casper trên thiết bị Ledger"
+
+#: ../../workflow/ledger-setup.rst:25
+msgid "Open the Manager in Ledger Live."
+msgstr "Mở Trình quản lý trong Ledger Live."
+
+#: ../../workflow/ledger-setup.rst:26 ../../workflow/ledger-setup.rst:41
+msgid "Connect and unlock your Ledger device."
+msgstr "Kết nối và mở khóa thiết bị Ledger của bạn."
+
+#: ../../workflow/ledger-setup.rst:27
+msgid ""
+"If asked, allow the manager on your device by pressing the right button."
+msgstr ""
+"Nếu được yêu cầu, hãy cho phép trình quản lý trên thiết bị của bạn bằng cách"
+" nhấn nút bên phải."
+
+#: ../../workflow/ledger-setup.rst:28
+msgid "Find Casper in the app catalog."
+msgstr "Tìm Casper trong danh mục ứng dụng."
+
+#: ../../workflow/ledger-setup.rst:29
+msgid "Click the Install button of the app."
+msgstr "Nhấp vào nút Cài đặt của ứng dụng."
+
+#: ../../workflow/ledger-setup.rst:30
+msgid "An installation window appears."
+msgstr "Một cửa sổ cài đặt xuất hiện."
+
+#: ../../workflow/ledger-setup.rst:31
+msgid "Your device will display **\"Processing…\"**"
+msgstr "Thiết bị của bạn sẽ hiển thị **\"Processing…\"**"
+
+#: ../../workflow/ledger-setup.rst:32
+msgid "The app installation is confirmed."
+msgstr "Cài đặt ứng dụng được xác nhận."
+
+#: ../../workflow/ledger-setup.rst:35
+msgid "Use Ledger device with your Web wallet"
+msgstr "Sử dụng thiết bị Ledger với ví Web của bạn"
+
+#: ../../workflow/ledger-setup.rst:38
+msgid "Sign in"
+msgstr "Đăng nhập"
+
+#: ../../workflow/ledger-setup.rst:39
+msgid "You can now use the Ledger device with Web wallet. Follow these steps:"
+msgstr ""
+"Bây giờ bạn có thể sử dụng thiết bị Ledger với ví Web. Làm theo các bước "
+"sau:"
+
+#: ../../workflow/ledger-setup.rst:42
+msgid "Open the Casper app on your Ledger device."
+msgstr "Mở ứng dụng Casper trên thiết bị Ledger của bạn."
+
+#: ../../workflow/ledger-setup.rst:43
+msgid "Go to `cspr.live/sign-in <https://cspr.live/sign-in>`_."
+msgstr "Chuyển tới `cspr.live/sign-in <https://cspr.live/sign-in>`_."
+
+#: ../../workflow/ledger-setup.rst:44
+msgid "Click on the **Connect** button in the Ledger section."
+msgstr "Nhấp vào nút **Connect** trong phần Ledger."
+
+#: ../../workflow/ledger-setup.rst:45
+msgid "Click on the **Connect to Ledger wallet** button."
+msgstr "Nhấp vào nút **Connect to Ledger wallet**."
+
+#: ../../workflow/ledger-setup.rst:46
+msgid "Select an account you want to use."
+msgstr "Chọn một tài khoản bạn muốn sử dụng."
+
+#: ../../workflow/ledger-setup.rst:47
+msgid "Now, your Ledger device is connected to the Web wallet."
+msgstr "Bây giờ, thiết bị Ledger của bạn đã được kết nối với ví Web."
+
+#: ../../workflow/ledger-setup.rst:50
+msgid "View account details"
+msgstr "Xem chi tiết tài khoản"
+
+#: ../../workflow/ledger-setup.rst:51 ../../workflow/ledger-setup.rst:94
+msgid "Go to `cspr.live <https://cspr.live>`_."
+msgstr "Chuyển tới `cspr.live <https://cspr.live>`_."
+
+#: ../../workflow/ledger-setup.rst:52
+msgid "Click on the account address in the upper-right corner of the page."
+msgstr "Nhấp vào địa chỉ tài khoản ở góc trên bên phải của trang."
+
+#: ../../workflow/ledger-setup.rst:57
+msgid "Click on the **View account** button."
+msgstr "Bấm vào nút **Xem tài khoản**."
+
+msgid "Image showing the account details."
+msgstr "Hình ảnh hiển thị chi tiết tài khoản."
+
+#: ../../workflow/ledger-setup.rst:64
+msgid "You are presented with a page displaying details about your account."
+msgstr ""
+"Bạn sẽ thấy một trang hiển thị thông tin chi tiết về tài khoản của bạn."
+
+#: ../../workflow/ledger-setup.rst:71
+msgid "View account balance"
+msgstr "Xem số dư tài khoản"
+
+#: ../../workflow/ledger-setup.rst:72
+msgid "You can check your account balance from the Web wallet:"
+msgstr "Bạn có thể kiểm tra số dư tài khoản của mình từ ví Web:"
+
+#: ../../workflow/ledger-setup.rst:74
+msgid "Follow the steps described in the \"View account details\" section above."
+msgstr ""
+"Thực hiện theo các bước được mô tả trong phần \"Xem chi tiết tài khoản\" ở "
+"trên."
+
+#: ../../workflow/ledger-setup.rst:75
+msgid ""
+"On the **Liquid Account Balance** row, you will see your latest known "
+"account balance."
+msgstr ""
+"Trên hàng **Số dư tài khoản thanh khoản**, bạn sẽ thấy số dư tài khoản mới "
+"nhất của mình."
+
+#: ../../workflow/ledger-setup.rst:79
+msgid "Receive tokens"
+msgstr "Nhận token"
+
+#: ../../workflow/ledger-setup.rst:80
+msgid ""
+"To receive tokens, you need to provide the sender with the public key of "
+"your account. To find it:"
+msgstr ""
+"Để nhận token, bạn cần cung cấp cho người gửi khóa công khai của tài khoản "
+"của bạn. Để tìm nó:"
+
+#: ../../workflow/ledger-setup.rst:82
+msgid "Open the account details page (see the \"View account details\" section)."
+msgstr "Mở trang chi tiết tài khoản (xem phần \"Xem chi tiết tài khoản\")."
+
+#: ../../workflow/ledger-setup.rst:83
+msgid "Copy the public key found on the **Public Key** row."
+msgstr "Sao chép khóa công khai được tìm thấy trên hàng **Khóa công khai**."
+
+#: ../../workflow/ledger-setup.rst:84
+msgid "Alternatively, click on the drop-down menu on your account address."
+msgstr "Ngoài ra, hãy nhấp vào menu thả xuống trên địa chỉ tài khoản của bạn."
+
+#: ../../workflow/ledger-setup.rst:89
+msgid "Click on the **Copy public key** button."
+msgstr "Nhấp vào nút **Sao chép khóa công khai**."
+
+#: ../../workflow/ledger-setup.rst:90
+msgid "Share the public key with the sender."
+msgstr "Chia sẻ khóa công khai với người gửi."
+
+#: ../../workflow/ledger-setup.rst:93
+msgid "Send tokens"
+msgstr "Gửi token"
+
+#: ../../workflow/ledger-setup.rst:95
+msgid "Sign in with your Ledger device."
+msgstr "Đăng nhập bằng thiết bị Ledger của bạn."
+
+#: ../../workflow/ledger-setup.rst:96
+msgid "Click on **Wallet** and then **Transfer CSPR**."
+msgstr "Nhấp vào **Ví** và sau đó nhấp vào **Chuyển CSPR**."
+
+#: ../../workflow/ledger-setup.rst:101
+msgid "Fill in the details for the transfer."
+msgstr "Điền thông tin chi tiết để chuyển khoản."
+
+msgid "Image showing the transfer details."
+msgstr "Hình ảnh hiển thị chi tiết chuyển khoản."
+
+#: ../../workflow/ledger-setup.rst:108
+msgid "Click on the **Next** button."
+msgstr "Nhấp vào nút **Tiếp theo**."
+
+#: ../../workflow/ledger-setup.rst:109
+msgid "On the next page, click **Confirm and transfer**."
+msgstr "Trên trang tiếp theo, nhấp vào **Xác nhận và chuyển**."
+
+msgid "Image showing the confirmation page."
+msgstr "Hình ảnh hiển thị trang xác nhận."
+
+#: ../../workflow/ledger-setup.rst:116
+msgid ""
+"On the **Sign transaction** page, click on the **Sign with Ledger** button."
+msgstr "Trên trang **Ký giao dịch**, nhấp vào nút **Ký bằng Ledger**."
+
+msgid "Image showing the transfer signing page."
+msgstr "Hình ảnh hiển thị trang ký chuyển khoản."
+
+#: ../../workflow/ledger-setup.rst:123
+msgid ""
+"Your Ledger hardware wallet will present you with transfer details. Verify "
+"the transfer details (txn hash, chain ID, source **account**, fee, target, "
+"and amount)."
+msgstr ""
+"Ví cứng Ledger của bạn sẽ cung cấp cho bạn chi tiết chuyển khoản. Xác thực "
+"chi tiết chuyển khoản (băm txn, ID chuỗi, tài khoản **nguồn**, phí, đích và "
+"số tiền)."
+
+#: ../../workflow/ledger-setup.rst:125
+msgid "**Verify the transaction on your Ledger device**"
+msgstr "**Xác thực giao dịch trên thiết bị Ledger của bạn**"
+
+#: ../../workflow/ledger-setup.rst:127
+msgid ""
+"Press the right button on your Ledger Device to review the transaction "
+"details (Amount and Address) until you see **“Approve”**."
+msgstr ""
+"Nhấn nút bên phải trên Thiết bị Ledger của bạn để xem lại chi tiết giao dịch"
+" (Số tiền và Địa chỉ) cho đến khi bạn thấy **“Approve”**."
+
+#: ../../workflow/ledger-setup.rst:129
+msgid ""
+"Verify the **txn hash** - make sure it matches the value displayed in the "
+"Web wallet on `cspr.live <https://cspr.live>`_."
+msgstr ""
+"Xác thực **txn hash** - đảm bảo rằng nó khớp với giá trị được hiển thị trong"
+" ví Web trên `cspr.live <https://cspr.live>`_."
+
+#: ../../workflow/ledger-setup.rst:135
+msgid "The *txn hash* value continues on a second screen."
+msgstr "Giá trị *txn hash* tiếp tục trên màn hình thứ hai."
+
+#: ../../workflow/ledger-setup.rst:141
+msgid ""
+"The next page displays transaction **type** - for CSPR transfers, that will "
+"be **Token transfer**."
+msgstr ""
+"Trang tiếp theo hiển thị giao dịch **type** - đối với chuyển khoản CSPR, đó "
+"sẽ là **Token transfer**."
+
+#: ../../workflow/ledger-setup.rst:147
+msgid ""
+"Verify the **chain ID**, which identifies the network on which you want to "
+"send the transaction."
+msgstr "Xác thực **chain ID** để xác định mạng mà bạn muốn gửi giao dịch."
+
+#: ../../workflow/ledger-setup.rst:153
+msgid ""
+"Verify the **account**, which is the public key of the account that "
+"initiated the transaction."
+msgstr ""
+"Xác thực **account**, là khóa công khai của tài khoản đã khởi xướng giao "
+"dịch."
+
+#: ../../workflow/ledger-setup.rst:159
+msgid "The *account* value continues on a second screen."
+msgstr "Giá trị *account* tiếp tục hiển thị trên màn hình thứ hai."
+
+#: ../../workflow/ledger-setup.rst:165
+msgid ""
+"Verify the **fee**. For CSPR token transfers, that value should be constant "
+"and equal to 10 000 motes = 0.00001 CSPR."
+msgstr ""
+"Xác thực **fee**. Đối với chuyển token CSPR, giá trị đó phải không đổi và "
+"bằng 10 000 motes = 0,00001 CSPR."
+
+#: ../../workflow/ledger-setup.rst:171
+msgid ""
+"Verify **target** - **NOTE** this **IS NOT** a public key of the recipient "
+"but the hash of that key. Compare the public key with the value in the Web "
+"wallet which shows you two fields for the recipient public key and "
+"target.\"."
+msgstr ""
+"Xác thực **target** - **LƯU Ý** đây **KHÔNG PHẢI** là khóa công khai của "
+"người nhận mà là mã băm của khóa đó. So sánh khóa công khai với giá trị "
+"trong ví Web hiển thị cho bạn hai trường dành cho khóa công khai và đích của"
+" người nhận.\"."
+
+#: ../../workflow/ledger-setup.rst:177
+msgid "The *target* value continues on a second screen."
+msgstr "Giá trị *target* tiếp tục trên màn hình thứ hai."
+
+#: ../../workflow/ledger-setup.rst:183
+msgid "Verify the **amount** you want to transfer."
+msgstr "Xác thực **amount** mà bạn muốn chuyển."
+
+#: ../../workflow/ledger-setup.rst:189
+msgid ""
+"If you approve the transaction, click both buttons on the Ledger device."
+msgstr ""
+"Nếu bạn chấp thuận giao dịch, hãy nhấp vào cả hai nút trên thiết bị Ledger."
+
+#: ../../workflow/ledger-setup.rst:195
+msgid ""
+"After approving the transaction with your Ledger hardware wallet, the "
+"`cspr.live <https://cspr.live>`_ Web wallet will display a \"Transfer "
+"completed\" page."
+msgstr ""
+"Sau khi chấp thuận giao dịch bằng ví cứng Ledger của bạn, ví Web `cspr.live "
+"<https://cspr.live>`_ sẽ hiển thị trang \"Đã hoàn thành chuyển\"."
+
+msgid "Image showing the transfer completed."
+msgstr "Hình ảnh hiển thị quá trình chuyển đã hoàn thành."
+
+#: ../../workflow/ledger-setup.rst:202
+msgid ""
+"You can now check your account to see a list of all the completed transfers."
+msgstr ""
+"Bây giờ bạn có thể kiểm tra tài khoản của mình để xem danh sách tất cả các "
+"lần chuyển tiền đã hoàn thành."

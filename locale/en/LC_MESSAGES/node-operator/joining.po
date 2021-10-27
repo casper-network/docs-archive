@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,8 +95,8 @@ msgstr ""
 
 #: ../../node-operator/joining.rst:46
 msgid ""
-"For more information visit `Github <https://github.com/CasperLabs/casper-"
-"node/tree/master/resources/production>`_"
+"For more information visit `Github <https://github.com/casper-network"
+"/casper-node/tree/master/resources/production>`_"
 msgstr ""
 
 #: ../../node-operator/joining.rst:49
@@ -134,4 +134,10 @@ msgid ""
 "Please see the bonding page to submit a bonding request to change from a "
 "synchronized node to a validating node."
 msgstr ""
+
+#~ msgid ""
+#~ "For more information visit `Github "
+#~ "<https://github.com/CasperLabs/casper-"
+#~ "node/tree/master/resources/production>`_"
+#~ msgstr ""
 

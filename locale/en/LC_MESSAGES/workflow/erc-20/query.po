@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../workflow/erc-20/query.rst:2
+msgid "Query the Contract Package"
+msgstr ""
+
+#: ../../workflow/erc-20/query.rst:4
+msgid "Query the contract package hash which returns the package:"
+msgstr ""
+
+#: ../../workflow/erc-20/query.rst:11
+msgid "This will return the ``Contract Package`` object:"
+msgstr ""
+
+#: ../../workflow/erc-20/query.rst:17
+msgid ""
+"In the ``contract_hash`` field, the hash value represents the stored "
+"contract which we will invoke later on."
+msgstr ""
+
+#: ../../workflow/erc-20/query.rst:19
+msgid ""
+"The utility contract invokes the ``balance_of`` and ``allowance`` entry "
+"point of the main ERC20 contract. Once the value is returned, the utility"
+" contract will write either a balance or an allowance value to a URef "
+"within its named keys, called `result`. We will query the utility "
+"contract object to read the URef."
+msgstr ""
+
+#: ../../workflow/erc-20/query.rst:27
+msgid ""
+"The named keys field, which will contain an entry called `result` with "
+"some URef associated with it."
+msgstr ""
+
+#: ../../workflow/erc-20/query.rst:31
+msgid ""
+"We will use this URef value to check the balances and allowances of users"
+" within the ERC20 contract."
+msgstr ""
+

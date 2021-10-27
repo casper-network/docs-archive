@@ -1,0 +1,1024 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-08-23 20:09+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../workflow/staking.rst:2
+msgid "How to Stake your CSPR"
+msgstr "Как стейкать ваши CSPR"
+
+#: ../../workflow/staking.rst:5
+msgid "1. Introduction"
+msgstr "1. Введение"
+
+#: ../../workflow/staking.rst:6
+msgid ""
+"Casper and other Proof-of-Stake protocols allow token holders to earn "
+"rewards and participate in the protocol through a mechanism called "
+"**staking**. This tutorial shows you how to stake your Casper tokens with a "
+"validator on the network. This process is also called **delegation**. We "
+"will use these terms interchangeably in this guide, but we will explain the "
+"technical difference for clarity."
+msgstr ""
+"Casper и другие протоколы Proof-of-Stake позволяют держателям токенов "
+"получать вознаграждения и участвовать в протоколе с помощью механизма, "
+"называемого **стейкинг**. В этом уроке показано, как стейкать токены Casper "
+"с помощью валидатора в сети. Этот процесс также называется "
+"**делегированием**. В этом руководстве мы будем использовать эти термины "
+"взаимозаменяемо, но для ясности объясним техническую разницу."
+
+#: ../../workflow/staking.rst:8
+msgid ""
+"This video guide covers the process at a high level, but we recommend "
+"following the written tutorial to go through the process step by step."
+msgstr ""
+"Это видео-руководство охватывает процесс на высоком уровне, но мы "
+"рекомендуем следовать письменному руководству, чтобы пройти процесс шаг за "
+"шагом."
+
+#: ../../workflow/staking.rst:15
+msgid "**Staking**"
+msgstr "**Стейкинг**"
+
+#: ../../workflow/staking.rst:17
+msgid ""
+"Node operators stake their own tokens to earn the eligibility to propose and"
+" approve blocks on the network. For this reason, we also refer to them as "
+"validators. They also run and maintain servers connected to the Casper "
+"Network. With these actions, node operators enable the Proof-of-Stake aspect"
+" of the network. This process is different from mining tokens. Validators "
+"thus earn rewards for participating and for securing the network."
+msgstr ""
+"Операторы нод стейкают свои собственные токены, чтобы получить право "
+"предлагать и утверждать блоки в сети. По этой причине мы также называем их "
+"валидаторами. Они также управляют и обслуживают серверы, подключенные к сети"
+" Casper. С помощью этих действий операторы нод включают аспект подтверждения"
+" ставки в сети. Этот процесс отличается от майнинга токенов. Таким образом, "
+"валидаторы получают вознаграждение за участие и за безопасность сети."
+
+#: ../../workflow/staking.rst:19
+msgid "**Delegating**"
+msgstr "**Делегирование**"
+
+#: ../../workflow/staking.rst:21
+#, python-format
+msgid ""
+"You can also participate in the protocol to earn rewards without maintaining"
+" a Casper node (a server that stores a copy of the blockchain). To "
+"accomplish this, you can delegate or allocate your CSPR tokens to a chosen "
+"node operator on the network. The node operator will retain a commission, "
+"which is a percentage of the rewards generated from your staked tokens. By "
+"participating in the protocol this way, you help improve the network's "
+"decentralization and security and earn rewards in return. The base annual "
+"reward rate is currently 8% of the total supply."
+msgstr ""
+"Вы также можете участвовать в протоколе, чтобы получать вознаграждения, не "
+"поддерживая ноду Casper (сервер, на котором хранится копия блокчейна). Для "
+"этого вы можете делегировать или распределить свои токены CSPR выбранному "
+"оператору ноды в сети. Оператор ноды сохранит комиссию, которая представляет"
+" собой процент от вознаграждений, полученных от ваших размещенных токенов. "
+"Участвуя таким образом в протоколе, вы помогаете улучшить децентрализацию и "
+"безопасность сети и получаете взамен вознаграждение. Базовая годовая ставка "
+"вознаграждения в настоящее время составляет 8% от общего объема предложения."
+
+#: ../../workflow/staking.rst:23
+msgid ""
+"This tutorial will show you how to earn rewards by delegating your Casper "
+"tokens. We will also cover the steps to undelegate your tokens at the end of"
+" the tutorial."
+msgstr ""
+"В этом уроке вы узнаете, как получать награды, делегируя свои токены Casper."
+" Мы также рассмотрим шаги по отмене делегирования ваших токенов в конце "
+"урока."
+
+#: ../../workflow/staking.rst:27
+msgid "1. Staking Overview"
+msgstr "1. Обзор стейкинга"
+
+#: ../../workflow/staking.rst:28
+msgid ""
+"Staking the process by which node operators participate in the blockchain "
+"network. It is important to understand the fundamentals of staking because "
+"when you delegate your tokens to a validator, they will be staking those "
+"tokens on your behalf. Here are a few common topics related to staking, but "
+"we encourage you to do your own research."
+msgstr ""
+"Определение процесса, посредством которого операторы узлов участвуют в сети "
+"блокчейна. Важно понимать основы размещения ставок, потому что, когда вы "
+"делегируете свои токены валидатору, они будут размещать эти токены от вашего"
+" имени. Вот несколько общих тем, связанных с размещением ставок - "
+"стейкингом, но мы рекомендуем вам провести собственное исследование."
+
+#: ../../workflow/staking.rst:30
+msgid "**Slashing**"
+msgstr "**Слэшинг**"
+
+#: ../../workflow/staking.rst:32
+msgid ""
+"Presently Casper does not slash if a node operator equivocates or "
+"misbehaves. If a node equivocates, other validators will ignore its "
+"messages, and the node will become inactive."
+msgstr ""
+"В настоящее время Casper не сокращает, если оператор ноды создает "
+"двусмысленности или ведет себя неправильно. Если нода отклоняется, другие "
+"средства проверки будут игнорировать ее сообщения, и нода станет неактивной."
+
+#: ../../workflow/staking.rst:34
+msgid "**Commission**"
+msgstr "**Комиссия**"
+
+#: ../../workflow/staking.rst:36
+msgid ""
+"Node operators (also known as validators) define a commission they take to "
+"provide staking services. This commission is a percentage of the rewards "
+"node operators take for their services."
+msgstr ""
+"Операторы ноды (также известные как валидаторы) определяют комиссию, которую"
+" они берут за предоставление услуг по размещению ставок - стейкингу. Эта "
+"комиссия представляет собой процент от вознаграждения, которое операторы нод"
+" получают за свои услуги."
+
+#: ../../workflow/staking.rst:38
+msgid "**Rewards**"
+msgstr "**Вознаграждения**"
+
+#: ../../workflow/staking.rst:40
+msgid ""
+"Validators receive rewards, proportional to their stake, for participating "
+"in the network. Delegators receive a portion of the validator's rewards, "
+"proportional to what they staked, minus the validator's commission (or "
+"delegation rate)."
+msgstr ""
+"Валидаторы получают вознаграждение, пропорциональное их ставке, за участие в"
+" сети. Делегаторы получают часть вознаграждения валидатора, пропорциональную"
+" тому, что они поставили, за вычетом комиссии валидатора (или курса "
+"делегирования)."
+
+#: ../../workflow/staking.rst:42
+msgid "**Validator Selection**"
+msgstr "**Отбор валидаторов**"
+
+#: ../../workflow/staking.rst:44
+msgid ""
+"As a prospective delegator, you need to select a validating node that you "
+"can trust. Please do your due diligence before you stake your tokens with a "
+"validator."
+msgstr ""
+"В качестве потенциального делегата важно выбрать проверяющую ноду, которой "
+"вы можете доверять. Пожалуйста, проявите должную осмотрительность, прежде "
+"чем ставить свои токены на стейк с помощью валидатора."
+
+#: ../../workflow/staking.rst:48
+msgid "3. Creating your Wallet with the CasperLabs Signer"
+msgstr "3. Создание вашего Кошелька с CasperLabs Signer"
+
+#: ../../workflow/staking.rst:49
+msgid ""
+"To stake tokens, you need access to a wallet with CSPR tokens. At the "
+"moment, you can use the `CasperLabs Signer "
+"<https://chrome.google.com/webstore/detail/casperlabs-"
+"signer/djhndpllfiibmcdbnmaaahkhchcoijce>`_ tool. The Signer acts as your "
+"CSPR wallet, keeping your accounts secure and helping you perform actions "
+"like staking, un-staking, or sending tokens to another account. Please "
+"follow `the Signer Guide <https://docs.cspr.community/docs/user-"
+"guides/SignerGuide.html>`_ for additional details on how to set up this "
+"tool."
+msgstr ""
+"Чтобы поставить токены, вам нужен доступ к кошельку с токенами CSPR. На "
+"данный момент вы можете воспользоваться инструментом подписи `CasperLabs "
+"Signer <https://chrome.google.com/webstore/detail/casperlabs-"
+"signer/djhndpllfiibmcdbnmaaahkhchcoijce>`_ . Подписывающий инструмент "
+"действует как ваш кошелек CSPR, обеспечивая безопасность ваших аккаунтов и "
+"помогая вам выполнять такие действия, как размещение ставок, снятие ставок "
+"или отправка токенов на другую учетную запись. Пожалуйста, следуйте `the "
+"Signer Guide <https://docs.cspr.community/docs/user-"
+"guides/SignerGuide.html>`_ для получения дополнительной информации о том, "
+"как настроить этот инструмент."
+
+#: ../../workflow/staking.rst:51
+msgid ""
+"You can create, store, and use one or more CSPR accounts with your Signer "
+"wallet. A password protects all accounts in what we call a **vault**."
+msgstr ""
+"Вы можете создавать, хранить и использовать одну или несколько учетных "
+"записей CSPR с помощью своего кошелька Signer. Пароль защищает все учетные "
+"записи в том, что мы называем **хранилищем** - vault."
+
+#: ../../workflow/staking.rst:54
+msgid "3.1 Signing in to the CasperLabs Signer"
+msgstr "3.1 Регистрация в CasperLabs Signer"
+
+#: ../../workflow/staking.rst:55
+msgid ""
+"If you are new or have logged out of the Signer, you can log in with these "
+"steps:"
+msgstr ""
+"Если вы новичок или вышли из Signer, вы можете войти в систему, выполнив "
+"следующие действия:"
+
+#: ../../workflow/staking.rst:57
+msgid ""
+"Using Chrome or a Chromium-based browser like Brave, navigate to the block "
+"explorer on the mainnet (https://cspr.live/), and click on the **Sign-in** "
+"menu."
+msgstr ""
+"Используя Chrome или браузер на основе Хрома, такой как Brave, перейдите в "
+"обозреватель блоков в главной сети (https://cspr.live/), и нажмите на меню "
+"**Вход**."
+
+#: ../../workflow/staking.rst:58
+msgid ""
+"Download the `CasperLabs Signer extension "
+"<https://chrome.google.com/webstore/detail/casperlabs-"
+"signer/djhndpllfiibmcdbnmaaahkhchcoijce>`_."
+msgstr ""
+"Загрузите расширение `CasperLabs Signer extension "
+"<https://chrome.google.com/webstore/detail/casperlabs-"
+"signer/djhndpllfiibmcdbnmaaahkhchcoijce>`_."
+
+#: ../../workflow/staking.rst:59
+msgid ""
+"You will need to create a vault that will safeguard your accounts with a "
+"password. In this step, we assume that you have not used the Signer before, "
+"so click **Reset Vault**."
+msgstr ""
+"Вам нужно будет создать хранилище, которое защитит ваши учетные записи "
+"паролем. На этом шаге мы предполагаем, что вы раньше не использовали Signer,"
+" поэтому нажмите **Сбросить хранилище**."
+
+#: ../../workflow/staking.rst:60
+msgid ""
+"Create a password for your new vault. Confirm the password, and then click "
+"**Create Vault**."
+msgstr ""
+"Создайте пароль для вашего нового хранилища. Подтвердите пароль, а затем "
+"нажмите **Создать хранилище**."
+
+#: ../../workflow/staking.rst:61
+msgid ""
+"Write down and store your password in a secure location. **If you lose it, "
+"you will lose access to this wallet!**"
+msgstr ""
+"Запишите и сохраните свой пароль в безопасном месте. **Если вы потеряете "
+"его, вы потеряете доступ к этому кошельку!**"
+
+#: ../../workflow/staking.rst:62
+msgid "Open the Signer extension and log into your vault."
+msgstr "Откройте расширение Signer и зайдите в хранилище."
+
+#: ../../workflow/staking.rst:63
+msgid ""
+"Click on the hamburger menu icon to select from a range of options. Notice "
+"that the checkmark indicates the active account."
+msgstr ""
+"Нажмите на значок меню в виде гамбургера, чтобы выбрать один из множества "
+"вариантов. Обратите внимание, что галочка указывает на активную учетную "
+"запись."
+
+#: ../../workflow/staking.rst:64
+msgid ""
+"From this menu, you can perform essential management functions, such as "
+"editing accounts, deleting accounts, or viewing and downloading your keys."
+msgstr ""
+"В этом меню вы можете выполнять основные функции управления, такие как "
+"редактирование учетных записей, удаление учетных записей или просмотр и "
+"загрузка ваших ключей."
+
+#: ../../workflow/staking.rst:65
+msgid ""
+"You can also view websites and dApps to which your accounts are connected."
+msgstr ""
+"Вы также можете просматривать веб-сайты и приложения, к которым подключены "
+"ваши учетные записи."
+
+#: ../../workflow/staking.rst:66
+msgid ""
+"One essential function is the ability to download your keys and store them "
+"in a secure location. If you lose access to the vault, you can create a new "
+"vault with the downloaded files. Please do this as early as possible!"
+msgstr ""
+"Одной из важных функций является возможность загружать ваши ключи и хранить "
+"их в безопасном месте. Если вы потеряете доступ к хранилищу, вы можете "
+"создать новое хранилище с загруженными файлами. Пожалуйста, сделайте это как"
+" можно раньше!"
+
+#: ../../workflow/staking.rst:69
+msgid "3.2 Creating a New Account"
+msgstr "3.2 Создание Новой учетной записи"
+
+#: ../../workflow/staking.rst:70
+msgid ""
+"If you are using the CasperLabs Signer for the first time, follow these "
+"steps to create an account and **download the account's keys**:"
+msgstr ""
+"Если вы используете CasperLabs Signer в первый раз, выполните следующие "
+"действия, чтобы создать учетную запись и **загрузить ключи учетной записи**:"
+
+#: ../../workflow/staking.rst:72
+msgid "Click **Create Account** in the Signer."
+msgstr "Нажмите **Создать аккаунт** в Signer"
+
+#: ../../workflow/staking.rst:73
+msgid ""
+"Give your account a name. In this tutorial, we will use the name *My-CSPR*."
+msgstr ""
+"Укажите имя своей учетной записи. В этом уроке мы будем использовать имя "
+"*My-CSPR*."
+
+#: ../../workflow/staking.rst:74
+msgid ""
+"Select an Algorithm using the dropdown menu. Select *SECP256K1* unless you "
+"have a good reason not to do so."
+msgstr ""
+"Выберите алгоритм с помощью выпадающего меню. Выберите *SECP256K1*, если у "
+"вас нет веской причины не делать этого."
+
+#: ../../workflow/staking.rst:75
+msgid "Click **Create** to save your account."
+msgstr "Нажмите **Создать**, чтобы сохранить свою учетную запись."
+
+#: ../../workflow/staking.rst:76
+msgid ""
+"**IMPORTANT: Download the key files for this account!** Click the hamburger "
+"icon and select the **Download Active Key** option."
+msgstr ""
+"**ВАЖНО: Загрузите файлы ключей для этой учетной записи!** Щелкните значок "
+"гамбургера и выберите опцию **Загрузить активный ключ**."
+
+#: ../../workflow/staking.rst:83
+msgid "Check that your browser downloaded the following three files:"
+msgstr "Убедитесь, что ваш браузер загрузил следующие три файла:"
+
+#: ../../workflow/staking.rst:85
+msgid "Your secret key: **...\\_secret\\_key.pem**"
+msgstr "Ваш секретный ключ: **...\\_secret\\_key.pem**"
+
+#: ../../workflow/staking.rst:86
+msgid "Your public key: **...\\_public\\_key.pem**"
+msgstr "Ваш открытый ключ: **...\\_public\\_key.pem**"
+
+#: ../../workflow/staking.rst:87
+msgid "A text file: **...\\_public\\_key\\_hex.txt**"
+msgstr "Текстовый файл: **...\\_public\\_key\\_hex.txt**"
+
+#: ../../workflow/staking.rst:89
+msgid ""
+"If you do not have these three files, you need to enable multiple downloads "
+"in your browser. It is crucial to proceed to the next step only if you have "
+"all of these files. This screenshot shows the files downloaded for an "
+"account called *My-CSPR*:"
+msgstr ""
+"Если у вас нет этих трех файлов, вам необходимо включить несколько загрузок "
+"в вашем браузере. Крайне важно переходить к следующему шагу только в том "
+"случае, если у вас есть все эти файлы. На этом снимке экрана показаны файлы,"
+" загруженные для учетной записи с именем *My-CSPR*:"
+
+#: ../../workflow/staking.rst:96
+msgid ""
+"**IMPORTANT: Move these files to a secure OFFLINE location!** Do not store "
+"them on any device with a wifi connection. We recommend an offline USB or "
+"hard drive. Consider backing up these files in multiple locations in case "
+"one location becomes compromised."
+msgstr ""
+"**ВАЖНО: Переместите эти файлы в безопасное автономное место!** Не храните "
+"их ни на одном устройстве с подключением Wi-Fi. Мы рекомендуем использовать "
+"автономный USB-накопитель или жесткий диск. Рассмотрите возможность "
+"резервного копирования этих файлов в нескольких местах на случай, если одно "
+"из них окажется скомпрометированным."
+
+#: ../../workflow/staking.rst:97
+msgid ""
+"If you lose the vault password you created, but still have the "
+"*secret_key.pem* file, you can import your account into a new vault, as "
+"shown in the next section."
+msgstr ""
+"Если вы потеряли созданный вами пароль хранилища, но у вас все еще есть файл"
+" *secret_key.pem*, вы можете импортировать свою учетную запись в новое "
+"хранилище, как показано в следующем разделе."
+
+#: ../../workflow/staking.rst:98
+msgid ""
+"**IMPORTANT: If you lose the secret_key.pem file and your vault password, "
+"you will lose access to that account and to the tokens stored in the "
+"account.**"
+msgstr ""
+"**ВАЖНО: Если вы потеряете файл secret_key.pem и пароль хранилища, вы "
+"потеряете доступ к этой учетной записи и к токенам, хранящимся в учетной "
+"записи.**"
+
+#: ../../workflow/staking.rst:101
+msgid "3.3 Importing an Existing Account"
+msgstr "3.3 Импорт Существующей учетной записи"
+
+#: ../../workflow/staking.rst:102
+msgid ""
+"If you already have your secret keys and would like to set up and use your "
+"wallet with your existing accounts, you can do so with the following steps. "
+"These steps also apply for users migrating from the outdated Clarity tool to"
+" `cspr.live <https://cspr.live/>`_."
+msgstr ""
+"Если у вас уже есть секретные ключи и вы хотите настроить и использовать "
+"свой кошелек с существующими учетными записями, вы можете сделать это, "
+"выполнив следующие действия. Эти шаги также применимы для пользователей, "
+"переходящих с устаревшего инструмента Clarity на 'cspr.live "
+"<https://cspr.live/>`_."
+
+#: ../../workflow/staking.rst:104
+msgid ""
+"Import your existing account by clicking the **IMPORT ACCOUNT** button."
+msgstr ""
+"Импортируйте существующую учетную запись, нажав кнопку **ИМПОРТИРОВАТЬ "
+"УЧЕТНУЮ ЗАПИСЬ**."
+
+#: ../../workflow/staking.rst:105
+msgid ""
+"Then, click on the **UPLOAD** button and select your secret key file (the "
+"file with the secret_key.pem extension)."
+msgstr ""
+"Затем нажмите кнопку **ЗАГРУЗИТЬ** и выберите файл секретного ключа (файл с "
+"расширением secret_key.pem)."
+
+#: ../../workflow/staking.rst:106
+msgid ""
+"Give your account a name and click on the **IMPORT** button to complete the "
+"import operation."
+msgstr ""
+"Введите имя своей учетной записи и нажмите кнопку **ИМПОРТ**, чтобы "
+"завершить операцию импорта."
+
+#: ../../workflow/staking.rst:107
+msgid ""
+"Repeat these steps for all the accounts you would like to import into your "
+"wallet."
+msgstr ""
+"Повторите эти действия для всех учетных записей, которые вы хотели бы "
+"импортировать в свой кошелек."
+
+#: ../../workflow/staking.rst:114
+msgid ""
+"Now that you have your CasperLabs Signer wallet, you can continue to connect"
+" to the mainnet blockchain."
+msgstr ""
+"Теперь, когда у вас есть кошелек CasperLabs Signer, вы можете продолжать "
+"подключаться к блокчейну mainnet."
+
+#: ../../workflow/staking.rst:117
+msgid "4. Connecting to cspr.live"
+msgstr "4. Подключение к cspr.live"
+
+#: ../../workflow/staking.rst:118
+msgid ""
+"Using the active account in the Signer tool, connect to the Casper "
+"blockchain by clicking on the **DISCONNECTED** button to toggle the "
+"connection."
+msgstr ""
+"Используя активную учетную запись в инструменте Signer, подключитесь к "
+"блокчейну Casper, нажав кнопку **ОТКЛЮЧЕНО**, чтобы переключить соединение."
+
+#: ../../workflow/staking.rst:125
+msgid "Approve the connection by clicking the **CONNECT** button."
+msgstr "Подтвердите подключение, нажав кнопку **ПОДКЛЮЧИТЬСЯ**."
+
+#: ../../workflow/staking.rst:132
+msgid ""
+"You are now in the block explorer and connected to the Casper blockchain "
+"using your active account!"
+msgstr ""
+"Теперь вы находитесь в проводнике блоков и подключены к блокчейну Casper, "
+"используя свою активную учетную запись!"
+
+#: ../../workflow/staking.rst:134
+msgid "Next, click on **View Account** in the top right corner."
+msgstr "Затем нажмите **Просмотреть учетную запись** в правом верхнем углу."
+
+#: ../../workflow/staking.rst:141
+msgid "You will see the following fields:"
+msgstr "Вы увидите следующие поля:"
+
+#: ../../workflow/staking.rst:143
+msgid "The **Public Key** is the address of your Casper Mainnet account."
+msgstr "**Открытый ключ** - это адрес вашей учетной записи Casper в сети."
+
+#: ../../workflow/staking.rst:144
+msgid ""
+"The **Account Hash** is a 32-byte identifier derived from the public key. "
+"The platform uses it to verify transactions."
+msgstr ""
+"**Хеш аккаунта** - это 32-байтовый идентификатор, полученный из открытого "
+"ключа. Платформа использует его для проверки транзакций."
+
+#: ../../workflow/staking.rst:145
+msgid ""
+"The **Liquid Account Balance** represents the tokens you have for immediate "
+"use."
+msgstr ""
+"**Ликвидный баланс счета** представляет собой токены, которые у вас есть для"
+" немедленного использования."
+
+#: ../../workflow/staking.rst:146
+msgid ""
+"The **Delegated Account Balance** represents your delegated tokens staked "
+"with validators on the network."
+msgstr ""
+"**Делегированный баланс аккаунта** представляет ваши делегированные токены, "
+"размещенные с помощью валидаторов в сети."
+
+#: ../../workflow/staking.rst:147
+msgid "You will also see **Total Rewards Received** on the account page."
+msgstr ""
+"Вы также увидите **Общее количество полученных вознаграждений** на странице "
+"учетной записи."
+
+#: ../../workflow/staking.rst:154
+msgid ""
+"If you wish, you can also explore the *Transfers*, *Deploys*, *Delegations*,"
+" and *Staking Rewards* tabs."
+msgstr ""
+"При желании вы также можете изучить вкладки *Переводы*, *Развертывание*, "
+"*Делегирование* и *Распределение вознаграждений*."
+
+#: ../../workflow/staking.rst:156
+msgid ""
+"In this tutorial, we are interested in the *Delegations* tab, where you can "
+"see a list of validators to which you have delegated tokens and the amount "
+"you have delegated."
+msgstr ""
+"В этом руководстве нас интересует вкладка *Делегирование*, где вы можете "
+"увидеть список валидаторов, которым вы делегировали токены, и сумму, которую"
+" вы делегировали."
+
+#: ../../workflow/staking.rst:158
+msgid ""
+"You will see details about your rewards in the *Staking Rewards* tab, such "
+"as the validator you have staked with and the amount you have received for "
+"each era."
+msgstr ""
+"Вы увидите подробную информацию о своих наградах на вкладке *Награды за "
+"ставки*, например, о валидаторе, с которым вы делали ставки, и сумме, "
+"которую вы получили за каждую эру."
+
+#: ../../workflow/staking.rst:163
+msgid "**Delegation Fees**"
+msgstr "**Курс делегирования**"
+
+#: ../../workflow/staking.rst:165
+msgid ""
+"It is important to know that the cost of the delegation process is "
+"approximately 3 CSPR. Ensure you have extra CSPR on your account apart from "
+"the amount you are delegating; otherwise, the transaction will fail. For "
+"example, if you want to delegate 1000 CSPR, you need to have at least 1003 "
+"CSPR in your account."
+msgstr ""
+"Важно знать, что стоимость процесса делегирования составляет примерно 3 "
+"CSPR. Убедитесь, что у вас есть дополнительный CSPR на вашем счете, помимо "
+"суммы, которую вы делегируете; в противном случае транзакция завершится "
+"неудачей. Например, если вы хотите делегировать 1000 CSPR, в вашей учетной "
+"записи должно быть не менее 1003 CSPR."
+
+#: ../../workflow/staking.rst:168
+msgid "5. Funding your Account"
+msgstr "5. Пополнение счета аккаунта"
+
+#: ../../workflow/staking.rst:170
+msgid ""
+"**IMPORTANT NOTE:** If you want to send your CSPR coins from an exchange to "
+"this account, you need to copy the **Public Key** value. Use the quick copy "
+"button to the right of the public key address to copy it. Then set up a "
+"withdrawal request from the exchange using the public key."
+msgstr ""
+"**ВАЖНОЕ ПРИМЕЧАНИЕ:** Если вы хотите отправить свои монеты CSPR с биржи на "
+"эту учетную запись, вам необходимо скопировать значение **Открытого ключа**."
+" Используйте кнопку быстрого копирования справа от адреса открытого ключа, "
+"чтобы скопировать его. Затем настройте запрос на вывод средств с биржи с "
+"помощью открытого ключа."
+
+#: ../../workflow/staking.rst:172
+msgid ""
+"The transfer from an exchange takes a few minutes. After your tokens arrive "
+"in your account, you can delegate them. This section demonstrates a "
+"withdrawal from the Coinlist exchange http://coinlist.co/ to the `Casper "
+"Mainnet on cspr.live <https://cspr.live/>`_."
+msgstr ""
+"Перевод с обменника занимает несколько минут. После того, как ваши токены "
+"поступят в вашу учетную запись, вы сможете делегировать их. В этом разделе "
+"демонстрируется вывод средств с биржи Coinlist http://coinlist.co/ в главную"
+" сеть Casper на 'cspr.live <https://cspr.live/>`_."
+
+#: ../../workflow/staking.rst:175
+msgid "5.1 Transfer CSPR from an Exchange"
+msgstr "5.1 Перевод CSPR с Биржи"
+
+#: ../../workflow/staking.rst:176
+msgid ""
+"If you need to transfer your CSPR tokens from an exchange, you will need "
+"your **public key** from the account page. You can also find this key in the"
+" **public_key_hex** file, which you can download from the CasperLabs Signer."
+msgstr ""
+"Если вам нужно перевести свои токены CSPR с биржи, вам понадобится ваш "
+"**открытый ключ** со страницы учетной записи. Вы также можете найти этот "
+"ключ в файле **public_key_hex**, который вы можете скачать из CasperLabs "
+"Signer."
+
+#: ../../workflow/staking.rst:178
+msgid ""
+"If you already have funds in your Signer wallet, you can skip this section. "
+"If you are working with a different exchange, you need to contact that "
+"exchange directly."
+msgstr ""
+"Если у вас уже есть средства в кошельке Signer, вы можете пропустить этот "
+"раздел. Если вы работаете с другой биржей, вам необходимо связаться с этой "
+"биржей напрямую."
+
+#: ../../workflow/staking.rst:180
+msgid "Log into your https://coinlist.co/ account."
+msgstr "Войдите в свой аккаунт https://coinlist.co/ ."
+
+#: ../../workflow/staking.rst:181
+msgid "Go to the **Wallet** tab."
+msgstr "Перейдите на вкладку **Кошелек**."
+
+#: ../../workflow/staking.rst:188
+msgid "Click on the **CSPR** section."
+msgstr "Нажмите на раздел **CSPR**."
+
+#: ../../workflow/staking.rst:195
+msgid "Click on the **Withdraw** button."
+msgstr "Нажмите на кнопку **Вывести**."
+
+#: ../../workflow/staking.rst:200
+msgid ""
+"Copy the **Public Key**. The screenshot below shows the account page on "
+"https://cspr.live/ and the field that you need to copy from that page."
+msgstr ""
+"Скопируйте **Открытый ключ**. На скриншоте ниже показана страница учетной "
+"записи на https://cspr.live/ и поле, которое вам нужно скопировать с этой "
+"страницы."
+
+#: ../../workflow/staking.rst:205
+msgid ""
+"Enter the **Public Key** in the **Recipient Address** field in the "
+"withdrawal request."
+msgstr ""
+"Введите **Открытый ключ** в поле **Адрес получателя** в запросе на вывод "
+"средств"
+
+#: ../../workflow/staking.rst:212
+msgid ""
+"Enter 0 in the **Transfer ID** field or another value that is meaningful to "
+"you. **You MUST enter a value or the transfer will fail!**"
+msgstr ""
+"Введите 0 в поле **Идентификатор перевода** или другое значимое для вас "
+"значение. **Вы ДОЛЖНЫ ввести значение, иначе перевод не удастся!**"
+
+#: ../../workflow/staking.rst:214
+msgid ""
+"Enter the CSPR amount you wish to transfer. **We recommend that you try "
+"these steps with a small amount of CSPR to verify you followed the steps "
+"correctly**. After one successful transfer, you will be more comfortable "
+"transferring larger amounts."
+msgstr ""
+"Введите сумму CSPR, которую вы хотите перевести. **Мы рекомендуем вам "
+"попробовать выполнить эти действия с небольшим количеством CSPR, чтобы "
+"убедиться, что вы правильно выполнили шаги**. После одного успешного "
+"перевода вам будет удобнее переводить большие суммы."
+
+#: ../../workflow/staking.rst:216
+msgid "Click **Review**."
+msgstr "Нажмите **Обзор**."
+
+#: ../../workflow/staking.rst:218
+msgid ""
+"Submit your transfer request. Wait approximately 5 minutes, and then go to "
+"the https://cspr.live/ site to verify your transfer. On your account page, "
+"you should see that the **Liquid Account Balance** reflects the amount you "
+"have transferred."
+msgstr ""
+"Отправьте запрос на перевод. Подождите примерно 5 минут, а затем перейдите в"
+" https://cspr.live/ сайт для подтверждения вашего перевода. На странице "
+"вашего аккаунта вы должны увидеть, что **Ликвидный баланс счета** отражает "
+"сумму, которую вы перевели."
+
+#: ../../workflow/staking.rst:220
+msgid "Now you are ready to delegate your tokens."
+msgstr "Теперь вы готовы делегировать свои токены."
+
+#: ../../workflow/staking.rst:223
+msgid "6. Delegating Tokens"
+msgstr "6. Делегирование токенов"
+
+#: ../../workflow/staking.rst:224
+msgid "You can access the delegation functionality in two ways."
+msgstr "Вы можете получить доступ к функциям делегирования двумя способами."
+
+#: ../../workflow/staking.rst:226
+msgid ""
+"**Option 1:** Click **Wallet** from the top navigation menu and then click "
+"**Delegate**."
+msgstr ""
+"**Вариант 1:** Нажмите **Кошелек** в верхнем меню навигации, а затем нажмите"
+" **Делегировать**."
+
+#: ../../workflow/staking.rst:233
+msgid ""
+"**Option 2:** Click **Validators** from the top navigation menu. From the "
+"validators table, click on any validator to access their details. Once you "
+"find the validator to which you want to delegate tokens, click the "
+"**Delegate** button."
+msgstr ""
+"**Вариант 2:** Нажмите **Валидаторы** в верхнем меню навигации. В таблице "
+"валидаторов щелкните на любого валидатора, чтобы получить доступ к его "
+"данным. Как только вы найдете валидатора, которому хотите делегировать "
+"токены, нажмите кнопку **Делегировать**."
+
+#: ../../workflow/staking.rst:238
+msgid "Then follow these instructions to delegate your tokens:"
+msgstr "Затем следуйте этим инструкциям, чтобы делегировать свои токены:"
+
+#: ../../workflow/staking.rst:240
+msgid "**Step 1 - Delegation Details**"
+msgstr "**Шаг 1 - Детали делегирования**"
+
+#: ../../workflow/staking.rst:242
+msgid ""
+"Start by choosing the validator to which you want to delegate your tokens. "
+"You can search for one using the search box or paste their public key if you"
+" have a validator in mind."
+msgstr ""
+"Начните с выбора валидатора, которому вы хотите делегировать свои токены. Вы"
+" можете выполнить поиск с помощью поля поиска или вставить открытый ключ "
+"валидатора, если у вас уже есть желаемый валидатор."
+
+#: ../../workflow/staking.rst:243
+msgid "Enter the amount of CSPR you would like to delegate."
+msgstr "Введите сумму CSPR, которую вы хотели бы делегировать."
+
+#: ../../workflow/staking.rst:244 ../../workflow/staking.rst:326
+msgid "Click **Next**."
+msgstr "Нажмите **Далее**."
+
+#: ../../workflow/staking.rst:251 ../../workflow/staking.rst:333
+msgid "**Step 2 - Confirm the Transaction**"
+msgstr "**Шаг 2 - Подтвердите транзакцию**"
+
+#: ../../workflow/staking.rst:253
+msgid "Review the details of the transaction."
+msgstr "Ознакомьтесь с деталями транзакции."
+
+#: ../../workflow/staking.rst:254
+msgid "Enter the amount you want to delegate."
+msgstr "Введите сумму, которую вы хотите делегировать."
+
+#: ../../workflow/staking.rst:255
+msgid ""
+"If everything is correct, click **Next**. If you wish to change something, "
+"you can return to the previous step by clicking **Back to step 1**."
+msgstr ""
+"Если все правильно, нажмите **Далее**. Если вы хотите что-то изменить, вы "
+"можете вернуться к предыдущему шагу, нажав **Вернуться к шагу 1**."
+
+#: ../../workflow/staking.rst:260 ../../workflow/staking.rst:341
+msgid "**Step 3 - Sign the Transaction**"
+msgstr "**Шаг 3 - Подпишите транзакцию**"
+
+#: ../../workflow/staking.rst:262 ../../workflow/staking.rst:343
+msgid "Click **Sign** with the CasperLabs Signer."
+msgstr "Нажмите **Подписать** с помощью CasperLabs Signer."
+
+#: ../../workflow/staking.rst:269
+msgid ""
+"Once the Signer app window opens, **make sure that the Deploy hash in the "
+"Signer window matches the Deploy hash in https://cspr.live/ before "
+"continuing!**"
+msgstr ""
+"Как только откроется окно приложения Signer, **убедитесь, что хеш "
+"развертывания в окне Signer совпадает с хешем развертывания в "
+"https://cspr.live/ прежде чем продолжить!**"
+
+#: ../../workflow/staking.rst:274
+msgid ""
+"Click **Sign** in the Signer window to sign and finalize the transaction. "
+"You have completed the delegation."
+msgstr ""
+"Нажмите **Подписать** в окне Signer, чтобы подписать и завершить транзакцию."
+" Вы завершили делегирование."
+
+#: ../../workflow/staking.rst:281
+msgid ""
+"The delegation transaction initiates as soon as the corresponding deploy is "
+"signed. You can review the details and status of the deploy by clicking "
+"**Deploy Details**. Now that you have everything set up, subsequent "
+"delegation operations will be much easier."
+msgstr ""
+"Транзакция делегирования инициируется, как только подписано соответствующее "
+"развертывание. Вы можете просмотреть сведения и статус развертывания, нажав "
+"**Сведения о развертывании**. Теперь, когда у вас все настроено, последующие"
+" операции делегирования будут намного проще."
+
+#: ../../workflow/staking.rst:284
+msgid "7. Monitoring"
+msgstr "7. Мониторинг"
+
+#: ../../workflow/staking.rst:285
+msgid ""
+"We recommend that you check in on how your stake is performing. The "
+"following points are important to understand and will be helpful in "
+"maximizing your rewards."
+msgstr ""
+"Мы рекомендуем вам проверить, как работает ваша ставка. Следующие моменты "
+"важны для понимания и будут полезны для максимизации ваших вознаграждений."
+
+#: ../../workflow/staking.rst:287
+msgid ""
+"If the validator you staked with decides to unbond, your stake will also be "
+"unbonded. Make sure that the validator you have selected is performing as "
+"per your expectations."
+msgstr ""
+"Если валидатор, с которым вы сделали ставку, решит отменить привязку, ваш "
+"стейк также будет отменен. Убедитесь, что выбранный вами валидатор работает "
+"в соответствии с вашими ожиданиями."
+
+#: ../../workflow/staking.rst:289
+msgid ""
+"Validators have to win a staking auction by competing for a validator slot "
+"with prospective and current validators. This process is permissionless, "
+"meaning validators can join and leave the auction without restrictions, "
+"except for the unbonding wait period, which lasts 14 hours."
+msgstr ""
+"Валидаторы должны выиграть аукцион ставок, соревнуясь за слот валидатора с "
+"потенциальными и текущими валидаторами. Этот процесс не имеет разрешений, "
+"что означает, что валидаторы могут присоединиться к аукциону и покинуть его "
+"без ограничений, за исключением периода ожидания анбондинга, который длится "
+"14 часов."
+
+#: ../../workflow/staking.rst:291
+msgid ""
+"Staking rewards are delivered to your account after each era, which is "
+"currently set to 2 hours. Note that it may take up to 2 eras (4 hours) for "
+"the first reward to appear after delegation. The rewards are automatically "
+"added to your current stake on the corresponding validator. You may view "
+"them under the *Rewards* tab on your account details page on "
+"https://cspr.live/."
+msgstr ""
+"Награды за стейк поступают на ваш аккаунт после каждой эры, которая в "
+"настоящее время установлена на 2 часа. Обратите внимание, что для появления "
+"первой награды после делегирования может потребоваться до 2 эр (4 часа). "
+"Вознаграждения автоматически добавляются к вашей текущей ставке у "
+"соответствующего валидатора. Вы можете просмотреть их на вкладке *Награды* "
+"на странице сведений об учетной записи на https://cspr.live/."
+
+#: ../../workflow/staking.rst:294
+msgid "8. Undelegating Tokens"
+msgstr "8. Отмена делегирования токенов"
+
+#: ../../workflow/staking.rst:295
+msgid ""
+"If you want to undelegate your tokens, you can do so at any time. Note that "
+"the cost of the undelegation process is 0.5 CSPR. You can access the "
+"undelegate functionality in three ways."
+msgstr ""
+"Если вы хотите отменить делегирование своих токенов, вы можете сделать это в"
+" любое время. Обратите внимание, что стоимость процесса отмены составляет "
+"0,5 CSPR. Вы можете получить доступ к функциям отмены делегирования тремя "
+"способами."
+
+#: ../../workflow/staking.rst:297
+msgid ""
+"**Option 1:** Click **Wallet** from the top navigation menu and then click "
+"**Undelegate Stake**."
+msgstr ""
+"**Вариант 1:** Нажмите **Кошелек** в верхнем меню навигации, а затем нажмите"
+" **Отменить стейк**."
+
+#: ../../workflow/staking.rst:304
+msgid ""
+"**Option 2:** Click **Validators** from the top navigation menu. From the "
+"validators table, click on any validator to access its details. Once you "
+"find the validator you wish to undelegate from, click the **Undelegate "
+"Stake** button."
+msgstr ""
+"**Вариант 2:** Нажмите **Валидаторы** в верхнем меню навигации. В таблице "
+"валидаторов щелкните любого валидатора, чтобы получить доступ к его "
+"сведениям. Как только вы найдете валидатора, от которого хотите отказаться, "
+"нажмите кнопку **Отменить стейк**."
+
+#: ../../workflow/staking.rst:309
+msgid ""
+"**Option 3:** Go to your account details by clicking your public key in the "
+"top navigation menu or clicking **View Account** from the expanded menu. "
+"Then click on the **Delegations** tab, and click on the **Undelegate** "
+"button next to the entry you want to undelegate."
+msgstr ""
+"**Вариант 3:** Перейдите к данным своей учетной записи, щелкнув свой "
+"открытый ключ в верхнем меню навигации или нажав **Просмотреть учетную "
+"запись** в расширенном меню. Затем перейдите на вкладку **Делегирование** и "
+"нажмите кнопку **Отменить делегирование** рядом с записью, которую вы хотите"
+" отменить."
+
+#: ../../workflow/staking.rst:314
+msgid "Then follow these instructions to undelegate your tokens:"
+msgstr ""
+"Затем следуйте этим инструкциям, чтобы отменить делегирование своих токенов:"
+
+#: ../../workflow/staking.rst:316
+msgid "**Step 1 - Undelegation Details**"
+msgstr "**Шаг 1 - Детали отмены делегирования**"
+
+#: ../../workflow/staking.rst:318
+msgid ""
+"Start by choosing the validator from which you want to undelegate your "
+"tokens. If a validator is not already selected, you can search for one using"
+" the search box. The search box will automatically show you validators with "
+"which you have staked."
+msgstr ""
+"Начните с выбора валидатора, у которого вы хотите отменить делегирование "
+"своих токенов. Если валидатор еще не выбран, вы можете найти его с помощью "
+"поля поиска. В окне поиска автоматически отобразятся валидаторы, с помощью "
+"которых вы сделали ставку."
+
+#: ../../workflow/staking.rst:325
+msgid "Enter the amount of Casper tokens you want to undelegate."
+msgstr ""
+"Введите сумму токенов Casper, которую вы хотите отменить с делегирования."
+
+#: ../../workflow/staking.rst:335
+msgid "Review your transaction details."
+msgstr "Ознакомьтесь с деталями вашей транзакции."
+
+#: ../../workflow/staking.rst:336
+msgid ""
+"If everything looks correct, click **Confirm** to undelegate the tokens. If "
+"you wish to change something, you can return to the previous step by "
+"clicking **Back to step 1**."
+msgstr ""
+"Если все правильно, нажмите **Подтвердить**. Если вы хотите что-то изменить,"
+" вы можете вернуться к предыдущему шагу, нажав **Вернуться к шагу 1**."
+
+#: ../../workflow/staking.rst:350
+msgid ""
+"Once the Signer app window opens, **make sure that the Deploy hash in the "
+"Signer window matches the Deploy hash in https://cspr.live/ before "
+"continuing**!"
+msgstr ""
+"Как только откроется окно приложения Signer, **убедитесь, что хеш "
+"развертывания в окне Signer совпадает с хешем развертывания в "
+"https://cspr.live/ прежде чем продолжить!**"
+
+#: ../../workflow/staking.rst:355
+msgid ""
+"Click **Sign** in the Signer window to sign and finalize the transaction."
+msgstr ""
+"Нажмите **Подписать** в окне Signer, чтобы подписать и завершить транзакцию."
+" "
+
+#: ../../workflow/staking.rst:362
+msgid ""
+"The stake undelegation initiates as soon as the corresponding deploy is "
+"signed. It may take 1-2 minutes for the undelegation details to become "
+"available. Please note that your undelegated tokens will appear in your "
+"account automatically after a 7-era delay, which is approximately 14 hours."
+msgstr ""
+"Отмена стейка начинается как только соответствующее развертывание подписано."
+" Это может занять 1-2 минуты, пока детали отмены делегирования станут "
+"доступны. Пожалуйста обратите внимание, что отмененные токены вернутся на "
+"ваш аккаунт автоматически после периода ожидания 7 эр, что занимает примерно"
+" 14 часов."
+
+#: ../../workflow/staking.rst:365
+msgid "Conclusion"
+msgstr "Вывод"
+
+#: ../../workflow/staking.rst:367
+msgid ""
+"By staking your tokens, you help secure the network and earn rewards in "
+"return. Thank you for your trust and participation!"
+msgstr ""
+"Когда вы стейкаете свои токены, вы делаете вклад в безопасность сети и в "
+"ответ получаете вознаграждения.  Спасибо за доверие и участие!"
+
+#: ../../workflow/staking.rst:369
+msgid ""
+"You can find additional information on the `docs.cspr.community "
+"<https://docs.cspr.community/>`_ website."
+msgstr ""
+"Дополнительную информацию вы можете найти тут `docs.cspr.community "
+"<https://docs.cspr.community/>`_ ."

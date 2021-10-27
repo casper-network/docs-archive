@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:48+0000\n"
 "Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
@@ -34,18 +34,17 @@ msgstr "Introduction"
 #: ../../implementation/tokens.rst:11
 msgid ""
 "The Casper Network is a decentralized blockchain platform based on a Proof-"
-"of-Stake consensus algorithm called `Highway "
-"<https://github.com/CasperLabs/highway>`_. Having a unit of value is "
-"required to make this system work because users must pay for computation, "
-"and validators must have `stake "
-"<https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In the "
-"blockchain space, this unit of value is a *token*."
+"of-Stake consensus algorithm called `Highway <https://github.com/casper-"
+"network/highway>`_. Having a unit of value is required to make this system "
+"work because users must pay for computation, and validators must have `stake"
+" <https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In the"
+" blockchain space, this unit of value is a *token*."
 msgstr ""
 "Le réseau Casper est une plateforme blockchain décentralisée basée sur un "
-"algorithme de consensus Proof-of-Stake appelé `Highway "
-"<https://github.com/CasperLabs/highway>`_. Avoir une unité de valeur est "
-"nécessaire pour faire fonctionner ce système car les utilisateurs doivent "
-"payer pour le calcul, et les validateurs doivent avoir un `stake "
+"algorithme de consensus Proof-of-Stake appelé `Highway <https://github.com"
+"/casper-network/highway>`_. Avoir une unité de valeur est nécessaire pour "
+"faire fonctionner ce système car les utilisateurs doivent payer pour le "
+"calcul, et les validateurs doivent avoir un `stake "
 "<https://docs.casperlabs.io/fr/latest/staking/index.html>`_ pour participer "
 "à l'enchère (to bond). Dans l'espace blockchain, cette unité de valeur est "
 "un *jeton*."
@@ -63,30 +62,24 @@ msgid "Token Generation and Distribution"
 msgstr "Génération et distribution de jetons"
 
 #: ../../implementation/tokens.rst:18
-#, python-format
 msgid ""
 "A blockchain system generally needs to have a supply of tokens available to "
 "pay for computation and reward validators for processing transactions on the"
-" network. A great deal of effort has been taken to ensure that no single "
-"individual or entity acquires more than 1% of the tokens from the onset."
-msgstr ""
-"Un système de blockchain doit généralement disposer d'une réserve de jetons "
-"pour payer les calculs et récompenser les validateurs pour le traitement des"
-" transactions sur le réseau. De nombreux efforts ont été déployés pour "
-"s'assurer qu'aucun individu ou entité n'acquiert plus de 1 % des jetons dès "
-"le départ."
-
-#: ../../implementation/tokens.rst:20
-msgid ""
-"In addition to the initial supply, the system will have a low rate of "
+" network. The initial supply at the launch of Mainnet was 10 billion CSPR. "
+"The current supply is available `here <https://api.cspr.live/supply>`_. In "
+"addition to the initial supply, the system will have a low rate of "
 "inflation, the results of which will be paid out to validators in the form "
 "of seigniorage."
 msgstr ""
-"En plus de l'approvisionnement initial, le système aura un faible taux "
-"d'inflation, dont les résultats seront versés aux validateurs sous forme de "
-"seigneuriage."
+"Un système de blockchain doit généralement disposer d'une offre de jetons "
+"pour payer les calculs et récompenser les validateurs pour le traitement des"
+" transactions sur le réseau. L'offre initiale au lancement de Mainnet était "
+"de 10 milliards de CSPR. L'offre actuelle est disponible `ici "
+"<https://api.cspr.live/supply>`_. En plus de l'offre initiale, le système "
+"aura un faible taux d'inflation, dont les résultats seront versés aux "
+"validateurs sous forme de seigneuriage."
 
-#: ../../implementation/tokens.rst:22
+#: ../../implementation/tokens.rst:20
 msgid ""
 "The number of tokens used as a basis for calculating seigniorage is 10 "
 "billion."
@@ -94,11 +87,11 @@ msgstr ""
 "Le nombre de jetons servant de base au calcul du seigneuriage est de 10 "
 "milliards."
 
-#: ../../implementation/tokens.rst:27
+#: ../../implementation/tokens.rst:25
 msgid "Divisibility of Tokens"
 msgstr "Divisibilité des jetons"
 
-#: ../../implementation/tokens.rst:29
+#: ../../implementation/tokens.rst:27
 msgid ""
 "Typically, a *token* is divisible into some number of parts. We call the "
 "indivisible units which make up the CSPR token *motes*. Each CSPR is "
@@ -113,11 +106,11 @@ msgstr ""
 " motes. En comparaison, l'Ether est divisible en :math:`10^{18}` parties "
 "appelées Wei."
 
-#: ../../implementation/tokens.rst:34
+#: ../../implementation/tokens.rst:32
 msgid "Mints and Purses"
 msgstr "Minages (mints ) et portes-monnaie (purses)"
 
-#: ../../implementation/tokens.rst:36
+#: ../../implementation/tokens.rst:34
 msgid ""
 "A *mint* is a contract that can produce new motes of a particular type. We "
 "allow for multiple mote types (each of which would have its mint contract) "
@@ -146,7 +139,7 @@ msgstr ""
 "pour les motes. Le ``URef`` est la façon dont un porte-monnaie est référencé"
 " à l'extérieur du mint."
 
-#: ../../implementation/tokens.rst:38
+#: ../../implementation/tokens.rst:36
 msgid ""
 "The ``AccessRights`` of the :ref:`URefs <global-state-urefs-permissions>` "
 "permissions model determine what actions are allowed to be performed when "
@@ -156,7 +149,7 @@ msgstr ""
 "state-urefs-permissions>`   détermine quelles actions sont autorisées lors "
 "de l'utilisation d'un ``URef`` associé à une porte-monnaie (purse)."
 
-#: ../../implementation/tokens.rst:40
+#: ../../implementation/tokens.rst:38
 msgid ""
 "As all ``URef``\\ s are unforgeable, so the only way to interact with a "
 "purse is for a ``URef`` with appropriate ``AccessRights`` to be given to the"
@@ -168,7 +161,7 @@ msgstr ""
 "soit donné au contexte actuel de façon valide (voir permissions des "
 ":ref:`URefs <global-state-urefs-permissions>` pour plus de details)."
 
-#: ../../implementation/tokens.rst:42
+#: ../../implementation/tokens.rst:40
 msgid ""
 "The basic global state options map onto more standard monetary operations "
 "according to the table below:"
@@ -176,39 +169,39 @@ msgstr ""
 "Les options de base de l'état global sont mapées sur des opérations "
 "monétaires plus standard selon le tableau ci-dessous."
 
-#: ../../implementation/tokens.rst:45
+#: ../../implementation/tokens.rst:43
 msgid "Global State Action"
 msgstr "Global State Action"
 
-#: ../../implementation/tokens.rst:45
+#: ../../implementation/tokens.rst:43
 msgid "Monetary Action"
 msgstr "Action monétaire"
 
-#: ../../implementation/tokens.rst:47
+#: ../../implementation/tokens.rst:45
 msgid "Add"
 msgstr "Ajouter"
 
-#: ../../implementation/tokens.rst:47
+#: ../../implementation/tokens.rst:45
 msgid "Deposit (i.e. transfer to)"
 msgstr "Dépôt (i.e. transférer à)"
 
-#: ../../implementation/tokens.rst:48
+#: ../../implementation/tokens.rst:46
 msgid "Write"
 msgstr "Ecriture"
 
-#: ../../implementation/tokens.rst:48
+#: ../../implementation/tokens.rst:46
 msgid "Withdraw (i.e. transfer from)"
 msgstr "Retrait (i.e. transférer de)"
 
-#: ../../implementation/tokens.rst:49
+#: ../../implementation/tokens.rst:47
 msgid "Read"
 msgstr "Lecture"
 
-#: ../../implementation/tokens.rst:49
+#: ../../implementation/tokens.rst:47
 msgid "Balance check"
 msgstr "Vérification du solde"
 
-#: ../../implementation/tokens.rst:52
+#: ../../implementation/tokens.rst:50
 msgid ""
 "We will use these definitions throughout this chapter to describe the "
 "implementation and usage of tokens on the Casper system."
@@ -216,11 +209,11 @@ msgstr ""
 "Nous utiliserons ces définitions tout au long de ce chapitre pour décrire la"
 " mise en œuvre et l'utilisation des jetons sur le système Casper."
 
-#: ../../implementation/tokens.rst:57
+#: ../../implementation/tokens.rst:55
 msgid "The mint Contract Interface"
 msgstr "L'interface du contrat mint"
 
-#: ../../implementation/tokens.rst:59
+#: ../../implementation/tokens.rst:57
 msgid ""
 "A valid mint contract exposes the following methods (recall that many mint "
 "implementations may exist, each corresponding to a different currency):"
@@ -229,13 +222,13 @@ msgstr ""
 "exister plusieurs implémentations mint, chacune correspondant à une monnaie "
 "différente) :"
 
-#: ../../implementation/tokens.rst:61
+#: ../../implementation/tokens.rst:59
 msgid ""
 "``transfer(source: URef, target: URef, amount: Motes) -> TransferResult``"
 msgstr ""
 "``transfer(source: URef, target: URef, amount: Motes) -> TransferResult``"
 
-#: ../../implementation/tokens.rst:63
+#: ../../implementation/tokens.rst:61
 msgid ""
 "``source`` must have at least ``Write`` access rights, ``target`` must have "
 "at least ``Add`` access rights"
@@ -243,7 +236,7 @@ msgstr ""
 "``source`` doit au moins avoir les droits d'accès ``Write`` , ``target`` "
 "doit au moins avoir les droits d'accès``Add`` ."
 
-#: ../../implementation/tokens.rst:65
+#: ../../implementation/tokens.rst:63
 msgid ""
 "``TransferResult`` may be a success acknowledgment or an error in the case "
 "of invalid ``source`` or ``target`` or insufficient balance in the "
@@ -253,11 +246,11 @@ msgstr ""
 "dans le cas d'une ``source`` ou d'un ``target`` invalide ou d'un solde "
 "insuffisant dans le porte-monnaie ``source``"
 
-#: ../../implementation/tokens.rst:68
+#: ../../implementation/tokens.rst:66
 msgid "``mint(amount: Motes) -> MintResult``"
 msgstr "``mint(amount: Motes) -> MintResult``"
 
-#: ../../implementation/tokens.rst:70
+#: ../../implementation/tokens.rst:68
 msgid ""
 "``MintResult`` either gives the created ``URef`` (with full access rights), "
 "which now has a balance equal to the given ``amount``; or an error due to "
@@ -267,7 +260,7 @@ msgstr ""
 "qui a maintenant un solde égal au ``amount`` donné ; soit une erreur due au "
 "fait que la création de nouvelles motes n'est pas autorisée."
 
-#: ../../implementation/tokens.rst:73
+#: ../../implementation/tokens.rst:71
 msgid ""
 "In the Casper mint, only the system account can call ``mint``, and it has no"
 " private key to produce valid cryptographic signatures, which means only the"
@@ -278,11 +271,11 @@ msgstr ""
 "valides, ce qui signifie que seul le logiciel lui-même peut exécuter des "
 "contrats dans le contexte du compte système."
 
-#: ../../implementation/tokens.rst:78
+#: ../../implementation/tokens.rst:76
 msgid "``create() -> URef``"
 msgstr "``create() -> URef``"
 
-#: ../../implementation/tokens.rst:80
+#: ../../implementation/tokens.rst:78
 msgid ""
 "a convenience function for ``mint(0)`` which cannot fail because it is "
 "always allowed to create an empty purse"
@@ -290,15 +283,15 @@ msgstr ""
 "une fonction de commodité pour ``mint(0)`` qui ne peut pas échouer car elle "
 "est toujours autorisée à créer un porte-monnaie vide"
 
-#: ../../implementation/tokens.rst:83
+#: ../../implementation/tokens.rst:81
 msgid "``balance(purse: URef) -> Option<Motes>``"
 msgstr "``balance(purse: URef) -> Option<Motes>``"
 
-#: ../../implementation/tokens.rst:85
+#: ../../implementation/tokens.rst:83
 msgid "``purse`` must have at least ``Read`` access rights"
 msgstr "``purse`` doit avoir au moins droit d'accès ``Read`` "
 
-#: ../../implementation/tokens.rst:86
+#: ../../implementation/tokens.rst:84
 msgid ""
 "``BalanceResult`` either returns the number of motes held by the ``purse``, "
 "or nothing if the ``URef`` is not valid"
@@ -306,11 +299,11 @@ msgstr ""
 "``BalanceResult`` renvoie soit le nombre de motes détenues par le ``purse``,"
 " soit rien si le ``URef`` n'est pas valide."
 
-#: ../../implementation/tokens.rst:92
+#: ../../implementation/tokens.rst:90
 msgid "Using purse ``URef``\\ s"
 msgstr "Utilisation des ``URef`` du porte-monnaie "
 
-#: ../../implementation/tokens.rst:94
+#: ../../implementation/tokens.rst:92
 msgid ""
 "It is dangerous to pass a purse's ``URef`` with ``Write`` permissions to a "
 "contract. A malicious contract may use that access to take more tokens than "
@@ -332,26 +325,27 @@ msgstr ""
 " ne contient pas plus de fonds que ce que l'utilisateur avait l'intention de"
 " donner."
 
-#: ../../implementation/tokens.rst:106
+#: ../../implementation/tokens.rst:104
 msgid ""
 "To avoid this inconvenience, it is a better practice for application "
 "developers intending to accept payment on-chain to make a version of their "
-"own purse ``URef`` with ``Read`` access rights publicly available. This "
-"allows clients to pay via a transfer using their purse, without either party"
-" exposing ``Write`` access to any purse."
+"own purse ``URef`` with ``Read`` and ``Add``  access rights publicly "
+"available. This allows clients to pay via a transfer using their purse, "
+"without either party exposing ``Write`` access to any purse."
 msgstr ""
 "Pour éviter ce désagrément, il est préférable que les développeurs "
 "d'applications qui ont l'intention d'accepter des paiements sur la chaîne "
 "mettent à la disposition du public une version de leur propre porte-monnaie "
-"``URef`` avec des droits d'accès ``Read`` . Cela permet aux clients de payer"
-" par transfert en utilisant leur porte-monnaie, sans qu'aucune des parties "
-"n'expose l'accès ``Write`` à un porte-monnaie."
+"(purse) ``URef`` avec les droits d'accès ``Read`` et ``Add``. Cela permet "
+"aux clients de payer via un transfert en utilisant leur porte-monnaie, sans "
+"qu'aucune des parties n'expose l'accès en écriture  ``Write``  à un porte-"
+"monnaie."
 
-#: ../../implementation/tokens.rst:112
+#: ../../implementation/tokens.rst:110
 msgid "Purses and Accounts"
 msgstr "Porte-monnaie (purses) et comptes"
 
-#: ../../implementation/tokens.rst:114
+#: ../../implementation/tokens.rst:112
 msgid ""
 "All :ref:`accounts-head` on the Casper system have a purse associated with "
 "the Casper system mint, which we call the *main purse*. However, for "
@@ -382,3 +376,56 @@ msgstr ""
 "transfert du mint avec le porte-monnaie principal du compte courant comme "
 "``source`` et le porte-monnaie principal du compte à la clé fournie comme "
 "``target``."
+
+#~ msgid ""
+#~ "The Casper Network is a decentralized blockchain platform based on a Proof-"
+#~ "of-Stake consensus algorithm called `Highway "
+#~ "<https://github.com/CasperLabs/highway>`_. Having a unit of value is "
+#~ "required to make this system work because users must pay for computation, "
+#~ "and validators must have `stake "
+#~ "<https://docs.casperlabs.io/en/latest/staking/index.html>`_ to bond. In the "
+#~ "blockchain space, this unit of value is a *token*."
+#~ msgstr ""
+#~ "Le réseau Casper est une plateforme blockchain décentralisée basée sur un "
+#~ "algorithme de consensus Proof-of-Stake appelé `Highway "
+#~ "<https://github.com/CasperLabs/highway>`_. Avoir une unité de valeur est "
+#~ "nécessaire pour faire fonctionner ce système car les utilisateurs doivent "
+#~ "payer pour le calcul, et les validateurs doivent avoir un `stake "
+#~ "<https://docs.casperlabs.io/fr/latest/staking/index.html>`_ pour participer "
+#~ "à l'enchère (to bond). Dans l'espace blockchain, cette unité de valeur est "
+#~ "un *jeton*."
+
+#~ msgid ""
+#~ "A blockchain system generally needs to have a supply of tokens available to "
+#~ "pay for computation and reward validators for processing transactions on the"
+#~ " network. A great deal of effort has been taken to ensure that no single "
+#~ "individual or entity acquires more than 1% of the tokens from the onset."
+#~ msgstr ""
+#~ "Un système de blockchain doit généralement disposer d'une réserve de jetons "
+#~ "pour payer les calculs et récompenser les validateurs pour le traitement des"
+#~ " transactions sur le réseau. De nombreux efforts ont été déployés pour "
+#~ "s'assurer qu'aucun individu ou entité n'acquiert plus de 1 % des jetons dès "
+#~ "le départ."
+
+#~ msgid ""
+#~ "In addition to the initial supply, the system will have a low rate of "
+#~ "inflation, the results of which will be paid out to validators in the form "
+#~ "of seigniorage."
+#~ msgstr ""
+#~ "En plus de l'approvisionnement initial, le système aura un faible taux "
+#~ "d'inflation, dont les résultats seront versés aux validateurs sous forme de "
+#~ "seigneuriage."
+
+#~ msgid ""
+#~ "To avoid this inconvenience, it is a better practice for application "
+#~ "developers intending to accept payment on-chain to make a version of their "
+#~ "own purse ``URef`` with ``Read`` access rights publicly available. This "
+#~ "allows clients to pay via a transfer using their purse, without either party"
+#~ " exposing ``Write`` access to any purse."
+#~ msgstr ""
+#~ "Pour éviter ce désagrément, il est préférable que les développeurs "
+#~ "d'applications qui ont l'intention d'accepter des paiements sur la chaîne "
+#~ "mettent à la disposition du public une version de leur propre porte-monnaie "
+#~ "``URef`` avec des droits d'accès ``Read`` . Cela permet aux clients de payer"
+#~ " par transfert en utilisant leur porte-monnaie, sans qu'aucune des parties "
+#~ "n'expose l'accès ``Write`` à un porte-monnaie."

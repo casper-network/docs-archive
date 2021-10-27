@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:46+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -101,7 +101,7 @@ msgstr ""
 
 #: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:27
 msgid "contract: The Casper contract API for runtime and storage"
-msgstr "contract: API hợp đồng Casper cho thời gian chạy và lưu trữ"
+msgstr "contract: API hợp đồng Casper cho thời điểm chạy và lưu trữ"
 
 #: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:28
 msgid "types: The Casper contract type system"
@@ -213,8 +213,15 @@ msgstr "Hàm hỗ trợ khác"
 
 #: ../../dapp-dev-guide/tutorials/erc20/implementation.rst:235
 msgid ""
-"The ``balance_key`` and ``allowance_key ``functions format the balances and "
+"The ``balance_key`` and ``allowance_key`` functions format the balances and "
 "account information from their internal representation into strings."
 msgstr ""
-"Các hàm ``balance_key`` và ``allowance_key`` định dạng số dư và thông tin "
-"tài khoản từ biểu diễn nội bộ của chúng thành chuỗi."
+"Các hàm ``balance_key`` và ``allow_key`` định dạng số dư và thông tin tài "
+"khoản từ biểu diễn nội bộ của chúng thành chuỗi."
+
+#~ msgid ""
+#~ "The ``balance_key`` and ``allowance_key ``functions format the balances and "
+#~ "account information from their internal representation into strings."
+#~ msgstr ""
+#~ "Các hàm ``balance_key`` và ``allowance_key`` định dạng số dư và thông tin "
+#~ "tài khoản từ biểu diễn nội bộ của chúng thành chuỗi."
