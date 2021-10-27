@@ -35,8 +35,8 @@ For key management instructions with this SDK, check this `document <https://hac
 
 There are also available C# versions of the following tutorials:
 
-* Counter Tutorial (`CasperLabs docs <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/counter/index.html>`_): C# version `here <https://hackmd.io/@K48d9TN9T2q7ERX4H27ysw/SJBnPCdVt>`_ .
-* Key-value storage Tutorial (`CasperLabs docs <https://docs.casperlabs.io/en/latest/dapp-dev-guide/tutorials/kv-storage-tutorial.html>`_): C# version `here <https://hackmd.io/@K48d9TN9T2q7ERX4H27ysw/HyX8i0WBt>`_ .
+* `C# counter <https://hackmd.io/@K48d9TN9T2q7ERX4H27ysw/SJBnPCdVt>`_ tutorial
+* `C# key-value storage <https://hackmd.io/@K48d9TN9T2q7ERX4H27ysw/HyX8i0WBt>`_ tutorial
 
 NOTE: Examples can be added to this site after the hackathon.
 
