@@ -13,4 +13,5 @@ Design
    serialization-standard.rst
    tokens.rst
    appendix.rst
+   checksummed-hex.rst
    
