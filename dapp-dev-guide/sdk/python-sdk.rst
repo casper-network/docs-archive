@@ -29,15 +29,15 @@ Usage Examples
 ^^^^^^^^^^^^^^
 In this section, we outline a couple of essential tasks you can accomplish with the Python SDK:
 
-* Sending a transfer
-* Staking
+* `Sending a transfer <#id2>`_ between two accounts
+* `Staking <#id3>`_ tokens with a validator
 
 For further examples, take a look at the `How-tos <https://github.com/casper-network/casper-python-sdk/tree/main/how_tos>`_.
 
 Sending a transfer
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This example shows you how to define and transfer funds between accounts on a Casper local network. Replace the ``path_to_cp2_account_key`` in the code below with the receiver's account address.
+This example shows you how to define and transfer funds between accounts on a Casper network. Replace the ``path_to_cp2_account_key`` in the code below with the receiver's account address.
 
 .. code-block:: python
 
@@ -147,7 +147,7 @@ This example shows you how to define and transfer funds between accounts on a Ca
 Staking
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This example shows you how to define and stake funds on Casper local network.
+This example shows you how to define and stake funds with a validator.
 
 .. code-block:: python
 
