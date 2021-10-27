@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: 2021-06-26 21:46+0000\n"
 "Last-Translator: Quang Huy Tran <tqhuy2018@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/caspernetwork/teams/122124/vi/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../../dapp-dev-guide/index.rst:27
+#: ../../dapp-dev-guide/index.rst:24
 msgid "Introduction"
 msgstr "Giới thiệu"
 
@@ -82,32 +82,30 @@ msgstr ""
 " trong lộ trình của chúng tôi và được sắp xếp để bạn có thể:"
 
 #: ../../dapp-dev-guide/index.rst:15
-msgid "Understand what CasperLabs is building."
-msgstr "Hiểu những gì CasperLabs đang xây dựng."
+msgid "Understand more about the Casper Network"
+msgstr "Hiểu thêm về Mạng Casper"
 
 #: ../../dapp-dev-guide/index.rst:16
-msgid "Learn how to build and operate applications on the platform."
-msgstr "Tìm hiểu cách xây dựng và vận hành các ứng dụng trên nền tảng."
+msgid "Learn how to build and operate applications on the platform"
+msgstr "Tìm hiểu cách xây dựng và vận hành các ứng dụng trên nền tảng"
 
 #: ../../dapp-dev-guide/index.rst:17
-msgid "Learn how to set up the CasperLabs environment locally."
-msgstr "Tìm hiểu cách thiết lập môi trường CasperLabs cục bộ."
+msgid "Learn how to set up a Casper Network locally"
+msgstr "Tìm hiểu cách thiết lập Mạng Casper cục bộ"
 
 #: ../../dapp-dev-guide/index.rst:18
-msgid "Work with our Contracts API to access our Rust resources."
-msgstr ""
-"Làm việc với API hợp đồng của chúng tôi để truy cập tài nguyên Rust của "
-"chúng tôi. "
+msgid "Work with the contracts API to access the network\\'s Rust resources"
+msgstr "Làm việc với API hợp đồng để truy cập tài nguyên Rust của mạng"
 
 #: ../../dapp-dev-guide/index.rst:19
-msgid "Learn how to create and test Smart Contracts with our libraries."
+msgid "Learn how to create and test smart contracts using available libraries"
 msgstr ""
-"Tìm hiểu cách tạo và kiểm tra Hợp đồng thông minh với các thư viện của chúng"
-" tôi."
+"Tìm hiểu cách tạo và kiểm thử các hợp đồng thông minh bằng cách sử dụng các "
+"thư viện có sẵn"
 
 #: ../../dapp-dev-guide/index.rst:20
-msgid "Work with the multi-signature capability to sign transactions."
-msgstr "Làm việc với khả năng đa chữ ký để ký các giao dịch."
+msgid "Work with the multi-signature capability to sign transactions"
+msgstr "Làm việc với khả năng đa chữ ký để ký các giao dịch"
 
 #: ../../dapp-dev-guide/index.rst:22
 msgid ""
@@ -121,16 +119,37 @@ msgstr ""
 "cung cấp phản hồi của mình khi bạn bắt đầu cuộc hành trình này với chúng tôi"
 " - chúng tôi mong muốn cùng nhau xây dựng một tương lai phi tập trung."
 
-#: ../../dapp-dev-guide/index.rst:24
-msgid ""
-"`Coding Standards and Review "
-"<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
-"cover best practices and recommendations following our coding standards, "
-"code reviews and publishing your code to our GitHub."
-msgstr ""
-"`Tiêu chuẩn và đánh giá mã "
-"<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
-"cover best practices and recommendations following our coding standards, "
-"code reviews and publishing your code to our GitHub.bao gồm các bài thực "
-"hành hay nhất và đề xuất tuân theo các tiêu chuẩn mã hóa, đánh giá mã và "
-"xuất bản mã của bạn lên GitHub của chúng tôi."
+#~ msgid "Understand what CasperLabs is building."
+#~ msgstr "Hiểu những gì CasperLabs đang xây dựng."
+
+#~ msgid "Learn how to build and operate applications on the platform."
+#~ msgstr "Tìm hiểu cách xây dựng và vận hành các ứng dụng trên nền tảng."
+
+#~ msgid "Learn how to set up the CasperLabs environment locally."
+#~ msgstr "Tìm hiểu cách thiết lập môi trường CasperLabs cục bộ."
+
+#~ msgid "Work with our Contracts API to access our Rust resources."
+#~ msgstr ""
+#~ "Làm việc với API hợp đồng của chúng tôi để truy cập tài nguyên Rust của "
+#~ "chúng tôi. "
+
+#~ msgid "Learn how to create and test Smart Contracts with our libraries."
+#~ msgstr ""
+#~ "Tìm hiểu cách tạo và kiểm tra Hợp đồng thông minh với các thư viện của chúng"
+#~ " tôi."
+
+#~ msgid "Work with the multi-signature capability to sign transactions."
+#~ msgstr "Làm việc với khả năng đa chữ ký để ký các giao dịch."
+
+#~ msgid ""
+#~ "`Coding Standards and Review "
+#~ "<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
+#~ "cover best practices and recommendations following our coding standards, "
+#~ "code reviews and publishing your code to our GitHub."
+#~ msgstr ""
+#~ "`Tiêu chuẩn và đánh giá mã "
+#~ "<https://github.com/CasperLabs/CasperLabs/blob/master/CONTRIBUTING.md/>`_ "
+#~ "cover best practices and recommendations following our coding standards, "
+#~ "code reviews and publishing your code to our GitHub.bao gồm các bài thực "
+#~ "hành hay nhất và đề xuất tuân theo các tiêu chuẩn mã hóa, đánh giá mã và "
+#~ "xuất bản mã của bạn lên GitHub của chúng tôi."

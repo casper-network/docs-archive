@@ -23,7 +23,7 @@ Delegation
 
 Delegation allows third parties to participate in consensus by adding weight to their preferred validators. Rewards received by validators are distributed in proportion to tokens bid and delegated. The current or prospective validator responsible for the bid receives a portion of the delegator rewards set by the delegation rate.
 
-Currently, delegation is unrestricted. Interested readers should review `CEP #29 <https://github.com/casper-network/ceps/pull/29>`_, which proposes delegation caps.
+Currently, delegation is unrestricted. Please visit `Delegation details <../economics/delegation.html>`_ page to check more about delegation cost and related details.
 
 Incentives
 ----------

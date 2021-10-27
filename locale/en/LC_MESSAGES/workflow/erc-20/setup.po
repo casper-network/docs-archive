@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-10 03:32+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../workflow/erc-20/setup.rst:2
+msgid "Setup"
+msgstr ""
+
+#: ../../workflow/erc-20/setup.rst:4
+msgid ""
+"Clone the ERC20 contract repository and run the ``make build-contract`` "
+"command. This will create the ``erc20_token.wasm`` and the "
+"``erc20_test_call.wasm``. The token WASM is the main contract. We will "
+"use the ``test_call`` contract wasm to query the balances and allowances "
+"of the ERC20 token balances throughout this workflow."
+msgstr ""
+
+#: ../../workflow/erc-20/setup.rst:8
+msgid "Install the main ERC20 contract"
+msgstr ""
+
+#: ../../workflow/erc-20/setup.rst:16
+msgid "Install the ERC20_test_call Contract Package"
+msgstr ""
+
+#: ../../workflow/erc-20/setup.rst:22
+msgid ""
+"At this point, the account that installed both the main contract and the "
+"helper contract will look like this."
+msgstr ""
+
+#: ../../workflow/erc-20/setup.rst:58
+msgid ""
+"``erc20_token_contract`` is the main contract, and is a stored contract, "
+"record its hash"
+msgstr ""
+
+#: ../../workflow/erc-20/setup.rst:59
+msgid ""
+"``erc20_test_call`` is a Contract package which contains the utility "
+"contract required to read the balances and allowances of users within the"
+" ERC20 state."
+msgstr ""
+

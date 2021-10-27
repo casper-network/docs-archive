@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,68 +150,93 @@ msgstr ""
 
 #: ../../dapp-dev-guide/getting-help.rst:50
 msgid ""
-"CasperLabs makes available the following resources for you to connect and"
-" get support:"
+"The Casper Association makes available the following resources for you to"
+" connect and get support:"
 msgstr ""
 
-#: ../../dapp-dev-guide/getting-help.rst:53
+#: ../../dapp-dev-guide/getting-help.rst:52
 msgid ""
 "On our `Discord Channel <https://discordapp.com/invite/mpZ9AYD>`_, "
 "connect live with members of our Engineering Team available to support "
 "you with the progress of your projects"
 msgstr ""
 
+#: ../../dapp-dev-guide/getting-help.rst:53
+msgid ""
+"Join the `Community Forum <https://forums.casperlabs.io/>`_ that includes"
+" technical discussions on using Casper features, obtain support, and pose"
+" questions"
+msgstr ""
+
 #: ../../dapp-dev-guide/getting-help.rst:54
 msgid ""
-"Join the `CasperLabs Community Forum <https://forums.casperlabs.io/>`_ "
-"that includes technical discussions on using Casper features, obtain "
-"support, and pose questions to the CasperLabs Core Engineering Team"
+"Subscribe to the `Casper Network Official Telegram Channel "
+"<https://t.me/casperblockchain>`_ for general information and updates "
+"about the platform"
 msgstr ""
 
-#: ../../dapp-dev-guide/getting-help.rst:55
+#: ../../dapp-dev-guide/getting-help.rst:56
 msgid ""
-"Subscribe to the `CasperLabs Official Telegram Channel "
-"<https://t.me/CasperLabs>`_ for general information and updates about our"
-" platform"
-msgstr ""
-
-#: ../../dapp-dev-guide/getting-help.rst:57
-msgid ""
-"If you find issues related to the smart contracts maintained by "
-"CasperLabs, file an issue in the `Casper Ecosystem repository "
-"<https://github.com/casper-ecosystem/>`_."
-msgstr ""
-
-#: ../../dapp-dev-guide/getting-help.rst:59
-msgid ""
-"For other issues, search the main `CasperLabs repository "
-"<https://github.com/CasperLabs>`_ and file the issue in the related "
+"If you find issues, search the main `Casper Network repository "
+"<https://github.com/casper-network>`_ and file the issue in the related "
 "project."
 msgstr ""
 
-#: ../../dapp-dev-guide/getting-help.rst:61
-msgid ""
-"Otherwise, use our `Jira Service Desk "
-"<https://casperlabs.atlassian.net/servicedesk>`_ for situations such as:"
-msgstr ""
+#~ msgid ""
+#~ "CasperLabs makes available the following "
+#~ "resources for you to connect and "
+#~ "get support:"
+#~ msgstr ""
 
-#: ../../dapp-dev-guide/getting-help.rst:63
-msgid "questions that are not issues"
-msgstr ""
+#~ msgid ""
+#~ "Join the `CasperLabs Community Forum "
+#~ "<https://forums.casperlabs.io/>`_ that includes "
+#~ "technical discussions on using Casper "
+#~ "features, obtain support, and pose "
+#~ "questions to the CasperLabs Core "
+#~ "Engineering Team"
+#~ msgstr ""
 
-#: ../../dapp-dev-guide/getting-help.rst:64
-msgid "needing technical support"
-msgstr ""
+#~ msgid ""
+#~ "Subscribe to the `CasperLabs Official "
+#~ "Telegram Channel <https://t.me/CasperLabs>`_ for "
+#~ "general information and updates about "
+#~ "our platform"
+#~ msgstr ""
 
-#: ../../dapp-dev-guide/getting-help.rst:65
-msgid "wanting to give feedback"
-msgstr ""
+#~ msgid ""
+#~ "If you find issues related to the"
+#~ " smart contracts maintained by CasperLabs,"
+#~ " file an issue in the `Casper "
+#~ "Ecosystem repository <https://github.com/casper-"
+#~ "ecosystem/>`_."
+#~ msgstr ""
 
-#: ../../dapp-dev-guide/getting-help.rst:66
-msgid "suggesting improvements"
-msgstr ""
+#~ msgid ""
+#~ "For other issues, search the main "
+#~ "`CasperLabs repository <https://github.com/CasperLabs>`_"
+#~ " and file the issue in the "
+#~ "related project."
+#~ msgstr ""
 
-#: ../../dapp-dev-guide/getting-help.rst:67
-msgid "participating in a bounty"
-msgstr ""
+#~ msgid ""
+#~ "Otherwise, use our `Jira Service Desk"
+#~ " <https://casperlabs.atlassian.net/servicedesk>`_ for "
+#~ "situations such as:"
+#~ msgstr ""
+
+#~ msgid "questions that are not issues"
+#~ msgstr ""
+
+#~ msgid "needing technical support"
+#~ msgstr ""
+
+#~ msgid "wanting to give feedback"
+#~ msgstr ""
+
+#~ msgid "suggesting improvements"
+#~ msgstr ""
+
+#~ msgid "participating in a bounty"
+#~ msgstr ""
 

@@ -11,6 +11,7 @@ The following tutorials present several Casper features in depth:
    kv-storage-tutorial
    multi-sig/index
    upgrade-tutorial
+   casper-signer
 
 
 ================================================================  ========================================================================  
@@ -21,5 +22,6 @@ The following tutorials present several Casper features in depth:
 `Key-value storage on Casper <kv-storage-tutorial.html>`_         Design a simple contract to store a value
 `Multi-signatures and key recovery <multi-sig/index.html>`_       Learn to sign transactions with multiple keys   
 `Smart contract upgrades <upgrade-tutorial.html>`_                Learn how to upgrade smart contracts   
+`Casper Signer dApp integration <casper-signer.html>`_            Learn to use the Casper Signer to connect a wallet to your website    
 ================================================================  ========================================================================
    

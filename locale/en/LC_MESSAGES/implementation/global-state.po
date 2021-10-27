@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,20 +100,20 @@ msgstr ""
 
 #: ../../implementation/global-state.rst:48
 msgid ""
-"`definition of the trie data structure <https://github.com/CasperLabs"
+"`definition of the trie data structure <https://github.com/casper-network"
 "/casper-"
 "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie/mod.rs#L320>`_"
 msgstr ""
 
 #: ../../implementation/global-state.rst:49
 msgid ""
-"`reading from the trie <https://github.com/CasperLabs/casper-"
+"`reading from the trie <https://github.com/casper-network/casper-"
 "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L37>`_"
 msgstr ""
 
 #: ../../implementation/global-state.rst:50
 msgid ""
-"`writing to the trie <https://github.com/CasperLabs/casper-"
+"`writing to the trie <https://github.com/casper-network/casper-"
 "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L638>`_"
 msgstr ""
 
@@ -124,4 +124,22 @@ msgid ""
 " a notion of a ``TrieStore``, which allows us to look up the root node "
 "for each trie."
 msgstr ""
+
+#~ msgid ""
+#~ "`definition of the trie data structure"
+#~ " <https://github.com/CasperLabs/casper-"
+#~ "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie/mod.rs#L320>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`reading from the trie "
+#~ "<https://github.com/CasperLabs/casper-"
+#~ "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L37>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "`writing to the trie "
+#~ "<https://github.com/CasperLabs/casper-"
+#~ "node/blob/cb1d20ad1ea6e245cd8237f9406885a1e785c669/execution_engine/src/storage/trie_store/operations/mod.rs#L638>`_"
+#~ msgstr ""
 

@@ -1,0 +1,206 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, CasperLabs LLC
+# This file is distributed under the same license as the CasperLabs Tech
+# Spec package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+# Translators:
+# David Tsaritov <tsaritov@gmail.com>, 2021
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CasperLabs Tech Spec\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-23 20:03+0000\n"
+"PO-Revision-Date: 2021-06-26 21:47+0000\n"
+"Last-Translator: David Tsaritov <tsaritov@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/caspernetwork/teams/122124/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../../glossary/E.rst:2
+msgid "E"
+msgstr "E"
+
+#: ../../glossary/E.rst:5
+msgid "`A <A.html>`_"
+msgstr "`A <A.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`B <B.html>`_"
+msgstr "`B <B.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`C <C.html>`_"
+msgstr "`C <C.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`D <D.html>`_"
+msgstr "`D <D.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`E <E.html>`_"
+msgstr "`E <E.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`F <F.html>`_"
+msgstr "`F <F.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`G <G.html>`_"
+msgstr "`G <G.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`H <H.html>`_"
+msgstr "`H <H.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`I <I.html>`_"
+msgstr "`I <I.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`J <J.html>`_"
+msgstr "`J <J.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`K <K.html>`_"
+msgstr "`K <K.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`L <L.html>`_"
+msgstr "`L <L.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`M <M.html>`_"
+msgstr "`M <M.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`N <N.html>`_"
+msgstr "`N <N.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`O <O.html>`_"
+msgstr "`O <O.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`P <P.html>`_"
+msgstr "`P <P.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`Q <Q.html>`_"
+msgstr "`Q <Q.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`R <R.html>`_"
+msgstr "`R <R.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`S <S.html>`_"
+msgstr "`S <S.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`T <T.html>`_"
+msgstr "`T <T.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`U <U.html>`_"
+msgstr "`U <U.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`V <V.html>`_"
+msgstr "`V <V.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`W <W.html>`_"
+msgstr "`W <W.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`X <X.html>`_"
+msgstr "`X <X.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`Y <Y.html>`_"
+msgstr "`Y <Y.html>`_"
+
+#: ../../glossary/E.rst:5
+msgid "`Z <Z.html>`_"
+msgstr "`Z <Z.html>`_"
+
+#: ../../glossary/E.rst:9
+msgid "Ecosystem"
+msgstr "Экосистема"
+
+#: ../../glossary/E.rst:10
+msgid "The ecosystem layer in Casper encompasses dApp design and operation."
+msgstr "Слой экосистемы в Casper охватывает дизайн и работу приложений dApp."
+
+#: ../../glossary/E.rst:13
+msgid "Era"
+msgstr "Эра"
+
+#: ../../glossary/E.rst:14
+msgid "A period of time during which the validator set does not change."
+msgstr "Период времени, в течение которого набор валидаторов не меняется. "
+
+#: ../../glossary/E.rst:16
+msgid ""
+"In the Casper Network, validators cannot join and leave at any point in "
+"time, but only at era boundaries. An era's validators are determined using "
+"an `auction <A.html#auction>`_. At the beginning of the era, the validators "
+"create a new instance of the Highway protocol and run this consensus "
+"protocol until they finalize the era's last block (see `booking block "
+"<B.html#id7>`_)."
+msgstr ""
+"В сети Casper валидаторы не могут входить и выходить в любое время, а могут "
+"только на границах эр. Валидаторы эры определяются через аукцион `auction "
+"<A.html#auction>`_. В начале эры валидаторы создают новый экземпляр "
+"протокола Highway и работают на этом протоколе консенсуса до момента "
+"финализации последнего блока эры (смотрите `booking block <B.html#id7>`_)."
+
+#: ../../glossary/E.rst:19
+msgid "Eviction"
+msgstr "Лишение прав"
+
+#: ../../glossary/E.rst:20
+msgid ""
+"Validators that fail to participate in `era <E.html#era>`_ will have their "
+"bid deactivated by the protocol, suspending their participation until they "
+"signal readiness to resume participation by invoking a method in the "
+"`auction contract <A.html#auction-contract>`_."
+msgstr ""
+"Валидаторам, которые не могли корректно участвовать в эре `era "
+"<E.html#era>`_ , протокол деактивирует биды, притормаживая их участие до тех"
+" пор, пока они не заявят о готовности его возобновить, обращаясь к методу в "
+"контракте аукциона `auction contract <A.html#auction-contract>`_."
+
+#: ../../glossary/E.rst:23
+msgid "External client"
+msgstr "Внешний клиент"
+
+#: ../../glossary/E.rst:24
+msgid ""
+"Any hardware/software connecting to a Node for the purpose of sending "
+"deploys or querying the state of the blockchain."
+msgstr ""
+"Любой хард/софт , подключаемый к ноде для отправки развертываний или запроса"
+" состояний блокчейн. "
+
+#~ msgid ""
+#~ "In the Casper Network, validators cannot join and leave at any point in "
+#~ "time, but only at era boundaries. An era's validators are determined using "
+#~ "an `auction <A.html#auction>`_. At the beginning of the era, the validators "
+#~ "create a new instance of the Highway protocol and run this consensus "
+#~ "protocol until they finalize the era's last block (see `booking block "
+#~ "<B.html#booking-block>`_)."
+#~ msgstr ""
+#~ "В сети Casper валидаторы не могут входить и выходить в любое время, а могут "
+#~ "только на границах эр. Валидаторы эры определяются через аукцион `auction "
+#~ "<A.html#auction>`_. В начале эры валидаторы создают новый экземпляр "
+#~ "протокола Highway и работают на этом протоколе консенсуса до момента "
+#~ "финализации последнего блока эры (смотрите `booking block <B.html#booking-"
+#~ "block>`_)."

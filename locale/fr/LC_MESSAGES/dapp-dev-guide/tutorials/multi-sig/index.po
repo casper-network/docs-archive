@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CasperLabs Tech Spec\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-26 20:13+0000\n"
+"POT-Creation-Date: 2021-09-08 20:42+0000\n"
 "PO-Revision-Date: 2021-06-26 21:46+0000\n"
 "Last-Translator: muss abahmane <elmabahma@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/caspernetwork/teams/122124/fr/)\n"
@@ -45,6 +45,25 @@ msgstr ""
 "un exemple de client qui invoque la fonctionnalité de signature multiple sur"
 " un réseau local Casper."
 
-#: ../../dapp-dev-guide/tutorials/multi-sig/index.rst:6
-msgid "**Table of Contents**"
-msgstr "**Table des matières**"
+#: ../../dapp-dev-guide/tutorials/multi-sig/index.rst:16
+msgid "Video Tutorials"
+msgstr "Tutoriels vidéo"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/index.rst:18
+msgid ""
+"If you prefer a video walkthrough of this guide, you can check out the "
+"videos below."
+msgstr ""
+"Si vous préférez une présentation vidéo de ce guide, vous pouvez consulter "
+"les vidéos ci-dessous."
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/index.rst:20
+msgid "**Account management and contract setup**"
+msgstr "**Gestion des comptes et configuration des contrats**"
+
+#: ../../dapp-dev-guide/tutorials/multi-sig/index.rst:26
+msgid "**Local network testing with a JavaScript client**"
+msgstr "**Test de réseau local avec un client JavaScript**"
+
+#~ msgid "**Table of Contents**"
+#~ msgstr "**Table des matières**"
