@@ -3,7 +3,7 @@ Golang SDK
 
 Usage Examples
 ^^^^^^^^^^^^^^
-This section includes some examples how to use Golang SDK:
+This section includes some examples of how to use Golang SDK:
 
 * Sending a transfer
 * Deploying a contract
