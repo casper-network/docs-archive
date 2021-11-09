@@ -1,7 +1,7 @@
 C# SDK (NetCasperSDK)
 =====================
 
-The `C# SDK <https://github.com/davidatwhiletrue/netcaspersdk>`_ allows developers to interact with the Casper Network using C#. This page covers different examples of using the SDK.
+The `C# SDK <https://github.com/make-software/casper-net-sdk>`_ allows developers to interact with the Casper Network using C#. This page covers different examples of using the SDK.
 
 Build
 ^^^^^
