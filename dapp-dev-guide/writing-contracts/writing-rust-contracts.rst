@@ -125,7 +125,7 @@ As part of the Casper local environment we provide the in-memory virtual machine
 TestContext
 ^^^^^^^^^^^
 
-A  `TestContext <https://docs.rs/casper-engine-test-support/latest/casper_engine_test_support/struct.TestContext.html>`_ provides a virtual machine instance. It should be a mutable object as we will change its internal data while making deploys. It's also important to set an initial balance for the account to use for deploys.
+A  TestContext provides a virtual machine instance. It should be a mutable object as we will change its internal data while making deploys. It's also important to set an initial balance for the account to use for deploys.
 
 .. code-block:: rust
 
