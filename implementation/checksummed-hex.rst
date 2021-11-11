@@ -8,7 +8,7 @@ Checksum Hex Encoding
 Introduction
 ------------
 
-A checksum hex encoding is a format that includes an embedded checksum to avoid copy errors when entering account addresses. While the checksum hex format protects account addresses, it also protects all hex-encoded values. For more details, look at the specification defined in `CEP-57 <https://github.com/casper-network/ceps/pull/57>`_ and implemented in **1.x.x**.
+A checksum hex encoding is a format that includes an embedded checksum to avoid copy errors when entering account addresses. While the checksum hex format protects account addresses, it also protects all hex-encoded values. For more details, look at the specification defined in `CEP-57 <https://github.com/casper-network/ceps/pull/57>`_.
 
 Checksum hex-encoded keys are safer to use than lowercase hex-encoded keys because they enforce the validity of the key. They make it easier to ensure that the system cannot process transactions with invalid or nonexistent keys. For example, suppose you accidentally change a character in a checksum hex-encoded key. In that case, it will make the key impossible to decode so that the system would not send tokens to invalid addresses. However, if someone accidentally changes a character in a regular hex-encoded key, the system would accept it, potentially stranding tokens in an inaccessible account.
 
@@ -32,7 +32,7 @@ Implementation
 --------------
 
 At a high level, the implementation in `GitHub <https://github.com/casper-network/casper-node/blob/dev/types/src/checksummed_hex.rs>`_ follows the steps below. The implementation was
-declared in `CEP-57 <https://github.com/casper-network/ceps/blob/master/text/0057-checksummed-addresses.md>`_ and implemented in **version**.
+declared in `CEP-57 <https://github.com/casper-network/ceps/blob/master/text/0057-checksummed-addresses.md>`_ and released in version ``1.4.2``.
 
 1. Take a blake2b hash of the input bytes.
 2. Convert the hash bytes into a cyclical stream of bits.
@@ -55,12 +55,11 @@ public key.
 
 For the Ed25519 public key ``01ccDBB42854759141910c134D67cfAf0E78a93AdD396d43045fAa3A567DcABd84``, the encoded public key ``ccDBB42854759141910c134D67cfAf0E78a93AdD396d43045fAa3A567DcABd84`` is concatenated with the key tag for ed25519 public keys ``01``.
 
-You can find the implementation on GitHub **link**.
+You can find the implementation on `GitHub <https://github.com/casper-network/casper-node/blob/dev/types/src/checksummed_hex.rs>.
 
 .. _checksum-hex-backward-compatibility:
 
 Backward Compatibility
 ----------------------
 
-.. TODO: Update this with whichever version this ships with.
-Version 1.x.x is backward-compatible with lower-hex encoded keys, so if you use a public key encoded in lowercase hex, the network will still be able to decode the public key and use it in a transaction.
+Version ``1.4.2`` is backward-compatible with lower-hex encoded keys, so if you use a public key encoded in lowercase hex, the network will still be able to decode the public key and use it in a transaction.
