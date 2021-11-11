@@ -8,8 +8,7 @@ Checksum Hex Encoding
 Introduction
 ------------
 
-A checksum hex encoding is a hex encoding format that includes an embedded checksum.
-The checksum hex encoding spec was defined in `CEP-57 <https://github.com/casper-network/ceps/pull/57>`_ and implemented in **1.x.x**.
+A checksum hex encoding is a format that includes an embedded checksum to avoid copy errors when entering account addresses. While the checksum hex format protects account addresses, it also protects all hex-encoded values. For more details, look at the specification defined in `CEP-57 <https://github.com/casper-network/ceps/pull/57>`_ and implemented in **1.x.x**.
 
 Checksum hex encoded keys are safer to use than lowercase hex encoded keys because they
 enforce the validity of the key, and they make it easier to ensure that transactions cannot be
