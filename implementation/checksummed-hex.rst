@@ -44,16 +44,16 @@ declared in `CEP-57 <https://github.com/casper-network/ceps/blob/master/text/005
 
 .. _checksum-hex-public-key-encoding:
 
-How `ed25519` and `secp256k1` keys are encoded
+How `Ed25519` and `Secp256K1` keys are encoded
 ----------------------------------------------
 
-For `ed25519` and `secp256k1` public keys, the public key bytes are hex-encoded with an embedded
+For `Ed25519` and `Secp256K1` public keys, the public key bytes are hex-encoded with an embedded
 checksum, then the hex-encoded public key tag is concatenated to the beginning of the encoded
 public key.
 
 **Example**:
 
-For the ed25519 public key ``01ccDBB42854759141910c134D67cfAf0E78a93AdD396d43045fAa3A567DcABd84``, the encoded public key ``ccDBB42854759141910c134D67cfAf0E78a93AdD396d43045fAa3A567DcABd84`` is concatenated with the key tag for ed25519 public keys ``01``.
+For the Ed25519 public key ``01ccDBB42854759141910c134D67cfAf0E78a93AdD396d43045fAa3A567DcABd84``, the encoded public key ``ccDBB42854759141910c134D67cfAf0E78a93AdD396d43045fAa3A567DcABd84`` is concatenated with the key tag for ed25519 public keys ``01``.
 
 You can find the implementation on GitHub **link**.
 
