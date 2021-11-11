@@ -12,7 +12,7 @@ The following table provides links to the SDK documentation, in addition to the 
  Java SDK (work in progress)                                                              https://github.com/casper-network/casper-java-sdk/
  `Golang SDK <go-sdk.html>`_ (work in progress)                                           https://github.com/casper-ecosystem/casper-golang-sdk/
  `Python SDK <python-sdk.html>`_ (work in progress)                                       https://github.com/casper-network/casper-python-sdk/ 
- `C# SDK <csharp-sdk.html>`_ (work in progress)                                           https://github.com/davidatwhiletrue/netcaspersdk  
+ `C# SDK <csharp-sdk.html>`_ (work in progress)                                           https://github.com/make-software/casper-net-sdk
 ======================================================================================    ==========================================================================================================================================
 
 .. toctree::

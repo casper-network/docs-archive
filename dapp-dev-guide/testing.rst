@@ -5,7 +5,7 @@
 Testing Contracts
 =================
 
-As part of the Casper local Rust contract development environment we provide an in-memory virtual machine you can run your contract against. A full node is not required for testing.  The testing framework is designed to be used in the following way:
+As part of the Casper local Rust contract development environment we provide an in-memory virtual machine and `testing framework https://docs.rs/casper-engine-test-support/latest/casper_engine_test_support/>`_ you can run your contract against. A full node is not required for testing. The testing framework is designed to be used in the following way:
 
 
 #. Initialize the system (context).
@@ -18,7 +18,7 @@ This environment enables the testing of blockchain enabled systems from end to e
 The TestContext for Rust Contracts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A  `TestContext <https://docs.rs/casper-engine-test-support/latest/casper_engine_test_support/struct.TestContext.html>`_ provides a virtual machine instance. It should be a mutable object as its internal data will change with each deploy. It's also important to set an initial balance for the account to use for deploys, as the system requires a balance in order to create an account.
+A  TestContext provides a virtual machine instance. It should be a mutable object as its internal data will change with each deploy. It's also important to set an initial balance for the account to use for deploys, as the system requires a balance in order to create an account.
 
 .. code-block:: rust
 
@@ -33,7 +33,7 @@ Account is type of ``[u8; 32]``. Balance is type of ``U512``.
 Running the Rust Smart Contract
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Before the contract can be deployed to the context, the request has to be prepared. A request is referred to as a `Session <https://docs.rs/casper-engine-test-support/latest/casper_engine_test_support/struct.Session.html>`_. Each session call has 4 elements:
+Before the contract can be deployed to the context, the request has to be prepared. A request is referred to as a Session. Each session call has 4 elements:
 
 
 * A Wasm file path.
