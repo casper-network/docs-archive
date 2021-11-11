@@ -1,26 +1,27 @@
-.. _checksummed-hex-head:
+.. _checksum-hex-head:
 
-Checksummed Hex Encoding
+Checksum Hex Encoding
 ========================
 
-.. _checksummed-hex-intro:
+.. _checksum-hex-intro:
 
 Introduction
 ------------
 
-Checksummed hex encoding is a hex encoding format that includes an embedded checksum.
-The checksummed hex encoding spec was defined in **CEP-57** and implemented in **1.x.x**.
+A checksum hex encoding is a hex encoding format that includes an embedded checksum.
+The checksum hex encoding spec was defined in `CEP-57 <https://github.com/casper-network/ceps/pull/57>`_ and implemented in **1.x.x**.
 
-Checksummed hex encoded keys are safer to use than lowercase hex encoded keys because they
+Checksum hex encoded keys are safer to use than lowercase hex encoded keys because they
 enforce the validity of the key, and they make it easier to ensure that transactions cannot be
 processed with invalid or nonexistent keys. As an example, if you accidentally change a character
-in a checksummed, hex encoded key, it will make the key impossible to decode, so tokens
+in a checksum, hex encoded key, it will make the key impossible to decode, so tokens
 can't sent to invalid addresses. However, if someone accidentally changes a character in a
 normal hex-encoded key, the system would accept it, potentially stranding tokens in an
 inaccessible account.
 
 
-The following :ref:`keys _serialization-standard-serialization-key` are checksummed-hex encoded:
+The following :ref:`keys _serialization-standard-serialization-key` are checksum-hex encoded:
+
 - Account
 - Hash
 - URef
@@ -32,7 +33,7 @@ The following :ref:`keys _serialization-standard-serialization-key` are checksum
 - Dictionary
 - SystemContractRegistry
 
-.. _checksummed-hex-implementation:
+.. _checksum-hex-implementation:
 
 Implementation
 --------------
@@ -50,7 +51,7 @@ The actual implementation is hosted on github :ref:`here <https://github.com/cas
 
 
 
-.. _checksummed-hex-public-key-encoding:
+.. _checksum-hex-public-key-encoding:
 
 How ed25519 and secp256k1 keys are encoded
 ------------------------------------------
@@ -65,7 +66,7 @@ For the ed25519 public key ``01ccDBB42854759141910c134D67cfAf0E78a93AdD396d43045
 
 You can find the implementation on github **link**
 
-.. _checksummed-hex-backward-compatibility:
+.. _checksum-hex-backward-compatibility:
 
 Backward Compatibility
 ----------------------
