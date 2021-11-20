@@ -514,6 +514,7 @@ A *key* in the :ref:`Global State<global-state-intro>` is one of the following d
 -  32-byte purse balance identifier
 -  32-byte Auction bid identifier
 -  32-byte Auction withdrawal identifier
+-  32-byte Dictionary item identifier
 
 The one exception to note here is the identifier for ``EraInfo``, which actually serializes as a ``u64`` value with an additional byte for the tag.
 
@@ -607,6 +608,12 @@ Information for the withdrawals is stored under this key only. The 32-byte ident
 ``blake2b256`` hash of the public key used to create the associated account (see
 :ref:`Accounts <accounts-associated-keys-weights>` for more information).
 
+.. _serialization-standard-dictionary-key:
+
+Dictionary Key
+~~~~~~~~~~~~~~~
+
+This key type is used for storing dictionary items.
 
 .. _serialization-standard-serialization-key:
 
@@ -638,7 +645,8 @@ The leading byte of the serialized buffer acts as a tag indicating the serialize
 +--------------------+-------------------+
 | ``Withdraw``       |                 8 |
 +--------------------+-------------------+
-
+| ``Dictionary``     |                 9 |
++--------------------+-------------------+
 
 - ``Account`` serializes as a 32 byte long buffer containing the byte representation of the underlying ``AccountHash``
 - ``Hash`` serializes as a 32 byte long buffer containing the byte representation of the underlying ``Hash`` itself.
@@ -648,7 +656,7 @@ The leading byte of the serialized buffer acts as a tag indicating the serialize
 - ``EraInfo`` serializes a ``u64`` primitive type containing the little-endian byte representation of ``u64``.
 - ``Balance`` serializes as 32 byte long buffer containing the byte representation of the URef address.
 - ``Bid`` and ``Withdraw`` both contain the ``AccountHash`` as their identifier; therefore, they serialize in the same manner as the ``Account`` variant.
-
+- ``Dictionary`` serializes as 32 byte long buffer containing the byte representation of the ``Dictionary`` item address.
 
 .. _serialization-standard-permissions:
 
@@ -682,7 +690,8 @@ This is summarized in the table below:
 +-----------------------------------+-----------------------------------+
 | Withdraw                          | System                            |
 +-----------------------------------+-----------------------------------+
-
+| Dictionary                        | ???                               |
++-----------------------------------+-----------------------------------+
 
 Refer to :ref:`URef permissions<uref-permissions>` on how permissions are handled in the case of ``URef``\ s.
 
