@@ -1,6 +1,10 @@
-# CasperLabs TechSpec
 
-## tl;dr on how to work and contribute
+# The Casper documentation has moved to https://casper.network/docs-app.
+
+
+## CasperLabs TechSpec
+
+### tl;dr on how to work and contribute
 
 - The whole document is written in a plaintext format called reStructuredText,
   and compiled into HTML and PDF by a documentation generator called
