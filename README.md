@@ -1,5 +1,5 @@
 
-# The Casper documentation has moved to https://casper.network/docs-app.
+# This Casper documentation has been archived. Visit https://github.com/casper-network/docs for the current documentation.
 
 
 ## CasperLabs TechSpec
